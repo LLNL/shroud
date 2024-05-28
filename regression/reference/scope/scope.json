@@ -599,7 +599,7 @@
                                 "dimension": "nitems",
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_native_*_cdesc_pointer"
+                            "stmt": "f_getter_native*_cdesc_pointer"
                         },
                         "SH_this": {
                             "meta": {
@@ -675,7 +675,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_getter_native_*_cdesc_pointer"
+                            "stmt_name": "f_getter_native*_cdesc_pointer"
                         }
                     },
                     "SH_this": {
@@ -1180,7 +1180,7 @@
                                         "dimension": "nitems",
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                    "stmt": "f_getter_native*_cdesc_pointer"
                                 },
                                 "SH_this": {
                                     "meta": {
@@ -1256,7 +1256,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer"
                                 }
                             },
                             "SH_this": {
@@ -1788,7 +1788,7 @@
                                         "dimension": "nitems",
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                    "stmt": "f_getter_native*_cdesc_pointer"
                                 },
                                 "SH_this": {
                                     "meta": {
@@ -1864,7 +1864,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer"
                                 }
                             },
                             "SH_this": {

@@ -26,7 +26,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Class2
-// Statement: c_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_capptr
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 {
     // splicer begin class.Class2.method.ctor

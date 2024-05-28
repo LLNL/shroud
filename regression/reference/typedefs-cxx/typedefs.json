@@ -336,7 +336,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -351,7 +351,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -410,7 +410,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "typefunc(\targ)",
@@ -447,7 +447,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -586,7 +586,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -601,7 +601,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -647,7 +647,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "typefunc_wrap(\targ)",
@@ -684,7 +684,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -781,7 +781,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_enum_scalar"
+                            "stmt": "c_function_enum"
                         },
                         "in": {
                             "meta": {
@@ -796,7 +796,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "in": {
                             "meta": {
@@ -868,7 +868,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_enum_scalar"
+                            "stmt_name": "c_function_enum"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnum(\tSHCXX_in)",
@@ -910,7 +910,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1060,7 +1060,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_enum_scalar"
+                            "stmt": "c_function_enum"
                         },
                         "in": {
                             "meta": {
@@ -1075,7 +1075,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "in": {
                             "meta": {
@@ -1147,7 +1147,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_enum_scalar"
+                            "stmt_name": "c_function_enum"
                         },
                         "fmtf": {
                             "C_call_function": "returnTypeID(\tSHCXX_in)",
@@ -1189,7 +1189,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1538,7 +1538,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -1553,7 +1553,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -1599,7 +1599,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "returnBytesForIndexType(\targ)",
@@ -1636,7 +1636,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -1754,7 +1754,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "ndims": {
                             "meta": {
@@ -1776,7 +1776,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "ndims": {
                             "meta": {
@@ -1835,7 +1835,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "returnShapeSize(\tndims,\t shape)",
@@ -1872,7 +1872,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "ndims": {
@@ -2019,7 +2019,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -2034,7 +2034,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -2080,7 +2080,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "returnBytesForIndexType2(\targ)",
@@ -2117,7 +2117,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -2235,7 +2235,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "ndims": {
                             "meta": {
@@ -2257,7 +2257,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "ndims": {
                             "meta": {
@@ -2316,7 +2316,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "returnShapeSize2(\tndims,\t shape)",
@@ -2353,7 +2353,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "ndims": {

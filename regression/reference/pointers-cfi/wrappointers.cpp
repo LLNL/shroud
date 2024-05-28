@@ -485,7 +485,7 @@ void POI_fill_with_zeros_CFI(CFI_cdesc_t *SHT_x_cfi, int x_length)
 
 // ----------------------------------------
 // Function:  int accumulate
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Statement: c_in_native*
@@ -504,7 +504,7 @@ int POI_accumulate(const int * arr, size_t len)
 
 // ----------------------------------------
 // Function:  int accumulate
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Statement: f_in_native*_cfi
@@ -527,7 +527,7 @@ int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  char * * names +intent(in)
 // Statement: c_in_char**
@@ -546,7 +546,7 @@ int POI_acceptCharArrayIn(char **names)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  char * * names +intent(in)
 // Statement: f_in_char**_cfi
@@ -586,7 +586,7 @@ void POI_setGlobalInt(int value)
  */
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // start POI_sumFixedArray
 int POI_sumFixedArray(void)
 {
@@ -1056,7 +1056,7 @@ void POI_getRawPtrToInt2d(int * * * arg)
  */
 // ----------------------------------------
 // Function:  int checkInt2d
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
 // Statement: c_in_native**
@@ -1139,7 +1139,7 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Statement: c_function_void_*
+// Statement: c_function_void*
 // ----------------------------------------
 // Argument:  int flag
 // Statement: c_in_native
@@ -1155,7 +1155,7 @@ void * POI_returnAddress1(int flag)
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Statement: c_function_void_*
+// Statement: c_function_void*
 // ----------------------------------------
 // Argument:  int flag
 // Statement: c_in_native
@@ -1201,7 +1201,7 @@ void POI_updateVoidPtr(void **addr)
 
 // ----------------------------------------
 // Function:  int VoidPtrArray
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  void * * addr +rank(1)
 // Statement: c_in_void**
@@ -1217,7 +1217,7 @@ int POI_VoidPtrArray(void **addr)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntPtrToScalar
 int * POI_returnIntPtrToScalar(void)
 {
@@ -1230,7 +1230,7 @@ int * POI_returnIntPtrToScalar(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Statement: f_function_native_*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToScalar_CFI
 void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1253,7 +1253,7 @@ void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntPtrToFixedArray
 int * POI_returnIntPtrToFixedArray(void)
 {
@@ -1266,7 +1266,7 @@ int * POI_returnIntPtrToFixedArray(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Statement: f_function_native_*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToFixedArray_CFI
 void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1293,7 +1293,7 @@ void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntPtrToConstScalar
 const int * POI_returnIntPtrToConstScalar(void)
 {
@@ -1306,7 +1306,7 @@ const int * POI_returnIntPtrToConstScalar(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Statement: f_function_native_*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToConstScalar_CFI
 void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1329,7 +1329,7 @@ void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntPtrToFixedConstArray
 const int * POI_returnIntPtrToFixedConstArray(void)
 {
@@ -1342,7 +1342,7 @@ const int * POI_returnIntPtrToFixedConstArray(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Statement: f_function_native_*_cfi_pointer
+// Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToFixedConstArray_CFI
 void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -1369,7 +1369,7 @@ void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntScalar
 int * POI_returnIntScalar(void)
 {
@@ -1382,7 +1382,7 @@ int * POI_returnIntScalar(void)
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Statement: f_function_native_*_scalar
+// Statement: f_function_native*_scalar
 // start POI_returnIntScalar_bufferify
 int POI_returnIntScalar_bufferify(void)
 {
@@ -1398,7 +1398,7 @@ int POI_returnIntScalar_bufferify(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntRaw
 int * POI_returnIntRaw(void)
 {
@@ -1415,7 +1415,7 @@ int * POI_returnIntRaw(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRawWithArgs +deref(raw)
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // ----------------------------------------
 // Argument:  const char * name
 // Statement: c_in_char*
@@ -1435,7 +1435,7 @@ int * POI_returnIntRawWithArgs(const char * name)
  */
 // ----------------------------------------
 // Function:  int * returnIntRawWithArgs +deref(raw)
-// Statement: f_function_native_*_raw
+// Statement: f_function_native*_raw
 // ----------------------------------------
 // Argument:  const char * name
 // Statement: f_in_char*_cfi
@@ -1458,7 +1458,7 @@ int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
  */
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d
-// Statement: c_function_native_**
+// Statement: c_function_native**
 // start POI_returnRawPtrToInt2d
 int * * POI_returnRawPtrToInt2d(void)
 {
@@ -1471,7 +1471,7 @@ int * * POI_returnRawPtrToInt2d(void)
 
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-// Statement: c_function_native_*
+// Statement: c_function_native*
 // start POI_returnIntAllocToFixedArray
 int * POI_returnIntAllocToFixedArray(void)
 {
@@ -1484,7 +1484,7 @@ int * POI_returnIntAllocToFixedArray(void)
 
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-// Statement: f_function_native_*_cfi_allocatable
+// Statement: f_function_native*_cfi_allocatable
 // start POI_returnIntAllocToFixedArray_CFI
 void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {

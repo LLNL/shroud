@@ -23,7 +23,7 @@
  */
 // ----------------------------------------
 // Function:  Alias typefunc_wrap
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  Alias arg
 // Statement: f_in_native
@@ -39,7 +39,7 @@ Alias TYP_typefunc_wrap_bufferify(Alias arg)
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: f_function_enum_scalar
+// Statement: f_function_enum
 // ----------------------------------------
 // Argument:  iColor in
 // Statement: f_in_enum
@@ -57,7 +57,7 @@ int TYP_returnEnum_bufferify(int in)
 
 // ----------------------------------------
 // Function:  TypeID returnTypeID
-// Statement: f_function_enum_scalar
+// Statement: f_function_enum
 // ----------------------------------------
 // Argument:  TypeID in
 // Statement: f_in_enum

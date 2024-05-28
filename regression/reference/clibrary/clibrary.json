@@ -205,7 +205,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -298,7 +298,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -698,7 +698,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg2": {
                             "meta": {
@@ -773,7 +773,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1246,7 +1246,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_buf_copy"
+                            "stmt": "f_function_char*_buf_copy"
                         },
                         "arg1": {
                             "meta": {
@@ -1341,7 +1341,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_copy"
+                            "stmt_name": "f_function_char*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2795,7 +2795,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "flag": {
                             "meta": {
@@ -2905,7 +2905,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3152,7 +3152,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "flag": {
                             "meta": {
@@ -3262,7 +3262,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3476,7 +3476,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "flag": {
                             "meta": {
@@ -3550,7 +3550,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3673,7 +3673,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "flag": {
                             "meta": {
@@ -3747,7 +3747,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -4282,7 +4282,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -4345,7 +4345,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -4596,7 +4596,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -4672,7 +4672,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {

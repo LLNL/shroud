@@ -92,7 +92,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  Alias typefunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  Alias arg
     ! Statement: f_in_native
@@ -111,7 +111,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  Alias typefunc_wrap
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  Alias arg
     ! Statement: f_in_native
@@ -130,7 +130,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  iColor returnEnum
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  iColor in
     ! Statement: f_in_enum
@@ -149,7 +149,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  TypeID returnTypeID
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  TypeID in
     ! Statement: f_in_enum
@@ -185,7 +185,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  IndexType arg
     ! Statement: f_in_native
@@ -205,7 +205,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  IndexType returnShapeSize
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int ndims
     ! Statement: f_in_native
@@ -229,7 +229,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  IndexType2 arg
     ! Statement: f_in_native
@@ -249,7 +249,7 @@ module typedefs_mod
 
     ! ----------------------------------------
     ! Function:  IndexType2 returnShapeSize2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int ndims
     ! Statement: f_in_native
@@ -280,7 +280,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  Alias typefunc
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  Alias arg
     ! Statement: f_in_native
@@ -300,7 +300,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  Alias typefunc_wrap
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  Alias arg
     ! Statement: f_in_native
@@ -326,7 +326,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  iColor returnEnum
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  iColor in
     ! Statement: f_in_enum
@@ -346,7 +346,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  TypeID returnTypeID
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  TypeID in
     ! Statement: f_in_enum
@@ -384,7 +384,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  IndexType arg
     ! Statement: f_in_native
@@ -405,7 +405,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  IndexType returnShapeSize
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int ndims
     ! Statement: f_in_native
@@ -430,7 +430,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int returnBytesForIndexType2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  IndexType2 arg
     ! Statement: f_in_native
@@ -451,7 +451,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  IndexType2 returnShapeSize2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int ndims
     ! Statement: f_in_native

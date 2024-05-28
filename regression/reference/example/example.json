@@ -64,7 +64,7 @@
                                                         "api": "capptr",
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                                    "stmt": "c_ctor_shadow_capptr"
                                                 }
                                             },
                                             "f": {
@@ -73,7 +73,7 @@
                                                         "api": "capptr",
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                                    "stmt": "f_ctor_shadow_capptr"
                                                 }
                                             },
                                             "lua": {
@@ -121,7 +121,7 @@
                                                     "f_local_ptr": "SHT_prv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                                    "stmt_name": "c_ctor_shadow_capptr"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t)",
@@ -161,7 +161,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                                    "stmt_name": "f_ctor_shadow_capptr"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass1 *",
@@ -272,7 +272,7 @@
                                                         "api": "capptr",
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                                    "stmt": "c_ctor_shadow_capptr"
                                                 },
                                                 "name": {
                                                     "meta": {
@@ -287,7 +287,7 @@
                                                         "api": "capptr",
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                                    "stmt": "f_ctor_shadow_capptr"
                                                 },
                                                 "name": {
                                                     "meta": {
@@ -369,7 +369,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                                    "stmt_name": "c_ctor_shadow_capptr"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
@@ -411,7 +411,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                                    "stmt_name": "f_ctor_shadow_capptr"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass1 *",
@@ -701,7 +701,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 },
                                                 "incr": {
                                                     "meta": {
@@ -716,7 +716,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 },
                                                 "incr": {
                                                     "meta": {
@@ -788,7 +788,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->incrementCount(\tincr)",
@@ -825,7 +825,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -995,7 +995,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_string_&"
+                                                    "stmt": "c_function_string&"
                                                 }
                                             },
                                             "f": {
@@ -1005,7 +1005,7 @@
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt": "f_function_string&_cdesc_allocatable"
                                                 }
                                             },
                                             "lua": {
@@ -1064,7 +1064,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string_&"
+                                                    "stmt_name": "c_function_string&"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getNameErrorCheck(\t)",
@@ -1115,7 +1115,7 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -1207,7 +1207,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_string_&"
+                                                    "stmt": "c_function_string&"
                                                 }
                                             },
                                             "f": {
@@ -1217,7 +1217,7 @@
                                                         "deref": "arg",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_string_&_buf_arg"
+                                                    "stmt": "f_function_string&_buf_arg"
                                                 }
                                             },
                                             "lua": {
@@ -1276,7 +1276,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string_&"
+                                                    "stmt_name": "c_function_string&"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getNameArg(\t)",
@@ -1316,7 +1316,7 @@
                                                     "i_var_len": "nname",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string_&_buf_arg"
+                                                    "stmt_name": "f_function_string&_buf_arg"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -1409,7 +1409,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 },
                                                 "value": {
                                                     "meta": {
@@ -1424,7 +1424,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 },
                                                 "value": {
                                                     "meta": {
@@ -1496,7 +1496,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
@@ -1533,7 +1533,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -1697,7 +1697,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 },
                                                 "value": {
                                                     "meta": {
@@ -1712,7 +1712,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 },
                                                 "value": {
                                                     "meta": {
@@ -1784,7 +1784,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
@@ -1821,7 +1821,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -1981,7 +1981,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_bool_scalar"
+                                                    "stmt": "c_function_bool"
                                                 },
                                                 "in": {
                                                     "meta": {
@@ -1996,7 +1996,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_bool_scalar"
+                                                    "stmt": "f_function_bool"
                                                 },
                                                 "in": {
                                                     "meta": {
@@ -2068,7 +2068,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_BOOL",
-                                                    "stmt_name": "c_function_bool_scalar"
+                                                    "stmt_name": "c_function_bool"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->hasAddr(\tin)",
@@ -2105,7 +2105,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_BOOL",
-                                                    "stmt_name": "f_function_bool_scalar"
+                                                    "stmt_name": "f_function_bool"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -2495,7 +2495,7 @@
                                                         "api": "capptr",
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                                    "stmt": "c_ctor_shadow_capptr"
                                                 },
                                                 "name": {
                                                     "meta": {
@@ -2510,7 +2510,7 @@
                                                         "api": "capptr",
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                                    "stmt": "f_ctor_shadow_capptr"
                                                 },
                                                 "name": {
                                                     "meta": {
@@ -2592,7 +2592,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                                    "stmt_name": "c_ctor_shadow_capptr"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
@@ -2634,7 +2634,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                                    "stmt_name": "f_ctor_shadow_capptr"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass2 *",
@@ -2929,7 +2929,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_string_&"
+                                                    "stmt": "c_function_string&"
                                                 }
                                             },
                                             "f": {
@@ -2939,7 +2939,7 @@
                                                         "deref": "copy",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_string_&_buf_copy"
+                                                    "stmt": "f_function_string&_buf_copy"
                                                 }
                                             },
                                             "lua": {
@@ -3000,7 +3000,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string_&"
+                                                    "stmt_name": "c_function_string&"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName(\t)",
@@ -3044,7 +3044,7 @@
                                                     "i_var_len": "SHT_rv_len",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string_&_buf_copy"
+                                                    "stmt_name": "f_function_string&_buf_copy"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -3139,7 +3139,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_string_&"
+                                                    "stmt": "c_function_string&"
                                                 }
                                             },
                                             "f": {
@@ -3149,7 +3149,7 @@
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt": "f_function_string&_cdesc_allocatable"
                                                 }
                                             },
                                             "lua": {
@@ -3207,7 +3207,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string_&"
+                                                    "stmt_name": "c_function_string&"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName2(\t)",
@@ -3258,7 +3258,7 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -3353,7 +3353,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_string_&"
+                                                    "stmt": "c_function_string&"
                                                 }
                                             },
                                             "f": {
@@ -3363,7 +3363,7 @@
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt": "f_function_string&_cdesc_allocatable"
                                                 }
                                             },
                                             "lua": {
@@ -3422,7 +3422,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string_&"
+                                                    "stmt_name": "c_function_string&"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName3(\t)",
@@ -3473,7 +3473,7 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "char *",
@@ -3567,7 +3567,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_string_&"
+                                                    "stmt": "c_function_string&"
                                                 }
                                             },
                                             "f": {
@@ -3577,7 +3577,7 @@
                                                         "deref": "allocatable",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt": "f_function_string&_cdesc_allocatable"
                                                 }
                                             },
                                             "lua": {
@@ -3635,7 +3635,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string_&"
+                                                    "stmt_name": "c_function_string&"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName4(\t)",
@@ -3686,7 +3686,7 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string_&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "char *",
@@ -3772,7 +3772,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 }
                                             },
                                             "f": {
@@ -3780,7 +3780,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 }
                                             },
                                             "lua": {
@@ -3826,7 +3826,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->GetNameLength(\t)",
@@ -3863,7 +3863,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -3961,7 +3961,7 @@
                                                         "api": "capptr",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_shadow_*_capptr"
+                                                    "stmt": "c_function_shadow*_capptr"
                                                 },
                                                 "in": {
                                                     "meta": {
@@ -3976,7 +3976,7 @@
                                                         "api": "capptr",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_shadow_*_capptr"
+                                                    "stmt": "f_function_shadow*_capptr"
                                                 },
                                                 "in": {
                                                     "meta": {
@@ -4044,7 +4044,7 @@
                                                     "f_local_ptr": "SHT_prv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_shadow_*_capptr"
+                                                    "stmt_name": "c_function_shadow*_capptr"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->get_class1(\tSHCXX_in)",
@@ -4083,7 +4083,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow_*_capptr"
+                                                    "stmt_name": "f_function_shadow*_capptr"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass1 *",
@@ -4268,7 +4268,7 @@
                                                         "api": "this",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_shadow_*_this"
+                                                    "stmt": "c_function_shadow*_this"
                                                 },
                                                 "type": {
                                                     "meta": {
@@ -4284,7 +4284,7 @@
                                                         "api": "this",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_shadow_*_this"
+                                                    "stmt": "f_function_shadow*_this"
                                                 },
                                                 "type": {
                                                     "meta": {
@@ -4330,7 +4330,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_shadow_*_this"
+                                                    "stmt_name": "c_function_shadow*_this"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type)",
@@ -4366,7 +4366,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow_*_this"
+                                                    "stmt_name": "f_function_shadow*_this"
                                                 }
                                             },
                                             "type": {
@@ -4559,7 +4559,7 @@
                                                         "api": "this",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_shadow_*_this"
+                                                    "stmt": "c_function_shadow*_this"
                                                 },
                                                 "len": {
                                                     "meta": {
@@ -4666,7 +4666,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_shadow_*_this"
+                                                    "stmt_name": "c_function_shadow*_this"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass2 *",
@@ -4909,7 +4909,7 @@
                                                         "api": "this",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_shadow_*_this"
+                                                    "stmt": "f_function_shadow*_this"
                                                 },
                                                 "len": {
                                                     "meta": {
@@ -4972,7 +4972,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow_*_this"
+                                                    "stmt_name": "f_function_shadow*_this"
                                                 }
                                             },
                                             "len": {
@@ -5116,7 +5116,7 @@
                                                         "api": "this",
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_shadow_*_this"
+                                                    "stmt": "f_function_shadow*_this"
                                                 },
                                                 "len": {
                                                     "meta": {
@@ -5179,7 +5179,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow_*_this"
+                                                    "stmt_name": "f_function_shadow*_this"
                                                 }
                                             },
                                             "len": {
@@ -5391,7 +5391,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 }
                                             },
                                             "f": {
@@ -5399,7 +5399,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 }
                                             },
                                             "lua": {
@@ -5449,7 +5449,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getTypeID(\t)",
@@ -5490,7 +5490,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_TypeID",
@@ -6922,7 +6922,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 }
                                             },
                                             "f": {
@@ -6930,7 +6930,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 }
                                             },
                                             "lua": {
@@ -6976,7 +6976,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue<int>(\t)",
@@ -7012,7 +7012,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -7129,7 +7129,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "c_function_native_scalar"
+                                                    "stmt": "c_function_native"
                                                 }
                                             },
                                             "f": {
@@ -7137,7 +7137,7 @@
                                                     "meta": {
                                                         "intent": "function"
                                                     },
-                                                    "stmt": "f_function_native_scalar"
+                                                    "stmt": "f_function_native"
                                                 }
                                             },
                                             "lua": {
@@ -7183,7 +7183,7 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
-                                                    "stmt_name": "c_function_native_scalar"
+                                                    "stmt_name": "c_function_native"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue<double>(\t)",
@@ -7219,7 +7219,7 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
-                                                    "stmt_name": "f_function_native_scalar"
+                                                    "stmt_name": "f_function_native"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -7497,7 +7497,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "c_function_bool_scalar"
+                                            "stmt": "c_function_bool"
                                         },
                                         "name": {
                                             "meta": {
@@ -7511,7 +7511,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "f_function_bool_scalar"
+                                            "stmt": "f_function_bool"
                                         },
                                         "name": {
                                             "meta": {
@@ -7589,7 +7589,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "c_function_bool_scalar"
+                                            "stmt_name": "c_function_bool"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::isNameValid(\tSHCXX_name)",
@@ -7627,7 +7627,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "f_function_bool_scalar"
+                                            "stmt_name": "f_function_bool"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -7786,7 +7786,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "c_function_bool_scalar"
+                                            "stmt": "c_function_bool"
                                         }
                                     },
                                     "f": {
@@ -7794,7 +7794,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "f_function_bool_scalar"
+                                            "stmt": "f_function_bool"
                                         }
                                     },
                                     "lua": {
@@ -7840,7 +7840,7 @@
                                             "cxx_var": "SHC_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "c_function_bool_scalar"
+                                            "stmt_name": "c_function_bool"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::isInitialized(\t)",
@@ -7875,7 +7875,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "f_function_bool_scalar"
+                                            "stmt_name": "f_function_bool"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -9181,7 +9181,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "c_function_native_scalar"
+                                            "stmt": "c_function_native"
                                         }
                                     },
                                     "f": {
@@ -9189,7 +9189,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "f_function_native_scalar"
+                                            "stmt": "f_function_native"
                                         }
                                     },
                                     "lua": {
@@ -9235,7 +9235,7 @@
                                             "cxx_var": "SHC_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt_name": "c_function_native_scalar"
+                                            "stmt_name": "c_function_native"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_size_t(\t)",
@@ -9270,7 +9270,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt_name": "f_function_native_scalar"
+                                            "stmt_name": "f_function_native"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -14657,7 +14657,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "c_function_native_scalar"
+                                            "stmt": "c_function_native"
                                         },
                                         "verylongname1": {
                                             "meta": {
@@ -14735,7 +14735,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "f_function_native_scalar"
+                                            "stmt": "f_function_native"
                                         },
                                         "verylongname1": {
                                             "meta": {
@@ -15032,7 +15032,7 @@
                                             "cxx_var": "SHC_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "c_function_native_scalar"
+                                            "stmt_name": "c_function_native"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
@@ -15069,7 +15069,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "f_function_native_scalar"
+                                            "stmt_name": "f_function_native"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",

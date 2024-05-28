@@ -444,7 +444,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {

@@ -1254,7 +1254,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "rv": {
                             "meta": {
@@ -1268,7 +1268,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "rv": {
                             "meta": {
@@ -1334,7 +1334,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "function4(\tARG_rv)",
@@ -1372,7 +1372,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2873,7 +2873,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -2881,7 +2881,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "py": {
@@ -2920,7 +2920,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
@@ -2955,7 +2955,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3037,7 +3037,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "point": {
                             "meta": {
@@ -3051,7 +3051,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "point": {
                             "meta": {
@@ -3107,7 +3107,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "Cstruct_as_class_sum(\tARG_point)",
@@ -3144,7 +3144,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -4927,7 +4927,7 @@
                                                 "api": "capptr",
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "c_ctor_shadow_scalar_capptr"
+                                            "stmt": "c_ctor_shadow_capptr"
                                         }
                                     },
                                     "f": {
@@ -4936,7 +4936,7 @@
                                                 "api": "capptr",
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "f_ctor_shadow_scalar_capptr"
+                                            "stmt": "f_ctor_shadow_capptr"
                                         }
                                     },
                                     "py": {
@@ -4977,7 +4977,7 @@
                                             "f_local_ptr": "SHT_prv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                            "stmt_name": "c_ctor_shadow_capptr"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->defaultctor(\t)",
@@ -5017,7 +5017,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                            "stmt_name": "f_ctor_shadow_capptr"
                                         },
                                         "fmtpy": {
                                             "PY_build_format": "O",

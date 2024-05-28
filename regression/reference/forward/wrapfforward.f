@@ -68,7 +68,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_capptr
         function c_class2_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="FOR_Class2_ctor")
@@ -120,7 +120,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  int passStruct1
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
         ! Statement: f_in_struct*
@@ -172,7 +172,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     function class2_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -252,7 +252,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStruct1
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
     ! Statement: f_in_struct*

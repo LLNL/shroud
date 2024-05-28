@@ -92,7 +92,7 @@ static void ShroudCharFree(char *src)
  */
 // ----------------------------------------
 // Function:  double PassByValueMacro
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  int arg2
 // Statement: f_in_native
@@ -106,7 +106,7 @@ double CLI_PassByValueMacro_bufferify(int arg2)
 
 // ----------------------------------------
 // Function:  char * Function4a +len(30)
-// Statement: f_function_char_*_buf_copy
+// Statement: f_function_char*_buf_copy
 // ----------------------------------------
 // Argument:  const char * arg1
 // Statement: f_in_char*
@@ -245,7 +245,7 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
  */
 // ----------------------------------------
 // Function:  int passAssumedTypeBuf
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
 // Statement: f_in_void*

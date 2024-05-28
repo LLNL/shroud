@@ -22,7 +22,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Shape
-// Statement: c_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_capptr
 CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 {
     // splicer begin class.Shape.method.ctor
@@ -35,7 +35,7 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 
 // ----------------------------------------
 // Function:  int get_ivar
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 int CLA_Shape_get_ivar(const CLA_Shape * self)
 {
     const classes::Shape *SH_this = static_cast<const classes::Shape *>

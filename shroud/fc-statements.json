@@ -35,15 +35,15 @@
         ]
     },
     {
-        "name": "f_function_native_scalar",
+        "name": "f_function_native",
         "alias": [
-            "f_function_enum_scalar",
-            "c_function_enum_scalar",
-            "c_function_native_scalar"
+            "f_function_enum",
+            "c_function_enum",
+            "c_function_native"
         ]
     },
     {
-        "name": "f_function_native_*_scalar",
+        "name": "f_function_native*_scalar",
         "comments": [
             "Return a scalar to avoid doing the deref in Fortran."
         ],
@@ -1001,9 +1001,9 @@
         ]
     },
     {
-        "name": "f_function_bool_scalar",
+        "name": "f_function_bool",
         "alias": [
-            "c_function_bool_scalar"
+            "c_function_bool"
         ],
         "f_need_wrapper": true
     },
@@ -1207,9 +1207,9 @@
         ]
     },
     {
-        "name": "f_function_void_*",
+        "name": "f_function_void*",
         "alias": [
-            "c_function_void_*"
+            "c_function_void*"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1253,7 +1253,7 @@
         }
     },
     {
-        "name": "c_function_native_*_scalar",
+        "name": "c_function_native*_scalar",
         "i_result_decl": [
             "{f_type} :: {i_var}"
         ],
@@ -1264,7 +1264,7 @@
         }
     },
     {
-        "name": "f_function_native_*_cdesc_allocatable",
+        "name": "f_function_native*_cdesc_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1274,7 +1274,7 @@
         ]
     },
     {
-        "name": "f_function_native_&",
+        "name": "f_function_native&",
         "notes": [
             "Pointer to scalar.",
             "type(C_PTR) is returned instead of a cdesc argument."
@@ -1283,13 +1283,13 @@
             "f_mixin_function_c-ptr"
         ],
         "alias": [
-            "f_function_native_*_pointer",
-            "f_function_native_*_pointer_caller",
-            "f_function_native_&_pointer"
+            "f_function_native*_pointer",
+            "f_function_native*_pointer_caller",
+            "f_function_native&_pointer"
         ]
     },
     {
-        "name": "f_function_native_*_cdesc_pointer",
+        "name": "f_function_native*_cdesc_pointer",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1297,11 +1297,11 @@
             "f_mixin_native_cdesc_pointer"
         ],
         "alias": [
-            "f_function_struct_*_cdesc_pointer"
+            "f_function_struct*_cdesc_pointer"
         ]
     },
     {
-        "name": "f_function_native_*_cdesc_pointer_caller",
+        "name": "f_function_native*_cdesc_pointer_caller",
         "notes": [
             "+deref(pointer) +owner(caller)",
             "The capsule contains information used to delete the memory."
@@ -1316,16 +1316,16 @@
         ]
     },
     {
-        "name": "f_function_native_*_raw",
+        "name": "f_function_native*_raw",
         "mixin": [
             "f_mixin_function_ptr"
         ],
         "alias": [
-            "c_function_native_*",
-            "c_function_native_&",
-            "c_function_native_*_caller",
-            "c_function_native_**",
-            "f_function_native_**"
+            "c_function_native*",
+            "c_function_native&",
+            "c_function_native*_caller",
+            "c_function_native**",
+            "f_function_native**"
         ]
     },
     {
@@ -1352,12 +1352,12 @@
         }
     },
     {
-        "name": "f_function_char_scalar",
+        "name": "f_function_char",
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
         "alias": [
-            "c_function_char_scalar"
+            "c_function_char"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -1381,10 +1381,10 @@
         }
     },
     {
-        "name": "f_function_char_*",
+        "name": "f_function_char*",
         "alias": [
-            "c_function_char_*",
-            "f_function_char_*_allocatable/copy/pointer/raw"
+            "c_function_char*",
+            "f_function_char*_allocatable/copy/pointer/raw"
         ],
         "f_arg_decl": [
             "type(C_PTR) :: {f_var}"
@@ -1471,7 +1471,7 @@
         ]
     },
     {
-        "name": "f_function_char_*_buf_copy",
+        "name": "f_function_char*_buf_copy",
         "notes": [
             "char *getname() +len(30)",
             "Copy result into caller's buffer."
@@ -1482,7 +1482,7 @@
             "c_mixin_in_character_buf"
         ],
         "alias": [
-            "c_function_char_*_buf_copy"
+            "c_function_char*_buf_copy"
         ],
         "cxx_local_var": "result",
         "c_helper": [
@@ -1493,16 +1493,16 @@
         ]
     },
     {
-        "name": "f_function_char_*_arg",
+        "name": "f_function_char*_arg",
         "notes": [
             "Change function result into an argument",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_char_*_buf_copy",
+        "base": "f_function_char*_buf_copy",
         "alias": [
-            "c_function_char_*_arg",
-            "f_function_char_*_buf_arg",
-            "c_function_char_*_buf_arg"
+            "c_function_char*_arg",
+            "f_function_char*_buf_arg",
+            "c_function_char*_buf_arg"
         ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
@@ -1564,7 +1564,7 @@
         ]
     },
     {
-        "name": "f_function_char_scalar_cdesc_allocatable",
+        "name": "f_function_char_cdesc_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1572,11 +1572,11 @@
             "c_mixin_function_char_*_cdesc"
         ],
         "alias": [
-            "f_function_char_*_cdesc_allocatable"
+            "f_function_char*_cdesc_allocatable"
         ]
     },
     {
-        "name": "f_function_char_scalar_cdesc_pointer",
+        "name": "f_function_char_cdesc_pointer",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1584,11 +1584,11 @@
             "f_mixin_char_cdesc_pointer"
         ],
         "alias": [
-            "f_function_char_*_cdesc_pointer"
+            "f_function_char*_cdesc_pointer"
         ]
     },
     {
-        "name": "f_function_string_*_cdesc_pointer",
+        "name": "f_function_string*_cdesc_pointer",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1596,8 +1596,9 @@
             "f_mixin_char_cdesc_pointer"
         ],
         "alias": [
-            "f_function_string_&_cdesc_pointer",
-            "f_function_string_*/&_cdesc_pointer_caller/library"
+            "f_function_string&_cdesc_pointer",
+            "f_function_string*_cdesc_pointer_caller/library",
+            "f_function_string&_cdesc_pointer_caller/library"
         ]
     },
     {
@@ -1726,10 +1727,11 @@
             "any api argument - is this useful?"
         ],
         "alias": [
-            "c_function_string_*/&",
-            "c_function_string_*_caller/library",
-            "c_function_string_*_copy",
-            "c_function_string_&_copy"
+            "c_function_string*",
+            "c_function_string&",
+            "c_function_string*_caller/library",
+            "c_function_string*_copy",
+            "c_function_string&_copy"
         ],
         "c_return": [
             "return {c_var};"
@@ -1744,7 +1746,7 @@
         }
     },
     {
-        "name": "c_function_string_scalar",
+        "name": "c_function_string",
         "notimplemented": true,
         "comments": [
             "Cannot return a char array by value."
@@ -1808,7 +1810,7 @@
         ]
     },
     {
-        "name": "f_function_string_*_cdesc_allocatable",
+        "name": "f_function_string*_cdesc_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1819,24 +1821,27 @@
             "f_mixin_capsule_dtor"
         ],
         "alias": [
-            "f_function_string_&_cdesc_allocatable",
-            "f_function_string_*/&_cdesc_allocatable_caller/library"
+            "f_function_string&_cdesc_allocatable",
+            "f_function_string*_cdesc_allocatable_caller/library",
+            "f_function_string&_cdesc_allocatable_caller/library"
         ]
     },
     {
-        "name": "f_function_string_scalar_buf",
+        "name": "f_function_string_buf",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_in_character_buf",
             "c_mixin_in_character_buf"
         ],
         "alias": [
-            "f_function_string_*_buf",
-            "f_function_string_&_buf",
-            "f_function_string_scalar_buf_copy",
-            "f_function_string_*_buf_copy",
-            "f_function_string_&_buf_copy",
-            "c_function_string_scalar/*/&_buf_copy"
+            "f_function_string*_buf",
+            "f_function_string&_buf",
+            "f_function_string_buf_copy",
+            "f_function_string*_buf_copy",
+            "f_function_string&_buf_copy",
+            "c_function_string_buf_copy",
+            "c_function_string*_buf_copy",
+            "c_function_string&_buf_copy"
         ],
         "c_helper": [
             "char_copy"
@@ -1850,16 +1855,16 @@
         ]
     },
     {
-        "name": "f_function_string_scalar_buf_arg",
+        "name": "f_function_string_buf_arg",
         "comments": [
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_string_scalar_buf",
+        "base": "f_function_string_buf",
         "alias": [
-            "c_function_string_scalar_buf_arg",
-            "f_function_string_&_buf_arg",
-            "c_function_string_&_buf_arg"
+            "c_function_string_buf_arg",
+            "f_function_string&_buf_arg",
+            "c_function_string&_buf_arg"
         ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
@@ -1878,7 +1883,7 @@
         ]
     },
     {
-        "name": "f_function_string_scalar_cdesc_allocatable",
+        "name": "f_function_string_cdesc_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1888,7 +1893,7 @@
             "f_mixin_use_capsule"
         ],
         "alias": [
-            "f_function_string_scalar_cdesc_allocatable_caller/library"
+            "f_function_string_cdesc_allocatable_caller/library"
         ],
         "cxx_local_var": "pointer",
         "c_pre_call": [
@@ -1933,7 +1938,7 @@
         }
     },
     {
-        "name": "c_function_vector_scalar_targ_native_scalar",
+        "name": "c_function_vector<native>",
         "notimplemented": true,
         "comments": [
             "Cannot return a std::vector<native> by value."
@@ -2162,7 +2167,7 @@
         ]
     },
     {
-        "name": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar",
+        "name": "f_function_vector<native>_cdesc_allocatable",
         "notes": [
             "Almost same as intent_out_buf.",
             "Similar to f_vector_out_allocatable but must declare result variable.",
@@ -2200,7 +2205,7 @@
         ]
     },
     {
-        "name": "c_function_vector_scalar_malloc_targ_native_scalar",
+        "name": "c_function_vector<native>_malloc",
         "comments": [
             "Create empty local vector then copy result to",
             "malloc allocated array.",
@@ -2645,7 +2650,7 @@
         ]
     },
     {
-        "name": "f_function_shadow_*_capsule",
+        "name": "f_function_shadow*_capsule",
         "comments": [
             "Return a C_capsule_data_type."
         ],
@@ -2655,7 +2660,7 @@
             "c_mixin_shadow"
         ],
         "alias": [
-            "c_function_shadow_*_capsule"
+            "c_function_shadow*_capsule"
         ],
         "cxx_local_var": "result",
         "c_post_call": [
@@ -2664,7 +2669,7 @@
         ]
     },
     {
-        "name": "f_function_shadow_*_this",
+        "name": "f_function_shadow*_this",
         "notes": [
             "Input set return_this.",
             "Do not return anything."
@@ -2673,7 +2678,7 @@
             "f_mixin_function-to-subroutine"
         ],
         "alias": [
-            "c_function_shadow_*_this"
+            "c_function_shadow*_this"
         ],
         "f_result": "subroutine",
         "c_call": [
@@ -2701,7 +2706,7 @@
         ]
     },
     {
-        "name": "f_function_shadow_*/&_capptr",
+        "name": "f_function_shadow*_capptr",
         "comments": [
             "Return a C_capsule_data_type."
         ],
@@ -2710,9 +2715,13 @@
             "c_mixin_shadow"
         ],
         "alias": [
-            "c_function_shadow_*/&_capptr",
-            "f_function_shadow_*/&_capptr_caller/library",
-            "c_function_shadow_*/&_capptr_caller/library"
+            "f_function_shadow&_capptr",
+            "c_function_shadow*_capptr",
+            "c_function_shadow&_capptr",
+            "f_function_shadow*_capptr_caller/library",
+            "f_function_shadow&_capptr_caller/library",
+            "c_function_shadow*_capptr_caller/library",
+            "c_function_shadow&_capptr_caller/library"
         ],
         "cxx_local_var": "result",
         "c_post_call": [
@@ -2725,7 +2734,7 @@
         ]
     },
     {
-        "name": "f_function_shadow_scalar_capptr",
+        "name": "f_function_shadow_capptr",
         "comments": [
             "Return a instance by value."
         ],
@@ -2739,10 +2748,10 @@
             "c_mixin_shadow"
         ],
         "alias": [
-            "c_function_shadow_scalar_capptr",
-            "f_function_shadow_scalar_capptr_targ_native_scalar",
-            "c_function_shadow_scalar_capptr_targ_native_scalar",
-            "f_function_shadow_scalar_capptr_caller/library"
+            "c_function_shadow_capptr",
+            "f_function_shadow<native>_capptr",
+            "c_function_shadow<native>_capptr",
+            "f_function_shadow_capptr_caller/library"
         ],
         "cxx_local_var": "pointer",
         "owner": "caller",
@@ -2759,13 +2768,13 @@
         ]
     },
     {
-        "name": "f_ctor_shadow_scalar_capptr",
+        "name": "f_ctor_shadow_capptr",
         "mixin": [
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
         ],
         "alias": [
-            "c_ctor_shadow_scalar_capptr"
+            "c_ctor_shadow_capptr"
         ],
         "c_call": [
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
@@ -2824,12 +2833,12 @@
     },
     {
         "start-after": "start function_struct_scalar",
-        "name": "f_function_struct_scalar",
+        "name": "f_function_struct",
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
         "alias": [
-            "c_function_struct_scalar"
+            "c_function_struct"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -2854,7 +2863,7 @@
         "end-before": "end function_struct_scalar"
     },
     {
-        "name": "f_function_struct_*_pointer",
+        "name": "f_function_struct*_pointer",
         "comments": [
             "C++ pointer -> void pointer -> C pointer"
         ],
@@ -2862,11 +2871,11 @@
             "f_mixin_function_c-ptr"
         ],
         "alias": [
-            "c_function_struct_*"
+            "c_function_struct*"
         ]
     },
     {
-        "name": "f_getter_struct_*_fapi_pointer",
+        "name": "f_getter_struct*_fapi_pointer",
         "notes": [
             "XXX - unused - the getter does not need a C wrapper if api(fapi)",
             "The getter can be done totally from Fortran for a pointer to a scalar.",
@@ -2918,7 +2927,7 @@
         ]
     },
     {
-        "name": "f_getter_bool_scalar",
+        "name": "f_getter_bool",
         "mixin": [
             "c_mixin_noargs"
         ],
@@ -2943,14 +2952,14 @@
         ]
     },
     {
-        "name": "f_getter_native_scalar",
+        "name": "f_getter_native",
         "mixin": [
             "c_mixin_noargs"
         ],
         "alias": [
-            "c_getter_native_scalar",
-            "f_getter_native_*_pointer",
-            "c_getter_native_*"
+            "c_getter_native",
+            "f_getter_native*_pointer",
+            "c_getter_native*"
         ],
         "f_arg_call": [],
         "c_call": [
@@ -3009,7 +3018,7 @@
         ]
     },
     {
-        "name": "f_getter_native_*_cdesc_pointer",
+        "name": "f_getter_native*_cdesc_pointer",
         "notes": [
             "Similar to calling a function, but save field pointer instead."
         ],
@@ -3020,11 +3029,11 @@
             "f_mixin_getter_cdesc"
         ],
         "alias": [
-            "f_getter_struct_*_cdesc_pointer"
+            "f_getter_struct*_cdesc_pointer"
         ]
     },
     {
-        "name": "f_getter_struct_**_cdesc_raw",
+        "name": "f_getter_struct**_cdesc_raw",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -3033,7 +3042,7 @@
         ]
     },
     {
-        "name": "f_getter_string_scalar_cdesc_allocatable",
+        "name": "f_getter_string_cdesc_allocatable",
         "comments": [
             "Return argument meta data to Fortran."
         ],
@@ -3085,7 +3094,7 @@
         ]
     },
     {
-        "name": "f_function_char_*_cfi_allocatable",
+        "name": "f_function_char*_cfi_allocatable",
         "notes": [
             "Add allocatable attribute to declaration."
         ],
@@ -3094,7 +3103,7 @@
             "c_mixin_arg_cfi"
         ],
         "alias": [
-            "f_function_char_scalar_cfi_allocatable"
+            "f_function_char_cfi_allocatable"
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
@@ -3127,7 +3136,7 @@
             "c_mixin_arg_cfi"
         ],
         "alias": [
-            "f_function_char_*_cfi_pointer"
+            "f_function_char*_cfi_pointer"
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
@@ -3311,7 +3320,7 @@
         ]
     },
     {
-        "name": "f_function_char_*_cfi_copy",
+        "name": "f_function_char*_cfi_copy",
         "comments": [
             "Copy result into caller's buffer."
         ],
@@ -3334,12 +3343,12 @@
         ]
     },
     {
-        "name": "f_function_char_*_cfi_arg",
+        "name": "f_function_char*_cfi_arg",
         "comments": [
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_char_*_cfi_copy",
+        "base": "f_function_char*_cfi_copy",
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
             "i_var": "{F_string_result_as_arg}",
@@ -3452,14 +3461,14 @@
         ]
     },
     {
-        "name": "f_function_string_scalar_cfi_copy",
+        "name": "f_function_string_cfi_copy",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_character_cfi"
         ],
         "alias": [
-            "f_function_string_*_cfi_copy",
-            "f_function_string_&_cfi_copy"
+            "f_function_string*_cfi_copy",
+            "f_function_string&_cfi_copy"
         ],
         "f_need_wrapper": true,
         "f_arg_call": [
@@ -3480,14 +3489,14 @@
         ]
     },
     {
-        "name": "f_function_string_scalar_cfi_arg",
+        "name": "f_function_string_cfi_arg",
         "comments": [
             "Change function result into an argument.",
             "Use F_string_result_as_arg as the argument name."
         ],
-        "base": "f_function_string_scalar_cfi_copy",
+        "base": "f_function_string_cfi_copy",
         "alias": [
-            "f_function_string_&_cfi_arg"
+            "f_function_string&_cfi_arg"
         ],
         "fmtdict": {
             "f_var": "{F_string_result_as_arg}",
@@ -3513,8 +3522,12 @@
             "c_mixin_arg_cfi"
         ],
         "alias": [
-            "f_function_string_scalar/*/&_cfi_pointer",
-            "f_function_string_scalar/*/&_cfi_pointer_caller/library"
+            "f_function_string_cfi_pointer",
+            "f_function_string*_cfi_pointer",
+            "f_function_string&_cfi_pointer",
+            "f_function_string_cfi_pointer_caller/library",
+            "f_function_string*_cfi_pointer_caller/library",
+            "f_function_string&_cfi_pointer_caller/library"
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
@@ -3569,14 +3582,17 @@
         ]
     },
     {
-        "name": "f_function_string_*/&_cfi_allocatable",
+        "name": "f_function_string*_cfi_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_scalar_cfi_allocatable",
             "c_mixin_arg_cfi"
         ],
         "alias": [
-            "f_function_string_scalar/*/&_cfi_allocatable_caller/library"
+            "f_function_string&_cfi_allocatable",
+            "f_function_string_cfi_allocatable_caller/library",
+            "f_function_string*_cfi_allocatable_caller/library",
+            "f_function_string&_cfi_allocatable_caller/library"
         ],
         "i_arg_decl": [
             "character(len=:), intent({f_intent}), allocatable :: {i_var}"
@@ -3602,7 +3618,7 @@
         ]
     },
     {
-        "name": "f_function_string_scalar_cfi_allocatable",
+        "name": "f_function_string_cfi_allocatable",
         "notes": [
             "std::string & function()"
         ],
@@ -3808,7 +3824,7 @@
         ]
     },
     {
-        "name": "f_function_native_*_cfi_allocatable",
+        "name": "f_function_native*_cfi_allocatable",
         "comments": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",
@@ -3831,7 +3847,7 @@
         "cxx_local_var": "result"
     },
     {
-        "name": "f_function_native_*_cfi_pointer",
+        "name": "f_function_native*_cfi_pointer",
         "comments": [
             "Pass result as an argument to C wrapper.",
             "Convert to subroutine and pass result as an argument.",

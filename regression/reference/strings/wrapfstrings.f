@@ -122,7 +122,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  char returnChar
-    ! Statement: f_function_char_scalar
+    ! Statement: f_function_char
     interface
         subroutine c_return_char(SHT_rv) &
                 bind(C, name="STR_returnChar")
@@ -208,7 +208,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
-    ! Statement: c_function_char_*
+    ! Statement: c_function_char*
     ! start c_get_char_ptr1
     interface
         function c_get_char_ptr1() &
@@ -223,7 +223,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
-    ! Statement: f_function_char_*_cdesc_allocatable
+    ! Statement: f_function_char*_cdesc_allocatable
     ! start c_get_char_ptr1_bufferify
     interface
         subroutine c_get_char_ptr1_bufferify(SHT_rv_cdesc) &
@@ -237,7 +237,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Statement: c_function_char_*
+    ! Statement: c_function_char*
     ! start c_get_char_ptr2
     interface
         function c_get_char_ptr2() &
@@ -252,7 +252,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Statement: f_function_char_*_buf_copy
+    ! Statement: f_function_char*_buf_copy
     ! start c_get_char_ptr2_bufferify
     interface
         subroutine c_get_char_ptr2_bufferify(SHT_rv, SHT_rv_len) &
@@ -267,7 +267,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr3
-    ! Statement: c_function_char_*
+    ! Statement: c_function_char*
     ! start c_get_char_ptr3
     interface
         function c_get_char_ptr3() &
@@ -282,7 +282,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr3
-    ! Statement: f_function_char_*_buf_arg
+    ! Statement: f_function_char*_buf_arg
     ! start c_get_char_ptr3_bufferify
     interface
         subroutine c_get_char_ptr3_bufferify(output, noutput) &
@@ -297,7 +297,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr4 +deref(raw)
-    ! Statement: f_function_char_*_raw
+    ! Statement: f_function_char*_raw
     interface
         function get_char_ptr4() &
                 result(SHT_rv) &
@@ -311,7 +311,7 @@ module strings_mod
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char * getCharPtr5 +deref(pointer)
-    ! Statement: c_function_char_*
+    ! Statement: c_function_char*
     interface
         function c_get_char_ptr5() &
                 result(SHT_rv) &
@@ -326,7 +326,7 @@ module strings_mod
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char * getCharPtr5 +deref(pointer)
-    ! Statement: f_function_char_*_cdesc_pointer
+    ! Statement: f_function_char*_cdesc_pointer
     interface
         subroutine c_get_char_ptr5_bufferify(SHT_rv_cdesc) &
                 bind(C, name="STR_getCharPtr5_bufferify")
@@ -341,7 +341,7 @@ module strings_mod
     ! Not Implemented
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
-    ! Statement: c_function_string_scalar
+    ! Statement: c_function_string
     interface
         function c_get_const_string_result() &
                 result(SHT_rv) &
@@ -355,7 +355,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
-    ! Statement: f_function_string_scalar_cdesc_allocatable
+    ! Statement: f_function_string_cdesc_allocatable
     interface
         subroutine c_get_const_string_result_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -371,7 +371,7 @@ module strings_mod
     ! Not Implemented
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
-    ! Statement: c_function_string_scalar
+    ! Statement: c_function_string
     interface
         function c_get_const_string_len() &
                 result(SHT_rv) &
@@ -385,7 +385,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
-    ! Statement: f_function_string_scalar_buf_copy
+    ! Statement: f_function_string_buf_copy
     interface
         subroutine c_get_const_string_len_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="STR_getConstStringLen_bufferify")
@@ -400,7 +400,7 @@ module strings_mod
     ! Not Implemented
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg
-    ! Statement: c_function_string_scalar
+    ! Statement: c_function_string
     interface
         function c_get_const_string_as_arg() &
                 result(SHT_rv) &
@@ -414,7 +414,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg
-    ! Statement: f_function_string_scalar_buf_arg
+    ! Statement: f_function_string_buf_arg
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, noutput) &
                 bind(C, name="STR_getConstStringAsArg_bufferify")
@@ -429,7 +429,7 @@ module strings_mod
     ! Not Implemented
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc
-    ! Statement: c_function_string_scalar
+    ! Statement: c_function_string
     interface
         function c_get_const_string_alloc() &
                 result(SHT_rv) &
@@ -443,7 +443,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc
-    ! Statement: f_function_string_scalar_cdesc_allocatable
+    ! Statement: f_function_string_cdesc_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -457,7 +457,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     ! start c_get_const_string_ref_pure
     interface
         function c_get_const_string_ref_pure() &
@@ -472,7 +472,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     ! start c_get_const_string_ref_pure_bufferify
     interface
         subroutine c_get_const_string_ref_pure_bufferify(SHT_rv_cdesc, &
@@ -488,7 +488,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_len() &
                 result(SHT_rv) &
@@ -501,7 +501,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHT_rv, &
                 SHT_rv_len) &
@@ -515,7 +515,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
@@ -528,7 +528,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg
-    ! Statement: f_function_string_&_buf_arg
+    ! Statement: f_function_string&_buf_arg
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
                 noutput) &
@@ -542,7 +542,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_len_empty() &
                 result(SHT_rv) &
@@ -555,7 +555,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHT_rv, &
                 SHT_rv_len) &
@@ -569,7 +569,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -582,7 +582,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -596,7 +596,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Statement: c_function_string_*
+    ! Statement: c_function_string*
     interface
         function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
@@ -609,7 +609,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Statement: f_function_string_*_buf_copy
+    ! Statement: f_function_string*_buf_copy
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHT_rv, &
                 SHT_rv_len) &
@@ -623,7 +623,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
-    ! Statement: c_function_string_*_library
+    ! Statement: c_function_string*_library
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -636,7 +636,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
-    ! Statement: f_function_string_*_cdesc_allocatable_library
+    ! Statement: f_function_string*_cdesc_allocatable_library
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -650,7 +650,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-    ! Statement: c_function_string_*_caller
+    ! Statement: c_function_string*_caller
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
@@ -663,7 +663,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-    ! Statement: f_function_string_*_cdesc_allocatable_caller
+    ! Statement: f_function_string*_cdesc_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_bufferify( &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -677,7 +677,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-    ! Statement: c_function_string_*_caller
+    ! Statement: c_function_string*_caller
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &
@@ -690,7 +690,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-    ! Statement: f_function_string_*_cdesc_allocatable_caller
+    ! Statement: f_function_string*_cdesc_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -705,7 +705,7 @@ module strings_mod
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-    ! Statement: c_function_string_*_library
+    ! Statement: c_function_string*_library
     interface
         function c_get_const_string_ptr_pointer() &
                 result(SHT_rv) &
@@ -720,7 +720,7 @@ module strings_mod
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-    ! Statement: f_function_string_*_cdesc_pointer_library
+    ! Statement: f_function_string*_cdesc_pointer_library
     interface
         subroutine c_get_const_string_ptr_pointer_bufferify( &
                 SHT_rv_cdesc) &
@@ -1008,7 +1008,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
-    ! Statement: c_function_native_scalar
+    ! Statement: c_function_native
     ! ----------------------------------------
     ! Argument:  std::string arg1
     ! Statement: c_in_string
@@ -1025,7 +1025,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  std::string arg1
     ! Statement: f_in_string_buf
@@ -1219,7 +1219,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  char CreturnChar
-    ! Statement: f_function_char_scalar
+    ! Statement: f_function_char
     interface
         subroutine c_creturn_char(SHT_rv) &
                 bind(C, name="STR_CreturnChar")
@@ -1352,7 +1352,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
-    ! Statement: c_function_native_scalar
+    ! Statement: c_function_native
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Statement: c_in_char*
@@ -1369,7 +1369,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Statement: f_in_char*_buf
@@ -1387,7 +1387,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  void * addr
     ! Statement: f_in_void*
@@ -1408,7 +1408,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * in
     ! Statement: f_in_char*
@@ -1517,7 +1517,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  char returnChar
-    ! Statement: f_function_char_scalar
+    ! Statement: f_function_char
     !>
     !! \brief return a char argument (non-pointer)
     !!
@@ -1581,7 +1581,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
-    ! Statement: f_function_char_*_cdesc_allocatable
+    ! Statement: f_function_char*_cdesc_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
     !!
@@ -1602,7 +1602,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
-    ! Statement: f_function_char_*_buf_copy
+    ! Statement: f_function_char*_buf_copy
     !>
     !! \brief return 'const char *' with fixed size (len=30)
     !!
@@ -1622,7 +1622,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const char * getCharPtr3
-    ! Statement: f_function_char_*_buf_arg
+    ! Statement: f_function_char*_buf_arg
     !>
     !! \brief return a 'const char *' as argument
     !!
@@ -1643,7 +1643,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  const char * getCharPtr4 +deref(raw)
-    ! Statement: f_function_char_*_raw
+    ! Statement: f_function_char*_raw
     !>
     !! \brief return a 'const char *' as type(C_PTR)
     !!
@@ -1660,7 +1660,7 @@ contains
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const char * getCharPtr5 +deref(pointer)
-    ! Statement: f_function_char_*_cdesc_pointer
+    ! Statement: f_function_char*_cdesc_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
     !!
@@ -1679,7 +1679,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringResult
-    ! Statement: f_function_string_scalar_cdesc_allocatable
+    ! Statement: f_function_string_cdesc_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
@@ -1701,7 +1701,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringLen +len(30)
-    ! Statement: f_function_string_scalar_buf_copy
+    ! Statement: f_function_string_buf_copy
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1719,7 +1719,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string getConstStringAsArg
-    ! Statement: f_function_string_scalar_buf_arg
+    ! Statement: f_function_string_buf_arg
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1736,7 +1736,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc
-    ! Statement: f_function_string_scalar_cdesc_allocatable
+    ! Statement: f_function_string_cdesc_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1754,7 +1754,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
@@ -1778,7 +1778,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -1799,7 +1799,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg
-    ! Statement: f_function_string_&_buf_arg
+    ! Statement: f_function_string&_buf_arg
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -1818,7 +1818,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     !>
     !! \brief Test returning empty string reference
     !!
@@ -1837,7 +1837,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1855,7 +1855,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
-    ! Statement: f_function_string_*_buf_copy
+    ! Statement: f_function_string*_buf_copy
     !>
     !! \brief return a 'const string *' as character(30)
     !!
@@ -1877,7 +1877,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
-    ! Statement: f_function_string_*_cdesc_allocatable_library
+    ! Statement: f_function_string*_cdesc_allocatable_library
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
@@ -1895,7 +1895,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-    ! Statement: f_function_string_*_cdesc_allocatable_caller
+    ! Statement: f_function_string*_cdesc_allocatable_caller
     !>
     !! It is the caller's responsibility to release the string
     !! created by the C++ library.
@@ -1920,7 +1920,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-    ! Statement: f_function_string_*_cdesc_allocatable_caller
+    ! Statement: f_function_string*_cdesc_allocatable_caller
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<
@@ -1942,7 +1942,7 @@ contains
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-    ! Statement: f_function_string_*_cdesc_pointer_library
+    ! Statement: f_function_string*_cdesc_pointer_library
     function get_const_string_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : c_f_pointer
@@ -2145,7 +2145,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  std::string arg1
     ! Statement: f_in_string_buf
@@ -2301,7 +2301,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  char CreturnChar
-    ! Statement: f_function_char_scalar
+    ! Statement: f_function_char
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!
@@ -2400,7 +2400,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrNotrim
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * src
     ! Statement: f_in_char*_buf
@@ -2424,7 +2424,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  void * addr
     ! Statement: f_in_void*
@@ -2457,7 +2457,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
     ! Statement: f_in_char*_capi

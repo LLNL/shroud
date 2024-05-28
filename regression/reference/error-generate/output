@@ -215,7 +215,7 @@ void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)
 --------------------
 Node: func0b
 line 26
-Unknown statement: c_function_native_***
+Unknown statement: c_function_native***
 --------------------
 Node: func0b
 line 26
@@ -258,7 +258,7 @@ void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), in
 Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 --------------------
 Node: struct1_get_arg2
-Unknown statement: f_getter_native_*_pointerxx
+Unknown statement: f_getter_native*_pointerxx
 Wrote wraperror.h
 Wrote wraperror.cpp
 Wrote wrapferror.f

@@ -498,7 +498,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_scalar"
+                            "stmt": "c_function_char"
                         }
                     },
                     "f": {
@@ -506,7 +506,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_scalar"
+                            "stmt": "f_function_char"
                         }
                     },
                     "py": {
@@ -543,7 +543,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_scalar"
+                            "stmt_name": "c_function_char"
                         },
                         "fmtf": {
                             "C_call_function": "returnChar(\t)",
@@ -577,7 +577,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_scalar"
+                            "stmt_name": "f_function_char"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1217,7 +1217,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1227,7 +1227,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_cdesc_allocatable"
+                            "stmt": "f_function_char*_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -1275,7 +1275,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr1(\t)",
@@ -1319,7 +1319,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_cdesc_allocatable"
+                            "stmt_name": "f_function_char*_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1397,7 +1397,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1407,7 +1407,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_buf_copy"
+                            "stmt": "f_function_char*_buf_copy"
                         }
                     },
                     "py": {
@@ -1457,7 +1457,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr2(\t)",
@@ -1499,7 +1499,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_copy"
+                            "stmt_name": "f_function_char*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1577,7 +1577,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1587,7 +1587,7 @@
                                 "deref": "arg",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_buf_arg"
+                            "stmt": "f_function_char*_buf_arg"
                         }
                     },
                     "py": {
@@ -1635,7 +1635,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr3(\t)",
@@ -1673,7 +1673,7 @@
                             "i_var_len": "noutput",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_arg"
+                            "stmt_name": "f_function_char*_buf_arg"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1746,7 +1746,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1755,7 +1755,7 @@
                                 "deref": "raw",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_raw"
+                            "stmt": "f_function_char*_raw"
                         }
                     },
                     "share": {
@@ -1787,7 +1787,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr4(\t)",
@@ -1822,7 +1822,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_raw"
+                            "stmt_name": "f_function_char*_raw"
                         }
                     }
                 },
@@ -1886,7 +1886,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1896,7 +1896,7 @@
                                 "deref": "pointer",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_cdesc_pointer"
+                            "stmt": "f_function_char*_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -1937,7 +1937,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr5(\t)",
@@ -1979,7 +1979,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_cdesc_pointer"
+                            "stmt_name": "f_function_char*_cdesc_pointer"
                         }
                     }
                 },
@@ -2037,7 +2037,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2047,7 +2047,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt": "f_function_string_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -2099,7 +2099,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringResult(\t)",
@@ -2150,7 +2150,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt_name": "f_function_string_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2221,7 +2221,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2231,7 +2231,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_buf_copy"
+                            "stmt": "f_function_string_buf_copy"
                         }
                     },
                     "py": {
@@ -2285,7 +2285,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringLen(\t)",
@@ -2329,7 +2329,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_buf_copy"
+                            "stmt_name": "f_function_string_buf_copy"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2400,7 +2400,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2410,7 +2410,7 @@
                                 "deref": "arg",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_buf_arg"
+                            "stmt": "f_function_string_buf_arg"
                         }
                     },
                     "py": {
@@ -2462,7 +2462,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringAsArg(\t)",
@@ -2502,7 +2502,7 @@
                             "i_var_len": "noutput",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_buf_arg"
+                            "stmt_name": "f_function_string_buf_arg"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2574,7 +2574,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2584,7 +2584,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt": "f_function_string_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -2636,7 +2636,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringAlloc(\t)",
@@ -2687,7 +2687,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt_name": "f_function_string_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2768,7 +2768,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -2778,7 +2778,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_cdesc_allocatable"
+                            "stmt": "f_function_string&_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -2829,7 +2829,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefPure(\t)",
@@ -2880,7 +2880,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2958,7 +2958,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -2968,7 +2968,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         }
                     },
                     "py": {
@@ -3021,7 +3021,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefLen(\t)",
@@ -3065,7 +3065,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3143,7 +3143,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -3153,7 +3153,7 @@
                                 "deref": "arg",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_arg"
+                            "stmt": "f_function_string&_buf_arg"
                         }
                     },
                     "py": {
@@ -3204,7 +3204,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefAsArg(\t)",
@@ -3244,7 +3244,7 @@
                             "i_var_len": "noutput",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_arg"
+                            "stmt_name": "f_function_string&_buf_arg"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3322,7 +3322,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -3332,7 +3332,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         }
                     },
                     "py": {
@@ -3385,7 +3385,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefLenEmpty(\t)",
@@ -3429,7 +3429,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3506,7 +3506,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -3516,7 +3516,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_cdesc_allocatable"
+                            "stmt": "f_function_string&_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -3567,7 +3567,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefAlloc(\t)",
@@ -3618,7 +3618,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3702,7 +3702,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_*"
+                            "stmt": "c_function_string*"
                         }
                     },
                     "f": {
@@ -3713,7 +3713,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_*_buf_copy"
+                            "stmt": "f_function_string*_buf_copy"
                         }
                     },
                     "py": {
@@ -3766,7 +3766,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*"
+                            "stmt_name": "c_function_string*"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrLen(\t)",
@@ -3810,7 +3810,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_buf_copy"
+                            "stmt_name": "f_function_string*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3891,7 +3891,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "c_function_string_*_library"
+                            "stmt": "c_function_string*_library"
                         }
                     },
                     "f": {
@@ -3902,7 +3902,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "f_function_string_*_cdesc_allocatable_library"
+                            "stmt": "f_function_string*_cdesc_allocatable_library"
                         }
                     },
                     "py": {
@@ -3955,7 +3955,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_library"
+                            "stmt_name": "c_function_string*_library"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
@@ -4006,7 +4006,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_allocatable_library"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_library"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4090,7 +4090,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "c_function_string_*_caller"
+                            "stmt": "c_function_string*_caller"
                         }
                     },
                     "f": {
@@ -4101,7 +4101,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt": "f_function_string*_cdesc_allocatable_caller"
                         }
                     },
                     "py": {
@@ -4154,7 +4154,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_caller"
+                            "stmt_name": "c_function_string*_caller"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
@@ -4205,7 +4205,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_caller"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4291,7 +4291,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "c_function_string_*_caller"
+                            "stmt": "c_function_string*_caller"
                         }
                     },
                     "f": {
@@ -4303,7 +4303,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt": "f_function_string*_cdesc_allocatable_caller"
                         }
                     },
                     "py": {
@@ -4358,7 +4358,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "3",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_caller"
+                            "stmt_name": "c_function_string*_caller"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
@@ -4409,7 +4409,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "3",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_caller"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4490,7 +4490,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "c_function_string_*_library"
+                            "stmt": "c_function_string*_library"
                         }
                     },
                     "f": {
@@ -4501,7 +4501,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "f_function_string_*_cdesc_pointer_library"
+                            "stmt": "f_function_string*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -4546,7 +4546,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_library"
+                            "stmt_name": "c_function_string*_library"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrPointer(\t)",
@@ -4591,7 +4591,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_pointer_library"
+                            "stmt_name": "f_function_string*_cdesc_pointer_library"
                         }
                     }
                 },
@@ -6624,7 +6624,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -6639,7 +6639,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -6708,7 +6708,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringInstance(\tSHCXX_arg1)",
@@ -6746,7 +6746,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -8663,7 +8663,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_scalar"
+                            "stmt": "c_function_char"
                         }
                     },
                     "f": {
@@ -8671,7 +8671,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_scalar"
+                            "stmt": "f_function_char"
                         }
                     },
                     "py": {
@@ -8708,7 +8708,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_scalar"
+                            "stmt_name": "c_function_char"
                         },
                         "fmtf": {
                             "C_call_function": "CreturnChar(\t)",
@@ -8742,7 +8742,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_scalar"
+                            "stmt_name": "f_function_char"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -9749,7 +9749,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "src": {
                             "meta": {
@@ -9763,7 +9763,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "src": {
                             "meta": {
@@ -9818,7 +9818,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrNotrim(\tSHT_src_str)",
@@ -9856,7 +9856,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "src": {
@@ -9995,7 +9995,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "addr": {
                             "meta": {
@@ -10016,7 +10016,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "addr": {
                             "meta": {
@@ -10074,7 +10074,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
@@ -10111,7 +10111,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "addr": {
@@ -10281,7 +10281,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "in": {
                             "meta": {
@@ -10301,7 +10301,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "in": {
                             "meta": {
@@ -10358,7 +10358,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI2(\tin,\t src)",
@@ -10395,7 +10395,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "in": {

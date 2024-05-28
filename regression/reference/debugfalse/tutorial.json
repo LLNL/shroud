@@ -236,7 +236,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -258,7 +258,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -355,7 +355,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::PassByValue(\targ1,\t arg2)",
@@ -392,7 +392,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv",
@@ -665,7 +665,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         },
                         "arg1": {
                             "meta": {
@@ -687,7 +687,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt": "f_function_string_cdesc_allocatable"
                         },
                         "arg1": {
                             "meta": {
@@ -791,7 +791,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::ConcatenateStrings(\tSHCXX_arg1,\t SHCXX_arg2)",
@@ -843,7 +843,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt_name": "f_function_string_cdesc_allocatable"
                         },
                         "fmtl": {
                             "c_abstract_decl": "const char",
@@ -1100,7 +1100,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -1108,7 +1108,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "share": {
@@ -1140,7 +1140,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\t)",
@@ -1175,7 +1175,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     }
                 },
@@ -1241,7 +1241,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1256,7 +1256,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1302,7 +1302,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1)",
@@ -1339,7 +1339,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -1467,7 +1467,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1489,7 +1489,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1586,7 +1586,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultArguments(\targ1,\t arg2)",
@@ -1623,7 +1623,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv",
@@ -3042,7 +3042,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -3050,7 +3050,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "share": {
@@ -3082,7 +3082,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateReturn<int>(\t)",
@@ -3117,7 +3117,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     }
                 },
@@ -3201,7 +3201,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -3209,7 +3209,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "share": {
@@ -3241,7 +3241,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::TemplateReturn<double>(\t)",
@@ -3276,7 +3276,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     }
                 },
@@ -4170,7 +4170,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "num": {
                             "meta": {
@@ -4185,7 +4185,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "num": {
                             "meta": {
@@ -4231,7 +4231,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum)",
@@ -4268,7 +4268,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "num": {
@@ -4387,7 +4387,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "num": {
                             "meta": {
@@ -4409,7 +4409,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "num": {
                             "meta": {
@@ -4468,7 +4468,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset)",
@@ -4505,7 +4505,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "num": {
@@ -4686,7 +4686,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "num": {
                             "meta": {
@@ -4715,7 +4715,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "num": {
                             "meta": {
@@ -4837,7 +4837,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\tnum,\t offset,\t stride)",
@@ -4874,7 +4874,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv",
@@ -5200,7 +5200,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "num": {
                             "meta": {
@@ -5222,7 +5222,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "num": {
                             "meta": {
@@ -5281,7 +5281,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num)",
@@ -5318,7 +5318,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "num": {
@@ -5487,7 +5487,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "num": {
                             "meta": {
@@ -5516,7 +5516,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "num": {
                             "meta": {
@@ -5588,7 +5588,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset)",
@@ -5625,7 +5625,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "num": {
@@ -5856,7 +5856,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "num": {
                             "meta": {
@@ -5892,7 +5892,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "num": {
                             "meta": {
@@ -6039,7 +6039,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::UseDefaultOverload(\ttype,\t num,\t offset,\t stride)",
@@ -6076,7 +6076,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv",
@@ -6461,7 +6461,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -6476,7 +6476,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -6548,7 +6548,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::typefunc(\targ)",
@@ -6585,7 +6585,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv",
@@ -6743,7 +6743,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -6758,7 +6758,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -6834,7 +6834,7 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
@@ -6875,7 +6875,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtl": {
                             "c_abstract_decl": "TUT_EnumTypeID",
@@ -7047,7 +7047,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_enum_scalar"
+                            "stmt": "c_function_enum"
                         },
                         "arg": {
                             "meta": {
@@ -7062,7 +7062,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "arg": {
                             "meta": {
@@ -7147,7 +7147,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_enum_scalar"
+                            "stmt_name": "c_function_enum"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::colorfunc(\tSHCXX_arg)",
@@ -7189,7 +7189,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         },
                         "fmtl": {
                             "c_abstract_decl": "enum TUT_Color",
@@ -7726,7 +7726,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "in": {
                             "meta": {
@@ -7809,7 +7809,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "in": {
                             "meta": {
@@ -7990,7 +7990,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::callback1(\tin,\t incr)",
@@ -8027,7 +8027,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "in": {
@@ -8173,7 +8173,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -8183,7 +8183,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         }
                     },
                     "lua": {
@@ -8243,7 +8243,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "tutorial::LastFunctionCalled(\t)",
@@ -8287,7 +8287,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         },
                         "fmtl": {
                             "c_abstract_decl": "const char *",

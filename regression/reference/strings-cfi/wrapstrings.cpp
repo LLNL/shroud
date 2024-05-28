@@ -143,7 +143,7 @@ void STR_passCharForce(char status)
  */
 // ----------------------------------------
 // Function:  char returnChar
-// Statement: c_function_char_scalar
+// Statement: c_function_char
 void STR_returnChar(char *SHC_rv)
 {
     // splicer begin function.returnChar
@@ -255,7 +255,7 @@ void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Statement: c_function_char_*
+// Statement: c_function_char*
 // start STR_getCharPtr1
 const char * STR_getCharPtr1(void)
 {
@@ -272,7 +272,7 @@ const char * STR_getCharPtr1(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Statement: f_function_char_*_cfi_allocatable
+// Statement: f_function_char*_cfi_allocatable
 // start STR_getCharPtr1_CFI
 void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -296,7 +296,7 @@ void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Statement: c_function_char_*
+// Statement: c_function_char*
 // start STR_getCharPtr2
 const char * STR_getCharPtr2(void)
 {
@@ -313,7 +313,7 @@ const char * STR_getCharPtr2(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Statement: f_function_char_*_cfi_copy
+// Statement: f_function_char*_cfi_copy
 // start STR_getCharPtr2_CFI
 void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -331,7 +331,7 @@ void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Statement: c_function_char_*
+// Statement: c_function_char*
 // start STR_getCharPtr3
 const char * STR_getCharPtr3(void)
 {
@@ -348,7 +348,7 @@ const char * STR_getCharPtr3(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Statement: f_function_char_*_cfi_arg
+// Statement: f_function_char*_cfi_arg
 // start STR_getCharPtr3_CFI
 void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -366,7 +366,7 @@ void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr4 +deref(raw)
-// Statement: c_function_char_*
+// Statement: c_function_char*
 const char * STR_getCharPtr4(void)
 {
     // splicer begin function.getCharPtr4
@@ -382,7 +382,7 @@ const char * STR_getCharPtr4(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char * getCharPtr5 +deref(pointer)
-// Statement: c_function_char_*
+// Statement: c_function_char*
 const char * STR_getCharPtr5(void)
 {
     // splicer begin function.getCharPtr5
@@ -399,7 +399,7 @@ const char * STR_getCharPtr5(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char * getCharPtr5 +deref(pointer)
-// Statement: f_function_char_*_cfi_pointer
+// Statement: f_function_char*_cfi_pointer
 void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getCharPtr5_CFI
@@ -434,7 +434,7 @@ void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringResult(void)
 {
     // splicer begin function.getConstStringResult
@@ -456,7 +456,7 @@ const char STR_getConstStringResult(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Statement: f_function_string_scalar_cfi_allocatable
+// Statement: f_function_string_cfi_allocatable
 void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringResult_CFI
@@ -481,7 +481,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringLen(void)
 {
     // splicer begin function.getConstStringLen
@@ -503,7 +503,7 @@ const char STR_getConstStringLen(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
-// Statement: f_function_string_scalar_cfi_copy
+// Statement: f_function_string_cfi_copy
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringLen_CFI
@@ -529,7 +529,7 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringAsArg(void)
 {
     // splicer begin function.getConstStringAsArg
@@ -551,7 +551,7 @@ const char STR_getConstStringAsArg(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
-// Statement: f_function_string_scalar_cfi_arg
+// Statement: f_function_string_cfi_arg
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringAsArg_CFI
@@ -573,7 +573,7 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 ! Not Implemented
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringAlloc(void)
 {
     // splicer begin function.getConstStringAlloc
@@ -586,7 +586,7 @@ const char STR_getConstStringAlloc(void)
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Statement: f_function_string_scalar_cfi_allocatable
+// Statement: f_function_string_cfi_allocatable
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringAlloc_CFI
@@ -606,7 +606,7 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Statement: c_function_string_&
+// Statement: c_function_string&
 // start STR_getConstStringRefPure
 const char * STR_getConstStringRefPure(void)
 {
@@ -624,7 +624,7 @@ const char * STR_getConstStringRefPure(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Statement: f_function_string_&_cfi_allocatable
+// Statement: f_function_string&_cfi_allocatable
 // start STR_getConstStringRefPure_CFI
 void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -649,7 +649,7 @@ void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefLen(void)
 {
     // splicer begin function.getConstStringRefLen
@@ -673,7 +673,7 @@ const char * STR_getConstStringRefLen(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Statement: f_function_string_&_cfi_copy
+// Statement: f_function_string&_cfi_copy
 void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefLen_CFI
@@ -699,7 +699,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefAsArg(void)
 {
     // splicer begin function.getConstStringRefAsArg
@@ -722,7 +722,7 @@ const char * STR_getConstStringRefAsArg(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Statement: f_function_string_&_cfi_arg
+// Statement: f_function_string&_cfi_arg
 void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefAsArg_CFI
@@ -746,7 +746,7 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefLenEmpty(void)
 {
     // splicer begin function.getConstStringRefLenEmpty
@@ -767,7 +767,7 @@ const char * STR_getConstStringRefLenEmpty(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Statement: f_function_string_&_cfi_copy
+// Statement: f_function_string&_cfi_copy
 void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefLenEmpty_CFI
@@ -787,7 +787,7 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefAlloc(void)
 {
     // splicer begin function.getConstStringRefAlloc
@@ -799,7 +799,7 @@ const char * STR_getConstStringRefAlloc(void)
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Statement: f_function_string_&_cfi_allocatable
+// Statement: f_function_string&_cfi_allocatable
 void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefAlloc_CFI
@@ -823,7 +823,7 @@ void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Statement: c_function_string_*
+// Statement: c_function_string*
 const char * STR_getConstStringPtrLen(void)
 {
     // splicer begin function.getConstStringPtrLen
@@ -843,7 +843,7 @@ const char * STR_getConstStringPtrLen(void)
  */
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Statement: f_function_string_*_cfi_copy
+// Statement: f_function_string*_cfi_copy
 void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrLen_CFI
@@ -864,7 +864,7 @@ void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Statement: c_function_string_*_library
+// Statement: c_function_string*_library
 const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
@@ -876,7 +876,7 @@ const char * STR_getConstStringPtrAlloc(void)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Statement: f_function_string_*_cfi_allocatable_library
+// Statement: f_function_string*_cfi_allocatable_library
 void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrAlloc_CFI
@@ -899,7 +899,7 @@ void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Statement: c_function_string_*_caller
+// Statement: c_function_string*_caller
 const char * STR_getConstStringPtrOwnsAlloc(void)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc
@@ -918,7 +918,7 @@ const char * STR_getConstStringPtrOwnsAlloc(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Statement: f_function_string_*_cfi_allocatable_caller
+// Statement: f_function_string*_cfi_allocatable_caller
 void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc_CFI
@@ -937,7 +937,7 @@ void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Statement: c_function_string_*_caller
+// Statement: c_function_string*_caller
 const char * STR_getConstStringPtrOwnsAllocPattern(void)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern
@@ -952,7 +952,7 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Statement: f_function_string_*_cfi_allocatable_caller
+// Statement: f_function_string*_cfi_allocatable_caller
 void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern_CFI
@@ -969,7 +969,7 @@ void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-// Statement: c_function_string_*_library
+// Statement: c_function_string*_library
 const char * STR_getConstStringPtrPointer(void)
 {
     // splicer begin function.getConstStringPtrPointer
@@ -983,7 +983,7 @@ const char * STR_getConstStringPtrPointer(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-// Statement: f_function_string_*_cfi_pointer_library
+// Statement: f_function_string*_cfi_pointer_library
 void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrPointer_CFI
@@ -1383,7 +1383,7 @@ void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
  */
 // ----------------------------------------
 // Function:  int acceptStringInstance
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  std::string arg1
 // Statement: c_in_string
@@ -1401,7 +1401,7 @@ int STR_acceptStringInstance(char *arg1)
  */
 // ----------------------------------------
 // Function:  int acceptStringInstance
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  std::string arg1
 // Statement: f_in_string_cfi
@@ -1639,7 +1639,7 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
  */
 // ----------------------------------------
 // Function:  char CreturnChar
-// Statement: c_function_char_scalar
+// Statement: c_function_char
 void STR_CreturnChar(char *SHC_rv)
 {
     // splicer begin function.CreturnChar
@@ -1782,7 +1782,7 @@ void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrNotrim
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const char * src
 // Statement: c_in_char*
@@ -1800,7 +1800,7 @@ int STR_CpassCharPtrNotrim(const char * src)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrNotrim
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const char * src
 // Statement: f_in_char*_cfi
@@ -1829,7 +1829,7 @@ int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  void * addr
 // Statement: c_in_void*
@@ -1850,7 +1850,7 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const char * in
 // Statement: c_in_char*
@@ -1871,7 +1871,7 @@ int STR_CpassCharPtrCAPI2(const char * in, const char * src)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI2
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const char * in
 // Statement: f_in_char*_cfi

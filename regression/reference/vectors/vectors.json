@@ -71,7 +71,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -87,7 +87,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -134,7 +134,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "vector_sum(\tSHCXX_arg)",
@@ -171,7 +171,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -1969,7 +1969,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1992,7 +1992,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -2052,7 +2052,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "vector_of_pointers(\tSHCXX_arg1,\t num)",
@@ -2089,7 +2089,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -2270,7 +2270,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -2286,7 +2286,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -2333,7 +2333,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_count(\tSHCXX_arg)",
@@ -2370,7 +2370,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -3279,7 +3279,7 @@
                                 "intent": "function",
                                 "rank": 1
                             },
-                            "stmt": "c_function_vector_scalar_malloc_targ_native_scalar"
+                            "stmt": "c_function_vector<native>_malloc"
                         },
                         "n": {
                             "meta": {
@@ -3297,7 +3297,7 @@
                                 "intent": "function",
                                 "rank": 1
                             },
-                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                            "stmt": "f_function_vector<native>_cdesc_allocatable"
                         },
                         "n": {
                             "meta": {
@@ -3359,7 +3359,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "c_function_vector_scalar_malloc_targ_native_scalar"
+                            "stmt_name": "c_function_vector<native>_malloc"
                         },
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",
@@ -3408,7 +3408,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                            "stmt_name": "f_function_vector<native>_cdesc_allocatable"
                         }
                     },
                     "n": {
@@ -3532,7 +3532,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -3554,7 +3554,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -3613,7 +3613,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "returnDim2(\targ,\t len)",
@@ -3650,7 +3650,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {

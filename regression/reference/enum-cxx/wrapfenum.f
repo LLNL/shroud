@@ -46,7 +46,7 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  int convert_to_int
-        ! Statement: c_function_native_scalar
+        ! Statement: c_function_native
         ! ----------------------------------------
         ! Argument:  enum Color in
         ! Statement: c_in_enum
@@ -61,7 +61,7 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  int convert_to_int
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  enum Color in
         ! Statement: f_in_enum
@@ -76,7 +76,7 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  enum Color returnEnum
-        ! Statement: c_function_enum_scalar
+        ! Statement: c_function_enum
         ! ----------------------------------------
         ! Argument:  enum Color in
         ! Statement: c_in_enum
@@ -91,7 +91,7 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  enum Color returnEnum
-        ! Statement: f_function_enum_scalar
+        ! Statement: f_function_enum
         ! ----------------------------------------
         ! Argument:  enum Color in
         ! Statement: f_in_enum
@@ -132,7 +132,7 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  enum Color returnEnumInOutArg
-        ! Statement: c_function_enum_scalar
+        ! Statement: c_function_enum
         ! ----------------------------------------
         ! Argument:  enum Color * inout +intent(inout)
         ! Statement: c_inout_enum*
@@ -147,7 +147,7 @@ module enum_mod
 
         ! ----------------------------------------
         ! Function:  enum Color returnEnumInOutArg
-        ! Statement: f_function_enum_scalar
+        ! Statement: f_function_enum
         ! ----------------------------------------
         ! Argument:  enum Color * inout +intent(inout)
         ! Statement: f_inout_enum*
@@ -170,7 +170,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int convert_to_int
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  enum Color in
     ! Statement: f_in_enum
@@ -189,7 +189,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  enum Color returnEnum
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  enum Color in
     ! Statement: f_in_enum
@@ -225,7 +225,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  enum Color returnEnumInOutArg
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  enum Color * inout +intent(inout)
     ! Statement: f_inout_enum*

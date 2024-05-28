@@ -64,7 +64,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 },
                                 "arg1": {
                                     "meta": {
@@ -80,7 +80,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 },
                                 "arg1": {
                                     "meta": {
@@ -128,7 +128,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->new(\targ1)",
@@ -169,7 +169,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 }
                             },
                             "arg1": {
@@ -294,7 +294,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 },
                                 "arg1": {
                                     "meta": {
@@ -317,7 +317,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 },
                                 "arg1": {
                                     "meta": {
@@ -378,7 +378,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->new(\targ1,\t arg2)",
@@ -419,7 +419,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 }
                             },
                             "arg1": {
@@ -604,7 +604,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 },
                                 "arg1": {
                                     "meta": {
@@ -634,7 +634,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 },
                                 "arg1": {
                                     "meta": {
@@ -708,7 +708,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->new(\targ1,\t arg2,\t arg3)",
@@ -749,7 +749,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 }
                             },
                             "arg1": {
@@ -1778,7 +1778,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -1823,7 +1823,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },
@@ -1881,7 +1881,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -1926,7 +1926,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },
@@ -1984,7 +1984,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -2029,7 +2029,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },

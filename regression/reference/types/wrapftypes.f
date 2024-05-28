@@ -24,7 +24,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short short_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  short arg1
         ! Statement: f_in_native
@@ -39,7 +39,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int arg1
         ! Statement: f_in_native
@@ -54,7 +54,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long arg1
         ! Statement: f_in_native
@@ -69,7 +69,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long long_long_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long long arg1
         ! Statement: f_in_native
@@ -84,7 +84,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short int short_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  short int arg1
         ! Statement: f_in_native
@@ -99,7 +99,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long int long_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long int arg1
         ! Statement: f_in_native
@@ -114,7 +114,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long int long_long_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long long int arg1
         ! Statement: f_in_native
@@ -129,7 +129,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned unsigned_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned arg1
         ! Statement: f_in_native
@@ -144,7 +144,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned short ushort_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned short arg1
         ! Statement: f_in_native
@@ -159,7 +159,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned int uint_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned int arg1
         ! Statement: f_in_native
@@ -174,7 +174,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long ulong_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned long arg1
         ! Statement: f_in_native
@@ -189,7 +189,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long long ulong_long_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned long long arg1
         ! Statement: f_in_native
@@ -204,7 +204,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long int ulong_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned long int arg1
         ! Statement: f_in_native
@@ -219,7 +219,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int8_t int8_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int8_t arg1
         ! Statement: f_in_native
@@ -234,7 +234,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int16_t int16_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int16_t arg1
         ! Statement: f_in_native
@@ -249,7 +249,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int32_t int32_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int32_t arg1
         ! Statement: f_in_native
@@ -264,7 +264,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int64_t int64_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int64_t arg1
         ! Statement: f_in_native
@@ -279,7 +279,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint8_t uint8_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint8_t arg1
         ! Statement: f_in_native
@@ -294,7 +294,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint16_t uint16_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint16_t arg1
         ! Statement: f_in_native
@@ -309,7 +309,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint32_t uint32_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint32_t arg1
         ! Statement: f_in_native
@@ -324,7 +324,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint64_t uint64_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint64_t arg1
         ! Statement: f_in_native
@@ -339,7 +339,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  size_t size_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  size_t arg1
         ! Statement: f_in_native
@@ -354,7 +354,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool bool_func
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         ! ----------------------------------------
         ! Argument:  bool arg
         ! Statement: f_in_bool
@@ -369,7 +369,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool returnBoolAndOthers
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         ! ----------------------------------------
         ! Argument:  int * flag +intent(out)
         ! Statement: f_out_native*
@@ -392,7 +392,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  short short_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  short arg1
     ! Statement: f_in_native
@@ -411,7 +411,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int arg1
     ! Statement: f_in_native
@@ -430,7 +430,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long arg1
     ! Statement: f_in_native
@@ -449,7 +449,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long long_long_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long long arg1
     ! Statement: f_in_native
@@ -468,7 +468,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  short int short_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  short int arg1
     ! Statement: f_in_native
@@ -487,7 +487,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long int long_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long int arg1
     ! Statement: f_in_native
@@ -506,7 +506,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long int long_long_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long long int arg1
     ! Statement: f_in_native
@@ -525,7 +525,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned unsigned_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned arg1
     ! Statement: f_in_native
@@ -544,7 +544,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned short ushort_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned short arg1
     ! Statement: f_in_native
@@ -563,7 +563,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned int uint_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned int arg1
     ! Statement: f_in_native
@@ -582,7 +582,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long ulong_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned long arg1
     ! Statement: f_in_native
@@ -601,7 +601,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long long ulong_long_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned long long arg1
     ! Statement: f_in_native
@@ -620,7 +620,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long int ulong_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned long int arg1
     ! Statement: f_in_native
@@ -639,7 +639,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int8_t int8_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int8_t arg1
     ! Statement: f_in_native
@@ -658,7 +658,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int16_t int16_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int16_t arg1
     ! Statement: f_in_native
@@ -677,7 +677,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int32_t int32_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int32_t arg1
     ! Statement: f_in_native
@@ -696,7 +696,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int64_t int64_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int64_t arg1
     ! Statement: f_in_native
@@ -715,7 +715,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint8_t uint8_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint8_t arg1
     ! Statement: f_in_native
@@ -734,7 +734,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint16_t uint16_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint16_t arg1
     ! Statement: f_in_native
@@ -753,7 +753,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint32_t uint32_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint32_t arg1
     ! Statement: f_in_native
@@ -772,7 +772,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint64_t uint64_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint64_t arg1
     ! Statement: f_in_native
@@ -791,7 +791,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  size_t size_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  size_t arg1
     ! Statement: f_in_native
@@ -808,7 +808,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool bool_func
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  bool arg
     ! Statement: f_in_bool
@@ -826,7 +826,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Statement: f_out_native*

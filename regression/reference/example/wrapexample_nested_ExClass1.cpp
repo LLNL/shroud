@@ -77,7 +77,7 @@ static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
 
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: c_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_capptr
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     AA_example_nested_ExClass1 * SHC_rv)
 {
@@ -100,7 +100,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
  */
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: c_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_capptr
 // ----------------------------------------
 // Argument:  const string * name
 // Statement: c_in_string*
@@ -127,7 +127,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
  */
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: f_ctor_shadow_scalar_capptr
+// Statement: f_ctor_shadow_capptr
 // ----------------------------------------
 // Argument:  const string * name
 // Statement: f_in_string*_buf
@@ -165,7 +165,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 
 // ----------------------------------------
 // Function:  int incrementCount
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int incr
 // Statement: c_in_native
@@ -182,7 +182,7 @@ int AA_example_nested_ExClass1_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const AA_example_nested_ExClass1 * self)
 {
@@ -197,7 +197,7 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Statement: f_function_string_&_cdesc_allocatable
+// Statement: f_function_string&_cdesc_allocatable
 void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const AA_example_nested_ExClass1 * self,
     AA_SHROUD_array *SHT_rv_cdesc,
@@ -215,7 +215,7 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
 
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * AA_example_nested_ExClass1_getNameArg(
     const AA_example_nested_ExClass1 * self)
 {
@@ -230,7 +230,7 @@ const char * AA_example_nested_ExClass1_getNameArg(
 
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Statement: f_function_string_&_buf_arg
+// Statement: f_function_string&_buf_arg
 void AA_example_nested_ExClass1_getNameArg_bufferify(
     const AA_example_nested_ExClass1 * self, char *name, int nname)
 {
@@ -248,7 +248,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
 
 // ----------------------------------------
 // Function:  int getValue
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int value
 // Statement: c_in_native
@@ -265,7 +265,7 @@ int AA_example_nested_ExClass1_getValue_from_int(
 
 // ----------------------------------------
 // Function:  long getValue
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  long value
 // Statement: c_in_native
@@ -282,7 +282,7 @@ long AA_example_nested_ExClass1_getValue_1(
 
 // ----------------------------------------
 // Function:  bool hasAddr
-// Statement: c_function_bool_scalar
+// Statement: c_function_bool
 // ----------------------------------------
 // Argument:  bool in
 // Statement: c_in_bool

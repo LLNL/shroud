@@ -25,7 +25,7 @@ extern "C" {
  */
 // ----------------------------------------
 // Function:  int passStructByReference
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Statement: c_inout_struct&
@@ -42,7 +42,7 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
  */
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Statement: c_in_struct&

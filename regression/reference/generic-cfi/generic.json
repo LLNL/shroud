@@ -322,7 +322,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "share": {
@@ -368,7 +368,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     }
                 },
@@ -887,7 +887,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -955,7 +955,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         }
                     },
                     "arg1": {
@@ -1075,7 +1075,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1145,7 +1145,7 @@
                             "fc_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -1269,7 +1269,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1339,7 +1339,7 @@
                             "fc_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -1467,7 +1467,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "nvalues": {
                             "meta": {
@@ -1549,7 +1549,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "nvalues": {
@@ -5345,7 +5345,7 @@
                                 "api": "capptr",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_shadow_*_capptr"
+                            "stmt": "f_function_shadow*_capptr"
                         }
                     },
                     "share": {
@@ -5396,7 +5396,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow_*_capptr"
+                            "stmt_name": "f_function_shadow*_capptr"
                         }
                     }
                 },
@@ -5604,7 +5604,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -5677,7 +5677,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -5806,7 +5806,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -5879,7 +5879,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {

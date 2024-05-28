@@ -32,7 +32,7 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  double Function2
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  double arg1
         ! Statement: f_in_native
@@ -71,7 +71,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  double Function2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  double arg1
     ! Statement: f_in_native

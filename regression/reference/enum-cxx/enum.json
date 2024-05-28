@@ -257,7 +257,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "in": {
                             "meta": {
@@ -272,7 +272,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "in": {
                             "meta": {
@@ -340,7 +340,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "convert_to_int(\tSHCXX_in)",
@@ -378,7 +378,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -528,7 +528,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_enum_scalar"
+                            "stmt": "c_function_enum"
                         },
                         "in": {
                             "meta": {
@@ -543,7 +543,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "in": {
                             "meta": {
@@ -615,7 +615,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_function_enum_scalar"
+                            "stmt_name": "c_function_enum"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnum(\tSHCXX_in)",
@@ -657,7 +657,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -991,7 +991,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_enum_scalar"
+                            "stmt": "c_function_enum"
                         },
                         "inout": {
                             "meta": {
@@ -1005,7 +1005,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "inout": {
                             "meta": {
@@ -1062,7 +1062,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_function_enum_scalar"
+                            "stmt_name": "c_function_enum"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnumInOutArg(\t&SHCXX_inout)",
@@ -1104,7 +1104,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         }
                     },
                     "inout": {

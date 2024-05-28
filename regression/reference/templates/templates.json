@@ -559,7 +559,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -568,7 +568,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 }
                             },
                             "share": {
@@ -602,7 +602,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "3",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -642,7 +642,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "3",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 }
                             }
                         },
@@ -847,7 +847,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -855,7 +855,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "share": {
@@ -887,7 +887,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_npts(\t)",
@@ -923,7 +923,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             }
                         },
@@ -1229,7 +1229,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -1237,7 +1237,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "share": {
@@ -1269,7 +1269,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_value(\t)",
@@ -1305,7 +1305,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             }
                         },
@@ -1424,7 +1424,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -1433,7 +1433,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 }
                             },
                             "share": {
@@ -1467,7 +1467,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "4",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -1507,7 +1507,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "4",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 }
                             }
                         },
@@ -1712,7 +1712,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -1720,7 +1720,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "share": {
@@ -1752,7 +1752,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_npts(\t)",
@@ -1788,7 +1788,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             }
                         },
@@ -2094,7 +2094,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -2102,7 +2102,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "share": {
@@ -2134,7 +2134,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_value(\t)",
@@ -2170,7 +2170,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             }
                         },
@@ -2305,7 +2305,7 @@
                                 "api": "capptr",
                                 "intent": "function"
                             },
-                            "stmt": "c_function_shadow_scalar_capptr_targ_native_scalar"
+                            "stmt": "c_function_shadow<native>_capptr"
                         }
                     },
                     "f": {
@@ -2314,7 +2314,7 @@
                                 "api": "capptr",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_shadow_scalar_capptr_targ_native_scalar"
+                            "stmt": "f_function_shadow<native>_capptr"
                         }
                     },
                     "share": {
@@ -2349,7 +2349,7 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "5",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_scalar_capptr_targ_native_scalar"
+                            "stmt_name": "c_function_shadow<native>_capptr"
                         },
                         "fmtf": {
                             "C_call_function": "returnUserType(\t)",
@@ -2390,7 +2390,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "5",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow_scalar_capptr_targ_native_scalar"
+                            "stmt_name": "f_function_shadow<native>_capptr"
                         }
                     }
                 },
@@ -3350,7 +3350,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -3358,7 +3358,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "py": {
@@ -3397,7 +3397,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
@@ -3432,7 +3432,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3535,7 +3535,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -3543,7 +3543,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "py": {
@@ -3582,7 +3582,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker2>(\t)",
@@ -3617,7 +3617,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3696,7 +3696,7 @@
                                                 "api": "capptr",
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "c_ctor_shadow_scalar_capptr"
+                                            "stmt": "c_ctor_shadow_capptr"
                                         }
                                     },
                                     "f": {
@@ -3705,7 +3705,7 @@
                                                 "api": "capptr",
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "f_ctor_shadow_scalar_capptr"
+                                            "stmt": "f_ctor_shadow_capptr"
                                         }
                                     },
                                     "py": {
@@ -3746,7 +3746,7 @@
                                             "f_local_ptr": "SHT_prv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                            "stmt_name": "c_ctor_shadow_capptr"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->ctor(\t)",
@@ -3786,7 +3786,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                            "stmt_name": "f_ctor_shadow_capptr"
                                         },
                                         "fmtpy": {
                                             "PY_build_format": "O",
@@ -4295,7 +4295,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "c_function_native_&"
+                                            "stmt": "c_function_native&"
                                         },
                                         "n": {
                                             "meta": {
@@ -4311,7 +4311,7 @@
                                                 "deref": "pointer",
                                                 "intent": "function"
                                             },
-                                            "stmt": "f_function_native_&_pointer"
+                                            "stmt": "f_function_native&_pointer"
                                         },
                                         "n": {
                                             "meta": {
@@ -4379,7 +4379,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "c_function_native_&"
+                                            "stmt_name": "c_function_native&"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->at(\tn)",
@@ -4418,7 +4418,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "f_function_native_&_pointer"
+                                            "stmt_name": "f_function_native&_pointer"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -4649,7 +4649,7 @@
                                                 "api": "capptr",
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "c_ctor_shadow_scalar_capptr"
+                                            "stmt": "c_ctor_shadow_capptr"
                                         }
                                     },
                                     "f": {
@@ -4658,7 +4658,7 @@
                                                 "api": "capptr",
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "f_ctor_shadow_scalar_capptr"
+                                            "stmt": "f_ctor_shadow_capptr"
                                         }
                                     },
                                     "py": {
@@ -4699,7 +4699,7 @@
                                             "f_local_ptr": "SHT_prv",
                                             "idtor": "2",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                            "stmt_name": "c_ctor_shadow_capptr"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->ctor(\t)",
@@ -4739,7 +4739,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "2",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                            "stmt_name": "f_ctor_shadow_capptr"
                                         },
                                         "fmtpy": {
                                             "PY_build_format": "O",
@@ -5248,7 +5248,7 @@
                                             "meta": {
                                                 "intent": "function"
                                             },
-                                            "stmt": "c_function_native_&"
+                                            "stmt": "c_function_native&"
                                         },
                                         "n": {
                                             "meta": {
@@ -5264,7 +5264,7 @@
                                                 "deref": "pointer",
                                                 "intent": "function"
                                             },
-                                            "stmt": "f_function_native_&_pointer"
+                                            "stmt": "f_function_native&_pointer"
                                         },
                                         "n": {
                                             "meta": {
@@ -5332,7 +5332,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "c_function_native_&"
+                                            "stmt_name": "c_function_native&"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->at(\tn)",
@@ -5371,7 +5371,7 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "f_function_native_&_pointer"
+                                            "stmt_name": "f_function_native&_pointer"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",

@@ -66,7 +66,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  char * * names +intent(in)
 // Statement: f_in_char**_buf
@@ -291,7 +291,7 @@ void POI_getAllocToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native*_pointer
 // start POI_returnIntPtrToScalar_bufferify
 int * POI_returnIntPtrToScalar_bufferify(void)
 {
@@ -304,7 +304,7 @@ int * POI_returnIntPtrToScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Statement: f_function_native_*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -323,7 +323,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native*_pointer
 // start POI_returnIntPtrToConstScalar_bufferify
 const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
@@ -336,7 +336,7 @@ const int * POI_returnIntPtrToConstScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Statement: f_function_native_*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -355,7 +355,7 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Statement: f_function_native_*_scalar
+// Statement: f_function_native*_scalar
 // start POI_returnIntScalar_bufferify
 int POI_returnIntScalar_bufferify(void)
 {
@@ -368,7 +368,7 @@ int POI_returnIntScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-// Statement: f_function_native_*_cdesc_allocatable
+// Statement: f_function_native*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc,

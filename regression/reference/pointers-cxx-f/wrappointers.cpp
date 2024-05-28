@@ -339,7 +339,7 @@ void POI_fill_with_zeros_bufferify(double * x, int x_length)
 
 // ----------------------------------------
 // Function:  int accumulate
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Statement: f_in_native*
@@ -361,7 +361,7 @@ int POI_accumulate_bufferify(const int * arr, size_t len)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  char * * names +intent(in)
 // Statement: f_in_char**_buf
@@ -399,7 +399,7 @@ void POI_setGlobalInt_bufferify(int value)
  */
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // start POI_sumFixedArray_bufferify
 int POI_sumFixedArray_bufferify(void)
 {
@@ -684,7 +684,7 @@ void POI_getRawPtrToInt2d_bufferify(int * * * arg)
  */
 // ----------------------------------------
 // Function:  int checkInt2d
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
 // Statement: f_in_native**
@@ -748,7 +748,7 @@ void POI_getAllocToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Statement: f_function_void_*
+// Statement: f_function_void*
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native
@@ -764,7 +764,7 @@ void * POI_returnAddress1_bufferify(int flag)
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Statement: f_function_void_*
+// Statement: f_function_void*
 // ----------------------------------------
 // Argument:  int flag
 // Statement: f_in_native
@@ -810,7 +810,7 @@ void POI_updateVoidPtr_bufferify(void **addr)
 
 // ----------------------------------------
 // Function:  int VoidPtrArray
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  void * * addr +rank(1)
 // Statement: f_in_void**
@@ -826,7 +826,7 @@ int POI_VoidPtrArray_bufferify(void **addr)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native*_pointer
 // start POI_returnIntPtrToScalar_bufferify
 int * POI_returnIntPtrToScalar_bufferify(void)
 {
@@ -839,7 +839,7 @@ int * POI_returnIntPtrToScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Statement: f_function_native_*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -858,7 +858,7 @@ void POI_returnIntPtrToFixedArray_bufferify(
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Statement: f_function_native_*_pointer
+// Statement: f_function_native*_pointer
 // start POI_returnIntPtrToConstScalar_bufferify
 const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
@@ -871,7 +871,7 @@ const int * POI_returnIntPtrToConstScalar_bufferify(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Statement: f_function_native_*_cdesc_pointer
+// Statement: f_function_native*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
@@ -890,7 +890,7 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Statement: f_function_native_*_scalar
+// Statement: f_function_native*_scalar
 // start POI_returnIntScalar_bufferify
 int POI_returnIntScalar_bufferify(void)
 {
@@ -906,7 +906,7 @@ int POI_returnIntScalar_bufferify(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
-// Statement: f_function_native_*_raw
+// Statement: f_function_native*_raw
 // start POI_returnIntRaw_bufferify
 int * POI_returnIntRaw_bufferify(void)
 {
@@ -923,7 +923,7 @@ int * POI_returnIntRaw_bufferify(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRawWithArgs +deref(raw)
-// Statement: f_function_native_*_raw
+// Statement: f_function_native*_raw
 // ----------------------------------------
 // Argument:  const char * name
 // Statement: f_in_char*
@@ -943,7 +943,7 @@ int * POI_returnIntRawWithArgs_bufferify(const char * name)
  */
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d
-// Statement: f_function_native_**
+// Statement: f_function_native**
 // start POI_returnRawPtrToInt2d_bufferify
 int * * POI_returnRawPtrToInt2d_bufferify(void)
 {
@@ -956,7 +956,7 @@ int * * POI_returnRawPtrToInt2d_bufferify(void)
 
 // ----------------------------------------
 // Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-// Statement: f_function_native_*_cdesc_allocatable
+// Statement: f_function_native*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc,

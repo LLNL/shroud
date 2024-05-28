@@ -51,7 +51,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -59,7 +59,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "share": {
@@ -91,7 +91,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "GetNameLength(\t)",
@@ -127,7 +127,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     }
                 },
@@ -183,7 +183,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -193,7 +193,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         }
                     },
                     "share": {
@@ -239,7 +239,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getNameErrorPattern(\t)",
@@ -283,7 +283,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         }
                     }
                 },
@@ -355,7 +355,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_bool_scalar"
+                            "stmt": "c_function_bool"
                         },
                         "name": {
                             "meta": {
@@ -369,7 +369,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "name": {
                             "meta": {
@@ -423,7 +423,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool_scalar"
+                            "stmt_name": "c_function_bool"
                         },
                         "fmtf": {
                             "F_C_call": "-F_C_name-",
@@ -438,7 +438,7 @@
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         }
                     },
                     "name": {

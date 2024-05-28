@@ -354,7 +354,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int accumulate
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Statement: f_in_native*
@@ -377,7 +377,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
-    ! Statement: c_function_native_scalar
+    ! Statement: c_function_native
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)
     ! Statement: c_in_char**
@@ -396,7 +396,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)
     ! Statement: f_in_char**_buf
@@ -435,7 +435,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int sumFixedArray
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! start sum_fixed_array
     interface
         function sum_fixed_array() &
@@ -783,7 +783,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int checkInt2d
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Statement: f_in_native**
@@ -855,7 +855,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void * returnAddress1
-    ! Statement: f_function_void_*
+    ! Statement: f_function_void*
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -874,7 +874,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2
-    ! Statement: f_function_void_*
+    ! Statement: f_function_void*
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -927,7 +927,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Statement: f_in_void**
@@ -946,7 +946,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Statement: c_function_native_*
+    ! Statement: c_function_native*
     ! start c_return_int_ptr_to_scalar
     interface
         function c_return_int_ptr_to_scalar() &
@@ -961,7 +961,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Statement: f_function_native_*_pointer
+    ! Statement: f_function_native*_pointer
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
         function c_return_int_ptr_to_scalar_bufferify() &
@@ -976,7 +976,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Statement: c_function_native_*
+    ! Statement: c_function_native*
     ! start c_return_int_ptr_to_fixed_array
     interface
         function c_return_int_ptr_to_fixed_array() &
@@ -991,7 +991,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Statement: f_function_native_*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_array_bufferify( &
@@ -1006,7 +1006,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Statement: c_function_native_*
+    ! Statement: c_function_native*
     ! start c_return_int_ptr_to_const_scalar
     interface
         function c_return_int_ptr_to_const_scalar() &
@@ -1021,7 +1021,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Statement: f_function_native_*_pointer
+    ! Statement: f_function_native*_pointer
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
         function c_return_int_ptr_to_const_scalar_bufferify() &
@@ -1036,7 +1036,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Statement: c_function_native_*
+    ! Statement: c_function_native*
     ! start c_return_int_ptr_to_fixed_const_array
     interface
         function c_return_int_ptr_to_fixed_const_array() &
@@ -1051,7 +1051,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Statement: f_function_native_*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
         subroutine c_return_int_ptr_to_fixed_const_array_bufferify( &
@@ -1066,7 +1066,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Statement: c_function_native_*
+    ! Statement: c_function_native*
     ! start c_return_int_scalar
     interface
         function c_return_int_scalar() &
@@ -1081,7 +1081,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Statement: f_function_native_*_scalar
+    ! Statement: f_function_native*_scalar
     ! start return_int_scalar
     interface
         function return_int_scalar() &
@@ -1096,7 +1096,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
-    ! Statement: f_function_native_*_raw
+    ! Statement: f_function_native*_raw
     ! start return_int_raw
     interface
         function return_int_raw() &
@@ -1111,7 +1111,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
-    ! Statement: f_function_native_*_raw
+    ! Statement: f_function_native*_raw
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Statement: f_in_char*
@@ -1130,7 +1130,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Statement: f_function_native_**
+    ! Statement: f_function_native**
     ! start c_return_raw_ptr_to_int2d
     interface
         function c_return_raw_ptr_to_int2d() &
@@ -1145,7 +1145,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Statement: c_function_native_*
+    ! Statement: c_function_native*
     ! start c_return_int_alloc_to_fixed_array
     interface
         function c_return_int_alloc_to_fixed_array() &
@@ -1160,7 +1160,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Statement: f_function_native_*_cdesc_allocatable
+    ! Statement: f_function_native*_cdesc_allocatable
     ! start c_return_int_alloc_to_fixed_array_bufferify
     interface
         subroutine c_return_int_alloc_to_fixed_array_bufferify( &
@@ -1513,7 +1513,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int accumulate
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const int * arr +rank(1)
     ! Statement: f_in_native*
@@ -1533,7 +1533,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)
     ! Statement: f_in_char**_buf
@@ -1576,7 +1576,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int sumFixedArray
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     !>
     !! Used to test values global_array.
     !<
@@ -1846,7 +1846,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int checkInt2d
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Statement: f_in_native**
@@ -1916,7 +1916,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  void * returnAddress1
-    ! Statement: f_function_void_*
+    ! Statement: f_function_void*
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -1935,7 +1935,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2
-    ! Statement: f_function_void_*
+    ! Statement: f_function_void*
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -1988,7 +1988,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int VoidPtrArray
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  void * * addr +rank(1)
     ! Statement: f_in_void**
@@ -2006,7 +2006,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
-    ! Statement: f_function_native_*_pointer
+    ! Statement: f_function_native*_pointer
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
             result(SHT_rv)
@@ -2022,7 +2022,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
-    ! Statement: f_function_native_*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
@@ -2039,7 +2039,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
-    ! Statement: f_function_native_*_pointer
+    ! Statement: f_function_native*_pointer
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
             result(SHT_rv)
@@ -2055,7 +2055,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-    ! Statement: f_function_native_*_cdesc_pointer
+    ! Statement: f_function_native*_cdesc_pointer
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)
@@ -2074,7 +2074,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
-    ! Statement: f_function_native_*_scalar
+    ! Statement: f_function_native*_scalar
     ! start return_int_scalar
     function return_int_scalar() &
             result(SHT_rv)
@@ -2091,7 +2091,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
-    ! Statement: f_function_native_*_raw
+    ! Statement: f_function_native*_raw
     !>
     !! Call directly via interface.
     !<
@@ -2109,7 +2109,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
-    ! Statement: f_function_native_*_raw
+    ! Statement: f_function_native*_raw
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
     !! Uses fc_statements f_function_native_*_raw.
@@ -2128,7 +2128,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
-    ! Statement: f_function_native_**
+    ! Statement: f_function_native**
     !>
     !! Test multiple layers of indirection.
     !! # getRawPtrToInt2d
@@ -2146,7 +2146,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
-    ! Statement: f_function_native_*_cdesc_allocatable
+    ! Statement: f_function_native*_cdesc_allocatable
     ! start return_int_alloc_to_fixed_array
     function return_int_alloc_to_fixed_array() &
             result(SHT_rv)

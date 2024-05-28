@@ -227,13 +227,10 @@ def lookup_c_function_stmt(node):
         stmts = ["c", sintent]
         result_stmt = lookup_fc_stmts(stmts)
     else:
-        r_attrs = declarator.attrs
-        result_typemap = ast.typemap
-        spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
-        specialize = lookup_c_statements(ast)
-        stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
+        abstract = find_abstract_declarator(ast)
+        stmts = ["c", sintent, abstract,
+                 r_meta["api"], r_meta["deref"], r_meta["owner"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -249,13 +246,10 @@ def lookup_f_function_stmt(node):
         stmts = ["f", sintent]
         result_stmt = lookup_fc_stmts(stmts)
     else:
-        r_attrs = declarator.attrs
-        result_typemap = ast.typemap
-        spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
-        specialize = lookup_c_statements(ast)
-        stmts = ["f", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
+        abstract = find_abstract_declarator(ast)
+        stmts = ["f", sintent, abstract,
+                 r_meta["api"], r_meta["deref"], r_meta["owner"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 

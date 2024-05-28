@@ -139,7 +139,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_bool_scalar"
+                            "stmt": "c_function_bool"
                         },
                         "i1": {
                             "meta": {
@@ -205,7 +205,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool_scalar"
+                            "stmt_name": "c_function_bool"
                         }
                     },
                     "i1": {
@@ -329,7 +329,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "i1": {
                             "meta": {
@@ -402,7 +402,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         }
                     },
                     "i1": {
@@ -532,7 +532,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "i1": {
                             "meta": {
@@ -605,7 +605,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         }
                     },
                     "i1": {

@@ -43,7 +43,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -52,7 +52,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 }
                             },
                             "py": {
@@ -93,7 +93,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -133,7 +133,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -395,7 +395,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -403,7 +403,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "py": {
@@ -442,7 +442,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getSize(\t)",
@@ -479,7 +479,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -859,7 +859,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -876,7 +876,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -942,7 +942,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArray(\t)",
@@ -991,7 +991,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1083,7 +1083,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -1100,7 +1100,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -1167,7 +1167,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConst(\t)",
@@ -1216,7 +1216,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1308,7 +1308,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -1325,7 +1325,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -1391,7 +1391,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayC(\t)",
@@ -1440,7 +1440,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1533,7 +1533,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -1550,7 +1550,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -1617,7 +1617,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConstC(\t)",
@@ -1666,7 +1666,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -3682,7 +3682,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_bool_scalar"
+                                    "stmt": "c_function_bool"
                                 },
                                 "array": {
                                     "meta": {
@@ -3697,7 +3697,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_bool_scalar"
+                                    "stmt": "f_function_bool"
                                 },
                                 "array": {
                                     "meta": {
@@ -3756,7 +3756,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_function_bool_scalar"
+                                    "stmt_name": "c_function_bool"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->checkPtr(\tarray)",
@@ -3793,7 +3793,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_function_bool_scalar"
+                                    "stmt_name": "f_function_bool"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PyBool_Type",
@@ -3920,7 +3920,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -3928,7 +3928,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "py": {
@@ -3967,7 +3967,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->sumArray(\t)",
@@ -4003,7 +4003,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",

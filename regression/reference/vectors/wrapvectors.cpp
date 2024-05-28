@@ -43,7 +43,7 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg
 // Statement: c_in_vector<native>&_buf
@@ -423,7 +423,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *SHT_arg_cdesc)
  */
 // ----------------------------------------
 // Function:  int vector_of_pointers
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  std::vector<const double * > & arg1 +intent(in)
 // Statement: c_in_vector<native*>&_buf
@@ -449,7 +449,7 @@ int VEC_vector_of_pointers(double *arg1, size_t SHT_arg1_len,
  */
 // ----------------------------------------
 // Function:  int vector_string_count
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const std::vector<std::string> & arg
 // Statement: c_in_vector<string>&_buf
@@ -604,7 +604,7 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
  */
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc
-// Statement: c_function_vector_scalar_malloc_targ_native_scalar
+// Statement: c_function_vector<native>_malloc
 // ----------------------------------------
 // Argument:  int n
 // Statement: c_in_native
@@ -628,7 +628,7 @@ int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size)
  */
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc
-// Statement: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
+// Statement: f_function_vector<native>_cdesc_allocatable
 // ----------------------------------------
 // Argument:  int n
 // Statement: f_in_native
@@ -649,7 +649,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
 
 // ----------------------------------------
 // Function:  int returnDim2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Statement: c_in_native*

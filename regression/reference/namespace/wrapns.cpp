@@ -44,7 +44,7 @@ static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * NS_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
@@ -56,7 +56,7 @@ const char * NS_LastFunctionCalled(void)
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
-// Statement: f_function_string_&_cdesc_allocatable
+// Statement: f_function_string&_cdesc_allocatable
 void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc,
     NS_SHROUD_capsule_data *SHT_rv_capsule)
 {

@@ -53,7 +53,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_capptr
         function XXX_TES_names_defaultctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -96,7 +96,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     function names_defaultctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR

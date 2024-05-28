@@ -193,7 +193,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_capptr
         function c_ex_class1_ctor_0(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
@@ -206,7 +206,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: c_ctor_shadow_scalar_capptr
+        ! Statement: c_ctor_shadow_capptr
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Statement: c_in_string*
@@ -223,7 +223,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_capptr
         ! ----------------------------------------
         ! Argument:  const string * name
         ! Statement: f_in_string*_buf
@@ -252,7 +252,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int incrementCount
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int incr
         ! Statement: f_in_native
@@ -269,7 +269,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         pure function c_ex_class1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck")
@@ -282,7 +282,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
-        ! Statement: f_function_string_&_cdesc_allocatable
+        ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class1_get_name_error_check_bufferify(self, &
                 SHT_rv_cdesc, SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass1_getNameErrorCheck_bufferify")
@@ -295,7 +295,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         pure function c_ex_class1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg")
@@ -308,7 +308,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg
-        ! Statement: f_function_string_&_buf_arg
+        ! Statement: f_function_string&_buf_arg
         subroutine c_ex_class1_get_name_arg_bufferify(self, name, nname) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -321,7 +321,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int getValue
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int value
         ! Statement: f_in_native
@@ -338,7 +338,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  long getValue
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long value
         ! Statement: f_in_native
@@ -355,7 +355,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool hasAddr
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         ! ----------------------------------------
         ! Argument:  bool in
         ! Statement: f_in_bool
@@ -382,7 +382,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
-        ! Statement: c_ctor_shadow_scalar_capptr
+        ! Statement: c_ctor_shadow_capptr
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Statement: c_in_string*
@@ -399,7 +399,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_capptr
         ! ----------------------------------------
         ! Argument:  const string * name +len_trim(trim_name)
         ! Statement: f_in_string*_buf
@@ -427,7 +427,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         pure function c_ex_class2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName")
@@ -440,7 +440,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-        ! Statement: f_function_string_&_buf_copy
+        ! Statement: f_function_string&_buf_copy
         subroutine c_ex_class2_get_name_bufferify(self, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="AA_example_nested_ExClass2_getName_bufferify")
@@ -454,7 +454,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         function c_ex_class2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName2")
@@ -467,7 +467,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2
-        ! Statement: f_function_string_&_cdesc_allocatable
+        ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass2_getName2_bufferify")
@@ -480,7 +480,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         pure function c_ex_class2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName3")
@@ -493,7 +493,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3
-        ! Statement: f_function_string_&_cdesc_allocatable
+        ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass2_getName3_bufferify")
@@ -506,7 +506,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         function c_ex_class2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getName4")
@@ -519,7 +519,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4
-        ! Statement: f_function_string_&_cdesc_allocatable
+        ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
                 bind(C, name="AA_example_nested_ExClass2_getName4_bufferify")
@@ -532,7 +532,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int GetNameLength
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         pure function c_ex_class2_get_name_length(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_GetNameLength")
@@ -545,7 +545,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
-        ! Statement: f_function_shadow_*_capptr
+        ! Statement: f_function_shadow*_capptr
         ! ----------------------------------------
         ! Argument:  const ExClass1 * in
         ! Statement: f_in_shadow*
@@ -564,7 +564,7 @@ module userlibrary_example_nested_mod
         ! Generated by has_default_arg
         ! ----------------------------------------
         ! Function:  ExClass2 * declare
-        ! Statement: f_function_shadow_*_this
+        ! Statement: f_function_shadow*_this
         ! ----------------------------------------
         ! Argument:  TypeID type
         ! Statement: f_in_native
@@ -579,7 +579,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2 * declare
-        ! Statement: c_function_shadow_*_this
+        ! Statement: c_function_shadow*_this
         ! ----------------------------------------
         ! Argument:  TypeID type
         ! Statement: c_in_native
@@ -608,7 +608,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  TypeID getTypeID
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         pure function c_ex_class2_get_type_id(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getTypeID")
@@ -686,7 +686,7 @@ module userlibrary_example_nested_mod
         ! Generated by cxx_template
         ! ----------------------------------------
         ! Function:  int getValue
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         function c_ex_class2_get_value_int(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_int")
@@ -700,7 +700,7 @@ module userlibrary_example_nested_mod
         ! Generated by cxx_template
         ! ----------------------------------------
         ! Function:  double getValue
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         function c_ex_class2_get_value_double(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_getValue_double")
@@ -721,7 +721,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isNameValid
-        ! Statement: c_function_bool_scalar
+        ! Statement: c_function_bool
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Statement: c_in_string&
@@ -736,7 +736,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isNameValid
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Statement: f_in_string&_buf
@@ -752,7 +752,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isInitialized
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         function c_is_initialized() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_isInitialized")
@@ -865,7 +865,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  size_t test_size_t
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         function test_size_t() &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_test_size_t")
@@ -1018,7 +1018,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int verylongfunctionname2
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int verylongname1
         ! Statement: f_in_native
@@ -1170,7 +1170,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     function ex_class1_ctor_0() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1183,7 +1183,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! ----------------------------------------
     ! Argument:  const string * name
     ! Statement: f_in_string*_buf
@@ -1226,7 +1226,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int incrementCount
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int incr
     ! Statement: f_in_native
@@ -1243,7 +1243,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     function ex_class1_get_name_error_check(obj) &
             result(SHT_rv)
         class(ex_class1) :: obj
@@ -1262,7 +1262,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getNameArg
-    ! Statement: f_function_string_&_buf_arg
+    ! Statement: f_function_string&_buf_arg
     subroutine ex_class1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
         class(ex_class1) :: obj
@@ -1276,7 +1276,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getValue
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int value
     ! Statement: f_in_native
@@ -1293,7 +1293,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  long getValue
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long value
     ! Statement: f_in_native
@@ -1310,7 +1310,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool hasAddr
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  bool in
     ! Statement: f_in_bool
@@ -1358,7 +1358,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass2
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! ----------------------------------------
     ! Argument:  const string * name +len_trim(trim_name)
     ! Statement: f_in_string*_buf
@@ -1396,7 +1396,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     function ex_class2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1412,7 +1412,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getName2
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name2(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
@@ -1431,7 +1431,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  string & getName3
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name3(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
@@ -1450,7 +1450,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  string & getName4
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name4(obj) &
             result(SHT_rv)
         class(ex_class2) :: obj
@@ -1469,7 +1469,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int GetNameLength
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     !>
     !! \brief helper function for Fortran
     !!
@@ -1486,7 +1486,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1 * get_class1
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  const ExClass1 * in
     ! Statement: f_in_shadow*
@@ -1506,7 +1506,7 @@ contains
     ! Generated by has_default_arg
     ! ----------------------------------------
     ! Function:  ExClass2 * declare
-    ! Statement: f_function_shadow_*_this
+    ! Statement: f_function_shadow*_this
     ! ----------------------------------------
     ! Argument:  TypeID type
     ! Statement: f_in_native
@@ -1522,7 +1522,7 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  ExClass2 * declare
-    ! Statement: f_function_shadow_*_this
+    ! Statement: f_function_shadow*_this
     ! ----------------------------------------
     ! Argument:  TypeID type
     ! Statement: f_in_native
@@ -1545,7 +1545,7 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  ExClass2 * declare
-    ! Statement: f_function_shadow_*_this
+    ! Statement: f_function_shadow*_this
     ! ----------------------------------------
     ! Argument:  TypeID type
     ! Statement: f_in_native
@@ -1577,7 +1577,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  TypeID getTypeID
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     function ex_class2_get_type_id(obj) &
             result(SHT_rv)
         use userlibrary_mod, only : type_id
@@ -1655,7 +1655,7 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int getValue
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     function ex_class2_get_value_int(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1669,7 +1669,7 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  double getValue
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     function ex_class2_get_value_double(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1712,7 +1712,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool isNameValid
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Statement: f_in_string&_buf
@@ -1728,7 +1728,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool isInitialized
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     function is_initialized() &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -1821,7 +1821,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  size_t test_size_t
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     function test_size_t() &
             result(SHT_rv)
         use iso_c_binding, only : C_SIZE_T
@@ -1989,7 +1989,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int verylongfunctionname2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int verylongname1
     ! Statement: f_in_native

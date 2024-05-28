@@ -47,7 +47,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -92,7 +92,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },
@@ -288,7 +288,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -333,7 +333,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },
@@ -529,7 +529,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -574,7 +574,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },

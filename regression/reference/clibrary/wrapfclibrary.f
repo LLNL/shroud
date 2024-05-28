@@ -61,7 +61,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  double PassByValue
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  double arg1
     ! Statement: f_in_native
@@ -105,7 +105,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int arg2
     ! Statement: f_in_native
@@ -147,7 +147,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
-    ! Statement: f_function_char_*_buf_copy
+    ! Statement: f_function_char*_buf_copy
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Statement: f_in_char*
@@ -288,7 +288,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int ImpliedLen
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * text +api(capi)
     ! Statement: f_in_char*_capi
@@ -313,7 +313,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * text +api(capi)
     ! Statement: f_in_char*_capi
@@ -338,7 +338,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  bool flag +implied(true)
     ! Statement: f_in_bool
@@ -355,7 +355,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  bool flag +implied(false)
     ! Statement: f_in_bool
@@ -419,7 +419,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int passAssumedType
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Statement: f_in_void*
@@ -454,7 +454,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Statement: f_in_void*
@@ -522,7 +522,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  double PassByValue
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  double arg1
     ! Statement: f_in_native
@@ -570,7 +570,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int arg2
     ! Statement: f_in_native
@@ -626,7 +626,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
-    ! Statement: f_function_char_*_buf_copy
+    ! Statement: f_function_char*_buf_copy
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -787,7 +787,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int ImpliedLen
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * text +api(capi)
     ! Statement: f_in_char*_capi
@@ -813,7 +813,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const char * text +api(capi)
     ! Statement: f_in_char*_capi
@@ -839,7 +839,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     !>
     !! \brief Single, implied bool argument
     !!
@@ -857,7 +857,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     !>
     !! \brief Single, implied bool argument
     !!
@@ -943,7 +943,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passAssumedType
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     !>
     !! \brief Test assumed-type
     !!
@@ -985,7 +985,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Statement: f_out_char*_buf

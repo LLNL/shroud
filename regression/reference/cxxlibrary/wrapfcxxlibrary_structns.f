@@ -31,7 +31,7 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReference
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg
         ! Statement: f_inout_struct&
@@ -47,7 +47,7 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReferenceIn
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  const Cstruct1 & arg
         ! Statement: f_in_struct&
@@ -97,7 +97,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStructByReference
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  Cstruct1 & arg
     ! Statement: f_inout_struct&
@@ -119,7 +119,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStructByReferenceIn
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const Cstruct1 & arg
     ! Statement: f_in_struct&

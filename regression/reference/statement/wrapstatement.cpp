@@ -46,7 +46,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
  */
 // ----------------------------------------
 // Function:  int GetNameLength +pure
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 int STMT_GetNameLength(void)
 {
     // splicer begin function.GetNameLength
@@ -56,7 +56,7 @@ int STMT_GetNameLength(void)
 
 // ----------------------------------------
 // Function:  const string & getNameErrorPattern +len(get_name_length())
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STMT_getNameErrorPattern(void)
 {
     // splicer begin function.getNameErrorPattern
@@ -73,7 +73,7 @@ const char * STMT_getNameErrorPattern(void)
 
 // ----------------------------------------
 // Function:  const string & getNameErrorPattern +len(get_name_length())
-// Statement: f_function_string_&_buf_copy
+// Statement: f_function_string&_buf_copy
 void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.getNameErrorPattern_bufferify
@@ -89,7 +89,7 @@ void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 
 // ----------------------------------------
 // Function:  bool nameIsValid
-// Statement: c_function_bool_scalar
+// Statement: c_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
 // Statement: c_in_string&

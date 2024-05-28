@@ -49,7 +49,7 @@ void AA_example_nested_local_function1(void)
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Statement: c_function_bool_scalar
+// Statement: c_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
 // Statement: c_in_string&
@@ -62,7 +62,7 @@ bool AA_example_nested_isNameValid(const char * name)
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Statement: f_function_bool_scalar
+// Statement: f_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
 // Statement: f_in_string&_buf
@@ -76,7 +76,7 @@ bool AA_example_nested_isNameValid_bufferify(char *name,
 
 // ----------------------------------------
 // Function:  bool isInitialized
-// Statement: c_function_bool_scalar
+// Statement: c_function_bool
 bool AA_example_nested_isInitialized(void)
 {
     // splicer begin namespace.example::nested.function.isInitialized
@@ -194,7 +194,7 @@ void AA_example_nested_testoptional_2(int i, long j)
 
 // ----------------------------------------
 // Function:  size_t test_size_t
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 size_t AA_example_nested_test_size_t(void)
 {
     // splicer begin namespace.example::nested.function.test_size_t
@@ -362,7 +362,7 @@ void AA_example_nested_verylongfunctionname1(int * verylongname1,
 
 // ----------------------------------------
 // Function:  int verylongfunctionname2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int verylongname1
 // Statement: c_in_native

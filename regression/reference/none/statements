@@ -3,79 +3,61 @@ root
   c
     ctor
       shadow
-        scalar
-          capptr -- f_ctor_shadow_scalar_capptr
+        capptr -- f_ctor_shadow_capptr
     defaulttmp -- c_defaulttmp
     dtor -- f_dtor
     function -- c_function
-      bool
-        scalar -- f_function_bool_scalar
-      char
-        * -- f_function_char_*
-          arg -- f_function_char_*_arg
-          buf
-            arg -- f_function_char_*_arg
-            copy -- f_function_char_*_buf_copy
-        scalar -- f_function_char_scalar
-      enum
-        scalar -- f_function_native_scalar
-      native
-        & -- f_function_native_*_raw
-        * -- f_function_native_*_raw
-          caller -- f_function_native_*_raw
-          scalar -- c_function_native_*_scalar
-        ** -- f_function_native_*_raw
-        scalar -- f_function_native_scalar
+      bool -- f_function_bool
+      char -- f_function_char
+      char* -- f_function_char*
+        arg -- f_function_char*_arg
+        buf
+          arg -- f_function_char*_arg
+          copy -- f_function_char*_buf_copy
+      enum -- f_function_native
+      native -- f_function_native
+      native& -- f_function_native*_raw
+      native* -- f_function_native*_raw
+        caller -- f_function_native*_raw
+        scalar -- c_function_native*_scalar
+      native** -- f_function_native*_raw
       shadow
-        &
-          capptr -- f_function_shadow_*/&_capptr
-            caller -- f_function_shadow_*/&_capptr
-            library -- f_function_shadow_*/&_capptr
-        *
-          capptr -- f_function_shadow_*/&_capptr
-            caller -- f_function_shadow_*/&_capptr
-            library -- f_function_shadow_*/&_capptr
-          capsule -- f_function_shadow_*_capsule
-          this -- f_function_shadow_*_this
-        scalar
-          capptr -- f_function_shadow_scalar_capptr
-            targ
-              native
-                scalar -- f_function_shadow_scalar_capptr
-      string
-        & -- f_shared_function_string_scalar
-          buf
-            arg -- f_function_string_scalar_buf_arg
-            copy -- f_function_string_scalar_buf
-          copy -- f_shared_function_string_scalar
-        * -- f_shared_function_string_scalar
-          buf
-            copy -- f_function_string_scalar_buf
-          caller -- f_shared_function_string_scalar
-          copy -- f_shared_function_string_scalar
-          library -- f_shared_function_string_scalar
-        scalar -- c_function_string_scalar
-          buf
-            arg -- f_function_string_scalar_buf_arg
-            copy -- f_function_string_scalar_buf
-      struct
-        * -- f_function_struct_*_pointer
-        scalar -- f_function_struct_scalar
-      vector
-        scalar
-          malloc
-            targ
-              native
-                scalar -- c_function_vector_scalar_malloc_targ_native_scalar
-          targ
-            native
-              scalar -- c_function_vector_scalar_targ_native_scalar
-      void
-        * -- f_function_void_*
+        capptr -- f_function_shadow_capptr
+      shadow&
+        capptr -- f_function_shadow*_capptr
+          caller -- f_function_shadow*_capptr
+          library -- f_function_shadow*_capptr
+      shadow*
+        capptr -- f_function_shadow*_capptr
+          caller -- f_function_shadow*_capptr
+          library -- f_function_shadow*_capptr
+        capsule -- f_function_shadow*_capsule
+        this -- f_function_shadow*_this
+      shadow<native>
+        capptr -- f_function_shadow_capptr
+      string -- c_function_string
+        buf
+          arg -- f_function_string_buf_arg
+          copy -- f_function_string_buf
+      string& -- f_shared_function_string_scalar
+        buf
+          arg -- f_function_string_buf_arg
+          copy -- f_function_string_buf
+        copy -- f_shared_function_string_scalar
+      string* -- f_shared_function_string_scalar
+        buf
+          copy -- f_function_string_buf
+        caller -- f_shared_function_string_scalar
+        copy -- f_shared_function_string_scalar
+        library -- f_shared_function_string_scalar
+      struct -- f_function_struct
+      struct* -- f_function_struct*_pointer
+      vector<native> -- c_function_vector<native>
+        malloc -- c_function_vector<native>_malloc
+      void* -- f_function_void*
     getter
-      native
-        * -- f_getter_native_scalar
-        scalar -- f_getter_native_scalar
+      native -- f_getter_native
+      native* -- f_getter_native
     in
       bool -- f_in_bool
       char -- f_in_char
@@ -283,169 +265,153 @@ root
         scalar -- f_XXXin_string_scalar
     ctor
       shadow
-        scalar
-          capptr -- f_ctor_shadow_scalar_capptr
+        capptr -- f_ctor_shadow_capptr
     defaulttmp -- f_defaulttmp
     dtor -- f_dtor
     function
-      bool
-        scalar -- f_function_bool_scalar
-      char
-        * -- f_function_char_*
-          allocatable -- f_function_char_*
-          arg -- f_function_char_*_arg
-          buf
-            arg -- f_function_char_*_arg
-            copy -- f_function_char_*_buf_copy
-          cdesc
-            allocatable -- f_function_char_scalar_cdesc_allocatable
-            pointer -- f_function_char_scalar_cdesc_pointer
-          cfi
-            allocatable -- f_function_char_*_cfi_allocatable
-            arg -- f_function_char_*_cfi_arg
-            copy -- f_function_char_*_cfi_copy
-            pointer -- f_function_char_cfi_pointer
-          copy -- f_function_char_*
-          pointer -- f_function_char_*
-          raw -- f_function_char_*
+      bool -- f_function_bool
+      char -- f_function_char
+        cdesc
+          allocatable -- f_function_char_cdesc_allocatable
+          pointer -- f_function_char_cdesc_pointer
         cfi
+          allocatable -- f_function_char*_cfi_allocatable
           pointer -- f_function_char_cfi_pointer
-        scalar -- f_function_char_scalar
-          cdesc
-            allocatable -- f_function_char_scalar_cdesc_allocatable
-            pointer -- f_function_char_scalar_cdesc_pointer
-          cfi
-            allocatable -- f_function_char_*_cfi_allocatable
-      enum
-        scalar -- f_function_native_scalar
-      native
-        & -- f_function_native_&
-          pointer -- f_function_native_&
-        *
-          cdesc
-            allocatable -- f_function_native_*_cdesc_allocatable
-            pointer -- f_function_native_*_cdesc_pointer
-              caller -- f_function_native_*_cdesc_pointer_caller
-          cfi
-            allocatable -- f_function_native_*_cfi_allocatable
-            pointer -- f_function_native_*_cfi_pointer
-          pointer -- f_function_native_&
-            caller -- f_function_native_&
-          raw -- f_function_native_*_raw
-          scalar -- f_function_native_*_scalar
-        ** -- f_function_native_*_raw
-        scalar -- f_function_native_scalar
+      char* -- f_function_char*
+        allocatable -- f_function_char*
+        arg -- f_function_char*_arg
+        buf
+          arg -- f_function_char*_arg
+          copy -- f_function_char*_buf_copy
+        cdesc
+          allocatable -- f_function_char_cdesc_allocatable
+          pointer -- f_function_char_cdesc_pointer
+        cfi
+          allocatable -- f_function_char*_cfi_allocatable
+          arg -- f_function_char*_cfi_arg
+          copy -- f_function_char*_cfi_copy
+          pointer -- f_function_char_cfi_pointer
+        copy -- f_function_char*
+        pointer -- f_function_char*
+        raw -- f_function_char*
+      enum -- f_function_native
+      native -- f_function_native
+      native& -- f_function_native&
+        pointer -- f_function_native&
+      native*
+        cdesc
+          allocatable -- f_function_native*_cdesc_allocatable
+          pointer -- f_function_native*_cdesc_pointer
+            caller -- f_function_native*_cdesc_pointer_caller
+        cfi
+          allocatable -- f_function_native*_cfi_allocatable
+          pointer -- f_function_native*_cfi_pointer
+        pointer -- f_function_native&
+          caller -- f_function_native&
+        raw -- f_function_native*_raw
+        scalar -- f_function_native*_scalar
+      native** -- f_function_native*_raw
       shadow
-        &
-          capptr -- f_function_shadow_*/&_capptr
-            caller -- f_function_shadow_*/&_capptr
-            library -- f_function_shadow_*/&_capptr
-        *
-          capptr -- f_function_shadow_*/&_capptr
-            caller -- f_function_shadow_*/&_capptr
-            library -- f_function_shadow_*/&_capptr
-          capsule -- f_function_shadow_*_capsule
-          this -- f_function_shadow_*_this
-        scalar
-          capptr -- f_function_shadow_scalar_capptr
-            caller -- f_function_shadow_scalar_capptr
-            library -- f_function_shadow_scalar_capptr
-            targ
-              native
-                scalar -- f_function_shadow_scalar_capptr
+        capptr -- f_function_shadow_capptr
+          caller -- f_function_shadow_capptr
+          library -- f_function_shadow_capptr
+      shadow&
+        capptr -- f_function_shadow*_capptr
+          caller -- f_function_shadow*_capptr
+          library -- f_function_shadow*_capptr
+      shadow*
+        capptr -- f_function_shadow*_capptr
+          caller -- f_function_shadow*_capptr
+          library -- f_function_shadow*_capptr
+        capsule -- f_function_shadow*_capsule
+        this -- f_function_shadow*_this
+      shadow<native>
+        capptr -- f_function_shadow_capptr
       string
-        &
-          buf -- f_function_string_scalar_buf
-            arg -- f_function_string_scalar_buf_arg
-            copy -- f_function_string_scalar_buf
-          cdesc
-            allocatable -- f_function_string_*_cdesc_allocatable
-              caller -- f_function_string_*_cdesc_allocatable
-              library -- f_function_string_*_cdesc_allocatable
-            pointer -- f_function_string_*_cdesc_pointer
-              caller -- f_function_string_*_cdesc_pointer
-              library -- f_function_string_*_cdesc_pointer
-          cfi
-            allocatable -- f_function_string_*/&_cfi_allocatable
-              caller -- f_function_string_*/&_cfi_allocatable
-              library -- f_function_string_*/&_cfi_allocatable
-            arg -- f_function_string_scalar_cfi_arg
-            copy -- f_function_string_scalar_cfi_copy
-            pointer -- f_shared_function_string_*_cfi_pointer
-              caller -- f_shared_function_string_*_cfi_pointer
-              library -- f_shared_function_string_*_cfi_pointer
-        *
-          buf -- f_function_string_scalar_buf
-            copy -- f_function_string_scalar_buf
-          cdesc
-            allocatable -- f_function_string_*_cdesc_allocatable
-              caller -- f_function_string_*_cdesc_allocatable
-              library -- f_function_string_*_cdesc_allocatable
-            pointer -- f_function_string_*_cdesc_pointer
-              caller -- f_function_string_*_cdesc_pointer
-              library -- f_function_string_*_cdesc_pointer
-          cfi
-            allocatable -- f_function_string_*/&_cfi_allocatable
-              caller -- f_function_string_*/&_cfi_allocatable
-              library -- f_function_string_*/&_cfi_allocatable
-            copy -- f_function_string_scalar_cfi_copy
-            pointer -- f_shared_function_string_*_cfi_pointer
-              caller -- f_shared_function_string_*_cfi_pointer
-              library -- f_shared_function_string_*_cfi_pointer
-        scalar
-          buf -- f_function_string_scalar_buf
-            arg -- f_function_string_scalar_buf_arg
-            copy -- f_function_string_scalar_buf
-          cdesc
-            allocatable -- f_function_string_scalar_cdesc_allocatable
-              caller -- f_function_string_scalar_cdesc_allocatable
-              library -- f_function_string_scalar_cdesc_allocatable
-          cfi
-            allocatable -- f_function_string_scalar_cfi_allocatable
-              caller -- f_function_string_*/&_cfi_allocatable
-              library -- f_function_string_*/&_cfi_allocatable
-            arg -- f_function_string_scalar_cfi_arg
-            copy -- f_function_string_scalar_cfi_copy
-            pointer -- f_shared_function_string_*_cfi_pointer
-              caller -- f_shared_function_string_*_cfi_pointer
-              library -- f_shared_function_string_*_cfi_pointer
-      struct
-        *
-          cdesc
-            pointer -- f_function_native_*_cdesc_pointer
-          pointer -- f_function_struct_*_pointer
-        scalar -- f_function_struct_scalar
+        buf -- f_function_string_buf
+          arg -- f_function_string_buf_arg
+          copy -- f_function_string_buf
+        cdesc
+          allocatable -- f_function_string_cdesc_allocatable
+            caller -- f_function_string_cdesc_allocatable
+            library -- f_function_string_cdesc_allocatable
+        cfi
+          allocatable -- f_function_string_cfi_allocatable
+            caller -- f_function_string*_cfi_allocatable
+            library -- f_function_string*_cfi_allocatable
+          arg -- f_function_string_cfi_arg
+          copy -- f_function_string_cfi_copy
+          pointer -- f_shared_function_string_*_cfi_pointer
+            caller -- f_shared_function_string_*_cfi_pointer
+            library -- f_shared_function_string_*_cfi_pointer
+      string&
+        buf -- f_function_string_buf
+          arg -- f_function_string_buf_arg
+          copy -- f_function_string_buf
+        cdesc
+          allocatable -- f_function_string*_cdesc_allocatable
+            caller -- f_function_string*_cdesc_allocatable
+            library -- f_function_string*_cdesc_allocatable
+          pointer -- f_function_string*_cdesc_pointer
+            caller -- f_function_string*_cdesc_pointer
+            library -- f_function_string*_cdesc_pointer
+        cfi
+          allocatable -- f_function_string*_cfi_allocatable
+            caller -- f_function_string*_cfi_allocatable
+            library -- f_function_string*_cfi_allocatable
+          arg -- f_function_string_cfi_arg
+          copy -- f_function_string_cfi_copy
+          pointer -- f_shared_function_string_*_cfi_pointer
+            caller -- f_shared_function_string_*_cfi_pointer
+            library -- f_shared_function_string_*_cfi_pointer
+      string*
+        buf -- f_function_string_buf
+          copy -- f_function_string_buf
+        cdesc
+          allocatable -- f_function_string*_cdesc_allocatable
+            caller -- f_function_string*_cdesc_allocatable
+            library -- f_function_string*_cdesc_allocatable
+          pointer -- f_function_string*_cdesc_pointer
+            caller -- f_function_string*_cdesc_pointer
+            library -- f_function_string*_cdesc_pointer
+        cfi
+          allocatable -- f_function_string*_cfi_allocatable
+            caller -- f_function_string*_cfi_allocatable
+            library -- f_function_string*_cfi_allocatable
+          copy -- f_function_string_cfi_copy
+          pointer -- f_shared_function_string_*_cfi_pointer
+            caller -- f_shared_function_string_*_cfi_pointer
+            library -- f_shared_function_string_*_cfi_pointer
+      struct -- f_function_struct
+      struct*
+        cdesc
+          pointer -- f_function_native*_cdesc_pointer
+        pointer -- f_function_struct*_pointer
       vector
         scalar
           cdesc -- f_function_vector_scalar_cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
-      void
-        * -- f_function_void_*
+      vector<native>
+        cdesc
+          allocatable -- f_function_vector<native>_cdesc_allocatable
+      void* -- f_function_void*
     getter
-      bool
-        scalar -- f_getter_bool_scalar
-      native
-        *
-          cdesc
-            pointer -- f_getter_native_*_cdesc_pointer
-          pointer -- f_getter_native_scalar
-        scalar -- f_getter_native_scalar
+      bool -- f_getter_bool
+      native -- f_getter_native
+      native*
+        cdesc
+          pointer -- f_getter_native*_cdesc_pointer
+        pointer -- f_getter_native
       string
-        scalar
-          cdesc
-            allocatable -- f_getter_string_scalar_cdesc_allocatable
-      struct
-        *
-          cdesc
-            pointer -- f_getter_native_*_cdesc_pointer
-          fapi
-            pointer -- f_getter_struct_*_fapi_pointer
-        **
-          cdesc
-            raw -- f_getter_struct_**_cdesc_raw
+        cdesc
+          allocatable -- f_getter_string_cdesc_allocatable
+      struct*
+        cdesc
+          pointer -- f_getter_native*_cdesc_pointer
+        fapi
+          pointer -- f_getter_struct*_fapi_pointer
+      struct**
+        cdesc
+          raw -- f_getter_struct**_cdesc_raw
     in
       bool -- f_in_bool
       char -- f_in_char
@@ -694,7 +660,7 @@ root
         scalar -- f_shared_native_scalar
       struct -- f_shared_struct
     subroutine -- f_subroutine
-c_ctor_shadow_scalar_capptr:
+c_ctor_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
@@ -719,7 +685,7 @@ c_ctor_shadow_scalar_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: ctor
-  name: c_ctor_shadow_scalar_capptr
+  name: c_ctor_shadow_capptr
   owner: caller
 c_defaulttmp:
   intent: defaulttmp
@@ -748,127 +714,11 @@ c_function:
   intent: function
   name: c_function
   owner: library
-c_function_bool_scalar:
+c_function_bool:
   intent: function
-  name: c_function_bool_scalar
+  name: c_function_bool
   owner: library
-c_function_char_*:
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_char_*
-  owner: library
-c_function_char_*_arg:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_copy
-  c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-  c_return_type: void
-  c_temps:
-  - len
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
-  fmtdict:
-    c_var: '{F_string_result_as_arg}'
-    c_var_len: n{F_string_result_as_arg}
-    f_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var: '{F_string_result_as_arg}'
-    i_var_len: n{F_string_result_as_arg}
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: function
-  name: c_function_char_*_arg
-  notes:
-  - Change function result into an argument
-  - Use F_string_result_as_arg as the argument name.
-  owner: library
-c_function_char_*_buf_arg:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_copy
-  c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-  c_return_type: void
-  c_temps:
-  - len
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
-  fmtdict:
-    c_var: '{F_string_result_as_arg}'
-    c_var_len: n{F_string_result_as_arg}
-    f_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var: '{F_string_result_as_arg}'
-    i_var_len: n{F_string_result_as_arg}
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: function
-  name: c_function_char_*_buf_arg
-  notes:
-  - Change function result into an argument
-  - Use F_string_result_as_arg as the argument name.
-  owner: library
-c_function_char_*_buf_copy:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_copy
-  c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
-  c_return_type: void
-  c_temps:
-  - len
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: function
-  name: c_function_char_*_buf_copy
-  notes:
-  - char *getname() +len(30)
-  - Copy result into caller's buffer.
-  owner: library
-c_function_char_scalar:
+c_function_char:
   c_arg_decl:
   - char *{c_var}
   c_call:
@@ -884,62 +734,178 @@ c_function_char_scalar:
     iso_c_binding:
     - C_CHAR
   intent: function
-  name: c_function_char_scalar
+  name: c_function_char
   owner: library
-c_function_enum_scalar:
-  intent: function
-  name: c_function_enum_scalar
-  owner: library
-c_function_native_&:
+c_function_char*:
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: c_function_native_&
+  name: c_function_char*
   owner: library
-c_function_native_*:
+c_function_char*_arg:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_copy
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  c_return_type: void
+  c_temps:
+  - len
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: result
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
+    f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: function
+  name: c_function_char*_arg
+  notes:
+  - Change function result into an argument
+  - Use F_string_result_as_arg as the argument name.
+  owner: library
+c_function_char*_buf_arg:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_copy
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  c_return_type: void
+  c_temps:
+  - len
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: result
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
+    f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: function
+  name: c_function_char*_buf_arg
+  notes:
+  - Change function result into an argument
+  - Use F_string_result_as_arg as the argument name.
+  owner: library
+c_function_char*_buf_copy:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_copy
+  c_post_call:
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  c_return_type: void
+  c_temps:
+  - len
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: result
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: function
+  name: c_function_char*_buf_copy
+  notes:
+  - char *getname() +len(30)
+  - Copy result into caller's buffer.
+  owner: library
+c_function_enum:
+  intent: function
+  name: c_function_enum
+  owner: library
+c_function_native:
+  intent: function
+  name: c_function_native
+  owner: library
+c_function_native&:
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: c_function_native_*
+  name: c_function_native&
   owner: library
-c_function_native_**:
+c_function_native*:
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: c_function_native_**
+  name: c_function_native*
   owner: library
-c_function_native_*_caller:
+c_function_native**:
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: c_function_native_*_caller
+  name: c_function_native**
   owner: library
-c_function_native_*_scalar:
+c_function_native*_caller:
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_native*_caller
+  owner: library
+c_function_native*_scalar:
   i_module:
     iso_c_binding:
     - '{f_kind}'
   i_result_decl:
   - '{f_type} :: {i_var}'
   intent: function
-  name: c_function_native_*_scalar
+  name: c_function_native*_scalar
   owner: library
-c_function_native_scalar:
-  intent: function
-  name: c_function_native_scalar
-  owner: library
-c_function_shadow_&_capptr:
+c_function_shadow&_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -966,9 +932,9 @@ c_function_shadow_&_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_&_capptr
+  name: c_function_shadow&_capptr
   owner: library
-c_function_shadow_&_capptr_caller:
+c_function_shadow&_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -995,9 +961,9 @@ c_function_shadow_&_capptr_caller:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_&_capptr_caller
+  name: c_function_shadow&_capptr_caller
   owner: library
-c_function_shadow_&_capptr_library:
+c_function_shadow&_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1024,9 +990,9 @@ c_function_shadow_&_capptr_library:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_&_capptr_library
+  name: c_function_shadow&_capptr_library
   owner: library
-c_function_shadow_*_capptr:
+c_function_shadow*_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1053,9 +1019,9 @@ c_function_shadow_*_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_*_capptr
+  name: c_function_shadow*_capptr
   owner: library
-c_function_shadow_*_capptr_caller:
+c_function_shadow*_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1082,9 +1048,9 @@ c_function_shadow_*_capptr_caller:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_*_capptr_caller
+  name: c_function_shadow*_capptr_caller
   owner: library
-c_function_shadow_*_capptr_library:
+c_function_shadow*_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1111,9 +1077,9 @@ c_function_shadow_*_capptr_library:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_*_capptr_library
+  name: c_function_shadow*_capptr_library
   owner: library
-c_function_shadow_*_capsule:
+c_function_shadow*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1131,21 +1097,21 @@ c_function_shadow_*_capsule:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: function
-  name: c_function_shadow_*_capsule
+  name: c_function_shadow*_capsule
   owner: library
-c_function_shadow_*_this:
+c_function_shadow*_this:
   c_call:
   - '{CXX_this_call}{function_name}{CXX_template}({C_call_list});'
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
   intent: function
-  name: c_function_shadow_*_this
+  name: c_function_shadow*_this
   notes:
   - Input set return_this.
   - Do not return anything.
   owner: library
-c_function_shadow_scalar_capptr:
+c_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1174,13 +1140,13 @@ c_function_shadow_scalar_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_scalar_capptr
+  name: c_function_shadow<native>_capptr
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   owner: caller
-c_function_shadow_scalar_capptr_targ_native_scalar:
+c_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1209,219 +1175,34 @@ c_function_shadow_scalar_capptr_targ_native_scalar:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: c_function_shadow_scalar_capptr_targ_native_scalar
+  name: c_function_shadow_capptr
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   owner: caller
-c_function_string_&:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_string_&
-  notes:
-  - Fortran calling a C function without
-  - any api argument - is this useful?
-  owner: library
-c_function_string_&_buf_arg:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_copy
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - len
-  comments:
-  - Change function result into an argument.
-  - Use F_string_result_as_arg as the argument name.
-  fmtdict:
-    c_var: '{F_string_result_as_arg}'
-    c_var_len: n{F_string_result_as_arg}
-    f_var: '{F_string_result_as_arg}'
-    f_var_len: n{F_string_result_as_arg}
-    i_var: '{F_string_result_as_arg}'
-    i_var_len: n{F_string_result_as_arg}
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: function
-  name: c_function_string_&_buf_arg
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
-  owner: library
-c_function_string_&_buf_copy:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_copy
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - len
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: function
-  name: c_function_string_&_buf_copy
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
-  owner: library
-c_function_string_&_copy:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_string_&_copy
-  notes:
-  - Fortran calling a C function without
-  - any api argument - is this useful?
-  owner: library
-c_function_string_*:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_string_*
-  notes:
-  - Fortran calling a C function without
-  - any api argument - is this useful?
-  owner: library
-c_function_string_*_buf_copy:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_copy
-  c_post_call:
-  - if ({cxx_var}{cxx_member}empty()) {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
-  - -}} else {{+
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
-  - -}}
-  c_return_type: void
-  c_temps:
-  - len
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass CHARACTER and LEN to C wrapper.
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
-  intent: function
-  name: c_function_string_*_buf_copy
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
-  owner: library
-c_function_string_*_caller:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_string_*_caller
-  notes:
-  - Fortran calling a C function without
-  - any api argument - is this useful?
-  owner: library
-c_function_string_*_copy:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_string_*_copy
-  notes:
-  - Fortran calling a C function without
-  - any api argument - is this useful?
-  owner: library
-c_function_string_*_library:
-  c_return:
-  - return {c_var};
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  i_result_decl:
-  - type(C_PTR) {i_var}
-  intent: function
-  name: c_function_string_*_library
-  notes:
-  - Fortran calling a C function without
-  - any api argument - is this useful?
-  owner: library
-c_function_string_scalar:
+c_function_string:
   comments:
   - Cannot return a char array by value.
   intent: function
-  name: c_function_string_scalar
+  name: c_function_string
   notimplemented: true
   owner: library
-c_function_string_scalar_buf_arg:
+c_function_string&:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_string&
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  owner: library
+c_function_string&_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -1457,14 +1238,14 @@ c_function_string_scalar_buf_arg:
     - C_CHAR
     - C_INT
   intent: function
-  name: c_function_string_scalar_buf_arg
+  name: c_function_string&_buf_arg
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_function_string_scalar_buf_copy:
+c_function_string&_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -1493,26 +1274,199 @@ c_function_string_scalar_buf_copy:
     - C_CHAR
     - C_INT
   intent: function
-  name: c_function_string_scalar_buf_copy
+  name: c_function_string&_buf_copy
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_function_struct_*:
-  c_need_wrapper: true
-  comments:
-  - C++ pointer -> void pointer -> C pointer
+c_function_string&_copy:
+  c_return:
+  - return {c_var};
   i_module:
     iso_c_binding:
     - C_PTR
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: c_function_struct_*
+  name: c_function_string&_copy
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
   owner: library
-c_function_struct_scalar:
+c_function_string*:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_string*
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  owner: library
+c_function_string*_buf_copy:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_copy
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: function
+  name: c_function_string*_buf_copy
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+c_function_string*_caller:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_string*_caller
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  owner: library
+c_function_string*_copy:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_string*_copy
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  owner: library
+c_function_string*_library:
+  c_return:
+  - return {c_var};
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_string*_library
+  notes:
+  - Fortran calling a C function without
+  - any api argument - is this useful?
+  owner: library
+c_function_string_buf_arg:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_copy
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  comments:
+  - Change function result into an argument.
+  - Use F_string_result_as_arg as the argument name.
+  fmtdict:
+    c_var: '{F_string_result_as_arg}'
+    c_var_len: n{F_string_result_as_arg}
+    f_var: '{F_string_result_as_arg}'
+    f_var_len: n{F_string_result_as_arg}
+    i_var: '{F_string_result_as_arg}'
+    i_var_len: n{F_string_result_as_arg}
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: function
+  name: c_function_string_buf_arg
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+c_function_string_buf_copy:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_copy
+  c_post_call:
+  - if ({cxx_var}{cxx_member}empty()) {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
+  - -}} else {{+
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+  - -}}
+  c_return_type: void
+  c_temps:
+  - len
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass CHARACTER and LEN to C wrapper.
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: function
+  name: c_function_string_buf_copy
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+c_function_struct:
   c_arg_decl:
   - '{c_type} *{c_var}'
   c_call:
@@ -1528,9 +1482,28 @@ c_function_struct_scalar:
     '{f_type_module}':
     - '{f_kind}'
   intent: function
-  name: c_function_struct_scalar
+  name: c_function_struct
   owner: library
-c_function_vector_scalar_malloc_targ_native_scalar:
+c_function_struct*:
+  c_need_wrapper: true
+  comments:
+  - C++ pointer -> void pointer -> C pointer
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - type(C_PTR) {i_var}
+  intent: function
+  name: c_function_struct*
+  owner: library
+c_function_vector<native>:
+  comments:
+  - Cannot return a std::vector<native> by value.
+  intent: function
+  name: c_function_vector<native>
+  notimplemented: true
+  owner: library
+c_function_vector<native>_malloc:
   c_arg_decl:
   - size_t *{c_var_size}
   c_call:
@@ -1566,20 +1539,13 @@ c_function_vector_scalar_malloc_targ_native_scalar:
   - <cstdlib>
   - <cstring>
   intent: function
-  name: c_function_vector_scalar_malloc_targ_native_scalar
+  name: c_function_vector<native>_malloc
   owner: library
-c_function_vector_scalar_targ_native_scalar:
-  comments:
-  - Cannot return a std::vector<native> by value.
+c_function_void*:
   intent: function
-  name: c_function_vector_scalar_targ_native_scalar
-  notimplemented: true
+  name: c_function_void*
   owner: library
-c_function_void_*:
-  intent: function
-  name: c_function_void_*
-  owner: library
-c_getter_native_*:
+c_getter_native:
   c_call:
   - // skip call c_getter
   c_return:
@@ -1587,9 +1553,9 @@ c_getter_native_*:
   comments:
   - No arguments to a function.
   intent: getter
-  name: c_getter_native_*
+  name: c_getter_native
   owner: library
-c_getter_native_scalar:
+c_getter_native*:
   c_call:
   - // skip call c_getter
   c_return:
@@ -1597,7 +1563,7 @@ c_getter_native_scalar:
   comments:
   - No arguments to a function.
   intent: getter
-  name: c_getter_native_scalar
+  name: c_getter_native*
   owner: library
 c_in_bool:
   intent: in
@@ -3945,7 +3911,7 @@ f_XXXin_string_scalar:
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   owner: library
-f_ctor_shadow_scalar_capptr:
+f_ctor_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
@@ -3983,7 +3949,7 @@ f_ctor_shadow_scalar_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: ctor
-  name: f_ctor_shadow_scalar_capptr
+  name: f_ctor_shadow_capptr
   owner: caller
 f_defaulttmp:
   intent: defaulttmp
@@ -4004,12 +3970,34 @@ f_dtor:
   intent: dtor
   name: f_dtor
   owner: library
-f_function_bool_scalar:
+f_function_bool:
   f_need_wrapper: true
   intent: function
-  name: f_function_bool_scalar
+  name: f_function_bool
   owner: library
-f_function_char_*:
+f_function_char:
+  c_arg_decl:
+  - char *{c_var}
+  c_call:
+  - '*{c_var} = {function_name}({C_call_list});'
+  c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
+  f_arg_call:
+  - '{f_var}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  intent: function
+  name: f_function_char
+  owner: library
+f_function_char*:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   i_module:
@@ -4018,9 +4006,9 @@ f_function_char_*:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_char_*
+  name: f_function_char*
   owner: library
-f_function_char_*_allocatable:
+f_function_char*_allocatable:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   i_module:
@@ -4029,9 +4017,9 @@ f_function_char_*_allocatable:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_char_*_allocatable
+  name: f_function_char*_allocatable
   owner: library
-f_function_char_*_arg:
+f_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -4084,12 +4072,12 @@ f_function_char_*_arg:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_char_*_arg
+  name: f_function_char*_arg
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
   owner: library
-f_function_char_*_buf_arg:
+f_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -4142,12 +4130,12 @@ f_function_char_*_buf_arg:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_char_*_buf_arg
+  name: f_function_char*_buf_arg
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
   owner: library
-f_function_char_*_buf_copy:
+f_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -4188,12 +4176,12 @@ f_function_char_*_buf_copy:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_char_*_buf_copy
+  name: f_function_char*_buf_copy
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
   owner: library
-f_function_char_*_cdesc_allocatable:
+f_function_char*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -4239,9 +4227,9 @@ f_function_char_*_cdesc_allocatable:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_char_*_cdesc_allocatable
+  name: f_function_char*_cdesc_allocatable
   owner: library
-f_function_char_*_cdesc_pointer:
+f_function_char*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -4287,9 +4275,9 @@ f_function_char_*_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_char_*_cdesc_pointer
+  name: f_function_char*_cdesc_pointer
   owner: library
-f_function_char_*_cfi_allocatable:
+f_function_char*_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -4320,11 +4308,11 @@ f_function_char_*_cfi_allocatable:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_char_*_cfi_allocatable
+  name: f_function_char*_cfi_allocatable
   notes:
   - Add allocatable attribute to declaration.
   owner: library
-f_function_char_*_cfi_arg:
+f_function_char*_cfi_arg:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -4360,9 +4348,9 @@ f_function_char_*_cfi_arg:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_char_*_cfi_arg
+  name: f_function_char*_cfi_arg
   owner: library
-f_function_char_*_cfi_copy:
+f_function_char*_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -4388,9 +4376,9 @@ f_function_char_*_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_char_*_cfi_copy
+  name: f_function_char*_cfi_copy
   owner: library
-f_function_char_*_cfi_pointer:
+f_function_char*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -4435,9 +4423,9 @@ f_function_char_*_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_char_*_cfi_pointer
+  name: f_function_char*_cfi_pointer
   owner: library
-f_function_char_*_copy:
+f_function_char*_copy:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   i_module:
@@ -4446,9 +4434,9 @@ f_function_char_*_copy:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_char_*_copy
+  name: f_function_char*_copy
   owner: library
-f_function_char_*_pointer:
+f_function_char*_pointer:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   i_module:
@@ -4457,9 +4445,9 @@ f_function_char_*_pointer:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_char_*_pointer
+  name: f_function_char*_pointer
   owner: library
-f_function_char_*_raw:
+f_function_char*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   i_module:
@@ -4468,7 +4456,138 @@ f_function_char_*_raw:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_char_*_raw
+  name: f_function_char*_raw
+  owner: library
+f_function_char_cdesc_allocatable:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
+  - copy_string
+  - type_defines
+  c_post_call:
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
+  - '{c_var_cdesc}->size = 1;'
+  - '{c_var_cdesc}->rank = 0;'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - using helper copy_string.
+  - Fill cdesc from char * in the C wrapper.
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  - copy_string
+  f_need_wrapper: true
+  f_post_call:
+  - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
+  - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: f_function_char_cdesc_allocatable
+  owner: library
+f_function_char_cdesc_pointer:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
+  - type_defines
+  c_post_call:
+  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
+  - '{c_var_cdesc}->size = 1;'
+  - '{c_var_cdesc}->rank = 0;'
+  c_return_type: void
+  c_temps:
+  - cdesc
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc from char * in the C wrapper.
+  - Assign Fortran pointer from cdesc using helper pointer_string.
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  - pointer_string
+  f_module:
+    iso_c_binding:
+    - c_f_pointer
+  f_need_wrapper: true
+  f_post_call:
+  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: function
+  name: f_function_char_cdesc_pointer
+  owner: library
+f_function_char_cfi_allocatable:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_post_call:
+  - if ({cxx_var} != {nullptr}) {{+
+  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
+    \ 0, \tstrlen({cxx_var}));"
+  - if (SH_ret == CFI_SUCCESS) {{+
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - -}}
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Make the argument a CFI_desc_t.
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), allocatable :: {f_var}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: f_function_char_cfi_allocatable
+  notes:
+  - Add allocatable attribute to declaration.
   owner: library
 f_function_char_cfi_pointer:
   c_arg_decl:
@@ -4517,164 +4636,15 @@ f_function_char_cfi_pointer:
   intent: function
   name: f_function_char_cfi_pointer
   owner: library
-f_function_char_scalar:
-  c_arg_decl:
-  - char *{c_var}
-  c_call:
-  - '*{c_var} = {function_name}({C_call_list});'
-  c_return_type: void
-  comments:
-  - Call the C wrapper as a subroutine.
-  f_arg_call:
-  - '{f_var}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
+f_function_enum:
   intent: function
-  name: f_function_char_scalar
+  name: f_function_enum
   owner: library
-f_function_char_scalar_cdesc_allocatable:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - copy_string
-  - type_defines
-  c_post_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
-  - using helper copy_string.
-  - Fill cdesc from char * in the C wrapper.
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - array_context
-  - copy_string
-  f_need_wrapper: true
-  f_post_call:
-  - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
-  - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
+f_function_native:
   intent: function
-  name: f_function_char_scalar_cdesc_allocatable
+  name: f_function_native
   owner: library
-f_function_char_scalar_cdesc_pointer:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - type_defines
-  c_post_call:
-  - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_cdesc}->size = 1;'
-  - '{c_var_cdesc}->rank = 0;'
-  c_return_type: void
-  c_temps:
-  - cdesc
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc from char * in the C wrapper.
-  - Assign Fortran pointer from cdesc using helper pointer_string.
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - array_context
-  - pointer_string
-  f_module:
-    iso_c_binding:
-    - c_f_pointer
-  f_need_wrapper: true
-  f_post_call:
-  - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: function
-  name: f_function_char_scalar_cdesc_pointer
-  owner: library
-f_function_char_scalar_cfi_allocatable:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_post_call:
-  - if ({cxx_var} != {nullptr}) {{+
-  - "int SH_ret = CFI_allocate({c_var_cfi}, \t(CFI_index_t *) 0, \t(CFI_index_t *)\
-    \ 0, \tstrlen({cxx_var}));"
-  - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
-  f_arg_call:
-  - '{f_var}'
-  f_arg_decl:
-  - 'character(len=:), allocatable :: {f_var}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: f_function_char_scalar_cfi_allocatable
-  notes:
-  - Add allocatable attribute to declaration.
-  owner: library
-f_function_enum_scalar:
-  intent: function
-  name: f_function_enum_scalar
-  owner: library
-f_function_native_&:
+f_function_native&:
   c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
@@ -4698,12 +4668,12 @@ f_function_native_&:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_native_&
+  name: f_function_native&
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
   owner: library
-f_function_native_&_pointer:
+f_function_native&_pointer:
   c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
@@ -4727,12 +4697,12 @@ f_function_native_&_pointer:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_native_&_pointer
+  name: f_function_native&_pointer
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
   owner: library
-f_function_native_**:
+f_function_native**:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
@@ -4744,9 +4714,9 @@ f_function_native_**:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_native_**
+  name: f_function_native**
   owner: library
-f_function_native_*_cdesc_allocatable:
+f_function_native*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -4812,9 +4782,9 @@ f_function_native_*_cdesc_allocatable:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_native_*_cdesc_allocatable
+  name: f_function_native*_cdesc_allocatable
   owner: library
-f_function_native_*_cdesc_pointer:
+f_function_native*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -4858,9 +4828,9 @@ f_function_native_*_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_native_*_cdesc_pointer
+  name: f_function_native*_cdesc_pointer
   owner: library
-f_function_native_*_cdesc_pointer_caller:
+f_function_native*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -4923,12 +4893,12 @@ f_function_native_*_cdesc_pointer_caller:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_native_*_cdesc_pointer_caller
+  name: f_function_native*_cdesc_pointer_caller
   notes:
   - +deref(pointer) +owner(caller)
   - The capsule contains information used to delete the memory.
   owner: library
-f_function_native_*_cfi_allocatable:
+f_function_native*_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -4965,9 +4935,9 @@ f_function_native_*_cfi_allocatable:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_native_*_cfi_allocatable
+  name: f_function_native*_cfi_allocatable
   owner: library
-f_function_native_*_cfi_pointer:
+f_function_native*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -5014,9 +4984,9 @@ f_function_native_*_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_native_*_cfi_pointer
+  name: f_function_native*_cfi_pointer
   owner: library
-f_function_native_*_pointer:
+f_function_native*_pointer:
   c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
@@ -5040,12 +5010,12 @@ f_function_native_*_pointer:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_native_*_pointer
+  name: f_function_native*_pointer
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
   owner: library
-f_function_native_*_pointer_caller:
+f_function_native*_pointer_caller:
   c_need_wrapper: true
   comments:
   - Return a C pointer as a type(C_PTR).
@@ -5069,12 +5039,12 @@ f_function_native_*_pointer_caller:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_native_*_pointer_caller
+  name: f_function_native*_pointer_caller
   notes:
   - Pointer to scalar.
   - type(C_PTR) is returned instead of a cdesc argument.
   owner: library
-f_function_native_*_raw:
+f_function_native*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
@@ -5086,9 +5056,9 @@ f_function_native_*_raw:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_native_*_raw
+  name: f_function_native*_raw
   owner: library
-f_function_native_*_scalar:
+f_function_native*_scalar:
   c_need_wrapper: true
   c_return:
   - return *{cxx_var};
@@ -5096,13 +5066,9 @@ f_function_native_*_scalar:
   comments:
   - Return a scalar to avoid doing the deref in Fortran.
   intent: function
-  name: f_function_native_*_scalar
+  name: f_function_native*_scalar
   owner: library
-f_function_native_scalar:
-  intent: function
-  name: f_function_native_scalar
-  owner: library
-f_function_shadow_&_capptr:
+f_function_shadow&_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5142,9 +5108,9 @@ f_function_shadow_&_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_&_capptr
+  name: f_function_shadow&_capptr
   owner: library
-f_function_shadow_&_capptr_caller:
+f_function_shadow&_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5184,9 +5150,9 @@ f_function_shadow_&_capptr_caller:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_&_capptr_caller
+  name: f_function_shadow&_capptr_caller
   owner: library
-f_function_shadow_&_capptr_library:
+f_function_shadow&_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5226,9 +5192,9 @@ f_function_shadow_&_capptr_library:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_&_capptr_library
+  name: f_function_shadow&_capptr_library
   owner: library
-f_function_shadow_*_capptr:
+f_function_shadow*_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5268,9 +5234,9 @@ f_function_shadow_*_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_*_capptr
+  name: f_function_shadow*_capptr
   owner: library
-f_function_shadow_*_capptr_caller:
+f_function_shadow*_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5310,9 +5276,9 @@ f_function_shadow_*_capptr_caller:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_*_capptr_caller
+  name: f_function_shadow*_capptr_caller
   owner: library
-f_function_shadow_*_capptr_library:
+f_function_shadow*_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5352,9 +5318,9 @@ f_function_shadow_*_capptr_library:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_*_capptr_library
+  name: f_function_shadow*_capptr_library
   owner: library
-f_function_shadow_*_capsule:
+f_function_shadow*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5379,9 +5345,9 @@ f_function_shadow_*_capsule:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: function
-  name: f_function_shadow_*_capsule
+  name: f_function_shadow*_capsule
   owner: library
-f_function_shadow_*_this:
+f_function_shadow*_this:
   c_call:
   - '{CXX_this_call}{function_name}{CXX_template}({C_call_list});'
   c_return_type: void
@@ -5391,12 +5357,12 @@ f_function_shadow_*_this:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
   intent: function
-  name: f_function_shadow_*_this
+  name: f_function_shadow*_this
   notes:
   - Input set return_this.
   - Do not return anything.
   owner: library
-f_function_shadow_scalar_capptr:
+f_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5438,13 +5404,13 @@ f_function_shadow_scalar_capptr:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_scalar_capptr
+  name: f_function_shadow<native>_capptr
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   owner: caller
-f_function_shadow_scalar_capptr_caller:
+f_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5486,13 +5452,13 @@ f_function_shadow_scalar_capptr_caller:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_scalar_capptr_caller
+  name: f_function_shadow_capptr
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   owner: caller
-f_function_shadow_scalar_capptr_library:
+f_function_shadow_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5534,13 +5500,13 @@ f_function_shadow_scalar_capptr_library:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_scalar_capptr_library
+  name: f_function_shadow_capptr_caller
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   owner: caller
-f_function_shadow_scalar_capptr_targ_native_scalar:
+f_function_shadow_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -5582,13 +5548,13 @@ f_function_shadow_scalar_capptr_targ_native_scalar:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
   intent: function
-  name: f_function_shadow_scalar_capptr_targ_native_scalar
+  name: f_function_shadow_capptr_library
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
   owner: caller
-f_function_string_&_buf:
+f_function_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -5632,14 +5598,14 @@ f_function_string_&_buf:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_&_buf
+  name: f_function_string&_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_&_buf_arg:
+f_function_string&_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -5695,14 +5661,14 @@ f_function_string_&_buf_arg:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_&_buf_arg
+  name: f_function_string&_buf_arg
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_&_buf_copy:
+f_function_string&_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -5746,14 +5712,14 @@ f_function_string_&_buf_copy:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_&_buf_copy
+  name: f_function_string&_buf_copy
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_&_cdesc_allocatable:
+f_function_string&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -5812,9 +5778,9 @@ f_function_string_&_cdesc_allocatable:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_&_cdesc_allocatable
+  name: f_function_string&_cdesc_allocatable
   owner: library
-f_function_string_&_cdesc_allocatable_caller:
+f_function_string&_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -5873,9 +5839,9 @@ f_function_string_&_cdesc_allocatable_caller:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_&_cdesc_allocatable_caller
+  name: f_function_string&_cdesc_allocatable_caller
   owner: library
-f_function_string_&_cdesc_allocatable_library:
+f_function_string&_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -5934,9 +5900,9 @@ f_function_string_&_cdesc_allocatable_library:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_&_cdesc_allocatable_library
+  name: f_function_string&_cdesc_allocatable_library
   owner: library
-f_function_string_&_cdesc_pointer:
+f_function_string&_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -5979,9 +5945,9 @@ f_function_string_&_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_string_&_cdesc_pointer
+  name: f_function_string&_cdesc_pointer
   owner: library
-f_function_string_&_cdesc_pointer_caller:
+f_function_string&_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -6024,9 +5990,9 @@ f_function_string_&_cdesc_pointer_caller:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_string_&_cdesc_pointer_caller
+  name: f_function_string&_cdesc_pointer_caller
   owner: library
-f_function_string_&_cdesc_pointer_library:
+f_function_string&_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -6069,9 +6035,9 @@ f_function_string_&_cdesc_pointer_library:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_string_&_cdesc_pointer_library
+  name: f_function_string&_cdesc_pointer_library
   owner: library
-f_function_string_&_cfi_allocatable:
+f_function_string&_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6102,11 +6068,11 @@ f_function_string_&_cfi_allocatable:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_&_cfi_allocatable
+  name: f_function_string&_cfi_allocatable
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_&_cfi_allocatable_caller:
+f_function_string&_cfi_allocatable_caller:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6137,11 +6103,11 @@ f_function_string_&_cfi_allocatable_caller:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_&_cfi_allocatable_caller
+  name: f_function_string&_cfi_allocatable_caller
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_&_cfi_allocatable_library:
+f_function_string&_cfi_allocatable_library:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6172,11 +6138,11 @@ f_function_string_&_cfi_allocatable_library:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_&_cfi_allocatable_library
+  name: f_function_string&_cfi_allocatable_library
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_&_cfi_arg:
+f_function_string&_cfi_arg:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -6216,9 +6182,9 @@ f_function_string_&_cfi_arg:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_&_cfi_arg
+  name: f_function_string&_cfi_arg
   owner: library
-f_function_string_&_cfi_copy:
+f_function_string&_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -6250,9 +6216,9 @@ f_function_string_&_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_&_cfi_copy
+  name: f_function_string&_cfi_copy
   owner: library
-f_function_string_&_cfi_pointer:
+f_function_string&_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -6297,12 +6263,12 @@ f_function_string_&_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_&_cfi_pointer
+  name: f_function_string&_cfi_pointer
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_&_cfi_pointer_caller:
+f_function_string&_cfi_pointer_caller:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -6347,12 +6313,12 @@ f_function_string_&_cfi_pointer_caller:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_&_cfi_pointer_caller
+  name: f_function_string&_cfi_pointer_caller
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_&_cfi_pointer_library:
+f_function_string&_cfi_pointer_library:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -6397,12 +6363,12 @@ f_function_string_&_cfi_pointer_library:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_&_cfi_pointer_library
+  name: f_function_string&_cfi_pointer_library
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_*_buf:
+f_function_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -6446,14 +6412,14 @@ f_function_string_*_buf:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_*_buf
+  name: f_function_string*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_*_buf_copy:
+f_function_string*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -6497,14 +6463,14 @@ f_function_string_*_buf_copy:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_*_buf_copy
+  name: f_function_string*_buf_copy
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_*_cdesc_allocatable:
+f_function_string*_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -6563,9 +6529,9 @@ f_function_string_*_cdesc_allocatable:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_*_cdesc_allocatable
+  name: f_function_string*_cdesc_allocatable
   owner: library
-f_function_string_*_cdesc_allocatable_caller:
+f_function_string*_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -6624,9 +6590,9 @@ f_function_string_*_cdesc_allocatable_caller:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_*_cdesc_allocatable_caller
+  name: f_function_string*_cdesc_allocatable_caller
   owner: library
-f_function_string_*_cdesc_allocatable_library:
+f_function_string*_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -6685,9 +6651,9 @@ f_function_string_*_cdesc_allocatable_library:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_*_cdesc_allocatable_library
+  name: f_function_string*_cdesc_allocatable_library
   owner: library
-f_function_string_*_cdesc_pointer:
+f_function_string*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -6730,9 +6696,9 @@ f_function_string_*_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_string_*_cdesc_pointer
+  name: f_function_string*_cdesc_pointer
   owner: library
-f_function_string_*_cdesc_pointer_caller:
+f_function_string*_cdesc_pointer_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -6775,9 +6741,9 @@ f_function_string_*_cdesc_pointer_caller:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_string_*_cdesc_pointer_caller
+  name: f_function_string*_cdesc_pointer_caller
   owner: library
-f_function_string_*_cdesc_pointer_library:
+f_function_string*_cdesc_pointer_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -6820,9 +6786,9 @@ f_function_string_*_cdesc_pointer_library:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_string_*_cdesc_pointer_library
+  name: f_function_string*_cdesc_pointer_library
   owner: library
-f_function_string_*_cfi_allocatable:
+f_function_string*_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6853,11 +6819,11 @@ f_function_string_*_cfi_allocatable:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_*_cfi_allocatable
+  name: f_function_string*_cfi_allocatable
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_*_cfi_allocatable_caller:
+f_function_string*_cfi_allocatable_caller:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6888,11 +6854,11 @@ f_function_string_*_cfi_allocatable_caller:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_*_cfi_allocatable_caller
+  name: f_function_string*_cfi_allocatable_caller
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_*_cfi_allocatable_library:
+f_function_string*_cfi_allocatable_library:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -6923,11 +6889,11 @@ f_function_string_*_cfi_allocatable_library:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_*_cfi_allocatable_library
+  name: f_function_string*_cfi_allocatable_library
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_*_cfi_copy:
+f_function_string*_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -6959,9 +6925,9 @@ f_function_string_*_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_*_cfi_copy
+  name: f_function_string*_cfi_copy
   owner: library
-f_function_string_*_cfi_pointer:
+f_function_string*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -7006,12 +6972,12 @@ f_function_string_*_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_*_cfi_pointer
+  name: f_function_string*_cfi_pointer
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_*_cfi_pointer_caller:
+f_function_string*_cfi_pointer_caller:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -7056,12 +7022,12 @@ f_function_string_*_cfi_pointer_caller:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_*_cfi_pointer_caller
+  name: f_function_string*_cfi_pointer_caller
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_*_cfi_pointer_library:
+f_function_string*_cfi_pointer_library:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -7106,12 +7072,12 @@ f_function_string_*_cfi_pointer_library:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_*_cfi_pointer_library
+  name: f_function_string*_cfi_pointer_library
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_scalar_buf:
+f_function_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -7155,14 +7121,14 @@ f_function_string_scalar_buf:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_scalar_buf
+  name: f_function_string_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_scalar_buf_arg:
+f_function_string_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -7218,14 +7184,14 @@ f_function_string_scalar_buf_arg:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_scalar_buf_arg
+  name: f_function_string_buf_arg
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_scalar_buf_copy:
+f_function_string_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -7269,14 +7235,14 @@ f_function_string_scalar_buf_copy:
     - C_CHAR
     - C_INT
   intent: function
-  name: f_function_string_scalar_buf_copy
+  name: f_function_string_buf_copy
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_function_string_scalar_cdesc_allocatable:
+f_function_string_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -7342,9 +7308,9 @@ f_function_string_scalar_cdesc_allocatable:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_scalar_cdesc_allocatable
+  name: f_function_string_cdesc_allocatable
   owner: library
-f_function_string_scalar_cdesc_allocatable_caller:
+f_function_string_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -7410,9 +7376,9 @@ f_function_string_scalar_cdesc_allocatable_caller:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_scalar_cdesc_allocatable_caller
+  name: f_function_string_cdesc_allocatable_caller
   owner: library
-f_function_string_scalar_cdesc_allocatable_library:
+f_function_string_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
@@ -7478,9 +7444,9 @@ f_function_string_scalar_cdesc_allocatable_library:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: function
-  name: f_function_string_scalar_cdesc_allocatable_library
+  name: f_function_string_cdesc_allocatable_library
   owner: library
-f_function_string_scalar_cfi_allocatable:
+f_function_string_cfi_allocatable:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -7509,11 +7475,11 @@ f_function_string_scalar_cfi_allocatable:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_scalar_cfi_allocatable
+  name: f_function_string_cfi_allocatable
   notes:
   - std::string & function()
   owner: library
-f_function_string_scalar_cfi_allocatable_caller:
+f_function_string_cfi_allocatable_caller:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -7544,11 +7510,11 @@ f_function_string_scalar_cfi_allocatable_caller:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_scalar_cfi_allocatable_caller
+  name: f_function_string_cfi_allocatable_caller
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_scalar_cfi_allocatable_library:
+f_function_string_cfi_allocatable_library:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_post_call:
@@ -7579,11 +7545,11 @@ f_function_string_scalar_cfi_allocatable_library:
   impl_header:
   - <cstring>
   intent: function
-  name: f_function_string_scalar_cfi_allocatable_library
+  name: f_function_string_cfi_allocatable_library
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
-f_function_string_scalar_cfi_arg:
+f_function_string_cfi_arg:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -7623,9 +7589,9 @@ f_function_string_scalar_cfi_arg:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_scalar_cfi_arg
+  name: f_function_string_cfi_arg
   owner: library
-f_function_string_scalar_cfi_copy:
+f_function_string_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -7657,9 +7623,9 @@ f_function_string_scalar_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_scalar_cfi_copy
+  name: f_function_string_cfi_copy
   owner: library
-f_function_string_scalar_cfi_pointer:
+f_function_string_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -7704,12 +7670,12 @@ f_function_string_scalar_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_scalar_cfi_pointer
+  name: f_function_string_cfi_pointer
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_scalar_cfi_pointer_caller:
+f_function_string_cfi_pointer_caller:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -7754,12 +7720,12 @@ f_function_string_scalar_cfi_pointer_caller:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_scalar_cfi_pointer_caller
+  name: f_function_string_cfi_pointer_caller
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_string_scalar_cfi_pointer_library:
+f_function_string_cfi_pointer_library:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -7804,12 +7770,34 @@ f_function_string_scalar_cfi_pointer_library:
   iface_header:
   - ISO_Fortran_binding.h
   intent: function
-  name: f_function_string_scalar_cfi_pointer_library
+  name: f_function_string_cfi_pointer_library
   notes:
   - XXX - consolidate with c_function_*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
-f_function_struct_*_cdesc_pointer:
+f_function_struct:
+  c_arg_decl:
+  - '{c_type} *{c_var}'
+  c_call:
+  - '*{c_var} = {C_call_function};'
+  c_return_type: void
+  comments:
+  - Call the C wrapper as a subroutine.
+  f_arg_call:
+  - '{f_var}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  i_arg_decl:
+  - '{f_type}, intent(OUT) :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    '{f_type_module}':
+    - '{f_kind}'
+  intent: function
+  name: f_function_struct
+  owner: library
+f_function_struct*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -7853,9 +7841,9 @@ f_function_struct_*_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_struct_*_cdesc_pointer
+  name: f_function_struct*_cdesc_pointer
   owner: library
-f_function_struct_*_pointer:
+f_function_struct*_pointer:
   c_need_wrapper: true
   comments:
   - C++ pointer -> void pointer -> C pointer
@@ -7879,47 +7867,9 @@ f_function_struct_*_pointer:
   i_result_decl:
   - type(C_PTR) {i_var}
   intent: function
-  name: f_function_struct_*_pointer
+  name: f_function_struct*_pointer
   owner: library
-f_function_struct_scalar:
-  c_arg_decl:
-  - '{c_type} *{c_var}'
-  c_call:
-  - '*{c_var} = {C_call_function};'
-  c_return_type: void
-  comments:
-  - Call the C wrapper as a subroutine.
-  f_arg_call:
-  - '{f_var}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  i_arg_decl:
-  - '{f_type}, intent(OUT) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    '{f_type_module}':
-    - '{f_kind}'
-  intent: function
-  name: f_function_struct_scalar
-  owner: library
-f_function_vector_scalar_cdesc:
-  c_helper:
-  - copy_array
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_helper:
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_LOC
-    - C_SIZE_T
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  intent: function
-  name: f_function_vector_scalar_cdesc
-  owner: library
-f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
+f_function_vector<native>_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -7974,22 +7924,38 @@ f_function_vector_scalar_cdesc_allocatable_targ_native_scalar:
   i_import:
   - '{F_array_type}'
   intent: function
-  name: f_function_vector_scalar_cdesc_allocatable_targ_native_scalar
+  name: f_function_vector<native>_cdesc_allocatable
   notes:
   - Almost same as intent_out_buf.
   - Similar to f_vector_out_allocatable but must declare result variable.
   - Always return a 1-d array.
   owner: library
-f_function_void_*:
+f_function_vector_scalar_cdesc:
+  c_helper:
+  - copy_array
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  intent: function
+  name: f_function_vector_scalar_cdesc
+  owner: library
+f_function_void*:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
   intent: function
-  name: f_function_void_*
+  name: f_function_void*
   owner: library
-f_getter_bool_scalar:
+f_getter_bool:
   c_call:
   - // skip call c_getter
   c_return:
@@ -7997,9 +7963,19 @@ f_getter_bool_scalar:
   comments:
   - No arguments to a function.
   intent: getter
-  name: f_getter_bool_scalar
+  name: f_getter_bool
   owner: library
-f_getter_native_*_cdesc_pointer:
+f_getter_native:
+  c_call:
+  - // skip call c_getter
+  c_return:
+  - return {CXX_this}->{field_name};
+  comments:
+  - No arguments to a function.
+  intent: getter
+  name: f_getter_native
+  owner: library
+f_getter_native*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
@@ -8046,11 +8022,11 @@ f_getter_native_*_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: getter
-  name: f_getter_native_*_cdesc_pointer
+  name: f_getter_native*_cdesc_pointer
   notes:
   - Similar to calling a function, but save field pointer instead.
   owner: library
-f_getter_native_*_pointer:
+f_getter_native*_pointer:
   c_call:
   - // skip call c_getter
   c_return:
@@ -8058,19 +8034,9 @@ f_getter_native_*_pointer:
   comments:
   - No arguments to a function.
   intent: getter
-  name: f_getter_native_*_pointer
+  name: f_getter_native*_pointer
   owner: library
-f_getter_native_scalar:
-  c_call:
-  - // skip call c_getter
-  c_return:
-  - return {CXX_this}->{field_name};
-  comments:
-  - No arguments to a function.
-  intent: getter
-  name: f_getter_native_scalar
-  owner: library
-f_getter_string_scalar_cdesc_allocatable:
+f_getter_string_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
@@ -8110,9 +8076,9 @@ f_getter_string_scalar_cdesc_allocatable:
   i_import:
   - '{F_array_type}'
   intent: getter
-  name: f_getter_string_scalar_cdesc_allocatable
+  name: f_getter_string_cdesc_allocatable
   owner: library
-f_getter_struct_**_cdesc_raw:
+f_getter_struct**_cdesc_raw:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
@@ -8161,9 +8127,9 @@ f_getter_struct_**_cdesc_raw:
   i_import:
   - '{F_array_type}'
   intent: getter
-  name: f_getter_struct_**_cdesc_raw
+  name: f_getter_struct**_cdesc_raw
   owner: library
-f_getter_struct_*_cdesc_pointer:
+f_getter_struct*_cdesc_pointer:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
@@ -8210,11 +8176,11 @@ f_getter_struct_*_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: getter
-  name: f_getter_struct_*_cdesc_pointer
+  name: f_getter_struct*_cdesc_pointer
   notes:
   - Similar to calling a function, but save field pointer instead.
   owner: library
-f_getter_struct_*_fapi_pointer:
+f_getter_struct*_fapi_pointer:
   f_arg_decl:
   - '{f_type}, pointer :: {F_result}'
   f_call:
@@ -8224,7 +8190,7 @@ f_getter_struct_*_fapi_pointer:
     - c_f_pointer
   f_need_wrapper: true
   intent: getter
-  name: f_getter_struct_*_fapi_pointer
+  name: f_getter_struct*_fapi_pointer
   notes:
   - XXX - unused - the getter does not need a C wrapper if api(fapi)
   - The getter can be done totally from Fortran for a pointer to a scalar.
