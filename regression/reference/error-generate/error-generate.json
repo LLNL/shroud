@@ -871,7 +871,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_char_*"
+                            "stmt": "c_inout_char*"
                         }
                     },
                     "f": {
@@ -1315,7 +1315,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_native_*"
+                            "stmt": "c_inout_native*"
                         }
                     },
                     "f": {
@@ -1398,7 +1398,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_native_*"
+                            "stmt": "c_inout_native*"
                         }
                     },
                     "f": {
@@ -1486,7 +1486,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_native_**"
+                            "stmt": "c_in_native**"
                         }
                     },
                     "f": {
@@ -1566,7 +1566,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -3068,7 +3068,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -3159,7 +3159,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },
@@ -3254,14 +3254,14 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "val": {
                             "meta": {
                                 "intent": "setter",
                                 "rank": 1
                             },
-                            "stmt": "f_setter_native_*"
+                            "stmt": "f_setter_native*"
                         }
                     },
                     "share": {
@@ -3326,7 +3326,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "val": {
@@ -3357,7 +3357,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_native_*"
+                            "stmt_name": "f_setter_native*"
                         }
                     }
                 },

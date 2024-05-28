@@ -53,7 +53,7 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const double & value +intent(in)
-// Statement: c_in_native_&
+// Statement: c_in_native&
 void TEM_vector_double_push_back(TEM_vector_double * self,
     const double * value)
 {
@@ -70,7 +70,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // Statement: c_function_native_&
 // ----------------------------------------
 // Argument:  size_type n
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 double * TEM_vector_double_at(TEM_vector_double * self,
     TEM_vector_double_size_type n)
 {
@@ -88,7 +88,7 @@ double * TEM_vector_double_at(TEM_vector_double * self,
 // Statement: f_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
     TEM_vector_double_size_type n)
 {

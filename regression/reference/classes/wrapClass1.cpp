@@ -80,7 +80,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start CLA_Class1_ctor_flag
 CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
@@ -136,7 +136,7 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
-// Statement: c_in_shadow_&
+// Statement: c_in_shadow&
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 {
@@ -178,10 +178,10 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
 // Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
-// Statement: c_in_string_&
+// Statement: c_in_string&
 // ----------------------------------------
 // Argument:  bool flag
-// Statement: c_in_bool_scalar
+// Statement: c_in_bool
 // start CLA_Class1_returnThisBuffer
 CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
     bool flag, CLA_Class1 * SHC_rv)
@@ -208,10 +208,10 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
 // Statement: f_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  bool flag
-// Statement: f_in_bool_scalar
+// Statement: f_in_bool
 // start CLA_Class1_returnThisBuffer_bufferify
 CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     char *name, int SHT_name_len, bool flag, CLA_Class1 * SHC_rv)
@@ -299,7 +299,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
 // Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 // start CLA_Class1_directionFunc
 enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
     enum CLA_Class1_DIRECTION arg)
@@ -323,7 +323,7 @@ enum CLA_Class1_DIRECTION CLA_Class1_directionFunc(CLA_Class1 * self,
 // Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 // start CLA_Class1_directionFunc_bufferify
 int CLA_Class1_directionFunc_bufferify(CLA_Class1 * self, int arg)
 {
@@ -378,7 +378,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(setter)
-// Statement: f_setter_native_scalar
+// Statement: f_setter_native
 // start CLA_Class1_set_test
 void CLA_Class1_set_test(CLA_Class1 * self, int val)
 {
@@ -413,7 +413,7 @@ bool CLA_Class1_get_m_bool(CLA_Class1 * self)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  bool val +intent(setter)
-// Statement: f_setter_bool_scalar
+// Statement: f_setter_bool
 // start CLA_Class1_set_m_bool
 void CLA_Class1_set_m_bool(CLA_Class1 * self, bool val)
 {
@@ -452,7 +452,7 @@ void CLA_Class1_get_m_name(CLA_Class1 * self,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  std::string val +intent(setter)
-// Statement: f_setter_string_scalar_buf
+// Statement: f_setter_string_buf
 // start CLA_Class1_set_m_name
 void CLA_Class1_set_m_name(CLA_Class1 * self, char *val,
     int SHT_val_len)

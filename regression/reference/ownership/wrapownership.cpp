@@ -80,7 +80,7 @@ int * OWN_ReturnIntPtrPointer_bufferify(void)
 // Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 int * OWN_ReturnIntPtrDimRaw(int * len)
 {
     // splicer begin function.ReturnIntPtrDimRaw
@@ -94,7 +94,7 @@ int * OWN_ReturnIntPtrDimRaw(int * len)
 // Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 // start OWN_ReturnIntPtrDimPointer
 int * OWN_ReturnIntPtrDimPointer(int * len)
 {
@@ -110,7 +110,7 @@ int * OWN_ReturnIntPtrDimPointer(int * len)
 // Statement: f_function_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 // start OWN_ReturnIntPtrDimPointer_bufferify
 void OWN_ReturnIntPtrDimPointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
@@ -133,7 +133,7 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 // Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 // start OWN_ReturnIntPtrDimAlloc
 int * OWN_ReturnIntPtrDimAlloc(int * len)
 {
@@ -149,7 +149,7 @@ int * OWN_ReturnIntPtrDimAlloc(int * len)
 // Statement: f_function_native_*_cdesc_allocatable
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 // start OWN_ReturnIntPtrDimAlloc_bufferify
 void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
     OWN_SHROUD_capsule_data *SHT_rv_capsule)
@@ -174,7 +174,7 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
 // Statement: c_function_native_*
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 int * OWN_ReturnIntPtrDimDefault(int * len)
 {
     // splicer begin function.ReturnIntPtrDimDefault
@@ -188,7 +188,7 @@ int * OWN_ReturnIntPtrDimDefault(int * len)
 // Statement: f_function_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 void OWN_ReturnIntPtrDimDefault_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
@@ -209,7 +209,7 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 // Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 int * OWN_ReturnIntPtrDimRawNew(int * len)
 {
     // splicer begin function.ReturnIntPtrDimRawNew
@@ -223,7 +223,7 @@ int * OWN_ReturnIntPtrDimRawNew(int * len)
 // Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 int * OWN_ReturnIntPtrDimPointerNew(int * len)
 {
     // splicer begin function.ReturnIntPtrDimPointerNew
@@ -237,7 +237,7 @@ int * OWN_ReturnIntPtrDimPointerNew(int * len)
 // Statement: f_function_native_*_cdesc_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 void OWN_ReturnIntPtrDimPointerNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc,
     OWN_SHROUD_capsule_data *SHT_rv_capsule)
@@ -261,7 +261,7 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 // Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 int * OWN_ReturnIntPtrDimAllocNew(int * len)
 {
     // splicer begin function.ReturnIntPtrDimAllocNew
@@ -275,7 +275,7 @@ int * OWN_ReturnIntPtrDimAllocNew(int * len)
 // Statement: c_function_native_*_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 {
     // splicer begin function.ReturnIntPtrDimDefaultNew
@@ -289,7 +289,7 @@ int * OWN_ReturnIntPtrDimDefaultNew(int * len)
 // Statement: f_function_native_*_cdesc_pointer_caller
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc,
     OWN_SHROUD_capsule_data *SHT_rv_capsule)
@@ -313,7 +313,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void OWN_createClassStatic(int flag)
 {
     // splicer begin function.createClassStatic
@@ -343,7 +343,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 // Statement: c_function_shadow_*_capptr_caller
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv)
 {
     // splicer begin function.getClassNew

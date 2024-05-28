@@ -171,7 +171,7 @@
                                         "intent": "setter",
                                         "value": true
                                     },
-                                    "stmt": "f_setter_native_scalar"
+                                    "stmt": "f_setter_native"
                                 }
                             },
                             "share": {
@@ -230,7 +230,7 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native_scalar"
+                                    "stmt_name": "f_setter_native"
                                 }
                             }
                         },
@@ -412,7 +412,7 @@
                                         "intent": "setter",
                                         "value": true
                                     },
-                                    "stmt": "f_setter_native_scalar"
+                                    "stmt": "f_setter_native"
                                 }
                             },
                             "share": {
@@ -471,7 +471,7 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native_scalar"
+                                    "stmt_name": "f_setter_native"
                                 }
                             }
                         },
@@ -653,7 +653,7 @@
                                         "intent": "setter",
                                         "value": true
                                     },
-                                    "stmt": "f_setter_native_scalar"
+                                    "stmt": "f_setter_native"
                                 }
                             },
                             "share": {
@@ -712,7 +712,7 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native_scalar"
+                                    "stmt_name": "f_setter_native"
                                 }
                             }
                         },
@@ -1125,7 +1125,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_native_*"
+                            "stmt": "c_inout_native*"
                         }
                     },
                     "py": {
@@ -1190,7 +1190,7 @@
                             "i_var": "data",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native_*"
+                            "stmt_name": "c_inout_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1281,7 +1281,7 @@
                                 "intent": "inout",
                                 "rank": 0
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "share": {
@@ -1343,7 +1343,7 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     }
                 },
@@ -1418,7 +1418,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "share": {
@@ -1482,7 +1482,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(data)",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     }
                 },
@@ -1557,7 +1557,7 @@
                                 "intent": "inout",
                                 "rank": 2
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "share": {
@@ -1621,7 +1621,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(data)",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     }
                 },

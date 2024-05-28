@@ -25,7 +25,7 @@ extern "C" {
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  short arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 short TYP_short_func(short arg1)
 {
     // splicer begin function.short_func
@@ -39,7 +39,7 @@ short TYP_short_func(short arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TYP_int_func(int arg1)
 {
     // splicer begin function.int_func
@@ -53,7 +53,7 @@ int TYP_int_func(int arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  long arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 long TYP_long_func(long arg1)
 {
     // splicer begin function.long_func
@@ -67,7 +67,7 @@ long TYP_long_func(long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  long long arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 long long TYP_long_long_func(long long arg1)
 {
     // splicer begin function.long_long_func
@@ -81,7 +81,7 @@ long long TYP_long_long_func(long long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  short int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 short TYP_short_int_func(short arg1)
 {
     // splicer begin function.short_int_func
@@ -95,7 +95,7 @@ short TYP_short_int_func(short arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  long int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 long TYP_long_int_func(long arg1)
 {
     // splicer begin function.long_int_func
@@ -109,7 +109,7 @@ long TYP_long_int_func(long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  long long int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 long long TYP_long_long_int_func(long long arg1)
 {
     // splicer begin function.long_long_int_func
@@ -123,7 +123,7 @@ long long TYP_long_long_int_func(long long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 unsigned int TYP_unsigned_func(unsigned int arg1)
 {
     // splicer begin function.unsigned_func
@@ -137,7 +137,7 @@ unsigned int TYP_unsigned_func(unsigned int arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned short arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 unsigned short TYP_ushort_func(unsigned short arg1)
 {
     // splicer begin function.ushort_func
@@ -151,7 +151,7 @@ unsigned short TYP_ushort_func(unsigned short arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 unsigned int TYP_uint_func(unsigned int arg1)
 {
     // splicer begin function.uint_func
@@ -165,7 +165,7 @@ unsigned int TYP_uint_func(unsigned int arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 unsigned long TYP_ulong_func(unsigned long arg1)
 {
     // splicer begin function.ulong_func
@@ -179,7 +179,7 @@ unsigned long TYP_ulong_func(unsigned long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long long arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 unsigned long long TYP_ulong_long_func(unsigned long long arg1)
 {
     // splicer begin function.ulong_long_func
@@ -193,7 +193,7 @@ unsigned long long TYP_ulong_long_func(unsigned long long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 unsigned long TYP_ulong_int_func(unsigned long arg1)
 {
     // splicer begin function.ulong_int_func
@@ -207,7 +207,7 @@ unsigned long TYP_ulong_int_func(unsigned long arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int8_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int8_t TYP_int8_func(int8_t arg1)
 {
     // splicer begin function.int8_func
@@ -221,7 +221,7 @@ int8_t TYP_int8_func(int8_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int16_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int16_t TYP_int16_func(int16_t arg1)
 {
     // splicer begin function.int16_func
@@ -235,7 +235,7 @@ int16_t TYP_int16_func(int16_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int32_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int32_t TYP_int32_func(int32_t arg1)
 {
     // splicer begin function.int32_func
@@ -249,7 +249,7 @@ int32_t TYP_int32_func(int32_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int64_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int64_t TYP_int64_func(int64_t arg1)
 {
     // splicer begin function.int64_func
@@ -263,7 +263,7 @@ int64_t TYP_int64_func(int64_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  uint8_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 uint8_t TYP_uint8_func(uint8_t arg1)
 {
     // splicer begin function.uint8_func
@@ -277,7 +277,7 @@ uint8_t TYP_uint8_func(uint8_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  uint16_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 uint16_t TYP_uint16_func(uint16_t arg1)
 {
     // splicer begin function.uint16_func
@@ -291,7 +291,7 @@ uint16_t TYP_uint16_func(uint16_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  uint32_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 uint32_t TYP_uint32_func(uint32_t arg1)
 {
     // splicer begin function.uint32_func
@@ -305,7 +305,7 @@ uint32_t TYP_uint32_func(uint32_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  uint64_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 uint64_t TYP_uint64_func(uint64_t arg1)
 {
     // splicer begin function.uint64_func
@@ -319,7 +319,7 @@ uint64_t TYP_uint64_func(uint64_t arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  size_t arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 size_t TYP_size_func(size_t arg1)
 {
     // splicer begin function.size_func
@@ -333,7 +333,7 @@ size_t TYP_size_func(size_t arg1)
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool arg
-// Statement: c_in_bool_scalar
+// Statement: c_in_bool
 bool TYP_bool_func(bool arg)
 {
     // splicer begin function.bool_func
@@ -357,7 +357,7 @@ bool TYP_bool_func(bool arg)
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 bool TYP_returnBoolAndOthers(int * flag)
 {
     // splicer begin function.returnBoolAndOthers

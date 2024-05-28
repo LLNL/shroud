@@ -42,7 +42,7 @@ int STR_Cstruct_as_subclass_get_x1(STR_Cstruct_as_subclass * self)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(setter)
-// Statement: f_setter_native_scalar
+// Statement: f_setter_native
 // start STR_Cstruct_as_subclass_set_x1
 void STR_Cstruct_as_subclass_set_x1(STR_Cstruct_as_subclass * self,
     int val)
@@ -78,7 +78,7 @@ int STR_Cstruct_as_subclass_get_y1(STR_Cstruct_as_subclass * self)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(setter)
-// Statement: f_setter_native_scalar
+// Statement: f_setter_native
 // start STR_Cstruct_as_subclass_set_y1
 void STR_Cstruct_as_subclass_set_y1(STR_Cstruct_as_subclass * self,
     int val)
@@ -114,7 +114,7 @@ int STR_Cstruct_as_subclass_get_z1(STR_Cstruct_as_subclass * self)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(setter)
-// Statement: f_setter_native_scalar
+// Statement: f_setter_native
 // start STR_Cstruct_as_subclass_set_z1
 void STR_Cstruct_as_subclass_set_z1(STR_Cstruct_as_subclass * self,
     int val)

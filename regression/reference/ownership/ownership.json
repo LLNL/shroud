@@ -813,7 +813,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "share": {
@@ -886,7 +886,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         }
                     }
                 },
@@ -976,7 +976,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -999,7 +999,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "lua": {
@@ -1191,7 +1191,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1215,7 +1215,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1331,7 +1331,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -1354,7 +1354,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "lua": {
@@ -1553,7 +1553,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1577,7 +1577,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1688,7 +1688,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -1711,7 +1711,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "lua": {
@@ -1903,7 +1903,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1927,7 +1927,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2032,7 +2032,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "share": {
@@ -2116,7 +2116,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         }
                     }
                 },
@@ -2208,7 +2208,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -2232,7 +2232,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "lua": {
@@ -2430,7 +2430,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2454,7 +2454,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2560,7 +2560,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "lua": {
@@ -2705,7 +2705,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2816,7 +2816,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -2840,7 +2840,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "lua": {
@@ -3038,7 +3038,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3062,7 +3062,7 @@
                             "i_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3918,7 +3918,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -3933,7 +3933,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "lua": {
@@ -4020,7 +4020,7 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4045,7 +4045,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -4309,7 +4309,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -4326,7 +4326,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "lua": {
@@ -4473,7 +4473,7 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4498,7 +4498,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",

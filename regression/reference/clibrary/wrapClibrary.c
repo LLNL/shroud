@@ -95,7 +95,7 @@ static void ShroudCharFree(char *src)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 double CLI_PassByValueMacro_bufferify(int arg2)
 {
     // splicer begin function.PassByValueMacro_bufferify
@@ -109,10 +109,10 @@ double CLI_PassByValueMacro_bufferify(int arg2)
 // Statement: f_function_char_*_buf_copy
 // ----------------------------------------
 // Argument:  const char * arg1
-// Statement: f_in_char_*
+// Statement: f_in_char*
 // ----------------------------------------
 // Argument:  const char * arg2
-// Statement: f_in_char_*
+// Statement: f_in_char*
 void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
@@ -133,7 +133,7 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
-// Statement: f_inout_char_*_buf
+// Statement: f_inout_char*_buf
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 {
     // splicer begin function.passCharPtrInOut_bufferify
@@ -156,7 +156,7 @@ void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 // start CLI_returnOneName_bufferify
 void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 {
@@ -179,10 +179,10 @@ void CLI_returnOneName_bufferify(char *name1, int SHT_name1_len)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
     char *name2, int SHT_name2_len)
 {
@@ -202,10 +202,10 @@ void CLI_returnTwoNames_bufferify(char *name1, int SHT_name1_len,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // start CLI_ImpliedTextLen_bufferify
 void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
     int ltext)
@@ -227,7 +227,7 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 {
     // splicer begin function.bindC2_bufferify
@@ -248,10 +248,10 @@ void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  void * arg +assumedtype
-// Statement: f_in_void_*
+// Statement: f_in_void*
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
     int SHT_outbuf_len)
 {

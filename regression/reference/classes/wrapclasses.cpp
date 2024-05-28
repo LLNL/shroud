@@ -45,7 +45,7 @@ static void ShroudCharCopy(char *dest, int ndest, const char *src, int nsrc)
 // Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 enum CLA_Class1_DIRECTION CLA_directionFunc(
     enum CLA_Class1_DIRECTION arg)
 {
@@ -65,7 +65,7 @@ enum CLA_Class1_DIRECTION CLA_directionFunc(
 // Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 int CLA_directionFunc_bufferify(int arg)
 {
     // splicer begin function.directionFunc_bufferify
@@ -87,7 +87,7 @@ int CLA_directionFunc_bufferify(int arg)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Class1 arg
-// Statement: c_in_shadow_scalar
+// Statement: c_in_shadow
 void CLA_passClassByValue(CLA_Class1 arg)
 {
     // splicer begin function.passClassByValue
@@ -102,7 +102,7 @@ void CLA_passClassByValue(CLA_Class1 arg)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Class1 * arg
-// Statement: c_in_shadow_*
+// Statement: c_in_shadow*
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass
@@ -215,7 +215,7 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 // Statement: c_function_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
@@ -232,7 +232,7 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag

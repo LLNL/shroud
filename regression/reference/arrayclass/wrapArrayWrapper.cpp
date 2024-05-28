@@ -38,7 +38,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int size
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void ARR_ArrayWrapper_setSize(ARR_ArrayWrapper * self, int size)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -65,7 +65,7 @@ int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int & size +intent(out)
-// Statement: c_out_native_&
+// Statement: c_out_native&
 void ARR_ArrayWrapper_fillSize(ARR_ArrayWrapper * self, int * size)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -215,10 +215,10 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
-// Statement: c_out_native_**
+// Statement: c_out_native**
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
     double * * array, int * isize)
 {
@@ -233,10 +233,10 @@ void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Statement: f_inout_native_*_hidden
+// Statement: f_inout_native*_hidden
 void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_array_cdesc)
 {
@@ -259,10 +259,10 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
-// Statement: c_out_native_*&
+// Statement: c_out_native*&
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Statement: c_inout_native_&
+// Statement: c_inout_native&
 void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
     double * * array, int * isize)
 {
@@ -277,10 +277,10 @@ void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
-// Statement: f_out_native_*&_cdesc_pointer
+// Statement: f_out_native*&_cdesc_pointer
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Statement: f_inout_native_&_hidden
+// Statement: f_inout_native&_hidden
 void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_array_cdesc)
 {
@@ -303,10 +303,10 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
-// Statement: c_out_native_**
+// Statement: c_out_native**
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
 {
@@ -321,10 +321,10 @@ void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Statement: f_inout_native_*_hidden
+// Statement: f_inout_native*_hidden
 void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
 {
@@ -347,10 +347,10 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
-// Statement: c_out_native_*&
+// Statement: c_out_native*&
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Statement: c_inout_native_&
+// Statement: c_inout_native&
 void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
 {
@@ -365,10 +365,10 @@ void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
-// Statement: f_out_native_*&_cdesc_pointer
+// Statement: f_out_native*&_cdesc_pointer
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Statement: f_inout_native_&_hidden
+// Statement: f_inout_native&_hidden
 void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
 {
@@ -391,7 +391,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
-// Statement: c_out_void_**
+// Statement: c_out_void**
 void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
     void **array)
 {
@@ -406,7 +406,7 @@ void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
-// Statement: c_out_void_*&
+// Statement: c_out_void*&
 void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
     void * * array)
 {
@@ -421,7 +421,7 @@ void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  void * array
-// Statement: c_in_void_*
+// Statement: c_in_void*
 bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void * array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);

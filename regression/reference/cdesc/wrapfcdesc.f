@@ -76,7 +76,7 @@ module cdesc_mod
         ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
-        ! Statement: c_in_native_*
+        ! Statement: c_in_native*
         subroutine c_rank2_in(arg) &
                 bind(C, name="CDE_Rank2In")
             use iso_c_binding, only : C_INT
@@ -89,7 +89,7 @@ module cdesc_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
-        ! Statement: f_in_native_*_cdesc
+        ! Statement: f_in_native*_cdesc
         subroutine c_rank2_in_bufferify(SHT_arg_cdesc) &
                 bind(C, name="CDE_Rank2In_bufferify")
             import :: CDE_SHROUD_array
@@ -102,10 +102,10 @@ module cdesc_mod
         ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
-        ! Statement: c_in_string_&
+        ! Statement: c_in_string&
         ! ----------------------------------------
         ! Argument:  void * value +api(cdesc)+intent(in)+rank(0)
-        ! Statement: c_in_void_*
+        ! Statement: c_in_void*
         subroutine c_get_scalar1(name, value) &
                 bind(C, name="CDE_GetScalar1")
             use iso_c_binding, only : C_CHAR, C_PTR
@@ -120,10 +120,10 @@ module cdesc_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
-        ! Statement: f_in_string_&_buf
+        ! Statement: f_in_string&_buf
         ! ----------------------------------------
         ! Argument:  int * value +api(cdesc)+intent(out)+rank(0)
-        ! Statement: f_out_native_*_cdesc
+        ! Statement: f_out_native*_cdesc
         subroutine c_get_scalar1_0_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
                 bind(C, name="CDE_GetScalar1_0_bufferify")
@@ -141,10 +141,10 @@ module cdesc_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
-        ! Statement: f_in_string_&_buf
+        ! Statement: f_in_string&_buf
         ! ----------------------------------------
         ! Argument:  double * value +api(cdesc)+intent(out)+rank(0)
-        ! Statement: f_out_native_*_cdesc
+        ! Statement: f_out_native*_cdesc
         subroutine c_get_scalar1_1_bufferify(name, SHT_name_len, &
                 SHT_value_cdesc) &
                 bind(C, name="CDE_GetScalar1_1_bufferify")
@@ -186,10 +186,10 @@ module cdesc_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
-        ! Statement: f_in_string_&_buf
+        ! Statement: f_in_string&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         subroutine c_get_scalar2_0_bufferify(name, SHT_name_len, value) &
                 bind(C, name="CDE_GetScalar2_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -205,10 +205,10 @@ module cdesc_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
-        ! Statement: f_in_string_&_buf
+        ! Statement: f_in_string&_buf
         ! ----------------------------------------
         ! Argument:  double * value +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         subroutine c_get_scalar2_1_bufferify(name, SHT_name_len, value) &
                 bind(C, name="CDE_GetScalar2_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
@@ -239,7 +239,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
-    ! Statement: f_in_native_*_cdesc
+    ! Statement: f_in_native*_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
@@ -261,10 +261,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  int * value +api(cdesc)+intent(out)+rank(0)
-    ! Statement: f_out_native_*_cdesc
+    ! Statement: f_out_native*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checks the type of the Fortran argument
@@ -301,10 +301,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  double * value +api(cdesc)+intent(out)+rank(0)
-    ! Statement: f_out_native_*_cdesc
+    ! Statement: f_out_native*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checks the type of the Fortran argument
@@ -373,10 +373,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an
@@ -401,10 +401,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     !>
     !! Call a C++ function which is templated on the return value.
     !! Create a Fortran function with the result passed in as an

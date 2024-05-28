@@ -145,7 +145,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_char_scalar"
+                            "stmt": "c_in_char"
                         }
                     },
                     "f": {
@@ -160,7 +160,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_char_scalar"
+                            "stmt": "f_in_char"
                         }
                     },
                     "share": {
@@ -221,7 +221,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_scalar"
+                            "stmt_name": "c_in_char"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -246,7 +246,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_scalar"
+                            "stmt_name": "f_in_char"
                         }
                     }
                 },
@@ -310,7 +310,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_char_scalar"
+                            "stmt": "c_in_char"
                         }
                     },
                     "f": {
@@ -325,7 +325,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_char_scalar"
+                            "stmt": "f_in_char"
                         }
                     },
                     "share": {
@@ -386,7 +386,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_scalar"
+                            "stmt_name": "c_in_char"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -411,7 +411,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_scalar"
+                            "stmt_name": "f_in_char"
                         }
                     }
                 },
@@ -622,13 +622,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -643,14 +643,14 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_cfi"
+                            "stmt": "f_out_char*_cfi"
                         },
                         "src": {
                             "meta": {
                                 "api": "cfi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_cfi"
+                            "stmt": "f_in_char*_cfi"
                         }
                     },
                     "share": {
@@ -724,7 +724,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -752,7 +752,7 @@
                             "i_var_cfi": "SHT_dest_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char*_cfi"
                         }
                     },
                     "src": {
@@ -778,7 +778,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -807,7 +807,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char*_cfi"
                         }
                     }
                 },
@@ -883,7 +883,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_char_*"
+                            "stmt": "c_inout_char*"
                         }
                     },
                     "f": {
@@ -898,7 +898,7 @@
                                 "api": "cfi",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_char_*_cfi"
+                            "stmt": "f_inout_char*_cfi"
                         }
                     },
                     "share": {
@@ -967,7 +967,7 @@
                             "i_var": "s",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_char_*"
+                            "stmt_name": "c_inout_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -997,7 +997,7 @@
                             "i_var_cfi": "SHT_s_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_char_*_cfi"
+                            "stmt_name": "f_inout_char*_cfi"
                         }
                     }
                 },
@@ -3895,7 +3895,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_string_&"
+                            "stmt": "c_in_string&"
                         }
                     },
                     "f": {
@@ -3910,7 +3910,7 @@
                                 "api": "cfi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_string_&_cfi"
+                            "stmt": "f_in_string&_cfi"
                         }
                     },
                     "share": {
@@ -3979,7 +3979,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_&"
+                            "stmt_name": "c_in_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4009,7 +4009,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_&_cfi"
+                            "stmt_name": "f_in_string&_cfi"
                         }
                     }
                 },
@@ -4083,7 +4083,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_&"
+                            "stmt": "c_out_string&"
                         }
                     },
                     "f": {
@@ -4098,7 +4098,7 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_&_cfi"
+                            "stmt": "f_out_string&_cfi"
                         }
                     },
                     "share": {
@@ -4167,7 +4167,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_&"
+                            "stmt_name": "c_out_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4195,7 +4195,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_&_cfi"
+                            "stmt_name": "f_out_string&_cfi"
                         }
                     }
                 },
@@ -4269,7 +4269,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_&"
+                            "stmt": "c_inout_string&"
                         }
                     },
                     "f": {
@@ -4284,7 +4284,7 @@
                                 "api": "cfi",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_&_cfi"
+                            "stmt": "f_inout_string&_cfi"
                         }
                     },
                     "share": {
@@ -4353,7 +4353,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_&"
+                            "stmt_name": "c_inout_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4384,7 +4384,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_&_cfi"
+                            "stmt_name": "f_inout_string&_cfi"
                         }
                     }
                 },
@@ -4455,7 +4455,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_string_*"
+                            "stmt": "c_in_string*"
                         }
                     },
                     "f": {
@@ -4470,7 +4470,7 @@
                                 "api": "cfi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_string_*_cfi"
+                            "stmt": "f_in_string*_cfi"
                         }
                     },
                     "share": {
@@ -4539,7 +4539,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_*"
+                            "stmt_name": "c_in_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4569,7 +4569,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_*_cfi"
+                            "stmt_name": "f_in_string*_cfi"
                         }
                     }
                 },
@@ -4640,7 +4640,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_*"
+                            "stmt": "c_inout_string*"
                         }
                     },
                     "f": {
@@ -4655,7 +4655,7 @@
                                 "api": "cfi",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_*_cfi"
+                            "stmt": "f_inout_string*_cfi"
                         }
                     },
                     "share": {
@@ -4724,7 +4724,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_*"
+                            "stmt_name": "c_inout_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4755,7 +4755,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_*_cfi"
+                            "stmt_name": "f_inout_string*_cfi"
                         }
                     }
                 },
@@ -4829,7 +4829,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_*"
+                            "stmt": "c_out_string*"
                         }
                     },
                     "f": {
@@ -4844,7 +4844,7 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_*_cfi"
+                            "stmt": "f_out_string*_cfi"
                         }
                     },
                     "share": {
@@ -4913,7 +4913,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_*"
+                            "stmt_name": "c_out_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4941,7 +4941,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_*_cfi"
+                            "stmt_name": "f_out_string*_cfi"
                         }
                     }
                 },
@@ -5031,13 +5031,13 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_*"
+                            "stmt": "c_inout_string*"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -5052,13 +5052,13 @@
                                 "api": "cfi",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_*_cfi"
+                            "stmt": "f_inout_string*_cfi"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -5132,7 +5132,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_*"
+                            "stmt_name": "c_inout_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5163,7 +5163,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_*_cfi"
+                            "stmt_name": "f_inout_string*_cfi"
                         }
                     },
                     "nlen": {
@@ -5189,7 +5189,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5214,7 +5214,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -5306,13 +5306,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_*"
+                            "stmt": "c_out_string*"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -5327,13 +5327,13 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_*_cfi"
+                            "stmt": "f_out_string*_cfi"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -5407,7 +5407,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_*"
+                            "stmt_name": "c_out_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5435,7 +5435,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_*_cfi"
+                            "stmt_name": "f_out_string*_cfi"
                         }
                     },
                     "nlen": {
@@ -5461,7 +5461,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5486,7 +5486,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -5552,7 +5552,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_string_scalar"
+                            "stmt": "c_in_string"
                         }
                     },
                     "f": {
@@ -5568,7 +5568,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_string_scalar_cfi"
+                            "stmt": "f_in_string_cfi"
                         }
                     },
                     "share": {
@@ -5680,7 +5680,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_scalar"
+                            "stmt_name": "c_in_string"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -5710,7 +5710,7 @@
                             "i_var_cfi": "SHT_arg1_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_scalar_cfi"
+                            "stmt_name": "f_in_string_cfi"
                         }
                     }
                 },
@@ -5889,7 +5889,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "strs": {
                             "meta": {
@@ -5901,7 +5901,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_**"
+                            "stmt": "c_out_string**"
                         }
                     },
                     "f": {
@@ -5916,7 +5916,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "strs": {
                             "meta": {
@@ -5930,7 +5930,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_**_cfi_copy"
+                            "stmt": "f_out_string**_cfi_copy"
                         }
                     },
                     "share": {
@@ -6010,7 +6010,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6034,7 +6034,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "strs": {
@@ -6064,7 +6064,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_**"
+                            "stmt_name": "c_out_string**"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6097,7 +6097,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_**_cfi_copy"
+                            "stmt_name": "f_out_string**_cfi_copy"
                         }
                     }
                 },
@@ -6191,7 +6191,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "strs": {
                             "meta": {
@@ -6203,7 +6203,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_**"
+                            "stmt": "c_out_string**"
                         }
                     },
                     "f": {
@@ -6218,7 +6218,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "strs": {
                             "meta": {
@@ -6232,7 +6232,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_**_cfi_allocatable"
+                            "stmt": "f_out_string**_cfi_allocatable"
                         }
                     },
                     "share": {
@@ -6312,7 +6312,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6336,7 +6336,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "strs": {
@@ -6366,7 +6366,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_**"
+                            "stmt_name": "c_out_string**"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6399,7 +6399,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_**_cfi_allocatable"
+                            "stmt_name": "f_out_string**_cfi_allocatable"
                         }
                     }
                 },
@@ -6494,7 +6494,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "strs": {
                             "meta": {
@@ -6506,7 +6506,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_**"
+                            "stmt": "c_out_string**"
                         }
                     },
                     "f": {
@@ -6521,7 +6521,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "strs": {
                             "meta": {
@@ -6535,7 +6535,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_**_cfi_allocatable"
+                            "stmt": "f_out_string**_cfi_allocatable"
                         }
                     },
                     "share": {
@@ -6615,7 +6615,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6639,7 +6639,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "strs": {
@@ -6671,7 +6671,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_**"
+                            "stmt_name": "c_out_string**"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6706,7 +6706,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_**_cfi_allocatable"
+                            "stmt_name": "f_out_string**_cfi_allocatable"
                         }
                     }
                 },
@@ -6845,7 +6845,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -6860,7 +6860,7 @@
                                 "api": "cfi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_cfi"
+                            "stmt": "f_in_char*_cfi"
                         }
                     },
                     "share": {
@@ -6929,7 +6929,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6958,7 +6958,7 @@
                             "i_var_cfi": "SHT_name_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char*_cfi"
                         }
                     }
                 },
@@ -7033,7 +7033,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         }
                     },
                     "f": {
@@ -7048,7 +7048,7 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_cfi"
+                            "stmt": "f_out_char*_cfi"
                         }
                     },
                     "share": {
@@ -7119,7 +7119,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7149,7 +7149,7 @@
                             "i_var_cfi": "SHT_name_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char*_cfi"
                         }
                     }
                 },
@@ -7212,7 +7212,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_char_scalar"
+                            "stmt": "c_in_char"
                         }
                     },
                     "f": {
@@ -7227,7 +7227,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_char_scalar"
+                            "stmt": "f_in_char"
                         }
                     },
                     "share": {
@@ -7288,7 +7288,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_scalar"
+                            "stmt_name": "c_in_char"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -7313,7 +7313,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_scalar"
+                            "stmt_name": "f_in_char"
                         }
                     }
                 },
@@ -7529,13 +7529,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -7550,7 +7550,7 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_cfi"
+                            "stmt": "f_out_char*_cfi"
                         },
                         "src": {
                             "meta": {
@@ -7558,7 +7558,7 @@
                                 "blanknull": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_cfi"
+                            "stmt": "f_in_char*_cfi"
                         }
                     },
                     "share": {
@@ -7632,7 +7632,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7660,7 +7660,7 @@
                             "i_var_cfi": "SHT_dest_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char*_cfi"
                         }
                     },
                     "src": {
@@ -7686,7 +7686,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7716,7 +7716,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char*_cfi"
                         }
                     }
                 },
@@ -7811,13 +7811,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -7832,7 +7832,7 @@
                                 "api": "cfi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_cfi"
+                            "stmt": "f_out_char*_cfi"
                         },
                         "src": {
                             "meta": {
@@ -7840,7 +7840,7 @@
                                 "blanknull": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_cfi"
+                            "stmt": "f_in_char*_cfi"
                         }
                     },
                     "share": {
@@ -7914,7 +7914,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7942,7 +7942,7 @@
                             "i_var_cfi": "SHT_dest_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_cfi"
+                            "stmt_name": "f_out_char*_cfi"
                         }
                     },
                     "src": {
@@ -7968,7 +7968,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7998,7 +7998,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char*_cfi"
                         }
                     }
                 },
@@ -8091,13 +8091,13 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         },
                         "name": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_&"
+                            "stmt": "c_inout_string&"
                         }
                     },
                     "f": {
@@ -8113,14 +8113,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         },
                         "name": {
                             "meta": {
                                 "api": "cfi",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_&_cfi"
+                            "stmt": "f_inout_string&_cfi"
                         }
                     },
                     "share": {
@@ -8199,7 +8199,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8230,7 +8230,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     },
                     "name": {
@@ -8256,7 +8256,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_&"
+                            "stmt_name": "c_inout_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8287,7 +8287,7 @@
                             "i_var_cfi": "SHT_name_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_&_cfi"
+                            "stmt_name": "f_inout_string&_cfi"
                         }
                     }
                 },
@@ -8362,7 +8362,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -8377,7 +8377,7 @@
                                 "api": "cfi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_cfi"
+                            "stmt": "f_in_char*_cfi"
                         }
                     },
                     "share": {
@@ -8488,7 +8488,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8517,7 +8517,7 @@
                             "i_var_cfi": "SHT_src_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char*_cfi"
                         }
                     }
                 },
@@ -8605,13 +8605,13 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_void_*"
+                            "stmt": "c_in_void*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -8626,14 +8626,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void_*"
+                            "stmt": "f_in_void*"
                         },
                         "src": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_capi"
+                            "stmt": "f_in_char*_capi"
                         }
                     },
                     "share": {
@@ -8734,7 +8734,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_*"
+                            "stmt_name": "c_in_void*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8758,7 +8758,7 @@
                             "i_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void_*"
+                            "stmt_name": "f_in_void*"
                         }
                     },
                     "src": {
@@ -8778,7 +8778,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8803,7 +8803,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char*_capi"
                         }
                     }
                 },
@@ -8896,13 +8896,13 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -8917,14 +8917,14 @@
                                 "api": "cfi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_cfi"
+                            "stmt": "f_in_char*_cfi"
                         },
                         "src": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_capi"
+                            "stmt": "f_in_char*_capi"
                         }
                     },
                     "share": {
@@ -9040,7 +9040,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9069,7 +9069,7 @@
                             "i_var_cfi": "SHT_in_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_cfi"
+                            "stmt_name": "f_in_char*_cfi"
                         }
                     },
                     "src": {
@@ -9095,7 +9095,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9120,7 +9120,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char*_capi"
                         }
                     }
                 },

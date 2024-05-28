@@ -74,7 +74,7 @@ module error_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         subroutine c_cstruct_as_subclass_set_x1(self, val) &
                 bind(C, name="ERR_Cstruct_as_subclass_set_x1")
             use iso_c_binding, only : C_INT
@@ -104,7 +104,7 @@ module error_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         subroutine c_cstruct_as_subclass_set_y1(self, val) &
                 bind(C, name="ERR_Cstruct_as_subclass_set_y1")
             use iso_c_binding, only : C_INT
@@ -134,7 +134,7 @@ module error_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         subroutine c_cstruct_as_subclass_set_z1(self, val) &
                 bind(C, name="ERR_Cstruct_as_subclass_set_z1")
             use iso_c_binding, only : C_INT
@@ -166,7 +166,7 @@ module error_mod
         ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  int * data
-        ! Statement: c_inout_native_*
+        ! Statement: c_inout_native*
         subroutine c_assumed_rank(data) &
                 bind(C, name="ERR_AssumedRank")
             use iso_c_binding, only : C_INT
@@ -180,7 +180,7 @@ module error_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(0)
-        ! Statement: f_inout_native_*
+        ! Statement: f_inout_native*
         subroutine c_assumed_rank_0d_bufferify(data) &
                 bind(C, name="ERR_AssumedRank_0d_bufferify")
             use iso_c_binding, only : C_INT
@@ -194,7 +194,7 @@ module error_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(1)
-        ! Statement: f_inout_native_*
+        ! Statement: f_inout_native*
         subroutine c_assumed_rank_1d_bufferify(data) &
                 bind(C, name="ERR_AssumedRank_1d_bufferify")
             use iso_c_binding, only : C_INT
@@ -208,7 +208,7 @@ module error_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * data +rank(2)
-        ! Statement: f_inout_native_*
+        ! Statement: f_inout_native*
         subroutine c_assumed_rank_2d_bufferify(data) &
                 bind(C, name="ERR_AssumedRank_2d_bufferify")
             use iso_c_binding, only : C_INT
@@ -248,7 +248,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     subroutine cstruct_as_subclass_set_x1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_subclass) :: obj
@@ -278,7 +278,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     subroutine cstruct_as_subclass_set_y1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_subclass) :: obj
@@ -308,7 +308,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     subroutine cstruct_as_subclass_set_z1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_subclass) :: obj
@@ -360,7 +360,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * data +rank(0)
-    ! Statement: f_inout_native_*
+    ! Statement: f_inout_native*
     subroutine assumed_rank_0d(data)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(INOUT) :: data
@@ -375,7 +375,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * data +rank(1)
-    ! Statement: f_inout_native_*
+    ! Statement: f_inout_native*
     subroutine assumed_rank_1d(data)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(INOUT) :: data(:)
@@ -390,7 +390,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * data +rank(2)
-    ! Statement: f_inout_native_*
+    ! Statement: f_inout_native*
     subroutine assumed_rank_2d(data)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(INOUT) :: data(:,:)

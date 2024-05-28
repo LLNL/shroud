@@ -192,7 +192,7 @@ module ownership_mod
         ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimRaw")
@@ -207,7 +207,7 @@ module ownership_mod
         ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         ! start c_return_int_ptr_dim_pointer
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
@@ -236,7 +236,7 @@ module ownership_mod
         ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         ! start c_return_int_ptr_dim_alloc
         function c_return_int_ptr_dim_alloc(len) &
                 result(SHT_rv) &
@@ -267,7 +267,7 @@ module ownership_mod
         ! Statement: c_function_native_*
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault")
@@ -292,7 +292,7 @@ module ownership_mod
         ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimRawNew")
@@ -307,7 +307,7 @@ module ownership_mod
         ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimPointerNew")
@@ -334,7 +334,7 @@ module ownership_mod
         ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimAllocNew")
@@ -349,7 +349,7 @@ module ownership_mod
         ! Statement: c_function_native_*_caller
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_ReturnIntPtrDimDefaultNew")
@@ -376,7 +376,7 @@ module ownership_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int flag
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine create_class_static(flag) &
                 bind(C, name="OWN_createClassStatic")
             use iso_c_binding, only : C_INT
@@ -402,7 +402,7 @@ module ownership_mod
         ! Statement: f_function_shadow_*_capptr_caller
         ! ----------------------------------------
         ! Argument:  int flag
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function c_get_class_new(flag, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="OWN_getClassNew")
@@ -617,7 +617,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine create_class_static(flag)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
@@ -645,7 +645,7 @@ contains
     ! Statement: f_function_shadow_*_capptr_caller
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Return pointer to new Class1 instance.
     !!

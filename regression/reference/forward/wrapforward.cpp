@@ -25,7 +25,7 @@ extern "C" {
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
-// Statement: c_in_struct_*
+// Statement: c_in_struct*
 int FOR_passStruct1(const Cstruct1 * arg)
 {
     // splicer begin function.passStruct1

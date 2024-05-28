@@ -146,13 +146,13 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "i2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "share": {
@@ -231,7 +231,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     },
                     "i2": {
@@ -257,7 +257,7 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         }
                     }
                 },
@@ -336,13 +336,13 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "i2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -429,7 +429,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "i2": {
@@ -456,7 +456,7 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -539,13 +539,13 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "i2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -632,7 +632,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "i2": {
@@ -659,7 +659,7 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -752,7 +752,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -806,7 +806,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -867,7 +867,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -923,7 +923,7 @@
                             "fc_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -988,7 +988,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1044,7 +1044,7 @@
                             "fc_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1137,7 +1137,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -1191,7 +1191,7 @@
                             "i_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -1252,7 +1252,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1308,7 +1308,7 @@
                             "fc_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1373,7 +1373,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1429,7 +1429,7 @@
                             "fc_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },

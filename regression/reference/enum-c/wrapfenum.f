@@ -49,7 +49,7 @@ module enum_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: f_in_enum_scalar
+        ! Statement: f_in_enum
         function convert_to_int(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_convert_to_int_bufferify")
@@ -64,7 +64,7 @@ module enum_mod
         ! Statement: f_function_enum_scalar
         ! ----------------------------------------
         ! Argument:  enum Color in
-        ! Statement: f_in_enum_scalar
+        ! Statement: f_in_enum
         function return_enum(in) &
                 result(SHT_rv) &
                 bind(C, name="ENU_returnEnum_bufferify")
@@ -79,7 +79,7 @@ module enum_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  enum Color * out +intent(out)
-        ! Statement: f_out_enum_*
+        ! Statement: f_out_enum*
         subroutine return_enum_out_arg(out) &
                 bind(C, name="ENU_returnEnumOutArg_bufferify")
             use iso_c_binding, only : C_SHORT
@@ -92,7 +92,7 @@ module enum_mod
         ! Statement: f_function_enum_scalar
         ! ----------------------------------------
         ! Argument:  enum Color * inout +intent(inout)
-        ! Statement: f_inout_enum_*
+        ! Statement: f_inout_enum*
         function return_enum_in_out_arg(inout) &
                 result(SHT_rv) &
                 bind(C, name="ENU_returnEnumInOutArg_bufferify")
@@ -115,7 +115,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     function convert_to_int(in) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_SHORT
@@ -134,7 +134,7 @@ contains
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  enum Color in
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     function return_enum(in) &
             result(SHT_rv)
         use iso_c_binding, only : C_SHORT
@@ -153,7 +153,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  enum Color * out +intent(out)
-    ! Statement: f_out_enum_*
+    ! Statement: f_out_enum*
     subroutine return_enum_out_arg(out)
         use iso_c_binding, only : C_SHORT
         integer(C_SHORT), intent(OUT) :: out
@@ -170,7 +170,7 @@ contains
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  enum Color * inout +intent(inout)
-    ! Statement: f_inout_enum_*
+    ! Statement: f_inout_enum*
     function return_enum_in_out_arg(inout) &
             result(SHT_rv)
         use iso_c_binding, only : C_SHORT

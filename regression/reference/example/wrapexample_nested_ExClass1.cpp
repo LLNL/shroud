@@ -103,7 +103,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name
-// Statement: c_in_string_*
+// Statement: c_in_string*
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
     const char * name, AA_example_nested_ExClass1 * SHC_rv)
 {
@@ -130,7 +130,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Statement: f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name
-// Statement: f_in_string_*_buf
+// Statement: f_in_string*_buf
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     char *name, int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv)
 {
@@ -168,7 +168,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int incr
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int AA_example_nested_ExClass1_incrementCount(
     AA_example_nested_ExClass1 * self, int incr)
 {
@@ -251,7 +251,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int value
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int AA_example_nested_ExClass1_getValue_from_int(
     AA_example_nested_ExClass1 * self, int value)
 {
@@ -268,7 +268,7 @@ int AA_example_nested_ExClass1_getValue_from_int(
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  long value
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 long AA_example_nested_ExClass1_getValue_1(
     AA_example_nested_ExClass1 * self, long value)
 {
@@ -285,7 +285,7 @@ long AA_example_nested_ExClass1_getValue_1(
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool in
-// Statement: c_in_bool_scalar
+// Statement: c_in_bool
 bool AA_example_nested_ExClass1_hasAddr(
     AA_example_nested_ExClass1 * self, bool in)
 {

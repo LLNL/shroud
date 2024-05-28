@@ -406,7 +406,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "c_in_shadow_*"
+                                    "stmt": "c_in_shadow*"
                                 }
                             },
                             "f": {
@@ -420,7 +420,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_shadow_*"
+                                    "stmt": "f_in_shadow*"
                                 }
                             },
                             "lua": {
@@ -507,7 +507,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow_*"
+                                    "stmt_name": "c_in_shadow*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -533,7 +533,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -643,7 +643,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "c_in_shadow_*"
+                                    "stmt": "c_in_shadow*"
                                 }
                             },
                             "f": {
@@ -657,7 +657,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_shadow_*"
+                                    "stmt": "f_in_shadow*"
                                 }
                             },
                             "lua": {
@@ -744,7 +744,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow_*"
+                                    "stmt_name": "c_in_shadow*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -770,7 +770,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -940,7 +940,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_struct_*"
+                            "stmt": "c_in_struct*"
                         }
                     },
                     "f": {
@@ -954,7 +954,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -1049,7 +1049,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_struct_*"
+                            "stmt_name": "c_in_struct*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1075,7 +1075,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },

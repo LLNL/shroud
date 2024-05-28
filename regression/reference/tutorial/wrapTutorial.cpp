@@ -93,10 +93,10 @@ void TUT_NoReturnNoArguments(void)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 double TUT_PassByValue(double arg1, int arg2)
 {
     // splicer begin function.PassByValue
@@ -116,10 +116,10 @@ double TUT_PassByValue(double arg1, int arg2)
 // Statement: c_function_string_scalar
 // ----------------------------------------
 // Argument:  const std::string & arg1
-// Statement: c_in_string_&
+// Statement: c_in_string&
 // ----------------------------------------
 // Argument:  const std::string & arg2
-// Statement: c_in_string_&
+// Statement: c_in_string&
 const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
 {
     // splicer begin function.ConcatenateStrings
@@ -142,10 +142,10 @@ const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
 // Statement: f_function_string_scalar_cdesc_allocatable
 // ----------------------------------------
 // Argument:  const std::string & arg1
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  const std::string & arg2
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc,
     TUT_SHROUD_capsule_data *SHT_rv_capsule)
@@ -183,7 +183,7 @@ double TUT_UseDefaultArguments(void)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start TUT_UseDefaultArguments_arg1
 double TUT_UseDefaultArguments_arg1(double arg1)
 {
@@ -199,10 +199,10 @@ double TUT_UseDefaultArguments_arg1(double arg1)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1=3.1415
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  bool arg2=true
-// Statement: c_in_bool_scalar
+// Statement: c_in_bool
 // start TUT_UseDefaultArguments_arg1_arg2
 double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 {
@@ -218,7 +218,7 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: c_in_string_&
+// Statement: c_in_string&
 void TUT_OverloadedFunction_from_name(const char * name)
 {
     // splicer begin function.OverloadedFunction_from_name
@@ -232,7 +232,7 @@ void TUT_OverloadedFunction_from_name(const char * name)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
@@ -248,7 +248,7 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int indx
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TUT_OverloadedFunction_from_index(int indx)
 {
     // splicer begin function.OverloadedFunction_from_index
@@ -262,7 +262,7 @@ void TUT_OverloadedFunction_from_index(int indx)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TUT_TemplateArgument_int(int arg)
 {
     // splicer begin function.TemplateArgument_int
@@ -276,7 +276,7 @@ void TUT_TemplateArgument_int(int arg)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TUT_TemplateArgument_double(double arg)
 {
     // splicer begin function.TemplateArgument_double
@@ -323,10 +323,10 @@ void TUT_FortranGenericOverloaded_0(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: c_in_string_&
+// Statement: c_in_string&
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1
@@ -341,10 +341,10 @@ void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  float arg2
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
@@ -361,10 +361,10 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
@@ -381,7 +381,7 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int num
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TUT_UseDefaultOverload_num(int num)
 {
     // splicer begin function.UseDefaultOverload_num
@@ -396,10 +396,10 @@ int TUT_UseDefaultOverload_num(int num)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int num
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TUT_UseDefaultOverload_num_offset(int num, int offset)
 {
     // splicer begin function.UseDefaultOverload_num_offset
@@ -413,13 +413,13 @@ int TUT_UseDefaultOverload_num_offset(int num, int offset)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int num
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
     int stride)
 {
@@ -435,10 +435,10 @@ int TUT_UseDefaultOverload_num_offset_stride(int num, int offset,
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  double type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TUT_UseDefaultOverload_3(double type, int num)
 {
     // splicer begin function.UseDefaultOverload_3
@@ -453,13 +453,13 @@ int TUT_UseDefaultOverload_3(double type, int num)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  double type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TUT_UseDefaultOverload_4(double type, int num, int offset)
 {
     // splicer begin function.UseDefaultOverload_4
@@ -473,16 +473,16 @@ int TUT_UseDefaultOverload_4(double type, int num, int offset)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  double type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride)
 {
@@ -498,7 +498,7 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  TypeID arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 {
     // splicer begin function.typefunc
@@ -512,7 +512,7 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  EnumTypeID arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 {
     // splicer begin function.enumfunc
@@ -529,7 +529,7 @@ TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
 // Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 {
     // splicer begin function.colorfunc
@@ -545,7 +545,7 @@ enum TUT_Color TUT_colorfunc(enum TUT_Color arg)
 // Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 int TUT_colorfunc_bufferify(int arg)
 {
     // splicer begin function.colorfunc_bufferify
@@ -565,10 +565,10 @@ int TUT_colorfunc_bufferify(int arg)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int & min +intent(out)
-// Statement: c_out_native_&
+// Statement: c_out_native&
 // ----------------------------------------
 // Argument:  int & max +intent(out)
-// Statement: c_out_native_&
+// Statement: c_out_native&
 // start TUT_getMinMax
 void TUT_getMinMax(int * min, int * max)
 {
@@ -587,10 +587,10 @@ void TUT_getMinMax(int * min, int * max)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int in
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int ( * incr)(int)
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))
 {

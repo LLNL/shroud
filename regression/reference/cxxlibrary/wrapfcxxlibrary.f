@@ -153,7 +153,7 @@ module cxxlibrary_mod
         ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  int length=1
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         function c_class1_check_length_1(self, length) &
                 result(SHT_rv) &
                 bind(C, name="CXX_Class1_check_length_1")
@@ -171,7 +171,7 @@ module cxxlibrary_mod
         ! Statement: f_function_shadow_*_this
         ! ----------------------------------------
         ! Argument:  int flag
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_class1_declare_0(self, flag) &
                 bind(C, name="CXX_Class1_declare_0")
             use iso_c_binding, only : C_INT
@@ -186,10 +186,10 @@ module cxxlibrary_mod
         ! Statement: c_function_shadow_*_this
         ! ----------------------------------------
         ! Argument:  int flag
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  LengthType length=1
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         subroutine c_class1_declare_1(self, flag, length) &
                 bind(C, name="CXX_Class1_declare_1")
             use iso_c_binding, only : C_INT
@@ -231,7 +231,7 @@ module cxxlibrary_mod
         ! Statement: f_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  double * data=nullptr +intent(IN)+rank(1)
-        ! Statement: f_in_native_*
+        ! Statement: f_in_native*
         function c_default_ptr_is_null_1(data) &
                 result(SHT_rv) &
                 bind(C, name="CXX_defaultPtrIsNULL_1")
@@ -247,13 +247,13 @@ module cxxlibrary_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int in1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         subroutine c_default_args_in_out_0(in1, out1, out2) &
                 bind(C, name="CXX_defaultArgsInOut_0")
             use iso_c_binding, only : C_INT
@@ -268,16 +268,16 @@ module cxxlibrary_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int in1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         ! ----------------------------------------
         ! Argument:  bool flag=false
-        ! Statement: f_in_bool_scalar
+        ! Statement: f_in_bool
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
                 bind(C, name="CXX_defaultArgsInOut_1")
             use iso_c_binding, only : C_BOOL, C_INT
@@ -293,7 +293,7 @@ module cxxlibrary_mod
         ! Statement: c_function_string_&
         ! ----------------------------------------
         ! Argument:  long idx
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         function c_get_group_name(idx) &
                 result(SHT_rv) &
                 bind(C, name="CXX_getGroupName")
@@ -309,7 +309,7 @@ module cxxlibrary_mod
         ! Statement: f_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int32_t idx
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_get_group_name_int32_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="CXX_getGroupName_int32_t_bufferify")
@@ -326,7 +326,7 @@ module cxxlibrary_mod
         ! Statement: f_function_string_&_buf_copy
         ! ----------------------------------------
         ! Argument:  int64_t idx
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_get_group_name_int64_t_bufferify(idx, SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="CXX_getGroupName_int64_t_bufferify")
@@ -343,7 +343,7 @@ module cxxlibrary_mod
         ! Statement: f_getter_struct_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  nested * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         subroutine c_nested_get_parent(SH_this, SHT_rv_cdesc) &
                 bind(C, name="CXX_nested_get_parent")
             import :: CXX_SHROUD_array, nested
@@ -358,10 +358,10 @@ module cxxlibrary_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  nested * val +intent(setter)
-        ! Statement: f_setter_struct_*
+        ! Statement: f_setter_struct*
         subroutine nested_set_parent(SH_this, val) &
                 bind(C, name="CXX_nested_set_parent")
             import :: nested
@@ -376,7 +376,7 @@ module cxxlibrary_mod
         ! Statement: f_getter_struct_**_cdesc_raw
         ! ----------------------------------------
         ! Argument:  nested * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         subroutine c_nested_get_child(SH_this, SHT_rv_cdesc) &
                 bind(C, name="CXX_nested_get_child")
             import :: CXX_SHROUD_array, nested
@@ -391,10 +391,10 @@ module cxxlibrary_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  nested * * val +intent(setter)+rank(1)
-        ! Statement: f_setter_struct_**
+        ! Statement: f_setter_struct**
         subroutine nested_set_child(SH_this, val) &
                 bind(C, name="CXX_nested_set_child")
             use iso_c_binding, only : C_PTR
@@ -410,7 +410,7 @@ module cxxlibrary_mod
         ! Statement: f_getter_struct_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  nested * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         subroutine c_nested_get_array(SH_this, SHT_rv_cdesc) &
                 bind(C, name="CXX_nested_get_array")
             import :: CXX_SHROUD_array, nested
@@ -425,10 +425,10 @@ module cxxlibrary_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  nested * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  nested * val +intent(setter)+rank(1)
-        ! Statement: f_setter_struct_*
+        ! Statement: f_setter_struct*
         subroutine nested_set_array(SH_this, val) &
                 bind(C, name="CXX_nested_set_array")
             import :: nested
@@ -511,7 +511,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int length=1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Test fortran_generic with default arguments.
     !!
@@ -533,7 +533,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long length=1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! Argument:  int length=1
     !>
     !! \brief Test fortran_generic with default arguments.
@@ -556,7 +556,7 @@ contains
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine class1_declare_0(obj, flag)
         use iso_c_binding, only : C_INT
         class(class1) :: obj
@@ -572,10 +572,10 @@ contains
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int length=1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! Argument:  LengthType length=1
     subroutine class1_declare_1_int(obj, flag, length)
         use iso_c_binding, only : C_INT
@@ -594,10 +594,10 @@ contains
     ! Statement: f_function_shadow_*_this
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  long length=1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! Argument:  LengthType length=1
     subroutine class1_declare_1_long(obj, flag, length)
         use iso_c_binding, only : C_INT, C_LONG
@@ -668,7 +668,7 @@ contains
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  double * data=nullptr +intent(IN)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     function default_ptr_is_null_1(data) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_DOUBLE
@@ -685,13 +685,13 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int in1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     subroutine default_args_in_out_0(in1, out1, out2)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: in1
@@ -707,16 +707,16 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int in1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     ! ----------------------------------------
     ! Argument:  bool flag=false
-    ! Statement: f_in_bool_scalar
+    ! Statement: f_in_bool
     subroutine default_args_in_out_1(in1, out1, out2, flag)
         use iso_c_binding, only : C_BOOL, C_INT
         integer(C_INT), value, intent(IN) :: in1
@@ -736,7 +736,7 @@ contains
     ! Statement: f_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int32_t idx
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief String reference function with scalar generic args
     !!
@@ -759,7 +759,7 @@ contains
     ! Statement: f_function_string_&_buf_copy
     ! ----------------------------------------
     ! Argument:  int64_t idx
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief String reference function with scalar generic args
     !!
@@ -782,7 +782,7 @@ contains
     ! Statement: f_getter_struct_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  nested * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function nested_get_parent(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : c_f_pointer
@@ -803,10 +803,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  nested * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  nested * val +intent(setter)
-    ! Statement: f_setter_struct_*
+    ! Statement: f_setter_struct*
     subroutine nested_set_parent(SH_this, val)
         type(nested), intent(INOUT) :: SH_this
         type(nested), intent(IN) :: val
@@ -822,7 +822,7 @@ contains
     ! Statement: f_getter_struct_**_cdesc_raw
     ! ----------------------------------------
     ! Argument:  nested * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function nested_get_child(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR, c_f_pointer
@@ -844,10 +844,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  nested * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  nested * * val +intent(setter)+rank(1)
-    ! Statement: f_setter_struct_**
+    ! Statement: f_setter_struct**
     subroutine nested_set_child(SH_this, val)
         type(nested), intent(INOUT) :: SH_this
         type(nested), intent(IN) :: val(:)
@@ -863,7 +863,7 @@ contains
     ! Statement: f_getter_struct_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  nested * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function nested_get_array(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : c_f_pointer
@@ -885,10 +885,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  nested * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  nested * val +intent(setter)+rank(1)
-    ! Statement: f_setter_struct_*
+    ! Statement: f_setter_struct*
     subroutine nested_set_array(SH_this, val)
         type(nested), intent(INOUT) :: SH_this
         type(nested), intent(IN) :: val(:)

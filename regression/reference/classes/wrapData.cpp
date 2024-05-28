@@ -26,7 +26,7 @@ extern "C" {
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int n
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start CLA_Data_allocate
 void CLA_Data_allocate(CLA_Data * self, int n)
 {
@@ -100,7 +100,7 @@ int CLA_Data_get_nitems(CLA_Data * self)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  int val +intent(setter)
-// Statement: f_setter_native_scalar
+// Statement: f_setter_native
 // start CLA_Data_set_nitems
 void CLA_Data_set_nitems(CLA_Data * self, int val)
 {
@@ -137,7 +137,7 @@ void CLA_Data_get_items(CLA_Data * self, CLA_SHROUD_array *SHT_rv_cdesc)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  int * val +intent(setter)+rank(1)
-// Statement: f_setter_native_*
+// Statement: f_setter_native*
 // start CLA_Data_set_items
 void CLA_Data_set_items(CLA_Data * self, int * val)
 {

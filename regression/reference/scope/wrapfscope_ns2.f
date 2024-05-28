@@ -91,7 +91,7 @@ module scope_ns2_mod
         ! Statement: f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         subroutine c_data_pointer_get_items(SH_this, SHT_rv_cdesc) &
                 bind(C, name="SCO_ns2_DataPointer_get_items")
             import :: SCO_SHROUD_array, data_pointer
@@ -106,10 +106,10 @@ module scope_ns2_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  ns2::DataPointer * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  int * val +intent(setter)+rank(1)
-        ! Statement: f_setter_native_*
+        ! Statement: f_setter_native*
         subroutine data_pointer_set_items(SH_this, val) &
                 bind(C, name="SCO_ns2_DataPointer_set_items")
             use iso_c_binding, only : C_INT
@@ -131,7 +131,7 @@ contains
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  ns2::DataPointer * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function data_pointer_get_items(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -153,10 +153,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  ns2::DataPointer * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     subroutine data_pointer_set_items(SH_this, val)
         use iso_c_binding, only : C_INT
         type(data_pointer), intent(INOUT) :: SH_this

@@ -85,7 +85,7 @@ static void ShroudStringToCdesc(AA_SHROUD_array *cdesc,
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
-// Statement: c_in_string_*
+// Statement: c_in_string*
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
     const char * name, AA_example_nested_ExClass2 * SHC_rv)
 {
@@ -108,7 +108,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // Statement: f_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
-// Statement: f_in_string_*_buf
+// Statement: f_in_string*_buf
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
     char *name, int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv)
 {
@@ -294,7 +294,7 @@ int AA_example_nested_ExClass2_GetNameLength(
 // Statement: c_function_shadow_*_capptr
 // ----------------------------------------
 // Argument:  const ExClass1 * in
-// Statement: c_in_shadow_*
+// Statement: c_in_shadow*
 AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
     AA_example_nested_ExClass1 * SHC_rv)
@@ -318,7 +318,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_ExClass2_declare_0(
     AA_example_nested_ExClass2 * self, AA_TypeID type)
 {
@@ -335,10 +335,10 @@ void AA_example_nested_ExClass2_declare_0(
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  SidreLength len=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_ExClass2_declare_1(
     AA_example_nested_ExClass2 * self, AA_TypeID type,
     SIDRE_SidreLength len)
@@ -385,7 +385,7 @@ AA_TypeID AA_example_nested_ExClass2_getTypeID(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int value
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_ExClass2_setValue_int(
     AA_example_nested_ExClass2 * self, int value)
 {
@@ -402,7 +402,7 @@ void AA_example_nested_ExClass2_setValue_int(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  long value
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_ExClass2_setValue_long(
     AA_example_nested_ExClass2 * self, long value)
 {
@@ -419,7 +419,7 @@ void AA_example_nested_ExClass2_setValue_long(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  float value
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_ExClass2_setValue_float(
     AA_example_nested_ExClass2 * self, float value)
 {
@@ -436,7 +436,7 @@ void AA_example_nested_ExClass2_setValue_float(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double value
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_ExClass2_setValue_double(
     AA_example_nested_ExClass2 * self, double value)
 {

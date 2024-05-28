@@ -77,138 +77,85 @@ root
         * -- f_getter_native_scalar
         scalar -- f_getter_native_scalar
     in
-      bool
-        scalar -- f_in_bool_scalar
-      char
-        * -- f_shared_native_scalar
-          buf -- f_in_char_*_buf
-        ** -- f_in_char_**
-          buf -- f_in_char_**_buf
-        scalar -- f_in_char_scalar
-      enum
-        scalar -- f_shared_native_scalar
-      native
-        & -- f_shared_native_scalar
-        * -- f_shared_native_scalar
-          cdesc -- f_in/out/inout_native_*_cdesc
-        ** -- f_in_native_**
-        scalar -- f_shared_native_scalar
-      procedure
-        scalar -- f_in_procedure_scalar
-      shadow
-        & -- f_in_shadow_&
-        * -- f_in_shadow_*
-        scalar -- f_in_shadow_scalar
-      string
-        & -- f_in_string_*/&
-          buf -- f_in_string_*/&_buf
-        * -- f_in_string_*/&
-          buf -- f_in_string_*/&_buf
-        scalar -- f_in_string_scalar
-          buf -- f_in_string_scalar_buf
-      struct
-        & -- f_shared_struct
-        * -- f_shared_struct
-        scalar -- f_shared_struct
-      unknown
-        scalar -- f_shared_native_scalar
-      vector
-        &
-          buf
-            targ
-              native
-                * -- f_in_vector_&_buf_targ_native_*
-                scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
-          targ
-            native
-              * -- c_shared_vector_argument
-              scalar -- c_shared_vector_argument
-            string
-              scalar -- c_shared_vector_argument
-        *
-          buf
-            targ
-              native
-                scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
-        scalar
-          buf
-            targ
-              native
-                scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
-      void
-        * -- f_in_void_*
-          cdesc -- f_in/out/inout_native_*_cdesc
-        ** -- f_in/out/inout_void_**
-        scalar -- f_shared_native_scalar
+      bool -- f_in_bool
+      char -- f_in_char
+      char* -- f_shared_native_scalar
+        buf -- f_in_char*_buf
+      char** -- f_in_char**
+        buf -- f_in_char**_buf
+      enum -- f_shared_native_scalar
+      native -- f_shared_native_scalar
+      native& -- f_shared_native_scalar
+      native* -- f_shared_native_scalar
+        cdesc -- f_in/out/inout_native*_cdesc
+      native** -- f_in_native**
+      procedure -- f_in_procedure
+      shadow -- f_in_shadow
+      shadow& -- f_in_shadow&
+      shadow* -- f_in_shadow*
+      string -- f_in_string
+        buf -- f_in_string_buf
+      string& -- f_in_string*
+        buf -- f_in_string*_buf
+      string* -- f_in_string*
+        buf -- f_in_string*_buf
+      struct -- f_shared_struct
+      struct& -- f_shared_struct
+      struct* -- f_shared_struct
+      unknown -- f_shared_native_scalar
+      vector<native*>& -- c_shared_vector_argument
+        buf -- f_in_vector<native*>&_buf
+      vector<native>
+        buf -- f_in_vector<native>_buf
+      vector<native>& -- c_shared_vector_argument
+        buf -- f_in_vector<native>_buf
+      vector<native>*
+        buf -- f_in_vector<native>_buf
+      vector<string>
+        buf -- f_in_vector<string>_buf
+      vector<string>& -- c_shared_vector_argument
+        buf -- f_in_vector<string>_buf
+      vector<string>*
+        buf -- f_in_vector<string>_buf
+      void -- f_shared_native_scalar
+      void* -- f_in_void*
+        cdesc -- f_in/out/inout_native*_cdesc
+      void** -- f_in/out/inout_void**
     inout
       bool
-        * -- f_inout_bool_*
-      char
-        * -- f_shared_native_scalar
-          buf -- f_inout_char_*_buf
-      enum
-        * -- f_inout_enum_*
-      native
-        & -- f_shared_native_scalar
-          hidden -- f_out/inout_native_&_hidden
-        * -- f_shared_native_scalar
-          cdesc -- f_in/out/inout_native_*_cdesc
-          hidden -- f_out/inout_native_*_hidden
-      shadow
-        & -- f_in_shadow_*
-        * -- f_in_shadow_*
-      string
-        & -- f_inout_string_*/&
-          buf -- f_inout_string_*/&_buf
-        * -- f_inout_string_*/&
-          buf -- f_inout_string_*/&_buf
-      struct
-        & -- f_shared_struct
-        * -- f_shared_struct
-      vector
-        &
-          buf
-            copy
-              targ
-                native
-                  scalar -- c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar
-            malloc
-              targ
-                native
-                  scalar -- c_inout_vector_scalar/*/&_buf_malloc_targ_native_scalar
-          targ
-            native
-              scalar -- c_shared_vector_argument
-        *
-          buf
-            copy
-              targ
-                native
-                  scalar -- c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar
-            malloc
-              targ
-                native
-                  scalar -- c_inout_vector_scalar/*/&_buf_malloc_targ_native_scalar
-        scalar
-          buf
-            copy
-              targ
-                native
-                  scalar -- c_inout_vector_scalar/*/&_buf_copy_targ_native_scalar
-            malloc
-              targ
-                native
-                  scalar -- c_inout_vector_scalar/*/&_buf_malloc_targ_native_scalar
-      void
-        *
-          cdesc -- f_in/out/inout_native_*_cdesc
-        ** -- f_in/out/inout_void_**
+        * -- f_inout_bool*
+      char* -- f_shared_native_scalar
+        buf -- f_inout_char*_buf
+      enum* -- f_inout_enum*
+      native& -- f_shared_native_scalar
+        hidden -- f_out/inout_native&_hidden
+      native* -- f_shared_native_scalar
+        cdesc -- f_in/out/inout_native*_cdesc
+        hidden -- f_out/inout_native*_hidden
+      shadow& -- f_in_shadow*
+      shadow* -- f_in_shadow*
+      string& -- f_inout_string*
+        buf -- f_inout_string*_buf
+      string* -- f_inout_string*
+        buf -- f_inout_string*_buf
+      struct& -- f_shared_struct
+      struct* -- f_shared_struct
+      vector<native>
+        buf
+          copy -- c_inout_vector<native>_buf_copy
+          malloc -- c_inout_vector<native>_buf_malloc
+      vector<native>&
+        buf
+          copy -- c_inout_vector<native>_buf_copy
+          malloc -- c_inout_vector<native>_buf_malloc
+      vector<native>*
+        buf
+          copy -- c_inout_vector<native>_buf_copy
+          malloc -- c_inout_vector<native>_buf_malloc
+      vector<scalar>& -- c_shared_vector_argument
+      void*
+        cdesc -- f_in/out/inout_native*_cdesc
+      void** -- f_in/out/inout_void**
     mixin
       arg
         cfi -- c_mixin_arg_cfi
@@ -265,102 +212,67 @@ root
           fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
     out
       bool
-        * -- f_out_bool_*
+        * -- f_out_bool*
       char
-        * -- f_shared_native_scalar
-          buf -- f_out_char_*_buf
-      enum
-        * -- f_out_enum_*
+        *
+          buf -- f_out_char*_buf
+      char* -- f_shared_native_scalar
+      enum* -- f_out_enum*
       native
-        & -- f_shared_native_scalar
-          hidden -- f_out/inout_native_&_hidden
         &* -- c_defaulttmp
-        * -- f_out_native_*
-          cdesc -- f_in/out/inout_native_*_cdesc
-          hidden -- f_out/inout_native_*_hidden
-        *& -- f_shared_native_scalar
-        ** -- f_out_native_**_raw
-          raw -- f_out_native_**_raw
-        *** -- f_shared_native_scalar
-      string
-        & -- f_out_string_*/&
-          buf -- f_out_string_*/&_buf
-        * -- f_out_string_*/&
-          buf -- f_out_string_*/&_buf
-        ** -- f_out_string_**_copy
-          cdesc
-            copy -- f_out_string_**_cdesc_copy
-      struct
-        & -- f_shared_struct
-        * -- f_shared_struct
-      vector
-        &
-          buf
-            copy
-              targ
-                native
-                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_native_scalar
-                string
-                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_string_scalar
-            malloc
-              targ
-                native
-                  scalar -- c_out_vector_scalar/*/&_buf_malloc_targ_native_scalar
-          cdesc
-            allocatable
-              targ
-                string
-                  scalar -- f_out_vector_&_cdesc_allocatable_targ_string_scalar
-            targ
-              native
-                scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
-              string
-                scalar -- f_out_vector_&_cdesc_targ_string_scalar
-          targ
-            native
-              scalar -- c_shared_vector_argument
-            string
-              scalar -- c_shared_vector_argument
-        *
-          buf
-            copy
-              targ
-                native
-                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_native_scalar
-                string
-                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_string_scalar
-            malloc
-              targ
-                native
-                  scalar -- c_out_vector_scalar/*/&_buf_malloc_targ_native_scalar
-          cdesc
-            targ
-              native
-                scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
-        scalar
-          buf
-            copy
-              targ
-                native
-                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_native_scalar
-                string
-                  scalar -- c_out_vector_scalar/*/&_buf_copy_targ_string_scalar
-            malloc
-              targ
-                native
-                  scalar -- c_out_vector_scalar/*/&_buf_malloc_targ_native_scalar
-      void
-        *
-          cdesc -- f_in/out/inout_native_*_cdesc
-        *& -- f_shared_native_scalar
-        ** -- f_in/out/inout_void_**
+      native& -- f_shared_native_scalar
+        hidden -- f_out/inout_native&_hidden
+      native* -- f_out_native*
+        cdesc -- f_in/out/inout_native*_cdesc
+        hidden -- f_out/inout_native*_hidden
+      native*& -- f_shared_native_scalar
+      native** -- f_out_native**_raw
+        raw -- f_out_native**_raw
+      native*** -- f_shared_native_scalar
+      string& -- f_out_string*
+        buf -- f_out_string*_buf
+      string* -- f_out_string*
+        buf -- f_out_string*_buf
+      string** -- f_out_string**_copy
+        cdesc
+          copy -- f_out_string**_cdesc_copy
+      struct& -- f_shared_struct
+      struct* -- f_shared_struct
+      vector<native>
+        buf
+          copy -- c_out_vector<native>_buf_copy
+          malloc -- c_out_vector<native>_buf_malloc
+      vector<native>& -- c_shared_vector_argument
+        buf
+          copy -- c_out_vector<native>_buf_copy
+          malloc -- c_out_vector<native>_buf_malloc
+        cdesc -- f_out_vector<native>*/&_cdesc
+      vector<native>*
+        buf
+          copy -- c_out_vector<native>_buf_copy
+          malloc -- c_out_vector<native>_buf_malloc
+        cdesc -- f_out_vector<native>*/&_cdesc
+      vector<string>
+        buf
+          copy -- c_out_vector<string>_buf_copy
+      vector<string>& -- c_shared_vector_argument
+        buf
+          copy -- c_out_vector<string>_buf_copy
+        cdesc -- f_out_vector<string>&_cdesc
+          allocatable -- f_out_vector<string>&_cdesc_allocatable
+      vector<string>*
+        buf
+          copy -- c_out_vector<string>_buf_copy
+      void*
+        cdesc -- f_in/out/inout_native*_cdesc
+      void*& -- f_shared_native_scalar
+      void** -- f_in/out/inout_void**
     setter -- f_setter
-      native
-        * -- f_setter_native_scalar/*
-        scalar -- f_setter_native_scalar/*
+      native -- f_setter_native
+      native* -- f_setter_native
       string
         scalar
-          buf -- f_setter_string_scalar_buf
+          buf -- f_setter_string_buf
     shared
       vector
         argument -- c_shared_vector_argument
@@ -392,17 +304,18 @@ root
             allocatable -- f_function_char_*_cfi_allocatable
             arg -- f_function_char_*_cfi_arg
             copy -- f_function_char_*_cfi_copy
-            pointer -- f_function_char_scalar_cfi_pointer
+            pointer -- f_function_char_cfi_pointer
           copy -- f_function_char_*
           pointer -- f_function_char_*
           raw -- f_function_char_*
+        cfi
+          pointer -- f_function_char_cfi_pointer
         scalar -- f_function_char_scalar
           cdesc
             allocatable -- f_function_char_scalar_cdesc_allocatable
             pointer -- f_function_char_scalar_cdesc_pointer
           cfi
             allocatable -- f_function_char_*_cfi_allocatable
-            pointer -- f_function_char_scalar_cfi_pointer
       enum
         scalar -- f_function_native_scalar
       native
@@ -534,129 +447,98 @@ root
           cdesc
             raw -- f_getter_struct_**_cdesc_raw
     in
-      bool
-        scalar -- f_in_bool_scalar
-      char
-        * -- f_shared_native_scalar
-          buf -- f_in_char_*_buf
-          capi -- f_shared_native_scalar
-          cfi -- f_in_char_*_cfi
-        ** -- f_in_char_**
-          buf -- f_in_char_**_buf
-          cfi -- f_in_char_**_cfi
-        scalar -- f_in_char_scalar
-      enum
-        scalar -- f_shared_native_scalar
-      native
-        & -- f_shared_native_scalar
-        * -- f_shared_native_scalar
-          cdesc -- f_in/out/inout_native_*_cdesc
-          cfi -- f_in/inout_native_*_cfi
-        ** -- f_in_native_**
-        scalar -- f_shared_native_scalar
-      procedure
-        scalar -- f_in_procedure_scalar
-      shadow
-        & -- f_in_shadow_&
-        * -- f_in_shadow_*
-        scalar -- f_in_shadow_scalar
-      string
-        & -- f_in_string_*/&
-          buf -- f_in_string_*/&_buf
-          cfi -- f_in_string_scalar/*/&_cfi
-        * -- f_in_string_*/&
-          buf -- f_in_string_*/&_buf
-          cfi -- f_in_string_scalar/*/&_cfi
-        scalar -- f_in_string_scalar
-          buf -- f_in_string_scalar_buf
-          cfi -- f_in_string_scalar/*/&_cfi
-      struct
-        & -- f_shared_struct
-        * -- f_shared_struct
-        scalar -- f_shared_struct
-      unknown
-        scalar -- f_shared_native_scalar
+      bool -- f_in_bool
+      char -- f_in_char
+      char* -- f_shared_native_scalar
+        buf -- f_in_char*_buf
+        capi -- f_shared_native_scalar
+        cfi -- f_in_char*_cfi
+      char** -- f_in_char**
+        buf -- f_in_char**_buf
+        cfi -- f_in_char**_cfi
+      enum -- f_shared_native_scalar
+      native -- f_shared_native_scalar
+      native& -- f_shared_native_scalar
+      native* -- f_shared_native_scalar
+        cdesc -- f_in/out/inout_native*_cdesc
+        cfi -- f_in/inout_native*_cfi
+      native** -- f_in_native**
+      procedure -- f_in_procedure
+      shadow -- f_in_shadow
+      shadow& -- f_in_shadow&
+      shadow* -- f_in_shadow*
+      string -- f_in_string
+        buf -- f_in_string_buf
+        cfi -- f_in_string_cfi
+      string& -- f_in_string*
+        buf -- f_in_string*_buf
+        cfi -- f_in_string_cfi
+      string* -- f_in_string*
+        buf -- f_in_string*_buf
+        cfi -- f_in_string_cfi
+      struct -- f_shared_struct
+      struct& -- f_shared_struct
+      struct* -- f_shared_struct
+      unknown -- f_shared_native_scalar
       vector
         &
-          buf
-            targ
-              native
-                * -- f_in_vector_&_buf_targ_native_*
-                scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
           cdesc
             targ
               native
                 scalar -- f_defaulttmp
-        *
-          buf
-            targ
-              native
-                scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
-        scalar
-          buf
-            targ
-              native
-                scalar -- f_in_vector_scalar/*/&_buf_targ_native_scalar
-              string
-                scalar -- f_in_vector_scalar/*/&_buf_targ_string_scalar
-      void
-        * -- f_in_void_*
-          cdesc -- f_in/out/inout_native_*_cdesc
-        ** -- f_in/out/inout_void_**
-          cfi -- f_in/out/inout_void_**
-        scalar -- f_shared_native_scalar
+      vector<native*>&
+        buf -- f_in_vector<native*>&_buf
+      vector<native>
+        buf -- f_in_vector<native>_buf
+      vector<native>&
+        buf -- f_in_vector<native>_buf
+      vector<native>*
+        buf -- f_in_vector<native>_buf
+      vector<string>
+        buf -- f_in_vector<string>_buf
+      vector<string>&
+        buf -- f_in_vector<string>_buf
+      vector<string>*
+        buf -- f_in_vector<string>_buf
+      void -- f_shared_native_scalar
+      void* -- f_in_void*
+        cdesc -- f_in/out/inout_native*_cdesc
+      void** -- f_in/out/inout_void**
+        cfi -- f_in/out/inout_void**
     inout
-      bool
-        * -- f_inout_bool_*
-      char
-        * -- f_shared_native_scalar
-          buf -- f_inout_char_*_buf
-          capi -- f_shared_native_scalar
-          cfi -- f_inout_char_*_cfi
-      enum
-        * -- f_inout_enum_*
-      native
-        & -- f_shared_native_scalar
-          hidden -- f_out/inout_native_&_hidden
-        * -- f_shared_native_scalar
-          cdesc -- f_in/out/inout_native_*_cdesc
-          cfi -- f_in/inout_native_*_cfi
-          hidden -- f_out/inout_native_*_hidden
-      shadow
-        & -- f_in_shadow_*
-        * -- f_in_shadow_*
-      string
-        & -- f_inout_string_*/&
-          buf -- f_inout_string_*/&_buf
-          cfi -- f_inout_string_*/&_cfi
-        * -- f_inout_string_*/&
-          buf -- f_inout_string_*/&_buf
-          cfi -- f_inout_string_*/&_cfi
-      struct
-        & -- f_shared_struct
-        * -- f_shared_struct
+      bool* -- f_inout_bool*
+      char* -- f_shared_native_scalar
+        buf -- f_inout_char*_buf
+        capi -- f_shared_native_scalar
+        cfi -- f_inout_char*_cfi
+      enum* -- f_inout_enum*
+      native& -- f_shared_native_scalar
+        hidden -- f_out/inout_native&_hidden
+      native* -- f_shared_native_scalar
+        cdesc -- f_in/out/inout_native*_cdesc
+        cfi -- f_in/inout_native*_cfi
+        hidden -- f_out/inout_native*_hidden
+      shadow& -- f_in_shadow*
+      shadow* -- f_in_shadow*
+      string& -- f_inout_string*
+        buf -- f_inout_string*_buf
+        cfi -- f_inout_string*_cfi
+      string* -- f_inout_string*
+        buf -- f_inout_string*_buf
+        cfi -- f_inout_string*_cfi
+      struct& -- f_shared_struct
+      struct* -- f_shared_struct
       vector
-        &
-          cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_inout_vector_&_cdesc_allocatable_targ_native_scalar
-            targ
-              native
-                scalar -- f_inout_vector_&_cdesc_targ_native_scalar
         buf
           targ
             string
               scalar -- f_inout_vector_buf_targ_string_scalar
-      void
-        *
-          cdesc -- f_in/out/inout_native_*_cdesc
-        ** -- f_in/out/inout_void_**
+      vector<native>&
+        cdesc -- f_inout_vector<native>&_cdesc
+          allocatable -- f_inout_vector<native>&_cdesc_allocatable
+      void*
+        cdesc -- f_in/out/inout_native*_cdesc
+      void** -- f_in/out/inout_void**
     mixin
       arg
         capsule -- f_mixin_arg_capsule
@@ -731,98 +613,76 @@ root
       use
         capsule -- f_mixin_use_capsule
     out
-      bool
-        * -- f_out_bool_*
-      char
-        * -- f_shared_native_scalar
-          buf -- f_out_char_*_buf
-          capi -- f_shared_native_scalar
-          cfi -- f_out_char_*_cfi
-      enum
-        * -- f_out_enum_*
-      native
-        & -- f_shared_native_scalar
-          hidden -- f_out/inout_native_&_hidden
-        * -- f_out_native_*
-          cdesc -- f_in/out/inout_native_*_cdesc
-          cfi
-            allocatable -- f_out_native_*_cfi_allocatable
-          hidden -- f_out/inout_native_*_hidden
-        *&
-          cdesc -- f_out_native_*&_cdesc
-            pointer -- f_out_native_*&_cdesc
-        **
-          cdesc
-            allocatable -- f_out_native_**_cdesc_allocatable
-            pointer -- f_out_native_**_cdesc_pointer
-          cfi
-            allocatable -- f_out_native_**_cfi_allocatable
-            pointer -- f_out_native_**_cfi_pointer
-          raw -- f_out_native_**_raw
-        *** -- f_shared_native_scalar
-      string
-        & -- f_out_string_*/&
-          buf -- f_out_string_*/&_buf
-          cfi -- f_out_string_*/&_cfi
-        * -- f_out_string_*/&
-          buf -- f_out_string_*/&_buf
-          cfi -- f_out_string_*/&_cfi
-        **
-          cdesc
-            allocatable -- f_out_string_**_cdesc_allocatable
-            copy -- f_out_string_**_cdesc_copy
-          cfi
-            allocatable -- f_out_string_**_cfi_allocatable
-            copy -- f_out_string_**_cfi_copy
-          copy -- f_out_string_**_copy
-      struct
-        & -- f_shared_struct
-        * -- f_shared_struct
+      &
+        cdesc -- f_out_vector<native>*/&_cdesc
+      bool* -- f_out_bool*
+      char* -- f_shared_native_scalar
+        buf -- f_out_char*_buf
+        capi -- f_shared_native_scalar
+        cfi -- f_out_char*_cfi
+      enum* -- f_out_enum*
+      native& -- f_shared_native_scalar
+        hidden -- f_out/inout_native&_hidden
+      native* -- f_out_native*
+        cdesc -- f_in/out/inout_native*_cdesc
+        cfi
+          allocatable -- f_out_native*_cfi_allocatable
+        hidden -- f_out/inout_native*_hidden
+      native*&
+        cdesc -- f_out_native*&_cdesc
+          pointer -- f_out_native*&_cdesc
+      native**
+        cdesc
+          allocatable -- f_out_native**_cdesc_allocatable
+          pointer -- f_out_native**_cdesc_pointer
+        cfi
+          allocatable -- f_out_native**_cfi_allocatable
+          pointer -- f_out_native**_cfi_pointer
+        raw -- f_out_native**_raw
+      native*** -- f_shared_native_scalar
+      string& -- f_out_string*
+        buf -- f_out_string*_buf
+        cfi -- f_out_string*_cfi
+      string* -- f_out_string*
+        buf -- f_out_string*_buf
+        cfi -- f_out_string*_cfi
+      string**
+        cdesc
+          allocatable -- f_out_string**_cdesc_allocatable
+          copy -- f_out_string**_cdesc_copy
+        cfi
+          allocatable -- f_out_string**_cfi_allocatable
+          copy -- f_out_string**_cfi_copy
+        copy -- f_out_string**_copy
+      struct& -- f_shared_struct
+      struct* -- f_shared_struct
       vector
-        &
-          cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_out_vector_*/&_cdesc_allocatable_targ_native_scalar
-                string
-                  scalar -- f_out_vector_&_cdesc_allocatable_targ_string_scalar
-            targ
-              native
-                scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
-              string
-                scalar -- f_out_vector_&_cdesc_targ_string_scalar
-        *
-          cdesc
-            allocatable
-              targ
-                native
-                  scalar -- f_out_vector_*/&_cdesc_allocatable_targ_native_scalar
-            targ
-              native
-                scalar -- f_out_vector_*/&_cdesc_targ_native_scalar
         buf
           targ
             string
               scalar -- f_out_vector_buf_targ_string_scalar
-      void
-        *
-          cdesc -- f_in/out/inout_native_*_cdesc
-        *& -- f_shared_native_scalar
-        ** -- f_in/out/inout_void_**
+      vector<native>&
+        cdesc -- f_out_vector<native>*/&_cdesc
+          allocatable -- f_out_vector<native>*_cdesc_allocatable
+      vector<native>*
+        cdesc -- f_out_vector<native>*/&_cdesc
+          allocatable -- f_out_vector<native>*_cdesc_allocatable
+      vector<string>&
+        cdesc -- f_out_vector<string>&_cdesc
+          allocatable -- f_out_vector<string>&_cdesc_allocatable
+      void*
+        cdesc -- f_in/out/inout_native*_cdesc
+      void*& -- f_shared_native_scalar
+      void** -- f_in/out/inout_void**
     setter -- f_setter
-      bool
-        scalar -- f_setter_bool_scalar
-      native
-        * -- f_setter_native_scalar/*
-        scalar -- f_setter_native_scalar/*
+      bool -- f_setter_bool
+      native -- f_setter_native
+      native* -- f_setter_native
       string
-        scalar
-          buf -- f_setter_string_scalar_buf
-      struct
-        * -- f_setter_struct_*_pointer
-          pointer -- f_setter_struct_*_pointer
-        ** -- f_setter_struct_**
+        buf -- f_setter_string_buf
+      struct* -- f_setter_struct*_pointer
+        pointer -- f_setter_struct*_pointer
+      struct** -- f_setter_struct**
     shared
       function
         string
@@ -1739,15 +1599,28 @@ c_getter_native_scalar:
   intent: getter
   name: c_getter_native_scalar
   owner: library
-c_in_bool_scalar:
+c_in_bool:
   intent: in
-  name: c_in_bool_scalar
+  name: c_in_bool
   owner: library
-c_in_char_*:
+c_in_char:
+  c_arg_decl:
+  - char {c_var}
+  i_arg_decl:
+  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   intent: in
-  name: c_in_char_*
+  name: c_in_char
   owner: library
-c_in_char_**:
+c_in_char*:
+  intent: in
+  name: c_in_char*
+  owner: library
+c_in_char**:
   c_arg_decl:
   - char **{c_var}
   i_arg_decl:
@@ -1758,11 +1631,11 @@ c_in_char_**:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: c_in_char_**
+  name: c_in_char**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-c_in_char_**_buf:
+c_in_char**_buf:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -1794,9 +1667,9 @@ c_in_char_**_buf:
     - C_SIZE_T
     - C_INT
   intent: in
-  name: c_in_char_**_buf
+  name: c_in_char**_buf
   owner: library
-c_in_char_*_buf:
+c_in_char*_buf:
   c_arg_call:
   - '{c_var_str}'
   c_arg_decl:
@@ -1825,39 +1698,30 @@ c_in_char_*_buf:
     - C_CHAR
     - C_INT
   intent: in
-  name: c_in_char_*_buf
+  name: c_in_char*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_in_char_scalar:
-  c_arg_decl:
-  - char {c_var}
-  i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
+c_in_enum:
   intent: in
-  name: c_in_char_scalar
+  name: c_in_enum
   owner: library
-c_in_enum_scalar:
+c_in_native:
   intent: in
-  name: c_in_enum_scalar
+  name: c_in_native
   owner: library
-c_in_native_&:
+c_in_native&:
   intent: in
-  name: c_in_native_&
+  name: c_in_native&
   owner: library
-c_in_native_*:
+c_in_native*:
   intent: in
-  name: c_in_native_*
+  name: c_in_native*
   owner: library
-c_in_native_**:
+c_in_native**:
   c_arg_decl:
   - '{cxx_type} **{cxx_var}'
   i_arg_decl:
@@ -1868,12 +1732,12 @@ c_in_native_**:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: c_in_native_**
+  name: c_in_native**
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
   owner: library
-c_in_native_*_cdesc:
+c_in_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -1897,51 +1761,13 @@ c_in_native_*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  name: c_in_native_*_cdesc
+  name: c_in_native*_cdesc
   owner: library
-c_in_native_scalar:
+c_in_procedure:
   intent: in
-  name: c_in_native_scalar
+  name: c_in_procedure
   owner: library
-c_in_procedure_scalar:
-  intent: in
-  name: c_in_procedure_scalar
-  owner: library
-c_in_shadow_&:
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
-  intent: in
-  name: c_in_shadow_&
-  owner: library
-c_in_shadow_*:
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-  comments:
-  - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
-  intent: in
-  name: c_in_shadow_*
-  owner: library
-c_in_shadow_scalar:
+c_in_shadow:
   c_arg_decl:
   - '{c_type} {c_var}'
   c_pre_call:
@@ -1957,85 +1783,43 @@ c_in_shadow_scalar:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: in
-  name: c_in_shadow_scalar
+  name: c_in_shadow
   owner: library
-c_in_string_&:
-  c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
-  intent: in
-  name: c_in_string_&
-  owner: library
-c_in_string_&_buf:
+c_in_shadow&:
   c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_len_trim
+  - '{c_type} * {c_var}'
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-  c_temps:
-  - len
-  comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
   - '{i_var}'
-  - '{i_var_len}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
-  name: c_in_string_&_buf
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
+  name: c_in_shadow&
   owner: library
-c_in_string_*:
-  c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
-  intent: in
-  name: c_in_string_*
-  owner: library
-c_in_string_*_buf:
+c_in_shadow*:
   c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_len_trim
+  - '{c_type} * {c_var}'
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-  c_temps:
-  - len
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
+  - Pass a shadow type to C wrapper.
+  cxx_local_var: pointer
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
   - '{i_var}'
-  - '{i_var_len}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
-  name: c_in_string_*_buf
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
+  name: c_in_shadow*
   owner: library
-c_in_string_scalar:
+c_in_string:
   c_arg_decl:
   - char *{c_var}
   i_arg_decl:
@@ -2046,9 +1830,85 @@ c_in_string_scalar:
     iso_c_binding:
     - C_CHAR
   intent: in
-  name: c_in_string_scalar
+  name: c_in_string
   owner: library
-c_in_string_scalar_buf:
+c_in_string&:
+  c_pre_call:
+  - '{c_const}std::string {cxx_var}({c_var});'
+  cxx_local_var: scalar
+  intent: in
+  name: c_in_string&
+  owner: library
+c_in_string&_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_len_trim
+  c_pre_call:
+  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  c_temps:
+  - len
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: c_in_string&_buf
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+c_in_string*:
+  c_pre_call:
+  - '{c_const}std::string {cxx_var}({c_var});'
+  cxx_local_var: scalar
+  intent: in
+  name: c_in_string*
+  owner: library
+c_in_string*_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_len_trim
+  c_pre_call:
+  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  c_temps:
+  - len
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: c_in_string*_buf
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+c_in_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -2077,39 +1937,46 @@ c_in_string_scalar_buf:
     - C_CHAR
     - C_INT
   intent: in
-  name: c_in_string_scalar_buf
+  name: c_in_string_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_in_struct_&:
+c_in_struct:
   intent: in
-  name: c_in_struct_&
+  name: c_in_struct
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_in_struct_*:
+c_in_struct&:
   intent: in
-  name: c_in_struct_*
+  name: c_in_struct&
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_in_struct_scalar:
+c_in_struct*:
   intent: in
-  name: c_in_struct_scalar
+  name: c_in_struct*
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_in_unknown_scalar:
+c_in_unknown:
   intent: in
-  name: c_in_unknown_scalar
+  name: c_in_unknown
   owner: library
-c_in_vector_&_buf_targ_native_*:
+c_in_vector<native*>&:
+  comments:
+  - Need to know the length of the vector from C
+  intent: in
+  name: c_in_vector<native*>&
+  notimplemented: true
+  owner: library
+c_in_vector<native*>&_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_len}
@@ -2138,11 +2005,18 @@ c_in_vector_&_buf_targ_native_*:
     - '{f_kind}'
     - C_SIZE_T
   intent: in
-  name: c_in_vector_&_buf_targ_native_*
+  name: c_in_vector<native*>&_buf
   notes:
   - Specialize for std::vector<native *>
   owner: library
-c_in_vector_&_buf_targ_native_scalar:
+c_in_vector<native>&:
+  comments:
+  - Need to know the length of the vector from C
+  intent: in
+  name: c_in_vector<native>&
+  notimplemented: true
+  owner: library
+c_in_vector<native>&_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -2164,9 +2038,64 @@ c_in_vector_&_buf_targ_native_scalar:
     - '{f_kind}'
     - C_SIZE_T
   intent: in
-  name: c_in_vector_&_buf_targ_native_scalar
+  name: c_in_vector<native>&_buf
   owner: library
-c_in_vector_&_buf_targ_string_scalar:
+c_in_vector<native>*_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by value to C.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: in
+  name: c_in_vector<native>*_buf
+  owner: library
+c_in_vector<native>_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by value to C.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: in
+  name: c_in_vector<native>_buf
+  owner: library
+c_in_vector<string>&:
+  comments:
+  - Need to know the length of the vector from C
+  intent: in
+  name: c_in_vector<string>&
+  notimplemented: true
+  owner: library
+c_in_vector<string>&_buf:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -2210,54 +2139,9 @@ c_in_vector_&_buf_targ_string_scalar:
     - C_SIZE_T
     - C_INT
   intent: in
-  name: c_in_vector_&_buf_targ_string_scalar
+  name: c_in_vector<string>&_buf
   owner: library
-c_in_vector_&_targ_native_*:
-  comments:
-  - Need to know the length of the vector from C
-  intent: in
-  name: c_in_vector_&_targ_native_*
-  notimplemented: true
-  owner: library
-c_in_vector_&_targ_native_scalar:
-  comments:
-  - Need to know the length of the vector from C
-  intent: in
-  name: c_in_vector_&_targ_native_scalar
-  notimplemented: true
-  owner: library
-c_in_vector_&_targ_string_scalar:
-  comments:
-  - Need to know the length of the vector from C
-  intent: in
-  name: c_in_vector_&_targ_string_scalar
-  notimplemented: true
-  owner: library
-c_in_vector_*_buf_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by value to C.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  intent: in
-  name: c_in_vector_*_buf_targ_native_scalar
-  owner: library
-c_in_vector_*_buf_targ_string_scalar:
+c_in_vector<string>*_buf:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -2301,33 +2185,9 @@ c_in_vector_*_buf_targ_string_scalar:
     - C_SIZE_T
     - C_INT
   intent: in
-  name: c_in_vector_*_buf_targ_string_scalar
+  name: c_in_vector<string>*_buf
   owner: library
-c_in_vector_scalar_buf_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by value to C.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  intent: in
-  name: c_in_vector_scalar_buf_targ_native_scalar
-  owner: library
-c_in_vector_scalar_buf_targ_string_scalar:
+c_in_vector<string>_buf:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -2371,13 +2231,17 @@ c_in_vector_scalar_buf_targ_string_scalar:
     - C_SIZE_T
     - C_INT
   intent: in
-  name: c_in_vector_scalar_buf_targ_string_scalar
+  name: c_in_vector<string>_buf
   owner: library
-c_in_void_*:
+c_in_void:
   intent: in
-  name: c_in_void_*
+  name: c_in_void
   owner: library
-c_in_void_**:
+c_in_void*:
+  intent: in
+  name: c_in_void*
+  owner: library
+c_in_void**:
   c_arg_decl:
   - void **{c_var}
   i_arg_decl:
@@ -2388,11 +2252,11 @@ c_in_void_**:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: c_in_void_**
+  name: c_in_void**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-c_in_void_*_cdesc:
+c_in_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -2416,21 +2280,17 @@ c_in_void_*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  name: c_in_void_*_cdesc
-  owner: library
-c_in_void_scalar:
-  intent: in
-  name: c_in_void_scalar
+  name: c_in_void*_cdesc
   owner: library
 c_inout_bool_*:
   intent: inout
   name: c_inout_bool_*
   owner: library
-c_inout_char_*:
+c_inout_char*:
   intent: inout
-  name: c_inout_char_*
+  name: c_inout_char*
   owner: library
-c_inout_char_*_buf:
+c_inout_char*_buf:
   c_arg_call:
   - '{c_var_str}'
   c_arg_decl:
@@ -2461,14 +2321,14 @@ c_inout_char_*_buf:
     - C_CHAR
     - C_INT
   intent: inout
-  name: c_inout_char_*_buf
+  name: c_inout_char*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_inout_enum_*:
+c_inout_enum*:
   c_post_call:
   - '*{c_var} = static_cast<{c_type}>({cxx_var});'
   c_pre_call:
@@ -2481,13 +2341,13 @@ c_inout_enum_*:
   lang_cxx:
     c_pre_call:
     - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
-  name: c_inout_enum_*
+  name: c_inout_enum*
   owner: library
-c_inout_native_&:
+c_inout_native&:
   intent: inout
-  name: c_inout_native_&
+  name: c_inout_native&
   owner: library
-c_inout_native_&_hidden:
+c_inout_native&_hidden:
   c_arg_call:
   - '{cxx_var}'
   c_pre_call:
@@ -2495,13 +2355,13 @@ c_inout_native_&_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: inout
-  name: c_inout_native_&_hidden
+  name: c_inout_native&_hidden
   owner: library
-c_inout_native_*:
+c_inout_native*:
   intent: inout
-  name: c_inout_native_*
+  name: c_inout_native*
   owner: library
-c_inout_native_*_cdesc:
+c_inout_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -2525,9 +2385,9 @@ c_inout_native_*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  name: c_inout_native_*_cdesc
+  name: c_inout_native*_cdesc
   owner: library
-c_inout_native_*_hidden:
+c_inout_native*_hidden:
   c_arg_call:
   - '&{cxx_var}'
   c_pre_call:
@@ -2535,9 +2395,9 @@ c_inout_native_*_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: inout
-  name: c_inout_native_*_hidden
+  name: c_inout_native*_hidden
   owner: library
-c_inout_shadow_&:
+c_inout_shadow&:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
@@ -2553,9 +2413,9 @@ c_inout_shadow_&:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: inout
-  name: c_inout_shadow_&
+  name: c_inout_shadow&
   owner: library
-c_inout_shadow_*:
+c_inout_shadow*:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
@@ -2571,9 +2431,9 @@ c_inout_shadow_*:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: inout
-  name: c_inout_shadow_*
+  name: c_inout_shadow*
   owner: library
-c_inout_string_&:
+c_inout_string&:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -2587,11 +2447,11 @@ c_inout_string_&:
   lang_cxx:
     impl_header:
     - <cstring>
-  name: c_inout_string_&
+  name: c_inout_string&
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   owner: library
-c_inout_string_&_buf:
+c_inout_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -2618,14 +2478,14 @@ c_inout_string_&_buf:
     - C_CHAR
     - C_INT
   intent: inout
-  name: c_inout_string_&_buf
+  name: c_inout_string&_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_inout_string_*:
+c_inout_string*:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -2639,11 +2499,11 @@ c_inout_string_*:
   lang_cxx:
     impl_header:
     - <cstring>
-  name: c_inout_string_*
+  name: c_inout_string*
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   owner: library
-c_inout_string_*_buf:
+c_inout_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -2670,28 +2530,28 @@ c_inout_string_*_buf:
     - C_CHAR
     - C_INT
   intent: inout
-  name: c_inout_string_*_buf
+  name: c_inout_string*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_inout_struct_&:
+c_inout_struct&:
   intent: inout
-  name: c_inout_struct_&
+  name: c_inout_struct&
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_inout_struct_*:
+c_inout_struct*:
   intent: inout
-  name: c_inout_struct_*
+  name: c_inout_struct*
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_inout_vector_&_buf_copy_targ_native_scalar:
+c_inout_vector<native>&_buf_copy:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
@@ -2715,10 +2575,10 @@ c_inout_vector_&_buf_copy_targ_native_scalar:
     - '{f_kind}'
     - C_SIZE_T
   intent: inout
-  name: c_inout_vector_&_buf_copy_targ_native_scalar
+  name: c_inout_vector<native>&_buf_copy
   notimplemented: true
   owner: library
-c_inout_vector_&_buf_malloc_targ_native_scalar:
+c_inout_vector<native>&_buf_malloc:
   c_arg_decl:
   - '{cxx_type} **{c_var}'
   - size_t *{c_var_size}
@@ -2751,140 +2611,140 @@ c_inout_vector_&_buf_malloc_targ_native_scalar:
   - <cstdlib>
   - <cstring>
   intent: inout
-  name: c_inout_vector_&_buf_malloc_targ_native_scalar
+  name: c_inout_vector<native>&_buf_malloc
   owner: library
-c_inout_vector_&_targ_native_scalar:
+c_inout_vector<native>*_buf_copy:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t *{c_var_size}
+  c_post_call:
+  - '*{c_var_size} = {cxx_var}->size()'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by reference to C.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: inout
+  name: c_inout_vector<native>*_buf_copy
+  notimplemented: true
+  owner: library
+c_inout_vector<native>*_buf_malloc:
+  c_arg_decl:
+  - '{cxx_type} **{c_var}'
+  - size_t *{c_var_size}
+  c_local:
+  - bytes
+  c_post_call:
+  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
+  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {cxx_var}.size();'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}(*{c_var}, *{c_var} + *{c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Create local vector from arguments then copy result to
+  - malloc allocated array.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    - C_SIZE_T
+  impl_header:
+  - <cstdlib>
+  - <cstring>
+  intent: inout
+  name: c_inout_vector<native>*_buf_malloc
+  owner: library
+c_inout_vector<native>_buf_copy:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t *{c_var_size}
+  c_post_call:
+  - '*{c_var_size} = {cxx_var}->size()'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by reference to C.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: inout
+  name: c_inout_vector<native>_buf_copy
+  notimplemented: true
+  owner: library
+c_inout_vector<native>_buf_malloc:
+  c_arg_decl:
+  - '{cxx_type} **{c_var}'
+  - size_t *{c_var_size}
+  c_local:
+  - bytes
+  c_post_call:
+  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
+  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {cxx_var}.size();'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}(*{c_var}, *{c_var} + *{c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Create local vector from arguments then copy result to
+  - malloc allocated array.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    - C_SIZE_T
+  impl_header:
+  - <cstdlib>
+  - <cstring>
+  intent: inout
+  name: c_inout_vector<native>_buf_malloc
+  owner: library
+c_inout_vector<scalar>&:
   comments:
   - Need to know the length of the vector from C
   intent: inout
-  name: c_inout_vector_&_targ_native_scalar
+  name: c_inout_vector<scalar>&
   notimplemented: true
   owner: library
-c_inout_vector_*_buf_copy_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t *{c_var_size}
-  c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by reference to C.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  intent: inout
-  name: c_inout_vector_*_buf_copy_targ_native_scalar
-  notimplemented: true
-  owner: library
-c_inout_vector_*_buf_malloc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} **{c_var}'
-  - size_t *{c_var_size}
-  c_local:
-  - bytes
-  c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}(*{c_var}, *{c_var} + *{c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Create local vector from arguments then copy result to
-  - malloc allocated array.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    - C_SIZE_T
-  impl_header:
-  - <cstdlib>
-  - <cstring>
-  intent: inout
-  name: c_inout_vector_*_buf_malloc_targ_native_scalar
-  owner: library
-c_inout_vector_scalar_buf_copy_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t *{c_var_size}
-  c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by reference to C.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  intent: inout
-  name: c_inout_vector_scalar_buf_copy_targ_native_scalar
-  notimplemented: true
-  owner: library
-c_inout_vector_scalar_buf_malloc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} **{c_var}'
-  - size_t *{c_var_size}
-  c_local:
-  - bytes
-  c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}(*{c_var}, *{c_var} + *{c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Create local vector from arguments then copy result to
-  - malloc allocated array.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    - C_SIZE_T
-  impl_header:
-  - <cstdlib>
-  - <cstring>
-  intent: inout
-  name: c_inout_vector_scalar_buf_malloc_targ_native_scalar
-  owner: library
-c_inout_void_**:
+c_inout_void**:
   c_arg_decl:
   - void **{c_var}
   i_arg_decl:
@@ -2895,11 +2755,11 @@ c_inout_void_**:
     iso_c_binding:
     - C_PTR
   intent: inout
-  name: c_inout_void_**
+  name: c_inout_void**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-c_inout_void_*_cdesc:
+c_inout_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -2923,7 +2783,7 @@ c_inout_void_*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  name: c_inout_void_*_cdesc
+  name: c_inout_void*_cdesc
   owner: library
 c_mixin_arg_cfi:
   c_arg_decl:
@@ -3309,9 +3169,9 @@ c_out_bool_*:
   intent: out
   name: c_out_bool_*
   owner: library
-c_out_char_*:
+c_out_char*:
   intent: out
-  name: c_out_char_*
+  name: c_out_char*
   owner: library
 c_out_char_*_buf:
   c_arg_decl:
@@ -3343,7 +3203,7 @@ c_out_char_*_buf:
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_out_enum_*:
+c_out_enum*:
   c_post_call:
   - '*{c_var} = static_cast<{c_type}>({cxx_var});'
   c_pre_call:
@@ -3356,17 +3216,13 @@ c_out_enum_*:
   lang_cxx:
     c_post_call:
     - '*{c_var} = static_cast<{c_type}>({cxx_var});'
-  name: c_out_enum_*
+  name: c_out_enum*
   owner: library
-c_out_native_&:
+c_out_native&:
   intent: out
-  name: c_out_native_&
+  name: c_out_native&
   owner: library
-c_out_native_&*:
-  intent: out
-  name: c_out_native_&*
-  owner: library
-c_out_native_&_hidden:
+c_out_native&_hidden:
   c_arg_call:
   - '{cxx_var}'
   c_pre_call:
@@ -3374,33 +3230,33 @@ c_out_native_&_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: out
-  name: c_out_native_&_hidden
+  name: c_out_native&_hidden
   owner: library
-c_out_native_*:
+c_out_native*:
   intent: out
-  name: c_out_native_*
+  name: c_out_native*
   owner: library
-c_out_native_*&:
+c_out_native*&:
   intent: out
-  name: c_out_native_*&
+  name: c_out_native*&
   owner: library
-c_out_native_**:
+c_out_native**:
   intent: out
-  name: c_out_native_**
+  name: c_out_native**
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   owner: library
-c_out_native_***:
+c_out_native***:
   intent: out
-  name: c_out_native_***
+  name: c_out_native***
   owner: library
-c_out_native_**_raw:
+c_out_native**_raw:
   intent: out
-  name: c_out_native_**_raw
+  name: c_out_native**_raw
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   owner: library
-c_out_native_*_cdesc:
+c_out_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -3424,9 +3280,9 @@ c_out_native_*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  name: c_out_native_*_cdesc
+  name: c_out_native*_cdesc
   owner: library
-c_out_native_*_hidden:
+c_out_native*_hidden:
   c_arg_call:
   - '&{cxx_var}'
   c_pre_call:
@@ -3434,9 +3290,13 @@ c_out_native_*_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: out
-  name: c_out_native_*_hidden
+  name: c_out_native*_hidden
   owner: library
-c_out_string_&:
+c_out_native_&*:
+  intent: out
+  name: c_out_native_&*
+  owner: library
+c_out_string&:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -3448,9 +3308,9 @@ c_out_string_&:
   lang_cxx:
     impl_header:
     - <cstring>
-  name: c_out_string_&
+  name: c_out_string&
   owner: library
-c_out_string_&_buf:
+c_out_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -3476,14 +3336,14 @@ c_out_string_&_buf:
     - C_CHAR
     - C_INT
   intent: out
-  name: c_out_string_&_buf
+  name: c_out_string&_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_out_string_*:
+c_out_string*:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -3495,18 +3355,18 @@ c_out_string_*:
   lang_cxx:
     impl_header:
     - <cstring>
-  name: c_out_string_*
+  name: c_out_string*
   owner: library
-c_out_string_**:
+c_out_string**:
   intent: out
-  name: c_out_string_**
+  name: c_out_string**
   notes:
   - std::string **arg+intent(out)+dimension(size)
   - Returning a pointer to a string*. However, this needs additional
   - mapping for the C interface.  Fortran calls the +api(cdesc) variant.
   notimplemented: true
   owner: library
-c_out_string_**_cdesc_copy:
+c_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -3529,13 +3389,13 @@ c_out_string_**_cdesc_copy:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: c_out_string_**_cdesc_copy
+  name: c_out_string**_cdesc_copy
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
   - C++ array. Copy into Fortran argument.
   - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   owner: library
-c_out_string_*_buf:
+c_out_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -3561,28 +3421,35 @@ c_out_string_*_buf:
     - C_CHAR
     - C_INT
   intent: out
-  name: c_out_string_*_buf
+  name: c_out_string*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_out_struct_&:
+c_out_struct&:
   intent: out
-  name: c_out_struct_&
+  name: c_out_struct&
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_out_struct_*:
+c_out_struct*:
   intent: out
-  name: c_out_struct_*
+  name: c_out_struct*
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-c_out_vector_&_buf_copy_targ_native_scalar:
+c_out_vector<native>&:
+  comments:
+  - Need to know the length of the vector from C
+  intent: out
+  name: c_out_vector<native>&
+  notimplemented: true
+  owner: library
+c_out_vector<native>&_buf_copy:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t *{c_var_size}
@@ -3613,14 +3480,9 @@ c_out_vector_&_buf_copy_targ_native_scalar:
   impl_header:
   - <cstring>
   intent: out
-  name: c_out_vector_&_buf_copy_targ_native_scalar
+  name: c_out_vector<native>&_buf_copy
   owner: library
-c_out_vector_&_buf_copy_targ_string_scalar:
-  intent: out
-  name: c_out_vector_&_buf_copy_targ_string_scalar
-  notimplemented: true
-  owner: library
-c_out_vector_&_buf_malloc_targ_native_scalar:
+c_out_vector<native>&_buf_malloc:
   c_arg_decl:
   - '{cxx_type} **{c_var}'
   - size_t *{c_var_size}
@@ -3653,9 +3515,252 @@ c_out_vector_&_buf_malloc_targ_native_scalar:
   - <cstdlib>
   - <cstring>
   intent: out
-  name: c_out_vector_&_buf_malloc_targ_native_scalar
+  name: c_out_vector<native>&_buf_malloc
   owner: library
-c_out_vector_&_cdesc_allocatable_targ_string_scalar:
+c_out_vector<native>&_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - copy_array
+  - type_defines
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  c_temps:
+  - cdesc
+  comments:
+  - copy into user's existing array.
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: c_out_vector<native>&_cdesc
+  notes:
+  - cxx_var is always a pointer to a vector.
+  owner: library
+c_out_vector<native>*_buf_copy:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t *{c_var_size}
+  c_local:
+  - size
+  c_post_call:
+  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
+    \ :\t {cxx_var}.size();"
+  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
+  - '*{c_var_size} = {c_local_size};'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by reference to C.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  impl_header:
+  - <cstring>
+  intent: out
+  name: c_out_vector<native>*_buf_copy
+  owner: library
+c_out_vector<native>*_buf_malloc:
+  c_arg_decl:
+  - '{cxx_type} **{c_var}'
+  - size_t *{c_var_size}
+  c_local:
+  - bytes
+  c_post_call:
+  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
+  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {cxx_var}.size();'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  c_temps:
+  - size
+  comments:
+  - Create empty local vector then copy result to
+  - malloc allocated array.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    - C_SIZE_T
+  impl_header:
+  - <cstdlib>
+  - <cstring>
+  intent: out
+  name: c_out_vector<native>*_buf_malloc
+  owner: library
+c_out_vector<native>*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - copy_array
+  - type_defines
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  c_temps:
+  - cdesc
+  comments:
+  - copy into user's existing array.
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: c_out_vector<native>*_cdesc
+  notes:
+  - cxx_var is always a pointer to a vector.
+  owner: library
+c_out_vector<native>_buf_copy:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t *{c_var_size}
+  c_local:
+  - size
+  c_post_call:
+  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
+    \ :\t {cxx_var}.size();"
+  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
+  - '*{c_var_size} = {c_local_size};'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by reference to C.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  impl_header:
+  - <cstring>
+  intent: out
+  name: c_out_vector<native>_buf_copy
+  owner: library
+c_out_vector<native>_buf_malloc:
+  c_arg_decl:
+  - '{cxx_type} **{c_var}'
+  - size_t *{c_var_size}
+  c_local:
+  - bytes
+  c_post_call:
+  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
+  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {cxx_var}.size();'
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  c_temps:
+  - size
+  comments:
+  - Create empty local vector then copy result to
+  - malloc allocated array.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    - C_SIZE_T
+  impl_header:
+  - <cstdlib>
+  - <cstring>
+  intent: out
+  name: c_out_vector<native>_buf_malloc
+  owner: library
+c_out_vector<string>&:
+  comments:
+  - Need to know the length of the vector from C
+  intent: out
+  name: c_out_vector<string>&
+  notimplemented: true
+  owner: library
+c_out_vector<string>&_buf_copy:
+  intent: out
+  name: c_out_vector<string>&_buf_copy
+  notimplemented: true
+  owner: library
+c_out_vector<string>&_cdesc:
+  c_arg_call:
+  - '{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - vector_string_out
+  c_post_call:
+  - "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+  c_pre_call:
+  - '{c_const}std::vector<std::string> {cxx_var};'
+  c_temps:
+  - cdesc
+  comments:
+  - Collect information about a string argument.
+  - Pass cdesc as argument to C wrapper.
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: c_out_vector<string>&_cdesc
+  owner: library
+c_out_vector<string>&_cdesc_allocatable:
   c_arg_call:
   - '*{cxx_var}'
   c_arg_decl:
@@ -3698,268 +3803,23 @@ c_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: out
-  name: c_out_vector_&_cdesc_allocatable_targ_string_scalar
+  name: c_out_vector<string>&_cdesc_allocatable
   owner: library
-c_out_vector_&_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  - type_defines
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - copy into user's existing array.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
+c_out_vector<string>*_buf_copy:
   intent: out
-  name: c_out_vector_&_cdesc_targ_native_scalar
-  notes:
-  - cxx_var is always a pointer to a vector.
-  owner: library
-c_out_vector_&_cdesc_targ_string_scalar:
-  c_arg_call:
-  - '{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - vector_string_out
-  c_post_call:
-  - "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
-  c_pre_call:
-  - '{c_const}std::vector<std::string> {cxx_var};'
-  c_temps:
-  - cdesc
-  comments:
-  - Collect information about a string argument.
-  - Pass cdesc as argument to C wrapper.
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: c_out_vector_&_cdesc_targ_string_scalar
-  owner: library
-c_out_vector_&_targ_native_scalar:
-  comments:
-  - Need to know the length of the vector from C
-  intent: out
-  name: c_out_vector_&_targ_native_scalar
+  name: c_out_vector<string>*_buf_copy
   notimplemented: true
   owner: library
-c_out_vector_&_targ_string_scalar:
-  comments:
-  - Need to know the length of the vector from C
+c_out_vector<string>_buf_copy:
   intent: out
-  name: c_out_vector_&_targ_string_scalar
+  name: c_out_vector<string>_buf_copy
   notimplemented: true
   owner: library
-c_out_vector_*_buf_copy_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t *{c_var_size}
-  c_local:
-  - size
-  c_post_call:
-  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
-    \ :\t {cxx_var}.size();"
-  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
-  - '*{c_var_size} = {c_local_size};'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by reference to C.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  impl_header:
-  - <cstring>
+c_out_void*&:
   intent: out
-  name: c_out_vector_*_buf_copy_targ_native_scalar
+  name: c_out_void*&
   owner: library
-c_out_vector_*_buf_copy_targ_string_scalar:
-  intent: out
-  name: c_out_vector_*_buf_copy_targ_string_scalar
-  notimplemented: true
-  owner: library
-c_out_vector_*_buf_malloc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} **{c_var}'
-  - size_t *{c_var_size}
-  c_local:
-  - bytes
-  c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
-  c_temps:
-  - size
-  comments:
-  - Create empty local vector then copy result to
-  - malloc allocated array.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    - C_SIZE_T
-  impl_header:
-  - <cstdlib>
-  - <cstring>
-  intent: out
-  name: c_out_vector_*_buf_malloc_targ_native_scalar
-  owner: library
-c_out_vector_*_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  - type_defines
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - copy into user's existing array.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: c_out_vector_*_cdesc_targ_native_scalar
-  notes:
-  - cxx_var is always a pointer to a vector.
-  owner: library
-c_out_vector_scalar_buf_copy_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t *{c_var_size}
-  c_local:
-  - size
-  c_post_call:
-  - "size_t {c_local_size} =\t *{c_var_size} < {cxx_var}.size() ?\t *{c_var_size}\
-    \ :\t {cxx_var}.size();"
-  - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_size}*sizeof({cxx_var}[0]));"
-  - '*{c_var_size} = {c_local_size};'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by reference to C.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  impl_header:
-  - <cstring>
-  intent: out
-  name: c_out_vector_scalar_buf_copy_targ_native_scalar
-  owner: library
-c_out_vector_scalar_buf_copy_targ_string_scalar:
-  intent: out
-  name: c_out_vector_scalar_buf_copy_targ_string_scalar
-  notimplemented: true
-  owner: library
-c_out_vector_scalar_buf_malloc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} **{c_var}'
-  - size_t *{c_var_size}
-  c_local:
-  - bytes
-  c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
-  c_temps:
-  - size
-  comments:
-  - Create empty local vector then copy result to
-  - malloc allocated array.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'type(C_PTR), intent({f_intent}) :: {i_var}'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    - C_SIZE_T
-  impl_header:
-  - <cstdlib>
-  - <cstring>
-  intent: out
-  name: c_out_vector_scalar_buf_malloc_targ_native_scalar
-  owner: library
-c_out_void_*&:
-  intent: out
-  name: c_out_void_*&
-  owner: library
-c_out_void_**:
+c_out_void**:
   c_arg_decl:
   - void **{c_var}
   i_arg_decl:
@@ -3970,11 +3830,11 @@ c_out_void_**:
     iso_c_binding:
     - C_PTR
   intent: out
-  name: c_out_void_**
+  name: c_out_void**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-c_out_void_*_cdesc:
+c_out_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -3998,7 +3858,7 @@ c_out_void_*_cdesc:
   lang_cxx:
     c_pre_call:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
-  name: c_out_void_*_cdesc
+  name: c_out_void*_cdesc
   owner: library
 c_setter:
   c_call:
@@ -4008,17 +3868,17 @@ c_setter:
   intent: setter
   name: c_setter
   owner: library
-c_setter_native_*:
+c_setter_native:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   intent: setter
-  name: c_setter_native_*
+  name: c_setter_native
   owner: library
-c_setter_native_scalar:
+c_setter_native*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   intent: setter
-  name: c_setter_native_scalar
+  name: c_setter_native*
   owner: library
 c_setter_string_scalar_buf:
   c_arg_decl:
@@ -4610,6 +4470,53 @@ f_function_char_*_raw:
   intent: function
   name: f_function_char_*_raw
   owner: library
+f_function_char_cfi_pointer:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cptr
+  - fptr
+  - cdesc
+  - len
+  - err
+  c_post_call:
+  - int {c_local_err};
+  - if ({cxx_var} == {nullptr}) {{+
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
+  - -}} else {{+
+  - CFI_CDESC_T(0) {c_local_fptr};
+  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
+  - void *{c_local_cptr} = {cxx_nonconst_ptr};
+  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
+  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
+    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
+  - if ({c_local_err} == CFI_SUCCESS) {{+
+  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
+  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
+  - -}}
+  - -}}
+  c_return_type: void
+  c_temps:
+  - cfi
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Make the argument a CFI_desc_t.
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=:), pointer :: {f_var}'
+  f_call:
+  - call {F_C_call}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: function
+  name: f_function_char_cfi_pointer
+  owner: library
 f_function_char_scalar:
   c_arg_decl:
   - char *{c_var}
@@ -4762,53 +4669,6 @@ f_function_char_scalar_cfi_allocatable:
   name: f_function_char_scalar_cfi_allocatable
   notes:
   - Add allocatable attribute to declaration.
-  owner: library
-f_function_char_scalar_cfi_pointer:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_local:
-  - cptr
-  - fptr
-  - cdesc
-  - len
-  - err
-  c_post_call:
-  - int {c_local_err};
-  - if ({cxx_var} == {nullptr}) {{+
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {nullptr},\t {nullptr});"
-  - -}} else {{+
-  - CFI_CDESC_T(0) {c_local_fptr};
-  - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = {cxx_nonconst_ptr};
-  - size_t {c_local_len} = {stdlib}strlen({cxx_var});
-  - "{c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t\
-    \ CFI_type_char,\t {c_local_len},\t 0,\t {nullptr});"
-  - if ({c_local_err} == CFI_SUCCESS) {{+
-  - '{c_var_cfi}->elem_len = {c_local_cdesc}->elem_len;'
-  - "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {nullptr});"
-  - -}}
-  - -}}
-  c_return_type: void
-  c_temps:
-  - cfi
-  comments:
-  - Call the C wrapper as a subroutine.
-  - Make the argument a CFI_desc_t.
-  f_arg_call:
-  - '{f_var}'
-  f_arg_decl:
-  - 'character(len=:), pointer :: {f_var}'
-  f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'character(len=:), intent({f_intent}), pointer :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: function
-  name: f_function_char_scalar_cfi_pointer
   owner: library
 f_function_enum_scalar:
   intent: function
@@ -8370,7 +8230,7 @@ f_getter_struct_*_fapi_pointer:
   - The getter can be done totally from Fortran for a pointer to a scalar.
   - Return value a function result.
   owner: library
-f_in_bool_scalar:
+f_in_bool:
   f_arg_call:
   - '{f_var_cxx}'
   f_declare:
@@ -8380,13 +8240,28 @@ f_in_bool_scalar:
   f_temps:
   - cxx
   intent: in
-  name: f_in_bool_scalar
+  name: f_in_bool
   owner: library
-f_in_char_*:
+f_in_char:
+  c_arg_decl:
+  - char {c_var}
+  f_arg_decl:
+  - 'character, value, intent(IN) :: {f_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   intent: in
-  name: f_in_char_*
+  name: f_in_char
   owner: library
-f_in_char_**:
+f_in_char*:
+  intent: in
+  name: f_in_char*
+  owner: library
+f_in_char**:
   c_arg_decl:
   - char **{c_var}
   i_arg_decl:
@@ -8397,11 +8272,11 @@ f_in_char_**:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: f_in_char_**
+  name: f_in_char**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-f_in_char_**_buf:
+f_in_char**_buf:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -8444,9 +8319,9 @@ f_in_char_**_buf:
     - C_SIZE_T
     - C_INT
   intent: in
-  name: f_in_char_**_buf
+  name: f_in_char**_buf
   owner: library
-f_in_char_**_cfi:
+f_in_char**_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -8476,9 +8351,9 @@ f_in_char_**_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
-  name: f_in_char_**_cfi
+  name: f_in_char**_cfi
   owner: library
-f_in_char_*_buf:
+f_in_char*_buf:
   c_arg_call:
   - '{c_var_str}'
   c_arg_decl:
@@ -8520,18 +8395,18 @@ f_in_char_*_buf:
     - C_CHAR
     - C_INT
   intent: in
-  name: f_in_char_*_buf
+  name: f_in_char*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_in_char_*_capi:
+f_in_char*_capi:
   intent: in
-  name: f_in_char_*_capi
+  name: f_in_char*_capi
   owner: library
-f_in_char_*_cfi:
+f_in_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -8556,36 +8431,25 @@ f_in_char_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
-  name: f_in_char_*_cfi
+  name: f_in_char*_cfi
   owner: library
-f_in_char_scalar:
-  c_arg_decl:
-  - char {c_var}
-  f_arg_decl:
-  - 'character, value, intent(IN) :: {f_var}'
-  i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
+f_in_enum:
   intent: in
-  name: f_in_char_scalar
+  name: f_in_enum
   owner: library
-f_in_enum_scalar:
+f_in_native:
   intent: in
-  name: f_in_enum_scalar
+  name: f_in_native
   owner: library
-f_in_native_&:
+f_in_native&:
   intent: in
-  name: f_in_native_&
+  name: f_in_native&
   owner: library
-f_in_native_*:
+f_in_native*:
   intent: in
-  name: f_in_native_*
+  name: f_in_native*
   owner: library
-f_in_native_**:
+f_in_native**:
   c_arg_decl:
   - '{cxx_type} **{cxx_var}'
   i_arg_decl:
@@ -8596,12 +8460,12 @@ f_in_native_**:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: f_in_native_**
+  name: f_in_native**
   notes:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
   owner: library
-f_in_native_*_cdesc:
+f_in_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -8640,9 +8504,9 @@ f_in_native_*_cdesc:
   i_import:
   - '{F_array_type}'
   intent: in
-  name: f_in_native_*_cdesc
+  name: f_in_native*_cdesc
   owner: library
-f_in_native_*_cfi:
+f_in_native*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
@@ -8663,63 +8527,15 @@ f_in_native_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
-  name: f_in_native_*_cfi
+  name: f_in_native*_cfi
   owner: library
-f_in_native_scalar:
-  intent: in
-  name: f_in_native_scalar
-  owner: library
-f_in_procedure_scalar:
+f_in_procedure:
   f_arg_decl:
   - '{f_type} :: {f_var}'
   intent: in
-  name: f_in_procedure_scalar
+  name: f_in_procedure
   owner: library
-f_in_shadow_&:
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-  cxx_local_var: pointer
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {f_var}'
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
-  intent: in
-  name: f_in_shadow_&
-  owner: library
-f_in_shadow_*:
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-  comments:
-  - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {f_var}'
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
-  intent: in
-  name: f_in_shadow_*
-  owner: library
-f_in_shadow_scalar:
+f_in_shadow:
   c_arg_decl:
   - '{c_type} {c_var}'
   c_pre_call:
@@ -8740,163 +8556,53 @@ f_in_shadow_scalar:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: in
-  name: f_in_shadow_scalar
+  name: f_in_shadow
   owner: library
-f_in_string_&:
-  c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
-  intent: in
-  name: f_in_string_&
-  owner: library
-f_in_string_&_buf:
+f_in_shadow&:
   c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_len_trim
+  - '{c_type} * {c_var}'
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-  c_temps:
-  - len
-  comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  cxx_local_var: pointer
   f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_declare:
-  - integer(C_INT) {f_var_len}
-  f_module:
-    iso_c_binding:
-    - C_INT
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_temps:
-  - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
   - '{i_var}'
-  - '{i_var_len}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
-  name: f_in_string_&_buf
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
+  name: f_in_shadow&
   owner: library
-f_in_string_&_cfi:
+f_in_shadow*:
   c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper:
-  - char_len_trim
-  c_local:
-  - trim
+  - '{c_type} * {c_var}'
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
-  c_temps:
-  - cfi
+  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
-  - Make the argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: in
-  name: f_in_string_&_cfi
-  owner: library
-f_in_string_*:
-  c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
-  intent: in
-  name: f_in_string_*
-  owner: library
-f_in_string_*_buf:
-  c_arg_decl:
-  - char *{c_var}
-  - int {c_var_len}
-  c_helper:
-  - char_len_trim
-  c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
-  c_temps:
-  - len
-  comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
+  - Pass a shadow type to C wrapper.
+  cxx_local_var: pointer
   f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_declare:
-  - integer(C_INT) {f_var_len}
-  f_module:
-    iso_c_binding:
-    - C_INT
+  - '{f_var}%{F_derived_member}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
   f_need_wrapper: true
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_temps:
-  - len
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
   i_arg_names:
   - '{i_var}'
-  - '{i_var_len}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_INT
+    '{f_type_module}':
+    - '{f_capsule_data_type}'
   intent: in
-  name: f_in_string_*_buf
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
+  name: f_in_shadow*
   owner: library
-f_in_string_*_cfi:
-  c_arg_decl:
-  - CFI_cdesc_t *{c_var_cfi}
-  c_helper:
-  - char_len_trim
-  c_local:
-  - trim
-  c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
-  - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
-  c_temps:
-  - cfi
-  comments:
-  - Make the argument a CFI_desc_t.
-  - Local character argument passed as CFI_desc_t.
-  cxx_local_var: scalar
-  i_arg_decl:
-  - 'character(len=*), intent({f_intent}) :: {i_var}'
-  i_arg_names:
-  - '{i_var}'
-  iface_header:
-  - ISO_Fortran_binding.h
-  intent: in
-  name: f_in_string_*_cfi
-  owner: library
-f_in_string_scalar:
+f_in_string:
   c_arg_decl:
   - char *{c_var}
   i_arg_decl:
@@ -8907,9 +8613,163 @@ f_in_string_scalar:
     iso_c_binding:
     - C_CHAR
   intent: in
-  name: f_in_string_scalar
+  name: f_in_string
   owner: library
-f_in_string_scalar_buf:
+f_in_string&:
+  c_pre_call:
+  - '{c_const}std::string {cxx_var}({c_var});'
+  cxx_local_var: scalar
+  intent: in
+  name: f_in_string&
+  owner: library
+f_in_string&_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_len_trim
+  c_pre_call:
+  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  c_temps:
+  - len
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: f_in_string&_buf
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+f_in_string&_cfi:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper:
+  - char_len_trim
+  c_local:
+  - trim
+  c_pre_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
+  c_temps:
+  - cfi
+  comments:
+  - Make the argument a CFI_desc_t.
+  - Local character argument passed as CFI_desc_t.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: in
+  name: f_in_string&_cfi
+  owner: library
+f_in_string*:
+  c_pre_call:
+  - '{c_const}std::string {cxx_var}({c_var});'
+  cxx_local_var: scalar
+  intent: in
+  name: f_in_string*
+  owner: library
+f_in_string*_buf:
+  c_arg_decl:
+  - char *{c_var}
+  - int {c_var_len}
+  c_helper:
+  - char_len_trim
+  c_pre_call:
+  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  c_temps:
+  - len
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_need_wrapper: true
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_temps:
+  - len
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_INT
+  intent: in
+  name: f_in_string*_buf
+  notes:
+  - Do not use arg_decl here since it does not understand +len(30) on functions.
+  - Used with function which pass in character argument.
+  - Used with function which return a char *.
+  - C wrapper will fill argument.
+  owner: library
+f_in_string*_cfi:
+  c_arg_decl:
+  - CFI_cdesc_t *{c_var_cfi}
+  c_helper:
+  - char_len_trim
+  c_local:
+  - trim
+  c_pre_call:
+  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
+  - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
+  c_temps:
+  - cfi
+  comments:
+  - Make the argument a CFI_desc_t.
+  - Local character argument passed as CFI_desc_t.
+  cxx_local_var: scalar
+  i_arg_decl:
+  - 'character(len=*), intent({f_intent}) :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  iface_header:
+  - ISO_Fortran_binding.h
+  intent: in
+  name: f_in_string*_cfi
+  owner: library
+f_in_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -8953,14 +8813,14 @@ f_in_string_scalar_buf:
     - C_CHAR
     - C_INT
   intent: in
-  name: f_in_string_scalar_buf
+  name: f_in_string_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_in_string_scalar_cfi:
+f_in_string_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -8984,34 +8844,34 @@ f_in_string_scalar_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: in
-  name: f_in_string_scalar_cfi
+  name: f_in_string_cfi
   owner: library
-f_in_struct_&:
+f_in_struct:
   intent: in
-  name: f_in_struct_&
+  name: f_in_struct
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_in_struct_*:
+f_in_struct&:
   intent: in
-  name: f_in_struct_*
+  name: f_in_struct&
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_in_struct_scalar:
+f_in_struct*:
   intent: in
-  name: f_in_struct_scalar
+  name: f_in_struct*
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_in_unknown_scalar:
+f_in_unknown:
   intent: in
-  name: f_in_unknown_scalar
+  name: f_in_unknown
   owner: library
-f_in_vector_&_buf_targ_native_*:
+f_in_vector<native*>&_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_len}
@@ -9050,11 +8910,11 @@ f_in_vector_&_buf_targ_native_*:
     - '{f_kind}'
     - C_SIZE_T
   intent: in
-  name: f_in_vector_&_buf_targ_native_*
+  name: f_in_vector<native*>&_buf
   notes:
   - Specialize for std::vector<native *>
   owner: library
-f_in_vector_&_buf_targ_native_scalar:
+f_in_vector<native>&_buf:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -9085,9 +8945,75 @@ f_in_vector_&_buf_targ_native_scalar:
     - '{f_kind}'
     - C_SIZE_T
   intent: in
-  name: f_in_vector_&_buf_targ_native_scalar
+  name: f_in_vector<native>&_buf
   owner: library
-f_in_vector_&_buf_targ_string_scalar:
+f_in_vector<native>*_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by value to C.
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_need_wrapper: true
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: in
+  name: f_in_vector<native>*_buf
+  owner: library
+f_in_vector<native>_buf:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  c_pre_call:
+  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by value to C.
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_need_wrapper: true
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: in
+  name: f_in_vector<native>_buf
+  owner: library
+f_in_vector<string>&_buf:
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -9142,202 +9068,140 @@ f_in_vector_&_buf_targ_string_scalar:
     - C_SIZE_T
     - C_INT
   intent: in
-  name: f_in_vector_&_buf_targ_string_scalar
+  name: f_in_vector<string>&_buf
+  owner: library
+f_in_vector<string>*_buf:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_helper:
+  - char_len_trim
+  c_local:
+  - i
+  - n
+  - s
+  c_pre_call:
+  - std::vector<{cxx_T}> {cxx_var};
+  - '{{+'
+  - '{c_const}char * {c_local_s} = {c_var};'
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+    \ {c_var_len})));"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  c_temps:
+  - size
+  - len
+  comments:
+  - Pass argument, size and len to C.
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_arg_decl:
+  - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
+  intent: in
+  name: f_in_vector<string>*_buf
+  owner: library
+f_in_vector<string>_buf:
+  c_arg_decl:
+  - const char *{c_var}
+  - size_t {c_var_size}
+  - int {c_var_len}
+  c_helper:
+  - char_len_trim
+  c_local:
+  - i
+  - n
+  - s
+  c_pre_call:
+  - std::vector<{cxx_T}> {cxx_var};
+  - '{{+'
+  - '{c_const}char * {c_local_s} = {c_var};'
+  - std::vector<{cxx_T}>::size_type
+  - +{c_local_i} = 0,
+  - '{c_local_n} = {c_var_size};'
+  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
+  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+    \ {c_var_len})));"
+  - '{c_local_s} += {c_var_len};'
+  - -}}
+  - -}}
+  c_temps:
+  - size
+  - len
+  comments:
+  - Pass argument, size and len to C.
+  cxx_local_var: scalar
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - len({f_var}, kind=C_INT)
+  f_arg_decl:
+  - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_INT
+  f_need_wrapper: true
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_len}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+    - C_SIZE_T
+    - C_INT
+  intent: in
+  name: f_in_vector<string>_buf
   owner: library
 f_in_vector_&_cdesc_targ_native_scalar:
   intent: in
   name: f_in_vector_&_cdesc_targ_native_scalar
   owner: library
-f_in_vector_*_buf_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by value to C.
-  cxx_local_var: scalar
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  f_arg_decl:
-  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-  f_need_wrapper: true
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
+f_in_void:
   intent: in
-  name: f_in_vector_*_buf_targ_native_scalar
+  name: f_in_void
   owner: library
-f_in_vector_*_buf_targ_string_scalar:
-  c_arg_decl:
-  - const char *{c_var}
-  - size_t {c_var_size}
-  - int {c_var_len}
-  c_helper:
-  - char_len_trim
-  c_local:
-  - i
-  - n
-  - s
-  c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
-  - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
-  - std::vector<{cxx_T}>::size_type
-  - +{c_local_i} = 0,
-  - '{c_local_n} = {c_var_size};'
-  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
-    \ {c_var_len})));"
-  - '{c_local_s} += {c_var_len};'
-  - -}}
-  - -}}
-  c_temps:
-  - size
-  - len
-  comments:
-  - Pass argument, size and len to C.
-  cxx_local_var: scalar
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - len({f_var}, kind=C_INT)
-  f_arg_decl:
-  - 'character(len=*), intent(IN) :: {f_var}(:)'
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_INT
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_SIZE_T
-    - C_INT
-  intent: in
-  name: f_in_vector_*_buf_targ_string_scalar
-  owner: library
-f_in_vector_scalar_buf_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by value to C.
-  cxx_local_var: scalar
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  f_arg_decl:
-  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-  f_need_wrapper: true
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  intent: in
-  name: f_in_vector_scalar_buf_targ_native_scalar
-  owner: library
-f_in_vector_scalar_buf_targ_string_scalar:
-  c_arg_decl:
-  - const char *{c_var}
-  - size_t {c_var_size}
-  - int {c_var_len}
-  c_helper:
-  - char_len_trim
-  c_local:
-  - i
-  - n
-  - s
-  c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
-  - '{{+'
-  - '{c_const}char * {c_local_s} = {c_var};'
-  - std::vector<{cxx_T}>::size_type
-  - +{c_local_i} = 0,
-  - '{c_local_n} = {c_var_size};'
-  - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
-    \ {c_var_len})));"
-  - '{c_local_s} += {c_var_len};'
-  - -}}
-  - -}}
-  c_temps:
-  - size
-  - len
-  comments:
-  - Pass argument, size and len to C.
-  cxx_local_var: scalar
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - len({f_var}, kind=C_INT)
-  f_arg_decl:
-  - 'character(len=*), intent(IN) :: {f_var}(:)'
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_INT
-  f_need_wrapper: true
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  - 'integer(C_INT), intent(IN), value :: {i_var_len}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  - '{i_var_len}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-    - C_SIZE_T
-    - C_INT
-  intent: in
-  name: f_in_vector_scalar_buf_targ_string_scalar
-  owner: library
-f_in_void_*:
+f_in_void*:
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: f_in_void_*
+  name: f_in_void*
   owner: library
-f_in_void_**:
+f_in_void**:
   c_arg_decl:
   - void **{c_var}
   f_arg_decl:
@@ -9353,11 +9217,11 @@ f_in_void_**:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: f_in_void_**
+  name: f_in_void**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-f_in_void_**_cfi:
+f_in_void**_cfi:
   c_arg_decl:
   - void **{c_var}
   f_arg_decl:
@@ -9373,11 +9237,11 @@ f_in_void_**_cfi:
     iso_c_binding:
     - C_PTR
   intent: in
-  name: f_in_void_**_cfi
+  name: f_in_void**_cfi
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-f_in_void_*_cdesc:
+f_in_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -9416,13 +9280,9 @@ f_in_void_*_cdesc:
   i_import:
   - '{F_array_type}'
   intent: in
-  name: f_in_void_*_cdesc
+  name: f_in_void*_cdesc
   owner: library
-f_in_void_scalar:
-  intent: in
-  name: f_in_void_scalar
-  owner: library
-f_inout_bool_*:
+f_inout_bool*:
   f_arg_call:
   - '{f_var_cxx}'
   f_declare:
@@ -9434,13 +9294,13 @@ f_inout_bool_*:
   f_temps:
   - cxx
   intent: inout
-  name: f_inout_bool_*
+  name: f_inout_bool*
   owner: library
-f_inout_char_*:
+f_inout_char*:
   intent: inout
-  name: f_inout_char_*
+  name: f_inout_char*
   owner: library
-f_inout_char_*_buf:
+f_inout_char*_buf:
   c_arg_call:
   - '{c_var_str}'
   c_arg_decl:
@@ -9484,18 +9344,18 @@ f_inout_char_*_buf:
     - C_CHAR
     - C_INT
   intent: inout
-  name: f_inout_char_*_buf
+  name: f_inout_char*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_inout_char_*_capi:
+f_inout_char*_capi:
   intent: inout
-  name: f_inout_char_*_capi
+  name: f_inout_char*_capi
   owner: library
-f_inout_char_*_cfi:
+f_inout_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -9522,22 +9382,22 @@ f_inout_char_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
-  name: f_inout_char_*_cfi
+  name: f_inout_char*_cfi
   owner: library
-f_inout_enum_*:
+f_inout_enum*:
   c_post_call:
   - '*{c_var} = static_cast<{c_type}>({cxx_var});'
   c_pre_call:
   - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
   cxx_local_var: scalar
   intent: inout
-  name: f_inout_enum_*
+  name: f_inout_enum*
   owner: library
-f_inout_native_&:
+f_inout_native&:
   intent: inout
-  name: f_inout_native_&
+  name: f_inout_native&
   owner: library
-f_inout_native_&_hidden:
+f_inout_native&_hidden:
   c_arg_call:
   - '{cxx_var}'
   c_pre_call:
@@ -9545,13 +9405,13 @@ f_inout_native_&_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: inout
-  name: f_inout_native_&_hidden
+  name: f_inout_native&_hidden
   owner: library
-f_inout_native_*:
+f_inout_native*:
   intent: inout
-  name: f_inout_native_*
+  name: f_inout_native*
   owner: library
-f_inout_native_*_cdesc:
+f_inout_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -9590,9 +9450,9 @@ f_inout_native_*_cdesc:
   i_import:
   - '{F_array_type}'
   intent: inout
-  name: f_inout_native_*_cdesc
+  name: f_inout_native*_cdesc
   owner: library
-f_inout_native_*_cfi:
+f_inout_native*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_pre_call:
@@ -9613,9 +9473,9 @@ f_inout_native_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
-  name: f_inout_native_*_cfi
+  name: f_inout_native*_cfi
   owner: library
-f_inout_native_*_hidden:
+f_inout_native*_hidden:
   c_arg_call:
   - '&{cxx_var}'
   c_pre_call:
@@ -9623,9 +9483,9 @@ f_inout_native_*_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: inout
-  name: f_inout_native_*_hidden
+  name: f_inout_native*_hidden
   owner: library
-f_inout_shadow_&:
+f_inout_shadow&:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
@@ -9646,9 +9506,9 @@ f_inout_shadow_&:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: inout
-  name: f_inout_shadow_&
+  name: f_inout_shadow&
   owner: library
-f_inout_shadow_*:
+f_inout_shadow*:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
@@ -9669,9 +9529,9 @@ f_inout_shadow_*:
     '{f_type_module}':
     - '{f_capsule_data_type}'
   intent: inout
-  name: f_inout_shadow_*
+  name: f_inout_shadow*
   owner: library
-f_inout_string_&:
+f_inout_string&:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -9695,11 +9555,11 @@ f_inout_string_&:
   impl_header:
   - <cstring>
   intent: inout
-  name: f_inout_string_&
+  name: f_inout_string&
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   owner: library
-f_inout_string_&_buf:
+f_inout_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -9739,14 +9599,14 @@ f_inout_string_&_buf:
     - C_CHAR
     - C_INT
   intent: inout
-  name: f_inout_string_&_buf
+  name: f_inout_string&_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_inout_string_&_cfi:
+f_inout_string&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -9774,9 +9634,9 @@ f_inout_string_&_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
-  name: f_inout_string_&_cfi
+  name: f_inout_string&_cfi
   owner: library
-f_inout_string_*:
+f_inout_string*:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -9800,11 +9660,11 @@ f_inout_string_*:
   impl_header:
   - <cstring>
   intent: inout
-  name: f_inout_string_*
+  name: f_inout_string*
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   owner: library
-f_inout_string_*_buf:
+f_inout_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -9844,14 +9704,14 @@ f_inout_string_*_buf:
     - C_CHAR
     - C_INT
   intent: inout
-  name: f_inout_string_*_buf
+  name: f_inout_string*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_inout_string_*_cfi:
+f_inout_string*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -9879,23 +9739,93 @@ f_inout_string_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: inout
-  name: f_inout_string_*_cfi
+  name: f_inout_string*_cfi
   owner: library
-f_inout_struct_&:
+f_inout_struct&:
   intent: inout
-  name: f_inout_struct_&
+  name: f_inout_struct&
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_inout_struct_*:
+f_inout_struct*:
   intent: inout
-  name: f_inout_struct_*
+  name: f_inout_struct*
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
+f_inout_vector<native>&_cdesc:
+  c_arg_decl:
+  - '{cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
+  - type_defines
+  - copy_array
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
+    \ + {c_var_size});"
+  c_temps:
+  - size
+  - cdesc
+  comments:
+  - Pass argument and size to C.
+  - Pass array_type to C which will fill it in.
+  - Pass argument and size to C.
+  - Pass array_type to C which will fill it in.
+  - Fill cdesc with vector information,
+  - ' Return address and size of vector data.'
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - array_context
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_LOC
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  i_module:
+    iso_c_binding:
+    - '{f_kind}'
+    - C_SIZE_T
+  intent: inout
+  name: f_inout_vector<native>&_cdesc
+  owner: library
+f_inout_vector<native>&_cdesc_allocatable:
   c_arg_decl:
   - '{cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -9965,77 +9895,7 @@ f_inout_vector_&_cdesc_allocatable_targ_native_scalar:
     - '{f_kind}'
     - C_SIZE_T
   intent: inout
-  name: f_inout_vector_&_cdesc_allocatable_targ_native_scalar
-  owner: library
-f_inout_vector_&_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  - type_defines
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
-  c_temps:
-  - size
-  - cdesc
-  comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - array_context
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_LOC
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module:
-    iso_c_binding:
-    - '{f_kind}'
-    - C_SIZE_T
-  intent: inout
-  name: f_inout_vector_&_cdesc_targ_native_scalar
+  name: f_inout_vector<native>&_cdesc_allocatable
   owner: library
 f_inout_vector_buf_targ_string_scalar:
   c_arg_decl:
@@ -10107,7 +9967,7 @@ f_inout_vector_buf_targ_string_scalar:
   intent: inout
   name: f_inout_vector_buf_targ_string_scalar
   owner: library
-f_inout_void_**:
+f_inout_void**:
   c_arg_decl:
   - void **{c_var}
   f_arg_decl:
@@ -10123,11 +9983,11 @@ f_inout_void_**:
     iso_c_binding:
     - C_PTR
   intent: inout
-  name: f_inout_void_**
+  name: f_inout_void**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-f_inout_void_*_cdesc:
+f_inout_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -10166,7 +10026,7 @@ f_inout_void_*_cdesc:
   i_import:
   - '{F_array_type}'
   intent: inout
-  name: f_inout_void_*_cdesc
+  name: f_inout_void*_cdesc
   owner: library
 f_mixin_arg_capsule:
   c_arg_decl:
@@ -10844,7 +10704,59 @@ f_mixin_use_capsule:
   intent: mixin
   name: f_mixin_use_capsule
   owner: library
-f_out_bool_*:
+f_out_&_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - copy_array
+  - type_defines
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  c_temps:
+  - cdesc
+  comments:
+  - copy into user's existing array.
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_LOC
+  f_need_wrapper: true
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: f_out_&_cdesc
+  notes:
+  - cxx_var is always a pointer to a vector.
+  owner: library
+f_out_bool*:
   f_arg_call:
   - '{f_var_cxx}'
   f_declare:
@@ -10854,13 +10766,13 @@ f_out_bool_*:
   f_temps:
   - cxx
   intent: out
-  name: f_out_bool_*
+  name: f_out_bool*
   owner: library
-f_out_char_*:
+f_out_char*:
   intent: out
-  name: f_out_char_*
+  name: f_out_char*
   owner: library
-f_out_char_*_buf:
+f_out_char*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -10896,18 +10808,18 @@ f_out_char_*_buf:
     - C_CHAR
     - C_INT
   intent: out
-  name: f_out_char_*_buf
+  name: f_out_char*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_out_char_*_capi:
+f_out_char*_capi:
   intent: out
-  name: f_out_char_*_capi
+  name: f_out_char*_capi
   owner: library
-f_out_char_*_cfi:
+f_out_char*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -10929,22 +10841,22 @@ f_out_char_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_char_*_cfi
+  name: f_out_char*_cfi
   owner: library
-f_out_enum_*:
+f_out_enum*:
   c_post_call:
   - '*{c_var} = static_cast<{c_type}>({cxx_var});'
   c_pre_call:
   - '{cxx_type} {cxx_var};'
   cxx_local_var: scalar
   intent: out
-  name: f_out_enum_*
+  name: f_out_enum*
   owner: library
-f_out_native_&:
+f_out_native&:
   intent: out
-  name: f_out_native_&
+  name: f_out_native&
   owner: library
-f_out_native_&_hidden:
+f_out_native&_hidden:
   c_arg_call:
   - '{cxx_var}'
   c_pre_call:
@@ -10952,15 +10864,15 @@ f_out_native_&_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: out
-  name: f_out_native_&_hidden
+  name: f_out_native&_hidden
   owner: library
-f_out_native_*:
+f_out_native*:
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
   intent: out
-  name: f_out_native_*
+  name: f_out_native*
   owner: library
-f_out_native_*&_cdesc:
+f_out_native*&_cdesc:
   c_arg_call:
   - '{cxx_var}'
   c_arg_decl:
@@ -11004,9 +10916,9 @@ f_out_native_*&_cdesc:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_native_*&_cdesc
+  name: f_out_native*&_cdesc
   owner: library
-f_out_native_*&_cdesc_pointer:
+f_out_native*&_cdesc_pointer:
   c_arg_call:
   - '{cxx_var}'
   c_arg_decl:
@@ -11050,13 +10962,13 @@ f_out_native_*&_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_native_*&_cdesc_pointer
+  name: f_out_native*&_cdesc_pointer
   owner: library
-f_out_native_***:
+f_out_native***:
   intent: out
-  name: f_out_native_***
+  name: f_out_native***
   owner: library
-f_out_native_**_cdesc_allocatable:
+f_out_native**_cdesc_allocatable:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -11121,13 +11033,13 @@ f_out_native_**_cdesc_allocatable:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: out
-  name: f_out_native_**_cdesc_allocatable
+  name: f_out_native**_cdesc_allocatable
   notes:
   - deref(allocatable)
   - A C function with a 'int **' argument associates it
   - with a Fortran pointer.
   owner: library
-f_out_native_**_cdesc_pointer:
+f_out_native**_cdesc_pointer:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -11171,13 +11083,13 @@ f_out_native_**_cdesc_pointer:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_native_**_cdesc_pointer
+  name: f_out_native**_cdesc_pointer
   notes:
   - deref(pointer)
   - A C function with a 'int **' argument associates it
   - with a Fortran pointer.
   owner: library
-f_out_native_**_cfi_allocatable:
+f_out_native**_cfi_allocatable:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -11209,9 +11121,9 @@ f_out_native_**_cfi_allocatable:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_native_**_cfi_allocatable
+  name: f_out_native**_cfi_allocatable
   owner: library
-f_out_native_**_cfi_pointer:
+f_out_native**_cfi_pointer:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -11251,20 +11163,20 @@ f_out_native_**_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_native_**_cfi_pointer
+  name: f_out_native**_cfi_pointer
   owner: library
-f_out_native_**_raw:
+f_out_native**_raw:
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
   intent: out
-  name: f_out_native_**_raw
+  name: f_out_native**_raw
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   owner: library
-f_out_native_*_cdesc:
+f_out_native*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -11303,13 +11215,13 @@ f_out_native_*_cdesc:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_native_*_cdesc
+  name: f_out_native*_cdesc
   owner: library
-f_out_native_*_cfi_allocatable:
+f_out_native*_cfi_allocatable:
   intent: out
-  name: f_out_native_*_cfi_allocatable
+  name: f_out_native*_cfi_allocatable
   owner: library
-f_out_native_*_hidden:
+f_out_native*_hidden:
   c_arg_call:
   - '&{cxx_var}'
   c_pre_call:
@@ -11317,9 +11229,9 @@ f_out_native_*_hidden:
   comments:
   - Declare a local variable and pass to C.
   intent: out
-  name: f_out_native_*_hidden
+  name: f_out_native*_hidden
   owner: library
-f_out_string_&:
+f_out_string&:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -11328,9 +11240,9 @@ f_out_string_&:
   impl_header:
   - <cstring>
   intent: out
-  name: f_out_string_&
+  name: f_out_string&
   owner: library
-f_out_string_&_buf:
+f_out_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -11369,14 +11281,14 @@ f_out_string_&_buf:
     - C_CHAR
     - C_INT
   intent: out
-  name: f_out_string_&_buf
+  name: f_out_string&_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_out_string_&_cfi:
+f_out_string&_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -11400,9 +11312,9 @@ f_out_string_&_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_string_&_cfi
+  name: f_out_string&_cfi
   owner: library
-f_out_string_*:
+f_out_string*:
   c_post_call:
   - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
   c_pre_call:
@@ -11411,9 +11323,9 @@ f_out_string_*:
   impl_header:
   - <cstring>
   intent: out
-  name: f_out_string_*
+  name: f_out_string*
   owner: library
-f_out_string_**_cdesc_allocatable:
+f_out_string**_cdesc_allocatable:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -11482,13 +11394,13 @@ f_out_string_**_cdesc_allocatable:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: out
-  name: f_out_string_**_cdesc_allocatable
+  name: f_out_string**_cdesc_allocatable
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
   - C++ array. Allocate in fortran, fill from C.
   - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   owner: library
-f_out_string_**_cdesc_copy:
+f_out_string**_cdesc_copy:
   c_arg_call:
   - '&{cxx_var}'
   c_arg_decl:
@@ -11532,13 +11444,13 @@ f_out_string_**_cdesc_copy:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_string_**_cdesc_copy
+  name: f_out_string**_cdesc_copy
   notes:
   - Pass a cdesc down to describe the memory and a capsule to hold the
   - C++ array. Copy into Fortran argument.
   - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   owner: library
-f_out_string_**_cfi_allocatable:
+f_out_string**_cfi_allocatable:
   c_arg_call:
   - '&{c_var_cxx}'
   c_arg_decl:
@@ -11559,12 +11471,12 @@ f_out_string_**_cfi_allocatable:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_string_**_cfi_allocatable
+  name: f_out_string**_cfi_allocatable
   notes:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
   owner: library
-f_out_string_**_cfi_copy:
+f_out_string**_cfi_copy:
   c_arg_call:
   - '&{c_var_cxx}'
   c_arg_decl:
@@ -11585,18 +11497,18 @@ f_out_string_**_cfi_copy:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_string_**_cfi_copy
+  name: f_out_string**_cfi_copy
   owner: library
-f_out_string_**_copy:
+f_out_string**_copy:
   intent: out
-  name: f_out_string_**_copy
+  name: f_out_string**_copy
   notes:
   - std::string **arg+intent(out)+dimension(size)
   - Returning a pointer to a string*. However, this needs additional
   - mapping for the C interface.  Fortran calls the +api(cdesc) variant.
   notimplemented: true
   owner: library
-f_out_string_*_buf:
+f_out_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -11635,14 +11547,14 @@ f_out_string_*_buf:
     - C_CHAR
     - C_INT
   intent: out
-  name: f_out_string_*_buf
+  name: f_out_string*_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_out_string_*_cfi:
+f_out_string*_cfi:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
@@ -11666,23 +11578,75 @@ f_out_string_*_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   intent: out
-  name: f_out_string_*_cfi
+  name: f_out_string*_cfi
   owner: library
-f_out_struct_&:
+f_out_struct&:
   intent: out
-  name: f_out_struct_&
+  name: f_out_struct&
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_out_struct_*:
+f_out_struct*:
   intent: out
-  name: f_out_struct_*
+  name: f_out_struct*
   notes:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   owner: library
-f_out_vector_&_cdesc_allocatable_targ_native_scalar:
+f_out_vector<native>&_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - copy_array
+  - type_defines
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  c_temps:
+  - cdesc
+  comments:
+  - copy into user's existing array.
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_LOC
+  f_need_wrapper: true
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: f_out_vector<native>&_cdesc
+  notes:
+  - cxx_var is always a pointer to a vector.
+  owner: library
+f_out_vector<native>&_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -11732,11 +11696,163 @@ f_out_vector_&_cdesc_allocatable_targ_native_scalar:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_vector_&_cdesc_allocatable_targ_native_scalar
+  name: f_out_vector<native>&_cdesc_allocatable
   notes:
   - Copy into allocated array.
   owner: library
-f_out_vector_&_cdesc_allocatable_targ_string_scalar:
+f_out_vector<native>*_cdesc:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - copy_array
+  - type_defines
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  c_temps:
+  - cdesc
+  comments:
+  - copy into user's existing array.
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+    - C_LOC
+  f_need_wrapper: true
+  f_post_call:
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: f_out_vector<native>*_cdesc
+  notes:
+  - cxx_var is always a pointer to a vector.
+  owner: library
+f_out_vector<native>*_cdesc_allocatable:
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - copy_array
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  c_temps:
+  - cdesc
+  comments:
+  - Pass cdesc as argument to C wrapper.
+  - Fill cdesc with vector information,
+  - ' Return address and size of vector data.'
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - copy_array
+  f_module:
+    iso_c_binding:
+    - C_LOC
+    - C_SIZE_T
+  f_need_wrapper: true
+  f_post_call:
+  - allocate({f_var}({f_var_cdesc}%size))
+  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: f_out_vector<native>*_cdesc_allocatable
+  notes:
+  - Copy into allocated array.
+  owner: library
+f_out_vector<string>&_cdesc:
+  c_arg_call:
+  - '{cxx_var}'
+  c_arg_decl:
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - vector_string_out
+  c_post_call:
+  - "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
+  c_pre_call:
+  - '{c_const}std::vector<std::string> {cxx_var};'
+  c_temps:
+  - cdesc
+  comments:
+  - Collect information about a string argument.
+  - Pass cdesc as argument to C wrapper.
+  f_arg_call:
+  - '{f_var_cdesc}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_declare:
+  - 'type({F_array_type}) :: {f_var_cdesc}'
+  f_helper:
+  - type_defines
+  - array_context
+  f_module:
+    iso_c_binding:
+    - C_LOC
+  f_need_wrapper: true
+  f_pre_call:
+  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
+  - '{f_var_cdesc}%type = SH_TYPE_CHAR'
+  - '{f_var_cdesc}%elem_len = len({f_var})'
+  - '{f_var_cdesc}%size = size({f_var})'
+  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
+  f_temps:
+  - cdesc
+  i_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  intent: out
+  name: f_out_vector<string>&_cdesc
+  owner: library
+f_out_vector<string>&_cdesc_allocatable:
   c_arg_call:
   - '*{cxx_var}'
   c_arg_decl:
@@ -11804,211 +11920,7 @@ f_out_vector_&_cdesc_allocatable_targ_string_scalar:
   - '{F_array_type}'
   - '{F_capsule_data_type}'
   intent: out
-  name: f_out_vector_&_cdesc_allocatable_targ_string_scalar
-  owner: library
-f_out_vector_&_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  - type_defines
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - copy into user's existing array.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_LOC
-  f_need_wrapper: true
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: f_out_vector_&_cdesc_targ_native_scalar
-  notes:
-  - cxx_var is always a pointer to a vector.
-  owner: library
-f_out_vector_&_cdesc_targ_string_scalar:
-  c_arg_call:
-  - '{cxx_var}'
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - vector_string_out
-  c_post_call:
-  - "{c_helper_vector_string_out}(\t{c_var_cdesc},\t {cxx_var});"
-  c_pre_call:
-  - '{c_const}std::vector<std::string> {cxx_var};'
-  c_temps:
-  - cdesc
-  comments:
-  - Collect information about a string argument.
-  - Pass cdesc as argument to C wrapper.
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - type_defines
-  - array_context
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  f_need_wrapper: true
-  f_pre_call:
-  - '{f_var_cdesc}%base_addr = C_LOC({f_var})'
-  - '{f_var_cdesc}%type = SH_TYPE_CHAR'
-  - '{f_var_cdesc}%elem_len = len({f_var})'
-  - '{f_var_cdesc}%size = size({f_var})'
-  - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: f_out_vector_&_cdesc_targ_string_scalar
-  owner: library
-f_out_vector_*_cdesc_allocatable_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - Pass cdesc as argument to C wrapper.
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_LOC
-    - C_SIZE_T
-  f_need_wrapper: true
-  f_post_call:
-  - allocate({f_var}({f_var_cdesc}%size))
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: f_out_vector_*_cdesc_allocatable_targ_native_scalar
-  notes:
-  - Copy into allocated array.
-  owner: library
-f_out_vector_*_cdesc_targ_native_scalar:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  - type_defines
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - copy into user's existing array.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_LOC
-  f_need_wrapper: true
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: f_out_vector_*_cdesc_targ_native_scalar
-  notes:
-  - cxx_var is always a pointer to a vector.
+  name: f_out_vector<string>&_cdesc_allocatable
   owner: library
 f_out_vector_buf_targ_string_scalar:
   c_arg_decl:
@@ -12069,11 +11981,11 @@ f_out_vector_buf_targ_string_scalar:
   intent: out
   name: f_out_vector_buf_targ_string_scalar
   owner: library
-f_out_void_*&:
+f_out_void*&:
   intent: out
-  name: f_out_void_*&
+  name: f_out_void*&
   owner: library
-f_out_void_**:
+f_out_void**:
   c_arg_decl:
   - void **{c_var}
   f_arg_decl:
@@ -12089,11 +12001,11 @@ f_out_void_**:
     iso_c_binding:
     - C_PTR
   intent: out
-  name: f_out_void_**
+  name: f_out_void**
   notes:
   - Treat as an assumed length array in Fortran interface.
   owner: library
-f_out_void_*_cdesc:
+f_out_void*_cdesc:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -12132,7 +12044,7 @@ f_out_void_*_cdesc:
   i_import:
   - '{F_array_type}'
   intent: out
-  name: f_out_void_*_cdesc
+  name: f_out_void*_cdesc
   owner: library
 f_setter:
   c_call:
@@ -12144,7 +12056,7 @@ f_setter:
   intent: setter
   name: f_setter
   owner: library
-f_setter_bool_scalar:
+f_setter_bool:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
@@ -12156,25 +12068,25 @@ f_setter_bool_scalar:
   f_temps:
   - cxx
   intent: setter
-  name: f_setter_bool_scalar
+  name: f_setter_bool
   owner: library
-f_setter_native_*:
+f_setter_native:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
   - '{fc_var}'
   intent: setter
-  name: f_setter_native_*
+  name: f_setter_native
   owner: library
-f_setter_native_scalar:
+f_setter_native*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
   - '{fc_var}'
   intent: setter
-  name: f_setter_native_scalar
+  name: f_setter_native*
   owner: library
-f_setter_string_scalar_buf:
+f_setter_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
@@ -12211,14 +12123,14 @@ f_setter_string_scalar_buf:
     - C_CHAR
     - C_INT
   intent: setter
-  name: f_setter_string_scalar_buf
+  name: f_setter_string_buf
   notes:
   - Do not use arg_decl here since it does not understand +len(30) on functions.
   - Used with function which pass in character argument.
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-f_setter_struct_*:
+f_setter_struct*:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
@@ -12226,9 +12138,9 @@ f_setter_struct_*:
   i_arg_names:
   - '{i_var}'
   intent: setter
-  name: f_setter_struct_*
+  name: f_setter_struct*
   owner: library
-f_setter_struct_**:
+f_setter_struct**:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
@@ -12239,9 +12151,9 @@ f_setter_struct_**:
     iso_c_binding:
     - C_PTR
   intent: setter
-  name: f_setter_struct_**
+  name: f_setter_struct**
   owner: library
-f_setter_struct_*_pointer:
+f_setter_struct*_pointer:
   c_post_call:
   - '{CXX_this}->{field_name} = val;'
   i_arg_decl:
@@ -12249,7 +12161,7 @@ f_setter_struct_*_pointer:
   i_arg_names:
   - '{i_var}'
   intent: setter
-  name: f_setter_struct_*_pointer
+  name: f_setter_struct*_pointer
   owner: library
 f_shared_function_string_*_cfi_pointer:
   c_arg_decl:

@@ -59,7 +59,7 @@ int CXX_Class1_check_length_0(CXX_Class1 * self)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  int length=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int CXX_Class1_check_length_1(CXX_Class1 * self, int length)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -75,7 +75,7 @@ int CXX_Class1_check_length_1(CXX_Class1 * self, int length)
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void CXX_Class1_declare_0(CXX_Class1 * self, int flag)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -89,10 +89,10 @@ void CXX_Class1_declare_0(CXX_Class1 * self, int flag)
 // Statement: c_function_shadow_*_this
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  LengthType length=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void CXX_Class1_declare_1(CXX_Class1 * self, int flag,
     CXX_LengthType length)
 {

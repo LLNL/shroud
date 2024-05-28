@@ -95,7 +95,7 @@ module typedefs_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Alias arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start typefunc
     interface
         function typefunc(arg) &
@@ -114,7 +114,7 @@ module typedefs_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Alias arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start typefunc_wrap
     interface
         function typefunc_wrap(arg) &
@@ -133,7 +133,7 @@ module typedefs_mod
     ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  iColor in
-    ! Statement: c_in_enum_scalar
+    ! Statement: c_in_enum
     ! start c_return_enum
     interface
         function c_return_enum(in) &
@@ -152,7 +152,7 @@ module typedefs_mod
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  iColor in
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start return_enum
     interface
         function return_enum(in) &
@@ -171,7 +171,7 @@ module typedefs_mod
     ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  TypeID in
-    ! Statement: c_in_enum_scalar
+    ! Statement: c_in_enum
     ! start c_return_type_id
     interface
         function c_return_type_id(in) &
@@ -190,7 +190,7 @@ module typedefs_mod
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  TypeID in
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start return_type_id
     interface
         function return_type_id(in) &
@@ -209,7 +209,7 @@ module typedefs_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! start typestruct
     interface
         subroutine typestruct(arg1) &
@@ -226,7 +226,7 @@ module typedefs_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start return_bytes_for_index_type
     interface
         function return_bytes_for_index_type(arg) &
@@ -246,10 +246,10 @@ module typedefs_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int ndims
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  const IndexType * shape +intent(in)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! start return_shape_size
     interface
         function return_shape_size(ndims, shape) &
@@ -270,7 +270,7 @@ module typedefs_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType2 arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start return_bytes_for_index_type2
     interface
         function return_bytes_for_index_type2(arg) &
@@ -290,10 +290,10 @@ module typedefs_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int ndims
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  const IndexType2 * shape +intent(in)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! start return_shape_size2
     interface
         function return_shape_size2(ndims, shape) &
@@ -321,7 +321,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Alias arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start typefunc
     function typefunc(arg) &
             result(SHT_rv)
@@ -341,7 +341,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Alias arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Use typedef with a C wrapper
     !!
@@ -367,7 +367,7 @@ contains
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  iColor in
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start return_enum
     function return_enum(in) &
             result(SHT_rv)
@@ -387,7 +387,7 @@ contains
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  TypeID in
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start return_type_id
     function return_type_id(in) &
             result(SHT_rv)
@@ -407,7 +407,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Struct1Rename * arg1
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! start typestruct
     subroutine typestruct(arg1)
         type(struct1_rename), intent(INOUT) :: arg1
@@ -425,7 +425,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start return_bytes_for_index_type
     function return_bytes_for_index_type(arg) &
             result(SHT_rv)
@@ -446,10 +446,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int ndims
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  const IndexType * shape +intent(in)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! start return_shape_size
     function return_shape_size(ndims, shape) &
             result(SHT_rv)
@@ -471,7 +471,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  IndexType2 arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start return_bytes_for_index_type2
     function return_bytes_for_index_type2(arg) &
             result(SHT_rv)
@@ -492,10 +492,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int ndims
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  const IndexType2 * shape +intent(in)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! start return_shape_size2
     function return_shape_size2(ndims, shape) &
             result(SHT_rv)

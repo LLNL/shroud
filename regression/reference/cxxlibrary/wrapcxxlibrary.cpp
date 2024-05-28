@@ -57,7 +57,7 @@ bool CXX_defaultPtrIsNULL_0(void)
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
-// Statement: c_in_native_*
+// Statement: c_in_native*
 bool CXX_defaultPtrIsNULL_1(double * data)
 {
     // splicer begin function.defaultPtrIsNULL_1
@@ -72,13 +72,13 @@ bool CXX_defaultPtrIsNULL_1(double * data)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int in1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 {
     // splicer begin function.defaultArgsInOut_0
@@ -91,16 +91,16 @@ void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int in1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 // ----------------------------------------
 // Argument:  bool flag=false
-// Statement: c_in_bool_scalar
+// Statement: c_in_bool
 void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 {
     // splicer begin function.defaultArgsInOut_1
@@ -117,7 +117,7 @@ void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag)
 // Statement: c_function_string_&
 // ----------------------------------------
 // Argument:  long idx
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 const char * CXX_getGroupName(long idx)
 {
     // splicer begin function.getGroupName
@@ -137,7 +137,7 @@ const char * CXX_getGroupName(long idx)
 // Statement: f_function_string_&_buf_copy
 // ----------------------------------------
 // Argument:  int32_t idx
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
@@ -162,7 +162,7 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 // Statement: f_function_string_&_buf_copy
 // ----------------------------------------
 // Argument:  int64_t idx
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len)
 {
@@ -183,7 +183,7 @@ void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
 // Statement: f_getter_struct_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  nested * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 void CXX_nested_get_parent(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)
 {
@@ -202,10 +202,10 @@ void CXX_nested_get_parent(CXX_nested * SH_this,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  nested * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  nested * val +intent(setter)
-// Statement: f_setter_struct_*
+// Statement: f_setter_struct*
 void CXX_nested_set_parent(CXX_nested * SH_this, CXX_nested * val)
 {
     // splicer begin function.nested_set_parent
@@ -220,7 +220,7 @@ void CXX_nested_set_parent(CXX_nested * SH_this, CXX_nested * val)
 // Statement: f_getter_struct_**_cdesc_raw
 // ----------------------------------------
 // Argument:  nested * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 void CXX_nested_get_child(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)
 {
@@ -240,10 +240,10 @@ void CXX_nested_get_child(CXX_nested * SH_this,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  nested * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  nested * * val +intent(setter)+rank(1)
-// Statement: f_setter_struct_**
+// Statement: f_setter_struct**
 void CXX_nested_set_child(CXX_nested * SH_this, CXX_nested * * val)
 {
     // splicer begin function.nested_set_child
@@ -258,7 +258,7 @@ void CXX_nested_set_child(CXX_nested * SH_this, CXX_nested * * val)
 // Statement: f_getter_struct_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  nested * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 void CXX_nested_get_array(CXX_nested * SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc)
 {
@@ -278,10 +278,10 @@ void CXX_nested_get_array(CXX_nested * SH_this,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  nested * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  nested * val +intent(setter)+rank(1)
-// Statement: f_setter_struct_*
+// Statement: f_setter_struct*
 void CXX_nested_set_array(CXX_nested * SH_this, CXX_nested * val)
 {
     // splicer begin function.nested_set_array

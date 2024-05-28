@@ -69,7 +69,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  char * * names +intent(in)
-// Statement: f_in_char_**_buf
+// Statement: f_in_char**_buf
 // start POI_acceptCharArrayIn_bufferify
 int POI_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len)
@@ -89,7 +89,7 @@ int POI_acceptCharArrayIn_bufferify(const char *names,
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToScalar_bufferify
 void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 {
@@ -113,7 +113,7 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToFixedArray_bufferify
 void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
@@ -139,10 +139,10 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 // start POI_getPtrToDynamicArray_bufferify
 void POI_getPtrToDynamicArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -171,7 +171,7 @@ void POI_getPtrToDynamicArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToFuncArray_bufferify
 void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 {
@@ -193,7 +193,7 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToConstScalar_bufferify
 void POI_getPtrToConstScalar_bufferify(
     POI_SHROUD_array *SHT_nitems_cdesc)
@@ -215,7 +215,7 @@ void POI_getPtrToConstScalar_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToFixedConstArray_bufferify
 void POI_getPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -238,10 +238,10 @@ void POI_getPtrToFixedConstArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
-// Statement: f_out_native_**_cdesc_pointer
+// Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 // start POI_getPtrToDynamicConstArray_bufferify
 void POI_getPtrToDynamicConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc)
@@ -268,7 +268,7 @@ void POI_getPtrToDynamicConstArray_bufferify(
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
-// Statement: f_out_native_**_cdesc_allocatable
+// Statement: f_out_native**_cdesc_allocatable
 // start POI_getAllocToFixedArray_bufferify
 void POI_getAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc,

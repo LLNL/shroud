@@ -92,7 +92,7 @@ void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 // Statement: c_function_bool_scalar
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: c_in_string_&
+// Statement: c_in_string&
 bool STMT_nameIsValid(const char * name)
 {
     // splicer begin function.nameIsValid

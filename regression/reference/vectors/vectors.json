@@ -79,7 +79,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_in_vector<native>&_buf"
                         }
                     },
                     "f": {
@@ -95,7 +95,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_vector_&_buf_targ_native_scalar"
+                            "stmt": "f_in_vector<native>&_buf"
                         }
                     },
                     "share": {
@@ -193,7 +193,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "c_in_vector<native>&_buf"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -225,7 +225,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "f_in_vector<native>&_buf"
                         }
                     }
                 },
@@ -319,7 +319,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -335,7 +335,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -414,7 +414,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -450,7 +450,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc"
                         }
                     }
                 },
@@ -573,7 +573,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -590,7 +590,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -679,7 +679,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -715,7 +715,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc"
                         }
                     }
                 },
@@ -827,7 +827,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -844,7 +844,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -931,7 +931,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -967,7 +967,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc"
                         }
                     }
                 },
@@ -1062,7 +1062,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_malloc"
                         }
                     },
                     "f": {
@@ -1079,7 +1079,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -1158,7 +1158,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_malloc"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1195,7 +1195,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc_allocatable"
                         }
                     }
                 },
@@ -1293,7 +1293,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "c_inout_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt": "c_inout_vector<native>&_buf_malloc"
                         }
                     },
                     "f": {
@@ -1310,7 +1310,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt": "f_inout_vector<native>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -1389,7 +1389,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt_name": "c_inout_vector<native>&_buf_malloc"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1430,7 +1430,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt_name": "f_inout_vector<native>&_cdesc_allocatable"
                         }
                     }
                 },
@@ -1520,7 +1520,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "c_inout_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_inout_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -1536,7 +1536,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_inout_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -1613,7 +1613,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_inout_vector<native>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1653,7 +1653,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_inout_vector<native>&_cdesc"
                         }
                     }
                 },
@@ -1746,7 +1746,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -1762,7 +1762,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -1841,7 +1841,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1877,7 +1877,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc"
                         }
                     }
                 },
@@ -1977,14 +1977,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_vector_&_buf_targ_native_*"
+                            "stmt": "c_in_vector<native*>&_buf"
                         },
                         "num": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -2000,14 +2000,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_vector_&_buf_targ_native_*"
+                            "stmt": "f_in_vector<native*>&_buf"
                         },
                         "num": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2112,7 +2112,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_vector_&_buf_targ_native_*"
+                            "stmt_name": "c_in_vector<native*>&_buf"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2146,7 +2146,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg1)",
-                            "stmt_name": "f_in_vector_&_buf_targ_native_*"
+                            "stmt_name": "f_in_vector<native*>&_buf"
                         }
                     },
                     "num": {
@@ -2166,7 +2166,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2191,7 +2191,7 @@
                             "i_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -2278,7 +2278,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmt": "c_in_vector<string>&_buf"
                         }
                     },
                     "f": {
@@ -2294,7 +2294,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_vector_&_buf_targ_string_scalar"
+                            "stmt": "f_in_vector<string>&_buf"
                         }
                     },
                     "share": {
@@ -2397,7 +2397,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "c_in_vector<string>&_buf"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2438,7 +2438,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "f_in_vector<string>&_buf"
                         }
                     }
                 },
@@ -2533,7 +2533,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt": "c_out_vector<string>&_buf_copy"
                         }
                     },
                     "f": {
@@ -2549,7 +2549,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
+                            "stmt": "f_out_vector<string>&_cdesc"
                         }
                     },
                     "share": {
@@ -2624,7 +2624,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt_name": "c_out_vector<string>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2660,7 +2660,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_string_scalar"
+                            "stmt_name": "f_out_vector<string>&_cdesc"
                         }
                     }
                 },
@@ -2755,7 +2755,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt": "c_out_vector<string>&_buf_copy"
                         }
                     },
                     "f": {
@@ -2772,7 +2772,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt": "f_out_vector<string>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -2847,7 +2847,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt_name": "c_out_vector<string>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2891,7 +2891,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable"
                         }
                     }
                 },
@@ -2987,7 +2987,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt": "c_out_vector<string>&_buf_copy"
                         }
                     },
                     "f": {
@@ -3004,7 +3004,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt": "f_out_vector<string>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -3081,7 +3081,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt_name": "c_out_vector<string>&_buf_copy"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3126,7 +3126,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable"
                         }
                     }
                 },
@@ -3286,7 +3286,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -3304,7 +3304,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3434,7 +3434,7 @@
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3459,7 +3459,7 @@
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -3539,14 +3539,14 @@
                                 "intent": "in",
                                 "rank": 2
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         },
                         "len": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -3561,14 +3561,14 @@
                                 "intent": "in",
                                 "rank": 2
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "len": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3670,7 +3670,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3699,7 +3699,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "len": {
@@ -3719,7 +3719,7 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3745,7 +3745,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(arg,2,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },

@@ -25,7 +25,7 @@ extern "C" {
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 int ENU_convert_to_int(enum ENU_Color in)
 {
     // splicer begin function.convert_to_int
@@ -40,7 +40,7 @@ int ENU_convert_to_int(enum ENU_Color in)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 int ENU_convert_to_int_bufferify(short in)
 {
     // splicer begin function.convert_to_int_bufferify
@@ -55,7 +55,7 @@ int ENU_convert_to_int_bufferify(short in)
 // Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 enum ENU_Color ENU_returnEnum(enum ENU_Color in)
 {
     // splicer begin function.returnEnum
@@ -71,7 +71,7 @@ enum ENU_Color ENU_returnEnum(enum ENU_Color in)
 // Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color in
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 short ENU_returnEnum_bufferify(short in)
 {
     // splicer begin function.returnEnum_bufferify
@@ -87,7 +87,7 @@ short ENU_returnEnum_bufferify(short in)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  enum Color * out +intent(out)
-// Statement: c_out_enum_*
+// Statement: c_out_enum*
 void ENU_returnEnumOutArg(enum ENU_Color * out)
 {
     // splicer begin function.returnEnumOutArg
@@ -102,7 +102,7 @@ void ENU_returnEnumOutArg(enum ENU_Color * out)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  enum Color * out +intent(out)
-// Statement: f_out_enum_*
+// Statement: f_out_enum*
 void ENU_returnEnumOutArg_bufferify(short * out)
 {
     // splicer begin function.returnEnumOutArg_bufferify
@@ -117,7 +117,7 @@ void ENU_returnEnumOutArg_bufferify(short * out)
 // Statement: c_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color * inout +intent(inout)
-// Statement: c_inout_enum_*
+// Statement: c_inout_enum*
 enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout)
 {
     // splicer begin function.returnEnumInOutArg
@@ -134,7 +134,7 @@ enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout)
 // Statement: f_function_enum_scalar
 // ----------------------------------------
 // Argument:  enum Color * inout +intent(inout)
-// Statement: f_inout_enum_*
+// Statement: f_inout_enum*
 short ENU_returnEnumInOutArg_bufferify(short * inout)
 {
     // splicer begin function.returnEnumInOutArg_bufferify

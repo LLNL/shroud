@@ -343,7 +343,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -358,7 +358,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "py": {
@@ -483,7 +483,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -508,7 +508,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -593,7 +593,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -608,7 +608,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -704,7 +704,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -729,7 +729,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -788,7 +788,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_enum_scalar"
+                            "stmt": "c_in_enum"
                         }
                     },
                     "f": {
@@ -803,7 +803,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_enum_scalar"
+                            "stmt": "f_in_enum"
                         }
                     },
                     "py": {
@@ -956,7 +956,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_enum_scalar"
+                            "stmt_name": "c_in_enum"
                         },
                         "fmtf": {
                             "c_abstract_decl": "TYP_iColor",
@@ -985,7 +985,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_enum_scalar"
+                            "stmt_name": "f_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "TYP_iColor",
@@ -1067,7 +1067,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_enum_scalar"
+                            "stmt": "c_in_enum"
                         }
                     },
                     "f": {
@@ -1082,7 +1082,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_enum_scalar"
+                            "stmt": "f_in_enum"
                         }
                     },
                     "py": {
@@ -1235,7 +1235,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_enum_scalar"
+                            "stmt_name": "c_in_enum"
                         },
                         "fmtf": {
                             "c_abstract_decl": "TYP_TypeID",
@@ -1264,7 +1264,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_enum_scalar"
+                            "stmt_name": "f_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "TYP_TypeID",
@@ -1350,7 +1350,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_struct_*"
+                            "stmt": "c_inout_struct*"
                         }
                     },
                     "f": {
@@ -1364,7 +1364,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         }
                     },
                     "py": {
@@ -1436,7 +1436,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "c_inout_struct_*"
+                            "stmt_name": "c_inout_struct*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1462,7 +1462,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_s_Struct1_array_descr",
@@ -1545,7 +1545,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -1560,7 +1560,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1656,7 +1656,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -1681,7 +1681,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1761,14 +1761,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "shape": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         }
                     },
                     "f": {
@@ -1783,14 +1783,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "shape": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         }
                     },
                     "share": {
@@ -1892,7 +1892,7 @@
                             "cxx_var": "ndims",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -1917,7 +1917,7 @@
                             "i_var": "ndims",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "shape": {
@@ -1937,7 +1937,7 @@
                             "cxx_var": "shape",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1966,7 +1966,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT32_T",
                             "size": "size(shape)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     }
                 },
@@ -2026,7 +2026,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -2041,7 +2041,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2137,7 +2137,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2162,7 +2162,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -2242,14 +2242,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "shape": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         }
                     },
                     "f": {
@@ -2264,14 +2264,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "shape": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         }
                     },
                     "share": {
@@ -2373,7 +2373,7 @@
                             "cxx_var": "ndims",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2398,7 +2398,7 @@
                             "i_var": "ndims",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "shape": {
@@ -2418,7 +2418,7 @@
                             "cxx_var": "shape",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2447,7 +2447,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT32_T",
                             "size": "size(shape)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     }
                 },

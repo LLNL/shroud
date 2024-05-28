@@ -89,7 +89,7 @@ static void ShroudCharFree(char *src)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
-// Statement: c_inout_char_*
+// Statement: c_inout_char*
 void TES_getName(char * name)
 {
     // splicer begin function.getName
@@ -102,7 +102,7 @@ void TES_getName(char * name)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
-// Statement: f_inout_char_*_buf
+// Statement: f_inout_char*_buf
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
     // splicer begin function.getName_bufferify
@@ -138,7 +138,7 @@ void c_name_special(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void YYY_TES_function3a_0(int i)
 {
     // splicer begin function.function3a_0
@@ -151,7 +151,7 @@ void YYY_TES_function3a_0(int i)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  long i
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void YYY_TES_function3a_1(long i)
 {
     // splicer begin function.function3a_1
@@ -164,7 +164,7 @@ void YYY_TES_function3a_1(long i)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::string & rv
-// Statement: c_in_string_&
+// Statement: c_in_string&
 int YYY_TES_function4(const char * rv)
 {
     // splicer begin function.function4
@@ -179,7 +179,7 @@ int YYY_TES_function4(const char * rv)
 // Statement: f_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::string & rv
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len)
 {
     // splicer begin function.function4_bufferify
@@ -207,10 +207,10 @@ void YYY_TES_fiveplus(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name
-// Statement: c_inout_string_&
+// Statement: c_inout_string&
 // ----------------------------------------
 // Argument:  int * value +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void TES_TestMultilineSplicer(char * name, int * value)
 {
     // splicer begin function.TestMultilineSplicer
@@ -227,10 +227,10 @@ void TES_TestMultilineSplicer(char * name, int * value)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & name
-// Statement: f_inout_string_&_buf
+// Statement: f_inout_string&_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
-// Statement: f_out_native_*
+// Statement: f_out_native*
 void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
     int * value)
 {
@@ -250,10 +250,10 @@ void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  long arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void c_name_instantiation1(int arg1, long arg2)
 {
     // splicer begin function.FunctionTU_0
@@ -271,10 +271,10 @@ void c_name_instantiation1(int arg1, long arg2)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  float arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TES_FunctionTU_instantiation2(float arg1, double arg2)
 {
     // splicer begin function.FunctionTU_instantiation2
@@ -303,7 +303,7 @@ int TES_UseImplWorker_instantiation3(void)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
-// Statement: c_in_shadow_*
+// Statement: c_in_shadow*
 int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
     // splicer begin function.Cstruct_as_class_sum
@@ -319,22 +319,22 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const char * rdbase
-// Statement: c_in_char_*
+// Statement: c_in_char*
 // ----------------------------------------
 // Argument:  const char * pkg
-// Statement: c_in_char_*
+// Statement: c_in_char*
 // ----------------------------------------
 // Argument:  const char * name
-// Statement: c_in_char_*
+// Statement: c_in_char*
 // ----------------------------------------
 // Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
-// Statement: c_in_void_scalar
+// Statement: c_in_void
 // ----------------------------------------
 // Argument:  void ( * afree)(double * arr +intent(inout))
-// Statement: c_in_void_scalar
+// Statement: c_in_void
 // ----------------------------------------
 // Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
-// Statement: c_in_void_scalar
+// Statement: c_in_void
 void TES_external_funcs(const char * rdbase, const char * pkg,
     const char * name, void ( * alloc)(double * arr, int * err),
     void ( * afree)(double * arr), void ( * assoc)(double * arr,
@@ -350,7 +350,7 @@ void TES_external_funcs(const char * rdbase, const char * pkg,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TES_bindtest(int arg1)
 {
     // splicer begin function.bindtest

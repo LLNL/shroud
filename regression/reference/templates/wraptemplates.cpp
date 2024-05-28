@@ -47,10 +47,10 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  long arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TEM_FunctionTU_0(int arg1, long arg2)
 {
     // splicer begin function.FunctionTU_0
@@ -68,10 +68,10 @@ void TEM_FunctionTU_0(int arg1, long arg2)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  float arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TEM_FunctionTU_1(float arg1, double arg2)
 {
     // splicer begin function.FunctionTU_1

@@ -62,7 +62,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         }
                     },
                     "share": {
@@ -120,7 +120,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     }
                 },
@@ -184,7 +184,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "share": {
@@ -242,7 +242,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     }
                 },
@@ -306,7 +306,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -364,7 +364,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -461,19 +461,19 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "arginout": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         },
                         "argout": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -542,7 +542,7 @@
                             "i_var": "argin",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "arginout": {
@@ -569,7 +569,7 @@
                             "i_var": "arginout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     },
                     "argout": {
@@ -596,7 +596,7 @@
                             "i_var": "argout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -698,7 +698,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "out": {
                             "meta": {
@@ -715,14 +715,14 @@
                                 "dimension": "size(in)",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "sizein": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -807,7 +807,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "out": {
@@ -838,7 +838,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "sizein": {
@@ -866,7 +866,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(in,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -968,7 +968,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "out": {
                             "meta": {
@@ -985,14 +985,14 @@
                                 "dimension": "size(in)",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "sizein": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1077,7 +1077,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(in)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "out": {
@@ -1108,7 +1108,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "sizein": {
@@ -1136,7 +1136,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(in,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1223,7 +1223,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "values": {
                             "meta": {
@@ -1235,7 +1235,7 @@
                                 "dimension": "3",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -1304,7 +1304,7 @@
                             "i_var": "nvalues",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "values": {
@@ -1335,7 +1335,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -1429,7 +1429,7 @@
                                 "dimension": "3",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "arg2": {
                             "meta": {
@@ -1441,7 +1441,7 @@
                                 "dimension": "3",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -1520,7 +1520,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "arg2": {
@@ -1551,7 +1551,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -1627,7 +1627,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "values": {
                             "meta": {
@@ -1639,7 +1639,7 @@
                                 "dimension": "nvar",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -1709,7 +1709,7 @@
                             "i_var": "nvar",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "values": {
@@ -1740,7 +1740,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -1839,20 +1839,20 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "result": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "values": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         }
                     },
                     "share": {
@@ -1923,7 +1923,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(values,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "result": {
@@ -1950,7 +1950,7 @@
                             "i_var": "result",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "values": {
@@ -1981,7 +1981,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(values)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     }
                 },
@@ -2055,7 +2055,7 @@
                                 "dimension": "3",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -2123,7 +2123,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -2205,14 +2205,14 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         },
                         "sizein": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2281,7 +2281,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(array)",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     },
                     "sizein": {
@@ -2309,7 +2309,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(array,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -2387,14 +2387,14 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         },
                         "x_length": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2463,7 +2463,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(x)",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     },
                     "x_length": {
@@ -2491,7 +2491,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(x,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -2570,14 +2570,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "len": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2668,7 +2668,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arr)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "len": {
@@ -2696,7 +2696,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(arr,kind=C_SIZE_T)",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -2774,7 +2774,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_char_**_buf"
+                            "stmt": "f_in_char**_buf"
                         }
                     },
                     "share": {
@@ -2866,7 +2866,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(names)",
-                            "stmt_name": "f_in_char_**_buf"
+                            "stmt_name": "f_in_char**_buf"
                         }
                     }
                 },
@@ -2923,7 +2923,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2982,7 +2982,7 @@
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -3149,7 +3149,7 @@
                                 "deref": "pointer",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -3213,7 +3213,7 @@
                             "i_var_cdesc": "SHT_nitems_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     }
                 },
@@ -3300,7 +3300,7 @@
                                 "dimension": "10",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -3378,7 +3378,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     }
                 },
@@ -3484,14 +3484,14 @@
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         },
                         "ncount": {
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "share": {
@@ -3574,7 +3574,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "ncount": {
@@ -3600,7 +3600,7 @@
                             "i_var": "ncount",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     }
                 },
@@ -3688,7 +3688,7 @@
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -3767,7 +3767,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     }
                 },
@@ -3847,7 +3847,7 @@
                                 "deref": "pointer",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -3911,7 +3911,7 @@
                             "i_var_cdesc": "SHT_nitems_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     }
                 },
@@ -3996,7 +3996,7 @@
                                 "dimension": "10",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -4074,7 +4074,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     }
                 },
@@ -4178,14 +4178,14 @@
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_pointer"
+                            "stmt": "f_out_native**_cdesc_pointer"
                         },
                         "ncount": {
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "share": {
@@ -4268,7 +4268,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_pointer"
+                            "stmt_name": "f_out_native**_cdesc_pointer"
                         }
                     },
                     "ncount": {
@@ -4294,7 +4294,7 @@
                             "i_var": "ncount",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     }
                 },
@@ -4366,7 +4366,7 @@
                                 "deref": "raw",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_raw"
+                            "stmt": "f_out_native**_raw"
                         }
                     },
                     "share": {
@@ -4424,7 +4424,7 @@
                             "i_var": "nitems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_raw"
+                            "stmt_name": "f_out_native**_raw"
                         }
                     }
                 },
@@ -4499,7 +4499,7 @@
                                 "deref": "raw",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_raw"
+                            "stmt": "f_out_native**_raw"
                         }
                     },
                     "share": {
@@ -4557,7 +4557,7 @@
                             "i_var": "nitems",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_raw"
+                            "stmt_name": "f_out_native**_raw"
                         }
                     }
                 },
@@ -4629,7 +4629,7 @@
                                 "deref": "raw",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_raw"
+                            "stmt": "f_out_native**_raw"
                         }
                     },
                     "share": {
@@ -4687,7 +4687,7 @@
                             "i_var": "count",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_raw"
+                            "stmt_name": "f_out_native**_raw"
                         }
                     }
                 },
@@ -4762,7 +4762,7 @@
                                 "deref": "raw",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_raw"
+                            "stmt": "f_out_native**_raw"
                         }
                     },
                     "share": {
@@ -4820,7 +4820,7 @@
                             "i_var": "count",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_raw"
+                            "stmt_name": "f_out_native**_raw"
                         }
                     }
                 },
@@ -4895,7 +4895,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_***"
+                            "stmt": "f_out_native***"
                         }
                     },
                     "share": {
@@ -4953,7 +4953,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_***"
+                            "stmt_name": "f_out_native***"
                         }
                     }
                 },
@@ -5025,7 +5025,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_**"
+                            "stmt": "f_in_native**"
                         }
                     },
                     "share": {
@@ -5105,7 +5105,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_**"
+                            "stmt_name": "f_in_native**"
                         }
                     }
                 },
@@ -5185,7 +5185,7 @@
                                 "dimension": "10,20",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         }
                     },
                     "share": {
@@ -5256,7 +5256,7 @@
                             "idtor": "0",
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     }
                 },
@@ -5349,7 +5349,7 @@
                                 "dimension": "10",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_**_cdesc_allocatable"
+                            "stmt": "f_out_native**_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -5434,7 +5434,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_**_cdesc_allocatable"
+                            "stmt_name": "f_out_native**_cdesc_allocatable"
                         }
                     }
                 },
@@ -5496,7 +5496,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -5576,7 +5576,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -5640,7 +5640,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -5720,7 +5720,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -5787,7 +5787,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_void_**"
+                            "stmt": "f_out_void**"
                         }
                     },
                     "share": {
@@ -5844,7 +5844,7 @@
                             "i_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_out_void_**"
+                            "stmt_name": "f_out_void**"
                         }
                     }
                 },
@@ -5914,7 +5914,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_void_**"
+                            "stmt": "f_inout_void**"
                         }
                     },
                     "share": {
@@ -5971,7 +5971,7 @@
                             "i_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_inout_void_**"
+                            "stmt_name": "f_inout_void**"
                         }
                     }
                 },
@@ -6042,7 +6042,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_void_**"
+                            "stmt": "f_in_void**"
                         }
                     },
                     "share": {
@@ -6126,7 +6126,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "size(addr)",
-                            "stmt_name": "f_in_void_**"
+                            "stmt_name": "f_in_void**"
                         }
                     }
                 },
@@ -6842,7 +6842,7 @@
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         }
                     },
                     "share": {
@@ -6922,7 +6922,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         }
                     }
                 },

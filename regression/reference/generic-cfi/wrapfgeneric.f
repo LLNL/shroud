@@ -91,7 +91,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_update_as_float(arg) &
                 bind(C, name="UpdateAsFloat")
@@ -106,7 +106,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_update_as_double(arg) &
                 bind(C, name="UpdateAsDouble")
@@ -134,7 +134,7 @@ module generic_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  double arg
-    ! Statement: c_in_native_scalar
+    ! Statement: c_in_native
     ! start c_generic_real
     interface
         subroutine c_generic_real(arg) &
@@ -151,10 +151,10 @@ module generic_mod
     ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1
-    ! Statement: c_in_native_scalar
+    ! Statement: c_in_native
     ! ----------------------------------------
     ! Argument:  long arg2
-    ! Statement: c_in_native_scalar
+    ! Statement: c_in_native
     interface
         function c_generic_real2(arg1, arg2) &
                 result(SHT_rv) &
@@ -172,10 +172,10 @@ module generic_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         function sum_values(values, nvalues) &
                 result(SHT_rv) &
@@ -194,16 +194,16 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * to
-    ! Statement: f_inout_native_*
+    ! Statement: f_inout_native*
     ! ----------------------------------------
     ! Argument:  int nto
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_assign_values_scalar_bufferify(from, nfrom, to, &
                 nto) &
@@ -223,16 +223,16 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
-    ! Statement: f_inout_native_*_cfi
+    ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_assign_values_broadcast_CFI(from, nfrom, to, nto) &
                 bind(C, name="GEN_AssignValues_broadcast_CFI")
@@ -251,16 +251,16 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nfrom
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
-    ! Statement: f_inout_native_*_cfi
+    ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_assign_values_copy_CFI(from, nfrom, to, nto) &
                 bind(C, name="GEN_AssignValues_copy_CFI")
@@ -280,13 +280,13 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_save_pointer_float1d_CFI(addr, type, size) &
                 bind(C, name="GEN_SavePointer_float1d_CFI")
@@ -306,13 +306,13 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_save_pointer_float2d_CFI(addr, type, size) &
                 bind(C, name="GEN_SavePointer_float2d_CFI")
@@ -331,13 +331,13 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_save_pointer2_float1d_CFI(addr, type, size) &
                 bind(C, name="GEN_SavePointer2_float1d_CFI")
@@ -355,13 +355,13 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  size_t size +implied(size(addr))
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine c_save_pointer2_float2d_CFI(addr, type, size) &
                 bind(C, name="GEN_SavePointer2_float2d_CFI")
@@ -378,13 +378,13 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Statement: f_out_void_**
+    ! Statement: f_out_void**
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     ! ----------------------------------------
     ! Argument:  size_t * size +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     interface
         subroutine get_pointer(addr, type, size) &
                 bind(C, name="GetPointer")
@@ -403,7 +403,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
-    ! Statement: f_out_native_**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer
     interface
         subroutine c_get_pointer_as_pointer_float1d_CFI(addr) &
                 bind(C, name="GEN_GetPointerAsPointer_float1d_CFI")
@@ -421,7 +421,7 @@ module generic_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
-    ! Statement: f_out_native_**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer
     interface
         subroutine c_get_pointer_as_pointer_float2d_CFI(addr) &
                 bind(C, name="GEN_GetPointerAsPointer_float2d_CFI")
@@ -453,10 +453,10 @@ module generic_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
-    ! Statement: f_inout_shadow_*
+    ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  int inew
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         function c_update_struct_as_class_int_bufferify(arg, inew) &
                 result(SHT_rv) &
@@ -476,10 +476,10 @@ module generic_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
-    ! Statement: f_inout_shadow_*
+    ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  long inew
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         function c_update_struct_as_class_long_bufferify(arg, inew) &
                 result(SHT_rv) &
@@ -580,7 +580,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine update_as_float(arg)
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), value, intent(IN) :: arg
@@ -594,7 +594,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine update_as_double(arg)
         use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), value, intent(IN) :: arg
@@ -624,7 +624,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! Argument:  double arg
     !>
     !! \brief Single argument generic
@@ -646,7 +646,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  double arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Single argument generic
     !!
@@ -667,11 +667,11 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! Argument:  long arg1
     ! ----------------------------------------
     ! Argument:  int arg2
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! Argument:  long arg2
     !>
     !! \brief Two argument generic
@@ -696,10 +696,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  long arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  long arg2
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Two argument generic
     !!
@@ -724,10 +724,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief scalar or array argument using assumed rank
     !!
@@ -750,16 +750,16 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * to
-    ! Statement: f_inout_native_*
+    ! Statement: f_inout_native*
     ! ----------------------------------------
     ! Argument:  int nto
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! Broadcast if nfrom == 1
     !! Copy if nfrom == nto
@@ -781,16 +781,16 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
-    ! Statement: f_inout_native_*_cfi
+    ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! Broadcast if nfrom == 1
     !! Copy if nfrom == nto
@@ -812,16 +812,16 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nfrom
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int * to +rank(1)
-    ! Statement: f_inout_native_*_cfi
+    ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! Broadcast if nfrom == 1
     !! Copy if nfrom == nto
@@ -844,7 +844,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:)
@@ -865,7 +865,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:,:)
@@ -885,7 +885,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(1)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:)
@@ -904,7 +904,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +intent(in)+rank(2)
-    ! Statement: f_in_native_*_cfi
+    ! Statement: f_in_native*_cfi
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:,:)
@@ -924,13 +924,13 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Statement: f_out_void_**
+    ! Statement: f_out_void**
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     ! ----------------------------------------
     ! Argument:  size_t * size +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     subroutine get_pointer(addr, type, size)
         use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
         type(C_PTR), intent(OUT) :: addr
@@ -949,7 +949,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
-    ! Statement: f_out_native_**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
@@ -966,7 +966,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
-    ! Statement: f_out_native_**_cfi_pointer
+    ! Statement: f_out_native**_cfi_pointer
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
@@ -995,10 +995,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
-    ! Statement: f_inout_shadow_*
+    ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  int inew
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function update_struct_as_class_int(arg, inew) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_LONG
@@ -1017,10 +1017,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  StructAsClass * arg
-    ! Statement: f_inout_shadow_*
+    ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  long inew
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function update_struct_as_class_long(arg, inew) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG

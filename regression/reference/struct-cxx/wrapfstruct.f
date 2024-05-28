@@ -182,7 +182,7 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         ! start c_cstruct_as_class_set_x1
         subroutine c_cstruct_as_class_set_x1(self, val) &
                 bind(C, name="STR_Cstruct_as_class_set_x1")
@@ -216,7 +216,7 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         ! start c_cstruct_as_class_set_y1
         subroutine c_cstruct_as_class_set_y1(self, val) &
                 bind(C, name="STR_Cstruct_as_class_set_y1")
@@ -250,7 +250,7 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         ! start c_cstruct_as_subclass_set_x1
         subroutine c_cstruct_as_subclass_set_x1(self, val) &
                 bind(C, name="STR_Cstruct_as_subclass_set_x1")
@@ -284,7 +284,7 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         ! start c_cstruct_as_subclass_set_y1
         subroutine c_cstruct_as_subclass_set_y1(self, val) &
                 bind(C, name="STR_Cstruct_as_subclass_set_y1")
@@ -318,7 +318,7 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  int val +intent(setter)
-        ! Statement: f_setter_native_scalar
+        ! Statement: f_setter_native
         ! start c_cstruct_as_subclass_set_z1
         subroutine c_cstruct_as_subclass_set_z1(self, val) &
                 bind(C, name="STR_Cstruct_as_subclass_set_z1")
@@ -335,7 +335,7 @@ module struct_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 arg
-        ! Statement: f_in_struct_scalar
+        ! Statement: f_in_struct
         ! start pass_struct_by_value
         function pass_struct_by_value(arg) &
                 result(SHT_rv) &
@@ -353,7 +353,7 @@ module struct_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         ! start pass_struct1
         function pass_struct1(arg) &
                 result(SHT_rv) &
@@ -371,10 +371,10 @@ module struct_mod
         ! Statement: c_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
-        ! Statement: c_in_struct_*
+        ! Statement: c_in_struct*
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-        ! Statement: c_out_char_*
+        ! Statement: c_out_char*
         function c_pass_struct2(s1, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_passStruct2")
@@ -391,10 +391,10 @@ module struct_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-        ! Statement: f_out_char_*_buf
+        ! Statement: f_out_char*_buf
         function c_pass_struct2_bufferify(s1, outbuf, SHT_outbuf_len) &
                 result(SHT_rv) &
                 bind(C, name="STR_passStruct2_bufferify")
@@ -412,7 +412,7 @@ module struct_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         function accept_struct_in_ptr(arg) &
                 result(SHT_rv) &
                 bind(C, name="STR_acceptStructInPtr")
@@ -428,13 +428,13 @@ module struct_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(out)
-        ! Statement: f_out_struct_*
+        ! Statement: f_out_struct*
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  double d
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine accept_struct_out_ptr(arg, i, d) &
                 bind(C, name="STR_acceptStructOutPtr")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -450,7 +450,7 @@ module struct_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 * arg +intent(inout)
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         subroutine accept_struct_in_out_ptr(arg) &
                 bind(C, name="STR_acceptStructInOutPtr")
             import :: cstruct1
@@ -463,10 +463,10 @@ module struct_mod
         ! Statement: f_function_struct_scalar
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  double d
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_return_struct_by_value(i, d, SHT_rv) &
                 bind(C, name="STR_returnStructByValue")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -482,10 +482,10 @@ module struct_mod
         ! Statement: c_function_struct_*
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  double d
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         function c_return_struct_ptr1(i, d) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr1")
@@ -501,10 +501,10 @@ module struct_mod
         ! Statement: f_function_struct_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  double d
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_return_struct_ptr1_bufferify(i, d, SHT_rv_cdesc) &
                 bind(C, name="STR_returnStructPtr1_bufferify")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -520,13 +520,13 @@ module struct_mod
         ! Statement: c_function_struct_*
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  double d
-        ! Statement: c_in_native_scalar
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-        ! Statement: c_out_char_*
+        ! Statement: c_out_char*
         function c_return_struct_ptr2(i, d, outbuf) &
                 result(SHT_rv) &
                 bind(C, name="STR_returnStructPtr2")
@@ -543,13 +543,13 @@ module struct_mod
         ! Statement: f_function_struct_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  double d
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-        ! Statement: f_out_char_*_buf
+        ! Statement: f_out_char*_buf
         subroutine c_return_struct_ptr2_bufferify(i, d, outbuf, &
                 SHT_outbuf_len, SHT_rv_cdesc) &
                 bind(C, name="STR_returnStructPtr2_bufferify")
@@ -625,10 +625,10 @@ module struct_mod
         ! Statement: f_function_shadow_*_capptr
         ! ----------------------------------------
         ! Argument:  int x
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int y
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function c_create_cstruct_as_class_args(x, y, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="STR_Create_Cstruct_as_class_args")
@@ -656,10 +656,10 @@ module struct_mod
         ! Statement: f_function_shadow_*_capsule
         ! ----------------------------------------
         ! Argument:  int x
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int y
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_return_cstruct_as_class_args(x, y, SHT_rv) &
                 bind(C, name="STR_Return_Cstruct_as_class_args")
             use iso_c_binding, only : C_INT
@@ -675,7 +675,7 @@ module struct_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
-        ! Statement: f_in_shadow_*
+        ! Statement: f_in_shadow*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
                 bind(C, name="STR_Cstruct_as_class_sum")
@@ -691,13 +691,13 @@ module struct_mod
         ! Statement: f_function_shadow_*_capptr
         ! ----------------------------------------
         ! Argument:  int x
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int y
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int z
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="STR_Create_Cstruct_as_subclass_args")
@@ -716,13 +716,13 @@ module struct_mod
         ! Statement: f_function_shadow_*_capsule
         ! ----------------------------------------
         ! Argument:  int x
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int y
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int z
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_return_cstruct_as_subclass_args(x, y, z, SHT_rv) &
                 bind(C, name="STR_Return_Cstruct_as_subclass_args")
             use iso_c_binding, only : C_INT
@@ -740,7 +740,7 @@ module struct_mod
         ! Statement: f_getter_native_*_pointer
         ! ----------------------------------------
         ! Argument:  Cstruct_ptr * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         function cstruct_ptr_get_const_dvalue(SH_this) &
                 result(SHT_rv) &
                 bind(C, name="STR_Cstruct_ptr_get_const_dvalue")
@@ -757,10 +757,10 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_ptr * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  const double * val +intent(setter)
-        ! Statement: f_setter_native_*
+        ! Statement: f_setter_native*
         subroutine cstruct_ptr_set_const_dvalue(SH_this, val) &
                 bind(C, name="STR_Cstruct_ptr_set_const_dvalue")
             use iso_c_binding, only : C_DOUBLE
@@ -776,7 +776,7 @@ module struct_mod
         ! Statement: f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         subroutine c_cstruct_list_get_ivalue(SH_this, SHT_rv_cdesc) &
                 bind(C, name="STR_Cstruct_list_get_ivalue")
             import :: STR_SHROUD_array, cstruct_list
@@ -791,10 +791,10 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  int * val +intent(setter)+rank(1)
-        ! Statement: f_setter_native_*
+        ! Statement: f_setter_native*
         subroutine cstruct_list_set_ivalue(SH_this, val) &
                 bind(C, name="STR_Cstruct_list_set_ivalue")
             use iso_c_binding, only : C_INT
@@ -810,7 +810,7 @@ module struct_mod
         ! Statement: f_getter_native_*_cdesc_pointer
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         subroutine c_cstruct_list_get_dvalue(SH_this, SHT_rv_cdesc) &
                 bind(C, name="STR_Cstruct_list_get_dvalue")
             import :: STR_SHROUD_array, cstruct_list
@@ -825,10 +825,10 @@ module struct_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  Cstruct_list * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  double * val +intent(setter)+rank(1)
-        ! Statement: f_setter_native_*
+        ! Statement: f_setter_native*
         subroutine cstruct_list_set_dvalue(SH_this, val) &
                 bind(C, name="STR_Cstruct_list_set_dvalue")
             use iso_c_binding, only : C_DOUBLE
@@ -877,7 +877,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start cstruct_as_class_set_x1
     subroutine cstruct_as_class_set_x1(obj, val)
         use iso_c_binding, only : C_INT
@@ -911,7 +911,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start cstruct_as_class_set_y1
     subroutine cstruct_as_class_set_y1(obj, val)
         use iso_c_binding, only : C_INT
@@ -948,7 +948,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start cstruct_as_subclass_set_x1
     subroutine cstruct_as_subclass_set_x1(obj, val)
         use iso_c_binding, only : C_INT
@@ -982,7 +982,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start cstruct_as_subclass_set_y1
     subroutine cstruct_as_subclass_set_y1(obj, val)
         use iso_c_binding, only : C_INT
@@ -1016,7 +1016,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start cstruct_as_subclass_set_z1
     subroutine cstruct_as_subclass_set_z1(obj, val)
         use iso_c_binding, only : C_INT
@@ -1038,7 +1038,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 arg
-    ! Statement: f_in_struct_scalar
+    ! Statement: f_in_struct
     ! start pass_struct_by_value
     function pass_struct_by_value(arg) &
             result(SHT_rv)
@@ -1059,7 +1059,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     ! start pass_struct1
     function pass_struct1(arg) &
             result(SHT_rv)
@@ -1078,10 +1078,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * s1
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     !>
     !! Pass name argument which will build a bufferify function.
     !<
@@ -1105,7 +1105,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function accept_struct_in_ptr(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1124,13 +1124,13 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
-    ! Statement: f_out_struct_*
+    ! Statement: f_out_struct*
     ! ----------------------------------------
     ! Argument:  int i
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  double d
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! Pass name argument which will build a bufferify function.
     !<
@@ -1152,7 +1152,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     subroutine accept_struct_in_out_ptr(arg)
         type(cstruct1), intent(INOUT) :: arg
         ! splicer begin function.accept_struct_in_out_ptr
@@ -1166,10 +1166,10 @@ contains
     ! Statement: f_function_struct_scalar
     ! ----------------------------------------
     ! Argument:  int i
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  double d
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function return_struct_by_value(i, d) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1186,10 +1186,10 @@ contains
     ! Statement: f_function_struct_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  int i
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  double d
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Return a pointer to a struct
     !!
@@ -1213,13 +1213,13 @@ contains
     ! Statement: f_function_struct_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  int i
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  double d
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     !>
     !! \brief Return a pointer to a struct
     !!
@@ -1295,10 +1295,10 @@ contains
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  int x
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int y
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function create_cstruct_as_class_args(x, y) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -1327,10 +1327,10 @@ contains
     ! Statement: f_function_shadow_*_capsule
     ! ----------------------------------------
     ! Argument:  int x
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int y
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function return_cstruct_as_class_args(x, y) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1347,7 +1347,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1363,13 +1363,13 @@ contains
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  int x
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int y
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int z
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function create_cstruct_as_subclass_args(x, y, z) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
@@ -1389,13 +1389,13 @@ contains
     ! Statement: f_function_shadow_*_capsule
     ! ----------------------------------------
     ! Argument:  int x
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int y
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int z
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function return_cstruct_as_subclass_args(x, y, z) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1416,7 +1416,7 @@ contains
     ! Statement: f_getter_native_*_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function cstruct_ptr_get_const_dvalue(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE
@@ -1436,10 +1436,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  Cstruct_ptr * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  const double * val +intent(setter)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     subroutine cstruct_ptr_set_const_dvalue(SH_this, val)
         use iso_c_binding, only : C_DOUBLE
         type(cstruct_ptr), intent(INOUT) :: SH_this
@@ -1456,7 +1456,7 @@ contains
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function cstruct_list_get_ivalue(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1478,10 +1478,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     subroutine cstruct_list_set_ivalue(SH_this, val)
         use iso_c_binding, only : C_INT
         type(cstruct_list), intent(INOUT) :: SH_this
@@ -1498,7 +1498,7 @@ contains
     ! Statement: f_getter_native_*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function cstruct_list_get_dvalue(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -1520,10 +1520,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  Cstruct_list * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  double * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     subroutine cstruct_list_set_dvalue(SH_this, val)
         use iso_c_binding, only : C_DOUBLE
         type(cstruct_list), intent(INOUT) :: SH_this

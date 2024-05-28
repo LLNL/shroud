@@ -163,6 +163,25 @@ def lookup_c_statements(arg):
             specialize.append(spointer)
     return specialize
 
+def find_abstract_declarator(arg):
+    """Look up the c_statements for an argument.
+    If the argument type is a template, look for
+    template specialization.
+
+    Args:
+        arg -
+    """
+    decl = [arg.typemap.sgroup]
+    if arg.template_arguments:
+        decl.append("<")
+        for targ in arg.template_arguments:
+            decl.append(targ.declarator.typemap.sgroup)
+            decl.append(targ.declarator.get_abstract_declarator())
+            decl.append(",")
+        decl[-1] = ">"
+    decl.append(arg.declarator.get_abstract_declarator())
+    return "".join(decl)
+
 def template_stmts(ast):
     """Create statement labels for template arguments.
     targ_int_scalar
@@ -242,33 +261,23 @@ def lookup_f_function_stmt(node):
 
 def lookup_c_arg_stmt(node, arg):
     """Lookup the C statements for an argument."""
-    declarator = arg.declarator
-    c_attrs = declarator.attrs
     c_meta = get_arg_bind(node, arg, "c").meta
-    arg_typemap = arg.typemap  # XXX - look up vector
-    sgroup = arg_typemap.sgroup
-    specialize = lookup_c_statements(arg)
-    spointer = declarator.get_indirect_stmt()
+    abstract = find_abstract_declarator(arg)
     sapi = c_meta["api"]
-    stmts = ["c", c_meta["intent"], sgroup, spointer,
-             sapi, c_meta["deref"], c_meta["owner"]] + specialize
+    stmts = ["c", c_meta["intent"], abstract,
+             sapi, c_meta["deref"], c_meta["owner"]]
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
 def lookup_f_arg_stmt(node, arg):
     """Lookup the Fortran statements for an argument."""
-    declarator = arg.declarator
-    c_attrs = declarator.attrs
     c_meta = get_arg_bind(node, arg, "f").meta
-    arg_typemap = arg.typemap  # XXX - look up vector
-    sgroup = arg_typemap.sgroup
-    specialize = lookup_c_statements(arg)
-    spointer = declarator.get_indirect_stmt()
+    abstract = find_abstract_declarator(arg)
     sapi = c_meta["api"]
     if c_meta["hidden"]:
         sapi = "hidden"
-    stmts = ["f", c_meta["intent"], sgroup, spointer,
-             sapi, c_meta["deref"], c_meta["owner"]] + specialize
+    stmts = ["f", c_meta["intent"], abstract,
+             sapi, c_meta["deref"], c_meta["owner"]]
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 

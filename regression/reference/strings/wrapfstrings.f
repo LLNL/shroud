@@ -95,7 +95,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char status
-    ! Statement: f_in_char_scalar
+    ! Statement: f_in_char
     interface
         subroutine pass_char(status) &
                 bind(C, name="STR_passChar")
@@ -110,7 +110,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char status
-    ! Statement: f_in_char_scalar
+    ! Statement: f_in_char
     interface
         subroutine c_pass_char_force(status) &
                 bind(C, name="STR_passCharForce")
@@ -137,10 +137,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
-    ! Statement: c_out_char_*
+    ! Statement: c_out_char*
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: c_in_char_*
+    ! Statement: c_in_char*
     ! start c_pass_char_ptr
     interface
         subroutine c_pass_char_ptr(dest, src) &
@@ -158,10 +158,10 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: f_in_char_*
+    ! Statement: f_in_char*
     ! start c_pass_char_ptr_bufferify
     interface
         subroutine c_pass_char_ptr_bufferify(dest, SHT_dest_len, src) &
@@ -180,7 +180,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
-    ! Statement: c_inout_char_*
+    ! Statement: c_inout_char*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
                 bind(C, name="STR_passCharPtrInOut")
@@ -195,7 +195,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
-    ! Statement: f_inout_char_*_buf
+    ! Statement: f_inout_char*_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
                 bind(C, name="STR_passCharPtrInOut_bufferify")
@@ -737,7 +737,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
-    ! Statement: c_in_string_&
+    ! Statement: c_in_string&
     interface
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_acceptStringConstReference")
@@ -752,7 +752,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
                 SHT_arg1_len) &
@@ -769,7 +769,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
-    ! Statement: c_out_string_&
+    ! Statement: c_out_string&
     interface
         subroutine c_accept_string_reference_out(arg1) &
                 bind(C, name="STR_acceptStringReferenceOut")
@@ -784,7 +784,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
-    ! Statement: f_out_string_&_buf
+    ! Statement: f_out_string&_buf
     interface
         subroutine c_accept_string_reference_out_bufferify(arg1, &
                 SHT_arg1_len) &
@@ -801,7 +801,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1
-    ! Statement: c_inout_string_&
+    ! Statement: c_inout_string&
     ! start c_accept_string_reference
     interface
         subroutine c_accept_string_reference(arg1) &
@@ -818,7 +818,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1
-    ! Statement: f_inout_string_&_buf
+    ! Statement: f_inout_string&_buf
     ! start c_accept_string_reference_bufferify
     interface
         subroutine c_accept_string_reference_bufferify(arg1, &
@@ -837,7 +837,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
-    ! Statement: c_in_string_*
+    ! Statement: c_in_string*
     interface
         subroutine c_accept_string_pointer_const(arg1) &
                 bind(C, name="STR_acceptStringPointerConst")
@@ -852,7 +852,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
-    ! Statement: f_in_string_*_buf
+    ! Statement: f_in_string*_buf
     interface
         subroutine c_accept_string_pointer_const_bufferify(arg1, &
                 SHT_arg1_len) &
@@ -869,7 +869,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
-    ! Statement: c_inout_string_*
+    ! Statement: c_inout_string*
     interface
         subroutine c_accept_string_pointer(arg1) &
                 bind(C, name="STR_acceptStringPointer")
@@ -884,7 +884,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
-    ! Statement: f_inout_string_*_buf
+    ! Statement: f_inout_string*_buf
     interface
         subroutine c_accept_string_pointer_bufferify(arg1, SHT_arg1_len) &
                 bind(C, name="STR_acceptStringPointer_bufferify")
@@ -900,7 +900,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Statement: c_out_string_*
+    ! Statement: c_out_string*
     interface
         subroutine c_fetch_string_pointer(arg1) &
                 bind(C, name="STR_fetchStringPointer")
@@ -915,7 +915,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Statement: f_out_string_*_buf
+    ! Statement: f_out_string*_buf
     interface
         subroutine c_fetch_string_pointer_bufferify(arg1, SHT_arg1_len) &
                 bind(C, name="STR_fetchStringPointer_bufferify")
@@ -931,10 +931,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
-    ! Statement: c_inout_string_*
+    ! Statement: c_inout_string*
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Statement: c_out_native_*
+    ! Statement: c_out_native*
     interface
         subroutine c_accept_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_acceptStringPointerLen")
@@ -950,10 +950,10 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
-    ! Statement: f_inout_string_*_buf
+    ! Statement: f_inout_string*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     interface
         subroutine c_accept_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
@@ -971,10 +971,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Statement: c_out_string_*
+    ! Statement: c_out_string*
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Statement: c_out_native_*
+    ! Statement: c_out_native*
     interface
         subroutine c_fetch_string_pointer_len(arg1, nlen) &
                 bind(C, name="STR_fetchStringPointerLen")
@@ -990,10 +990,10 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Statement: f_out_string_*_buf
+    ! Statement: f_out_string*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     interface
         subroutine c_fetch_string_pointer_len_bufferify(arg1, &
                 SHT_arg1_len, nlen) &
@@ -1011,7 +1011,7 @@ module strings_mod
     ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1
-    ! Statement: c_in_string_scalar
+    ! Statement: c_in_string
     interface
         function c_accept_string_instance(arg1) &
                 result(SHT_rv) &
@@ -1028,7 +1028,7 @@ module strings_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1
-    ! Statement: f_in_string_scalar_buf
+    ! Statement: f_in_string_buf
     interface
         function c_accept_string_instance_bufferify(arg1, SHT_arg1_len) &
                 result(SHT_rv) &
@@ -1048,10 +1048,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
-    ! Statement: c_out_string_**
+    ! Statement: c_out_string**
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
-    ! Statement: c_out_native_*
+    ! Statement: c_out_native*
     interface
         subroutine c_fetch_array_string_arg(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringArg")
@@ -1068,7 +1068,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
-    ! Statement: f_out_string_**_cdesc_copy
+    ! Statement: f_out_string**_cdesc_copy
     interface
         subroutine c_fetch_array_string_arg_bufferify(SHT_strs_cdesc) &
                 bind(C, name="STR_fetchArrayStringArg_bufferify")
@@ -1085,10 +1085,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
-    ! Statement: c_out_string_**
+    ! Statement: c_out_string**
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
-    ! Statement: c_out_native_*
+    ! Statement: c_out_native*
     interface
         subroutine c_fetch_array_string_alloc(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAlloc")
@@ -1105,7 +1105,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
-    ! Statement: f_out_string_**_cdesc_allocatable
+    ! Statement: f_out_string**_cdesc_allocatable
     interface
         subroutine c_fetch_array_string_alloc_bufferify(SHT_strs_cdesc, &
                 SHT_strs_capsule) &
@@ -1124,10 +1124,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
-    ! Statement: c_out_string_**
+    ! Statement: c_out_string**
     ! ----------------------------------------
     ! Argument:  int * nstrs +hidden+intent(out)
-    ! Statement: c_out_native_*
+    ! Statement: c_out_native*
     interface
         subroutine c_fetch_array_string_alloc_len(strs, nstrs) &
                 bind(C, name="STR_fetchArrayStringAllocLen")
@@ -1144,7 +1144,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
-    ! Statement: f_out_string_**_cdesc_allocatable
+    ! Statement: f_out_string**_cdesc_allocatable
     interface
         subroutine c_fetch_array_string_alloc_len_bufferify( &
                 SHT_strs_cdesc, SHT_strs_capsule) &
@@ -1161,7 +1161,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
-    ! Statement: f_in_char_*
+    ! Statement: f_in_char*
     interface
         subroutine c_explicit1(name) &
                 bind(C, name="STR_explicit1")
@@ -1176,7 +1176,7 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
-    ! Statement: c_out_char_*
+    ! Statement: c_out_char*
     interface
         subroutine c_explicit2(name) &
                 bind(C, name="STR_explicit2")
@@ -1191,7 +1191,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     interface
         subroutine c_explicit2_bufferify(name, SHT_name_len) &
                 bind(C, name="STR_explicit2_bufferify")
@@ -1207,7 +1207,7 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char status
-    ! Statement: f_in_char_scalar
+    ! Statement: f_in_char
     interface
         subroutine cpass_char(status) &
                 bind(C, name="CpassChar")
@@ -1234,10 +1234,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
-    ! Statement: c_out_char_*
+    ! Statement: c_out_char*
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
-    ! Statement: c_in_char_*
+    ! Statement: c_in_char*
     interface
         subroutine c_cpass_char_ptr(dest, src) &
                 bind(C, name="CpassCharPtr")
@@ -1253,10 +1253,10 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
-    ! Statement: f_in_char_*_buf
+    ! Statement: f_in_char*_buf
     interface
         subroutine c_cpass_char_ptr_bufferify(dest, SHT_dest_len, src, &
                 SHT_src_len) &
@@ -1275,10 +1275,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
-    ! Statement: c_out_char_*
+    ! Statement: c_out_char*
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: c_in_char_*
+    ! Statement: c_in_char*
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
                 bind(C, name="STR_CpassCharPtrBlank")
@@ -1294,10 +1294,10 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: f_in_char_*_buf
+    ! Statement: f_in_char*_buf
     interface
         subroutine c_cpass_char_ptr_blank_bufferify(dest, SHT_dest_len, &
                 src, SHT_src_len) &
@@ -1316,10 +1316,10 @@ module strings_mod
     ! Statement: c_subroutine
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
-    ! Statement: c_in_native_*
+    ! Statement: c_in_native*
     ! ----------------------------------------
     ! Argument:  std::string & name
-    ! Statement: c_inout_string_&
+    ! Statement: c_inout_string&
     interface
         subroutine c_post_declare(count, name) &
                 bind(C, name="STR_PostDeclare")
@@ -1335,10 +1335,10 @@ module strings_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  std::string & name
-    ! Statement: f_inout_string_&_buf
+    ! Statement: f_inout_string&_buf
     interface
         subroutine c_post_declare_bufferify(count, name, SHT_name_len) &
                 bind(C, name="STR_PostDeclare_bufferify")
@@ -1355,7 +1355,7 @@ module strings_mod
     ! Statement: c_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: c_in_char_*
+    ! Statement: c_in_char*
     interface
         function c_cpass_char_ptr_notrim(src) &
                 result(SHT_rv) &
@@ -1372,7 +1372,7 @@ module strings_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: f_in_char_*_buf
+    ! Statement: f_in_char*_buf
     interface
         function c_cpass_char_ptr_notrim_bufferify(src, SHT_src_len) &
                 result(SHT_rv) &
@@ -1390,10 +1390,10 @@ module strings_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * addr
-    ! Statement: f_in_void_*
+    ! Statement: f_in_void*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
-    ! Statement: f_in_char_*_capi
+    ! Statement: f_in_char*_capi
     interface
         function cpass_char_ptr_capi(addr, src) &
                 result(SHT_rv) &
@@ -1411,10 +1411,10 @@ module strings_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * in
-    ! Statement: f_in_char_*
+    ! Statement: f_in_char*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
-    ! Statement: f_in_char_*_capi
+    ! Statement: f_in_char*_capi
     interface
         function c_cpass_char_ptr_capi2(in, src) &
                 result(SHT_rv) &
@@ -1485,7 +1485,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char status
-    ! Statement: f_in_char_scalar
+    ! Statement: f_in_char
     !>
     !! \brief pass a single char argument as a scalar.
     !!
@@ -1503,7 +1503,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char status
-    ! Statement: f_in_char_scalar
+    ! Statement: f_in_char
     !>
     !! By default no Fortran wrapper is created.
     !! Force one so it can be tested.
@@ -1535,7 +1535,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     !>
     !! \brief strcpy like behavior
     !!
@@ -1562,7 +1562,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
-    ! Statement: f_inout_char_*_buf
+    ! Statement: f_inout_char*_buf
     !>
     !! \brief toupper
     !!
@@ -1960,7 +1960,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     !>
     !! \brief Accept a const string reference
     !!
@@ -1984,7 +1984,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
-    ! Statement: f_out_string_&_buf
+    ! Statement: f_out_string&_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -2007,7 +2007,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & arg1
-    ! Statement: f_inout_string_&_buf
+    ! Statement: f_inout_string&_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -2032,7 +2032,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
-    ! Statement: f_in_string_*_buf
+    ! Statement: f_in_string*_buf
     !>
     !! \brief Accept a const string pointer - intent(in)
     !!
@@ -2052,7 +2052,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
-    ! Statement: f_inout_string_*_buf
+    ! Statement: f_inout_string*_buf
     !>
     !! \brief Accept a string pointer - intent(inout)
     !!
@@ -2072,7 +2072,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Statement: f_out_string_*_buf
+    ! Statement: f_out_string*_buf
     !>
     !! \brief Accept a string pointer - intent(out)
     !!
@@ -2093,10 +2093,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1
-    ! Statement: f_inout_string_*_buf
+    ! Statement: f_inout_string*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     !>
     !! \brief Accept a string pointer - intent(inout)
     !!
@@ -2120,10 +2120,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Statement: f_out_string_*_buf
+    ! Statement: f_out_string*_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     !>
     !! \brief Accept a string pointer - intent(out)
     !!
@@ -2148,7 +2148,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  std::string arg1
-    ! Statement: f_in_string_scalar_buf
+    ! Statement: f_in_string_buf
     !>
     !! \brief Accept a string instance
     !!
@@ -2170,7 +2170,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
-    ! Statement: f_out_string_**_cdesc_copy
+    ! Statement: f_out_string**_cdesc_copy
     !>
     !! Copy output into argument strs which must be large enough
     !! to hold values.  Excess values will be truncated.
@@ -2198,7 +2198,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
-    ! Statement: f_out_string_**_cdesc_allocatable
+    ! Statement: f_out_string**_cdesc_allocatable
     !>
     !! Copy output into argument strs which must be large enough
     !! to hold values.  Excess values will be truncated.
@@ -2228,7 +2228,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
-    ! Statement: f_out_string_**_cdesc_allocatable
+    ! Statement: f_out_string**_cdesc_allocatable
     !>
     !! Copy output into argument strs which must be large enough
     !! to hold values.  Excess values will be truncated.
@@ -2268,7 +2268,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     subroutine explicit2(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(OUT) :: name
@@ -2286,7 +2286,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char status
-    ! Statement: f_in_char_scalar
+    ! Statement: f_in_char
     !>
     !! \brief pass a single char argument as a scalar, extern "C"
     !!
@@ -2319,10 +2319,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     ! ----------------------------------------
     ! Argument:  const char * src +blanknull
-    ! Statement: f_in_char_*_buf
+    ! Statement: f_in_char*_buf
     !>
     !! \brief strcpy like behavior
     !!
@@ -2350,10 +2350,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
-    ! Statement: f_out_char_*_buf
+    ! Statement: f_out_char*_buf
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: f_in_char_*_buf
+    ! Statement: f_in_char*_buf
     !>
     !! \brief Test F_blanknull option
     !!
@@ -2377,10 +2377,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
-    ! Statement: f_in_native_*
+    ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  std::string & name
-    ! Statement: f_inout_string_&_buf
+    ! Statement: f_inout_string&_buf
     !>
     !! Test post_declare.
     !! The std::string in py_string_inout must be declared before the
@@ -2403,7 +2403,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src
-    ! Statement: f_in_char_*_buf
+    ! Statement: f_in_char*_buf
     !>
     !! \brief NULL terminate input string in C, not in Fortran.
     !!
@@ -2427,10 +2427,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  void * addr
-    ! Statement: f_in_void_*
+    ! Statement: f_in_void*
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
-    ! Statement: f_in_char_*_capi
+    ! Statement: f_in_char*_capi
     !>
     !! \brief Do not NULL terminate input string
     !!
@@ -2460,7 +2460,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const char * src +api(capi)
-    ! Statement: f_in_char_*_capi
+    ! Statement: f_in_char*_capi
     !>
     !! \brief Mix api(buf) and api(capi)
     !!

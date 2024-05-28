@@ -24,7 +24,7 @@ extern "C" {
 // Statement: f_getter_native_*_cdesc_pointer
 // ----------------------------------------
 // Argument:  ns3::DataPointer * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 void SCO_DataPointer_get_items(SCO_datapointer * SH_this,
     SCO_SHROUD_array *SHT_rv_cdesc)
 {
@@ -44,10 +44,10 @@ void SCO_DataPointer_get_items(SCO_datapointer * SH_this,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  ns3::DataPointer * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  int * val +intent(setter)+rank(1)
-// Statement: f_setter_native_*
+// Statement: f_setter_native*
 void SCO_DataPointer_set_items(SCO_datapointer * SH_this, int * val)
 {
     // splicer begin function.DataPointer_set_items

@@ -361,7 +361,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_string_&"
+                            "stmt": "c_in_string&"
                         }
                     },
                     "f": {
@@ -376,7 +376,7 @@
                                 "api": "buf",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_string_&_buf"
+                            "stmt": "f_in_string&_buf"
                         }
                     },
                     "share": {
@@ -464,7 +464,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_&"
+                            "stmt_name": "c_in_string&"
                         },
                         "fmtf": {
                             "c_helper_char_len_trim": "ShroudCharLenTrim",
@@ -476,7 +476,7 @@
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_&_buf"
+                            "stmt_name": "f_in_string&_buf"
                         }
                     }
                 },

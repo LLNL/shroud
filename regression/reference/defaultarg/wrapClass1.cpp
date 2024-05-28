@@ -31,7 +31,7 @@ extern "C" {
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.new_0
@@ -52,10 +52,10 @@ DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv)
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg2=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 {
     // splicer begin class.Class1.method.new_1
@@ -75,13 +75,13 @@ DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv)
 // Statement: c_ctor_shadow_scalar_capptr
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg2=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg3=2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
     DEF_Class1 * SHC_rv)
 {
@@ -115,7 +115,7 @@ void DEF_Class1_delete(DEF_Class1 * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_Class1_DefaultArguments_0(DEF_Class1 * self, int arg1)
 {
     Class1 *SH_this = static_cast<Class1 *>(self->addr);
@@ -134,10 +134,10 @@ void DEF_Class1_DefaultArguments_0(DEF_Class1 * self, int arg1)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg2=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_Class1_DefaultArguments_1(DEF_Class1 * self, int arg1,
     int arg2)
 {
@@ -156,13 +156,13 @@ void DEF_Class1_DefaultArguments_1(DEF_Class1 * self, int arg1,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg2=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int arg3=2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_Class1_DefaultArguments_2(DEF_Class1 * self, int arg1,
     int arg2, int arg3)
 {

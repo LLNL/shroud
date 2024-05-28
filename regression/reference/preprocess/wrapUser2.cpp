@@ -40,7 +40,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {
     User2 *SH_this = static_cast<User2 *>(self->addr);

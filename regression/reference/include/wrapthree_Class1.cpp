@@ -19,7 +19,7 @@ extern "C" {
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  CustomType arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void LIB_three_Class1_method1(LIB_three_Class1 * self,
     LIB_CustomType arg1)
 {

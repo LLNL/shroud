@@ -39,7 +39,7 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int n
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 {
     structAsClass<int> *SH_this = static_cast<structAsClass<int> *>
@@ -68,7 +68,7 @@ int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int v
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
     int v)
 {

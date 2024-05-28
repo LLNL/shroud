@@ -28,7 +28,7 @@ extern "C" {
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
-// Statement: c_inout_struct_&
+// Statement: c_inout_struct&
 int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReference
@@ -45,7 +45,7 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 // Statement: c_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
-// Statement: c_in_struct_&
+// Statement: c_in_struct&
 int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceIn
@@ -59,7 +59,7 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
-// Statement: c_inout_struct_&
+// Statement: c_inout_struct&
 void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceInout
@@ -72,7 +72,7 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
-// Statement: c_out_struct_&
+// Statement: c_out_struct&
 void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceOut

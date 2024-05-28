@@ -26,10 +26,10 @@ extern "C" {
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void TEM_user_int_nested_double(TEM_user_int * self, int arg1,
     double arg2)
 {

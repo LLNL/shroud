@@ -264,7 +264,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_enum_scalar"
+                            "stmt": "c_in_enum"
                         }
                     },
                     "f": {
@@ -279,7 +279,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_enum_scalar"
+                            "stmt": "f_in_enum"
                         }
                     },
                     "py": {
@@ -424,7 +424,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_in_enum_scalar"
+                            "stmt_name": "c_in_enum"
                         },
                         "fmtf": {
                             "c_abstract_decl": "enum ENU_Color",
@@ -453,7 +453,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum_scalar"
+                            "stmt_name": "f_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum ENU_Color",
@@ -535,7 +535,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_enum_scalar"
+                            "stmt": "c_in_enum"
                         }
                     },
                     "f": {
@@ -550,7 +550,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_enum_scalar"
+                            "stmt": "f_in_enum"
                         }
                     },
                     "py": {
@@ -703,7 +703,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_in_enum_scalar"
+                            "stmt_name": "c_in_enum"
                         },
                         "fmtf": {
                             "c_abstract_decl": "enum ENU_Color",
@@ -732,7 +732,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum_scalar"
+                            "stmt_name": "f_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum ENU_Color",
@@ -822,7 +822,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_enum_*"
+                            "stmt": "c_out_enum*"
                         }
                     },
                     "f": {
@@ -836,7 +836,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_enum_*"
+                            "stmt": "f_out_enum*"
                         }
                     },
                     "share": {
@@ -905,7 +905,7 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_out_enum_*"
+                            "stmt_name": "c_out_enum*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -930,7 +930,7 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_out_enum_*"
+                            "stmt_name": "f_out_enum*"
                         }
                     }
                 },
@@ -997,7 +997,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_enum_*"
+                            "stmt": "c_inout_enum*"
                         }
                     },
                     "f": {
@@ -1011,7 +1011,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_enum_*"
+                            "stmt": "f_inout_enum*"
                         }
                     },
                     "share": {
@@ -1130,7 +1130,7 @@
                             "i_var": "inout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_inout_enum_*"
+                            "stmt_name": "c_inout_enum*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1155,7 +1155,7 @@
                             "i_var": "inout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_inout_enum_*"
+                            "stmt_name": "f_inout_enum*"
                         }
                     }
                 },

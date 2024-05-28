@@ -61,7 +61,7 @@ module statement_mod
         ! Statement: c_function_bool_scalar
         ! ----------------------------------------
         ! Argument:  const std::string & name
-        ! Statement: c_in_string_&
+        ! Statement: c_in_string&
         function c_name_is_valid(name) &
                 result(SHT_rv) &
                 bind(C, name="STMT_nameIsValid")
@@ -115,7 +115,7 @@ contains
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const std::string & name
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     function name_is_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT

@@ -53,7 +53,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
-// Statement: c_in_native_&
+// Statement: c_in_native&
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>
@@ -69,7 +69,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // Statement: c_function_native_&
 // ----------------------------------------
 // Argument:  size_type n
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int * TEM_vector_int_at(TEM_vector_int * self,
     TEM_vector_int_size_type n)
 {
@@ -87,7 +87,7 @@ int * TEM_vector_int_at(TEM_vector_int * self,
 // Statement: f_function_native_&_pointer
 // ----------------------------------------
 // Argument:  size_type n
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 int * TEM_vector_int_at_bufferify(TEM_vector_int * self,
     TEM_vector_int_size_type n)
 {

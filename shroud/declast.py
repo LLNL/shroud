@@ -1378,6 +1378,16 @@ class Declarator(Node):
             return "scalar"
         return out
 
+    def get_abstract_declarator(self):
+        """Return abstract declarator.
+        """
+        out = ""
+        for ptr in self.pointer:
+            out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
+        return out
+
     def get_array_size(self):
         """Return size of array by multiplying dimensions."""
         array = self.array

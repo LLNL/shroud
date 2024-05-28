@@ -35,10 +35,10 @@ module interface_mod
         ! Statement: f_function_native_scalar
         ! ----------------------------------------
         ! Argument:  double arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int arg2
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")
@@ -74,10 +74,10 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  double arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int arg2
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function function2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT

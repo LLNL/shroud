@@ -221,7 +221,7 @@ module classes_mod
     ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start c_class1_ctor_flag
     interface
         function c_class1_ctor_flag(flag, SHT_rv) &
@@ -273,7 +273,7 @@ module classes_mod
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
-    ! Statement: f_in_shadow_&
+    ! Statement: f_in_shadow&
     ! start c_class1_equivalent
     interface
         pure function c_class1_equivalent(self, obj2) &
@@ -308,10 +308,10 @@ module classes_mod
     ! Statement: c_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: c_in_string_&
+    ! Statement: c_in_string&
     ! ----------------------------------------
     ! Argument:  bool flag
-    ! Statement: c_in_bool_scalar
+    ! Statement: c_in_bool
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
@@ -334,10 +334,10 @@ module classes_mod
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  bool flag
-    ! Statement: f_in_bool_scalar
+    ! Statement: f_in_bool
     ! start c_class1_return_this_buffer_bufferify
     interface
         function c_class1_return_this_buffer_bufferify(self, name, &
@@ -414,7 +414,7 @@ module classes_mod
     ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: c_in_enum_scalar
+    ! Statement: c_in_enum
     ! start c_class1_direction_func
     interface
         function c_class1_direction_func(self, arg) &
@@ -435,7 +435,7 @@ module classes_mod
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start c_class1_direction_func_bufferify
     interface
         function c_class1_direction_func_bufferify(self, arg) &
@@ -493,7 +493,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -531,7 +531,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  bool val +intent(setter)
-    ! Statement: f_setter_bool_scalar
+    ! Statement: f_setter_bool
     ! start c_class1_set_m_bool
     interface
         subroutine c_class1_set_m_bool(self, val) &
@@ -567,7 +567,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  std::string val +intent(setter)
-    ! Statement: f_setter_string_scalar_buf
+    ! Statement: f_setter_string_buf
     ! start c_class1_set_m_name
     interface
         subroutine c_class1_set_m_name(self, val, SHT_val_len) &
@@ -679,7 +679,7 @@ module classes_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start c_data_allocate
     interface
         subroutine c_data_allocate(self, n) &
@@ -762,7 +762,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start c_data_set_nitems
     interface
         subroutine c_data_set_nitems(self, val) &
@@ -798,7 +798,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     ! start c_data_set_items
     interface
         subroutine c_data_set_items(self, val) &
@@ -817,7 +817,7 @@ module classes_mod
     ! Statement: c_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: c_in_enum_scalar
+    ! Statement: c_in_enum
     interface
         function c_direction_func(arg) &
                 result(SHT_rv) &
@@ -834,7 +834,7 @@ module classes_mod
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
@@ -851,7 +851,7 @@ module classes_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg
-    ! Statement: f_in_shadow_scalar
+    ! Statement: f_in_shadow
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_passClassByValue")
@@ -866,7 +866,7 @@ module classes_mod
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     interface
         function c_useclass(arg) &
                 result(SHT_rv) &
@@ -968,7 +968,7 @@ module classes_mod
     ! Statement: f_function_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         function c_get_class_copy(flag, SHT_rv) &
                 result(SHT_prv) &
@@ -987,7 +987,7 @@ module classes_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine set_global_flag(arg) &
                 bind(C, name="CLA_set_global_flag")
@@ -1106,7 +1106,7 @@ contains
     ! Statement: f_ctor_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start class1_ctor_flag
     function class1_ctor_flag(flag) &
             result(SHT_rv)
@@ -1156,7 +1156,7 @@ contains
     ! Statement: f_function_bool_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
-    ! Statement: f_in_shadow_&
+    ! Statement: f_in_shadow&
     !>
     !! \brief Pass in reference to instance
     !!
@@ -1195,10 +1195,10 @@ contains
     ! Statement: f_function_shadow_*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  bool flag
-    ! Statement: f_in_bool_scalar
+    ! Statement: f_in_bool
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -1273,7 +1273,7 @@ contains
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
@@ -1325,7 +1325,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
@@ -1359,7 +1359,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  bool val +intent(setter)
-    ! Statement: f_setter_bool_scalar
+    ! Statement: f_setter_bool
     ! start class1_set_m_bool
     subroutine class1_set_m_bool(obj, val)
         use iso_c_binding, only : C_BOOL
@@ -1398,7 +1398,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  std::string val +intent(setter)
-    ! Statement: f_setter_string_scalar_buf
+    ! Statement: f_setter_string_buf
     ! start class1_set_m_name
     subroutine class1_set_m_name(obj, val)
         use iso_c_binding, only : C_INT
@@ -1578,7 +1578,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start data_allocate
     subroutine data_allocate(obj, n)
         use iso_c_binding, only : C_INT
@@ -1651,7 +1651,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start data_set_nitems
     subroutine data_set_nitems(obj, val)
         use iso_c_binding, only : C_INT
@@ -1688,7 +1688,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     ! start data_set_items
     subroutine data_set_items(obj, val)
         use iso_c_binding, only : C_INT
@@ -1710,7 +1710,7 @@ contains
     ! Statement: f_function_enum_scalar
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     function direction_func(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1727,7 +1727,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg
-    ! Statement: f_in_shadow_scalar
+    ! Statement: f_in_shadow
     !>
     !! \brief Pass arguments to a function.
     !!
@@ -1744,7 +1744,7 @@ contains
     ! Statement: f_function_native_scalar
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     function useclass(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1850,7 +1850,7 @@ contains
     ! Statement: f_function_shadow_scalar_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
@@ -1873,7 +1873,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine set_global_flag(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
