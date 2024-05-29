@@ -2718,8 +2718,8 @@
             },
             {
                 "<FUNCTION>": "AssignValues  37 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "34",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 34,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -2841,8 +2841,8 @@
             },
             {
                 "<FUNCTION>": "AssignValues  38 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "34",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 34,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"

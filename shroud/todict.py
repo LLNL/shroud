@@ -38,10 +38,10 @@ def add_comment(dct, label, name=None):
 
 class Helpers:
     def visit_bool(self, node):
-        return str(node)
+        return node
 
     def visit_int(self, node):
-        return str(node)
+        return node
 
     def visit_str(self, node):
         return str(node)
@@ -91,11 +91,14 @@ class ToDict(visitor.Visitor):
         super(ToDict, self).__init__()
         self.labelast = labelast
 
+    def visit_NoneType(self, node):
+        return node
+
     def visit_bool(self, node):
-        return str(node)
+        return node
 
     def visit_int(self, node):
-        return str(node)
+        return node
 
     def visit_str(self, node):
         return str(node)

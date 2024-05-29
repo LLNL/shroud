@@ -62,7 +62,7 @@
                 },
                 "typemap_name": "tutorial::Color",
                 "user_fmt": {
-                    "baz": "4"
+                    "baz": 4
                 },
                 "wrap": {
                     "python": true

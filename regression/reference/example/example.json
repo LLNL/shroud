@@ -2353,7 +2353,7 @@
                                 "scope": "example::nested::ExClass1::",
                                 "typemap_name": "example::nested::ExClass1",
                                 "user_fields": {
-                                    "export": "True"
+                                    "export": true
                                 },
                                 "wrap": {
                                     "c": true,
@@ -4841,7 +4841,7 @@
                                     },
                                     {
                                         "<FUNCTION>": "declare  30 ****************************************",
-                                        "_PTR_F_C_index": "18",
+                                        "_PTR_F_C_index": 18,
                                         "_default_funcs": [
                                             23
                                         ],
@@ -5048,7 +5048,7 @@
                                     },
                                     {
                                         "<FUNCTION>": "declare  31 ****************************************",
-                                        "_PTR_F_C_index": "18",
+                                        "_PTR_F_C_index": 18,
                                         "_default_funcs": [
                                             23
                                         ],

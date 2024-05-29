@@ -969,7 +969,7 @@
                     },
                     {
                         "<FUNCTION>": "check_length  7 ****************************************",
-                        "_PTR_F_C_index": "2",
+                        "_PTR_F_C_index": 2,
                         "_default_funcs": [
                             5
                         ],
@@ -1126,7 +1126,7 @@
                     },
                     {
                         "<FUNCTION>": "check_length  8 ****************************************",
-                        "_PTR_F_C_index": "2",
+                        "_PTR_F_C_index": 2,
                         "_default_funcs": [
                             5
                         ],
@@ -1751,7 +1751,7 @@
                     },
                     {
                         "<FUNCTION>": "declare  9 ****************************************",
-                        "_PTR_F_C_index": "3",
+                        "_PTR_F_C_index": 3,
                         "_default_funcs": [
                             6
                         ],
@@ -1954,7 +1954,7 @@
                     },
                     {
                         "<FUNCTION>": "declare  10 ****************************************",
-                        "_PTR_F_C_index": "3",
+                        "_PTR_F_C_index": 3,
                         "_default_funcs": [
                             6
                         ],
@@ -4192,8 +4192,8 @@
             },
             {
                 "<FUNCTION>": "getGroupName  26 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "17",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 17,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4368,8 +4368,8 @@
             },
             {
                 "<FUNCTION>": "getGroupName  27 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "17",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 17,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"

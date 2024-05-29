@@ -378,7 +378,7 @@
                 },
                 "typemap_name": "Color",
                 "user_fmt": {
-                    "baz": "4"
+                    "baz": 4
                 },
                 "wrap": {
                     "c": true,

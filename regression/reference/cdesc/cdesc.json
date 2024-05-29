@@ -520,8 +520,8 @@
             },
             {
                 "<FUNCTION>": "GetScalar1  6 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "1",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -762,8 +762,8 @@
             },
             {
                 "<FUNCTION>": "GetScalar1  7 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "1",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1586,8 +1586,8 @@
             },
             {
                 "<FUNCTION>": "GetScalar2  8 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "3",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 3,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1803,8 +1803,8 @@
             },
             {
                 "<FUNCTION>": "GetScalar2  9 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "3",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 3,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"

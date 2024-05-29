@@ -1222,8 +1222,8 @@
             },
             {
                 "<FUNCTION>": "AssumedRank  9 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "7",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 7,
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -1359,8 +1359,8 @@
             },
             {
                 "<FUNCTION>": "AssumedRank  10 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "7",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 7,
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
@@ -1498,8 +1498,8 @@
             },
             {
                 "<FUNCTION>": "AssumedRank  11 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "7",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 7,
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [

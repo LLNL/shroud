@@ -62,7 +62,7 @@
                 },
                 "typemap_name": "tutorial::Color",
                 "user_fmt": {
-                    "baz": "4"
+                    "baz": 4
                 },
                 "wrap": {
                     "c": true,
@@ -3739,8 +3739,8 @@
             },
             {
                 "<FUNCTION>": "FortranGenericOverloaded  28 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "9",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 9,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3931,8 +3931,8 @@
             },
             {
                 "<FUNCTION>": "FortranGenericOverloaded  29 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "9",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 9,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"

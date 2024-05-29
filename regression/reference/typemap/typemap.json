@@ -269,7 +269,7 @@
             },
             {
                 "<FUNCTION>": "passIndex  3 ****************************************",
-                "C_force_wrapper": "True",
+                "C_force_wrapper": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -472,7 +472,7 @@
             },
             {
                 "<FUNCTION>": "passIndex  4 ****************************************",
-                "C_force_wrapper": "True",
+                "C_force_wrapper": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -818,7 +818,7 @@
             },
             {
                 "<FUNCTION>": "passIndex2  5 ****************************************",
-                "_PTR_F_C_index": "1",
+                "_PTR_F_C_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -939,7 +939,7 @@
             },
             {
                 "<FUNCTION>": "passIndex2  6 ****************************************",
-                "_PTR_F_C_index": "1",
+                "_PTR_F_C_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1203,7 +1203,7 @@
             },
             {
                 "<FUNCTION>": "passFloat  7 ****************************************",
-                "_PTR_F_C_index": "2",
+                "_PTR_F_C_index": 2,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1324,7 +1324,7 @@
             },
             {
                 "<FUNCTION>": "passFloat  8 ****************************************",
-                "_PTR_F_C_index": "2",
+                "_PTR_F_C_index": 2,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
