@@ -186,7 +186,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<int *>\t(&SHCXX_arg)",
@@ -194,7 +193,15 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_vector<native>&_buf"
+                            "stmt_name": "c_in_vector<native>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -207,7 +214,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<int *>\t(&SHCXX_arg)",
@@ -227,7 +233,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_vector<native>&_buf"
+                            "stmt_name": "f_in_vector<native>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -397,7 +411,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -417,7 +430,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<native>&_buf_copy"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -431,7 +452,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -454,7 +474,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<native>&_cdesc"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -664,7 +692,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -684,7 +711,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<native>&_buf_copy"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -698,7 +733,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -721,7 +755,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<native>&_cdesc"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -918,7 +960,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -938,7 +979,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<native>&_buf_copy"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -952,7 +1001,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -975,7 +1023,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<native>&_cdesc"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1147,7 +1203,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -1167,7 +1222,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<native>&_buf_malloc"
+                            "stmt_name": "c_out_vector<native>&_buf_malloc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1181,7 +1244,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -1205,7 +1267,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<native>&_cdesc_allocatable"
+                            "stmt_name": "f_out_vector<native>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1380,7 +1450,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -1400,7 +1469,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector<native>&_buf_malloc"
+                            "stmt_name": "c_inout_vector<native>&_buf_malloc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1416,7 +1493,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -1442,7 +1518,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_inout_vector<native>&_cdesc_allocatable"
+                            "stmt_name": "f_inout_vector<native>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1607,7 +1691,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -1626,7 +1709,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector<native>&_buf_copy"
+                            "stmt_name": "c_inout_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1642,7 +1733,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_int",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -1667,7 +1757,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_inout_vector<native>&_cdesc"
+                            "stmt_name": "f_inout_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1836,7 +1934,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_double",
                             "cxx_T": "double",
-                            "cxx_T1": "double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
@@ -1856,7 +1953,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<native>&_buf_copy"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "double",
+                                    "cxx_type": "double",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1870,7 +1975,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_double",
                             "cxx_T": "double",
-                            "cxx_T1": "double",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -1893,7 +1997,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<native>&_cdesc"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "double",
+                                    "cxx_type": "double",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -2121,7 +2233,6 @@
                             "c_var_size": "SHT_arg1_size",
                             "cfi_type": "CFI_type_double",
                             "cxx_T": "const double *",
-                            "cxx_T1": "const double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -2129,7 +2240,15 @@
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_vector<native*>&_buf"
+                            "stmt_name": "c_in_vector<native*>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "const double *",
+                                    "cxx_type": "double",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2143,7 +2262,6 @@
                             "c_var_size": "SHT_arg1_size",
                             "cfi_type": "CFI_type_double",
                             "cxx_T": "const double *",
-                            "cxx_T1": "const double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
@@ -2164,7 +2282,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(arg1)",
-                            "stmt_name": "f_in_vector<native*>&_buf"
+                            "stmt_name": "f_in_vector<native*>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "const double *",
+                                    "cxx_type": "double",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)"
+                                }
+                            ]
                         }
                     },
                     "num": {
@@ -2408,7 +2534,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
@@ -2416,7 +2541,15 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_vector<string>&_buf"
+                            "stmt_name": "c_in_vector<string>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2434,7 +2567,6 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
@@ -2458,7 +2590,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_vector<string>&_buf"
+                            "stmt_name": "f_in_vector<string>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -2627,7 +2767,6 @@
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -2645,7 +2784,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<string>&_buf_copy"
+                            "stmt_name": "c_out_vector<string>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2659,7 +2806,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -2682,7 +2828,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<string>&_cdesc"
+                            "stmt_name": "f_out_vector<string>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -2852,7 +3006,6 @@
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -2870,7 +3023,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<string>&_buf_copy"
+                            "stmt_name": "c_out_vector<string>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2887,7 +3048,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -2915,7 +3075,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable"
+                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -3087,7 +3255,6 @@
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -3106,7 +3273,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector<string>&_buf_copy"
+                            "stmt_name": "c_out_vector<string>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3124,7 +3299,6 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
-                            "cxx_T1": "std::string",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
@@ -3152,7 +3326,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable"
+                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "cxx_type": "std::string",
+                                    "f_kind": "C_CHAR",
+                                    "f_type": "character(*)"
+                                }
+                            ]
                         }
                     }
                 },
@@ -3368,7 +3550,6 @@
                             "c_var_size": "SHT_rv_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_rv_decl": "int SHCXX_rv",
@@ -3386,7 +3567,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "c_function_vector<native>_malloc"
+                            "stmt_name": "c_function_vector<native>_malloc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",
@@ -3410,7 +3599,6 @@
                             "c_var_cdesc": "SHT_rv_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_rv",
@@ -3436,7 +3624,15 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "f_function_vector<native>_cdesc_allocatable"
+                            "stmt_name": "f_function_vector<native>_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     },
                     "n": {

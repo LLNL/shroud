@@ -901,3 +901,45 @@ default_stmts = dict(
 # owner      "caller"
 
 fc_statements = []
+
+
+######################################################################
+# templates
+
+class TemplateFormat(object):
+    """Used with Scope and format fields.
+    to access type information for a template parameter.
+
+    "{targ[0].f_type} arg"
+    """
+    def __init__(self, decl):
+        """
+        decl - declast.Declaration
+        """
+        self.decl = decl
+
+    def __str__(self):
+        return str(self.decl)
+
+    @property
+    def cxx_T(self):
+        return self.decl.get_first_abstract_declarator()
+
+    @property
+    def cxx_type(self):
+        return self.decl.typemap.cxx_type
+
+    @property
+    def f_type(self):
+        return self.decl.typemap.f_type
+
+    @property
+    def f_kind(self):
+        return self.decl.typemap.f_kind
+
+def set_template_fields(ast, fmt):
+    """Set the format fields for template arguments.
+    Accessed as "{targs[0].cxx_type}"
+    """
+    fmt.cxx_T = ast.gen_template_argument()
+    fmt.targs = [TemplateFormat(targ) for targ in ast.template_arguments]

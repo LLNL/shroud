@@ -277,12 +277,25 @@ class ToDict(visitor.Visitor):
     ######################################################################
 
     def visit_Scope(self, node):
+        # Do not call visit for most members. It slows things down a lot.
+        # Instead, have a list of keys which must be visited.
         d = {}
         skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
         for key, value in node.__dict__.items():
-            if not key.startswith(skip):
+            if key in ["targs"]:
+                d[key] = self.visit(value)
+            elif not key.startswith(skip):
                 d[key] = value
         return d
+
+    def visit_TemplateFormat(self, node):
+        # return the properties of TemplateFormat
+        return dict(
+            cxx_T = node.cxx_T,
+            cxx_type = node.cxx_type,
+            f_type = node.f_type,
+            f_kind = node.f_kind,
+        )
 
     ######################################################################
 

@@ -119,7 +119,6 @@
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::vector<int> *>\t(&arg)",
@@ -136,6 +135,14 @@
                             "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt": "py_in_vector<native>&_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ],
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -241,7 +248,6 @@
                             "capsule_order": "1",
                             "ctor_expr": "*arg",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_alloc_decl": "std::vector<int> * SH_arg",
                             "cxx_member": "->",
@@ -259,6 +265,14 @@
                             "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt": "py_out_vector<native>&_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ],
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -796,7 +810,6 @@
                             "capsule_order": "2",
                             "ctor_expr": "*arg",
                             "cxx_T": "double",
-                            "cxx_T1": "double",
                             "cxx_addr": "",
                             "cxx_alloc_decl": "std::vector<double> * SH_arg",
                             "cxx_member": "->",
@@ -814,6 +827,14 @@
                             "rank": "1",
                             "size_var": "SHSize_arg",
                             "stmt": "py_out_vector<native>&_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "double",
+                                    "cxx_type": "double",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)"
+                                }
+                            ],
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -1385,7 +1406,6 @@
                             "capsule_order": "1",
                             "ctor_expr": "*SHCXX_rv",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_addr": "",
                             "cxx_alloc_decl": "std::vector<int> * SHCXX_rv",
                             "cxx_member": "->",
@@ -1403,6 +1423,14 @@
                             "rank": "1",
                             "size_var": "SHSize_rv",
                             "stmt": "py_function_vector<native>_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ],
                             "value_var": "SHValue_rv"
                         }
                     },

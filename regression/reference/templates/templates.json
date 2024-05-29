@@ -2339,7 +2339,6 @@
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_abstract_decl": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -2350,7 +2349,15 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "5",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow<native>_capptr"
+                            "stmt_name": "c_function_shadow<native>_capptr",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "C_call_function": "returnUserType(\t)",
@@ -2373,7 +2380,6 @@
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
-                            "cxx_T1": "int",
                             "cxx_abstract_decl": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
@@ -2392,7 +2398,15 @@
                             "i_var": "SHT_rv",
                             "idtor": "5",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow<native>_capptr"
+                            "stmt_name": "f_function_shadow<native>_capptr",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "cxx_type": "int",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)"
+                                }
+                            ]
                         }
                     }
                 },

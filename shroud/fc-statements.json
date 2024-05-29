@@ -646,7 +646,7 @@
             "Return pointer to array type.",
             "Add an argument to return the length of the array"
         ],
-        "c_return_type": "{cxx_T1} *",
+        "c_return_type": "{targs[0].cxx_type} *",
         "c_arg_decl": [
             "size_t *{c_var_size}"
         ],
@@ -2038,7 +2038,7 @@
         ],
         "c_post_call": [
             "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
-            "*{c_var} = static_cast<{cxx_T1} *>\t(std::malloc({c_local_bytes}));",
+            "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));",
             "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
             "*{c_var_size} = {cxx_var}.size();"
         ],
@@ -2069,7 +2069,7 @@
         ],
         "c_post_call": [
             "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
-            "*{c_var} = static_cast<{cxx_T1} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));",
+            "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));",
             "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
             "*{c_var_size} = {cxx_var}.size();"
         ],
@@ -2093,7 +2093,7 @@
         "c_post_call": [
             "{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();",
             "{c_var_cdesc}->type = {sh_type};",
-            "{c_var_cdesc}->elem_len = sizeof({cxx_T1});",
+            "{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});",
             "{c_var_cdesc}->size = {cxx_var}->size();",
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
@@ -2223,7 +2223,7 @@
         ],
         "c_post_call": [
             "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
-            "{cxx_T1} *{c_var} =\t static_cast<{cxx_T1} *>\t(std::malloc({c_local_bytes}));",
+            "{targs[0].cxx_type} *{c_var} =\t static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));",
             "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
             "*{c_var_size} = {cxx_var}.size();"
         ],
