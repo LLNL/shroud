@@ -41,7 +41,7 @@ PY_Class2_tp_del (PY_Class2 *self)
 
 // ----------------------------------------
 // Function:  const std::string & getName
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getName__doc__[] =
 "documentation"
 ;

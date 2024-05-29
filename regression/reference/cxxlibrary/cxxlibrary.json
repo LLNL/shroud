@@ -2414,7 +2414,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2533,7 +2533,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3077,7 +3077,7 @@
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_bool_scalar",
+                            "stmt": "py_function_bool",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -6002,7 +6002,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_native",
                                     "value_var": "SHValue_rv"
                                 }
                             },
@@ -6257,7 +6257,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_native",
                                     "value_var": "SHValue_rv"
                                 }
                             },

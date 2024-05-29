@@ -2051,19 +2051,19 @@ return 1;""",
         self.set_fmt_fields(cls, node, ast, bind, fmt_result, True)
         self.set_cxx_nonconst_ptr(ast, fmt_result)
         sgroup = result_typemap.sgroup
+        abstract = statements.find_abstract_declarator(ast)
         stmts = None
         if is_ctor:
             # Code added by create_ctor_function.
             result_blk = default_scope
             fmt_result.stmt = result_blk.name
         elif result_typemap.base == "struct":
-            stmts = ["py", "function", sgroup, options.PY_struct_arg]
+            stmts = ["py", "function", abstract, options.PY_struct_arg]
         elif result_typemap.base == "vector":
-            abstract = statements.find_abstract_declarator(ast)
             stmts = ["py", "function", abstract, options.PY_array_arg]
         elif sgroup == "native":
+            stmts = ["py", "function", abstract]
             spointer = declarator.get_indirect_stmt()
-            stmts = ["py", "function", sgroup, spointer]
             if spointer != "scalar":
                 deref = meta["deref"]
                 if deref == "scalar":
@@ -2071,8 +2071,7 @@ return 1;""",
                 else:
                     stmts.append(options.PY_array_arg)
         else:
-            spointer = declarator.get_indirect_stmt()
-            stmts = ["py", "function", sgroup, spointer]
+            stmts = ["py", "function", abstract]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
             fmt_result.stmt = result_blk.name
@@ -3745,15 +3744,16 @@ py_statements = [
     dict(
         name="py_defaulttmp",
         alias=[
-            "py_function_native_scalar",
+            "py_function_native",
             "py_in_native",
-            "py_function_native_*_scalar",
+            "py_function_native*_scalar",
 
-            "py_function_enum_scalar",
+            "py_function_enum",
             "py_in_enum",
 
             "py_in_unknown",
             "py_function_struct_list",
+            "py_function_struct*_list",
         ],
     ),
 
@@ -3799,7 +3799,7 @@ py_statements = [
         ]
     ),
     dict(
-        name="py_function_void_*",
+        name="py_function_void*",
         fmtdict=dict(
             ctor_expr="{cxx_var}",
         ),
@@ -3847,7 +3847,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_bool_scalar",
+        name="py_function_bool",
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -4008,7 +4008,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_function_native_*_list",
+        name="py_function_native*_list",
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -4025,9 +4025,10 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        # py_function_native_*_numpy
-        # py_function_native_&_numpy
-        name="py_function_native_*/&_numpy",
+        name="py_function_native*_numpy",
+        alias=[
+            "py_function_native&_numpy",
+        ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -4052,7 +4053,7 @@ py_statements = [
 
     dict(
         name="py_out_native**_numpy",
-        base="py_function_native_*_numpy",
+        base="py_function_native*_numpy",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4178,7 +4179,7 @@ py_statements = [
     ),
     dict(
         name="py_out_native**_list",
-        base="py_function_native_*_list",
+        base="py_function_native*_list",
         # Declare a local variable for the argument.
         arg_declare=[
             "{c_const}{c_type} *{c_var};",
@@ -4221,7 +4222,7 @@ py_statements = [
         arg_call=["{c_var}[0]"],
     ),
     dict(
-        name="py_function_char_scalar",
+        name="py_function_char",
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -4231,7 +4232,7 @@ py_statements = [
         object_created=True,
     ),
     dict(
-        name="py_function_char_*",
+        name="py_function_char*",
         fmtdict=dict(
             ctor_expr="{c_var}",
         ),
@@ -4332,15 +4333,15 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_function_string_scalar",
+        name="py_function_string",
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
     dict(
-        name="py_function_string_*",
+        name="py_function_string*",
         alias=[
-            "py_function_string_&",
+            "py_function_string&",
         ],
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
@@ -4533,6 +4534,9 @@ py_statements = [
     ),
     dict(
         name="py_function_struct_numpy",
+        alias=[
+            "py_function_struct*_numpy",
+        ],
         # XXX - expand to array of struct
         need_numpy=True,
         allocate_local_var=True,
@@ -4608,7 +4612,7 @@ py_statements = [
     dict(
         name="py_out_struct*_class",
         alias=[
-            "py_function_shadow_scalar",
+            "py_function_shadow",
         ],
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
@@ -4647,6 +4651,9 @@ py_statements = [
     ),
     dict(
         name="py_function_struct_class",
+        alias=[
+            "py_function_struct*_class",
+        ],
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
@@ -4734,9 +4741,9 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_shadow_*",
+        name="py_function_shadow*",
         alias=[
-            "py_function_shadow_&",
+            "py_function_shadow&",
         ],
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"

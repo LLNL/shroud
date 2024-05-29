@@ -96,7 +96,7 @@ PY_setSize(
 
 // ----------------------------------------
 // Function:  int getSize
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_getSize__doc__[] =
 "documentation"
 ;
@@ -169,7 +169,7 @@ PY_allocate(
 
 // ----------------------------------------
 // Function:  double * getArray +dimension(getSize())
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_getArray__doc__[] =
 "documentation"
 ;
@@ -202,7 +202,7 @@ fail:
 
 // ----------------------------------------
 // Function:  double * getArrayConst +dimension(getSize())
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_getArrayConst__doc__[] =
 "documentation"
 ;
@@ -235,7 +235,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayC +dimension(getSize())
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_getArrayC__doc__[] =
 "documentation"
 ;
@@ -268,7 +268,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const double * getArrayConstC +dimension(getSize())
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_getArrayConstC__doc__[] =
 "documentation"
 ;
@@ -523,7 +523,7 @@ PY_fetchVoidRef(
 
 // ----------------------------------------
 // Function:  bool checkPtr
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  void * array
 // Statement: py_in_void*
@@ -571,7 +571,7 @@ fail:
 
 // ----------------------------------------
 // Function:  double sumArray
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_sumArray__doc__[] =
 "documentation"
 ;

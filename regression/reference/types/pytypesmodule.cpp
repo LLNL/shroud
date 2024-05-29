@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  short short_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  short arg1
 // Statement: py_in_native
@@ -70,7 +70,7 @@ PY_short_func(
 
 // ----------------------------------------
 // Function:  int int_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int arg1
 // Statement: py_in_native
@@ -106,7 +106,7 @@ PY_int_func(
 
 // ----------------------------------------
 // Function:  long long_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  long arg1
 // Statement: py_in_native
@@ -142,7 +142,7 @@ PY_long_func(
 
 // ----------------------------------------
 // Function:  long long long_long_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  long long arg1
 // Statement: py_in_native
@@ -178,7 +178,7 @@ PY_long_long_func(
 
 // ----------------------------------------
 // Function:  short int short_int_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  short int arg1
 // Statement: py_in_native
@@ -214,7 +214,7 @@ PY_short_int_func(
 
 // ----------------------------------------
 // Function:  long int long_int_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  long int arg1
 // Statement: py_in_native
@@ -250,7 +250,7 @@ PY_long_int_func(
 
 // ----------------------------------------
 // Function:  long long int long_long_int_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  long long int arg1
 // Statement: py_in_native
@@ -286,7 +286,7 @@ PY_long_long_int_func(
 
 // ----------------------------------------
 // Function:  unsigned unsigned_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  unsigned arg1
 // Statement: py_in_native
@@ -322,7 +322,7 @@ PY_unsigned_func(
 
 // ----------------------------------------
 // Function:  unsigned short ushort_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  unsigned short arg1
 // Statement: py_in_native
@@ -358,7 +358,7 @@ PY_ushort_func(
 
 // ----------------------------------------
 // Function:  unsigned int uint_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  unsigned int arg1
 // Statement: py_in_native
@@ -394,7 +394,7 @@ PY_uint_func(
 
 // ----------------------------------------
 // Function:  unsigned long ulong_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  unsigned long arg1
 // Statement: py_in_native
@@ -430,7 +430,7 @@ PY_ulong_func(
 
 // ----------------------------------------
 // Function:  unsigned long long ulong_long_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  unsigned long long arg1
 // Statement: py_in_native
@@ -466,7 +466,7 @@ PY_ulong_long_func(
 
 // ----------------------------------------
 // Function:  unsigned long int ulong_int_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  unsigned long int arg1
 // Statement: py_in_native
@@ -502,7 +502,7 @@ PY_ulong_int_func(
 
 // ----------------------------------------
 // Function:  int8_t int8_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int8_t arg1
 // Statement: py_in_native
@@ -538,7 +538,7 @@ PY_int8_func(
 
 // ----------------------------------------
 // Function:  int16_t int16_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int16_t arg1
 // Statement: py_in_native
@@ -574,7 +574,7 @@ PY_int16_func(
 
 // ----------------------------------------
 // Function:  int32_t int32_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int32_t arg1
 // Statement: py_in_native
@@ -610,7 +610,7 @@ PY_int32_func(
 
 // ----------------------------------------
 // Function:  int64_t int64_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int64_t arg1
 // Statement: py_in_native
@@ -646,7 +646,7 @@ PY_int64_func(
 
 // ----------------------------------------
 // Function:  uint8_t uint8_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  uint8_t arg1
 // Statement: py_in_native
@@ -682,7 +682,7 @@ PY_uint8_func(
 
 // ----------------------------------------
 // Function:  uint16_t uint16_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  uint16_t arg1
 // Statement: py_in_native
@@ -718,7 +718,7 @@ PY_uint16_func(
 
 // ----------------------------------------
 // Function:  uint32_t uint32_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  uint32_t arg1
 // Statement: py_in_native
@@ -754,7 +754,7 @@ PY_uint32_func(
 
 // ----------------------------------------
 // Function:  uint64_t uint64_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  uint64_t arg1
 // Statement: py_in_native
@@ -790,7 +790,7 @@ PY_uint64_func(
 
 // ----------------------------------------
 // Function:  size_t size_func
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  size_t arg1
 // Statement: py_in_native
@@ -826,7 +826,7 @@ PY_size_func(
 
 // ----------------------------------------
 // Function:  bool bool_func
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  bool arg
 // Statement: py_in_bool
@@ -871,7 +871,7 @@ fail:
 
 // ----------------------------------------
 // Function:  bool returnBoolAndOthers
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Statement: py_out_native*

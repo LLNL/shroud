@@ -171,7 +171,7 @@ PY_function3a_1(
 
 // ----------------------------------------
 // Function:  int function4
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const std::string & rv
 // Statement: py_in_string&
@@ -329,7 +329,7 @@ PY_FunctionTU_instantiation2(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_UseImplWorker_instantiation3__doc__[] =
 "documentation"
 ;
@@ -358,7 +358,7 @@ PY_UseImplWorker_instantiation3(
 
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
 // Statement: py_in_shadow*

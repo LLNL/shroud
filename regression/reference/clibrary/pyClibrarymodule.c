@@ -53,7 +53,7 @@ PY_NoReturnNoArguments(
 
 // ----------------------------------------
 // Function:  double PassByValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  double arg1
 // Statement: py_in_native
@@ -134,7 +134,7 @@ PY_PassByReference(
 
 // ----------------------------------------
 // Function:  double PassByValueMacro
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int arg2
 // Statement: py_in_native
@@ -239,7 +239,7 @@ fail:
 
 // ----------------------------------------
 // Function:  char * Function4a +len(30)
-// Statement: py_function_char_*
+// Statement: py_function_char*
 // ----------------------------------------
 // Argument:  const char * arg1
 // Statement: py_in_char*
@@ -469,7 +469,7 @@ PY_ImpliedTextLen(
 
 // ----------------------------------------
 // Function:  int ImpliedLen
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const char * text +api(capi)
 // Statement: py_in_char*
@@ -523,7 +523,7 @@ PY_ImpliedLen(
 
 // ----------------------------------------
 // Function:  int ImpliedLenTrim
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const char * text +api(capi)
 // Statement: py_in_char*
@@ -577,7 +577,7 @@ PY_ImpliedLenTrim(
 
 // ----------------------------------------
 // Function:  bool ImpliedBoolTrue
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  bool flag +implied(true)
 // Exact:     py_default
@@ -618,7 +618,7 @@ fail:
 
 // ----------------------------------------
 // Function:  bool ImpliedBoolFalse
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  bool flag +implied(false)
 // Exact:     py_default

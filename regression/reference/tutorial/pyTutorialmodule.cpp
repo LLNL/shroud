@@ -53,7 +53,7 @@ PY_NoReturnNoArguments(
 
 // ----------------------------------------
 // Function:  double PassByValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  double arg1
 // Statement: py_in_native
@@ -94,7 +94,7 @@ PY_PassByValue(
 
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
-// Statement: py_function_string_scalar
+// Statement: py_function_string
 // ----------------------------------------
 // Argument:  const std::string & arg1
 // Statement: py_in_string&
@@ -146,7 +146,7 @@ PY_ConcatenateStrings(
 
 // ----------------------------------------
 // Function:  double UseDefaultArguments
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  double arg1=3.1415
 // Statement: py_in_native
@@ -372,7 +372,7 @@ PY_FortranGenericOverloaded_1(
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int num
 // Statement: py_in_native
@@ -431,7 +431,7 @@ PY_UseDefaultOverload_num_offset_stride(
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  double type
 // Statement: py_in_native
@@ -496,7 +496,7 @@ PY_UseDefaultOverload_5(
 
 // ----------------------------------------
 // Function:  TypeID typefunc
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  TypeID arg
 // Statement: py_in_native
@@ -532,7 +532,7 @@ PY_typefunc(
 
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  EnumTypeID arg
 // Statement: py_in_native
@@ -572,7 +572,7 @@ PY_enumfunc(
 
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: py_function_enum_scalar
+// Statement: py_function_enum
 // ----------------------------------------
 // Argument:  Color arg
 // Statement: py_in_enum
@@ -648,7 +648,7 @@ PY_getMinMax(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

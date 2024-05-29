@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int convert_to_int
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  enum Color in
 // Statement: py_in_enum
@@ -73,7 +73,7 @@ PY_convert_to_int(
 
 // ----------------------------------------
 // Function:  enum Color returnEnum
-// Statement: py_function_enum_scalar
+// Statement: py_function_enum
 // ----------------------------------------
 // Argument:  enum Color in
 // Statement: py_in_enum

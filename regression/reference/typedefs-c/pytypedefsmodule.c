@@ -38,7 +38,7 @@ PyArray_Descr *PY_Struct1Rename_array_descr;
 
 // ----------------------------------------
 // Function:  Alias typefunc
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Alias arg
 // Statement: py_in_native
@@ -74,7 +74,7 @@ PY_typefunc(
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: py_function_enum_scalar
+// Statement: py_function_enum
 // ----------------------------------------
 // Argument:  iColor in
 // Statement: py_in_enum
@@ -113,7 +113,7 @@ PY_returnEnum(
 
 // ----------------------------------------
 // Function:  TypeID returnTypeID
-// Statement: py_function_enum_scalar
+// Statement: py_function_enum
 // ----------------------------------------
 // Argument:  TypeID in
 // Statement: py_in_enum

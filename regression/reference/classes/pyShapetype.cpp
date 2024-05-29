@@ -61,7 +61,7 @@ PY_Shape_tp_init(
 
 // ----------------------------------------
 // Function:  int get_ivar
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_get_ivar__doc__[] =
 "documentation"
 ;

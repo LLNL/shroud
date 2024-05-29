@@ -136,7 +136,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg
 // Statement: py_in_vector<native>&_list
@@ -310,7 +310,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int returnDim2
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
 // Statement: py_in_native*_list

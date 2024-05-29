@@ -41,7 +41,7 @@ PY_Singleton_tp_del (PY_Singleton *self)
 
 // ----------------------------------------
 // Function:  static Singleton & getReference
-// Statement: py_function_shadow_&
+// Statement: py_function_shadow&
 static char PY_getReference__doc__[] =
 "documentation"
 ;

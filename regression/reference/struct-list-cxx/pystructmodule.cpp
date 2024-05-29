@@ -42,7 +42,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1 arg
 // Statement: py_in_struct_list
@@ -78,7 +78,7 @@ PY_passStructByValue(
 
 // ----------------------------------------
 // Function:  int passStruct1
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Statement: py_in_struct*_list
@@ -114,7 +114,7 @@ PY_passStruct1(
 
 // ----------------------------------------
 // Function:  int passStruct2
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Statement: py_in_struct*_list
@@ -157,7 +157,7 @@ PY_passStruct2(
 
 // ----------------------------------------
 // Function:  int acceptStructInPtr
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
 // Statement: py_in_struct*_list
@@ -323,7 +323,7 @@ PY_returnStructByValue(
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1
-// Statement: py_function_struct_list
+// Statement: py_function_struct*_list
 // ----------------------------------------
 // Argument:  int i
 // Statement: py_in_native
@@ -369,7 +369,7 @@ PY_returnStructPtr1(
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Statement: py_function_struct_list
+// Statement: py_function_struct*_list
 // ----------------------------------------
 // Argument:  int i
 // Statement: py_in_native
@@ -419,7 +419,7 @@ PY_returnStructPtr2(
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtrArray +dimension(2)
-// Statement: py_function_struct_list
+// Statement: py_function_struct*_list
 static char PY_returnStructPtrArray__doc__[] =
 "documentation"
 ;
@@ -448,7 +448,7 @@ PY_returnStructPtrArray(
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
-// Statement: py_function_struct_list
+// Statement: py_function_struct*_list
 static char PY_get_global_struct_list__doc__[] =
 "documentation"
 ;

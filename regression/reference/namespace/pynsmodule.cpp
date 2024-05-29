@@ -36,7 +36,7 @@ PyObject *PY_init_ns_nswork(void);
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

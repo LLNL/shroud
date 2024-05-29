@@ -111,7 +111,7 @@ PY_FunctionTU_1(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
 "documentation"
 ;
@@ -140,7 +140,7 @@ PY_UseImplWorker_internal_ImplWorker1(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"
 ;

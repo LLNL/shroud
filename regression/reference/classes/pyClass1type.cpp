@@ -93,7 +93,7 @@ PY_Class1_tp_init_flag(
 
 // ----------------------------------------
 // Function:  int Method1
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_Method1__doc__[] =
 "documentation"
 ;
@@ -122,7 +122,7 @@ PY_Method1(
 
 // ----------------------------------------
 // Function:  bool equivalent
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Statement: py_in_shadow&
@@ -170,7 +170,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Statement: py_function_shadow_*
+// Statement: py_function_shadow*
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -198,7 +198,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  const std::string & getName
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getName__doc__[] =
 "documentation"
 ;
@@ -228,7 +228,7 @@ PY_getName(
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Statement: py_function_enum_scalar
+// Statement: py_function_enum
 // ----------------------------------------
 // Argument:  DIRECTION arg
 // Statement: py_in_enum

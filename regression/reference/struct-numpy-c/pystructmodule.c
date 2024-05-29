@@ -42,7 +42,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1 arg
 // Statement: py_in_struct_numpy
@@ -101,7 +101,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStruct1
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
 // Statement: py_in_struct*_numpy
@@ -160,7 +160,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStruct2
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Statement: py_in_struct*_numpy
@@ -226,7 +226,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int acceptStructInPtr
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
 // Statement: py_in_struct*_numpy
@@ -463,7 +463,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1
-// Statement: py_function_struct_numpy
+// Statement: py_function_struct*_numpy
 // ----------------------------------------
 // Argument:  int i
 // Statement: py_in_native
@@ -516,7 +516,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Statement: py_function_struct_numpy
+// Statement: py_function_struct*_numpy
 // ----------------------------------------
 // Argument:  int i
 // Statement: py_in_native
@@ -575,7 +575,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtrArray +dimension(2)
-// Statement: py_function_struct_numpy
+// Statement: py_function_struct*_numpy
 static char PY_returnStructPtrArray__doc__[] =
 "documentation"
 ;
@@ -613,7 +613,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
-// Statement: py_function_struct_numpy
+// Statement: py_function_struct*_numpy
 static char PY_get_global_struct_list__doc__[] =
 "documentation"
 ;

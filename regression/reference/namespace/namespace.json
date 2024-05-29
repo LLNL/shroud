@@ -191,7 +191,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }

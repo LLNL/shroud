@@ -56,7 +56,7 @@ PP_local_function1(
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
 // Statement: py_in_string&
@@ -100,7 +100,7 @@ fail:
 
 // ----------------------------------------
 // Function:  bool isInitialized
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 static char PP_isInitialized__doc__[] =
 "documentation"
 ;
@@ -246,7 +246,7 @@ PP_testoptional_2(
 
 // ----------------------------------------
 // Function:  size_t test_size_t
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PP_test_size_t__doc__[] =
 "documentation"
 ;
@@ -549,7 +549,7 @@ PP_verylongfunctionname1(
 
 // ----------------------------------------
 // Function:  int verylongfunctionname2
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int verylongname1
 // Statement: py_in_native

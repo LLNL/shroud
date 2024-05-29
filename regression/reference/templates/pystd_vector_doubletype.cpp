@@ -96,7 +96,7 @@ PY_push_back(
 
 // ----------------------------------------
 // Function:  double & at
-// Statement: py_function_native_&_numpy
+// Statement: py_function_native&_numpy
 // ----------------------------------------
 // Argument:  size_type n
 // Statement: py_in_native

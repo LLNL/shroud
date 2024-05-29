@@ -38,7 +38,7 @@ PyArray_Descr *PY_Cstruct1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByReference
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1 & arg
 // Statement: py_inout_struct&_numpy
@@ -99,7 +99,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg
 // Statement: py_in_struct&_numpy

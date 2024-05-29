@@ -139,7 +139,7 @@ PY_passChar(
 
 // ----------------------------------------
 // Function:  char returnChar
-// Statement: py_function_char_scalar
+// Statement: py_function_char
 static char PY_returnChar__doc__[] =
 "documentation"
 ;
@@ -257,7 +257,7 @@ PY_passCharPtrInOut(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Statement: py_function_char_*
+// Statement: py_function_char*
 static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
@@ -286,7 +286,7 @@ PY_getCharPtr1(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Statement: py_function_char_*
+// Statement: py_function_char*
 static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
@@ -315,7 +315,7 @@ PY_getCharPtr2(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Statement: py_function_char_*
+// Statement: py_function_char*
 static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
@@ -344,7 +344,7 @@ PY_getCharPtr3(
 
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Statement: py_function_string_scalar
+// Statement: py_function_string
 static char PY_getConstStringResult__doc__[] =
 "documentation"
 ;
@@ -374,7 +374,7 @@ PY_getConstStringResult(
 
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
-// Statement: py_function_string_scalar
+// Statement: py_function_string
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -404,7 +404,7 @@ PY_getConstStringLen(
 
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
-// Statement: py_function_string_scalar
+// Statement: py_function_string
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
@@ -434,7 +434,7 @@ PY_getConstStringAsArg(
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Statement: py_function_string_scalar
+// Statement: py_function_string
 static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
@@ -460,7 +460,7 @@ PY_getConstStringAlloc(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
@@ -490,7 +490,7 @@ PY_getConstStringRefPure(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
@@ -523,7 +523,7 @@ PY_getConstStringRefLen(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
@@ -555,7 +555,7 @@ PY_getConstStringRefAsArg(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
@@ -585,7 +585,7 @@ PY_getConstStringRefLenEmpty(
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
 ;
@@ -611,7 +611,7 @@ PY_getConstStringRefAlloc(
 
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Statement: py_function_string_*
+// Statement: py_function_string*
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;
@@ -645,7 +645,7 @@ PY_getConstStringPtrLen(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Statement: py_function_string_*
+// Statement: py_function_string*
 static char PY_getConstStringPtrAlloc__doc__[] =
 "documentation"
 ;
@@ -671,7 +671,7 @@ PY_getConstStringPtrAlloc(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Statement: py_function_string_*
+// Statement: py_function_string*
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
 ;
@@ -704,7 +704,7 @@ PY_getConstStringPtrOwnsAlloc(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Statement: py_function_string_*
+// Statement: py_function_string*
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
 ;
@@ -1077,7 +1077,7 @@ PY_fetchStringPointerLen(
 
 // ----------------------------------------
 // Function:  int acceptStringInstance
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  std::string arg1
 // Statement: py_in_string
@@ -1227,7 +1227,7 @@ PY_CpassChar(
 
 // ----------------------------------------
 // Function:  char CreturnChar
-// Statement: py_function_char_scalar
+// Statement: py_function_char
 static char PY_CreturnChar__doc__[] =
 "documentation"
 ;

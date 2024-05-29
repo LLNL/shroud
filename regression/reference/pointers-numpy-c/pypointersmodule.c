@@ -867,7 +867,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int accumulate
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Statement: py_in_native*_numpy
@@ -930,7 +930,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  char * * names +intent(in)
 // Statement: py_in_char**
@@ -1016,7 +1016,7 @@ PY_setGlobalInt(
 
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_sumFixedArray__doc__[] =
 "documentation"
 ;
@@ -1315,7 +1315,7 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Statement: py_function_void_*
+// Statement: py_function_void*
 // ----------------------------------------
 // Argument:  int flag
 // Statement: py_in_native
@@ -1351,7 +1351,7 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Statement: py_function_void_*
+// Statement: py_function_void*
 // ----------------------------------------
 // Argument:  int flag
 // Statement: py_in_native
@@ -1416,7 +1416,7 @@ PY_fetchVoidPtr(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -1446,7 +1446,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -1478,7 +1478,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
 ;
@@ -1509,7 +1509,7 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Statement: py_function_native_*_numpy
+// Statement: py_function_native*_numpy
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"
 ;
@@ -1542,7 +1542,7 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Statement: py_function_native_*_scalar
+// Statement: py_function_native*_scalar
 static char PY_returnIntScalar__doc__[] =
 "documentation"
 ;

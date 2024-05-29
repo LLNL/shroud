@@ -39,7 +39,7 @@ PyArray_Descr *PY_nested_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByReferenceCls
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg
 // Statement: py_inout_struct&_class
@@ -79,7 +79,7 @@ PY_passStructByReferenceCls(
 
 // ----------------------------------------
 // Function:  int passStructByReferenceInCls
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1_cls & arg
 // Statement: py_in_struct&_class
@@ -200,7 +200,7 @@ fail:
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Statement: py_in_native*_numpy
