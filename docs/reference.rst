@@ -1477,6 +1477,12 @@ cxx_T
     The template parameters for templated arguments.
     ``std::vector<{cxx_T}>``
 
+cxx_Tn
+    The value of each template argument.
+    *n* indexes the arguments starting at 1.
+    For ``user_type<int, long *>`` the values would be
+    ``cxx_T1=int`` and ``cxx_T2=long *``.
+
 cxx_type
     The C++ type of the argument.
 

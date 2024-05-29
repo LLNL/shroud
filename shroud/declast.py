@@ -1554,22 +1554,25 @@ class Declaration(Node):
 
     def __repr__(self):
         return "<Declaration('{}')>".format(str(self))
-    
+
+    def get_first_abstract_declarator(self):
+        """Return an abstract declarator for the first declarator.
+        The wrapping will split "int i,j" into "int i;int j"
+        """
+        declarator = self.declarator.get_abstract_declarator()
+        if declarator:
+            decl = "{} {}".format(str(self), declarator)
+        else:
+            decl = str(self)
+        return decl
+            
     def gen_template_argument(self):
         """
         ex  "int, double *"
         """
-        decl = []
-        for targ in self.template_arguments:
-            decl.append(str(targ))
-            if targ.declarator:
-                s = str(targ.declarator)
-                if s:
-                    decl.append(" ")
-                    decl.append(s)
-            decl.append(",")
-        decl.pop()
-        return ''.join(decl)
+        # template_arguments is a list of Declarations
+        return ",".join([targ.get_first_abstract_declarator()
+                         for targ in self.template_arguments])
         
     def gen_template_arguments(self):
         """Return string for template_arguments."""

@@ -927,7 +927,7 @@ return 1;""",
         if ast.template_arguments:
             vtypemap = ast.template_arguments[0].typemap
             fmt.numpy_type = vtypemap.PYN_typenum
-            fmt.cxx_T = ','.join([str(targ) for targ in ast.template_arguments])
+            statements.set_template_fields(ast, fmt)
             fmt.npy_rank = "1"
             if is_result:
                 fmt.npy_dims_var = "SHD_" + fmt.C_result
