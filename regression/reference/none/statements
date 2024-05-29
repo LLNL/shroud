@@ -1512,12 +1512,12 @@ c_function_vector<native>_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "{cxx_T} *{c_var} =\t static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
+  - "{cxx_T1} *{c_var} =\t static_cast<{cxx_T1} *>\t(std::malloc({c_local_bytes}));"
   - "std::memcpy({c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t {cxx_var};"
-  c_return_type: '{cxx_T} *'
+  c_return_type: '{cxx_T1} *'
   c_temps:
   - size
   comments:
@@ -2552,7 +2552,7 @@ c_inout_vector<native>&_buf_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
+  - "*{c_var} = static_cast<{cxx_T1} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
   - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
@@ -2614,7 +2614,7 @@ c_inout_vector<native>*_buf_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
+  - "*{c_var} = static_cast<{cxx_T1} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
   - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
@@ -2676,7 +2676,7 @@ c_inout_vector<native>_buf_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
+  - "*{c_var} = static_cast<{cxx_T1} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));"
   - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
@@ -2823,7 +2823,7 @@ c_mixin_destructor_new-vector:
 c_mixin_function_array_malloc:
   c_arg_decl:
   - size_t *{c_var_size}
-  c_return_type: '{cxx_T} *'
+  c_return_type: '{cxx_T1} *'
   c_temps:
   - size
   comments:
@@ -2932,7 +2932,7 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -3077,7 +3077,7 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -3121,7 +3121,7 @@ c_mixin_vector_cdesc_fill-cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -3456,7 +3456,7 @@ c_out_vector<native>&_buf_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
+  - "*{c_var} = static_cast<{cxx_T1} *>\t(std::malloc({c_local_bytes}));"
   - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
@@ -3492,7 +3492,7 @@ c_out_vector<native>&_cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -3559,7 +3559,7 @@ c_out_vector<native>*_buf_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
+  - "*{c_var} = static_cast<{cxx_T1} *>\t(std::malloc({c_local_bytes}));"
   - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
@@ -3595,7 +3595,7 @@ c_out_vector<native>*_cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -3662,7 +3662,7 @@ c_out_vector<native>_buf_malloc:
   - bytes
   c_post_call:
   - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
-  - "*{c_var} = static_cast<{cxx_T} *>\t(std::malloc({c_local_bytes}));"
+  - "*{c_var} = static_cast<{cxx_T1} *>\t(std::malloc({c_local_bytes}));"
   - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
   - '*{c_var_size} = {cxx_var}.size();'
   c_pre_call:
@@ -7878,7 +7878,7 @@ f_function_vector<native>_cdesc_allocatable:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -9733,7 +9733,7 @@ f_inout_vector<native>&_cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -9803,7 +9803,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -10679,7 +10679,7 @@ f_out_&_cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -11569,7 +11569,7 @@ f_out_vector<native>&_cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -11620,7 +11620,7 @@ f_out_vector<native>&_cdesc_allocatable:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -11675,7 +11675,7 @@ f_out_vector<native>*_cdesc:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
@@ -11726,7 +11726,7 @@ f_out_vector<native>*_cdesc_allocatable:
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
   - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({cxx_T});'
+  - '{c_var_cdesc}->elem_len = sizeof({cxx_T1});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
