@@ -1032,7 +1032,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssumedRank(int *data+dimension(..))",
-                "declgen": "void AssumedRank(int * data)",
+                "declgen": "void AssumedRank(int *data)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -1262,7 +1262,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssumedRank(int *data+dimension(..))",
-                "declgen": "void AssumedRank(int * data +rank(0))",
+                "declgen": "void AssumedRank(int *data +rank(0))",
                 "name": "AssumedRank",
                 "options": {},
                 "wrap": {
@@ -1399,7 +1399,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssumedRank(int *data+dimension(..))",
-                "declgen": "void AssumedRank(int * data +rank(1))",
+                "declgen": "void AssumedRank(int *data +rank(1))",
                 "name": "AssumedRank",
                 "options": {},
                 "wrap": {
@@ -1538,7 +1538,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssumedRank(int *data+dimension(..))",
-                "declgen": "void AssumedRank(int * data +rank(2))",
+                "declgen": "void AssumedRank(int *data +rank(2))",
                 "name": "AssumedRank",
                 "options": {},
                 "wrap": {

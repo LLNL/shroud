@@ -57,7 +57,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(IndexType i1, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(IndexType i1, IndexType *i2 +intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -317,7 +317,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int32_t i1, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int32_t i1, IndexType *i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -520,7 +520,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int64_t i1, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int64_t i1, IndexType *i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {

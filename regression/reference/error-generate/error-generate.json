@@ -383,7 +383,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ***func0b() +deref(pointer)",
-                "declgen": "int * * * func0b(void) +deref(pointer)",
+                "declgen": "int ***func0b(void) +deref(pointer)",
                 "name": "func0b",
                 "options": {},
                 "wrap": {},
@@ -490,7 +490,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *func0e() +dimension",
-                "declgen": "int * func0e(void) +dimension",
+                "declgen": "int *func0e(void) +dimension",
                 "name": "func0e",
                 "options": {},
                 "wrap": {},
@@ -798,7 +798,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func3c(char *arg1 +charlen)",
-                "declgen": "void func3c(char * arg1 +charlen)",
+                "declgen": "void func3c(char *arg1 +charlen)",
                 "name": "func3c",
                 "options": {},
                 "wrap": {},
@@ -855,7 +855,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func4(char *arg1 +blanknull)",
-                "declgen": "void func4(char * arg1 +blanknull)",
+                "declgen": "void func4(char *arg1 +blanknull)",
                 "name": "func4",
                 "options": {},
                 "wrap": {},
@@ -937,7 +937,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func6(vector *arg1)",
-                "declgen": "void func6(vector * arg1)",
+                "declgen": "void func6(vector *arg1)",
                 "name": "func6",
                 "options": {},
                 "wrap": {},
@@ -1012,7 +1012,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func6a(vector<int, int> *arg1)",
-                "declgen": "void func6a(vector<int,int> * arg1)",
+                "declgen": "void func6a(vector<int,int> *arg1)",
                 "name": "func6a",
                 "options": {},
                 "wrap": {},
@@ -1078,7 +1078,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func6b(none<int> *arg1)",
-                "declgen": "void func6b(none<int> * arg1)",
+                "declgen": "void func6b(none<int> *arg1)",
                 "name": "func6b",
                 "options": {},
                 "wrap": {},
@@ -1135,7 +1135,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func7(int *arg1 +dimension(n+=2))",
-                "declgen": "void func7(int * arg1 +dimension(n+=2))",
+                "declgen": "void func7(int *arg1 +dimension(n+=2))",
                 "name": "func7",
                 "options": {},
                 "wrap": {},
@@ -1299,7 +1299,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func9(int *arg1+deref(none))",
-                "declgen": "void func9(int * arg1 +deref(none))",
+                "declgen": "void func9(int *arg1 +deref(none))",
                 "name": "func9",
                 "options": {},
                 "wrap": {},
@@ -1382,7 +1382,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func9b(int *arg1+deref(pointer))",
-                "declgen": "void func9b(int * arg1 +deref(pointer))",
+                "declgen": "void func9b(int *arg1 +deref(pointer))",
                 "name": "func9b",
                 "options": {},
                 "wrap": {},
@@ -1470,7 +1470,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func9c(int **arg1+deref(pointer)+intent(in))",
-                "declgen": "void func9c(int * * arg1 +deref(pointer)+intent(in))",
+                "declgen": "void func9c(int **arg1 +deref(pointer)+intent(in))",
                 "name": "func9c",
                 "options": {},
                 "wrap": {},
@@ -1689,7 +1689,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10c(int *arg1+rank(nrank))",
-                "declgen": "void func10c(int * arg1 +rank(nrank))",
+                "declgen": "void func10c(int *arg1 +rank(nrank))",
                 "name": "func10c",
                 "options": {},
                 "wrap": {},
@@ -1748,7 +1748,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10c(int *arg1+rank(30))",
-                "declgen": "void func10c(int * arg1 +rank(30))",
+                "declgen": "void func10c(int *arg1 +rank(30))",
                 "name": "func10c",
                 "options": {},
                 "wrap": {},
@@ -1979,7 +1979,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func12(int **arg1 +intent(out)+owner(none))",
-                "declgen": "void func12(int * * arg1 +intent(out)+owner(none))",
+                "declgen": "void func12(int **arg1 +intent(out)+owner(none))",
                 "name": "func12",
                 "options": {},
                 "wrap": {},
@@ -2051,7 +2051,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13(double *in     +intent(in)  +rank(1), int     sizein +implied(size(in,2,3)))",
-                "declgen": "void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))",
+                "declgen": "void func13(double *in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))",
                 "name": "func13",
                 "options": {},
                 "wrap": {},
@@ -2129,7 +2129,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13b(double *in     +intent(in)  +rank(1), int     sizein +implied(size(none)))",
-                "declgen": "void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))",
+                "declgen": "void func13b(double *in +intent(in)+rank(1), int sizein +implied(size(none)))",
                 "name": "func13b",
                 "options": {},
                 "wrap": {},
@@ -2217,7 +2217,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13c(const char *text, int ntext+implied(len(text,2)), int mtext+implied(len_trim(text,3)))",
-                "declgen": "void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))",
+                "declgen": "void func13c(const char *text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))",
                 "name": "func13c",
                 "options": {},
                 "wrap": {},
@@ -2310,7 +2310,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13d(const char *text, int ntext+implied(len(text2)), int mtext+implied(len_trim(text3)))",
-                "declgen": "void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))",
+                "declgen": "void func13d(const char *text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))",
                 "name": "func13d",
                 "options": {},
                 "wrap": {},
@@ -2395,7 +2395,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
-                "declgen": "void callback_set_alloc(void (* alloc)(int tc +intent(none)))",
+                "declgen": "void callback_set_alloc(void (*alloc)(int tc +intent(none)))",
                 "name": "callback_set_alloc",
                 "options": {},
                 "wrap": {},
@@ -2550,7 +2550,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +intent(out), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +intent(out), int nto)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -2793,7 +2793,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +rank(8), int nto)",
                 "name": "AssignValues",
                 "options": {
                     "wrap_c": false,
@@ -2916,7 +2916,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +deref(allocatable2), int nto)",
                 "name": "AssignValues",
                 "options": {
                     "wrap_c": false,
@@ -3037,7 +3037,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * struct1_get_arg2(struct1 *SH_this+intent(in))",
-                "declgen": "int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)",
+                "declgen": "int *struct1_get_arg2(struct1 *SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)",
                 "name": "struct1_get_arg2",
                 "options": {},
                 "struct_parent": "struct1",
@@ -3231,7 +3231,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void struct1_set_arg2(struct1 *SH_this,int * val)",
-                "declgen": "void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void struct1_set_arg2(struct1 *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "struct1_set_arg2",
                 "options": {},
                 "user_fmt": {

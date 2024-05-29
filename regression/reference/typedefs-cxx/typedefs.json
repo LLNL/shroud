@@ -1330,7 +1330,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void typestruct(Struct1Rename *arg1);",
-                "declgen": "void typestruct(Struct1Rename * arg1)",
+                "declgen": "void typestruct(Struct1Rename *arg1)",
                 "name": "typestruct",
                 "options": {},
                 "wrap": {
@@ -1739,7 +1739,7 @@
                     "typemap_name": "IndexType"
                 },
                 "decl": "IndexType returnShapeSize(int ndims, const IndexType *shape+intent(in)+rank(1));",
-                "declgen": "IndexType returnShapeSize(int ndims, const IndexType * shape +intent(in)+rank(1))",
+                "declgen": "IndexType returnShapeSize(int ndims, const IndexType *shape +intent(in)+rank(1))",
                 "name": "returnShapeSize",
                 "options": {
                     "wrap_python": false
@@ -2220,7 +2220,7 @@
                     "typemap_name": "IndexType2"
                 },
                 "decl": "IndexType2 returnShapeSize2(int ndims, const IndexType2 *shape+intent(in)+rank(1));",
-                "declgen": "IndexType2 returnShapeSize2(int ndims, const IndexType2 * shape +intent(in)+rank(1))",
+                "declgen": "IndexType2 returnShapeSize2(int ndims, const IndexType2 *shape +intent(in)+rank(1))",
                 "name": "returnShapeSize2",
                 "options": {
                     "wrap_python": false

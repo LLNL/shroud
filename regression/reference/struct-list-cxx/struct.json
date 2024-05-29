@@ -1118,7 +1118,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "declgen": "int passStruct1(const Cstruct1 *arg)",
                 "name": "passStruct1",
                 "options": {
                     "literalinclude": true
@@ -1255,7 +1255,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "int passStruct2(const Cstruct1 *s1, char *outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -1408,7 +1408,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
-                "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
+                "declgen": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "name": "acceptStructInPtr",
                 "options": {},
                 "wrap": {
@@ -1546,7 +1546,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i, double d)",
+                "declgen": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -1714,7 +1714,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
-                "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
+                "declgen": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "name": "acceptStructInOutPtr",
                 "options": {},
                 "wrap": {
@@ -1977,7 +1977,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i, double d)",
+                "declgen": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -2160,7 +2160,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -2338,7 +2338,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtrArray() +dimension(2)",
-                "declgen": "Cstruct1 * returnStructPtrArray(void) +dimension(2)",
+                "declgen": "Cstruct1 *returnStructPtrArray(void) +dimension(2)",
                 "doxygen": {
                     "brief": "Return a pointer to an array of structs"
                 },
@@ -2433,7 +2433,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "declgen": "Cstruct_list *get_global_struct_list(void)",
                 "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
@@ -2508,7 +2508,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class *Create_Cstruct_as_class(void)",
                 "name": "Create_Cstruct_as_class",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
@@ -2571,7 +2571,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
                 "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
@@ -2624,7 +2624,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Return_Cstruct_as_class(void)",
-                "declgen": "Cstruct_as_class * Return_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class *Return_Cstruct_as_class(void)",
                 "name": "Return_Cstruct_as_class",
                 "options": {
                     "C_shadow_result": false,
@@ -2686,7 +2686,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Return_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)",
                 "name": "Return_Cstruct_as_class_args",
                 "options": {
                     "C_shadow_result": false,
@@ -2754,7 +2754,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
-                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class",
@@ -2835,7 +2835,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
@@ -2925,7 +2925,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Return_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Return_Cstruct_as_subclass_args",
                 "options": {
                     "C_shadow_result": false,

@@ -445,7 +445,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptBothStructs( Cstruct_as_class *s1 +intent(in), Cstruct_as_numpy *s2 +intent(in))",
-                "declgen": "int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))",
+                "declgen": "int acceptBothStructs(Cstruct_as_class *s1 +intent(in), Cstruct_as_numpy *s2 +intent(in))",
                 "name": "acceptBothStructs",
                 "options": {},
                 "wrap": {

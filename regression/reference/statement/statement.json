@@ -165,7 +165,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getNameErrorPattern()",
-                "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
+                "declgen": "const string &getNameErrorPattern(void) +len(get_name_length())",
                 "helpers": {
                     "c": [
                         "char_copy"
@@ -327,7 +327,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool nameIsValid(const std::string& name)",
-                "declgen": "bool nameIsValid(const std::string & name)",
+                "declgen": "bool nameIsValid(const std::string &name)",
                 "helpers": {
                     "c": [
                         "char_len_trim"

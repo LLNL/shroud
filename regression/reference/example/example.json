@@ -244,7 +244,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1( const string *name )",
-                                        "declgen": "ExClass1(const string * name)",
+                                        "declgen": "ExClass1(const string *name)",
                                         "doxygen": {
                                             "brief": "constructor",
                                             "description": "longer description\nusually multiple lines\n",
@@ -968,7 +968,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
-                                        "declgen": "const string & getNameErrorCheck(void) const",
+                                        "declgen": "const string &getNameErrorCheck(void) const",
                                         "helpers": {
                                             "c": [
                                                 "array_context",
@@ -1184,7 +1184,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getNameArg() const",
-                                        "declgen": "const string & getNameArg(void) const",
+                                        "declgen": "const string &getNameArg(void) const",
                                         "helpers": {
                                             "c": [
                                                 "char_copy"
@@ -2469,7 +2469,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2(const string *name)",
-                                        "declgen": "ExClass2(const string * name +len_trim(trim_name))",
+                                        "declgen": "ExClass2(const string *name +len_trim(trim_name))",
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
@@ -2909,7 +2909,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getName() const",
-                                        "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "declgen": "const string &getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "helpers": {
                                             "c": [
                                                 "char_copy"
@@ -3112,7 +3112,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getName2()",
-                                        "declgen": "const string & getName2(void)",
+                                        "declgen": "const string &getName2(void)",
                                         "helpers": {
                                             "c": [
                                                 "array_context",
@@ -3326,7 +3326,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "string& getName3() const",
-                                        "declgen": "string & getName3(void) const",
+                                        "declgen": "string &getName3(void) const",
                                         "helpers": {
                                             "c": [
                                                 "array_context",
@@ -3540,7 +3540,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "string& getName4()",
-                                        "declgen": "string & getName4(void)",
+                                        "declgen": "string &getName4(void)",
                                         "helpers": {
                                             "c": [
                                                 "array_context",
@@ -3945,7 +3945,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1 *get_class1(const ExClass1 *in)",
-                                        "declgen": "ExClass1 * get_class1(const ExClass1 * in)",
+                                        "declgen": "ExClass1 *get_class1(const ExClass1 *in)",
                                         "name": "get_class1",
                                         "options": {},
                                         "wrap": {
@@ -4253,7 +4253,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type)",
+                                        "declgen": "ExClass2 *declare(TypeID type)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -4487,7 +4487,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type, SidreLength len=1)",
+                                        "declgen": "ExClass2 *declare(TypeID type, SidreLength len=1)",
                                         "fortran_generic": [
                                             {
                                                 "decls": [
@@ -4895,7 +4895,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type, int len=1)",
+                                        "declgen": "ExClass2 *declare(TypeID type, int len=1)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -5102,7 +5102,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2 * declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "ExClass2 * declare(TypeID type, long len=1)",
+                                        "declgen": "ExClass2 *declare(TypeID type, long len=1)",
                                         "name": "declare",
                                         "options": {},
                                         "return_this": true,
@@ -7466,7 +7466,7 @@
                                     "typemap_name": "bool"
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
-                                "declgen": "bool isNameValid(const std::string & name)",
+                                "declgen": "bool isNameValid(const std::string &name)",
                                 "helpers": {
                                     "c": [
                                         "char_len_trim"
@@ -7950,7 +7950,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name)",
-                                "declgen": "void test_names(const std::string & name)",
+                                "declgen": "void test_names(const std::string &name)",
                                 "helpers": {
                                     "c": [
                                         "char_len_trim"
@@ -8211,7 +8211,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
-                                "declgen": "void test_names(const std::string & name, int flag)",
+                                "declgen": "void test_names(const std::string &name, int flag)",
                                 "helpers": {
                                     "c": [
                                         "char_len_trim"
@@ -9695,7 +9695,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr1(void (*get)());",
-                                "declgen": "void FuncPtr1(void (* get)(void))",
+                                "declgen": "void FuncPtr1(void (*get)(void))",
                                 "doxygen": {
                                     "brief": "subroutine"
                                 },
@@ -10121,7 +10121,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr2(double * (*get)());",
-                                "declgen": "void FuncPtr2(double * (* get)(void))",
+                                "declgen": "void FuncPtr2(double *(*get)(void))",
                                 "doxygen": {
                                     "brief": "return a pointer"
                                 },
@@ -10584,7 +10584,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr3(double (*get)(int i, int));",
-                                "declgen": "void FuncPtr3(double (* get)(int i, int))",
+                                "declgen": "void FuncPtr3(double (*get)(int i, int))",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -11257,7 +11257,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr4(double (*get)(double, int));",
-                                "declgen": "void FuncPtr4(double (* get)(double, int))",
+                                "declgen": "void FuncPtr4(double (*get)(double, int))",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -11776,7 +11776,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
-                                "declgen": "void FuncPtr5(void (* get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
+                                "declgen": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
                                 "name": "FuncPtr5",
                                 "options": {},
                                 "wrap": {
@@ -13389,7 +13389,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))",
-                                "declgen": "void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))",
+                                "declgen": "void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))",
                                 "name": "verylongfunctionname1",
                                 "options": {
                                     "F_force_wrapper": true
@@ -15937,7 +15937,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +dimension(shape(in)), int      sizein +implied(size(in)))",
-                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))",
+                                "declgen": "void cos_doubles(double *in +intent(in)+rank(2), double *out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))",
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },

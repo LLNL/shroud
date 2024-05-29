@@ -6,28 +6,28 @@ C c Class2(void)
 C f Class2(void)
 C c ~Class2(void)
 C f ~Class2(void)
-C c void func1(tutorial::Class1 * arg +intent(in))
-C f void func1(tutorial::Class1 * arg +intent(in))
-C c void acceptClass3(Class3 * arg +intent(in))
-C f void acceptClass3(Class3 * arg +intent(in))
+C c void func1(tutorial::Class1 *arg +intent(in))
+C f void func1(tutorial::Class1 *arg +intent(in))
+C c void acceptClass3(Class3 *arg +intent(in))
+C f void acceptClass3(Class3 *arg +intent(in))
 Close wrapClass2.h
 Close wrapClass2.cpp
-C c int passStruct1(const Cstruct1 * arg)
-C f int passStruct1(const Cstruct1 * arg)
+C c int passStruct1(const Cstruct1 *arg)
+C f int passStruct1(const Cstruct1 *arg)
 Close wrapforward.h
 Close wrapforward.cpp
 class Class3
 class Class2
 Fortran Class2(void)
 Fortran ~Class2(void)
-Fortran void func1(tutorial::Class1 * arg +intent(in))
-Fortran void acceptClass3(Class3 * arg +intent(in))
+Fortran void func1(tutorial::Class1 *arg +intent(in))
+Fortran void acceptClass3(Class3 *arg +intent(in))
 C-interface f Class2(void)
 C-interface f ~Class2(void)
-C-interface f void func1(tutorial::Class1 * arg +intent(in))
-C-interface f void acceptClass3(Class3 * arg +intent(in))
-Fortran int passStruct1(const Cstruct1 * arg)
-C-interface f int passStruct1(const Cstruct1 * arg)
+C-interface f void func1(tutorial::Class1 *arg +intent(in))
+C-interface f void acceptClass3(Class3 *arg +intent(in))
+Fortran int passStruct1(const Cstruct1 *arg)
+C-interface f int passStruct1(const Cstruct1 *arg)
 Close wrapfforward.f
 Close utilforward.cpp
 Close typesforward.h
@@ -36,8 +36,8 @@ Close pyClass3type.cpp
 class Class2
 Python method Class2(void)
 Python method ~Class2(void)
-Python method void func1(tutorial::Class1 * arg +intent(in))
-Python method void acceptClass3(Class3 * arg +intent(in))
+Python method void func1(tutorial::Class1 *arg +intent(in))
+Python method void acceptClass3(Class3 *arg +intent(in))
 Close pyClass2type.cpp
 Close pyforwardmodule.cpp
 Close pyforwardutil.cpp
@@ -45,7 +45,7 @@ Close pyforwardmodule.hpp
 Close setup.py
 Lua method Class2(void)
 Lua method ~Class2(void)
-Lua method void func1(tutorial::Class1 * arg +intent(in))
-Lua method void acceptClass3(Class3 * arg +intent(in))
+Lua method void func1(tutorial::Class1 *arg +intent(in))
+Lua method void acceptClass3(Class3 *arg +intent(in))
 Close luaforwardmodule.hpp
 Close luaforwardmodule.cpp

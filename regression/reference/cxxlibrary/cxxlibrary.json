@@ -1317,7 +1317,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag)",
+                        "declgen": "Class1 *declare(int flag)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1543,7 +1543,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag, LengthType length=1)",
+                        "declgen": "Class1 *declare(int flag, LengthType length=1)",
                         "fortran_generic": [
                             {
                                 "decls": [
@@ -1805,7 +1805,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag, int length=1)",
+                        "declgen": "Class1 *declare(int flag, int length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -2008,7 +2008,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag, long length=1)",
+                        "declgen": "Class1 *declare(int flag, long length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -2367,7 +2367,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg)",
+                "declgen": "int passStructByReferenceCls(Cstruct1_cls &arg)",
                 "name": "passStructByReferenceCls",
                 "options": {},
                 "wrap": {
@@ -2483,7 +2483,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceInCls(const Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceInCls(const Cstruct1_cls & arg)",
+                "declgen": "int passStructByReferenceInCls(const Cstruct1_cls &arg)",
                 "doxygen": {
                     "description": "const defaults to intent(in)\n"
                 },
@@ -2604,7 +2604,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))",
-                "declgen": "void passStructByReferenceInoutCls(Cstruct1_cls & arg +intent(inout))",
+                "declgen": "void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))",
                 "name": "passStructByReferenceInoutCls",
                 "options": {},
                 "wrap": {
@@ -2704,7 +2704,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))",
-                "declgen": "void passStructByReferenceOutCls(Cstruct1_cls & arg +intent(out))",
+                "declgen": "void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))",
                 "name": "passStructByReferenceOutCls",
                 "options": {},
                 "wrap": {
@@ -2936,7 +2936,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
-                "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))",
+                "declgen": "bool defaultPtrIsNULL(double *data=nullptr +intent(IN)+rank(1))",
                 "name": "defaultPtrIsNULL",
                 "options": {},
                 "wrap": {
@@ -3230,7 +3230,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out))",
+                "declgen": "void defaultArgsInOut(int in1, int *out1 +intent(out), int *out2 +intent(out))",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3570,7 +3570,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out), bool flag=false)",
+                "declgen": "void defaultArgsInOut(int in1, int *out1 +intent(out), int *out2 +intent(out), bool flag=false)",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -4038,7 +4038,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(long idx) +len(30)",
+                "declgen": "const std::string &getGroupName(long idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4232,7 +4232,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int32_t idx) +len(30)",
+                "declgen": "const std::string &getGroupName(int32_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4408,7 +4408,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int64_t idx) +len(30)",
+                "declgen": "const std::string &getGroupName(int64_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4587,7 +4587,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * nested_get_parent(nested *SH_this+intent(in))",
-                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in)) +intent(getter)",
+                "declgen": "nested *nested_get_parent(nested *SH_this +intent(in)) +intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -4778,7 +4778,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_parent(nested *SH_this,nested * val)",
-                "declgen": "void nested_set_parent(nested * SH_this, nested * val +intent(setter)) +intent(setter)",
+                "declgen": "void nested_set_parent(nested *SH_this, nested *val +intent(setter)) +intent(setter)",
                 "name": "nested_set_parent",
                 "options": {},
                 "user_fmt": {
@@ -4964,7 +4964,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this+intent(in))",
-                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
+                "declgen": "nested **nested_get_child(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -5179,7 +5179,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_child(nested *SH_this,nested * * val)",
-                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void nested_set_child(nested *SH_this, nested **val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "nested_set_child",
                 "options": {},
                 "user_fmt": {
@@ -5368,7 +5368,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * nested_get_array(nested *SH_this+intent(in))",
-                "declgen": "nested * nested_get_array(nested * SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
+                "declgen": "nested *nested_get_array(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -5580,7 +5580,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_array(nested *SH_this,nested * val)",
-                "declgen": "void nested_set_array(nested * SH_this, nested * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void nested_set_array(nested *SH_this, nested *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "nested_set_array",
                 "options": {},
                 "user_fmt": {
@@ -5863,7 +5863,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int passStructByReference(Cstruct1 &arg)",
-                        "declgen": "int passStructByReference(Cstruct1 & arg)",
+                        "declgen": "int passStructByReference(Cstruct1 &arg)",
                         "doxygen": {
                             "description": "Argument is modified by library, defaults to intent(inout).\n"
                         },
@@ -6118,7 +6118,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int passStructByReferenceIn(const Cstruct1 &arg)",
-                        "declgen": "int passStructByReferenceIn(const Cstruct1 & arg)",
+                        "declgen": "int passStructByReferenceIn(const Cstruct1 &arg)",
                         "doxygen": {
                             "description": "const defaults to intent(in)\n"
                         },
@@ -6375,7 +6375,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
-                        "declgen": "void passStructByReferenceInout(Cstruct1 & arg +intent(inout))",
+                        "declgen": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
                         "name": "passStructByReferenceInout",
                         "options": {},
                         "wrap": {
@@ -6578,7 +6578,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
-                        "declgen": "void passStructByReferenceOut(Cstruct1 & arg +intent(out))",
+                        "declgen": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
                         "name": "passStructByReferenceOut",
                         "options": {},
                         "wrap": {

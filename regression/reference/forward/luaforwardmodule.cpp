@@ -67,7 +67,7 @@ static int l_Class2_dtor(lua_State *L)
     // splicer end class.Class2.method.__gc
 }
 
-// void func1(tutorial::Class1 * arg +intent(in))
+// void func1(tutorial::Class1 *arg +intent(in))
 // ----------------------------------------
 // Function:  void func1
 // Statement: lua_subroutine
@@ -87,7 +87,7 @@ static int l_Class2_func1(lua_State *L)
     // splicer end class.Class2.method.func1
 }
 
-// void acceptClass3(Class3 * arg +intent(in))
+// void acceptClass3(Class3 *arg +intent(in))
 // ----------------------------------------
 // Function:  void acceptClass3
 // Statement: lua_subroutine

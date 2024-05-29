@@ -564,7 +564,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
+                "declgen": "int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -775,7 +775,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
-                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void DataPointer_set_items(ns3::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "DataPointer_set_items",
                 "options": {},
                 "user_fmt": {
@@ -1145,7 +1145,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
+                        "declgen": "int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "array_context",
@@ -1356,7 +1356,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                        "declgen": "void DataPointer_set_items(ns1::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1753,7 +1753,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
+                        "declgen": "int *DataPointer_get_items(ns2::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "array_context",
@@ -1964,7 +1964,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                        "declgen": "void DataPointer_set_items(ns2::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {

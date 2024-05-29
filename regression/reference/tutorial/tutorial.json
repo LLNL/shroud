@@ -634,7 +634,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)",
+                "declgen": "const std::string ConcatenateStrings(const std::string &arg1, const std::string &arg2)",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -1854,7 +1854,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
-                "declgen": "void OverloadedFunction(const std::string & name)",
+                "declgen": "void OverloadedFunction(const std::string &name)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -3438,7 +3438,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3786,7 +3786,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string &name, float arg2)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -3978,7 +3978,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -7378,7 +7378,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getMinMax(int &min +intent(out), int &max +intent(out))",
-                "declgen": "void getMinMax(int & min +intent(out), int & max +intent(out))",
+                "declgen": "void getMinMax(int &min +intent(out), int &max +intent(out))",
                 "doxygen": {
                     "brief": "Pass in reference to scalar"
                 },
@@ -7706,7 +7706,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int callback1(int in, int (*incr)(int));",
-                "declgen": "int callback1(int in, int (* incr)(int))",
+                "declgen": "int callback1(int in, int (*incr)(int))",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -8153,7 +8153,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "declgen": "const std::string &LastFunctionCalled(void) +len(30)",
                 "helpers": {
                     "c": [
                         "char_copy"

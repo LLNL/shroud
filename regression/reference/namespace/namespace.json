@@ -37,7 +37,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void)",
+                "declgen": "const std::string &LastFunctionCalled(void)",
                 "helpers": {
                     "c": [
                         "array_context",

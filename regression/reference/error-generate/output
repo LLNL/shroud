@@ -25,17 +25,17 @@ charlen attribute must have a value
 Node: func6
 line 44
 void func6(vector * arg1)
-Type 'std::vector' requires template argument: vector * arg1
+Type 'std::vector' requires template argument: vector *arg1
 --------------------
 Node: func6a
 line 45
 void func6a(vector<int,int> * arg1)
-Type 'std::vector' may only have 1 template arguments: vector<int,int> * arg1
+Type 'std::vector' may only have 1 template arguments: vector<int,int> *arg1
 --------------------
 Node: func6b
 line 46
 void func6b(none<int> * arg1)
-Type 'none' may not supply template argument: none<int> * arg1
+Type 'none' may not supply template argument: none<int> *arg1
 --------------------
 Node: func13
 line 70

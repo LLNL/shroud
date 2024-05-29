@@ -58,7 +58,7 @@ static int l_PassByValue(lua_State *L)
     // splicer end function.PassByValue
 }
 
-// const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
+// const std::string ConcatenateStrings(const std::string &arg1, const std::string &arg2)
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
 // Statement: lua_function_string
@@ -150,7 +150,7 @@ static int l_UseDefaultArguments(lua_State *L)
     // splicer end function.UseDefaultArguments
 }
 
-// void OverloadedFunction(const std::string & name)
+// void OverloadedFunction(const std::string &name)
 // void OverloadedFunction(int indx)
 // ----------------------------------------
 // Function:  void OverloadedFunction
@@ -239,7 +239,7 @@ static int l_TemplateArgument(lua_State *L)
 }
 
 // void FortranGenericOverloaded(void)
-// void FortranGenericOverloaded(const std::string & name, double arg2)
+// void FortranGenericOverloaded(const std::string &name, double arg2)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Statement: lua_subroutine
@@ -499,7 +499,7 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-// const std::string & LastFunctionCalled(void) +len(30)
+// const std::string &LastFunctionCalled(void) +len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Statement: lua_function_string&

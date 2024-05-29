@@ -344,7 +344,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrRaw()",
-                "declgen": "int * ReturnIntPtrRaw(void) +deref(raw)",
+                "declgen": "int *ReturnIntPtrRaw(void) +deref(raw)",
                 "name": "ReturnIntPtrRaw",
                 "options": {
                     "wrap_fortran": false,
@@ -433,7 +433,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrScalar()",
-                "declgen": "int * ReturnIntPtrScalar(void) +deref(scalar)",
+                "declgen": "int *ReturnIntPtrScalar(void) +deref(scalar)",
                 "name": "ReturnIntPtrScalar",
                 "options": {
                     "wrap_lua": false
@@ -602,7 +602,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrPointer()",
-                "declgen": "int * ReturnIntPtrPointer(void) +deref(pointer)",
+                "declgen": "int *ReturnIntPtrPointer(void) +deref(pointer)",
                 "name": "ReturnIntPtrPointer",
                 "options": {
                     "wrap_lua": false
@@ -791,7 +791,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out))",
-                "declgen": "int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)",
+                "declgen": "int *ReturnIntPtrDimRaw(int *len +intent(out)) +deref(raw)",
                 "name": "ReturnIntPtrDimRaw",
                 "options": {
                     "wrap_fortran": false,
@@ -939,7 +939,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "declgen": "int *ReturnIntPtrDimPointer(int *len +hidden+intent(out)) +deref(pointer)+dimension(len)",
                 "helpers": {
                     "c": [
                         "array_context"
@@ -1291,7 +1291,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
+                "declgen": "int *ReturnIntPtrDimAlloc(int *len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -1652,7 +1652,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
+                "declgen": "int *ReturnIntPtrDimDefault(int *len +hidden+intent(out)) +dimension(len)",
                 "helpers": {
                     "c": [
                         "array_context"
@@ -2003,7 +2003,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimRawNew(int *len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "name": "ReturnIntPtrDimRawNew",
                 "options": {
                     "wrap_fortran": false,
@@ -2170,7 +2170,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimPointerNew(int *len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
                 "helpers": {
                     "c": [
                         "array_context"
@@ -2531,7 +2531,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimAllocNew(int *len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)",
                 "name": "ReturnIntPtrDimAllocNew",
                 "options": {
                     "wrap_fortran": false,
@@ -2778,7 +2778,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "declgen": "int *ReturnIntPtrDimDefaultNew(int *len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "helpers": {
                     "c": [
                         "array_context"
@@ -3151,7 +3151,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimRaw(int **array, int *len+intent(out))",
-                "declgen": "void IntPtrDimRaw(int * * array +deref(raw)+intent(out)+owner(library), int * len +intent(out))",
+                "declgen": "void IntPtrDimRaw(int **array +deref(raw)+intent(out)+owner(library), int *len +intent(out))",
                 "name": "IntPtrDimRaw",
                 "options": {
                     "wrap_c": false,
@@ -3244,7 +3244,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimPointer(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimPointer(int **array +deref(pointer)+dimension(len)+intent(out)+owner(library), int *len +hidden+intent(out))",
                 "name": "IntPtrDimPointer",
                 "options": {
                     "wrap_c": false,
@@ -3343,7 +3343,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimAlloc(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimAlloc(int **array +deref(allocatable)+dimension(len)+intent(out)+owner(library), int *len +hidden+intent(out))",
                 "name": "IntPtrDimAlloc",
                 "options": {
                     "wrap_c": false,
@@ -3441,7 +3441,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefault(int **array +dimension(len)+intent(out)+owner(library), int *len +hidden+intent(out))",
                 "name": "IntPtrDimDefault",
                 "options": {
                     "wrap_c": false,
@@ -3539,7 +3539,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimRawNew(int * * array +deref(raw)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimRawNew(int **array +deref(raw)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimRawNew",
                 "options": {
                     "wrap_c": false,
@@ -3632,7 +3632,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimPointerNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimPointerNew(int **array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimPointerNew",
                 "options": {
                     "wrap_c": false,
@@ -3731,7 +3731,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimAllocNew(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimAllocNew(int **array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimAllocNew",
                 "options": {
                     "wrap_c": false,
@@ -3829,7 +3829,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefaultNew(int **array +dimension(len)+intent(out)+owner(caller), int *len +hidden+intent(out))",
                 "name": "IntPtrDimDefaultNew",
                 "options": {
                     "wrap_c": false,
@@ -4099,7 +4099,7 @@
                     "typemap_name": "Class1"
                 },
                 "decl": "Class1 * getClassStatic() +owner(library)",
-                "declgen": "Class1 * getClassStatic(void) +owner(library)",
+                "declgen": "Class1 *getClassStatic(void) +owner(library)",
                 "name": "getClassStatic",
                 "options": {
                     "wrap_lua": false
@@ -4281,7 +4281,7 @@
                     "typemap_name": "Class1"
                 },
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)",
-                "declgen": "Class1 * getClassNew(int flag) +owner(caller)",
+                "declgen": "Class1 *getClassNew(int flag) +owner(caller)",
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 },

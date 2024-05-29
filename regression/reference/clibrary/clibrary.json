@@ -469,7 +469,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void PassByReference(double *arg1+intent(in), int *arg2+intent(out))",
-                "declgen": "void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))",
+                "declgen": "void PassByReference(double *arg1 +intent(in), int *arg2 +intent(out))",
                 "name": "PassByReference",
                 "options": {
                     "literalinclude": true
@@ -910,7 +910,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
-                "declgen": "void checkBool(const bool arg1, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
+                "declgen": "void checkBool(const bool arg1, bool *arg2 +intent(out), bool *arg3 +intent(inout))",
                 "doxygen": {
                     "brief": "Check intent with bool"
                 },
@@ -1226,7 +1226,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "declgen": "char *Function4a(const char *arg1, const char *arg2) +len(30)",
                 "helpers": {
                     "c": [
                         "char_copy"
@@ -1495,7 +1495,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptName(const char *name)",
-                "declgen": "void acceptName(const char * name)",
+                "declgen": "void acceptName(const char *name)",
                 "name": "acceptName",
                 "options": {
                     "literalinclude": true
@@ -1653,7 +1653,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
+                "declgen": "void passCharPtrInOut(char *s +intent(inout))",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
@@ -1859,7 +1859,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrCAPI(int n, char *in  +api(capi)+intent(inout), char *out +api(capi)+intent(out))",
-                "declgen": "void passCharPtrCAPI(int n, char * in +api(capi)+intent(inout), char * out +api(capi)+intent(out))",
+                "declgen": "void passCharPtrCAPI(int n, char *in +api(capi)+intent(inout), char *out +api(capi)+intent(out))",
                 "doxygen": {
                     "brief": "api(capi) with intent(out) and intent(inout)",
                     "description": "Only the interface is needed."
@@ -2068,7 +2068,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
+                "declgen": "void returnOneName(char *name1 +charlen(MAXNAME)+intent(out))",
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
@@ -2261,7 +2261,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
+                "declgen": "void returnTwoNames(char *name1 +charlen(MAXNAME)+intent(out), char *name2 +charlen(MAXNAME)+intent(out))",
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
@@ -2514,7 +2514,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text)))",
+                "declgen": "void ImpliedTextLen(char *text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text)))",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
@@ -2778,7 +2778,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLen(const char *text+api(capi), int ltext+implied(len(text)), bool flag+implied(false))",
-                "declgen": "int ImpliedLen(const char * text +api(capi), int ltext +implied(len(text)), bool flag +implied(false))",
+                "declgen": "int ImpliedLen(const char *text +api(capi), int ltext +implied(len(text)), bool flag +implied(false))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nUse api(capi) to avoid needlessly copying the string.\n"
@@ -3135,7 +3135,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLenTrim(const char *text+api(capi), int ltext+implied(len_trim(text)), bool flag+implied(true))",
-                "declgen": "int ImpliedLenTrim(const char * text +api(capi), int ltext +implied(len_trim(text)), bool flag +implied(true))",
+                "declgen": "int ImpliedLenTrim(const char *text +api(capi), int ltext +implied(len_trim(text)), bool flag +implied(true))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nUse api(capi) to avoid needlessly copying the string.\n"
@@ -3933,7 +3933,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void bindC2(char *outbuf+intent(out))",
-                "declgen": "void bindC2(char * outbuf +intent(out))",
+                "declgen": "void bindC2(char *outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
@@ -4096,7 +4096,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
-                "declgen": "void passVoidStarStar(void * in +intent(in), void * * out +intent(out))",
+                "declgen": "void passVoidStarStar(void *in +intent(in), void **out +intent(out))",
                 "doxygen": {
                     "brief": "Assign in to out.",
                     "description": "No bufferify function is created, only an interface.\n"
@@ -4263,7 +4263,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedType(void *arg+assumedtype)",
-                "declgen": "int passAssumedType(void * arg +assumedtype)",
+                "declgen": "int passAssumedType(void *arg +assumedtype)",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4418,7 +4418,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passAssumedTypeDim(void *arg+assumedtype+rank(1))",
-                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+rank(1))",
+                "declgen": "void passAssumedTypeDim(void *arg +assumedtype+rank(1))",
                 "doxygen": {
                     "brief": "Test assumed-type with rank(1)"
                 },
@@ -4573,7 +4573,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
-                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))",
+                "declgen": "int passAssumedTypeBuf(void *arg +assumedtype, char *outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4837,7 +4837,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
-                "declgen": "void callback_set_alloc(int tc, array_info * arr +intent(inout), void (* alloc)(int tc +intent(in), array_info * arr +intent(inout)))",
+                "declgen": "void callback_set_alloc(int tc, array_info *arr +intent(inout), void (*alloc)(int tc +intent(in), array_info *arr +intent(inout)))",
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },

@@ -356,7 +356,7 @@ module vectors_mod
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  std::vector<const double * > & arg1 +intent(in)
+    ! Argument:  std::vector<const double *> & arg1 +intent(in)
     ! Statement: f_in_vector<native*>&_buf
     ! ----------------------------------------
     ! Argument:  int num
@@ -785,7 +785,7 @@ contains
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  std::vector<const double * > & arg1 +intent(in)
+    ! Argument:  std::vector<const double *> & arg1 +intent(in)
     ! Statement: f_in_vector<native*>&_buf
     ! ----------------------------------------
     ! Argument:  int num

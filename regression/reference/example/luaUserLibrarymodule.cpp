@@ -24,7 +24,7 @@ extern "C" {
 // splicer end C_definition
 
 // ExClass1(void)
-// ExClass1(const string * name)
+// ExClass1(const string *name)
 // ----------------------------------------
 // Function:  ExClass1
 // Statement: lua_ctor
@@ -124,7 +124,7 @@ static int l_example_nested_ExClass1_incrementCount(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getNameErrorCheck(void) const
+// const string &getNameErrorCheck(void) const
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
 // Statement: lua_function_string&
@@ -139,7 +139,7 @@ static int l_example_nested_ExClass1_getNameErrorCheck(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
-// const string & getNameArg(void) const
+// const string &getNameArg(void) const
 // ----------------------------------------
 // Function:  const string & getNameArg
 // Statement: lua_function_string&
@@ -253,7 +253,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// ExClass2(const string * name +len_trim(trim_name))
+// ExClass2(const string *name +len_trim(trim_name))
 // ----------------------------------------
 // Function:  ExClass2
 // Statement: lua_ctor
@@ -298,7 +298,7 @@ static int l_example_nested_ExClass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string &getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Statement: lua_function_string&
@@ -313,7 +313,7 @@ static int l_example_nested_ExClass2_getName(lua_State *L)
     // splicer end class.ExClass2.method.getName
 }
 
-// const string & getName2(void)
+// const string &getName2(void)
 // ----------------------------------------
 // Function:  const string & getName2
 // Statement: lua_function_string&
@@ -328,7 +328,7 @@ static int l_example_nested_ExClass2_getName2(lua_State *L)
     // splicer end class.ExClass2.method.getName2
 }
 
-// string & getName3(void) const
+// string &getName3(void) const
 // ----------------------------------------
 // Function:  string & getName3
 // Statement: lua_function_string&
@@ -343,7 +343,7 @@ static int l_example_nested_ExClass2_getName3(lua_State *L)
     // splicer end class.ExClass2.method.getName3
 }
 
-// string & getName4(void)
+// string &getName4(void)
 // ----------------------------------------
 // Function:  string & getName4
 // Statement: lua_function_string&
@@ -377,7 +377,7 @@ static int l_example_nested_ExClass2_GetNameLength(lua_State *L)
     // splicer end class.ExClass2.method.GetNameLength
 }
 
-// ExClass1 * get_class1(const ExClass1 * in)
+// ExClass1 *get_class1(const ExClass1 *in)
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
 // Statement: lua_function_shadow*
@@ -399,7 +399,7 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
     // splicer end class.ExClass2.method.get_class1
 }
 
-// ExClass2 * declare(TypeID type, SidreLength len=1)
+// ExClass2 *declare(TypeID type, SidreLength len=1)
 // ----------------------------------------
 // Function:  ExClass2 * declare
 // Statement: lua_function_shadow*
@@ -637,7 +637,7 @@ static int l_example_nested_local_function1(lua_State *)
     // splicer end function.local_function1
 }
 
-// bool isNameValid(const std::string & name)
+// bool isNameValid(const std::string &name)
 // ----------------------------------------
 // Function:  bool isNameValid
 // Statement: lua_function_bool
@@ -667,8 +667,8 @@ static int l_example_nested_isInitialized(lua_State *L)
     // splicer end function.isInitialized
 }
 
-// void test_names(const std::string & name)
-// void test_names(const std::string & name, int flag)
+// void test_names(const std::string &name)
+// void test_names(const std::string &name, int flag)
 // ----------------------------------------
 // Function:  void test_names
 // Statement: lua_subroutine
@@ -839,7 +839,7 @@ static int l_example_nested_testmpi(lua_State *L)
     // splicer end function.testmpi
 }
 
-// void FuncPtr1(void (* get)(void))
+// void FuncPtr1(void (*get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr1
 // Statement: lua_subroutine
@@ -858,7 +858,7 @@ static int l_example_nested_FuncPtr1(lua_State *)
     // splicer end function.FuncPtr1
 }
 
-// void FuncPtr2(double * (* get)(void))
+// void FuncPtr2(double *(*get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr2
 // Statement: lua_subroutine
@@ -877,7 +877,7 @@ static int l_example_nested_FuncPtr2(lua_State *)
     // splicer end function.FuncPtr2
 }
 
-// void FuncPtr3(double (* get)(int i, int))
+// void FuncPtr3(double (*get)(int i, int))
 // ----------------------------------------
 // Function:  void FuncPtr3
 // Statement: lua_subroutine
@@ -897,7 +897,7 @@ static int l_example_nested_FuncPtr3(lua_State *L)
     // splicer end function.FuncPtr3
 }
 
-// void FuncPtr5(void (* get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
+// void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))
 // ----------------------------------------
 // Function:  void FuncPtr5
 // Statement: lua_subroutine
@@ -912,7 +912,7 @@ static int l_example_nested_FuncPtr5(lua_State *)
     // splicer end function.FuncPtr5
 }
 
-// void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
+// void verylongfunctionname1(int *verylongname1 +intent(inout), int *verylongname2 +intent(inout), int *verylongname3 +intent(inout), int *verylongname4 +intent(inout), int *verylongname5 +intent(inout), int *verylongname6 +intent(inout), int *verylongname7 +intent(inout), int *verylongname8 +intent(inout), int *verylongname9 +intent(inout), int *verylongname10 +intent(inout))
 // ----------------------------------------
 // Function:  void verylongfunctionname1
 // Statement: lua_subroutine
@@ -1032,7 +1032,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
     // splicer end function.verylongfunctionname2
 }
 
-// void cos_doubles(double * in +intent(in)+rank(2), double * out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
+// void cos_doubles(double *in +intent(in)+rank(2), double *out +dimension(shape(in))+intent(out), int sizein +implied(size(in)))
 // ----------------------------------------
 // Function:  void cos_doubles
 // Statement: lua_subroutine

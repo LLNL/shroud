@@ -430,7 +430,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
-                "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
+                "declgen": "void getName(char *name +len(worklen)+len_trim(worktrim))",
                 "helpers": {
                     "c": [
                         "char_alloc",
@@ -1235,7 +1235,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv)",
+                "declgen": "int function4(const std::string &rv)",
                 "helpers": {
                     "c": [
                         "char_len_trim"
@@ -1616,7 +1616,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name, int * value +intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string &name, int *value +intent(out))",
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
@@ -3021,7 +3021,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
-                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class"
@@ -3459,7 +3459,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr+intent(inout), int *err+intent(out)), void (*afree)(double *arr+intent(inout)), void (*assoc)(double *arr+intent(in), int *err+intent(out)))",
-                "declgen": "void external_funcs(const char * rdbase, const char * pkg, const char * name, void (* alloc)(double * arr +intent(inout), int * err +intent(out)), void (* afree)(double * arr +intent(inout)), void (* assoc)(double * arr +intent(in), int * err +intent(out)))",
+                "declgen": "void external_funcs(const char *rdbase, const char *pkg, const char *name, void (*alloc)(double *arr +intent(inout), int *err +intent(out)), void (*afree)(double *arr +intent(inout)), void (*assoc)(double *arr +intent(in), int *err +intent(out)))",
                 "name": "external_funcs",
                 "options": {
                     "wrap_python": false

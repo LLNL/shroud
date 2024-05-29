@@ -1438,7 +1438,6 @@ class Declarator(Node):
         out = []
         for ptr in self.pointer:
             out.append(str(ptr))
-            out.append(" ")
 
         if self.func:
             out.append("(" + str(self.func) + ")")

@@ -33,7 +33,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "declgen": "const std::string *getConstStringPtrAlloc(void) +owner(library)",
                 "helpers": {
                     "c": [
                         "array_context",

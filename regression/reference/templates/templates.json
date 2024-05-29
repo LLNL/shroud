@@ -3954,7 +3954,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void push_back( const T& value+intent(in) )",
-                                "declgen": "void push_back(const T & value +intent(in))",
+                                "declgen": "void push_back(const T &value +intent(in))",
                                 "have_template_args": true,
                                 "name": "push_back",
                                 "options": {},
@@ -4018,7 +4018,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void push_back( const T& value+intent(in) )",
-                                "declgen": "void push_back(const int & value +intent(in))",
+                                "declgen": "void push_back(const int &value +intent(in))",
                                 "have_template_args": true,
                                 "name": "push_back",
                                 "options": {},
@@ -4217,7 +4217,7 @@
                                     "template_argument": "T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n)",
+                                "declgen": "T &at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {},
@@ -4278,7 +4278,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n)",
+                                "declgen": "int &at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {
@@ -4907,7 +4907,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void push_back( const T& value+intent(in) )",
-                                "declgen": "void push_back(const T & value +intent(in))",
+                                "declgen": "void push_back(const T &value +intent(in))",
                                 "have_template_args": true,
                                 "name": "push_back",
                                 "options": {},
@@ -4971,7 +4971,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void push_back( const T& value+intent(in) )",
-                                "declgen": "void push_back(const double & value +intent(in))",
+                                "declgen": "void push_back(const double &value +intent(in))",
                                 "have_template_args": true,
                                 "name": "push_back",
                                 "options": {},
@@ -5170,7 +5170,7 @@
                                     "template_argument": "T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n)",
+                                "declgen": "T &at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {},
@@ -5231,7 +5231,7 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n)",
+                                "declgen": "double &at(size_type n)",
                                 "have_template_args": true,
                                 "name": "at",
                                 "options": {

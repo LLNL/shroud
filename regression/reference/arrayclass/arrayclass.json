@@ -546,7 +546,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fillSize(int &size +intent(out))",
-                        "declgen": "void fillSize(int & size +intent(out))",
+                        "declgen": "void fillSize(int &size +intent(out))",
                         "name": "fillSize",
                         "options": {},
                         "wrap": {
@@ -830,7 +830,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray(void) +dimension(getSize())",
+                        "declgen": "double *getArray(void) +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1054,7 +1054,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst(void) const +dimension(getSize())",
+                        "declgen": "double *getArrayConst(void) const +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1279,7 +1279,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC(void) +dimension(getSize())",
+                        "declgen": "const double *getArrayC(void) +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1504,7 +1504,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
+                        "declgen": "const double *getArrayConstC(void) const +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1761,7 +1761,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtr(double **array +dimension(isize)+intent(out), int *isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -2142,7 +2142,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRef(double *&array +dimension(isize)+intent(out), int &isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -2524,7 +2524,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double **array +dimension(isize)+intent(out), int *isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -2906,7 +2906,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double *&array +dimension(isize)+intent(out), int &isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -3268,7 +3268,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchVoidPtr(void **array +intent(out))",
-                        "declgen": "void fetchVoidPtr(void * * array +intent(out))",
+                        "declgen": "void fetchVoidPtr(void **array +intent(out))",
                         "name": "fetchVoidPtr",
                         "options": {},
                         "wrap": {
@@ -3471,7 +3471,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchVoidRef(void *&array +intent(out))",
-                        "declgen": "void fetchVoidRef(void * & array +intent(out))",
+                        "declgen": "void fetchVoidRef(void *&array +intent(out))",
                         "name": "fetchVoidRef",
                         "options": {},
                         "wrap": {
@@ -3668,7 +3668,7 @@
                             "typemap_name": "bool"
                         },
                         "decl": "bool checkPtr(void *array)",
-                        "declgen": "bool checkPtr(void * array)",
+                        "declgen": "bool checkPtr(void *array)",
                         "name": "checkPtr",
                         "options": {},
                         "wrap": {

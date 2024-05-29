@@ -1450,7 +1450,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +dimension(..), int nvalues)",
+                "declgen": "int SumValues(const int *values +dimension(..), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -1688,7 +1688,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -1988,7 +1988,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2277,7 +2277,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(1), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2578,7 +2578,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from +rank(1), int nfrom, int * to +rank(1), int nto)",
+                "declgen": "void AssignValues(const int *from +rank(1), int nfrom, int *to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2862,7 +2862,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(void * addr, int type, size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer(void *addr, int type, size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3071,7 +3071,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer(float *addr +intent(in)+rank(1), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -3321,7 +3321,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer(float *addr +intent(in)+rank(2), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -3560,7 +3560,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(void * addr, int type +implied(type(addr)), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer2(void *addr, int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3796,7 +3796,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer2(float *addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -4074,7 +4074,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer2(float *addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -4356,7 +4356,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointer(void **addr+intent(out), int *type+intent(out), size_t *size+intent(out))",
-                "declgen": "void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))",
+                "declgen": "void GetPointer(void **addr +intent(out), int *type +intent(out), size_t *size +intent(out))",
                 "name": "GetPointer",
                 "options": {},
                 "wrap": {
@@ -4595,7 +4595,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(void **addr +intent(out), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -4849,7 +4849,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(1), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5122,7 +5122,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(2), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5330,7 +5330,7 @@
                     "typemap_name": "StructAsClass"
                 },
                 "decl": "StructAsClass *CreateStructAsClass(void)",
-                "declgen": "StructAsClass * CreateStructAsClass(void)",
+                "declgen": "StructAsClass *CreateStructAsClass(void)",
                 "name": "CreateStructAsClass",
                 "options": {
                     "class_ctor": "StructAsClass"
@@ -5450,7 +5450,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -5592,7 +5592,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, int inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
@@ -5794,7 +5794,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {

@@ -1,18 +1,18 @@
 Read yaml statement.yaml
 C c int GetNameLength(void) +pure
 C f int GetNameLength(void) +pure
-C c const string & getNameErrorPattern(void) +len(get_name_length())
-C f const string & getNameErrorPattern(void) +len(get_name_length())
-C c bool nameIsValid(const std::string & name)
+C c const string &getNameErrorPattern(void) +len(get_name_length())
+C f const string &getNameErrorPattern(void) +len(get_name_length())
+C c bool nameIsValid(const std::string &name)
 Close wrapstatement.h
 Close wrapstatement.cpp
 Fortran int GetNameLength(void) +pure
-Fortran const string & getNameErrorPattern(void) +len(get_name_length())
-Fortran bool nameIsValid(const std::string & name)
+Fortran const string &getNameErrorPattern(void) +len(get_name_length())
+Fortran bool nameIsValid(const std::string &name)
 C-interface f int GetNameLength(void) +pure
-C-interface c const string & getNameErrorPattern(void) +len(get_name_length())
-C-interface f const string & getNameErrorPattern(void) +len(get_name_length())
-C-interface c bool nameIsValid(const std::string & name)
+C-interface c const string &getNameErrorPattern(void) +len(get_name_length())
+C-interface f const string &getNameErrorPattern(void) +len(get_name_length())
+C-interface c bool nameIsValid(const std::string &name)
 Close wrapfstatement.f
 Close utilstatement.cpp
 Close typesstatement.h

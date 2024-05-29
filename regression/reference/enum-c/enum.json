@@ -645,7 +645,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnEnumOutArg(enum Color *out+intent(out))",
-                "declgen": "void returnEnumOutArg(enum Color * out +intent(out))",
+                "declgen": "void returnEnumOutArg(enum Color *out +intent(out))",
                 "name": "returnEnumOutArg",
                 "options": {
                     "wrap_python": false
@@ -770,7 +770,7 @@
                     "typemap_name": "Color"
                 },
                 "decl": "enum Color returnEnumInOutArg(enum Color *inout+intent(inout))",
-                "declgen": "enum Color returnEnumInOutArg(enum Color * inout +intent(inout))",
+                "declgen": "enum Color returnEnumInOutArg(enum Color *inout +intent(inout))",
                 "name": "returnEnumInOutArg",
                 "options": {
                     "wrap_python": false

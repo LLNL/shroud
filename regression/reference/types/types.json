@@ -5669,7 +5669,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool returnBoolAndOthers(int *flag+intent(out))",
-                "declgen": "bool returnBoolAndOthers(int * flag +intent(out))",
+                "declgen": "bool returnBoolAndOthers(int *flag +intent(out))",
                 "doxygen": {
                     "brief": "Function which returns bool with other intent(out) arguments",
                     "description": "Python treats bool differently since Py_BuildValue does not support\nbool until Python 3.3.\nMust create a PyObject with PyBool_FromLong then include that object\nin call to Py_BuildValue as type 'O'.  But since two return values\nare being created, function return and argument flag, rename first\nlocal C variable to avoid duplicate names in wrapper.\n"

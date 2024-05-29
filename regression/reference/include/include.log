@@ -30,16 +30,16 @@ Close wraplibrary_outer2.cpp
 class Class2
 C c void method1(MPI_Comm comm)
 C f void method1(MPI_Comm comm)
-C c void method2(three::Class1 * c2)
-C f void method2(three::Class1 * c2)
+C c void method2(three::Class1 *c2)
+C f void method2(three::Class1 *c2)
 Close wrapClass2.h
 Close wrapClass2.cpp
 Close wraplibrary.h
 class Class2
 Fortran void method1(MPI_Comm comm)
-Fortran void method2(three::Class1 * c2)
+Fortran void method2(three::Class1 *c2)
 C-interface f void method1(MPI_Comm comm)
-C-interface f void method2(three::Class1 * c2)
+C-interface f void method2(three::Class1 *c2)
 typedef CustomType
 Fortran void function1(void)
 C-interface f void function1(void)

@@ -113,7 +113,7 @@ static int l_Class1_Method1(lua_State *L)
     // splicer end class.Class1.method.Method1
 }
 
-// const std::string & getName(void)
+// const std::string &getName(void)
 // ----------------------------------------
 // Function:  const std::string & getName
 // Statement: lua_function_string&
@@ -166,7 +166,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// const std::string & getName(void)
+// const std::string &getName(void)
 // ----------------------------------------
 // Function:  const std::string & getName
 // Statement: lua_function_string&
@@ -312,7 +312,7 @@ static int l_get_global_flag(lua_State *L)
     // splicer end function.get_global_flag
 }
 
-// const std::string & LastFunctionCalled(void) +len(30)
+// const std::string &LastFunctionCalled(void) +len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Statement: lua_function_string&

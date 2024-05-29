@@ -7,16 +7,16 @@ C f void One(void)
 Close wrapns_outer.h
 Close wrapns_outer.cpp
 class ClassWork
-C c const std::string & LastFunctionCalled(void)
-C f const std::string & LastFunctionCalled(void)
+C c const std::string &LastFunctionCalled(void)
+C f const std::string &LastFunctionCalled(void)
 C c void One(void)
 C f void One(void)
 Close wrapns.h
 Close wrapns.cpp
-Fortran const std::string & LastFunctionCalled(void)
+Fortran const std::string &LastFunctionCalled(void)
 Fortran void One(void)
-C-interface c const std::string & LastFunctionCalled(void)
-C-interface f const std::string & LastFunctionCalled(void)
+C-interface c const std::string &LastFunctionCalled(void)
+C-interface f const std::string &LastFunctionCalled(void)
 C-interface f void One(void)
 class Cstruct1
 Fortran void One(void)
@@ -34,7 +34,7 @@ Close pyns_outermodule.cpp
 class ClassWork
 Close pynswork_ClassWorktype.cpp
 Close pyns_nsworkmodule.cpp
-Python function const std::string & LastFunctionCalled(void)
+Python function const std::string &LastFunctionCalled(void)
 Python function void One(void)
 Close pynsmodule.cpp
 Close pynsutil.cpp

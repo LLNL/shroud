@@ -48,7 +48,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1(void (*incr)(void))",
-                "declgen": "void callback1(void (* incr)(void))",
+                "declgen": "void callback1(void (*incr)(void))",
                 "doxygen": {
                     "brief": "Create abstract interface for function"
                 },
@@ -244,7 +244,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1_wrap(void (*incr)(void))",
-                "declgen": "void callback1_wrap(void (* incr)(void))",
+                "declgen": "void callback1_wrap(void (*incr)(void))",
                 "doxygen": {
                     "brief": "Create abstract interface for function",
                     "description": "Create a Fortran wrapper to call the bind(C) interface.\n"
@@ -446,7 +446,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1_external(void (*incr)(void)+external)",
-                "declgen": "void callback1_external(void (* incr)(void) +external)",
+                "declgen": "void callback1_external(void (*incr)(void) +external)",
                 "doxygen": {
                     "brief": "Declare callback as external"
                 },
@@ -651,7 +651,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1_funptr(void (*incr)(void)+funptr)",
-                "declgen": "void callback1_funptr(void (* incr)(void) +funptr)",
+                "declgen": "void callback1_funptr(void (*incr)(void) +funptr)",
                 "doxygen": {
                     "brief": "Declare callback as c_funptr",
                     "description": "The caller is responsible for using c_funloc to pass the function address.\n"
@@ -872,7 +872,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback2(const char *name, int ival, incrtype incr)",
-                "declgen": "void callback2(const char * name, int ival, incrtype incr)",
+                "declgen": "void callback2(const char *name, int ival, incrtype incr)",
                 "doxygen": {
                     "brief": "Create abstract interface for function"
                 },
@@ -1099,7 +1099,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback2_external(const char *name, int ival, incrtype incr+external)",
-                "declgen": "void callback2_external(const char * name, int ival, incrtype incr +external)",
+                "declgen": "void callback2_external(const char *name, int ival, incrtype incr +external)",
                 "doxygen": {
                     "brief": "Declare callback as external"
                 },
@@ -1326,7 +1326,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback2_funptr(const char *name, int ival, incrtype incr+funptr)",
-                "declgen": "void callback2_funptr(const char * name, int ival, incrtype incr +funptr)",
+                "declgen": "void callback2_funptr(const char *name, int ival, incrtype incr +funptr)",
                 "doxygen": {
                     "brief": "Declare callback as c_funptr",
                     "description": "The caller is responsible for using c_funloc to pass the function address.\nAllows any function to be passed as an argument.\n"
@@ -1567,7 +1567,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback3(int type, void *in+assumedtype+intent(in), void (*incr)(void)+funptr)",
-                "declgen": "void callback3(int type, void * in +assumedtype+intent(in), void (* incr)(void) +funptr)",
+                "declgen": "void callback3(int type, void *in +assumedtype+intent(in), void (*incr)(void) +funptr)",
                 "doxygen": {
                     "brief": "Test function pointer with assumedtype"
                 },
@@ -1915,7 +1915,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int callback4(int *ilow+rank(1)+intent(in), int nargs+implied(size(ilow)), int (*actor)(int *ilow+rank(1)+intent(in), int nargs+intent(in)))",
-                "declgen": "int callback4(int * ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int (* actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in)))",
+                "declgen": "int callback4(int *ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int (*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in)))",
                 "doxygen": {
                     "brief": "Test attributes on callback arguments"
                 },
@@ -2350,7 +2350,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_ptr(int *(*get)(void));",
-                "declgen": "void callback_ptr(int * (* get)(void))",
+                "declgen": "void callback_ptr(int *(*get)(void))",
                 "doxygen": {
                     "brief": "Return a C_PTR",
                     "description": "No other arguments to test that a function result\nuses iso_c_binding C_PTR.\n"
@@ -2585,7 +2585,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int abstract1(int input, int (*get)(double, int));",
-                "declgen": "int abstract1(int input, int (* get)(double, int))",
+                "declgen": "int abstract1(int input, int (*get)(double, int))",
                 "doxygen": {
                     "brief": "abstract argument"
                 },

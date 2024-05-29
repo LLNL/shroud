@@ -385,7 +385,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void func1(tutorial::Class1 *arg +intent(in))",
-                        "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
+                        "declgen": "void func1(tutorial::Class1 *arg +intent(in))",
                         "name": "func1",
                         "options": {},
                         "wrap": {
@@ -622,7 +622,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void acceptClass3(Class3 *arg +intent(in))",
-                        "declgen": "void acceptClass3(Class3 * arg +intent(in))",
+                        "declgen": "void acceptClass3(Class3 *arg +intent(in))",
                         "name": "acceptClass3",
                         "options": {},
                         "wrap": {
@@ -918,7 +918,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "declgen": "int passStruct1(const Cstruct1 *arg)",
                 "name": "passStruct1",
                 "options": {
                     "wrap_lua": false,

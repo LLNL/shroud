@@ -44,7 +44,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
-                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
+                "declgen": "void acceptFloatComplexInoutPtr(float complex *arg1)",
                 "name": "acceptFloatComplexInoutPtr",
                 "options": {
                     "wrap_python": false
@@ -166,7 +166,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
-                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
+                "declgen": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
                 "name": "acceptDoubleComplexInoutPtr",
                 "options": {},
                 "wrap": {
@@ -325,7 +325,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
-                "declgen": "void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))",
+                "declgen": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
                 "name": "acceptDoubleComplexOutPtr",
                 "options": {},
                 "wrap": {
@@ -498,7 +498,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))",
-                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex * arg1, int * flag +intent(out))",
+                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))",
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
@@ -652,7 +652,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexOutPtrFlag( double complex *arg1 +intent(out), int *flag +intent(out))",
-                "declgen": "void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))",
+                "declgen": "void acceptDoubleComplexOutPtrFlag(double complex *arg1 +intent(out), int *flag +intent(out))",
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\nCreates a Py_complex for intent(out)\n"
                 },

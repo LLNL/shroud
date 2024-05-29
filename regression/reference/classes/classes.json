@@ -896,7 +896,7 @@
                             "typemap_name": "bool"
                         },
                         "decl": "bool equivalent(Class1 const &obj2) const;",
-                        "declgen": "bool equivalent(const Class1 & obj2) const",
+                        "declgen": "bool equivalent(const Class1 &obj2) const",
                         "doxygen": {
                             "brief": "Pass in reference to instance"
                         },
@@ -1158,7 +1158,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThis();",
-                        "declgen": "Class1 * returnThis(void)",
+                        "declgen": "Class1 *returnThis(void)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1320,7 +1320,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag)",
+                        "declgen": "Class1 *returnThisBuffer(std::string &name +intent(in), bool flag)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1620,7 +1620,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 *getclass3() const",
-                        "declgen": "Class1 * getclass3(void) const",
+                        "declgen": "Class1 *getclass3(void) const",
                         "doxygen": {
                             "brief": "Test const method"
                         },
@@ -1791,7 +1791,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "const std::string & getName(void)",
+                        "declgen": "const std::string &getName(void)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -3383,7 +3383,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "const std::string & getName(void)",
+                        "declgen": "const std::string &getName(void)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -3652,7 +3652,7 @@
                             "typemap_name": "classes::Singleton"
                         },
                         "decl": "static Singleton& getReference()",
-                        "declgen": "static Singleton & getReference(void)",
+                        "declgen": "static Singleton &getReference(void)",
                         "name": "getReference",
                         "options": {},
                         "wrap": {
@@ -5221,7 +5221,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * get_items()",
-                        "declgen": "int * get_items(void) +dimension(nitems)+intent(getter)",
+                        "declgen": "int *get_items(void) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "array_context",
@@ -5380,7 +5380,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void set_items(int * val)",
-                        "declgen": "void set_items(int * val +intent(setter)+rank(1)) +intent(setter)",
+                        "declgen": "void set_items(int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "set_items",
                         "options": {},
                         "user_fmt": {
@@ -6185,7 +6185,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int useclass(const Class1 *arg)",
-                "declgen": "int useclass(const Class1 * arg)",
+                "declgen": "int useclass(const Class1 *arg)",
                 "name": "useclass",
                 "options": {
                     "wrap_lua": false
@@ -6439,7 +6439,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "const Class1 *getclass2()",
-                "declgen": "const Class1 * getclass2(void)",
+                "declgen": "const Class1 *getclass2(void)",
                 "doxygen": {
                     "brief": "Return const class pointer"
                 },
@@ -6570,7 +6570,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 *getclass3()",
-                "declgen": "Class1 * getclass3(void)",
+                "declgen": "Class1 *getclass3(void)",
                 "doxygen": {
                     "brief": "Return class pointer"
                 },
@@ -6737,7 +6737,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "const Class1 *getclass2_void()",
-                "declgen": "const Class1 * getclass2_void(void)",
+                "declgen": "const Class1 *getclass2_void(void)",
                 "doxygen": {
                     "brief": "C wrapper will return void"
                 },
@@ -6866,7 +6866,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 *getclass3_void()",
-                "declgen": "Class1 * getclass3_void(void)",
+                "declgen": "Class1 *getclass3_void(void)",
                 "doxygen": {
                     "brief": "C wrapper will return void"
                 },
@@ -6996,7 +6996,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "const Class1 &getConstClassReference()",
-                "declgen": "const Class1 & getConstClassReference(void)",
+                "declgen": "const Class1 &getConstClassReference(void)",
                 "name": "getConstClassReference",
                 "options": {
                     "wrap_lua": false,
@@ -7124,7 +7124,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 &getClassReference()",
-                "declgen": "Class1 & getClassReference(void)",
+                "declgen": "Class1 &getClassReference(void)",
                 "name": "getClassReference",
                 "options": {
                     "wrap_lua": false
@@ -7884,7 +7884,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
+                "declgen": "const std::string &LastFunctionCalled(void) +len(30)",
                 "helpers": {
                     "c": [
                         "char_copy"

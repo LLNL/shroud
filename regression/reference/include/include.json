@@ -213,7 +213,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method2(three::Class1 * c2)",
-                        "declgen": "void method2(three::Class1 * c2)",
+                        "declgen": "void method2(three::Class1 *c2)",
                         "name": "method2",
                         "options": {},
                         "wrap": {
