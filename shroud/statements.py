@@ -146,23 +146,6 @@ def convert_vector_typemap(arg):
     else:
         return arg.typemap
 
-def lookup_c_statements(arg):
-    """Look up the c_statements for an argument.
-    If the argument type is a template, look for
-    template specialization.
-
-    Args:
-        arg -
-    """
-    specialize = []
-    if arg.template_arguments:
-        specialize.append('targ')
-        for targ in arg.template_arguments:
-            specialize.append(targ.typemap.sgroup)
-            spointer = targ.declarator.get_indirect_stmt()
-            specialize.append(spointer)
-    return specialize
-
 def find_abstract_declarator(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
@@ -181,24 +164,6 @@ def find_abstract_declarator(arg):
         decl[-1] = ">"
     decl.append(arg.declarator.get_abstract_declarator())
     return "".join(decl)
-
-def template_stmts(ast):
-    """Create statement labels for template arguments.
-    targ_int_scalar
-
-    Parameters
-    ----------
-    ast : declast.Declaration
-    """
-    specialize = []
-    if ast.template_arguments:
-        specialize.append('targ')
-        for targ in ast.template_arguments:
-            arg_typemap = targ.typemap
-            specialize.append(arg_typemap.sgroup)
-            spointer = targ.declarator.get_indirect_stmt()
-            specialize.append(spointer)
-    return specialize
 
 def lookup_fc_stmts(path):
     """Lookup statements for C and Fortran wrappers.

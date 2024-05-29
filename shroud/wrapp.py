@@ -1368,8 +1368,8 @@ return 1;""",
             elif arg_typemap.base == "struct":
                 stmts = ["py", intent, sgroup, spointer, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
-                specialize = statements.template_stmts(ast)
-                stmts = ["py", intent, sgroup, options.PY_array_arg] + specialize
+                abstract = statements.find_abstract_declarator(arg)
+                stmts = ["py", intent, abstract, options.PY_array_arg]
             elif rank or dimension:
                 # ex. (int * arg1 +intent(in) +rank(1))
                 stmts = ["py", intent, sgroup, spointer,
@@ -2061,8 +2061,8 @@ return 1;""",
         elif result_typemap.base == "struct":
             stmts = ["py", "function", sgroup, options.PY_struct_arg]
         elif result_typemap.base == "vector":
-            specialize = statements.template_stmts(ast)
-            stmts = ["py", "function", sgroup, options.PY_array_arg] + specialize
+            abstract = statements.find_abstract_declarator(ast)
+            stmts = ["py", "function", abstract, options.PY_array_arg]
         elif sgroup == "native":
             spointer = declarator.get_indirect_stmt()
             stmts = ["py", "function", sgroup, spointer]
@@ -4774,7 +4774,7 @@ py_statements = [
 # std::vector  only used with C++
 # list
     dict(
-        name="py_in_vector_list",
+        name="py_in_vector<native>&_list",
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
@@ -4797,7 +4797,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_out_vector_list",
+        name="py_out_vector<native>&_list",
         # Create a pointer a std::vector and pass to C++ function.
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
@@ -4824,7 +4824,7 @@ py_statements = [
     dict(
         name="py_function_vector_list",
         alias=[
-            "py_function_vector_list_targ_native_scalar",
+            "py_function_vector<native>_list",
         ],
         declare=[
             "PyObject * {py_var} = {nullptr};",
@@ -4845,7 +4845,7 @@ py_statements = [
 # cxx_var will always be a pointer since we must save it in a capsule.
 # vectors have the dimension attribute added by generate.py
     dict(
-        name="py_in_vector_numpy",
+        name="py_in_vector<native>&_numpy",
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
@@ -4876,7 +4876,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_out_vector_numpy",
+        name="py_out_vector<native>&_numpy",
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
@@ -4908,7 +4908,7 @@ py_statements = [
     dict(
         name="py_function_vector_numpy",
         alias=[
-            "py_function_vector_numpy_targ_native_scalar",
+            "py_function_vector<native>_numpy",
         ],
         need_numpy=True,
         allocate_local_var=True,

@@ -134,7 +134,7 @@
                             "pytmp_var": "SHTPy_arg",
                             "rank": "1",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_vector_numpy",
+                            "stmt": "py_in_vector<native>&_numpy",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -256,7 +256,7 @@
                             "py_var": "SHPy_arg",
                             "rank": "1",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_vector_numpy",
+                            "stmt": "py_out_vector<native>&_numpy",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -810,7 +810,7 @@
                             "py_var": "SHPy_arg",
                             "rank": "1",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_vector_numpy",
+                            "stmt": "py_out_vector<native>&_numpy",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -1398,7 +1398,7 @@
                             "py_var": "SHTPy_rv",
                             "rank": "1",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_vector_numpy_targ_native_scalar",
+                            "stmt": "py_function_vector<native>_numpy",
                             "value_var": "SHValue_rv"
                         }
                     },

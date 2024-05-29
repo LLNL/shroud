@@ -12288,13 +12288,10 @@ root
         numpy -- py_function_struct_numpy
       vector
         list -- py_function_vector_list
-          targ
-            native
-              scalar -- py_function_vector_list
         numpy -- py_function_vector_numpy
-          targ
-            native
-              scalar -- py_function_vector_numpy
+      vector<native>
+        list -- py_function_vector_list
+        numpy -- py_function_vector_numpy
       void
         * -- py_function_void_*
     in
@@ -12335,9 +12332,9 @@ root
           numpy -- py_in_struct_scalar_numpy
       unknown
         scalar -- py_defaulttmp
-      vector
-        list -- py_in_vector_list
-        numpy -- py_in_vector_numpy
+      vector<native>&
+        list -- py_in_vector<native>&_list
+        numpy -- py_in_vector<native>&_numpy
       void
         * -- py_in_void_*
     inout
@@ -12401,9 +12398,9 @@ root
           list -- py_out_struct_*_list
           numpy -- py_out_struct_*_numpy
         list -- py_out_struct_list
-      vector
-        list -- py_out_vector_list
-        numpy -- py_out_vector_numpy
+      vector<native>&
+        list -- py_out_vector<native>&_list
+        numpy -- py_out_vector<native>&_numpy
       void
         *& -- py_out_void_*&
         ** -- py_out_void_**
@@ -13107,6 +13104,45 @@ py_function_struct_numpy:
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
+py_function_vector<native>_list:
+  declare:
+  - PyObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  intent: function
+  name: py_function_vector<native>_list
+  object_created: true
+  post_call:
+  - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
+  - if ({py_var} == {nullptr}) goto fail;
+py_function_vector<native>_numpy:
+  allocate_local_var: true
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  intent: function
+  name: py_function_vector<native>_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - '{npy_dims_var}[0] = {cxx_var}->size();'
+  - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
+    \ {cxx_var}->data());"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
 py_function_vector_list:
   declare:
   - PyObject * {py_var} = {nullptr};
@@ -13115,18 +13151,6 @@ py_function_vector_list:
   goto_fail: true
   intent: function
   name: py_function_vector_list
-  object_created: true
-  post_call:
-  - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
-  - if ({py_var} == {nullptr}) goto fail;
-py_function_vector_list_targ_native_scalar:
-  declare:
-  - PyObject * {py_var} = {nullptr};
-  fail:
-  - Py_XDECREF({py_var});
-  goto_fail: true
-  intent: function
-  name: py_function_vector_list_targ_native_scalar
   object_created: true
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
@@ -13144,33 +13168,6 @@ py_function_vector_numpy:
   goto_fail: true
   intent: function
   name: py_function_vector_numpy
-  need_numpy: true
-  object_created: true
-  post_call:
-  - '{npy_dims_var}[0] = {cxx_var}->size();'
-  - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
-    \ {cxx_var}->data());"
-  - if ({py_var} == {nullptr}) goto fail;
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-py_function_vector_numpy_targ_native_scalar:
-  allocate_local_var: true
-  declare:
-  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  fail:
-  - Py_XDECREF({py_var});
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
-  goto_fail: true
-  intent: function
-  name: py_function_vector_numpy_targ_native_scalar
   need_numpy: true
   object_created: true
   post_call:
@@ -13511,14 +13508,14 @@ py_in_struct_scalar_numpy:
 py_in_unknown_scalar:
   intent: in
   name: py_in_unknown_scalar
-py_in_vector_list:
+py_in_vector<native>&_list:
   c_helper: create_from_PyObject_vector_{cxx_T}
   cxx_local_var: scalar
   declare:
   - PyObject * {pytmp_var};
   goto_fail: true
   intent: in
-  name: py_in_vector_list
+  name: py_in_vector<native>&_list
   parse_args:
   - '&{pytmp_var}'
   parse_format: O
@@ -13527,7 +13524,7 @@ py_in_vector_list:
   pre_call:
   - "if ({hnamefunc0}\t({pytmp_var},\t \"{c_var}\",\t {cxx_var}) == -1)"
   - +goto fail;-
-py_in_vector_numpy:
+py_in_vector<native>&_numpy:
   cxx_local_var: scalar
   declare:
   - PyObject * {pytmp_var};
@@ -13536,7 +13533,7 @@ py_in_vector_numpy:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: in
-  name: py_in_vector_numpy
+  name: py_in_vector<native>&_numpy
   need_numpy: true
   parse_args:
   - '&{pytmp_var}'
@@ -14202,7 +14199,7 @@ py_out_struct_list:
   name: py_out_struct_list
   post_declare:
   - '{cxx_type} {cxx_var};'
-py_out_vector_list:
+py_out_vector<native>&_list:
   c_helper: to_PyList_vector_{cxx_T}
   cxx_local_var: scalar
   declare:
@@ -14211,14 +14208,14 @@ py_out_vector_list:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
-  name: py_out_vector_list
+  name: py_out_vector<native>&_list
   object_created: true
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
-py_out_vector_numpy:
+py_out_vector<native>&_numpy:
   allocate_local_var: true
   arg_call:
   - '*{cxx_var}'
@@ -14233,7 +14230,7 @@ py_out_vector_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: out
-  name: py_out_vector_numpy
+  name: py_out_vector<native>&_numpy
   need_numpy: true
   object_created: true
   post_call:
