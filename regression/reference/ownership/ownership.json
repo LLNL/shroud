@@ -99,7 +99,7 @@
                                     "stmt_name": "f_dtor"
                                 },
                                 "fmtl": {
-                                    "stmt": "lua_dtor_scalar"
+                                    "stmt": "lua_dtor"
                                 }
                             }
                         },

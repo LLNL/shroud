@@ -169,7 +169,7 @@
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
                                                     "cxx_var": "SHCXX_rv",
-                                                    "stmt": "lua_ctor_scalar"
+                                                    "stmt": "lua_ctor"
                                                 },
                                                 "fmtpy": {
                                                     "PY_build_format": "O",
@@ -419,7 +419,7 @@
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
                                                     "cxx_var": "SHCXX_rv",
-                                                    "stmt": "lua_ctor_scalar"
+                                                    "stmt": "lua_ctor"
                                                 },
                                                 "fmtpy": {
                                                     "PY_build_format": "O",
@@ -508,7 +508,7 @@
                                                     "cxx_var": "name",
                                                     "lua_var": "SH_Lua_name",
                                                     "pop_expr": "lua_tostring(L, 1)",
-                                                    "stmt": "lua_in_string_*"
+                                                    "stmt": "lua_in_string*"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -641,7 +641,7 @@
                                                     "stmt_name": "f_dtor"
                                                 },
                                                 "fmtl": {
-                                                    "stmt": "lua_dtor_scalar"
+                                                    "stmt": "lua_dtor"
                                                 }
                                             }
                                         },
@@ -834,7 +834,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -908,7 +908,7 @@
                                                     "cxx_var": "incr",
                                                     "lua_var": "SH_Lua_incr",
                                                     "pop_expr": "lua_tointeger(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -1125,7 +1125,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv.c_str()",
                                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                    "stmt": "lua_function_string_&"
+                                                    "stmt": "lua_function_string&"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -1326,7 +1326,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv.c_str()",
                                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                    "stmt": "lua_function_string_&"
+                                                    "stmt": "lua_function_string&"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -1542,7 +1542,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -1616,7 +1616,7 @@
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
                                                     "pop_expr": "lua_tointeger(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -1830,7 +1830,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -1904,7 +1904,7 @@
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
                                                     "pop_expr": "lua_tointeger(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -2114,7 +2114,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushboolean(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_bool_scalar"
+                                                    "stmt": "lua_function_bool"
                                                 },
                                                 "fmtpy": {
                                                     "PyTypeObject": "PyBool_Type",
@@ -2190,7 +2190,7 @@
                                                     "cxx_var": "in",
                                                     "lua_var": "SH_Lua_in",
                                                     "pop_expr": "lua_toboolean(L, 1)",
-                                                    "stmt": "lua_in_bool_scalar"
+                                                    "stmt": "lua_in_bool"
                                                 },
                                                 "fmtpy": {
                                                     "PyTypeObject": "PyBool_Type",
@@ -2642,7 +2642,7 @@
                                                     "cxx_addr": "",
                                                     "cxx_member": "->",
                                                     "cxx_var": "SHCXX_rv",
-                                                    "stmt": "lua_ctor_scalar"
+                                                    "stmt": "lua_ctor"
                                                 },
                                                 "fmtpy": {
                                                     "PY_build_format": "O",
@@ -2731,7 +2731,7 @@
                                                     "cxx_var": "name",
                                                     "lua_var": "SH_Lua_name",
                                                     "pop_expr": "lua_tostring(L, 1)",
-                                                    "stmt": "lua_in_string_*"
+                                                    "stmt": "lua_in_string*"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -2865,7 +2865,7 @@
                                                     "stmt_name": "f_dtor"
                                                 },
                                                 "fmtl": {
-                                                    "stmt": "lua_dtor_scalar"
+                                                    "stmt": "lua_dtor"
                                                 }
                                             }
                                         },
@@ -3054,7 +3054,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv.c_str()",
                                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                    "stmt": "lua_function_string_&"
+                                                    "stmt": "lua_function_string&"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -3268,7 +3268,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv.c_str()",
                                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                    "stmt": "lua_function_string_&"
+                                                    "stmt": "lua_function_string&"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -3483,7 +3483,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv.c_str()",
                                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                    "stmt": "lua_function_string_&"
+                                                    "stmt": "lua_function_string&"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -3696,7 +3696,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv.c_str()",
                                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                                    "stmt": "lua_function_string_&"
+                                                    "stmt": "lua_function_string&"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -3872,7 +3872,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -4093,7 +4093,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "static_cast<void *>(\tSHCXX_rv)",
                                                     "push_expr": "PUSH",
-                                                    "stmt": "lua_function_shadow_*"
+                                                    "stmt": "lua_function_shadow*"
                                                 },
                                                 "fmtpy": {
                                                     "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
@@ -4173,7 +4173,7 @@
                                                     "cxx_var": "in",
                                                     "lua_var": "SH_Lua_in",
                                                     "pop_expr": "static_cast<example::nested::ExClass1 *>\t(\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")->addr)",
-                                                    "stmt": "lua_in_shadow_*"
+                                                    "stmt": "lua_in_shadow*"
                                                 },
                                                 "fmtpy": {
                                                     "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
@@ -4676,7 +4676,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "static_cast<void *>(\tSHCXX_rv)",
                                                     "push_expr": "PUSH",
-                                                    "stmt": "lua_function_shadow_*"
+                                                    "stmt": "lua_function_shadow*"
                                                 },
                                                 "fmtpy": {
                                                     "PY_to_object_idtor_func": "PP_ExClass2_to_Object_idtor",
@@ -4735,7 +4735,7 @@
                                                     "cxx_var": "len",
                                                     "lua_var": "SH_Lua_len",
                                                     "pop_expr": "lua_tointeger(L, 2)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -4797,7 +4797,7 @@
                                                     "cxx_var": "type",
                                                     "lua_var": "SH_Lua_type",
                                                     "pop_expr": "getTypeID(lua_tointeger(L, 1))",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_abstract_decl": "AA_TypeID",
@@ -5500,7 +5500,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "static_cast<int>(SHCXX_rv)",
                                                     "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -5891,7 +5891,7 @@
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
                                                     "pop_expr": "lua_tointeger(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -6178,7 +6178,7 @@
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
                                                     "pop_expr": "lua_tointeger(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -6462,7 +6462,7 @@
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
                                                     "pop_expr": "lua_tonumber(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -6752,7 +6752,7 @@
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
                                                     "pop_expr": "lua_tonumber(L, 1)",
-                                                    "stmt": "lua_in_native_scalar"
+                                                    "stmt": "lua_in_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -7021,7 +7021,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -7228,7 +7228,7 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "push_arg": "SHCXX_rv",
                                                     "push_expr": "lua_pushnumber(L, SHCXX_rv)",
-                                                    "stmt": "lua_function_native_scalar"
+                                                    "stmt": "lua_function_native"
                                                 },
                                                 "fmtpy": {
                                                     "c_deref": "",
@@ -7636,7 +7636,7 @@
                                             "cxx_var": "SHCXX_rv",
                                             "push_arg": "SHCXX_rv",
                                             "push_expr": "lua_pushboolean(L, SHCXX_rv)",
-                                            "stmt": "lua_function_bool_scalar"
+                                            "stmt": "lua_function_bool"
                                         },
                                         "fmtpy": {
                                             "PyTypeObject": "PyBool_Type",
@@ -7721,7 +7721,7 @@
                                             "cxx_var": "name",
                                             "lua_var": "SH_Lua_name",
                                             "pop_expr": "lua_tostring(L, 1)",
-                                            "stmt": "lua_in_string_&"
+                                            "stmt": "lua_in_string&"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -7884,7 +7884,7 @@
                                             "cxx_var": "SHCXX_rv",
                                             "push_arg": "SHCXX_rv",
                                             "push_expr": "lua_pushboolean(L, SHCXX_rv)",
-                                            "stmt": "lua_function_bool_scalar"
+                                            "stmt": "lua_function_bool"
                                         },
                                         "fmtpy": {
                                             "PyTypeObject": "PyBool_Type",
@@ -8132,7 +8132,7 @@
                                             "cxx_var": "name",
                                             "lua_var": "SH_Lua_name",
                                             "pop_expr": "lua_tostring(L, 1)",
-                                            "stmt": "lua_in_string_&"
+                                            "stmt": "lua_in_string&"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8421,7 +8421,7 @@
                                             "cxx_var": "flag",
                                             "lua_var": "SH_Lua_flag",
                                             "pop_expr": "lua_tointeger(L, 2)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -8507,7 +8507,7 @@
                                             "cxx_var": "name",
                                             "lua_var": "SH_Lua_name",
                                             "pop_expr": "lua_tostring(L, 1)",
-                                            "stmt": "lua_in_string_&"
+                                            "stmt": "lua_in_string&"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -9039,7 +9039,7 @@
                                             "cxx_var": "i",
                                             "lua_var": "SH_Lua_i",
                                             "pop_expr": "lua_tointeger(L, 1)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9115,7 +9115,7 @@
                                             "cxx_var": "j",
                                             "lua_var": "SH_Lua_j",
                                             "pop_expr": "lua_tointeger(L, 2)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9279,7 +9279,7 @@
                                             "cxx_var": "SHCXX_rv",
                                             "push_arg": "SHCXX_rv",
                                             "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                            "stmt": "lua_function_native_scalar"
+                                            "stmt": "lua_function_native"
                                         },
                                         "fmtpy": {
                                             "c_deref": "",
@@ -9515,7 +9515,7 @@
                                             "cxx_var": "comm",
                                             "lua_var": "SH_Lua_comm",
                                             "pop_expr": "MPI_Comm_f2c(POP)",
-                                            "stmt": "lua_in_unknown_scalar"
+                                            "stmt": "lua_in_unknown"
                                         },
                                         "fmtpy": {
                                             "c_abstract_decl": "MPI_Fint",
@@ -10047,7 +10047,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "POP",
-                                            "stmt": "lua_in_void_scalar"
+                                            "stmt": "lua_in_void"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -10494,7 +10494,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "lua_tonumber(L, 1)",
-                                            "stmt": "lua_in_native_*"
+                                            "stmt": "lua_in_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -11169,7 +11169,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "lua_tonumber(L, 1)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -13160,7 +13160,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "POP",
-                                            "stmt": "lua_in_void_scalar"
+                                            "stmt": "lua_in_void"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -13794,7 +13794,7 @@
                                             "cxx_var": "verylongname1",
                                             "lua_var": "SH_Lua_verylongname1",
                                             "pop_expr": "lua_tointeger(L, 1)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -13871,7 +13871,7 @@
                                             "cxx_var": "verylongname10",
                                             "lua_var": "SH_Lua_verylongname10",
                                             "pop_expr": "lua_tointeger(L, 10)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -13948,7 +13948,7 @@
                                             "cxx_var": "verylongname2",
                                             "lua_var": "SH_Lua_verylongname2",
                                             "pop_expr": "lua_tointeger(L, 2)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14025,7 +14025,7 @@
                                             "cxx_var": "verylongname3",
                                             "lua_var": "SH_Lua_verylongname3",
                                             "pop_expr": "lua_tointeger(L, 3)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14102,7 +14102,7 @@
                                             "cxx_var": "verylongname4",
                                             "lua_var": "SH_Lua_verylongname4",
                                             "pop_expr": "lua_tointeger(L, 4)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14179,7 +14179,7 @@
                                             "cxx_var": "verylongname5",
                                             "lua_var": "SH_Lua_verylongname5",
                                             "pop_expr": "lua_tointeger(L, 5)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14256,7 +14256,7 @@
                                             "cxx_var": "verylongname6",
                                             "lua_var": "SH_Lua_verylongname6",
                                             "pop_expr": "lua_tointeger(L, 6)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14333,7 +14333,7 @@
                                             "cxx_var": "verylongname7",
                                             "lua_var": "SH_Lua_verylongname7",
                                             "pop_expr": "lua_tointeger(L, 7)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14410,7 +14410,7 @@
                                             "cxx_var": "verylongname8",
                                             "lua_var": "SH_Lua_verylongname8",
                                             "pop_expr": "lua_tointeger(L, 8)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -14487,7 +14487,7 @@
                                             "cxx_var": "verylongname9",
                                             "lua_var": "SH_Lua_verylongname9",
                                             "pop_expr": "lua_tointeger(L, 9)",
-                                            "stmt": "lua_inout_native_*"
+                                            "stmt": "lua_inout_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -15078,7 +15078,7 @@
                                             "cxx_var": "SHCXX_rv",
                                             "push_arg": "SHCXX_rv",
                                             "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                            "stmt": "lua_function_native_scalar"
+                                            "stmt": "lua_function_native"
                                         },
                                         "fmtpy": {
                                             "c_deref": "",
@@ -15152,7 +15152,7 @@
                                             "cxx_var": "verylongname1",
                                             "lua_var": "SH_Lua_verylongname1",
                                             "pop_expr": "lua_tointeger(L, 1)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15228,7 +15228,7 @@
                                             "cxx_var": "verylongname10",
                                             "lua_var": "SH_Lua_verylongname10",
                                             "pop_expr": "lua_tointeger(L, 10)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15304,7 +15304,7 @@
                                             "cxx_var": "verylongname2",
                                             "lua_var": "SH_Lua_verylongname2",
                                             "pop_expr": "lua_tointeger(L, 2)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15380,7 +15380,7 @@
                                             "cxx_var": "verylongname3",
                                             "lua_var": "SH_Lua_verylongname3",
                                             "pop_expr": "lua_tointeger(L, 3)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15456,7 +15456,7 @@
                                             "cxx_var": "verylongname4",
                                             "lua_var": "SH_Lua_verylongname4",
                                             "pop_expr": "lua_tointeger(L, 4)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15532,7 +15532,7 @@
                                             "cxx_var": "verylongname5",
                                             "lua_var": "SH_Lua_verylongname5",
                                             "pop_expr": "lua_tointeger(L, 5)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15608,7 +15608,7 @@
                                             "cxx_var": "verylongname6",
                                             "lua_var": "SH_Lua_verylongname6",
                                             "pop_expr": "lua_tointeger(L, 6)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15684,7 +15684,7 @@
                                             "cxx_var": "verylongname7",
                                             "lua_var": "SH_Lua_verylongname7",
                                             "pop_expr": "lua_tointeger(L, 7)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15760,7 +15760,7 @@
                                             "cxx_var": "verylongname8",
                                             "lua_var": "SH_Lua_verylongname8",
                                             "pop_expr": "lua_tointeger(L, 8)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -15836,7 +15836,7 @@
                                             "cxx_var": "verylongname9",
                                             "lua_var": "SH_Lua_verylongname9",
                                             "pop_expr": "lua_tointeger(L, 9)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -16225,7 +16225,7 @@
                                             "cxx_var": "in",
                                             "lua_var": "SH_Lua_in",
                                             "pop_expr": "lua_tonumber(L, 1)",
-                                            "stmt": "lua_in_native_*"
+                                            "stmt": "lua_in_native*"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -16308,7 +16308,7 @@
                                             "cxx_type": "double",
                                             "cxx_var": "out",
                                             "lua_var": "SH_Lua_out",
-                                            "stmt": "lua_out_native_*"
+                                            "stmt": "lua_out_native*"
                                         },
                                         "fmtpy": {
                                             "array_size": "shape(in)",
@@ -16391,7 +16391,7 @@
                                             "cxx_var": "sizein",
                                             "lua_var": "SH_Lua_sizein",
                                             "pop_expr": "lua_tointeger(L, 2)",
-                                            "stmt": "lua_in_native_scalar"
+                                            "stmt": "lua_in_native"
                                         },
                                         "fmtpy": {
                                             "c_const": "",

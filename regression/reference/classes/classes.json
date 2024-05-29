@@ -240,7 +240,7 @@
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor_scalar"
+                                    "stmt": "lua_ctor"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -469,7 +469,7 @@
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor_scalar"
+                                    "stmt": "lua_ctor"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -548,7 +548,7 @@
                                     "cxx_var": "flag",
                                     "lua_var": "SH_Lua_flag",
                                     "pop_expr": "lua_tointeger(L, 1)",
-                                    "stmt": "lua_in_native_scalar"
+                                    "stmt": "lua_in_native"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -676,7 +676,7 @@
                                     "stmt_name": "f_dtor"
                                 },
                                 "fmtl": {
-                                    "stmt": "lua_dtor_scalar"
+                                    "stmt": "lua_dtor"
                                 }
                             }
                         },
@@ -827,7 +827,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "push_arg": "SHCXX_rv",
                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                    "stmt": "lua_function_native_scalar"
+                                    "stmt": "lua_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -1950,7 +1950,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "push_arg": "SHCXX_rv.c_str()",
                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                    "stmt": "lua_function_string_&"
+                                    "stmt": "lua_function_string&"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2180,7 +2180,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "push_arg": "static_cast<int>(SHCXX_rv)",
                                     "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                                    "stmt": "lua_function_enum_scalar"
+                                    "stmt": "lua_function_enum"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -2269,7 +2269,7 @@
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
                                     "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                                    "stmt": "lua_in_enum_scalar"
+                                    "stmt": "lua_in_enum"
                                 },
                                 "fmtpy": {
                                     "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -3542,7 +3542,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "push_arg": "SHCXX_rv.c_str()",
                                     "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                    "stmt": "lua_function_string_&"
+                                    "stmt": "lua_function_string&"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3992,7 +3992,7 @@
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor_scalar"
+                                    "stmt": "lua_ctor"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -4162,7 +4162,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "push_arg": "SHCXX_rv",
                                     "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                    "stmt": "lua_function_native_scalar"
+                                    "stmt": "lua_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -4396,7 +4396,7 @@
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor_scalar"
+                                    "stmt": "lua_ctor"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -5811,7 +5811,7 @@
                             "cxx_var": "SHCXX_rv",
                             "push_arg": "static_cast<int>(SHCXX_rv)",
                             "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                            "stmt": "lua_function_enum_scalar"
+                            "stmt": "lua_function_enum"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -5900,7 +5900,7 @@
                             "cxx_var": "arg",
                             "lua_var": "SH_Lua_arg",
                             "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                            "stmt": "lua_in_enum_scalar"
+                            "stmt": "lua_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -7666,7 +7666,7 @@
                             "cxx_var": "arg",
                             "lua_var": "SH_Lua_arg",
                             "pop_expr": "lua_tointeger(L, 1)",
-                            "stmt": "lua_in_native_scalar"
+                            "stmt": "lua_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -7828,7 +7828,7 @@
                             "cxx_var": "SHCXX_rv",
                             "push_arg": "SHCXX_rv",
                             "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                            "stmt": "lua_function_native_scalar"
+                            "stmt": "lua_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -8028,7 +8028,7 @@
                             "cxx_var": "SHCXX_rv",
                             "push_arg": "SHCXX_rv.c_str()",
                             "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                            "stmt": "lua_function_string_&"
+                            "stmt": "lua_function_string&"
                         },
                         "fmtpy": {
                             "array_size": "1",

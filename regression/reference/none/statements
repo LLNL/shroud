@@ -14284,54 +14284,37 @@ py_out_void**:
 ***** Lua
 root
   lua
-    ctor
-      scalar -- lua_ctor_scalar
+    ctor -- lua_ctor
     defaulttmp -- lua_defaulttmp
-    dtor
-      scalar -- lua_dtor_scalar
+    dtor -- lua_dtor
     function
-      bool
-        scalar -- lua_function_bool_scalar
-      enum
-        scalar -- lua_function_native_scalar
-      native
-        scalar -- lua_function_native_scalar
-      shadow
-        * -- lua_function_shadow_*
-      string
-        & -- lua_function_string_&
-        scalar -- lua_function_string_scalar
-      void
-        * -- lua_function_void_*
+      bool -- lua_function_bool
+      enum -- lua_function_native
+      native -- lua_function_native
+      shadow* -- lua_function_shadow*
+      string -- lua_function_string
+      string& -- lua_function_string&
+      void* -- lua_function_void*
     in
-      bool
-        scalar -- lua_in_bool_scalar
-      enum
-        scalar -- lua_in_native_scalar
-      native
-        * -- lua_defaulttmp
-        scalar -- lua_in_native_scalar
-      shadow
-        * -- lua_in_shadow_*
-      string
-        & -- lua_in_string_*
-        * -- lua_in_string_*
-      unknown
-        scalar -- lua_defaulttmp
-      void
-        scalar -- lua_defaulttmp
+      bool -- lua_in_bool
+      enum -- lua_in_native
+      native -- lua_in_native
+      native* -- lua_defaulttmp
+      shadow* -- lua_in_shadow*
+      string& -- lua_in_string*
+      string* -- lua_in_string*
+      unknown -- lua_defaulttmp
+      void -- lua_defaulttmp
     inout
-      native
-        * -- lua_inout_native_*
+      native* -- lua_inout_native*
     mixin
       callfunction -- lua_mixin_callfunction
       push -- lua_mixin_push
       unknown -- lua_mixin_unknown
     out
-      native
-        * -- lua_defaulttmp
+      native* -- lua_defaulttmp
     subroutine -- lua_subroutine
-lua_ctor_scalar:
+lua_ctor:
   call:
   - "{LUA_userdata_type} * {LUA_userdata_var} =\t ({LUA_userdata_type} *) lua_newuserdata({LUA_state_var},\
     \ sizeof(*{LUA_userdata_var}));"
@@ -14341,107 +14324,107 @@ lua_ctor_scalar:
   - /* Set the metatable on the userdata. */
   - lua_setmetatable(L, -2);
   intent: ctor
-  name: lua_ctor_scalar
+  name: lua_ctor
 lua_defaulttmp:
   intent: defaulttmp
   name: lua_defaulttmp
-lua_dtor_scalar:
+lua_dtor:
   call:
   - delete {LUA_userdata_var}->{LUA_userdata_member};
   - '{LUA_userdata_var}->{LUA_userdata_member} = NULL;'
   intent: dtor
-  name: lua_dtor_scalar
-lua_function_bool_scalar:
+  name: lua_dtor
+lua_function_bool:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_bool_scalar
+  name: lua_function_bool
   post_call:
   - '{push_expr};'
-lua_function_enum_scalar:
+lua_function_enum:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_enum_scalar
+  name: lua_function_enum
   post_call:
   - '{push_expr};'
-lua_function_native_scalar:
+lua_function_native:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_native_scalar
+  name: lua_function_native
   post_call:
   - '{push_expr};'
-lua_function_shadow_*:
+lua_function_shadow*:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_shadow_*
+  name: lua_function_shadow*
   post_call:
   - '{push_expr};'
-lua_function_string_&:
+lua_function_string:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_string_&
+  name: lua_function_string
   post_call:
   - '{push_expr};'
-lua_function_string_scalar:
+lua_function_string&:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_string_scalar
+  name: lua_function_string&
   post_call:
   - '{push_expr};'
-lua_function_void_*:
+lua_function_void*:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
   intent: function
-  name: lua_function_void_*
-lua_in_bool_scalar:
+  name: lua_function_void*
+lua_in_bool:
   intent: in
-  name: lua_in_bool_scalar
+  name: lua_in_bool
   pre_call:
   - bool {c_var} = {pop_expr};
-lua_in_enum_scalar:
+lua_in_enum:
   intent: in
-  name: lua_in_enum_scalar
+  name: lua_in_enum
   pre_call:
   - "{cxx_type} {cxx_var} =\t {pop_expr};"
-lua_in_native_*:
+lua_in_native:
   intent: in
-  name: lua_in_native_*
-lua_in_native_scalar:
-  intent: in
-  name: lua_in_native_scalar
+  name: lua_in_native
   pre_call:
   - "{cxx_type} {cxx_var} =\t {pop_expr};"
-lua_in_shadow_*:
+lua_in_native*:
   intent: in
-  name: lua_in_shadow_*
+  name: lua_in_native*
+lua_in_shadow*:
+  intent: in
+  name: lua_in_shadow*
   pre_call:
   - "{cxx_type} * {cxx_var} =\t {pop_expr};"
-lua_in_string_&:
+lua_in_string&:
   intent: in
-  name: lua_in_string_&
+  name: lua_in_string&
   pre_call:
   - "const char * {c_var} = \t{pop_expr};"
-lua_in_string_*:
+lua_in_string*:
   intent: in
-  name: lua_in_string_*
+  name: lua_in_string*
   pre_call:
   - "const char * {c_var} = \t{pop_expr};"
-lua_in_unknown_scalar:
+lua_in_unknown:
   intent: in
-  name: lua_in_unknown_scalar
-lua_in_void_scalar:
+  name: lua_in_unknown
+lua_in_void:
   intent: in
-  name: lua_in_void_scalar
-lua_inout_native_*:
+  name: lua_in_void
+lua_inout_native*:
   intent: inout
-  name: lua_inout_native_*
+  name: lua_inout_native*
   pre_call:
-  - // lua_native_*_inout;
+  - // lua_inout_native*;
 lua_mixin_callfunction:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
@@ -14455,9 +14438,9 @@ lua_mixin_push:
 lua_mixin_unknown:
   intent: mixin
   name: lua_mixin_unknown
-lua_out_native_*:
+lua_out_native*:
   intent: out
-  name: lua_out_native_*
+  name: lua_out_native*
 lua_subroutine:
   call:
   - '{LUA_this_call}{function_name}({cxx_call_list});'
