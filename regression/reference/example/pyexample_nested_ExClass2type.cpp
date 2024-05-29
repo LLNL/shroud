@@ -156,7 +156,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
-// Statement: py_in_string_*
+// Statement: py_in_string*
 /**
  * \brief constructor
  *
@@ -328,7 +328,7 @@ PP_GetNameLength(
 // Statement: py_function_shadow_*
 // ----------------------------------------
 // Argument:  const ExClass1 * in
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PP_get_class1__doc__[] =
 "documentation"
 ;
@@ -369,10 +369,10 @@ PP_get_class1(
 // Statement: py_function_shadow_*
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  SidreLength len=1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PP_declare_1__doc__[] =
 "documentation"
 ;
@@ -478,7 +478,7 @@ PP_getTypeID(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_int(
   PP_ExClass2 *self,
@@ -505,7 +505,7 @@ PP_setValue_int(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  long value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_long(
   PP_ExClass2 *self,
@@ -532,7 +532,7 @@ PP_setValue_long(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  float value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_float(
   PP_ExClass2 *self,
@@ -559,7 +559,7 @@ PP_setValue_float(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_double(
   PP_ExClass2 *self,

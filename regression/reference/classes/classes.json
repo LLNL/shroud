@@ -565,7 +565,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_flag",
                                     "size_var": "SHSize_flag",
-                                    "stmt": "py_in_native_scalar",
+                                    "stmt": "py_in_native",
                                     "value_var": "SHValue_flag"
                                 }
                             }
@@ -1120,7 +1120,7 @@
                                     "py_object": "PY_Class1",
                                     "py_var": "SHPy_obj2",
                                     "size_var": "SHSize_obj2",
-                                    "stmt": "py_in_shadow_&",
+                                    "stmt": "py_in_shadow&",
                                     "value_var": "SHValue_obj2"
                                 }
                             }
@@ -2290,7 +2290,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_enum_scalar",
+                                    "stmt": "py_in_enum",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -5921,7 +5921,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_enum_scalar",
+                            "stmt": "py_in_enum",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -6139,7 +6139,7 @@
                             "py_object": "PY_Class1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_shadow_scalar",
+                            "stmt": "py_in_shadow",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -6404,7 +6404,7 @@
                             "py_object": "PY_Class1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_shadow_*",
+                            "stmt": "py_in_shadow*",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -7683,7 +7683,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_arg"
                         }
                     }

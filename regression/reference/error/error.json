@@ -1208,7 +1208,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_data",
                             "size_var": "SHSize_data",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_data"
                         }
                     }

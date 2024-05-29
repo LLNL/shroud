@@ -42,10 +42,10 @@ PyObject *PY_init_templates_internal(void);
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  long arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 /**
  * \brief Function template with two template parameters.
  *
@@ -78,10 +78,10 @@ PY_FunctionTU_0(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  float arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 /**
  * \brief Function template with two template parameters.
  *

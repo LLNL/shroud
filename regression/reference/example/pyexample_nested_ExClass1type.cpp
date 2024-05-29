@@ -80,7 +80,7 @@ PP_ExClass1_tp_init_0(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const string * name
-// Statement: py_in_string_*
+// Statement: py_in_string*
 /**
  * \brief constructor
  *
@@ -123,7 +123,7 @@ PP_ExClass1_tp_init_1(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int incr
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PP_incrementCount__doc__[] =
 "documentation"
 ;
@@ -211,7 +211,7 @@ PP_getNameArg(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_getValue_from_int(
   PP_ExClass1 *self,
@@ -243,7 +243,7 @@ PP_getValue_from_int(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_getValue_1(
   PP_ExClass1 *self,
@@ -275,7 +275,7 @@ PP_getValue_1(
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool in
-// Statement: py_in_bool_scalar
+// Statement: py_in_bool
 static char PP_hasAddr__doc__[] =
 "documentation"
 ;

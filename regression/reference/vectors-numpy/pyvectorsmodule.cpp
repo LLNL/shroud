@@ -217,7 +217,7 @@ fail:
 // Statement: py_function_vector<native>_numpy
 // ----------------------------------------
 // Argument:  int n
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -285,7 +285,7 @@ fail:
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
-// Statement: py_in_native_*_numpy
+// Statement: py_in_native*_numpy
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))
 // Exact:     py_default

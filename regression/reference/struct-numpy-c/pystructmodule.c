@@ -45,7 +45,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 arg
-// Statement: py_in_struct_scalar_numpy
+// Statement: py_in_struct_numpy
 static char PY_passStructByValue__doc__[] =
 "documentation"
 ;
@@ -104,7 +104,7 @@ fail:
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
-// Statement: py_in_struct_*_numpy
+// Statement: py_in_struct*_numpy
 static char PY_passStruct1__doc__[] =
 "documentation"
 ;
@@ -163,10 +163,10 @@ fail:
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
-// Statement: py_in_struct_*_numpy
+// Statement: py_in_struct*_numpy
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-// Statement: py_out_char_*_charlen
+// Statement: py_out_char*_charlen
 static char PY_passStruct2__doc__[] =
 "documentation"
 ;
@@ -229,7 +229,7 @@ fail:
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
-// Statement: py_in_struct_*_numpy
+// Statement: py_in_struct*_numpy
 static char PY_acceptStructInPtr__doc__[] =
 "documentation"
 ;
@@ -288,13 +288,13 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
-// Statement: py_out_struct_*_numpy
+// Statement: py_out_struct*_numpy
 // ----------------------------------------
 // Argument:  int i
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_acceptStructOutPtr__doc__[] =
 "documentation"
 ;
@@ -349,7 +349,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
-// Statement: py_inout_struct_*_numpy
+// Statement: py_inout_struct*_numpy
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
 ;
@@ -399,10 +399,10 @@ fail:
 // Statement: py_function_struct_numpy
 // ----------------------------------------
 // Argument:  int i
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_returnStructByValue__doc__[] =
 "documentation"
 ;
@@ -466,10 +466,10 @@ fail:
 // Statement: py_function_struct_numpy
 // ----------------------------------------
 // Argument:  int i
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_returnStructPtr1__doc__[] =
 "documentation"
 ;
@@ -519,13 +519,13 @@ fail:
 // Statement: py_function_struct_numpy
 // ----------------------------------------
 // Argument:  int i
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-// Statement: py_out_char_*_charlen
+// Statement: py_out_char*_charlen
 static char PY_returnStructPtr2__doc__[] =
 "documentation"
 ;

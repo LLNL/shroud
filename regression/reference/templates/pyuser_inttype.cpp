@@ -48,10 +48,10 @@ PY_user_int_tp_del (PY_user_int *self)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_nested_double__doc__[] =
 "documentation"
 ;

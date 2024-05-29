@@ -567,7 +567,7 @@
                                     "py_object": "PyObject",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_shadow_*",
+                                    "stmt": "py_in_shadow*",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -806,7 +806,7 @@
                                     "py_object": "PY_Class3",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_shadow_*",
+                                    "stmt": "py_in_shadow*",
                                     "value_var": "SHValue_arg"
                                 }
                             }

@@ -37,7 +37,7 @@ PyObject *PY_error_obj;
 // Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: py_in_enum_scalar
+// Statement: py_in_enum
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
@@ -78,7 +78,7 @@ PY_directionFunc(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Class1 arg
-// Statement: py_in_shadow_scalar
+// Statement: py_in_shadow
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;
@@ -116,7 +116,7 @@ PY_passClassByValue(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Class1 * arg
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -207,7 +207,7 @@ PY_getClassReference(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int arg
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_set_global_flag__doc__[] =
 "documentation"
 ;

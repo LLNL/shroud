@@ -64,7 +64,7 @@ PY_Class1_tp_init_default(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int flag
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static int
 PY_Class1_tp_init_flag(
   PY_Class1 *self,
@@ -125,7 +125,7 @@ PY_Method1(
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  const Class1 & obj2
-// Statement: py_in_shadow_&
+// Statement: py_in_shadow&
 static char PY_equivalent__doc__[] =
 "documentation"
 ;
@@ -231,7 +231,7 @@ PY_getName(
 // Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: py_in_enum_scalar
+// Statement: py_in_enum
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;

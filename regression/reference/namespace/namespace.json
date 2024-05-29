@@ -526,7 +526,7 @@
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_dfield",
                                             "size_var": "SHSize_dfield",
-                                            "stmt": "py_ctor_native_scalar_numpy",
+                                            "stmt": "py_ctor_native_numpy",
                                             "value_var": "SHValue_dfield"
                                         }
                                     },
@@ -548,7 +548,7 @@
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_ifield",
                                             "size_var": "SHSize_ifield",
-                                            "stmt": "py_ctor_native_scalar_numpy",
+                                            "stmt": "py_ctor_native_numpy",
                                             "value_var": "SHValue_ifield"
                                         }
                                     }

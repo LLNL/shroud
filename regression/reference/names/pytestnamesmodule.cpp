@@ -47,7 +47,7 @@ PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
-// Statement: py_inout_char_*
+// Statement: py_inout_char*
 static char PY_getName__doc__[] =
 "documentation"
 ;
@@ -120,7 +120,7 @@ PY_function2(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int i
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PY_function3a_0(
   PyObject *SHROUD_UNUSED(self),
@@ -147,7 +147,7 @@ PY_function3a_0(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  long i
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PY_function3a_1(
   PyObject *SHROUD_UNUSED(self),
@@ -174,7 +174,7 @@ PY_function3a_1(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const std::string & rv
-// Statement: py_in_string_&
+// Statement: py_in_string&
 static char PY_function4__doc__[] =
 "documentation"
 ;
@@ -232,10 +232,10 @@ PY_fiveplus(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  std::string & name
-// Statement: py_inout_string_&
+// Statement: py_inout_string&
 // ----------------------------------------
 // Argument:  int * value +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 static char PY_TestMultilineSplicer__doc__[] =
 "documentation"
 ;
@@ -260,10 +260,10 @@ PY_TestMultilineSplicer(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  long arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 /**
  * \brief Function template with two template parameters.
  *
@@ -296,10 +296,10 @@ PY_name_instantiation1(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  float arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 /**
  * \brief Function template with two template parameters.
  *
@@ -361,7 +361,7 @@ PY_UseImplWorker_instantiation3(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PY_Cstruct_as_class_sum__doc__[] =
 "documentation"
 ;

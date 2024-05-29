@@ -37,7 +37,7 @@ PyObject *PY_error_obj;
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  short arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_short_func__doc__[] =
 "documentation"
 ;
@@ -73,7 +73,7 @@ PY_short_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_int_func__doc__[] =
 "documentation"
 ;
@@ -109,7 +109,7 @@ PY_int_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_long_func__doc__[] =
 "documentation"
 ;
@@ -145,7 +145,7 @@ PY_long_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long long arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_long_long_func__doc__[] =
 "documentation"
 ;
@@ -181,7 +181,7 @@ PY_long_long_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  short int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_short_int_func__doc__[] =
 "documentation"
 ;
@@ -217,7 +217,7 @@ PY_short_int_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_long_int_func__doc__[] =
 "documentation"
 ;
@@ -253,7 +253,7 @@ PY_long_int_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  long long int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_long_long_int_func__doc__[] =
 "documentation"
 ;
@@ -289,7 +289,7 @@ PY_long_long_int_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_unsigned_func__doc__[] =
 "documentation"
 ;
@@ -325,7 +325,7 @@ PY_unsigned_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned short arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_ushort_func__doc__[] =
 "documentation"
 ;
@@ -361,7 +361,7 @@ PY_ushort_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_uint_func__doc__[] =
 "documentation"
 ;
@@ -397,7 +397,7 @@ PY_uint_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_ulong_func__doc__[] =
 "documentation"
 ;
@@ -433,7 +433,7 @@ PY_ulong_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long long arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_ulong_long_func__doc__[] =
 "documentation"
 ;
@@ -469,7 +469,7 @@ PY_ulong_long_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  unsigned long int arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_ulong_int_func__doc__[] =
 "documentation"
 ;
@@ -505,7 +505,7 @@ PY_ulong_int_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int8_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_int8_func__doc__[] =
 "documentation"
 ;
@@ -541,7 +541,7 @@ PY_int8_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int16_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_int16_func__doc__[] =
 "documentation"
 ;
@@ -577,7 +577,7 @@ PY_int16_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int32_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_int32_func__doc__[] =
 "documentation"
 ;
@@ -613,7 +613,7 @@ PY_int32_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int64_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_int64_func__doc__[] =
 "documentation"
 ;
@@ -649,7 +649,7 @@ PY_int64_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint8_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_uint8_func__doc__[] =
 "documentation"
 ;
@@ -685,7 +685,7 @@ PY_uint8_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint16_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_uint16_func__doc__[] =
 "documentation"
 ;
@@ -721,7 +721,7 @@ PY_uint16_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint32_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_uint32_func__doc__[] =
 "documentation"
 ;
@@ -757,7 +757,7 @@ PY_uint32_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  uint64_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_uint64_func__doc__[] =
 "documentation"
 ;
@@ -793,7 +793,7 @@ PY_uint64_func(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  size_t arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_size_func__doc__[] =
 "documentation"
 ;
@@ -829,7 +829,7 @@ PY_size_func(
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  bool arg
-// Statement: py_in_bool_scalar
+// Statement: py_in_bool
 static char PY_bool_func__doc__[] =
 "documentation"
 ;
@@ -874,7 +874,7 @@ fail:
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"
 ;

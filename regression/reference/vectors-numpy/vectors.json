@@ -1418,7 +1418,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_n",
                             "size_var": "SHSize_n",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_n"
                         }
                     }
@@ -1560,7 +1560,7 @@
                             "pytmp_var": "SHTPy_arg",
                             "rank": "2",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_arg"
                         }
                     },

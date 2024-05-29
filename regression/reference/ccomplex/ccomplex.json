@@ -276,7 +276,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -434,7 +434,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -567,7 +567,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -588,7 +588,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -780,7 +780,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -826,7 +826,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_flag"
                         }
                     }

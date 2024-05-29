@@ -68,7 +68,7 @@ PY_vector_int_tp_init(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
-// Statement: py_in_native_&
+// Statement: py_in_native&
 static char PY_push_back__doc__[] =
 "documentation"
 ;
@@ -99,7 +99,7 @@ PY_push_back(
 // Statement: py_function_native_&_numpy
 // ----------------------------------------
 // Argument:  size_type n
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_at__doc__[] =
 "documentation"
 ;

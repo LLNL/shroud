@@ -56,10 +56,10 @@ PY_NoReturnNoArguments(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  double arg1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_PassByValue__doc__[] =
 "documentation"
 ;
@@ -97,10 +97,10 @@ PY_PassByValue(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * arg1 +intent(in)
-// Statement: py_in_native_*
+// Statement: py_in_native*
 // ----------------------------------------
 // Argument:  int * arg2 +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 static char PY_PassByReference__doc__[] =
 "documentation"
 ;
@@ -137,7 +137,7 @@ PY_PassByReference(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  int arg2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_PassByValueMacro__doc__[] =
 "documentation"
 ;
@@ -177,13 +177,13 @@ PY_PassByValueMacro(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const bool arg1
-// Statement: py_in_bool_scalar
+// Statement: py_in_bool
 // ----------------------------------------
 // Argument:  bool * arg2 +intent(out)
-// Statement: py_out_bool_*
+// Statement: py_out_bool*
 // ----------------------------------------
 // Argument:  bool * arg3 +intent(inout)
-// Statement: py_inout_bool_*
+// Statement: py_inout_bool*
 static char PY_checkBool__doc__[] =
 "documentation"
 ;
@@ -242,10 +242,10 @@ fail:
 // Statement: py_function_char_*
 // ----------------------------------------
 // Argument:  const char * arg1
-// Statement: py_in_char_*
+// Statement: py_in_char*
 // ----------------------------------------
 // Argument:  const char * arg2
-// Statement: py_in_char_*
+// Statement: py_in_char*
 static char PY_Function4a__doc__[] =
 "documentation"
 ;
@@ -283,7 +283,7 @@ PY_Function4a(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const char * name
-// Statement: py_in_char_*
+// Statement: py_in_char*
 static char PY_acceptName__doc__[] =
 "documentation"
 ;
@@ -314,7 +314,7 @@ PY_acceptName(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
-// Statement: py_inout_char_*
+// Statement: py_inout_char*
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
 ;
@@ -356,7 +356,7 @@ PY_passCharPtrInOut(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-// Statement: py_out_char_*_charlen
+// Statement: py_out_char*_charlen
 static char PY_returnOneName__doc__[] =
 "documentation"
 ;
@@ -392,10 +392,10 @@ PY_returnOneName(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
-// Statement: py_out_char_*_charlen
+// Statement: py_out_char*_charlen
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)
-// Statement: py_out_char_*_charlen
+// Statement: py_out_char*_charlen
 static char PY_returnTwoNames__doc__[] =
 "documentation"
 ;
@@ -432,7 +432,7 @@ PY_returnTwoNames(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
-// Statement: py_out_char_*_charlen
+// Statement: py_out_char*_charlen
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
 // Exact:     py_default
@@ -472,7 +472,7 @@ PY_ImpliedTextLen(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * text +api(capi)
-// Statement: py_in_char_*
+// Statement: py_in_char*
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
 // Exact:     py_default
@@ -526,7 +526,7 @@ PY_ImpliedLen(
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  const char * text +api(capi)
-// Statement: py_in_char_*
+// Statement: py_in_char*
 // ----------------------------------------
 // Argument:  int ltext +implied(len_trim(text))
 // Exact:     py_default

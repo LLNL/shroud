@@ -68,7 +68,7 @@ PY_ArrayWrapper_tp_init(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int size
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_setSize__doc__[] =
 "documentation"
 ;
@@ -124,7 +124,7 @@ PY_getSize(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int & size +intent(out)
-// Statement: py_out_native_&
+// Statement: py_out_native&
 static char PY_fillSize__doc__[] =
 "documentation"
 ;
@@ -304,10 +304,10 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
-// Statement: py_out_native_**_numpy
+// Statement: py_out_native**_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 static char PY_fetchArrayPtr__doc__[] =
 "documentation"
 ;
@@ -345,10 +345,10 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
-// Statement: py_out_native_*&_numpy
+// Statement: py_out_native*&_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Statement: py_inout_native_&
+// Statement: py_inout_native&
 static char PY_fetchArrayRef__doc__[] =
 "documentation"
 ;
@@ -386,10 +386,10 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
-// Statement: py_out_native_**_numpy
+// Statement: py_out_native**_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 static char PY_fetchArrayPtrConst__doc__[] =
 "documentation"
 ;
@@ -427,10 +427,10 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
-// Statement: py_out_native_*&_numpy
+// Statement: py_out_native*&_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden
-// Statement: py_inout_native_&
+// Statement: py_inout_native&
 static char PY_fetchArrayRefConst__doc__[] =
 "documentation"
 ;
@@ -468,7 +468,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
-// Statement: py_out_void_**
+// Statement: py_out_void**
 static char PY_fetchVoidPtr__doc__[] =
 "documentation"
 ;
@@ -497,7 +497,7 @@ PY_fetchVoidPtr(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
-// Statement: py_out_void_*&
+// Statement: py_out_void*&
 static char PY_fetchVoidRef__doc__[] =
 "documentation"
 ;
@@ -526,7 +526,7 @@ PY_fetchVoidRef(
 // Statement: py_function_bool_scalar
 // ----------------------------------------
 // Argument:  void * array
-// Statement: py_in_void_*
+// Statement: py_in_void*
 static char PY_checkPtr__doc__[] =
 "documentation"
 ;

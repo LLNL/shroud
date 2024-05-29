@@ -54,10 +54,10 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  char name[20]
-// Statement: py_ctor_char_[]_numpy
+// Statement: py_ctor_char[]_numpy
 // ----------------------------------------
 // Argument:  int count[10]
-// Statement: py_ctor_native_[]_numpy
+// Statement: py_ctor_native[]_numpy
 static int
 PY_Arrays1_tp_init(
   PY_Arrays1 *self,

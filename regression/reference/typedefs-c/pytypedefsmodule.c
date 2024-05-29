@@ -41,7 +41,7 @@ PyArray_Descr *PY_Struct1Rename_array_descr;
 // Statement: py_function_native_scalar
 // ----------------------------------------
 // Argument:  Alias arg
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_typefunc__doc__[] =
 "documentation"
 ;
@@ -77,7 +77,7 @@ PY_typefunc(
 // Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: py_in_enum_scalar
+// Statement: py_in_enum
 static char PY_returnEnum__doc__[] =
 "documentation"
 ;
@@ -116,7 +116,7 @@ PY_returnEnum(
 // Statement: py_function_enum_scalar
 // ----------------------------------------
 // Argument:  TypeID in
-// Statement: py_in_enum_scalar
+// Statement: py_in_enum
 static char PY_returnTypeID__doc__[] =
 "documentation"
 ;
@@ -155,7 +155,7 @@ PY_returnTypeID(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Struct1Rename * arg1
-// Statement: py_inout_struct_*_list
+// Statement: py_inout_struct*_list
 static char PY_typestruct__doc__[] =
 "documentation"
 ;

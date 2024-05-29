@@ -12220,24 +12220,22 @@ root
         array -- py_base_ctor_array
           fill -- py_base_ctor_array_fill
     ctor
-      char
-        * -- py_ctor_char_*
-          numpy -- py_ctor_char_*
-        ** -- py_ctor_char_**
-          list -- py_ctor_char_**
-        [] -- py_ctor_char_[]
-          list -- py_ctor_char_[]
-          numpy -- py_ctor_char_[]
+      char* -- py_ctor_char*
+        numpy -- py_ctor_char*
+      char** -- py_ctor_char**
+        list -- py_ctor_char**
+      char[] -- py_ctor_char[]
+        list -- py_ctor_char[]
+        numpy -- py_ctor_char[]
       native -- py_ctor_native
-        * -- py_ctor_native_*
-          list -- py_ctor_native_*
-          numpy -- py_ctor_native_*
-        [] -- py_ctor_native_[]
-          list -- py_ctor_native_[]
-          numpy -- py_ctor_native_[]
-        scalar
-          list -- py_ctor_native
-          numpy -- py_ctor_native
+        list -- py_ctor_native
+        numpy -- py_ctor_native
+      native* -- py_ctor_native*
+        list -- py_ctor_native*
+        numpy -- py_ctor_native*
+      native[] -- py_ctor_native[]
+        list -- py_ctor_native[]
+        numpy -- py_ctor_native[]
     defaulttmp -- py_defaulttmp
     descr
       bool
@@ -12277,7 +12275,7 @@ root
       shadow
         & -- py_function_shadow_*
         * -- py_function_shadow_*
-        scalar -- py_out_struct_*_class
+        scalar -- py_out_struct*_class
       string
         & -- py_function_string_*
         * -- py_function_string_*
@@ -12295,115 +12293,97 @@ root
       void
         * -- py_function_void_*
     in
-      bool
-        scalar -- py_in_bool_scalar
-      char
-        * -- py_in_char_*
-        ** -- py_in_char_**
-        scalar -- py_in_char_scalar
-      enum
-        scalar -- py_defaulttmp
-      native
-        & -- py_in_native_&
-        * -- py_in_native_*
-          list -- py_in_native_*_list
-          numpy -- py_in_native_*_numpy
-        scalar -- py_defaulttmp
-      shadow
-        & -- py_in_shadow_&
-        * -- py_in_shadow_*
-        scalar -- py_in_shadow_scalar
-      string
-        & -- py_in_string_scalar
-        * -- py_in_string_*
-        scalar -- py_in_string_scalar
+      bool -- py_in_bool
+      char -- py_in_char
+      char* -- py_in_char*
+      char** -- py_in_char**
+      enum -- py_defaulttmp
+      native -- py_defaulttmp
+      native& -- py_in_native&
+      native* -- py_in_native*
+        list -- py_in_native*_list
+        numpy -- py_in_native*_numpy
+      shadow -- py_in_shadow
+      shadow& -- py_in_shadow&
+      shadow* -- py_in_shadow*
+      string -- py_in_string
+      string& -- py_in_string
+      string* -- py_in_string*
       struct
-        &
-          class -- py_in_struct_&_class
-          numpy -- py_in_struct_&_numpy
-        *
-          class -- py_in_struct_*_class
-          list -- py_in_struct_*_list
-          numpy -- py_in_struct_*_numpy
+        class -- py_in_struct_class
         list -- py_in_struct_list
-        scalar
-          class -- py_in_struct_scalar_class
-          list -- py_in_struct_list
-          numpy -- py_in_struct_scalar_numpy
-      unknown
-        scalar -- py_defaulttmp
+        numpy -- py_in_struct_numpy
+      struct&
+        class -- py_in_struct&_class
+        numpy -- py_in_struct&_numpy
+      struct*
+        class -- py_in_struct*_class
+        list -- py_in_struct*_list
+        numpy -- py_in_struct*_numpy
+      unknown -- py_defaulttmp
       vector<native>&
         list -- py_in_vector<native>&_list
         numpy -- py_in_vector<native>&_numpy
-      void
-        * -- py_in_void_*
+      void* -- py_in_void*
     inout
       bool -- py_inout_bool
-        * -- py_inout_bool_*
-      char
-        * -- py_inout_char_*
-      native
-        & -- py_inout_native_&
-        * -- py_inout_native_*
-          list -- py_inout_native_*_list
-          numpy -- py_inout_native_*_numpy
+      bool* -- py_inout_bool*
+      char* -- py_inout_char*
+      native& -- py_inout_native&
+      native* -- py_inout_native*
+        list -- py_inout_native*_list
+        numpy -- py_inout_native*_numpy
       shadow
         * -- py_inout_shadow_*
-      string
-        & -- py_inout_string_scalar
-        * -- py_inout_string_*
-        scalar -- py_inout_string_scalar
+      string -- py_inout_string
+      string& -- py_inout_string
+      string* -- py_inout_string*
       struct
-        &
-          class -- py_inout_struct_&_class
-          numpy -- py_inout_struct_&_numpy
-        *
-          class -- py_inout_struct_*_class
-          list -- py_inout_struct_*_list
-          numpy -- py_inout_struct_*_numpy
         list -- py_inout_struct_list
+      struct&
+        class -- py_inout_struct&_class
+        numpy -- py_inout_struct&_numpy
+      struct*
+        class -- py_inout_struct*_class
+        list -- py_inout_struct*_list
+        numpy -- py_inout_struct*_numpy
     mixin
       unknown -- py_mixin_unknown
     out
       bool -- py_out_bool
-        * -- py_out_bool_*
-      char
-        *
-          charlen -- py_out_char_*_charlen
-      enum
-        * -- py_out_enum_*
-      native
-        & -- py_out_native_&
-        * -- py_out_native_*
-          list -- py_out_native_*_list
-          numpy -- py_out_native_*_numpy
-        *&
-          numpy -- py_out_native_*&_numpy
-        **
-          list -- py_out_native_**_list
-          numpy -- py_out_native_**_numpy
-          raw -- py_out_native_**_raw
+      bool* -- py_out_bool*
+      char*
+        charlen -- py_out_char*_charlen
+      enum* -- py_out_enum*
+      native& -- py_out_native&
+      native* -- py_out_native*
+        list -- py_out_native*_list
+        numpy -- py_out_native*_numpy
+      native*&
+        numpy -- py_out_native*&_numpy
+      native**
+        list -- py_out_native**_list
+        numpy -- py_out_native**_numpy
+        raw -- py_out_native**_raw
       shadow
         * -- py_out_shadow_*
-      string
-        & -- py_out_string_scalar
-        * -- py_out_string_*
-        scalar -- py_out_string_scalar
+      string -- py_out_string
+      string& -- py_out_string
+      string* -- py_out_string*
       struct
-        &
-          class -- py_out_struct_&_class
-          numpy -- py_out_struct_&_numpy
-        *
-          class -- py_out_struct_*_class
-          list -- py_out_struct_*_list
-          numpy -- py_out_struct_*_numpy
         list -- py_out_struct_list
+      struct&
+        class -- py_out_struct&_class
+        numpy -- py_out_struct&_numpy
+      struct*
+        class -- py_out_struct*_class
+        list -- py_out_struct*_list
+        numpy -- py_out_struct*_numpy
       vector<native>&
         list -- py_out_vector<native>&_list
         numpy -- py_out_vector<native>&_numpy
-      void
-        *& -- py_out_void_*&
-        ** -- py_out_void_**
+      void*& -- py_out_void*&
+      void** -- py_out_void**
 py_base_ctor_array:
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -12433,13 +12413,13 @@ py_base_ctor_array_fill:
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
-py_ctor_char_*:
+py_ctor_char*:
   c_helper: get_from_object_char
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_char_*
+  name: py_ctor_char*
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12447,13 +12427,13 @@ py_ctor_char_*:
   post_call:
   - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_char_**:
+py_ctor_char**:
   c_helper: get_from_object_charptr
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_char_**
+  name: py_ctor_char**
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12461,13 +12441,13 @@ py_ctor_char_**:
   post_call:
   - SH_obj->{field_name} = {cast_static}char **{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_char_**_list:
+py_ctor_char**_list:
   c_helper: get_from_object_charptr
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_char_**_list
+  name: py_ctor_char**_list
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12475,13 +12455,13 @@ py_ctor_char_**_list:
   post_call:
   - SH_obj->{field_name} = {cast_static}char **{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_char_*_numpy:
+py_ctor_char*_numpy:
   c_helper: get_from_object_char
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_char_*_numpy
+  name: py_ctor_char*_numpy
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12489,13 +12469,13 @@ py_ctor_char_*_numpy:
   post_call:
   - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_char_[]:
+py_ctor_char[]:
   c_helper: fill_from_PyObject_char
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
   intent: ctor
-  name: py_ctor_char_[]
+  name: py_ctor_char[]
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -12506,13 +12486,13 @@ py_ctor_char_[]:
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
-py_ctor_char_[]_list:
+py_ctor_char[]_list:
   c_helper: fill_from_PyObject_char
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
   intent: ctor
-  name: py_ctor_char_[]_list
+  name: py_ctor_char[]_list
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -12523,13 +12503,13 @@ py_ctor_char_[]_list:
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
-py_ctor_char_[]_numpy:
+py_ctor_char[]_numpy:
   c_helper: fill_from_PyObject_char
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
   intent: ctor
-  name: py_ctor_char_[]_numpy
+  name: py_ctor_char[]_numpy
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -12547,13 +12527,13 @@ py_ctor_native:
   name: py_ctor_native
   post_call:
   - SH_obj->{field_name} = {field_name};
-py_ctor_native_*:
+py_ctor_native*:
   c_helper: get_from_object_{c_type}_{PY_array_arg}
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_native_*
+  name: py_ctor_native*
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12561,13 +12541,13 @@ py_ctor_native_*:
   post_call:
   - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_native_*_list:
+py_ctor_native*_list:
   c_helper: get_from_object_{c_type}_{PY_array_arg}
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_native_*_list
+  name: py_ctor_native*_list
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12575,13 +12555,13 @@ py_ctor_native_*_list:
   post_call:
   - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_native_*_numpy:
+py_ctor_native*_numpy:
   c_helper: get_from_object_{c_type}_{PY_array_arg}
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
   - '{value_var}.name = "{field_name}";'
   intent: ctor
-  name: py_ctor_native_*_numpy
+  name: py_ctor_native*_numpy
   parse_args:
   - '{hnamefunc0}'
   - '&{value_var}'
@@ -12589,13 +12569,13 @@ py_ctor_native_*_numpy:
   post_call:
   - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
   - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_ctor_native_[]:
+py_ctor_native[]:
   c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
   intent: ctor
-  name: py_ctor_native_[]
+  name: py_ctor_native[]
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -12606,13 +12586,13 @@ py_ctor_native_[]:
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
-py_ctor_native_[]_list:
+py_ctor_native[]_list:
   c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
   intent: ctor
-  name: py_ctor_native_[]_list
+  name: py_ctor_native[]_list
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -12623,13 +12603,13 @@ py_ctor_native_[]_list:
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
-py_ctor_native_[]_numpy:
+py_ctor_native[]_numpy:
   c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
   declare:
   - PyObject *{py_var} = {nullptr};
   goto_fail: true
   intent: ctor
-  name: py_ctor_native_[]_numpy
+  name: py_ctor_native[]_numpy
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -12640,18 +12620,18 @@ py_ctor_native_[]_numpy:
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
-py_ctor_native_scalar_list:
+py_ctor_native_list:
   declare:
   - '{c_type} {c_var} = 0;'
   intent: ctor
-  name: py_ctor_native_scalar_list
+  name: py_ctor_native_list
   post_call:
   - SH_obj->{field_name} = {field_name};
-py_ctor_native_scalar_numpy:
+py_ctor_native_numpy:
   declare:
   - '{c_type} {c_var} = 0;'
   intent: ctor
-  name: py_ctor_native_scalar_numpy
+  name: py_ctor_native_numpy
   post_call:
   - SH_obj->{field_name} = {field_name};
 py_defaulttmp:
@@ -13187,17 +13167,27 @@ py_function_void_*:
     ctor_expr: '{cxx_var}'
   intent: function
   name: py_function_void_*
-py_in_bool_scalar:
+py_in_bool:
   intent: in
-  name: py_in_bool_scalar
+  name: py_in_bool
   pre_call:
   - '{cxx_var} = PyObject_IsTrue({py_var});'
-py_in_char_*:
+py_in_char:
+  arg_call:
+  - '{c_var}[0]'
+  arg_declare:
+  - char *{c_var};
+  intent: in
+  name: py_in_char
+  parse_args:
+  - '&{c_var}'
+  parse_format: s
+py_in_char*:
   arg_call:
   - '{c_var}'
   intent: in
-  name: py_in_char_*
-py_in_char_**:
+  name: py_in_char*
+py_in_char**:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -13212,7 +13202,7 @@ py_in_char_**:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
   intent: in
-  name: py_in_char_**
+  name: py_in_char**
   parse_args:
   - '&{pytmp_var}'
   parse_format: O
@@ -13222,32 +13212,25 @@ py_in_char_**:
   - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
   - +goto fail;-
   - '{cxx_var} = {cast_static}char **{cast1}{value_var}.data{cast2};'
-py_in_char_scalar:
-  arg_call:
-  - '{c_var}[0]'
-  arg_declare:
-  - char *{c_var};
+py_in_enum:
   intent: in
-  name: py_in_char_scalar
-  parse_args:
-  - '&{c_var}'
-  parse_format: s
-py_in_enum_scalar:
+  name: py_in_enum
+py_in_native:
   intent: in
-  name: py_in_enum_scalar
-py_in_native_&:
+  name: py_in_native
+py_in_native&:
   arg_declare:
   - '{c_type} {c_var};'
   intent: in
-  name: py_in_native_&
-py_in_native_*:
+  name: py_in_native&
+py_in_native*:
   arg_call:
   - '&{c_var}'
   arg_declare:
   - '{c_type} {c_var};'
   intent: in
-  name: py_in_native_*
-py_in_native_*_list:
+  name: py_in_native*
+py_in_native*_list:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -13264,7 +13247,7 @@ py_in_native_*_list:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
   intent: in
-  name: py_in_native_*_list
+  name: py_in_native*_list
   parse_args:
   - '&{pytmp_var}'
   parse_format: O
@@ -13273,7 +13256,7 @@ py_in_native_*_list:
   - +goto fail;-
   - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
   - '{size_var} = {value_var}.size;'
-py_in_native_*_numpy:
+py_in_native*_numpy:
   arg_call:
   - '{c_var}'
   cleanup:
@@ -13291,7 +13274,7 @@ py_in_native_*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_in_native_*_numpy
+  name: py_in_native*_numpy
   need_numpy: true
   parse_args:
   - '&{pytmp_var}'
@@ -13306,42 +13289,49 @@ py_in_native_*_numpy:
   - -}}
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-py_in_native_scalar:
-  intent: in
-  name: py_in_native_scalar
-py_in_shadow_&:
+py_in_shadow:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
   intent: in
-  name: py_in_shadow_&
+  name: py_in_shadow
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_in_shadow_*:
-  cxx_local_var: pointer
-  intent: in
-  name: py_in_shadow_*
-  post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_in_shadow_scalar:
+py_in_shadow&:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
   intent: in
-  name: py_in_shadow_scalar
+  name: py_in_shadow&
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_in_string_&:
+py_in_shadow*:
+  cxx_local_var: pointer
+  intent: in
+  name: py_in_shadow*
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_in_string:
   arg_declare:
   - char * {c_var};
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   intent: in
-  name: py_in_string_&
+  name: py_in_string
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
-py_in_string_*:
+py_in_string&:
+  arg_declare:
+  - char * {c_var};
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: in
+  name: py_in_string&
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_in_string*:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13350,28 +13340,18 @@ py_in_string_*:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   intent: in
-  name: py_in_string_*
+  name: py_in_string*
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
-py_in_string_scalar:
-  arg_declare:
-  - char * {c_var};
-  cxx_local_var: scalar
-  fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  intent: in
-  name: py_in_string_scalar
-  post_declare:
-  - '{c_const}std::string {cxx_var}({c_var});'
-py_in_struct_&_class:
+py_in_struct&_class:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
   intent: in
-  name: py_in_struct_&_class
+  name: py_in_struct&_class
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_in_struct_&_numpy:
+py_in_struct&_numpy:
   arg_call:
   - '*{cxx_var}'
   arg_declare:
@@ -13392,7 +13372,7 @@ py_in_struct_&_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_in_struct_&_numpy
+  name: py_in_struct&_numpy
   need_numpy: true
   parse_args:
   - '&{pytmp_var}'
@@ -13408,18 +13388,18 @@ py_in_struct_&_numpy:
   - -}}
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-py_in_struct_*_class:
+py_in_struct*_class:
   cxx_local_var: pointer
   intent: in
-  name: py_in_struct_*_class
+  name: py_in_struct*_class
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_in_struct_*_list:
+py_in_struct*_list:
   arg_call:
   - '&{cxx_var}'
   intent: in
-  name: py_in_struct_*_list
-py_in_struct_*_numpy:
+  name: py_in_struct*_list
+py_in_struct*_numpy:
   arg_declare:
   - '{cxx_type} *{cxx_var};'
   cleanup:
@@ -13438,7 +13418,7 @@ py_in_struct_*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_in_struct_*_numpy
+  name: py_in_struct*_numpy
   need_numpy: true
   parse_args:
   - '&{pytmp_var}'
@@ -13454,21 +13434,18 @@ py_in_struct_*_numpy:
   - -}}
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_in_struct_class:
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  intent: in
+  name: py_in_struct_class
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
 py_in_struct_list:
   intent: in
   name: py_in_struct_list
-py_in_struct_scalar_class:
-  arg_call:
-  - '*{cxx_var}'
-  cxx_local_var: pointer
-  intent: in
-  name: py_in_struct_scalar_class
-  post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_in_struct_scalar_list:
-  intent: in
-  name: py_in_struct_scalar_list
-py_in_struct_scalar_numpy:
+py_in_struct_numpy:
   arg_call:
   - '*{cxx_var}'
   arg_declare:
@@ -13489,7 +13466,7 @@ py_in_struct_scalar_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_in_struct_scalar_numpy
+  name: py_in_struct_numpy
   need_numpy: true
   parse_args:
   - '&{pytmp_var}'
@@ -13505,9 +13482,9 @@ py_in_struct_scalar_numpy:
   - -}}
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-py_in_unknown_scalar:
+py_in_unknown:
   intent: in
-  name: py_in_unknown_scalar
+  name: py_in_unknown
 py_in_vector<native>&_list:
   c_helper: create_from_PyObject_vector_{cxx_T}
   cxx_local_var: scalar
@@ -13552,14 +13529,14 @@ py_in_vector<native>&_numpy:
   pre_call:
   - '{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));'
   - "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));"
-py_in_void_*:
+py_in_void*:
   arg_call:
   - '{c_var}'
   declare:
   - PyObject *{py_var};
   goto_fail: true
   intent: in
-  name: py_in_void_*
+  name: py_in_void*
   parse_args:
   - '&{py_var}'
   parse_format: O
@@ -13581,7 +13558,7 @@ py_inout_bool:
   - if ({py_var} == {nullptr}) goto fail;
   pre_call:
   - '{cxx_var} = PyObject_IsTrue({py_var});'
-py_inout_bool_*:
+py_inout_bool*:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13590,26 +13567,26 @@ py_inout_bool_*:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: inout
-  name: py_inout_bool_*
+  name: py_inout_bool*
   object_created: true
   post_call:
   - '{py_var} = PyBool_FromLong({c_var});'
   - if ({py_var} == {nullptr}) goto fail;
   pre_call:
   - '{cxx_var} = PyObject_IsTrue({py_var});'
-py_inout_char_*:
+py_inout_char*:
   arg_call:
   - '{c_var}'
   fmtdict:
     ctor_expr: '{c_var}'
   intent: inout
-  name: py_inout_char_*
-py_inout_native_&:
+  name: py_inout_char*
+py_inout_native&:
   arg_declare:
   - '{c_type} {c_var};'
   intent: inout
-  name: py_inout_native_&
-py_inout_native_*:
+  name: py_inout_native&
+py_inout_native*:
   arg_call:
   - '&{c_var}'
   arg_declare:
@@ -13617,8 +13594,8 @@ py_inout_native_*:
   fmtdict:
     ctor_expr: '{c_var}'
   intent: inout
-  name: py_inout_native_*
-py_inout_native_*_list:
+  name: py_inout_native*
+py_inout_native*_list:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -13636,7 +13613,7 @@ py_inout_native_*_list:
   - Py_XDECREF({value_var}.dataobj);
   goto_fail: true
   intent: inout
-  name: py_inout_native_*_list
+  name: py_inout_native*_list
   object_created: true
   parse_args:
   - '&{pytmp_var}'
@@ -13649,7 +13626,7 @@ py_inout_native_*_list:
   - +goto fail;-
   - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
   - '{size_var} = {value_var}.size;'
-py_inout_native_*_numpy:
+py_inout_native*_numpy:
   arg_call:
   - '{c_var}'
   declare:
@@ -13665,7 +13642,7 @@ py_inout_native_*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_inout_native_*_numpy
+  name: py_inout_native*_numpy
   need_numpy: true
   object_created: true
   parse_args:
@@ -13687,17 +13664,27 @@ py_inout_shadow_*:
   name: py_inout_shadow_*
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_inout_string_&:
+py_inout_string:
   arg_declare:
   - char *{c_var};
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   intent: inout
-  name: py_inout_string_&
+  name: py_inout_string
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
-py_inout_string_*:
+py_inout_string&:
+  arg_declare:
+  - char *{c_var};
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: inout
+  name: py_inout_string&
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_inout_string*:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13706,30 +13693,20 @@ py_inout_string_*:
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   intent: inout
-  name: py_inout_string_*
+  name: py_inout_string*
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
-py_inout_string_scalar:
-  arg_declare:
-  - char *{c_var};
-  cxx_local_var: scalar
-  fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  intent: inout
-  name: py_inout_string_scalar
-  post_declare:
-  - '{c_const}std::string {cxx_var}({c_var});'
-py_inout_struct_&_class:
+py_inout_struct&_class:
   arg_call:
   - '*{cxx_var}'
   cxx_local_var: pointer
   incref_on_return: true
   intent: inout
-  name: py_inout_struct_&_class
+  name: py_inout_struct&_class
   object_created: true
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_inout_struct_&_numpy:
+py_inout_struct&_numpy:
   arg_call:
   - '*{cxx_var}'
   arg_declare:
@@ -13747,7 +13724,7 @@ py_inout_struct_&_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_inout_struct_&_numpy
+  name: py_inout_struct&_numpy
   need_numpy: true
   object_created: true
   parse_args:
@@ -13764,20 +13741,20 @@ py_inout_struct_&_numpy:
   - -}}
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-py_inout_struct_*_class:
+py_inout_struct*_class:
   cxx_local_var: pointer
   incref_on_return: true
   intent: inout
-  name: py_inout_struct_*_class
+  name: py_inout_struct*_class
   object_created: true
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-py_inout_struct_*_list:
+py_inout_struct*_list:
   arg_call:
   - '&{cxx_var}'
   intent: inout
-  name: py_inout_struct_*_list
-py_inout_struct_*_numpy:
+  name: py_inout_struct*_list
+py_inout_struct*_numpy:
   arg_declare:
   - '{cxx_type} *{cxx_var};'
   declare:
@@ -13793,7 +13770,7 @@ py_inout_struct_*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_inout_struct_*_numpy
+  name: py_inout_struct*_numpy
   need_numpy: true
   object_created: true
   parse_args:
@@ -13830,7 +13807,7 @@ py_out_bool:
   post_call:
   - '{py_var} = PyBool_FromLong({c_var});'
   - if ({py_var} == {nullptr}) goto fail;
-py_out_bool_*:
+py_out_bool*:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13841,12 +13818,12 @@ py_out_bool_*:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
-  name: py_out_bool_*
+  name: py_out_bool*
   object_created: true
   post_call:
   - '{py_var} = PyBool_FromLong({c_var});'
   - if ({py_var} == {nullptr}) goto fail;
-py_out_char_*_charlen:
+py_out_char*_charlen:
   arg_call:
   - '{c_var}'
   arg_declare:
@@ -13854,23 +13831,23 @@ py_out_char_*_charlen:
   fmtdict:
     ctor_expr: '{c_var}'
   intent: out
-  name: py_out_char_*_charlen
-py_out_enum_*:
+  name: py_out_char*_charlen
+py_out_enum*:
   arg_call:
   - '&{cxx_var}'
   cxx_local_var: scalar
   declare:
   - '{cxx_type} {py_var};'
   intent: out
-  name: py_out_enum_*
+  name: py_out_enum*
   post_call:
   - '*{c_var} = ({cxx_type}) {py_var};'
-py_out_native_&:
+py_out_native&:
   arg_declare:
   - '{c_const}{c_type} {c_var};'
   intent: out
-  name: py_out_native_&
-py_out_native_*:
+  name: py_out_native&
+py_out_native*:
   arg_call:
   - '&{c_var}'
   arg_declare:
@@ -13878,8 +13855,8 @@ py_out_native_*:
   fmtdict:
     ctor_expr: '{c_var}'
   intent: out
-  name: py_out_native_*
-py_out_native_*&_numpy:
+  name: py_out_native*
+py_out_native*&_numpy:
   arg_call:
   - '{cxx_var}'
   arg_declare:
@@ -13894,7 +13871,7 @@ py_out_native_*&_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: out
-  name: py_out_native_*&_numpy
+  name: py_out_native*&_numpy
   need_numpy: true
   object_created: true
   post_call:
@@ -13908,7 +13885,7 @@ py_out_native_*&_numpy:
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-py_out_native_**_list:
+py_out_native**_list:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13920,12 +13897,12 @@ py_out_native_**_list:
   - Py_XDECREF({py_var});
   goto_fail: true
   intent: out
-  name: py_out_native_**_list
+  name: py_out_native**_list
   object_created: true
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
-py_out_native_**_numpy:
+py_out_native**_numpy:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13940,7 +13917,7 @@ py_out_native_**_numpy:
   - Py_XDECREF({py_capsule});
   goto_fail: true
   intent: out
-  name: py_out_native_**_numpy
+  name: py_out_native**_numpy
   need_numpy: true
   object_created: true
   post_call:
@@ -13954,7 +13931,7 @@ py_out_native_**_numpy:
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-py_out_native_**_raw:
+py_out_native**_raw:
   arg_call:
   - '&{cxx_var}'
   arg_declare:
@@ -13962,11 +13939,11 @@ py_out_native_**_raw:
   declare:
   - PyObject *{py_var} = {nullptr};
   intent: out
-  name: py_out_native_**_raw
+  name: py_out_native**_raw
   object_created: true
   post_call:
   - '{py_var} = PyCapsule_New({cxx_var}, NULL, NULL);'
-py_out_native_*_list:
+py_out_native*_list:
   arg_call:
   - '{c_var}'
   arg_declare:
@@ -14001,7 +13978,7 @@ py_out_native_*_list:
     - PyErr_NoMemory();
     - goto fail;
     - -}}
-  name: py_out_native_*_list
+  name: py_out_native*_list
   object_created: true
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
@@ -14012,7 +13989,7 @@ py_out_native_*_list:
   - PyErr_NoMemory();
   - goto fail;
   - -}}
-py_out_native_*_numpy:
+py_out_native*_numpy:
   arg_call:
   - '{c_var}'
   declare:
@@ -14027,7 +14004,7 @@ py_out_native_*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_out_native_*_numpy
+  name: py_out_native*_numpy
   need_numpy: true
   object_created: true
   post_parse:
@@ -14053,33 +14030,33 @@ py_out_shadow_*:
   - "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - if ({py_var} == {nullptr}) goto fail;
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
-py_out_string_&:
+py_out_string:
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   intent: out
-  name: py_out_string_&
+  name: py_out_string
   post_declare:
   - '{c_const}std::string {cxx_var};'
-py_out_string_*:
+py_out_string&:
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  intent: out
+  name: py_out_string&
+  post_declare:
+  - '{c_const}std::string {cxx_var};'
+py_out_string*:
   arg_call:
   - '&{cxx_var}'
   cxx_local_var: scalar
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
   intent: out
-  name: py_out_string_*
+  name: py_out_string*
   post_declare:
   - '{c_const}std::string {cxx_var};'
-py_out_string_scalar:
-  cxx_local_var: scalar
-  fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  intent: out
-  name: py_out_string_scalar
-  post_declare:
-  - '{c_const}std::string {cxx_var};'
-py_out_struct_&_class:
+py_out_struct&_class:
   arg_call:
   - '*{cxx_var}'
   arg_declare:
@@ -14097,14 +14074,14 @@ py_out_struct_&_class:
   lang_cxx:
     pre_call:
     - '{cxx_var} = new {cxx_type};'
-  name: py_out_struct_&_class
+  name: py_out_struct&_class
   object_created: true
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
   pre_call:
   - '{cxx_var} = new {cxx_type};'
-py_out_struct_&_numpy:
+py_out_struct&_numpy:
   arg_call:
   - '*{cxx_var}'
   arg_declare:
@@ -14121,7 +14098,7 @@ py_out_struct_&_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_out_struct_&_numpy
+  name: py_out_struct&_numpy
   need_numpy: true
   object_created: true
   post_parse:
@@ -14135,7 +14112,7 @@ py_out_struct_&_numpy:
   - -}}
   pre_call:
   - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-py_out_struct_*_class:
+py_out_struct*_class:
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
   cxx_local_var: pointer
@@ -14151,21 +14128,21 @@ py_out_struct_*_class:
   lang_cxx:
     pre_call:
     - '{cxx_var} = new {cxx_type};'
-  name: py_out_struct_*_class
+  name: py_out_struct*_class
   object_created: true
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
   pre_call:
   - '{cxx_var} = new {cxx_type};'
-py_out_struct_*_list:
+py_out_struct*_list:
   arg_call:
   - '&{cxx_var}'
   intent: out
-  name: py_out_struct_*_list
+  name: py_out_struct*_list
   post_declare:
   - '{cxx_type} {cxx_var};'
-py_out_struct_*_numpy:
+py_out_struct*_numpy:
   arg_declare:
   - '{cxx_type} *{cxx_var};'
   declare:
@@ -14180,7 +14157,7 @@ py_out_struct_*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
-  name: py_out_struct_*_numpy
+  name: py_out_struct*_numpy
   need_numpy: true
   object_created: true
   post_parse:
@@ -14245,7 +14222,7 @@ py_out_vector<native>&_numpy:
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-py_out_void_*&:
+py_out_void*&:
   arg_call:
   - '{c_var}'
   arg_declare:
@@ -14253,8 +14230,8 @@ py_out_void_*&:
   fmtdict:
     ctor_expr: '{cxx_var}'
   intent: out
-  name: py_out_void_*&
-py_out_void_**:
+  name: py_out_void*&
+py_out_void**:
   arg_call:
   - '&{c_var}'
   arg_declare:
@@ -14262,7 +14239,7 @@ py_out_void_**:
   fmtdict:
     ctor_expr: '{cxx_var}'
   intent: out
-  name: py_out_void_**
+  name: py_out_void**
 ***** Lua
 root
   lua

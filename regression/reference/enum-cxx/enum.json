@@ -474,7 +474,7 @@
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_in",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_enum_scalar",
+                            "stmt": "py_in_enum",
                             "value_var": "SHValue_in"
                         }
                     }
@@ -753,7 +753,7 @@
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_in",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_enum_scalar",
+                            "stmt": "py_in_enum",
                             "value_var": "SHValue_in"
                         }
                     }
