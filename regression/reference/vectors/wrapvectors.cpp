@@ -639,7 +639,7 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
     std::vector<int> *SHC_rv = new std::vector<int>;
     *SHC_rv = ReturnVectorAlloc(n);
     SHT_rv_cdesc->base_addr = SHC_rv->empty() ? nullptr : &SHC_rv->front();
-    SHT_rv_cdesc->type = SH_TYPE_OTHER;
+    SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
     SHT_rv_cdesc->size = SHC_rv->size();
     SHT_rv_cdesc->rank = 1;

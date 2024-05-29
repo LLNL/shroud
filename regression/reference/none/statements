@@ -228,12 +228,12 @@ root
         buf
           copy -- c_out_vector<native>_buf_copy
           malloc -- c_out_vector<native>_buf_malloc
-        cdesc -- f_out_vector<native>*/&_cdesc
+        cdesc -- f_out_vector<native>*_cdesc
       vector<native>*
         buf
           copy -- c_out_vector<native>_buf_copy
           malloc -- c_out_vector<native>_buf_malloc
-        cdesc -- f_out_vector<native>*/&_cdesc
+        cdesc -- f_out_vector<native>*_cdesc
       vector<string>
         buf
           copy -- c_out_vector<string>_buf_copy
@@ -579,8 +579,6 @@ root
       use
         capsule -- f_mixin_use_capsule
     out
-      &
-        cdesc -- f_out_vector<native>*/&_cdesc
       bool* -- f_out_bool*
       char* -- f_shared_native_scalar
         buf -- f_out_char*_buf
@@ -628,10 +626,10 @@ root
             string
               scalar -- f_out_vector_buf_targ_string_scalar
       vector<native>&
-        cdesc -- f_out_vector<native>*/&_cdesc
+        cdesc -- f_out_vector<native>*_cdesc
           allocatable -- f_out_vector<native>*_cdesc_allocatable
       vector<native>*
-        cdesc -- f_out_vector<native>*/&_cdesc
+        cdesc -- f_out_vector<native>*_cdesc
           allocatable -- f_out_vector<native>*_cdesc_allocatable
       vector<string>&
         cdesc -- f_out_vector<string>&_cdesc
@@ -1944,7 +1942,7 @@ c_in_vector<native*>&:
   owner: library
 c_in_vector<native*>&_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
   c_pre_call:
@@ -1959,7 +1957,7 @@ c_in_vector<native*>&_buf:
   - Create a vector for pointers.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
@@ -1968,7 +1966,7 @@ c_in_vector<native*>&_buf:
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: c_in_vector<native*>&_buf
@@ -1984,7 +1982,7 @@ c_in_vector<native>&:
   owner: library
 c_in_vector<native>&_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
@@ -1994,21 +1992,21 @@ c_in_vector<native>&_buf:
   - Pass argument and size by value to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: c_in_vector<native>&_buf
   owner: library
 c_in_vector<native>*_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
@@ -2018,21 +2016,21 @@ c_in_vector<native>*_buf:
   - Pass argument and size by value to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: c_in_vector<native>*_buf
   owner: library
 c_in_vector<native>_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
@@ -2042,14 +2040,14 @@ c_in_vector<native>_buf:
   - Pass argument and size by value to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: c_in_vector<native>_buf
@@ -2519,7 +2517,7 @@ c_inout_struct*:
   owner: library
 c_inout_vector<native>&_buf_copy:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_post_call:
   - '*{c_var_size} = {cxx_var}->size()'
@@ -2531,14 +2529,14 @@ c_inout_vector<native>&_buf_copy:
   - Pass argument and size by reference to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: inout
   name: c_inout_vector<native>&_buf_copy
@@ -2546,7 +2544,7 @@ c_inout_vector<native>&_buf_copy:
   owner: library
 c_inout_vector<native>&_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
   - bytes
@@ -2581,7 +2579,7 @@ c_inout_vector<native>&_buf_malloc:
   owner: library
 c_inout_vector<native>*_buf_copy:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_post_call:
   - '*{c_var_size} = {cxx_var}->size()'
@@ -2593,14 +2591,14 @@ c_inout_vector<native>*_buf_copy:
   - Pass argument and size by reference to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: inout
   name: c_inout_vector<native>*_buf_copy
@@ -2608,7 +2606,7 @@ c_inout_vector<native>*_buf_copy:
   owner: library
 c_inout_vector<native>*_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
   - bytes
@@ -2643,7 +2641,7 @@ c_inout_vector<native>*_buf_malloc:
   owner: library
 c_inout_vector<native>_buf_copy:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_post_call:
   - '*{c_var_size} = {cxx_var}->size()'
@@ -2655,14 +2653,14 @@ c_inout_vector<native>_buf_copy:
   - Pass argument and size by reference to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: inout
   name: c_inout_vector<native>_buf_copy
@@ -2670,7 +2668,7 @@ c_inout_vector<native>_buf_copy:
   owner: library
 c_inout_vector<native>_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
   - bytes
@@ -2892,7 +2890,7 @@ c_mixin_in_character_buf:
   owner: library
 c_mixin_inout_array_cdesc:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -2904,7 +2902,7 @@ c_mixin_inout_array_cdesc:
   - Pass argument and size to C.
   - Pass array_type to C which will fill it in.
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
@@ -2915,14 +2913,14 @@ c_mixin_inout_array_cdesc:
   - '{F_array_type}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
   name: c_mixin_inout_array_cdesc
   owner: library
 c_mixin_inout_vector_cdesc_targ_native_scalar:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -2931,7 +2929,7 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -2955,7 +2953,7 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - delete cxx_ptr;
   destructor_name: std_vector_{cxx_T}
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
@@ -2966,7 +2964,7 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
   - '{F_array_type}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
   name: c_mixin_inout_vector_cdesc_targ_native_scalar
@@ -3042,7 +3040,7 @@ c_mixin_noargs:
   owner: library
 c_mixin_out_array_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_temps:
   - size
@@ -3076,7 +3074,7 @@ c_mixin_out_vector_cdesc_targ_native_scalar:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -3120,7 +3118,7 @@ c_mixin_vector_cdesc_fill-cdesc:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -3417,7 +3415,7 @@ c_out_vector<native>&:
   owner: library
 c_out_vector<native>&_buf_copy:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_local:
   - size
@@ -3434,14 +3432,14 @@ c_out_vector<native>&_buf_copy:
   - Pass argument and size by reference to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   impl_header:
   - <cstring>
@@ -3450,7 +3448,7 @@ c_out_vector<native>&_buf_copy:
   owner: library
 c_out_vector<native>&_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
   - bytes
@@ -3491,7 +3489,7 @@ c_out_vector<native>&_cdesc:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -3520,7 +3518,7 @@ c_out_vector<native>&_cdesc:
   owner: library
 c_out_vector<native>*_buf_copy:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_local:
   - size
@@ -3537,14 +3535,14 @@ c_out_vector<native>*_buf_copy:
   - Pass argument and size by reference to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   impl_header:
   - <cstring>
@@ -3553,7 +3551,7 @@ c_out_vector<native>*_buf_copy:
   owner: library
 c_out_vector<native>*_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
   - bytes
@@ -3594,7 +3592,7 @@ c_out_vector<native>*_cdesc:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -3623,7 +3621,7 @@ c_out_vector<native>*_cdesc:
   owner: library
 c_out_vector<native>_buf_copy:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_local:
   - size
@@ -3640,14 +3638,14 @@ c_out_vector<native>_buf_copy:
   - Pass argument and size by reference to C.
   cxx_local_var: scalar
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   impl_header:
   - <cstring>
@@ -3656,7 +3654,7 @@ c_out_vector<native>_buf_copy:
   owner: library
 c_out_vector<native>_buf_malloc:
   c_arg_decl:
-  - '{cxx_type} **{c_var}'
+  - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
   - bytes
@@ -3725,6 +3723,9 @@ c_out_vector<string>&_cdesc:
   - '{F_array_type}'
   intent: out
   name: c_out_vector<string>&_cdesc
+  notes:
+  - f_arg_decl replaces values from f_mixin_str_array
+  - This one needs to use targs.
   owner: library
 c_out_vector<string>&_cdesc_allocatable:
   c_arg_call:
@@ -7877,7 +7878,7 @@ f_function_vector<native>_cdesc_allocatable:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -7900,7 +7901,7 @@ f_function_vector<native>_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_declare:
@@ -7909,6 +7910,7 @@ f_function_vector<native>_cdesc_allocatable:
   - copy_array
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_LOC
     - C_SIZE_T
   f_need_wrapper: true
@@ -8839,7 +8841,7 @@ f_in_unknown:
   owner: library
 f_in_vector<native*>&_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
   c_pre_call:
@@ -8858,13 +8860,14 @@ f_in_vector<native*>&_buf:
   - size({f_var}, 1, kind=C_SIZE_T)
   - size({f_var}, 2, kind=C_SIZE_T)
   f_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {f_var}(:,:)'
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
@@ -8873,7 +8876,7 @@ f_in_vector<native*>&_buf:
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: f_in_vector<native*>&_buf
@@ -8882,7 +8885,7 @@ f_in_vector<native*>&_buf:
   owner: library
 f_in_vector<native>&_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
@@ -8895,27 +8898,28 @@ f_in_vector<native>&_buf:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
-  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: f_in_vector<native>&_buf
   owner: library
 f_in_vector<native>*_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
@@ -8928,27 +8932,28 @@ f_in_vector<native>*_buf:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
-  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: f_in_vector<native>*_buf
   owner: library
 f_in_vector<native>_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_pre_call:
   - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
@@ -8961,20 +8966,21 @@ f_in_vector<native>_buf:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
-  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: in
   name: f_in_vector<native>_buf
@@ -9723,7 +9729,7 @@ f_inout_struct*:
   owner: library
 f_inout_vector<native>&_cdesc:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -9732,7 +9738,7 @@ f_inout_vector<native>&_cdesc:
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -9760,7 +9766,7 @@ f_inout_vector<native>&_cdesc:
   - size({f_var}, kind=C_SIZE_T)
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -9769,13 +9775,14 @@ f_inout_vector<native>&_cdesc:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+    - '{targs[0].f_kind}'
     - C_LOC
   f_post_call:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
   f_temps:
   - cdesc
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
@@ -9786,14 +9793,14 @@ f_inout_vector<native>&_cdesc:
   - '{F_array_type}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: inout
   name: f_inout_vector<native>&_cdesc
   owner: library
 f_inout_vector<native>&_cdesc_allocatable:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
@@ -9802,7 +9809,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -9830,7 +9837,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   - size({f_var}, kind=C_SIZE_T)
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -9839,6 +9846,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
+    - '{targs[0].f_kind}'
     - C_LOC
   f_post_call:
   - if (allocated({f_var})) deallocate({f_var})
@@ -9847,7 +9855,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   f_temps:
   - cdesc
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   i_arg_names:
@@ -9858,7 +9866,7 @@ f_inout_vector<native>&_cdesc_allocatable:
   - '{F_array_type}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: inout
   name: f_inout_vector<native>&_cdesc_allocatable
@@ -10246,7 +10254,7 @@ f_mixin_helper_vector_string_allocatable:
   owner: library
 f_mixin_in_2d_array_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
   c_temps:
@@ -10259,13 +10267,14 @@ f_mixin_in_2d_array_buf:
   - size({f_var}, 1, kind=C_SIZE_T)
   - size({f_var}, 2, kind=C_SIZE_T)
   f_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {f_var}(:,:)'
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
@@ -10274,14 +10283,14 @@ f_mixin_in_2d_array_buf:
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
   name: f_mixin_in_2d_array_buf
   owner: library
 f_mixin_in_array_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   c_temps:
   - size
@@ -10291,20 +10300,21 @@ f_mixin_in_array_buf:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
-  - '{f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
   name: f_mixin_in_array_buf
@@ -10463,7 +10473,7 @@ f_mixin_native_cdesc_raw:
   owner: library
 f_mixin_out_array_buf:
   c_arg_decl:
-  - '{cxx_type} *{c_var}'
+  - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
   c_temps:
   - size
@@ -10477,14 +10487,14 @@ f_mixin_out_array_buf:
     - C_SIZE_T
   f_need_wrapper: true
   i_arg_decl:
-  - '{f_type}, intent({f_intent}) :: {i_var}(*)'
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
   i_arg_names:
   - '{i_var}'
   - '{i_var_size}'
   i_module:
     iso_c_binding:
-    - '{f_kind}'
+    - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
   name: f_mixin_out_array_buf
@@ -10628,6 +10638,8 @@ f_mixin_str_array:
   - '{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}'
   intent: mixin
   name: f_mixin_str_array
+  notes:
+  - XXX - maybe use character(*) directly in f_arg_decl
   owner: library
 f_mixin_unknown:
   c_arg_decl:
@@ -10669,58 +10681,6 @@ f_mixin_use_capsule:
   - '{F_capsule_data_type}'
   intent: mixin
   name: f_mixin_use_capsule
-  owner: library
-f_out_&_cdesc:
-  c_arg_decl:
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - copy_array
-  - type_defines
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  c_temps:
-  - cdesc
-  comments:
-  - copy into user's existing array.
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  f_arg_call:
-  - '{f_var_cdesc}'
-  f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_helper:
-  - copy_array
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-    - C_LOC
-  f_need_wrapper: true
-  f_post_call:
-  - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-  f_temps:
-  - cdesc
-  i_arg_decl:
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  intent: out
-  name: f_out_&_cdesc
-  notes:
-  - cxx_var is always a pointer to a vector.
   owner: library
 f_out_bool*:
   f_arg_call:
@@ -11568,7 +11528,7 @@ f_out_vector<native>&_cdesc:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -11587,13 +11547,14 @@ f_out_vector<native>&_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
   - copy_array
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
     - C_LOC
   f_need_wrapper: true
@@ -11619,7 +11580,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -11640,13 +11601,14 @@ f_out_vector<native>&_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
   - copy_array
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_LOC
     - C_SIZE_T
   f_need_wrapper: true
@@ -11674,7 +11636,7 @@ f_out_vector<native>*_cdesc:
   - type_defines
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -11693,13 +11655,14 @@ f_out_vector<native>*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
   - copy_array
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_SIZE_T
     - C_LOC
   f_need_wrapper: true
@@ -11725,7 +11688,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - copy_array
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {sh_type};'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
   - '{c_var_cdesc}->size = {cxx_var}->size();'
   - '{c_var_cdesc}->rank = 1;'
@@ -11746,13 +11709,14 @@ f_out_vector<native>*_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
   - copy_array
   f_module:
     iso_c_binding:
+    - '{targs[0].f_kind}'
     - C_LOC
     - C_SIZE_T
   f_need_wrapper: true
@@ -11791,7 +11755,7 @@ f_out_vector<string>&_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11817,6 +11781,9 @@ f_out_vector<string>&_cdesc:
   - '{F_array_type}'
   intent: out
   name: f_out_vector<string>&_cdesc
+  notes:
+  - f_arg_decl replaces values from f_mixin_str_array
+  - This one needs to use targs.
   owner: library
 f_out_vector<string>&_cdesc_allocatable:
   c_arg_call:

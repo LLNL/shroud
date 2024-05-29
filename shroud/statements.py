@@ -137,15 +137,6 @@ def collect_arg_typemaps(arg):
         typemaps = [arg.typemap]
     return typemaps
 
-def convert_vector_typemap(arg):
-    """Convert a single template typemaps.
-    XXX - this is only to support vector and should be removed.
-    """
-    if arg.template_arguments:
-        return arg.template_arguments[0].typemap
-    else:
-        return arg.typemap
-
 def find_abstract_declarator(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
@@ -936,6 +927,10 @@ class TemplateFormat(object):
     @property
     def f_kind(self):
         return self.decl.typemap.f_kind
+
+    @property
+    def sh_type(self):
+        return self.decl.typemap.sh_type
 
 def set_template_fields(ast, fmt):
     """Set the format fields for template arguments.

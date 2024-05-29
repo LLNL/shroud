@@ -166,8 +166,7 @@ class FillFormat(object):
     def fill_c_arg(self, wlang, cls, node, arg, arg_stmt, fmt_arg, meta, pre_call):
         declarator = arg.declarator
         arg_name = declarator.user_name
-        arg_typemap = arg.typemap  # XXX - look up vector
-        arg_typemap = statements.convert_vector_typemap(arg)
+        arg_typemap = arg.typemap
            
         fmt_arg.c_var = arg_name
         # XXX - order issue - c_var must be set before name_temp_vars,
@@ -250,8 +249,8 @@ class FillFormat(object):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_stmt = bind.stmt
+        arg_typemap = arg.typemap
 
-        arg_typemap = statements.convert_vector_typemap(arg)
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
         self.set_fmt_fields_iface(node, arg, bind, fmt_arg, arg_name, arg_typemap)
@@ -493,8 +492,6 @@ class FillFormat(object):
             ntypemap = f_ast.typemap
             rootname = c_ast.declarator.user_name
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
-            # XXX - need to add an argument for each template arg
-            ntypemap = statements.convert_vector_typemap(c_ast)
             statements.set_template_fields(c_ast, fmt)
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, bind, fmt, rootname,
