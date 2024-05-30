@@ -2307,9 +2307,7 @@ def bind_c(declaration, modules, intent=None, is_result=False,
     else:
         decl.append(declarator.user_name)
 
-    if basedef.base == "vector":
-        decl.append("(*)")  # is array
-    elif ntypemap.base == "string":
+    if ntypemap.base == "string":
         decl.append("(*)")
     elif "dimension" in attrs:
         # Any dimension is changed to assumed-size.
