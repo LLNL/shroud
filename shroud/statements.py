@@ -912,25 +912,12 @@ class TemplateFormat(object):
     def __str__(self):
         return str(self.decl)
 
+    def __getattr__(self, name):
+        return getattr(self.decl.typemap, name)
+    
     @property
     def cxx_T(self):
         return self.decl.get_first_abstract_declarator()
-
-    @property
-    def cxx_type(self):
-        return self.decl.typemap.cxx_type
-
-    @property
-    def f_type(self):
-        return self.decl.typemap.f_type
-
-    @property
-    def f_kind(self):
-        return self.decl.typemap.f_kind
-
-    @property
-    def sh_type(self):
-        return self.decl.typemap.sh_type
 
 def set_template_fields(ast, fmt):
     """Set the format fields for template arguments.
