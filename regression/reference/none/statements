@@ -3685,6 +3685,13 @@ c_out_vector<string>&:
   notimplemented: true
   owner: library
 c_out_vector<string>&_buf_copy:
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}(*)'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   intent: out
   name: c_out_vector<string>&_buf_copy
   notimplemented: true
@@ -3763,11 +3770,25 @@ c_out_vector<string>&_cdesc_allocatable:
   name: c_out_vector<string>&_cdesc_allocatable
   owner: library
 c_out_vector<string>*_buf_copy:
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}(*)'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   intent: out
   name: c_out_vector<string>*_buf_copy
   notimplemented: true
   owner: library
 c_out_vector<string>_buf_copy:
+  i_arg_decl:
+  - 'character(kind=C_CHAR), intent(OUT) :: {i_var}(*)'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   intent: out
   name: c_out_vector<string>_buf_copy
   notimplemented: true

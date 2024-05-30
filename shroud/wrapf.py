@@ -1141,9 +1141,6 @@ rv = .false.
             else:
                 arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
                 arg_typemap = ast.typemap
-                if ast.template_arguments:
-                    # If a template, use its type
-                    arg_typemap = ast.template_arguments[0].typemap
                 self.update_f_module(
                     modules,
                     arg_typemap.i_module or arg_typemap.f_module,
@@ -2281,15 +2278,11 @@ def bind_c(declaration, modules, intent=None, is_result=False,
     else:
         ntypemap = declaration.typemap
     basedef = ntypemap
-    if declaration.template_arguments:
-        # If a template, use its type
-        ntypemap = declaration.template_arguments[0].typemap
 
     typ = ntypemap.i_type or ntypemap.f_type
     if typ is None:
-        raise RuntimeError(
-            "Type {} has no value for i_type".format(declaration.typename)
-        )
+        error.cursor.warning("Type {} has no value for f_type or i_type".format(ntypemap.name))
+        return "===> {} <===".format(ntypemap.name)
     if is_callback and declarator.is_indirect():
         typ = "type(C_PTR)"
         modules.setdefault("iso_c_binding", {})["C_PTR"] = True
@@ -2368,9 +2361,6 @@ def gen_arg_as_fortran(
     declarator = declaration.declarator
     attrs = declarator.attrs
     ntypemap = declaration.typemap
-    if ntypemap.sgroup == "vector":
-        # If std::vector, use its type (<int>)
-        ntypemap = declaration.template_arguments[0].typemap
 
     is_allocatable = False
     is_pointer = False

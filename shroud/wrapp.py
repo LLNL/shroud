@@ -925,6 +925,8 @@ return 1;""",
             fmt.PYN_descr = typemap.PYN_descr
 
         if ast.template_arguments:
+            # XXX - need to move numpy_type to TemplateFormat then use
+            #     targs[0].numpy_type in statements.
             vtypemap = ast.template_arguments[0].typemap
             fmt.numpy_type = vtypemap.PYN_typenum
             statements.set_template_fields(ast, fmt)

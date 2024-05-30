@@ -2302,7 +2302,18 @@
             "c_out_vector<string>*_buf_copy",
             "c_out_vector<string>&_buf_copy"
         ],
-        "notimplemented": true
+        "notimplemented": true,
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR), intent(OUT) :: {i_var}(*)"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        }
     },
     {
         "name": "f_out_vector_buf_targ_string_scalar",
