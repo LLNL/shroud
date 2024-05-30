@@ -149,21 +149,19 @@ root
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
       function
-        array
-          malloc -- c_mixin_function_array_malloc
         char
           *
             cdesc -- c_mixin_function_char_*_cdesc
         string
           cdesc -- c_mixin_function_string_cdesc
+        vector
+          malloc -- c_mixin_function_vector_malloc
       in
         character
           buf -- c_mixin_in_character_buf
       inout
-        array
-          cdesc -- c_mixin_inout_array_cdesc
         vector
-          cdesc
+          cdesc -- c_mixin_inout_vector_cdesc
             targ
               native
                 scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
@@ -177,12 +175,11 @@ root
           pointer -- c_mixin_native_cfi_pointer
       noargs -- c_mixin_noargs
       out
-        array
-          buf
-            malloc -- c_mixin_out_array_buf_malloc
         native
           ** -- c_mixin_out_native_**
         vector
+          buf
+            malloc -- c_mixin_out_vector_buf_malloc
           cdesc
             targ
               native
@@ -536,15 +533,15 @@ root
             allocatable -- f_mixin_helper_vector_string_allocatable
       in
         2d
-          array
-            buf -- f_mixin_in_2d_array_buf
-        array
-          buf -- f_mixin_in_array_buf
+          vector
+            buf -- f_mixin_in_2d_vector_buf
         character
           buf -- f_mixin_in_character_buf
         string
           array
             buf -- f_mixin_in_string_array_buf
+        vector
+          buf -- f_mixin_in_vector_buf
       inout
         array
           cdesc -- f_mixin_inout_array_cdesc
@@ -559,7 +556,6 @@ root
           raw -- f_mixin_native_cdesc_raw
       out
         array
-          buf -- f_mixin_out_array_buf
           cdesc
             allocatable -- f_mixin_out_array_cdesc_allocatable
         native
@@ -569,6 +565,8 @@ root
         string
           **
             cfi -- f_mixin_out_string_**_cfi
+        vector
+          buf -- f_mixin_out_vector_buf
       pass
         capsule -- f_mixin_pass_capsule
         cdesc -- f_mixin_pass_cdesc
@@ -2818,28 +2816,6 @@ c_mixin_destructor_new-vector:
   intent: mixin
   name: c_mixin_destructor_new-vector
   owner: library
-c_mixin_function_array_malloc:
-  c_arg_decl:
-  - size_t *{c_var_size}
-  c_return_type: '{targs[0].cxx_type} *'
-  c_temps:
-  - size
-  comments:
-  - Return pointer to array type.
-  - Add an argument to return the length of the array
-  i_arg_decl:
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    - C_SIZE_T
-  i_result_decl:
-  - 'type(C_PTR) :: {i_var}'
-  intent: mixin
-  name: c_mixin_function_array_malloc
-  owner: library
 c_mixin_function_char_*_cdesc:
   c_helper:
   - type_defines
@@ -2865,6 +2841,28 @@ c_mixin_function_string_cdesc:
   intent: mixin
   name: c_mixin_function_string_cdesc
   owner: library
+c_mixin_function_vector_malloc:
+  c_arg_decl:
+  - size_t *{c_var_size}
+  c_return_type: '{targs[0].cxx_type} *'
+  c_temps:
+  - size
+  comments:
+  - Return pointer to array type.
+  - Add an argument to return the length of the array
+  i_arg_decl:
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    - C_SIZE_T
+  i_result_decl:
+  - 'type(C_PTR) :: {i_var}'
+  intent: mixin
+  name: c_mixin_function_vector_malloc
+  owner: library
 c_mixin_in_character_buf:
   c_arg_decl:
   - char *{c_var}
@@ -2888,7 +2886,7 @@ c_mixin_in_character_buf:
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_mixin_inout_array_cdesc:
+c_mixin_inout_vector_cdesc:
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -2916,7 +2914,7 @@ c_mixin_inout_array_cdesc:
     - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
-  name: c_mixin_inout_array_cdesc
+  name: c_mixin_inout_vector_cdesc
   owner: library
 c_mixin_inout_vector_cdesc_targ_native_scalar:
   c_arg_decl:
@@ -3038,7 +3036,17 @@ c_mixin_noargs:
   intent: mixin
   name: c_mixin_noargs
   owner: library
-c_mixin_out_array_buf_malloc:
+c_mixin_out_native_**:
+  c_arg_call:
+  - '&{cxx_var}'
+  c_pre_call:
+  - '{c_const}{cxx_type} *{cxx_var};'
+  intent: mixin
+  name: c_mixin_out_native_**
+  notes:
+  - double **count +intent(out)+dimension(ncount)
+  owner: library
+c_mixin_out_vector_buf_malloc:
   c_arg_decl:
   - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
@@ -3057,17 +3065,7 @@ c_mixin_out_array_buf_malloc:
     - C_PTR
     - C_SIZE_T
   intent: mixin
-  name: c_mixin_out_array_buf_malloc
-  owner: library
-c_mixin_out_native_**:
-  c_arg_call:
-  - '&{cxx_var}'
-  c_pre_call:
-  - '{c_const}{cxx_type} *{cxx_var};'
-  intent: mixin
-  name: c_mixin_out_native_**
-  notes:
-  - double **count +intent(out)+dimension(ncount)
+  name: c_mixin_out_vector_buf_malloc
   owner: library
 c_mixin_out_vector_cdesc_targ_native_scalar:
   c_helper:
@@ -10252,7 +10250,7 @@ f_mixin_helper_vector_string_allocatable:
   intent: mixin
   name: f_mixin_helper_vector_string_allocatable
   owner: library
-f_mixin_in_2d_array_buf:
+f_mixin_in_2d_vector_buf:
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
@@ -10286,38 +10284,7 @@ f_mixin_in_2d_array_buf:
     - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
-  name: f_mixin_in_2d_array_buf
-  owner: library
-f_mixin_in_array_buf:
-  c_arg_decl:
-  - '{targs[0].cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by value to C.
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  f_arg_decl:
-  - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
-  f_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-  f_need_wrapper: true
-  i_arg_decl:
-  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-  intent: mixin
-  name: f_mixin_in_array_buf
+  name: f_mixin_in_2d_vector_buf
   owner: library
 f_mixin_in_character_buf:
   comments:
@@ -10376,6 +10343,37 @@ f_mixin_in_string_array_buf:
     - C_INT
   intent: mixin
   name: f_mixin_in_string_array_buf
+  owner: library
+f_mixin_in_vector_buf:
+  c_arg_decl:
+  - '{targs[0].cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by value to C.
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  f_arg_decl:
+  - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+  f_need_wrapper: true
+  i_arg_decl:
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+  intent: mixin
+  name: f_mixin_in_vector_buf
   owner: library
 f_mixin_inout_array_cdesc:
   comments:
@@ -10471,34 +10469,6 @@ f_mixin_native_cdesc_raw:
   intent: mixin
   name: f_mixin_native_cdesc_raw
   owner: library
-f_mixin_out_array_buf:
-  c_arg_decl:
-  - '{targs[0].cxx_type} *{c_var}'
-  - size_t *{c_var_size}
-  c_temps:
-  - size
-  comments:
-  - Pass argument and size by reference to C.
-  f_arg_call:
-  - '{f_var}'
-  - size({f_var}, kind=C_SIZE_T)
-  f_module:
-    iso_c_binding:
-    - C_SIZE_T
-  f_need_wrapper: true
-  i_arg_decl:
-  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  i_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-  intent: mixin
-  name: f_mixin_out_array_buf
-  owner: library
 f_mixin_out_array_cdesc_allocatable:
   comments:
   - Allocate Fortran array from cdesc.
@@ -10555,6 +10525,34 @@ f_mixin_out_string_**_cfi:
   - cxx
   intent: mixin
   name: f_mixin_out_string_**_cfi
+  owner: library
+f_mixin_out_vector_buf:
+  c_arg_decl:
+  - '{targs[0].cxx_type} *{c_var}'
+  - size_t *{c_var_size}
+  c_temps:
+  - size
+  comments:
+  - Pass argument and size by reference to C.
+  f_arg_call:
+  - '{f_var}'
+  - size({f_var}, kind=C_SIZE_T)
+  f_module:
+    iso_c_binding:
+    - C_SIZE_T
+  f_need_wrapper: true
+  i_arg_decl:
+  - '{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  i_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+  intent: mixin
+  name: f_mixin_out_vector_buf
   owner: library
 f_mixin_pass_capsule:
   c_arg_decl:

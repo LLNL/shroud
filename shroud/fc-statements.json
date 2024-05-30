@@ -537,7 +537,7 @@
         ]
     },
     {
-        "name": "f_mixin_in_array_buf",
+        "name": "f_mixin_in_vector_buf",
         "comments": [
             "Pass argument and size by value to C."
         ],
@@ -578,7 +578,7 @@
         ]
     },
     {
-        "name": "f_mixin_out_array_buf",
+        "name": "f_mixin_out_vector_buf",
         "comments": [
             "Pass argument and size by reference to C."
         ],
@@ -615,7 +615,7 @@
         ]
     },
     {
-        "name": "c_mixin_out_array_buf_malloc",
+        "name": "c_mixin_out_vector_buf_malloc",
         "comments": [
             "Pass raw pointer and size by reference to C."
         ],
@@ -642,7 +642,7 @@
         ]
     },
     {
-        "name": "c_mixin_function_array_malloc",
+        "name": "c_mixin_function_vector_malloc",
         "comments": [
             "Return pointer to array type.",
             "Add an argument to return the length of the array"
@@ -671,7 +671,7 @@
         ]
     },
     {
-        "name": "f_mixin_in_2d_array_buf",
+        "name": "f_mixin_in_2d_vector_buf",
         "comments": [
             "Pass argument, len and size to C."
         ],
@@ -743,7 +743,7 @@
         ]
     },
     {
-        "name": "c_mixin_inout_array_cdesc",
+        "name": "c_mixin_inout_vector_cdesc",
         "comments": [
             "Pass argument and size to C.",
             "Pass array_type to C which will fill it in."
@@ -1971,7 +1971,7 @@
             "c_in_vector<native>&_buf"
         ],
         "mixin": [
-            "f_mixin_in_array_buf"
+            "f_mixin_in_vector_buf"
         ],
         "cxx_local_var": "scalar",
         "c_pre_call": [
@@ -1985,7 +1985,7 @@
             "c_out_vector<native>&_buf_copy"
         ],
         "mixin": [
-            "f_mixin_out_array_buf"
+            "f_mixin_out_vector_buf"
         ],
         "cxx_local_var": "scalar",
         "c_pre_call": [
@@ -2010,7 +2010,7 @@
             "c_inout_vector<native>&_buf_copy"
         ],
         "mixin": [
-            "f_mixin_out_array_buf"
+            "f_mixin_out_vector_buf"
         ],
         "cxx_local_var": "scalar",
         "c_pre_call": [
@@ -2032,7 +2032,7 @@
             "c_out_vector<native>&_buf_malloc"
         ],
         "mixin": [
-            "c_mixin_out_array_buf_malloc"
+            "c_mixin_out_vector_buf_malloc"
         ],
         "cxx_local_var": "scalar",
         "c_pre_call": [
@@ -2063,7 +2063,7 @@
             "c_inout_vector<native>&_buf_malloc"
         ],
         "mixin": [
-            "c_mixin_out_array_buf_malloc"
+            "c_mixin_out_vector_buf_malloc"
         ],
         "cxx_local_var": "scalar",
         "c_pre_call": [
@@ -2154,7 +2154,7 @@
         "name": "c_mixin_inout_vector_cdesc_targ_native_scalar",
         "mixin": [
             "f_mixin_inout_array_cdesc",
-            "c_mixin_inout_array_cdesc",
+            "c_mixin_inout_vector_cdesc",
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc"
         ],
@@ -2216,7 +2216,7 @@
             "Add an argument with the length of the array."
         ],
         "mixin": [
-            "c_mixin_function_array_malloc"
+            "c_mixin_function_vector_malloc"
         ],
         "cxx_local_var": "result",
         "c_pre_call": [
@@ -2251,7 +2251,7 @@
             "Specialize for std::vector<native *>"
         ],
         "mixin": [
-            "f_mixin_in_2d_array_buf"
+            "f_mixin_in_2d_vector_buf"
         ],
         "cxx_local_var": "scalar",
         "c_pre_call": [
