@@ -27,14 +27,6 @@ void test_vector_int(void)
 
 }
 
-void test_twostruct(void)
-{
-    double data[] = {1, 2, 3, 4, 5};
-    twostruct<double, int> value{data, 5};
-
-    process_twostruct(value);
-}
-
 void test_pairs(void)
 {
   mypair<int> myobject (100, 75);
@@ -65,7 +57,6 @@ void test_structAsClass(void)
 int main(int argc, char *argv[])
 {
   test_vector_int();
-  test_twostruct();
 
   test_pairs();
 

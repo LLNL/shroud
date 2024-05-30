@@ -69,24 +69,6 @@ user<int> returnUserType(void);
 
 //----------------------------------------------------------------------
 
-// template functions which take two arguments:
-// a pointer to data and a length.
-
-template<typename T, typename U>
-struct twostruct
-{
-    T* values;
-    U length;
-};
-
-
-template<typename T, typename U>
-void process_twostruct(twostruct<T, U> arg)
-{
-}
-
-//----------------------------------------------------------------------
-
 template<typename T>
 struct structAsClass {
     int npts;
