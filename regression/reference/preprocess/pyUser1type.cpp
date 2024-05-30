@@ -84,7 +84,7 @@ PY_method2(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int i=0
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 #if defined(USE_THREE)
 static char PY_method3def_1__doc__[] =
 "documentation"

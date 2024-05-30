@@ -46,7 +46,7 @@ module error_mod
         ! Statement: f_mixin_unknown
         ! ----------------------------------------
         ! Argument:  struct1 * SH_this +intent(in)
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         function struct1_get_arg2(SH_this, struct1_get_arg2) &
                 result(SHT_rv) &
                 bind(C, name="ERR_struct1_get_arg2")
@@ -64,10 +64,10 @@ module error_mod
         ! Statement: f_setter
         ! ----------------------------------------
         ! Argument:  struct1 * SH_this
-        ! Statement: f_inout_struct_*
+        ! Statement: f_inout_struct*
         ! ----------------------------------------
         ! Argument:  int * val +intent(setter)+rank(1)
-        ! Statement: f_setter_native_*
+        ! Statement: f_setter_native*
         subroutine struct1_set_arg2(SH_this, val) &
                 bind(C, name="ERR_struct1_set_arg2")
             use iso_c_binding, only : C_INT
@@ -91,7 +91,7 @@ contains
     ! Statement: f_mixin_unknown
     ! ----------------------------------------
     ! Argument:  struct1 * SH_this +intent(in)
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function struct1_get_arg2(SH_this) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -111,10 +111,10 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  struct1 * SH_this
-    ! Statement: f_inout_struct_*
+    ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     subroutine struct1_set_arg2(SH_this, val)
         use iso_c_binding, only : C_INT
         type(struct1), intent(INOUT) :: SH_this

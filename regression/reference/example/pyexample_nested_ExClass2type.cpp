@@ -156,7 +156,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
-// Statement: py_in_string_*
+// Statement: py_in_string*
 /**
  * \brief constructor
  *
@@ -192,7 +192,7 @@ PP_ExClass2_tp_init(
 
 // ----------------------------------------
 // Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PP_getName__doc__[] =
 "documentation"
 ;
@@ -218,7 +218,7 @@ PP_getName(
 
 // ----------------------------------------
 // Function:  const string & getName2
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PP_getName2__doc__[] =
 "documentation"
 ;
@@ -244,7 +244,7 @@ PP_getName2(
 
 // ----------------------------------------
 // Function:  string & getName3
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PP_getName3__doc__[] =
 "documentation"
 ;
@@ -270,7 +270,7 @@ PP_getName3(
 
 // ----------------------------------------
 // Function:  string & getName4
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PP_getName4__doc__[] =
 "documentation"
 ;
@@ -296,7 +296,7 @@ PP_getName4(
 
 // ----------------------------------------
 // Function:  int GetNameLength
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PP_GetNameLength__doc__[] =
 "documentation"
 ;
@@ -325,10 +325,10 @@ PP_GetNameLength(
 
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Statement: py_function_shadow_*
+// Statement: py_function_shadow*
 // ----------------------------------------
 // Argument:  const ExClass1 * in
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PP_get_class1__doc__[] =
 "documentation"
 ;
@@ -366,13 +366,13 @@ PP_get_class1(
 
 // ----------------------------------------
 // Function:  ExClass2 * declare
-// Statement: py_function_shadow_*
+// Statement: py_function_shadow*
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  SidreLength len=1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PP_declare_1__doc__[] =
 "documentation"
 ;
@@ -450,7 +450,7 @@ PP_destroyall(
 
 // ----------------------------------------
 // Function:  TypeID getTypeID
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PP_getTypeID__doc__[] =
 "documentation"
 ;
@@ -478,7 +478,7 @@ PP_getTypeID(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_int(
   PP_ExClass2 *self,
@@ -505,7 +505,7 @@ PP_setValue_int(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  long value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_long(
   PP_ExClass2 *self,
@@ -532,7 +532,7 @@ PP_setValue_long(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  float value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_float(
   PP_ExClass2 *self,
@@ -559,7 +559,7 @@ PP_setValue_float(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_setValue_double(
   PP_ExClass2 *self,
@@ -583,7 +583,7 @@ PP_setValue_double(
 
 // ----------------------------------------
 // Function:  int getValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static PyObject *
 PP_getValue_int(
   PP_ExClass2 *self,
@@ -604,7 +604,7 @@ PP_getValue_int(
 
 // ----------------------------------------
 // Function:  double getValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static PyObject *
 PP_getValue_double(
   PP_ExClass2 *self,

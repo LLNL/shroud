@@ -32,13 +32,13 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  double Function2
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  double arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int arg2
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")
@@ -71,13 +71,13 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  double Function2
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  double arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int arg2
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function function2(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT

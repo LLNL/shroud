@@ -55,7 +55,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg)",
+                "declgen": "int vector_sum(const std::vector<int> &arg)",
                 "name": "vector_sum",
                 "options": {
                     "literalinclude": true,
@@ -107,7 +107,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -134,7 +134,13 @@
                             "pytmp_var": "SHTPy_arg",
                             "rank": "1",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_vector_numpy",
+                            "stmt": "py_in_vector<native>&_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ],
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -190,7 +196,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -256,7 +262,13 @@
                             "py_var": "SHPy_arg",
                             "rank": "1",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_vector_numpy",
+                            "stmt": "py_out_vector<native>&_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ],
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -312,7 +324,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -415,7 +427,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -509,7 +521,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> &arg +deref(allocatable)+intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -593,7 +605,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> &arg +deref(allocatable)+intent(inout))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -673,7 +685,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg)",
+                "declgen": "void vector_increment(std::vector<int> &arg)",
                 "name": "vector_increment",
                 "options": {
                     "wrap_lua": false,
@@ -745,7 +757,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -810,7 +822,13 @@
                             "py_var": "SHPy_arg",
                             "rank": "1",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_vector_numpy",
+                            "stmt": "py_out_vector<native>&_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "double",
+                                    "typemap_name": "double"
+                                }
+                            ],
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -882,7 +900,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
-                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in), int num)",
+                "declgen": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
@@ -961,7 +979,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg)",
+                "declgen": "int vector_string_count(const std::vector<std::string> &arg)",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -1036,7 +1054,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -1113,7 +1131,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out))",
+                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> &arg +deref(allocatable)+intent(out))",
                 "name": "vector_string_fill_allocatable",
                 "options": {
                     "wrap_lua": false,
@@ -1187,7 +1205,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20))",
+                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> &arg +deref(allocatable)+intent(out)+len(20))",
                 "name": "vector_string_fill_allocatable_len",
                 "options": {
                     "wrap_lua": false,
@@ -1259,7 +1277,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))",
+                "declgen": "void vector_string_append(std::vector<std::string> &arg +intent(inout))",
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
@@ -1398,7 +1416,13 @@
                             "py_var": "SHTPy_rv",
                             "rank": "1",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_vector_numpy_targ_native_scalar",
+                            "stmt": "py_function_vector<native>_numpy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ],
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -1418,7 +1442,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_n",
                             "size_var": "SHSize_n",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_n"
                         }
                     }
@@ -1477,7 +1501,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
-                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2)))",
+                "declgen": "int returnDim2(int *arg +intent(in)+rank(2), int len +implied(size(arg,2)))",
                 "name": "returnDim2",
                 "options": {},
                 "wrap": {
@@ -1538,7 +1562,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -1560,7 +1584,7 @@
                             "pytmp_var": "SHTPy_arg",
                             "rank": "2",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_arg"
                         }
                     },

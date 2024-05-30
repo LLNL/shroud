@@ -124,7 +124,7 @@ class FillFormat(object):
             converter, lang = find_result_converter(
                 wlang, self.language, result_typemap)
             if ast.template_arguments:
-                fmt_result.cxx_T = ast.gen_template_argument()
+                statements.set_template_fields(ast, fmt_result)
             if result_stmt.cxx_local_var == "result":
                 # C result is passed in as an argument. Create local C++ name.
                 fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
@@ -166,8 +166,7 @@ class FillFormat(object):
     def fill_c_arg(self, wlang, cls, node, arg, arg_stmt, fmt_arg, meta, pre_call):
         declarator = arg.declarator
         arg_name = declarator.user_name
-        arg_typemap = arg.typemap  # XXX - look up vector
-        arg_typemap, junk = statements.lookup_c_statements(arg)
+        arg_typemap = arg.typemap
            
         fmt_arg.c_var = arg_name
         # XXX - order issue - c_var must be set before name_temp_vars,
@@ -250,8 +249,8 @@ class FillFormat(object):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_stmt = bind.stmt
+        arg_typemap = arg.typemap
 
-        arg_typemap, junk = statements.lookup_c_statements(arg)
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
         self.set_fmt_fields_iface(node, arg, bind, fmt_arg, arg_name, arg_typemap)
@@ -354,7 +353,7 @@ class FillFormat(object):
             fmt.idtor = "0"
 
             if ntypemap.base != "shadow" and ast.template_arguments:
-                fmt.cxx_T = ast.gen_template_argument()
+                statements.set_template_fields(ast, fmt)
             
             if meta["blanknull"]:
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
@@ -493,9 +492,7 @@ class FillFormat(object):
             ntypemap = f_ast.typemap
             rootname = c_ast.declarator.user_name
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
-            # XXX - need to add an argument for each template arg
-            ntypemap = c_ast.template_arguments[0].typemap
-            fmt.cxx_T = c_ast.gen_template_argument()
+            statements.set_template_fields(c_ast, fmt)
         if subprogram != "subroutine":
             self.set_fmt_fields_iface(fcn, c_ast, bind, fmt, rootname,
                                       ntypemap, subprogram)

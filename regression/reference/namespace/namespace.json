@@ -37,7 +37,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void)",
+                "declgen": "const std::string &LastFunctionCalled(void)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -63,7 +63,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -73,7 +73,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_cdesc_allocatable"
+                            "stmt": "f_function_string&_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -124,7 +124,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "LastFunctionCalled(\t)",
@@ -175,7 +175,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -191,7 +191,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -526,7 +526,7 @@
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_dfield",
                                             "size_var": "SHSize_dfield",
-                                            "stmt": "py_ctor_native_scalar_numpy",
+                                            "stmt": "py_ctor_native_numpy",
                                             "value_var": "SHValue_dfield"
                                         }
                                     },
@@ -548,7 +548,7 @@
                                             "numpy_type": "NPY_INT",
                                             "py_var": "SHPy_ifield",
                                             "size_var": "SHSize_ifield",
-                                            "stmt": "py_ctor_native_scalar_numpy",
+                                            "stmt": "py_ctor_native_numpy",
                                             "value_var": "SHValue_ifield"
                                         }
                                     }

@@ -119,6 +119,7 @@
             "literalinclude2": false,
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
+            "typemap_sgroup": null,
             "wrap_c": true,
             "wrap_class_as": "class",
             "wrap_fortran": true,
@@ -749,6 +750,7 @@
             "impl_header": [
                 "<vector>"
             ],
+            "ntemplate_args": 1,
             "sgroup": "vector"
         },
         "uint16_t": {

@@ -24,7 +24,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  int GetNameLength +pure
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         pure function get_name_length() &
                 result(SHT_rv) &
                 bind(C, name="STMT_GetNameLength")
@@ -35,7 +35,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_getNameErrorPattern")
@@ -46,7 +46,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
-        ! Statement: f_function_string_&_buf_copy
+        ! Statement: f_function_string&_buf_copy
         subroutine c_get_name_error_pattern_bufferify(SHT_rv, &
                 SHT_rv_len) &
                 bind(C, name="STMT_getNameErrorPattern_bufferify")
@@ -58,10 +58,10 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  bool nameIsValid
-        ! Statement: c_function_bool_scalar
+        ! Statement: c_function_bool
         ! ----------------------------------------
         ! Argument:  const std::string & name
-        ! Statement: c_in_string_&
+        ! Statement: c_in_string&
         function c_name_is_valid(name) &
                 result(SHT_rv) &
                 bind(C, name="STMT_nameIsValid")
@@ -81,7 +81,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int GetNameLength +pure
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     !>
     !! \brief helper function for Fortran to get length of name.
     !!
@@ -98,7 +98,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +len(get_name_length())
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     function get_name_error_pattern() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -112,10 +112,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool nameIsValid
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  const std::string & name
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     function name_is_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT

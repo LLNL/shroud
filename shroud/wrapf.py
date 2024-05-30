@@ -1008,9 +1008,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
 
-                    arg_typemap, specialize = statements.lookup_c_statements(
-                        param
-                    )
+                    arg_typemap = param.typemap
                     self.update_f_module(
                         modules,
                         arg_typemap.i_module or arg_typemap.f_module,
@@ -1143,9 +1141,6 @@ rv = .false.
             else:
                 arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
                 arg_typemap = ast.typemap
-                if ast.template_arguments:
-                    # If a template, use its type
-                    arg_typemap = ast.template_arguments[0].typemap
                 self.update_f_module(
                     modules,
                     arg_typemap.i_module or arg_typemap.f_module,
@@ -1706,7 +1701,7 @@ rv = .false.
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typemap, specialize = statements.lookup_c_statements(c_arg)
+            arg_typemap = c_arg.typemap
 
             # Create a local variable for C if necessary.
             # The local variable fc_var is used in fc_statements. 
@@ -2283,15 +2278,11 @@ def bind_c(declaration, modules, intent=None, is_result=False,
     else:
         ntypemap = declaration.typemap
     basedef = ntypemap
-    if declaration.template_arguments:
-        # If a template, use its type
-        ntypemap = declaration.template_arguments[0].typemap
 
     typ = ntypemap.i_type or ntypemap.f_type
     if typ is None:
-        raise RuntimeError(
-            "Type {} has no value for i_type".format(declaration.typename)
-        )
+        error.cursor.warning("Type {} has no value for f_type or i_type".format(ntypemap.name))
+        return "===> {} <===".format(ntypemap.name)
     if is_callback and declarator.is_indirect():
         typ = "type(C_PTR)"
         modules.setdefault("iso_c_binding", {})["C_PTR"] = True
@@ -2316,9 +2307,7 @@ def bind_c(declaration, modules, intent=None, is_result=False,
     else:
         decl.append(declarator.user_name)
 
-    if basedef.base == "vector":
-        decl.append("(*)")  # is array
-    elif ntypemap.base == "string":
+    if ntypemap.base == "string":
         decl.append("(*)")
     elif "dimension" in attrs:
         # Any dimension is changed to assumed-size.
@@ -2370,9 +2359,6 @@ def gen_arg_as_fortran(
     declarator = declaration.declarator
     attrs = declarator.attrs
     ntypemap = declaration.typemap
-    if ntypemap.sgroup == "vector":
-        # If std::vector, use its type (<int>)
-        ntypemap = declaration.template_arguments[0].typemap
 
     is_allocatable = False
     is_pointer = False
@@ -2430,7 +2416,7 @@ def gen_arg_as_fortran(
     rank = attrs.get("rank")
     if rank is not None:
         rank = int(rank)
-        decl.append(declaration.fortran_ranks[rank])
+        decl.append(fcfmt.fortran_ranks[rank])
     elif dimension:
         if is_allocatable:
             # Assume 1-d.

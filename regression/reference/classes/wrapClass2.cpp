@@ -50,7 +50,7 @@ static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
  */
 // ----------------------------------------
 // Function:  const std::string & getName
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * CLA_Class2_getName(CLA_Class2 * self)
 {
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
@@ -68,7 +68,7 @@ const char * CLA_Class2_getName(CLA_Class2 * self)
  */
 // ----------------------------------------
 // Function:  const std::string & getName
-// Statement: f_function_string_&_cdesc_allocatable
+// Statement: f_function_string&_cdesc_allocatable
 void CLA_Class2_getName_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *SHT_rv_cdesc,
     CLA_SHROUD_capsule_data *SHT_rv_capsule)

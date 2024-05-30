@@ -44,7 +44,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
-                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
+                "declgen": "void acceptFloatComplexInoutPtr(float complex *arg1)",
                 "name": "acceptFloatComplexInoutPtr",
                 "options": {
                     "wrap_python": false
@@ -64,7 +64,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "share": {
@@ -122,7 +122,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     }
                 },
@@ -166,7 +166,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
-                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
+                "declgen": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
                 "name": "acceptDoubleComplexInoutPtr",
                 "options": {},
                 "wrap": {
@@ -185,7 +185,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "py": {
@@ -255,7 +255,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -276,7 +276,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -325,7 +325,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
-                "declgen": "void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))",
+                "declgen": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
                 "name": "acceptDoubleComplexOutPtr",
                 "options": {},
                 "wrap": {
@@ -344,7 +344,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "py": {
@@ -414,7 +414,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -434,7 +434,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -498,7 +498,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))",
-                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex * arg1, int * flag +intent(out))",
+                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))",
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
@@ -567,7 +567,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -588,7 +588,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -652,7 +652,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexOutPtrFlag( double complex *arg1 +intent(out), int *flag +intent(out))",
-                "declgen": "void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))",
+                "declgen": "void acceptDoubleComplexOutPtrFlag(double complex *arg1 +intent(out), int *flag +intent(out))",
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\nCreates a Py_complex for intent(out)\n"
                 },
@@ -674,13 +674,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "flag": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "py": {
@@ -760,7 +760,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -780,7 +780,7 @@
                             "py_ctype": "Py_complex",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -808,7 +808,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -826,7 +826,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_flag"
                         }
                     }

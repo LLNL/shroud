@@ -39,10 +39,10 @@ PyArray_Descr *PY_nested_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByReferenceCls
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg
-// Statement: py_inout_struct_&_class
+// Statement: py_inout_struct&_class
 static char PY_passStructByReferenceCls__doc__[] =
 "documentation"
 ;
@@ -79,10 +79,10 @@ PY_passStructByReferenceCls(
 
 // ----------------------------------------
 // Function:  int passStructByReferenceInCls
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1_cls & arg
-// Statement: py_in_struct_&_class
+// Statement: py_in_struct&_class
 static char PY_passStructByReferenceInCls__doc__[] =
 "documentation"
 ;
@@ -126,7 +126,7 @@ PY_passStructByReferenceInCls(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(inout)
-// Statement: py_inout_struct_&_class
+// Statement: py_inout_struct&_class
 static char PY_passStructByReferenceInoutCls__doc__[] =
 "documentation"
 ;
@@ -166,7 +166,7 @@ PY_passStructByReferenceInoutCls(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(out)
-// Statement: py_out_struct_&_class
+// Statement: py_out_struct&_class
 static char PY_passStructByReferenceOutCls__doc__[] =
 "documentation"
 ;
@@ -200,10 +200,10 @@ fail:
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
-// Statement: py_in_native_*_numpy
+// Statement: py_in_native*_numpy
 static char PY_defaultPtrIsNULL_1__doc__[] =
 "documentation"
 ;
@@ -278,16 +278,16 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int in1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 // ----------------------------------------
 // Argument:  bool flag=false
-// Statement: py_in_bool_scalar
+// Statement: py_in_bool
 static char PY_defaultArgsInOut_1__doc__[] =
 "documentation"
 ;

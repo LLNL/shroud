@@ -48,7 +48,7 @@ module library_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm
-        ! Statement: f_in_unknown_scalar
+        ! Statement: f_in_unknown
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
@@ -63,7 +63,7 @@ module library_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
-        ! Statement: f_inout_shadow_*
+        ! Statement: f_inout_shadow*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             use library_three_mod, only : LIB_SHROUD_capsule_data
@@ -81,7 +81,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm
-    ! Statement: f_in_unknown_scalar
+    ! Statement: f_in_unknown
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
         integer, value, intent(IN) :: comm
@@ -93,7 +93,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
-    ! Statement: f_inout_shadow_*
+    ! Statement: f_inout_shadow*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj

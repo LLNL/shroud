@@ -43,7 +43,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -52,7 +52,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 }
                             },
                             "py": {
@@ -93,7 +93,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -133,7 +133,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -216,7 +216,7 @@
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_native_scalar"
+                                    "stmt": "c_in_native"
                                 }
                             },
                             "f": {
@@ -231,7 +231,7 @@
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "py": {
@@ -305,7 +305,7 @@
                                     "cxx_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -330,7 +330,7 @@
                                     "i_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -347,7 +347,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_size",
                                     "size_var": "SHSize_size",
-                                    "stmt": "py_in_native_scalar",
+                                    "stmt": "py_in_native",
                                     "value_var": "SHValue_size"
                                 }
                             }
@@ -395,7 +395,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -403,7 +403,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "py": {
@@ -442,7 +442,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getSize(\t)",
@@ -479,7 +479,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -494,7 +494,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_native",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -546,7 +546,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fillSize(int &size +intent(out))",
-                        "declgen": "void fillSize(int & size +intent(out))",
+                        "declgen": "void fillSize(int &size +intent(out))",
                         "name": "fillSize",
                         "options": {},
                         "wrap": {
@@ -566,7 +566,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_native_&"
+                                    "stmt": "c_out_native&"
                                 }
                             },
                             "f": {
@@ -580,7 +580,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_native_&"
+                                    "stmt": "f_out_native&"
                                 }
                             },
                             "py": {
@@ -652,7 +652,7 @@
                                     "cxx_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_out_native_&"
+                                    "stmt_name": "c_out_native&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -677,7 +677,7 @@
                                     "i_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_out_native_&"
+                                    "stmt_name": "f_out_native&"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -695,7 +695,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_size",
                                     "size_var": "SHSize_size",
-                                    "stmt": "py_out_native_&",
+                                    "stmt": "py_out_native&",
                                     "value_var": "SHValue_size"
                                 }
                             }
@@ -830,7 +830,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray(void) +dimension(getSize())",
+                        "declgen": "double *getArray(void) +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -859,7 +859,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -876,7 +876,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -942,7 +942,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArray(\t)",
@@ -991,7 +991,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1012,7 +1012,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_numpy",
+                                    "stmt": "py_function_native*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1054,7 +1054,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst(void) const +dimension(getSize())",
+                        "declgen": "double *getArrayConst(void) const +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1083,7 +1083,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -1100,7 +1100,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -1167,7 +1167,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConst(\t)",
@@ -1216,7 +1216,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1237,7 +1237,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_numpy",
+                                    "stmt": "py_function_native*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1279,7 +1279,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC(void) +dimension(getSize())",
+                        "declgen": "const double *getArrayC(void) +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1308,7 +1308,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -1325,7 +1325,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -1391,7 +1391,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayC(\t)",
@@ -1440,7 +1440,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1461,7 +1461,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_numpy",
+                                    "stmt": "py_function_native*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1504,7 +1504,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
+                        "declgen": "const double *getArrayConstC(void) const +dimension(getSize())",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1533,7 +1533,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_*"
+                                    "stmt": "c_function_native*"
                                 }
                             },
                             "f": {
@@ -1550,7 +1550,7 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_*_cdesc_pointer"
+                                    "stmt": "f_function_native*_cdesc_pointer"
                                 }
                             },
                             "py": {
@@ -1617,7 +1617,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_*"
+                                    "stmt_name": "c_function_native*"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConstC(\t)",
@@ -1666,7 +1666,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1687,7 +1687,7 @@
                                     "py_var": "SHTPy_rv",
                                     "rank": "1",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_*_numpy",
+                                    "stmt": "py_function_native*_numpy",
                                     "value_var": "SHValue_rv"
                                 }
                             }
@@ -1761,7 +1761,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtr(double **array +dimension(isize)+intent(out), int *isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -1795,13 +1795,13 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_native_**"
+                                    "stmt": "c_out_native**"
                                 },
                                 "isize": {
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_native_*"
+                                    "stmt": "c_inout_native*"
                                 }
                             },
                             "f": {
@@ -1823,14 +1823,14 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_native_**_cdesc_pointer"
+                                    "stmt": "f_out_native**_cdesc_pointer"
                                 },
                                 "isize": {
                                     "meta": {
                                         "hidden": true,
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_native_*_hidden"
+                                    "stmt": "f_inout_native*_hidden"
                                 }
                             },
                             "py": {
@@ -1938,7 +1938,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native_**"
+                                    "stmt_name": "c_out_native**"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -1976,7 +1976,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_**_cdesc_pointer"
+                                    "stmt_name": "f_out_native**_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1999,7 +1999,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_**_numpy",
+                                    "stmt": "py_out_native**_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -2026,7 +2026,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native_*"
+                                    "stmt_name": "c_inout_native*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2050,7 +2050,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_*_hidden"
+                                    "stmt_name": "f_inout_native*_hidden"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2068,7 +2068,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt": "py_inout_native_*",
+                                    "stmt": "py_inout_native*",
                                     "value_var": "SHValue_isize"
                                 }
                             }
@@ -2142,7 +2142,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRef(double *&array +dimension(isize)+intent(out), int &isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -2176,13 +2176,13 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_native_*&"
+                                    "stmt": "c_out_native*&"
                                 },
                                 "isize": {
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_native_&"
+                                    "stmt": "c_inout_native&"
                                 }
                             },
                             "f": {
@@ -2204,14 +2204,14 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_native_*&_cdesc_pointer"
+                                    "stmt": "f_out_native*&_cdesc_pointer"
                                 },
                                 "isize": {
                                     "meta": {
                                         "hidden": true,
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_native_&_hidden"
+                                    "stmt": "f_inout_native&_hidden"
                                 }
                             },
                             "py": {
@@ -2319,7 +2319,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native_*&"
+                                    "stmt_name": "c_out_native*&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2357,7 +2357,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_*&_cdesc_pointer"
+                                    "stmt_name": "f_out_native*&_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2380,7 +2380,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_*&_numpy",
+                                    "stmt": "py_out_native*&_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -2407,7 +2407,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native_&"
+                                    "stmt_name": "c_inout_native&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2431,7 +2431,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_&_hidden"
+                                    "stmt_name": "f_inout_native&_hidden"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2449,7 +2449,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt": "py_inout_native_&",
+                                    "stmt": "py_inout_native&",
                                     "value_var": "SHValue_isize"
                                 }
                             }
@@ -2524,7 +2524,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double **array +dimension(isize)+intent(out), int *isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -2558,13 +2558,13 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_native_**"
+                                    "stmt": "c_out_native**"
                                 },
                                 "isize": {
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_native_*"
+                                    "stmt": "c_inout_native*"
                                 }
                             },
                             "f": {
@@ -2586,14 +2586,14 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_native_**_cdesc_pointer"
+                                    "stmt": "f_out_native**_cdesc_pointer"
                                 },
                                 "isize": {
                                     "meta": {
                                         "hidden": true,
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_native_*_hidden"
+                                    "stmt": "f_inout_native*_hidden"
                                 }
                             },
                             "py": {
@@ -2701,7 +2701,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native_**"
+                                    "stmt_name": "c_out_native**"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2739,7 +2739,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_**_cdesc_pointer"
+                                    "stmt_name": "f_out_native**_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2762,7 +2762,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_**_numpy",
+                                    "stmt": "py_out_native**_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -2789,7 +2789,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native_*"
+                                    "stmt_name": "c_inout_native*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2813,7 +2813,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_*_hidden"
+                                    "stmt_name": "f_inout_native*_hidden"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2831,7 +2831,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt": "py_inout_native_*",
+                                    "stmt": "py_inout_native*",
                                     "value_var": "SHValue_isize"
                                 }
                             }
@@ -2906,7 +2906,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double *&array +dimension(isize)+intent(out), int &isize +hidden)",
                         "helpers": {
                             "c": [
                                 "array_context"
@@ -2940,13 +2940,13 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_native_*&"
+                                    "stmt": "c_out_native*&"
                                 },
                                 "isize": {
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_native_&"
+                                    "stmt": "c_inout_native&"
                                 }
                             },
                             "f": {
@@ -2968,14 +2968,14 @@
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_native_*&_cdesc_pointer"
+                                    "stmt": "f_out_native*&_cdesc_pointer"
                                 },
                                 "isize": {
                                     "meta": {
                                         "hidden": true,
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_native_&_hidden"
+                                    "stmt": "f_inout_native&_hidden"
                                 }
                             },
                             "py": {
@@ -3083,7 +3083,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native_*&"
+                                    "stmt_name": "c_out_native*&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3121,7 +3121,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native_*&_cdesc_pointer"
+                                    "stmt_name": "f_out_native*&_cdesc_pointer"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -3144,7 +3144,7 @@
                                     "py_var": "SHPy_array",
                                     "rank": "1",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_native_*&_numpy",
+                                    "stmt": "py_out_native*&_numpy",
                                     "value_var": "SHValue_array"
                                 }
                             },
@@ -3171,7 +3171,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native_&"
+                                    "stmt_name": "c_inout_native&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3195,7 +3195,7 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native_&_hidden"
+                                    "stmt_name": "f_inout_native&_hidden"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3213,7 +3213,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt": "py_inout_native_&",
+                                    "stmt": "py_inout_native&",
                                     "value_var": "SHValue_isize"
                                 }
                             }
@@ -3268,7 +3268,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchVoidPtr(void **array +intent(out))",
-                        "declgen": "void fetchVoidPtr(void * * array +intent(out))",
+                        "declgen": "void fetchVoidPtr(void **array +intent(out))",
                         "name": "fetchVoidPtr",
                         "options": {},
                         "wrap": {
@@ -3288,7 +3288,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_void_**"
+                                    "stmt": "c_out_void**"
                                 }
                             },
                             "f": {
@@ -3302,7 +3302,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_void_**"
+                                    "stmt": "f_out_void**"
                                 }
                             },
                             "py": {
@@ -3374,7 +3374,7 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "c_out_void_**"
+                                    "stmt_name": "c_out_void**"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3398,7 +3398,7 @@
                                     "i_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "f_out_void_**"
+                                    "stmt_name": "f_out_void**"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3416,7 +3416,7 @@
                                     "numpy_type": null,
                                     "py_var": "SHPy_array",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_void_**",
+                                    "stmt": "py_out_void**",
                                     "value_var": "SHValue_array"
                                 }
                             }
@@ -3471,7 +3471,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchVoidRef(void *&array +intent(out))",
-                        "declgen": "void fetchVoidRef(void * & array +intent(out))",
+                        "declgen": "void fetchVoidRef(void *&array +intent(out))",
                         "name": "fetchVoidRef",
                         "options": {},
                         "wrap": {
@@ -3491,7 +3491,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_void_*&"
+                                    "stmt": "c_out_void*&"
                                 }
                             },
                             "f": {
@@ -3505,7 +3505,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_void_*&"
+                                    "stmt": "f_out_void*&"
                                 }
                             },
                             "py": {
@@ -3577,7 +3577,7 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "c_out_void_*&"
+                                    "stmt_name": "c_out_void*&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3601,7 +3601,7 @@
                                     "i_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "f_out_void_*&"
+                                    "stmt_name": "f_out_void*&"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3619,7 +3619,7 @@
                                     "numpy_type": null,
                                     "py_var": "SHPy_array",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_out_void_*&",
+                                    "stmt": "py_out_void*&",
                                     "value_var": "SHValue_array"
                                 }
                             }
@@ -3668,7 +3668,7 @@
                             "typemap_name": "bool"
                         },
                         "decl": "bool checkPtr(void *array)",
-                        "declgen": "bool checkPtr(void * array)",
+                        "declgen": "bool checkPtr(void *array)",
                         "name": "checkPtr",
                         "options": {},
                         "wrap": {
@@ -3682,14 +3682,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_bool_scalar"
+                                    "stmt": "c_function_bool"
                                 },
                                 "array": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_void_*"
+                                    "stmt": "c_in_void*"
                                 }
                             },
                             "f": {
@@ -3697,14 +3697,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_bool_scalar"
+                                    "stmt": "f_function_bool"
                                 },
                                 "array": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_void_*"
+                                    "stmt": "f_in_void*"
                                 }
                             },
                             "py": {
@@ -3756,7 +3756,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_function_bool_scalar"
+                                    "stmt_name": "c_function_bool"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->checkPtr(\tarray)",
@@ -3793,7 +3793,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_function_bool_scalar"
+                                    "stmt_name": "f_function_bool"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PyBool_Type",
@@ -3809,7 +3809,7 @@
                                     "numpy_type": "NPY_BOOL",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_bool_scalar",
+                                    "stmt": "py_function_bool",
                                     "value_var": "SHValue_rv"
                                 }
                             },
@@ -3830,7 +3830,7 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "c_in_void_*"
+                                    "stmt_name": "c_in_void*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3854,7 +3854,7 @@
                                     "i_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "f_in_void_*"
+                                    "stmt_name": "f_in_void*"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3873,7 +3873,7 @@
                                     "py_var": "SHPy_array",
                                     "pytmp_var": "SHTPy_array",
                                     "size_var": "SHSize_array",
-                                    "stmt": "py_in_void_*",
+                                    "stmt": "py_in_void*",
                                     "value_var": "SHValue_array"
                                 }
                             }
@@ -3920,7 +3920,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -3928,7 +3928,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "py": {
@@ -3967,7 +3967,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->sumArray(\t)",
@@ -4003,7 +4003,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -4018,7 +4018,7 @@
                                     "numpy_type": "NPY_DOUBLE",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_native",
                                     "value_var": "SHValue_rv"
                                 }
                             }

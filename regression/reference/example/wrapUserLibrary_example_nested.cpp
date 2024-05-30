@@ -49,10 +49,10 @@ void AA_example_nested_local_function1(void)
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Statement: c_function_bool_scalar
+// Statement: c_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: c_in_string_&
+// Statement: c_in_string&
 bool AA_example_nested_isNameValid(const char * name)
 {
     // splicer begin namespace.example::nested.function.isNameValid
@@ -62,10 +62,10 @@ bool AA_example_nested_isNameValid(const char * name)
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Statement: f_function_bool_scalar
+// Statement: f_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 bool AA_example_nested_isNameValid_bufferify(char *name,
     int SHT_name_len)
 {
@@ -76,7 +76,7 @@ bool AA_example_nested_isNameValid_bufferify(char *name,
 
 // ----------------------------------------
 // Function:  bool isInitialized
-// Statement: c_function_bool_scalar
+// Statement: c_function_bool
 bool AA_example_nested_isInitialized(void)
 {
     // splicer begin namespace.example::nested.function.isInitialized
@@ -90,7 +90,7 @@ bool AA_example_nested_isInitialized(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: c_in_string_&
+// Statement: c_in_string&
 void AA_example_nested_test_names(const char * name)
 {
     // splicer begin namespace.example::nested.function.test_names
@@ -104,7 +104,7 @@ void AA_example_nested_test_names(const char * name)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 void AA_example_nested_test_names_bufferify(char *name,
     int SHT_name_len)
 {
@@ -120,10 +120,10 @@ void AA_example_nested_test_names_bufferify(char *name,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: c_in_string_&
+// Statement: c_in_string&
 // ----------------------------------------
 // Argument:  int flag
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_test_names_flag(const char * name, int flag)
 {
     // splicer begin namespace.example::nested.function.test_names_flag
@@ -137,10 +137,10 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: f_in_string_&_buf
+// Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  int flag
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void AA_example_nested_test_names_flag_bufferify(char *name,
     int SHT_name_len, int flag)
 {
@@ -168,7 +168,7 @@ void AA_example_nested_testoptional_0(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_testoptional_1(int i)
 {
     // splicer begin namespace.example::nested.function.testoptional_1
@@ -181,10 +181,10 @@ void AA_example_nested_testoptional_1(int i)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  long j=2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_testoptional_2(int i, long j)
 {
     // splicer begin namespace.example::nested.function.testoptional_2
@@ -194,7 +194,7 @@ void AA_example_nested_testoptional_2(int i, long j)
 
 // ----------------------------------------
 // Function:  size_t test_size_t
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 size_t AA_example_nested_test_size_t(void)
 {
     // splicer begin namespace.example::nested.function.test_size_t
@@ -209,7 +209,7 @@ size_t AA_example_nested_test_size_t(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm
-// Statement: c_in_unknown_scalar
+// Statement: c_in_unknown
 void AA_example_nested_testmpi_mpi(MPI_Fint comm)
 {
     // splicer begin namespace.example::nested.function.testmpi_mpi
@@ -240,7 +240,7 @@ void AA_example_nested_testmpi_serial(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(void)
-// Statement: c_in_void_scalar
+// Statement: c_in_void
 void AA_example_nested_FuncPtr1(void ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr1
@@ -257,7 +257,7 @@ void AA_example_nested_FuncPtr1(void ( * get)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
-// Statement: c_in_native_*
+// Statement: c_in_native*
 void AA_example_nested_FuncPtr2(double * ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr2
@@ -274,7 +274,7 @@ void AA_example_nested_FuncPtr2(double * ( * get)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(int i, int)
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr3
@@ -291,7 +291,7 @@ void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(double, int)
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr4
@@ -304,7 +304,7 @@ void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
-// Statement: c_in_void_scalar
+// Statement: c_in_void
 void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
@@ -320,34 +320,34 @@ void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname2 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname3 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname4 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname5 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname6 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname7 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname8 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname9 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname10 +intent(inout)
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 void AA_example_nested_verylongfunctionname1(int * verylongname1,
     int * verylongname2, int * verylongname3, int * verylongname4,
     int * verylongname5, int * verylongname6, int * verylongname7,
@@ -362,37 +362,37 @@ void AA_example_nested_verylongfunctionname1(int * verylongname1,
 
 // ----------------------------------------
 // Function:  int verylongfunctionname2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int verylongname1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname2
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname3
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname4
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname5
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname6
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname7
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname8
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname9
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  int verylongname10
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 int AA_example_nested_verylongfunctionname2(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
@@ -416,13 +416,13 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
-// Statement: c_in_native_*
+// Statement: c_in_native*
 // ----------------------------------------
 // Argument:  double * out +dimension(shape(in))+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void AA_example_nested_cos_doubles(double * in, double * out,
     int sizein)
 {

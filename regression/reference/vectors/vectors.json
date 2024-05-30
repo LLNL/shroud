@@ -55,7 +55,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg)",
+                "declgen": "int vector_sum(const std::vector<int> &arg)",
                 "name": "vector_sum",
                 "options": {
                     "literalinclude": true,
@@ -71,7 +71,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -79,7 +79,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_vector_&_buf_targ_native_scalar"
+                            "stmt": "c_in_vector<native>&_buf"
                         }
                     },
                     "f": {
@@ -87,7 +87,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -95,7 +95,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_vector_&_buf_targ_native_scalar"
+                            "stmt": "f_in_vector<native>&_buf"
                         }
                     },
                     "share": {
@@ -134,7 +134,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "vector_sum(\tSHCXX_arg)",
@@ -171,7 +171,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -181,19 +181,25 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "const int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<int *>\t(&SHCXX_arg)",
-                            "cxx_type": "int",
+                            "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&SHCXX_arg)",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_vector_&_buf_targ_native_scalar"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_vector<native>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -201,21 +207,19 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "const int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<int *>\t(&SHCXX_arg)",
-                            "cxx_type": "int",
+                            "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&SHCXX_arg)",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_dimension": "(*)",
@@ -223,9 +227,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_vector_&_buf_targ_native_scalar"
+                            "stmt_name": "f_in_vector<native>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -282,7 +292,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +intent(out))",
+                "declgen": "void vector_iota_out(std::vector<int> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -319,7 +329,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -335,7 +345,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -390,21 +400,19 @@
                             "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_local_size": "SHC_arg_size",
@@ -412,9 +420,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -423,23 +437,21 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -448,9 +460,15 @@
                             "i_var_cdesc": "SHT_arg_cdesc",
                             "idtor": "1",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -507,7 +525,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -573,7 +591,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -590,7 +608,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -655,21 +673,19 @@
                             "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_local_size": "SHC_arg_size",
@@ -677,9 +693,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -688,23 +710,21 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -713,9 +733,15 @@
                             "i_var_cdesc": "SHT_arg_cdesc",
                             "idtor": "1",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -772,7 +798,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -827,7 +853,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -844,7 +870,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -907,21 +933,19 @@
                             "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_local_size": "SHC_arg_size",
@@ -929,9 +953,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -940,23 +970,21 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -965,9 +993,15 @@
                             "i_var_cdesc": "SHT_arg_cdesc",
                             "idtor": "1",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1025,7 +1059,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+intent(out))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> &arg +deref(allocatable)+intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1062,7 +1096,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_malloc"
                         }
                     },
                     "f": {
@@ -1079,7 +1113,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -1134,21 +1168,19 @@
                             "c_local_bytes": "SHC_arg_bytes",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_local_bytes": "SHC_arg_bytes",
@@ -1156,9 +1188,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_malloc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1167,24 +1205,22 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_char_type": "character(len=SHT_arg_cdesc%elem_len) ::\t ",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -1193,9 +1229,15 @@
                             "i_var_cdesc": "SHT_arg_cdesc",
                             "idtor": "1",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1253,7 +1295,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> &arg +deref(allocatable)+intent(inout))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1293,7 +1335,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "c_inout_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt": "c_inout_vector<native>&_buf_malloc"
                         }
                     },
                     "f": {
@@ -1310,7 +1352,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt": "f_inout_vector<native>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -1365,21 +1407,19 @@
                             "c_local_bytes": "SHC_arg_bytes",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_local_bytes": "SHC_arg_bytes",
@@ -1387,9 +1427,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_malloc_targ_native_scalar"
+                            "stmt_name": "c_inout_vector<native>&_buf_malloc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1399,16 +1445,16 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -1416,9 +1462,7 @@
                             "f_helper_array_context": "VEC_SHROUD_array",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "INOUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -1428,9 +1472,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "1",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_inout_vector_&_cdesc_allocatable_targ_native_scalar"
+                            "stmt_name": "f_inout_vector<native>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1484,7 +1534,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg)",
+                "declgen": "void vector_increment(std::vector<int> &arg)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -1520,7 +1570,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "c_inout_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_inout_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -1536,7 +1586,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_inout_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -1590,30 +1640,34 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_inout_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_inout_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1623,25 +1677,23 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "int * arg",
-                            "c_type": "int",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_int",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_array_context": "VEC_SHROUD_array",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "INOUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -1651,9 +1703,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "1",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_inout_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_inout_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1710,7 +1768,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +intent(out))",
+                "declgen": "void vector_iota_out_d(std::vector<double> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -1746,7 +1804,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt": "c_out_vector<native>&_buf_copy"
                         }
                     },
                     "f": {
@@ -1762,7 +1820,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt": "f_out_vector<native>&_cdesc"
                         }
                     },
                     "share": {
@@ -1817,21 +1875,19 @@
                             "c_local_size": "SHC_arg_size",
                             "c_member": "->",
                             "c_proto_decl": "double * arg",
-                            "c_type": "double",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_size": "SHT_arg_size",
-                            "cfi_type": "CFI_type_double",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "double",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_local_size": "SHC_arg_size",
@@ -1839,9 +1895,15 @@
                             "i_var_size": "SHT_arg_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_DOUBLE",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_native_scalar"
+                            "stmt_name": "c_out_vector<native>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "double",
+                                    "typemap_name": "double"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1850,23 +1912,21 @@
                             "c_helper_copy_array": "VEC_ShroudCopyArray",
                             "c_member": "->",
                             "c_proto_decl": "double * arg",
-                            "c_type": "double",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
-                            "cfi_type": "CFI_type_double",
+                            "cfi_type": "CFI_type_other",
                             "cxx_T": "double",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "double",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -1875,9 +1935,15 @@
                             "i_var_cdesc": "SHT_arg_cdesc",
                             "idtor": "2",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_DOUBLE",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_native_scalar"
+                            "stmt_name": "f_out_vector<native>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "double",
+                                    "typemap_name": "double"
+                                }
+                            ]
                         }
                     }
                 },
@@ -1950,7 +2016,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
-                "declgen": "int vector_of_pointers(std::vector<const double * > & arg1 +intent(in), int num)",
+                "declgen": "int vector_of_pointers(std::vector<const double *> &arg1 +intent(in), int num)",
                 "doxygen": {
                     "brief": "Fortran 2-d array to vector<const double *>"
                 },
@@ -1969,7 +2035,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -1977,14 +2043,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_vector_&_buf_targ_native_*"
+                            "stmt": "c_in_vector<native*>&_buf"
                         },
                         "num": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -1992,7 +2058,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -2000,14 +2066,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_vector_&_buf_targ_native_*"
+                            "stmt": "f_in_vector<native*>&_buf"
                         },
                         "num": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -2052,7 +2118,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "vector_of_pointers(\tSHCXX_arg1,\t num)",
@@ -2089,7 +2155,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -2099,20 +2165,26 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "double * arg1",
-                            "c_type": "double",
+                            "c_type": null,
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "c_var_size": "SHT_arg1_size",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_T": "const double * ",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "const double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
-                            "cxx_type": "double",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg1",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_vector_&_buf_targ_native_*"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt_name": "c_in_vector<native*>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "const double *",
+                                    "typemap_name": "double"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2120,22 +2192,20 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "double * arg1",
-                            "c_type": "double",
+                            "c_type": null,
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "c_var_size": "SHT_arg1_size",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_T": "const double * ",
+                            "cfi_type": "CFI_type_other",
+                            "cxx_T": "const double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
-                            "cxx_type": "double",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg1",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_dimension": "(*)",
@@ -2144,9 +2214,15 @@
                             "i_var_size": "SHT_arg1_size",
                             "idtor": "0",
                             "rank": "1",
-                            "sh_type": "SH_TYPE_DOUBLE",
+                            "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg1)",
-                            "stmt_name": "f_in_vector_&_buf_targ_native_*"
+                            "stmt_name": "f_in_vector<native*>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "const double *",
+                                    "typemap_name": "double"
+                                }
+                            ]
                         }
                     },
                     "num": {
@@ -2166,7 +2242,7 @@
                             "cxx_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2191,7 +2267,7 @@
                             "i_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -2246,7 +2322,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg)",
+                "declgen": "int vector_string_count(const std::vector<std::string> &arg)",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -2270,7 +2346,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -2278,7 +2354,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmt": "c_in_vector<string>&_buf"
                         }
                     },
                     "f": {
@@ -2286,7 +2362,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -2294,7 +2370,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_vector_&_buf_targ_string_scalar"
+                            "stmt": "f_in_vector<string>&_buf"
                         }
                     },
                     "share": {
@@ -2333,7 +2409,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_count(\tSHCXX_arg)",
@@ -2370,7 +2446,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -2384,7 +2460,7 @@
                             "c_local_s": "SHC_arg_s",
                             "c_member": "->",
                             "c_proto_decl": "const char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_len": "SHT_arg_len",
                             "c_var_size": "SHT_arg_size",
@@ -2392,12 +2468,18 @@
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
-                            "cxx_type": "std::string",
+                            "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&SHCXX_arg)",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "c_in_vector<string>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2409,7 +2491,7 @@
                             "c_local_s": "SHC_arg_s",
                             "c_member": "->",
                             "c_proto_decl": "const char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_len": "SHT_arg_len",
                             "c_var_size": "SHT_arg_size",
@@ -2417,14 +2499,12 @@
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
-                            "cxx_type": "std::string",
+                            "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&SHCXX_arg)",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_dimension": "(*)",
@@ -2438,7 +2518,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_vector_&_buf_targ_string_scalar"
+                            "stmt_name": "f_in_vector<string>&_buf",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         }
                     }
                 },
@@ -2495,7 +2581,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill(std::vector< std::string > &arg+intent(out))",
-                "declgen": "void vector_string_fill(std::vector<std::string> & arg +intent(out))",
+                "declgen": "void vector_string_fill(std::vector<std::string> &arg +intent(out))",
                 "doxygen": {
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
@@ -2533,7 +2619,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt": "c_out_vector<string>&_buf_copy"
                         }
                     },
                     "f": {
@@ -2549,7 +2635,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_targ_string_scalar"
+                            "stmt": "f_out_vector<string>&_cdesc"
                         }
                     },
                     "share": {
@@ -2603,20 +2689,18 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "std::string",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
@@ -2624,7 +2708,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt_name": "c_out_vector<string>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2633,7 +2723,7 @@
                             "c_helper_vector_string_out": "VEC_ShroudVectorStringOut",
                             "c_member": "->",
                             "c_proto_decl": "char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
@@ -2641,15 +2731,13 @@
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "std::string",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_array_context": "VEC_SHROUD_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -2660,7 +2748,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_targ_string_scalar"
+                            "stmt_name": "f_out_vector<string>&_cdesc",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         }
                     }
                 },
@@ -2718,7 +2812,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill_allocatable( std::vector< std::string > &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> & arg +deref(allocatable)+intent(out))",
+                "declgen": "void vector_string_fill_allocatable(std::vector<std::string> &arg +deref(allocatable)+intent(out))",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -2755,7 +2849,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt": "c_out_vector<string>&_buf_copy"
                         }
                     },
                     "f": {
@@ -2772,7 +2866,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt": "f_out_vector<string>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -2826,20 +2920,18 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "std::string",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
@@ -2847,7 +2939,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt_name": "c_out_vector<string>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2858,7 +2956,7 @@
                             "c_helper_vector_string_out_len": "VEC_ShroudVectorStringOutSize",
                             "c_member": "->",
                             "c_proto_decl": "char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_capsule": "SHT_arg_capsule",
                             "c_var_cdesc": "SHT_arg_cdesc",
@@ -2867,7 +2965,7 @@
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "std::string",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -2876,9 +2974,7 @@
                             "f_helper_capsule_dtor": "VEC_SHROUD_capsule_dtor",
                             "f_helper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
                             "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_capsule": "SHT_arg_capsule",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -2891,7 +2987,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         }
                     }
                 },
@@ -2950,7 +3052,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_fill_allocatable_len( std::vector< std::string > &arg+intent(out)+len(20)+deref(allocatable))",
-                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20))",
+                "declgen": "void vector_string_fill_allocatable_len(std::vector<std::string> &arg +deref(allocatable)+intent(out)+len(20))",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -2987,7 +3089,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt": "c_out_vector<string>&_buf_copy"
                         }
                     },
                     "f": {
@@ -3004,7 +3106,7 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt": "f_out_vector<string>&_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -3059,21 +3161,19 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_proto_decl": "char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "std::string",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_char_len": "len=20",
                             "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
@@ -3081,7 +3181,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "c_out_vector_&_buf_copy_targ_string_scalar"
+                            "stmt_name": "c_out_vector<string>&_buf_copy",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3093,7 +3199,7 @@
                             "c_helper_vector_string_out_len": "VEC_ShroudVectorStringOutSize",
                             "c_member": "->",
                             "c_proto_decl": "char * arg",
-                            "c_type": "char",
+                            "c_type": null,
                             "c_var": "arg",
                             "c_var_capsule": "SHT_arg_capsule",
                             "c_var_cdesc": "SHT_arg_cdesc",
@@ -3102,7 +3208,7 @@
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "std::string",
+                            "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
@@ -3111,9 +3217,7 @@
                             "f_helper_capsule_dtor": "VEC_SHROUD_capsule_dtor",
                             "f_helper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
                             "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
+                            "f_type": null,
                             "f_var": "arg",
                             "f_var_capsule": "SHT_arg_capsule",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -3126,7 +3230,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(arg)",
-                            "stmt_name": "f_out_vector_&_cdesc_allocatable_targ_string_scalar"
+                            "stmt_name": "f_out_vector<string>&_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "std::string",
+                                    "typemap_name": "std::string"
+                                }
+                            ]
                         }
                     }
                 },
@@ -3183,7 +3293,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_string_append(std::vector< std::string > &arg+intent(inout))",
-                "declgen": "void vector_string_append(std::vector<std::string> & arg +intent(inout))",
+                "declgen": "void vector_string_append(std::vector<std::string> &arg +intent(inout))",
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
@@ -3279,14 +3389,14 @@
                                 "intent": "function",
                                 "rank": 1
                             },
-                            "stmt": "c_function_vector_scalar_malloc_targ_native_scalar"
+                            "stmt": "c_function_vector<native>_malloc"
                         },
                         "n": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -3297,14 +3407,14 @@
                                 "intent": "function",
                                 "rank": 1
                             },
-                            "stmt": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                            "stmt": "f_function_vector<native>_cdesc_allocatable"
                         },
                         "n": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3359,7 +3469,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "c_function_vector_scalar_malloc_targ_native_scalar"
+                            "stmt_name": "c_function_vector<native>_malloc",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         },
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",
@@ -3395,9 +3511,7 @@
                             "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
-                            "f_kind": "C_INT",
                             "f_type": null,
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "f_var_cdesc": "SHT_rv_cdesc",
                             "fc_var": "SHT_rv",
@@ -3408,7 +3522,13 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(SHT_rv)",
-                            "stmt_name": "f_function_vector_scalar_cdesc_allocatable_targ_native_scalar"
+                            "stmt_name": "f_function_vector<native>_cdesc_allocatable",
+                            "targs": [
+                                {
+                                    "cxx_T": "int",
+                                    "typemap_name": "int"
+                                }
+                            ]
                         }
                     },
                     "n": {
@@ -3434,7 +3554,7 @@
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3459,7 +3579,7 @@
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -3519,7 +3639,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int returnDim2(int *arg +rank(2)+intent(in), int len+implied(size(arg,2)))",
-                "declgen": "int returnDim2(int * arg +intent(in)+rank(2), int len +implied(size(arg,2)))",
+                "declgen": "int returnDim2(int *arg +intent(in)+rank(2), int len +implied(size(arg,2)))",
                 "name": "returnDim2",
                 "options": {},
                 "wrap": {
@@ -3532,21 +3652,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 2
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         },
                         "len": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -3554,21 +3674,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 2
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "len": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3613,7 +3733,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "returnDim2(\targ,\t len)",
@@ -3650,7 +3770,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -3670,7 +3790,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3699,7 +3819,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "len": {
@@ -3719,7 +3839,7 @@
                             "cxx_var": "len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3745,7 +3865,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(arg,2,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },

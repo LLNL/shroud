@@ -42,6 +42,7 @@ declarations:
 #- decl: void func5(int arg1=0, int arg2)
 
 - decl: void func6(vector *arg1)
+- decl: void func6a(vector<int, int> *arg1)
 - decl: void func6b(none<int> *arg1)
 
 - decl: void func7(int *arg1 +dimension(n+=2))

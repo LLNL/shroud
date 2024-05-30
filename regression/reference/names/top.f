@@ -142,7 +142,7 @@ module top_module
         ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
-        ! Statement: c_inout_char_*
+        ! Statement: c_inout_char*
         subroutine c_get_name(name) &
                 bind(C, name="TES_getName")
             use iso_c_binding, only : C_CHAR
@@ -155,7 +155,7 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
-        ! Statement: f_inout_char_*_buf
+        ! Statement: f_inout_char*_buf
         subroutine c_get_name_bufferify(name, SHT_name_len) &
                 bind(C, name="TES_getName_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -185,7 +185,7 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int i
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine YYY_TES_function3a_0(i) &
                 bind(C, name="YYY_TES_function3a_0")
             use iso_c_binding, only : C_INT
@@ -198,7 +198,7 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  long i
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine YYY_TES_function3a_1(i) &
                 bind(C, name="YYY_TES_function3a_1")
             use iso_c_binding, only : C_LONG
@@ -208,10 +208,10 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int function4
-        ! Statement: c_function_native_scalar
+        ! Statement: c_function_native
         ! ----------------------------------------
         ! Argument:  const std::string & rv
-        ! Statement: c_in_string_&
+        ! Statement: c_in_string&
         function YYY_TES_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -223,10 +223,10 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int function4
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  const std::string & rv
-        ! Statement: f_in_string_&_buf
+        ! Statement: f_in_string&_buf
         function YYY_TES_function4_bufferify(rv, SHT_rv_len) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
@@ -250,10 +250,10 @@ module top_module
         ! Statement: c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name
-        ! Statement: c_inout_string_&
+        ! Statement: c_inout_string&
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
-        ! Statement: c_out_native_*
+        ! Statement: c_out_native*
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_TestMultilineSplicer")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -267,10 +267,10 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name
-        ! Statement: f_inout_string_&_buf
+        ! Statement: f_inout_string&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         subroutine c_test_multiline_splicer_bufferify(name, &
                 SHT_name_len, value) &
                 bind(C, name="TES_TestMultilineSplicer_bufferify")
@@ -287,10 +287,10 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  long arg2
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine f_c_name_instantiation1(arg1, arg2) &
                 bind(C, name="c_name_instantiation1")
             use iso_c_binding, only : C_INT, C_LONG
@@ -305,10 +305,10 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  float arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  double arg2
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_function_tu_instantiation2(arg1, arg2) &
                 bind(C, name="TES_FunctionTU_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -320,7 +320,7 @@ module top_module
         ! Generated by cxx_template
         ! ----------------------------------------
         ! Function:  int UseImplWorker
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         function c_use_impl_worker_instantiation3() &
                 result(SHT_rv) &
                 bind(C, name="TES_UseImplWorker_instantiation3")
@@ -331,10 +331,10 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int Cstruct_as_class_sum
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  const Cstruct_as_class * point +pass
-        ! Statement: f_in_shadow_*
+        ! Statement: f_in_shadow*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
                 bind(C, name="TES_Cstruct_as_class_sum")
@@ -350,22 +350,22 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  const char * rdbase
-        ! Statement: f_in_char_*
+        ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  const char * pkg
-        ! Statement: f_in_char_*
+        ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  const char * name
-        ! Statement: f_in_char_*
+        ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
-        ! Statement: f_in_void_scalar
+        ! Statement: f_in_void
         ! ----------------------------------------
         ! Argument:  void ( * afree)(double * arr +intent(inout))
-        ! Statement: f_in_void_scalar
+        ! Statement: f_in_void
         ! ----------------------------------------
         ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
-        ! Statement: f_in_void_scalar
+        ! Statement: f_in_void
         subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
                 assoc) &
                 bind(C, name="TES_external_funcs")
@@ -386,7 +386,7 @@ module top_module
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_bindtest(arg1) &
                 bind(C, name="TES_bindtest")
             use iso_c_binding, only : C_INT
@@ -545,7 +545,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +len(worklen)+len_trim(worktrim)
-    ! Statement: f_inout_char_*_buf
+    ! Statement: f_inout_char*_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: name
@@ -579,7 +579,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int i
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine F_name_function3a_int(i)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: i
@@ -593,7 +593,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  long i
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine F_name_function3a_long(i)
         use iso_c_binding, only : C_LONG
         integer(C_LONG), value, intent(IN) :: i
@@ -604,10 +604,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int function4
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const std::string & rv
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     function testnames_function4(rv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -634,10 +634,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name
-    ! Statement: f_inout_string_&_buf
+    ! Statement: f_inout_string&_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     !>
     !! Use std::string argument to get bufferified function.
     !<
@@ -657,10 +657,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  long arg2
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -680,10 +680,10 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  float arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  double arg2
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Function template with two template parameters.
     !!
@@ -700,7 +700,7 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int UseImplWorker
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     !>
     !! \brief Function which uses a templated T in the implemetation.
     !!
@@ -716,10 +716,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const Cstruct_as_class * point +pass
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -753,7 +753,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine bindtest(arg1)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg1

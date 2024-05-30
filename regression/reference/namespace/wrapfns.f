@@ -106,7 +106,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
-        ! Statement: c_function_string_&
+        ! Statement: c_function_string&
         function c_last_function_called() &
                 result(SHT_rv) &
                 bind(C, name="NS_LastFunctionCalled")
@@ -117,7 +117,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled
-        ! Statement: f_function_string_&_cdesc_allocatable
+        ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_last_function_called_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
                 bind(C, name="NS_LastFunctionCalled_bufferify")
@@ -167,7 +167,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     function last_function_called() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv

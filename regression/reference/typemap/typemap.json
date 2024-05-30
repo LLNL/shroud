@@ -57,7 +57,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(IndexType i1, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(IndexType i1, IndexType *i2 +intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -139,20 +139,20 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_bool_scalar"
+                            "stmt": "c_function_bool"
                         },
                         "i1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "i2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "share": {
@@ -205,7 +205,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool_scalar"
+                            "stmt_name": "c_function_bool"
                         }
                     },
                     "i1": {
@@ -231,7 +231,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     },
                     "i2": {
@@ -257,7 +257,7 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         }
                     }
                 },
@@ -269,7 +269,7 @@
             },
             {
                 "<FUNCTION>": "passIndex  3 ****************************************",
-                "C_force_wrapper": "True",
+                "C_force_wrapper": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -317,7 +317,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int32_t i1, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int32_t i1, IndexType *i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -329,20 +329,20 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "i1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "i2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -402,7 +402,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         }
                     },
                     "i1": {
@@ -429,7 +429,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "i2": {
@@ -456,7 +456,7 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -472,7 +472,7 @@
             },
             {
                 "<FUNCTION>": "passIndex  4 ****************************************",
-                "C_force_wrapper": "True",
+                "C_force_wrapper": true,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -520,7 +520,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool passIndex(IndexType i1, IndexType *i2+intent(out))",
-                "declgen": "bool passIndex(int64_t i1, IndexType * i2 +intent(out))",
+                "declgen": "bool passIndex(int64_t i1, IndexType *i2 +intent(out))",
                 "name": "passIndex",
                 "options": {},
                 "wrap": {
@@ -532,20 +532,20 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "i1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "i2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -605,7 +605,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         }
                     },
                     "i1": {
@@ -632,7 +632,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "i2": {
@@ -659,7 +659,7 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -752,7 +752,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -806,7 +806,7 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -818,7 +818,7 @@
             },
             {
                 "<FUNCTION>": "passIndex2  5 ****************************************",
-                "_PTR_F_C_index": "1",
+                "_PTR_F_C_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -867,7 +867,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -923,7 +923,7 @@
                             "fc_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -939,7 +939,7 @@
             },
             {
                 "<FUNCTION>": "passIndex2  6 ****************************************",
-                "_PTR_F_C_index": "1",
+                "_PTR_F_C_index": 1,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -988,7 +988,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1044,7 +1044,7 @@
                             "fc_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1137,7 +1137,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -1191,7 +1191,7 @@
                             "i_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -1203,7 +1203,7 @@
             },
             {
                 "<FUNCTION>": "passFloat  7 ****************************************",
-                "_PTR_F_C_index": "2",
+                "_PTR_F_C_index": 2,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1252,7 +1252,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1308,7 +1308,7 @@
                             "fc_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1324,7 +1324,7 @@
             },
             {
                 "<FUNCTION>": "passFloat  8 ****************************************",
-                "_PTR_F_C_index": "2",
+                "_PTR_F_C_index": 2,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1373,7 +1373,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1429,7 +1429,7 @@
                             "fc_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },

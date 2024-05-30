@@ -125,7 +125,19 @@ def get_arg_bind(node, arg, wlang):
 
 ######################################################################
 
-def lookup_c_statements(arg):
+def collect_arg_typemaps(arg):
+    """Return list of typemaps used by argument.
+    Templates will provide multiple typemaps.
+    """
+    if arg.template_arguments:
+        typemaps = []
+        for targ in arg.template_arguments:
+            typemaps.append(targ.typemap)
+    else:
+        typemaps = [arg.typemap]
+    return typemaps
+
+def find_abstract_declarator(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
     template specialization.
@@ -133,37 +145,16 @@ def lookup_c_statements(arg):
     Args:
         arg -
     """
-    arg_typemap = arg.typemap
-
-    specialize = []
+    decl = [arg.typemap.sgroup]
     if arg.template_arguments:
-        specialize.append('targ')
-        # XXX currently only the first template argument is processed.
-        targ = arg.template_arguments[0]
-        arg_typemap = targ.typemap
-        specialize.append(arg_typemap.sgroup)
-        spointer = targ.declarator.get_indirect_stmt()
-        specialize.append(spointer)
-    return arg_typemap, specialize
-
-def template_stmts(ast):
-    """Create statement labels for template arguments.
-    targ_int_scalar
-
-    Parameters
-    ----------
-    ast : declast.Declaration
-    """
-    specialize = []
-    if ast.template_arguments:
-        specialize.append('targ')
-        # XXX currently only the first template argument is processed.
-        targ = ast.template_arguments[0]
-        arg_typemap = targ.typemap
-        specialize.append(arg_typemap.sgroup)
-        spointer = targ.declarator.get_indirect_stmt()
-        specialize.append(spointer)
-    return specialize
+        decl.append("<")
+        for targ in arg.template_arguments:
+            decl.append(targ.declarator.typemap.sgroup)
+            decl.append(targ.declarator.get_abstract_declarator())
+            decl.append(",")
+        decl[-1] = ">"
+    decl.append(arg.declarator.get_abstract_declarator())
+    return "".join(decl)
 
 def lookup_fc_stmts(path):
     """Lookup statements for C and Fortran wrappers.
@@ -192,13 +183,10 @@ def lookup_c_function_stmt(node):
         stmts = ["c", sintent]
         result_stmt = lookup_fc_stmts(stmts)
     else:
-        r_attrs = declarator.attrs
-        result_typemap = ast.typemap
-        spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
-        junk, specialize = lookup_c_statements(ast)
-        stmts = ["c", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
+        abstract = find_abstract_declarator(ast)
+        stmts = ["c", sintent, abstract,
+                 r_meta["api"], r_meta["deref"], r_meta["owner"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
@@ -214,45 +202,32 @@ def lookup_f_function_stmt(node):
         stmts = ["f", sintent]
         result_stmt = lookup_fc_stmts(stmts)
     else:
-        r_attrs = declarator.attrs
-        result_typemap = ast.typemap
-        spointer = declarator.get_indirect_stmt()
         # intent will be "function", "ctor", "getter"
-        junk, specialize = lookup_c_statements(ast)
-        stmts = ["f", sintent, result_typemap.sgroup, spointer,
-                 r_meta["api"], r_meta["deref"], r_meta["owner"]] + specialize
+        abstract = find_abstract_declarator(ast)
+        stmts = ["f", sintent, abstract,
+                 r_meta["api"], r_meta["deref"], r_meta["owner"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
 
 def lookup_c_arg_stmt(node, arg):
     """Lookup the C statements for an argument."""
-    declarator = arg.declarator
-    c_attrs = declarator.attrs
     c_meta = get_arg_bind(node, arg, "c").meta
-    arg_typemap = arg.typemap  # XXX - look up vector
-    sgroup = arg_typemap.sgroup
-    junk, specialize = lookup_c_statements(arg)
-    spointer = declarator.get_indirect_stmt()
+    abstract = find_abstract_declarator(arg)
     sapi = c_meta["api"]
-    stmts = ["c", c_meta["intent"], sgroup, spointer,
-             sapi, c_meta["deref"], c_meta["owner"]] + specialize
+    stmts = ["c", c_meta["intent"], abstract,
+             sapi, c_meta["deref"], c_meta["owner"]]
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
 def lookup_f_arg_stmt(node, arg):
     """Lookup the Fortran statements for an argument."""
-    declarator = arg.declarator
-    c_attrs = declarator.attrs
     c_meta = get_arg_bind(node, arg, "f").meta
-    arg_typemap = arg.typemap  # XXX - look up vector
-    sgroup = arg_typemap.sgroup
-    junk, specialize = lookup_c_statements(arg)
-    spointer = declarator.get_indirect_stmt()
+    abstract = find_abstract_declarator(arg)
     sapi = c_meta["api"]
     if c_meta["hidden"]:
         sapi = "hidden"
-    stmts = ["f", c_meta["intent"], sgroup, spointer,
-             sapi, c_meta["deref"], c_meta["owner"]] + specialize
+    stmts = ["f", c_meta["intent"], abstract,
+             sapi, c_meta["deref"], c_meta["owner"]]
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
 
@@ -912,3 +887,36 @@ default_stmts = dict(
 # owner      "caller"
 
 fc_statements = []
+
+
+######################################################################
+# templates
+
+class TemplateFormat(object):
+    """Used with Scope and format fields.
+    to access type information for a template parameter.
+
+    "{targ[0].f_type} arg"
+    """
+    def __init__(self, decl):
+        """
+        decl - declast.Declaration
+        """
+        self.decl = decl
+
+    def __str__(self):
+        return str(self.decl)
+
+    def __getattr__(self, name):
+        return getattr(self.decl.typemap, name)
+    
+    @property
+    def cxx_T(self):
+        return self.decl.get_first_abstract_declarator()
+
+def set_template_fields(ast, fmt):
+    """Set the format fields for template arguments.
+    Accessed as "{targs[0].cxx_type}"
+    """
+    fmt.cxx_T = ast.gen_template_argument()
+    fmt.targs = [TemplateFormat(targ) for targ in ast.template_arguments]

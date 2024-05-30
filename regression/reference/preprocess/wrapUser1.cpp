@@ -64,7 +64,7 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int i=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void PRE_User1_method3def_1(PRE_User1 * self, int i)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);

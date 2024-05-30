@@ -72,6 +72,7 @@ class Typemap(object):
         ("template_suffix", None),  # Name when used by wrapper identifiers
                                     # when added to class/struct format.
                     # Set from format.template_suffix in YAML for class.
+        ("ntemplate_args", 0), # Number of template arguments
         ("base", "unknown"),  # Base type: 'string', 'integer', 'real', 'complex'
         ("typedef", None),  # Initialize from existing type (name of type)
                             # A Typemap instance
@@ -888,6 +889,7 @@ def default_typemap():
         # C++03 "The elements of a vector are stored contiguously" (23.2.4/1).
         vector=Typemap(
             "std::vector",
+            ntemplate_args=1,
             cxx_type="std::vector<{cxx_T}>",
             cxx_header="<vector>",
             # #- cxx_to_c='{cxx_var}.data()',  # C++11
@@ -1469,7 +1471,7 @@ def fill_typedef_typemap(node, fields={}):
 #    fill_typedef_typemap_defaults(ntypemap, fmtdict)
     ntypemap.finalize()
 
-def return_shadow_types(typemaps):  # typemaps -> dict
+def return_user_types(typemaps):  # typemaps -> dict
     """Return a dictionary of user defined types."""
     dct = {}
     for key, ntypemap in typemaps.items():

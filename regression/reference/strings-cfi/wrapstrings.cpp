@@ -112,7 +112,7 @@ void STR_init_test(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char status
-// Statement: c_in_char_scalar
+// Statement: c_in_char
 void STR_passChar(char status)
 {
     // splicer begin function.passChar
@@ -129,7 +129,7 @@ void STR_passChar(char status)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char status
-// Statement: c_in_char_scalar
+// Statement: c_in_char
 void STR_passCharForce(char status)
 {
     // splicer begin function.passCharForce
@@ -143,7 +143,7 @@ void STR_passCharForce(char status)
  */
 // ----------------------------------------
 // Function:  char returnChar
-// Statement: c_function_char_scalar
+// Statement: c_function_char
 void STR_returnChar(char *SHC_rv)
 {
     // splicer begin function.returnChar
@@ -163,10 +163,10 @@ void STR_returnChar(char *SHC_rv)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
-// Statement: c_out_char_*
+// Statement: c_out_char*
 // ----------------------------------------
 // Argument:  const char * src
-// Statement: c_in_char_*
+// Statement: c_in_char*
 // start STR_passCharPtr
 void STR_passCharPtr(char * dest, const char * src)
 {
@@ -188,10 +188,10 @@ void STR_passCharPtr(char * dest, const char * src)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
-// Statement: f_out_char_*_cfi
+// Statement: f_out_char*_cfi
 // ----------------------------------------
 // Argument:  const char * src
-// Statement: f_in_char_*_cfi
+// Statement: f_in_char*_cfi
 // start STR_passCharPtr_CFI
 void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
@@ -218,7 +218,7 @@ void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
-// Statement: c_inout_char_*
+// Statement: c_inout_char*
 void STR_passCharPtrInOut(char * s)
 {
     // splicer begin function.passCharPtrInOut
@@ -237,7 +237,7 @@ void STR_passCharPtrInOut(char * s)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
-// Statement: f_inout_char_*_cfi
+// Statement: f_inout_char*_cfi
 void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
 {
     // splicer begin function.passCharPtrInOut_CFI
@@ -255,7 +255,7 @@ void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Statement: c_function_char_*
+// Statement: c_function_char*
 // start STR_getCharPtr1
 const char * STR_getCharPtr1(void)
 {
@@ -272,7 +272,7 @@ const char * STR_getCharPtr1(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1
-// Statement: f_function_char_*_cfi_allocatable
+// Statement: f_function_char*_cfi_allocatable
 // start STR_getCharPtr1_CFI
 void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -296,7 +296,7 @@ void STR_getCharPtr1_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Statement: c_function_char_*
+// Statement: c_function_char*
 // start STR_getCharPtr2
 const char * STR_getCharPtr2(void)
 {
@@ -313,7 +313,7 @@ const char * STR_getCharPtr2(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +len(30)
-// Statement: f_function_char_*_cfi_copy
+// Statement: f_function_char*_cfi_copy
 // start STR_getCharPtr2_CFI
 void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -331,7 +331,7 @@ void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Statement: c_function_char_*
+// Statement: c_function_char*
 // start STR_getCharPtr3
 const char * STR_getCharPtr3(void)
 {
@@ -348,7 +348,7 @@ const char * STR_getCharPtr3(void)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3
-// Statement: f_function_char_*_cfi_arg
+// Statement: f_function_char*_cfi_arg
 // start STR_getCharPtr3_CFI
 void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -366,7 +366,7 @@ void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr4 +deref(raw)
-// Statement: c_function_char_*
+// Statement: c_function_char*
 const char * STR_getCharPtr4(void)
 {
     // splicer begin function.getCharPtr4
@@ -382,7 +382,7 @@ const char * STR_getCharPtr4(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char * getCharPtr5 +deref(pointer)
-// Statement: c_function_char_*
+// Statement: c_function_char*
 const char * STR_getCharPtr5(void)
 {
     // splicer begin function.getCharPtr5
@@ -399,7 +399,7 @@ const char * STR_getCharPtr5(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const char * getCharPtr5 +deref(pointer)
-// Statement: f_function_char_*_cfi_pointer
+// Statement: f_function_char*_cfi_pointer
 void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getCharPtr5_CFI
@@ -434,7 +434,7 @@ void STR_getCharPtr5_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringResult(void)
 {
     // splicer begin function.getConstStringResult
@@ -456,7 +456,7 @@ const char STR_getConstStringResult(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringResult
-// Statement: f_function_string_scalar_cfi_allocatable
+// Statement: f_function_string_cfi_allocatable
 void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringResult_CFI
@@ -481,7 +481,7 @@ void STR_getConstStringResult_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringLen(void)
 {
     // splicer begin function.getConstStringLen
@@ -503,7 +503,7 @@ const char STR_getConstStringLen(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringLen +len(30)
-// Statement: f_function_string_scalar_cfi_copy
+// Statement: f_function_string_cfi_copy
 void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringLen_CFI
@@ -529,7 +529,7 @@ void STR_getConstStringLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringAsArg(void)
 {
     // splicer begin function.getConstStringAsArg
@@ -551,7 +551,7 @@ const char STR_getConstStringAsArg(void)
  */
 // ----------------------------------------
 // Function:  const string getConstStringAsArg
-// Statement: f_function_string_scalar_cfi_arg
+// Statement: f_function_string_cfi_arg
 void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringAsArg_CFI
@@ -573,7 +573,7 @@ void STR_getConstStringAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 ! Not Implemented
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Statement: c_function_string_scalar
+// Statement: c_function_string
 const char STR_getConstStringAlloc(void)
 {
     // splicer begin function.getConstStringAlloc
@@ -586,7 +586,7 @@ const char STR_getConstStringAlloc(void)
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc
-// Statement: f_function_string_scalar_cfi_allocatable
+// Statement: f_function_string_cfi_allocatable
 void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringAlloc_CFI
@@ -606,7 +606,7 @@ void STR_getConstStringAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Statement: c_function_string_&
+// Statement: c_function_string&
 // start STR_getConstStringRefPure
 const char * STR_getConstStringRefPure(void)
 {
@@ -624,7 +624,7 @@ const char * STR_getConstStringRefPure(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure
-// Statement: f_function_string_&_cfi_allocatable
+// Statement: f_function_string&_cfi_allocatable
 // start STR_getConstStringRefPure_CFI
 void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
@@ -649,7 +649,7 @@ void STR_getConstStringRefPure_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefLen(void)
 {
     // splicer begin function.getConstStringRefLen
@@ -673,7 +673,7 @@ const char * STR_getConstStringRefLen(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +len(30)
-// Statement: f_function_string_&_cfi_copy
+// Statement: f_function_string&_cfi_copy
 void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefLen_CFI
@@ -699,7 +699,7 @@ void STR_getConstStringRefLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefAsArg(void)
 {
     // splicer begin function.getConstStringRefAsArg
@@ -722,7 +722,7 @@ const char * STR_getConstStringRefAsArg(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg
-// Statement: f_function_string_&_cfi_arg
+// Statement: f_function_string&_cfi_arg
 void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefAsArg_CFI
@@ -746,7 +746,7 @@ void STR_getConstStringRefAsArg_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefLenEmpty(void)
 {
     // splicer begin function.getConstStringRefLenEmpty
@@ -767,7 +767,7 @@ const char * STR_getConstStringRefLenEmpty(void)
  */
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +len(30)
-// Statement: f_function_string_&_cfi_copy
+// Statement: f_function_string&_cfi_copy
 void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefLenEmpty_CFI
@@ -787,7 +787,7 @@ void STR_getConstStringRefLenEmpty_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Statement: c_function_string_&
+// Statement: c_function_string&
 const char * STR_getConstStringRefAlloc(void)
 {
     // splicer begin function.getConstStringRefAlloc
@@ -799,7 +799,7 @@ const char * STR_getConstStringRefAlloc(void)
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc
-// Statement: f_function_string_&_cfi_allocatable
+// Statement: f_function_string&_cfi_allocatable
 void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringRefAlloc_CFI
@@ -823,7 +823,7 @@ void STR_getConstStringRefAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Statement: c_function_string_*
+// Statement: c_function_string*
 const char * STR_getConstStringPtrLen(void)
 {
     // splicer begin function.getConstStringPtrLen
@@ -843,7 +843,7 @@ const char * STR_getConstStringPtrLen(void)
  */
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +len(30)
-// Statement: f_function_string_*_cfi_copy
+// Statement: f_function_string*_cfi_copy
 void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrLen_CFI
@@ -864,7 +864,7 @@ void STR_getConstStringPtrLen_CFI(CFI_cdesc_t *SHT_rv_cfi)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Statement: c_function_string_*_library
+// Statement: c_function_string*_library
 const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
@@ -876,7 +876,7 @@ const char * STR_getConstStringPtrAlloc(void)
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
-// Statement: f_function_string_*_cfi_allocatable_library
+// Statement: f_function_string*_cfi_allocatable_library
 void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrAlloc_CFI
@@ -899,7 +899,7 @@ void STR_getConstStringPtrAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Statement: c_function_string_*_caller
+// Statement: c_function_string*_caller
 const char * STR_getConstStringPtrOwnsAlloc(void)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc
@@ -918,7 +918,7 @@ const char * STR_getConstStringPtrOwnsAlloc(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
-// Statement: f_function_string_*_cfi_allocatable_caller
+// Statement: f_function_string*_cfi_allocatable_caller
 void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrOwnsAlloc_CFI
@@ -937,7 +937,7 @@ void STR_getConstStringPtrOwnsAlloc_CFI(CFI_cdesc_t *SHT_rv_cfi)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Statement: c_function_string_*_caller
+// Statement: c_function_string*_caller
 const char * STR_getConstStringPtrOwnsAllocPattern(void)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern
@@ -952,7 +952,7 @@ const char * STR_getConstStringPtrOwnsAllocPattern(void)
  */
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
-// Statement: f_function_string_*_cfi_allocatable_caller
+// Statement: f_function_string*_cfi_allocatable_caller
 void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrOwnsAllocPattern_CFI
@@ -969,7 +969,7 @@ void STR_getConstStringPtrOwnsAllocPattern_CFI(CFI_cdesc_t *SHT_rv_cfi)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-// Statement: c_function_string_*_library
+// Statement: c_function_string*_library
 const char * STR_getConstStringPtrPointer(void)
 {
     // splicer begin function.getConstStringPtrPointer
@@ -983,7 +983,7 @@ const char * STR_getConstStringPtrPointer(void)
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
-// Statement: f_function_string_*_cfi_pointer_library
+// Statement: f_function_string*_cfi_pointer_library
 void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getConstStringPtrPointer_CFI
@@ -1022,7 +1022,7 @@ void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & arg1
-// Statement: c_in_string_&
+// Statement: c_in_string&
 void STR_acceptStringConstReference(const char * arg1)
 {
     // splicer begin function.acceptStringConstReference
@@ -1043,7 +1043,7 @@ void STR_acceptStringConstReference(const char * arg1)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string & arg1
-// Statement: f_in_string_&_cfi
+// Statement: f_in_string&_cfi
 void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
     // splicer begin function.acceptStringConstReference_CFI
@@ -1066,7 +1066,7 @@ void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
-// Statement: c_out_string_&
+// Statement: c_out_string&
 void STR_acceptStringReferenceOut(char * arg1)
 {
     // splicer begin function.acceptStringReferenceOut
@@ -1088,7 +1088,7 @@ void STR_acceptStringReferenceOut(char * arg1)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
-// Statement: f_out_string_&_cfi
+// Statement: f_out_string&_cfi
 void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
     // splicer begin function.acceptStringReferenceOut_CFI
@@ -1112,7 +1112,7 @@ void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1
-// Statement: c_inout_string_&
+// Statement: c_inout_string&
 // start STR_acceptStringReference
 void STR_acceptStringReference(char * arg1)
 {
@@ -1136,7 +1136,7 @@ void STR_acceptStringReference(char * arg1)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string & arg1
-// Statement: f_inout_string_&_cfi
+// Statement: f_inout_string&_cfi
 // start STR_acceptStringReference_CFI
 void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
@@ -1160,7 +1160,7 @@ void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  const std::string * arg1
-// Statement: c_in_string_*
+// Statement: c_in_string*
 void STR_acceptStringPointerConst(const char * arg1)
 {
     // splicer begin function.acceptStringPointerConst
@@ -1178,7 +1178,7 @@ void STR_acceptStringPointerConst(const char * arg1)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  const std::string * arg1
-// Statement: f_in_string_*_cfi
+// Statement: f_in_string*_cfi
 void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
     // splicer begin function.acceptStringPointerConst_CFI
@@ -1198,7 +1198,7 @@ void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
-// Statement: c_inout_string_*
+// Statement: c_inout_string*
 void STR_acceptStringPointer(char * arg1)
 {
     // splicer begin function.acceptStringPointer
@@ -1217,7 +1217,7 @@ void STR_acceptStringPointer(char * arg1)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
-// Statement: f_inout_string_*_cfi
+// Statement: f_inout_string*_cfi
 void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
     // splicer begin function.acceptStringPointer_CFI
@@ -1240,7 +1240,7 @@ void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
-// Statement: c_out_string_*
+// Statement: c_out_string*
 void STR_fetchStringPointer(char * arg1)
 {
     // splicer begin function.fetchStringPointer
@@ -1260,7 +1260,7 @@ void STR_fetchStringPointer(char * arg1)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
-// Statement: f_out_string_*_cfi
+// Statement: f_out_string*_cfi
 void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
     // splicer begin function.fetchStringPointer_CFI
@@ -1283,10 +1283,10 @@ void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
-// Statement: c_inout_string_*
+// Statement: c_inout_string*
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void STR_acceptStringPointerLen(char * arg1, int * nlen)
 {
     // splicer begin function.acceptStringPointerLen
@@ -1307,10 +1307,10 @@ void STR_acceptStringPointerLen(char * arg1, int * nlen)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1
-// Statement: f_inout_string_*_cfi
+// Statement: f_inout_string*_cfi
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
-// Statement: f_out_native_*
+// Statement: f_out_native*
 void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen)
 {
@@ -1336,10 +1336,10 @@ void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
-// Statement: c_out_string_*
+// Statement: c_out_string*
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void STR_fetchStringPointerLen(char * arg1, int * nlen)
 {
     // splicer begin function.fetchStringPointerLen
@@ -1361,10 +1361,10 @@ void STR_fetchStringPointerLen(char * arg1, int * nlen)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
-// Statement: f_out_string_*_cfi
+// Statement: f_out_string*_cfi
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
-// Statement: f_out_native_*
+// Statement: f_out_native*
 void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
     int * nlen)
 {
@@ -1383,10 +1383,10 @@ void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
  */
 // ----------------------------------------
 // Function:  int acceptStringInstance
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  std::string arg1
-// Statement: c_in_string_scalar
+// Statement: c_in_string
 int STR_acceptStringInstance(char *arg1)
 {
     // splicer begin function.acceptStringInstance
@@ -1401,10 +1401,10 @@ int STR_acceptStringInstance(char *arg1)
  */
 // ----------------------------------------
 // Function:  int acceptStringInstance
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  std::string arg1
-// Statement: f_in_string_scalar_cfi
+// Statement: f_in_string_cfi
 int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 {
     // splicer begin function.acceptStringInstance_CFI
@@ -1430,10 +1430,10 @@ int STR_acceptStringInstance_CFI(CFI_cdesc_t *SHT_arg1_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +dimension(nstrs)+intent(out)
-// Statement: c_out_string_**
+// Statement: c_out_string**
 // ----------------------------------------
 // Argument:  int * nstrs +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void STR_fetchArrayStringArg(char * * strs, int * nstrs)
 {
     // splicer begin function.fetchArrayStringArg
@@ -1454,10 +1454,10 @@ void STR_fetchArrayStringArg(char * * strs, int * nstrs)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +dimension(nstrs)+intent(out)
-// Statement: f_out_string_**_cfi_copy
+// Statement: f_out_string**_cfi_copy
 // ----------------------------------------
 // Argument:  int * nstrs +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringArg_CFI
@@ -1483,10 +1483,10 @@ void STR_fetchArrayStringArg_CFI(CFI_cdesc_t *SHT_strs_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
-// Statement: c_out_string_**
+// Statement: c_out_string**
 // ----------------------------------------
 // Argument:  int * nstrs +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 {
     // splicer begin function.fetchArrayStringAlloc
@@ -1508,10 +1508,10 @@ void STR_fetchArrayStringAlloc(char * * strs, int * nstrs)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
-// Statement: f_out_string_**_cfi_allocatable
+// Statement: f_out_string**_cfi_allocatable
 // ----------------------------------------
 // Argument:  int * nstrs +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAlloc_CFI
@@ -1537,10 +1537,10 @@ void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
-// Statement: c_out_string_**
+// Statement: c_out_string**
 // ----------------------------------------
 // Argument:  int * nstrs +hidden+intent(out)
-// Statement: c_out_native_*
+// Statement: c_out_native*
 void STR_fetchArrayStringAllocLen(char * * strs, int * nstrs)
 {
     // splicer begin function.fetchArrayStringAllocLen
@@ -1562,10 +1562,10 @@ void STR_fetchArrayStringAllocLen(char * * strs, int * nstrs)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
-// Statement: f_out_string_**_cfi_allocatable
+// Statement: f_out_string**_cfi_allocatable
 // ----------------------------------------
 // Argument:  int * nstrs +hidden+intent(out)
-// Statement: f_out_native_*_hidden
+// Statement: f_out_native*_hidden
 void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
 {
     // splicer begin function.fetchArrayStringAllocLen_CFI
@@ -1581,7 +1581,7 @@ void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
-// Statement: c_in_char_*
+// Statement: c_in_char*
 void STR_explicit1(char * name)
 {
     // splicer begin function.explicit1
@@ -1594,7 +1594,7 @@ void STR_explicit1(char * name)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
-// Statement: f_in_char_*_cfi
+// Statement: f_in_char*_cfi
 void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.explicit1_CFI
@@ -1610,7 +1610,7 @@ void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
-// Statement: c_out_char_*
+// Statement: c_out_char*
 void STR_explicit2(char * name)
 {
     // splicer begin function.explicit2
@@ -1623,7 +1623,7 @@ void STR_explicit2(char * name)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
-// Statement: f_out_char_*_cfi
+// Statement: f_out_char*_cfi
 void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
 {
     // splicer begin function.explicit2_CFI
@@ -1639,7 +1639,7 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi)
  */
 // ----------------------------------------
 // Function:  char CreturnChar
-// Statement: c_function_char_scalar
+// Statement: c_function_char
 void STR_CreturnChar(char *SHC_rv)
 {
     // splicer begin function.CreturnChar
@@ -1660,10 +1660,10 @@ void STR_CreturnChar(char *SHC_rv)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
-// Statement: f_out_char_*_cfi
+// Statement: f_out_char*_cfi
 // ----------------------------------------
 // Argument:  const char * src +blanknull
-// Statement: f_in_char_*_cfi
+// Statement: f_in_char*_cfi
 void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
@@ -1686,10 +1686,10 @@ void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
-// Statement: c_out_char_*
+// Statement: c_out_char*
 // ----------------------------------------
 // Argument:  const char * src
-// Statement: c_in_char_*
+// Statement: c_in_char*
 void STR_CpassCharPtrBlank(char * dest, const char * src)
 {
     // splicer begin function.CpassCharPtrBlank
@@ -1706,10 +1706,10 @@ void STR_CpassCharPtrBlank(char * dest, const char * src)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  char * dest +intent(out)
-// Statement: f_out_char_*_cfi
+// Statement: f_out_char*_cfi
 // ----------------------------------------
 // Argument:  const char * src
-// Statement: f_in_char_*_cfi
+// Statement: f_in_char*_cfi
 void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi)
 {
@@ -1734,10 +1734,10 @@ void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
-// Statement: c_in_native_*
+// Statement: c_in_native*
 // ----------------------------------------
 // Argument:  std::string & name
-// Statement: c_inout_string_&
+// Statement: c_inout_string&
 void STR_PostDeclare(int * count, char * name)
 {
     // splicer begin function.PostDeclare
@@ -1758,10 +1758,10 @@ void STR_PostDeclare(int * count, char * name)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
-// Statement: f_in_native_*_cfi
+// Statement: f_in_native*_cfi
 // ----------------------------------------
 // Argument:  std::string & name
-// Statement: f_inout_string_&_cfi
+// Statement: f_inout_string&_cfi
 void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     CFI_cdesc_t *SHT_name_cfi)
 {
@@ -1782,10 +1782,10 @@ void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrNotrim
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const char * src
-// Statement: c_in_char_*
+// Statement: c_in_char*
 int STR_CpassCharPtrNotrim(const char * src)
 {
     // splicer begin function.CpassCharPtrNotrim
@@ -1800,10 +1800,10 @@ int STR_CpassCharPtrNotrim(const char * src)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrNotrim
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const char * src
-// Statement: f_in_char_*_cfi
+// Statement: f_in_char*_cfi
 int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
 {
     // splicer begin function.CpassCharPtrNotrim_CFI
@@ -1829,13 +1829,13 @@ int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  void * addr
-// Statement: c_in_void_*
+// Statement: c_in_void*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: c_in_char_*
+// Statement: c_in_char*
 int STR_CpassCharPtrCAPI(void * addr, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI
@@ -1850,13 +1850,13 @@ int STR_CpassCharPtrCAPI(void * addr, const char * src)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  const char * in
-// Statement: c_in_char_*
+// Statement: c_in_char*
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: c_in_char_*
+// Statement: c_in_char*
 int STR_CpassCharPtrCAPI2(const char * in, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI2
@@ -1871,13 +1871,13 @@ int STR_CpassCharPtrCAPI2(const char * in, const char * src)
  */
 // ----------------------------------------
 // Function:  int CpassCharPtrCAPI2
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const char * in
-// Statement: f_in_char_*_cfi
+// Statement: f_in_char*_cfi
 // ----------------------------------------
 // Argument:  const char * src +api(capi)
-// Statement: f_in_char_*_capi
+// Statement: f_in_char*_capi
 int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char * src)
 {
     // splicer begin function.CpassCharPtrCAPI2_CFI

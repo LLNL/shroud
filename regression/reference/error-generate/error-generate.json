@@ -383,7 +383,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ***func0b() +deref(pointer)",
-                "declgen": "int * * * func0b(void) +deref(pointer)",
+                "declgen": "int ***func0b(void) +deref(pointer)",
                 "name": "func0b",
                 "options": {},
                 "wrap": {},
@@ -444,7 +444,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         }
                     },
                     "f": {
@@ -490,7 +490,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *func0e() +dimension",
-                "declgen": "int * func0e(void) +dimension",
+                "declgen": "int *func0e(void) +dimension",
                 "name": "func0e",
                 "options": {},
                 "wrap": {},
@@ -798,7 +798,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func3c(char *arg1 +charlen)",
-                "declgen": "void func3c(char * arg1 +charlen)",
+                "declgen": "void func3c(char *arg1 +charlen)",
                 "name": "func3c",
                 "options": {},
                 "wrap": {},
@@ -855,7 +855,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func4(char *arg1 +blanknull)",
-                "declgen": "void func4(char * arg1 +blanknull)",
+                "declgen": "void func4(char *arg1 +blanknull)",
                 "name": "func4",
                 "options": {},
                 "wrap": {},
@@ -871,7 +871,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_char_*"
+                            "stmt": "c_inout_char*"
                         }
                     },
                     "f": {
@@ -937,7 +937,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func6(vector *arg1)",
-                "declgen": "void func6(vector * arg1)",
+                "declgen": "void func6(vector *arg1)",
                 "name": "func6",
                 "options": {},
                 "wrap": {},
@@ -963,7 +963,82 @@
                 }
             },
             {
-                "<FUNCTION>": "func6b  13 ****************************************",
+                "<FUNCTION>": "func6a  13 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "func6a",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "name": "arg1",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ],
+                                    "typemap_name": "std::vector"
+                                },
+                                "specifier": [
+                                    "vector"
+                                ],
+                                "template_arguments": [
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    },
+                                    {
+                                        "declarator": {
+                                            "typemap_name": "int"
+                                        },
+                                        "specifier": [
+                                            "int"
+                                        ],
+                                        "typemap_name": "int"
+                                    }
+                                ],
+                                "typemap_name": "std::vector"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void func6a(vector<int, int> *arg1)",
+                "declgen": "void func6a(vector<int,int> *arg1)",
+                "name": "func6a",
+                "options": {},
+                "wrap": {},
+                "zz_bind": {
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "arg1": {
+                            "meta": {
+                                "intent": "inout",
+                                "rank": 1
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "func6a",
+                    "F_name_api": "func6a",
+                    "function_name": "func6a"
+                }
+            },
+            {
+                "<FUNCTION>": "func6b  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func6b",
@@ -1003,7 +1078,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func6b(none<int> *arg1)",
-                "declgen": "void func6b(none<int> * arg1)",
+                "declgen": "void func6b(none<int> *arg1)",
                 "name": "func6b",
                 "options": {},
                 "wrap": {},
@@ -1028,7 +1103,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func7  14 ****************************************",
+                "<FUNCTION>": "func7  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func7",
@@ -1060,7 +1135,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func7(int *arg1 +dimension(n+=2))",
-                "declgen": "void func7(int * arg1 +dimension(n+=2))",
+                "declgen": "void func7(int *arg1 +dimension(n+=2))",
                 "name": "func7",
                 "options": {},
                 "wrap": {},
@@ -1086,7 +1161,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func8  15 ****************************************",
+                "<FUNCTION>": "func8  16 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func8",
@@ -1139,7 +1214,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func8a  16 ****************************************",
+                "<FUNCTION>": "func8a  17 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func8a",
@@ -1192,7 +1267,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func9  17 ****************************************",
+                "<FUNCTION>": "func9  18 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func9",
@@ -1224,7 +1299,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func9(int *arg1+deref(none))",
-                "declgen": "void func9(int * arg1 +deref(none))",
+                "declgen": "void func9(int *arg1 +deref(none))",
                 "name": "func9",
                 "options": {},
                 "wrap": {},
@@ -1240,7 +1315,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_native_*"
+                            "stmt": "c_inout_native*"
                         }
                     },
                     "f": {
@@ -1275,7 +1350,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func9b  18 ****************************************",
+                "<FUNCTION>": "func9b  19 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func9b",
@@ -1307,7 +1382,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func9b(int *arg1+deref(pointer))",
-                "declgen": "void func9b(int * arg1 +deref(pointer))",
+                "declgen": "void func9b(int *arg1 +deref(pointer))",
                 "name": "func9b",
                 "options": {},
                 "wrap": {},
@@ -1323,7 +1398,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_native_*"
+                            "stmt": "c_inout_native*"
                         }
                     },
                     "f": {
@@ -1359,7 +1434,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func9c  19 ****************************************",
+                "<FUNCTION>": "func9c  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func9c",
@@ -1395,7 +1470,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func9c(int **arg1+deref(pointer)+intent(in))",
-                "declgen": "void func9c(int * * arg1 +deref(pointer)+intent(in))",
+                "declgen": "void func9c(int **arg1 +deref(pointer)+intent(in))",
                 "name": "func9c",
                 "options": {},
                 "wrap": {},
@@ -1411,7 +1486,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_native_**"
+                            "stmt": "c_in_native**"
                         }
                     },
                     "f": {
@@ -1447,7 +1522,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10  20 ****************************************",
+                "<FUNCTION>": "func10  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func10",
@@ -1491,7 +1566,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "f": {
@@ -1528,7 +1603,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10b  21 ****************************************",
+                "<FUNCTION>": "func10b  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func10b",
@@ -1581,7 +1656,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10c  22 ****************************************",
+                "<FUNCTION>": "func10c  23 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1614,7 +1689,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10c(int *arg1+rank(nrank))",
-                "declgen": "void func10c(int * arg1 +rank(nrank))",
+                "declgen": "void func10c(int *arg1 +rank(nrank))",
                 "name": "func10c",
                 "options": {},
                 "wrap": {},
@@ -1640,7 +1715,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func10c  23 ****************************************",
+                "<FUNCTION>": "func10c  24 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1673,7 +1748,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func10c(int *arg1+rank(30))",
-                "declgen": "void func10c(int * arg1 +rank(30))",
+                "declgen": "void func10c(int *arg1 +rank(30))",
                 "name": "func10c",
                 "options": {},
                 "wrap": {},
@@ -1700,7 +1775,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  24 ****************************************",
+                "<FUNCTION>": "func11  25 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1755,7 +1830,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  25 ****************************************",
+                "<FUNCTION>": "func11  26 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1811,7 +1886,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func11  26 ****************************************",
+                "<FUNCTION>": "func11  27 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1868,7 +1943,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func12  27 ****************************************",
+                "<FUNCTION>": "func12  28 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func12",
@@ -1904,7 +1979,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func12(int **arg1 +intent(out)+owner(none))",
-                "declgen": "void func12(int * * arg1 +intent(out)+owner(none))",
+                "declgen": "void func12(int **arg1 +intent(out)+owner(none))",
                 "name": "func12",
                 "options": {},
                 "wrap": {},
@@ -1930,7 +2005,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13  28 ****************************************",
+                "<FUNCTION>": "func13  29 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13",
@@ -1976,7 +2051,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13(double *in     +intent(in)  +rank(1), int     sizein +implied(size(in,2,3)))",
-                "declgen": "void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))",
+                "declgen": "void func13(double *in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))",
                 "name": "func13",
                 "options": {},
                 "wrap": {},
@@ -2008,7 +2083,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13b  29 ****************************************",
+                "<FUNCTION>": "func13b  30 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13b",
@@ -2054,7 +2129,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13b(double *in     +intent(in)  +rank(1), int     sizein +implied(size(none)))",
-                "declgen": "void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))",
+                "declgen": "void func13b(double *in +intent(in)+rank(1), int sizein +implied(size(none)))",
                 "name": "func13b",
                 "options": {},
                 "wrap": {},
@@ -2086,7 +2161,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13c  30 ****************************************",
+                "<FUNCTION>": "func13c  31 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13c",
@@ -2142,7 +2217,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13c(const char *text, int ntext+implied(len(text,2)), int mtext+implied(len_trim(text,3)))",
-                "declgen": "void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))",
+                "declgen": "void func13c(const char *text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))",
                 "name": "func13c",
                 "options": {},
                 "wrap": {},
@@ -2179,7 +2254,7 @@
                 }
             },
             {
-                "<FUNCTION>": "func13d  31 ****************************************",
+                "<FUNCTION>": "func13d  32 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "func13d",
@@ -2235,7 +2310,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void func13d(const char *text, int ntext+implied(len(text2)), int mtext+implied(len_trim(text3)))",
-                "declgen": "void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))",
+                "declgen": "void func13d(const char *text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))",
                 "name": "func13d",
                 "options": {},
                 "wrap": {},
@@ -2272,7 +2347,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_set_alloc  32 ****************************************",
+                "<FUNCTION>": "callback_set_alloc  33 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_set_alloc",
@@ -2320,7 +2395,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(void (*alloc)(int tc+intent(none)))",
-                "declgen": "void callback_set_alloc(void (* alloc)(int tc +intent(none)))",
+                "declgen": "void callback_set_alloc(void (*alloc)(int tc +intent(none)))",
                 "name": "callback_set_alloc",
                 "options": {},
                 "wrap": {},
@@ -2406,7 +2481,7 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  33 ****************************************",
+                "<FUNCTION>": "AssignValues  34 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2475,7 +2550,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +intent(out), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +intent(out), int nto)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -2642,14 +2717,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  36 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "33",
+                "<FUNCTION>": "AssignValues  37 ****************************************",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 34,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 33,
+                "_orig_node_index": 34,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2718,7 +2793,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +rank(8), int nto)",
                 "name": "AssignValues",
                 "options": {
                     "wrap_c": false,
@@ -2765,14 +2840,14 @@
                 }
             },
             {
-                "<FUNCTION>": "AssignValues  37 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "33",
+                "<FUNCTION>": "AssignValues  38 ****************************************",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 34,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
                 ],
-                "_orig_node_index": 33,
+                "_orig_node_index": 34,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2841,7 +2916,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to+intent(out), int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +deref(allocatable2), int nto)",
                 "name": "AssignValues",
                 "options": {
                     "wrap_c": false,
@@ -2916,7 +2991,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_get_arg2  34 ****************************************",
+                "<FUNCTION>": "struct1_get_arg2  35 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -2962,7 +3037,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * struct1_get_arg2(struct1 *SH_this+intent(in))",
-                "declgen": "int * struct1_get_arg2(struct1 * SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)",
+                "declgen": "int *struct1_get_arg2(struct1 *SH_this +intent(in)) +deref(pointerxx)+dimension(narg2)+intent(getter)",
                 "name": "struct1_get_arg2",
                 "options": {},
                 "struct_parent": "struct1",
@@ -2993,7 +3068,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -3084,7 +3159,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },
@@ -3101,7 +3176,7 @@
                 }
             },
             {
-                "<FUNCTION>": "struct1_set_arg2  35 ****************************************",
+                "<FUNCTION>": "struct1_set_arg2  36 ****************************************",
                 "_generated": "getter/setter",
                 "_generated_path": [
                     "getter/setter"
@@ -3156,7 +3231,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void struct1_set_arg2(struct1 *SH_this,int * val)",
-                "declgen": "void struct1_set_arg2(struct1 * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void struct1_set_arg2(struct1 *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "struct1_set_arg2",
                 "options": {},
                 "user_fmt": {
@@ -3179,14 +3254,14 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "val": {
                             "meta": {
                                 "intent": "setter",
                                 "rank": 1
                             },
-                            "stmt": "f_setter_native_*"
+                            "stmt": "f_setter_native*"
                         }
                     },
                     "share": {
@@ -3251,7 +3326,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "val": {
@@ -3282,7 +3357,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_native_*"
+                            "stmt_name": "f_setter_native*"
                         }
                     }
                 },

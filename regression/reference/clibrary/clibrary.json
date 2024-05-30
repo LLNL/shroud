@@ -205,21 +205,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "py": {
@@ -298,7 +298,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -313,7 +313,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -341,7 +341,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -358,7 +358,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -386,7 +386,7 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -403,7 +403,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_arg2"
                         }
                     }
@@ -469,7 +469,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void PassByReference(double *arg1+intent(in), int *arg2+intent(out))",
-                "declgen": "void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))",
+                "declgen": "void PassByReference(double *arg1 +intent(in), int *arg2 +intent(out))",
                 "name": "PassByReference",
                 "options": {
                     "literalinclude": true
@@ -490,13 +490,13 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "py": {
@@ -576,7 +576,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -594,7 +594,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_native_*",
+                            "stmt": "py_in_native*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -622,7 +622,7 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -640,7 +640,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_arg2"
                         }
                     }
@@ -698,14 +698,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "py": {
@@ -773,7 +773,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -788,7 +788,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -816,7 +816,7 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -833,7 +833,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_arg2"
                         }
                     }
@@ -910,7 +910,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
-                "declgen": "void checkBool(const bool arg1, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
+                "declgen": "void checkBool(const bool arg1, bool *arg2 +intent(out), bool *arg3 +intent(inout))",
                 "doxygen": {
                     "brief": "Check intent with bool"
                 },
@@ -935,19 +935,19 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_bool_scalar"
+                            "stmt": "f_in_bool"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_bool_*"
+                            "stmt": "f_out_bool*"
                         },
                         "arg3": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_bool_*"
+                            "stmt": "f_inout_bool*"
                         }
                     },
                     "py": {
@@ -1040,7 +1040,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool_scalar"
+                            "stmt_name": "f_in_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1059,7 +1059,7 @@
                             "py_object": "PyObject",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_bool_scalar",
+                            "stmt": "py_in_bool",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -1088,7 +1088,7 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_out_bool_*"
+                            "stmt_name": "f_out_bool*"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1107,7 +1107,7 @@
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_out_bool_*",
+                            "stmt": "py_out_bool*",
                             "value_var": "SHValue_arg2"
                         }
                     },
@@ -1136,7 +1136,7 @@
                             "i_var": "arg3",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_inout_bool_*"
+                            "stmt_name": "f_inout_bool*"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1156,7 +1156,7 @@
                             "py_object": "PyObject",
                             "py_var": "SHPy_arg3",
                             "size_var": "SHSize_arg3",
-                            "stmt": "py_inout_bool_*",
+                            "stmt": "py_inout_bool*",
                             "value_var": "SHValue_arg3"
                         }
                     }
@@ -1226,7 +1226,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "declgen": "char *Function4a(const char *arg1, const char *arg2) +len(30)",
                 "helpers": {
                     "c": [
                         "char_copy"
@@ -1246,21 +1246,21 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_buf_copy"
+                            "stmt": "f_function_char*_buf_copy"
                         },
                         "arg1": {
                             "meta": {
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         },
                         "arg2": {
                             "meta": {
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         }
                     },
                     "py": {
@@ -1341,7 +1341,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_copy"
+                            "stmt_name": "f_function_char*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1357,7 +1357,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_char_*",
+                            "stmt": "py_function_char*",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -1385,7 +1385,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1403,7 +1403,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -1431,7 +1431,7 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1449,7 +1449,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_arg2"
                         }
                     }
@@ -1495,7 +1495,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptName(const char *name)",
-                "declgen": "void acceptName(const char * name)",
+                "declgen": "void acceptName(const char *name)",
                 "name": "acceptName",
                 "options": {
                     "literalinclude": true
@@ -1517,7 +1517,7 @@
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         }
                     },
                     "py": {
@@ -1587,7 +1587,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1605,7 +1605,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_name"
                         }
                     }
@@ -1653,7 +1653,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
+                "declgen": "void passCharPtrInOut(char *s +intent(inout))",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
@@ -1684,7 +1684,7 @@
                                 "api": "buf",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_char_*_buf"
+                            "stmt": "f_inout_char*_buf"
                         }
                     },
                     "py": {
@@ -1763,7 +1763,7 @@
                             "i_var_str": "SHT_s_str",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_char_*_buf"
+                            "stmt_name": "f_inout_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1781,7 +1781,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_s",
                             "size_var": "SHSize_s",
-                            "stmt": "py_inout_char_*",
+                            "stmt": "py_inout_char*",
                             "value_var": "SHValue_s"
                         }
                     }
@@ -1859,7 +1859,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrCAPI(int n, char *in  +api(capi)+intent(inout), char *out +api(capi)+intent(out))",
-                "declgen": "void passCharPtrCAPI(int n, char * in +api(capi)+intent(inout), char * out +api(capi)+intent(out))",
+                "declgen": "void passCharPtrCAPI(int n, char *in +api(capi)+intent(inout), char *out +api(capi)+intent(out))",
                 "doxygen": {
                     "brief": "api(capi) with intent(out) and intent(inout)",
                     "description": "Only the interface is needed."
@@ -1884,21 +1884,21 @@
                                 "api": "capi",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_char_*_capi"
+                            "stmt": "f_inout_char*_capi"
                         },
                         "n": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "out": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_capi"
+                            "stmt": "f_out_char*_capi"
                         }
                     },
                     "share": {
@@ -1967,7 +1967,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_char_*_capi"
+                            "stmt_name": "f_inout_char*_capi"
                         }
                     },
                     "n": {
@@ -1994,7 +1994,7 @@
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "out": {
@@ -2021,7 +2021,7 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_capi"
+                            "stmt_name": "f_out_char*_capi"
                         }
                     }
                 },
@@ -2068,7 +2068,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
+                "declgen": "void returnOneName(char *name1 +charlen(MAXNAME)+intent(out))",
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
@@ -2099,7 +2099,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         }
                     },
                     "py": {
@@ -2174,7 +2174,7 @@
                             "i_var_len": "SHT_name1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2193,7 +2193,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_name1",
                             "size_var": "SHSize_name1",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_name1"
                         }
                     }
@@ -2261,7 +2261,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
+                "declgen": "void returnTwoNames(char *name1 +charlen(MAXNAME)+intent(out), char *name2 +charlen(MAXNAME)+intent(out))",
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
@@ -2290,14 +2290,14 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         },
                         "name2": {
                             "meta": {
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         }
                     },
                     "py": {
@@ -2382,7 +2382,7 @@
                             "i_var_len": "SHT_name1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2401,7 +2401,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_name1",
                             "size_var": "SHSize_name1",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_name1"
                         }
                     },
@@ -2433,7 +2433,7 @@
                             "i_var_len": "SHT_name2_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2452,7 +2452,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_name2",
                             "size_var": "SHSize_name2",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_name2"
                         }
                     }
@@ -2514,7 +2514,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text)))",
+                "declgen": "void ImpliedTextLen(char *text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text)))",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
@@ -2544,14 +2544,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "text": {
                             "meta": {
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         }
                     },
                     "py": {
@@ -2635,7 +2635,7 @@
                             "idtor": "0",
                             "pre_call_intent": "len(text,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2684,7 +2684,7 @@
                             "i_var_len": "SHT_text_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2703,7 +2703,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_text",
                             "size_var": "SHSize_text",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_text"
                         }
                     }
@@ -2778,7 +2778,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLen(const char *text+api(capi), int ltext+implied(len(text)), bool flag+implied(false))",
-                "declgen": "int ImpliedLen(const char * text +api(capi), int ltext +implied(len(text)), bool flag +implied(false))",
+                "declgen": "int ImpliedLen(const char *text +api(capi), int ltext +implied(len(text)), bool flag +implied(false))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nUse api(capi) to avoid needlessly copying the string.\n"
@@ -2795,28 +2795,28 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "flag": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_bool_scalar"
+                            "stmt": "f_in_bool"
                         },
                         "ltext": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "text": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_capi"
+                            "stmt": "f_in_char*_capi"
                         }
                     },
                     "py": {
@@ -2905,7 +2905,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2920,7 +2920,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2950,7 +2950,7 @@
                             "idtor": "0",
                             "pre_call_intent": ".FALSE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool_scalar"
+                            "stmt_name": "f_in_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -2997,7 +2997,7 @@
                             "idtor": "0",
                             "pre_call_intent": "len(text,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3042,7 +3042,7 @@
                             "i_var": "text",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char*_capi"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3060,7 +3060,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_text",
                             "size_var": "SHSize_text",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_text"
                         }
                     }
@@ -3135,7 +3135,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLenTrim(const char *text+api(capi), int ltext+implied(len_trim(text)), bool flag+implied(true))",
-                "declgen": "int ImpliedLenTrim(const char * text +api(capi), int ltext +implied(len_trim(text)), bool flag +implied(true))",
+                "declgen": "int ImpliedLenTrim(const char *text +api(capi), int ltext +implied(len_trim(text)), bool flag +implied(true))",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nUse api(capi) to avoid needlessly copying the string.\n"
@@ -3152,28 +3152,28 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "flag": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_bool_scalar"
+                            "stmt": "f_in_bool"
                         },
                         "ltext": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "text": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_capi"
+                            "stmt": "f_in_char*_capi"
                         }
                     },
                     "py": {
@@ -3262,7 +3262,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3277,7 +3277,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3307,7 +3307,7 @@
                             "idtor": "0",
                             "pre_call_intent": ".TRUE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool_scalar"
+                            "stmt_name": "f_in_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3354,7 +3354,7 @@
                             "idtor": "0",
                             "pre_call_intent": "len_trim(text,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3399,7 +3399,7 @@
                             "i_var": "text",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char*_capi"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3417,7 +3417,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_text",
                             "size_var": "SHSize_text",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_text"
                         }
                     }
@@ -3476,14 +3476,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "flag": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_bool_scalar"
+                            "stmt": "f_in_bool"
                         }
                     },
                     "py": {
@@ -3550,7 +3550,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3566,7 +3566,7 @@
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_bool_scalar",
+                            "stmt": "py_function_bool",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3596,7 +3596,7 @@
                             "idtor": "0",
                             "pre_call_intent": ".TRUE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool_scalar"
+                            "stmt_name": "f_in_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3673,14 +3673,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "flag": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_bool_scalar"
+                            "stmt": "f_in_bool"
                         }
                     },
                     "py": {
@@ -3747,7 +3747,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3763,7 +3763,7 @@
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_bool_scalar",
+                            "stmt": "py_function_bool",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3793,7 +3793,7 @@
                             "idtor": "0",
                             "pre_call_intent": ".FALSE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool_scalar"
+                            "stmt_name": "f_in_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3933,7 +3933,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void bindC2(char *outbuf+intent(out))",
-                "declgen": "void bindC2(char * outbuf +intent(out))",
+                "declgen": "void bindC2(char *outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
@@ -3966,7 +3966,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         }
                     },
                     "share": {
@@ -4029,7 +4029,7 @@
                             "i_var_len": "SHT_outbuf_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         }
                     }
                 },
@@ -4096,7 +4096,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
-                "declgen": "void passVoidStarStar(void * in +intent(in), void * * out +intent(out))",
+                "declgen": "void passVoidStarStar(void *in +intent(in), void **out +intent(out))",
                 "doxygen": {
                     "brief": "Assign in to out.",
                     "description": "No bufferify function is created, only an interface.\n"
@@ -4122,13 +4122,13 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void_*"
+                            "stmt": "f_in_void*"
                         },
                         "out": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_void_**"
+                            "stmt": "f_out_void**"
                         }
                     },
                     "share": {
@@ -4191,7 +4191,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void_*"
+                            "stmt_name": "f_in_void*"
                         }
                     },
                     "out": {
@@ -4217,7 +4217,7 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_out_void_**"
+                            "stmt_name": "f_out_void**"
                         }
                     }
                 },
@@ -4263,7 +4263,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedType(void *arg+assumedtype)",
-                "declgen": "int passAssumedType(void * arg +assumedtype)",
+                "declgen": "int passAssumedType(void *arg +assumedtype)",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4282,7 +4282,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -4290,7 +4290,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void_*"
+                            "stmt": "f_in_void*"
                         }
                     },
                     "share": {
@@ -4345,7 +4345,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -4371,7 +4371,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void_*"
+                            "stmt_name": "f_in_void*"
                         }
                     }
                 },
@@ -4418,7 +4418,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passAssumedTypeDim(void *arg+assumedtype+rank(1))",
-                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+rank(1))",
+                "declgen": "void passAssumedTypeDim(void *arg +assumedtype+rank(1))",
                 "doxygen": {
                     "brief": "Test assumed-type with rank(1)"
                 },
@@ -4445,7 +4445,7 @@
                                 "rank": 1,
                                 "value": true
                             },
-                            "stmt": "f_in_void_*"
+                            "stmt": "f_in_void*"
                         }
                     },
                     "share": {
@@ -4509,7 +4509,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_void_*"
+                            "stmt_name": "f_in_void*"
                         }
                     }
                 },
@@ -4573,7 +4573,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
-                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))",
+                "declgen": "int passAssumedTypeBuf(void *arg +assumedtype, char *outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4596,7 +4596,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
@@ -4604,14 +4604,14 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void_*"
+                            "stmt": "f_in_void*"
                         },
                         "outbuf": {
                             "meta": {
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         }
                     },
                     "share": {
@@ -4672,7 +4672,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -4698,7 +4698,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void_*"
+                            "stmt_name": "f_in_void*"
                         }
                     },
                     "outbuf": {
@@ -4729,7 +4729,7 @@
                             "i_var_len": "SHT_outbuf_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         }
                     }
                 },
@@ -4837,7 +4837,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
-                "declgen": "void callback_set_alloc(int tc, array_info * arr +intent(inout), void (* alloc)(int tc +intent(in), array_info * arr +intent(inout)))",
+                "declgen": "void callback_set_alloc(int tc, array_info *arr +intent(inout), void (*alloc)(int tc +intent(in), array_info *arr +intent(inout)))",
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },
@@ -4956,20 +4956,20 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void_scalar"
+                            "stmt": "f_in_void"
                         },
                         "arr": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "tc": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -5132,7 +5132,7 @@
                             "i_var": "alloc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void_scalar"
+                            "stmt_name": "f_in_void"
                         }
                     },
                     "arr": {
@@ -5160,7 +5160,7 @@
                             "i_var": "arr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "tc": {
@@ -5187,7 +5187,7 @@
                             "i_var": "tc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },

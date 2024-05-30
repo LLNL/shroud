@@ -1487,6 +1487,14 @@ size_var
     Name of variable which holds the size of an array in the
     Python wrapper.
 
+targs
+    This is an array of objects, one for each template argument.
+    For ``user_type<int, long *>`` the values *cxx_T* would be
+    ``targs[0].cxx_T=int`` and ``targs[1].cxx_T=long *``.
+
+    Other fields are *cxx_type*, *f_type*, and *f_kind*.
+
+    
 fmtc
 """"
 

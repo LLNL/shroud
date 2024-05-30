@@ -40,13 +40,13 @@ static int l_NoReturnNoArguments(lua_State *)
 // double PassByValue(double arg1, int arg2)
 // ----------------------------------------
 // Function:  double PassByValue
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  double arg1
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int arg2
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_PassByValue(lua_State *L)
 {
     // splicer begin function.PassByValue
@@ -58,16 +58,16 @@ static int l_PassByValue(lua_State *L)
     // splicer end function.PassByValue
 }
 
-// const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
+// const std::string ConcatenateStrings(const std::string &arg1, const std::string &arg2)
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings
-// Statement: lua_function_string_scalar
+// Statement: lua_function_string
 // ----------------------------------------
 // Argument:  const std::string & arg1
-// Statement: lua_in_string_&
+// Statement: lua_in_string&
 // ----------------------------------------
 // Argument:  const std::string & arg2
-// Statement: lua_in_string_&
+// Statement: lua_in_string&
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
@@ -87,22 +87,22 @@ static int l_ConcatenateStrings(lua_State *L)
 // double UseDefaultArguments(double arg1=3.1415, bool arg2=true)
 // ----------------------------------------
 // Function:  double UseDefaultArguments
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Function:  double UseDefaultArguments
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  double arg1=3.1415
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  double UseDefaultArguments
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  double arg1=3.1415
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  bool arg2=true
-// Statement: lua_in_bool_scalar
+// Statement: lua_in_bool
 static int l_UseDefaultArguments(lua_State *L)
 {
     // splicer begin function.UseDefaultArguments
@@ -150,20 +150,20 @@ static int l_UseDefaultArguments(lua_State *L)
     // splicer end function.UseDefaultArguments
 }
 
-// void OverloadedFunction(const std::string & name)
+// void OverloadedFunction(const std::string &name)
 // void OverloadedFunction(int indx)
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: lua_in_string_&
+// Statement: lua_in_string&
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  int indx
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_OverloadedFunction(lua_State *L)
 {
     // splicer begin function.OverloadedFunction
@@ -201,13 +201,13 @@ static int l_OverloadedFunction(lua_State *L)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  int arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  double arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_TemplateArgument(lua_State *L)
 {
     // splicer begin function.TemplateArgument
@@ -239,7 +239,7 @@ static int l_TemplateArgument(lua_State *L)
 }
 
 // void FortranGenericOverloaded(void)
-// void FortranGenericOverloaded(const std::string & name, double arg2)
+// void FortranGenericOverloaded(const std::string &name, double arg2)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Statement: lua_subroutine
@@ -248,10 +248,10 @@ static int l_TemplateArgument(lua_State *L)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: lua_in_string_&
+// Statement: lua_in_string&
 // ----------------------------------------
 // Argument:  double arg2
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_FortranGenericOverloaded(lua_State *L)
 {
     // splicer begin function.FortranGenericOverloaded
@@ -290,67 +290,67 @@ static int l_FortranGenericOverloaded(lua_State *L)
 // int UseDefaultOverload(double type, int num, int offset=0, int stride=1)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  double type
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int stride=1
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  double type
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Function:  int UseDefaultOverload
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  double type
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int num
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int offset=0
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 // ----------------------------------------
 // Argument:  int stride=1
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_UseDefaultOverload(lua_State *L)
 {
     // splicer begin function.UseDefaultOverload
@@ -449,10 +449,10 @@ static int l_UseDefaultOverload(lua_State *L)
 // TypeID typefunc(TypeID arg)
 // ----------------------------------------
 // Function:  TypeID typefunc
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  TypeID arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_typefunc(lua_State *L)
 {
     // splicer begin function.typefunc
@@ -466,10 +466,10 @@ static int l_typefunc(lua_State *L)
 // EnumTypeID enumfunc(EnumTypeID arg)
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 // ----------------------------------------
 // Argument:  EnumTypeID arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_enumfunc(lua_State *L)
 {
     // splicer begin function.enumfunc
@@ -484,10 +484,10 @@ static int l_enumfunc(lua_State *L)
 // Color colorfunc(Color arg)
 // ----------------------------------------
 // Function:  Color colorfunc
-// Statement: lua_function_enum_scalar
+// Statement: lua_function_enum
 // ----------------------------------------
 // Argument:  Color arg
-// Statement: lua_in_enum_scalar
+// Statement: lua_in_enum
 static int l_colorfunc(lua_State *L)
 {
     // splicer begin function.colorfunc
@@ -499,10 +499,10 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-// const std::string & LastFunctionCalled(void) +len(30)
+// const std::string &LastFunctionCalled(void) +len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Statement: lua_function_string_&
+// Statement: lua_function_string&
 static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

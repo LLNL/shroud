@@ -38,10 +38,10 @@ def add_comment(dct, label, name=None):
 
 class Helpers:
     def visit_bool(self, node):
-        return str(node)
+        return node
 
     def visit_int(self, node):
-        return str(node)
+        return node
 
     def visit_str(self, node):
         return str(node)
@@ -91,11 +91,14 @@ class ToDict(visitor.Visitor):
         super(ToDict, self).__init__()
         self.labelast = labelast
 
+    def visit_NoneType(self, node):
+        return node
+
     def visit_bool(self, node):
-        return str(node)
+        return node
 
     def visit_int(self, node):
-        return str(node)
+        return node
 
     def visit_str(self, node):
         return str(node)
@@ -274,12 +277,24 @@ class ToDict(visitor.Visitor):
     ######################################################################
 
     def visit_Scope(self, node):
+        # Do not call visit for most members. It slows things down a lot.
+        # Instead, have a list of keys which must be visited.
         d = {}
         skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
         for key, value in node.__dict__.items():
-            if not key.startswith(skip):
+            if key in ["targs"]:
+                d[key] = self.visit(value)
+            elif not key.startswith(skip):
                 d[key] = value
         return d
+
+    def visit_TemplateFormat(self, node):
+        # Return the properties of TemplateFormat.
+        # Avoid repeating all of the typemap fields.
+        return dict(
+            cxx_T = node.cxx_T,
+            typemap_name = node.decl.typemap.name,
+        )
 
     ######################################################################
 

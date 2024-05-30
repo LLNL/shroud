@@ -44,10 +44,10 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int x1
-// Statement: py_ctor_native_scalar_numpy
+// Statement: py_ctor_native_numpy
 // ----------------------------------------
 // Argument:  int y1
-// Statement: py_ctor_native_scalar_numpy
+// Statement: py_ctor_native_numpy
 static int
 PY_Cstruct_as_class_tp_init(
   PY_Cstruct_as_class *self,

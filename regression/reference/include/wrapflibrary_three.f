@@ -44,7 +44,7 @@ module library_three_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  CustomType arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
             use library_mod, only : custom_type
@@ -62,7 +62,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  CustomType arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine class1_method1(obj, arg1)
         use library_mod, only : custom_type
         class(class1) :: obj

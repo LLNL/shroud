@@ -62,7 +62,7 @@ PY_exfunc_0(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int flag
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 #ifndef USE_CLASS3_A
 static PyObject *
 PY_exfunc_1(

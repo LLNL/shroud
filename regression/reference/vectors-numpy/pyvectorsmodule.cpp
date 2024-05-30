@@ -37,10 +37,10 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg
-// Statement: py_in_vector_numpy
+// Statement: py_in_vector<native>&_numpy
 static char PY_vector_sum__doc__[] =
 "documentation"
 ;
@@ -99,7 +99,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)
-// Statement: py_out_vector_numpy
+// Statement: py_out_vector<native>&_numpy
 static char PY_vector_iota_out__doc__[] =
 "documentation"
 ;
@@ -158,7 +158,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)
-// Statement: py_out_vector_numpy
+// Statement: py_out_vector<native>&_numpy
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
 ;
@@ -214,10 +214,10 @@ fail:
 
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc
-// Statement: py_function_vector_numpy_targ_native_scalar
+// Statement: py_function_vector<native>_numpy
 // ----------------------------------------
 // Argument:  int n
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"
 ;
@@ -282,10 +282,10 @@ fail:
 
 // ----------------------------------------
 // Function:  int returnDim2
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int * arg +intent(in)+rank(2)
-// Statement: py_in_native_*_numpy
+// Statement: py_in_native*_numpy
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))
 // Exact:     py_default

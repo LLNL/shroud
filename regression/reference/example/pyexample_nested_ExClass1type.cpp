@@ -80,7 +80,7 @@ PP_ExClass1_tp_init_0(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const string * name
-// Statement: py_in_string_*
+// Statement: py_in_string*
 /**
  * \brief constructor
  *
@@ -120,10 +120,10 @@ PP_ExClass1_tp_init_1(
 
 // ----------------------------------------
 // Function:  int incrementCount
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int incr
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PP_incrementCount__doc__[] =
 "documentation"
 ;
@@ -156,7 +156,7 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -182,7 +182,7 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;
@@ -208,10 +208,10 @@ PP_getNameArg(
 
 // ----------------------------------------
 // Function:  int getValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_getValue_from_int(
   PP_ExClass1 *self,
@@ -240,10 +240,10 @@ PP_getValue_from_int(
 
 // ----------------------------------------
 // Function:  long getValue
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  long value
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_getValue_1(
   PP_ExClass1 *self,
@@ -272,10 +272,10 @@ PP_getValue_1(
 
 // ----------------------------------------
 // Function:  bool hasAddr
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  bool in
-// Statement: py_in_bool_scalar
+// Statement: py_in_bool
 static char PP_hasAddr__doc__[] =
 "documentation"
 ;

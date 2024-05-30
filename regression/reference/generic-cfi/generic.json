@@ -103,7 +103,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -162,7 +162,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -224,7 +224,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -283,7 +283,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -322,7 +322,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         }
                     },
                     "share": {
@@ -368,7 +368,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     }
                 },
@@ -465,7 +465,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -519,7 +519,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -531,7 +531,7 @@
             },
             {
                 "<FUNCTION>": "GenericReal  13 ****************************************",
-                "_PTR_F_C_index": "3",
+                "_PTR_F_C_index": 3,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -585,7 +585,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -641,7 +641,7 @@
                             "fc_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -657,7 +657,7 @@
             },
             {
                 "<FUNCTION>": "GenericReal  14 ****************************************",
-                "_PTR_F_C_index": "3",
+                "_PTR_F_C_index": 3,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -711,7 +711,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -767,7 +767,7 @@
                             "fc_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -887,21 +887,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -955,7 +955,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         }
                     },
                     "arg1": {
@@ -981,7 +981,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     },
                     "arg2": {
@@ -1007,7 +1007,7 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -1019,7 +1019,7 @@
             },
             {
                 "<FUNCTION>": "GenericReal2  15 ****************************************",
-                "_PTR_F_C_index": "4",
+                "_PTR_F_C_index": 4,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1075,21 +1075,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1145,7 +1145,7 @@
                             "fc_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -1171,7 +1171,7 @@
                             "fc_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "arg2": {
@@ -1197,7 +1197,7 @@
                             "fc_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1213,7 +1213,7 @@
             },
             {
                 "<FUNCTION>": "GenericReal2  16 ****************************************",
-                "_PTR_F_C_index": "4",
+                "_PTR_F_C_index": 4,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1269,21 +1269,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "arg2": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -1339,7 +1339,7 @@
                             "fc_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg1": {
@@ -1365,7 +1365,7 @@
                             "fc_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "arg2": {
@@ -1391,7 +1391,7 @@
                             "fc_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -1450,7 +1450,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +dimension(..), int nvalues)",
+                "declgen": "int SumValues(const int *values +dimension(..), int nvalues)",
                 "doxygen": {
                     "brief": "scalar or array argument using assumed rank"
                 },
@@ -1467,14 +1467,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "nvalues": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "values": {
                             "meta": {
@@ -1485,7 +1485,7 @@
                                 "dimension": "..",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         }
                     },
                     "share": {
@@ -1549,7 +1549,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "nvalues": {
@@ -1576,7 +1576,7 @@
                             "i_var": "nvalues",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "values": {
@@ -1608,7 +1608,7 @@
                             "idtor": "0",
                             "rank": "assumed",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     }
                 },
@@ -1688,7 +1688,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -1916,8 +1916,8 @@
             },
             {
                 "<FUNCTION>": "AssignValues  17 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "6",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 6,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -1988,7 +1988,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to, int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2009,27 +2009,27 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "nfrom": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "nto": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "to": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_native_*"
+                            "stmt": "f_inout_native*"
                         }
                     },
                     "share": {
@@ -2105,7 +2105,7 @@
                             "i_var": "from",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "nfrom": {
@@ -2132,7 +2132,7 @@
                             "i_var": "nfrom",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "nto": {
@@ -2159,7 +2159,7 @@
                             "i_var": "nto",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "to": {
@@ -2186,7 +2186,7 @@
                             "i_var": "to",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_inout_native_*"
+                            "stmt_name": "f_inout_native*"
                         }
                     }
                 },
@@ -2202,8 +2202,8 @@
             },
             {
                 "<FUNCTION>": "AssignValues  18 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "6",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 6,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -2277,7 +2277,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom, int * to +rank(1), int nto)",
+                "declgen": "void AssignValues(const int *from, int nfrom, int *to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2298,21 +2298,21 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "nfrom": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "nto": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "to": {
                             "meta": {
@@ -2320,7 +2320,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_native_*_cfi"
+                            "stmt": "f_inout_native*_cfi"
                         }
                     },
                     "share": {
@@ -2397,7 +2397,7 @@
                             "i_var": "from",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         }
                     },
                     "nfrom": {
@@ -2424,7 +2424,7 @@
                             "i_var": "nfrom",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "nto": {
@@ -2451,7 +2451,7 @@
                             "i_var": "nto",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "to": {
@@ -2484,7 +2484,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(to)",
-                            "stmt_name": "f_inout_native_*_cfi"
+                            "stmt_name": "f_inout_native*_cfi"
                         }
                     }
                 },
@@ -2500,8 +2500,8 @@
             },
             {
                 "<FUNCTION>": "AssignValues  19 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "6",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 6,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -2578,7 +2578,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from +rank(1), int nfrom, int * to +rank(1), int nto)",
+                "declgen": "void AssignValues(const int *from +rank(1), int nfrom, int *to +rank(1), int nto)",
                 "doxygen": {
                     "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
                 },
@@ -2601,21 +2601,21 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         },
                         "nfrom": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "nto": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "to": {
                             "meta": {
@@ -2623,7 +2623,7 @@
                                 "intent": "inout",
                                 "rank": 1
                             },
-                            "stmt": "f_inout_native_*_cfi"
+                            "stmt": "f_inout_native*_cfi"
                         }
                     },
                     "share": {
@@ -2707,7 +2707,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(from)",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     },
                     "nfrom": {
@@ -2734,7 +2734,7 @@
                             "i_var": "nfrom",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "nto": {
@@ -2761,7 +2761,7 @@
                             "i_var": "nto",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "to": {
@@ -2794,7 +2794,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(to)",
-                            "stmt_name": "f_inout_native_*_cfi"
+                            "stmt_name": "f_inout_native*_cfi"
                         }
                     }
                 },
@@ -2862,7 +2862,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(void * addr, int type, size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer(void *addr, int type, size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3005,8 +3005,8 @@
             },
             {
                 "<FUNCTION>": "SavePointer  20 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "7",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 7,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3071,7 +3071,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(1), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer(float *addr +intent(in)+rank(1), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -3091,21 +3091,21 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         },
                         "size": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "type": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3183,7 +3183,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     },
                     "size": {
@@ -3211,7 +3211,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "type": {
@@ -3239,7 +3239,7 @@
                             "idtor": "0",
                             "pre_call_intent": "T_FLOAT",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -3255,8 +3255,8 @@
             },
             {
                 "<FUNCTION>": "SavePointer  21 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "7",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 7,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3321,7 +3321,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer(void *addr, int type, size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer(float * addr +intent(in)+rank(2), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer(float *addr +intent(in)+rank(2), int type +implied(T_FLOAT), size_t size +implied(size(addr)))",
                 "name": "SavePointer",
                 "options": {},
                 "wrap": {
@@ -3341,21 +3341,21 @@
                                 "intent": "in",
                                 "rank": 2
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         },
                         "size": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "type": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3433,7 +3433,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     },
                     "size": {
@@ -3461,7 +3461,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "type": {
@@ -3489,7 +3489,7 @@
                             "idtor": "0",
                             "pre_call_intent": "T_FLOAT",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -3560,7 +3560,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(void * addr, int type +implied(type(addr)), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer2(void *addr, int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -3730,8 +3730,8 @@
             },
             {
                 "<FUNCTION>": "SavePointer2  22 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "8",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 8,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -3796,7 +3796,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer2(float *addr +intent(in)+rank(1), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -3844,21 +3844,21 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         },
                         "size": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "type": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -3936,7 +3936,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     },
                     "size": {
@@ -3964,7 +3964,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "type": {
@@ -3992,7 +3992,7 @@
                             "idtor": "0",
                             "pre_call_intent": "SH_TYPE_FLOAT",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -4008,8 +4008,8 @@
             },
             {
                 "<FUNCTION>": "SavePointer2  23 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "8",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 8,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4074,7 +4074,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void SavePointer2(void *addr, int type+implied(type(addr)), size_t size+implied(size(addr)))",
-                "declgen": "void SavePointer2(float * addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
+                "declgen": "void SavePointer2(float *addr +intent(in)+rank(2), int type +implied(type(addr)), size_t size +implied(size(addr)))",
                 "fstatements": {
                     "c": {
                         "c_helper": [
@@ -4122,21 +4122,21 @@
                                 "intent": "in",
                                 "rank": 2
                             },
-                            "stmt": "f_in_native_*_cfi"
+                            "stmt": "f_in_native*_cfi"
                         },
                         "size": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "type": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -4214,7 +4214,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt_name": "f_in_native_*_cfi"
+                            "stmt_name": "f_in_native*_cfi"
                         }
                     },
                     "size": {
@@ -4242,7 +4242,7 @@
                             "idtor": "0",
                             "pre_call_intent": "size(addr,kind=C_SIZE_T)",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "type": {
@@ -4270,7 +4270,7 @@
                             "idtor": "0",
                             "pre_call_intent": "SH_TYPE_FLOAT",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -4356,7 +4356,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointer(void **addr+intent(out), int *type+intent(out), size_t *size+intent(out))",
-                "declgen": "void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))",
+                "declgen": "void GetPointer(void **addr +intent(out), int *type +intent(out), size_t *size +intent(out))",
                 "name": "GetPointer",
                 "options": {},
                 "wrap": {
@@ -4374,19 +4374,19 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_void_**"
+                            "stmt": "f_out_void**"
                         },
                         "size": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "type": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -4453,7 +4453,7 @@
                             "i_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_out_void_**"
+                            "stmt_name": "f_out_void**"
                         }
                     },
                     "size": {
@@ -4480,7 +4480,7 @@
                             "i_var": "size",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "type": {
@@ -4507,7 +4507,7 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -4595,7 +4595,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(void **addr +intent(out), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -4767,8 +4767,8 @@
             },
             {
                 "<FUNCTION>": "GetPointerAsPointer  24 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "10",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 10,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4849,7 +4849,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(1), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -4870,21 +4870,21 @@
                                 "intent": "out",
                                 "rank": 1
                             },
-                            "stmt": "f_out_native_**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer"
                         },
                         "size": {
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "type": {
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "share": {
@@ -4972,7 +4972,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt_name": "f_out_native_**_cfi_pointer"
+                            "stmt_name": "f_out_native**_cfi_pointer"
                         }
                     },
                     "size": {
@@ -4998,7 +4998,7 @@
                             "i_var": "size",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "type": {
@@ -5024,7 +5024,7 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     }
                 },
@@ -5040,8 +5040,8 @@
             },
             {
                 "<FUNCTION>": "GetPointerAsPointer  25 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "10",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 10,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -5122,7 +5122,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(float * * addr +deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(float **addr +deref(pointer)+intent(out)+rank(2), int *type +hidden+intent(out), size_t *size +hidden+intent(out))",
                 "name": "GetPointerAsPointer",
                 "options": {},
                 "wrap": {
@@ -5143,21 +5143,21 @@
                                 "intent": "out",
                                 "rank": 2
                             },
-                            "stmt": "f_out_native_**_cfi_pointer"
+                            "stmt": "f_out_native**_cfi_pointer"
                         },
                         "size": {
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "type": {
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         }
                     },
                     "share": {
@@ -5245,7 +5245,7 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_FLOAT",
                             "size": "size(addr)",
-                            "stmt_name": "f_out_native_**_cfi_pointer"
+                            "stmt_name": "f_out_native**_cfi_pointer"
                         }
                     },
                     "size": {
@@ -5271,7 +5271,7 @@
                             "i_var": "size",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "type": {
@@ -5297,7 +5297,7 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     }
                 },
@@ -5330,7 +5330,7 @@
                     "typemap_name": "StructAsClass"
                 },
                 "decl": "StructAsClass *CreateStructAsClass(void)",
-                "declgen": "StructAsClass * CreateStructAsClass(void)",
+                "declgen": "StructAsClass *CreateStructAsClass(void)",
                 "name": "CreateStructAsClass",
                 "options": {
                     "class_ctor": "StructAsClass"
@@ -5345,7 +5345,7 @@
                                 "api": "capptr",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_shadow_*_capptr"
+                            "stmt": "f_function_shadow*_capptr"
                         }
                     },
                     "share": {
@@ -5396,7 +5396,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow_*_capptr"
+                            "stmt_name": "f_function_shadow*_capptr"
                         }
                     }
                 },
@@ -5450,7 +5450,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -5546,8 +5546,8 @@
             },
             {
                 "<FUNCTION>": "UpdateStructAsClass  26 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "12",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 12,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -5592,7 +5592,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, int inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, int inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
@@ -5604,20 +5604,20 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_shadow_*"
+                            "stmt": "f_inout_shadow*"
                         },
                         "inew": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -5677,7 +5677,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -5705,7 +5705,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_shadow_*"
+                            "stmt_name": "f_inout_shadow*"
                         }
                     },
                     "inew": {
@@ -5732,7 +5732,7 @@
                             "i_var": "inew",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -5748,8 +5748,8 @@
             },
             {
                 "<FUNCTION>": "UpdateStructAsClass  27 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "12",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 12,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -5794,7 +5794,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
-                "declgen": "long UpdateStructAsClass(StructAsClass * arg, long inew)",
+                "declgen": "long UpdateStructAsClass(StructAsClass *arg, long inew)",
                 "name": "UpdateStructAsClass",
                 "options": {},
                 "wrap": {
@@ -5806,20 +5806,20 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_shadow_*"
+                            "stmt": "f_inout_shadow*"
                         },
                         "inew": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -5879,7 +5879,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -5907,7 +5907,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_shadow_*"
+                            "stmt_name": "f_inout_shadow*"
                         }
                     },
                     "inew": {
@@ -5934,7 +5934,7 @@
                             "i_var": "inew",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },

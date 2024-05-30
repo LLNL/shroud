@@ -126,3 +126,17 @@ declarations:
     f_c_module:
       "--import--":
       -  LIB_IndexType
+
+####
+#
+
+- decl: template<typename T, typename U>
+       struct twostruct
+
+- decl: template<typename T, typename U>
+        void process_twostruct(twostruct<T, U> arg)
+
+- decl: void process_twostruct(twostruct<int, long> arg)
+  cxx_template:
+  - instantiation: <int, long>
+  

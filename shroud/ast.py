@@ -684,7 +684,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             SH_class_setter_template="set_{wrapped_name}",
             SH_struct_getter_template="{struct_name}_get_{wrapped_name}",
             SH_struct_setter_template="{struct_name}_set_{wrapped_name}",
-            
+
+            typemap_sgroup=None,
         )
         return def_options
 
@@ -1209,6 +1210,10 @@ class ClassNode(AstNode, NamespaceMixin):
         elif self.wrap_as == "class":
             typemap.fill_class_typemap(self, fields)
 
+        if self.options.typemap_sgroup is not None:
+            # Control selection of fc-statements.
+            self.typemap.sgroup = self.options.typemap_sgroup
+
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
             # when in the format dictionary is passed in.
@@ -1560,7 +1565,11 @@ class FunctionNode(AstNode):
         self.decl = decl
         if ast is None:
             ast = declast.check_decl(decl, parent.symtab)
+            
         if isinstance(ast, declast.Template):
+            self.name = ast.decl.declarator.name
+            if not self.template_arguments:
+                error.cursor.warning("Templated function requires the 'cxx_template' field")
             for param in ast.parameters:
                 self.template_parameters.append(param.name)
 
@@ -1577,7 +1586,9 @@ class FunctionNode(AstNode):
                 lst.append(arg.asts[0].typemap.name)
             self.cxx_template[argname] = lst
         elif isinstance(ast, declast.Declaration):
-            pass
+            self.name = ast.declarator.name
+            if self.template_arguments:
+                error.cursor.warning("'cxx_template' field only used with a templated function")
         else:
             raise RuntimeError("Expected a function declaration")
         if ast.declarator.params is None:

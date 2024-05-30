@@ -26,7 +26,7 @@ extern "C" {
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_generic_nelems(IndexType num_elems)
 {
     // splicer begin function.apply_generic_nelems
@@ -40,10 +40,10 @@ void DEF_apply_generic_nelems(IndexType num_elems)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_generic_nelems_offset(IndexType num_elems,
     IndexType offset)
 {
@@ -57,13 +57,13 @@ void DEF_apply_generic_nelems_offset(IndexType num_elems,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_generic_nelems_offset_stride(IndexType num_elems,
     IndexType offset, IndexType stride)
 {
@@ -79,10 +79,10 @@ void DEF_apply_generic_nelems_offset_stride(IndexType num_elems,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_generic_type_nelems(DEF_TypeID type, IndexType num_elems)
 {
     // splicer begin function.apply_generic_type_nelems
@@ -99,13 +99,13 @@ void DEF_apply_generic_type_nelems(DEF_TypeID type, IndexType num_elems)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_generic_type_nelems_offset(DEF_TypeID type,
     IndexType num_elems, IndexType offset)
 {
@@ -122,16 +122,16 @@ void DEF_apply_generic_type_nelems_offset(DEF_TypeID type,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_generic_type_nelems_offset_stride(DEF_TypeID type,
     IndexType num_elems, IndexType offset, IndexType stride)
 {
@@ -147,13 +147,13 @@ void DEF_apply_generic_type_nelems_offset_stride(DEF_TypeID type,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_require_0(IndexType num_elems, IndexType offset,
     IndexType stride)
 {
@@ -167,16 +167,16 @@ void DEF_apply_require_0(IndexType num_elems, IndexType offset,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_require_1(DEF_TypeID type, IndexType num_elems,
     IndexType offset, IndexType stride)
 {
@@ -191,13 +191,13 @@ void DEF_apply_require_1(DEF_TypeID type, IndexType num_elems,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
     IndexType stride)
 {
@@ -212,16 +212,16 @@ void DEF_apply_optional_0(IndexType num_elems, IndexType offset,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  TypeID type
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType num_elems
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType offset=0
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  IndexType stride=1
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 void DEF_apply_optional_1(DEF_TypeID type, IndexType num_elems,
     IndexType offset, IndexType stride)
 {

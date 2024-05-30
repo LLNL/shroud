@@ -24,10 +24,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short short_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  short arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function short_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_short_func")
@@ -39,10 +39,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int_func")
@@ -54,10 +54,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_func")
@@ -69,10 +69,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long long_long_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long long arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function long_long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_long_func")
@@ -84,10 +84,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short int short_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  short int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function short_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_short_int_func")
@@ -99,10 +99,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long int long_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function long_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_int_func")
@@ -114,10 +114,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long int long_long_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  long long int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function long_long_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_long_int_func")
@@ -129,10 +129,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned unsigned_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function unsigned_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_unsigned_func")
@@ -144,10 +144,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned short ushort_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned short arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function ushort_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ushort_func")
@@ -159,10 +159,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned int uint_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function uint_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint_func")
@@ -174,10 +174,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long ulong_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned long arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function ulong_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_func")
@@ -189,10 +189,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long long ulong_long_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned long long arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function ulong_long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_long_func")
@@ -204,10 +204,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long int ulong_int_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  unsigned long int arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function ulong_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_int_func")
@@ -219,10 +219,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int8_t int8_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int8_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function int8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int8_func")
@@ -234,10 +234,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int16_t int16_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int16_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function int16_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int16_func")
@@ -249,10 +249,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int32_t int32_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int32_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function int32_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int32_func")
@@ -264,10 +264,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int64_t int64_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  int64_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function int64_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int64_func")
@@ -279,10 +279,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint8_t uint8_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint8_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function uint8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint8_func")
@@ -294,10 +294,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint16_t uint16_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint16_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function uint16_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint16_func")
@@ -309,10 +309,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint32_t uint32_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint32_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function uint32_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint32_func")
@@ -324,10 +324,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint64_t uint64_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  uint64_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function uint64_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint64_func")
@@ -339,10 +339,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  size_t size_func
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  size_t arg1
-        ! Statement: f_in_native_scalar
+        ! Statement: f_in_native
         function size_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_size_func")
@@ -354,10 +354,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool bool_func
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         ! ----------------------------------------
         ! Argument:  bool arg
-        ! Statement: f_in_bool_scalar
+        ! Statement: f_in_bool
         function c_bool_func(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_bool_func")
@@ -369,10 +369,10 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool returnBoolAndOthers
-        ! Statement: f_function_bool_scalar
+        ! Statement: f_function_bool
         ! ----------------------------------------
         ! Argument:  int * flag +intent(out)
-        ! Statement: f_out_native_*
+        ! Statement: f_out_native*
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
                 bind(C, name="TYP_returnBoolAndOthers")
@@ -392,10 +392,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  short short_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  short arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function short_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_SHORT
@@ -411,10 +411,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function int_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -430,10 +430,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function long_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -449,10 +449,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long long_long_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long long arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function long_long_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG_LONG
@@ -468,10 +468,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  short int short_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  short int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function short_int_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_SHORT
@@ -487,10 +487,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long int long_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function long_int_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -506,10 +506,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  long long int long_long_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  long long int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function long_long_int_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG_LONG
@@ -525,10 +525,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned unsigned_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function unsigned_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -544,10 +544,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned short ushort_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned short arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function ushort_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_SHORT
@@ -563,10 +563,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned int uint_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function uint_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -582,10 +582,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long ulong_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned long arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function ulong_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -601,10 +601,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long long ulong_long_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned long long arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function ulong_long_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG_LONG
@@ -620,10 +620,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  unsigned long int ulong_int_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  unsigned long int arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function ulong_int_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_LONG
@@ -639,10 +639,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int8_t int8_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int8_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function int8_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT8_T
@@ -658,10 +658,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int16_t int16_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int16_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function int16_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT16_T
@@ -677,10 +677,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int32_t int32_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int32_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function int32_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT32_T
@@ -696,10 +696,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int64_t int64_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  int64_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function int64_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT64_T
@@ -715,10 +715,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint8_t uint8_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint8_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function uint8_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT8_T
@@ -734,10 +734,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint16_t uint16_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint16_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function uint16_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT16_T
@@ -753,10 +753,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint32_t uint32_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint32_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function uint32_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT32_T
@@ -772,10 +772,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  uint64_t uint64_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  uint64_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function uint64_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT64_T
@@ -791,10 +791,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  size_t size_func
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  size_t arg1
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     function size_func(arg1) &
             result(SHT_rv)
         use iso_c_binding, only : C_SIZE_T
@@ -808,10 +808,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool bool_func
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  bool arg
-    ! Statement: f_in_bool_scalar
+    ! Statement: f_in_bool
     function bool_func(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL
@@ -826,10 +826,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
-    ! Statement: f_out_native_*
+    ! Statement: f_out_native*
     !>
     !! \brief Function which returns bool with other intent(out) arguments
     !!

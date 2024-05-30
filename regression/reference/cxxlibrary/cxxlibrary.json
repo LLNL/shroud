@@ -148,7 +148,7 @@
                                     "numpy_type": "NPY_DOUBLE",
                                     "py_var": "SHPy_dfield",
                                     "size_var": "SHSize_dfield",
-                                    "stmt": "py_ctor_native_scalar_numpy",
+                                    "stmt": "py_ctor_native_numpy",
                                     "value_var": "SHValue_dfield"
                                 }
                             },
@@ -170,7 +170,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_ifield",
                                     "size_var": "SHSize_ifield",
-                                    "stmt": "py_ctor_native_scalar_numpy",
+                                    "stmt": "py_ctor_native_numpy",
                                     "value_var": "SHValue_ifield"
                                 }
                             }
@@ -559,7 +559,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -568,7 +568,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 }
                             },
                             "share": {
@@ -602,7 +602,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -642,7 +642,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 }
                             }
                         },
@@ -691,7 +691,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 }
                             },
                             "f": {
@@ -699,7 +699,7 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 }
                             },
                             "share": {
@@ -731,7 +731,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->check_length(\t)",
@@ -767,7 +767,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             }
                         },
@@ -871,14 +871,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 },
                                 "length": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_native_scalar"
+                                    "stmt": "c_in_native"
                                 }
                             },
                             "share": {
@@ -926,7 +926,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 }
                             },
                             "length": {
@@ -952,7 +952,7 @@
                                     "i_var": "length",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native"
                                 }
                             }
                         },
@@ -969,7 +969,7 @@
                     },
                     {
                         "<FUNCTION>": "check_length  7 ****************************************",
-                        "_PTR_F_C_index": "2",
+                        "_PTR_F_C_index": 2,
                         "_default_funcs": [
                             5
                         ],
@@ -1023,14 +1023,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 },
                                 "length": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -1080,7 +1080,7 @@
                                     "fc_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             },
                             "length": {
@@ -1106,7 +1106,7 @@
                                     "fc_var": "length",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             }
                         },
@@ -1126,7 +1126,7 @@
                     },
                     {
                         "<FUNCTION>": "check_length  8 ****************************************",
-                        "_PTR_F_C_index": "2",
+                        "_PTR_F_C_index": 2,
                         "_default_funcs": [
                             5
                         ],
@@ -1180,14 +1180,14 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 },
                                 "length": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -1237,7 +1237,7 @@
                                     "fc_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 }
                             },
                             "length": {
@@ -1263,7 +1263,7 @@
                                     "fc_var": "length",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_LONG",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             }
                         },
@@ -1317,7 +1317,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag)",
+                        "declgen": "Class1 *declare(int flag)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1332,14 +1332,14 @@
                                         "api": "this",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_shadow_*_this"
+                                    "stmt": "c_function_shadow*_this"
                                 },
                                 "flag": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_native_scalar"
+                                    "stmt": "c_in_native"
                                 }
                             },
                             "f": {
@@ -1348,14 +1348,14 @@
                                         "api": "this",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shadow_*_this"
+                                    "stmt": "f_function_shadow*_this"
                                 },
                                 "flag": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -1394,7 +1394,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow_*_this"
+                                    "stmt_name": "c_function_shadow*_this"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->declare(\tflag)",
@@ -1430,7 +1430,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow_*_this"
+                                    "stmt_name": "f_function_shadow*_this"
                                 }
                             },
                             "flag": {
@@ -1450,7 +1450,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -1475,7 +1475,7 @@
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             }
                         },
@@ -1543,7 +1543,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag, LengthType length=1)",
+                        "declgen": "Class1 *declare(int flag, LengthType length=1)",
                         "fortran_generic": [
                             {
                                 "decls": [
@@ -1613,21 +1613,21 @@
                                         "api": "this",
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_shadow_*_this"
+                                    "stmt": "c_function_shadow*_this"
                                 },
                                 "flag": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_native_scalar"
+                                    "stmt": "c_in_native"
                                 },
                                 "length": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "c_in_native_scalar"
+                                    "stmt": "c_in_native"
                                 }
                             },
                             "share": {
@@ -1682,7 +1682,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow_*_this"
+                                    "stmt_name": "c_function_shadow*_this"
                                 }
                             },
                             "flag": {
@@ -1708,7 +1708,7 @@
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native"
                                 }
                             },
                             "length": {
@@ -1734,7 +1734,7 @@
                                     "i_var": "length",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_LONG",
-                                    "stmt_name": "c_in_native_scalar"
+                                    "stmt_name": "c_in_native"
                                 }
                             }
                         },
@@ -1751,7 +1751,7 @@
                     },
                     {
                         "<FUNCTION>": "declare  9 ****************************************",
-                        "_PTR_F_C_index": "3",
+                        "_PTR_F_C_index": 3,
                         "_default_funcs": [
                             6
                         ],
@@ -1805,7 +1805,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag, int length=1)",
+                        "declgen": "Class1 *declare(int flag, int length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -1819,21 +1819,21 @@
                                         "api": "this",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shadow_*_this"
+                                    "stmt": "f_function_shadow*_this"
                                 },
                                 "flag": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 },
                                 "length": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -1882,7 +1882,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow_*_this"
+                                    "stmt_name": "f_function_shadow*_this"
                                 }
                             },
                             "flag": {
@@ -1908,7 +1908,7 @@
                                     "fc_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             },
                             "length": {
@@ -1934,7 +1934,7 @@
                                     "fc_var": "length",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             }
                         },
@@ -1954,7 +1954,7 @@
                     },
                     {
                         "<FUNCTION>": "declare  10 ****************************************",
-                        "_PTR_F_C_index": "3",
+                        "_PTR_F_C_index": 3,
                         "_default_funcs": [
                             6
                         ],
@@ -2008,7 +2008,7 @@
                             "typemap_name": "Class1"
                         },
                         "decl": "Class1* declare(int flag, LengthType length = 1)",
-                        "declgen": "Class1 * declare(int flag, long length=1)",
+                        "declgen": "Class1 *declare(int flag, long length=1)",
                         "name": "declare",
                         "options": {},
                         "return_this": true,
@@ -2022,21 +2022,21 @@
                                         "api": "this",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shadow_*_this"
+                                    "stmt": "f_function_shadow*_this"
                                 },
                                 "flag": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 },
                                 "length": {
                                     "meta": {
                                         "intent": "in",
                                         "value": true
                                     },
-                                    "stmt": "f_in_native_scalar"
+                                    "stmt": "f_in_native"
                                 }
                             },
                             "share": {
@@ -2085,7 +2085,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow_*_this"
+                                    "stmt_name": "f_function_shadow*_this"
                                 }
                             },
                             "flag": {
@@ -2111,7 +2111,7 @@
                                     "fc_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             },
                             "length": {
@@ -2137,7 +2137,7 @@
                                     "fc_var": "length",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_LONG",
-                                    "stmt_name": "f_in_native_scalar"
+                                    "stmt_name": "f_in_native"
                                 }
                             }
                         },
@@ -2193,7 +2193,7 @@
                                     "meta": {
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_scalar"
+                                    "stmt": "f_getter_native"
                                 }
                             },
                             "share": {
@@ -2238,7 +2238,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_scalar"
+                                    "stmt_name": "f_getter_native"
                                 }
                             }
                         },
@@ -2367,7 +2367,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg)",
+                "declgen": "int passStructByReferenceCls(Cstruct1_cls &arg)",
                 "name": "passStructByReferenceCls",
                 "options": {},
                 "wrap": {
@@ -2414,7 +2414,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2440,7 +2440,7 @@
                             "py_object": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_inout_struct_&_class",
+                            "stmt": "py_inout_struct&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2483,7 +2483,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceInCls(const Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceInCls(const Cstruct1_cls & arg)",
+                "declgen": "int passStructByReferenceInCls(const Cstruct1_cls &arg)",
                 "doxygen": {
                     "description": "const defaults to intent(in)\n"
                 },
@@ -2533,7 +2533,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2559,7 +2559,7 @@
                             "py_object": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_struct_&_class",
+                            "stmt": "py_in_struct&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2604,7 +2604,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))",
-                "declgen": "void passStructByReferenceInoutCls(Cstruct1_cls & arg +intent(inout))",
+                "declgen": "void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))",
                 "name": "passStructByReferenceInoutCls",
                 "options": {},
                 "wrap": {
@@ -2659,7 +2659,7 @@
                             "py_object": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_inout_struct_&_class",
+                            "stmt": "py_inout_struct&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2704,7 +2704,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))",
-                "declgen": "void passStructByReferenceOutCls(Cstruct1_cls & arg +intent(out))",
+                "declgen": "void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))",
                 "name": "passStructByReferenceOutCls",
                 "options": {},
                 "wrap": {
@@ -2758,7 +2758,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_struct_&_class",
+                            "stmt": "py_out_struct&_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2803,7 +2803,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_bool_scalar"
+                            "stmt": "c_function_bool"
                         }
                     },
                     "f": {
@@ -2811,7 +2811,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         }
                     },
                     "share": {
@@ -2843,7 +2843,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool_scalar"
+                            "stmt_name": "c_function_bool"
                         },
                         "fmtf": {
                             "C_call_function": "defaultPtrIsNULL(\t)",
@@ -2878,7 +2878,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         }
                     }
                 },
@@ -2936,7 +2936,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
-                "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))",
+                "declgen": "bool defaultPtrIsNULL(double *data=nullptr +intent(IN)+rank(1))",
                 "name": "defaultPtrIsNULL",
                 "options": {},
                 "wrap": {
@@ -2950,14 +2950,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_bool_scalar"
+                            "stmt": "c_function_bool"
                         },
                         "data": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         }
                     },
                     "f": {
@@ -2965,14 +2965,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_bool_scalar"
+                            "stmt": "f_function_bool"
                         },
                         "data": {
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         }
                     },
                     "py": {
@@ -3024,7 +3024,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool_scalar"
+                            "stmt_name": "c_function_bool"
                         },
                         "fmtf": {
                             "C_call_function": "defaultPtrIsNULL(\tdata)",
@@ -3061,7 +3061,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool_scalar"
+                            "stmt_name": "f_function_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3077,7 +3077,7 @@
                             "numpy_type": "NPY_BOOL",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_bool_scalar",
+                            "stmt": "py_function_bool",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3098,7 +3098,7 @@
                             "cxx_var": "data",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3127,7 +3127,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "size(data)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3146,7 +3146,7 @@
                             "pytmp_var": "SHTPy_data",
                             "rank": "1",
                             "size_var": "SHSize_data",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_data"
                         }
                     }
@@ -3230,7 +3230,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out))",
+                "declgen": "void defaultArgsInOut(int in1, int *out1 +intent(out), int *out2 +intent(out))",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3250,19 +3250,19 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "out1": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "out2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -3277,19 +3277,19 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "out1": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "out2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "share": {
@@ -3360,7 +3360,7 @@
                             "cxx_var": "in1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3385,7 +3385,7 @@
                             "i_var": "in1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     },
                     "out1": {
@@ -3405,7 +3405,7 @@
                             "cxx_var": "out1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3430,7 +3430,7 @@
                             "i_var": "out1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     },
                     "out2": {
@@ -3450,7 +3450,7 @@
                             "cxx_var": "out2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3475,7 +3475,7 @@
                             "i_var": "out2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         }
                     }
                 },
@@ -3570,7 +3570,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1, int * out1 +intent(out), int * out2 +intent(out), bool flag=false)",
+                "declgen": "void defaultArgsInOut(int in1, int *out1 +intent(out), int *out2 +intent(out), bool flag=false)",
                 "name": "defaultArgsInOut",
                 "options": {},
                 "wrap": {
@@ -3591,26 +3591,26 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_bool_scalar"
+                            "stmt": "c_in_bool"
                         },
                         "in1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         },
                         "out1": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "out2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -3625,26 +3625,26 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_bool_scalar"
+                            "stmt": "f_in_bool"
                         },
                         "in1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         },
                         "out1": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         },
                         "out2": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "py": {
@@ -3750,7 +3750,7 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_in_bool_scalar"
+                            "stmt_name": "c_in_bool"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3776,7 +3776,7 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool_scalar"
+                            "stmt_name": "f_in_bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3795,7 +3795,7 @@
                             "py_object": "PyObject",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_in_bool_scalar",
+                            "stmt": "py_in_bool",
                             "value_var": "SHValue_flag"
                         }
                     },
@@ -3816,7 +3816,7 @@
                             "cxx_var": "in1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3841,7 +3841,7 @@
                             "i_var": "in1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3858,7 +3858,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_in1",
                             "size_var": "SHSize_in1",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_in1"
                         }
                     },
@@ -3879,7 +3879,7 @@
                             "cxx_var": "out1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3904,7 +3904,7 @@
                             "i_var": "out1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3922,7 +3922,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_out1",
                             "size_var": "SHSize_out1",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_out1"
                         }
                     },
@@ -3943,7 +3943,7 @@
                             "cxx_var": "out2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3968,7 +3968,7 @@
                             "i_var": "out2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3986,7 +3986,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_out2",
                             "size_var": "SHSize_out2",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_out2"
                         }
                     }
@@ -4038,7 +4038,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(long idx) +len(30)",
+                "declgen": "const std::string &getGroupName(long idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4094,14 +4094,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         },
                         "idx": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native_scalar"
+                            "stmt": "c_in_native"
                         }
                     },
                     "share": {
@@ -4154,7 +4154,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         }
                     },
                     "idx": {
@@ -4180,7 +4180,7 @@
                             "i_var": "idx",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_in_native_scalar"
+                            "stmt_name": "c_in_native"
                         }
                     }
                 },
@@ -4192,8 +4192,8 @@
             },
             {
                 "<FUNCTION>": "getGroupName  26 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "17",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 17,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4232,7 +4232,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int32_t idx) +len(30)",
+                "declgen": "const std::string &getGroupName(int32_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4256,14 +4256,14 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         },
                         "idx": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -4325,7 +4325,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         }
                     },
                     "idx": {
@@ -4352,7 +4352,7 @@
                             "i_var": "idx",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -4368,8 +4368,8 @@
             },
             {
                 "<FUNCTION>": "getGroupName  27 ****************************************",
-                "C_force_wrapper": "True",
-                "_PTR_C_CXX_index": "17",
+                "C_force_wrapper": true,
+                "_PTR_C_CXX_index": 17,
                 "_generated": "fortran_generic",
                 "_generated_path": [
                     "fortran_generic"
@@ -4408,7 +4408,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getGroupName(long idx) +len(30)",
-                "declgen": "const std::string & getGroupName(int64_t idx) +len(30)",
+                "declgen": "const std::string &getGroupName(int64_t idx) +len(30)",
                 "doxygen": {
                     "brief": "String reference function with scalar generic args"
                 },
@@ -4432,14 +4432,14 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         },
                         "idx": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native_scalar"
+                            "stmt": "f_in_native"
                         }
                     },
                     "share": {
@@ -4501,7 +4501,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         }
                     },
                     "idx": {
@@ -4528,7 +4528,7 @@
                             "i_var": "idx",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native_scalar"
+                            "stmt_name": "f_in_native"
                         }
                     }
                 },
@@ -4587,7 +4587,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * nested_get_parent(nested *SH_this+intent(in))",
-                "declgen": "nested * nested_get_parent(nested * SH_this +intent(in)) +intent(getter)",
+                "declgen": "nested *nested_get_parent(nested *SH_this +intent(in)) +intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -4616,13 +4616,13 @@
                                 "deref": "pointer",
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_struct_*_cdesc_pointer"
+                            "stmt": "f_getter_struct*_cdesc_pointer"
                         },
                         "SH_this": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -4679,7 +4679,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct_*_cdesc_pointer"
+                            "stmt_name": "f_getter_struct*_cdesc_pointer"
                         }
                     },
                     "SH_this": {
@@ -4707,7 +4707,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },
@@ -4778,7 +4778,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_parent(nested *SH_this,nested * val)",
-                "declgen": "void nested_set_parent(nested * SH_this, nested * val +intent(setter)) +intent(setter)",
+                "declgen": "void nested_set_parent(nested *SH_this, nested *val +intent(setter)) +intent(setter)",
                 "name": "nested_set_parent",
                 "options": {},
                 "user_fmt": {
@@ -4801,13 +4801,13 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "val": {
                             "meta": {
                                 "intent": "setter"
                             },
-                            "stmt": "f_setter_struct_*"
+                            "stmt": "f_setter_struct*"
                         }
                     },
                     "share": {
@@ -4871,7 +4871,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "val": {
@@ -4899,7 +4899,7 @@
                             "i_var": "val",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_setter_struct_*"
+                            "stmt_name": "f_setter_struct*"
                         }
                     }
                 },
@@ -4964,7 +4964,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * * nested_get_child(nested *SH_this+intent(in))",
-                "declgen": "nested * * nested_get_child(nested * SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
+                "declgen": "nested **nested_get_child(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -4999,13 +4999,13 @@
                                 "dimension": "sublevels",
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_struct_**_cdesc_raw"
+                            "stmt": "f_getter_struct**_cdesc_raw"
                         },
                         "SH_this": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -5076,7 +5076,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct_**_cdesc_raw"
+                            "stmt_name": "f_getter_struct**_cdesc_raw"
                         }
                     },
                     "SH_this": {
@@ -5104,7 +5104,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },
@@ -5179,7 +5179,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_child(nested *SH_this,nested * * val)",
-                "declgen": "void nested_set_child(nested * SH_this, nested * * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void nested_set_child(nested *SH_this, nested **val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "nested_set_child",
                 "options": {},
                 "user_fmt": {
@@ -5202,14 +5202,14 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "val": {
                             "meta": {
                                 "intent": "setter",
                                 "rank": 1
                             },
-                            "stmt": "f_setter_struct_**"
+                            "stmt": "f_setter_struct**"
                         }
                     },
                     "share": {
@@ -5274,7 +5274,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "val": {
@@ -5306,7 +5306,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_struct_**"
+                            "stmt_name": "f_setter_struct**"
                         }
                     }
                 },
@@ -5368,7 +5368,7 @@
                     "typemap_name": "nested"
                 },
                 "decl": "nested * nested_get_array(nested *SH_this+intent(in))",
-                "declgen": "nested * nested_get_array(nested * SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
+                "declgen": "nested *nested_get_array(nested *SH_this +intent(in)) +dimension(sublevels)+intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -5403,13 +5403,13 @@
                                 "dimension": "sublevels",
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_struct_*_cdesc_pointer"
+                            "stmt": "f_getter_struct*_cdesc_pointer"
                         },
                         "SH_this": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -5480,7 +5480,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct_*_cdesc_pointer"
+                            "stmt_name": "f_getter_struct*_cdesc_pointer"
                         }
                     },
                     "SH_this": {
@@ -5508,7 +5508,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },
@@ -5580,7 +5580,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void nested_set_array(nested *SH_this,nested * val)",
-                "declgen": "void nested_set_array(nested * SH_this, nested * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void nested_set_array(nested *SH_this, nested *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "nested_set_array",
                 "options": {},
                 "user_fmt": {
@@ -5603,14 +5603,14 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "val": {
                             "meta": {
                                 "intent": "setter",
                                 "rank": 1
                             },
-                            "stmt": "f_setter_struct_*"
+                            "stmt": "f_setter_struct*"
                         }
                     },
                     "share": {
@@ -5675,7 +5675,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "val": {
@@ -5707,7 +5707,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_struct_*"
+                            "stmt_name": "f_setter_struct*"
                         }
                     }
                 },
@@ -5863,7 +5863,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int passStructByReference(Cstruct1 &arg)",
-                        "declgen": "int passStructByReference(Cstruct1 & arg)",
+                        "declgen": "int passStructByReference(Cstruct1 &arg)",
                         "doxygen": {
                             "description": "Argument is modified by library, defaults to intent(inout).\n"
                         },
@@ -5880,13 +5880,13 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 },
                                 "arg": {
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_struct_&"
+                                    "stmt": "c_inout_struct&"
                                 }
                             },
                             "f": {
@@ -5894,13 +5894,13 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 },
                                 "arg": {
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_struct_&"
+                                    "stmt": "f_inout_struct&"
                                 }
                             },
                             "py": {
@@ -5950,7 +5950,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReference(\t*arg)",
@@ -5987,7 +5987,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -6002,7 +6002,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_native",
                                     "value_var": "SHValue_rv"
                                 }
                             },
@@ -6023,7 +6023,7 @@
                                     "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "c_inout_struct_&"
+                                    "stmt_name": "c_inout_struct&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -6049,7 +6049,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct_&"
+                                    "stmt_name": "f_inout_struct&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -6072,7 +6072,7 @@
                                     "py_var": "SHPy_arg",
                                     "pytmp_var": "SHTPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_inout_struct_&_numpy",
+                                    "stmt": "py_inout_struct&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -6118,7 +6118,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int passStructByReferenceIn(const Cstruct1 &arg)",
-                        "declgen": "int passStructByReferenceIn(const Cstruct1 & arg)",
+                        "declgen": "int passStructByReferenceIn(const Cstruct1 &arg)",
                         "doxygen": {
                             "description": "const defaults to intent(in)\n"
                         },
@@ -6135,13 +6135,13 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "c_function_native_scalar"
+                                    "stmt": "c_function_native"
                                 },
                                 "arg": {
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "c_in_struct_&"
+                                    "stmt": "c_in_struct&"
                                 }
                             },
                             "f": {
@@ -6149,13 +6149,13 @@
                                     "meta": {
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_native_scalar"
+                                    "stmt": "f_function_native"
                                 },
                                 "arg": {
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_struct_&"
+                                    "stmt": "f_in_struct&"
                                 }
                             },
                             "py": {
@@ -6205,7 +6205,7 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native_scalar"
+                                    "stmt_name": "c_function_native"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
@@ -6242,7 +6242,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native_scalar"
+                                    "stmt_name": "f_function_native"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -6257,7 +6257,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHTPy_rv",
                                     "size_var": "SHSize_rv",
-                                    "stmt": "py_function_native_scalar",
+                                    "stmt": "py_function_native",
                                     "value_var": "SHValue_rv"
                                 }
                             },
@@ -6278,7 +6278,7 @@
                                     "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "c_in_struct_&"
+                                    "stmt_name": "c_in_struct&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -6304,7 +6304,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct_&"
+                                    "stmt_name": "f_in_struct&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -6327,7 +6327,7 @@
                                     "py_var": "SHPy_arg",
                                     "pytmp_var": "SHTPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_struct_&_numpy",
+                                    "stmt": "py_in_struct&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -6375,7 +6375,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
-                        "declgen": "void passStructByReferenceInout(Cstruct1 & arg +intent(inout))",
+                        "declgen": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
                         "name": "passStructByReferenceInout",
                         "options": {},
                         "wrap": {
@@ -6395,7 +6395,7 @@
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "c_inout_struct_&"
+                                    "stmt": "c_inout_struct&"
                                 }
                             },
                             "f": {
@@ -6409,7 +6409,7 @@
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_struct_&"
+                                    "stmt": "f_inout_struct&"
                                 }
                             },
                             "py": {
@@ -6481,7 +6481,7 @@
                                     "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "c_inout_struct_&"
+                                    "stmt_name": "c_inout_struct&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -6507,7 +6507,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct_&"
+                                    "stmt_name": "f_inout_struct&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -6530,7 +6530,7 @@
                                     "py_var": "SHPy_arg",
                                     "pytmp_var": "SHTPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_inout_struct_&_numpy",
+                                    "stmt": "py_inout_struct&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -6578,7 +6578,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
-                        "declgen": "void passStructByReferenceOut(Cstruct1 & arg +intent(out))",
+                        "declgen": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
                         "name": "passStructByReferenceOut",
                         "options": {},
                         "wrap": {
@@ -6598,7 +6598,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "c_out_struct_&"
+                                    "stmt": "c_out_struct&"
                                 }
                             },
                             "f": {
@@ -6612,7 +6612,7 @@
                                     "meta": {
                                         "intent": "out"
                                     },
-                                    "stmt": "f_out_struct_&"
+                                    "stmt": "f_out_struct&"
                                 }
                             },
                             "py": {
@@ -6684,7 +6684,7 @@
                                     "cxx_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "c_out_struct_&"
+                                    "stmt_name": "c_out_struct&"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -6710,7 +6710,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_out_struct_&"
+                                    "stmt_name": "f_out_struct&"
                                 },
                                 "fmtpy": {
                                     "PYN_descr": "PY_Cstruct1_array_descr",
@@ -6732,7 +6732,7 @@
                                     "numpy_type": null,
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_out_struct_&_numpy",
+                                    "stmt": "py_out_struct&_numpy",
                                     "value_var": "SHValue_arg"
                                 }
                             }

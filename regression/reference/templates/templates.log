@@ -5,10 +5,10 @@ C c vector(void)
 C f vector(void)
 C c ~vector(void)
 C f ~vector(void)
-C c void push_back(const int & value +intent(in))
-C f void push_back(const int & value +intent(in))
-C c int & at(size_type n)
-C f int & at(size_type n)
+C c void push_back(const int &value +intent(in))
+C f void push_back(const int &value +intent(in))
+C c int &at(size_type n)
+C f int &at(size_type n)
 Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
 class vector<double>
@@ -16,10 +16,10 @@ C c vector(void)
 C f vector(void)
 C c ~vector(void)
 C f ~vector(void)
-C c void push_back(const double & value +intent(in))
-C f void push_back(const double & value +intent(in))
-C c double & at(size_type n)
-C f double & at(size_type n)
+C c void push_back(const double &value +intent(in))
+C f void push_back(const double &value +intent(in))
+C c double &at(size_type n)
+C f double &at(size_type n)
 Close wrapstd_vector_double.h
 Close wrapstd_vector_double.cpp
 class ImplWorker1
@@ -108,24 +108,24 @@ class vector<int>
 typedef size_type
 Fortran vector(void)
 Fortran ~vector(void)
-Fortran void push_back(const int & value +intent(in))
-Fortran int & at(size_type n)
+Fortran void push_back(const int &value +intent(in))
+Fortran int &at(size_type n)
 C-interface f vector(void)
 C-interface f ~vector(void)
-C-interface f void push_back(const int & value +intent(in))
-C-interface c int & at(size_type n)
-C-interface f int & at(size_type n)
+C-interface f void push_back(const int &value +intent(in))
+C-interface c int &at(size_type n)
+C-interface f int &at(size_type n)
 class vector<double>
 typedef size_type
 Fortran vector(void)
 Fortran ~vector(void)
-Fortran void push_back(const double & value +intent(in))
-Fortran double & at(size_type n)
+Fortran void push_back(const double &value +intent(in))
+Fortran double &at(size_type n)
 C-interface f vector(void)
 C-interface f ~vector(void)
-C-interface f void push_back(const double & value +intent(in))
-C-interface c double & at(size_type n)
-C-interface f double & at(size_type n)
+C-interface f void push_back(const double &value +intent(in))
+C-interface c double &at(size_type n)
+C-interface f double &at(size_type n)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f
@@ -134,14 +134,14 @@ Close typestemplates.h
 class vector
 Python method vector(void)
 Python method ~vector(void)
-Python method void push_back(const int & value +intent(in))
-Python method int & at(size_type n)
+Python method void push_back(const int &value +intent(in))
+Python method int &at(size_type n)
 Close pystd_vector_inttype.cpp
 class vector
 Python method vector(void)
 Python method ~vector(void)
-Python method void push_back(const double & value +intent(in))
-Python method double & at(size_type n)
+Python method void push_back(const double &value +intent(in))
+Python method double &at(size_type n)
 Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1

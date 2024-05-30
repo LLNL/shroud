@@ -48,10 +48,10 @@ PY_Cstruct1_cls_tp_del (PY_Cstruct1_cls *self)
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int ifield
-// Statement: py_ctor_native_scalar_numpy
+// Statement: py_ctor_native_numpy
 // ----------------------------------------
 // Argument:  double dfield
-// Statement: py_ctor_native_scalar_numpy
+// Statement: py_ctor_native_numpy
 static int
 PY_Cstruct1_cls_tp_init(
   PY_Cstruct1_cls *self,

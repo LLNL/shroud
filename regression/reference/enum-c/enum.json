@@ -254,14 +254,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "in": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_enum_scalar"
+                            "stmt": "f_in_enum"
                         }
                     },
                     "py": {
@@ -329,7 +329,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -344,7 +344,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -376,7 +376,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum_scalar"
+                            "stmt_name": "f_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum Color",
@@ -397,7 +397,7 @@
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_in",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_enum_scalar",
+                            "stmt": "py_in_enum",
                             "value_var": "SHValue_in"
                         }
                     }
@@ -450,14 +450,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "in": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_enum_scalar"
+                            "stmt": "f_in_enum"
                         }
                     },
                     "py": {
@@ -529,7 +529,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -544,7 +544,7 @@
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_enum_scalar",
+                            "stmt": "py_function_enum",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -576,7 +576,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum_scalar"
+                            "stmt_name": "f_in_enum"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum Color",
@@ -597,7 +597,7 @@
                             "numpy_type": "NPY_SHORT",
                             "py_var": "SHPy_in",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_enum_scalar",
+                            "stmt": "py_in_enum",
                             "value_var": "SHValue_in"
                         }
                     }
@@ -645,7 +645,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnEnumOutArg(enum Color *out+intent(out))",
-                "declgen": "void returnEnumOutArg(enum Color * out +intent(out))",
+                "declgen": "void returnEnumOutArg(enum Color *out +intent(out))",
                 "name": "returnEnumOutArg",
                 "options": {
                     "wrap_python": false
@@ -665,7 +665,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_enum_*"
+                            "stmt": "f_out_enum*"
                         }
                     },
                     "share": {
@@ -724,7 +724,7 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_out_enum_*"
+                            "stmt_name": "f_out_enum*"
                         }
                     }
                 },
@@ -770,7 +770,7 @@
                     "typemap_name": "Color"
                 },
                 "decl": "enum Color returnEnumInOutArg(enum Color *inout+intent(inout))",
-                "declgen": "enum Color returnEnumInOutArg(enum Color * inout +intent(inout))",
+                "declgen": "enum Color returnEnumInOutArg(enum Color *inout +intent(inout))",
                 "name": "returnEnumInOutArg",
                 "options": {
                     "wrap_python": false
@@ -784,13 +784,13 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_enum_scalar"
+                            "stmt": "f_function_enum"
                         },
                         "inout": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_enum_*"
+                            "stmt": "f_inout_enum*"
                         }
                     },
                     "share": {
@@ -848,7 +848,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum_scalar"
+                            "stmt_name": "f_function_enum"
                         }
                     },
                     "inout": {
@@ -875,7 +875,7 @@
                             "i_var": "inout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_inout_enum_*"
+                            "stmt_name": "f_inout_enum*"
                         }
                     }
                 },

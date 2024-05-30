@@ -11,10 +11,10 @@ Close wrapCstruct_as_subclass.h
 Close wrapCstruct_as_subclass.cpp
 C c void BadFstatements(void)
 C f void BadFstatements(void)
-C c void AssumedRank(int * data)
-C f void AssumedRank(int * data +rank(0))
-C f void AssumedRank(int * data +rank(1))
-C f void AssumedRank(int * data +rank(2))
+C c void AssumedRank(int *data)
+C f void AssumedRank(int *data +rank(0))
+C f void AssumedRank(int *data +rank(1))
+C f void AssumedRank(int *data +rank(2))
 Close wraperror.h
 Close wraperror.cpp
 class Cstruct_as_subclass
@@ -31,20 +31,20 @@ C-interface f void set_y1(int val +intent(setter)) +intent(setter)
 C-interface f int get_z1(void) +intent(getter)
 C-interface f void set_z1(int val +intent(setter)) +intent(setter)
 Fortran void BadFstatements(void)
-Fortran void AssumedRank(int * data +rank(0))
-Fortran void AssumedRank(int * data +rank(1))
-Fortran void AssumedRank(int * data +rank(2))
+Fortran void AssumedRank(int *data +rank(0))
+Fortran void AssumedRank(int *data +rank(1))
+Fortran void AssumedRank(int *data +rank(2))
 C-interface c void BadFstatements(void)
 C-interface f void BadFstatements(void)
-C-interface c void AssumedRank(int * data)
-C-interface f void AssumedRank(int * data +rank(0))
-C-interface f void AssumedRank(int * data +rank(1))
-C-interface f void AssumedRank(int * data +rank(2))
+C-interface c void AssumedRank(int *data)
+C-interface f void AssumedRank(int *data +rank(0))
+C-interface f void AssumedRank(int *data +rank(1))
+C-interface f void AssumedRank(int *data +rank(2))
 Close wrapferror.f
 Close utilerror.cpp
 Close typeserror.h
 Python function void BadFstatements(void)
-Python function void AssumedRank(int * data)
+Python function void AssumedRank(int *data)
 Python function void PYGoodFunction(void)
 Close pyerrormodule.cpp
 Close pyerrormodule.hpp

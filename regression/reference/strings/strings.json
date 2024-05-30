@@ -155,7 +155,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_char_scalar"
+                            "stmt": "c_in_char"
                         }
                     },
                     "f": {
@@ -170,7 +170,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_char_scalar"
+                            "stmt": "f_in_char"
                         }
                     },
                     "py": {
@@ -244,7 +244,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_scalar"
+                            "stmt_name": "c_in_char"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -269,7 +269,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_scalar"
+                            "stmt_name": "f_in_char"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -287,7 +287,7 @@
                             "py_var": "SHPy_status",
                             "pytmp_var": "SHTPy_status",
                             "size_var": "SHSize_status",
-                            "stmt": "py_in_char_scalar",
+                            "stmt": "py_in_char",
                             "value_var": "SHValue_status"
                         }
                     }
@@ -353,7 +353,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_char_scalar"
+                            "stmt": "c_in_char"
                         }
                     },
                     "f": {
@@ -368,7 +368,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_char_scalar"
+                            "stmt": "f_in_char"
                         }
                     },
                     "share": {
@@ -429,7 +429,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_scalar"
+                            "stmt_name": "c_in_char"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -454,7 +454,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_scalar"
+                            "stmt_name": "f_in_char"
                         }
                     }
                 },
@@ -498,7 +498,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_scalar"
+                            "stmt": "c_function_char"
                         }
                     },
                     "f": {
@@ -506,7 +506,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_scalar"
+                            "stmt": "f_function_char"
                         }
                     },
                     "py": {
@@ -543,7 +543,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_scalar"
+                            "stmt_name": "c_function_char"
                         },
                         "fmtf": {
                             "C_call_function": "returnChar(\t)",
@@ -577,7 +577,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_scalar"
+                            "stmt_name": "f_function_char"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -592,7 +592,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_char_scalar",
+                            "stmt": "py_function_char",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -657,7 +657,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)",
-                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out), const char * src)",
+                "declgen": "void passCharPtr(char *dest +charlen(40)+intent(out), const char *src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
@@ -689,13 +689,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -710,14 +710,14 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         },
                         "src": {
                             "meta": {
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         }
                     },
                     "py": {
@@ -808,7 +808,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -837,7 +837,7 @@
                             "i_var_len": "SHT_dest_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -856,7 +856,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_dest",
                             "size_var": "SHSize_dest",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_dest"
                         }
                     },
@@ -883,7 +883,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -908,7 +908,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -926,7 +926,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_src",
                             "size_var": "SHSize_src",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_src"
                         }
                     }
@@ -974,7 +974,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
+                "declgen": "void passCharPtrInOut(char *s +intent(inout))",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
@@ -1005,7 +1005,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_char_*"
+                            "stmt": "c_inout_char*"
                         }
                     },
                     "f": {
@@ -1020,7 +1020,7 @@
                                 "api": "buf",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_char_*_buf"
+                            "stmt": "f_inout_char*_buf"
                         }
                     },
                     "py": {
@@ -1101,7 +1101,7 @@
                             "i_var": "s",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_char_*"
+                            "stmt_name": "c_inout_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1134,7 +1134,7 @@
                             "i_var_str": "SHT_s_str",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_char_*_buf"
+                            "stmt_name": "f_inout_char*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1152,7 +1152,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_s",
                             "size_var": "SHSize_s",
-                            "stmt": "py_inout_char_*",
+                            "stmt": "py_inout_char*",
                             "value_var": "SHValue_s"
                         }
                     }
@@ -1187,7 +1187,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr1()",
-                "declgen": "const char * getCharPtr1(void)",
+                "declgen": "const char *getCharPtr1(void)",
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
@@ -1217,7 +1217,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1227,7 +1227,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_cdesc_allocatable"
+                            "stmt": "f_function_char*_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -1275,7 +1275,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr1(\t)",
@@ -1319,7 +1319,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_cdesc_allocatable"
+                            "stmt_name": "f_function_char*_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1335,7 +1335,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_char_*",
+                            "stmt": "py_function_char*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -1373,7 +1373,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "const char * getCharPtr2(void) +len(30)",
+                "declgen": "const char *getCharPtr2(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
@@ -1397,7 +1397,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1407,7 +1407,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_buf_copy"
+                            "stmt": "f_function_char*_buf_copy"
                         }
                     },
                     "py": {
@@ -1457,7 +1457,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr2(\t)",
@@ -1499,7 +1499,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_copy"
+                            "stmt_name": "f_function_char*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1515,7 +1515,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_char_*",
+                            "stmt": "py_function_char*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -1550,7 +1550,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "const char * getCharPtr3(void)",
+                "declgen": "const char *getCharPtr3(void)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1577,7 +1577,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1587,7 +1587,7 @@
                                 "deref": "arg",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_buf_arg"
+                            "stmt": "f_function_char*_buf_arg"
                         }
                     },
                     "py": {
@@ -1635,7 +1635,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr3(\t)",
@@ -1673,7 +1673,7 @@
                             "i_var_len": "noutput",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_buf_arg"
+                            "stmt_name": "f_function_char*_buf_arg"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1689,7 +1689,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_char_*",
+                            "stmt": "py_function_char*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -1728,7 +1728,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr4() +deref(raw)",
-                "declgen": "const char * getCharPtr4(void) +deref(raw)",
+                "declgen": "const char *getCharPtr4(void) +deref(raw)",
                 "doxygen": {
                     "brief": "return a 'const char *' as type(C_PTR)"
                 },
@@ -1746,7 +1746,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1755,7 +1755,7 @@
                                 "deref": "raw",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_raw"
+                            "stmt": "f_function_char*_raw"
                         }
                     },
                     "share": {
@@ -1787,7 +1787,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr4(\t)",
@@ -1822,7 +1822,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_raw"
+                            "stmt_name": "f_function_char*_raw"
                         }
                     }
                 },
@@ -1858,7 +1858,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr5() +deref(pointer)",
-                "declgen": "const char * getCharPtr5(void) +deref(pointer)",
+                "declgen": "const char *getCharPtr5(void) +deref(pointer)",
                 "doxygen": {
                     "brief": "return a 'const char *' as character(:) pointer"
                 },
@@ -1886,7 +1886,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_*"
+                            "stmt": "c_function_char*"
                         }
                     },
                     "f": {
@@ -1896,7 +1896,7 @@
                                 "deref": "pointer",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_*_cdesc_pointer"
+                            "stmt": "f_function_char*_cdesc_pointer"
                         }
                     },
                     "share": {
@@ -1937,7 +1937,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_*"
+                            "stmt_name": "c_function_char*"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr5(\t)",
@@ -1979,7 +1979,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_*_cdesc_pointer"
+                            "stmt_name": "f_function_char*_cdesc_pointer"
                         }
                     }
                 },
@@ -2037,7 +2037,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2047,7 +2047,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt": "f_function_string_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -2099,7 +2099,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringResult(\t)",
@@ -2150,7 +2150,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt_name": "f_function_string_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2165,7 +2165,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_scalar",
+                            "stmt": "py_function_string",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -2221,7 +2221,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2231,7 +2231,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_buf_copy"
+                            "stmt": "f_function_string_buf_copy"
                         }
                     },
                     "py": {
@@ -2285,7 +2285,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringLen(\t)",
@@ -2329,7 +2329,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_buf_copy"
+                            "stmt_name": "f_function_string_buf_copy"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2344,7 +2344,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_scalar",
+                            "stmt": "py_function_string",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -2400,7 +2400,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2410,7 +2410,7 @@
                                 "deref": "arg",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_buf_arg"
+                            "stmt": "f_function_string_buf_arg"
                         }
                     },
                     "py": {
@@ -2462,7 +2462,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringAsArg(\t)",
@@ -2502,7 +2502,7 @@
                             "i_var_len": "noutput",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_buf_arg"
+                            "stmt_name": "f_function_string_buf_arg"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2517,7 +2517,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_scalar",
+                            "stmt": "py_function_string",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -2574,7 +2574,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_scalar"
+                            "stmt": "c_function_string"
                         }
                     },
                     "f": {
@@ -2584,7 +2584,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt": "f_function_string_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -2636,7 +2636,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_scalar"
+                            "stmt_name": "c_function_string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringAlloc(\t)",
@@ -2687,7 +2687,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_scalar_cdesc_allocatable"
+                            "stmt_name": "f_function_string_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2702,7 +2702,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_scalar",
+                            "stmt": "py_function_string",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -2737,7 +2737,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefPure()",
-                "declgen": "const string & getConstStringRefPure(void)",
+                "declgen": "const string &getConstStringRefPure(void)",
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
@@ -2768,7 +2768,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -2778,7 +2778,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_cdesc_allocatable"
+                            "stmt": "f_function_string&_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -2829,7 +2829,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefPure(\t)",
@@ -2880,7 +2880,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2896,7 +2896,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -2935,7 +2935,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLen() +len=30",
-                "declgen": "const string & getConstStringRefLen(void) +len(30)",
+                "declgen": "const string &getConstStringRefLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
@@ -2958,7 +2958,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -2968,7 +2968,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         }
                     },
                     "py": {
@@ -3021,7 +3021,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefLen(\t)",
@@ -3065,7 +3065,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3081,7 +3081,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3117,7 +3117,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "const string & getConstStringRefAsArg(void)",
+                "declgen": "const string &getConstStringRefAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which will be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3143,7 +3143,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -3153,7 +3153,7 @@
                                 "deref": "arg",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_arg"
+                            "stmt": "f_function_string&_buf_arg"
                         }
                     },
                     "py": {
@@ -3204,7 +3204,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefAsArg(\t)",
@@ -3244,7 +3244,7 @@
                             "i_var_len": "noutput",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_arg"
+                            "stmt_name": "f_function_string&_buf_arg"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3260,7 +3260,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3300,7 +3300,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
-                "declgen": "const string & getConstStringRefLenEmpty(void) +len(30)",
+                "declgen": "const string &getConstStringRefLenEmpty(void) +len(30)",
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
@@ -3322,7 +3322,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -3332,7 +3332,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_buf_copy"
+                            "stmt": "f_function_string&_buf_copy"
                         }
                     },
                     "py": {
@@ -3385,7 +3385,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefLenEmpty(\t)",
@@ -3429,7 +3429,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3445,7 +3445,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3480,7 +3480,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
-                "declgen": "const std::string & getConstStringRefAlloc(void)",
+                "declgen": "const std::string &getConstStringRefAlloc(void)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -3506,7 +3506,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_&"
+                            "stmt": "c_function_string&"
                         }
                     },
                     "f": {
@@ -3516,7 +3516,7 @@
                                 "deref": "allocatable",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_&_cdesc_allocatable"
+                            "stmt": "f_function_string&_cdesc_allocatable"
                         }
                     },
                     "py": {
@@ -3567,7 +3567,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_&"
+                            "stmt_name": "c_function_string&"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefAlloc(\t)",
@@ -3618,7 +3618,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3634,7 +3634,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_&",
+                            "stmt": "py_function_string&",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3672,7 +3672,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string * getConstStringPtrLen() +len=30",
-                "declgen": "const string * getConstStringPtrLen(void) +len(30)",
+                "declgen": "const string *getConstStringPtrLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
@@ -3702,7 +3702,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_string_*"
+                            "stmt": "c_function_string*"
                         }
                     },
                     "f": {
@@ -3713,7 +3713,7 @@
                                 "deref": "copy",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_string_*_buf_copy"
+                            "stmt": "f_function_string*_buf_copy"
                         }
                     },
                     "py": {
@@ -3766,7 +3766,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*"
+                            "stmt_name": "c_function_string*"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrLen(\t)",
@@ -3810,7 +3810,7 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_buf_copy"
+                            "stmt_name": "f_function_string*_buf_copy"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3826,7 +3826,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_*",
+                            "stmt": "py_function_string*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3864,7 +3864,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "declgen": "const std::string *getConstStringPtrAlloc(void) +owner(library)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -3891,7 +3891,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "c_function_string_*_library"
+                            "stmt": "c_function_string*_library"
                         }
                     },
                     "f": {
@@ -3902,7 +3902,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "f_function_string_*_cdesc_allocatable_library"
+                            "stmt": "f_function_string*_cdesc_allocatable_library"
                         }
                     },
                     "py": {
@@ -3955,7 +3955,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_library"
+                            "stmt_name": "c_function_string*_library"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
@@ -4006,7 +4006,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_allocatable_library"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_library"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4022,7 +4022,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_*",
+                            "stmt": "py_function_string*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4060,7 +4060,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
-                "declgen": "const std::string * getConstStringPtrOwnsAlloc(void) +owner(caller)",
+                "declgen": "const std::string *getConstStringPtrOwnsAlloc(void) +owner(caller)",
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
@@ -4090,7 +4090,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "c_function_string_*_caller"
+                            "stmt": "c_function_string*_caller"
                         }
                     },
                     "f": {
@@ -4101,7 +4101,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt": "f_function_string*_cdesc_allocatable_caller"
                         }
                     },
                     "py": {
@@ -4154,7 +4154,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_caller"
+                            "stmt_name": "c_function_string*_caller"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
@@ -4205,7 +4205,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_caller"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4221,7 +4221,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_*",
+                            "stmt": "py_function_string*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4260,7 +4260,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
-                "declgen": "const std::string * getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)",
+                "declgen": "const std::string *getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)",
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
@@ -4291,7 +4291,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "c_function_string_*_caller"
+                            "stmt": "c_function_string*_caller"
                         }
                     },
                     "f": {
@@ -4303,7 +4303,7 @@
                                 "intent": "function",
                                 "owner": "caller"
                             },
-                            "stmt": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt": "f_function_string*_cdesc_allocatable_caller"
                         }
                     },
                     "py": {
@@ -4358,7 +4358,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "3",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_caller"
+                            "stmt_name": "c_function_string*_caller"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
@@ -4409,7 +4409,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "3",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_allocatable_caller"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_caller"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4425,7 +4425,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_string_*",
+                            "stmt": "py_function_string*",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4464,7 +4464,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrPointer() +deref(pointer)+owner(library)",
-                "declgen": "const std::string * getConstStringPtrPointer(void) +deref(pointer)+owner(library)",
+                "declgen": "const std::string *getConstStringPtrPointer(void) +deref(pointer)+owner(library)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -4490,7 +4490,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "c_function_string_*_library"
+                            "stmt": "c_function_string*_library"
                         }
                     },
                     "f": {
@@ -4501,7 +4501,7 @@
                                 "intent": "function",
                                 "owner": "library"
                             },
-                            "stmt": "f_function_string_*_cdesc_pointer_library"
+                            "stmt": "f_function_string*_cdesc_pointer_library"
                         }
                     },
                     "share": {
@@ -4546,7 +4546,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string_*_library"
+                            "stmt_name": "c_function_string*_library"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrPointer(\t)",
@@ -4591,7 +4591,7 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_*_cdesc_pointer_library"
+                            "stmt_name": "f_function_string*_cdesc_pointer_library"
                         }
                     }
                 },
@@ -4635,7 +4635,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringConstReference(const std::string & arg1)",
-                "declgen": "void acceptStringConstReference(const std::string & arg1)",
+                "declgen": "void acceptStringConstReference(const std::string &arg1)",
                 "doxygen": {
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
@@ -4664,7 +4664,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_string_&"
+                            "stmt": "c_in_string&"
                         }
                     },
                     "f": {
@@ -4679,7 +4679,7 @@
                                 "api": "buf",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_string_&_buf"
+                            "stmt": "f_in_string&_buf"
                         }
                     },
                     "py": {
@@ -4760,7 +4760,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_&"
+                            "stmt_name": "c_in_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -4789,7 +4789,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_&_buf"
+                            "stmt_name": "f_in_string&_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4807,7 +4807,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_string_&",
+                            "stmt": "py_in_string&",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -4855,7 +4855,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringReferenceOut(std::string & arg1+intent(out))",
-                "declgen": "void acceptStringReferenceOut(std::string & arg1 +intent(out))",
+                "declgen": "void acceptStringReferenceOut(std::string &arg1 +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string reference",
                     "description": "Set out to a constant string.\narg1 is intent(OUT)\nMust copy out.\n"
@@ -4884,7 +4884,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_&"
+                            "stmt": "c_out_string&"
                         }
                     },
                     "f": {
@@ -4899,7 +4899,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_&_buf"
+                            "stmt": "f_out_string&_buf"
                         }
                     },
                     "py": {
@@ -4980,7 +4980,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_&"
+                            "stmt_name": "c_out_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5009,7 +5009,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_&_buf"
+                            "stmt_name": "f_out_string&_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5027,7 +5027,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_string_&",
+                            "stmt": "py_out_string&",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -5072,7 +5072,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringReference(std::string & arg1)",
-                "declgen": "void acceptStringReference(std::string & arg1)",
+                "declgen": "void acceptStringReference(std::string &arg1)",
                 "doxygen": {
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
@@ -5104,7 +5104,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_&"
+                            "stmt": "c_inout_string&"
                         }
                     },
                     "f": {
@@ -5119,7 +5119,7 @@
                                 "api": "buf",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_&_buf"
+                            "stmt": "f_inout_string&_buf"
                         }
                     },
                     "py": {
@@ -5200,7 +5200,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_&"
+                            "stmt_name": "c_inout_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5230,7 +5230,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_&_buf"
+                            "stmt_name": "f_inout_string&_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5248,7 +5248,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_string_&",
+                            "stmt": "py_inout_string&",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -5294,7 +5294,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerConst(const std::string * arg1)",
-                "declgen": "void acceptStringPointerConst(const std::string * arg1)",
+                "declgen": "void acceptStringPointerConst(const std::string *arg1)",
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
@@ -5322,7 +5322,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_string_*"
+                            "stmt": "c_in_string*"
                         }
                     },
                     "f": {
@@ -5337,7 +5337,7 @@
                                 "api": "buf",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_string_*_buf"
+                            "stmt": "f_in_string*_buf"
                         }
                     },
                     "py": {
@@ -5418,7 +5418,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_*"
+                            "stmt_name": "c_in_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5447,7 +5447,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_*_buf"
+                            "stmt_name": "f_in_string*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5465,7 +5465,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_string_*",
+                            "stmt": "py_in_string*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -5510,7 +5510,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointer(std::string * arg1)",
-                "declgen": "void acceptStringPointer(std::string * arg1)",
+                "declgen": "void acceptStringPointer(std::string *arg1)",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
@@ -5539,7 +5539,7 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_*"
+                            "stmt": "c_inout_string*"
                         }
                     },
                     "f": {
@@ -5554,7 +5554,7 @@
                                 "api": "buf",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_*_buf"
+                            "stmt": "f_inout_string*_buf"
                         }
                     },
                     "py": {
@@ -5635,7 +5635,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_*"
+                            "stmt_name": "c_inout_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5665,7 +5665,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_*_buf"
+                            "stmt_name": "f_inout_string*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5683,7 +5683,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_string_*",
+                            "stmt": "py_inout_string*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -5731,7 +5731,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchStringPointer(std::string * arg1 +intent(out))",
-                "declgen": "void fetchStringPointer(std::string * arg1 +intent(out))",
+                "declgen": "void fetchStringPointer(std::string *arg1 +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\n"
@@ -5760,7 +5760,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_*"
+                            "stmt": "c_out_string*"
                         }
                     },
                     "f": {
@@ -5775,7 +5775,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_*_buf"
+                            "stmt": "f_out_string*_buf"
                         }
                     },
                     "py": {
@@ -5856,7 +5856,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_*"
+                            "stmt_name": "c_out_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -5885,7 +5885,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_*_buf"
+                            "stmt_name": "f_out_string*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5903,7 +5903,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_string_*",
+                            "stmt": "py_out_string*",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -5966,7 +5966,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerLen(std::string * arg1, int *nlen+intent(out))",
-                "declgen": "void acceptStringPointerLen(std::string * arg1, int * nlen +intent(out))",
+                "declgen": "void acceptStringPointerLen(std::string *arg1, int *nlen +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
@@ -5996,13 +5996,13 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_*"
+                            "stmt": "c_inout_string*"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -6017,13 +6017,13 @@
                                 "api": "buf",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_*_buf"
+                            "stmt": "f_inout_string*_buf"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "py": {
@@ -6114,7 +6114,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_*"
+                            "stmt_name": "c_inout_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6144,7 +6144,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_*_buf"
+                            "stmt_name": "f_inout_string*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6162,7 +6162,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_string_*",
+                            "stmt": "py_inout_string*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -6189,7 +6189,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6214,7 +6214,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6232,7 +6232,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nlen",
                             "size_var": "SHSize_nlen",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_nlen"
                         }
                     }
@@ -6298,7 +6298,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchStringPointerLen(std::string * arg1 +intent(out), int *nlen+intent(out))",
-                "declgen": "void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent(out))",
+                "declgen": "void fetchStringPointerLen(std::string *arg1 +intent(out), int *nlen +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(out)",
                     "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
@@ -6327,13 +6327,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_*"
+                            "stmt": "c_out_string*"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         }
                     },
                     "f": {
@@ -6348,13 +6348,13 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_*_buf"
+                            "stmt": "f_out_string*_buf"
                         },
                         "nlen": {
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*"
+                            "stmt": "f_out_native*"
                         }
                     },
                     "py": {
@@ -6445,7 +6445,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_*"
+                            "stmt_name": "c_out_string*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6474,7 +6474,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_*_buf"
+                            "stmt_name": "f_out_string*_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6492,7 +6492,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_string_*",
+                            "stmt": "py_out_string*",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -6519,7 +6519,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6544,7 +6544,7 @@
                             "i_var": "nlen",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*"
+                            "stmt_name": "f_out_native*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6562,7 +6562,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nlen",
                             "size_var": "SHSize_nlen",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_nlen"
                         }
                     }
@@ -6624,14 +6624,14 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg1": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_string_scalar"
+                            "stmt": "c_in_string"
                         }
                     },
                     "f": {
@@ -6639,7 +6639,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg1": {
                             "meta": {
@@ -6647,7 +6647,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_string_scalar_buf"
+                            "stmt": "f_in_string_buf"
                         }
                     },
                     "py": {
@@ -6708,7 +6708,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringInstance(\tSHCXX_arg1)",
@@ -6746,7 +6746,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -6761,7 +6761,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -6788,7 +6788,7 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string_scalar"
+                            "stmt_name": "c_in_string"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -6819,7 +6819,7 @@
                             "i_var_len": "SHT_arg1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string_scalar_buf"
+                            "stmt_name": "f_in_string_buf"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -6836,7 +6836,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_in_string_scalar",
+                            "stmt": "py_in_string",
                             "value_var": "SHValue_arg1"
                         }
                     }
@@ -6902,7 +6902,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))",
-                "declgen": "void returnStrings(std::string & arg1 +intent(out), std::string & arg2 +intent(out))",
+                "declgen": "void returnStrings(std::string &arg1 +intent(out), std::string &arg2 +intent(out))",
                 "doxygen": {
                     "brief": "Test Python returning multiple std::string arguments."
                 },
@@ -6968,7 +6968,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_string_&",
+                            "stmt": "py_out_string&",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -6989,7 +6989,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_out_string_&",
+                            "stmt": "py_out_string&",
                             "value_var": "SHValue_arg2"
                         }
                     }
@@ -7057,7 +7057,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchArrayStringArg( std::string **strs +intent(out)+dimension(nstrs), int *nstrs+intent(out)+hidden);",
-                "declgen": "void fetchArrayStringArg(std::string * * strs +dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))",
+                "declgen": "void fetchArrayStringArg(std::string **strs +dimension(nstrs)+intent(out), int *nstrs +hidden+intent(out))",
                 "doxygen": {
                     "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\n"
                 },
@@ -7090,7 +7090,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "strs": {
                             "meta": {
@@ -7102,7 +7102,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_**"
+                            "stmt": "c_out_string**"
                         }
                     },
                     "f": {
@@ -7117,7 +7117,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "strs": {
                             "meta": {
@@ -7131,7 +7131,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_**_cdesc_copy"
+                            "stmt": "f_out_string**_cdesc_copy"
                         }
                     },
                     "share": {
@@ -7211,7 +7211,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7235,7 +7235,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "strs": {
@@ -7265,7 +7265,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_**"
+                            "stmt_name": "c_out_string**"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7303,7 +7303,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_**_cdesc_copy"
+                            "stmt_name": "f_out_string**_cdesc_copy"
                         }
                     }
                 },
@@ -7373,7 +7373,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchArrayStringAlloc( std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable), int *nstrs+intent(out)+hidden);",
-                "declgen": "void fetchArrayStringAlloc(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out), int * nstrs +hidden+intent(out))",
+                "declgen": "void fetchArrayStringAlloc(std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out), int *nstrs +hidden+intent(out))",
                 "doxygen": {
                     "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\nThe defered length is set to the maximum string length.\n"
                 },
@@ -7409,7 +7409,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "strs": {
                             "meta": {
@@ -7421,7 +7421,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_**"
+                            "stmt": "c_out_string**"
                         }
                     },
                     "f": {
@@ -7436,7 +7436,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "strs": {
                             "meta": {
@@ -7450,7 +7450,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_**_cdesc_allocatable"
+                            "stmt": "f_out_string**_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -7530,7 +7530,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7554,7 +7554,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "strs": {
@@ -7584,7 +7584,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_**"
+                            "stmt_name": "c_out_string**"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7630,7 +7630,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_**_cdesc_allocatable"
+                            "stmt_name": "f_out_string**_cdesc_allocatable"
                         }
                     }
                 },
@@ -7701,7 +7701,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchArrayStringAllocLen( std::string **strs +intent(out)+len(20)+dimension(nstrs)+deref(allocatable), int *nstrs+intent(out)+hidden);",
-                "declgen": "void fetchArrayStringAllocLen(std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20), int * nstrs +hidden+intent(out))",
+                "declgen": "void fetchArrayStringAllocLen(std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20), int *nstrs +hidden+intent(out))",
                 "doxygen": {
                     "description": "Copy output into argument strs which must be large enough\nto hold values.  Excess values will be truncated.\nThe nstrs argument is the length of the array.\nIt is associated with strs via the dimension(nstrs) attribute.\n+hidden indicates that it is not part of the Fortran API.\nThe defered length is set to the len attribute.\n"
                 },
@@ -7737,7 +7737,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_native_*"
+                            "stmt": "c_out_native*"
                         },
                         "strs": {
                             "meta": {
@@ -7749,7 +7749,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "c_out_string_**"
+                            "stmt": "c_out_string**"
                         }
                     },
                     "f": {
@@ -7764,7 +7764,7 @@
                                 "hidden": true,
                                 "intent": "out"
                             },
-                            "stmt": "f_out_native_*_hidden"
+                            "stmt": "f_out_native*_hidden"
                         },
                         "strs": {
                             "meta": {
@@ -7778,7 +7778,7 @@
                                 "dimension": "nstrs",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_string_**_cdesc_allocatable"
+                            "stmt": "f_out_string**_cdesc_allocatable"
                         }
                     },
                     "share": {
@@ -7858,7 +7858,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_out_native_*"
+                            "stmt_name": "c_out_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7882,7 +7882,7 @@
                             "i_var": "nstrs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native_*_hidden"
+                            "stmt_name": "f_out_native*_hidden"
                         }
                     },
                     "strs": {
@@ -7914,7 +7914,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_string_**"
+                            "stmt_name": "c_out_string**"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -7961,7 +7961,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_string_**_cdesc_allocatable"
+                            "stmt_name": "f_out_string**_cdesc_allocatable"
                         }
                     }
                 },
@@ -8007,7 +8007,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "char returnMany(int *arg1 +intent(out))",
-                "declgen": "char returnMany(int * arg1 +intent(out))",
+                "declgen": "char returnMany(int *arg1 +intent(out))",
                 "doxygen": {
                     "description": "Test Py_BuildValue with multiple values.\n"
                 },
@@ -8072,7 +8072,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
-                "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
+                "declgen": "void explicit1(char *name +intent(in)+len_trim(AAlen))",
                 "name": "explicit1",
                 "options": {},
                 "user_fmt": {
@@ -8095,7 +8095,7 @@
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -8110,7 +8110,7 @@
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         }
                     },
                     "py": {
@@ -8182,7 +8182,7 @@
                             "cxx_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8207,7 +8207,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -8225,7 +8225,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name",
-                            "stmt": "py_in_char_*",
+                            "stmt": "py_in_char*",
                             "value_var": "SHValue_name"
                         }
                     }
@@ -8275,7 +8275,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
-                "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
+                "declgen": "void explicit2(char *name +intent(out)+len(AAtrim))",
                 "helpers": {
                     "c": [
                         "char_blank_fill"
@@ -8302,7 +8302,7 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         }
                     },
                     "f": {
@@ -8317,7 +8317,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         }
                     },
                     "share": {
@@ -8388,7 +8388,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8419,7 +8419,7 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         }
                     }
                 },
@@ -8483,7 +8483,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_char_scalar"
+                            "stmt": "c_in_char"
                         }
                     },
                     "f": {
@@ -8498,7 +8498,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_char_scalar"
+                            "stmt": "f_in_char"
                         }
                     },
                     "py": {
@@ -8572,7 +8572,7 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_scalar"
+                            "stmt_name": "c_in_char"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -8597,7 +8597,7 @@
                             "i_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_scalar"
+                            "stmt_name": "f_in_char"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -8615,7 +8615,7 @@
                             "py_var": "SHPy_status",
                             "pytmp_var": "SHTPy_status",
                             "size_var": "SHSize_status",
-                            "stmt": "py_in_char_scalar",
+                            "stmt": "py_in_char",
                             "value_var": "SHValue_status"
                         }
                     }
@@ -8663,7 +8663,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_char_scalar"
+                            "stmt": "c_function_char"
                         }
                     },
                     "f": {
@@ -8671,7 +8671,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_char_scalar"
+                            "stmt": "f_function_char"
                         }
                     },
                     "py": {
@@ -8708,7 +8708,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char_scalar"
+                            "stmt_name": "c_function_char"
                         },
                         "fmtf": {
                             "C_call_function": "CreturnChar(\t)",
@@ -8742,7 +8742,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char_scalar"
+                            "stmt_name": "f_function_char"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -8757,7 +8757,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_char_scalar",
+                            "stmt": "py_function_char",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -8824,7 +8824,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src+blanknull)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +blanknull)",
+                "declgen": "void CpassCharPtr(char *dest +intent(out), const char *src +blanknull)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\nIf src is a blank string, pass a NULL pointer to C library function.\n"
@@ -8858,13 +8858,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -8879,7 +8879,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         },
                         "src": {
                             "meta": {
@@ -8887,7 +8887,7 @@
                                 "blanknull": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_buf"
+                            "stmt": "f_in_char*_buf"
                         }
                     },
                     "share": {
@@ -8961,7 +8961,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -8990,7 +8990,7 @@
                             "i_var_len": "SHT_dest_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         }
                     },
                     "src": {
@@ -9016,7 +9016,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9049,7 +9049,7 @@
                             "i_var_str": "SHT_src_str",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_buf"
+                            "stmt_name": "f_in_char*_buf"
                         }
                     }
                 },
@@ -9111,7 +9111,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtrBlank(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtrBlank(char * dest +intent(out), const char * src)",
+                "declgen": "void CpassCharPtrBlank(char *dest +intent(out), const char *src)",
                 "doxygen": {
                     "brief": "Test F_blanknull option"
                 },
@@ -9144,13 +9144,13 @@
                             "meta": {
                                 "intent": "out"
                             },
-                            "stmt": "c_out_char_*"
+                            "stmt": "c_out_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -9165,7 +9165,7 @@
                                 "api": "buf",
                                 "intent": "out"
                             },
-                            "stmt": "f_out_char_*_buf"
+                            "stmt": "f_out_char*_buf"
                         },
                         "src": {
                             "meta": {
@@ -9173,7 +9173,7 @@
                                 "blanknull": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_buf"
+                            "stmt": "f_in_char*_buf"
                         }
                     },
                     "share": {
@@ -9247,7 +9247,7 @@
                             "i_var": "dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_char_*"
+                            "stmt_name": "c_out_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9276,7 +9276,7 @@
                             "i_var_len": "SHT_dest_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char_*_buf"
+                            "stmt_name": "f_out_char*_buf"
                         }
                     },
                     "src": {
@@ -9302,7 +9302,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9335,7 +9335,7 @@
                             "i_var_str": "SHT_src_str",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_buf"
+                            "stmt_name": "f_in_char*_buf"
                         }
                     }
                 },
@@ -9397,7 +9397,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
-                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name)",
+                "declgen": "void PostDeclare(int *count +intent(in)+rank(1), std::string &name)",
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
@@ -9429,13 +9429,13 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "c_in_native_*"
+                            "stmt": "c_in_native*"
                         },
                         "name": {
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "c_inout_string_&"
+                            "stmt": "c_inout_string&"
                         }
                     },
                     "f": {
@@ -9450,14 +9450,14 @@
                                 "intent": "in",
                                 "rank": 1
                             },
-                            "stmt": "f_in_native_*"
+                            "stmt": "f_in_native*"
                         },
                         "name": {
                             "meta": {
                                 "api": "buf",
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_string_&_buf"
+                            "stmt": "f_inout_string&_buf"
                         }
                     },
                     "py": {
@@ -9554,7 +9554,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmt_name": "c_in_native_*"
+                            "stmt_name": "c_in_native*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9583,7 +9583,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(count)",
-                            "stmt_name": "f_in_native_*"
+                            "stmt_name": "f_in_native*"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -9603,7 +9603,7 @@
                             "pytmp_var": "SHTPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_in_native_*_list",
+                            "stmt": "py_in_native*_list",
                             "value_var": "SHValue_count"
                         }
                     },
@@ -9630,7 +9630,7 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_inout_string_&"
+                            "stmt_name": "c_inout_string&"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9660,7 +9660,7 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_string_&_buf"
+                            "stmt_name": "f_inout_string&_buf"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -9678,7 +9678,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name",
-                            "stmt": "py_inout_string_&",
+                            "stmt": "py_inout_string&",
                             "value_var": "SHValue_name"
                         }
                     }
@@ -9724,7 +9724,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int CpassCharPtrNotrim(const char *src)",
-                "declgen": "int CpassCharPtrNotrim(const char * src)",
+                "declgen": "int CpassCharPtrNotrim(const char *src)",
                 "doxygen": {
                     "brief": "NULL terminate input string in C, not in Fortran."
                 },
@@ -9749,13 +9749,13 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -9763,7 +9763,7 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "src": {
                             "meta": {
@@ -9771,7 +9771,7 @@
                                 "ftrim_char_in": false,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_buf"
+                            "stmt": "f_in_char*_buf"
                         }
                     },
                     "share": {
@@ -9818,7 +9818,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrNotrim(\tSHT_src_str)",
@@ -9856,7 +9856,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "src": {
@@ -9882,7 +9882,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -9914,7 +9914,7 @@
                             "i_var_str": "SHT_src_str",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_buf"
+                            "stmt_name": "f_in_char*_buf"
                         }
                     }
                 },
@@ -9976,7 +9976,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int CpassCharPtrCAPI(void *addr, const char *src +api(capi))",
-                "declgen": "int CpassCharPtrCAPI(void * addr, const char * src +api(capi))",
+                "declgen": "int CpassCharPtrCAPI(void *addr, const char *src +api(capi))",
                 "doxygen": {
                     "brief": "Do not NULL terminate input string",
                     "description": "The C library function should get the same address\nfor addr and src.\nUsed when the C function needs the true address of the argument.\nSkips null-termination. Useful to create an interface for\na function which is already callable by Fortran.\nFor example, the length is passed explicitly.\nThis example will not create a Fortran wrapper since C can be\ncalled directly.\n"
@@ -9995,20 +9995,20 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "addr": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_void_*"
+                            "stmt": "c_in_void*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -10016,21 +10016,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "addr": {
                             "meta": {
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void_*"
+                            "stmt": "f_in_void*"
                         },
                         "src": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_capi"
+                            "stmt": "f_in_char*_capi"
                         }
                     },
                     "share": {
@@ -10074,7 +10074,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
@@ -10111,7 +10111,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "addr": {
@@ -10131,7 +10131,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void_*"
+                            "stmt_name": "c_in_void*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -10155,7 +10155,7 @@
                             "i_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void_*"
+                            "stmt_name": "f_in_void*"
                         }
                     },
                     "src": {
@@ -10175,7 +10175,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -10200,7 +10200,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char*_capi"
                         }
                     }
                 },
@@ -10263,7 +10263,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))",
-                "declgen": "int CpassCharPtrCAPI2(const char * in, const char * src +api(capi))",
+                "declgen": "int CpassCharPtrCAPI2(const char *in, const char *src +api(capi))",
                 "doxygen": {
                     "brief": "Mix api(buf) and api(capi)"
                 },
@@ -10281,19 +10281,19 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "in": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         },
                         "src": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_char_*"
+                            "stmt": "c_in_char*"
                         }
                     },
                     "f": {
@@ -10301,21 +10301,21 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "in": {
                             "meta": {
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*"
+                            "stmt": "f_in_char*"
                         },
                         "src": {
                             "meta": {
                                 "api": "capi",
                                 "intent": "in"
                             },
-                            "stmt": "f_in_char_*_capi"
+                            "stmt": "f_in_char*_capi"
                         }
                     },
                     "share": {
@@ -10358,7 +10358,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI2(\tin,\t src)",
@@ -10395,7 +10395,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "in": {
@@ -10415,7 +10415,7 @@
                             "cxx_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -10440,7 +10440,7 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*"
+                            "stmt_name": "f_in_char*"
                         }
                     },
                     "src": {
@@ -10460,7 +10460,7 @@
                             "cxx_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_char_*"
+                            "stmt_name": "c_in_char*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -10485,7 +10485,7 @@
                             "i_var": "src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char_*_capi"
+                            "stmt_name": "f_in_char*_capi"
                         }
                     }
                 },

@@ -30,13 +30,13 @@ static void ShroudCharBlankFill(char *dest, int ndest)
  */
 // ----------------------------------------
 // Function:  int passStruct2
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
     int SHT_outbuf_len)
 {
@@ -49,13 +49,13 @@ int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
 
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
-// Statement: f_function_struct_scalar
+// Statement: f_function_struct
 // ----------------------------------------
 // Argument:  int i
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void STR_returnStructByValue_bufferify(int i, double d,
     Cstruct1 *SHC_rv)
 {
@@ -71,13 +71,13 @@ void STR_returnStructByValue_bufferify(int i, double d,
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1
-// Statement: f_function_struct_*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int i
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void STR_returnStructPtr1_bufferify(int i, double d,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -98,16 +98,16 @@ void STR_returnStructPtr1_bufferify(int i, double d,
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
-// Statement: f_function_struct_*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer
 // ----------------------------------------
 // Argument:  int i
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  double d
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
-// Statement: f_out_char_*_buf
+// Statement: f_out_char*_buf
 void STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
     int SHT_outbuf_len, STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -128,7 +128,7 @@ void STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtrArray +dimension(2)
-// Statement: f_function_struct_*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer
 void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.returnStructPtrArray_bufferify
@@ -144,7 +144,7 @@ void STR_returnStructPtrArray_bufferify(STR_SHROUD_array *SHT_rv_cdesc)
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
-// Statement: f_function_struct_*_cdesc_pointer
+// Statement: f_function_struct*_cdesc_pointer
 void STR_get_global_struct_list_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -160,7 +160,7 @@ void STR_get_global_struct_list_bufferify(
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
-// Statement: f_function_shadow_*_capptr
+// Statement: f_function_shadow*_capptr
 // start STR_Create_Cstruct_as_class_bufferify
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_bufferify(
     STR_Cstruct_as_class * SHC_rv)
@@ -176,13 +176,13 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_bufferify(
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
-// Statement: f_function_shadow_*_capptr
+// Statement: f_function_shadow*_capptr
 // ----------------------------------------
 // Argument:  int x
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  int y
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args_bufferify(int x,
     int y, STR_Cstruct_as_class * SHC_rv)
 {
@@ -196,7 +196,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args_bufferify(int x,
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Return_Cstruct_as_class
-// Statement: f_function_shadow_*_capsule
+// Statement: f_function_shadow*_capsule
 void STR_Return_Cstruct_as_class_bufferify(
     STR_Cstruct_as_class * SHC_rv)
 {
@@ -209,13 +209,13 @@ void STR_Return_Cstruct_as_class_bufferify(
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Return_Cstruct_as_class_args
-// Statement: f_function_shadow_*_capsule
+// Statement: f_function_shadow*_capsule
 // ----------------------------------------
 // Argument:  int x
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  int y
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void STR_Return_Cstruct_as_class_args_bufferify(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
@@ -228,10 +228,10 @@ void STR_Return_Cstruct_as_class_args_bufferify(int x, int y,
 
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
-// Statement: f_function_native_scalar
+// Statement: f_function_native
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
-// Statement: f_in_shadow_*
+// Statement: f_in_shadow*
 int STR_Cstruct_as_class_sum_bufferify(STR_Cstruct_as_class * point)
 {
     // splicer begin function.Cstruct_as_class_sum_bufferify
@@ -244,16 +244,16 @@ int STR_Cstruct_as_class_sum_bufferify(STR_Cstruct_as_class * point)
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
-// Statement: f_function_shadow_*_capptr
+// Statement: f_function_shadow*_capptr
 // ----------------------------------------
 // Argument:  int x
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  int y
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  int z
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args_bufferify(
     int x, int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
@@ -268,16 +268,16 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args_bufferify(
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Return_Cstruct_as_subclass_args
-// Statement: f_function_shadow_*_capsule
+// Statement: f_function_shadow*_capsule
 // ----------------------------------------
 // Argument:  int x
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  int y
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 // ----------------------------------------
 // Argument:  int z
-// Statement: f_in_native_scalar
+// Statement: f_in_native
 void STR_Return_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
     STR_Cstruct_as_subclass * SHC_rv)
 {
@@ -292,10 +292,10 @@ void STR_Return_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
 // Generated by getter/setter
 // ----------------------------------------
 // Function:  const double * Cstruct_ptr_get_const_dvalue +intent(getter)
-// Statement: f_getter_native_*_pointer
+// Statement: f_getter_native*_pointer
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)
 {
     // splicer begin function.Cstruct_ptr_get_const_dvalue
@@ -310,10 +310,10 @@ const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  Cstruct_ptr * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  const double * val +intent(setter)
-// Statement: f_setter_native_*
+// Statement: f_setter_native*
 void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
     const double * val)
 {
@@ -326,10 +326,10 @@ void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
 // Generated by getter/setter
 // ----------------------------------------
 // Function:  int * Cstruct_list_get_ivalue +dimension(nitems+nitems)+intent(getter)
-// Statement: f_getter_native_*_cdesc_pointer
+// Statement: f_getter_native*_cdesc_pointer
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 void STR_Cstruct_list_get_ivalue(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -349,10 +349,10 @@ void STR_Cstruct_list_get_ivalue(Cstruct_list * SH_this,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  int * val +intent(setter)+rank(1)
-// Statement: f_setter_native_*
+// Statement: f_setter_native*
 void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 {
     // splicer begin function.Cstruct_list_set_ivalue
@@ -364,10 +364,10 @@ void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val)
 // Generated by getter/setter
 // ----------------------------------------
 // Function:  double * Cstruct_list_get_dvalue +dimension(nitems*TWO)+intent(getter)
-// Statement: f_getter_native_*_cdesc_pointer
+// Statement: f_getter_native*_cdesc_pointer
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 void STR_Cstruct_list_get_dvalue(Cstruct_list * SH_this,
     STR_SHROUD_array *SHT_rv_cdesc)
 {
@@ -387,10 +387,10 @@ void STR_Cstruct_list_get_dvalue(Cstruct_list * SH_this,
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  Cstruct_list * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  double * val +intent(setter)+rank(1)
-// Statement: f_setter_native_*
+// Statement: f_setter_native*
 void STR_Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val)
 {
     // splicer begin function.Cstruct_list_set_dvalue

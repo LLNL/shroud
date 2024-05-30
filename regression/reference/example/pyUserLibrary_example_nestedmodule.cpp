@@ -56,10 +56,10 @@ PP_local_function1(
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: py_in_string_&
+// Statement: py_in_string&
 static char PP_isNameValid__doc__[] =
 "documentation"
 ;
@@ -100,7 +100,7 @@ fail:
 
 // ----------------------------------------
 // Function:  bool isInitialized
-// Statement: py_function_bool_scalar
+// Statement: py_function_bool
 static char PP_isInitialized__doc__[] =
 "documentation"
 ;
@@ -133,7 +133,7 @@ fail:
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: py_in_string_&
+// Statement: py_in_string&
 static PyObject *
 PP_test_names(
   PyObject *SHROUD_UNUSED(self),
@@ -163,10 +163,10 @@ PP_test_names(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  const std::string & name
-// Statement: py_in_string_&
+// Statement: py_in_string&
 // ----------------------------------------
 // Argument:  int flag
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static PyObject *
 PP_test_names_flag(
   PyObject *SHROUD_UNUSED(self),
@@ -198,10 +198,10 @@ PP_test_names_flag(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int i=1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  long j=2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PP_testoptional_2__doc__[] =
 "documentation"
 ;
@@ -246,7 +246,7 @@ PP_testoptional_2(
 
 // ----------------------------------------
 // Function:  size_t test_size_t
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PP_test_size_t__doc__[] =
 "documentation"
 ;
@@ -274,7 +274,7 @@ PP_test_size_t(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  MPI_Comm comm
-// Statement: py_in_unknown_scalar
+// Statement: py_in_unknown
 #ifdef HAVE_MPI
 static PyObject *
 PP_testmpi_mpi(
@@ -462,34 +462,34 @@ PP_FuncPtr5(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname2 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname3 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname4 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname5 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname6 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname7 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname8 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname9 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * verylongname10 +intent(inout)
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 static char PP_verylongfunctionname1__doc__[] =
 "documentation"
 ;
@@ -549,37 +549,37 @@ PP_verylongfunctionname1(
 
 // ----------------------------------------
 // Function:  int verylongfunctionname2
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  int verylongname1
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname2
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname3
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname4
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname5
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname6
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname7
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname8
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname9
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 // ----------------------------------------
 // Argument:  int verylongname10
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PP_verylongfunctionname2__doc__[] =
 "documentation"
 ;
@@ -640,10 +640,10 @@ PP_verylongfunctionname2(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
-// Statement: py_in_native_*_numpy
+// Statement: py_in_native*_numpy
 // ----------------------------------------
 // Argument:  double * out +dimension(shape(in))+intent(out)
-// Statement: py_out_native_*_numpy
+// Statement: py_out_native*_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
 // Exact:     py_default

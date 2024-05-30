@@ -1068,12 +1068,14 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if c_meta["api"] == 'cfi':
                 any_cfi = True
 
-            arg_typemap = arg.typemap  # XXX - look up vector
-
+            arg_typemap = arg.typemap
             self.header_impl.add_typemap_list(arg_typemap.impl_header)
-                    
-            arg_typemap, junk = statements.lookup_c_statements(arg)
-            header_typedef_nodes[arg_typemap.name] = arg_typemap
+            
+            typemaps = statements.collect_arg_typemaps(arg)
+            for ntypemap in typemaps:
+#                self.header_impl.add_typemap_list(ntypemap.impl_header)
+                header_typedef_nodes[ntypemap.name] = ntypemap
+
             hidden = c_meta["hidden"]
 
             arg_stmt = arg_bind.stmt
@@ -1082,7 +1084,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
             if arg_typemap.is_enum:
                 # enums use the ci_type field.
-                # make sure awrapper is written, and make sure a
+                # make sure a wrapper is written, and make sure a
                 # a C and C bufferify functions are created.
                 need_wrapper = True
                 stmt_indexes.append(wlang)

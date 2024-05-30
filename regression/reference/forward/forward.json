@@ -97,7 +97,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "c_ctor_shadow_scalar_capptr"
+                                    "stmt": "c_ctor_shadow_capptr"
                                 }
                             },
                             "f": {
@@ -106,7 +106,7 @@
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
-                                    "stmt": "f_ctor_shadow_scalar_capptr"
+                                    "stmt": "f_ctor_shadow_capptr"
                                 }
                             },
                             "lua": {
@@ -154,7 +154,7 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -194,7 +194,7 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_scalar_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "FOR_Class2 *",
@@ -202,7 +202,7 @@
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor_scalar"
+                                    "stmt": "lua_ctor"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -332,7 +332,7 @@
                                     "stmt_name": "f_dtor"
                                 },
                                 "fmtl": {
-                                    "stmt": "lua_dtor_scalar"
+                                    "stmt": "lua_dtor"
                                 }
                             }
                         },
@@ -385,7 +385,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void func1(tutorial::Class1 *arg +intent(in))",
-                        "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
+                        "declgen": "void func1(tutorial::Class1 *arg +intent(in))",
                         "name": "func1",
                         "options": {},
                         "wrap": {
@@ -406,7 +406,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "c_in_shadow_*"
+                                    "stmt": "c_in_shadow*"
                                 }
                             },
                             "f": {
@@ -420,7 +420,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_shadow_*"
+                                    "stmt": "f_in_shadow*"
                                 }
                             },
                             "lua": {
@@ -507,7 +507,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow_*"
+                                    "stmt_name": "c_in_shadow*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -533,7 +533,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -547,7 +547,7 @@
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
                                     "pop_expr": "static_cast<tutorial::Class1 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
-                                    "stmt": "lua_in_shadow_*"
+                                    "stmt": "lua_in_shadow*"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PY_Class1_Type",
@@ -567,7 +567,7 @@
                                     "py_object": "PyObject",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_shadow_*",
+                                    "stmt": "py_in_shadow*",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -622,7 +622,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void acceptClass3(Class3 *arg +intent(in))",
-                        "declgen": "void acceptClass3(Class3 * arg +intent(in))",
+                        "declgen": "void acceptClass3(Class3 *arg +intent(in))",
                         "name": "acceptClass3",
                         "options": {},
                         "wrap": {
@@ -643,7 +643,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "c_in_shadow_*"
+                                    "stmt": "c_in_shadow*"
                                 }
                             },
                             "f": {
@@ -657,7 +657,7 @@
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_shadow_*"
+                                    "stmt": "f_in_shadow*"
                                 }
                             },
                             "lua": {
@@ -744,7 +744,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow_*"
+                                    "stmt_name": "c_in_shadow*"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -770,7 +770,7 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow_*"
+                                    "stmt_name": "f_in_shadow*"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -784,7 +784,7 @@
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
                                     "pop_expr": "static_cast<forward::Class3 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
-                                    "stmt": "lua_in_shadow_*"
+                                    "stmt": "lua_in_shadow*"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",
@@ -806,7 +806,7 @@
                                     "py_object": "PY_Class3",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
-                                    "stmt": "py_in_shadow_*",
+                                    "stmt": "py_in_shadow*",
                                     "value_var": "SHValue_arg"
                                 }
                             }
@@ -918,7 +918,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "declgen": "int passStruct1(const Cstruct1 *arg)",
                 "name": "passStruct1",
                 "options": {
                     "wrap_lua": false,
@@ -934,13 +934,13 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "c_function_native_scalar"
+                            "stmt": "c_function_native"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "c_in_struct_*"
+                            "stmt": "c_in_struct*"
                         }
                     },
                     "f": {
@@ -948,13 +948,13 @@
                             "meta": {
                                 "intent": "function"
                             },
-                            "stmt": "f_function_native_scalar"
+                            "stmt": "f_function_native"
                         },
                         "arg": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -992,7 +992,7 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native_scalar"
+                            "stmt_name": "c_function_native"
                         },
                         "fmtf": {
                             "C_call_function": "forward::passStruct1(\targ)",
@@ -1029,7 +1029,7 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native_scalar"
+                            "stmt_name": "f_function_native"
                         }
                     },
                     "arg": {
@@ -1049,7 +1049,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_struct_*"
+                            "stmt_name": "c_in_struct*"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1075,7 +1075,7 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },

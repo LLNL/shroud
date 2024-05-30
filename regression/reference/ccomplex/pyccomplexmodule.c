@@ -37,7 +37,7 @@ PyObject *PY_error_obj;
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 static char PY_acceptDoubleComplexInoutPtr__doc__[] =
 "documentation"
 ;
@@ -77,7 +77,7 @@ PY_acceptDoubleComplexInoutPtr(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 static char PY_acceptDoubleComplexOutPtr__doc__[] =
 "documentation"
 ;
@@ -106,10 +106,10 @@ PY_acceptDoubleComplexOutPtr(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1
-// Statement: py_inout_native_*
+// Statement: py_inout_native*
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 static char PY_acceptDoubleComplexInoutPtrFlag__doc__[] =
 "documentation"
 ;
@@ -155,10 +155,10 @@ PY_acceptDoubleComplexInoutPtrFlag(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
-// Statement: py_out_native_*
+// Statement: py_out_native*
 static char PY_acceptDoubleComplexOutPtrFlag__doc__[] =
 "documentation"
 ;

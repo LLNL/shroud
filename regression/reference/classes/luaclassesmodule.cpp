@@ -29,13 +29,13 @@ extern "C" {
 // Class1(int flag)
 // ----------------------------------------
 // Function:  Class1
-// Statement: lua_ctor_scalar
+// Statement: lua_ctor
 // ----------------------------------------
 // Function:  Class1
-// Statement: lua_ctor_scalar
+// Statement: lua_ctor
 // ----------------------------------------
 // Argument:  int flag
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_Class1_ctor(lua_State *L)
 {
     // splicer begin class.Class1.method.ctor
@@ -82,7 +82,7 @@ static int l_Class1_ctor(lua_State *L)
 // ~Class1(void) +name(delete)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
-// Statement: lua_dtor_scalar
+// Statement: lua_dtor
 static int l_Class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
@@ -97,7 +97,7 @@ static int l_Class1_delete(lua_State *L)
 // int Method1(void)
 // ----------------------------------------
 // Function:  int Method1
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 /**
  * \brief returns the value of flag member
  *
@@ -113,10 +113,10 @@ static int l_Class1_Method1(lua_State *L)
     // splicer end class.Class1.method.Method1
 }
 
-// const std::string & getName(void)
+// const std::string &getName(void)
 // ----------------------------------------
 // Function:  const std::string & getName
-// Statement: lua_function_string_&
+// Statement: lua_function_string&
 /**
  * \brief test helper
  *
@@ -135,10 +135,10 @@ static int l_Class1_getName(lua_State *L)
 // DIRECTION directionFunc(DIRECTION arg)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Statement: lua_function_enum_scalar
+// Statement: lua_function_enum
 // ----------------------------------------
 // Argument:  DIRECTION arg
-// Statement: lua_in_enum_scalar
+// Statement: lua_in_enum
 static int l_Class1_directionFunc(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
@@ -166,10 +166,10 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// const std::string & getName(void)
+// const std::string &getName(void)
 // ----------------------------------------
 // Function:  const std::string & getName
-// Statement: lua_function_string_&
+// Statement: lua_function_string&
 /**
  * \brief test helper
  *
@@ -198,7 +198,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // Shape(void)
 // ----------------------------------------
 // Function:  Shape
-// Statement: lua_ctor_scalar
+// Statement: lua_ctor
 static int l_Shape_ctor(lua_State *L)
 {
     // splicer begin class.Shape.method.ctor
@@ -216,7 +216,7 @@ static int l_Shape_ctor(lua_State *L)
 // int get_ivar(void) const
 // ----------------------------------------
 // Function:  int get_ivar
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 static int l_Shape_get_ivar(lua_State *L)
 {
     // splicer begin class.Shape.method.get_ivar
@@ -241,7 +241,7 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 // Circle(void)
 // ----------------------------------------
 // Function:  Circle
-// Statement: lua_ctor_scalar
+// Statement: lua_ctor
 static int l_Circle_ctor(lua_State *L)
 {
     // splicer begin class.Circle.method.ctor
@@ -268,10 +268,10 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Statement: lua_function_enum_scalar
+// Statement: lua_function_enum
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: lua_in_enum_scalar
+// Statement: lua_in_enum
 static int l_directionFunc(lua_State *L)
 {
     // splicer begin function.directionFunc
@@ -289,7 +289,7 @@ static int l_directionFunc(lua_State *L)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  int arg
-// Statement: lua_in_native_scalar
+// Statement: lua_in_native
 static int l_set_global_flag(lua_State *L)
 {
     // splicer begin function.set_global_flag
@@ -302,7 +302,7 @@ static int l_set_global_flag(lua_State *L)
 // int get_global_flag(void)
 // ----------------------------------------
 // Function:  int get_global_flag
-// Statement: lua_function_native_scalar
+// Statement: lua_function_native
 static int l_get_global_flag(lua_State *L)
 {
     // splicer begin function.get_global_flag
@@ -312,10 +312,10 @@ static int l_get_global_flag(lua_State *L)
     // splicer end function.get_global_flag
 }
 
-// const std::string & LastFunctionCalled(void) +len(30)
+// const std::string &LastFunctionCalled(void) +len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Statement: lua_function_string_&
+// Statement: lua_function_string&
 static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

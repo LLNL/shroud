@@ -22,7 +22,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Circle
-// Statement: c_ctor_shadow_scalar_capptr
+// Statement: c_ctor_shadow_capptr
 CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv)
 {
     // splicer begin class.Circle.method.ctor

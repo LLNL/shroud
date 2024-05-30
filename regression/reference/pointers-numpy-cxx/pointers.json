@@ -44,7 +44,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_in(const int *arg)",
-                "declgen": "void intargs_in(const int * arg)",
+                "declgen": "void intargs_in(const int *arg)",
                 "name": "intargs_in",
                 "options": {},
                 "wrap": {
@@ -94,7 +94,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_native_*",
+                            "stmt": "py_in_native*",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -136,7 +136,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_inout(int *arg)",
-                "declgen": "void intargs_inout(int * arg)",
+                "declgen": "void intargs_inout(int *arg)",
                 "doxygen": {
                     "description": "Argument is modified by library, defaults to intent(inout).\n"
                 },
@@ -189,7 +189,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -234,7 +234,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_out(int *arg +intent(out))",
-                "declgen": "void intargs_out(int * arg +intent(out))",
+                "declgen": "void intargs_out(int *arg +intent(out))",
                 "name": "intargs_out",
                 "options": {},
                 "wrap": {
@@ -284,7 +284,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -361,7 +361,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs(const int argin      +intent(in), int * arginout +intent(inout), int * argout   +intent(out))",
-                "declgen": "void intargs(const int argin +intent(in), int * arginout +intent(inout), int * argout +intent(out))",
+                "declgen": "void intargs(const int argin +intent(in), int *arginout +intent(inout), int *argout +intent(out))",
                 "name": "intargs",
                 "options": {},
                 "wrap": {
@@ -432,7 +432,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_argin",
                             "size_var": "SHSize_argin",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_argin"
                         }
                     },
@@ -453,7 +453,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_arginout",
                             "size_var": "SHSize_arginout",
-                            "stmt": "py_inout_native_*",
+                            "stmt": "py_inout_native*",
                             "value_var": "SHValue_arginout"
                         }
                     },
@@ -474,7 +474,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_argout",
                             "size_var": "SHSize_argout",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_argout"
                         }
                     }
@@ -552,7 +552,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
+                "declgen": "void cos_doubles(double *in +intent(in)+rank(1), double *out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -653,7 +653,7 @@
                             "pytmp_var": "SHTPy_in",
                             "rank": "1",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_in"
                         }
                     },
@@ -679,7 +679,7 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_out"
                         }
                     },
@@ -777,7 +777,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
+                "declgen": "void truncate_to_int(double *in +intent(in)+rank(1), int *out +dimension(size(in))+intent(out), int sizein +implied(size(in)))",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -878,7 +878,7 @@
                             "pytmp_var": "SHTPy_in",
                             "rank": "1",
                             "size_var": "SHSize_in",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_in"
                         }
                     },
@@ -904,7 +904,7 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_out"
                         }
                     },
@@ -988,7 +988,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))",
-                "declgen": "void get_values(int * nvalues +intent(OUT), int * values +dimension(3)+intent(out))",
+                "declgen": "void get_values(int *nvalues +intent(OUT), int *values +dimension(3)+intent(out))",
                 "doxygen": {
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
@@ -1064,7 +1064,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nvalues",
                             "size_var": "SHSize_nvalues",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_nvalues"
                         }
                     },
@@ -1090,7 +1090,7 @@
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_values"
                         }
                     }
@@ -1155,7 +1155,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void get_values2(int *arg1 +intent(out)+dimension(3), int *arg2 +intent(out)+dimension(3))",
-                "declgen": "void get_values2(int * arg1 +dimension(3)+intent(out), int * arg2 +dimension(3)+intent(out))",
+                "declgen": "void get_values2(int *arg1 +dimension(3)+intent(out), int *arg2 +dimension(3)+intent(out))",
                 "doxygen": {
                     "brief": "fill values into two arrays",
                     "description": "Test two intent(out) arguments.\nMake sure error handling works with C++.\n"
@@ -1248,7 +1248,7 @@
                             "py_var": "SHPy_arg1",
                             "rank": "1",
                             "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_arg1"
                         }
                     },
@@ -1274,7 +1274,7 @@
                             "py_var": "SHPy_arg2",
                             "rank": "1",
                             "size_var": "SHSize_arg2",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_arg2"
                         }
                     }
@@ -1330,7 +1330,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
-                "declgen": "void iota_dimension(int nvar, int * values +dimension(nvar)+intent(out))",
+                "declgen": "void iota_dimension(int nvar, int *values +dimension(nvar)+intent(out))",
                 "name": "iota_dimension",
                 "options": {},
                 "wrap": {
@@ -1403,7 +1403,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nvar",
                             "size_var": "SHSize_nvar",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_nvar"
                         }
                     },
@@ -1429,7 +1429,7 @@
                             "py_var": "SHPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_values"
                         }
                     }
@@ -1506,7 +1506,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values)), const int * values +rank(1), int * result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
                 "name": "Sum",
                 "options": {
                     "wrap_lua": false
@@ -1602,7 +1602,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_result",
                             "size_var": "SHSize_result",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_result"
                         }
                     },
@@ -1624,7 +1624,7 @@
                             "pytmp_var": "SHTPy_values",
                             "rank": "1",
                             "size_var": "SHSize_values",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_values"
                         }
                     }
@@ -1670,7 +1670,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fillIntArray(int *out +intent(out)+dimension(3))",
-                "declgen": "void fillIntArray(int * out +dimension(3)+intent(out))",
+                "declgen": "void fillIntArray(int *out +dimension(3)+intent(out))",
                 "doxygen": {
                     "description": "Return three values into memory the user provides.\n"
                 },
@@ -1740,7 +1740,7 @@
                             "py_var": "SHPy_out",
                             "rank": "1",
                             "size_var": "SHSize_out",
-                            "stmt": "py_out_native_*_numpy",
+                            "stmt": "py_out_native*_numpy",
                             "value_var": "SHValue_out"
                         }
                     }
@@ -1799,7 +1799,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array)))",
+                "declgen": "void incrementIntArray(int *array +intent(inout)+rank(1), int sizein +implied(size(array)))",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1867,7 +1867,7 @@
                             "pytmp_var": "SHTPy_array",
                             "rank": "1",
                             "size_var": "SHSize_array",
-                            "stmt": "py_inout_native_*_numpy",
+                            "stmt": "py_inout_native*_numpy",
                             "value_var": "SHValue_array"
                         }
                     },
@@ -1945,7 +1945,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
-                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x)))",
+                "declgen": "void fill_with_zeros(double *x +rank(1), int x_length +implied(size(x)))",
                 "name": "fill_with_zeros",
                 "options": {},
                 "wrap": {
@@ -2010,7 +2010,7 @@
                             "pytmp_var": "SHTPy_x",
                             "rank": "1",
                             "size_var": "SHSize_x",
-                            "stmt": "py_inout_native_*_numpy",
+                            "stmt": "py_inout_native*_numpy",
                             "value_var": "SHValue_x"
                         }
                     },
@@ -2089,7 +2089,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
-                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr)))",
+                "declgen": "int accumulate(const int *arr +rank(1), size_t len +implied(size(arr)))",
                 "name": "accumulate",
                 "options": {},
                 "wrap": {
@@ -2150,7 +2150,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2172,7 +2172,7 @@
                             "pytmp_var": "SHTPy_arr",
                             "rank": "1",
                             "size_var": "SHSize_arr",
-                            "stmt": "py_in_native_*_numpy",
+                            "stmt": "py_in_native*_numpy",
                             "value_var": "SHValue_arr"
                         }
                     },
@@ -2240,7 +2240,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "int acceptCharArrayIn(char * * names +intent(in))",
+                "declgen": "int acceptCharArrayIn(char **names +intent(in))",
                 "doxygen": {
                     "description": "Return strlen of the first index as a check.\n"
                 },
@@ -2292,7 +2292,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2315,7 +2315,7 @@
                             "pytmp_var": "SHTPy_names",
                             "rank": "1",
                             "size_var": "SHSize_names",
-                            "stmt": "py_in_char_**",
+                            "stmt": "py_in_char**",
                             "value_var": "SHValue_names"
                         }
                     }
@@ -2403,7 +2403,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_value",
                             "size_var": "SHSize_value",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_value"
                         }
                     }
@@ -2469,7 +2469,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -2517,7 +2517,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
+                "declgen": "void getPtrToScalar(int **nitems +intent(out))",
                 "name": "getPtrToScalar",
                 "options": {
                     "wrap_python": false
@@ -2580,7 +2580,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedArray(int **count +dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -2650,7 +2650,7 @@
                             "py_var": "SHPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_out_native_**_numpy",
+                            "stmt": "py_out_native**_numpy",
                             "value_var": "SHValue_count"
                         }
                     }
@@ -2718,7 +2718,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicArray(int **count +dimension(ncount)+intent(out), int *ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
@@ -2799,7 +2799,7 @@
                             "py_var": "SHPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_out_native_**_numpy",
+                            "stmt": "py_out_native**_numpy",
                             "value_var": "SHValue_count"
                         }
                     },
@@ -2820,7 +2820,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_ncount",
                             "size_var": "SHSize_ncount",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_ncount"
                         }
                     }
@@ -2869,7 +2869,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
+                "declgen": "void getPtrToFuncArray(int **count +dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
@@ -2941,7 +2941,7 @@
                             "py_var": "SHPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_out_native_**_numpy",
+                            "stmt": "py_out_native**_numpy",
                             "value_var": "SHValue_count"
                         }
                     }
@@ -2990,7 +2990,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
+                "declgen": "void getPtrToConstScalar(const int **nitems +intent(out))",
                 "name": "getPtrToConstScalar",
                 "options": {
                     "wrap_python": false
@@ -3054,7 +3054,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedConstArray(const int **count +dimension(10)+intent(out))",
                 "name": "getPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -3121,7 +3121,7 @@
                             "py_var": "SHPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_out_native_**_numpy",
+                            "stmt": "py_out_native**_numpy",
                             "value_var": "SHValue_count"
                         }
                     }
@@ -3190,7 +3190,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicConstArray(const int **count +dimension(ncount)+intent(out), int *ncount +hidden+intent(out))",
                 "name": "getPtrToDynamicConstArray",
                 "options": {},
                 "wrap": {
@@ -3268,7 +3268,7 @@
                             "py_var": "SHPy_count",
                             "rank": "1",
                             "size_var": "SHSize_count",
-                            "stmt": "py_out_native_**_numpy",
+                            "stmt": "py_out_native**_numpy",
                             "value_var": "SHValue_count"
                         }
                     },
@@ -3289,7 +3289,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_ncount",
                             "size_var": "SHSize_ncount",
-                            "stmt": "py_out_native_*",
+                            "stmt": "py_out_native*",
                             "value_var": "SHValue_ncount"
                         }
                     }
@@ -3338,7 +3338,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))",
-                "declgen": "void getRawPtrToScalar(int * * nitems +deref(raw)+intent(out))",
+                "declgen": "void getRawPtrToScalar(int **nitems +deref(raw)+intent(out))",
                 "doxygen": {
                     "description": "Called directly via an interface in Fortran.\n"
                 },
@@ -3392,7 +3392,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_nitems",
                             "size_var": "SHSize_nitems",
-                            "stmt": "py_out_native_**_raw",
+                            "stmt": "py_out_native**_raw",
                             "value_var": "SHValue_nitems"
                         }
                     }
@@ -3441,7 +3441,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getRawPtrToScalarForce(int **nitems+intent(out)+deref(raw))",
-                "declgen": "void getRawPtrToScalarForce(int * * nitems +deref(raw)+intent(out))",
+                "declgen": "void getRawPtrToScalarForce(int **nitems +deref(raw)+intent(out))",
                 "doxygen": {
                     "description": "Create a Fortran wrapper.\n"
                 },
@@ -3508,7 +3508,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))",
-                "declgen": "void getRawPtrToFixedArray(int * * count +deref(raw)+intent(out))",
+                "declgen": "void getRawPtrToFixedArray(int **count +deref(raw)+intent(out))",
                 "doxygen": {
                     "description": "Return a type(C_PTR) to an array which is always the same length.\nCalled directly via an interface in Fortran.\n# Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.\n"
                 },
@@ -3562,7 +3562,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_count",
                             "size_var": "SHSize_count",
-                            "stmt": "py_out_native_**_raw",
+                            "stmt": "py_out_native**_raw",
                             "value_var": "SHValue_count"
                         }
                     }
@@ -3611,7 +3611,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getRawPtrToFixedArrayForce(int **count+intent(out)+deref(raw))",
-                "declgen": "void getRawPtrToFixedArrayForce(int * * count +deref(raw)+intent(out))",
+                "declgen": "void getRawPtrToFixedArrayForce(int **count +deref(raw)+intent(out))",
                 "doxygen": {
                     "description": "Return a type(C_PTR) to an array which is always the same length.\nCreate a Fortran wrapper.\n"
                 },
@@ -3680,7 +3680,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getRawPtrToInt2d(int ***arg +intent(out))",
-                "declgen": "void getRawPtrToInt2d(int * * * arg +intent(out))",
+                "declgen": "void getRawPtrToInt2d(int ***arg +intent(out))",
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n"
                 },
@@ -3745,7 +3745,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int checkInt2d(int **arg +intent(in))",
-                "declgen": "int checkInt2d(int * * arg +intent(in))",
+                "declgen": "int checkInt2d(int **arg +intent(in))",
                 "doxygen": {
                     "description": "Check results of getRawPtrToInt2d.\n"
                 },
@@ -3808,7 +3808,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DimensionIn(const int *arg +dimension(10,20))",
-                "declgen": "void DimensionIn(const int * arg +dimension(10,20))",
+                "declgen": "void DimensionIn(const int *arg +dimension(10,20))",
                 "doxygen": {
                     "description": "Test +dimension(10,20) +intent(in) together.\nThis will not use assumed-shape in the Fortran wrapper.\n"
                 },
@@ -3885,7 +3885,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getAllocToFixedArray(int **count+intent(out)+dimension(10)+deref(allocatable))",
-                "declgen": "void getAllocToFixedArray(int * * count +deref(allocatable)+dimension(10)+intent(out))",
+                "declgen": "void getAllocToFixedArray(int **count +deref(allocatable)+dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -3950,7 +3950,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress1(int flag)",
-                "declgen": "void * returnAddress1(int flag)",
+                "declgen": "void *returnAddress1(int flag)",
                 "name": "returnAddress1",
                 "options": {},
                 "wrap": {
@@ -4000,7 +4000,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_void_*",
+                            "stmt": "py_function_void*",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -4020,7 +4020,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -4062,7 +4062,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress2(int flag)",
-                "declgen": "void * returnAddress2(int flag)",
+                "declgen": "void *returnAddress2(int flag)",
                 "name": "returnAddress2",
                 "options": {
                     "F_force_wrapper": true
@@ -4114,7 +4114,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_void_*",
+                            "stmt": "py_function_void*",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -4134,7 +4134,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_flag",
                             "size_var": "SHSize_flag",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_flag"
                         }
                     }
@@ -4182,7 +4182,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fetchVoidPtr(void **addr+intent(out))",
-                "declgen": "void fetchVoidPtr(void * * addr +intent(out))",
+                "declgen": "void fetchVoidPtr(void **addr +intent(out))",
                 "name": "fetchVoidPtr",
                 "options": {},
                 "wrap": {
@@ -4232,7 +4232,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_addr",
                             "size_var": "SHSize_addr",
-                            "stmt": "py_out_void_**",
+                            "stmt": "py_out_void**",
                             "value_var": "SHValue_addr"
                         }
                     }
@@ -4280,7 +4280,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void updateVoidPtr(void **addr+intent(inout))",
-                "declgen": "void updateVoidPtr(void * * addr +intent(inout))",
+                "declgen": "void updateVoidPtr(void **addr +intent(inout))",
                 "name": "updateVoidPtr",
                 "options": {
                     "F_force_wrapper": true,
@@ -4343,7 +4343,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int VoidPtrArray(void **addr+rank(1))",
-                "declgen": "int VoidPtrArray(void * * addr +rank(1))",
+                "declgen": "int VoidPtrArray(void **addr +rank(1))",
                 "name": "VoidPtrArray",
                 "options": {
                     "F_force_wrapper": true,
@@ -4390,7 +4390,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
-                "declgen": "int * returnIntPtrToScalar(void)",
+                "declgen": "int *returnIntPtrToScalar(void)",
                 "name": "returnIntPtrToScalar",
                 "options": {},
                 "wrap": {
@@ -4428,7 +4428,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_*_numpy",
+                            "stmt": "py_function_native*_numpy",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4462,7 +4462,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
+                "declgen": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "name": "returnIntPtrToFixedArray",
                 "options": {},
                 "wrap": {
@@ -4517,7 +4517,7 @@
                             "py_var": "SHTPy_rv",
                             "rank": "1",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_*_numpy",
+                            "stmt": "py_function_native*_numpy",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4549,7 +4549,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
-                "declgen": "const int * returnIntPtrToConstScalar(void)",
+                "declgen": "const int *returnIntPtrToConstScalar(void)",
                 "name": "returnIntPtrToConstScalar",
                 "options": {},
                 "wrap": {
@@ -4587,7 +4587,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_*_numpy",
+                            "stmt": "py_function_native*_numpy",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4622,7 +4622,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
+                "declgen": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "name": "returnIntPtrToFixedConstArray",
                 "options": {},
                 "wrap": {
@@ -4677,7 +4677,7 @@
                             "py_var": "SHTPy_rv",
                             "rank": "1",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_*_numpy",
+                            "stmt": "py_function_native*_numpy",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4711,7 +4711,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntScalar(void) +deref(scalar)",
-                "declgen": "int * returnIntScalar(void) +deref(scalar)",
+                "declgen": "int *returnIntScalar(void) +deref(scalar)",
                 "name": "returnIntScalar",
                 "options": {},
                 "wrap": {
@@ -4750,7 +4750,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_*_scalar",
+                            "stmt": "py_function_native*_scalar",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -4784,7 +4784,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntRaw(void) +deref(raw)",
-                "declgen": "int * returnIntRaw(void) +deref(raw)",
+                "declgen": "int *returnIntRaw(void) +deref(raw)",
                 "doxygen": {
                     "description": "Call directly via interface.\n"
                 },
@@ -4847,7 +4847,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntRawWithArgs(const char *name) +deref(raw)",
-                "declgen": "int * returnIntRawWithArgs(const char * name) +deref(raw)",
+                "declgen": "int *returnIntRawWithArgs(const char *name) +deref(raw)",
                 "doxygen": {
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_function_native_*_raw.\n"
                 },
@@ -4898,7 +4898,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int **returnRawPtrToInt2d(void)",
-                "declgen": "int * * returnRawPtrToInt2d(void)",
+                "declgen": "int **returnRawPtrToInt2d(void)",
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
                 },
@@ -4946,7 +4946,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntAllocToFixedArray(void) +dimension(10)+deref(allocatable)",
-                "declgen": "int * returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
+                "declgen": "int *returnIntAllocToFixedArray(void) +deref(allocatable)+dimension(10)",
                 "name": "returnIntAllocToFixedArray",
                 "options": {
                     "wrap_python": false

@@ -24,6 +24,8 @@ T mypair<T>::getmax ()
   return retval;
 }
 
+//----------------------------------------------------------------------
+
 class Worker
 {
 };
@@ -40,14 +42,21 @@ T ReturnT()
   return arg;
 }
 
+//----------------------------------------------------------------------
 
 // Function which uses a templated T in the implemetation.
+// templates.yaml contains:
+//  cxx_template:
+//  - instantiation: <internal::ImplWorker1>
+//  - instantiation: <internal::ImplWorker2>
+
 template<typename T>
 int UseImplWorker()
 {
   return T::getValue();
 }
 
+//----------------------------------------------------------------------
 
 template<typename T>
 class user {
@@ -57,6 +66,26 @@ public:
 };
 
 user<int> returnUserType(void);
+
+//----------------------------------------------------------------------
+
+// template functions which take two arguments:
+// a pointer to data and a length.
+
+template<typename T, typename U>
+struct twostruct
+{
+    T* values;
+    U length;
+};
+
+
+template<typename T, typename U>
+void process_twostruct(twostruct<T, U> arg)
+{
+}
+
+//----------------------------------------------------------------------
 
 template<typename T>
 struct structAsClass {

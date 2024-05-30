@@ -564,7 +564,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
-                "declgen": "int * DataPointer_get_items(ns3::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
+                "declgen": "int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                 "helpers": {
                     "c": [
                         "array_context",
@@ -599,13 +599,13 @@
                                 "dimension": "nitems",
                                 "intent": "getter"
                             },
-                            "stmt": "f_getter_native_*_cdesc_pointer"
+                            "stmt": "f_getter_native*_cdesc_pointer"
                         },
                         "SH_this": {
                             "meta": {
                                 "intent": "in"
                             },
-                            "stmt": "f_in_struct_*"
+                            "stmt": "f_in_struct*"
                         }
                     },
                     "share": {
@@ -675,7 +675,7 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_getter_native_*_cdesc_pointer"
+                            "stmt_name": "f_getter_native*_cdesc_pointer"
                         }
                     },
                     "SH_this": {
@@ -703,7 +703,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct_*"
+                            "stmt_name": "f_in_struct*"
                         }
                     }
                 },
@@ -775,7 +775,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
-                "declgen": "void DataPointer_set_items(ns3::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                "declgen": "void DataPointer_set_items(ns3::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "DataPointer_set_items",
                 "options": {},
                 "user_fmt": {
@@ -798,14 +798,14 @@
                             "meta": {
                                 "intent": "inout"
                             },
-                            "stmt": "f_inout_struct_*"
+                            "stmt": "f_inout_struct*"
                         },
                         "val": {
                             "meta": {
                                 "intent": "setter",
                                 "rank": 1
                             },
-                            "stmt": "f_setter_native_*"
+                            "stmt": "f_setter_native*"
                         }
                     },
                     "share": {
@@ -870,7 +870,7 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct_*"
+                            "stmt_name": "f_inout_struct*"
                         }
                     },
                     "val": {
@@ -901,7 +901,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_native_*"
+                            "stmt_name": "f_setter_native*"
                         }
                     }
                 },
@@ -1145,7 +1145,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns1::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
+                        "declgen": "int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "array_context",
@@ -1180,13 +1180,13 @@
                                         "dimension": "nitems",
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                    "stmt": "f_getter_native*_cdesc_pointer"
                                 },
                                 "SH_this": {
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_struct_*"
+                                    "stmt": "f_in_struct*"
                                 }
                             },
                             "share": {
@@ -1256,7 +1256,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer"
                                 }
                             },
                             "SH_this": {
@@ -1284,7 +1284,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct_*"
+                                    "stmt_name": "f_in_struct*"
                                 }
                             }
                         },
@@ -1356,7 +1356,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns1::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                        "declgen": "void DataPointer_set_items(ns1::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1379,14 +1379,14 @@
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_struct_*"
+                                    "stmt": "f_inout_struct*"
                                 },
                                 "val": {
                                     "meta": {
                                         "intent": "setter",
                                         "rank": 1
                                     },
-                                    "stmt": "f_setter_native_*"
+                                    "stmt": "f_setter_native*"
                                 }
                             },
                             "share": {
@@ -1451,7 +1451,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct_*"
+                                    "stmt_name": "f_inout_struct*"
                                 }
                             },
                             "val": {
@@ -1482,7 +1482,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native_*"
+                                    "stmt_name": "f_setter_native*"
                                 }
                             }
                         },
@@ -1753,7 +1753,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
-                        "declgen": "int * DataPointer_get_items(ns2::DataPointer * SH_this +intent(in)) +dimension(nitems)+intent(getter)",
+                        "declgen": "int *DataPointer_get_items(ns2::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
                                 "array_context",
@@ -1788,13 +1788,13 @@
                                         "dimension": "nitems",
                                         "intent": "getter"
                                     },
-                                    "stmt": "f_getter_native_*_cdesc_pointer"
+                                    "stmt": "f_getter_native*_cdesc_pointer"
                                 },
                                 "SH_this": {
                                     "meta": {
                                         "intent": "in"
                                     },
-                                    "stmt": "f_in_struct_*"
+                                    "stmt": "f_in_struct*"
                                 }
                             },
                             "share": {
@@ -1864,7 +1864,7 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native_*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer"
                                 }
                             },
                             "SH_this": {
@@ -1892,7 +1892,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct_*"
+                                    "stmt_name": "f_in_struct*"
                                 }
                             }
                         },
@@ -1964,7 +1964,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
-                        "declgen": "void DataPointer_set_items(ns2::DataPointer * SH_this, int * val +intent(setter)+rank(1)) +intent(setter)",
+                        "declgen": "void DataPointer_set_items(ns2::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
                         "user_fmt": {
@@ -1987,14 +1987,14 @@
                                     "meta": {
                                         "intent": "inout"
                                     },
-                                    "stmt": "f_inout_struct_*"
+                                    "stmt": "f_inout_struct*"
                                 },
                                 "val": {
                                     "meta": {
                                         "intent": "setter",
                                         "rank": 1
                                     },
-                                    "stmt": "f_setter_native_*"
+                                    "stmt": "f_setter_native*"
                                 }
                             },
                             "share": {
@@ -2059,7 +2059,7 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct_*"
+                                    "stmt_name": "f_inout_struct*"
                                 }
                             },
                             "val": {
@@ -2090,7 +2090,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native_*"
+                                    "stmt_name": "f_setter_native*"
                                 }
                             }
                         },

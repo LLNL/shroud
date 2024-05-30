@@ -64,7 +64,7 @@ PY_Class2_tp_init(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PY_func1__doc__[] =
 "documentation"
 ;
@@ -98,7 +98,7 @@ PY_func1(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PY_acceptClass3__doc__[] =
 "documentation"
 ;

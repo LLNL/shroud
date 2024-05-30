@@ -47,7 +47,7 @@ no-such-type ERR_BadFstatements_bufferify(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * data
-// Statement: c_inout_native_*
+// Statement: c_inout_native*
 void ERR_AssumedRank(int * data)
 {
     // splicer begin function.AssumedRank
@@ -61,7 +61,7 @@ void ERR_AssumedRank(int * data)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * data +rank(0)
-// Statement: f_inout_native_*
+// Statement: f_inout_native*
 void ERR_AssumedRank_0d_bufferify(int * data)
 {
     // splicer begin function.AssumedRank_0d_bufferify
@@ -75,7 +75,7 @@ void ERR_AssumedRank_0d_bufferify(int * data)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * data +rank(1)
-// Statement: f_inout_native_*
+// Statement: f_inout_native*
 void ERR_AssumedRank_1d_bufferify(int * data)
 {
     // splicer begin function.AssumedRank_1d_bufferify
@@ -89,7 +89,7 @@ void ERR_AssumedRank_1d_bufferify(int * data)
 // Statement: f_subroutine
 // ----------------------------------------
 // Argument:  int * data +rank(2)
-// Statement: f_inout_native_*
+// Statement: f_inout_native*
 void ERR_AssumedRank_2d_bufferify(int * data)
 {
     // splicer begin function.AssumedRank_2d_bufferify

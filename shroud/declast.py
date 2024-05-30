@@ -530,7 +530,6 @@ class Parser(ExprParser):
                 lst.append(temp)
                 if not self.have("COMMA"):
                     break
-                self.error_msg("Only single template argument accepted")
             self.mustbe("GT")
 
     def top_level(self):
@@ -1379,6 +1378,16 @@ class Declarator(Node):
             return "scalar"
         return out
 
+    def get_abstract_declarator(self):
+        """Return abstract declarator.
+        """
+        out = ""
+        for ptr in self.pointer:
+            out += ptr.ptr
+        if self.array:
+            out += "[]"   # XXX - multidimensional?
+        return out
+
     def get_array_size(self):
         """Return size of array by multiplying dimensions."""
         array = self.array
@@ -1429,7 +1438,6 @@ class Declarator(Node):
         out = []
         for ptr in self.pointer:
             out.append(str(ptr))
-            out.append(" ")
 
         if self.func:
             out.append("(" + str(self.func) + ")")
@@ -1473,17 +1481,6 @@ class Declaration(Node):
 
     attrs     - Attributes set by the user.
     """
-
-    fortran_ranks = [
-        "",
-        "(:)",
-        "(:,:)",
-        "(:,:,:)",
-        "(:,:,:,:)",
-        "(:,:,:,:,:)",
-        "(:,:,:,:,:,:)",
-        "(:,:,:,:,:,:,:)",
-    ]
 
     def __init__(self, symtab=None):
 #        self.symtab = symtab  # GGG -lots of problems with copy
@@ -1546,22 +1543,25 @@ class Declaration(Node):
 
     def __repr__(self):
         return "<Declaration('{}')>".format(str(self))
-    
+
+    def get_first_abstract_declarator(self):
+        """Return an abstract declarator for the first declarator.
+        The wrapping will split "int i,j" into "int i;int j"
+        """
+        declarator = self.declarator.get_abstract_declarator()
+        if declarator:
+            decl = "{} {}".format(str(self), declarator)
+        else:
+            decl = str(self)
+        return decl
+            
     def gen_template_argument(self):
         """
         ex  "int, double *"
         """
-        decl = []
-        for targ in self.template_arguments:
-            decl.append(str(targ))
-            if targ.declarator:
-                s = str(targ.declarator)
-                if s:
-                    decl.append(" ")
-                    decl.append(s)
-            decl.append(",")
-        decl.pop()
-        return ''.join(decl)
+        # template_arguments is a list of Declarations
+        return ",".join([targ.get_first_abstract_declarator()
+                         for targ in self.template_arguments])
         
     def gen_template_arguments(self):
         """Return string for template_arguments."""
@@ -1693,6 +1693,7 @@ class Struct(Node):
                 type_name,
                 base="struct",
                 sgroup="struct",
+                ntemplate_args = symtab.find_ntemplate_args()
             )
             symtab.add_tag_to_current("struct", self)
             if symtab.language == "cxx":
@@ -1720,6 +1721,7 @@ class Template(Node):
         self.name = "template-"
         self.is_class = False
         self.paramtypemap = symtab.lookup_typemap("--template-parameter--")
+        self.ntemplate_args = 0
 
         symtab.push_template_scope(self)
 
@@ -1730,6 +1732,7 @@ class Template(Node):
         node.typemap = self.paramtypemap
         self.parameters.append(node)
         self.symbols[name] = node
+        self.ntemplate_args += 1
 
     def add_child(self, name, node):
         """
@@ -1804,10 +1807,10 @@ class SymbolTable(object):
         self.language = language
 
         # Create the global scope.
-        glb = Global()
-        self.scope_stack.append(glb)
+        self.top = Global()
+        self.scope_stack.append(self.top)
         self.scope_len.append(0)
-        self.current = glb
+        self.current = self.top
 
     def push_template_scope(self, node):
         """
@@ -2024,6 +2027,12 @@ class SymbolTable(object):
         self.add_typedef_by_name("string")
         self.add_typedef_by_name("vector")
         self.restore_depth(depth)
+
+    def find_ntemplate_args(self):
+        """If currently defining a template, return number of arguments."""
+        if isinstance(self.current, Template):
+            return self.current.ntemplate_args
+        return 0
 
 def symtab_to_dict(node):
     """Return SymbolTable as a dictionary.

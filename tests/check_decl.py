@@ -21,6 +21,7 @@ from shroud import declast
 #from shroud import declstr
 from shroud import error
 from shroud import todict
+from shroud import typemap
 
 from shroud import declstr
 
@@ -135,6 +136,16 @@ template<T> class user {
 };
 user<int> returnUserType(void);
 --------------------
+# template with two arguments
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+template<typename T, typename U>
+void process_twostruct(twostruct<T, U> arg);
+--------------------
 # nested namespace
 # XXX - fix printing
 namespace ns1 {
@@ -198,6 +209,20 @@ Xlines = """
 int callback1(int in, int (*incr)(int));
 --------------------
 """
+
+Xlines = """
+# template with two arguments
+template<typename T, typename U>
+struct twostruct
+{
+  T* values;
+  U length;
+};
+#template<typename T, typename U>
+#void process_twostruct(twostruct<T, U> arg);
+--------------------
+"""
+
 
 def test_decl_str(idx, declaration, indent):
     """Convert function declaration to C and C++.
@@ -276,8 +301,16 @@ def test_block(comments, code, symtab):
         yaml.safe_dump(asdict, sys.stdout)
 
         print("XXXX SymbolTable")
-        symbols = declast.symtab_to_dict(symtab.scope_stack[0])
+        symbols = declast.symtab_to_dict(symtab.top)
         yaml.safe_dump(symbols, sys.stdout)
+
+        typemaps = symtab.typemaps
+        user_types = typemap.return_user_types(typemaps)
+        if user_types:
+            print("XXXX Typemap")
+            typemaps_dict = todict.to_dict(user_types)
+            yaml.safe_dump(typemaps_dict, sys.stdout)
+        
     except error.ShroudParseError as err:
         print("Parse Error line {}:".format(err.line))
         print(err.message)

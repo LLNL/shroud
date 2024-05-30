@@ -159,27 +159,33 @@ class VerifyAttrs(object):
                 raise RuntimeError("Expected default value for %s" % argname)
 
         # Check template attribute
-        # XXX - This should be part of typemap
         temp = arg.template_arguments
-        if arg_typemap and arg_typemap.base == "vector":
+        if arg_typemap and arg_typemap.ntemplate_args > 0:
             if not temp:
                 cursor.generate(
-                    "std::vector must have template argument: {}".format(
-                        gen_decl(arg)
+                    "Type '{}' requires template argument: {}".format(
+                        arg_typemap.name, gen_decl(arg)
+                    )
+                )
+            elif len(temp) != arg_typemap.ntemplate_args:
+                cursor.generate(
+                    "Type '{}' may only have {} template arguments: {}".format(
+                        arg_typemap.name, arg_typemap.ntemplate_args, gen_decl(arg)
                     )
                 )
             else:
-                arg_typemap = arg.template_arguments[0].typemap
-                if arg_typemap is None:
-                    # XXX - Not sure this can happen with current parser
-                    raise RuntimeError(
-                        "check_arg_attr: No such type %s for template: %s"
-                        % (temp, gen_decl(arg))
-                    )
+                for targ in temp:
+                    arg_typemap = targ.typemap
+                    if arg_typemap is None:
+                        # XXX - Not sure this can happen with current parser
+                        raise RuntimeError(
+                            "check_arg_attr: No such type %s for template: %s"
+                            % (temp, gen_decl(arg))
+                        )
         elif temp:
             cursor.generate(
-                "Type '%s' may not supply template argument: %s"
-                % (arg_typemap.name, gen_decl(arg))
+                "Type '{}' may not supply template argument: {}".format(
+                    arg_typemap.name, gen_decl(arg))
             )
 
         # Flag node if any argument is assumed-rank.

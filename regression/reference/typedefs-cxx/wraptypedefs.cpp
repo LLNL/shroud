@@ -22,10 +22,10 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Alias typefunc
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  Alias arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start TYP_typefunc
 TYP_Alias TYP_typefunc(TYP_Alias arg)
 {
@@ -44,10 +44,10 @@ TYP_Alias TYP_typefunc(TYP_Alias arg)
  */
 // ----------------------------------------
 // Function:  Alias typefunc_wrap
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  Alias arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start TYP_typefunc_wrap
 TYP_Alias TYP_typefunc_wrap(TYP_Alias arg)
 {
@@ -60,10 +60,10 @@ TYP_Alias TYP_typefunc_wrap(TYP_Alias arg)
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: c_function_enum_scalar
+// Statement: c_function_enum
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 // start TYP_returnEnum
 TYP_iColor TYP_returnEnum(TYP_iColor in)
 {
@@ -78,10 +78,10 @@ TYP_iColor TYP_returnEnum(TYP_iColor in)
 
 // ----------------------------------------
 // Function:  iColor returnEnum
-// Statement: f_function_enum_scalar
+// Statement: f_function_enum
 // ----------------------------------------
 // Argument:  iColor in
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 // start TYP_returnEnum_bufferify
 int TYP_returnEnum_bufferify(int in)
 {
@@ -96,10 +96,10 @@ int TYP_returnEnum_bufferify(int in)
 
 // ----------------------------------------
 // Function:  TypeID returnTypeID
-// Statement: c_function_enum_scalar
+// Statement: c_function_enum
 // ----------------------------------------
 // Argument:  TypeID in
-// Statement: c_in_enum_scalar
+// Statement: c_in_enum
 // start TYP_returnTypeID
 TYP_TypeID TYP_returnTypeID(TYP_TypeID in)
 {
@@ -114,10 +114,10 @@ TYP_TypeID TYP_returnTypeID(TYP_TypeID in)
 
 // ----------------------------------------
 // Function:  TypeID returnTypeID
-// Statement: f_function_enum_scalar
+// Statement: f_function_enum
 // ----------------------------------------
 // Argument:  TypeID in
-// Statement: f_in_enum_scalar
+// Statement: f_in_enum
 // start TYP_returnTypeID_bufferify
 int TYP_returnTypeID_bufferify(int in)
 {
@@ -135,7 +135,7 @@ int TYP_returnTypeID_bufferify(int in)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  Struct1Rename * arg1
-// Statement: c_inout_struct_*
+// Statement: c_inout_struct*
 // start TYP_typestruct
 void TYP_typestruct(TYP_Struct1Rename * arg1)
 {
@@ -147,10 +147,10 @@ void TYP_typestruct(TYP_Struct1Rename * arg1)
 
 // ----------------------------------------
 // Function:  int returnBytesForIndexType
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  IndexType arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start TYP_returnBytesForIndexType
 int TYP_returnBytesForIndexType(TYP_IndexType arg)
 {
@@ -163,13 +163,13 @@ int TYP_returnBytesForIndexType(TYP_IndexType arg)
 
 // ----------------------------------------
 // Function:  IndexType returnShapeSize
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int ndims
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  const IndexType * shape +intent(in)+rank(1)
-// Statement: c_in_native_*
+// Statement: c_in_native*
 // start TYP_returnShapeSize
 TYP_IndexType TYP_returnShapeSize(int ndims,
     const TYP_IndexType * shape)
@@ -183,10 +183,10 @@ TYP_IndexType TYP_returnShapeSize(int ndims,
 
 // ----------------------------------------
 // Function:  int returnBytesForIndexType2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  IndexType2 arg
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // start TYP_returnBytesForIndexType2
 int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
 {
@@ -199,13 +199,13 @@ int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
 
 // ----------------------------------------
 // Function:  IndexType2 returnShapeSize2
-// Statement: c_function_native_scalar
+// Statement: c_function_native
 // ----------------------------------------
 // Argument:  int ndims
-// Statement: c_in_native_scalar
+// Statement: c_in_native
 // ----------------------------------------
 // Argument:  const IndexType2 * shape +intent(in)+rank(1)
-// Statement: c_in_native_*
+// Statement: c_in_native*
 // start TYP_returnShapeSize2
 LOCAL_IndexType TYP_returnShapeSize2(int ndims,
     const LOCAL_IndexType * shape)

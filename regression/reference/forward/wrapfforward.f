@@ -68,7 +68,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Statement: f_ctor_shadow_scalar_capptr
+        ! Statement: f_ctor_shadow_capptr
         function c_class2_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="FOR_Class2_ctor")
@@ -94,7 +94,7 @@ module forward_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
-        ! Statement: f_in_shadow_*
+        ! Statement: f_in_shadow*
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : SHROUD_class1_capsule
@@ -109,7 +109,7 @@ module forward_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
-        ! Statement: f_in_shadow_*
+        ! Statement: f_in_shadow*
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_acceptClass3")
             import :: FOR_SHROUD_capsule_data
@@ -120,10 +120,10 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  int passStruct1
-        ! Statement: f_function_native_scalar
+        ! Statement: f_function_native
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
-        ! Statement: f_in_struct_*
+        ! Statement: f_in_struct*
         function pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="FOR_passStruct1")
@@ -172,7 +172,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     function class2_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -198,7 +198,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
         class(class2) :: obj
@@ -213,7 +213,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
         type(class3), intent(IN) :: arg
@@ -252,10 +252,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int passStruct1
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
-    ! Statement: f_in_struct_*
+    ! Statement: f_in_struct*
     function pass_struct1(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

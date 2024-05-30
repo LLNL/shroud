@@ -565,7 +565,7 @@ class Header(object):
             self.file_code[fname] = ntypemap
             
     def add_typemap_list(self, lst):
-        """Append list of headers."""
+        """Collect list of headers."""
         for name in lst:
             self.header_impl_include_order["typemap"][name] = True
 
@@ -801,6 +801,9 @@ class Scope(object):
         """ Treat as dictionary for format command.
         """
         return getattr(self, key)
+
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
 
     def __contains__(self, item):
         return hasattr(self, item)

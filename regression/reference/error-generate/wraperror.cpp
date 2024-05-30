@@ -26,7 +26,7 @@ extern "C" {
 // Statement: f_mixin_unknown
 // ----------------------------------------
 // Argument:  struct1 * SH_this +intent(in)
-// Statement: f_in_struct_*
+// Statement: f_in_struct*
 int * ERR_struct1_get_arg2(ERR_struct1 * SH_this, ===>SHC_rv<===)
 {
     // splicer begin function.struct1_get_arg2
@@ -41,10 +41,10 @@ int * ERR_struct1_get_arg2(ERR_struct1 * SH_this, ===>SHC_rv<===)
 // Statement: f_setter
 // ----------------------------------------
 // Argument:  struct1 * SH_this
-// Statement: f_inout_struct_*
+// Statement: f_inout_struct*
 // ----------------------------------------
 // Argument:  int * val +intent(setter)+rank(1)
-// Statement: f_setter_native_*
+// Statement: f_setter_native*
 void ERR_struct1_set_arg2(ERR_struct1 * SH_this, int * val)
 {
     // splicer begin function.struct1_set_arg2

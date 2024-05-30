@@ -201,7 +201,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! start c_class1_ctor_default
     interface
         function c_class1_ctor_default(SHT_rv) &
@@ -218,10 +218,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start c_class1_ctor_flag
     interface
         function c_class1_ctor_flag(flag, SHT_rv) &
@@ -253,7 +253,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int Method1
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! start c_class1_method1
     interface
         function c_class1_method1(self) &
@@ -270,10 +270,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  bool equivalent
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
-    ! Statement: f_in_shadow_&
+    ! Statement: f_in_shadow&
     ! start c_class1_equivalent
     interface
         pure function c_class1_equivalent(self, obj2) &
@@ -291,7 +291,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThis
-    ! Statement: f_function_shadow_*_this
+    ! Statement: f_function_shadow*_this
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
@@ -305,13 +305,13 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
-    ! Statement: c_function_shadow_*_capptr
+    ! Statement: c_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: c_in_string_&
+    ! Statement: c_in_string&
     ! ----------------------------------------
     ! Argument:  bool flag
-    ! Statement: c_in_bool_scalar
+    ! Statement: c_in_bool
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_rv) &
@@ -331,13 +331,13 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  bool flag
-    ! Statement: f_in_bool_scalar
+    ! Statement: f_in_bool
     ! start c_class1_return_this_buffer_bufferify
     interface
         function c_class1_return_this_buffer_bufferify(self, name, &
@@ -359,7 +359,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     ! start c_class1_getclass3
     interface
         function c_class1_getclass3(self, SHT_rv) &
@@ -377,7 +377,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     ! start c_class1_get_name
     interface
         function c_class1_get_name(self) &
@@ -394,7 +394,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, SHT_rv_cdesc, &
@@ -411,10 +411,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
-    ! Statement: c_function_enum_scalar
+    ! Statement: c_function_enum
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: c_in_enum_scalar
+    ! Statement: c_in_enum
     ! start c_class1_direction_func
     interface
         function c_class1_direction_func(self, arg) &
@@ -432,10 +432,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start c_class1_direction_func_bufferify
     interface
         function c_class1_direction_func_bufferify(self, arg) &
@@ -454,7 +454,7 @@ module classes_mod
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int get_m_flag +intent(getter)
-    ! Statement: f_getter_native_scalar
+    ! Statement: f_getter_native
     ! start c_class1_get_m_flag
     interface
         function c_class1_get_m_flag(self) &
@@ -472,7 +472,7 @@ module classes_mod
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int get_test +intent(getter)
-    ! Statement: f_getter_native_scalar
+    ! Statement: f_getter_native
     ! start c_class1_get_test
     interface
         function c_class1_get_test(self) &
@@ -493,7 +493,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -510,7 +510,7 @@ module classes_mod
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  bool get_m_bool +intent(getter)
-    ! Statement: f_getter_bool_scalar
+    ! Statement: f_getter_bool
     ! start c_class1_get_m_bool
     interface
         function c_class1_get_m_bool(self) &
@@ -531,7 +531,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  bool val +intent(setter)
-    ! Statement: f_setter_bool_scalar
+    ! Statement: f_setter_bool
     ! start c_class1_set_m_bool
     interface
         subroutine c_class1_set_m_bool(self, val) &
@@ -548,7 +548,7 @@ module classes_mod
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  std::string get_m_name +intent(getter)
-    ! Statement: f_getter_string_scalar_cdesc_allocatable
+    ! Statement: f_getter_string_cdesc_allocatable
     ! start c_class1_get_m_name
     interface
         subroutine c_class1_get_m_name(self, SHT_rv_cdesc) &
@@ -567,7 +567,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  std::string val +intent(setter)
-    ! Statement: f_setter_string_scalar_buf
+    ! Statement: f_setter_string_buf
     ! start c_class1_set_m_name
     interface
         subroutine c_class1_set_m_name(self, val, SHT_val_len) &
@@ -584,7 +584,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
@@ -599,7 +599,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     interface
         subroutine c_class2_get_name_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -614,7 +614,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
-    ! Statement: f_function_shadow_&_capptr
+    ! Statement: f_function_shadow&_capptr
     ! start c_singleton_get_reference
     interface
         function c_singleton_get_reference(SHT_rv) &
@@ -631,7 +631,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     interface
         function c_shape_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -646,7 +646,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int get_ivar
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     interface
         pure function c_shape_get_ivar(self) &
                 result(SHT_rv) &
@@ -661,7 +661,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     interface
         function c_circle_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -679,7 +679,7 @@ module classes_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start c_data_allocate
     interface
         subroutine c_data_allocate(self, n) &
@@ -709,7 +709,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! start c_data_ctor
     interface
         function c_data_ctor(SHT_rv) &
@@ -741,7 +741,7 @@ module classes_mod
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int get_nitems +intent(getter)
-    ! Statement: f_getter_native_scalar
+    ! Statement: f_getter_native
     ! start c_data_get_nitems
     interface
         function c_data_get_nitems(self) &
@@ -762,7 +762,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start c_data_set_nitems
     interface
         subroutine c_data_set_nitems(self, val) &
@@ -779,7 +779,7 @@ module classes_mod
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int * get_items +dimension(nitems)+intent(getter)
-    ! Statement: f_getter_native_*_cdesc_pointer
+    ! Statement: f_getter_native*_cdesc_pointer
     ! start c_data_get_items
     interface
         subroutine c_data_get_items(self, SHT_rv_cdesc) &
@@ -798,7 +798,7 @@ module classes_mod
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     ! start c_data_set_items
     interface
         subroutine c_data_set_items(self, val) &
@@ -814,10 +814,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
-    ! Statement: c_function_enum_scalar
+    ! Statement: c_function_enum
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: c_in_enum_scalar
+    ! Statement: c_in_enum
     interface
         function c_direction_func(arg) &
                 result(SHT_rv) &
@@ -831,10 +831,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
@@ -851,7 +851,7 @@ module classes_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg
-    ! Statement: f_in_shadow_scalar
+    ! Statement: f_in_shadow
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_passClassByValue")
@@ -863,10 +863,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int useclass
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     interface
         function c_useclass(arg) &
                 result(SHT_rv) &
@@ -881,7 +881,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     interface
         function c_getclass2(SHT_rv) &
                 result(SHT_prv) &
@@ -896,7 +896,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     interface
         function c_getclass3(SHT_rv) &
                 result(SHT_prv) &
@@ -911,7 +911,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2_void
-    ! Statement: f_function_shadow_*_capsule
+    ! Statement: f_function_shadow*_capsule
     interface
         subroutine c_getclass2_void(SHT_rv) &
                 bind(C, name="CLA_getclass2_void")
@@ -923,7 +923,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3_void
-    ! Statement: f_function_shadow_*_capsule
+    ! Statement: f_function_shadow*_capsule
     interface
         subroutine c_getclass3_void(SHT_rv) &
                 bind(C, name="CLA_getclass3_void")
@@ -935,7 +935,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
-    ! Statement: f_function_shadow_&_capptr
+    ! Statement: f_function_shadow&_capptr
     interface
         function c_get_const_class_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -950,7 +950,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
-    ! Statement: f_function_shadow_&_capptr
+    ! Statement: f_function_shadow&_capptr
     interface
         function c_get_class_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -965,10 +965,10 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_scalar_capptr
+    ! Statement: f_function_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         function c_get_class_copy(flag, SHT_rv) &
                 result(SHT_prv) &
@@ -987,7 +987,7 @@ module classes_mod
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     interface
         subroutine set_global_flag(arg) &
                 bind(C, name="CLA_set_global_flag")
@@ -999,7 +999,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int get_global_flag
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     interface
         function get_global_flag() &
                 result(SHT_rv) &
@@ -1012,7 +1012,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
-    ! Statement: c_function_string_&
+    ! Statement: c_function_string&
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -1025,7 +1025,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
                 bind(C, name="CLA_LastFunctionCalled_bufferify")
@@ -1088,7 +1088,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -1103,10 +1103,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start class1_ctor_flag
     function class1_ctor_flag(flag) &
             result(SHT_rv)
@@ -1134,7 +1134,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int Method1
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     !>
     !! \brief returns the value of flag member
     !!
@@ -1153,10 +1153,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool equivalent
-    ! Statement: f_function_bool_scalar
+    ! Statement: f_function_bool
     ! ----------------------------------------
     ! Argument:  const Class1 & obj2
-    ! Statement: f_in_shadow_&
+    ! Statement: f_in_shadow&
     !>
     !! \brief Pass in reference to instance
     !!
@@ -1176,7 +1176,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThis
-    ! Statement: f_function_shadow_*_this
+    ! Statement: f_function_shadow*_this
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -1192,13 +1192,13 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Statement: f_in_string_&_buf
+    ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  bool flag
-    ! Statement: f_in_bool_scalar
+    ! Statement: f_in_bool
     !>
     !! \brief Return pointer to 'this' to allow chaining calls
     !!
@@ -1225,7 +1225,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     !>
     !! \brief Test const method
     !!
@@ -1245,7 +1245,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     !>
     !! \brief test helper
     !!
@@ -1270,10 +1270,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     ! start class1_direction_func
     function class1_direction_func(obj, arg) &
             result(SHT_rv)
@@ -1290,7 +1290,7 @@ contains
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int get_m_flag +intent(getter)
-    ! Statement: f_getter_native_scalar
+    ! Statement: f_getter_native
     ! start class1_get_m_flag
     function class1_get_m_flag(obj) &
             result(SHT_rv)
@@ -1306,7 +1306,7 @@ contains
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int get_test +intent(getter)
-    ! Statement: f_getter_native_scalar
+    ! Statement: f_getter_native
     ! start class1_get_test
     function class1_get_test(obj) &
             result(SHT_rv)
@@ -1325,7 +1325,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start class1_set_test
     subroutine class1_set_test(obj, val)
         use iso_c_binding, only : C_INT
@@ -1340,7 +1340,7 @@ contains
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  bool get_m_bool +intent(getter)
-    ! Statement: f_getter_bool_scalar
+    ! Statement: f_getter_bool
     ! start class1_get_m_bool
     function class1_get_m_bool(obj) &
             result(SHT_rv)
@@ -1359,7 +1359,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  bool val +intent(setter)
-    ! Statement: f_setter_bool_scalar
+    ! Statement: f_setter_bool
     ! start class1_set_m_bool
     subroutine class1_set_m_bool(obj, val)
         use iso_c_binding, only : C_BOOL
@@ -1376,7 +1376,7 @@ contains
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  std::string get_m_name +intent(getter)
-    ! Statement: f_getter_string_scalar_cdesc_allocatable
+    ! Statement: f_getter_string_cdesc_allocatable
     ! start class1_get_m_name
     function class1_get_m_name(obj) &
             result(SHT_rv)
@@ -1398,7 +1398,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  std::string val +intent(setter)
-    ! Statement: f_setter_string_scalar_buf
+    ! Statement: f_setter_string_buf
     ! start class1_set_m_name
     subroutine class1_set_m_name(obj, val)
         use iso_c_binding, only : C_INT
@@ -1440,7 +1440,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string & getName
-    ! Statement: f_function_string_&_cdesc_allocatable
+    ! Statement: f_function_string&_cdesc_allocatable
     !>
     !! \brief test helper
     !!
@@ -1489,7 +1489,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
-    ! Statement: f_function_shadow_&_capptr
+    ! Statement: f_function_shadow&_capptr
     ! start singleton_get_reference
     function singleton_get_reference() &
             result(SHT_rv)
@@ -1507,7 +1507,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     function shape_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1520,7 +1520,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  int get_ivar
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     function shape_get_ivar(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1559,7 +1559,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     function circle_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1578,7 +1578,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int n
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     ! start data_allocate
     subroutine data_allocate(obj, n)
         use iso_c_binding, only : C_INT
@@ -1604,7 +1604,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_scalar_capptr
+    ! Statement: f_ctor_shadow_capptr
     ! start data_ctor
     function data_ctor() &
             result(SHT_rv)
@@ -1632,7 +1632,7 @@ contains
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int get_nitems +intent(getter)
-    ! Statement: f_getter_native_scalar
+    ! Statement: f_getter_native
     ! start data_get_nitems
     function data_get_nitems(obj) &
             result(SHT_rv)
@@ -1651,7 +1651,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int val +intent(setter)
-    ! Statement: f_setter_native_scalar
+    ! Statement: f_setter_native
     ! start data_set_nitems
     subroutine data_set_nitems(obj, val)
         use iso_c_binding, only : C_INT
@@ -1666,7 +1666,7 @@ contains
     ! Generated by getter/setter
     ! ----------------------------------------
     ! Function:  int * get_items +dimension(nitems)+intent(getter)
-    ! Statement: f_getter_native_*_cdesc_pointer
+    ! Statement: f_getter_native*_cdesc_pointer
     ! start data_get_items
     function data_get_items(obj) &
             result(SHT_rv)
@@ -1688,7 +1688,7 @@ contains
     ! Statement: f_setter
     ! ----------------------------------------
     ! Argument:  int * val +intent(setter)+rank(1)
-    ! Statement: f_setter_native_*
+    ! Statement: f_setter_native*
     ! start data_set_items
     subroutine data_set_items(obj, val)
         use iso_c_binding, only : C_INT
@@ -1707,10 +1707,10 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
-    ! Statement: f_function_enum_scalar
+    ! Statement: f_function_enum
     ! ----------------------------------------
     ! Argument:  Class1::DIRECTION arg
-    ! Statement: f_in_enum_scalar
+    ! Statement: f_in_enum
     function direction_func(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1727,7 +1727,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg
-    ! Statement: f_in_shadow_scalar
+    ! Statement: f_in_shadow
     !>
     !! \brief Pass arguments to a function.
     !!
@@ -1741,10 +1741,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int useclass
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     ! ----------------------------------------
     ! Argument:  const Class1 * arg
-    ! Statement: f_in_shadow_*
+    ! Statement: f_in_shadow*
     function useclass(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1757,7 +1757,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     !>
     !! \brief Return const class pointer
     !!
@@ -1774,7 +1774,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
-    ! Statement: f_function_shadow_*_capptr
+    ! Statement: f_function_shadow*_capptr
     !>
     !! \brief Return class pointer
     !!
@@ -1791,7 +1791,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2_void
-    ! Statement: f_function_shadow_*_capsule
+    ! Statement: f_function_shadow*_capsule
     !>
     !! \brief C wrapper will return void
     !!
@@ -1806,7 +1806,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3_void
-    ! Statement: f_function_shadow_*_capsule
+    ! Statement: f_function_shadow*_capsule
     !>
     !! \brief C wrapper will return void
     !!
@@ -1821,7 +1821,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
-    ! Statement: f_function_shadow_&_capptr
+    ! Statement: f_function_shadow&_capptr
     function get_const_class_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1834,7 +1834,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
-    ! Statement: f_function_shadow_&_capptr
+    ! Statement: f_function_shadow&_capptr
     function get_class_reference() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1847,10 +1847,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_scalar_capptr
+    ! Statement: f_function_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     !>
     !! \brief Return Class1 instance by value, uses copy constructor
     !!
@@ -1873,7 +1873,7 @@ contains
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  int arg
-    ! Statement: f_in_native_scalar
+    ! Statement: f_in_native
     subroutine set_global_flag(arg)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: arg
@@ -1887,7 +1887,7 @@ contains
     ! Only the interface is needed
     ! ----------------------------------------
     ! Function:  int get_global_flag
-    ! Statement: f_function_native_scalar
+    ! Statement: f_function_native
     function get_global_flag() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1900,7 +1900,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
-    ! Statement: f_function_string_&_buf_copy
+    ! Statement: f_function_string&_buf_copy
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

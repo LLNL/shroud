@@ -34,10 +34,10 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Statement: py_function_enum_scalar
+// Statement: py_function_enum
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg
-// Statement: py_in_enum_scalar
+// Statement: py_in_enum
 static char PY_directionFunc__doc__[] =
 "documentation"
 ;
@@ -78,7 +78,7 @@ PY_directionFunc(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  Class1 arg
-// Statement: py_in_shadow_scalar
+// Statement: py_in_shadow
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;
@@ -113,10 +113,10 @@ PY_passClassByValue(
 
 // ----------------------------------------
 // Function:  int useclass
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 // ----------------------------------------
 // Argument:  const Class1 * arg
-// Statement: py_in_shadow_*
+// Statement: py_in_shadow*
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -152,7 +152,7 @@ PY_useclass(
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Statement: py_function_shadow_*
+// Statement: py_function_shadow*
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -180,7 +180,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
-// Statement: py_function_shadow_&
+// Statement: py_function_shadow&
 static char PY_getClassReference__doc__[] =
 "documentation"
 ;
@@ -207,7 +207,7 @@ PY_getClassReference(
 // Statement: py_default
 // ----------------------------------------
 // Argument:  int arg
-// Statement: py_in_native_scalar
+// Statement: py_in_native
 static char PY_set_global_flag__doc__[] =
 "documentation"
 ;
@@ -235,7 +235,7 @@ PY_set_global_flag(
 
 // ----------------------------------------
 // Function:  int get_global_flag
-// Statement: py_function_native_scalar
+// Statement: py_function_native
 static char PY_get_global_flag__doc__[] =
 "documentation"
 ;
@@ -260,7 +260,7 @@ PY_get_global_flag(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Statement: py_function_string_&
+// Statement: py_function_string&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

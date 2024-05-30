@@ -152,7 +152,7 @@
                                     "numpy_type": "NPY_DOUBLE",
                                     "py_var": "SHPy_dfield",
                                     "size_var": "SHSize_dfield",
-                                    "stmt": "py_ctor_native_scalar_numpy",
+                                    "stmt": "py_ctor_native_numpy",
                                     "value_var": "SHValue_dfield"
                                 }
                             },
@@ -174,7 +174,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_ifield",
                                     "size_var": "SHSize_ifield",
-                                    "stmt": "py_ctor_native_scalar_numpy",
+                                    "stmt": "py_ctor_native_numpy",
                                     "value_var": "SHValue_ifield"
                                 }
                             }
@@ -355,7 +355,7 @@
                             "typemap_name": "Cstruct_ptr"
                         },
                         "decl": "Cstruct_ptr_ctor",
-                        "declgen": "Cstruct_ptr(char * cfield +intent(in), const double * const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)",
+                        "declgen": "Cstruct_ptr(char *cfield +intent(in), const double *const_dvalue +intent(in)) +name(Cstruct_ptr_ctor)",
                         "name": "Cstruct_ptr_ctor",
                         "options": {},
                         "struct_members": [
@@ -447,7 +447,7 @@
                                     "py_var": "SHPy_cfield",
                                     "pytmp_var": "SHTPy_cfield",
                                     "size_var": "SHSize_cfield",
-                                    "stmt": "py_ctor_char_*_numpy",
+                                    "stmt": "py_ctor_char*_numpy",
                                     "value_var": "SHValue_cfield"
                                 }
                             },
@@ -472,7 +472,7 @@
                                     "py_var": "SHPy_const_dvalue",
                                     "pytmp_var": "SHTPy_const_dvalue",
                                     "size_var": "SHSize_const_dvalue",
-                                    "stmt": "py_ctor_native_*_numpy",
+                                    "stmt": "py_ctor_native*_numpy",
                                     "value_var": "SHValue_const_dvalue"
                                 }
                             }
@@ -701,7 +701,7 @@
                             "typemap_name": "Cstruct_list"
                         },
                         "decl": "Cstruct_list_ctor",
-                        "declgen": "Cstruct_list(int nitems, int * ivalue +dimension(nitems+nitems)+intent(in), double * dvalue +dimension(nitems*TWO)+intent(in), char * * svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)",
+                        "declgen": "Cstruct_list(int nitems, int *ivalue +dimension(nitems+nitems)+intent(in), double *dvalue +dimension(nitems*TWO)+intent(in), char **svalue +dimension(nitems)+intent(in)) +name(Cstruct_list_ctor)",
                         "name": "Cstruct_list_ctor",
                         "options": {},
                         "struct_members": [
@@ -882,7 +882,7 @@
                                     "pytmp_var": "SHTPy_dvalue",
                                     "rank": "1",
                                     "size_var": "SHSize_dvalue",
-                                    "stmt": "py_ctor_native_*_list",
+                                    "stmt": "py_ctor_native*_list",
                                     "value_var": "SHValue_dvalue"
                                 }
                             },
@@ -912,7 +912,7 @@
                                     "pytmp_var": "SHTPy_ivalue",
                                     "rank": "1",
                                     "size_var": "SHSize_ivalue",
-                                    "stmt": "py_ctor_native_*_list",
+                                    "stmt": "py_ctor_native*_list",
                                     "value_var": "SHValue_ivalue"
                                 }
                             },
@@ -934,7 +934,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_nitems",
                                     "size_var": "SHSize_nitems",
-                                    "stmt": "py_ctor_native_scalar_list",
+                                    "stmt": "py_ctor_native_list",
                                     "value_var": "SHValue_nitems"
                                 }
                             },
@@ -964,7 +964,7 @@
                                     "pytmp_var": "SHTPy_svalue",
                                     "rank": "1",
                                     "size_var": "SHSize_svalue",
-                                    "stmt": "py_ctor_char_**_list",
+                                    "stmt": "py_ctor_char**_list",
                                     "value_var": "SHValue_svalue"
                                 }
                             }
@@ -1295,7 +1295,7 @@
                             "typemap_name": "Cstruct_numpy"
                         },
                         "decl": "Cstruct_numpy_ctor",
-                        "declgen": "Cstruct_numpy(int nitems, int * ivalue +dimension(nitems)+intent(in), double * dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)",
+                        "declgen": "Cstruct_numpy(int nitems, int *ivalue +dimension(nitems)+intent(in), double *dvalue +dimension(nitems)+intent(in)) +name(Cstruct_numpy_ctor)",
                         "name": "Cstruct_numpy_ctor",
                         "options": {},
                         "struct_members": [
@@ -1429,7 +1429,7 @@
                                     "pytmp_var": "SHTPy_dvalue",
                                     "rank": "1",
                                     "size_var": "SHSize_dvalue",
-                                    "stmt": "py_ctor_native_*_numpy",
+                                    "stmt": "py_ctor_native*_numpy",
                                     "value_var": "SHValue_dvalue"
                                 }
                             },
@@ -1459,7 +1459,7 @@
                                     "pytmp_var": "SHTPy_ivalue",
                                     "rank": "1",
                                     "size_var": "SHSize_ivalue",
-                                    "stmt": "py_ctor_native_*_numpy",
+                                    "stmt": "py_ctor_native*_numpy",
                                     "value_var": "SHValue_ivalue"
                                 }
                             },
@@ -1481,7 +1481,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_nitems",
                                     "size_var": "SHSize_nitems",
-                                    "stmt": "py_ctor_native_scalar_numpy",
+                                    "stmt": "py_ctor_native_numpy",
                                     "value_var": "SHValue_nitems"
                                 }
                             }
@@ -1824,7 +1824,7 @@
                                     "py_var": "SHPy_count",
                                     "pytmp_var": "SHTPy_count",
                                     "size_var": "SHSize_count",
-                                    "stmt": "py_ctor_native_[]_numpy",
+                                    "stmt": "py_ctor_native[]_numpy",
                                     "value_var": "SHValue_count"
                                 }
                             },
@@ -1849,7 +1849,7 @@
                                     "py_var": "SHPy_name",
                                     "pytmp_var": "SHTPy_name",
                                     "size_var": "SHSize_name",
-                                    "stmt": "py_ctor_char_[]_numpy",
+                                    "stmt": "py_ctor_char[]_numpy",
                                     "value_var": "SHValue_name"
                                 }
                             }
@@ -2333,7 +2333,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2358,7 +2358,7 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_struct_scalar_class",
+                            "stmt": "py_in_struct_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2401,7 +2401,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg)",
+                "declgen": "int passStruct1(const Cstruct1 *arg)",
                 "name": "passStruct1",
                 "options": {
                     "literalinclude": true
@@ -2450,7 +2450,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2476,7 +2476,7 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_struct_*_class",
+                            "stmt": "py_in_struct*_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2538,7 +2538,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "int passStruct2(const Cstruct1 *s1, char *outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -2598,7 +2598,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2620,7 +2620,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_outbuf"
                         }
                     },
@@ -2646,7 +2646,7 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
-                            "stmt": "py_in_struct_*_class",
+                            "stmt": "py_in_struct*_class",
                             "value_var": "SHValue_s1"
                         }
                     }
@@ -2691,7 +2691,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
-                "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
+                "declgen": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "name": "acceptStructInPtr",
                 "options": {},
                 "wrap": {
@@ -2738,7 +2738,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_native_scalar",
+                            "stmt": "py_function_native",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -2764,7 +2764,7 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_in_struct_*_class",
+                            "stmt": "py_in_struct*_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -2829,7 +2829,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i, double d)",
+                "declgen": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -2910,7 +2910,7 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_out_struct_*_class",
+                            "stmt": "py_out_struct*_class",
                             "value_var": "SHValue_arg"
                         }
                     },
@@ -2930,7 +2930,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -2950,7 +2950,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_i"
                         }
                     }
@@ -2995,7 +2995,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
-                "declgen": "void acceptStructInOutPtr(Cstruct1 * arg +intent(inout))",
+                "declgen": "void acceptStructInOutPtr(Cstruct1 *arg +intent(inout))",
                 "name": "acceptStructInOutPtr",
                 "options": {},
                 "wrap": {
@@ -3050,7 +3050,7 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt": "py_inout_struct_*_class",
+                            "stmt": "py_inout_struct*_class",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -3185,7 +3185,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -3205,7 +3205,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_i"
                         }
                     }
@@ -3257,7 +3257,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i, double d)",
+                "declgen": "Cstruct1 *returnStructPtr1(int i, double d)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3327,7 +3327,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_struct_class",
+                            "stmt": "py_function_struct*_class",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3347,7 +3347,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -3367,7 +3367,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_i"
                         }
                     }
@@ -3438,7 +3438,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i, double d, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3518,7 +3518,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_struct_class",
+                            "stmt": "py_function_struct*_class",
                             "value_var": "SHValue_rv"
                         }
                     },
@@ -3538,7 +3538,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_d"
                         }
                     },
@@ -3558,7 +3558,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt": "py_in_native_scalar",
+                            "stmt": "py_in_native",
                             "value_var": "SHValue_i"
                         }
                     },
@@ -3580,7 +3580,7 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt": "py_out_char_*_charlen",
+                            "stmt": "py_out_char*_charlen",
                             "value_var": "SHValue_outbuf"
                         }
                     }
@@ -3614,7 +3614,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtrArray() +dimension(2)",
-                "declgen": "Cstruct1 * returnStructPtrArray(void) +dimension(2)",
+                "declgen": "Cstruct1 *returnStructPtrArray(void) +dimension(2)",
                 "doxygen": {
                     "brief": "Return a pointer to an array of structs"
                 },
@@ -3676,7 +3676,7 @@
                             "py_var": "SHTPy_rv",
                             "rank": "1",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_struct_class",
+                            "stmt": "py_function_struct*_class",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3707,7 +3707,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "declgen": "Cstruct_list *get_global_struct_list(void)",
                 "name": "get_global_struct_list",
                 "options": {},
                 "wrap": {
@@ -3749,7 +3749,7 @@
                             "numpy_type": null,
                             "py_var": "SHTPy_rv",
                             "size_var": "SHSize_rv",
-                            "stmt": "py_function_struct_class",
+                            "stmt": "py_function_struct*_class",
                             "value_var": "SHValue_rv"
                         }
                     }
@@ -3780,7 +3780,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class *Create_Cstruct_as_class(void)",
                 "name": "Create_Cstruct_as_class",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
@@ -3843,7 +3843,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
                 "name": "Create_Cstruct_as_class_args",
                 "options": {
                     "class_ctor": "Cstruct_as_class",
@@ -3896,7 +3896,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Return_Cstruct_as_class(void)",
-                "declgen": "Cstruct_as_class * Return_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class *Return_Cstruct_as_class(void)",
                 "name": "Return_Cstruct_as_class",
                 "options": {
                     "C_shadow_result": false,
@@ -3958,7 +3958,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Return_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class *Return_Cstruct_as_class_args(int x, int y)",
                 "name": "Return_Cstruct_as_class_args",
                 "options": {
                     "C_shadow_result": false,
@@ -4026,7 +4026,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
-                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
                 "name": "Cstruct_as_class_sum",
                 "options": {
                     "class_method": "Cstruct_as_class",
@@ -4107,7 +4107,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Create_Cstruct_as_subclass_args",
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
@@ -4197,7 +4197,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Return_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass *Return_Cstruct_as_subclass_args(int x, int y, int z)",
                 "name": "Return_Cstruct_as_subclass_args",
                 "options": {
                     "C_shadow_result": false,
