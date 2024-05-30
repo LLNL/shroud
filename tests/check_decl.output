@@ -62,10 +62,10 @@ XXXX PRINT
    j
 1 const double
    d
-   * d2
+   *d2
 XXXX PRINT_NODE
 int i, j;
-const double d, * d2;
+const double d, *d2;
 
 XXXX AST
 stmts:
@@ -101,15 +101,15 @@ int **i2;
 int &i3;
 XXXX PRINT
 0 int
-   * i1
+   *i1
 1 int
-   * * i2
+   **i2
 2 int
-   & i3
+   &i3
 XXXX PRINT_NODE
-int * i1;
-int * * i2;
-int & i3;
+int *i1;
+int **i2;
+int &i3;
 
 XXXX AST
 stmts:
@@ -493,7 +493,7 @@ XXXX PRINT
    var1
 XXXX PRINT_NODE
 struct list_s{
-struct list_s * next;
+struct list_s *next;
 }
 ;
 struct list_s var1;
@@ -561,8 +561,8 @@ XXXX PRINT
    
 XXXX PRINT_NODE
 struct list_s{
-struct list_s * next;
-list_s * prev;
+struct list_s *next;
+list_s *prev;
 }
 ;
 
@@ -796,13 +796,13 @@ address var;
 void caller(address arg1);
 XXXX PRINT
 0 typedef void
-   * address
+   *address
 1 address
    var
 2 void
    caller(address arg1)
 XXXX PRINT_NODE
-typedef void * address;
+typedef void *address;
 address var;
 void caller(address arg1);
 
@@ -872,11 +872,11 @@ typedef int (*fcn)(int);
 void caller(fcn callback);
 XXXX PRINT
 0 typedef int
-   (* fcn)(int)
+   (*fcn)(int)
 1 void
    caller(fcn callback)
 XXXX PRINT_NODE
-typedef int (* fcn)(int);
+typedef int (*fcn)(int);
 void caller(fcn callback);
 
 XXXX AST
@@ -1028,7 +1028,7 @@ XXXX PRINT
 1 <T,U>
 XXXX PRINT_NODE
 template<T, U>  struct twostruct{
-T * values;
+T *values;
 U length;
 }
 ;
@@ -1211,7 +1211,7 @@ int fun1(int arg1, int *arg2, const int *arg3);
 int callback1(int in, int (*incr)(int));
 XXXX PRINT
 0 int
-   fun1(int arg1, int * arg2, const int * arg3)
+   fun1(int arg1, int *arg2, const int *arg3)
 XXXX DeclStr
      gen_decl: 0 int fun1(int arg1, int * arg2, const int * arg3)
      as_c    : 0 int fun1
@@ -1227,7 +1227,7 @@ XXXX DeclStr
          as_c    : 2 const int * arg3
          as_cxx  : 2 const int * arg3
 1 int
-   callback1(int in, int (* incr)(int))
+   callback1(int in, int (*incr)(int))
 XXXX DeclStr
      gen_decl: 1 int callback1(int in, int ( * incr)(int))
      as_c    : 1 int callback1
@@ -1240,8 +1240,8 @@ XXXX DeclStr
          as_c    : 1 int ( * incr)(int)
          as_cxx  : 1 int ( * incr)(int)
 XXXX PRINT_NODE
-int fun1(int arg1, int * arg2, const int * arg3);
-int callback1(int in, int (* incr)(int));
+int fun1(int arg1, int *arg2, const int *arg3);
+int callback1(int in, int (*incr)(int));
 
 XXXX AST
 stmts:
@@ -1323,7 +1323,7 @@ int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
 int callback1(int in, int (*incr)(int));
 XXXX PRINT
 0 int
-   fun1(std::vector<int> arg1, std::vector<int> * arg2, std::vector<int> & arg3)
+   fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3)
 XXXX DeclStr
      gen_decl: 0 int fun1(std::vector<int> arg1, std::vector<int> * arg2, std::vector<int> & arg3)
      as_c    : 0 int fun1
@@ -1339,7 +1339,7 @@ XXXX DeclStr
          as_c    : 2 int * arg3
          as_cxx  : 2 int & arg3
 1 int
-   callback1(int in, int (* incr)(int))
+   callback1(int in, int (*incr)(int))
 XXXX DeclStr
      gen_decl: 1 int callback1(int in, int ( * incr)(int))
      as_c    : 1 int callback1
@@ -1352,8 +1352,8 @@ XXXX DeclStr
          as_c    : 1 int ( * incr)(int)
          as_cxx  : 1 int ( * incr)(int)
 XXXX PRINT_NODE
-int fun1(std::vector<int> arg1, std::vector<int> * arg2, std::vector<int> & arg3);
-int callback1(int in, int (* incr)(int));
+int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
+int callback1(int in, int (*incr)(int));
 
 XXXX AST
 stmts:

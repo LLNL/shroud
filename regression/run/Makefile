@@ -180,8 +180,9 @@ test-c : $(c-test-list)
 # C++
 
 cpp-test-list = \
-  test-cpp-tutorial \
+  test-cpp-classes \
   test-cpp-templates \
+  test-cpp-sgroup \
   test-cpp-defaultarg32 \
   test-cpp-defaultarg64 \
   test-cpp-scope

@@ -453,7 +453,7 @@ class CheckParse(unittest.TestCase):
     
         r = declast.check_decl("char *var4[44]", symtab)
         declarator = r.declarator
-        self.assertEqual("* var4[44]", str(declarator))
+        self.assertEqual("*var4[44]", str(declarator))
         self.assertEqual(1, declarator.is_indirect())
         self.assertEqual(2, declarator.is_array())
         self.assertEqual("char **", r.as_cast())
@@ -580,7 +580,7 @@ class CheckParse(unittest.TestCase):
 
         r = declast.check_decl("std::vector<int *> var1", symtab)
         s = gen_decl(r)
-        self.assertEqual("std::vector<int * > var1", s)
+        self.assertEqual("std::vector<int *> var1", s)
         self.assertEqual(
             {
                 'declarator': {
@@ -614,7 +614,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int * var1", s)
 
         s = gen_arg_as_cxx(r, force_ptr=True, with_template_args=True)
-        self.assertEqual("std::vector<int * > * var1", s)
+        self.assertEqual("std::vector<int *> * var1", s)
 
     def test_template_argument_list(self):
         symtab = declast.SymbolTable()

@@ -5,31 +5,22 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 // #######################################################################
 //
-// Tests for classes.cpp
+// Tests for sgroup.yaml
 //
 
-#include "classes.hpp"
+#include <sgroup.hpp>
 
-int tester1()
+#include <cassert>
+
+void test_twostruct(void)
 {
-  return classes::Class1::DIRECTION::UP;
-}
-int tester2()
-{
-  return classes::Class1::UP;
+    double data[] = {1, 2, 3, 4, 5};
+    twostruct<double, int> value{data, 5};
+
+    process_twostruct(value);
 }
 
 int main(int argc, char *argv[])
 {
-#if 0
-    classes::Class1 * obj = new classes::Class1;
-
-    obj->Method1();
-
-    delete obj;
-#else
-    classes::Class1 obj;
-
-    obj.Method1();
-#endif
+  test_twostruct();
 }

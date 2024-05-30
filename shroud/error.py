@@ -61,6 +61,7 @@ class Cursor(object):
         self.current = NodeCursor(None)
         self.node_list = [ self.current ]
 
+        self.phase = None
         self.last_phase = None
         self.nwarning = 0
 
