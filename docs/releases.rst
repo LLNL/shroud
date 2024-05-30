@@ -279,6 +279,14 @@ New Features
 
 * Expose default statements to users in the file ``fc-statements.json``.
 
+* Remove the assumption that there is only one template argument for
+  types.  This worked for ``std::vector`` but is now generalized.
+  This required adding the format field ``targs`` which is a list of
+  objects for template arguments. Used in the format fields as
+  ``{targs[0].cxx_type}`` to access the type of the first template
+  argument.  Function and class declarations always allowed multiple
+  template arguments.
+
 * Added *fmtdict* field to Fortran and C statement groups. Similar to
   *fmtdict* already in the Python statement groups. It allows format
   fields to be set explicitly in the statement group to override the
