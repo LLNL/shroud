@@ -1119,11 +1119,10 @@
         }
     },
     {
-        "name": "f_in/out/inout_native*_cdesc",
-        "mixin": [
-            "f_mixin_pass_cdesc"
-        ],
+        "name": "f_in_native*_cdesc",
         "alias": [
+            "f_out_native*_cdesc",
+            "f_inout_native*_cdesc",
             "c_in_native*_cdesc",
             "c_out_native*_cdesc",
             "c_inout_native*_cdesc",
@@ -1133,6 +1132,9 @@
             "f_in_void*_cdesc",
             "f_out_void*_cdesc",
             "f_inout_void*_cdesc"
+        ],
+        "mixin": [
+            "f_mixin_pass_cdesc"
         ],
         "f_arg_decl": [
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
@@ -1165,12 +1167,14 @@
         }
     },
     {
-        "name": "f_out/inout_native*_hidden",
+        "name": "f_out_native*_hidden",
+        "alias": [
+            "f_inout_native*_hidden",
+            "c_out_native*_hidden",
+            "c_inout_native*_hidden"
+        ],
         "comments": [
             "Declare a local variable and pass to C."
-        ],
-        "alias": [
-            "c_out/inout_native*_hidden"
         ],
         "c_pre_call": [
             "{cxx_type} {cxx_var};"
@@ -1180,12 +1184,14 @@
         ]
     },
     {
-        "name": "f_out/inout_native&_hidden",
+        "name": "f_out_native&_hidden",
+        "alias": [
+            "f_inout_native&_hidden",
+            "c_out_native&_hidden",
+            "c_inout_native&_hidden"
+        ],
         "comments": [
             "Declare a local variable and pass to C."
-        ],
-        "alias": [
-            "c_out/inout_native&_hidden"
         ],
         "c_pre_call": [
             "{cxx_type} {cxx_var};"
@@ -1223,13 +1229,17 @@
         ]
     },
     {
-        "name": "f_in/out/inout_void**",
+        "name": "f_in_void**",
+        "alias": [
+            "f_out_void**",
+            "f_inout_void**",
+            "c_in_void**",
+            "c_out_void**",
+            "c_inout_void**",
+            "f_in_void**_cfi"
+        ],
         "notes": [
             "Treat as an assumed length array in Fortran interface."
-        ],
-        "alias": [
-            "c_in/out/inout_void**",
-            "f_in_void**_cfi"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1386,7 +1396,10 @@
         "name": "f_function_char*",
         "alias": [
             "c_function_char*",
-            "f_function_char*_allocatable/copy/pointer/raw"
+            "f_function_char*_allocatable",
+            "f_function_char*_copy",
+            "f_function_char*_pointer",
+            "f_function_char*_raw"
         ],
         "f_arg_decl": [
             "type(C_PTR) :: {f_var}"
@@ -1591,16 +1604,18 @@
     },
     {
         "name": "f_function_string*_cdesc_pointer",
+        "alias": [
+            "f_function_string&_cdesc_pointer",
+            "f_function_string*_cdesc_pointer_caller",
+            "f_function_string*_cdesc_pointer_library",
+            "f_function_string&_cdesc_pointer_caller",
+            "f_function_string&_cdesc_pointer_library"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_pointer"
-        ],
-        "alias": [
-            "f_function_string&_cdesc_pointer",
-            "f_function_string*_cdesc_pointer_caller/library",
-            "f_function_string&_cdesc_pointer_caller/library"
         ]
     },
     {
@@ -1724,16 +1739,17 @@
     },
     {
         "name": "f_shared_function_string_scalar",
-        "notes": [
-            "Fortran calling a C function without",
-            "any api argument - is this useful?"
-        ],
         "alias": [
             "c_function_string*",
             "c_function_string&",
-            "c_function_string*_caller/library",
+            "c_function_string*_caller",
+            "c_function_string*_library",
             "c_function_string*_copy",
             "c_function_string&_copy"
+        ],
+        "notes": [
+            "Fortran calling a C function without",
+            "any api argument - is this useful?"
         ],
         "c_return": [
             "return {c_var};"
@@ -1813,6 +1829,13 @@
     },
     {
         "name": "f_function_string*_cdesc_allocatable",
+        "alias": [
+            "f_function_string&_cdesc_allocatable",
+            "f_function_string*_cdesc_allocatable_caller",
+            "f_function_string*_cdesc_allocatable_library",
+            "f_function_string&_cdesc_allocatable_caller",
+            "f_function_string&_cdesc_allocatable_library"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1821,11 +1844,6 @@
             "c_mixin_native_capsule_fill",
             "f_mixin_char_cdesc_allocate",
             "f_mixin_capsule_dtor"
-        ],
-        "alias": [
-            "f_function_string&_cdesc_allocatable",
-            "f_function_string*_cdesc_allocatable_caller/library",
-            "f_function_string&_cdesc_allocatable_caller/library"
         ]
     },
     {
@@ -1886,6 +1904,10 @@
     },
     {
         "name": "f_function_string_cdesc_allocatable",
+        "alias": [
+            "f_function_string_cdesc_allocatable_caller",
+            "f_function_string_cdesc_allocatable_library"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
@@ -1893,9 +1915,6 @@
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
             "f_mixin_use_capsule"
-        ],
-        "alias": [
-            "f_function_string_cdesc_allocatable_caller/library"
         ],
         "cxx_local_var": "pointer",
         "c_pre_call": [
@@ -2735,21 +2754,25 @@
     },
     {
         "name": "f_function_shadow*_capptr",
+        "alias": [
+            "f_function_shadow&_capptr",
+            "c_function_shadow*_capptr",
+            "c_function_shadow&_capptr",
+            "f_function_shadow*_capptr_caller",
+            "f_function_shadow*_capptr_library",
+            "f_function_shadow&_capptr_caller",
+            "f_function_shadow&_capptr_library",
+            "c_function_shadow*_capptr_caller",
+            "c_function_shadow*_capptr_library",
+            "c_function_shadow&_capptr_caller",
+            "c_function_shadow&_capptr_library"
+        ],
         "comments": [
             "Return a C_capsule_data_type."
         ],
         "mixin": [
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
-        ],
-        "alias": [
-            "f_function_shadow&_capptr",
-            "c_function_shadow*_capptr",
-            "c_function_shadow&_capptr",
-            "f_function_shadow*_capptr_caller/library",
-            "f_function_shadow&_capptr_caller/library",
-            "c_function_shadow*_capptr_caller/library",
-            "c_function_shadow&_capptr_caller/library"
         ],
         "cxx_local_var": "result",
         "c_post_call": [
@@ -2763,6 +2786,13 @@
     },
     {
         "name": "f_function_shadow_capptr",
+        "alias": [
+            "c_function_shadow_capptr",
+            "f_function_shadow<native>_capptr",
+            "c_function_shadow<native>_capptr",
+            "f_function_shadow_capptr_caller",
+            "f_function_shadow_capptr_library"
+        ],
         "comments": [
             "Return a instance by value."
         ],
@@ -2774,12 +2804,6 @@
         "mixin": [
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
-        ],
-        "alias": [
-            "c_function_shadow_capptr",
-            "f_function_shadow<native>_capptr",
-            "c_function_shadow<native>_capptr",
-            "f_function_shadow_capptr_caller/library"
         ],
         "cxx_local_var": "pointer",
         "owner": "caller",
@@ -3291,7 +3315,10 @@
         ]
     },
     {
-        "name": "f_in/inout_native*_cfi",
+        "name": "f_in_native*_cfi",
+        "alias": [
+            "f_inout_native*_cfi"
+        ],
         "mixin": [
             "c_mixin_arg_native_cfi"
         ],
@@ -3541,6 +3568,17 @@
     },
     {
         "name": "f_shared_function_string*_cfi_pointer",
+        "alias": [
+            "f_function_string_cfi_pointer",
+            "f_function_string*_cfi_pointer",
+            "f_function_string&_cfi_pointer",
+            "f_function_string_cfi_pointer_caller",
+            "f_function_string_cfi_pointer_library",
+            "f_function_string*_cfi_pointer_caller",
+            "f_function_string*_cfi_pointer_library",
+            "f_function_string&_cfi_pointer_caller",
+            "f_function_string&_cfi_pointer_library"
+        ],
         "notes": [
             "XXX - consolidate with c_function*_cfi_pointer?",
             "XXX - via a helper to get address and length of string"
@@ -3548,14 +3586,6 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "c_mixin_arg_cfi"
-        ],
-        "alias": [
-            "f_function_string_cfi_pointer",
-            "f_function_string*_cfi_pointer",
-            "f_function_string&_cfi_pointer",
-            "f_function_string_cfi_pointer_caller/library",
-            "f_function_string*_cfi_pointer_caller/library",
-            "f_function_string&_cfi_pointer_caller/library"
         ],
         "f_need_wrapper": true,
         "f_arg_decl": [
@@ -3611,16 +3641,19 @@
     },
     {
         "name": "f_function_string*_cfi_allocatable",
+        "alias": [
+            "f_function_string&_cfi_allocatable",
+            "f_function_string_cfi_allocatable_caller",
+            "f_function_string_cfi_allocatable_library",
+            "f_function_string*_cfi_allocatable_caller",
+            "f_function_string*_cfi_allocatable_library",
+            "f_function_string&_cfi_allocatable_caller",
+            "f_function_string&_cfi_allocatable_library"
+        ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_string_cfi_allocatable",
             "c_mixin_arg_cfi"
-        ],
-        "alias": [
-            "f_function_string&_cfi_allocatable",
-            "f_function_string_cfi_allocatable_caller/library",
-            "f_function_string*_cfi_allocatable_caller/library",
-            "f_function_string&_cfi_allocatable_caller/library"
         ],
         "i_arg_decl": [
             "character(len=:), intent({f_intent}), allocatable :: {i_var}"
