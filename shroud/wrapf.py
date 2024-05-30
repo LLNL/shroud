@@ -2428,7 +2428,7 @@ def gen_arg_as_fortran(
     rank = attrs.get("rank")
     if rank is not None:
         rank = int(rank)
-        decl.append(declaration.fortran_ranks[rank])
+        decl.append(fcfmt.fortran_ranks[rank])
     elif dimension:
         if is_allocatable:
             # Assume 1-d.

@@ -1482,17 +1482,6 @@ class Declaration(Node):
     attrs     - Attributes set by the user.
     """
 
-    fortran_ranks = [
-        "",
-        "(:)",
-        "(:,:)",
-        "(:,:,:)",
-        "(:,:,:,:)",
-        "(:,:,:,:,:)",
-        "(:,:,:,:,:,:)",
-        "(:,:,:,:,:,:,:)",
-    ]
-
     def __init__(self, symtab=None):
 #        self.symtab = symtab  # GGG -lots of problems with copy
         self.specifier = []  # int, long, ...
