@@ -405,7 +405,7 @@
         ]
     },
     {
-        "name": "c_mixin_function_char_*_cdesc",
+        "name": "c_mixin_function_char*_cdesc",
         "comments": [
             "Fill cdesc from char * in the C wrapper."
         ],
@@ -915,7 +915,7 @@
         ]
     },
     {
-        "name": "f_shared_native_scalar",
+        "name": "f_shared_native",
         "alias": [
             "f_in_native",
             "c_in_native",
@@ -1043,7 +1043,7 @@
         }
     },
     {
-        "name": "c_mixin_out_native_**",
+        "name": "c_mixin_out_native**",
         "notes": [
             "double **count +intent(out)+dimension(ncount)"
         ],
@@ -1081,7 +1081,7 @@
         "mixin": [
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
-            "c_mixin_out_native_**",
+            "c_mixin_out_native**",
             "f_mixin_out_native_cdesc_allocate",
             "f_mixin_use_capsule"
         ]
@@ -1095,7 +1095,7 @@
         ],
         "mixin": [
             "f_mixin_pass_cdesc",
-            "c_mixin_out_native_**",
+            "c_mixin_out_native**",
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_out_native_cdesc_pointer"
         ]
@@ -1571,7 +1571,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
             "f_mixin_char_cdesc_allocate",
-            "c_mixin_function_char_*_cdesc"
+            "c_mixin_function_char*_cdesc"
         ],
         "alias": [
             "f_function_char*_cdesc_allocatable"
@@ -1582,7 +1582,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
-            "c_mixin_function_char_*_cdesc",
+            "c_mixin_function_char*_cdesc",
             "f_mixin_char_cdesc_pointer"
         ],
         "alias": [
@@ -2102,7 +2102,7 @@
         ]
     },
     {
-        "name": "c_mixin_out_vector_cdesc_targ_native_scalar",
+        "name": "c_mixin_out_vector<native>_cdesc",
         "mixin": [
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc"
@@ -2127,7 +2127,7 @@
         ],
         "mixin": [
             "f_mixin_pass_cdesc",
-            "c_mixin_out_vector_cdesc_targ_native_scalar"
+            "c_mixin_out_vector<native>_cdesc"
         ],
         "c_helper": [
             "copy_array",
@@ -2151,7 +2151,7 @@
         ]
     },
     {
-        "name": "c_mixin_inout_vector_cdesc_targ_native_scalar",
+        "name": "c_mixin_inout_vector<native>_cdesc",
         "mixin": [
             "f_mixin_inout_array_cdesc",
             "c_mixin_inout_vector_cdesc",
@@ -2505,7 +2505,7 @@
     {
         "name": "f_inout_vector<native>&_cdesc",
         "mixin": [
-            "c_mixin_inout_vector_cdesc_targ_native_scalar"
+            "c_mixin_inout_vector<native>_cdesc"
         ],
         "append": {
             "f_module": {
@@ -2553,7 +2553,7 @@
         ],
         "mixin": [
             "f_mixin_pass_cdesc",
-            "c_mixin_out_vector_cdesc_targ_native_scalar"
+            "c_mixin_out_vector<native>_cdesc"
         ],
         "c_helper": [
             "copy_array"
@@ -2579,7 +2579,7 @@
     {
         "name": "f_inout_vector<native>&_cdesc_allocatable",
         "mixin": [
-            "c_mixin_inout_vector_cdesc_targ_native_scalar"
+            "c_mixin_inout_vector<native>_cdesc"
         ],
         "append": {
             "f_module": {
@@ -3529,9 +3529,9 @@
         ]
     },
     {
-        "name": "f_shared_function_string_*_cfi_pointer",
+        "name": "f_shared_function_string*_cfi_pointer",
         "notes": [
-            "XXX - consolidate with c_function_*_cfi_pointer?",
+            "XXX - consolidate with c_function*_cfi_pointer?",
             "XXX - via a helper to get address and length of string"
         ],
         "mixin": [
@@ -3586,7 +3586,7 @@
         ]
     },
     {
-        "name": "f_mixin_function_string_scalar_cfi_allocatable",
+        "name": "f_mixin_function_string_cfi_allocatable",
         "notes": [
             "similar to f_char_scalar_allocatable."
         ],
@@ -3602,7 +3602,7 @@
         "name": "f_function_string*_cfi_allocatable",
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_string_scalar_cfi_allocatable",
+            "f_mixin_function_string_cfi_allocatable",
             "c_mixin_arg_cfi"
         ],
         "alias": [
@@ -3641,7 +3641,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_function_string_scalar_cfi_allocatable",
+            "f_mixin_function_string_cfi_allocatable",
             "c_mixin_arg_cfi"
         ],
         "i_arg_names": [
@@ -3660,7 +3660,7 @@
         ]
     },
     {
-        "name": "f_mixin_out_string_**_cfi",
+        "name": "f_mixin_out_string**_cfi",
         "c_temps": [
             "cxx"
         ],
@@ -3679,7 +3679,7 @@
         ],
         "mixin": [
             "c_mixin_arg_cfi",
-            "f_mixin_out_string_**_cfi"
+            "f_mixin_out_string**_cfi"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -3695,7 +3695,7 @@
         "name": "f_out_string**_cfi_copy",
         "mixin": [
             "c_mixin_arg_cfi",
-            "f_mixin_out_string_**_cfi"
+            "f_mixin_out_string**_cfi"
         ],
         "i_arg_names": [
             "{i_var}"

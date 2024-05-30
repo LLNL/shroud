@@ -1560,7 +1560,11 @@ class FunctionNode(AstNode):
         self.decl = decl
         if ast is None:
             ast = declast.check_decl(decl, parent.symtab)
+            
         if isinstance(ast, declast.Template):
+            self.name = ast.decl.declarator.name
+            if not self.template_arguments:
+                error.cursor.warning("Templated function requires the 'cxx_template' field")
             for param in ast.parameters:
                 self.template_parameters.append(param.name)
 
@@ -1577,7 +1581,9 @@ class FunctionNode(AstNode):
                 lst.append(arg.asts[0].typemap.name)
             self.cxx_template[argname] = lst
         elif isinstance(ast, declast.Declaration):
-            pass
+            self.name = ast.declarator.name
+            if self.template_arguments:
+                error.cursor.warning("'cxx_template' field only used with a templated function")
         else:
             raise RuntimeError("Expected a function declaration")
         if ast.declarator.params is None:

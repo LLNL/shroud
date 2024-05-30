@@ -61,14 +61,14 @@ root
     in
       bool -- f_in_bool
       char -- f_in_char
-      char* -- f_shared_native_scalar
+      char* -- f_shared_native
         buf -- f_in_char*_buf
       char** -- f_in_char**
         buf -- f_in_char**_buf
-      enum -- f_shared_native_scalar
-      native -- f_shared_native_scalar
-      native& -- f_shared_native_scalar
-      native* -- f_shared_native_scalar
+      enum -- f_shared_native
+      native -- f_shared_native
+      native& -- f_shared_native
+      native* -- f_shared_native
         cdesc -- f_in/out/inout_native*_cdesc
       native** -- f_in_native**
       procedure -- f_in_procedure
@@ -84,7 +84,7 @@ root
       struct -- f_shared_struct
       struct& -- f_shared_struct
       struct* -- f_shared_struct
-      unknown -- f_shared_native_scalar
+      unknown -- f_shared_native
       vector<native*>& -- c_shared_vector_argument
         buf -- f_in_vector<native*>&_buf
       vector<native>
@@ -99,19 +99,19 @@ root
         buf -- f_in_vector<string>_buf
       vector<string>*
         buf -- f_in_vector<string>_buf
-      void -- f_shared_native_scalar
+      void -- f_shared_native
       void* -- f_in_void*
         cdesc -- f_in/out/inout_native*_cdesc
       void** -- f_in/out/inout_void**
     inout
       bool
         * -- f_inout_bool*
-      char* -- f_shared_native_scalar
+      char* -- f_shared_native
         buf -- f_inout_char*_buf
       enum* -- f_inout_enum*
-      native& -- f_shared_native_scalar
+      native& -- f_shared_native
         hidden -- f_out/inout_native&_hidden
-      native* -- f_shared_native_scalar
+      native* -- f_shared_native
         cdesc -- f_in/out/inout_native*_cdesc
         hidden -- f_out/inout_native*_hidden
       shadow& -- f_in_shadow*
@@ -149,9 +149,8 @@ root
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
       function
-        char
-          *
-            cdesc -- c_mixin_function_char_*_cdesc
+        char*
+          cdesc -- c_mixin_function_char*_cdesc
         string
           cdesc -- c_mixin_function_string_cdesc
         vector
@@ -162,9 +161,8 @@ root
       inout
         vector
           cdesc -- c_mixin_inout_vector_cdesc
-            targ
-              native
-                scalar -- c_mixin_inout_vector_cdesc_targ_native_scalar
+        vector<native>
+          cdesc -- c_mixin_inout_vector<native>_cdesc
       native
         capsule
           fill -- c_mixin_native_capsule_fill
@@ -175,15 +173,12 @@ root
           pointer -- c_mixin_native_cfi_pointer
       noargs -- c_mixin_noargs
       out
-        native
-          ** -- c_mixin_out_native_**
+        native** -- c_mixin_out_native**
         vector
           buf
             malloc -- c_mixin_out_vector_buf_malloc
-          cdesc
-            targ
-              native
-                scalar -- c_mixin_out_vector_cdesc_targ_native_scalar
+        vector<native>
+          cdesc -- c_mixin_out_vector<native>_cdesc
       shadow -- c_mixin_shadow
       unknown -- c_mixin_unknown
       vector
@@ -195,19 +190,19 @@ root
       char
         *
           buf -- f_out_char*_buf
-      char* -- f_shared_native_scalar
+      char* -- f_shared_native
       enum* -- f_out_enum*
       native
         &* -- c_defaulttmp
-      native& -- f_shared_native_scalar
+      native& -- f_shared_native
         hidden -- f_out/inout_native&_hidden
       native* -- f_out_native*
         cdesc -- f_in/out/inout_native*_cdesc
         hidden -- f_out/inout_native*_hidden
-      native*& -- f_shared_native_scalar
+      native*& -- f_shared_native
       native** -- f_out_native**_raw
         raw -- f_out_native**_raw
-      native*** -- f_shared_native_scalar
+      native*** -- f_shared_native
       string& -- f_out_string*
         buf -- f_out_string*_buf
       string* -- f_out_string*
@@ -244,7 +239,7 @@ root
           copy -- c_out_vector<string>_buf_copy
       void*
         cdesc -- f_in/out/inout_native*_cdesc
-      void*& -- f_shared_native_scalar
+      void*& -- f_shared_native
       void** -- f_in/out/inout_void**
     setter -- f_setter
       native -- f_setter_native
@@ -338,9 +333,9 @@ root
             library -- f_function_string*_cfi_allocatable
           arg -- f_function_string_cfi_arg
           copy -- f_function_string_cfi_copy
-          pointer -- f_shared_function_string_*_cfi_pointer
-            caller -- f_shared_function_string_*_cfi_pointer
-            library -- f_shared_function_string_*_cfi_pointer
+          pointer -- f_shared_function_string*_cfi_pointer
+            caller -- f_shared_function_string*_cfi_pointer
+            library -- f_shared_function_string*_cfi_pointer
       string&
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg
@@ -358,9 +353,9 @@ root
             library -- f_function_string*_cfi_allocatable
           arg -- f_function_string_cfi_arg
           copy -- f_function_string_cfi_copy
-          pointer -- f_shared_function_string_*_cfi_pointer
-            caller -- f_shared_function_string_*_cfi_pointer
-            library -- f_shared_function_string_*_cfi_pointer
+          pointer -- f_shared_function_string*_cfi_pointer
+            caller -- f_shared_function_string*_cfi_pointer
+            library -- f_shared_function_string*_cfi_pointer
       string*
         buf -- f_function_string_buf
           copy -- f_function_string_buf
@@ -376,9 +371,9 @@ root
             caller -- f_function_string*_cfi_allocatable
             library -- f_function_string*_cfi_allocatable
           copy -- f_function_string_cfi_copy
-          pointer -- f_shared_function_string_*_cfi_pointer
-            caller -- f_shared_function_string_*_cfi_pointer
-            library -- f_shared_function_string_*_cfi_pointer
+          pointer -- f_shared_function_string*_cfi_pointer
+            caller -- f_shared_function_string*_cfi_pointer
+            library -- f_shared_function_string*_cfi_pointer
       struct -- f_function_struct
       struct*
         cdesc
@@ -412,17 +407,17 @@ root
     in
       bool -- f_in_bool
       char -- f_in_char
-      char* -- f_shared_native_scalar
+      char* -- f_shared_native
         buf -- f_in_char*_buf
-        capi -- f_shared_native_scalar
+        capi -- f_shared_native
         cfi -- f_in_char*_cfi
       char** -- f_in_char**
         buf -- f_in_char**_buf
         cfi -- f_in_char**_cfi
-      enum -- f_shared_native_scalar
-      native -- f_shared_native_scalar
-      native& -- f_shared_native_scalar
-      native* -- f_shared_native_scalar
+      enum -- f_shared_native
+      native -- f_shared_native
+      native& -- f_shared_native
+      native* -- f_shared_native
         cdesc -- f_in/out/inout_native*_cdesc
         cfi -- f_in/inout_native*_cfi
       native** -- f_in_native**
@@ -442,7 +437,7 @@ root
       struct -- f_shared_struct
       struct& -- f_shared_struct
       struct* -- f_shared_struct
-      unknown -- f_shared_native_scalar
+      unknown -- f_shared_native
       vector
         &
           cdesc
@@ -463,21 +458,21 @@ root
         buf -- f_in_vector<string>_buf
       vector<string>*
         buf -- f_in_vector<string>_buf
-      void -- f_shared_native_scalar
+      void -- f_shared_native
       void* -- f_in_void*
         cdesc -- f_in/out/inout_native*_cdesc
       void** -- f_in/out/inout_void**
         cfi -- f_in/out/inout_void**
     inout
       bool* -- f_inout_bool*
-      char* -- f_shared_native_scalar
+      char* -- f_shared_native
         buf -- f_inout_char*_buf
-        capi -- f_shared_native_scalar
+        capi -- f_shared_native
         cfi -- f_inout_char*_cfi
       enum* -- f_inout_enum*
-      native& -- f_shared_native_scalar
+      native& -- f_shared_native
         hidden -- f_out/inout_native&_hidden
-      native* -- f_shared_native_scalar
+      native* -- f_shared_native
         cdesc -- f_in/out/inout_native*_cdesc
         cfi -- f_in/inout_native*_cfi
         hidden -- f_out/inout_native*_hidden
@@ -518,9 +513,8 @@ root
           capptr -- f_mixin_function_shadow_capptr
           capsule -- f_mixin_function_shadow_capsule
         string
-          scalar
-            cfi
-              allocatable -- f_mixin_function_string_scalar_cfi_allocatable
+          cfi
+            allocatable -- f_mixin_function_string_cfi_allocatable
       function-to-subroutine -- f_mixin_function-to-subroutine
       getter
         cdesc -- f_mixin_getter_cdesc
@@ -562,9 +556,8 @@ root
           cdesc
             allocate -- f_mixin_out_native_cdesc_allocate
             pointer -- f_mixin_out_native_cdesc_pointer
-        string
-          **
-            cfi -- f_mixin_out_string_**_cfi
+        string**
+          cfi -- f_mixin_out_string**_cfi
         vector
           buf -- f_mixin_out_vector_buf
       pass
@@ -578,12 +571,12 @@ root
         capsule -- f_mixin_use_capsule
     out
       bool* -- f_out_bool*
-      char* -- f_shared_native_scalar
+      char* -- f_shared_native
         buf -- f_out_char*_buf
-        capi -- f_shared_native_scalar
+        capi -- f_shared_native
         cfi -- f_out_char*_cfi
       enum* -- f_out_enum*
-      native& -- f_shared_native_scalar
+      native& -- f_shared_native
         hidden -- f_out/inout_native&_hidden
       native* -- f_out_native*
         cdesc -- f_in/out/inout_native*_cdesc
@@ -601,7 +594,7 @@ root
           allocatable -- f_out_native**_cfi_allocatable
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
-      native*** -- f_shared_native_scalar
+      native*** -- f_shared_native
       string& -- f_out_string*
         buf -- f_out_string*_buf
         cfi -- f_out_string*_cfi
@@ -634,7 +627,7 @@ root
           allocatable -- f_out_vector<string>&_cdesc_allocatable
       void*
         cdesc -- f_in/out/inout_native*_cdesc
-      void*& -- f_shared_native_scalar
+      void*& -- f_shared_native
       void** -- f_in/out/inout_void**
     setter -- f_setter
       bool -- f_setter_bool
@@ -648,12 +641,11 @@ root
     shared
       function
         string
-          *
-            cfi
-              pointer -- f_shared_function_string_*_cfi_pointer
           scalar -- f_shared_function_string_scalar
-      native
-        scalar -- f_shared_native_scalar
+        string*
+          cfi
+            pointer -- f_shared_function_string*_cfi_pointer
+      native -- f_shared_native
       struct -- f_shared_struct
     subroutine -- f_subroutine
 c_ctor_shadow_capptr:
@@ -2816,7 +2808,7 @@ c_mixin_destructor_new-vector:
   intent: mixin
   name: c_mixin_destructor_new-vector
   owner: library
-c_mixin_function_char_*_cdesc:
+c_mixin_function_char*_cdesc:
   c_helper:
   - type_defines
   c_post_call:
@@ -2828,7 +2820,7 @@ c_mixin_function_char_*_cdesc:
   comments:
   - Fill cdesc from char * in the C wrapper.
   intent: mixin
-  name: c_mixin_function_char_*_cdesc
+  name: c_mixin_function_char*_cdesc
   owner: library
 c_mixin_function_string_cdesc:
   c_helper:
@@ -2886,37 +2878,7 @@ c_mixin_in_character_buf:
   - Used with function which return a char *.
   - C wrapper will fill argument.
   owner: library
-c_mixin_inout_vector_cdesc:
-  c_arg_decl:
-  - '{targs[0].cxx_type} *{c_var}'
-  - size_t {c_var_size}
-  - '{C_array_type} *{c_var_cdesc}'
-  c_helper:
-  - array_context
-  c_temps:
-  - size
-  - cdesc
-  comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  i_arg_decl:
-  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
-  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
-  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
-  i_arg_names:
-  - '{i_var}'
-  - '{i_var_size}'
-  - '{i_var_cdesc}'
-  i_import:
-  - '{F_array_type}'
-  i_module:
-    iso_c_binding:
-    - '{targs[0].f_kind}'
-    - C_SIZE_T
-  intent: mixin
-  name: c_mixin_inout_vector_cdesc
-  owner: library
-c_mixin_inout_vector_cdesc_targ_native_scalar:
+c_mixin_inout_vector<native>_cdesc:
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -2965,7 +2927,37 @@ c_mixin_inout_vector_cdesc_targ_native_scalar:
     - '{targs[0].f_kind}'
     - C_SIZE_T
   intent: mixin
-  name: c_mixin_inout_vector_cdesc_targ_native_scalar
+  name: c_mixin_inout_vector<native>_cdesc
+  owner: library
+c_mixin_inout_vector_cdesc:
+  c_arg_decl:
+  - '{targs[0].cxx_type} *{c_var}'
+  - size_t {c_var_size}
+  - '{C_array_type} *{c_var_cdesc}'
+  c_helper:
+  - array_context
+  c_temps:
+  - size
+  - cdesc
+  comments:
+  - Pass argument and size to C.
+  - Pass array_type to C which will fill it in.
+  i_arg_decl:
+  - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
+  - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
+  - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
+  i_arg_names:
+  - '{i_var}'
+  - '{i_var_size}'
+  - '{i_var_cdesc}'
+  i_import:
+  - '{F_array_type}'
+  i_module:
+    iso_c_binding:
+    - '{targs[0].f_kind}'
+    - C_SIZE_T
+  intent: mixin
+  name: c_mixin_inout_vector_cdesc
   owner: library
 c_mixin_native_capsule_fill:
   c_post_call:
@@ -3036,15 +3028,38 @@ c_mixin_noargs:
   intent: mixin
   name: c_mixin_noargs
   owner: library
-c_mixin_out_native_**:
+c_mixin_out_native**:
   c_arg_call:
   - '&{cxx_var}'
   c_pre_call:
   - '{c_const}{cxx_type} *{cxx_var};'
   intent: mixin
-  name: c_mixin_out_native_**
+  name: c_mixin_out_native**
   notes:
   - double **count +intent(out)+dimension(ncount)
+  owner: library
+c_mixin_out_vector<native>_cdesc:
+  c_helper:
+  - type_defines
+  c_post_call:
+  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->type = {targs[0].sh_type};'
+  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
+  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->rank = 1;'
+  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
+  c_pre_call:
+  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  comments:
+  - Fill cdesc with vector information,
+  - ' Return address and size of vector data.'
+  cxx_local_var: pointer
+  destructor:
+  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
+  - delete cxx_ptr;
+  destructor_name: std_vector_{cxx_T}
+  intent: mixin
+  name: c_mixin_out_vector<native>_cdesc
   owner: library
 c_mixin_out_vector_buf_malloc:
   c_arg_decl:
@@ -3066,29 +3081,6 @@ c_mixin_out_vector_buf_malloc:
     - C_SIZE_T
   intent: mixin
   name: c_mixin_out_vector_buf_malloc
-  owner: library
-c_mixin_out_vector_cdesc_targ_native_scalar:
-  c_helper:
-  - type_defines
-  c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_cdesc}->type = {targs[0].sh_type};'
-  - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
-  - '{c_var_cdesc}->rank = 1;'
-  - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
-  c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
-  comments:
-  - Fill cdesc with vector information,
-  - ' Return address and size of vector data.'
-  cxx_local_var: pointer
-  destructor:
-  - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
-  - delete cxx_ptr;
-  destructor_name: std_vector_{cxx_T}
-  intent: mixin
-  name: c_mixin_out_vector_cdesc_targ_native_scalar
   owner: library
 c_mixin_shadow:
   c_arg_decl:
@@ -6264,7 +6256,7 @@ f_function_string&_cfi_pointer:
   intent: function
   name: f_function_string&_cfi_pointer
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string&_cfi_pointer_caller:
@@ -6314,7 +6306,7 @@ f_function_string&_cfi_pointer_caller:
   intent: function
   name: f_function_string&_cfi_pointer_caller
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string&_cfi_pointer_library:
@@ -6364,7 +6356,7 @@ f_function_string&_cfi_pointer_library:
   intent: function
   name: f_function_string&_cfi_pointer_library
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string*_buf:
@@ -6973,7 +6965,7 @@ f_function_string*_cfi_pointer:
   intent: function
   name: f_function_string*_cfi_pointer
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string*_cfi_pointer_caller:
@@ -7023,7 +7015,7 @@ f_function_string*_cfi_pointer_caller:
   intent: function
   name: f_function_string*_cfi_pointer_caller
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string*_cfi_pointer_library:
@@ -7073,7 +7065,7 @@ f_function_string*_cfi_pointer_library:
   intent: function
   name: f_function_string*_cfi_pointer_library
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string_buf:
@@ -7671,7 +7663,7 @@ f_function_string_cfi_pointer:
   intent: function
   name: f_function_string_cfi_pointer
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string_cfi_pointer_caller:
@@ -7721,7 +7713,7 @@ f_function_string_cfi_pointer_caller:
   intent: function
   name: f_function_string_cfi_pointer_caller
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_string_cfi_pointer_library:
@@ -7771,7 +7763,7 @@ f_function_string_cfi_pointer_library:
   intent: function
   name: f_function_string_cfi_pointer_library
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_function_struct:
@@ -10166,14 +10158,14 @@ f_mixin_function_shadow_capsule:
   intent: mixin
   name: f_mixin_function_shadow_capsule
   owner: library
-f_mixin_function_string_scalar_cfi_allocatable:
+f_mixin_function_string_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   f_need_wrapper: true
   intent: mixin
-  name: f_mixin_function_string_scalar_cfi_allocatable
+  name: f_mixin_function_string_cfi_allocatable
   notes:
   - similar to f_char_scalar_allocatable.
   owner: library
@@ -10516,7 +10508,7 @@ f_mixin_out_native_cdesc_pointer:
   intent: mixin
   name: f_mixin_out_native_cdesc_pointer
   owner: library
-f_mixin_out_string_**_cfi:
+f_mixin_out_string**_cfi:
   c_arg_call:
   - '&{c_var_cxx}'
   c_pre_call:
@@ -10524,7 +10516,7 @@ f_mixin_out_string_**_cfi:
   c_temps:
   - cxx
   intent: mixin
-  name: f_mixin_out_string_**_cfi
+  name: f_mixin_out_string**_cfi
   owner: library
 f_mixin_out_vector_buf:
   c_arg_decl:
@@ -12094,7 +12086,7 @@ f_setter_struct*_pointer:
   intent: setter
   name: f_setter_struct*_pointer
   owner: library
-f_shared_function_string_*_cfi_pointer:
+f_shared_function_string*_cfi_pointer:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
@@ -12139,9 +12131,9 @@ f_shared_function_string_*_cfi_pointer:
   iface_header:
   - ISO_Fortran_binding.h
   intent: shared
-  name: f_shared_function_string_*_cfi_pointer
+  name: f_shared_function_string*_cfi_pointer
   notes:
-  - XXX - consolidate with c_function_*_cfi_pointer?
+  - XXX - consolidate with c_function*_cfi_pointer?
   - XXX - via a helper to get address and length of string
   owner: library
 f_shared_function_string_scalar:
@@ -12158,9 +12150,9 @@ f_shared_function_string_scalar:
   - Fortran calling a C function without
   - any api argument - is this useful?
   owner: library
-f_shared_native_scalar:
+f_shared_native:
   intent: shared
-  name: f_shared_native_scalar
+  name: f_shared_native
   owner: library
 f_shared_struct:
   intent: shared
