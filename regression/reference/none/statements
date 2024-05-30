@@ -69,7 +69,7 @@ root
       native -- f_shared_native
       native& -- f_shared_native
       native* -- f_shared_native
-        cdesc -- f_in/out/inout_native*_cdesc
+        cdesc -- f_in_native*_cdesc
       native** -- f_in_native**
       procedure -- f_in_procedure
       shadow -- f_in_shadow
@@ -101,8 +101,8 @@ root
         buf -- f_in_vector<string>_buf
       void -- f_shared_native
       void* -- f_in_void*
-        cdesc -- f_in/out/inout_native*_cdesc
-      void** -- f_in/out/inout_void**
+        cdesc -- f_in_native*_cdesc
+      void** -- f_in_void**
     inout
       bool
         * -- f_inout_bool*
@@ -110,10 +110,10 @@ root
         buf -- f_inout_char*_buf
       enum* -- f_inout_enum*
       native& -- f_shared_native
-        hidden -- f_out/inout_native&_hidden
+        hidden -- f_out_native&_hidden
       native* -- f_shared_native
-        cdesc -- f_in/out/inout_native*_cdesc
-        hidden -- f_out/inout_native*_hidden
+        cdesc -- f_in_native*_cdesc
+        hidden -- f_out_native*_hidden
       shadow& -- f_in_shadow*
       shadow* -- f_in_shadow*
       string& -- f_inout_string*
@@ -136,8 +136,8 @@ root
           malloc -- c_inout_vector<native>_buf_malloc
       vector<scalar>& -- c_shared_vector_argument
       void*
-        cdesc -- f_in/out/inout_native*_cdesc
-      void** -- f_in/out/inout_void**
+        cdesc -- f_in_native*_cdesc
+      void** -- f_in_void**
     mixin
       arg
         cfi -- c_mixin_arg_cfi
@@ -195,10 +195,10 @@ root
       native
         &* -- c_defaulttmp
       native& -- f_shared_native
-        hidden -- f_out/inout_native&_hidden
+        hidden -- f_out_native&_hidden
       native* -- f_out_native*
-        cdesc -- f_in/out/inout_native*_cdesc
-        hidden -- f_out/inout_native*_hidden
+        cdesc -- f_in_native*_cdesc
+        hidden -- f_out_native*_hidden
       native*& -- f_shared_native
       native** -- f_out_native**_raw
         raw -- f_out_native**_raw
@@ -238,9 +238,9 @@ root
         buf
           copy -- c_out_vector<string>_buf_copy
       void*
-        cdesc -- f_in/out/inout_native*_cdesc
+        cdesc -- f_in_native*_cdesc
       void*& -- f_shared_native
-      void** -- f_in/out/inout_void**
+      void** -- f_in_void**
     setter -- f_setter
       native -- f_setter_native
       native* -- f_setter_native
@@ -418,8 +418,8 @@ root
       native -- f_shared_native
       native& -- f_shared_native
       native* -- f_shared_native
-        cdesc -- f_in/out/inout_native*_cdesc
-        cfi -- f_in/inout_native*_cfi
+        cdesc -- f_in_native*_cdesc
+        cfi -- f_in_native*_cfi
       native** -- f_in_native**
       procedure -- f_in_procedure
       shadow -- f_in_shadow
@@ -460,9 +460,9 @@ root
         buf -- f_in_vector<string>_buf
       void -- f_shared_native
       void* -- f_in_void*
-        cdesc -- f_in/out/inout_native*_cdesc
-      void** -- f_in/out/inout_void**
-        cfi -- f_in/out/inout_void**
+        cdesc -- f_in_native*_cdesc
+      void** -- f_in_void**
+        cfi -- f_in_void**
     inout
       bool* -- f_inout_bool*
       char* -- f_shared_native
@@ -471,11 +471,11 @@ root
         cfi -- f_inout_char*_cfi
       enum* -- f_inout_enum*
       native& -- f_shared_native
-        hidden -- f_out/inout_native&_hidden
+        hidden -- f_out_native&_hidden
       native* -- f_shared_native
-        cdesc -- f_in/out/inout_native*_cdesc
-        cfi -- f_in/inout_native*_cfi
-        hidden -- f_out/inout_native*_hidden
+        cdesc -- f_in_native*_cdesc
+        cfi -- f_in_native*_cfi
+        hidden -- f_out_native*_hidden
       shadow& -- f_in_shadow*
       shadow* -- f_in_shadow*
       string& -- f_inout_string*
@@ -495,8 +495,8 @@ root
         cdesc -- f_inout_vector<native>&_cdesc
           allocatable -- f_inout_vector<native>&_cdesc_allocatable
       void*
-        cdesc -- f_in/out/inout_native*_cdesc
-      void** -- f_in/out/inout_void**
+        cdesc -- f_in_native*_cdesc
+      void** -- f_in_void**
     mixin
       arg
         capsule -- f_mixin_arg_capsule
@@ -577,12 +577,12 @@ root
         cfi -- f_out_char*_cfi
       enum* -- f_out_enum*
       native& -- f_shared_native
-        hidden -- f_out/inout_native&_hidden
+        hidden -- f_out_native&_hidden
       native* -- f_out_native*
-        cdesc -- f_in/out/inout_native*_cdesc
+        cdesc -- f_in_native*_cdesc
         cfi
           allocatable -- f_out_native*_cfi_allocatable
-        hidden -- f_out/inout_native*_hidden
+        hidden -- f_out_native*_hidden
       native*&
         cdesc -- f_out_native*&_cdesc
           pointer -- f_out_native*&_cdesc
@@ -626,9 +626,9 @@ root
         cdesc -- f_out_vector<string>&_cdesc
           allocatable -- f_out_vector<string>&_cdesc_allocatable
       void*
-        cdesc -- f_in/out/inout_native*_cdesc
+        cdesc -- f_in_native*_cdesc
       void*& -- f_shared_native
-      void** -- f_in/out/inout_void**
+      void** -- f_in_void**
     setter -- f_setter
       bool -- f_setter_bool
       native -- f_setter_native
