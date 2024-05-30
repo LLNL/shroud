@@ -568,6 +568,7 @@ if __name__ == "__main__":
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),
+        TestDesc("sgroup"),
         TestDesc("ownership"),
         TestDesc("generic"),
         TestDesc("generic-cfi", yaml="generic",

@@ -684,7 +684,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             SH_class_setter_template="set_{wrapped_name}",
             SH_struct_getter_template="{struct_name}_get_{wrapped_name}",
             SH_struct_setter_template="{struct_name}_set_{wrapped_name}",
-            
+
+            typemap_sgroup=None,
         )
         return def_options
 
@@ -1208,6 +1209,10 @@ class ClassNode(AstNode, NamespaceMixin):
             typemap.fill_struct_typemap(self, fields)
         elif self.wrap_as == "class":
             typemap.fill_class_typemap(self, fields)
+
+        if self.options.typemap_sgroup is not None:
+            # Control selection of fc-statements.
+            self.typemap.sgroup = self.options.typemap_sgroup
 
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
