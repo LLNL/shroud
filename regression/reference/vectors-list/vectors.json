@@ -139,9 +139,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ],
                             "value_var": "SHValue_arg"
@@ -267,9 +265,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ],
                             "value_var": "SHValue_arg"
@@ -827,9 +823,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "double",
-                                    "cxx_type": "double",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)"
+                                    "typemap_name": "double"
                                 }
                             ],
                             "value_var": "SHValue_arg"
@@ -1420,9 +1414,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ],
                             "value_var": "SHValue_rv"

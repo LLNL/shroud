@@ -126,8 +126,8 @@ def get_arg_bind(node, arg, wlang):
 ######################################################################
 
 def collect_arg_typemaps(arg):
-    """Collect the typemaps used by arguments.
-    Templates may provide multiple typemaps.
+    """Return list of typemaps used by argument.
+    Templates will provide multiple typemaps.
     """
     if arg.template_arguments:
         typemaps = []
@@ -155,11 +155,6 @@ def find_abstract_declarator(arg):
         decl[-1] = ">"
     decl.append(arg.declarator.get_abstract_declarator())
     return "".join(decl)
-
-def set_template_fields(ast, fmt):
-    fmt.cxx_T = ast.gen_template_argument()
-    for i, targ in enumerate(ast.template_arguments):
-        fmt["cxx_T{}".format(i + 1)] = targ.get_first_abstract_declarator()
 
 def lookup_fc_stmts(path):
     """Lookup statements for C and Fortran wrappers.

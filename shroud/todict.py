@@ -289,12 +289,11 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_TemplateFormat(self, node):
-        # return the properties of TemplateFormat
+        # Return the properties of TemplateFormat.
+        # Avoid repeating all of the typemap fields.
         return dict(
             cxx_T = node.cxx_T,
-            cxx_type = node.cxx_type,
-            f_type = node.f_type,
-            f_kind = node.f_kind,
+            typemap_name = node.decl.typemap.name,
         )
 
     ######################################################################

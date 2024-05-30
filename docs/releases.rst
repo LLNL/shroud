@@ -284,8 +284,9 @@ New Features
   This required adding the format field ``targs`` which is a list of
   objects for template arguments. Used in the format fields as
   ``{targs[0].cxx_type}`` to access the type of the first template
-  argument.  Function and class declarations always allowed multiple
-  template arguments.
+  argument. Option *typemap_sgroup* allows futher control of which
+  statement group is selected to use with a type.  Function and class
+  declarations always allowed multiple template arguments.
 
 * Added *fmtdict* field to Fortran and C statement groups. Similar to
   *fmtdict* already in the Python statement groups. It allows format

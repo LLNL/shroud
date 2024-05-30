@@ -197,9 +197,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -235,9 +233,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -430,9 +426,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -472,9 +466,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -707,9 +699,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -749,9 +739,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -971,9 +959,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -1013,9 +999,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -1210,9 +1194,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -1253,9 +1235,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -1453,9 +1433,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -1500,9 +1478,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -1689,9 +1665,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -1735,9 +1709,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }
@@ -1929,9 +1901,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "double",
-                                    "cxx_type": "double",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)"
+                                    "typemap_name": "double"
                                 }
                             ]
                         },
@@ -1971,9 +1941,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "double",
-                                    "cxx_type": "double",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)"
+                                    "typemap_name": "double"
                                 }
                             ]
                         }
@@ -2214,9 +2182,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "const double *",
-                                    "cxx_type": "double",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)"
+                                    "typemap_name": "double"
                                 }
                             ]
                         },
@@ -2254,9 +2220,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "const double *",
-                                    "cxx_type": "double",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)"
+                                    "typemap_name": "double"
                                 }
                             ]
                         }
@@ -2513,9 +2477,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         },
@@ -2560,9 +2522,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         }
@@ -2752,9 +2712,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         },
@@ -2794,9 +2752,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         }
@@ -2987,9 +2943,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         },
@@ -3037,9 +2991,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         }
@@ -3233,9 +3185,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         },
@@ -3284,9 +3234,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "std::string",
-                                    "cxx_type": "std::string",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)"
+                                    "typemap_name": "std::string"
                                 }
                             ]
                         }
@@ -3525,9 +3473,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         },
@@ -3580,9 +3526,7 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 }
                             ]
                         }

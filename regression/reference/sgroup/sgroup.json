@@ -183,15 +183,11 @@
                             "targs": [
                                 {
                                     "cxx_T": "int",
-                                    "cxx_type": "int",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)"
+                                    "typemap_name": "int"
                                 },
                                 {
                                     "cxx_T": "long",
-                                    "cxx_type": "long",
-                                    "f_kind": "C_LONG",
-                                    "f_type": "integer(C_LONG)"
+                                    "typemap_name": "long"
                                 }
                             ]
                         }

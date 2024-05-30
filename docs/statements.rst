@@ -114,15 +114,15 @@ selected based on the typemap's sgroup field which is either *shadow*
 or *struct*.
 
 In some cases, it can be beneficial to look inside a compound type.
-By setting the option *typemap_sgroup*, a statement group can used
+By setting the option *typemap_sgroup*, a statement group can be used
 which is specific for the type. A prime example of this is
 ``std::vector``. This maps naturally to a Fortran array. The C wrapper
 accepts a pointer to the array along with a length argument. The C
 wrapper is then responsible for creating the ``std::vector``. If the
 ``std::vector`` was created in the Fortran code it could be passed
 opaquely; however, it would be very inconvenient to access elements in
-Fortran requiring the use of ``vector.at`` method instead of Fortran
-array subscripting.
+Fortran requiring the use of the ``vector.at`` method instead of
+Fortran array subscripting.
 
 See the sgroup.yaml test.
 
