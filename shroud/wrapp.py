@@ -4026,8 +4026,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_native*_numpy",
         alias=[
+            "py_function_native*_numpy",
             "py_function_native&_numpy",
         ],
         need_numpy=True,
@@ -4293,8 +4293,8 @@ py_statements = [
 # string
 # ctor_expr is arguments to PyString_FromStringAndSize.
     dict(
-        name="py_in_string",
         alias=[
+            "py_in_string",
             "py_in_string&",
         ],
         cxx_local_var="scalar",
@@ -4308,8 +4308,8 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_inout_string",
         alias=[
+            "py_inout_string",
             "py_inout_string&",
         ],
         cxx_local_var="scalar",
@@ -4322,8 +4322,8 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_out_string",
         alias=[
+            "py_out_string",
             "py_out_string&",
         ],
         arg_declare=[],
@@ -4340,8 +4340,8 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_function_string*",
         alias=[
+            "py_function_string*",
             "py_function_string&",
         ],
         fmtdict=dict(
@@ -4534,8 +4534,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_struct_numpy",
         alias=[
+            "py_function_struct_numpy",
             "py_function_struct*_numpy",
         ],
         # XXX - expand to array of struct
@@ -4611,8 +4611,8 @@ py_statements = [
         incref_on_return=True,
     ),
     dict(
-        name="py_out_struct*_class",
         alias=[
+            "py_out_struct*_class",
             "py_function_shadow",
         ],
 #        allocate_local_var=True,  # needed to release memory
@@ -4651,8 +4651,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_struct_class",
         alias=[
+            "py_function_struct_class",
             "py_function_struct*_class",
         ],
         cxx_local_var="pointer",
@@ -4742,8 +4742,8 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_function_shadow*",
         alias=[
+            "py_function_shadow*",
             "py_function_shadow&",
         ],
 #            declare=[
@@ -4827,8 +4827,8 @@ py_statements = [
     ),
     # XXX - must release after copying result.
     dict(
-        name="py_function_vector_list",
         alias=[
+            "py_function_vector_list",
             "py_function_vector<native>_list",
         ],
         declare=[
@@ -4911,8 +4911,8 @@ py_statements = [
         fail_capsule=fail_capsule,
     ),
     dict(
-        name="py_function_vector_numpy",
         alias=[
+            "py_function_vector_numpy",
             "py_function_vector<native>_numpy",
         ],
         need_numpy=True,
@@ -4981,8 +4981,8 @@ py_statements = [
     ),
     
     dict(
-        name="py_ctor_native",
         alias=[
+            "py_ctor_native",
             "py_ctor_native_list",
             "py_ctor_native_numpy",
         ],
@@ -4995,47 +4995,47 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_ctor_native[]",
-        base="py_base_ctor_array_fill",
         alias=[
+            "py_ctor_native[]",
             "py_ctor_native[]_list",
             "py_ctor_native[]_numpy",
         ],
+        base="py_base_ctor_array_fill",
         c_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
     ),
     dict(
-        name="py_ctor_native*",
-        base="py_base_ctor_array",
         alias=[
+            "py_ctor_native*",
             "py_ctor_native*_list",
             "py_ctor_native*_numpy",
         ],
+        base="py_base_ctor_array",
         c_helper="get_from_object_{c_type}_{PY_array_arg}",
     ),
     
     dict(
-        name="py_ctor_char[]",
-        base="py_base_ctor_array_fill",
         alias=[
+            "py_ctor_char[]",
             "py_ctor_char[]_list",
             "py_ctor_char[]_numpy",
         ],
+        base="py_base_ctor_array_fill",
         c_helper="fill_from_PyObject_char",
     ),
     dict(
-        name="py_ctor_char*",
-        base="py_base_ctor_array",
         alias=[
+            "py_ctor_char*",
             "py_ctor_char*_numpy",
         ],
+        base="py_base_ctor_array",
         c_helper="get_from_object_char",
     ),
     dict(
-        name="py_ctor_char**",
-        base="py_base_ctor_array",
         alias=[
+            "py_ctor_char**",
             "py_ctor_char**_list",
         ],
+        base="py_base_ctor_array",
         c_helper="get_from_object_charptr",
         # Need explicit post_call to change cast to char **.
         post_call=[
@@ -5105,8 +5105,8 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_descr_char_*",
         alias=[
+            "py_descr_char_*",
             "py_descr_char_*_numpy",
         ],
         setter_helper="get_from_object_{c_type}_list",
@@ -5244,8 +5244,8 @@ py_statements = [
     ),
 
     dict(
-        name="py_descr_char_[]",
         alias=[
+            "py_descr_char_[]",
             "py_descr_char_[]_list",
             "py_descr_char_[]_numpy",
         ],

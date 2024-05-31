@@ -1089,8 +1089,8 @@ lua_statements = [
     #####
     # native
     dict(
-        name="lua_in_native",
         alias=[
+            "lua_in_native",
             "lua_in_enum",
         ],
         pre_call=[
@@ -1104,20 +1104,20 @@ lua_statements = [
         ],
     ),
     dict(
-        name="lua_function_native",
+        alias=[
+            "lua_function_native",
+            "lua_function_enum",
+        ],
         mixin=[
             "lua_mixin_callfunction",
             "lua_mixin_push"
-        ],
-        alias=[
-            "lua_function_enum",
         ],
     ),
     #####
     # string
     dict(
-        name="lua_in_string*",
         alias=[
+            "lua_in_string*",
             "lua_in_string&",
         ],
         pre_call=[
