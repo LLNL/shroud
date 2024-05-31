@@ -412,8 +412,8 @@ def process_mixin(stmts, defaults, stmtdict):
     Add mixin into dictionary
 
     alias=[
-        "c_function_native_*_allocatable/raw",
-        "c_function_native_*/&/**_pointer",
+        "c_function_native_*_allocatable",
+        "c_function_native_*_raw",
     ],
 
     Set an index field for each statement.
@@ -422,7 +422,6 @@ def process_mixin(stmts, defaults, stmtdict):
     # Apply base and mixin
     # This allows mixins to propagate
     # i.e. you can mixin a group which itself has a mixin.
-    # Save by name permutations into mixins  (in/out/inout)
     cursor = error.cursor
     cursor.push_phase("Check statements")
     stmt_cursor = cursor.push_statement()
@@ -435,17 +434,14 @@ def process_mixin(stmts, defaults, stmtdict):
             cursor.warning("Missing name in statement")
             continue
         name = stmt["name"]
-#        print("XXXXX", name)
+        if name[0] == "!":
+            continue
         node = {}
         parts = name.split("_")
         if len(parts) < 2:
             cursor.warning("Statement name is too short, must include language and intent.")
             continue
-        lang = parts[0]
         intent = parts[1]
-        # Check length of name
-        if lang[0] == "!":
-            continue
         if intent == "mixin":
             if "base" in stmt:
                 cursor.warning("Intent mixin group should not have 'base' field.")
@@ -467,7 +463,6 @@ def process_mixin(stmts, defaults, stmtdict):
                     cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
                 elif mixin not in mixins:
                     cursor.warning("Mixin '{}' not found.".format(mixin))
-#                print("M    ", mixin)
                 else:
                     append_mixin(node, mixins[mixin])
         if intent == "mixin":
@@ -478,53 +473,32 @@ def process_mixin(stmts, defaults, stmtdict):
             node.update(stmt)
         post_mixin_check_statement(name, node)
         node["orig"] = name
-        out = compute_all_permutations(name)
-        firstname = "_".join(out[0])
         node["index"] = str(index)
         index += 1
-        to_add = []
-        if len(out) == 1:
-            node["name"] = name
-            to_add.append(node)
-        else:
-            lparts = {}  # count unique language parts
-            for part in out:
-                aname = "_".join(part)
-                anode = node.copy()
-                anode["name"] = aname
-                lparts[part[0]] = True
-                to_add.append(anode)
-            # Sanity check. Otherwise defaults[lang] would be wrong.
-            if len(lparts) > 1:
-                cursor.warning("Only one language per group. Used {}".format(", ".join(lparts.keys())))
+        node["name"] = name
 
-        for anode in to_add:
-            aname = anode["name"]
-            parts = aname.split("_", 2)
-            lang = parts[0]
-            intent = parts[1]
-            if aname in mixins:
-                cursor.warning("Statement name '{}' already exists.".format(aname))
-            elif intent not in [
-                "in", "out", "inout", "mixin",
-                "function", "subroutine",
-                "getter", "setter",
-                "ctor", "dtor",
-                "base", "descr",
-                "defaulttmp", "XXXin", "test", "shared",
-            ]:
-                cursor.warning("Invalid intent '{}'.".format(intent))
-            else:
-                mixins[aname] = anode
+        if name in mixins:
+            cursor.warning("Statement name '{}' already exists.".format(name))
+        elif intent not in [
+            "in", "out", "inout", "mixin",
+            "function", "subroutine",
+            "getter", "setter",
+            "ctor", "dtor",
+            "base", "descr",
+            "defaulttmp", "XXXin", "test", "shared",
+        ]:
+            cursor.warning("Invalid intent '{}'.".format(intent))
+        else:
+            mixins[name] = node
 
         if "alias" in stmt:
-            aliases.append((firstname, stmt["alias"]))
+            aliases.append((name, stmt["alias"]))
 
     # Apply defaults.
     for stmt in mixins.values():
         stmt_cursor.stmt = stmt
         name = stmt["name"]
-        parts = name.split("_",2)
+        parts = name.split("_", 2)
         lang = parts[0]
         intent = parts[1]
         if "base" in stmt:
@@ -545,18 +519,14 @@ def process_mixin(stmts, defaults, stmtdict):
         node = stmtdict[name]
         stmt_cursor.stmt = node
         for alias in aliases:
-#            print("AAAA ", alias)
-            aout = compute_all_permutations(alias)
-            for apart in aout:
-                aname = "_".join(apart)
-                anode = util.Scope(node)
-                if aname in stmtdict:
-                    cursor.warning("Alias '{}' already exists.".format(aname))
-                else:
-                    anode.name = aname
-                    anode.intent = apart[1]
-                    stmtdict[aname] = anode
-#                    print("A    ", aname)
+            apart = alias.split("_")
+            anode = util.Scope(node)
+            if alias in stmtdict:
+                cursor.warning("Alias '{}' already exists.".format(alias))
+            else:
+                anode.name = alias
+                anode.intent = apart[1]
+                stmtdict[alias] = anode
     cursor.pop_statement()
     cursor.pop_phase("Check statements")
 #    cursor.check_for_warnings()
@@ -586,54 +556,6 @@ def update_for_language(stmts, lang):
     for item in stmts:
         if specific in item:
             item.update(item[specific])
-
-
-def compute_all_permutations(key):
-    """Expand parts which have multiple values
-
-    Ex: parts = 
-      [['c'], ['in', 'out', 'inout'], ['native'], ['*'], ['cfi']]
-    Three entries will be returned:
-      ['c', 'in', 'native', '*', 'cfi']
-      ['c', 'out', 'native', '*', 'cfi']
-      ['c', 'inout', 'native', '*', 'cfi']
-    """
-    steps = key.split("_")
-    substeps = []
-    for part in steps:
-        subparts = part.split("/")
-        substeps.append(subparts)
-
-    expanded = []
-    compute_stmt_permutations(expanded, substeps)
-    return expanded
-
-
-def compute_stmt_permutations(out, parts):
-    """Recursively expand permutations
-
-    ex: f_function_string_scalar/*/&_cfi_copy
-
-    Parameters
-    ----------
-    out : list
-        Results are appended to the list.
-    parts :
-    """
-    tmp = []
-    for i, part in enumerate(parts):
-        if isinstance(part, list):
-            if len(part) == 1:
-                tmp.append(part[0])
-            else:
-                for expand in part:
-                    compute_stmt_permutations(
-                        out, tmp + [expand] + parts[i+1:])
-                break
-        else:
-            tmp.append(part)
-    else:
-        out.append(tmp)
 
 
 def add_statement_to_tree(tree, node):

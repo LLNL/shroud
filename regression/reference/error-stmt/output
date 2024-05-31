@@ -33,32 +33,20 @@ statement line 38
 Statement: f_mixin_good1
 Statement name 'f_mixin_good1' already exists.
 --------------------
-statement line 41
-Statement: f_mixin_good2/good3
-Statement name 'f_mixin_good2' already exists.
---------------------
-statement line 43
-Statement: f/c_in_foo3
-Only one language per group. Used f, c
---------------------
-statement line 53
+statement line 50
 Statement: f_badintent_foo6
 Invalid intent 'badintent'.
 --------------------
 statement line 54
-Statement: f_in/outer_foo6
-Invalid intent 'outer'.
---------------------
-statement line 58
 Statement: f_in_foo7
 c_arg_decl must be a list.
 --------------------
-statement line 58
+statement line 54
 Statement: f_in_foo7
 c_arg_decl, i_arg_decl and i_arg_names must all exist together.
 Missing i_arg_decl, i_arg_names.
 --------------------
-statement line 60
+statement line 56
 Statement: f_in_foo8
 c_arg_decl, i_arg_decl and i_arg_names must all be same length. Used 1, 1, 2.
 --------------------
@@ -66,11 +54,11 @@ statement line 20
 Statement: java_mixin
 Statement does not start with a known language code: 'java'
 --------------------
-statement line 45
+statement line 42
 Statement: f_in_foo4
 Base 'nonexistent' not found.
 --------------------
-statement line 48
+statement line 45
 Statement: f_in_foo5
 Alias 'f_in_foo5a' already exists.
 Wrote wrapferror.f

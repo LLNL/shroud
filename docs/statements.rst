@@ -30,7 +30,7 @@ Statement names which start with a `!` are ignored.
           Useful to define a group that varies slightly
           such as pointer vs reference argument.
 
-.. mixin - list of single names, no alternative allowed such as allocatable/pointer
+.. mixin - list of names
            must not contain 'alias', 'append' or 'base'
            List fields from the mixin group will be appended to the group
            being defined.
