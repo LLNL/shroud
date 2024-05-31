@@ -3,141 +3,141 @@ root
   c
     ctor
       shadow
-        capptr -- f_ctor_shadow_capptr
+        capptr -- c_ctor_shadow_capptr
     defaulttmp -- c_defaulttmp
-    dtor -- f_dtor
+    dtor -- c_dtor
     function -- c_function
-      bool -- f_function_bool
-      char -- f_function_char
-      char* -- f_function_char*
-        arg -- f_function_char*_arg
+      bool -- c_function_bool
+      char -- c_function_char
+      char* -- c_function_char*
+        arg -- c_function_char*_arg
         buf
-          arg -- f_function_char*_arg
-          copy -- f_function_char*_buf_copy
-      enum -- f_function_native
-      native -- f_function_native
-      native& -- f_function_native*_raw
-      native* -- f_function_native*_raw
-        caller -- f_function_native*_raw
+          arg -- c_function_char*_buf_arg
+          copy -- c_function_char*_buf_copy
+      enum -- c_function_enum
+      native -- c_function_native
+      native& -- c_function_native&
+      native* -- c_function_native*
+        caller -- c_function_native*_caller
         scalar -- c_function_native*_scalar
-      native** -- f_function_native*_raw
+      native** -- c_function_native**
       shadow
-        capptr -- f_function_shadow_capptr
+        capptr -- c_function_shadow_capptr
       shadow&
-        capptr -- f_function_shadow*_capptr
-          caller -- f_function_shadow*_capptr
-          library -- f_function_shadow*_capptr
+        capptr -- c_function_shadow&_capptr
+          caller -- c_function_shadow&_capptr_caller
+          library -- c_function_shadow&_capptr_library
       shadow*
-        capptr -- f_function_shadow*_capptr
-          caller -- f_function_shadow*_capptr
-          library -- f_function_shadow*_capptr
-        capsule -- f_function_shadow*_capsule
-        this -- f_function_shadow*_this
+        capptr -- c_function_shadow*_capptr
+          caller -- c_function_shadow*_capptr_caller
+          library -- c_function_shadow*_capptr_library
+        capsule -- c_function_shadow*_capsule
+        this -- c_function_shadow*_this
       shadow<native>
-        capptr -- f_function_shadow_capptr
+        capptr -- c_function_shadow<native>_capptr
       string -- c_function_string
         buf
-          arg -- f_function_string_buf_arg
-          copy -- f_function_string_buf
-      string& -- f_shared_function_string_scalar
+          arg -- c_function_string_buf_arg
+          copy -- c_function_string_buf_copy
+      string& -- c_function_string&
         buf
-          arg -- f_function_string_buf_arg
-          copy -- f_function_string_buf
-        copy -- f_shared_function_string_scalar
-      string* -- f_shared_function_string_scalar
+          arg -- c_function_string&_buf_arg
+          copy -- c_function_string&_buf_copy
+        copy -- c_function_string&_copy
+      string* -- c_function_string*
         buf
-          copy -- f_function_string_buf
-        caller -- f_shared_function_string_scalar
-        copy -- f_shared_function_string_scalar
-        library -- f_shared_function_string_scalar
-      struct -- f_function_struct
-      struct* -- f_function_struct*_pointer
+          copy -- c_function_string*_buf_copy
+        caller -- c_function_string*_caller
+        copy -- c_function_string*_copy
+        library -- c_function_string*_library
+      struct -- c_function_struct
+      struct* -- c_function_struct*
       vector<native> -- c_function_vector<native>
         malloc -- c_function_vector<native>_malloc
-      void* -- f_function_void*
+      void* -- c_function_void*
     getter
-      native -- f_getter_native
-      native* -- f_getter_native
+      native -- c_getter_native
+      native* -- c_getter_native*
     in
-      bool -- f_in_bool
-      char -- f_in_char
-      char* -- f_shared_native
-        buf -- f_in_char*_buf
-      char** -- f_in_char**
-        buf -- f_in_char**_buf
-      enum -- f_shared_native
-      native -- f_shared_native
-      native& -- f_shared_native
-      native* -- f_shared_native
-        cdesc -- f_in_native*_cdesc
-      native** -- f_in_native**
-      procedure -- f_in_procedure
-      shadow -- f_in_shadow
-      shadow& -- f_in_shadow&
-      shadow* -- f_in_shadow*
-      string -- f_in_string
-        buf -- f_in_string_buf
-      string& -- f_in_string*
-        buf -- f_in_string*_buf
-      string* -- f_in_string*
-        buf -- f_in_string*_buf
-      struct -- f_shared_struct
-      struct& -- f_shared_struct
-      struct* -- f_shared_struct
-      unknown -- f_shared_native
-      vector<native*>& -- c_shared_vector_argument
-        buf -- f_in_vector<native*>&_buf
+      bool -- c_in_bool
+      char -- c_in_char
+      char* -- c_in_char*
+        buf -- c_in_char*_buf
+      char** -- c_in_char**
+        buf -- c_in_char**_buf
+      enum -- c_in_enum
+      native -- c_in_native
+      native& -- c_in_native&
+      native* -- c_in_native*
+        cdesc -- c_in_native*_cdesc
+      native** -- c_in_native**
+      procedure -- c_in_procedure
+      shadow -- c_in_shadow
+      shadow& -- c_in_shadow&
+      shadow* -- c_in_shadow*
+      string -- c_in_string
+        buf -- c_in_string_buf
+      string& -- c_in_string&
+        buf -- c_in_string&_buf
+      string* -- c_in_string*
+        buf -- c_in_string*_buf
+      struct -- c_in_struct
+      struct& -- c_in_struct&
+      struct* -- c_in_struct*
+      unknown -- c_in_unknown
+      vector<native*>& -- c_in_vector<native*>&
+        buf -- c_in_vector<native*>&_buf
       vector<native>
-        buf -- f_in_vector<native>_buf
-      vector<native>& -- c_shared_vector_argument
-        buf -- f_in_vector<native>_buf
+        buf -- c_in_vector<native>_buf
+      vector<native>& -- c_in_vector<native>&
+        buf -- c_in_vector<native>&_buf
       vector<native>*
-        buf -- f_in_vector<native>_buf
+        buf -- c_in_vector<native>*_buf
       vector<string>
-        buf -- f_in_vector<string>_buf
-      vector<string>& -- c_shared_vector_argument
-        buf -- f_in_vector<string>_buf
+        buf -- c_in_vector<string>_buf
+      vector<string>& -- c_in_vector<string>&
+        buf -- c_in_vector<string>&_buf
       vector<string>*
-        buf -- f_in_vector<string>_buf
-      void -- f_shared_native
-      void* -- f_in_void*
-        cdesc -- f_in_native*_cdesc
-      void** -- f_in_void**
+        buf -- c_in_vector<string>*_buf
+      void -- c_in_void
+      void* -- c_in_void*
+        cdesc -- c_in_void*_cdesc
+      void** -- c_in_void**
     inout
       bool
-        * -- f_inout_bool*
-      char* -- f_shared_native
-        buf -- f_inout_char*_buf
-      enum* -- f_inout_enum*
-      native& -- f_shared_native
-        hidden -- f_out_native&_hidden
-      native* -- f_shared_native
-        cdesc -- f_in_native*_cdesc
-        hidden -- f_out_native*_hidden
-      shadow& -- f_in_shadow*
-      shadow* -- f_in_shadow*
-      string& -- f_inout_string*
-        buf -- f_inout_string*_buf
-      string* -- f_inout_string*
-        buf -- f_inout_string*_buf
-      struct& -- f_shared_struct
-      struct* -- f_shared_struct
+        * -- c_inout_bool_*
+      char* -- c_inout_char*
+        buf -- c_inout_char*_buf
+      enum* -- c_inout_enum*
+      native& -- c_inout_native&
+        hidden -- c_inout_native&_hidden
+      native* -- c_inout_native*
+        cdesc -- c_inout_native*_cdesc
+        hidden -- c_inout_native*_hidden
+      shadow& -- c_inout_shadow&
+      shadow* -- c_inout_shadow*
+      string& -- c_inout_string&
+        buf -- c_inout_string&_buf
+      string* -- c_inout_string*
+        buf -- c_inout_string*_buf
+      struct& -- c_inout_struct&
+      struct* -- c_inout_struct*
       vector<native>
         buf
           copy -- c_inout_vector<native>_buf_copy
           malloc -- c_inout_vector<native>_buf_malloc
       vector<native>&
         buf
-          copy -- c_inout_vector<native>_buf_copy
-          malloc -- c_inout_vector<native>_buf_malloc
+          copy -- c_inout_vector<native>&_buf_copy
+          malloc -- c_inout_vector<native>&_buf_malloc
       vector<native>*
         buf
-          copy -- c_inout_vector<native>_buf_copy
-          malloc -- c_inout_vector<native>_buf_malloc
-      vector<scalar>& -- c_shared_vector_argument
+          copy -- c_inout_vector<native>*_buf_copy
+          malloc -- c_inout_vector<native>*_buf_malloc
+      vector<scalar>& -- c_inout_vector<scalar>&
       void*
-        cdesc -- f_in_native*_cdesc
-      void** -- f_in_void**
+        cdesc -- c_inout_void*_cdesc
+      void** -- c_inout_void**
     mixin
       arg
         cfi -- c_mixin_arg_cfi
@@ -186,71 +186,71 @@ root
           fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
     out
       bool
-        * -- f_out_bool*
+        * -- c_out_bool_*
       char
         *
-          buf -- f_out_char*_buf
-      char* -- f_shared_native
-      enum* -- f_out_enum*
+          buf -- c_out_char_*_buf
+      char* -- c_out_char*
+      enum* -- c_out_enum*
       native
-        &* -- c_defaulttmp
-      native& -- f_shared_native
-        hidden -- f_out_native&_hidden
-      native* -- f_out_native*
-        cdesc -- f_in_native*_cdesc
-        hidden -- f_out_native*_hidden
-      native*& -- f_shared_native
-      native** -- f_out_native**_raw
-        raw -- f_out_native**_raw
-      native*** -- f_shared_native
-      string& -- f_out_string*
-        buf -- f_out_string*_buf
-      string* -- f_out_string*
-        buf -- f_out_string*_buf
-      string** -- f_out_string**_copy
+        &* -- c_out_native_&*
+      native& -- c_out_native&
+        hidden -- c_out_native&_hidden
+      native* -- c_out_native*
+        cdesc -- c_out_native*_cdesc
+        hidden -- c_out_native*_hidden
+      native*& -- c_out_native*&
+      native** -- c_out_native**
+        raw -- c_out_native**_raw
+      native*** -- c_out_native***
+      string& -- c_out_string&
+        buf -- c_out_string&_buf
+      string* -- c_out_string*
+        buf -- c_out_string*_buf
+      string** -- c_out_string**
         cdesc
-          copy -- f_out_string**_cdesc_copy
-      struct& -- f_shared_struct
-      struct* -- f_shared_struct
+          copy -- c_out_string**_cdesc_copy
+      struct& -- c_out_struct&
+      struct* -- c_out_struct*
       vector<native>
         buf
           copy -- c_out_vector<native>_buf_copy
           malloc -- c_out_vector<native>_buf_malloc
-      vector<native>& -- c_shared_vector_argument
+      vector<native>& -- c_out_vector<native>&
         buf
-          copy -- c_out_vector<native>_buf_copy
-          malloc -- c_out_vector<native>_buf_malloc
-        cdesc -- f_out_vector<native>*_cdesc
+          copy -- c_out_vector<native>&_buf_copy
+          malloc -- c_out_vector<native>&_buf_malloc
+        cdesc -- c_out_vector<native>&_cdesc
       vector<native>*
         buf
-          copy -- c_out_vector<native>_buf_copy
-          malloc -- c_out_vector<native>_buf_malloc
-        cdesc -- f_out_vector<native>*_cdesc
+          copy -- c_out_vector<native>*_buf_copy
+          malloc -- c_out_vector<native>*_buf_malloc
+        cdesc -- c_out_vector<native>*_cdesc
       vector<string>
         buf
           copy -- c_out_vector<string>_buf_copy
-      vector<string>& -- c_shared_vector_argument
+      vector<string>& -- c_out_vector<string>&
         buf
-          copy -- c_out_vector<string>_buf_copy
-        cdesc -- f_out_vector<string>&_cdesc
-          allocatable -- f_out_vector<string>&_cdesc_allocatable
+          copy -- c_out_vector<string>&_buf_copy
+        cdesc -- c_out_vector<string>&_cdesc
+          allocatable -- c_out_vector<string>&_cdesc_allocatable
       vector<string>*
         buf
-          copy -- c_out_vector<string>_buf_copy
+          copy -- c_out_vector<string>*_buf_copy
       void*
-        cdesc -- f_in_native*_cdesc
-      void*& -- f_shared_native
-      void** -- f_in_void**
-    setter -- f_setter
-      native -- f_setter_native
-      native* -- f_setter_native
+        cdesc -- c_out_void*_cdesc
+      void*& -- c_out_void*&
+      void** -- c_out_void**
+    setter -- c_setter
+      native -- c_setter_native
+      native* -- c_setter_native*
       string
         scalar
-          buf -- f_setter_string_buf
+          buf -- c_setter_string_scalar_buf
     shared
       vector
         argument -- c_shared_vector_argument
-    subroutine -- f_subroutine
+    subroutine -- c_subroutine
   f
     XXXin
       string
@@ -267,29 +267,29 @@ root
           allocatable -- f_function_char_cdesc_allocatable
           pointer -- f_function_char_cdesc_pointer
         cfi
-          allocatable -- f_function_char*_cfi_allocatable
+          allocatable -- f_function_char_cfi_allocatable
           pointer -- f_function_char_cfi_pointer
       char* -- f_function_char*
-        allocatable -- f_function_char*
+        allocatable -- f_function_char*_allocatable
         arg -- f_function_char*_arg
         buf
-          arg -- f_function_char*_arg
+          arg -- f_function_char*_buf_arg
           copy -- f_function_char*_buf_copy
         cdesc
-          allocatable -- f_function_char_cdesc_allocatable
-          pointer -- f_function_char_cdesc_pointer
+          allocatable -- f_function_char*_cdesc_allocatable
+          pointer -- f_function_char*_cdesc_pointer
         cfi
           allocatable -- f_function_char*_cfi_allocatable
           arg -- f_function_char*_cfi_arg
           copy -- f_function_char*_cfi_copy
-          pointer -- f_function_char_cfi_pointer
-        copy -- f_function_char*
-        pointer -- f_function_char*
-        raw -- f_function_char*
-      enum -- f_function_native
+          pointer -- f_function_char*_cfi_pointer
+        copy -- f_function_char*_copy
+        pointer -- f_function_char*_pointer
+        raw -- f_function_char*_raw
+      enum -- f_function_enum
       native -- f_function_native
       native& -- f_function_native&
-        pointer -- f_function_native&
+        pointer -- f_function_native&_pointer
       native*
         cdesc
           allocatable -- f_function_native*_cdesc_allocatable
@@ -298,86 +298,86 @@ root
         cfi
           allocatable -- f_function_native*_cfi_allocatable
           pointer -- f_function_native*_cfi_pointer
-        pointer -- f_function_native&
-          caller -- f_function_native&
+        pointer -- f_function_native*_pointer
+          caller -- f_function_native*_pointer_caller
         raw -- f_function_native*_raw
         scalar -- f_function_native*_scalar
-      native** -- f_function_native*_raw
+      native** -- f_function_native**
       shadow
         capptr -- f_function_shadow_capptr
-          caller -- f_function_shadow_capptr
-          library -- f_function_shadow_capptr
+          caller -- f_function_shadow_capptr_caller
+          library -- f_function_shadow_capptr_library
       shadow&
-        capptr -- f_function_shadow*_capptr
-          caller -- f_function_shadow*_capptr
-          library -- f_function_shadow*_capptr
+        capptr -- f_function_shadow&_capptr
+          caller -- f_function_shadow&_capptr_caller
+          library -- f_function_shadow&_capptr_library
       shadow*
         capptr -- f_function_shadow*_capptr
-          caller -- f_function_shadow*_capptr
-          library -- f_function_shadow*_capptr
+          caller -- f_function_shadow*_capptr_caller
+          library -- f_function_shadow*_capptr_library
         capsule -- f_function_shadow*_capsule
         this -- f_function_shadow*_this
       shadow<native>
-        capptr -- f_function_shadow_capptr
+        capptr -- f_function_shadow<native>_capptr
       string
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg
-          copy -- f_function_string_buf
+          copy -- f_function_string_buf_copy
         cdesc
           allocatable -- f_function_string_cdesc_allocatable
-            caller -- f_function_string_cdesc_allocatable
-            library -- f_function_string_cdesc_allocatable
+            caller -- f_function_string_cdesc_allocatable_caller
+            library -- f_function_string_cdesc_allocatable_library
         cfi
           allocatable -- f_function_string_cfi_allocatable
-            caller -- f_function_string*_cfi_allocatable
-            library -- f_function_string*_cfi_allocatable
+            caller -- f_function_string_cfi_allocatable_caller
+            library -- f_function_string_cfi_allocatable_library
           arg -- f_function_string_cfi_arg
           copy -- f_function_string_cfi_copy
-          pointer -- f_shared_function_string*_cfi_pointer
-            caller -- f_shared_function_string*_cfi_pointer
-            library -- f_shared_function_string*_cfi_pointer
+          pointer -- f_function_string_cfi_pointer
+            caller -- f_function_string_cfi_pointer_caller
+            library -- f_function_string_cfi_pointer_library
       string&
-        buf -- f_function_string_buf
-          arg -- f_function_string_buf_arg
-          copy -- f_function_string_buf
+        buf -- f_function_string&_buf
+          arg -- f_function_string&_buf_arg
+          copy -- f_function_string&_buf_copy
         cdesc
-          allocatable -- f_function_string*_cdesc_allocatable
-            caller -- f_function_string*_cdesc_allocatable
-            library -- f_function_string*_cdesc_allocatable
-          pointer -- f_function_string*_cdesc_pointer
-            caller -- f_function_string*_cdesc_pointer
-            library -- f_function_string*_cdesc_pointer
+          allocatable -- f_function_string&_cdesc_allocatable
+            caller -- f_function_string&_cdesc_allocatable_caller
+            library -- f_function_string&_cdesc_allocatable_library
+          pointer -- f_function_string&_cdesc_pointer
+            caller -- f_function_string&_cdesc_pointer_caller
+            library -- f_function_string&_cdesc_pointer_library
         cfi
-          allocatable -- f_function_string*_cfi_allocatable
-            caller -- f_function_string*_cfi_allocatable
-            library -- f_function_string*_cfi_allocatable
-          arg -- f_function_string_cfi_arg
-          copy -- f_function_string_cfi_copy
-          pointer -- f_shared_function_string*_cfi_pointer
-            caller -- f_shared_function_string*_cfi_pointer
-            library -- f_shared_function_string*_cfi_pointer
+          allocatable -- f_function_string&_cfi_allocatable
+            caller -- f_function_string&_cfi_allocatable_caller
+            library -- f_function_string&_cfi_allocatable_library
+          arg -- f_function_string&_cfi_arg
+          copy -- f_function_string&_cfi_copy
+          pointer -- f_function_string&_cfi_pointer
+            caller -- f_function_string&_cfi_pointer_caller
+            library -- f_function_string&_cfi_pointer_library
       string*
-        buf -- f_function_string_buf
-          copy -- f_function_string_buf
+        buf -- f_function_string*_buf
+          copy -- f_function_string*_buf_copy
         cdesc
           allocatable -- f_function_string*_cdesc_allocatable
-            caller -- f_function_string*_cdesc_allocatable
-            library -- f_function_string*_cdesc_allocatable
+            caller -- f_function_string*_cdesc_allocatable_caller
+            library -- f_function_string*_cdesc_allocatable_library
           pointer -- f_function_string*_cdesc_pointer
-            caller -- f_function_string*_cdesc_pointer
-            library -- f_function_string*_cdesc_pointer
+            caller -- f_function_string*_cdesc_pointer_caller
+            library -- f_function_string*_cdesc_pointer_library
         cfi
           allocatable -- f_function_string*_cfi_allocatable
-            caller -- f_function_string*_cfi_allocatable
-            library -- f_function_string*_cfi_allocatable
-          copy -- f_function_string_cfi_copy
-          pointer -- f_shared_function_string*_cfi_pointer
-            caller -- f_shared_function_string*_cfi_pointer
-            library -- f_shared_function_string*_cfi_pointer
+            caller -- f_function_string*_cfi_allocatable_caller
+            library -- f_function_string*_cfi_allocatable_library
+          copy -- f_function_string*_cfi_copy
+          pointer -- f_function_string*_cfi_pointer
+            caller -- f_function_string*_cfi_pointer_caller
+            library -- f_function_string*_cfi_pointer_library
       struct -- f_function_struct
       struct*
         cdesc
-          pointer -- f_function_native*_cdesc_pointer
+          pointer -- f_function_struct*_cdesc_pointer
         pointer -- f_function_struct*_pointer
       vector
         scalar
@@ -392,13 +392,13 @@ root
       native*
         cdesc
           pointer -- f_getter_native*_cdesc_pointer
-        pointer -- f_getter_native
+        pointer -- f_getter_native*_pointer
       string
         cdesc
           allocatable -- f_getter_string_cdesc_allocatable
       struct*
         cdesc
-          pointer -- f_getter_native*_cdesc_pointer
+          pointer -- f_getter_struct*_cdesc_pointer
         fapi
           pointer -- f_getter_struct*_fapi_pointer
       struct**
@@ -407,17 +407,17 @@ root
     in
       bool -- f_in_bool
       char -- f_in_char
-      char* -- f_shared_native
+      char* -- f_in_char*
         buf -- f_in_char*_buf
-        capi -- f_shared_native
+        capi -- f_in_char*_capi
         cfi -- f_in_char*_cfi
       char** -- f_in_char**
         buf -- f_in_char**_buf
         cfi -- f_in_char**_cfi
-      enum -- f_shared_native
-      native -- f_shared_native
-      native& -- f_shared_native
-      native* -- f_shared_native
+      enum -- f_in_enum
+      native -- f_in_native
+      native& -- f_in_native&
+      native* -- f_in_native*
         cdesc -- f_in_native*_cdesc
         cfi -- f_in_native*_cfi
       native** -- f_in_native**
@@ -428,64 +428,64 @@ root
       string -- f_in_string
         buf -- f_in_string_buf
         cfi -- f_in_string_cfi
-      string& -- f_in_string*
-        buf -- f_in_string*_buf
-        cfi -- f_in_string_cfi
+      string& -- f_in_string&
+        buf -- f_in_string&_buf
+        cfi -- f_in_string&_cfi
       string* -- f_in_string*
         buf -- f_in_string*_buf
-        cfi -- f_in_string_cfi
-      struct -- f_shared_struct
-      struct& -- f_shared_struct
-      struct* -- f_shared_struct
-      unknown -- f_shared_native
+        cfi -- f_in_string*_cfi
+      struct -- f_in_struct
+      struct& -- f_in_struct&
+      struct* -- f_in_struct*
+      unknown -- f_in_unknown
       vector
         &
           cdesc
             targ
               native
-                scalar -- f_defaulttmp
+                scalar -- f_in_vector_&_cdesc_targ_native_scalar
       vector<native*>&
         buf -- f_in_vector<native*>&_buf
       vector<native>
         buf -- f_in_vector<native>_buf
       vector<native>&
-        buf -- f_in_vector<native>_buf
+        buf -- f_in_vector<native>&_buf
       vector<native>*
-        buf -- f_in_vector<native>_buf
+        buf -- f_in_vector<native>*_buf
       vector<string>
         buf -- f_in_vector<string>_buf
       vector<string>&
-        buf -- f_in_vector<string>_buf
+        buf -- f_in_vector<string>&_buf
       vector<string>*
-        buf -- f_in_vector<string>_buf
-      void -- f_shared_native
+        buf -- f_in_vector<string>*_buf
+      void -- f_in_void
       void* -- f_in_void*
-        cdesc -- f_in_native*_cdesc
+        cdesc -- f_in_void*_cdesc
       void** -- f_in_void**
-        cfi -- f_in_void**
+        cfi -- f_in_void**_cfi
     inout
       bool* -- f_inout_bool*
-      char* -- f_shared_native
+      char* -- f_inout_char*
         buf -- f_inout_char*_buf
-        capi -- f_shared_native
+        capi -- f_inout_char*_capi
         cfi -- f_inout_char*_cfi
       enum* -- f_inout_enum*
-      native& -- f_shared_native
-        hidden -- f_out_native&_hidden
-      native* -- f_shared_native
-        cdesc -- f_in_native*_cdesc
-        cfi -- f_in_native*_cfi
-        hidden -- f_out_native*_hidden
-      shadow& -- f_in_shadow*
-      shadow* -- f_in_shadow*
-      string& -- f_inout_string*
-        buf -- f_inout_string*_buf
-        cfi -- f_inout_string*_cfi
+      native& -- f_inout_native&
+        hidden -- f_inout_native&_hidden
+      native* -- f_inout_native*
+        cdesc -- f_inout_native*_cdesc
+        cfi -- f_inout_native*_cfi
+        hidden -- f_inout_native*_hidden
+      shadow& -- f_inout_shadow&
+      shadow* -- f_inout_shadow*
+      string& -- f_inout_string&
+        buf -- f_inout_string&_buf
+        cfi -- f_inout_string&_cfi
       string* -- f_inout_string*
         buf -- f_inout_string*_buf
         cfi -- f_inout_string*_cfi
-      struct& -- f_shared_struct
-      struct* -- f_shared_struct
+      struct& -- f_inout_struct&
+      struct* -- f_inout_struct*
       vector
         buf
           targ
@@ -495,8 +495,8 @@ root
         cdesc -- f_inout_vector<native>&_cdesc
           allocatable -- f_inout_vector<native>&_cdesc_allocatable
       void*
-        cdesc -- f_in_native*_cdesc
-      void** -- f_in_void**
+        cdesc -- f_inout_void*_cdesc
+      void** -- f_inout_void**
     mixin
       arg
         capsule -- f_mixin_arg_capsule
@@ -571,21 +571,21 @@ root
         capsule -- f_mixin_use_capsule
     out
       bool* -- f_out_bool*
-      char* -- f_shared_native
+      char* -- f_out_char*
         buf -- f_out_char*_buf
-        capi -- f_shared_native
+        capi -- f_out_char*_capi
         cfi -- f_out_char*_cfi
       enum* -- f_out_enum*
-      native& -- f_shared_native
+      native& -- f_out_native&
         hidden -- f_out_native&_hidden
       native* -- f_out_native*
-        cdesc -- f_in_native*_cdesc
+        cdesc -- f_out_native*_cdesc
         cfi
           allocatable -- f_out_native*_cfi_allocatable
         hidden -- f_out_native*_hidden
       native*&
         cdesc -- f_out_native*&_cdesc
-          pointer -- f_out_native*&_cdesc
+          pointer -- f_out_native*&_cdesc_pointer
       native**
         cdesc
           allocatable -- f_out_native**_cdesc_allocatable
@@ -594,10 +594,10 @@ root
           allocatable -- f_out_native**_cfi_allocatable
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
-      native*** -- f_shared_native
-      string& -- f_out_string*
-        buf -- f_out_string*_buf
-        cfi -- f_out_string*_cfi
+      native*** -- f_out_native***
+      string& -- f_out_string&
+        buf -- f_out_string&_buf
+        cfi -- f_out_string&_cfi
       string* -- f_out_string*
         buf -- f_out_string*_buf
         cfi -- f_out_string*_cfi
@@ -609,16 +609,16 @@ root
           allocatable -- f_out_string**_cfi_allocatable
           copy -- f_out_string**_cfi_copy
         copy -- f_out_string**_copy
-      struct& -- f_shared_struct
-      struct* -- f_shared_struct
+      struct& -- f_out_struct&
+      struct* -- f_out_struct*
       vector
         buf
           targ
             string
               scalar -- f_out_vector_buf_targ_string_scalar
       vector<native>&
-        cdesc -- f_out_vector<native>*_cdesc
-          allocatable -- f_out_vector<native>*_cdesc_allocatable
+        cdesc -- f_out_vector<native>&_cdesc
+          allocatable -- f_out_vector<native>&_cdesc_allocatable
       vector<native>*
         cdesc -- f_out_vector<native>*_cdesc
           allocatable -- f_out_vector<native>*_cdesc_allocatable
@@ -626,16 +626,16 @@ root
         cdesc -- f_out_vector<string>&_cdesc
           allocatable -- f_out_vector<string>&_cdesc_allocatable
       void*
-        cdesc -- f_in_native*_cdesc
-      void*& -- f_shared_native
-      void** -- f_in_void**
+        cdesc -- f_out_void*_cdesc
+      void*& -- f_out_void*&
+      void** -- f_out_void**
     setter -- f_setter
       bool -- f_setter_bool
       native -- f_setter_native
-      native* -- f_setter_native
+      native* -- f_setter_native*
       string
         buf -- f_setter_string_buf
-      struct* -- f_setter_struct*_pointer
+      struct* -- f_setter_struct*
         pointer -- f_setter_struct*_pointer
       struct** -- f_setter_struct**
     shared
@@ -12199,33 +12199,33 @@ root
           fill -- py_base_ctor_array_fill
     ctor
       char* -- py_ctor_char*
-        numpy -- py_ctor_char*
+        numpy -- py_ctor_char*_numpy
       char** -- py_ctor_char**
-        list -- py_ctor_char**
+        list -- py_ctor_char**_list
       char[] -- py_ctor_char[]
-        list -- py_ctor_char[]
-        numpy -- py_ctor_char[]
+        list -- py_ctor_char[]_list
+        numpy -- py_ctor_char[]_numpy
       native -- py_ctor_native
-        list -- py_ctor_native
-        numpy -- py_ctor_native
+        list -- py_ctor_native_list
+        numpy -- py_ctor_native_numpy
       native* -- py_ctor_native*
-        list -- py_ctor_native*
-        numpy -- py_ctor_native*
+        list -- py_ctor_native*_list
+        numpy -- py_ctor_native*_numpy
       native[] -- py_ctor_native[]
-        list -- py_ctor_native[]
-        numpy -- py_ctor_native[]
+        list -- py_ctor_native[]_list
+        numpy -- py_ctor_native[]_numpy
     defaulttmp -- py_defaulttmp
     descr
       bool
         scalar -- py_descr_bool_scalar
       char
         * -- py_descr_char_*
-          numpy -- py_descr_char_*
+          numpy -- py_descr_char_*_numpy
         **
           list -- py_descr_char_**_list
         [] -- py_descr_char_[]
-          list -- py_descr_char_[]
-          numpy -- py_descr_char_[]
+          list -- py_descr_char_[]_list
+          numpy -- py_descr_char_[]_numpy
       native
         *
           list -- py_descr_native_*_list
@@ -12238,42 +12238,42 @@ root
       bool -- py_function_bool
       char -- py_function_char
       char* -- py_function_char*
-      enum -- py_defaulttmp
-      native -- py_defaulttmp
+      enum -- py_function_enum
+      native -- py_function_native
       native&
-        numpy -- py_function_native*_numpy
+        numpy -- py_function_native&_numpy
       native*
         list -- py_function_native*_list
         numpy -- py_function_native*_numpy
-        scalar -- py_defaulttmp
-      shadow -- py_out_struct*_class
-      shadow& -- py_function_shadow*
+        scalar -- py_function_native*_scalar
+      shadow -- py_function_shadow
+      shadow& -- py_function_shadow&
       shadow* -- py_function_shadow*
       string -- py_function_string
-      string& -- py_function_string*
+      string& -- py_function_string&
       string* -- py_function_string*
       struct
         class -- py_function_struct_class
-        list -- py_defaulttmp
+        list -- py_function_struct_list
         numpy -- py_function_struct_numpy
       struct*
-        class -- py_function_struct_class
-        list -- py_defaulttmp
-        numpy -- py_function_struct_numpy
+        class -- py_function_struct*_class
+        list -- py_function_struct*_list
+        numpy -- py_function_struct*_numpy
       vector
         list -- py_function_vector_list
         numpy -- py_function_vector_numpy
       vector<native>
-        list -- py_function_vector_list
-        numpy -- py_function_vector_numpy
+        list -- py_function_vector<native>_list
+        numpy -- py_function_vector<native>_numpy
       void* -- py_function_void*
     in
       bool -- py_in_bool
       char -- py_in_char
       char* -- py_in_char*
       char** -- py_in_char**
-      enum -- py_defaulttmp
-      native -- py_defaulttmp
+      enum -- py_in_enum
+      native -- py_in_native
       native& -- py_in_native&
       native* -- py_in_native*
         list -- py_in_native*_list
@@ -12282,7 +12282,7 @@ root
       shadow& -- py_in_shadow&
       shadow* -- py_in_shadow*
       string -- py_in_string
-      string& -- py_in_string
+      string& -- py_in_string&
       string* -- py_in_string*
       struct
         class -- py_in_struct_class
@@ -12295,7 +12295,7 @@ root
         class -- py_in_struct*_class
         list -- py_in_struct*_list
         numpy -- py_in_struct*_numpy
-      unknown -- py_defaulttmp
+      unknown -- py_in_unknown
       vector<native>&
         list -- py_in_vector<native>&_list
         numpy -- py_in_vector<native>&_numpy
@@ -12311,7 +12311,7 @@ root
       shadow
         * -- py_inout_shadow_*
       string -- py_inout_string
-      string& -- py_inout_string
+      string& -- py_inout_string&
       string* -- py_inout_string*
       struct
         list -- py_inout_struct_list
@@ -12343,7 +12343,7 @@ root
       shadow
         * -- py_out_shadow_*
       string -- py_out_string
-      string& -- py_out_string
+      string& -- py_out_string&
       string* -- py_out_string*
       struct
         list -- py_out_struct_list
@@ -14267,7 +14267,7 @@ root
     dtor -- lua_dtor
     function
       bool -- lua_function_bool
-      enum -- lua_function_native
+      enum -- lua_function_enum
       native -- lua_function_native
       shadow* -- lua_function_shadow*
       string -- lua_function_string
@@ -14275,14 +14275,14 @@ root
       void* -- lua_function_void*
     in
       bool -- lua_in_bool
-      enum -- lua_in_native
+      enum -- lua_in_enum
       native -- lua_in_native
-      native* -- lua_defaulttmp
+      native* -- lua_in_native*
       shadow* -- lua_in_shadow*
-      string& -- lua_in_string*
+      string& -- lua_in_string&
       string* -- lua_in_string*
-      unknown -- lua_defaulttmp
-      void -- lua_defaulttmp
+      unknown -- lua_in_unknown
+      void -- lua_in_void
     inout
       native* -- lua_inout_native*
     mixin
@@ -14290,7 +14290,7 @@ root
       push -- lua_mixin_push
       unknown -- lua_mixin_unknown
     out
-      native* -- lua_defaulttmp
+      native* -- lua_out_native*
     subroutine -- lua_subroutine
 lua_ctor:
   call:

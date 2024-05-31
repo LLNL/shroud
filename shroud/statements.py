@@ -472,7 +472,6 @@ def process_mixin(stmts, defaults, stmtdict):
                 append_mixin(node, stmt["append"])
             node.update(stmt)
         post_mixin_check_statement(name, node)
-        node["orig"] = name
         node["index"] = str(index)
         index += 1
         node["name"] = name
@@ -650,7 +649,7 @@ def print_tree_index(tree, lines, indent=""):
     parts = tree.get('_key', 'root').split('_')
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
-        origname = tree["_node"]["orig"]
+        origname = tree["_node"]["name"]
         lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
     else:
         lines.append("{}{}\n".format(indent, parts[-1]))
