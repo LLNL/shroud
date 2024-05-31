@@ -9,6 +9,10 @@ statement line 19
 Statement: short
 Statement name is too short, must include language and intent.
 --------------------
+statement line 20
+Statement: java_mixin
+Statement does not start with a known language code: 'java'
+--------------------
 statement line 22
 Statement: f_mixin_with-base
 Intent mixin group should not have 'base' field.
@@ -33,6 +37,14 @@ statement line 38
 Statement: f_mixin_good1
 Statement name 'f_mixin_good1' already exists.
 --------------------
+statement line 42
+Statement: f_in_foo4
+Base 'nonexistent' not found.
+--------------------
+statement line 45
+Statement: f_in_foo5
+Alias 'f_in_foo5a' already exists.
+--------------------
 statement line 50
 Statement: f_badintent_foo6
 Invalid intent 'badintent'.
@@ -49,18 +61,6 @@ Missing i_arg_decl, i_arg_names.
 statement line 56
 Statement: f_in_foo8
 c_arg_decl, i_arg_decl and i_arg_names must all be same length. Used 1, 1, 2.
---------------------
-statement line 20
-Statement: java_mixin
-Statement does not start with a known language code: 'java'
---------------------
-statement line 42
-Statement: f_in_foo4
-Base 'nonexistent' not found.
---------------------
-statement line 45
-Statement: f_in_foo5
-Alias 'f_in_foo5a' already exists.
 Wrote wrapferror.f
 Wrote utilerror.cpp
 Wrote typeserror.h

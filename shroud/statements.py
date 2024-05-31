@@ -434,22 +434,30 @@ def process_mixin(stmts, defaults, stmtdict):
     cursor.push_phase("Check statements")
     stmt_cursor = cursor.push_statement()
     mixins = OrderedDict()
-    aliases = []
     index = 0
     for stmt in stmts:
         stmt_cursor.stmt = stmt
-        if "name" not in stmt:
+        node = None
+        tmp_node = {}
+        aliases = None
+        if "alias" in stmt:
+            # name is not allowed"
+            aliases = stmt["alias"]
+            intent = None
+        if "name" in stmt:
+            # must not have alias
+            name = stmt["name"]
+            if name[0] == "!":
+                continue
+            parts = name.split("_")
+            if len(parts) < 2:
+                cursor.warning("Statement name is too short, must include language and intent.")
+                continue
+            lang = parts[0]
+            intent = parts[1]
+        else:
             cursor.warning("Missing name in statement")
             continue
-        name = stmt["name"]
-        if name[0] == "!":
-            continue
-        node = {}
-        parts = name.split("_")
-        if len(parts) < 2:
-            cursor.warning("Statement name is too short, must include language and intent.")
-            continue
-        intent = parts[1]
         if intent == "mixin":
             if "base" in stmt:
                 cursor.warning("Intent mixin group should not have 'base' field.")
@@ -461,7 +469,11 @@ def process_mixin(stmts, defaults, stmtdict):
             if "append" in stmt:
                 cursor.warning("Intent mixin group should not have 'append' field.")
                 continue
-            node["name"] = name
+            tmp_node["name"] = name
+            if name in mixins:
+                cursor.warning("Statement name '{}' already exists.".format(name))
+            else:
+                mixins[name] = tmp_node
 
         # Apply any mixin groups
         if "mixin" in stmt:
@@ -475,38 +487,24 @@ def process_mixin(stmts, defaults, stmtdict):
                 elif mixin not in mixins:
                     cursor.warning("Mixin '{}' not found.".format(mixin))
                 else:
-                    append_mixin(node, mixins[mixin])
+                    append_mixin(tmp_node, mixins[mixin])
 
         if intent == "mixin":
-            # Now append from current group
-            append_mixin(node, stmt)
+            append_mixin(tmp_node, stmt)
         else:
             if "append" in stmt:
-                append_mixin(node, stmt["append"])
+                append_mixin(tmp_node, stmt["append"])
             # Replace any mixin values
-            node.update(stmt)
+            tmp_node.update(stmt)
 
-        post_mixin_check_statement(name, node)
-        node["index"] = str(index)
+        post_mixin_check_statement(name, tmp_node)
+        tmp_node["index"] = str(index)
         index += 1
 
-        if name in mixins:
-            cursor.warning("Statement name '{}' already exists.".format(name))
-        elif intent not in valid_intents:
+        if intent not in valid_intents:
             cursor.warning("Invalid intent '{}'.".format(intent))
-        else:
-            mixins[name] = node
 
-        if "alias" in stmt:
-            aliases.append((name, stmt["alias"]))
-
-    # Apply defaults.
-    for stmt in mixins.values():
-        stmt_cursor.stmt = stmt
-        name = stmt["name"]
-        parts = name.split("_", 2)
-        lang = parts[0]
-        intent = parts[1]
+        # Create the Scope instance.
         if "base" in stmt:
             if stmt["base"] not in stmtdict:
                 cursor.warning("Base '{}' not found.".format(stmt["base"]))
@@ -516,23 +514,26 @@ def process_mixin(stmts, defaults, stmtdict):
             cursor.warning("Statement does not start with a known language code: '%s'" % lang)
         else:
             node = util.Scope(defaults[lang])
-        node.update(stmt)
-        node.intent = intent
-        stmtdict[name] = node
+        if not node:
+            continue
+        node.update(tmp_node)
 
-    # Install with alias name.
-    for name, aliases in aliases:
-        node = stmtdict[name]
-        stmt_cursor.stmt = node
-        for alias in aliases:
-            apart = alias.split("_")
-            anode = util.Scope(node)
-            if alias in stmtdict:
-                cursor.warning("Alias '{}' already exists.".format(alias))
-            else:
-                anode.name = alias
-                anode.intent = apart[1]
-                stmtdict[alias] = anode
+        if name:
+            stmtdict[name] = node
+            node.intent = intent
+        if aliases:
+            # Install with alias name.
+            for alias in aliases:
+                #        node = stmtdict[name]
+                #        stmt_cursor.stmt = node
+                apart = alias.split("_")
+                anode = util.Scope(node)
+                if alias in stmtdict:
+                    cursor.warning("Alias '{}' already exists.".format(alias))
+                else:
+                    anode.name = alias
+                    anode.intent = apart[1]
+                    stmtdict[alias] = anode
     cursor.pop_statement()
     cursor.pop_phase("Check statements")
 #    cursor.check_for_warnings()
