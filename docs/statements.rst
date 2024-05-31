@@ -16,7 +16,7 @@ Combinations of language, type and attributes are used to select
 a statement entry.
 
 
-Statement names which start with a `!` are ignored.
+Statement names or alias which start with a `#` are ignored.
 
 .. name
 
@@ -30,12 +30,14 @@ Statement names which start with a `!` are ignored.
           Useful to define a group that varies slightly
           such as pointer vs reference argument.
 
-.. mixin - list of single names, no alternative allowed such as allocatable/pointer
-           must not contain 'alias', 'append' or 'base'
+.. mixin - list of names
            List fields from the mixin group will be appended to the group
            being defined.
            Non-lists are assigned.
            Dictionaries are recursively appended (f_module).
+
+           A mixin group is created when the intent in the name is 'mixin'.
+           Must not contain 'alias', 'append' or 'base'
 
 .. append - applied after mixins as a sort of one-off mixin to append to fields.
       f_post_call is defined by the mixins but need to add one more line.
@@ -59,6 +61,10 @@ Statement names which start with a `!` are ignored.
            copy_allocate: "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
 
 .. alias
+     An alias field can be used with or without the name field.
+
+     If there are C and Fortran group, make the first alias a Fortran name.
+     C is a subset of Fortran and the first alias determines the defaults.
 
 .. fmtdict - A dictionary to replace default values
 

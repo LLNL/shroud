@@ -400,7 +400,15 @@ def append_mixin(stmt, mixin):
             append_mixin(stmt[key], value)
         else:
             stmt[key] = value
-            
+
+valid_intents = [
+    "in", "out", "inout",
+    "mixin",
+    "function", "subroutine",
+    "getter", "setter",
+    "ctor", "dtor",
+    "base", "descr",
+]
 
 def process_mixin(stmts, defaults, stmtdict):
     """Return a dictionary of all statements
@@ -412,8 +420,8 @@ def process_mixin(stmts, defaults, stmtdict):
     Add mixin into dictionary
 
     alias=[
-        "c_function_native_*_allocatable/raw",
-        "c_function_native_*/&/**_pointer",
+        "c_function_native_*_allocatable",
+        "c_function_native_*_raw",
     ],
 
     Set an index field for each statement.
@@ -422,31 +430,43 @@ def process_mixin(stmts, defaults, stmtdict):
     # Apply base and mixin
     # This allows mixins to propagate
     # i.e. you can mixin a group which itself has a mixin.
-    # Save by name permutations into mixins  (in/out/inout)
     cursor = error.cursor
     cursor.push_phase("Check statements")
     stmt_cursor = cursor.push_statement()
     mixins = OrderedDict()
-    aliases = []
     index = 0
     for stmt in stmts:
         stmt_cursor.stmt = stmt
-        if "name" not in stmt:
-            cursor.warning("Missing name in statement")
+        node = None
+        tmp_node = {}
+        tmp_name = None
+        name = None
+        aliases = []
+        intent = None
+        if "alias" in stmt:
+            # name is not allowed"
+            aliases = stmt["alias"]
+            # XXX - first alias used for lang
+            tmp_name = aliases[0]
+        if "name" in stmt:
+            name = stmt["name"]
+            tmp_name = name
+            if tmp_name[0] == "#":
+                continue
+        if not tmp_name:
+            cursor.warning("Statement must have name or alias")
             continue
-        name = stmt["name"]
-#        print("XXXXX", name)
-        node = {}
-        parts = name.split("_")
+
+        parts = tmp_name.split("_")
         if len(parts) < 2:
             cursor.warning("Statement name is too short, must include language and intent.")
             continue
         lang = parts[0]
         intent = parts[1]
-        # Check length of name
-        if lang[0] == "!":
-            continue
         if intent == "mixin":
+            if name is None:
+                cursor.warning("Intent mixin only allowed in name, not alias.")
+                continue
             if "base" in stmt:
                 cursor.warning("Intent mixin group should not have 'base' field.")
                 continue
@@ -457,76 +477,42 @@ def process_mixin(stmts, defaults, stmtdict):
             if "append" in stmt:
                 cursor.warning("Intent mixin group should not have 'append' field.")
                 continue
+            tmp_node["name"] = name
+            if name in mixins:
+                cursor.warning("Statement name '{}' already exists.".format(name))
+            else:
+                mixins[name] = tmp_node
+
+        # Apply any mixin groups
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
-                mparts = mixin.split("_")
+                mparts = mixin.split("_", 2)
                 if mparts[1] != "mixin":
                     cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
                 elif mixin not in mixins:
                     cursor.warning("Mixin '{}' not found.".format(mixin))
-#                print("M    ", mixin)
                 else:
-                    append_mixin(node, mixins[mixin])
+                    append_mixin(tmp_node, mixins[mixin])
+
         if intent == "mixin":
-            append_mixin(node, stmt)
+            append_mixin(tmp_node, stmt)
         else:
             if "append" in stmt:
-                append_mixin(node, stmt["append"])
-            node.update(stmt)
-        post_mixin_check_statement(name, node)
-        node["orig"] = name
-        out = compute_all_permutations(name)
-        firstname = "_".join(out[0])
-        node["index"] = str(index)
+                append_mixin(tmp_node, stmt["append"])
+            # Replace any mixin values
+            tmp_node.update(stmt)
+
+        post_mixin_check_statement(tmp_name, tmp_node)
+        tmp_node["index"] = str(index)
         index += 1
-        to_add = []
-        if len(out) == 1:
-            node["name"] = name
-            to_add.append(node)
-        else:
-            lparts = {}  # count unique language parts
-            for part in out:
-                aname = "_".join(part)
-                anode = node.copy()
-                anode["name"] = aname
-                lparts[part[0]] = True
-                to_add.append(anode)
-            # Sanity check. Otherwise defaults[lang] would be wrong.
-            if len(lparts) > 1:
-                cursor.warning("Only one language per group. Used {}".format(", ".join(lparts.keys())))
 
-        for anode in to_add:
-            aname = anode["name"]
-            parts = aname.split("_", 2)
-            lang = parts[0]
-            intent = parts[1]
-            if aname in mixins:
-                cursor.warning("Statement name '{}' already exists.".format(aname))
-            elif intent not in [
-                "in", "out", "inout", "mixin",
-                "function", "subroutine",
-                "getter", "setter",
-                "ctor", "dtor",
-                "base", "descr",
-                "defaulttmp", "XXXin", "test", "shared",
-            ]:
-                cursor.warning("Invalid intent '{}'.".format(intent))
-            else:
-                mixins[aname] = anode
+        if intent not in valid_intents:
+            cursor.warning("Invalid intent '{}'.".format(intent))
 
-        if "alias" in stmt:
-            aliases.append((firstname, stmt["alias"]))
-
-    # Apply defaults.
-    for stmt in mixins.values():
-        stmt_cursor.stmt = stmt
-        name = stmt["name"]
-        parts = name.split("_",2)
-        lang = parts[0]
-        intent = parts[1]
+        # Create the Scope instance.
         if "base" in stmt:
             if stmt["base"] not in stmtdict:
                 cursor.warning("Base '{}' not found.".format(stmt["base"]))
@@ -536,27 +522,33 @@ def process_mixin(stmts, defaults, stmtdict):
             cursor.warning("Statement does not start with a known language code: '%s'" % lang)
         else:
             node = util.Scope(defaults[lang])
-        node.update(stmt)
-        node.intent = intent
-        stmtdict[name] = node
+        if not node:
+            continue
+        node.update(tmp_node)
 
-    # Install with alias name.
-    for name, aliases in aliases:
-        node = stmtdict[name]
-        stmt_cursor.stmt = node
-        for alias in aliases:
-#            print("AAAA ", alias)
-            aout = compute_all_permutations(alias)
-            for apart in aout:
-                aname = "_".join(apart)
+        if name:
+            stmtdict[name] = node
+            node.intent = intent
+        if aliases:
+            # Install with alias name.
+            for alias in aliases:
+                if alias[0] == "#":
+                    continue
+                apart = alias.split("_", 2)
+                intent = apart[1]
                 anode = util.Scope(node)
-                if aname in stmtdict:
-                    cursor.warning("Alias '{}' already exists.".format(aname))
+                if intent == "mixin":
+                    cursor.warning("Mixin not allowed in alias '{}'."
+                                   .format(alias))
+                elif intent not in valid_intents:
+                    cursor.warning("Invalid intent '{}' in alias '{}'."
+                                   .format(intent, alias))
+                if alias in stmtdict:
+                    cursor.warning("Alias '{}' already exists.".format(alias))
                 else:
-                    anode.name = aname
-                    anode.intent = apart[1]
-                    stmtdict[aname] = anode
-#                    print("A    ", aname)
+                    anode.name = alias
+                    anode.intent = intent
+                    stmtdict[alias] = anode
     cursor.pop_statement()
     cursor.pop_phase("Check statements")
 #    cursor.check_for_warnings()
@@ -586,54 +578,6 @@ def update_for_language(stmts, lang):
     for item in stmts:
         if specific in item:
             item.update(item[specific])
-
-
-def compute_all_permutations(key):
-    """Expand parts which have multiple values
-
-    Ex: parts = 
-      [['c'], ['in', 'out', 'inout'], ['native'], ['*'], ['cfi']]
-    Three entries will be returned:
-      ['c', 'in', 'native', '*', 'cfi']
-      ['c', 'out', 'native', '*', 'cfi']
-      ['c', 'inout', 'native', '*', 'cfi']
-    """
-    steps = key.split("_")
-    substeps = []
-    for part in steps:
-        subparts = part.split("/")
-        substeps.append(subparts)
-
-    expanded = []
-    compute_stmt_permutations(expanded, substeps)
-    return expanded
-
-
-def compute_stmt_permutations(out, parts):
-    """Recursively expand permutations
-
-    ex: f_function_string_scalar/*/&_cfi_copy
-
-    Parameters
-    ----------
-    out : list
-        Results are appended to the list.
-    parts :
-    """
-    tmp = []
-    for i, part in enumerate(parts):
-        if isinstance(part, list):
-            if len(part) == 1:
-                tmp.append(part[0])
-            else:
-                for expand in part:
-                    compute_stmt_permutations(
-                        out, tmp + [expand] + parts[i+1:])
-                break
-        else:
-            tmp.append(part)
-    else:
-        out.append(tmp)
 
 
 def add_statement_to_tree(tree, node):
@@ -728,7 +672,7 @@ def print_tree_index(tree, lines, indent=""):
     parts = tree.get('_key', 'root').split('_')
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
-        origname = tree["_node"]["orig"]
+        origname = tree["_node"]["name"]
         lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
     else:
         lines.append("{}{}\n".format(indent, parts[-1]))
