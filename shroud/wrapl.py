@@ -1024,7 +1024,6 @@ lua_statements = [
     ),
     
     dict(
-        name="lua_defaulttmp",
         alias=[
             "lua_in_unknown",
             "lua_in_void",

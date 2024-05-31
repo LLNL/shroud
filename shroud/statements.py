@@ -402,12 +402,12 @@ def append_mixin(stmt, mixin):
             stmt[key] = value
 
 valid_intents = [
-    "in", "out", "inout", "mixin",
+    "in", "out", "inout",
+    "mixin",
     "function", "subroutine",
     "getter", "setter",
     "ctor", "dtor",
     "base", "descr",
-    "defaulttmp",
 ]
 
 def process_mixin(stmts, defaults, stmtdict):

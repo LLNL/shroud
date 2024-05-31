@@ -12084,7 +12084,6 @@ root
       native[] -- py_ctor_native[]
         list -- py_ctor_native[]_list
         numpy -- py_ctor_native[]_numpy
-    defaulttmp -- py_defaulttmp
     descr
       bool
         scalar -- py_descr_bool_scalar
@@ -12479,9 +12478,6 @@ py_ctor_native_numpy:
   name: py_ctor_native_numpy
   post_call:
   - SH_obj->{field_name} = {field_name};
-py_defaulttmp:
-  intent: defaulttmp
-  name: py_defaulttmp
 py_descr_bool_scalar:
   getter:
   - return PyBool_FromLong({c_var});
@@ -14133,7 +14129,6 @@ py_out_void**:
 root
   lua
     ctor -- lua_ctor
-    defaulttmp -- lua_defaulttmp
     dtor -- lua_dtor
     function
       bool -- lua_function_bool
@@ -14173,9 +14168,6 @@ lua_ctor:
   - lua_setmetatable(L, -2);
   intent: ctor
   name: lua_ctor
-lua_defaulttmp:
-  intent: defaulttmp
-  name: lua_defaulttmp
 lua_dtor:
   call:
   - delete {LUA_userdata_var}->{LUA_userdata_member};

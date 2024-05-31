@@ -3744,7 +3744,6 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_defaulttmp",
         alias=[
             "py_function_native",
             "py_in_native",
