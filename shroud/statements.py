@@ -400,7 +400,15 @@ def append_mixin(stmt, mixin):
             append_mixin(stmt[key], value)
         else:
             stmt[key] = value
-            
+
+valid_intents = [
+    "in", "out", "inout", "mixin",
+    "function", "subroutine",
+    "getter", "setter",
+    "ctor", "dtor",
+    "base", "descr",
+    "defaulttmp", "XXXin", "test", "shared",
+]
 
 def process_mixin(stmts, defaults, stmtdict):
     """Return a dictionary of all statements
@@ -453,6 +461,9 @@ def process_mixin(stmts, defaults, stmtdict):
             if "append" in stmt:
                 cursor.warning("Intent mixin group should not have 'append' field.")
                 continue
+            node["name"] = name
+
+        # Apply any mixin groups
         if "mixin" in stmt:
             if "base" in stmt:
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
@@ -465,27 +476,23 @@ def process_mixin(stmts, defaults, stmtdict):
                     cursor.warning("Mixin '{}' not found.".format(mixin))
                 else:
                     append_mixin(node, mixins[mixin])
+
         if intent == "mixin":
+            # Now append from current group
             append_mixin(node, stmt)
         else:
             if "append" in stmt:
                 append_mixin(node, stmt["append"])
+            # Replace any mixin values
             node.update(stmt)
+
         post_mixin_check_statement(name, node)
         node["index"] = str(index)
         index += 1
-        node["name"] = name
 
         if name in mixins:
             cursor.warning("Statement name '{}' already exists.".format(name))
-        elif intent not in [
-            "in", "out", "inout", "mixin",
-            "function", "subroutine",
-            "getter", "setter",
-            "ctor", "dtor",
-            "base", "descr",
-            "defaulttmp", "XXXin", "test", "shared",
-        ]:
+        elif intent not in valid_intents:
             cursor.warning("Invalid intent '{}'.".format(intent))
         else:
             mixins[name] = node
