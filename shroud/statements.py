@@ -407,7 +407,7 @@ valid_intents = [
     "getter", "setter",
     "ctor", "dtor",
     "base", "descr",
-    "defaulttmp", "XXXin", "test", "shared",
+    "defaulttmp", "XXXin", "test",
 ]
 
 def process_mixin(stmts, defaults, stmtdict):
