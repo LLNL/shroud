@@ -439,26 +439,34 @@ def process_mixin(stmts, defaults, stmtdict):
         stmt_cursor.stmt = stmt
         node = None
         tmp_node = {}
-        aliases = None
+        tmp_name = None
+        name = None
+        aliases = []
+        intent = None
         if "alias" in stmt:
             # name is not allowed"
             aliases = stmt["alias"]
-            intent = None
+            # XXX - first alias used for lang
+            tmp_name = aliases[0]
         if "name" in stmt:
-            # must not have alias
             name = stmt["name"]
-            if name[0] == "!":
+            tmp_name = name
+            if tmp_name[0] == "!":
                 continue
-            parts = name.split("_")
-            if len(parts) < 2:
-                cursor.warning("Statement name is too short, must include language and intent.")
-                continue
-            lang = parts[0]
-            intent = parts[1]
-        else:
-            cursor.warning("Missing name in statement")
+        if not tmp_name:
+            cursor.warning("Statement must have name or alias")
             continue
+
+        parts = tmp_name.split("_")
+        if len(parts) < 2:
+            cursor.warning("Statement name is too short, must include language and intent.")
+            continue
+        lang = parts[0]
+        intent = parts[1]
         if intent == "mixin":
+            if name is None:
+                cursor.warning("Intent mixin only allowed in name, not alias.")
+                continue
             if "base" in stmt:
                 cursor.warning("Intent mixin group should not have 'base' field.")
                 continue
@@ -481,7 +489,7 @@ def process_mixin(stmts, defaults, stmtdict):
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
-                mparts = mixin.split("_")
+                mparts = mixin.split("_", 2)
                 if mparts[1] != "mixin":
                     cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
                 elif mixin not in mixins:
@@ -497,7 +505,7 @@ def process_mixin(stmts, defaults, stmtdict):
             # Replace any mixin values
             tmp_node.update(stmt)
 
-        post_mixin_check_statement(name, tmp_node)
+        post_mixin_check_statement(tmp_name, tmp_node)
         tmp_node["index"] = str(index)
         index += 1
 
@@ -524,15 +532,20 @@ def process_mixin(stmts, defaults, stmtdict):
         if aliases:
             # Install with alias name.
             for alias in aliases:
-                #        node = stmtdict[name]
-                #        stmt_cursor.stmt = node
-                apart = alias.split("_")
+                apart = alias.split("_", 2)
+                intent = apart[1]
                 anode = util.Scope(node)
+                if intent == "mixin":
+                    cursor.warning("Mixin not allowed in alias '{}'."
+                                   .format(alias))
+                elif intent not in valid_intents:
+                    cursor.warning("Invalid intent '{}' in alias '{}'."
+                                   .format(intent, alias))
                 if alias in stmtdict:
                     cursor.warning("Alias '{}' already exists.".format(alias))
                 else:
                     anode.name = alias
-                    anode.intent = apart[1]
+                    anode.intent = intent
                     stmtdict[alias] = anode
     cursor.pop_statement()
     cursor.pop_phase("Check statements")

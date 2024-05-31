@@ -25,6 +25,12 @@ statements:
       alias: ["nonexistent"]
     - name: f_mixin_with-append
       append: nonexistent
+    - name: f_mixin_with-alias
+      alias:
+      - f_in_no-alias-in-mixin-group
+
+    - alias:
+      - f_mixin_one_alias
 
     - name: f_in_foo1
       mixin:
@@ -46,6 +52,8 @@ statements:
       alias:
       - f_in_foo5a
       - f_in_foo5a
+      - f_badintent_foo5ain
+      - f_mixin_not-here
 
     - name: f_badintent_foo6
 

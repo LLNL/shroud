@@ -9,12 +9,12 @@
         "i_arg_names": []
     },
     {
-        "name": "f_subroutine",
+        "alias": [
+            "f_subroutine",
+            "c_subroutine"
+        ],
         "mixin": [
             "c_mixin_noargs"
-        ],
-        "alias": [
-            "c_subroutine"
         ],
         "f_arg_call": [],
         "f_call": [
@@ -903,13 +903,11 @@
         ]
     },
     {
-        "name": "f_defaulttmp",
         "alias": [
             "f_in_vector_&_cdesc_targ_native_scalar"
         ]
     },
     {
-        "name": "c_defaulttmp",
         "alias": [
             "c_out_native_&*"
         ]

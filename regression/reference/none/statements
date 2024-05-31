@@ -4,7 +4,6 @@ root
     ctor
       shadow
         capptr -- c_ctor_shadow_capptr
-    defaulttmp -- c_defaulttmp
     dtor -- c_dtor
     function -- c_function
       bool -- c_function_bool
@@ -258,7 +257,6 @@ root
     ctor
       shadow
         capptr -- f_ctor_shadow_capptr
-    defaulttmp -- f_defaulttmp
     dtor -- f_dtor
     function
       bool -- f_function_bool
@@ -675,10 +673,6 @@ c_ctor_shadow_capptr:
   intent: ctor
   name: c_ctor_shadow_capptr
   owner: caller
-c_defaulttmp:
-  intent: defaulttmp
-  name: c_defaulttmp
-  owner: library
 c_dtor:
   c_call:
   - delete {CXX_this};
@@ -3963,10 +3957,6 @@ f_ctor_shadow_capptr:
   intent: ctor
   name: f_ctor_shadow_capptr
   owner: caller
-f_defaulttmp:
-  intent: defaulttmp
-  name: f_defaulttmp
-  owner: library
 f_dtor:
   c_call:
   - delete {CXX_this};

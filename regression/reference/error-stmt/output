@@ -3,7 +3,7 @@
 Phase: Check statements
 ----------------------------------------
 statement line 18
-Missing name in statement
+Statement must have name or alias
 --------------------
 statement line 19
 Statement: short
@@ -25,40 +25,55 @@ statement line 26
 Statement: f_mixin_with-append
 Intent mixin group should not have 'append' field.
 --------------------
-statement line 29
+statement line 28
+Statement: f_mixin_with-alias
+Intent mixin group should not have 'alias' field.
+--------------------
+statement line 32
+Intent mixin only allowed in name, not alias.
+--------------------
+statement line 35
 Statement: f_in_foo1
 Mixin 'f_in_foo1mixin' must have intent 'mixin'.
 --------------------
-statement line 32
+statement line 38
 Statement: f_in_foo2
 Mixin 'f_mixin_nonexistent' not found.
 --------------------
-statement line 38
+statement line 44
 Statement: f_mixin_good1
 Statement name 'f_mixin_good1' already exists.
 --------------------
-statement line 42
+statement line 48
 Statement: f_in_foo4
 Base 'nonexistent' not found.
 --------------------
-statement line 45
+statement line 51
 Statement: f_in_foo5
 Alias 'f_in_foo5a' already exists.
 --------------------
-statement line 50
+statement line 51
+Statement: f_in_foo5
+Invalid intent 'badintent' in alias 'f_badintent_foo5ain'.
+--------------------
+statement line 51
+Statement: f_in_foo5
+Mixin not allowed in alias 'f_mixin_not-here'.
+--------------------
+statement line 58
 Statement: f_badintent_foo6
 Invalid intent 'badintent'.
 --------------------
-statement line 54
+statement line 62
 Statement: f_in_foo7
 c_arg_decl must be a list.
 --------------------
-statement line 54
+statement line 62
 Statement: f_in_foo7
 c_arg_decl, i_arg_decl and i_arg_names must all exist together.
 Missing i_arg_decl, i_arg_names.
 --------------------
-statement line 56
+statement line 64
 Statement: f_in_foo8
 c_arg_decl, i_arg_decl and i_arg_names must all be same length. Used 1, 1, 2.
 Wrote wrapferror.f
