@@ -63,6 +63,9 @@ Statement names or alias which start with a `#` are ignored.
 .. alias
      An alias field can be used with or without the name field.
 
+     If there are C and Fortran group, make the first alias a Fortran name.
+     C is a subset of Fortran and the first alias determines the defaults.
+
 .. fmtdict - A dictionary to replace default values
 
         name: f_function_char_*_cfi_arg
