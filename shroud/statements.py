@@ -407,7 +407,7 @@ valid_intents = [
     "getter", "setter",
     "ctor", "dtor",
     "base", "descr",
-    "defaulttmp", "XXXin", "test",
+    "defaulttmp",
 ]
 
 def process_mixin(stmts, defaults, stmtdict):
@@ -451,7 +451,7 @@ def process_mixin(stmts, defaults, stmtdict):
         if "name" in stmt:
             name = stmt["name"]
             tmp_name = name
-            if tmp_name[0] == "!":
+            if tmp_name[0] == "#":
                 continue
         if not tmp_name:
             cursor.warning("Statement must have name or alias")
@@ -532,6 +532,8 @@ def process_mixin(stmts, defaults, stmtdict):
         if aliases:
             # Install with alias name.
             for alias in aliases:
+                if alias[0] == "#":
+                    continue
                 apart = alias.split("_", 2)
                 intent = apart[1]
                 anode = util.Scope(node)

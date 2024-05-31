@@ -16,7 +16,7 @@ Combinations of language, type and attributes are used to select
 a statement entry.
 
 
-Statement names which start with a `!` are ignored.
+Statement names or alias which start with a `#` are ignored.
 
 .. name
 

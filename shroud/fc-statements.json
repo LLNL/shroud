@@ -1767,7 +1767,7 @@
         ]
     },
     {
-        "name": "f_XXXin_string_scalar",
+        "name": "#f_in_string_scalar",
         "f_need_wrapper": true,
         "mixin": [
             "f_mixin_in_character_buf"

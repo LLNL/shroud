@@ -248,9 +248,6 @@ root
           buf -- c_setter_string_scalar_buf
     subroutine -- c_subroutine
   f
-    XXXin
-      string
-        scalar -- f_XXXin_string_scalar
     ctor
       shadow
         capptr -- f_ctor_shadow_capptr
@@ -3874,29 +3871,6 @@ c_subroutine:
   - No arguments to a function.
   intent: subroutine
   name: c_subroutine
-  owner: library
-f_XXXin_string_scalar:
-  comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_arg_decl:
-  - 'character(len=*), intent(IN) :: {f_var}'
-  f_declare:
-  - integer(C_INT) {f_var_len}
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_need_wrapper: true
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_temps:
-  - len
-  intent: XXXin
-  name: f_XXXin_string_scalar
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
   owner: library
 f_ctor_shadow_capptr:
   c_arg_decl:
