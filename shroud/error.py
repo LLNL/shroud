@@ -52,7 +52,9 @@ class StmtCursor(object):
             print("statement line", linenumber)
         if "name" in self.stmt:
             print("Statement:", self.stmt["name"])
-        
+        elif "alias" in self.stmt:
+            print("Statement:", self.stmt["alias"][0])
+            
 class Cursor(object):
     def __init__(self):
         self.phase_list = []
