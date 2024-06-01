@@ -30,6 +30,7 @@ Statement: f_mixin_with-alias
 Intent mixin group should not have 'alias' field.
 --------------------
 statement line 32
+Statement: f_mixin_one_alias
 Intent mixin only allowed in name, not alias.
 --------------------
 statement line 35
