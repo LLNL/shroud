@@ -7,7 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// cxx_header
 #include "funptr.h"
+// shroud
 #include "wrapfunptr.h"
 
 // splicer begin CXX_definitions
@@ -22,6 +24,12 @@ extern "C" {
  * \brief Create abstract interface for function
  *
  */
+// ----------------------------------------
+// Function:  void callback1
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  void ( * incr)(void)
+// Statement: c_in_void
 void FUN_callback1(void ( * incr)(void))
 {
     // splicer begin function.callback1
@@ -34,6 +42,12 @@ void FUN_callback1(void ( * incr)(void))
  *
  * Create a Fortran wrapper to call the bind(C) interface.
  */
+// ----------------------------------------
+// Function:  void callback1_wrap
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  void ( * incr)(void)
+// Statement: c_in_void
 void FUN_callback1_wrap(void ( * incr)(void))
 {
     // splicer begin function.callback1_wrap
@@ -45,6 +59,12 @@ void FUN_callback1_wrap(void ( * incr)(void))
  * \brief Declare callback as external
  *
  */
+// ----------------------------------------
+// Function:  void callback1_external
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  void ( * incr)(void) +external
+// Statement: c_in_void
 void FUN_callback1_external(void ( * incr)(void))
 {
     // splicer begin function.callback1_external
@@ -57,6 +77,12 @@ void FUN_callback1_external(void ( * incr)(void))
  *
  * The caller is responsible for using c_funloc to pass the function address.
  */
+// ----------------------------------------
+// Function:  void callback1_funptr
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  void ( * incr)(void) +funptr
+// Statement: c_in_void
 // start FUN_callback1_funptr
 void FUN_callback1_funptr(void ( * incr)(void))
 {
@@ -70,6 +96,18 @@ void FUN_callback1_funptr(void ( * incr)(void))
  * \brief Create abstract interface for function
  *
  */
+// ----------------------------------------
+// Function:  void callback2
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  const char * name
+// Statement: c_in_char*
+// ----------------------------------------
+// Argument:  int ival
+// Statement: c_in_native
+// ----------------------------------------
+// Argument:  incrtype incr
+// Statement: c_in_procedure
 void FUN_callback2(const char * name, int ival, FUN_incrtype incr)
 {
     // splicer begin function.callback2
@@ -81,6 +119,18 @@ void FUN_callback2(const char * name, int ival, FUN_incrtype incr)
  * \brief Declare callback as external
  *
  */
+// ----------------------------------------
+// Function:  void callback2_external
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  const char * name
+// Statement: c_in_char*
+// ----------------------------------------
+// Argument:  int ival
+// Statement: c_in_native
+// ----------------------------------------
+// Argument:  incrtype incr +external
+// Statement: c_in_procedure
 void FUN_callback2_external(const char * name, int ival,
     FUN_incrtype incr)
 {
@@ -95,6 +145,18 @@ void FUN_callback2_external(const char * name, int ival,
  * The caller is responsible for using c_funloc to pass the function address.
  * Allows any function to be passed as an argument.
  */
+// ----------------------------------------
+// Function:  void callback2_funptr
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  const char * name
+// Statement: c_in_char*
+// ----------------------------------------
+// Argument:  int ival
+// Statement: c_in_native
+// ----------------------------------------
+// Argument:  incrtype incr +funptr
+// Statement: c_in_procedure
 void FUN_callback2_funptr(const char * name, int ival,
     FUN_incrtype incr)
 {
@@ -107,6 +169,18 @@ void FUN_callback2_funptr(const char * name, int ival,
  * \brief Test function pointer with assumedtype
  *
  */
+// ----------------------------------------
+// Function:  void callback3
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  int type
+// Statement: c_in_native
+// ----------------------------------------
+// Argument:  void * in +assumedtype+intent(in)
+// Statement: c_in_void*
+// ----------------------------------------
+// Argument:  void ( * incr)(void) +funptr
+// Statement: c_in_void
 void FUN_callback3(int type, void * in, void ( * incr)(void))
 {
     // splicer begin function.callback3
@@ -118,6 +192,18 @@ void FUN_callback3(int type, void * in, void ( * incr)(void))
  * \brief Test attributes on callback arguments
  *
  */
+// ----------------------------------------
+// Function:  int callback4
+// Statement: c_function_native
+// ----------------------------------------
+// Argument:  int * ilow +intent(in)+rank(1)
+// Statement: c_in_native*
+// ----------------------------------------
+// Argument:  int nargs +implied(size(ilow))
+// Statement: c_in_native
+// ----------------------------------------
+// Argument:  int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))
+// Statement: c_in_native
 int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
     int nargs))
 {
@@ -133,6 +219,12 @@ int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
  * No other arguments to test that a function result
  * uses iso_c_binding C_PTR.
  */
+// ----------------------------------------
+// Function:  void callback_ptr
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  int * ( * get)(void)
+// Statement: c_in_native*
 void FUN_callback_ptr(int * ( * get)(void))
 {
     // splicer begin function.callback_ptr
@@ -144,6 +236,15 @@ void FUN_callback_ptr(int * ( * get)(void))
  * \brief abstract argument
  *
  */
+// ----------------------------------------
+// Function:  int abstract1
+// Statement: c_function_native
+// ----------------------------------------
+// Argument:  int input
+// Statement: c_in_native
+// ----------------------------------------
+// Argument:  int ( * get)(double, int)
+// Statement: c_in_native
 int FUN_abstract1(int input, int ( * get)(double, int))
 {
     // splicer begin function.abstract1

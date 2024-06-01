@@ -15,7 +15,9 @@
 #ifndef WRAPFUNPTR_H
 #define WRAPFUNPTR_H
 
+// typemap
 #include "wrapfunptr.h"
+// shroud
 #include "typesfunptr.h"
 
 // splicer begin CXX_declarations

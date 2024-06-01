@@ -13,6 +13,7 @@ library: funptr
 cxx_header: funptr.h
 
 options:
+  debug: True
   wrap_lua: False
   wrap_python: False
 
