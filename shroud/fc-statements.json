@@ -3932,7 +3932,10 @@
             "c_in_procedure"
         ],
         "f_arg_decl": [
-            "{f_type} :: {f_var}"
+            "procedure({f_kind}) :: {f_var}"
+        ],
+        "f_arg_name": [
+            "{f_var}"
         ]
     },
     {
@@ -3940,8 +3943,19 @@
             "f_in_procedure_funptr",
             "c_in_procedure_funptr"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_FUNPTR"
+            ]
+        },
         "f_arg_decl": [
-            "{f_type} :: {f_var}"
+            "type(C_FUNPTR) :: {f_var}"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
         ]
     },
     {
@@ -3949,8 +3963,19 @@
             "f_in_procedure_external",
             "c_in_procedure_external"
         ],
+        "notes": [
+            "EXTERNAL is not allowed in BIND(C), so force wrapper."
+        ],
         "f_arg_decl": [
-            "{f_type} :: {f_var}"
-        ]
+            "external :: {f_var}"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
+        "f_need_wrapper": true
+
     }
 ]

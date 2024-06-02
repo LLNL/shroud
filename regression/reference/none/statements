@@ -1707,6 +1707,8 @@ c_in_procedure:
 c_in_procedure_external:
   intent: in
   name: c_in_procedure_external
+  notes:
+  - EXTERNAL is not allowed in BIND(C), so force wrapper.
   owner: library
 c_in_procedure_funptr:
   intent: in
@@ -8467,19 +8469,35 @@ f_in_native*_cfi:
   owner: library
 f_in_procedure:
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - 'procedure({f_kind}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   intent: in
   name: f_in_procedure
   owner: library
 f_in_procedure_external:
+  f_arg_call:
+  - '{f_var}'
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - 'external :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
+  f_need_wrapper: true
   intent: in
   name: f_in_procedure_external
+  notes:
+  - EXTERNAL is not allowed in BIND(C), so force wrapper.
   owner: library
 f_in_procedure_funptr:
+  f_arg_call:
+  - '{f_var}'
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - 'type(C_FUNPTR) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
+  f_module:
+    iso_c_binding:
+    - C_FUNPTR
   intent: in
   name: f_in_procedure_funptr
   owner: library

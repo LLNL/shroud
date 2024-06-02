@@ -744,7 +744,7 @@ rv = .false.
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
         """Add declarations from fc_statements.
 
-        Return True if arg_decl found.
+        Return True if f_arg_decl found.
         """
         found = False
         if stmts.f_arg_decl:
