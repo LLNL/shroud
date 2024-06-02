@@ -619,10 +619,13 @@ class Parser(ExprParser):
 
         # SSS Share fields between Declaration and Declarator for now
         for d2 in node.declarators:
-            d2.typemap = node.typemap
             if d2.func:
                 d2.func.typemap = node.typemap
-        
+                d2.typemap = add_funptr_typemap(self.symtab, node, d2)
+                d2.typemap = node.typemap  # work in progress
+            else:
+                d2.typemap = node.typemap
+                
         if "typedef" in node.storage:
             self.symtab.create_typedef(node)
         self.exit("declaration", str(node))
@@ -2192,3 +2195,20 @@ def find_rank_of_dimension(dim):
         return None
     dim_ast = ExprParser(dim).dimension_shape()
     return len(dim_ast)
+
+def add_funptr_typemap(symtab, declaration, declarator):
+    """Create a typemap for a function pointer.
+    """
+    type_name = str(declaration) + str(declarator)
+    ntypemap = symtab.lookup_typemap(type_name)
+    if not ntypemap:
+        ntypemap = typemap.Typemap(
+            type_name,
+            base="procedure",
+            sgroup="procedure",
+
+            f_type="f-function-pointer",
+            #                ast=ast,  # XXX - maybe needed later
+        )
+        symtab.register_typemap(ntypemap.name, ntypemap)
+    return ntypemap

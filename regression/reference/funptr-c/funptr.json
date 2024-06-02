@@ -3518,6 +3518,46 @@
             "wrap_header": [
                 "wrapfunptr.h"
             ]
+        },
+        "int(*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in))": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "int(*get)(double, int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "int*(*get)(void)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "typedef int(*get)(double, int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "typedef void(*incrtype)(int i, TypeID j)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "void(*incr)(void)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "void(*incr)(void) +external": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "void(*incr)(void) +funptr": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
         }
     }
 }

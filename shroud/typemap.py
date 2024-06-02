@@ -1477,7 +1477,8 @@ def return_user_types(typemaps):  # typemaps -> dict
     for key, ntypemap in typemaps.items():
         if ntypemap.name == "--template-parameter--":
             continue
-        elif ntypemap.sgroup in ["shadow", "struct", "template", "enum"]:
+        elif ntypemap.sgroup in [
+                "shadow", "struct", "template", "enum", "procedure"]:
             dct[key] = ntypemap
         elif ntypemap.is_enum:
             dct[key] = ntypemap

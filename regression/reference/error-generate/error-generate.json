@@ -3533,6 +3533,11 @@
             },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
+        },
+        "void(*alloc)(int tc +intent(none))": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
         }
     }
 }
