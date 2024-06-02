@@ -6,7 +6,6 @@
 
 """
 Check attributes in delcaration.
-Set meta attributes.
 Generate additional functions required to create wrappers.
 """
 from __future__ import print_function

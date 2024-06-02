@@ -500,6 +500,8 @@ scalar
 .. With the `decl` field, deref only applies to the Fortran wrapper.
    Must be added to a `bind.X.decl` to apply to other languages.
 
+.. function pointers meta[deref] for both the +external and +funptr.
+
 dimension
 ^^^^^^^^^
 

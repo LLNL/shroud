@@ -383,7 +383,12 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
-        if ntypemap.name == "void":
+        if declarator.is_function_pointer():
+            if attrs.get("external"):
+                meta["deref"] = "external"
+            elif attrs.get("funptr"):
+                meta["deref"] = "funptr"
+        elif ntypemap.name == "void":
             # void cannot be dereferenced.
             pass
         elif intent not in ["out", "inout"]:

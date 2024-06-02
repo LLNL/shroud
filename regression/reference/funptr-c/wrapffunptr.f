@@ -113,7 +113,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void) +external
-        ! Statement: f_in_procedure
+        ! Statement: f_in_procedure_external
         subroutine c_callback1_external(incr) &
                 bind(C, name="callback1_external")
             import :: callback1_external_incr
@@ -126,7 +126,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void) +funptr
-        ! Statement: f_in_procedure
+        ! Statement: f_in_procedure_funptr
         ! start callback1_funptr
         subroutine callback1_funptr(incr) &
                 bind(C, name="callback1_funptr")
@@ -212,7 +212,7 @@ module funptr_mod
         ! Statement: f_in_void*
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void) +funptr
-        ! Statement: f_in_procedure
+        ! Statement: f_in_procedure_funptr
         subroutine callback3(type, in, incr) &
                 bind(C, name="callback3")
             use iso_c_binding, only : C_FUNPTR, C_INT

@@ -679,6 +679,7 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "external",
                                 "fptr": {
                                     "<FUNCTION>": "incr  None ****************************************",
                                     "ast": {
@@ -720,7 +721,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_external"
                         }
                     },
                     "share": {
@@ -843,7 +844,7 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_external"
                         }
                     }
                 },
@@ -970,6 +971,7 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "funptr",
                                 "fptr": {
                                     "<FUNCTION>": "incr  None ****************************************",
                                     "ast": {
@@ -1011,7 +1013,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_funptr"
                         }
                     },
                     "share": {
@@ -1134,7 +1136,7 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_funptr"
                         }
                     }
                 },
@@ -2265,6 +2267,7 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "funptr",
                                 "fptr": {
                                     "<FUNCTION>": "incr  None ****************************************",
                                     "ast": {
@@ -2306,7 +2309,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_funptr"
                         },
                         "type": {
                             "meta": {
@@ -2493,7 +2496,7 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_funptr"
                         }
                     },
                     "type": {

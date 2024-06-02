@@ -3929,7 +3929,9 @@
     {
         "alias": [
             "f_in_procedure",
-            "c_in_procedure"
+            "c_in_procedure",
+            "f_in_procedure_external",
+            "f_in_procedure_funptr"
         ],
         "f_arg_decl": [
             "{f_type} :: {f_var}"
