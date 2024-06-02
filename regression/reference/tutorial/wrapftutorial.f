@@ -669,7 +669,7 @@ module tutorial_mod
     ! Statement: f_in_native
     ! ----------------------------------------
     ! Argument:  int ( * incr)(int)
-    ! Statement: f_in_native
+    ! Statement: f_in_procedure
     ! start callback1
     interface
         function callback1(in, incr) &

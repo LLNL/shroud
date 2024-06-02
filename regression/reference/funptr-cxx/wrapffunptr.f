@@ -87,7 +87,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void)
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         subroutine callback1(incr) &
                 bind(C, name="FUN_callback1")
             import :: callback1_incr
@@ -100,7 +100,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void)
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         subroutine c_callback1_wrap(incr) &
                 bind(C, name="FUN_callback1_wrap")
             import :: callback1_wrap_incr
@@ -113,7 +113,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void) +external
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         subroutine c_callback1_external(incr) &
                 bind(C, name="FUN_callback1_external")
             import :: callback1_external_incr
@@ -126,7 +126,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void) +funptr
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         ! start callback1_funptr
         subroutine callback1_funptr(incr) &
                 bind(C, name="FUN_callback1_funptr")
@@ -212,7 +212,7 @@ module funptr_mod
         ! Statement: f_in_void*
         ! ----------------------------------------
         ! Argument:  void ( * incr)(void) +funptr
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         subroutine callback3(type, in, incr) &
                 bind(C, name="FUN_callback3")
             use iso_c_binding, only : C_FUNPTR, C_INT
@@ -233,7 +233,7 @@ module funptr_mod
         ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))
-        ! Statement: f_in_native
+        ! Statement: f_in_procedure
         function c_callback4(ilow, nargs, actor) &
                 result(SHT_rv) &
                 bind(C, name="FUN_callback4")
@@ -251,7 +251,7 @@ module funptr_mod
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  int * ( * get)(void)
-        ! Statement: f_in_native*
+        ! Statement: f_in_procedure
         subroutine callback_ptr(get) &
                 bind(C, name="FUN_callback_ptr")
             import :: callback_ptr_get
@@ -267,7 +267,7 @@ module funptr_mod
         ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  int ( * get)(double, int)
-        ! Statement: f_in_native
+        ! Statement: f_in_procedure
         function c_abstract1(input, get) &
                 result(SHT_rv) &
                 bind(C, name="FUN_abstract1")

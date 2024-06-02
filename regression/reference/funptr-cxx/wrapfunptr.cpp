@@ -29,7 +29,7 @@ extern "C" {
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * incr)(void)
-// Statement: c_in_void
+// Statement: c_in_procedure
 void FUN_callback1(void ( * incr)(void))
 {
     // splicer begin function.callback1
@@ -47,7 +47,7 @@ void FUN_callback1(void ( * incr)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * incr)(void)
-// Statement: c_in_void
+// Statement: c_in_procedure
 void FUN_callback1_wrap(void ( * incr)(void))
 {
     // splicer begin function.callback1_wrap
@@ -64,7 +64,7 @@ void FUN_callback1_wrap(void ( * incr)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external
-// Statement: c_in_void
+// Statement: c_in_procedure
 void FUN_callback1_external(void ( * incr)(void))
 {
     // splicer begin function.callback1_external
@@ -82,7 +82,7 @@ void FUN_callback1_external(void ( * incr)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +funptr
-// Statement: c_in_void
+// Statement: c_in_procedure
 // start FUN_callback1_funptr
 void FUN_callback1_funptr(void ( * incr)(void))
 {
@@ -180,7 +180,7 @@ void FUN_callback2_funptr(const char * name, int ival,
 // Statement: c_in_void*
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +funptr
-// Statement: c_in_void
+// Statement: c_in_procedure
 void FUN_callback3(int type, void * in, void ( * incr)(void))
 {
     // splicer begin function.callback3
@@ -203,7 +203,7 @@ void FUN_callback3(int type, void * in, void ( * incr)(void))
 // Statement: c_in_native
 // ----------------------------------------
 // Argument:  int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))
-// Statement: c_in_native
+// Statement: c_in_procedure
 int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
     int nargs))
 {
@@ -224,7 +224,7 @@ int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  int * ( * get)(void)
-// Statement: c_in_native*
+// Statement: c_in_procedure
 void FUN_callback_ptr(int * ( * get)(void))
 {
     // splicer begin function.callback_ptr
@@ -244,7 +244,7 @@ void FUN_callback_ptr(int * ( * get)(void))
 // Statement: c_in_native
 // ----------------------------------------
 // Argument:  int ( * get)(double, int)
-// Statement: c_in_native
+// Statement: c_in_procedure
 int FUN_abstract1(int input, int ( * get)(double, int))
 {
     // splicer begin function.abstract1

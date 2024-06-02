@@ -9757,7 +9757,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "c_in_void"
+                                            "stmt": "c_in_procedure"
                                         }
                                     },
                                     "f": {
@@ -9809,7 +9809,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "f_in_void"
+                                            "stmt": "f_in_procedure"
                                         }
                                     },
                                     "lua": {
@@ -10010,7 +10010,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "stmt_name": "c_in_void"
+                                            "stmt_name": "c_in_procedure"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -10034,7 +10034,7 @@
                                             "i_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "stmt_name": "f_in_void"
+                                            "stmt_name": "f_in_procedure"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -10047,7 +10047,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "POP",
-                                            "stmt": "lua_in_void"
+                                            "stmt": "lua_mixin_unknown"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -10187,7 +10187,7 @@
                                                 },
                                                 "intent": "in"
                                             },
-                                            "stmt": "c_in_native*"
+                                            "stmt": "c_in_procedure"
                                         }
                                     },
                                     "f": {
@@ -10243,7 +10243,7 @@
                                                 },
                                                 "intent": "in"
                                             },
-                                            "stmt": "f_in_native*"
+                                            "stmt": "f_in_procedure"
                                         }
                                     },
                                     "lua": {
@@ -10456,7 +10456,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "c_in_native*"
+                                            "stmt_name": "c_in_procedure"
                                         },
                                         "fmtf": {
                                             "c_addr": "",
@@ -10481,7 +10481,7 @@
                                             "i_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "f_in_native*"
+                                            "stmt_name": "f_in_procedure"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -10494,7 +10494,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "lua_tonumber(L, 1)",
-                                            "stmt": "lua_in_native*"
+                                            "stmt": "lua_mixin_unknown"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -10694,7 +10694,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "c_in_native"
+                                            "stmt": "c_in_procedure"
                                         }
                                     },
                                     "f": {
@@ -10792,7 +10792,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "f_in_native"
+                                            "stmt": "f_in_procedure"
                                         }
                                     },
                                     "lua": {
@@ -11131,7 +11131,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "c_in_native"
+                                            "stmt_name": "c_in_procedure"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -11156,7 +11156,7 @@
                                             "i_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "f_in_native"
+                                            "stmt_name": "f_in_procedure"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -11169,7 +11169,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "lua_tonumber(L, 1)",
-                                            "stmt": "lua_in_native"
+                                            "stmt": "lua_mixin_unknown"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -11366,7 +11366,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "c_in_native"
+                                            "stmt": "c_in_procedure"
                                         }
                                     },
                                     "f": {
@@ -11461,7 +11461,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "f_in_native"
+                                            "stmt": "f_in_procedure"
                                         }
                                     },
                                     "share": {
@@ -11602,7 +11602,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "c_in_native"
+                                            "stmt_name": "c_in_procedure"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -11627,7 +11627,7 @@
                                             "i_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "f_in_native"
+                                            "stmt_name": "f_in_procedure"
                                         }
                                     }
                                 },
@@ -12042,7 +12042,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "c_in_void"
+                                            "stmt": "c_in_procedure"
                                         }
                                     },
                                     "f": {
@@ -12301,7 +12301,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "f_in_void"
+                                            "stmt": "f_in_procedure"
                                         }
                                     },
                                     "lua": {
@@ -13123,7 +13123,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "stmt_name": "c_in_void"
+                                            "stmt_name": "c_in_procedure"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -13147,7 +13147,7 @@
                                             "i_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "stmt_name": "f_in_void"
+                                            "stmt_name": "f_in_procedure"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -13160,7 +13160,7 @@
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "POP",
-                                            "stmt": "lua_in_void"
+                                            "stmt": "lua_mixin_unknown"
                                         },
                                         "fmtpy": {
                                             "c_const": "",

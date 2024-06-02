@@ -4956,7 +4956,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure"
                         },
                         "arr": {
                             "meta": {
@@ -5132,7 +5132,7 @@
                             "i_var": "alloc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure"
                         }
                     },
                     "arr": {

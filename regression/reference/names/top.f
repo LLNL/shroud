@@ -359,13 +359,13 @@ module top_module
         ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         ! ----------------------------------------
         ! Argument:  void ( * afree)(double * arr +intent(inout))
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         ! ----------------------------------------
         ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
-        ! Statement: f_in_void
+        ! Statement: f_in_procedure
         subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
                 assoc) &
                 bind(C, name="TES_external_funcs")

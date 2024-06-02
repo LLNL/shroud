@@ -845,7 +845,7 @@ static int l_example_nested_testmpi(lua_State *L)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(void)
-// Statement: lua_in_void
+// Statement: lua_mixin_unknown
 /**
  * \brief subroutine
  *
@@ -864,7 +864,7 @@ static int l_example_nested_FuncPtr1(lua_State *)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
-// Statement: lua_in_native*
+// Statement: lua_mixin_unknown
 /**
  * \brief return a pointer
  *
@@ -883,15 +883,14 @@ static int l_example_nested_FuncPtr2(lua_State *)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(int i, int)
-// Statement: lua_in_native
+// Statement: lua_mixin_unknown
 /**
  * \brief abstract argument
  *
  */
-static int l_example_nested_FuncPtr3(lua_State *L)
+static int l_example_nested_FuncPtr3(lua_State *)
 {
     // splicer begin function.FuncPtr3
-    double get = lua_tonumber(L, 1);
     example::nested::FuncPtr3(get);
     return 0;
     // splicer end function.FuncPtr3
@@ -903,7 +902,7 @@ static int l_example_nested_FuncPtr3(lua_State *L)
 // Statement: lua_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
-// Statement: lua_in_void
+// Statement: lua_mixin_unknown
 static int l_example_nested_FuncPtr5(lua_State *)
 {
     // splicer begin function.FuncPtr5

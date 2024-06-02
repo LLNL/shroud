@@ -7801,7 +7801,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_native"
+                            "stmt": "c_in_procedure"
                         }
                     },
                     "f": {
@@ -7884,7 +7884,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native"
+                            "stmt": "f_in_procedure"
                         }
                     },
                     "share": {
@@ -8092,7 +8092,7 @@
                             "cxx_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_procedure"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -8117,7 +8117,7 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_procedure"
                         }
                     }
                 },

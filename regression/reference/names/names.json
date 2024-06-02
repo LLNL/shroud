@@ -3551,7 +3551,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_void"
+                            "stmt": "c_in_procedure"
                         },
                         "alloc": {
                             "meta": {
@@ -3656,7 +3656,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_void"
+                            "stmt": "c_in_procedure"
                         },
                         "assoc": {
                             "meta": {
@@ -3761,7 +3761,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "c_in_void"
+                            "stmt": "c_in_procedure"
                         },
                         "name": {
                             "meta": {
@@ -3864,7 +3864,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure"
                         },
                         "alloc": {
                             "meta": {
@@ -3969,7 +3969,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure"
                         },
                         "assoc": {
                             "meta": {
@@ -4074,7 +4074,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure"
                         },
                         "name": {
                             "meta": {
@@ -4449,7 +4449,7 @@
                             "cxx_var": "afree",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void"
+                            "stmt_name": "c_in_procedure"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4473,7 +4473,7 @@
                             "i_var": "afree",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure"
                         }
                     },
                     "alloc": {
@@ -4493,7 +4493,7 @@
                             "cxx_var": "alloc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void"
+                            "stmt_name": "c_in_procedure"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4517,7 +4517,7 @@
                             "i_var": "alloc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure"
                         }
                     },
                     "assoc": {
@@ -4537,7 +4537,7 @@
                             "cxx_var": "assoc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_in_void"
+                            "stmt_name": "c_in_procedure"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -4561,7 +4561,7 @@
                             "i_var": "assoc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure"
                         }
                     },
                     "name": {

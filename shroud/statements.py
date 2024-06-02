@@ -142,10 +142,22 @@ def find_abstract_declarator(arg):
     If the argument type is a template, look for
     template specialization.
 
+    All function pointers are mapped to "procedure" without
+    any reference to the return type.
+       - decl: void callback_ptr(int *(*get)(void));
+       - decl: void callback_ptr(int  (*get)(void));
+    Are the same.
+    Funtion pointers from a typedef already have the correct typemap.
+
     Args:
         arg -
     """
-    decl = [arg.typemap.sgroup]
+    if arg.declarator.is_function_pointer():
+        decl = ["procedure"]
+        abstract = ""
+    else:
+        decl = [arg.typemap.sgroup]
+        abstract = arg.declarator.get_abstract_declarator()
     if arg.template_arguments:
         decl.append("<")
         for targ in arg.template_arguments:
@@ -153,7 +165,7 @@ def find_abstract_declarator(arg):
             decl.append(targ.declarator.get_abstract_declarator())
             decl.append(",")
         decl[-1] = ">"
-    decl.append(arg.declarator.get_abstract_declarator())
+    decl.append(abstract)
     return "".join(decl)
 
 def lookup_fc_stmts(path):
