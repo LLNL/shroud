@@ -71,6 +71,8 @@ root
         cdesc -- c_in_native*_cdesc
       native** -- c_in_native**
       procedure -- c_in_procedure
+        external -- c_in_procedure_external
+        funptr -- c_in_procedure_funptr
       shadow -- c_in_shadow
       shadow& -- c_in_shadow&
       shadow* -- c_in_shadow*
@@ -1701,6 +1703,14 @@ c_in_native*_cdesc:
 c_in_procedure:
   intent: in
   name: c_in_procedure
+  owner: library
+c_in_procedure_external:
+  intent: in
+  name: c_in_procedure_external
+  owner: library
+c_in_procedure_funptr:
+  intent: in
+  name: c_in_procedure_funptr
   owner: library
 c_in_shadow:
   c_arg_decl:

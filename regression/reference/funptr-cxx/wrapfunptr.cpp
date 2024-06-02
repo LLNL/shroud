@@ -64,7 +64,7 @@ void FUN_callback1_wrap(void ( * incr)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +external
-// Statement: c_in_procedure
+// Statement: c_in_procedure_external
 void FUN_callback1_external(void ( * incr)(void))
 {
     // splicer begin function.callback1_external
@@ -82,7 +82,7 @@ void FUN_callback1_external(void ( * incr)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +funptr
-// Statement: c_in_procedure
+// Statement: c_in_procedure_funptr
 // start FUN_callback1_funptr
 void FUN_callback1_funptr(void ( * incr)(void))
 {
@@ -180,7 +180,7 @@ void FUN_callback2_funptr(const char * name, int ival,
 // Statement: c_in_void*
 // ----------------------------------------
 // Argument:  void ( * incr)(void) +funptr
-// Statement: c_in_procedure
+// Statement: c_in_procedure_funptr
 void FUN_callback3(int type, void * in, void ( * incr)(void))
 {
     // splicer begin function.callback3
