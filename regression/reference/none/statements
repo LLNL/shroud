@@ -544,6 +544,7 @@ root
           allocate -- f_mixin_native_cdesc_allocate
           pointer -- f_mixin_native_cdesc_pointer
           raw -- f_mixin_native_cdesc_raw
+        default -- f_mixin_native_default
       out
         array
           cdesc
@@ -1737,6 +1738,8 @@ c_in_shadow&:
   - '{c_type} * {c_var}'
   c_pre_call:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  comments:
+  - Pass a shadow type to C wrapper.
   cxx_local_var: pointer
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
@@ -8185,6 +8188,8 @@ f_in_char:
   - char {c_var}
   f_arg_decl:
   - 'character, value, intent(IN) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   i_arg_decl:
   - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
   i_arg_names:
@@ -8238,6 +8243,8 @@ f_in_char**_buf:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -8282,6 +8289,8 @@ f_in_char**_cfi:
   cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   i_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {i_var}(:)'
   i_arg_names:
@@ -8418,6 +8427,8 @@ f_in_native*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -8513,6 +8524,8 @@ f_in_shadow:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_need_wrapper: true
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}), value :: {i_var}'
@@ -8529,11 +8542,15 @@ f_in_shadow&:
   - '{c_type} * {c_var}'
   c_pre_call:
   - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  comments:
+  - Pass a shadow type to C wrapper.
   cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_need_wrapper: true
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
@@ -8557,6 +8574,8 @@ f_in_shadow*:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_need_wrapper: true
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
@@ -8758,6 +8777,8 @@ f_in_string_buf:
   - '{f_var_len}'
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_module:
@@ -8859,6 +8880,8 @@ f_in_vector<native*>&_buf:
   - size({f_var}, 2, kind=C_SIZE_T)
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -8897,6 +8920,8 @@ f_in_vector<native>&_buf:
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -8931,6 +8956,8 @@ f_in_vector<native>*_buf:
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -8965,6 +8992,8 @@ f_in_vector<native>_buf:
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -9019,6 +9048,8 @@ f_in_vector<string>&_buf:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -9076,6 +9107,8 @@ f_in_vector<string>*_buf:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -9133,6 +9166,8 @@ f_in_vector<string>_buf:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -9165,6 +9200,8 @@ f_in_void:
 f_in_void*:
   f_arg_decl:
   - 'type(C_PTR), intent(IN) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -9176,6 +9213,8 @@ f_in_void**:
   - void **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -9196,6 +9235,8 @@ f_in_void**_cfi:
   - void **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -9226,6 +9267,8 @@ f_in_void*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -9396,6 +9439,8 @@ f_inout_native*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -9467,6 +9512,8 @@ f_inout_shadow&:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_need_wrapper: true
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
@@ -9490,6 +9537,8 @@ f_inout_shadow*:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_need_wrapper: true
   i_arg_decl:
   - 'type({f_capsule_data_type}), intent({f_intent}) :: {i_var}'
@@ -9765,6 +9814,8 @@ f_inout_vector<native>&_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -9836,6 +9887,8 @@ f_inout_vector<native>&_cdesc_allocatable:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -9918,6 +9971,8 @@ f_inout_vector_buf_targ_string_scalar:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -9944,6 +9999,8 @@ f_inout_void**:
   - void **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -9974,6 +10031,8 @@ f_inout_void*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -10266,6 +10325,8 @@ f_mixin_in_2d_vector_buf:
   - size({f_var}, 2, kind=C_SIZE_T)
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}) :: {f_var}(:,:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -10323,6 +10384,8 @@ f_mixin_in_string_array_buf:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -10357,6 +10420,8 @@ f_mixin_in_vector_buf:
   - size({f_var}, kind=C_SIZE_T)
   f_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - '{targs[0].f_kind}'
@@ -10469,11 +10534,25 @@ f_mixin_native_cdesc_raw:
   intent: mixin
   name: f_mixin_native_cdesc_raw
   owner: library
+f_mixin_native_default:
+  f_arg_call:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
+  intent: mixin
+  name: f_mixin_native_default
+  notes:
+  - Accept an argument of native type.
+  owner: library
 f_mixin_out_array_cdesc_allocatable:
   comments:
   - Allocate Fortran array from cdesc.
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_LOC
@@ -10491,6 +10570,8 @@ f_mixin_out_native_cdesc_allocate:
   - then fill from cdesc using helper copy_array.
   f_arg_decl:
   - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_helper:
   - copy_array
   f_module:
@@ -10508,6 +10589,8 @@ f_mixin_out_native_cdesc_pointer:
   - Set Fortran pointer to native array.
   f_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -10613,6 +10696,8 @@ f_mixin_shadow-arg:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_need_wrapper: true
   intent: mixin
   name: f_mixin_shadow-arg
@@ -10622,6 +10707,8 @@ f_mixin_str_array:
   - Collect information about a string argument.
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_helper:
   - type_defines
   - array_context
@@ -10793,6 +10880,8 @@ f_out_native&_hidden:
 f_out_native*:
   f_arg_decl:
   - '{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   intent: out
   name: f_out_native*
   owner: library
@@ -10821,6 +10910,8 @@ f_out_native*&_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -10867,6 +10958,8 @@ f_out_native*&_cdesc_pointer:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -10927,6 +11020,8 @@ f_out_native**_cdesc_allocatable:
   - '{f_var_capsule}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -10988,6 +11083,8 @@ f_out_native**_cdesc_pointer:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11092,6 +11189,8 @@ f_out_native**_cfi_pointer:
 f_out_native**_raw:
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -11115,6 +11214,8 @@ f_out_native*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11288,6 +11389,8 @@ f_out_string**_cdesc_allocatable:
   - '{f_var_capsule}'
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -11344,6 +11447,8 @@ f_out_string**_cdesc_copy:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11546,6 +11651,8 @@ f_out_vector<native>&_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11600,6 +11707,8 @@ f_out_vector<native>&_cdesc_allocatable:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11654,6 +11763,8 @@ f_out_vector<native>*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11708,6 +11819,8 @@ f_out_vector<native>*_cdesc_allocatable:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11754,6 +11867,8 @@ f_out_vector<string>&_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -11821,6 +11936,8 @@ f_out_vector<string>&_cdesc_allocatable:
   - '{f_var_capsule}'
   f_arg_decl:
   - 'character({f_char_len}), intent(OUT), allocatable, target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -11891,6 +12008,8 @@ f_out_vector_buf_targ_string_scalar:
   - len({f_var}, kind=C_INT)
   f_arg_decl:
   - 'character(len=*), intent(IN) :: {f_var}(:)'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_SIZE_T
@@ -11921,6 +12040,8 @@ f_out_void**:
   - void **{c_var}
   f_arg_decl:
   - 'type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
@@ -11951,6 +12072,8 @@ f_out_void*_cdesc:
   - '{f_var_cdesc}'
   f_arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   f_helper:
@@ -12006,6 +12129,8 @@ f_setter_native:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
   - '{fc_var}'
+  f_arg_name:
+  - '{f_var}'
   intent: setter
   name: f_setter_native
   owner: library
@@ -12014,6 +12139,8 @@ f_setter_native*:
   - '{CXX_this}->{field_name} = val;'
   f_arg_call:
   - '{fc_var}'
+  f_arg_name:
+  - '{f_var}'
   intent: setter
   name: f_setter_native*
   owner: library
@@ -12033,6 +12160,8 @@ f_setter_string_buf:
   - '{f_var_len}'
   f_arg_decl:
   - 'character(len=*), intent({f_intent}) :: {f_var}'
+  f_arg_name:
+  - '{f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_module:

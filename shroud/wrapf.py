@@ -1673,8 +1673,6 @@ rv = .false.
                 # Explicit declarations from fc_statements.
                 self.add_stmt_declaration(
                     arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
-                if not result_stmt.f_arg_name:
-                    arg_f_names.append(fmt_arg.f_var)
                 self.add_f_module_from_stmts(result_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
