@@ -4007,7 +4007,8 @@
             "c_in_procedure"
         ],
         "f_arg_decl": [
-            "procedure({f_kind}) :: {f_var}"
+            "procedure({f_kind}) :: {f_var}",
+            "procedure({arg.procedure}) :: {f_var}"
         ],
         "f_arg_name": [
             "{f_var}"

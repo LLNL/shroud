@@ -291,6 +291,7 @@ class FillFormat(object):
         fmt_arg.f_var = arg_name
         fmt_arg.fc_var = arg_name
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
+        fmt_arg.arg = FortranArgFormat(f_arg)
         arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind, fmt_arg)
         self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg, bind)
         self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
@@ -829,3 +830,40 @@ def find_result_converter(wlang, language, ntypemap):
         converter = ntypemap.cxx_to_c
         lang = "c_type"
     return (converter, lang)
+
+######################################################################
+
+class FortranArgWorker(object):
+    def __init__(self, arg):
+        self.arg = arg
+
+    def procedure(self):
+        return "default-procedure"
+        if name is None:
+            name = wformat(
+                node.options.F_abstract_interface_subprogram_template, fmt
+            )
+
+
+class FortranArgFormat(object):
+    """
+    An instance is added to the format dictionary for every Fortran
+    argument. It is used to look up fields while processing
+    statements to add values.
+
+    The value is only looked up once then cached.
+    """
+
+    def __init__(self, arg):
+        self.worker = FortranArgWorker(arg)
+        self._cache = {}
+
+    def __getattr__(self, name):
+        if name in self._cache:
+            return self._cache[name]
+        try:
+            value = getattr(self.worker, name)()
+            self._cache[name] = value
+        except:
+            raise
+        return value
