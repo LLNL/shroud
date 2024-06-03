@@ -3534,16 +3534,6 @@
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "typedef int(*)(double,int)": {
-            "base": "procedure",
-            "f_type": "f-function-pointer",
-            "sgroup": "procedure"
-        },
-        "typedef void(*)(int,TypeID)": {
-            "base": "procedure",
-            "f_type": "f-function-pointer",
-            "sgroup": "procedure"
-        },
         "void(*)(void)": {
             "base": "procedure",
             "f_type": "f-function-pointer",

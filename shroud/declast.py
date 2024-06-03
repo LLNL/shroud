@@ -621,8 +621,11 @@ class Parser(ExprParser):
         for d2 in node.declarators:
             if d2.func:
                 d2.func.typemap = node.typemap
-                d2.typemap = add_funptr_typemap(self.symtab, node, d2)
-                d2.typemap = node.typemap  # work in progress
+                if "typedef" in node.storage:
+                    d2.typemap = node.typemap
+                else:
+                    d2.typemap = add_funptr_typemap(self.symtab, node, d2)
+                    d2.typemap = node.typemap  # work in progress
             else:
                 d2.typemap = node.typemap
                 
