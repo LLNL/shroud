@@ -8520,7 +8520,7 @@
         }
     },
     "types": {
-        "int(*incr)(int)": {
+        "int(*)(int)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"

@@ -7070,17 +7070,12 @@
                 "typestestnames.hh"
             ]
         },
-        "void(*afree)(double *arr +intent(inout))": {
+        "void(*)(double*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "void(*alloc)(double *arr +intent(inout), int *err +intent(out))": {
-            "base": "procedure",
-            "f_type": "f-function-pointer",
-            "sgroup": "procedure"
-        },
-        "void(*assoc)(double *arr +intent(in), int *err +intent(out))": {
+        "void(*)(double*,int*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"

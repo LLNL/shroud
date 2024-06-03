@@ -16709,17 +16709,17 @@
                 "wrapUserLibrary.h"
             ]
         },
-        "double(*get)(double, int)": {
+        "double(*)(double,int)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "double(*get)(int i, int)": {
+        "double(*)(int,int)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "double*(*get)(void)": {
+        "double*(*)(void)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
@@ -16839,12 +16839,12 @@
                 "typesUserLibrary.h"
             ]
         },
-        "void(*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)": {
+        "void(*)(int,int,int,int,int,int,int,int,int,int)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "void(*get)(void)": {
+        "void(*)(void)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"

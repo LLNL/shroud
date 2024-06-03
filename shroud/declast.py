@@ -1437,13 +1437,15 @@ class Declarator(Node):
                 parts.append("{}({})".format(attr, value))
             space = ""
 
-    def __str__(self):
+    def to_string(self, abstract=False):
         out = []
         for ptr in self.pointer:
             out.append(str(ptr))
 
         if self.func:
-            out.append("(" + str(self.func) + ")")
+            out.append("(" + self.func.to_string(abstract) + ")")
+        elif abstract:
+            pass
         elif self.name:
             out.append(self.name)
 
@@ -1454,11 +1456,16 @@ class Declarator(Node):
                 for param in self.params:
                     out.append(comma)
                     out.append(str(param))
-                    s = str(param.declarator)
-                    if s:
-                        out.append(" ")
-                        out.append(s)
-                    comma = ", "
+                    s = param.declarator.to_string(abstract)
+                    if abstract:
+                        if s:
+                            out.append(s)
+                        comma = ","
+                    else:
+                        if s:
+                            out.append(" ")
+                            out.append(s)
+                        comma = ", "
             else:
                 out.append("void")
             out.append(")")
@@ -1472,9 +1479,16 @@ class Declarator(Node):
         if self.init is not None:
             out.append("=")
             out.append(str(self.init))
-        self.gen_attrs(self.attrs, out)
+        if not abstract:
+            self.gen_attrs(self.attrs, out)
 
         return "".join(out)
+
+    def abstract(self):
+        return self.to_string(abstract=True)
+
+    def __str__(self):
+        return self.to_string()
 
 
 class Declaration(Node):
@@ -2199,7 +2213,7 @@ def find_rank_of_dimension(dim):
 def add_funptr_typemap(symtab, declaration, declarator):
     """Create a typemap for a function pointer.
     """
-    type_name = str(declaration) + str(declarator)
+    type_name = str(declaration) + declarator.abstract()
     ntypemap = symtab.lookup_typemap(type_name)
     if not ntypemap:
         ntypemap = typemap.Typemap(

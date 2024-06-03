@@ -5409,7 +5409,7 @@
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
         },
-        "void(*alloc)(int tc +intent(in), array_info *arr +intent(inout))": {
+        "void(*)(int,array_info*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
