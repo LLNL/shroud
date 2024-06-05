@@ -3528,6 +3528,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3535,6 +3536,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3623,6 +3625,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3635,6 +3638,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3728,6 +3732,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -3740,6 +3745,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -3841,6 +3847,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3848,6 +3855,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3936,6 +3944,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3948,6 +3957,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4041,6 +4051,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -4053,6 +4064,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -4156,6 +4168,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4163,6 +4176,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4250,6 +4264,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4262,6 +4277,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4354,6 +4370,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -4366,6 +4383,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"

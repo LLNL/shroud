@@ -654,6 +654,7 @@ class FillMetaShare(FillMeta):
         if arg.declarator.is_function_pointer():
             fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
             r_bind.meta["fptr"] = fptr
+            statements.fetch_func_bind(fptr, wlang)
             self.meta_function_params(fptr, is_fptr=True)
 
     def meta_variable(self, cls, node):
@@ -695,6 +696,7 @@ class FillMetaShare(FillMeta):
             if arg.declarator.is_function_pointer():
                 fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
                 meta["fptr"] = fptr
+                statements.fetch_func_bind(fptr, wlang)
                 self.meta_function_params(fptr, is_fptr=True)
         # --- End loop over function parameters
         func_cursor.arg = None
@@ -962,7 +964,9 @@ class FillMetaFortran(FillMeta):
 
         arg = node.ast
         if arg.declarator.is_function_pointer():
-            self.meta_function_params(meta["fptr"])
+            fptr = meta["fptr"]
+            statements.fetch_func_bind(fptr, wlang)
+            self.meta_function_params(fptr)
 
     def meta_variable(self, cls, node):
         wlang = self.wlang
@@ -1014,7 +1018,9 @@ class FillMetaFortran(FillMeta):
             self.set_arg_hidden(arg, meta)
 
             if arg.declarator.is_function_pointer():
-                self.meta_function_params(meta["fptr"])
+                fptr = meta["fptr"]
+                statements.fetch_func_bind(fptr, wlang)
+                self.meta_function_params(fptr)
         func_cursor.arg = None
         
     def set_arg_fortran(self, node, arg, meta):

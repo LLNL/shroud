@@ -2454,6 +2454,7 @@
                                     },
                                     "zz_bind": {
                                         "share": {
+                                            "+result": {},
                                             "tc": {
                                                 "meta": {
                                                     "intent": "inout",

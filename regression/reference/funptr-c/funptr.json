@@ -95,6 +95,14 @@
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -142,6 +150,14 @@
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
@@ -294,6 +310,14 @@
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -341,6 +365,14 @@
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
@@ -497,6 +529,14 @@
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -547,6 +587,14 @@
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
@@ -706,6 +754,14 @@
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -756,6 +812,14 @@
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
@@ -1628,6 +1692,14 @@
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -1692,6 +1764,14 @@
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
@@ -2000,6 +2080,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
@@ -2014,6 +2095,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
@@ -2125,6 +2207,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
@@ -2139,6 +2222,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
@@ -2406,6 +2490,14 @@
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "get",
                                         "F_name_api": "get",
@@ -2457,6 +2549,14 @@
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {}
+                                        },
+                                        "share": {
+                                            "+result": {}
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "get",
@@ -2660,6 +2760,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -2672,6 +2773,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -2760,6 +2862,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -2772,6 +2875,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -3064,6 +3168,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "i": {
                                                 "meta": {
                                                     "value": true
@@ -3076,6 +3181,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "i": {
                                                 "meta": {
                                                     "value": true
@@ -3154,6 +3260,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "i": {
                                                 "meta": {
                                                     "value": true
@@ -3166,6 +3273,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "i": {
                                                 "meta": {
                                                     "value": true
@@ -3302,6 +3410,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -3314,6 +3423,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -3390,6 +3500,7 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
@@ -3402,6 +3513,7 @@
                                             }
                                         },
                                         "share": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true

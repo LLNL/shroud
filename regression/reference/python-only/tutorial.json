@@ -2625,6 +2625,7 @@
                                     "wrap": {},
                                     "zz_bind": {
                                         "share": {
+                                            "+result": {},
                                             "arg1": {
                                                 "meta": {
                                                     "value": true
