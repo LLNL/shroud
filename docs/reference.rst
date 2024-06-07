@@ -1483,6 +1483,21 @@ cxx_type
 cxx_var
     Name of the C++ variable.
 
+f_intent
+    The value of the intent metaattribute. Converted to uppercase.
+    Used with argument declarations:
+    ``{f_type}, intent({f_intent})``.
+    If the intent is *none*, the Fortran wrapper will not compile.
+    Instead use *f_intent_attr*.
+
+f_intent_attr
+    The value of the intent mataattribute.
+    Converted into a Fortran attribute.
+    ex ``, intent(IN)``.
+    Used with argument declarations:
+    ``{f_type}{f_intent_attr} ::``.
+    If the intent is *none*, the value will be blank.
+
 size_var
     Name of variable which holds the size of an array in the
     Python wrapper.

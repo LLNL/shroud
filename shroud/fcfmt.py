@@ -222,6 +222,7 @@ class FillFormat(object):
             fmt_result.i_var = fmt_result.F_result
             fmt_result.f_var = fmt_result.F_result
             fmt_result.f_intent = "OUT"
+            fmt_result.f_intent_attr = ", intent(OUT)"
             fmt_result.c_type = result_typemap.c_type  # c_return_type
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, bind, fmt_result,
@@ -445,10 +446,13 @@ class FillFormat(object):
         elif subprogram == "function":
             # XXX this also gets set for subroutines
             fmt.f_intent = "OUT"
+            fmt.f_intent_attr = ", intent(OUT)"
         else:
             fmt.f_intent = meta["intent"].upper()
             if fmt.f_intent == "SETTER":
                 fmt.f_intent = "IN"
+            if fmt.f_intent != "NONE":
+                fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
         
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type

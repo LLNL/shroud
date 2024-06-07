@@ -242,6 +242,7 @@
             "f_declare_shape_prefix": "SHAPE_",
             "f_get_shape_array": "",
             "f_intent": "",
+            "f_intent_attr": "",
             "f_kind": "",
             "f_shape_var": "",
             "f_type": "",

@@ -77,6 +77,7 @@
                                     "cxx_var": "SHC_rv",
                                     "f_c_suffix": "_bufferify",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
                                     "f_type_module": "iso_c_binding",

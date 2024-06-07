@@ -171,6 +171,7 @@
                             "cxx_var": "arg",
                             "f_derived_type": "twostruct",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "twostruct",
                             "f_type": "type(twostruct)",
                             "f_type_module": "sgroup_mod",

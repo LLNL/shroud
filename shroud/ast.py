@@ -756,6 +756,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_declare_shape_array="",
             f_get_shape_array="",
             f_intent="",
+            f_intent_attr="",
             f_kind="",
             f_shape_var="",
             f_type="",
