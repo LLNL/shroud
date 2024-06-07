@@ -28,17 +28,17 @@ module funptr_mod
 
     abstract interface
 
-        subroutine callback1_external_incr() bind(C)
+        subroutine callback1_external_incr1_external() bind(C)
             implicit none
-        end subroutine callback1_external_incr
+        end subroutine callback1_external_incr1_external
 
-        subroutine callback1_incr() bind(C)
+        subroutine callback1_incr1() bind(C)
             implicit none
-        end subroutine callback1_incr
+        end subroutine callback1_incr1
 
-        subroutine callback1_wrap_incr() bind(C)
+        subroutine callback1_wrap_incr1_wrap() bind(C)
             implicit none
-        end subroutine callback1_wrap_incr
+        end subroutine callback1_wrap_incr1_wrap
 
         function callback4_actor(ilow, nargs) bind(C)
             use iso_c_binding, only : C_INT
@@ -48,11 +48,11 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
-        function callback_ptr_get() bind(C)
+        function callback_ptr_get_ptr() bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) :: callback_ptr_get
-        end function callback_ptr_get
+            type(C_PTR) :: callback_ptr_get_ptr
+        end function callback_ptr_get_ptr
 
         function custom_funptr(XX0arg, XX1arg) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -62,13 +62,13 @@ module funptr_mod
             integer(C_INT) :: custom_funptr
         end function custom_funptr
 
-        function get(arg0, arg1) bind(C)
+        function get_int(arg0, arg1) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value :: arg0
             integer(C_INT), value :: arg1
-            integer(C_INT) :: get
-        end function get
+            integer(C_INT) :: get_int
+        end function get_int
 
         subroutine incrtype(i, j) bind(C)
             use iso_c_binding, only : C_INT
@@ -86,53 +86,53 @@ module funptr_mod
         ! Function:  void callback1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr)(void)
+        ! Argument:  void ( * incr1)(void)
         ! Statement: f_in_procedure
-        subroutine callback1(incr) &
+        subroutine callback1(incr1) &
                 bind(C, name="callback1")
-            import :: callback1_incr
+            import :: callback1_incr1
             implicit none
-            procedure(callback1_incr) :: incr
+            procedure(callback1_incr1) :: incr1
         end subroutine callback1
 
         ! ----------------------------------------
         ! Function:  void callback1_wrap
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr)(void)
+        ! Argument:  void ( * incr1_wrap)(void)
         ! Statement: f_in_procedure
-        subroutine c_callback1_wrap(incr) &
+        subroutine c_callback1_wrap(incr1_wrap) &
                 bind(C, name="callback1_wrap")
-            import :: callback1_wrap_incr
+            import :: callback1_wrap_incr1_wrap
             implicit none
-            procedure(callback1_wrap_incr) :: incr
+            procedure(callback1_wrap_incr1_wrap) :: incr1_wrap
         end subroutine c_callback1_wrap
 
         ! ----------------------------------------
         ! Function:  void callback1_external
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr)(void) +external
+        ! Argument:  void ( * incr1_external)(void) +external
         ! Statement: f_in_procedure_external
-        subroutine c_callback1_external(incr) &
+        subroutine c_callback1_external(incr1_external) &
                 bind(C, name="callback1_external")
-            import :: callback1_external_incr
+            import :: callback1_external_incr1_external
             implicit none
-            procedure(callback1_external_incr) :: incr
+            procedure(callback1_external_incr1_external) :: incr1_external
         end subroutine c_callback1_external
 
         ! ----------------------------------------
         ! Function:  void callback1_funptr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr)(void) +funptr
+        ! Argument:  void ( * incr1_funptr)(void) +funptr
         ! Statement: f_in_procedure_funptr
         ! start callback1_funptr
-        subroutine callback1_funptr(incr) &
+        subroutine callback1_funptr(incr1_funptr) &
                 bind(C, name="callback1_funptr")
             use iso_c_binding, only : C_FUNPTR
             implicit none
-            type(C_FUNPTR), value :: incr
+            type(C_FUNPTR), value :: incr1_funptr
         end subroutine callback1_funptr
         ! end callback1_funptr
 
@@ -211,15 +211,15 @@ module funptr_mod
         ! Argument:  void * in +assumedtype+intent(in)
         ! Statement: f_in_void*
         ! ----------------------------------------
-        ! Argument:  void ( * incr)(void) +funptr
+        ! Argument:  void ( * incr3)(void) +funptr
         ! Statement: f_in_procedure_funptr
-        subroutine callback3(type, in, incr) &
+        subroutine callback3(type, in, incr3) &
                 bind(C, name="callback3")
             use iso_c_binding, only : C_FUNPTR, C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: type
             type(*) :: in
-            type(C_FUNPTR), value :: incr
+            type(C_FUNPTR), value :: incr3
         end subroutine callback3
 
         ! ----------------------------------------
@@ -250,13 +250,13 @@ module funptr_mod
         ! Function:  void callback_ptr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int * ( * get)(void)
+        ! Argument:  int * ( * get_ptr)(void)
         ! Statement: f_in_procedure
-        subroutine callback_ptr(get) &
+        subroutine callback_ptr(get_ptr) &
                 bind(C, name="callback_ptr")
-            import :: callback_ptr_get
+            import :: callback_ptr_get_ptr
             implicit none
-            procedure(callback_ptr_get) :: get
+            procedure(callback_ptr_get_ptr) :: get_ptr
         end subroutine callback_ptr
 
         ! ----------------------------------------
@@ -266,16 +266,16 @@ module funptr_mod
         ! Argument:  int input
         ! Statement: f_in_native
         ! ----------------------------------------
-        ! Argument:  int ( * get)(double, int)
+        ! Argument:  int ( * get_abs)(double, int)
         ! Statement: f_in_procedure
-        function c_abstract1(input, get) &
+        function c_abstract1(input, get_abs) &
                 result(SHT_rv) &
                 bind(C, name="abstract1")
             use iso_c_binding, only : C_INT
             import :: custom_funptr
             implicit none
             integer(C_INT), value, intent(IN) :: input
-            procedure(custom_funptr) :: get
+            procedure(custom_funptr) :: get_abs
             integer(C_INT) :: SHT_rv
         end function c_abstract1
     end interface
@@ -294,10 +294,10 @@ contains
     !! \brief Create abstract interface for function
     !!
     !<
-    subroutine callback1(incr)
-        procedure(callback1_incr) :: incr
+    subroutine callback1(incr1)
+        procedure(callback1_incr1) :: incr1
         ! splicer begin function.callback1
-        call c_callback1(incr)
+        call c_callback1(incr1)
         ! splicer end function.callback1
     end subroutine callback1
 #endif
@@ -310,10 +310,10 @@ contains
     !!
     !! Create a Fortran wrapper to call the bind(C) interface.
     !<
-    subroutine callback1_wrap(incr)
-        procedure(callback1_wrap_incr) :: incr
+    subroutine callback1_wrap(incr1_wrap)
+        procedure(callback1_wrap_incr1_wrap) :: incr1_wrap
         ! splicer begin function.callback1_wrap
-        call c_callback1_wrap(incr)
+        call c_callback1_wrap(incr1_wrap)
         ! splicer end function.callback1_wrap
     end subroutine callback1_wrap
 
@@ -324,10 +324,10 @@ contains
     !! \brief Declare callback as external
     !!
     !<
-    subroutine callback1_external(incr)
-        external :: incr
+    subroutine callback1_external(incr1_external)
+        external :: incr1_external
         ! splicer begin function.callback1_external
-        call c_callback1_external(incr)
+        call c_callback1_external(incr1_external)
         ! splicer end function.callback1_external
     end subroutine callback1_external
 
@@ -342,11 +342,11 @@ contains
     !! The caller is responsible for using c_funloc to pass the function address.
     !<
     ! start callback1_funptr
-    subroutine callback1_funptr(incr)
+    subroutine callback1_funptr(incr1_funptr)
         use iso_c_binding, only : C_FUNPTR
-        type(C_FUNPTR) :: incr
+        type(C_FUNPTR) :: incr1_funptr
         ! splicer begin function.callback1_funptr
-        call c_callback1_funptr(incr)
+        call c_callback1_funptr(incr1_funptr)
         ! splicer end function.callback1_funptr
     end subroutine callback1_funptr
     ! end callback1_funptr
@@ -426,13 +426,13 @@ contains
     !! \brief Test function pointer with assumedtype
     !!
     !<
-    subroutine callback3(type, in, incr)
+    subroutine callback3(type, in, incr3)
         use iso_c_binding, only : C_FUNPTR, C_INT
         integer(C_INT), value, intent(IN) :: type
         type(*) :: in
-        type(C_FUNPTR) :: incr
+        type(C_FUNPTR) :: incr3
         ! splicer begin function.callback3
-        call c_callback3(type, in, incr)
+        call c_callback3(type, in, incr3)
         ! splicer end function.callback3
     end subroutine callback3
 #endif
@@ -471,10 +471,10 @@ contains
     !! No other arguments to test that a function result
     !! uses iso_c_binding C_PTR.
     !<
-    subroutine callback_ptr(get)
-        procedure(callback_ptr_get) :: get
+    subroutine callback_ptr(get_ptr)
+        procedure(callback_ptr_get_ptr) :: get_ptr
         ! splicer begin function.callback_ptr
-        call c_callback_ptr(get)
+        call c_callback_ptr(get_ptr)
         ! splicer end function.callback_ptr
     end subroutine callback_ptr
 #endif
@@ -489,14 +489,14 @@ contains
     !! \brief abstract argument
     !!
     !<
-    function abstract1(input, get) &
+    function abstract1(input, get_abs) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: input
-        procedure(custom_funptr) :: get
+        procedure(custom_funptr) :: get_abs
         integer(C_INT) :: SHT_rv
         ! splicer begin function.abstract1
-        SHT_rv = c_abstract1(input, get)
+        SHT_rv = c_abstract1(input, get_abs)
         ! splicer end function.abstract1
     end function abstract1
 

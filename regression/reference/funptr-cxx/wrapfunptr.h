@@ -40,18 +40,18 @@ typedef int FUN_TypeID;
 typedef void ( * FUN_incrtype)(int i, FUN_TypeID j);
 // splicer end typedef.incrtype
 
-// typedef get
-// splicer begin typedef.get
-typedef int ( * FUN_get)(double, int);
-// splicer end typedef.get
+// typedef get_int
+// splicer begin typedef.get_int
+typedef int ( * FUN_get_int)(double, int);
+// splicer end typedef.get_int
 
-void FUN_callback1(void ( * incr)(void));
+void FUN_callback1(void ( * incr1)(void));
 
-void FUN_callback1_wrap(void ( * incr)(void));
+void FUN_callback1_wrap(void ( * incr1_wrap)(void));
 
-void FUN_callback1_external(void ( * incr)(void));
+void FUN_callback1_external(void ( * incr1_external)(void));
 
-void FUN_callback1_funptr(void ( * incr)(void));
+void FUN_callback1_funptr(void ( * incr1_funptr)(void));
 
 void FUN_callback2(const char * name, int ival, FUN_incrtype incr);
 
@@ -61,14 +61,14 @@ void FUN_callback2_external(const char * name, int ival,
 void FUN_callback2_funptr(const char * name, int ival,
     FUN_incrtype incr);
 
-void FUN_callback3(int type, void * in, void ( * incr)(void));
+void FUN_callback3(int type, void * in, void ( * incr3)(void));
 
 int FUN_callback4(int * ilow, int nargs, int ( * actor)(int * ilow,
     int nargs));
 
-void FUN_callback_ptr(int * ( * get)(void));
+void FUN_callback_ptr(int * ( * get_ptr)(void));
 
-int FUN_abstract1(int input, int ( * get)(double, int));
+int FUN_abstract1(int input, int ( * get_abs)(double, int));
 
 #ifdef __cplusplus
 }
