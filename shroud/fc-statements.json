@@ -243,7 +243,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}) :: {f_var}"
+            "{f_type}{f_intent_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}"
@@ -297,7 +297,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "allocate({f_var}{f_array_allocate})",
@@ -354,7 +354,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})"
@@ -625,8 +625,8 @@
             "{i_var_size}"
         ],
         "i_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}) :: {i_var}(*)",
-            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}"
+            "{targs[0].f_type}{f_intent_attr} :: {i_var}(*)",
+            "integer(C_SIZE_T){f_intent_attr} :: {i_var_size}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -652,8 +652,8 @@
             "{i_var_size}"
         ],
         "i_arg_decl": [
-            "type(C_PTR), intent({f_intent}) :: {i_var}",
-            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}"
+            "type(C_PTR){f_intent_attr} :: {i_var}",
+            "integer(C_SIZE_T){f_intent_attr} :: {i_var_size}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -682,7 +682,7 @@
             "{i_var_size}"
         ],
         "i_arg_decl": [
-            "integer(C_SIZE_T), intent({f_intent}) :: {i_var_size}"
+            "integer(C_SIZE_T){f_intent_attr} :: {i_var_size}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -703,7 +703,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}) :: {f_var}(:,:)"
+            "{targs[0].f_type}{f_intent_attr} :: {f_var}(:,:)"
         ],
         "f_arg_call": [
             "{f_var}",
@@ -922,7 +922,7 @@
             "{i_var_len}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR), intent({f_intent}) :: {i_var}(*)",
+            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)",
             "integer(C_INT), value, intent(IN) :: {i_var_len}"
         ],
         "i_module": {
@@ -1048,7 +1048,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}) :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}"
         ]
     },
     {
@@ -1146,7 +1146,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "type(C_PTR), intent({f_intent}) :: {f_var}"
+            "type(C_PTR){f_intent_attr} :: {f_var}"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1176,7 +1176,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_helper": [
             "type_defines",
@@ -1292,13 +1292,13 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "type(C_PTR), intent({f_intent}) :: {f_var}{f_assumed_shape}"
+            "type(C_PTR){f_intent_attr} :: {f_var}{f_assumed_shape}"
         ],
         "c_arg_decl": [
             "void **{c_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR), intent({f_intent}) :: {i_var}{i_dimension}"
+            "type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -1860,7 +1860,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character(len=*), intent({f_intent}) :: {f_var}"
+            "character(len=*){f_intent_attr} :: {f_var}"
         ],
         "cxx_local_var": "scalar",
         "c_helper": [
@@ -2208,7 +2208,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -2489,7 +2489,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_helper": [
             "type_defines",
@@ -2526,7 +2526,7 @@
             "array_context"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "c_helper": [
             "vector_string_out"
@@ -2604,7 +2604,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
@@ -2625,7 +2625,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "call {f_helper_copy_array}(\t{temp0},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
@@ -2660,7 +2660,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "allocate({f_var}({f_var_cdesc}%size))",
@@ -2684,7 +2684,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{targs[0].f_type}, intent({f_intent}), allocatable, target :: {f_var}{f_assumed_shape}"
+            "{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
             "if (allocated({f_var})) deallocate({f_var})",
@@ -2701,7 +2701,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}, intent({f_intent}) :: {f_var}"
+            "{f_type}{f_intent_attr} :: {f_var}"
         ],
         "f_arg_call": [
             "{f_var}%{F_derived_member}"
@@ -2714,7 +2714,7 @@
             "{c_type} * {c_var}"
         ],
         "i_arg_decl": [
-            "type({f_capsule_data_type}), intent({f_intent}) :: {i_var}"
+            "type({f_capsule_data_type}){f_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -2738,7 +2738,7 @@
             "{c_type} {c_var}"
         ],
         "i_arg_decl": [
-            "type({f_capsule_data_type}), intent({f_intent}), value :: {i_var}"
+            "type({f_capsule_data_type}){f_intent_attr}, value :: {i_var}"
         ],
         "cxx_local_var": "pointer",
         "c_pre_call": [
@@ -3190,7 +3190,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character(len=*), intent({f_intent}) :: {f_var}"
+            "character(len=*){f_intent_attr} :: {f_var}"
         ],
         "c_post_call": [
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
@@ -3234,7 +3234,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:), intent({f_intent}), allocatable :: {i_var}"
+            "character(len=:){f_intent_attr}, allocatable :: {i_var}"
         ],
         "cxx_local_var": null,
         "c_pre_call": [],
@@ -3267,7 +3267,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:), intent({f_intent}), pointer :: {i_var}"
+            "character(len=:){f_intent_attr}, pointer :: {i_var}"
         ],
         "cxx_local_var": null,
         "c_pre_call": [],
@@ -3305,7 +3305,7 @@
         ],
         "cxx_local_var": "pointer",
         "i_arg_decl": [
-            "character(len=*), intent({f_intent}) :: {i_var}"
+            "character(len=*){f_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -3324,7 +3324,7 @@
         ],
         "cxx_local_var": "pointer",
         "i_arg_decl": [
-            "{f_type}, intent({f_intent}) :: {i_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -3492,10 +3492,10 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character(len=*), intent({f_intent}) :: {f_var}(:)"
+            "character(len=*){f_intent_attr} :: {f_var}(:)"
         ],
         "i_arg_decl": [
-            "character(len=*), intent({f_intent}) :: {i_var}(:)"
+            "character(len=*){f_intent_attr} :: {i_var}(:)"
         ],
         "c_pre_call": [
             "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -3666,7 +3666,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:), intent({f_intent}), pointer :: {i_var}"
+            "character(len=:){f_intent_attr}, pointer :: {i_var}"
         ],
         "cxx_local_var": null,
         "c_pre_call": [],
@@ -3724,7 +3724,7 @@
             "c_mixin_arg_cfi"
         ],
         "i_arg_decl": [
-            "character(len=:), intent({f_intent}), allocatable :: {i_var}"
+            "character(len=:){f_intent_attr}, allocatable :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -3760,7 +3760,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(len=:), intent({f_intent}), allocatable :: {i_var}"
+            "character(len=:){f_intent_attr}, allocatable :: {i_var}"
         ],
         "cxx_local_var": null,
         "c_pre_call": [],
@@ -3797,7 +3797,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(*), intent({f_intent}) :: {i_var}{f_assumed_shape}"
+            "character(*){f_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
             "// Allocate and copy into {c_var}"
@@ -3813,7 +3813,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "character(*), intent({f_intent}) :: {i_var}{f_assumed_shape}"
+            "character(*){f_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
         "c_post_call": [
             "// Copy results into {c_var}"
@@ -3924,7 +3924,7 @@
             "c_mixin_native_cfi_allocatable"
         ],
         "i_arg_decl": [
-            "{f_type}, intent({f_intent}), allocatable :: {i_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
         ],
         "c_pre_call": [
             "{c_const}{c_type} * {cxx_var};"
@@ -3943,7 +3943,7 @@
             "c_mixin_native_cfi_pointer"
         ],
         "i_arg_decl": [
-            "{f_type}, intent({f_intent}), pointer :: {i_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
         ],
         "c_pre_call": [
             "{c_const}{c_type} * {cxx_var};"
@@ -3971,7 +3971,7 @@
             "{f_var}"
         ],
         "i_arg_decl": [
-            "{f_type}, intent({f_intent}), allocatable :: {i_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
         ],
         "cxx_local_var": "result"
     },
@@ -3997,7 +3997,7 @@
             "{f_var}"
         ],
         "i_arg_decl": [
-            "{f_type}, intent({f_intent}), pointer :: {i_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
         ],
         "cxx_local_var": "result"
     },
