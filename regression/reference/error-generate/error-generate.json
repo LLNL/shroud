@@ -2412,15 +2412,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -2444,7 +2435,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(int tc +intent(none))",
+                                    "decl": "void alloc(int tc +intent(none))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -2454,7 +2445,11 @@
                                     },
                                     "zz_bind": {
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "tc": {
                                                 "meta": {
                                                     "intent": "inout",

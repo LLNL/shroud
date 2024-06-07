@@ -3482,15 +3482,6 @@
                                     "<FUNCTION>": "afree  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "afree",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "afree",
                                             "params": [
                                                 {
@@ -3519,7 +3510,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * afree)(double * arr +intent(inout))",
+                                    "decl": "void afree(double * arr +intent(inout))",
                                     "name": "afree",
                                     "options": {},
                                     "wrap": {
@@ -3528,15 +3519,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3561,15 +3562,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -3616,7 +3608,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(double * arr +intent(inout), int * err +intent(out))",
+                                    "decl": "void alloc(double * arr +intent(inout), int * err +intent(out))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -3625,20 +3617,31 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_native*"
                                             },
                                             "err": {
                                                 "meta": {
                                                     "intent": "out"
-                                                }
+                                                },
+                                                "stmt": "f_out_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3668,15 +3671,6 @@
                                     "<FUNCTION>": "assoc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "assoc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "assoc",
                                             "params": [
                                                 {
@@ -3723,7 +3717,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * assoc)(double * arr +intent(in), int * err +intent(out))",
+                                    "decl": "void assoc(double * arr +intent(in), int * err +intent(out))",
                                     "name": "assoc",
                                     "options": {},
                                     "wrap": {
@@ -3732,20 +3726,31 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
-                                                }
+                                                },
+                                                "stmt": "f_in_native*"
                                             },
                                             "err": {
                                                 "meta": {
                                                     "intent": "out"
-                                                }
+                                                },
+                                                "stmt": "f_out_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -3801,15 +3806,6 @@
                                     "<FUNCTION>": "afree  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "afree",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "afree",
                                             "params": [
                                                 {
@@ -3838,7 +3834,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * afree)(double * arr +intent(inout))",
+                                    "decl": "void afree(double * arr +intent(inout))",
                                     "name": "afree",
                                     "options": {},
                                     "wrap": {
@@ -3847,15 +3843,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3880,15 +3886,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -3935,7 +3932,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(double * arr +intent(inout), int * err +intent(out))",
+                                    "decl": "void alloc(double * arr +intent(inout), int * err +intent(out))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -3944,20 +3941,31 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_native*"
                                             },
                                             "err": {
                                                 "meta": {
                                                     "intent": "out"
-                                                }
+                                                },
+                                                "stmt": "f_out_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -3987,15 +3995,6 @@
                                     "<FUNCTION>": "assoc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "assoc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "assoc",
                                             "params": [
                                                 {
@@ -4042,7 +4041,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * assoc)(double * arr +intent(in), int * err +intent(out))",
+                                    "decl": "void assoc(double * arr +intent(in), int * err +intent(out))",
                                     "name": "assoc",
                                     "options": {},
                                     "wrap": {
@@ -4051,20 +4050,31 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
-                                                }
+                                                },
+                                                "stmt": "f_in_native*"
                                             },
                                             "err": {
                                                 "meta": {
                                                     "intent": "out"
-                                                }
+                                                },
+                                                "stmt": "f_out_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
@@ -4122,15 +4132,6 @@
                                     "<FUNCTION>": "afree  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "afree",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "afree",
                                             "params": [
                                                 {
@@ -4159,7 +4160,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * afree)(double * arr +intent(inout))",
+                                    "decl": "void afree(double * arr +intent(inout))",
                                     "name": "afree",
                                     "options": {},
                                     "wrap": {
@@ -4168,15 +4169,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4200,15 +4211,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -4255,7 +4257,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(double * arr +intent(inout), int * err +intent(out))",
+                                    "decl": "void alloc(double * arr +intent(inout), int * err +intent(out))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -4264,20 +4266,31 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_native*"
                                             },
                                             "err": {
                                                 "meta": {
                                                     "intent": "out"
-                                                }
+                                                },
+                                                "stmt": "f_out_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4306,15 +4319,6 @@
                                     "<FUNCTION>": "assoc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "assoc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "assoc",
                                             "params": [
                                                 {
@@ -4361,7 +4365,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * assoc)(double * arr +intent(in), int * err +intent(out))",
+                                    "decl": "void assoc(double * arr +intent(in), int * err +intent(out))",
                                     "name": "assoc",
                                     "options": {},
                                     "wrap": {
@@ -4370,20 +4374,31 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"
-                                                }
+                                                },
+                                                "stmt": "f_in_native*"
                                             },
                                             "err": {
                                                 "meta": {
                                                     "intent": "out"
-                                                }
+                                                },
+                                                "stmt": "f_out_native*"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "in"

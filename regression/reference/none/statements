@@ -566,6 +566,8 @@ root
       unknown -- f_mixin_unknown
       use
         capsule -- f_mixin_use_capsule
+    none
+      native -- f_none_native
     out
       bool* -- f_out_bool*
       char* -- f_out_char*
@@ -10767,6 +10769,12 @@ f_mixin_use_capsule:
   - '{F_capsule_data_type}'
   intent: mixin
   name: f_mixin_use_capsule
+  owner: library
+f_none_native:
+  intent: none
+  name: f_none_native
+  notes:
+  - An intent of 'none' is used with function pointers
   owner: library
 f_out_bool*:
   f_arg_call:

@@ -4863,15 +4863,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -4913,7 +4904,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))",
+                                    "decl": "void alloc(int tc +intent(in), array_info * arr +intent(inout))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -4921,21 +4912,32 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_struct*"
                                             },
                                             "tc": {
                                                 "meta": {
                                                     "intent": "in",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_in_native"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
@@ -4986,15 +4988,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -5036,7 +5029,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))",
+                                    "decl": "void alloc(int tc +intent(in), array_info * arr +intent(inout))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -5044,21 +5037,32 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"
-                                                }
+                                                },
+                                                "stmt": "f_inout_struct*"
                                             },
                                             "tc": {
                                                 "meta": {
                                                     "intent": "in",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_in_native"
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "arr": {
                                                 "meta": {
                                                     "intent": "inout"

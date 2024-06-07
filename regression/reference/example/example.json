@@ -9721,15 +9721,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "typemap_name": "void"
@@ -9739,7 +9730,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(void)",
+                                                    "decl": "void get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -9750,10 +9741,19 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -9781,15 +9781,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "typemap_name": "void"
@@ -9799,7 +9790,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(void)",
+                                                    "decl": "void get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -9810,10 +9801,19 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -9840,15 +9840,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "typemap_name": "void"
@@ -9858,7 +9849,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(void)",
+                                                    "decl": "void get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -9869,10 +9860,19 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -9898,15 +9898,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "typemap_name": "void"
@@ -9916,7 +9907,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(void)",
+                                                    "decl": "void get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -9927,10 +9918,19 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -9956,15 +9956,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "typemap_name": "void"
@@ -9974,7 +9965,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(void)",
+                                                    "decl": "void get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -9985,10 +9976,19 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -10187,15 +10187,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "pointer": [
@@ -10210,7 +10201,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double * ( * get)(void)",
+                                                    "decl": "double * get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10221,10 +10212,20 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "deref": "pointer",
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native*_pointer"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -10251,15 +10252,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "pointer": [
@@ -10274,7 +10266,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double * ( * get)(void)",
+                                                    "decl": "double * get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10285,10 +10277,20 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "deref": "pointer",
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native*_pointer"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -10314,15 +10316,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "pointer": [
@@ -10337,7 +10330,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double * ( * get)(void)",
+                                                    "decl": "double * get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10348,10 +10341,20 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "deref": "pointer",
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native*_pointer"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -10376,15 +10379,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "pointer": [
@@ -10399,7 +10393,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double * ( * get)(void)",
+                                                    "decl": "double * get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10410,10 +10404,20 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "deref": "pointer",
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native*_pointer"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -10438,15 +10442,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [],
                                                             "pointer": [
@@ -10461,7 +10456,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double * ( * get)(void)",
+                                                    "decl": "double * get(void)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10472,10 +10467,20 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "deref": "pointer",
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native*_pointer"
+                                                            }
                                                         },
                                                         "share": {
-                                                            "+result": {}
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            }
                                                         }
                                                     },
                                                     "zz_fmtdict": {
@@ -10692,15 +10697,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -10730,7 +10726,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(int i, int)",
+                                                    "decl": "double get(int i, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10741,27 +10737,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -10792,15 +10803,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -10830,7 +10832,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(int i, int)",
+                                                    "decl": "double get(int i, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10841,27 +10843,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -10891,15 +10908,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -10929,7 +10937,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(int i, int)",
+                                                    "decl": "double get(int i, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -10940,27 +10948,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -10989,15 +11012,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -11027,7 +11041,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(int i, int)",
+                                                    "decl": "double get(int i, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -11038,27 +11052,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -11087,15 +11116,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -11125,7 +11145,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(int i, int)",
+                                                    "decl": "double get(int i, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -11136,27 +11156,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "i": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -11377,15 +11412,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -11414,7 +11440,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(double, int)",
+                                                    "decl": "double get(double, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -11423,27 +11449,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -11474,15 +11515,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -11511,7 +11543,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(double, int)",
+                                                    "decl": "double get(double, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -11520,27 +11552,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -11570,15 +11617,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "double"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -11607,7 +11645,7 @@
                                                         ],
                                                         "typemap_name": "double"
                                                     },
-                                                    "decl": "double ( * get)(double, int)",
+                                                    "decl": "double get(double, int)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -11616,27 +11654,42 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                },
+                                                                "stmt": "f_function_native"
+                                                            },
                                                             "arg1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "function"
+                                                                }
+                                                            },
                                                             "arg1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "arg2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -11895,15 +11948,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -12014,7 +12058,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
+                                                    "decl": "void get(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -12025,107 +12069,146 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -12156,15 +12239,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -12275,7 +12349,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
+                                                    "decl": "void get(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -12286,107 +12360,146 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -12416,15 +12529,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -12535,7 +12639,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
+                                                    "decl": "void get(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -12546,107 +12650,146 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -12675,15 +12818,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -12794,7 +12928,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
+                                                    "decl": "void get(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -12805,107 +12939,146 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }
@@ -12934,15 +13107,6 @@
                                                     "<FUNCTION>": "get  None ****************************************",
                                                     "ast": {
                                                         "declarator": {
-                                                            "func": {
-                                                                "name": "get",
-                                                                "pointer": [
-                                                                    {
-                                                                        "ptr": "*"
-                                                                    }
-                                                                ],
-                                                                "typemap_name": "void"
-                                                            },
                                                             "name": "get",
                                                             "params": [
                                                                 {
@@ -13053,7 +13217,7 @@
                                                         ],
                                                         "typemap_name": "void"
                                                     },
-                                                    "decl": "void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
+                                                    "decl": "void get(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
                                                     "name": "get",
                                                     "options": {},
                                                     "wrap": {
@@ -13064,107 +13228,146 @@
                                                     },
                                                     "zz_bind": {
                                                         "f": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                },
+                                                                "stmt": "f_subroutine"
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
-                                                                }
+                                                                },
+                                                                "stmt": "f_none_native"
                                                             }
                                                         },
                                                         "share": {
-                                                            "+result": {},
+                                                            "+result": {
+                                                                "meta": {
+                                                                    "intent": "subroutine"
+                                                                }
+                                                            },
                                                             "verylongname1": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname10": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname2": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname3": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname4": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname5": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname6": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname7": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname8": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             },
                                                             "verylongname9": {
                                                                 "meta": {
+                                                                    "intent": "none",
                                                                     "value": true
                                                                 }
                                                             }

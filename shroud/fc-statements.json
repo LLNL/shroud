@@ -4003,6 +4003,14 @@
     },
     {
         "alias": [
+            "f_none_native"
+        ],
+        "notes": [
+            "An intent of 'none' is used with function pointers"
+        ]
+    },
+    {
+        "alias": [
             "f_in_procedure",
             "c_in_procedure"
         ],

@@ -415,6 +415,7 @@ def append_mixin(stmt, mixin):
 
 valid_intents = [
     "in", "out", "inout",
+    "none",    # used with function pointers
     "mixin",
     "function", "subroutine",
     "getter", "setter",
