@@ -659,7 +659,7 @@ class FillMetaShare(FillMeta):
             fptr = FunctionNode(gen_decl(newarg), parent=node, ast=newarg)
             r_bind.meta["fptr"] = fptr
             statements.fetch_func_bind(fptr, wlang)
-            self.meta_function_params(fptr, is_fptr=True)
+            self.meta_function(None, fptr, is_fptr=True)
 
     def meta_variable(self, cls, node):
         wlang = self.wlang

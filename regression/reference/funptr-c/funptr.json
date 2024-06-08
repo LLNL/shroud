@@ -3216,7 +3216,11 @@
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "i": {
                                                 "meta": {
                                                     "intent": "none",
@@ -3303,7 +3307,11 @@
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "i": {
                                                 "meta": {
                                                     "intent": "none",
@@ -3448,7 +3456,11 @@
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
                                                     "intent": "none",
@@ -3533,7 +3545,11 @@
                                             }
                                         },
                                         "share": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
                                                     "intent": "none",
