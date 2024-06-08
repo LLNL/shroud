@@ -842,6 +842,7 @@ class FortranArgWorker(object):
         self.arg = arg
 
     def procedure(self):
+        """Demonstration attribute"""
         return "default-procedure"
         if name is None:
             name = wformat(

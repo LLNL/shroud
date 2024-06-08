@@ -1863,6 +1863,9 @@ contains
     ! ----------------------------------------
     ! Function:  void FuncPtr1
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void ( * get)(void)
+    ! Statement: f_in_procedure
     !>
     !! \brief subroutine
     !!
@@ -1880,6 +1883,9 @@ contains
     ! ----------------------------------------
     ! Function:  void FuncPtr2
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  double * ( * get)(void)
+    ! Statement: f_in_procedure
     !>
     !! \brief return a pointer
     !!
@@ -1895,6 +1901,9 @@ contains
     ! ----------------------------------------
     ! Function:  void FuncPtr3
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  double ( * get)(int i, int)
+    ! Statement: f_in_procedure
     !>
     !! \brief abstract argument
     !!
@@ -1909,6 +1918,9 @@ contains
     ! ----------------------------------------
     ! Function:  void FuncPtr4
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  double ( * get)(double, int)
+    ! Statement: f_in_procedure
     !>
     !! \brief abstract argument
     !!
@@ -1925,6 +1937,9 @@ contains
     ! ----------------------------------------
     ! Function:  void FuncPtr5
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
+    ! Statement: f_in_procedure
     subroutine func_ptr5(get)
         procedure(func_ptr5_get) :: get
         ! splicer begin namespace.example::nested.function.func_ptr5

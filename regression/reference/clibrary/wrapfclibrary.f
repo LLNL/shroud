@@ -1021,6 +1021,9 @@ contains
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)
     ! Statement: f_inout_struct*
+    ! ----------------------------------------
+    ! Argument:  void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))
+    ! Statement: f_in_procedure
     !>
     !! The function argument takes a struct argument
     !! which is defined in this library.

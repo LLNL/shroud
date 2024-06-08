@@ -290,6 +290,9 @@ contains
     ! ----------------------------------------
     ! Function:  void callback1
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void ( * incr1)(void)
+    ! Statement: f_in_procedure
     !>
     !! \brief Create abstract interface for function
     !!
@@ -305,6 +308,9 @@ contains
     ! ----------------------------------------
     ! Function:  void callback1_wrap
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void ( * incr1_wrap)(void)
+    ! Statement: f_in_procedure
     !>
     !! \brief Create abstract interface for function
     !!
@@ -336,6 +342,9 @@ contains
     ! ----------------------------------------
     ! Function:  void callback1_funptr
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void ( * incr1_funptr)(void) +funptr
+    ! Statement: f_in_procedure_funptr
     !>
     !! \brief Declare callback as c_funptr
     !!
@@ -422,6 +431,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int type
     ! Statement: f_in_native
+    ! ----------------------------------------
+    ! Argument:  void ( * incr3)(void) +funptr
+    ! Statement: f_in_procedure_funptr
     !>
     !! \brief Test function pointer with assumedtype
     !!
@@ -443,6 +455,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int * ilow +intent(in)+rank(1)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))
+    ! Statement: f_in_procedure
     !>
     !! \brief Test attributes on callback arguments
     !!
@@ -465,6 +480,9 @@ contains
     ! ----------------------------------------
     ! Function:  void callback_ptr
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  int * ( * get_ptr)(void)
+    ! Statement: f_in_procedure
     !>
     !! \brief Return a C_PTR
     !!
@@ -485,6 +503,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int input
     ! Statement: f_in_native
+    ! ----------------------------------------
+    ! Argument:  int ( * get_abs)(double, int)
+    ! Statement: f_in_procedure
     !>
     !! \brief abstract argument
     !!

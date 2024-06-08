@@ -1650,19 +1650,6 @@ rv = .false.
                 arg_c_call.append(fmt_arg.f_var)
                 # function pointers are pass thru without any other action
                 continue
-            elif f_declarator.is_function_pointer():
-                if "funptr" in f_attrs:
-                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
-                else:
-                    arg_f_decl.append(
-                        "procedure({}) :: {}".format(
-                            fmt_arg.f_abstract_interface, fmt_arg.f_var)
-                    )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                # function pointers are pass thru without any other action
-                continue
             elif implied:
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
@@ -1705,7 +1692,10 @@ rv = .false.
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 
-            self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
+            if not f_declarator.is_function_pointer():
+                # XXX - function pointers confuse this code
+                # XXX - it adds a USE for the function pointers's return type.
+                self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic
