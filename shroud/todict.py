@@ -140,9 +140,8 @@ class ToDict(visitor.Visitor):
                          "default_name",
                         ])
 
-        if node.typemap.base != "template":
-            # Only print name to avoid too much nesting.
-            d["typemap_name"] = node.typemap.name
+        # Only print name to avoid too much nesting.
+        d["typemap_name"] = node.typemap.name
 
         attrs = {key: value
                  for (key, value) in node.attrs.items()

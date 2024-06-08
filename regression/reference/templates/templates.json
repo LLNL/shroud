@@ -65,7 +65,8 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "name": "arg1"
+                                            "name": "arg1",
+                                            "typemap_name": "--template-parameter--"
                                         },
                                         "specifier": [
                                             "T"
@@ -74,7 +75,8 @@
                                     },
                                     {
                                         "declarator": {
-                                            "name": "arg2"
+                                            "name": "arg2",
+                                            "typemap_name": "--template-parameter--"
                                         },
                                         "specifier": [
                                             "U"
@@ -956,7 +958,8 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "name": "v"
+                                            "name": "v",
+                                            "typemap_name": "--template-parameter--"
                                         },
                                         "specifier": [
                                             "T"
@@ -1175,7 +1178,8 @@
                         "ast": {
                             "declarator": {
                                 "name": "get_value",
-                                "params": []
+                                "params": [],
+                                "typemap_name": "--template-parameter--"
                             },
                             "specifier": [
                                 "T"
@@ -1828,7 +1832,8 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "name": "v"
+                                            "name": "v",
+                                            "typemap_name": "--template-parameter--"
                                         },
                                         "specifier": [
                                             "T"
@@ -2047,7 +2052,8 @@
                         "ast": {
                             "declarator": {
                                 "name": "get_value",
-                                "params": []
+                                "params": [],
+                                "typemap_name": "--template-parameter--"
                             },
                             "specifier": [
                                 "T"
@@ -2443,7 +2449,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg1"
+                                    "name": "arg1",
+                                    "typemap_name": "--template-parameter--"
                                 },
                                 "specifier": [
                                     "T"
@@ -2452,7 +2459,8 @@
                             },
                             {
                                 "declarator": {
-                                    "name": "arg2"
+                                    "name": "arg2",
+                                    "typemap_name": "--template-parameter--"
                                 },
                                 "specifier": [
                                     "U"
@@ -3980,7 +3988,8 @@
                                                         {
                                                             "ptr": "&"
                                                         }
-                                                    ]
+                                                    ],
+                                                    "typemap_name": "--template-parameter--"
                                                 },
                                                 "specifier": [
                                                     "T"
@@ -4253,7 +4262,8 @@
                                             {
                                                 "ptr": "&"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "--template-parameter--"
                                     },
                                     "specifier": [
                                         "T"
@@ -4941,7 +4951,8 @@
                                                         {
                                                             "ptr": "&"
                                                         }
-                                                    ]
+                                                    ],
+                                                    "typemap_name": "--template-parameter--"
                                                 },
                                                 "specifier": [
                                                     "T"
@@ -5214,7 +5225,8 @@
                                             {
                                                 "ptr": "&"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "--template-parameter--"
                                     },
                                     "specifier": [
                                         "T"

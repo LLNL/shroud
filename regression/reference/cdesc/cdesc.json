@@ -1016,7 +1016,8 @@
                 "ast": {
                     "declarator": {
                         "name": "getData",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "--template-parameter--"
                     },
                     "specifier": [
                         "DataType"

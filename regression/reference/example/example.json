@@ -5588,7 +5588,8 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "name": "value"
+                                                            "name": "value",
+                                                            "typemap_name": "--template-parameter--"
                                                         },
                                                         "specifier": [
                                                             "ValueType"
@@ -6846,7 +6847,8 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "getValue",
-                                                "params": []
+                                                "params": [],
+                                                "typemap_name": "--template-parameter--"
                                             },
                                             "specifier": [
                                                 "ValueType"

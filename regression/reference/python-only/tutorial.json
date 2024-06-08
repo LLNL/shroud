@@ -794,7 +794,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg"
+                                    "name": "arg",
+                                    "typemap_name": "--template-parameter--"
                                 },
                                 "specifier": [
                                     "ArgType"
@@ -1129,7 +1130,8 @@
                 "ast": {
                     "declarator": {
                         "name": "TemplateReturn",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "--template-parameter--"
                     },
                     "specifier": [
                         "RetType"
