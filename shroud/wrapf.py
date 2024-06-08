@@ -1633,16 +1633,6 @@ rv = .false.
                 arg_f_names.append(fmt_arg.f_var)
                 arg_c_call.append(fmt_arg.f_var)
                 continue
-            elif "external" in f_attrs:
-                # external is similar to assumed type, in that it will
-                # accept any function.  But external is not allowed
-                # in bind(C), so make sure a wrapper is generated.
-                arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
-                need_wrapper = True
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                # function pointers are pass thru without any other action
-                continue
             elif implied:
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(

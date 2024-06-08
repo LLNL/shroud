@@ -326,6 +326,9 @@ contains
     ! ----------------------------------------
     ! Function:  void callback1_external
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void ( * incr1_external)(void) +external
+    ! Statement: f_in_procedure_external
     !>
     !! \brief Declare callback as external
     !!
@@ -390,6 +393,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int ival
     ! Statement: f_in_native
+    ! ----------------------------------------
+    ! Argument:  incrtype incr +external
+    ! Statement: f_in_procedure_external
     !>
     !! \brief Declare callback as external
     !!
