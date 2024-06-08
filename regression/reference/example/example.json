@@ -5701,7 +5701,8 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "name": "value"
+                                                            "name": "value",
+                                                            "typemap_name": "int"
                                                         },
                                                         "specifier": [
                                                             "int"
@@ -5989,7 +5990,8 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "name": "value"
+                                                            "name": "value",
+                                                            "typemap_name": "long"
                                                         },
                                                         "specifier": [
                                                             "long"
@@ -6274,7 +6276,8 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "name": "value"
+                                                            "name": "value",
+                                                            "typemap_name": "float"
                                                         },
                                                         "specifier": [
                                                             "float"
@@ -6559,7 +6562,8 @@
                                                 "params": [
                                                     {
                                                         "declarator": {
-                                                            "name": "value"
+                                                            "name": "value",
+                                                            "typemap_name": "double"
                                                         },
                                                         "specifier": [
                                                             "double"
@@ -6914,7 +6918,8 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "getValue",
-                                                "params": []
+                                                "params": [],
+                                                "typemap_name": "int"
                                             },
                                             "specifier": [
                                                 "int"
@@ -7118,7 +7123,8 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "getValue",
-                                                "params": []
+                                                "params": [],
+                                                "typemap_name": "double"
                                             },
                                             "specifier": [
                                                 "double"

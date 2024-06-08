@@ -1091,7 +1091,8 @@
                 "ast": {
                     "declarator": {
                         "name": "getData",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
@@ -1248,7 +1249,8 @@
                 "ast": {
                     "declarator": {
                         "name": "getData",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "double"
                     },
                     "specifier": [
                         "double"

@@ -2064,7 +2064,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg1"
+                                    "name": "arg1",
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
                                     "int"
@@ -2074,7 +2075,8 @@
                             },
                             {
                                 "declarator": {
-                                    "name": "arg2"
+                                    "name": "arg2",
+                                    "typemap_name": "long"
                                 },
                                 "specifier": [
                                     "long"
@@ -2426,7 +2428,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg1"
+                                    "name": "arg1",
+                                    "typemap_name": "float"
                                 },
                                 "specifier": [
                                     "float"
@@ -2436,7 +2439,8 @@
                             },
                             {
                                 "declarator": {
-                                    "name": "arg2"
+                                    "name": "arg2",
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
                                     "double"

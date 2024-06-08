@@ -1533,11 +1533,19 @@ class Declaration(Node):
         """Instantiate a template argument.
         node - Declaration node of template argument.
         Return a new copy of self and fill in type from node.
+        Also copy the declarators and replace typemap.
         If node is 'int *', the pointer is in the declarator.
         """
         # XXX - what if T = 'int *' and arg is 'T *arg'?
         new = copy.copy(self)
         new.set_type(node.typemap)
+        declarators = []
+        for declarator in self.declarators:
+            newd = copy.copy(declarator)
+            newd.typemap = node.typemap
+            declarators.append(newd)
+        new.declarators = declarators
+        new.declarator = declarators[0]
         return new
 
     def __str__(self):

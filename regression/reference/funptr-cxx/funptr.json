@@ -4820,7 +4820,7 @@
                                                 "meta": {
                                                     "intent": "function"
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_function_native"
                                             },
                                             "arg1": {
                                                 "meta": {
@@ -4917,7 +4917,7 @@
                                                 "meta": {
                                                     "intent": "function"
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_function_native"
                                             },
                                             "arg1": {
                                                 "meta": {
@@ -5014,7 +5014,7 @@
                                                 "meta": {
                                                     "intent": "function"
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_function_native"
                                             },
                                             "arg1": {
                                                 "meta": {

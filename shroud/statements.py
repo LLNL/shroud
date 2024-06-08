@@ -152,12 +152,14 @@ def find_abstract_declarator(arg):
     Args:
         arg -
     """
-    if arg.declarator.is_function_pointer():
+    declarator = arg.declarator
+    if declarator.is_function_pointer():
         decl = ["procedure"]
         abstract = ""
     else:
-        decl = [arg.typemap.sgroup]
-        abstract = arg.declarator.get_abstract_declarator()
+        decl = [declarator.typemap.sgroup]
+        abstract = declarator.get_abstract_declarator()
+
     if arg.template_arguments:
         decl.append("<")
         for targ in arg.template_arguments:

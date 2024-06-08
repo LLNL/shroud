@@ -2416,7 +2416,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg"
+                                    "name": "arg",
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
                                     "int"
@@ -2678,7 +2679,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg"
+                                    "name": "arg",
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
                                     "double"
@@ -3008,7 +3010,8 @@
                 "ast": {
                     "declarator": {
                         "name": "TemplateReturn",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
@@ -3164,7 +3167,8 @@
                 "ast": {
                     "declarator": {
                         "name": "TemplateReturn",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "double"
                     },
                     "specifier": [
                         "double"

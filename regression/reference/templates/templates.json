@@ -157,7 +157,8 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "name": "arg1"
+                                            "name": "arg1",
+                                            "typemap_name": "int"
                                         },
                                         "specifier": [
                                             "int"
@@ -167,7 +168,8 @@
                                     },
                                     {
                                         "declarator": {
-                                            "name": "arg2"
+                                            "name": "arg2",
+                                            "typemap_name": "double"
                                         },
                                         "specifier": [
                                             "double"
@@ -1009,7 +1011,8 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "name": "v"
+                                            "name": "v",
+                                            "typemap_name": "int"
                                         },
                                         "specifier": [
                                             "int"
@@ -1210,7 +1213,8 @@
                         "ast": {
                             "declarator": {
                                 "name": "get_value",
-                                "params": []
+                                "params": [],
+                                "typemap_name": "int"
                             },
                             "specifier": [
                                 "int"
@@ -1879,7 +1883,8 @@
                                 "params": [
                                     {
                                         "declarator": {
-                                            "name": "v"
+                                            "name": "v",
+                                            "typemap_name": "double"
                                         },
                                         "specifier": [
                                             "double"
@@ -2080,7 +2085,8 @@
                         "ast": {
                             "declarator": {
                                 "name": "get_value",
-                                "params": []
+                                "params": [],
+                                "typemap_name": "double"
                             },
                             "specifier": [
                                 "double"
@@ -2557,7 +2563,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg1"
+                                    "name": "arg1",
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
                                     "int"
@@ -2567,7 +2574,8 @@
                             },
                             {
                                 "declarator": {
-                                    "name": "arg2"
+                                    "name": "arg2",
+                                    "typemap_name": "long"
                                 },
                                 "specifier": [
                                     "long"
@@ -2902,7 +2910,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg1"
+                                    "name": "arg1",
+                                    "typemap_name": "float"
                                 },
                                 "specifier": [
                                     "float"
@@ -2912,7 +2921,8 @@
                             },
                             {
                                 "declarator": {
-                                    "name": "arg2"
+                                    "name": "arg2",
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
                                     "double"
@@ -4033,7 +4043,8 @@
                                                         {
                                                             "ptr": "&"
                                                         }
-                                                    ]
+                                                    ],
+                                                    "typemap_name": "int"
                                                 },
                                                 "specifier": [
                                                     "int"
@@ -4302,7 +4313,8 @@
                                             {
                                                 "ptr": "&"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "int"
                                     },
                                     "specifier": [
                                         "int"
@@ -4992,7 +5004,8 @@
                                                         {
                                                             "ptr": "&"
                                                         }
-                                                    ]
+                                                    ],
+                                                    "typemap_name": "double"
                                                 },
                                                 "specifier": [
                                                     "double"
@@ -5261,7 +5274,8 @@
                                             {
                                                 "ptr": "&"
                                             }
-                                        ]
+                                        ],
+                                        "typemap_name": "double"
                                     },
                                     "specifier": [
                                         "double"
