@@ -292,6 +292,7 @@
                             "cxx_nonconst_ptr": "&incr1",
                             "cxx_type": "void",
                             "cxx_var": "incr1",
+                            "f_abstract_interface": "callback1_incr1",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
@@ -596,6 +597,7 @@
                             "cxx_nonconst_ptr": "&incr1_wrap",
                             "cxx_type": "void",
                             "cxx_var": "incr1_wrap",
+                            "f_abstract_interface": "callback1_wrap_incr1_wrap",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
@@ -911,6 +913,7 @@
                             "cxx_nonconst_ptr": "&incr1_external",
                             "cxx_type": "void",
                             "cxx_var": "incr1_external",
+                            "f_abstract_interface": "callback1_external_incr1_external",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
@@ -3290,6 +3293,7 @@
                             "cxx_nonconst_ptr": "&actor",
                             "cxx_type": "int",
                             "cxx_var": "actor",
+                            "f_abstract_interface": "callback4_actor",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
@@ -3710,6 +3714,7 @@
                             "cxx_nonconst_ptr": "get_ptr",
                             "cxx_type": "int",
                             "cxx_var": "get_ptr",
+                            "f_abstract_interface": "callback_ptr_get_ptr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
@@ -4236,6 +4241,7 @@
                             "cxx_nonconst_ptr": "&get_abs",
                             "cxx_type": "int",
                             "cxx_var": "get_abs",
+                            "f_abstract_interface": "custom_funptr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
@@ -4715,6 +4721,7 @@
                     "F_name_api": "incrtype",
                     "F_name_typedef": "incrtype",
                     "cxx_type": "incrtype",
+                    "f_abstract_interface": "incrtype",
                     "typedef_name": "incrtype"
                 }
             },
@@ -5067,6 +5074,7 @@
                     "F_name_api": "get_int",
                     "F_name_typedef": "get_int",
                     "cxx_type": "get_int",
+                    "f_abstract_interface": "get_int",
                     "typedef_name": "get_int"
                 }
             }

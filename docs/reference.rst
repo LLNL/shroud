@@ -1483,6 +1483,9 @@ cxx_type
 cxx_var
     Name of the C++ variable.
 
+f_abstract_interface
+    Name of abstract interface created for a function pointer.
+
 f_intent
     The value of the intent metaattribute. Converted to uppercase.
     Used with argument declarations:

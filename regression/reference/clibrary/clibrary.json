@@ -5176,6 +5176,7 @@
                             "cxx_nonconst_ptr": "&alloc",
                             "cxx_type": "void",
                             "cxx_var": "alloc",
+                            "f_abstract_interface": "callback_set_alloc_alloc",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",

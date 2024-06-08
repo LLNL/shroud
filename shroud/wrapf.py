@@ -948,7 +948,7 @@ rv = .false.
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
-    def add_abstract_interface(self, node, arg, fileinfo, name=None):
+    def add_abstract_interface(self, node, arg, fileinfo, fmt_arg=None, name=None):
         """Record an abstract interface.
 
         Function pointers are converted to abstract interfaces.
@@ -957,16 +957,22 @@ rv = .false.
         If from a typedef, then name argument will be set.
 
         Args:
-            node -
-            arg -
+            node -  ast.TypedefNode  ast.FunctionNode
+            arg -   declast.Declaration
             fileinfo - ModuleInfo
         """
-        fmt = util.Scope(node.fmtdict)
-        fmt.argname = arg.declarator.user_name
+        if fmt_arg:
+            fmt = fmt_arg
+        else:
+            fmt = node.fmtdict
         if name is None:
+            fmt_tmp = util.Scope(fmt)
+            fmt_tmp.argname = arg.declarator.user_name
+            # argname used in F_abstract_interface_subroutine_template
             name = wformat(
-                node.options.F_abstract_interface_subprogram_template, fmt
+                node.options.F_abstract_interface_subprogram_template, fmt_tmp
             )
+        fmt.f_abstract_interface = name
         entry = fileinfo.f_abstract_interface.get(name)
         if entry is None:
             meta = get_arg_bind(node, arg, "f").meta
@@ -990,6 +996,7 @@ rv = .false.
             for key in sorted(fileinfo.f_abstract_interface.keys()):
                 node, fmt, arg, fptr = fileinfo.f_abstract_interface[key]
                 options = node.options
+                fmt_tmp = util.Scope(fmt)
                 subprogram = arg.declarator.get_subprogram()
                 iface.append("")
                 arg_f_names = []
@@ -1000,10 +1007,10 @@ rv = .false.
                     meta = get_arg_bind(fptr, param, "f").meta
                     intent = meta["intent"]
                     if name is None:
-                        fmt.index = str(i)
+                        fmt_tmp.index = str(i)
                         name = wformat(
                             options.F_abstract_interface_argument_template,
-                            fmt,
+                            fmt_tmp,
                         )
                     arg_f_names.append(name)
                     arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
@@ -1126,7 +1133,7 @@ rv = .false.
                     )
                     self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
                 else:
-                    absiface = self.add_abstract_interface(node, ast, fileinfo)
+                    absiface = fmt.f_abstract_interface
                     arg_c_decl.append(
                         "procedure({}) :: {}".format(absiface, name)
                     )
@@ -1134,7 +1141,7 @@ rv = .false.
             elif declarator.is_array() > 1:
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
-                # 'char **' uses c_char_**_in as a special case.
+                # 'char **' uses c_in_char** as a special case.
                 append_format(arg_c_decl,
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1598,6 +1605,10 @@ rv = .false.
             implied = f_attrs.get("implied", None)
             pass_obj = f_attrs.get("pass", None)
 
+            if f_declarator.is_function_pointer():
+                if "funptr" not in f_attrs:
+                    absiface = self.add_abstract_interface(node, f_arg, fileinfo, fmt_arg)
+
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
                 arg_f_decl.append(
@@ -1644,9 +1655,9 @@ rv = .false.
                     self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
                     arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
                 else:
-                    absiface = self.add_abstract_interface(node, f_arg, fileinfo)
                     arg_f_decl.append(
-                        "procedure({}) :: {}".format(absiface, fmt_arg.f_var)
+                        "procedure({}) :: {}".format(
+                            fmt_arg.f_abstract_interface, fmt_arg.f_var)
                     )
                 arg_f_names.append(fmt_arg.f_var)
                 arg_c_call.append(fmt_arg.f_var)

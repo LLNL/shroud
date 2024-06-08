@@ -8190,6 +8190,7 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "int",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "callback1_incr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
