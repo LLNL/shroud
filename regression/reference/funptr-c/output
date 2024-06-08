@@ -1,4 +1,10 @@
 Will not generate C wrappers for a language=c library
+
+----------------------------------------
+Phase: FillMeta typedef
+----------------------------------------
+Node: get_int
+Unknown statement: f_function_procedure
 Wrote wrapffunptr.f
 Wrote utilfunptr.c
 Wrote typesfunptr.h

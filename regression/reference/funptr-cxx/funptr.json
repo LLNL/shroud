@@ -4460,18 +4460,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "i": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "j": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
@@ -4552,18 +4559,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "i": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "j": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
@@ -4644,18 +4658,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "i": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "j": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
@@ -4795,18 +4816,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_mixin_unknown"
+                                            },
                                             "arg1": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
@@ -4885,18 +4913,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_mixin_unknown"
+                                            },
                                             "arg1": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
@@ -4975,18 +5010,25 @@
                                     },
                                     "zz_bind": {
                                         "f": {
-                                            "+result": {},
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_mixin_unknown"
+                                            },
                                             "arg1": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {

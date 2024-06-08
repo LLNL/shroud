@@ -974,7 +974,7 @@ class FillMetaFortran(FillMeta):
         if arg.declarator.is_function_pointer():
             fptr = meta["fptr"]
             statements.fetch_func_bind(fptr, wlang)
-            self.meta_function_params(fptr)
+            self.meta_function(None, fptr)
 
     def meta_variable(self, cls, node):
         wlang = self.wlang

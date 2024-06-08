@@ -1,3 +1,9 @@
+
+----------------------------------------
+Phase: FillMeta typedef
+----------------------------------------
+Node: get_int
+Unknown statement: f_function_procedure
 Wrote wrapfunptr.h
 Wrote wrapfunptr.cpp
 Wrote wrapffunptr.f
