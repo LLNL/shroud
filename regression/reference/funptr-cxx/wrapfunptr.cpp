@@ -130,7 +130,7 @@ void FUN_callback2(const char * name, int ival, FUN_incrtype incr)
 // Statement: c_in_native
 // ----------------------------------------
 // Argument:  incrtype incr +external
-// Statement: c_in_procedure
+// Statement: c_in_procedure_external
 void FUN_callback2_external(const char * name, int ival,
     FUN_incrtype incr)
 {
@@ -156,7 +156,7 @@ void FUN_callback2_external(const char * name, int ival,
 // Statement: c_in_native
 // ----------------------------------------
 // Argument:  incrtype incr +funptr
-// Statement: c_in_procedure
+// Statement: c_in_procedure_funptr
 void FUN_callback2_funptr(const char * name, int ival,
     FUN_incrtype incr)
 {

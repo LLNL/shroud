@@ -1605,9 +1605,15 @@ rv = .false.
             implied = f_attrs.get("implied", None)
             pass_obj = f_attrs.get("pass", None)
 
-            if f_declarator.is_function_pointer():
+            if arg_typemap.base == "procedure":
+                do_use = False
+                fmt_arg.f_abstract_interface = arg_typemap.f_kind
+            elif f_declarator.is_function_pointer():
+                do_use = False
                 if "funptr" not in f_attrs:
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo, fmt_arg)
+            else:
+                do_use = True
 
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
@@ -1633,19 +1639,6 @@ rv = .false.
                 # in bind(C), so make sure a wrapper is generated.
                 arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
                 need_wrapper = True
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                # function pointers are pass thru without any other action
-                continue
-            elif arg_typemap.base == "procedure":
-                if "funptr" in f_attrs:
-                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
-                else:
-                    # abstract interface already created via typedef
-                    arg_f_decl.append(
-                        "procedure({}) :: {}".format(fmt_arg.f_kind, fmt_arg.f_var)
-                    )
                 arg_f_names.append(fmt_arg.f_var)
                 arg_c_call.append(fmt_arg.f_var)
                 # function pointers are pass thru without any other action
@@ -1692,7 +1685,7 @@ rv = .false.
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 
-            if not f_declarator.is_function_pointer():
+            if do_use:
                 # XXX - function pointers confuse this code
                 # XXX - it adds a USE for the function pointers's return type.
                 self.update_f_module(modules, arg_typemap.f_module, fmt_arg)

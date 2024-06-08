@@ -232,6 +232,7 @@
             "cast_static": "static_cast<",
             "class_scope": "",
             "cxx_class": "",
+            "f_abstract_interface": "",
             "f_array_allocate": "",
             "f_array_shape": "",
             "f_assumed_shape": "",

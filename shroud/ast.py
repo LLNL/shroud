@@ -747,6 +747,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_temp_lower_decl="",    # Assume scalar.
             c_temp_lower_use="NULL",   # Assume scalar in CFI_setpointer.
 
+            f_abstract_interface="",
             f_array_allocate="",
             f_array_shape="",
             f_assumed_shape="",  # scalar
@@ -821,6 +822,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
 #                cxx_T="short",   # Needs to be a actual type to find helper.
                 F_C_var="XXXF_C_var",
+                f_abstract_interface="XXXf_abstract_interface=",
                 f_capsule_data_type="XXXf_capsule_data_type",
                 f_cdesc_shape="XXXf_cdesc_shape",
                 f_intent="XXXf_intent",

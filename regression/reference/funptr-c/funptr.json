@@ -1042,6 +1042,7 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "incrtype",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "incrtype",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
@@ -1194,10 +1195,11 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "external",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_external"
                         },
                         "ival": {
                             "meta": {
@@ -1272,6 +1274,7 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "incrtype",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "incrtype",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
@@ -1282,7 +1285,7 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_external"
                         }
                     },
                     "ival": {
@@ -1425,10 +1428,11 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "funptr",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_funptr"
                         },
                         "ival": {
                             "meta": {
@@ -1503,6 +1507,7 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "incrtype",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "incrtype",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
@@ -1513,7 +1518,7 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_funptr"
                         }
                     },
                     "ival": {

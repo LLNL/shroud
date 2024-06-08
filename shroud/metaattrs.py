@@ -331,7 +331,7 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
-        if declarator.is_function_pointer():
+        if declarator.is_function_pointer() or ntypemap.base == "procedure":
             if attrs.get("external"):
                 meta["deref"] = "external"
             elif attrs.get("funptr"):
@@ -393,7 +393,7 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
-        if declarator.is_function_pointer():
+        if declarator.is_function_pointer() or ntypemap.base == "procedure":
             if attrs.get("external"):
                 meta["deref"] = "external"
             elif attrs.get("funptr"):

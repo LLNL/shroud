@@ -169,7 +169,7 @@ module funptr_mod
         ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  incrtype incr +external
-        ! Statement: f_in_procedure
+        ! Statement: f_in_procedure_external
         subroutine c_callback2_external(name, ival, incr) &
                 bind(C, name="callback2_external")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -191,7 +191,7 @@ module funptr_mod
         ! Statement: f_in_native
         ! ----------------------------------------
         ! Argument:  incrtype incr +funptr
-        ! Statement: f_in_procedure
+        ! Statement: f_in_procedure_funptr
         subroutine c_callback2_funptr(name, ival, incr) &
                 bind(C, name="callback2_funptr")
             use iso_c_binding, only : C_CHAR, C_FUNPTR, C_INT
@@ -367,6 +367,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int ival
     ! Statement: f_in_native
+    ! ----------------------------------------
+    ! Argument:  incrtype incr
+    ! Statement: f_in_procedure
     !>
     !! \brief Create abstract interface for function
     !!
@@ -407,6 +410,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int ival
     ! Statement: f_in_native
+    ! ----------------------------------------
+    ! Argument:  incrtype incr +funptr
+    ! Statement: f_in_procedure_funptr
     !>
     !! \brief Declare callback as c_funptr
     !!
