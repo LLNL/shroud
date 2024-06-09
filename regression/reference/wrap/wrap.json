@@ -86,7 +86,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },

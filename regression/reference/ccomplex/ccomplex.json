@@ -95,7 +95,8 @@
                             "F_arg_c_call": "arg1",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -230,7 +231,8 @@
                             "F_arg_c_call": "arg1",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -391,7 +393,8 @@
                             "F_arg_c_call": "arg1",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -739,7 +742,8 @@
                             "F_arg_c_call": "arg1,\t flag",
                             "F_arguments": "arg1,\t flag",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {

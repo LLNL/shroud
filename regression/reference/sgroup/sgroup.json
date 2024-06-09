@@ -150,7 +150,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {

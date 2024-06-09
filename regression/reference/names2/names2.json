@@ -64,7 +64,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "c_a_function",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "ignore1::ignore2::AFunction(\t)",
@@ -77,7 +78,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },

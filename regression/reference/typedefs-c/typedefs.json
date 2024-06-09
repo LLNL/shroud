@@ -405,7 +405,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "Alias"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -590,7 +591,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "Alias"
                         }
                     },
                     "arg": {
@@ -750,7 +752,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "iColor"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -953,7 +956,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "TypeID"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1130,7 +1134,8 @@
                             "F_arg_c_call": "arg1",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -1297,7 +1302,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -1473,7 +1479,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "IndexType"
                         }
                     },
                     "ndims": {
@@ -1649,7 +1656,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -1825,7 +1833,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "IndexType2"
                         }
                     },
                     "ndims": {

@@ -511,7 +511,8 @@
                             "F_C_arguments": "name",
                             "F_C_name": "c_get_name",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "getName(\tSHT_name_str)",
@@ -527,7 +528,8 @@
                             "F_arguments": "name",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -689,7 +691,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "YYY_TES_function1",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "function1(\t)",
@@ -702,7 +705,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -783,7 +787,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "YYY_TES_function2",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "function2(\t)",
@@ -796,7 +801,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -917,7 +923,8 @@
                             "C_prototype": "int i",
                             "C_return_type": "void",
                             "F_C_name": "YYY_TES_function3a_0",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "function3a(\ti)",
@@ -932,7 +939,8 @@
                             "F_arg_c_call": "i",
                             "F_arguments": "i",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "i": {
@@ -1120,7 +1128,8 @@
                             "C_prototype": "long i",
                             "C_return_type": "void",
                             "F_C_name": "YYY_TES_function3a_1",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "function3a(\ti)",
@@ -1135,7 +1144,8 @@
                             "F_arg_c_call": "i",
                             "F_arguments": "i",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "i": {
@@ -1349,7 +1359,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "function4(\tARG_rv)",
@@ -1388,7 +1399,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1561,7 +1573,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "YYY_TES_fiveplus",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "fiveplus(\t)",
@@ -1574,7 +1587,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -1759,7 +1773,8 @@
                             "F_C_arguments": "name,\t value",
                             "F_C_name": "c_test_multiline_splicer",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "TestMultilineSplicer(\tARG_name,\t value)",
@@ -1775,7 +1790,8 @@
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -2271,7 +2287,8 @@
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
                             "F_C_name": "c_function_tu_0",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
@@ -2286,7 +2303,8 @@
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -2646,7 +2664,8 @@
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
                             "F_C_name": "c_function_tu_instantiation2",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
@@ -2661,7 +2680,8 @@
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -2974,7 +2994,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
@@ -3010,7 +3031,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3162,7 +3184,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "Cstruct_as_class_sum(\tARG_point)",
@@ -3200,7 +3223,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -4745,7 +4769,8 @@
                             "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
                             "C_return_type": "void",
                             "F_C_name": "c_external_funcs",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
@@ -4760,7 +4785,8 @@
                             "F_arg_c_call": "trim(rdbase)//C_NULL_CHAR,\t trim(pkg)//C_NULL_CHAR,\t trim(name)//C_NULL_CHAR,\t alloc,\t afree,\t assoc",
                             "F_arguments": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "afree": {
@@ -5171,7 +5197,8 @@
                             "C_prototype": "int arg1",
                             "C_return_type": "void",
                             "F_C_name": "c_bindtest",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "bindtest(\targ1)",
@@ -5186,7 +5213,8 @@
                             "F_arg_c_call": "arg1",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -5346,7 +5374,8 @@
                                             "f_local_ptr": "SHT_prv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "c_ctor_shadow_capptr"
+                                            "stmt_name": "c_ctor_shadow_capptr",
+                                            "typemap_name": "ns0::Names"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->defaultctor(\t)",
@@ -5387,7 +5416,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "f_ctor_shadow_capptr"
+                                            "stmt_name": "f_ctor_shadow_capptr",
+                                            "typemap_name": "ns0::Names"
                                         },
                                         "fmtpy": {
                                             "PY_build_format": "O",
@@ -5489,7 +5519,8 @@
                                             "C_prototype": "TES_ns0_Names * self",
                                             "C_return_type": "void",
                                             "F_C_name": "XXX_TES_names_method1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method1(\t)",
@@ -5503,7 +5534,8 @@
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -5588,7 +5620,8 @@
                                             "C_prototype": "TES_ns0_Names * self2",
                                             "C_return_type": "void",
                                             "F_C_name": "XXX_TES_names_method2",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method2(\t)",
@@ -5602,7 +5635,8 @@
                                             "F_arg_c_call": "obj2%cxxmem",
                                             "F_arguments": "obj2",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -5872,7 +5906,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_init_ns1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "ns1::init_ns1(\t)",
@@ -5885,7 +5920,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -6505,7 +6541,8 @@
                                             "C_prototype": "TES_capi_class1 * self",
                                             "C_return_type": "void",
                                             "F_C_name": "c_class1_member1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->Member1(\t)",
@@ -6519,7 +6556,8 @@
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -6620,7 +6658,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_worker1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "CAPI::Worker1(\t)",
@@ -6633,7 +6672,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -6736,7 +6776,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_worker1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "CAPI2::Worker1(\t)",
@@ -6749,7 +6790,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },

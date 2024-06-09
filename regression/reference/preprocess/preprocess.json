@@ -72,7 +72,8 @@
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user1_method1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method1(\t)",
@@ -86,7 +87,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -166,7 +168,8 @@
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user1_method2",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method2(\t)",
@@ -180,7 +183,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -258,7 +262,8 @@
                                     "C_prototype": "PRE_User1 * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user1_method3def_0",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method3def(\t)",
@@ -272,7 +277,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -400,7 +406,8 @@
                                     "C_prototype": "PRE_User1 * self,\t int i",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user1_method3def_1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method3def(\ti)",
@@ -415,7 +422,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t i",
                                     "F_arguments": "obj,\t i",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "i": {
@@ -609,7 +617,8 @@
                                     "C_prototype": "PRE_User2 * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user2_exfunc_0",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->exfunc(\t)",
@@ -623,7 +632,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -743,7 +753,8 @@
                                     "C_prototype": "PRE_User2 * self,\t int flag",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user2_exfunc_1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->exfunc(\tflag)",
@@ -758,7 +769,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t flag",
                                     "F_arguments": "obj,\t flag",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "flag": {

@@ -262,7 +262,8 @@
                             "C_prototype": "void ( * incr1)(\tvoid)",
                             "C_return_type": "void",
                             "F_C_name": "c_callback1",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback1(\tincr1)",
@@ -277,7 +278,8 @@
                             "F_arg_c_call": "incr1",
                             "F_arguments": "incr1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1": {
@@ -592,7 +594,8 @@
                             "C_prototype": "void ( * incr1_wrap)(\tvoid)",
                             "C_return_type": "void",
                             "F_C_name": "c_callback1_wrap",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback1_wrap(\tincr1_wrap)",
@@ -607,7 +610,8 @@
                             "F_arg_c_call": "incr1_wrap",
                             "F_arguments": "incr1_wrap",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1_wrap": {
@@ -933,7 +937,8 @@
                             "C_prototype": "void ( * incr1_external)(\tvoid)",
                             "C_return_type": "void",
                             "F_C_name": "c_callback1_external",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback1_external(\tincr1_external)",
@@ -948,7 +953,8 @@
                             "F_arg_c_call": "incr1_external",
                             "F_arguments": "incr1_external",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1_external": {
@@ -1277,7 +1283,8 @@
                             "C_prototype": "void ( * incr1_funptr)(\tvoid)",
                             "C_return_type": "void",
                             "F_C_name": "c_callback1_funptr",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback1_funptr(\tincr1_funptr)",
@@ -1292,7 +1299,8 @@
                             "F_arg_c_call": "incr1_funptr",
                             "F_arguments": "incr1_funptr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1_funptr": {
@@ -1507,7 +1515,8 @@
                             "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
                             "C_return_type": "void",
                             "F_C_name": "c_callback2",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback2(\tname,\t ival,\t incr)",
@@ -1522,7 +1531,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -1844,7 +1854,8 @@
                             "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
                             "C_return_type": "void",
                             "F_C_name": "c_callback2_external",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback2_external(\tname,\t ival,\t incr)",
@@ -1859,7 +1870,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -2182,7 +2194,8 @@
                             "C_prototype": "const char * name,\t int ival,\t FUN_incrtype incr",
                             "C_return_type": "void",
                             "F_C_name": "c_callback2_funptr",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback2_funptr(\tname,\t ival,\t incr)",
@@ -2197,7 +2210,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -2696,7 +2710,8 @@
                             "C_prototype": "int type,\t void * in,\t void ( * incr3)(\tvoid)",
                             "C_return_type": "void",
                             "F_C_name": "c_callback3",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback3(\ttype,\t in,\t incr3)",
@@ -2711,7 +2726,8 @@
                             "F_arg_c_call": "type,\t in,\t incr3",
                             "F_arguments": "type,\t in,\t incr3",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -3485,7 +3501,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
@@ -3523,7 +3540,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "actor": {
@@ -3962,7 +3980,8 @@
                             "C_prototype": "int * ( * get_ptr)(\tvoid)",
                             "C_return_type": "void",
                             "F_C_name": "c_callback_ptr",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "callback_ptr(\tget_ptr)",
@@ -3977,7 +3996,8 @@
                             "F_arg_c_call": "get_ptr",
                             "F_arguments": "get_ptr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "get_ptr": {
@@ -4548,7 +4568,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "abstract1(\tinput,\t get_abs)",
@@ -4586,7 +4607,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "get_abs": {

@@ -602,7 +602,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -643,7 +644,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "Class1"
                                 }
                             }
                         },
@@ -732,7 +734,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->check_length(\t)",
@@ -769,7 +772,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -929,7 +933,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 }
                             },
                             "length": {
@@ -1086,7 +1091,8 @@
                                     "fc_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             },
                             "length": {
@@ -1246,7 +1252,8 @@
                                     "fc_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             },
                             "length": {
@@ -1405,7 +1412,8 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow*_this"
+                                    "stmt_name": "c_function_shadow*_this",
+                                    "typemap_name": "Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->declare(\tflag)",
@@ -1442,7 +1450,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow*_this"
+                                    "stmt_name": "f_function_shadow*_this",
+                                    "typemap_name": "Class1"
                                 }
                             },
                             "flag": {
@@ -1700,7 +1709,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow*_this"
+                                    "stmt_name": "c_function_shadow*_this",
+                                    "typemap_name": "Class1"
                                 }
                             },
                             "flag": {
@@ -1904,7 +1914,8 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow*_this"
+                                    "stmt_name": "f_function_shadow*_this",
+                                    "typemap_name": "Class1"
                                 }
                             },
                             "flag": {
@@ -2111,7 +2122,8 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow*_this"
+                                    "stmt_name": "f_function_shadow*_this",
+                                    "typemap_name": "Class1"
                                 }
                             },
                             "flag": {
@@ -2269,7 +2281,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -2874,7 +2887,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool"
+                            "stmt_name": "c_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtf": {
                             "C_call_function": "defaultPtrIsNULL(\t)",
@@ -2910,7 +2924,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         }
                     }
                 },
@@ -3056,7 +3071,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool"
+                            "stmt_name": "c_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtf": {
                             "C_call_function": "defaultPtrIsNULL(\tdata)",
@@ -3094,7 +3110,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3363,7 +3380,8 @@
                             "C_prototype": "int in1,\t int * out1,\t int * out2",
                             "C_return_type": "void",
                             "F_C_name": "c_default_args_in_out_0",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
@@ -3378,7 +3396,8 @@
                             "F_arg_c_call": "in1,\t out1,\t out2",
                             "F_arguments": "in1,\t out1,\t out2",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in1": {
@@ -3768,7 +3787,8 @@
                             "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                             "C_return_type": "void",
                             "F_C_name": "c_default_args_in_out_1",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
@@ -3783,7 +3803,8 @@
                             "F_arg_c_call": "in1,\t out1,\t out2,\t SHT_flag_cxx",
                             "F_arguments": "in1,\t out1,\t out2,\t flag",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "flag": {
@@ -4228,7 +4249,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         }
                     },
                     "idx": {
@@ -4402,7 +4424,8 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy",
+                            "typemap_name": "std::string"
                         }
                     },
                     "idx": {
@@ -4581,7 +4604,8 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy",
+                            "typemap_name": "std::string"
                         }
                     },
                     "idx": {
@@ -4762,7 +4786,8 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct*_cdesc_pointer"
+                            "stmt_name": "f_getter_struct*_cdesc_pointer",
+                            "typemap_name": "nested"
                         }
                     },
                     "SH_this": {
@@ -4928,7 +4953,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {
@@ -5166,7 +5192,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct**_cdesc_raw"
+                            "stmt_name": "f_getter_struct**_cdesc_raw",
+                            "typemap_name": "nested"
                         }
                     },
                     "SH_this": {
@@ -5338,7 +5365,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {
@@ -5577,7 +5605,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_getter_struct*_cdesc_pointer"
+                            "stmt_name": "f_getter_struct*_cdesc_pointer",
+                            "typemap_name": "nested"
                         }
                     },
                     "SH_this": {
@@ -5746,7 +5775,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {
@@ -6053,7 +6083,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReference(\t*arg)",
@@ -6091,7 +6122,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -6314,7 +6346,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
@@ -6352,7 +6385,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -6561,7 +6595,8 @@
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
                                     "F_C_name": "c_pass_struct_by_reference_inout",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
@@ -6576,7 +6611,8 @@
                                     "F_arg_c_call": "arg",
                                     "F_arguments": "arg",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "arg": {
@@ -6769,7 +6805,8 @@
                                     "C_prototype": "CXX_cstruct1 * arg",
                                     "C_return_type": "void",
                                     "F_C_name": "c_pass_struct_by_reference_out",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
@@ -6784,7 +6821,8 @@
                                     "F_arg_c_call": "arg",
                                     "F_arguments": "arg",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "arg": {

@@ -154,7 +154,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "forward::Class2"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -195,7 +196,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "forward::Class2"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "FOR_Class2 *",
@@ -315,7 +317,8 @@
                                     "C_prototype": "FOR_Class2 * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_class2_dtor",
-                                    "stmt_name": "c_dtor"
+                                    "stmt_name": "c_dtor",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->dtor(\t)",
@@ -330,7 +333,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_dtor"
+                                    "stmt_name": "f_dtor",
+                                    "typemap_name": "void"
                                 },
                                 "fmtl": {
                                     "stmt": "lua_dtor"
@@ -470,7 +474,8 @@
                                     "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
                                     "C_return_type": "void",
                                     "F_C_name": "c_class2_func1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->func1(\tSHCXX_arg)",
@@ -485,7 +490,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
                                     "F_arguments": "obj,\t arg",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtl": {
                                     "stmt": "lua_subroutine"
@@ -712,7 +718,8 @@
                                     "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
                                     "C_return_type": "void",
                                     "F_C_name": "c_class2_accept_class3",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->acceptClass3(\tSHCXX_arg)",
@@ -727,7 +734,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
                                     "F_arguments": "obj,\t arg",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtl": {
                                     "stmt": "lua_subroutine"
@@ -1003,7 +1011,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "forward::passStruct1(\targ)",
@@ -1041,7 +1050,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {

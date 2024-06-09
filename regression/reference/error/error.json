@@ -93,7 +93,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -204,7 +205,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -337,7 +339,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -448,7 +451,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -581,7 +585,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -692,7 +697,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -980,7 +986,8 @@
                             "F_C_arguments": "",
                             "F_C_name": "c_bad_fstatements",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "BadFstatements(\t)",
@@ -995,7 +1002,8 @@
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -1173,7 +1181,8 @@
                             "F_C_arguments": "data",
                             "F_C_name": "c_assumed_rank",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1325,7 +1334,8 @@
                             "F_arguments": "data",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1464,7 +1474,8 @@
                             "F_arguments": "data",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1605,7 +1616,8 @@
                             "F_arguments": "data",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {

@@ -200,7 +200,8 @@
                             "F_arg_c_call": "incr1",
                             "F_arguments": "incr1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1": {
@@ -432,7 +433,8 @@
                             "F_arg_c_call": "incr1_wrap",
                             "F_arguments": "incr1_wrap",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1_wrap": {
@@ -671,7 +673,8 @@
                             "F_arg_c_call": "incr1_external",
                             "F_arguments": "incr1_external",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1_external": {
@@ -913,7 +916,8 @@
                             "F_arg_c_call": "incr1_funptr",
                             "F_arguments": "incr1_funptr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr1_funptr": {
@@ -1084,7 +1088,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -1319,7 +1324,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -1555,7 +1561,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -1910,7 +1917,8 @@
                             "F_arg_c_call": "type,\t in,\t incr3",
                             "F_arguments": "type,\t in,\t incr3",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -2473,7 +2481,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "actor": {
@@ -2782,7 +2791,8 @@
                             "F_arg_c_call": "get_ptr",
                             "F_arguments": "get_ptr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "get_ptr": {
@@ -3209,7 +3219,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "get_abs": {

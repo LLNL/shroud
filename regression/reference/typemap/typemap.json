@@ -206,7 +206,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool"
+                            "stmt_name": "c_function_bool",
+                            "typemap_name": "bool"
                         }
                     },
                     "i1": {
@@ -408,7 +409,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         }
                     },
                     "i1": {
@@ -616,7 +618,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         }
                     },
                     "i1": {
@@ -795,7 +798,8 @@
                             "F_C_arguments": "i1",
                             "F_C_name": "c_pass_index2",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "i1": {
@@ -914,7 +918,8 @@
                             "F_arg_c_call": "int(i1, INDEXTYPE)",
                             "F_arguments": "i1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "i1": {
@@ -1037,7 +1042,8 @@
                             "F_arg_c_call": "int(i1, INDEXTYPE)",
                             "F_arguments": "i1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "i1": {
@@ -1186,7 +1192,8 @@
                             "F_C_arguments": "f1",
                             "F_C_name": "c_pass_float",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "f1": {
@@ -1305,7 +1312,8 @@
                             "F_arg_c_call": "real(f1, FLOATTYPE)",
                             "F_arguments": "f1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "f1": {
@@ -1428,7 +1436,8 @@
                             "F_arg_c_call": "real(f1, FLOATTYPE)",
                             "F_arguments": "f1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "f1": {

@@ -125,7 +125,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "LastFunctionCalled(\t)",
@@ -177,7 +178,8 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable",
+                            "typemap_name": "std::string"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -270,7 +272,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "c_one",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "One(\t)",
@@ -283,7 +286,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -735,7 +739,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_one",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer::One(\t)",
@@ -748,7 +753,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },

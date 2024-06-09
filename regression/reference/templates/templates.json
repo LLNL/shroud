@@ -309,7 +309,8 @@
                                     "C_prototype": "TEM_user_int * self,\t int arg1,\t double arg2",
                                     "C_return_type": "void",
                                     "F_C_name": "c_user_int_nested_double",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->nested<double>(\targ1,\t arg2)",
@@ -324,7 +325,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t arg1,\t arg2",
                                     "F_arguments": "obj,\t arg1,\t arg2",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "arg1": {
@@ -616,7 +618,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "3",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "structAsClass_int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -657,7 +660,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "3",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "structAsClass_int"
                                 }
                             }
                         },
@@ -757,7 +761,8 @@
                                     "C_prototype": "TEM_structAsClass_int * self,\t int n",
                                     "C_return_type": "void",
                                     "F_C_name": "c_struct_as_class_int_set_npts",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_npts(\tn)",
@@ -772,7 +777,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "n": {
@@ -907,7 +913,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_npts(\t)",
@@ -944,7 +951,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1106,7 +1114,8 @@
                                     "C_prototype": "TEM_structAsClass_int * self,\t int v",
                                     "C_return_type": "void",
                                     "F_C_name": "c_struct_as_class_int_set_value",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_value(\tv)",
@@ -1121,7 +1130,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t v",
                                     "F_arguments": "obj,\t v",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "v": {
@@ -1299,7 +1309,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_value(\t)",
@@ -1336,7 +1347,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1498,7 +1510,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "4",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "structAsClass_double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -1539,7 +1552,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "4",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "structAsClass_double"
                                 }
                             }
                         },
@@ -1639,7 +1653,8 @@
                                     "C_prototype": "TEM_structAsClass_double * self,\t int n",
                                     "C_return_type": "void",
                                     "F_C_name": "c_struct_as_class_double_set_npts",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_npts(\tn)",
@@ -1654,7 +1669,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "n": {
@@ -1789,7 +1805,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_npts(\t)",
@@ -1826,7 +1843,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1988,7 +2006,8 @@
                                     "C_prototype": "TEM_structAsClass_double * self,\t double v",
                                     "C_return_type": "void",
                                     "F_C_name": "c_struct_as_class_double_set_value",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->set_value(\tv)",
@@ -2003,7 +2022,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t v",
                                     "F_arguments": "obj,\t v",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "v": {
@@ -2181,7 +2201,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_value(\t)",
@@ -2218,7 +2239,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "double"
                                 }
                             }
                         },
@@ -2403,7 +2425,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "user_int"
                         },
                         "fmtf": {
                             "C_call_function": "returnUserType(\t)",
@@ -2451,7 +2474,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "user_int"
                         }
                     }
                 },
@@ -2769,7 +2793,8 @@
                             "C_prototype": "int arg1,\t long arg2",
                             "C_return_type": "void",
                             "F_C_name": "c_function_tu_0",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<int, long>(\targ1,\t arg2)",
@@ -2784,7 +2809,8 @@
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -3130,7 +3156,8 @@
                             "C_prototype": "float arg1,\t double arg2",
                             "C_return_type": "void",
                             "F_C_name": "c_function_tu_1",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "FunctionTU<float, double>(\targ1,\t arg2)",
@@ -3145,7 +3172,8 @@
                             "F_arg_c_call": "arg1,\t arg2",
                             "F_arguments": "arg1,\t arg2",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -3484,7 +3512,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker1>(\t)",
@@ -3520,7 +3549,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3670,7 +3700,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "UseImplWorker<internal::ImplWorker2>(\t)",
@@ -3706,7 +3737,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3835,7 +3867,8 @@
                                             "f_local_ptr": "SHT_prv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "c_ctor_shadow_capptr"
+                                            "stmt_name": "c_ctor_shadow_capptr",
+                                            "typemap_name": "std::vector_int"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->ctor(\t)",
@@ -3876,7 +3909,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "1",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "f_ctor_shadow_capptr"
+                                            "stmt_name": "f_ctor_shadow_capptr",
+                                            "typemap_name": "std::vector_int"
                                         },
                                         "fmtpy": {
                                             "PY_build_format": "O",
@@ -3978,7 +4012,8 @@
                                             "C_prototype": "TEM_vector_int * self",
                                             "C_return_type": "void",
                                             "F_C_name": "c_vector_int_dtor",
-                                            "stmt_name": "c_dtor"
+                                            "stmt_name": "c_dtor",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->dtor(\t)",
@@ -3993,7 +4028,8 @@
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_dtor"
+                                            "stmt_name": "f_dtor",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -4182,7 +4218,8 @@
                                             "C_prototype": "TEM_vector_int * self,\t const int * value",
                                             "C_return_type": "void",
                                             "F_C_name": "c_vector_int_push_back",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->push_back(\t*value)",
@@ -4197,7 +4234,8 @@
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     },
                                     "value": {
@@ -4479,7 +4517,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "c_function_native&"
+                                            "stmt_name": "c_function_native&",
+                                            "typemap_name": "int"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->at(\tn)",
@@ -4519,7 +4558,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "f_function_native&_pointer"
+                                            "stmt_name": "f_function_native&_pointer",
+                                            "typemap_name": "int"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -4804,7 +4844,8 @@
                                             "f_local_ptr": "SHT_prv",
                                             "idtor": "2",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "c_ctor_shadow_capptr"
+                                            "stmt_name": "c_ctor_shadow_capptr",
+                                            "typemap_name": "std::vector_double"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->ctor(\t)",
@@ -4845,7 +4886,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "2",
                                             "sh_type": "SH_TYPE_OTHER",
-                                            "stmt_name": "f_ctor_shadow_capptr"
+                                            "stmt_name": "f_ctor_shadow_capptr",
+                                            "typemap_name": "std::vector_double"
                                         },
                                         "fmtpy": {
                                             "PY_build_format": "O",
@@ -4947,7 +4989,8 @@
                                             "C_prototype": "TEM_vector_double * self",
                                             "C_return_type": "void",
                                             "F_C_name": "c_vector_double_dtor",
-                                            "stmt_name": "c_dtor"
+                                            "stmt_name": "c_dtor",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->dtor(\t)",
@@ -4962,7 +5005,8 @@
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_dtor"
+                                            "stmt_name": "f_dtor",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -5151,7 +5195,8 @@
                                             "C_prototype": "TEM_vector_double * self,\t const double * value",
                                             "C_return_type": "void",
                                             "F_C_name": "c_vector_double_push_back",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->push_back(\t*value)",
@@ -5166,7 +5211,8 @@
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     },
                                     "value": {
@@ -5448,7 +5494,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "c_function_native&"
+                                            "stmt_name": "c_function_native&",
+                                            "typemap_name": "double"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->at(\tn)",
@@ -5488,7 +5535,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
-                                            "stmt_name": "f_function_native&_pointer"
+                                            "stmt_name": "f_function_native&_pointer",
+                                            "typemap_name": "double"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",

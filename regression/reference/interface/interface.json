@@ -63,7 +63,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -198,7 +199,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "double"
                         }
                     },
                     "arg1": {

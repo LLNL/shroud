@@ -330,7 +330,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -533,7 +534,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -703,7 +705,8 @@
                             "F_arguments": "out",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "out": {
@@ -857,7 +860,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "Color"
                         }
                     },
                     "inout": {

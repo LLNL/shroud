@@ -87,7 +87,8 @@
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
                             "F_C_name": "c_intargs_in",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -196,7 +197,8 @@
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
                             "F_C_name": "c_intargs_inout",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -305,7 +307,8 @@
                             "C_prototype": "int * arg",
                             "C_return_type": "void",
                             "F_C_name": "c_intargs_out",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -470,7 +473,8 @@
                             "C_prototype": "const int argin,\t int * arginout,\t int * argout",
                             "C_return_type": "void",
                             "F_C_name": "c_intargs",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "argin": {
@@ -710,7 +714,8 @@
                             "C_prototype": "double * in,\t double * out,\t int sizein",
                             "C_return_type": "void",
                             "F_C_name": "c_cos_doubles",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -952,7 +957,8 @@
                             "C_prototype": "double * in,\t int * out,\t int sizein",
                             "C_return_type": "void",
                             "F_C_name": "c_truncate_to_int",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -1155,7 +1161,8 @@
                             "C_prototype": "int * nvalues,\t int * values",
                             "C_return_type": "void",
                             "F_C_name": "c_get_values",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nvalues": {
@@ -1348,7 +1355,8 @@
                             "C_prototype": "int * arg1,\t int * arg2",
                             "C_return_type": "void",
                             "F_C_name": "c_get_values2",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -1520,7 +1528,8 @@
                             "C_prototype": "int nvar,\t int * values",
                             "C_return_type": "void",
                             "F_C_name": "c_iota_dimension",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nvar": {
@@ -1714,7 +1723,8 @@
                             "C_prototype": "int len,\t const int * values,\t int * result",
                             "C_return_type": "void",
                             "F_C_name": "c_sum",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "len": {
@@ -1885,7 +1895,8 @@
                             "C_prototype": "int * out",
                             "C_return_type": "void",
                             "F_C_name": "c_fill_int_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "out": {
@@ -2028,7 +2039,8 @@
                             "C_prototype": "int * array,\t int sizein",
                             "C_return_type": "void",
                             "F_C_name": "c_increment_int_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "array": {
@@ -2188,7 +2200,8 @@
                             "C_prototype": "double * x,\t int x_length",
                             "C_return_type": "void",
                             "F_C_name": "c_fill_with_zeros",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "x": {
@@ -2362,7 +2375,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arr": {
@@ -2515,7 +2529,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "names": {
@@ -2618,7 +2633,8 @@
                             "C_prototype": "int value",
                             "C_return_type": "void",
                             "F_C_name": "c_set_global_int",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "value": {
@@ -2712,7 +2728,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -2803,7 +2820,8 @@
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_scalar",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -2931,7 +2949,8 @@
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_fixed_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3091,7 +3110,8 @@
                             "C_prototype": "int * * count,\t int * ncount",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_dynamic_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3246,7 +3266,8 @@
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_func_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3363,7 +3384,8 @@
                             "C_prototype": "const int * * nitems",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_const_scalar",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -3489,7 +3511,8 @@
                             "C_prototype": "const int * * count",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_fixed_const_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3647,7 +3670,8 @@
                             "C_prototype": "const int * * count,\t int * ncount",
                             "C_return_type": "void",
                             "F_C_name": "c_get_ptr_to_dynamic_const_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3788,7 +3812,8 @@
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
                             "F_C_name": "c_get_raw_ptr_to_scalar",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -3907,7 +3932,8 @@
                             "C_prototype": "int * * nitems",
                             "C_return_type": "void",
                             "F_C_name": "c_get_raw_ptr_to_scalar_force",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -4023,7 +4049,8 @@
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_name": "c_get_raw_ptr_to_fixed_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -4142,7 +4169,8 @@
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -4262,7 +4290,8 @@
                             "C_prototype": "int * * * arg",
                             "C_return_type": "void",
                             "F_C_name": "c_get_raw_ptr_to_int2d",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -4392,7 +4421,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -4526,7 +4556,8 @@
                             "C_prototype": "const int * arg",
                             "C_return_type": "void",
                             "F_C_name": "c_dimension_in",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -4659,7 +4690,8 @@
                             "C_prototype": "int * * count",
                             "C_return_type": "void",
                             "F_C_name": "c_get_alloc_to_fixed_array",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -4782,7 +4814,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_function_void*"
+                            "stmt_name": "c_function_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "flag": {
@@ -4905,7 +4938,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "c_function_void*"
+                            "stmt_name": "c_function_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "flag": {
@@ -5017,7 +5051,8 @@
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
                             "F_C_name": "c_fetch_void_ptr",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "addr": {
@@ -5132,7 +5167,8 @@
                             "C_prototype": "void **addr",
                             "C_return_type": "void",
                             "F_C_name": "c_update_void_ptr",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "addr": {
@@ -5262,7 +5298,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "addr": {
@@ -5358,7 +5395,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -5448,7 +5486,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -5522,7 +5561,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -5613,7 +5653,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -5689,7 +5730,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -5770,7 +5812,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -5880,7 +5923,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -5985,7 +6029,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native**"
+                            "stmt_name": "c_function_native**",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -6078,7 +6123,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native*"
+                            "stmt_name": "c_function_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },

@@ -676,7 +676,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_getter_native*_cdesc_pointer"
+                            "stmt_name": "f_getter_native*_cdesc_pointer",
+                            "typemap_name": "int"
                         }
                     },
                     "SH_this": {
@@ -845,7 +846,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {
@@ -1264,7 +1266,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer",
+                                    "typemap_name": "int"
                                 }
                             },
                             "SH_this": {
@@ -1433,7 +1436,8 @@
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "SH_this": {
@@ -1879,7 +1883,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer",
+                                    "typemap_name": "int"
                                 }
                             },
                             "SH_this": {
@@ -2048,7 +2053,8 @@
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "SH_this": {

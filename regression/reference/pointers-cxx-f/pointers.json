@@ -94,7 +94,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -219,7 +220,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -344,7 +346,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -525,7 +528,8 @@
                             "F_arguments": "argin,\t arginout,\t argout",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "argin": {
@@ -793,7 +797,8 @@
                             "F_arguments": "in,\t out",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -1070,7 +1075,8 @@
                             "F_arguments": "in,\t out",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -1308,7 +1314,8 @@
                             "F_arguments": "nvalues,\t values",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nvalues": {
@@ -1525,7 +1532,8 @@
                             "F_arguments": "arg1,\t arg2",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -1723,7 +1731,8 @@
                             "F_arguments": "nvar,\t values",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nvar": {
@@ -1941,7 +1950,8 @@
                             "F_arguments": "values,\t result",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "len": {
@@ -2145,7 +2155,8 @@
                             "F_arguments": "out",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "out": {
@@ -2306,7 +2317,8 @@
                             "F_arguments": "array",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "array": {
@@ -2493,7 +2505,8 @@
                             "F_arguments": "x",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "x": {
@@ -2704,7 +2717,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arr": {
@@ -2901,7 +2915,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "names": {
@@ -3030,7 +3045,8 @@
                             "F_arguments": "value",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "value": {
@@ -3149,7 +3165,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -3260,7 +3277,8 @@
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -3419,7 +3437,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3617,7 +3636,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3814,7 +3834,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -3968,7 +3989,8 @@
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -4125,7 +4147,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -4321,7 +4344,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -4495,7 +4519,8 @@
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -4631,7 +4656,8 @@
                             "F_arguments": "nitems",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nitems": {
@@ -4764,7 +4790,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -4900,7 +4927,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -5036,7 +5064,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -5192,7 +5221,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -5342,7 +5372,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -5506,7 +5537,8 @@
                             "F_arguments": "count",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -5672,7 +5704,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_function_void*"
+                            "stmt_name": "f_function_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "flag": {
@@ -5820,7 +5853,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_function_void*"
+                            "stmt_name": "f_function_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "flag": {
@@ -5948,7 +5982,8 @@
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "addr": {
@@ -6078,7 +6113,8 @@
                             "F_arguments": "addr",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "addr": {
@@ -6233,7 +6269,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "addr": {
@@ -6359,7 +6396,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_pointer"
+                            "stmt_name": "f_function_native*_pointer",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -6489,7 +6527,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_cdesc_pointer"
+                            "stmt_name": "f_function_native*_cdesc_pointer",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -6584,7 +6623,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_pointer"
+                            "stmt_name": "f_function_native*_pointer",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -6715,7 +6755,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_cdesc_pointer"
+                            "stmt_name": "f_function_native*_cdesc_pointer",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -6810,7 +6851,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_scalar"
+                            "stmt_name": "f_function_native*_scalar",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -6911,7 +6953,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_raw"
+                            "stmt_name": "f_function_native*_raw",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -7043,7 +7086,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_raw"
+                            "stmt_name": "f_function_native*_raw",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -7173,7 +7217,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native**"
+                            "stmt_name": "f_function_native**",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -7316,7 +7361,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native*_cdesc_allocatable"
+                            "stmt_name": "f_function_native*_cdesc_allocatable",
+                            "typemap_name": "int"
                         }
                     }
                 },

@@ -341,7 +341,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "convert_to_int(\tSHCXX_in)",
@@ -380,7 +381,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -622,7 +624,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_function_enum"
+                            "stmt_name": "c_function_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnum(\tSHCXX_in)",
@@ -665,7 +668,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -875,7 +879,8 @@
                             "F_C_arguments": "out",
                             "F_C_name": "c_return_enum_out_arg",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnumOutArg(\t&SHCXX_out)",
@@ -891,7 +896,8 @@
                             "F_arguments": "out",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "out": {
@@ -1079,7 +1085,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_function_enum"
+                            "stmt_name": "c_function_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtf": {
                             "C_call_function": "returnEnumInOutArg(\t&SHCXX_inout)",
@@ -1122,7 +1129,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "Color"
                         }
                     },
                     "inout": {

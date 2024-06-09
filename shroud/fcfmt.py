@@ -32,6 +32,7 @@ maplang = dict(f="ci_type", c="c_type")
 
 class FillFormat(object):
     """Loop over Nodes and fill fmt dictionaries.
+    Used for Fortran and C wrappers.
 
     Creates the nested dictionary structure:
     _fmtargs = {
@@ -109,7 +110,7 @@ class FillFormat(object):
 
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
-        fmt_result.stmt_name = result_stmt.name
+        set_share_function_format(node, fmt_result, bind_result)
         func_cursor.stmt = None
 
         # --- Loop over function parameters
@@ -831,6 +832,12 @@ class ToDimension(todict.PrintNode):
                 
 ######################################################################
 
+def set_share_function_format(node, fmt, bind):
+    meta = bind.meta
+
+    fmt.stmt_name = bind.stmt.name
+    fmt.typemap = node.ast.typemap
+    
 def set_f_arg_format(node, arg, fmt, bind):
     meta = bind.meta
 

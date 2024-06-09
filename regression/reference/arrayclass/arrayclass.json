@@ -93,7 +93,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "ArrayWrapper"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -134,7 +135,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "ArrayWrapper"
                                 },
                                 "fmtpy": {
                                     "PY_build_format": "O",
@@ -271,7 +273,8 @@
                                     "C_prototype": "ARR_ArrayWrapper * self,\t int size",
                                     "C_return_type": "void",
                                     "F_C_name": "c_ArrayWrapper_setSize",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->setSize(\tsize)",
@@ -286,7 +289,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t size",
                                     "F_arguments": "obj,\t size",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "size": {
@@ -448,7 +452,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getSize(\t)",
@@ -486,7 +491,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",
@@ -624,7 +630,8 @@
                                     "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
                                     "C_return_type": "void",
                                     "F_C_name": "c_ArrayWrapper_fillSize",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fillSize(\t*size)",
@@ -639,7 +646,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t size",
                                     "F_arguments": "obj,\t size",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "size": {
@@ -788,7 +796,8 @@
                                     "C_prototype": "ARR_ArrayWrapper * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_ArrayWrapper_allocate",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->allocate(\t)",
@@ -802,7 +811,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -955,7 +965,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*"
+                                    "stmt_name": "c_function_native*",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArray(\t)",
@@ -1005,7 +1016,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1182,7 +1194,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*"
+                                    "stmt_name": "c_function_native*",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConst(\t)",
@@ -1232,7 +1245,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1408,7 +1422,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*"
+                                    "stmt_name": "c_function_native*",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayC(\t)",
@@ -1458,7 +1473,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1636,7 +1652,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*"
+                                    "stmt_name": "c_function_native*",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getArrayConstC(\t)",
@@ -1686,7 +1703,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer"
+                                    "stmt_name": "f_function_native*_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "self->obj->getSize()",
@@ -1912,7 +1930,8 @@
                                     "F_C_arguments": "self,\t array,\t isize",
                                     "F_C_name": "c_ArrayWrapper_fetchArrayPtr",
                                     "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchArrayPtr(\t&array,\t &isize)",
@@ -1928,7 +1947,8 @@
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "array": {
@@ -2301,7 +2321,8 @@
                                     "F_C_arguments": "self,\t array,\t isize",
                                     "F_C_name": "c_ArrayWrapper_fetchArrayRef",
                                     "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchArrayRef(\tarray,\t isize)",
@@ -2317,7 +2338,8 @@
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "array": {
@@ -2691,7 +2713,8 @@
                                     "F_C_arguments": "self,\t array,\t isize",
                                     "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst",
                                     "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchArrayPtrConst(\t&array,\t &isize)",
@@ -2707,7 +2730,8 @@
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "array": {
@@ -3081,7 +3105,8 @@
                                     "F_C_arguments": "self,\t array,\t isize",
                                     "F_C_name": "c_ArrayWrapper_fetchArrayRefConst",
                                     "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchArrayRefConst(\tarray,\t isize)",
@@ -3097,7 +3122,8 @@
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
                                     "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "array": {
@@ -3391,7 +3417,8 @@
                                     "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
                                     "C_return_type": "void",
                                     "F_C_name": "c_ArrayWrapper_fetchVoidPtr",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchVoidPtr(\tarray)",
@@ -3406,7 +3433,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t array",
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "array": {
@@ -3599,7 +3627,8 @@
                                     "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
                                     "C_return_type": "void",
                                     "F_C_name": "c_ArrayWrapper_fetchVoidRef",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->fetchVoidRef(\t*array)",
@@ -3614,7 +3643,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t array",
                                     "F_arguments": "obj,\t array",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "array": {
@@ -3818,7 +3848,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_function_bool"
+                                    "stmt_name": "c_function_bool",
+                                    "typemap_name": "bool"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->checkPtr(\tarray)",
@@ -3856,7 +3887,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_function_bool"
+                                    "stmt_name": "f_function_bool",
+                                    "typemap_name": "bool"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PyBool_Type",
@@ -4035,7 +4067,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->sumArray(\t)",
@@ -4072,7 +4105,8 @@
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "c_deref": "",

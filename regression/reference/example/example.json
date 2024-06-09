@@ -121,7 +121,8 @@
                                                     "f_local_ptr": "SHT_prv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_ctor_shadow_capptr"
+                                                    "stmt_name": "c_ctor_shadow_capptr",
+                                                    "typemap_name": "example::nested::ExClass1"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t)",
@@ -162,7 +163,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_ctor_shadow_capptr"
+                                                    "stmt_name": "f_ctor_shadow_capptr",
+                                                    "typemap_name": "example::nested::ExClass1"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass1 *",
@@ -371,7 +373,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_ctor_shadow_capptr"
+                                                    "stmt_name": "c_ctor_shadow_capptr",
+                                                    "typemap_name": "example::nested::ExClass1"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
@@ -414,7 +417,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "1",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_ctor_shadow_capptr"
+                                                    "stmt_name": "f_ctor_shadow_capptr",
+                                                    "typemap_name": "example::nested::ExClass1"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass1 *",
@@ -630,7 +634,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class1_dtor",
-                                                    "stmt_name": "c_dtor"
+                                                    "stmt_name": "c_dtor",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->dtor(\t)",
@@ -645,7 +650,8 @@
                                                     "F_arg_c_call": "obj%cxxmem",
                                                     "F_arguments": "obj",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_dtor"
+                                                    "stmt_name": "f_dtor",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_dtor"
@@ -795,7 +801,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->incrementCount(\tincr)",
@@ -833,7 +840,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -1078,7 +1086,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string&"
+                                                    "stmt_name": "c_function_string&",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getNameErrorCheck(\t)",
@@ -1130,7 +1139,8 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -1292,7 +1302,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string&"
+                                                    "stmt_name": "c_function_string&",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getNameArg(\t)",
@@ -1333,7 +1344,8 @@
                                                     "i_var_len": "nname",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string&_buf_arg"
+                                                    "stmt_name": "f_function_string&_buf_arg",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -1513,7 +1525,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
@@ -1551,7 +1564,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -1807,7 +1821,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "long"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue(\tvalue)",
@@ -1845,7 +1860,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_LONG",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "long"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -2097,7 +2113,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_BOOL",
-                                                    "stmt_name": "c_function_bool"
+                                                    "stmt_name": "c_function_bool",
+                                                    "typemap_name": "bool"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->hasAddr(\tin)",
@@ -2135,7 +2152,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_BOOL",
-                                                    "stmt_name": "f_function_bool"
+                                                    "stmt_name": "f_function_bool",
+                                                    "typemap_name": "bool"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -2336,7 +2354,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass1 * self",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class1_splicer_special",
-                                                    "stmt_name": "c_subroutine"
+                                                    "stmt_name": "c_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->SplicerSpecial(\t)",
@@ -2350,7 +2369,8 @@
                                                     "F_arg_c_call": "obj%cxxmem",
                                                     "F_arguments": "obj",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_subroutine"
+                                                    "stmt_name": "f_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_subroutine"
@@ -2628,7 +2648,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_ctor_shadow_capptr"
+                                                    "stmt_name": "c_ctor_shadow_capptr",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->ctor(\t&SHCXX_name)",
@@ -2671,7 +2692,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_ctor_shadow_capptr"
+                                                    "stmt_name": "f_ctor_shadow_capptr",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass2 *",
@@ -2888,7 +2910,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class2_dtor",
-                                                    "stmt_name": "c_dtor"
+                                                    "stmt_name": "c_dtor",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->dtor(\t)",
@@ -2903,7 +2926,8 @@
                                                     "F_arg_c_call": "obj%cxxmem",
                                                     "F_arguments": "obj",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_dtor"
+                                                    "stmt_name": "f_dtor",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_dtor"
@@ -3042,7 +3066,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string&"
+                                                    "stmt_name": "c_function_string&",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName(\t)",
@@ -3087,7 +3112,8 @@
                                                     "i_var_len": "SHT_rv_len",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string&_buf_copy"
+                                                    "stmt_name": "f_function_string&_buf_copy",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -3251,7 +3277,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string&"
+                                                    "stmt_name": "c_function_string&",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName2(\t)",
@@ -3303,7 +3330,8 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "const char *",
@@ -3468,7 +3496,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string&"
+                                                    "stmt_name": "c_function_string&",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName3(\t)",
@@ -3520,7 +3549,8 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "char *",
@@ -3683,7 +3713,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_string&"
+                                                    "stmt_name": "c_function_string&",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getName4(\t)",
@@ -3735,7 +3766,8 @@
                                                     "i_var_cdesc": "SHT_rv_cdesc",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_string&_cdesc_allocatable"
+                                                    "stmt_name": "f_function_string&_cdesc_allocatable",
+                                                    "typemap_name": "std::string"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "char *",
@@ -3875,7 +3907,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->GetNameLength(\t)",
@@ -3913,7 +3946,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -4094,7 +4128,8 @@
                                                     "f_local_ptr": "SHT_prv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_shadow*_capptr"
+                                                    "stmt_name": "c_function_shadow*_capptr",
+                                                    "typemap_name": "example::nested::ExClass1"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->get_class1(\tSHCXX_in)",
@@ -4134,7 +4169,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow*_capptr"
+                                                    "stmt_name": "f_function_shadow*_capptr",
+                                                    "typemap_name": "example::nested::ExClass1"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass1 *",
@@ -4386,7 +4422,8 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_shadow*_this"
+                                                    "stmt_name": "c_function_shadow*_this",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->declare(\tSHCXX_type)",
@@ -4423,7 +4460,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow*_this"
+                                                    "stmt_name": "f_function_shadow*_this",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 }
                                             },
                                             "type": {
@@ -4729,7 +4767,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "c_function_shadow*_this"
+                                                    "stmt_name": "c_function_shadow*_this",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_example_nested_ExClass2 *",
@@ -5039,7 +5078,8 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow*_this"
+                                                    "stmt_name": "f_function_shadow*_this",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 }
                                             },
                                             "len": {
@@ -5250,7 +5290,8 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_function_shadow*_this"
+                                                    "stmt_name": "f_function_shadow*_this",
+                                                    "typemap_name": "example::nested::ExClass2"
                                                 }
                                             },
                                             "len": {
@@ -5398,7 +5439,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass2 * self",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class2_destroyall",
-                                                    "stmt_name": "c_subroutine"
+                                                    "stmt_name": "c_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->destroyall(\t)",
@@ -5412,7 +5454,8 @@
                                                     "F_arg_c_call": "obj%cxxmem",
                                                     "F_arguments": "obj",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_subroutine"
+                                                    "stmt_name": "f_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_subroutine"
@@ -5524,7 +5567,8 @@
                                                     "cxx_var": "SHCXX_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "TypeID"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getTypeID(\t)",
@@ -5566,7 +5610,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "TypeID"
                                                 },
                                                 "fmtl": {
                                                     "c_abstract_decl": "AA_TypeID",
@@ -5893,7 +5938,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class2_set_value_int",
-                                                    "stmt_name": "c_subroutine"
+                                                    "stmt_name": "c_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<int>(\tvalue)",
@@ -5908,7 +5954,8 @@
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_subroutine"
+                                                    "stmt_name": "f_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_subroutine"
@@ -6186,7 +6233,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class2_set_value_long",
-                                                    "stmt_name": "c_subroutine"
+                                                    "stmt_name": "c_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<long>(\tvalue)",
@@ -6201,7 +6249,8 @@
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_subroutine"
+                                                    "stmt_name": "f_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_subroutine"
@@ -6476,7 +6525,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class2_set_value_float",
-                                                    "stmt_name": "c_subroutine"
+                                                    "stmt_name": "c_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<float>(\tvalue)",
@@ -6491,7 +6541,8 @@
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_subroutine"
+                                                    "stmt_name": "f_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_subroutine"
@@ -6772,7 +6823,8 @@
                                                     "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
                                                     "C_return_type": "void",
                                                     "F_C_name": "c_ex_class2_set_value_double",
-                                                    "stmt_name": "c_subroutine"
+                                                    "stmt_name": "c_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->setValue<double>(\tvalue)",
@@ -6787,7 +6839,8 @@
                                                     "F_arg_c_call": "obj%cxxmem,\t value",
                                                     "F_arguments": "obj,\t value",
                                                     "F_subprogram": "subroutine",
-                                                    "stmt_name": "f_subroutine"
+                                                    "stmt_name": "f_subroutine",
+                                                    "typemap_name": "void"
                                                 },
                                                 "fmtl": {
                                                     "stmt": "lua_subroutine"
@@ -7079,7 +7132,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue<int>(\t)",
@@ -7116,7 +7170,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_INT",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "int"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -7288,7 +7343,8 @@
                                                     "cxx_var": "SHC_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
-                                                    "stmt_name": "c_function_native"
+                                                    "stmt_name": "c_function_native",
+                                                    "typemap_name": "double"
                                                 },
                                                 "fmtf": {
                                                     "C_call_function": "SH_this->getValue<double>(\t)",
@@ -7325,7 +7381,8 @@
                                                     "i_var": "SHT_rv",
                                                     "idtor": "0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
-                                                    "stmt_name": "f_function_native"
+                                                    "stmt_name": "f_function_native",
+                                                    "typemap_name": "double"
                                                 },
                                                 "fmtl": {
                                                     "c_var": "SHCXX_rv",
@@ -7508,7 +7565,8 @@
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_name": "c_local_function1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::local_function1(\t)",
@@ -7521,7 +7579,8 @@
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -7696,7 +7755,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "c_function_bool"
+                                            "stmt_name": "c_function_bool",
+                                            "typemap_name": "bool"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::isNameValid(\tSHCXX_name)",
@@ -7735,7 +7795,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "f_function_bool"
+                                            "stmt_name": "f_function_bool",
+                                            "typemap_name": "bool"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -7952,7 +8013,8 @@
                                             "cxx_var": "SHC_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "c_function_bool"
+                                            "stmt_name": "c_function_bool",
+                                            "typemap_name": "bool"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::isInitialized(\t)",
@@ -7988,7 +8050,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_BOOL",
-                                            "stmt_name": "f_function_bool"
+                                            "stmt_name": "f_function_bool",
+                                            "typemap_name": "bool"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -8158,7 +8221,8 @@
                                             "F_C_arguments": "name",
                                             "F_C_name": "c_test_names",
                                             "F_C_subprogram": "subroutine",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_names(\tSHCXX_name)",
@@ -8174,7 +8238,8 @@
                                             "F_arguments": "name",
                                             "F_subprogram": "subroutine",
                                             "f_c_suffix": "_bufferify",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -8455,7 +8520,8 @@
                                             "F_C_arguments": "name,\t flag",
                                             "F_C_name": "c_test_names_flag",
                                             "F_C_subprogram": "subroutine",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_names(\tSHCXX_name,\t flag)",
@@ -8471,7 +8537,8 @@
                                             "F_arguments": "name,\t flag",
                                             "F_subprogram": "subroutine",
                                             "f_c_suffix": "_bufferify",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -8726,7 +8793,8 @@
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_name": "c_testoptional_0",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testoptional(\t)",
@@ -8739,7 +8807,8 @@
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -8846,7 +8915,8 @@
                                             "C_prototype": "int i",
                                             "C_return_type": "void",
                                             "F_C_name": "c_testoptional_1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testoptional(\ti)",
@@ -8861,7 +8931,8 @@
                                             "F_arg_c_call": "i",
                                             "F_arguments": "i",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     },
                                     "i": {
@@ -9093,7 +9164,8 @@
                                             "C_prototype": "int i,\t long j",
                                             "C_return_type": "void",
                                             "F_C_name": "c_testoptional_2",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testoptional(\ti,\t j)",
@@ -9108,7 +9180,8 @@
                                             "F_arg_c_call": "i,\t j",
                                             "F_arguments": "i,\t j",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -9375,7 +9448,8 @@
                                             "cxx_var": "SHC_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt_name": "c_function_native"
+                                            "stmt_name": "c_function_native",
+                                            "typemap_name": "size_t"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::test_size_t(\t)",
@@ -9411,7 +9485,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt_name": "f_function_native"
+                                            "stmt_name": "f_function_native",
+                                            "typemap_name": "size_t"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -9571,7 +9646,8 @@
                                             "C_prototype": "MPI_Fint comm",
                                             "C_return_type": "void",
                                             "F_C_name": "c_testmpi_mpi",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testmpi(\tSHCXX_comm)",
@@ -9586,7 +9662,8 @@
                                             "F_arg_c_call": "comm",
                                             "F_arguments": "comm",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -9775,7 +9852,8 @@
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_name": "c_testmpi_serial",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::testmpi(\t)",
@@ -9788,7 +9866,8 @@
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -10193,7 +10272,8 @@
                                             "C_prototype": "void ( * get)(\tvoid)",
                                             "C_return_type": "void",
                                             "F_C_name": "c_func_ptr1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr1(\tget)",
@@ -10208,7 +10288,8 @@
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -10725,7 +10806,8 @@
                                             "C_prototype": "double * ( * get)(\tvoid)",
                                             "C_return_type": "void",
                                             "F_C_name": "c_func_ptr2",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr2(\tget)",
@@ -10740,7 +10822,8 @@
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -11576,7 +11659,8 @@
                                             "C_prototype": "double ( * get)(\tint i,\t int)",
                                             "C_return_type": "void",
                                             "F_C_name": "c_func_ptr3",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr3(\tget)",
@@ -11591,7 +11675,8 @@
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -12158,7 +12243,8 @@
                                             "C_prototype": "double ( * get)(\tdouble,\t int)",
                                             "C_return_type": "void",
                                             "F_C_name": "c_func_ptr4",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr4(\tget)",
@@ -12173,7 +12259,8 @@
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     },
                                     "get": {
@@ -14332,7 +14419,8 @@
                                             "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "C_return_type": "void",
                                             "F_C_name": "c_func_ptr5",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::FuncPtr5(\tget)",
@@ -14347,7 +14435,8 @@
                                             "F_arg_c_call": "get",
                                             "F_arguments": "get",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -14971,7 +15060,8 @@
                                             "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
                                             "C_return_type": "void",
                                             "F_C_name": "c_verylongfunctionname1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::verylongfunctionname1(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
@@ -14986,7 +15076,8 @@
                                             "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "F_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"
@@ -16335,7 +16426,8 @@
                                             "cxx_var": "SHC_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "c_function_native"
+                                            "stmt_name": "c_function_native",
+                                            "typemap_name": "int"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::verylongfunctionname2(\tverylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
@@ -16373,7 +16465,8 @@
                                             "i_var": "SHT_rv",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "f_function_native"
+                                            "stmt_name": "f_function_native",
+                                            "typemap_name": "int"
                                         },
                                         "fmtl": {
                                             "c_var": "SHCXX_rv",
@@ -17499,7 +17592,8 @@
                                             "C_prototype": "double * in,\t double * out,\t int sizein",
                                             "C_return_type": "void",
                                             "F_C_name": "c_cos_doubles",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "example::nested::cos_doubles(\tin,\t out,\t sizein)",
@@ -17514,7 +17608,8 @@
                                             "F_arg_c_call": "in,\t out,\t SH_sizein",
                                             "F_arguments": "in,\t out",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtl": {
                                             "stmt": "lua_subroutine"

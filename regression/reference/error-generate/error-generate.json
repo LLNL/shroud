@@ -3128,7 +3128,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_mixin_unknown"
+                            "stmt_name": "f_mixin_unknown",
+                            "typemap_name": "int"
                         }
                     },
                     "SH_this": {
@@ -3297,7 +3298,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {

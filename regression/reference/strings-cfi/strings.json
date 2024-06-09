@@ -71,7 +71,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "c_init_test",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "init_test(\t)",
@@ -84,7 +85,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -186,7 +188,8 @@
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "F_C_name": "c_pass_char",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "passChar(\tstatus)",
@@ -201,7 +204,8 @@
                             "F_arg_c_call": "status",
                             "F_arguments": "status",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "status": {
@@ -356,7 +360,8 @@
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "F_C_name": "c_pass_char_force",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "passCharForce(\tstatus)",
@@ -371,7 +376,8 @@
                             "F_arg_c_call": "status",
                             "F_arguments": "status",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "status": {
@@ -502,7 +508,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char"
+                            "stmt_name": "c_function_char",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "returnChar(\t)",
@@ -537,7 +544,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char"
+                            "stmt_name": "f_function_char",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -693,7 +701,8 @@
                             "F_C_arguments": "dest,\t src",
                             "F_C_name": "c_pass_char_ptr",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "passCharPtr(\tSHCXX_dest,\t SHCXX_src)",
@@ -709,7 +718,8 @@
                             "F_arguments": "dest,\t src",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "dest": {
@@ -944,7 +954,8 @@
                             "F_C_arguments": "s",
                             "F_C_name": "c_pass_char_ptr_in_out",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "passCharPtrInOut(\tSHCXX_s)",
@@ -960,7 +971,8 @@
                             "F_arguments": "s",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "s": {
@@ -1123,7 +1135,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char*"
+                            "stmt_name": "c_function_char*",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr1(\t)",
@@ -1162,7 +1175,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char*_cfi_allocatable"
+                            "stmt_name": "f_function_char*_cfi_allocatable",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1275,7 +1289,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char*"
+                            "stmt_name": "c_function_char*",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr2(\t)",
@@ -1317,7 +1332,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char*_cfi_copy"
+                            "stmt_name": "f_function_char*_cfi_copy",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1428,7 +1444,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char*"
+                            "stmt_name": "c_function_char*",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr3(\t)",
@@ -1466,7 +1483,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char*_cfi_arg"
+                            "stmt_name": "f_function_char*_cfi_arg",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1562,7 +1580,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char*"
+                            "stmt_name": "c_function_char*",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr4(\t)",
@@ -1598,7 +1617,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char*_raw"
+                            "stmt_name": "f_function_char*_raw",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1704,7 +1724,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char*"
+                            "stmt_name": "c_function_char*",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "getCharPtr5(\t)",
@@ -1753,7 +1774,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char*_cfi_pointer"
+                            "stmt_name": "f_function_char*_cfi_pointer",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1854,7 +1876,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string"
+                            "stmt_name": "c_function_string",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringResult(\t)",
@@ -1895,7 +1918,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_cfi_allocatable"
+                            "stmt_name": "f_function_string_cfi_allocatable",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2006,7 +2030,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string"
+                            "stmt_name": "c_function_string",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringLen(\t)",
@@ -2050,7 +2075,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_cfi_copy"
+                            "stmt_name": "f_function_string_cfi_copy",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2159,7 +2185,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string"
+                            "stmt_name": "c_function_string",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringAsArg(\t)",
@@ -2199,7 +2226,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_cfi_arg"
+                            "stmt_name": "f_function_string_cfi_arg",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2297,7 +2325,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string"
+                            "stmt_name": "c_function_string",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringAlloc(\t)",
@@ -2338,7 +2367,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string_cfi_allocatable"
+                            "stmt_name": "f_function_string_cfi_allocatable",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2444,7 +2474,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefPure(\t)",
@@ -2485,7 +2516,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cfi_allocatable"
+                            "stmt_name": "f_function_string&_cfi_allocatable",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2601,7 +2633,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefLen(\t)",
@@ -2645,7 +2678,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cfi_copy"
+                            "stmt_name": "f_function_string&_cfi_copy",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2759,7 +2793,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefAsArg(\t)",
@@ -2799,7 +2834,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cfi_arg"
+                            "stmt_name": "f_function_string&_cfi_arg",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -2915,7 +2951,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefLenEmpty(\t)",
@@ -2959,7 +2996,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cfi_copy"
+                            "stmt_name": "f_function_string&_cfi_copy",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3060,7 +3098,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringRefAlloc(\t)",
@@ -3101,7 +3140,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cfi_allocatable"
+                            "stmt_name": "f_function_string&_cfi_allocatable",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3224,7 +3264,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*"
+                            "stmt_name": "c_function_string*",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrLen(\t)",
@@ -3268,7 +3309,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cfi_copy"
+                            "stmt_name": "f_function_string*_cfi_copy",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3375,7 +3417,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*_library"
+                            "stmt_name": "c_function_string*_library",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
@@ -3416,7 +3459,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cfi_allocatable_library"
+                            "stmt_name": "f_function_string*_cfi_allocatable_library",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3526,7 +3570,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*_caller"
+                            "stmt_name": "c_function_string*_caller",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
@@ -3567,7 +3612,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cfi_allocatable_caller"
+                            "stmt_name": "f_function_string*_cfi_allocatable_caller",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3681,7 +3727,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*_caller"
+                            "stmt_name": "c_function_string*_caller",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
@@ -3722,7 +3769,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cfi_allocatable_caller"
+                            "stmt_name": "f_function_string*_cfi_allocatable_caller",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3832,7 +3880,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*_library"
+                            "stmt_name": "c_function_string*_library",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrPointer(\t)",
@@ -3883,7 +3932,8 @@
                             "i_var_cfi": "SHT_rv_cfi",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cfi_pointer_library"
+                            "stmt_name": "f_function_string*_cfi_pointer_library",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -3997,7 +4047,8 @@
                             "F_C_arguments": "arg1",
                             "F_C_name": "c_accept_string_const_reference",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringConstReference(\tSHCXX_arg1)",
@@ -4013,7 +4064,8 @@
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -4189,7 +4241,8 @@
                             "F_C_arguments": "arg1",
                             "F_C_name": "c_accept_string_reference_out",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringReferenceOut(\tSHCXX_arg1)",
@@ -4205,7 +4258,8 @@
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -4379,7 +4433,8 @@
                             "F_C_arguments": "arg1",
                             "F_C_name": "c_accept_string_reference",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringReference(\tSHCXX_arg1)",
@@ -4395,7 +4450,8 @@
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -4569,7 +4625,8 @@
                             "F_C_arguments": "arg1",
                             "F_C_name": "c_accept_string_pointer_const",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringPointerConst(\t&SHCXX_arg1)",
@@ -4585,7 +4642,8 @@
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -4758,7 +4816,8 @@
                             "F_C_arguments": "arg1",
                             "F_C_name": "c_accept_string_pointer",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringPointer(\t&SHCXX_arg1)",
@@ -4774,7 +4833,8 @@
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -4951,7 +5011,8 @@
                             "F_C_arguments": "arg1",
                             "F_C_name": "c_fetch_string_pointer",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "fetchStringPointer(\t&SHCXX_arg1)",
@@ -4967,7 +5028,8 @@
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -5174,7 +5236,8 @@
                             "F_C_arguments": "arg1,\t nlen",
                             "F_C_name": "c_accept_string_pointer_len",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringPointerLen(\t&SHCXX_arg1,\t nlen)",
@@ -5190,7 +5253,8 @@
                             "F_arguments": "arg1,\t nlen",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -5457,7 +5521,8 @@
                             "F_C_arguments": "arg1,\t nlen",
                             "F_C_name": "c_fetch_string_pointer_len",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "fetchStringPointerLen(\t&SHCXX_arg1,\t nlen)",
@@ -5473,7 +5538,8 @@
                             "F_arguments": "arg1,\t nlen",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -5717,7 +5783,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "acceptStringInstance(\tSHCXX_arg1)",
@@ -5756,7 +5823,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg1": {
@@ -6074,7 +6142,8 @@
                             "F_C_arguments": "strs,\t nstrs",
                             "F_C_name": "c_fetch_array_string_arg",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "fetchArrayStringArg(\t&SHT_strs_cxx,\t &nstrs)",
@@ -6090,7 +6159,8 @@
                             "F_arguments": "strs",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nstrs": {
@@ -6384,7 +6454,8 @@
                             "F_C_arguments": "strs,\t nstrs",
                             "F_C_name": "c_fetch_array_string_alloc",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "fetchArrayStringAlloc(\t&SHT_strs_cxx,\t &nstrs)",
@@ -6400,7 +6471,8 @@
                             "F_arguments": "strs",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nstrs": {
@@ -6695,7 +6767,8 @@
                             "F_C_arguments": "strs,\t nstrs",
                             "F_C_name": "c_fetch_array_string_alloc_len",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "fetchArrayStringAllocLen(\t&SHT_strs_cxx,\t &nstrs)",
@@ -6711,7 +6784,8 @@
                             "F_arguments": "strs",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "nstrs": {
@@ -7017,7 +7091,8 @@
                             "F_C_arguments": "name",
                             "F_C_name": "c_explicit1",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "explicit1(\tSHCXX_name)",
@@ -7033,7 +7108,8 @@
                             "F_arguments": "name",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -7209,7 +7285,8 @@
                             "F_C_arguments": "name",
                             "F_C_name": "c_explicit2",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "explicit2(\tSHCXX_name)",
@@ -7225,7 +7302,8 @@
                             "F_arguments": "name",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -7391,7 +7469,8 @@
                             "C_prototype": "char status",
                             "C_return_type": "void",
                             "F_C_name": "c_cpass_char",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "CpassChar(\tstatus)",
@@ -7406,7 +7485,8 @@
                             "F_arg_c_call": "status",
                             "F_arguments": "status",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "status": {
@@ -7539,7 +7619,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_char"
+                            "stmt_name": "c_function_char",
+                            "typemap_name": "char"
                         },
                         "fmtf": {
                             "C_call_function": "CreturnChar(\t)",
@@ -7574,7 +7655,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_char"
+                            "stmt_name": "f_function_char",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -7734,7 +7816,8 @@
                             "F_C_arguments": "dest,\t src",
                             "F_C_name": "c_cpass_char_ptr",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtr(\tSHCXX_dest,\t SHCXX_src)",
@@ -7750,7 +7833,8 @@
                             "F_arguments": "dest,\t src",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "dest": {
@@ -8024,7 +8108,8 @@
                             "F_C_arguments": "dest,\t src",
                             "F_C_name": "c_cpass_char_ptr_blank",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrBlank(\tSHCXX_dest,\t SHCXX_src)",
@@ -8040,7 +8125,8 @@
                             "F_arguments": "dest,\t src",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "dest": {
@@ -8313,7 +8399,8 @@
                             "F_C_arguments": "count,\t name",
                             "F_C_name": "c_post_declare",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "PostDeclare(\tSHCXX_count,\t SHCXX_name)",
@@ -8329,7 +8416,8 @@
                             "F_arguments": "count,\t name",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_CFI",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "count": {
@@ -8593,7 +8681,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrNotrim(\tSHCXX_src)",
@@ -8632,7 +8721,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "src": {
@@ -8851,7 +8941,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
@@ -8889,7 +8980,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "addr": {
@@ -9162,7 +9254,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "CpassCharPtrCAPI2(\tSHCXX_in,\t src)",
@@ -9201,7 +9294,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "in": {

@@ -126,7 +126,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "short"
                         },
                         "fmtf": {
                             "C_call_function": "short_func(\targ1)",
@@ -164,7 +165,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "short"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -375,7 +377,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "int_func(\targ1)",
@@ -413,7 +416,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -624,7 +628,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "long"
                         },
                         "fmtf": {
                             "C_call_function": "long_func(\targ1)",
@@ -662,7 +667,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "long"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -875,7 +881,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "long_long"
                         },
                         "fmtf": {
                             "C_call_function": "long_long_func(\targ1)",
@@ -913,7 +920,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "long_long"
                         },
                         "fmtpy": {
                             "PY_build_format": "L",
@@ -1128,7 +1136,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "short"
                         },
                         "fmtf": {
                             "C_call_function": "short_int_func(\targ1)",
@@ -1166,7 +1175,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "short"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1379,7 +1389,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "long"
                         },
                         "fmtf": {
                             "C_call_function": "long_int_func(\targ1)",
@@ -1417,7 +1428,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "long"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -1632,7 +1644,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "long_long"
                         },
                         "fmtf": {
                             "C_call_function": "long_long_int_func(\targ1)",
@@ -1670,7 +1683,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "long_long"
                         },
                         "fmtpy": {
                             "PY_build_format": "L",
@@ -1883,7 +1897,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "unsigned_int"
                         },
                         "fmtf": {
                             "C_call_function": "unsigned_func(\targ1)",
@@ -1921,7 +1936,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "unsigned_int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2134,7 +2150,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_SHORT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "unsigned_short"
                         },
                         "fmtf": {
                             "C_call_function": "ushort_func(\targ1)",
@@ -2172,7 +2189,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_SHORT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "unsigned_short"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2385,7 +2403,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "unsigned_int"
                         },
                         "fmtf": {
                             "C_call_function": "uint_func(\targ1)",
@@ -2423,7 +2442,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "unsigned_int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2636,7 +2656,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "unsigned_long"
                         },
                         "fmtf": {
                             "C_call_function": "ulong_func(\targ1)",
@@ -2674,7 +2695,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "unsigned_long"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -2889,7 +2911,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "unsigned_long_long"
                         },
                         "fmtf": {
                             "C_call_function": "ulong_long_func(\targ1)",
@@ -2927,7 +2950,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "unsigned_long_long"
                         },
                         "fmtpy": {
                             "PY_build_format": "K",
@@ -3144,7 +3168,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "unsigned_long"
                         },
                         "fmtf": {
                             "C_call_function": "ulong_int_func(\targ1)",
@@ -3182,7 +3207,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UNSIGNED_LONG",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "unsigned_long"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3393,7 +3419,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT8_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int8_t"
                         },
                         "fmtf": {
                             "C_call_function": "int8_func(\targ1)",
@@ -3431,7 +3458,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT8_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int8_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3642,7 +3670,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT16_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int16_t"
                         },
                         "fmtf": {
                             "C_call_function": "int16_func(\targ1)",
@@ -3680,7 +3709,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT16_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int16_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -3891,7 +3921,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int32_t"
                         },
                         "fmtf": {
                             "C_call_function": "int32_func(\targ1)",
@@ -3929,7 +3960,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int32_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -4140,7 +4172,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int64_t"
                         },
                         "fmtf": {
                             "C_call_function": "int64_func(\targ1)",
@@ -4178,7 +4211,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int64_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -4389,7 +4423,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT8_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "uint8_t"
                         },
                         "fmtf": {
                             "C_call_function": "uint8_func(\targ1)",
@@ -4427,7 +4462,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT8_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "uint8_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -4638,7 +4674,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT16_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "uint16_t"
                         },
                         "fmtf": {
                             "C_call_function": "uint16_func(\targ1)",
@@ -4676,7 +4713,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT16_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "uint16_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -4887,7 +4925,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT32_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "uint32_t"
                         },
                         "fmtf": {
                             "C_call_function": "uint32_func(\targ1)",
@@ -4925,7 +4964,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT32_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "uint32_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -5136,7 +5176,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT64_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "uint64_t"
                         },
                         "fmtf": {
                             "C_call_function": "uint64_func(\targ1)",
@@ -5174,7 +5215,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_UINT64_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "uint64_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -5385,7 +5427,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "size_t"
                         },
                         "fmtf": {
                             "C_call_function": "size_func(\targ1)",
@@ -5423,7 +5466,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "size_t"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -5634,7 +5678,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool"
+                            "stmt_name": "c_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtf": {
                             "C_call_function": "bool_func(\targ)",
@@ -5672,7 +5717,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -5895,7 +5941,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool"
+                            "stmt_name": "c_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtf": {
                             "C_call_function": "returnBoolAndOthers(\tflag)",
@@ -5933,7 +5980,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",

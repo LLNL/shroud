@@ -91,7 +91,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "GetNameLength(\t)",
@@ -128,7 +129,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -241,7 +243,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getNameErrorPattern(\t)",
@@ -286,7 +289,8 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy",
+                            "typemap_name": "std::string"
                         }
                     }
                 },
@@ -427,7 +431,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "c_function_bool"
+                            "stmt_name": "c_function_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtf": {
                             "F_C_call": "-F_C_name-",
@@ -443,7 +448,8 @@
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_function_bool"
+                            "stmt_name": "f_function_bool",
+                            "typemap_name": "bool"
                         }
                     },
                     "name": {

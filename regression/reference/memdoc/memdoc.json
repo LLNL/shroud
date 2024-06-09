@@ -116,7 +116,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*_library"
+                            "stmt_name": "c_function_string*_library",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
@@ -168,7 +169,8 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cdesc_allocatable_library"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_library",
+                            "typemap_name": "std::string"
                         }
                     }
                 },

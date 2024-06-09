@@ -134,7 +134,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "vector_sum(\tSHCXX_arg)",
@@ -172,7 +173,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -379,7 +381,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out(\t*SHCXX_arg)",
@@ -395,7 +398,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -647,7 +651,8 @@
                             "F_C_name": "c_vector_iota_out_with_num",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_with_num(\t*SHCXX_arg)",
@@ -673,7 +678,8 @@
                             "f_var": "num",
                             "fc_var": "num",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -913,7 +919,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_with_num2",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_with_num2(\t*SHCXX_arg)",
@@ -938,7 +945,8 @@
                             "f_var": "num",
                             "fc_var": "num",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1161,7 +1169,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_alloc",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_alloc(\t*SHCXX_arg)",
@@ -1177,7 +1186,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1404,7 +1414,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_inout_alloc",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_inout_alloc(\t*SHCXX_arg)",
@@ -1420,7 +1431,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1642,7 +1654,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_increment",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_increment(\t*SHCXX_arg)",
@@ -1658,7 +1671,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1880,7 +1894,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_d",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_d(\t*SHCXX_arg)",
@@ -1896,7 +1911,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -2154,7 +2170,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "vector_of_pointers(\tSHCXX_arg1,\t num)",
@@ -2192,7 +2209,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg1": {
@@ -2456,7 +2474,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_count(\tSHCXX_arg)",
@@ -2494,7 +2513,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -2716,7 +2736,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_vector_string_fill",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_fill(\targ)",
@@ -2732,7 +2753,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -2951,7 +2973,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_vector_string_fill_allocatable",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_fill_allocatable(\t*SHCXX_arg)",
@@ -2967,7 +2990,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -3195,7 +3219,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_vector_string_fill_allocatable_len",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_fill_allocatable_len(\t*SHCXX_arg)",
@@ -3211,7 +3236,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -3541,7 +3567,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",
@@ -3595,7 +3622,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     },
                     "n": {
@@ -3804,7 +3832,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "returnDim2(\targ,\t len)",
@@ -3842,7 +3871,8 @@
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
