@@ -536,8 +536,6 @@ class FillFormat(object):
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         if ntypemap.f_derived_type:
             fmt.f_derived_type = ntypemap.f_derived_type
-        if ntypemap.f_module_name:
-            fmt.f_type_module = ntypemap.f_module_name
 
     def set_fmt_fields_f(self, cls, fcn, f_ast, c_ast, bind, fmt,
                          subprogram=None,

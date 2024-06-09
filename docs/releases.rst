@@ -144,7 +144,15 @@ f_c_module        i_module
 f_c_module_line   i_module_line
 f_c_type          i_type
 ===============   =============
-           
+
+* Renamed format fields
+
+===============   =======================
+Old Name          New Name
+===============   =======================
+f_type_module     typemap.f_module_name
+===============   =======================
+  
 * Added format field *f_c_suffix*. Used in format fields
   *C_name_template* and *F_C_name_template* to allow Fortran wrapper
   *to call a C function with additional mangling such as

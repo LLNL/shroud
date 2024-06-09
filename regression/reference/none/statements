@@ -657,8 +657,8 @@ c_ctor_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -900,8 +900,8 @@ c_function_shadow&_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -929,8 +929,8 @@ c_function_shadow&_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -958,8 +958,8 @@ c_function_shadow&_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -987,8 +987,8 @@ c_function_shadow*_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1016,8 +1016,8 @@ c_function_shadow*_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1045,8 +1045,8 @@ c_function_shadow*_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1068,8 +1068,8 @@ c_function_shadow*_capsule:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: function
   name: c_function_shadow*_capsule
   owner: library
@@ -1108,8 +1108,8 @@ c_function_shadow<native>_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1143,8 +1143,8 @@ c_function_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -1453,8 +1453,8 @@ c_function_struct:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_kind}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: function
   name: c_function_struct
   owner: library
@@ -1741,8 +1741,8 @@ c_in_shadow:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: in
   name: c_in_shadow
   owner: library
@@ -1759,8 +1759,8 @@ c_in_shadow&:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: in
   name: c_in_shadow&
   owner: library
@@ -1777,8 +1777,8 @@ c_in_shadow*:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: in
   name: c_in_shadow*
   owner: library
@@ -2373,8 +2373,8 @@ c_inout_shadow&:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: inout
   name: c_inout_shadow&
   owner: library
@@ -2391,8 +2391,8 @@ c_inout_shadow*:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: inout
   name: c_inout_shadow*
   owner: library
@@ -3099,8 +3099,8 @@ c_mixin_shadow:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: mixin
   name: c_mixin_shadow
   owner: library
@@ -3934,8 +3934,8 @@ f_ctor_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5089,8 +5089,8 @@ f_function_shadow&_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5131,8 +5131,8 @@ f_function_shadow&_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5173,8 +5173,8 @@ f_function_shadow&_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5215,8 +5215,8 @@ f_function_shadow*_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5257,8 +5257,8 @@ f_function_shadow*_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5299,8 +5299,8 @@ f_function_shadow*_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5329,8 +5329,8 @@ f_function_shadow*_capsule:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: function
   name: f_function_shadow*_capsule
   owner: library
@@ -5385,8 +5385,8 @@ f_function_shadow<native>_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5433,8 +5433,8 @@ f_function_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5481,8 +5481,8 @@ f_function_shadow_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -5529,8 +5529,8 @@ f_function_shadow_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
   i_result_var: '{F_result_ptr}'
@@ -7779,8 +7779,8 @@ f_function_struct:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_kind}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: function
   name: f_function_struct
   owner: library
@@ -8556,8 +8556,8 @@ f_in_shadow:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: in
   name: f_in_shadow
   owner: library
@@ -8581,8 +8581,8 @@ f_in_shadow&:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: in
   name: f_in_shadow&
   owner: library
@@ -8606,8 +8606,8 @@ f_in_shadow*:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: in
   name: f_in_shadow*
   owner: library
@@ -9544,8 +9544,8 @@ f_inout_shadow&:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: inout
   name: f_inout_shadow&
   owner: library
@@ -9569,8 +9569,8 @@ f_inout_shadow*:
   i_arg_names:
   - '{i_var}'
   i_module:
-    '{f_type_module}':
-    - '{f_capsule_data_type}'
+    '{typemap.f_module_name}':
+    - '{typemap.f_capsule_data_type}'
   intent: inout
   name: f_inout_shadow*
   owner: library

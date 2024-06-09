@@ -2744,8 +2744,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{f_type_module}": [
-                "{f_capsule_data_type}"
+            "{typemap.f_module_name}": [
+                "{typemap.f_capsule_data_type}"
             ]
         }
     },
@@ -2989,8 +2989,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{f_type_module}": [
-                "{f_kind}"
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
             ]
         },
         "c_call": [
