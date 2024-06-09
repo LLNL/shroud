@@ -10770,6 +10770,15 @@ f_mixin_use_capsule:
   name: f_mixin_use_capsule
   owner: library
 f_none_native:
+  c_arg_decl:
+  - // f_none_native - c_arg_decl
+  i_arg_decl:
+  - '{typemap.f_type}, value :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: none
   name: f_none_native
   notes:

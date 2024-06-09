@@ -982,6 +982,30 @@
         ]
     },
     {
+        "alias": [
+            "f_none_native"
+        ],
+        "notes": [
+            "An intent of 'none' is used with function pointers"
+        ],
+        "c_arg_decl": [
+            "// f_none_native - c_arg_decl"
+        ],
+        "i_arg_names":
+        [
+            "{i_var}"
+        ],
+        "i_arg_decl":
+        [
+            "{typemap.f_type}, value :: {i_var}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        }
+    },
+    {
         "name": "f_mixin_local-logical-var",
         "f_temps": [
             "cxx"
@@ -4000,14 +4024,6 @@
             "{f_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
         ],
         "cxx_local_var": "result"
-    },
-    {
-        "alias": [
-            "f_none_native"
-        ],
-        "notes": [
-            "An intent of 'none' is used with function pointers"
-        ]
     },
     {
         "alias": [

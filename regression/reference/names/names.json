@@ -3581,7 +3581,9 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_native*",
+                                                "typemap_name": "double"
                                             }
                                         }
                                     },
@@ -3706,13 +3708,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_native*",
+                                                "typemap_name": "double"
                                             }
                                         },
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
-                                                "stmt_name": "f_out_native*"
+                                                "i_var": "err",
+                                                "stmt_name": "f_out_native*",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -3837,13 +3843,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_in_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_in_native*",
+                                                "typemap_name": "double"
                                             }
                                         },
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
-                                                "stmt_name": "f_out_native*"
+                                                "i_var": "err",
+                                                "stmt_name": "f_out_native*",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -3964,7 +3974,9 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_native*",
+                                                "typemap_name": "double"
                                             }
                                         }
                                     },
@@ -4089,13 +4101,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_native*",
+                                                "typemap_name": "double"
                                             }
                                         },
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
-                                                "stmt_name": "f_out_native*"
+                                                "i_var": "err",
+                                                "stmt_name": "f_out_native*",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -4220,13 +4236,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_in_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_in_native*",
+                                                "typemap_name": "double"
                                             }
                                         },
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
-                                                "stmt_name": "f_out_native*"
+                                                "i_var": "err",
+                                                "stmt_name": "f_out_native*",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -4349,7 +4369,9 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_native*",
+                                                "typemap_name": "double"
                                             }
                                         }
                                     },
@@ -4473,13 +4495,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_native*",
+                                                "typemap_name": "double"
                                             }
                                         },
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
-                                                "stmt_name": "f_out_native*"
+                                                "i_var": "err",
+                                                "stmt_name": "f_out_native*",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -4603,13 +4629,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_in_native*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_in_native*",
+                                                "typemap_name": "double"
                                             }
                                         },
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
-                                                "stmt_name": "f_out_native*"
+                                                "i_var": "err",
+                                                "stmt_name": "f_out_native*",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },

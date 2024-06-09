@@ -285,6 +285,8 @@ class ToDict(visitor.Visitor):
                 continue
             elif key in ["targs"]:
                 d[key] = self.visit(value)
+            elif key == "typemap":
+                d["typemap_name"] = value.name
             elif not key.startswith(skip):
                 d[key] = value
         return d

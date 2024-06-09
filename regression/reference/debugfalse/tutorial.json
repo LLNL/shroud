@@ -7873,7 +7873,9 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
-                                                "stmt_name": "f_none_native"
+                                                "i_var": "arg0",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -7976,7 +7978,9 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
-                                                "stmt_name": "f_none_native"
+                                                "i_var": "arg0",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -8077,7 +8081,9 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
-                                                "stmt_name": "f_none_native"
+                                                "i_var": "arg0",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },

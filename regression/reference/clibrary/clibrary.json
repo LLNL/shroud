@@ -5007,13 +5007,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_struct*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_struct*",
+                                                "typemap_name": "array_info"
                                             }
                                         },
                                         "tc": {
                                             "fmtf": {
                                                 "f_abstract_name": "tc",
-                                                "stmt_name": "f_in_native"
+                                                "i_var": "tc",
+                                                "stmt_name": "f_in_native",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -5154,13 +5158,17 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
-                                                "stmt_name": "f_inout_struct*"
+                                                "i_var": "arr",
+                                                "stmt_name": "f_inout_struct*",
+                                                "typemap_name": "array_info"
                                             }
                                         },
                                         "tc": {
                                             "fmtf": {
                                                 "f_abstract_name": "tc",
-                                                "stmt_name": "f_in_native"
+                                                "i_var": "tc",
+                                                "stmt_name": "f_in_native",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },

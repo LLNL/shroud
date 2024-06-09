@@ -174,6 +174,9 @@ class FillFormat(object):
             fmt_arg.stmt_name = arg_stmt.name
 
             fmt_arg.f_abstract_name = arg_name
+            fmt_arg.i_var = arg_name
+            fmt_arg.typemap = arg.declarator.typemap
+            #   f_intent_attr
         # --- End loop over function parameters
         fmt_result.f_abstract_names = abstract_names
         func_cursor.arg = None

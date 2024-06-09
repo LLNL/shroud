@@ -10936,13 +10936,17 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "arg1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "i",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -11064,13 +11068,17 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "arg1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "i",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -11191,13 +11199,17 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "arg1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "i",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -11317,13 +11329,17 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "arg1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "i",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -11443,13 +11459,17 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "arg1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "i",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -11760,13 +11780,17 @@
                                                         "XX0arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX0arg",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "XX0arg",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "double"
                                                             }
                                                         },
                                                         "XX1arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX1arg",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "XX1arg",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -11885,13 +11909,17 @@
                                                         "XX0arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX0arg",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "XX0arg",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "double"
                                                             }
                                                         },
                                                         "XX1arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX1arg",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "XX1arg",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -12009,13 +12037,17 @@
                                                         "XX0arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX0arg",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "XX0arg",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "double"
                                                             }
                                                         },
                                                         "XX1arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX1arg",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "XX1arg",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -12560,61 +12592,81 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname10",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname2",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname3",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname4",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname5",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname6",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname7",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname8",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname9",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -12929,61 +12981,81 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname10",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname2",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname3",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname4",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname5",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname6",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname7",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname8",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname9",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -13297,61 +13369,81 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname10",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname2",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname3",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname4",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname5",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname6",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname7",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname8",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname9",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -13664,61 +13756,81 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname10",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname2",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname3",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname4",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname5",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname6",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname7",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname8",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname9",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },
@@ -14031,61 +14143,81 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname1",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname10",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname2",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname3",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname4",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname5",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname6",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname7",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname8",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         },
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
-                                                                "stmt_name": "f_none_native"
+                                                                "i_var": "verylongname9",
+                                                                "stmt_name": "f_none_native",
+                                                                "typemap_name": "int"
                                                             }
                                                         }
                                                     },

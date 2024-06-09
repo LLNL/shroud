@@ -1002,25 +1002,36 @@ rv = .false.
                 arg_f_names = []
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
+                imports = {}  # indexed as [symbol]
+                fmtargs = fptr._fmtargs
+                fmt_result = fmtargs["+result"]["fmtf"]
+                abstract_names = fmt_result.f_abstract_names
                 for i, param in enumerate(fptr.ast.declarator.params):
-                    name = param.declarator.user_name
-                    meta = get_arg_bind(fptr, param, "f").meta
-                    intent = meta["intent"]
-                    if name is None:
-                        fmt_tmp.index = str(i)
-                        name = wformat(
-                            options.F_abstract_interface_argument_template,
-                            fmt_tmp,
-                        )
-                    arg_f_names.append(name)
-                    arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
+                    bind = get_arg_bind(fptr, param, "f")
+                    meta = bind.meta
+                    stmts = bind.stmt
+                    fmt_arg = fmtargs[abstract_names[i]]["fmtf"]
+                    # See also build_arg_list_interface
+                    if stmts.i_arg_decl is not None:
+                        # Use explicit declaration from CStmt, both must exist.
+                        for name in stmts.i_arg_names:
+                            append_format(arg_f_names, name, fmt_arg)
+                        for arg in stmts.i_arg_decl:
+                            append_format(arg_c_decl, arg, fmt_arg)
+                        self.add_i_module_from_stmts(stmts, modules, imports, fmt_arg)
+                    else:
+                        # XXX - convert the others later
+                        name = fmt_arg.f_abstract_name
+                        intent = meta["intent"]
+                        arg_f_names.append(name)
+                        arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
 
-                    arg_typemap = param.typemap
-                    self.update_f_module(
-                        modules,
-                        arg_typemap.i_module or arg_typemap.f_module,
-                        fmt
-                    )
+                        arg_typemap = param.typemap
+                        self.update_f_module(
+                            modules,
+                            arg_typemap.i_module or arg_typemap.f_module,
+                            fmt
+                        )
 
                 if subprogram == "function":
                     arg_c_decl.append(bind_c(fptr.ast,
@@ -1035,7 +1046,6 @@ rv = .false.
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
                 iface.append(1)
-                imports = {}
                 arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)
                 iface.extend(arg_f_use)
                 if imports:
@@ -1606,6 +1616,7 @@ rv = .false.
             pass_obj = f_attrs.get("pass", None)
 
             if arg_typemap.base == "procedure":
+                # typedef function pointer
                 do_use = False
                 fmt_arg.f_abstract_interface = arg_typemap.f_kind
             elif f_declarator.is_function_pointer():
