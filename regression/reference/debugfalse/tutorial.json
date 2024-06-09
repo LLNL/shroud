@@ -7862,6 +7862,15 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arg0": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg0",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -7950,6 +7959,15 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arg0": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg0",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr",
                                         "F_name_api": "incr",
@@ -8033,6 +8051,15 @@
                                                     "intent": "none",
                                                     "value": true
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arg0": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg0",
+                                                "stmt_name": "f_none_native"
                                             }
                                         }
                                     },

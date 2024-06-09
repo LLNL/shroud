@@ -4995,6 +4995,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_struct*"
+                                            }
+                                        },
+                                        "tc": {
+                                            "fmtf": {
+                                                "f_abstract_name": "tc",
+                                                "stmt_name": "f_in_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "alloc",
                                         "F_name_api": "alloc",
@@ -5117,6 +5132,21 @@
                                                     "intent": "in",
                                                     "value": true
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_struct*"
+                                            }
+                                        },
+                                        "tc": {
+                                            "fmtf": {
+                                                "f_abstract_name": "tc",
+                                                "stmt_name": "f_in_native"
                                             }
                                         }
                                     },

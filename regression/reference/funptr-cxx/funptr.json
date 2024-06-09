@@ -105,6 +105,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1",
                                         "F_name_api": "incr1",
@@ -163,6 +166,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1",
                                         "F_name_api": "incr1",
@@ -219,6 +225,9 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {}
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1",
@@ -410,6 +419,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_wrap",
                                         "F_name_api": "incr1_wrap",
@@ -468,6 +480,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_wrap",
                                         "F_name_api": "incr1_wrap",
@@ -524,6 +539,9 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {}
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_wrap",
@@ -719,6 +737,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_external",
                                         "F_name_api": "incr1_external",
@@ -781,6 +802,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_external",
                                         "F_name_api": "incr1_external",
@@ -840,6 +864,9 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {}
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_external",
@@ -1038,6 +1065,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_funptr",
                                         "F_name_api": "incr1_funptr",
@@ -1100,6 +1130,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_funptr",
                                         "F_name_api": "incr1_funptr",
@@ -1159,6 +1192,9 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {}
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_funptr",
@@ -2361,6 +2397,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr3",
                                         "F_name_api": "incr3",
@@ -2438,6 +2477,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr3",
                                         "F_name_api": "incr3",
@@ -2511,6 +2553,9 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {}
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr3",
@@ -2919,6 +2964,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "ilow": {
+                                            "fmtf": {
+                                                "f_abstract_name": "ilow",
+                                                "stmt_name": "f_in_native*"
+                                            }
+                                        },
+                                        "nargs": {
+                                            "fmtf": {
+                                                "f_abstract_name": "nargs",
+                                                "stmt_name": "f_in_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "actor",
                                         "F_name_api": "actor",
@@ -3050,6 +3110,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "ilow": {
+                                            "fmtf": {
+                                                "f_abstract_name": "ilow",
+                                                "stmt_name": "f_in_native*"
+                                            }
+                                        },
+                                        "nargs": {
+                                            "fmtf": {
+                                                "f_abstract_name": "nargs",
+                                                "stmt_name": "f_in_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "actor",
                                         "F_name_api": "actor",
@@ -3177,6 +3252,21 @@
                                                     "intent": "in",
                                                     "value": true
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "ilow": {
+                                            "fmtf": {
+                                                "f_abstract_name": "ilow",
+                                                "stmt_name": "f_in_native*"
+                                            }
+                                        },
+                                        "nargs": {
+                                            "fmtf": {
+                                                "f_abstract_name": "nargs",
+                                                "stmt_name": "f_in_native"
                                             }
                                         }
                                     },
@@ -3525,6 +3615,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_ptr",
                                         "F_name_api": "get_ptr",
@@ -3588,6 +3681,9 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {}
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_ptr",
                                         "F_name_api": "get_ptr",
@@ -3649,6 +3745,9 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {}
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_ptr",
@@ -3915,6 +4014,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "XX0arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX0arg",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        },
+                                        "XX1arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX1arg",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_abs",
                                         "F_name_api": "get_abs",
@@ -4025,6 +4139,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "XX0arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX0arg",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        },
+                                        "XX1arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX1arg",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_abs",
                                         "F_name_api": "get_abs",
@@ -4131,6 +4260,21 @@
                                                     "intent": "none",
                                                     "value": true
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "XX0arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX0arg",
+                                                "stmt_name": "f_none_native"
+                                            }
+                                        },
+                                        "XX1arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX1arg",
+                                                "stmt_name": "f_none_native"
                                             }
                                         }
                                     },

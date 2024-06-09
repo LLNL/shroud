@@ -3570,6 +3570,15 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_native*"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "afree",
                                         "F_name_api": "afree",
@@ -3679,6 +3688,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_native*"
+                                            }
+                                        },
+                                        "err": {
+                                            "fmtf": {
+                                                "f_abstract_name": "err",
+                                                "stmt_name": "f_out_native*"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "alloc",
                                         "F_name_api": "alloc",
@@ -3785,6 +3809,21 @@
                                                 "meta": {
                                                     "intent": "out"
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_in_native*"
+                                            }
+                                        },
+                                        "err": {
+                                            "fmtf": {
+                                                "f_abstract_name": "err",
+                                                "stmt_name": "f_out_native*"
                                             }
                                         }
                                     },
@@ -3894,6 +3933,15 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_native*"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "afree",
                                         "F_name_api": "afree",
@@ -4003,6 +4051,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_native*"
+                                            }
+                                        },
+                                        "err": {
+                                            "fmtf": {
+                                                "f_abstract_name": "err",
+                                                "stmt_name": "f_out_native*"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "alloc",
                                         "F_name_api": "alloc",
@@ -4109,6 +4172,21 @@
                                                 "meta": {
                                                     "intent": "out"
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_in_native*"
+                                            }
+                                        },
+                                        "err": {
+                                            "fmtf": {
+                                                "f_abstract_name": "err",
+                                                "stmt_name": "f_out_native*"
                                             }
                                         }
                                     },
@@ -4220,6 +4298,15 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_native*"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "afree",
                                         "F_name_api": "afree",
@@ -4328,6 +4415,21 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_inout_native*"
+                                            }
+                                        },
+                                        "err": {
+                                            "fmtf": {
+                                                "f_abstract_name": "err",
+                                                "stmt_name": "f_out_native*"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "alloc",
                                         "F_name_api": "alloc",
@@ -4433,6 +4535,21 @@
                                                 "meta": {
                                                     "intent": "out"
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {},
+                                        "arr": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arr",
+                                                "stmt_name": "f_in_native*"
+                                            }
+                                        },
+                                        "err": {
+                                            "fmtf": {
+                                                "f_abstract_name": "err",
+                                                "stmt_name": "f_out_native*"
                                             }
                                         }
                                     },

@@ -32,6 +32,19 @@ maplang = dict(f="ci_type", c="c_type")
 
 class FillFormat(object):
     """Loop over Nodes and fill fmt dictionaries.
+
+    Creates the nested dictionary structure:
+    _fmtargs = {
+      '+result': {
+         'fmtc': Scope(_fmtfunc)
+      }
+      'arg1': {
+        'fmtc': Scope(_fmtfunc),
+        'fmtf': Scope(_fmtfunc)
+        'fmtl': Scope(_fmtfunc)
+        'fmtpy': Scope(_fmtfunc)
+      }
+    }
     """
     def __init__(self, newlibrary):
         self.newlibrary = newlibrary
@@ -82,15 +95,13 @@ class FillFormat(object):
             node.eval_template("F_name_function")
             node.eval_template("F_name_generic")
 
-        ast = node.ast
-
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
         fmt_result.stmt_name = result_stmt.name
         func_cursor.stmt = None
 
         # --- Loop over function parameters
-        for arg in ast.declarator.params:
+        for arg in node.ast.declarator.params:
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
@@ -102,6 +113,47 @@ class FillFormat(object):
             func_cursor.stmt = arg_stmt
             fmt_arg.stmt_name = arg_stmt.name
 
+            if wlang == "f" and arg.declarator.is_function_pointer():
+                fptr = bind_arg.meta["fptr"]
+                self.fmt_function_pointer(wlang, fptr)
+        # --- End loop over function parameters
+        func_cursor.arg = None
+        func_cursor.stmt = None
+            
+        cursor.pop_node(node)
+
+    def fmt_function_pointer(self, wlang, node):
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+
+        fmtlang = "fmt" + wlang
+
+        fmt_func = node.fmtdict
+        fmtargs = node._fmtargs
+        fmt_arg0 = fmtargs.setdefault("+result", {})
+
+        # --- Loop over function parameters
+        fmt_name = util.Scope(fmt_func)
+        for i, arg in enumerate(node.ast.declarator.params):
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+            
+            if arg_name is None:
+                fmt_name.index = str(i)
+                arg_name = wformat(
+                    node.options.F_abstract_interface_argument_template,
+                    fmt_name,
+                )
+
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+            bind_arg = statements.fetch_arg_bind(node, arg, wlang)
+            arg_stmt = bind_arg.stmt
+            func_cursor.stmt = arg_stmt
+            fmt_arg.stmt_name = arg_stmt.name
+
+            fmt_arg.f_abstract_name = arg_name
         # --- End loop over function parameters
         func_cursor.arg = None
         func_cursor.stmt = None
