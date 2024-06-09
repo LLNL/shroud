@@ -4996,7 +4996,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "tc",
+                                                    "arr"
+                                                ]
+                                            }
+                                        },
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
@@ -5136,7 +5143,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "tc",
+                                                    "arr"
+                                                ]
+                                            }
+                                        },
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",

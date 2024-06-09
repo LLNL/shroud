@@ -104,7 +104,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1",
@@ -163,7 +167,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1",
@@ -327,7 +335,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_wrap",
@@ -386,7 +398,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_wrap",
@@ -554,7 +570,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_external",
@@ -616,7 +636,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_external",
@@ -787,7 +811,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_funptr",
@@ -849,7 +877,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr1_funptr",
@@ -1746,7 +1778,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr3",
@@ -1822,7 +1858,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "incr3",
@@ -2167,7 +2207,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "ilow",
+                                                    "nargs"
+                                                ]
+                                            }
+                                        },
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
@@ -2311,7 +2358,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "ilow",
+                                                    "nargs"
+                                                ]
+                                            }
+                                        },
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
@@ -2593,7 +2647,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_ptr",
@@ -2657,7 +2715,11 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {}
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
                                     },
                                     "zz_fmtdict": {
                                         "C_name_api": "get_ptr",
@@ -2896,7 +2958,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "XX0arg",
+                                                    "XX1arg"
+                                                ]
+                                            }
+                                        },
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
@@ -3019,7 +3088,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "XX0arg",
+                                                    "XX1arg"
+                                                ]
+                                            }
+                                        },
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
@@ -3350,7 +3426,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "i",
+                                                    "j"
+                                                ]
+                                            }
+                                        },
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
@@ -3463,7 +3546,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "i",
+                                                    "j"
+                                                ]
+                                            }
+                                        },
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
@@ -3635,7 +3725,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0",
+                                                    "arg1"
+                                                ]
+                                            }
+                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
@@ -3746,7 +3843,14 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0",
+                                                    "arg1"
+                                                ]
+                                            }
+                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",

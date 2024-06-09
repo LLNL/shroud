@@ -135,6 +135,11 @@ class FillFormat(object):
         cursor.pop_node(node)
 
     def fmt_function_pointer(self, wlang, node):
+        """
+        Set fmt.f_abstract_names on the result.
+          A list of abstract argument names including defaulted names.
+        Set fmt.f_abstract_name for arguments.
+        """
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
@@ -143,6 +148,8 @@ class FillFormat(object):
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
         fmt_arg0 = fmtargs.setdefault("+result", {})
+        fmt_result = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+        abstract_names = []
 
         # --- Loop over function parameters
         fmt_name = util.Scope(fmt_func)
@@ -157,6 +164,7 @@ class FillFormat(object):
                     node.options.F_abstract_interface_argument_template,
                     fmt_name,
                 )
+            abstract_names.append(arg_name)
 
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
@@ -167,6 +175,7 @@ class FillFormat(object):
 
             fmt_arg.f_abstract_name = arg_name
         # --- End loop over function parameters
+        fmt_result.f_abstract_names = abstract_names
         func_cursor.arg = None
         func_cursor.stmt = None
             

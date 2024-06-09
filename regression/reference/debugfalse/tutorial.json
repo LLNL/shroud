@@ -7863,7 +7863,13 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0"
+                                                ]
+                                            }
+                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
@@ -7960,7 +7966,13 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0"
+                                                ]
+                                            }
+                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
@@ -8055,7 +8067,13 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {},
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0"
+                                                ]
+                                            }
+                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
