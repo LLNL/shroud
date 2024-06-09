@@ -137,7 +137,8 @@
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_unknown"
+                                    "stmt_name": "c_in_unknown",
+                                    "typemap_name": "MPI_Comm"
                                 },
                                 "fmtf": {
                                     "c_abstract_decl": "MPI_Fint",
@@ -167,7 +168,8 @@
                                     "i_var": "comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_unknown"
+                                    "stmt_name": "f_in_unknown",
+                                    "typemap_name": "MPI_Comm"
                                 }
                             }
                         },
@@ -307,7 +309,8 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_inout_shadow*"
+                                    "stmt_name": "c_inout_shadow*",
+                                    "typemap_name": "three::Class1"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -334,7 +337,8 @@
                                     "i_var": "c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_inout_shadow*"
+                                    "stmt_name": "f_inout_shadow*",
+                                    "typemap_name": "three::Class1"
                                 }
                             }
                         },
@@ -671,7 +675,8 @@
                                             "cxx_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "c_in_native"
+                                            "stmt_name": "c_in_native",
+                                            "typemap_name": "CustomType"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -697,7 +702,8 @@
                                             "i_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "f_in_native"
+                                            "stmt_name": "f_in_native",
+                                            "typemap_name": "CustomType"
                                         }
                                     }
                                 },

@@ -226,7 +226,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "double"
                         }
                     },
                     "arg2": {
@@ -254,7 +255,8 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },

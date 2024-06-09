@@ -233,7 +233,8 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "IndexType"
                         }
                     },
                     "i2": {
@@ -260,7 +261,8 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_out_native*"
+                            "stmt_name": "c_out_native*",
+                            "typemap_name": "IndexType"
                         }
                     }
                 },
@@ -434,7 +436,8 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int32_t"
                         }
                     },
                     "i2": {
@@ -462,7 +465,8 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "IndexType"
                         }
                     }
                 },
@@ -640,7 +644,8 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int64_t"
                         }
                     },
                     "i2": {
@@ -668,7 +673,8 @@
                             "i_var": "i2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "IndexType"
                         }
                     }
                 },
@@ -816,7 +822,8 @@
                             "i_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "IndexType"
                         }
                     }
                 },
@@ -934,7 +941,8 @@
                             "fc_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int32_t"
                         }
                     }
                 },
@@ -1056,7 +1064,8 @@
                             "fc_var": "i1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT64_T",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int64_t"
                         }
                     }
                 },
@@ -1204,7 +1213,8 @@
                             "i_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "FloatType"
                         }
                     }
                 },
@@ -1322,7 +1332,8 @@
                             "fc_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "float"
                         }
                     }
                 },
@@ -1444,7 +1455,8 @@
                             "fc_var": "f1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "double"
                         }
                     }
                 },

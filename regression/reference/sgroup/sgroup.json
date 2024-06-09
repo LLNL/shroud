@@ -190,7 +190,8 @@
                                     "cxx_T": "long",
                                     "typemap_name": "long"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "twostruct"
                         }
                     }
                 },

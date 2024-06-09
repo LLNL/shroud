@@ -123,7 +123,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "float_complex"
                         }
                     }
                 },
@@ -257,7 +258,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "double_complex"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -417,7 +419,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "double_complex"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -764,7 +767,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "double_complex"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -813,7 +817,8 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "array_size": "1",

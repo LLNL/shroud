@@ -343,7 +343,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "double"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -389,7 +390,8 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -580,7 +582,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_native*",
+                            "typemap_name": "double"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -627,7 +630,8 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -823,7 +827,8 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -1048,7 +1053,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool"
+                            "stmt_name": "f_in_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1097,7 +1103,8 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_out_bool*"
+                            "stmt_name": "f_out_bool*",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1146,7 +1153,8 @@
                             "i_var": "arg3",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_inout_bool*"
+                            "stmt_name": "f_inout_bool*",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -1397,7 +1405,8 @@
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1444,7 +1453,8 @@
                             "i_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1601,7 +1611,8 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1778,7 +1789,8 @@
                             "i_var_str": "SHT_s_str",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_char*_buf"
+                            "stmt_name": "f_inout_char*_buf",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1983,7 +1995,8 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_inout_char*_capi"
+                            "stmt_name": "f_inout_char*_capi",
+                            "typemap_name": "char"
                         }
                     },
                     "n": {
@@ -2011,7 +2024,8 @@
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "out": {
@@ -2039,7 +2053,8 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_capi"
+                            "stmt_name": "f_out_char*_capi",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -2193,7 +2208,8 @@
                             "i_var_len": "SHT_name1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_buf"
+                            "stmt_name": "f_out_char*_buf",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2402,7 +2418,8 @@
                             "i_var_len": "SHT_name1_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_buf"
+                            "stmt_name": "f_out_char*_buf",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2454,7 +2471,8 @@
                             "i_var_len": "SHT_name2_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_buf"
+                            "stmt_name": "f_out_char*_buf",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2657,7 +2675,8 @@
                             "idtor": "0",
                             "pre_call_intent": "len(text,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2707,7 +2726,8 @@
                             "i_var_len": "SHT_text_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_buf"
+                            "stmt_name": "f_out_char*_buf",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2975,7 +2995,8 @@
                             "idtor": "0",
                             "pre_call_intent": ".FALSE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool"
+                            "stmt_name": "f_in_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3023,7 +3044,8 @@
                             "idtor": "0",
                             "pre_call_intent": "len(text,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3069,7 +3091,8 @@
                             "i_var": "text",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*_capi"
+                            "stmt_name": "f_in_char*_capi",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3336,7 +3359,8 @@
                             "idtor": "0",
                             "pre_call_intent": ".TRUE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool"
+                            "stmt_name": "f_in_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3384,7 +3408,8 @@
                             "idtor": "0",
                             "pre_call_intent": "len_trim(text,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3430,7 +3455,8 @@
                             "i_var": "text",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*_capi"
+                            "stmt_name": "f_in_char*_capi",
+                            "typemap_name": "char"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -3629,7 +3655,8 @@
                             "idtor": "0",
                             "pre_call_intent": ".TRUE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool"
+                            "stmt_name": "f_in_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -3828,7 +3855,8 @@
                             "idtor": "0",
                             "pre_call_intent": ".FALSE._C_BOOL",
                             "sh_type": "SH_TYPE_BOOL",
-                            "stmt_name": "f_in_bool"
+                            "stmt_name": "f_in_bool",
+                            "typemap_name": "bool"
                         },
                         "fmtpy": {
                             "PyTypeObject": "PyBool_Type",
@@ -4065,7 +4093,8 @@
                             "i_var_len": "SHT_outbuf_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_buf"
+                            "stmt_name": "f_out_char*_buf",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -4228,7 +4257,8 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void*"
+                            "stmt_name": "f_in_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "out": {
@@ -4255,7 +4285,8 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_out_void**"
+                            "stmt_name": "f_out_void**",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -4411,7 +4442,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void*"
+                            "stmt_name": "f_in_void*",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -4550,7 +4582,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_void*"
+                            "stmt_name": "f_in_void*",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -4741,7 +4774,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void*"
+                            "stmt_name": "f_in_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "outbuf": {
@@ -4773,7 +4807,8 @@
                             "i_var_len": "SHT_outbuf_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_out_char*_buf"
+                            "stmt_name": "f_out_char*_buf",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -5238,7 +5273,8 @@
                             "i_var": "alloc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "void"
                         }
                     },
                     "arr": {
@@ -5267,7 +5303,8 @@
                             "i_var": "arr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct*"
+                            "stmt_name": "f_inout_struct*",
+                            "typemap_name": "array_info"
                         }
                     },
                     "tc": {
@@ -5295,7 +5332,8 @@
                             "i_var": "tc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },

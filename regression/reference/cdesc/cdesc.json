@@ -168,7 +168,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_in_native*"
+                            "stmt_name": "c_in_native*",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -204,7 +205,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_native*_cdesc"
+                            "stmt_name": "f_in_native*_cdesc",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -484,7 +486,8 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string&"
+                            "stmt_name": "c_in_string&",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -512,7 +515,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "1",
-                            "stmt_name": "c_in_void*"
+                            "stmt_name": "c_in_void*",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -716,7 +720,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -752,7 +757,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmt_name": "f_out_native*_cdesc"
+                            "stmt_name": "f_out_native*_cdesc",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -960,7 +966,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -996,7 +1003,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "1",
-                            "stmt_name": "f_out_native*_cdesc"
+                            "stmt_name": "f_out_native*_cdesc",
+                            "typemap_name": "double"
                         }
                     }
                 },
@@ -1773,7 +1781,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -1801,7 +1810,8 @@
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1992,7 +2002,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -2020,7 +2031,8 @@
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "double"
                         }
                     }
                 },

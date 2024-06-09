@@ -378,7 +378,8 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum Color",
@@ -580,7 +581,8 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum Color",
@@ -729,7 +731,8 @@
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_out_enum*"
+                            "stmt_name": "f_out_enum*",
+                            "typemap_name": "Color"
                         }
                     }
                 },
@@ -882,7 +885,8 @@
                             "i_var": "inout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_inout_enum*"
+                            "stmt_name": "f_inout_enum*",
+                            "typemap_name": "Color"
                         }
                     }
                 },

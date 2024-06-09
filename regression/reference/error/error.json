@@ -232,7 +232,8 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -475,7 +476,8 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -718,7 +720,8 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1197,7 +1200,8 @@
                             "i_var": "data",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native*"
+                            "stmt_name": "c_inout_native*",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1351,7 +1355,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1491,7 +1496,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(data)",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1631,7 +1637,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(data)",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },

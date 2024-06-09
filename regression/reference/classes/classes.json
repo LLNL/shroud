@@ -512,7 +512,8 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native"
+                                    "stmt_name": "c_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -538,7 +539,8 @@
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native"
+                                    "stmt_name": "f_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -1077,7 +1079,8 @@
                                     "cxx_var": "SHCXX_obj2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow&"
+                                    "stmt_name": "c_in_shadow&",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -1104,7 +1107,8 @@
                                     "i_var": "obj2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow&"
+                                    "stmt_name": "f_in_shadow&",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -1512,7 +1516,8 @@
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_in_bool"
+                                    "stmt_name": "c_in_bool",
+                                    "typemap_name": "bool"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -1539,7 +1544,8 @@
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_in_bool"
+                                    "stmt_name": "f_in_bool",
+                                    "typemap_name": "bool"
                                 }
                             },
                             "name": {
@@ -1566,7 +1572,8 @@
                                     "i_var": "name",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_string&"
+                                    "stmt_name": "c_in_string&",
+                                    "typemap_name": "std::string"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -1596,7 +1603,8 @@
                                     "i_var_len": "SHT_name_len",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_string&_buf"
+                                    "stmt_name": "f_in_string&_buf",
+                                    "typemap_name": "std::string"
                                 }
                             }
                         },
@@ -2245,7 +2253,8 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_enum"
+                                    "stmt_name": "c_in_enum",
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 },
                                 "fmtf": {
                                     "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -2275,7 +2284,8 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_enum"
+                                    "stmt_name": "f_in_enum",
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -2659,7 +2669,8 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -2903,7 +2914,8 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_setter_bool"
+                                    "stmt_name": "f_setter_bool",
+                                    "typemap_name": "bool"
                                 }
                             }
                         },
@@ -3172,7 +3184,8 @@
                                     "i_var_len": "SHT_val_len",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_setter_string_buf"
+                                    "stmt_name": "f_setter_string_buf",
+                                    "typemap_name": "std::string"
                                 }
                             }
                         },
@@ -4642,7 +4655,8 @@
                                     "cxx_var": "n",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native"
+                                    "stmt_name": "c_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -4668,7 +4682,8 @@
                                     "i_var": "n",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native"
+                                    "stmt_name": "f_in_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5211,7 +5226,8 @@
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5506,7 +5522,8 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native*"
+                                    "stmt_name": "f_setter_native*",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5899,7 +5916,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_enum"
+                            "stmt_name": "c_in_enum",
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "fmtf": {
                             "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -5929,7 +5947,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -6135,7 +6154,8 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_shadow"
+                            "stmt_name": "c_in_shadow",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -6162,7 +6182,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_shadow"
+                            "stmt_name": "f_in_shadow",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -6401,7 +6422,8 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_shadow*"
+                            "stmt_name": "c_in_shadow*",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6428,7 +6450,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_shadow*"
+                            "stmt_name": "f_in_shadow*",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -7491,7 +7514,8 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -7517,7 +7541,8 @@
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -7682,7 +7707,8 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -7708,7 +7734,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtl": {
                             "LUA_index": 1,

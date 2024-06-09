@@ -228,7 +228,8 @@
                             "i_var": "incr1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -459,7 +460,8 @@
                             "i_var": "incr1_wrap",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -697,7 +699,8 @@
                             "i_var": "incr1_external",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure_external"
+                            "stmt_name": "f_in_procedure_external",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -937,7 +940,8 @@
                             "i_var": "incr1_funptr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure_funptr"
+                            "stmt_name": "f_in_procedure_funptr",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -1109,7 +1113,8 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "incrtype"
                         }
                     },
                     "ival": {
@@ -1137,7 +1142,8 @@
                             "i_var": "ival",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -1165,7 +1171,8 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1341,7 +1348,8 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure_external"
+                            "stmt_name": "f_in_procedure_external",
+                            "typemap_name": "incrtype"
                         }
                     },
                     "ival": {
@@ -1369,7 +1377,8 @@
                             "i_var": "ival",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -1397,7 +1406,8 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1574,7 +1584,8 @@
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure_funptr"
+                            "stmt_name": "f_in_procedure_funptr",
+                            "typemap_name": "incrtype"
                         }
                     },
                     "ival": {
@@ -1602,7 +1613,8 @@
                             "i_var": "ival",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -1630,7 +1642,8 @@
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1924,7 +1937,8 @@
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void*"
+                            "stmt_name": "f_in_void*",
+                            "typemap_name": "void"
                         }
                     },
                     "incr3": {
@@ -1951,7 +1965,8 @@
                             "i_var": "incr3",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_procedure_funptr"
+                            "stmt_name": "f_in_procedure_funptr",
+                            "typemap_name": "void"
                         }
                     },
                     "type": {
@@ -1979,7 +1994,8 @@
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -2478,7 +2494,8 @@
                             "i_var": "actor",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "int"
                         }
                     },
                     "ilow": {
@@ -2510,7 +2527,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(ilow)",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_native*",
+                            "typemap_name": "int"
                         }
                     },
                     "nargs": {
@@ -2539,7 +2557,8 @@
                             "idtor": "0",
                             "pre_call_intent": "size(ilow,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -2784,7 +2803,8 @@
                             "i_var": "get_ptr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -3210,7 +3230,8 @@
                             "i_var": "get_abs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "int"
                         }
                     },
                     "input": {
@@ -3238,7 +3259,8 @@
                             "i_var": "input",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },

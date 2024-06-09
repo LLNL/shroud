@@ -705,7 +705,8 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct*"
+                            "stmt_name": "f_in_struct*",
+                            "typemap_name": "ns3::DataPointer"
                         }
                     }
                 },
@@ -873,7 +874,8 @@
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct*"
+                            "stmt_name": "f_inout_struct*",
+                            "typemap_name": "ns3::DataPointer"
                         }
                     },
                     "val": {
@@ -905,7 +907,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_native*"
+                            "stmt_name": "f_setter_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1290,7 +1293,8 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct*"
+                                    "stmt_name": "f_in_struct*",
+                                    "typemap_name": "ns1::DataPointer"
                                 }
                             }
                         },
@@ -1458,7 +1462,8 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct*"
+                                    "stmt_name": "f_inout_struct*",
+                                    "typemap_name": "ns1::DataPointer"
                                 }
                             },
                             "val": {
@@ -1490,7 +1495,8 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native*"
+                                    "stmt_name": "f_setter_native*",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1902,7 +1908,8 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct*"
+                                    "stmt_name": "f_in_struct*",
+                                    "typemap_name": "ns2::DataPointer"
                                 }
                             }
                         },
@@ -2070,7 +2077,8 @@
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct*"
+                                    "stmt_name": "f_inout_struct*",
+                                    "typemap_name": "ns2::DataPointer"
                                 }
                             },
                             "val": {
@@ -2102,7 +2110,8 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native*"
+                                    "stmt_name": "f_setter_native*",
+                                    "typemap_name": "int"
                                 }
                             }
                         },

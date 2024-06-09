@@ -508,7 +508,8 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow*"
+                                    "stmt_name": "c_in_shadow*",
+                                    "typemap_name": "tutorial::Class1"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -535,7 +536,8 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow*"
+                                    "stmt_name": "f_in_shadow*",
+                                    "typemap_name": "tutorial::Class1"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -746,7 +748,8 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow*"
+                                    "stmt_name": "c_in_shadow*",
+                                    "typemap_name": "forward::Class3"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -773,7 +776,8 @@
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow*"
+                                    "stmt_name": "f_in_shadow*",
+                                    "typemap_name": "forward::Class3"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -1053,7 +1057,8 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_struct*"
+                            "stmt_name": "c_in_struct*",
+                            "typemap_name": "Cstruct1"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1080,7 +1085,8 @@
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_struct*"
+                            "stmt_name": "f_in_struct*",
+                            "typemap_name": "Cstruct1"
                         }
                     }
                 },

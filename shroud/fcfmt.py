@@ -124,6 +124,7 @@ class FillFormat(object):
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
             fmt_arg.stmt_name = arg_stmt.name
+            fmt_arg.typemap = arg.declarator.typemap
 
             if wlang == "f" and arg.declarator.is_function_pointer():
                 fptr = bind_arg.meta["fptr"]

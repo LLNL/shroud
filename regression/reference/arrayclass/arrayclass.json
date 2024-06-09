@@ -306,7 +306,8 @@
                                     "cxx_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native"
+                                    "stmt_name": "c_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -332,7 +333,8 @@
                                     "i_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native"
+                                    "stmt_name": "f_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -655,7 +657,8 @@
                                     "cxx_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_out_native&"
+                                    "stmt_name": "c_out_native&",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -681,7 +684,8 @@
                                     "i_var": "size",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_out_native&"
+                                    "stmt_name": "f_out_native&",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1951,7 +1955,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native**"
+                                    "stmt_name": "c_out_native**",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -1990,7 +1995,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native**_cdesc_pointer"
+                                    "stmt_name": "f_out_native**_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2041,7 +2047,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native*"
+                                    "stmt_name": "c_inout_native*",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2066,7 +2073,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native*_hidden"
+                                    "stmt_name": "f_inout_native*_hidden",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2336,7 +2344,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native*&"
+                                    "stmt_name": "c_out_native*&",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2375,7 +2384,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native*&_cdesc_pointer"
+                                    "stmt_name": "f_out_native*&_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2426,7 +2436,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native&"
+                                    "stmt_name": "c_inout_native&",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2451,7 +2462,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native&_hidden"
+                                    "stmt_name": "f_inout_native&_hidden",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2722,7 +2734,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native**"
+                                    "stmt_name": "c_out_native**",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2761,7 +2774,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native**_cdesc_pointer"
+                                    "stmt_name": "f_out_native**_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2812,7 +2826,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native*"
+                                    "stmt_name": "c_inout_native*",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -2837,7 +2852,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native*_hidden"
+                                    "stmt_name": "f_inout_native*_hidden",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3108,7 +3124,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_out_native*&"
+                                    "stmt_name": "c_out_native*&",
+                                    "typemap_name": "double"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3147,7 +3164,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_out_native*&_cdesc_pointer"
+                                    "stmt_name": "f_out_native*&_cdesc_pointer",
+                                    "typemap_name": "double"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -3198,7 +3216,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_inout_native&"
+                                    "stmt_name": "c_inout_native&",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3223,7 +3242,8 @@
                                     "i_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_inout_native&_hidden"
+                                    "stmt_name": "f_inout_native&_hidden",
+                                    "typemap_name": "int"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3402,7 +3422,8 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "c_out_void**"
+                                    "stmt_name": "c_out_void**",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3427,7 +3448,8 @@
                                     "i_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "f_out_void**"
+                                    "stmt_name": "f_out_void**",
+                                    "typemap_name": "void"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3606,7 +3628,8 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "c_out_void*&"
+                                    "stmt_name": "c_out_void*&",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3631,7 +3654,8 @@
                                     "i_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "f_out_void*&"
+                                    "stmt_name": "f_out_void*&",
+                                    "typemap_name": "void"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -3861,7 +3885,8 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "c_in_void*"
+                                    "stmt_name": "c_in_void*",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -3886,7 +3911,8 @@
                                     "i_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt_name": "f_in_void*"
+                                    "stmt_name": "f_in_void*",
+                                    "typemap_name": "void"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
