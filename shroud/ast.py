@@ -1946,6 +1946,7 @@ class TypedefNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
+        self.fmtdict = util.Scope(parent.fmtdict)
         self.user_fmt = format
         self.default_format(parent, format)
         if self.user_fmt:
@@ -1955,6 +1956,7 @@ class TypedefNode(AstNode):
         self.ast = ast
         self.user_fields = fields
         self._bind = {}                   # Access with get_arg_bind
+        self._fmtargs = {}                # Used with function pointer arguments
 
         # save info from original type used in generated declarations.
         ntypemap = ast.typemap

@@ -57,6 +57,11 @@ class FillFormat(object):
     def fmt_namespace(self, node):
         cursor = self.cursor
         
+        cursor.push_phase("FillFormat typedef")
+        for typ in node.typedefs:
+            self.fmt_typedefs(typ)
+        cursor.pop_phase("FillFormat typedef")
+
         for cls in node.classes:
             cursor.push_phase("FillFormat class function")
             self.fmt_functions(cls, cls.functions)
@@ -69,6 +74,13 @@ class FillFormat(object):
         for ns in node.namespaces:
             self.fmt_namespace(ns)
 
+    def fmt_typedefs(self, node):
+        if node.wrap.fortran:
+            if node.ast.declarator.is_function_pointer():
+                meta = statements.fetch_typedef_bind(node, "f").meta
+                fptr = meta["fptr"]
+                self.fmt_function_pointer("f", fptr)
+            
     def fmt_functions(self, cls, functions):
         for node in functions:
             if node.wrap.c:
