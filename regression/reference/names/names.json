@@ -950,6 +950,8 @@
                             "cxx_nonconst_ptr": "&i",
                             "cxx_type": "int",
                             "cxx_var": "i",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -1151,6 +1153,8 @@
                             "cxx_nonconst_ptr": "&i",
                             "cxx_type": "long",
                             "cxx_var": "i",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
                             "stmt_name": "c_in_native",
@@ -2300,6 +2304,8 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -2366,6 +2372,8 @@
                             "cxx_nonconst_ptr": "&arg2",
                             "cxx_type": "long",
                             "cxx_var": "arg2",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
                             "stmt_name": "c_in_native",
@@ -2671,6 +2679,8 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "float",
                             "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmt_name": "c_in_native",
@@ -2737,6 +2747,8 @@
                             "cxx_nonconst_ptr": "&arg2",
                             "cxx_type": "double",
                             "cxx_var": "arg2",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "c_in_native",
@@ -3222,6 +3234,8 @@
                             "cxx_nonconst_ptr": "const_cast<Cstruct_as_class *>\t(ARG_point)",
                             "cxx_type": "Cstruct_as_class",
                             "cxx_var": "ARG_point",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_shadow*",
@@ -3603,6 +3617,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
@@ -3730,6 +3746,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
@@ -3738,6 +3756,8 @@
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
+                                                "f_intent": "OUT",
+                                                "f_intent_attr": ", intent(OUT)",
                                                 "i_var": "err",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
@@ -3865,6 +3885,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
@@ -3873,6 +3895,8 @@
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
+                                                "f_intent": "OUT",
+                                                "f_intent_attr": ", intent(OUT)",
                                                 "i_var": "err",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
@@ -3996,6 +4020,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
@@ -4123,6 +4149,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
@@ -4131,6 +4159,8 @@
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
+                                                "f_intent": "OUT",
+                                                "f_intent_attr": ", intent(OUT)",
                                                 "i_var": "err",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
@@ -4258,6 +4288,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
@@ -4266,6 +4298,8 @@
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
+                                                "f_intent": "OUT",
+                                                "f_intent_attr": ", intent(OUT)",
                                                 "i_var": "err",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
@@ -4391,6 +4425,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
@@ -4517,6 +4553,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
@@ -4525,6 +4563,8 @@
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
+                                                "f_intent": "OUT",
+                                                "f_intent_attr": ", intent(OUT)",
                                                 "i_var": "err",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
@@ -4651,6 +4691,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
@@ -4659,6 +4701,8 @@
                                         "err": {
                                             "fmtf": {
                                                 "f_abstract_name": "err",
+                                                "f_intent": "OUT",
+                                                "f_intent_attr": ", intent(OUT)",
                                                 "i_var": "err",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
@@ -4734,6 +4778,8 @@
                             "cxx_nonconst_ptr": "&afree",
                             "cxx_type": "void",
                             "cxx_var": "afree",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure",
@@ -4782,6 +4828,8 @@
                             "cxx_nonconst_ptr": "&alloc",
                             "cxx_type": "void",
                             "cxx_var": "alloc",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure",
@@ -4830,6 +4878,8 @@
                             "cxx_nonconst_ptr": "&assoc",
                             "cxx_type": "void",
                             "cxx_var": "assoc",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure",
@@ -4878,6 +4928,8 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(name)",
                             "cxx_type": "char",
                             "cxx_var": "name",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_char*",
@@ -4926,6 +4978,8 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(pkg)",
                             "cxx_type": "char",
                             "cxx_var": "pkg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_char*",
@@ -4974,6 +5028,8 @@
                             "cxx_nonconst_ptr": "const_cast<char *>\t(rdbase)",
                             "cxx_type": "char",
                             "cxx_var": "rdbase",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_char*",
@@ -5148,6 +5204,8 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",

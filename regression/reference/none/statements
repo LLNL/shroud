@@ -1650,8 +1650,19 @@ c_in_enum:
   name: c_in_enum
   owner: library
 c_in_native:
+  c_arg_decl:
+  - '{c_const}{c_type} {c_var}'
+  i_arg_decl:
+  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: in
   name: c_in_native
+  notes:
+  - An intent of 'none' is used with function pointers
   owner: library
 c_in_native&:
   intent: in
@@ -8387,8 +8398,19 @@ f_in_enum:
   name: f_in_enum
   owner: library
 f_in_native:
+  c_arg_decl:
+  - '{c_const}{c_type} {c_var}'
+  i_arg_decl:
+  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: in
   name: f_in_native
+  notes:
+  - An intent of 'none' is used with function pointers
   owner: library
 f_in_native&:
   intent: in
@@ -10771,9 +10793,9 @@ f_mixin_use_capsule:
   owner: library
 f_none_native:
   c_arg_decl:
-  - // f_none_native - c_arg_decl
+  - '{c_const}{c_type} {c_var}'
   i_arg_decl:
-  - '{typemap.f_type}, value :: {i_var}'
+  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
   i_arg_names:
   - '{i_var}'
   i_module:

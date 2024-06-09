@@ -342,6 +342,8 @@
                                     "cxx_nonconst_ptr": "&arg1",
                                     "cxx_type": "int",
                                     "cxx_var": "arg1",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_in_native",
@@ -408,6 +410,8 @@
                                     "cxx_nonconst_ptr": "&arg2",
                                     "cxx_type": "double",
                                     "cxx_var": "arg2",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_in_native",
@@ -786,6 +790,8 @@
                                     "cxx_nonconst_ptr": "&n",
                                     "cxx_type": "int",
                                     "cxx_var": "n",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_in_native",
@@ -1133,6 +1139,8 @@
                                     "cxx_nonconst_ptr": "&v",
                                     "cxx_type": "int",
                                     "cxx_var": "v",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_in_native",
@@ -1664,6 +1672,8 @@
                                     "cxx_nonconst_ptr": "&n",
                                     "cxx_type": "int",
                                     "cxx_var": "n",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "c_in_native",
@@ -2011,6 +2021,8 @@
                                     "cxx_nonconst_ptr": "&v",
                                     "cxx_type": "double",
                                     "cxx_var": "v",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt_name": "c_in_native",
@@ -2790,6 +2802,8 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "int",
                             "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -2856,6 +2870,8 @@
                             "cxx_nonconst_ptr": "&arg2",
                             "cxx_type": "long",
                             "cxx_var": "arg2",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
                             "stmt_name": "c_in_native",
@@ -3147,6 +3163,8 @@
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "float",
                             "cxx_var": "arg1",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
                             "stmt_name": "c_in_native",
@@ -3213,6 +3231,8 @@
                             "cxx_nonconst_ptr": "&arg2",
                             "cxx_type": "double",
                             "cxx_var": "arg2",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "c_in_native",
@@ -4195,6 +4215,8 @@
                                             "cxx_nonconst_ptr": "const_cast<int *>\t(&value)",
                                             "cxx_type": "int",
                                             "cxx_var": "value",
+                                            "f_intent": "IN",
+                                            "f_intent_attr": ", intent(IN)",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
                                             "stmt_name": "c_in_native&",
@@ -4272,7 +4294,7 @@
                                             {
                                                 "declarator": {
                                                     "name": "n",
-                                                    "typemap_name": "std::vector::size_type"
+                                                    "typemap_name": "std::vector<int>::size_type"
                                                 },
                                                 "specifier": [
                                                     "size_type"
@@ -4333,7 +4355,7 @@
                                             {
                                                 "declarator": {
                                                     "name": "n",
-                                                    "typemap_name": "std::vector::size_type"
+                                                    "typemap_name": "std::vector<int>::size_type"
                                                 },
                                                 "specifier": [
                                                     "size_type"
@@ -4542,7 +4564,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt_name": "c_in_native",
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<int>::size_type"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -4569,7 +4591,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt_name": "f_in_native",
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<int>::size_type"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -5162,6 +5184,8 @@
                                             "cxx_nonconst_ptr": "const_cast<double *>\t(&value)",
                                             "cxx_type": "double",
                                             "cxx_var": "value",
+                                            "f_intent": "IN",
+                                            "f_intent_attr": ", intent(IN)",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
                                             "stmt_name": "c_in_native&",
@@ -5239,7 +5263,7 @@
                                             {
                                                 "declarator": {
                                                     "name": "n",
-                                                    "typemap_name": "std::vector::size_type"
+                                                    "typemap_name": "std::vector<double>::size_type"
                                                 },
                                                 "specifier": [
                                                     "size_type"
@@ -5300,7 +5324,7 @@
                                             {
                                                 "declarator": {
                                                     "name": "n",
-                                                    "typemap_name": "std::vector::size_type"
+                                                    "typemap_name": "std::vector<double>::size_type"
                                                 },
                                                 "specifier": [
                                                     "size_type"
@@ -5509,7 +5533,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt_name": "c_in_native",
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<double>::size_type"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -5536,7 +5560,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt_name": "f_in_native",
-                                            "typemap_name": "std::vector::size_type"
+                                            "typemap_name": "std::vector<double>::size_type"
                                         },
                                         "fmtpy": {
                                             "c_const": "",

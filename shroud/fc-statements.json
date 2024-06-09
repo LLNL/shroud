@@ -947,8 +947,6 @@
     },
     {
         "alias": [
-            "f_in_native",
-            "c_in_native",
             "f_in_native*",
             "c_in_native*",
             "f_in_native&",
@@ -983,13 +981,15 @@
     },
     {
         "alias": [
+            "f_in_native",
+            "c_in_native",
             "f_none_native"
         ],
         "notes": [
             "An intent of 'none' is used with function pointers"
         ],
         "c_arg_decl": [
-            "// f_none_native - c_arg_decl"
+            "{c_const}{c_type} {c_var}"
         ],
         "i_arg_names":
         [
@@ -997,7 +997,7 @@
         ],
         "i_arg_decl":
         [
-            "{typemap.f_type}, value :: {i_var}"
+            "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
         ],
         "i_module": {
             "{typemap.f_module_name}": [

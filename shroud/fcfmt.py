@@ -123,12 +123,12 @@ class FillFormat(object):
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
-            fmt_arg.stmt_name = arg_stmt.name
-            fmt_arg.typemap = arg.declarator.typemap
 
-            if wlang == "f" and arg.declarator.is_function_pointer():
-                fptr = bind_arg.meta["fptr"]
-                self.fmt_function_pointer(wlang, fptr)
+            set_f_arg_format(node, arg, fmt_arg, bind_arg)
+            if wlang == "f":
+                if arg.declarator.is_function_pointer():
+                    fptr = bind_arg.meta["fptr"]
+                    self.fmt_function_pointer(wlang, fptr)
         # --- End loop over function parameters
         func_cursor.arg = None
         func_cursor.stmt = None
@@ -172,12 +172,12 @@ class FillFormat(object):
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
-            fmt_arg.stmt_name = arg_stmt.name
 
-            fmt_arg.f_abstract_name = arg_name
-            fmt_arg.i_var = arg_name
-            fmt_arg.typemap = arg.declarator.typemap
-            #   f_intent_attr
+            if wlang == "f":
+                set_f_arg_format(node, arg, fmt_arg, bind_arg)
+                fmt_arg.f_abstract_name = arg_name
+                fmt_arg.i_var = arg_name
+                
         # --- End loop over function parameters
         fmt_result.f_abstract_names = abstract_names
         func_cursor.arg = None
@@ -524,12 +524,8 @@ class FillFormat(object):
             # XXX this also gets set for subroutines
             fmt.f_intent = "OUT"
             fmt.f_intent_attr = ", intent(OUT)"
-        else:
-            fmt.f_intent = meta["intent"].upper()
-            if fmt.f_intent == "SETTER":
-                fmt.f_intent = "IN"
-            if fmt.f_intent != "NONE":
-                fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+#        else:
+            # XXX - now set in fcfmt.set_f_arg_format
         
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
@@ -834,6 +830,20 @@ class ToDimension(todict.PrintNode):
         error.get_cursor().warning("Detected assumed-rank dimension")
                 
 ######################################################################
+
+def set_f_arg_format(node, arg, fmt, bind):
+    meta = bind.meta
+
+    fmt.stmt_name = bind.stmt.name
+    fmt.typemap = arg.declarator.typemap
+    
+    intent = meta["intent"].upper()
+    if intent == "SETTER":
+        intent = "IN"
+    if intent != "NONE":
+        fmt.f_intent = intent
+        fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+
 
 def compute_c_deref(arg, local_var, fmt):
     """Compute format fields to dereference C argument."""

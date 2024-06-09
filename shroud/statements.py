@@ -790,7 +790,7 @@ CStmts = util.Scope(
     destructor=[],
     owner="library",
 
-    c_arg_decl=None,
+    c_arg_decl=None,    # C prototype
     i_arg_names=None,
     i_arg_decl=None,
 

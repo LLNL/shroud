@@ -5042,6 +5042,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_struct*",
                                                 "typemap_name": "array_info"
@@ -5050,6 +5052,8 @@
                                         "tc": {
                                             "fmtf": {
                                                 "f_abstract_name": "tc",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
                                                 "i_var": "tc",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
@@ -5193,6 +5197,8 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_intent": "INOUT",
+                                                "f_intent_attr": ", intent(INOUT)",
                                                 "i_var": "arr",
                                                 "stmt_name": "f_inout_struct*",
                                                 "typemap_name": "array_info"
@@ -5201,6 +5207,8 @@
                                         "tc": {
                                             "fmtf": {
                                                 "f_abstract_name": "tc",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
                                                 "i_var": "tc",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"

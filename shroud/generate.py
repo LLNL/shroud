@@ -546,6 +546,7 @@ class GenFunctions(object):
                 for typedef in typedefmap:
                     if ntypemap is typedef[0]:
                         arg.typemap = typedef[1]
+                        arg.declarator.typemap = typedef[1]
                         break
             
     def update_templated_typemaps(self, node):
