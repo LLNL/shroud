@@ -1892,18 +1892,18 @@
         "f_arg_decl": [
             "character(len=*){f_intent_attr} :: {f_var}"
         ],
-        "cxx_local_var": "scalar",
         "c_helper": [
             "char_len_trim"
         ],
         "c_pre_call": [
             "int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});",
-            "std::string {cxx_var}({c_var}, {c_local_trim});"
+            "std::string {c_local_cxx}({c_var}, {c_local_trim});"
         ],
-        "c_call": [
-            "XXX{cxx_var}"
+        "c_arg_call": [
+            "{c_local_cxx}"
         ],
         "c_local": [
+            "cxx",
             "trim"
         ]
     },

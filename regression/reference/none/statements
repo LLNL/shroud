@@ -1877,23 +1877,23 @@ c_in_string*_buf:
   - C wrapper will fill argument.
   owner: library
 c_in_string_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_call:
-  - XXX{cxx_var}
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - trim
   c_pre_call:
   - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
-  - std::string {cxx_var}({c_var}, {c_local_trim});
+  - std::string {c_local_cxx}({c_var}, {c_local_trim});
   c_temps:
   - len
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
@@ -8771,23 +8771,23 @@ f_in_string*_cfi:
   name: f_in_string*_cfi
   owner: library
 f_in_string_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
-  c_call:
-  - XXX{cxx_var}
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - trim
   c_pre_call:
   - int {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_len});
-  - std::string {cxx_var}({c_var}, {c_local_trim});
+  - std::string {c_local_cxx}({c_var}, {c_local_trim});
   c_temps:
   - len
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
