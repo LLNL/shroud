@@ -1813,18 +1813,22 @@ c_in_string&:
   - Similar to f_in_string*, but c_arg_call is pass by value
   owner: library
 c_in_string&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
   c_helper:
   - char_len_trim
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
+    \ {c_var_len}));"
   c_temps:
   - len
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
@@ -1854,18 +1858,22 @@ c_in_string*:
   name: c_in_string*
   owner: library
 c_in_string*_buf:
+  c_arg_call:
+  - '&{c_local_cxx}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
   c_helper:
   - char_len_trim
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
+    \ {c_var_len}));"
   c_temps:
   - len
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
@@ -8651,18 +8659,22 @@ f_in_string&:
   - Similar to f_in_string*, but c_arg_call is pass by value
   owner: library
 f_in_string&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
   c_helper:
   - char_len_trim
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
+    \ {c_var_len}));"
   c_temps:
   - len
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -8731,18 +8743,22 @@ f_in_string*:
   name: f_in_string*
   owner: library
 f_in_string*_buf:
+  c_arg_call:
+  - '&{c_local_cxx}'
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
   c_helper:
   - char_len_trim
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}std::string {cxx_var}({c_var},\t {c_helper_char_len_trim}({c_var}, {c_var_len}));"
+  - "{c_const}std::string {c_local_cxx}({c_var},\t {c_helper_char_len_trim}({c_var},\
+    \ {c_var_len}));"
   c_temps:
   - len
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
