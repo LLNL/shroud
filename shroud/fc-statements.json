@@ -1725,22 +1725,49 @@
     },
     {
         "alias": [
-            "f_out_string*",
-            "f_out_string&",
-            "c_out_string*",
-            "c_out_string&"
+            "c_out_string*"
         ],
         "lang_cxx": {
             "impl_header": [
                 "<cstring>"
             ]
         },
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{c_const}std::string {cxx_var};"
+            "{c_const}std::string {c_local_cxx};"
+        ],
+        "c_arg_call": [
+            "&{c_local_cxx}"
         ],
         "c_post_call": [
-            "strcpy({c_var}, {cxx_var}{cxx_member}c_str());"
+            "strcpy({c_var}, {c_local_cxx}.c_str());"
+        ]
+    },
+    {
+        "alias": [
+            "c_out_string&"
+        ],
+        "notes": [
+            "Similar to f_out_string*"
+        ],
+        "lang_cxx": {
+            "impl_header": [
+                "<cstring>"
+            ]
+        },
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}std::string {c_local_cxx};"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
+        ],
+        "c_post_call": [
+            "strcpy({c_var}, {c_local_cxx}.c_str());"
         ]
     },
     {

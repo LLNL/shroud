@@ -594,10 +594,10 @@ root
           pointer -- f_out_native**_cfi_pointer
         raw -- f_out_native**_raw
       native*** -- f_out_native***
-      string& -- f_out_string&
+      string&
         buf -- f_out_string&_buf
         cfi -- f_out_string&_cfi
-      string* -- f_out_string*
+      string*
         buf -- f_out_string*_buf
         cfi -- f_out_string*_cfi
       string**
@@ -3273,11 +3273,14 @@ c_out_native_&*:
   name: c_out_native_&*
   owner: library
 c_out_string&:
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_local:
+  - cxx
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - strcpy({c_var}, {c_local_cxx}.c_str());
   c_pre_call:
-  - '{c_const}std::string {cxx_var};'
-  cxx_local_var: scalar
+  - '{c_const}std::string {c_local_cxx};'
   impl_header:
   - <cstring>
   intent: out
@@ -3285,6 +3288,8 @@ c_out_string&:
     impl_header:
     - <cstring>
   name: c_out_string&
+  notes:
+  - Similar to f_out_string*
   owner: library
 c_out_string&_buf:
   c_arg_decl:
@@ -3320,11 +3325,14 @@ c_out_string&_buf:
   - C wrapper will fill argument.
   owner: library
 c_out_string*:
+  c_arg_call:
+  - '&{c_local_cxx}'
+  c_local:
+  - cxx
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - strcpy({c_var}, {c_local_cxx}.c_str());
   c_pre_call:
-  - '{c_const}std::string {cxx_var};'
-  cxx_local_var: scalar
+  - '{c_const}std::string {c_local_cxx};'
   impl_header:
   - <cstring>
   intent: out
@@ -11303,17 +11311,6 @@ f_out_native*_hidden:
   intent: out
   name: f_out_native*_hidden
   owner: library
-f_out_string&:
-  c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
-  c_pre_call:
-  - '{c_const}std::string {cxx_var};'
-  cxx_local_var: scalar
-  impl_header:
-  - <cstring>
-  intent: out
-  name: f_out_string&
-  owner: library
 f_out_string&_buf:
   c_arg_decl:
   - char *{c_var}
@@ -11385,17 +11382,6 @@ f_out_string&_cfi:
   - ISO_Fortran_binding.h
   intent: out
   name: f_out_string&_cfi
-  owner: library
-f_out_string*:
-  c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
-  c_pre_call:
-  - '{c_const}std::string {cxx_var};'
-  cxx_local_var: scalar
-  impl_header:
-  - <cstring>
-  intent: out
-  name: f_out_string*
   owner: library
 f_out_string**_cdesc_allocatable:
   c_arg_call:

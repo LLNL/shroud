@@ -37,6 +37,11 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
         i_result_decl
     end {F_C_subprogram} {F_C_name}
 
+.. Typically have different groups for pointer vs reference
+   f_out_string* vs f_out_string&
+   Since call-by-reference and call-by-value differences.
+   Also dereference:  . vs ->
+    
 Format fields
 -------------
 
