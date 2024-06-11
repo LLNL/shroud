@@ -2410,13 +2410,16 @@ c_inout_shadow*:
   name: c_inout_shadow*
   owner: library
 c_inout_string&:
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_local:
+  - cxx
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - strcpy({c_var}, {c_local_cxx}.c_str());
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   impl_header:
   - <cstring>
   intent: inout
@@ -2462,13 +2465,16 @@ c_inout_string&_buf:
   - C wrapper will fill argument.
   owner: library
 c_inout_string*:
+  c_arg_call:
+  - '&{c_local_cxx}'
+  c_local:
+  - cxx
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - strcpy({c_var}, {c_local_cxx}.c_str());
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   impl_header:
   - <cstring>
   intent: inout
@@ -9591,13 +9597,16 @@ f_inout_shadow*:
   name: f_inout_shadow*
   owner: library
 f_inout_string&:
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_local:
+  - cxx
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - strcpy({c_var}, {c_local_cxx}.c_str());
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -9696,13 +9705,16 @@ f_inout_string&_cfi:
   name: f_inout_string&_cfi
   owner: library
 f_inout_string*:
+  c_arg_call:
+  - '&{c_local_cxx}'
+  c_local:
+  - cxx
   c_post_call:
-  - strcpy({c_var}, {cxx_var}{cxx_member}c_str());
+  - strcpy({c_var}, {c_local_cxx}.c_str());
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
