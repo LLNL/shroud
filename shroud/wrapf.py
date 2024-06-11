@@ -996,7 +996,6 @@ rv = .false.
             for key in sorted(fileinfo.f_abstract_interface.keys()):
                 node, fmt, arg, fptr = fileinfo.f_abstract_interface[key]
                 options = node.options
-                fmt_tmp = util.Scope(fmt)
                 subprogram = arg.declarator.get_subprogram()
                 iface.append("")
                 arg_f_names = []
