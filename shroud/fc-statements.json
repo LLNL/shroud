@@ -1853,8 +1853,14 @@
     },
     {
         "alias": [
-            "f_in_string",
             "c_in_string"
+        ],
+        "comments": [
+            "Pass a NULL terminated string to C wrapper"
+        ],
+        "notes": [
+            "Pass directly as argument which will construct the std::string",
+            "This would work for Fortran if it explicited added C_NULL_CHAR"
         ],
         "c_arg_decl": [
             "char *{c_var}"

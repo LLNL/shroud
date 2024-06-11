@@ -150,6 +150,7 @@ f_c_type          i_type
 ===============   =======================
 Old Name          New Name
 ===============   =======================
+                  f_intent_attr
 f_type_module     typemap.f_module_name
 ===============   =======================
   
