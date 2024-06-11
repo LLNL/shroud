@@ -421,7 +421,7 @@ root
       shadow -- f_in_shadow
       shadow& -- f_in_shadow&
       shadow* -- f_in_shadow*
-      string -- f_in_string
+      string
         buf -- f_in_string_buf
         cfi -- f_in_string_cfi
       string& -- f_in_string&
@@ -1785,6 +1785,8 @@ c_in_shadow*:
 c_in_string:
   c_arg_decl:
   - char *{c_var}
+  comments:
+  - Pass a NULL terminated string to C wrapper
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   i_arg_names:
@@ -1794,6 +1796,9 @@ c_in_string:
     - C_CHAR
   intent: in
   name: c_in_string
+  notes:
+  - Pass directly as argument which will construct the std::string
+  - This would work for Fortran if it explicited added C_NULL_CHAR
   owner: library
 c_in_string&:
   c_pre_call:
@@ -8610,19 +8615,6 @@ f_in_shadow*:
     - '{typemap.f_capsule_data_type}'
   intent: in
   name: f_in_shadow*
-  owner: library
-f_in_string:
-  c_arg_decl:
-  - char *{c_var}
-  i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
-  i_arg_names:
-  - '{i_var}'
-  i_module:
-    iso_c_binding:
-    - C_CHAR
-  intent: in
-  name: f_in_string
   owner: library
 f_in_string&:
   c_pre_call:
