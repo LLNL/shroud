@@ -264,6 +264,9 @@ class FillFormat(object):
         elif converter is None:
             # Compatible
             fmt_arg.cxx_var = fmt_arg.c_var
+        elif arg_stmt.c_pre_call:
+            # statements have explicit code
+            pass
         else:
             # convert C argument to C++
             fmt_arg.c_abstract_decl = gen_arg_as_c(
