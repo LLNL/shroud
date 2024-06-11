@@ -1340,7 +1340,7 @@
                             "cxx_member": "->",
                             "cxx_rv_decl": "char * SHC_rv",
                             "cxx_type": "char",
-                            "cxx_var": "SHC_rv",
+                            "cxx_var": "SHCXX_SHC_rv",
                             "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",

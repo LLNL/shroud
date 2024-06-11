@@ -2894,7 +2894,7 @@
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "names",
                             "cxx_type": "char",
-                            "cxx_var": "names",
+                            "cxx_var": "SHCXX_names",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",

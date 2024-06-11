@@ -405,6 +405,8 @@ class FillFormat(object):
                     setattr(fmt,
                             "{}_local_{}".format(prefix, name),
                             fmt.CXX_local + fmt.c_var)
+                    # Enable cxx_nonconst_ptr to continue to work
+                    fmt.cxx_var = fmt.CXX_local + fmt.c_var
                 else:
                     setattr(fmt,
                             "{}_local_{}".format(prefix, name),

@@ -462,7 +462,7 @@
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
                             "cxx_type": "std::string",
-                            "cxx_var": "name",
+                            "cxx_var": "SHCXX_name",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
