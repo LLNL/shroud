@@ -611,12 +611,12 @@ void VEC_vector_string_fill_allocatable_len_bufferify(
 int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size)
 {
     // splicer begin function.ReturnVectorAlloc
-    std::vector<int> SHCXX_rv;
-    SHCXX_rv = ReturnVectorAlloc(n);
-    size_t SHC_rv_bytes = SHCXX_rv.size()*sizeof(SHCXX_rv[0]);
+    std::vector<int> SHCXX_SHC_rv;
+    SHCXX_SHC_rv = ReturnVectorAlloc(n);
+    size_t SHC_rv_bytes = SHCXX_SHC_rv.size()*sizeof(SHCXX_SHC_rv[0]);
     int *SHC_rv = static_cast<int *>(std::malloc(SHC_rv_bytes));
-    std::memcpy(SHC_rv, SHCXX_rv.data(), SHC_rv_bytes);
-    *SHT_rv_size = SHCXX_rv.size();
+    std::memcpy(SHC_rv, SHCXX_SHC_rv.data(), SHC_rv_bytes);
+    *SHT_rv_size = SHCXX_SHC_rv.size();
     return SHC_rv;
     // splicer end function.ReturnVectorAlloc
 }
