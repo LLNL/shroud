@@ -3033,9 +3033,14 @@
             "f_mixin_shadow-arg",
             "c_mixin_shadow"
         ],
-        "cxx_local_var": "pointer",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+        ],
+        "c_arg_call": [
+            "*{c_local_cxx}"
         ]
     },
     {
