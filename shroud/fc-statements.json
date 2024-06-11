@@ -1869,8 +1869,31 @@
     {
         "alias": [
             "f_out_string*_buf",
+            "c_out_string*_buf"
+        ],
+        "mixin": [
+            "f_mixin_in_character_buf",
+            "c_mixin_in_character_buf"
+        ],
+        "c_helper": [
+            "char_copy"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "std::string {c_local_cxx};"
+        ],
+        "c_arg_call": [
+            "&{c_local_cxx}"
+        ],
+        "c_post_call": [
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
+        ]
+    },
+    {
+        "alias": [
             "f_out_string&_buf",
-            "c_out_string*_buf",
             "c_out_string&_buf"
         ],
         "mixin": [
@@ -1880,12 +1903,17 @@
         "c_helper": [
             "char_copy"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "std::string {cxx_var};"
+            "std::string {c_local_cxx};"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ],
         "c_post_call": [
-            "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size());"
+            "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx}.data(),\t {c_local_cxx}.size());"
         ]
     },
     {
