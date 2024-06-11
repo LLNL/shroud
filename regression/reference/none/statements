@@ -1742,13 +1742,16 @@ c_in_procedure_funptr:
   name: c_in_procedure_funptr
   owner: library
 c_in_shadow:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{c_type} {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr}, value :: {i_var}'
   i_arg_names:
@@ -8614,13 +8617,16 @@ f_in_procedure_funptr:
   name: f_in_procedure_funptr
   owner: library
 f_in_shadow:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{c_type} {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}.addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
