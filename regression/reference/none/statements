@@ -1781,13 +1781,16 @@ c_in_shadow&:
   name: c_in_shadow&
   owner: library
 c_in_shadow*:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -2401,13 +2404,16 @@ c_inout_native*_hidden:
   name: c_inout_native*_hidden
   owner: library
 c_inout_shadow&:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -2419,13 +2425,16 @@ c_inout_shadow&:
   name: c_inout_shadow&
   owner: library
 c_inout_shadow*:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -8670,13 +8679,16 @@ f_in_shadow&:
   name: f_in_shadow&
   owner: library
 f_in_shadow*:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -9614,13 +9626,16 @@ f_inout_native*_hidden:
   name: f_inout_native*_hidden
   owner: library
 f_inout_shadow&:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -9639,13 +9654,16 @@ f_inout_shadow&:
   name: f_inout_shadow&
   owner: library
 f_inout_shadow*:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_local:
+  - cxx
   c_pre_call:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+  - "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
   comments:
   - Pass a shadow type to C wrapper.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
