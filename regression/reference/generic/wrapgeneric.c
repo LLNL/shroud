@@ -329,8 +329,8 @@ GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
     GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.CreateStructAsClass_bufferify
-    StructAsClass * SHCXX_rv = CreateStructAsClass();
-    SHC_rv->addr = SHCXX_rv;
+    StructAsClass *SHCXX_SHC_rv = CreateStructAsClass();
+    SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.CreateStructAsClass_bufferify

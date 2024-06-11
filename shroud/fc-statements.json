@@ -3046,17 +3046,11 @@
     {
         "alias": [
             "f_function_shadow*_capptr",
-            "f_function_shadow&_capptr",
-            "c_function_shadow*_capptr",
-            "c_function_shadow&_capptr",
             "f_function_shadow*_capptr_caller",
             "f_function_shadow*_capptr_library",
-            "f_function_shadow&_capptr_caller",
-            "f_function_shadow&_capptr_library",
+            "c_function_shadow*_capptr",
             "c_function_shadow*_capptr_caller",
-            "c_function_shadow*_capptr_library",
-            "c_function_shadow&_capptr_caller",
-            "c_function_shadow&_capptr_library"
+            "c_function_shadow*_capptr_library"
         ],
         "comments": [
             "Return a C_capsule_data_type."
@@ -3065,7 +3059,12 @@
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
         ],
-        "cxx_local_var": "result",
+        "c_local": [
+            "cxx"
+        ],
+        "c_call": [
+            "{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});"
+        ],
         "c_post_call": [
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};"
@@ -3073,6 +3072,20 @@
         "c_return_type": "{c_type} *",
         "c_return": [
             "return {c_var};"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_shadow&_capptr",
+            "f_function_shadow&_capptr_caller",
+            "f_function_shadow&_capptr_library",
+            "c_function_shadow&_capptr",
+            "c_function_shadow&_capptr_caller",
+            "c_function_shadow&_capptr_library"
+        ],
+        "base": "f_function_shadow*_capptr",
+        "c_call": [
+            "{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});"
         ]
     },
     {

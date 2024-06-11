@@ -304,9 +304,8 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     // splicer begin namespace.example::nested.class.ExClass2.method.get_class1
     const example::nested::ExClass1 * SHCXX_in =
         static_cast<const example::nested::ExClass1 *>(in->addr);
-    example::nested::ExClass1 * SHCXX_rv = SH_this->get_class1(
-        SHCXX_in);
-    SHC_rv->addr = SHCXX_rv;
+    example::nested::ExClass1 *SHCXX_SHC_rv = SH_this->get_class1(SHCXX_in);
+    SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1
