@@ -150,6 +150,7 @@ class Cursor(object):
 
     def check_for_warnings(self):
         if self.nwarning > 0:
+            print("Too many warnings: {}".format(self.nwarning))
             raise SystemExit
 
 class ShroudError(Exception):

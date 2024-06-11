@@ -2529,6 +2529,7 @@ def create_library_from_dictionary(node, symtab):
     """
 
     cursor = error.get_cursor()
+    cursor.nwarning = 0  # reset for tests
     cursor.push_phase("Create library")
     if "copyright" in node:
         clean_list(node["copyright"])

@@ -1331,6 +1331,7 @@ class CheckParse(unittest.TestCase):
                             {
                                 "declarator": {
                                     "name": "arg",
+                                    "typemap_name": "--template-parameter--",
                                 },
                                 "specifier": ["ArgType"],
                                 "template_argument": "ArgType",
