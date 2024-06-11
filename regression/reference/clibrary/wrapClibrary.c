@@ -117,8 +117,8 @@ void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
     char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.Function4a_bufferify
-    char * SHCXX_rv = Function4a(arg1, arg2);
-    ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_rv, -1);
+    char *SHCXX_SHC_rv = Function4a(arg1, arg2);
+    ShroudCharCopy(SHC_rv, SHT_rv_len, SHCXX_SHC_rv, -1);
     // splicer end function.Function4a_bufferify
 }
 

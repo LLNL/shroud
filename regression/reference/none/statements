@@ -723,17 +723,20 @@ c_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - len
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     c_var_len: n{F_string_result_as_arg}
@@ -761,17 +764,20 @@ c_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - len
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
   fmtdict:
     c_var: '{F_string_result_as_arg}'
     c_var_len: n{F_string_result_as_arg}
@@ -799,17 +805,20 @@ c_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - len
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
   i_arg_decl:
   - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
   - 'integer(C_INT), value, intent(IN) :: {i_var_len}'
@@ -4061,17 +4070,20 @@ f_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - len
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -4119,17 +4131,20 @@ f_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - len
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
@@ -4177,17 +4192,20 @@ f_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
-  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - len
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}'
   - '{f_var_len}'
