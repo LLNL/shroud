@@ -1179,6 +1179,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if result_stmt.c_call:
             raw_call_code = result_stmt.c_call
             need_wrapper = True
+            if result_stmt.intent == "function":
+                self.set_cxx_nonconst_ptr(ast, fmt_result)
         elif C_subprogram == "subroutine":
             raw_call_code = ["{C_call_function};"]
         else:

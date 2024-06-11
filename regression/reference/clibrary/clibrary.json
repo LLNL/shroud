@@ -1338,6 +1338,7 @@
                             "cfi_type": "CFI_type_other",
                             "cxx_addr": "",
                             "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_SHC_rv",
                             "cxx_rv_decl": "char * SHC_rv",
                             "cxx_type": "char",
                             "cxx_var": "SHCXX_SHC_rv",
