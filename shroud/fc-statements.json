@@ -2524,12 +2524,17 @@
         "mixin": [
             "f_mixin_in_2d_vector_buf"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "std::vector<{cxx_T}> {cxx_var};",
+            "std::vector<{cxx_T}> {c_local_cxx};",
             "for (size_t i=0; i < {c_var_size}; ++i) {{+",
-            "{cxx_var}.push_back({c_var} + ({c_var_len}*i));",
+            "{c_local_cxx}.push_back({c_var} + ({c_var_len}*i));",
             "-}}"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ]
     },
     {

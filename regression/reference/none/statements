@@ -1974,21 +1974,24 @@ c_in_vector<native*>&:
   notimplemented: true
   owner: library
 c_in_vector<native*>&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - for (size_t i=0; i < {c_var_size}; ++i) {{+
-  - '{cxx_var}.push_back({c_var} + ({c_var_len}*i));'
+  - '{c_local_cxx}.push_back({c_var} + ({c_var_len}*i));'
   - -}}
   c_temps:
   - len
   - size
   comments:
   - Create a vector for pointers.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_len}'
@@ -8959,21 +8962,24 @@ f_in_unknown:
   name: f_in_unknown
   owner: library
 f_in_vector<native*>&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - for (size_t i=0; i < {c_var_size}; ++i) {{+
-  - '{cxx_var}.push_back({c_var} + ({c_var_len}*i));'
+  - '{c_local_cxx}.push_back({c_var} + ({c_var_len}*i));'
   - -}}
   c_temps:
   - len
   - size
   comments:
   - Create a vector for pointers.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, 1, kind=C_SIZE_T)
