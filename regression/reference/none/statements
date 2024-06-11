@@ -1801,11 +1801,16 @@ c_in_string:
   - This would work for Fortran if it explicited added C_NULL_CHAR
   owner: library
 c_in_string&:
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   intent: in
   name: c_in_string&
+  notes:
+  - Similar to f_in_string*, but c_arg_call is pass by value
   owner: library
 c_in_string&_buf:
   c_arg_decl:
@@ -1839,9 +1844,12 @@ c_in_string&_buf:
   - C wrapper will fill argument.
   owner: library
 c_in_string*:
+  c_arg_call:
+  - '&{c_local_cxx}'
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   intent: in
   name: c_in_string*
   owner: library
@@ -8617,11 +8625,16 @@ f_in_shadow*:
   name: f_in_shadow*
   owner: library
 f_in_string&:
+  c_arg_call:
+  - '{c_local_cxx}'
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   intent: in
   name: f_in_string&
+  notes:
+  - Similar to f_in_string*, but c_arg_call is pass by value
   owner: library
 f_in_string&_buf:
   c_arg_decl:
@@ -8694,9 +8707,12 @@ f_in_string&_cfi:
   name: f_in_string&_cfi
   owner: library
 f_in_string*:
+  c_arg_call:
+  - '&{c_local_cxx}'
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::string {cxx_var}({c_var});'
-  cxx_local_var: scalar
+  - '{c_const}std::string {c_local_cxx}({c_var});'
   intent: in
   name: f_in_string*
   owner: library

@@ -397,9 +397,15 @@ class FillFormat(object):
         names = stmts.get(lang + "_local", None)
         if names is not None:
             for name in names:
-                setattr(fmt,
-                        "{}_local_{}".format(prefix, name),
-                        "{}{}_{}".format(fmt.C_local, rootname, name))
+                if name == "cxx":
+                    # special case for now to mimic cxx_local_var
+                    setattr(fmt,
+                            "{}_local_{}".format(prefix, name),
+                            fmt.CXX_local + fmt.c_var)
+                else:
+                    setattr(fmt,
+                            "{}_local_{}".format(prefix, name),
+                            "{}{}_{}".format(fmt.C_local, rootname, name))
 
     def set_fmt_fields_c(self, wlang, cls, fcn, ast, ntypemap, fmt, meta, is_func):
         """

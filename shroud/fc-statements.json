@@ -1693,13 +1693,34 @@
     {
         "alias": [
             "f_in_string*",
+            "c_in_string*"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}std::string {c_local_cxx}({c_var});"
+        ],
+        "c_arg_call": [
+            "&{c_local_cxx}"
+        ]
+    },
+    {
+        "alias": [
             "f_in_string&",
-            "c_in_string*",
             "c_in_string&"
         ],
-        "cxx_local_var": "scalar",
+        "notes": [
+            "Similar to f_in_string*, but c_arg_call is pass by value"
+        ],
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{c_const}std::string {cxx_var}({c_var});"
+            "{c_const}std::string {c_local_cxx}({c_var});"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ]
     },
     {
