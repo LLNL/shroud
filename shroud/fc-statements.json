@@ -1642,12 +1642,17 @@
             "char_array_alloc",
             "char_array_free"
         ],
-        "cxx_local_var": "pointer",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "char **{cxx_var} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+            "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ],
         "c_post_call": [
-            "{c_helper_char_array_free}({cxx_var}, {c_var_size});"
+            "{c_helper_char_array_free}({c_local_cxx}, {c_var_size});"
         ]
     },
     {

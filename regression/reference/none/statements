@@ -1576,6 +1576,8 @@ c_in_char**:
   - Treat as an assumed length array in Fortran interface.
   owner: library
 c_in_char**_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -1583,16 +1585,18 @@ c_in_char**_buf:
   c_helper:
   - char_array_alloc
   - char_array_free
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_helper_char_array_free}({cxx_var}, {c_var_size});'
+  - '{c_helper_char_array_free}({c_local_cxx}, {c_var_size});'
   c_pre_call:
-  - "char **{cxx_var} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+  - "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t\
+    \ {c_var_len});"
   c_temps:
   - size
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: pointer
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -8280,6 +8284,8 @@ f_in_char**:
   - Treat as an assumed length array in Fortran interface.
   owner: library
 f_in_char**_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -8287,16 +8293,18 @@ f_in_char**_buf:
   c_helper:
   - char_array_alloc
   - char_array_free
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_helper_char_array_free}({cxx_var}, {c_var_size});'
+  - '{c_helper_char_array_free}({c_local_cxx}, {c_var_size});'
   c_pre_call:
-  - "char **{cxx_var} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+  - "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t\
+    \ {c_var_len});"
   c_temps:
   - size
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
