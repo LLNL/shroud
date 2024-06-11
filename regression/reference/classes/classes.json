@@ -192,7 +192,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -224,15 +225,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "CLA_Class1 *",
@@ -420,7 +422,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\tflag)",
@@ -453,15 +456,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "1",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "CLA_Class1 *",
@@ -508,9 +512,12 @@
                                     "cxx_nonconst_ptr": "&flag",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native"
+                                    "stmt_name": "c_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -527,15 +534,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "flag",
                                     "fc_var": "flag",
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native"
+                                    "stmt_name": "f_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -658,7 +666,8 @@
                                     "C_prototype": "CLA_Class1 * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_class1_delete",
-                                    "stmt_name": "c_dtor"
+                                    "stmt_name": "c_dtor",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->delete(\t)",
@@ -673,7 +682,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_dtor"
+                                    "stmt_name": "f_dtor",
+                                    "typemap_name": "void"
                                 },
                                 "fmtl": {
                                     "stmt": "lua_dtor"
@@ -782,7 +792,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->Method1(\t)",
@@ -810,15 +821,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtl": {
                                     "c_var": "SHCXX_rv",
@@ -997,7 +1009,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_function_bool"
+                                    "stmt_name": "c_function_bool",
+                                    "typemap_name": "bool"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->equivalent(\t*SHCXX_obj2)",
@@ -1027,15 +1040,16 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_function_bool"
+                                    "stmt_name": "f_function_bool",
+                                    "typemap_name": "bool"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PyBool_Type",
@@ -1070,9 +1084,12 @@
                                     "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(SHCXX_obj2)",
                                     "cxx_type": "classes::Class1",
                                     "cxx_var": "SHCXX_obj2",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow&"
+                                    "stmt_name": "c_in_shadow&",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -1091,14 +1108,15 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "obj2",
                                     "fc_var": "obj2",
                                     "i_var": "obj2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow&"
+                                    "stmt_name": "f_in_shadow&",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -1220,7 +1238,8 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow*_this"
+                                    "stmt_name": "c_function_shadow*_this",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->returnThis(\t)",
@@ -1249,13 +1268,14 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow*_this"
+                                    "stmt_name": "f_function_shadow*_this",
+                                    "typemap_name": "classes::Class1"
                                 }
                             }
                         },
@@ -1429,14 +1449,15 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow*_capptr"
+                                    "stmt_name": "c_function_shadow*_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->returnThisBuffer(\tSHCXX_name,\t flag)",
@@ -1468,15 +1489,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow*_capptr"
+                                    "stmt_name": "f_function_shadow*_capptr",
+                                    "typemap_name": "classes::Class1"
                                 }
                             },
                             "flag": {
@@ -1495,14 +1517,15 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "flag",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "flag",
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_in_bool"
+                                    "stmt_name": "c_in_bool",
+                                    "typemap_name": "bool"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -1519,16 +1542,17 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "flag",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "flag",
                                     "f_var_cxx": "SHT_flag_cxx",
                                     "fc_var": "flag",
                                     "i_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_in_bool"
+                                    "stmt_name": "f_in_bool",
+                                    "typemap_name": "bool"
                                 }
                             },
                             "name": {
@@ -1547,14 +1571,15 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_name",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "name",
                                     "i_var": "name",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_string&"
+                                    "stmt_name": "c_in_string&",
+                                    "typemap_name": "std::string"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -1573,9 +1598,9 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_name",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "name",
                                     "f_var_len": "SHT_name_len",
                                     "fc_var": "name",
@@ -1583,7 +1608,8 @@
                                     "i_var_len": "SHT_name_len",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_string&_buf"
+                                    "stmt_name": "f_in_string&_buf",
+                                    "typemap_name": "std::string"
                                 }
                             }
                         },
@@ -1695,7 +1721,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow*_capptr"
+                                    "stmt_name": "c_function_shadow*_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getclass3(\t)",
@@ -1725,15 +1752,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow*_capptr"
+                                    "stmt_name": "f_function_shadow*_capptr",
+                                    "typemap_name": "classes::Class1"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -1882,14 +1910,15 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_string&"
+                                    "stmt_name": "c_function_string&",
+                                    "typemap_name": "std::string"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getName(\t)",
@@ -1928,9 +1957,9 @@
                                     "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "f_var_capsule": "SHT_rv_capsule",
                                     "f_var_cdesc": "SHT_rv_cdesc",
@@ -1940,7 +1969,8 @@
                                     "i_var_cdesc": "SHT_rv_cdesc",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_string&_cdesc_allocatable"
+                                    "stmt_name": "f_function_string&_cdesc_allocatable",
+                                    "typemap_name": "std::string"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "const char *",
@@ -2121,14 +2151,15 @@
                                     "cxx_type": "classes::Class1::DIRECTION",
                                     "cxx_var": "SHCXX_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_enum"
+                                    "stmt_name": "c_function_enum",
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->directionFunc(\tSHCXX_arg)",
@@ -2162,15 +2193,16 @@
                                     "cxx_var": "SHCXX_rv",
                                     "f_c_suffix": "_bufferify",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_enum"
+                                    "stmt_name": "f_function_enum",
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -2219,14 +2251,15 @@
                                     "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg",
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_enum"
+                                    "stmt_name": "c_in_enum",
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 },
                                 "fmtf": {
                                     "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -2247,15 +2280,16 @@
                                     "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "arg",
                                     "fc_var": "arg",
                                     "i_var": "arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_enum"
+                                    "stmt_name": "f_in_enum",
+                                    "typemap_name": "classes::Class1::DIRECTION"
                                 },
                                 "fmtl": {
                                     "LUA_index": 1,
@@ -2387,15 +2421,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -2490,15 +2525,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -2609,7 +2645,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -2628,15 +2665,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -2731,15 +2769,16 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_getter_bool"
+                                    "stmt_name": "f_getter_bool",
+                                    "typemap_name": "bool"
                                 }
                             }
                         },
@@ -2850,7 +2889,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t SHT_val_cxx",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -2869,16 +2909,17 @@
                                     "cxx_type": "bool",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "f_var_cxx": "SHT_val_cxx",
                                     "fc_var": "val",
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_setter_bool"
+                                    "stmt_name": "f_setter_bool",
+                                    "typemap_name": "bool"
                                 }
                             }
                         },
@@ -2993,9 +3034,9 @@
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "f_var_cdesc": "SHT_rv_cdesc",
                                     "fc_var": "SHT_rv",
@@ -3003,7 +3044,8 @@
                                     "i_var_cdesc": "SHT_rv_cdesc",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_getter_string_cdesc_allocatable"
+                                    "stmt_name": "f_getter_string_cdesc_allocatable",
+                                    "typemap_name": "std::string"
                                 }
                             }
                         },
@@ -3115,7 +3157,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val,\t SHT_val_len",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -3135,9 +3178,9 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "f_var_len": "SHT_val_len",
                                     "fc_var": "val",
@@ -3145,7 +3188,8 @@
                                     "i_var_len": "SHT_val_len",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_setter_string_buf"
+                                    "stmt_name": "f_setter_string_buf",
+                                    "typemap_name": "std::string"
                                 }
                             }
                         },
@@ -3474,14 +3518,15 @@
                                     "cxx_type": "std::string",
                                     "cxx_var": "SHCXX_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_string&"
+                                    "stmt_name": "c_function_string&",
+                                    "typemap_name": "std::string"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->getName(\t)",
@@ -3520,9 +3565,9 @@
                                     "f_helper_capsule_dtor": "CLA_SHROUD_capsule_dtor",
                                     "f_helper_copy_string": "CLA_SHROUD_copy_string",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_CHAR",
                                     "f_type": "character(*)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "f_var_capsule": "SHT_rv_capsule",
                                     "f_var_cdesc": "SHT_rv_cdesc",
@@ -3532,7 +3577,8 @@
                                     "i_var_cdesc": "SHT_rv_cdesc",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_string&_cdesc_allocatable"
+                                    "stmt_name": "f_function_string&_cdesc_allocatable",
+                                    "typemap_name": "std::string"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "const char *",
@@ -3722,7 +3768,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_function_shadow&_capptr"
+                                    "stmt_name": "c_function_shadow&_capptr",
+                                    "typemap_name": "classes::Singleton"
                                 },
                                 "fmtf": {
                                     "C_call_function": "classes::Singleton::getReference(\t)",
@@ -3752,15 +3799,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "singleton",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(singleton)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_function_shadow&_capptr"
+                                    "stmt_name": "f_function_shadow&_capptr",
+                                    "typemap_name": "classes::Singleton"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Singleton_to_Object_idtor",
@@ -3944,7 +3992,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "2",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Shape"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -3976,15 +4025,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "shape",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(shape)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "2",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Shape"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "CLA_Shape *",
@@ -4116,7 +4166,8 @@
                                     "cxx_var": "SHC_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native"
+                                    "stmt_name": "c_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->get_ivar(\t)",
@@ -4145,15 +4196,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native"
+                                    "stmt_name": "f_function_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtl": {
                                     "c_var": "SHCXX_rv",
@@ -4348,7 +4400,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "3",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Circle"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -4380,15 +4433,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "circle",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(circle)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "3",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Circle"
                                 },
                                 "fmtl": {
                                     "c_abstract_decl": "CLA_Circle *",
@@ -4574,7 +4628,8 @@
                                     "C_prototype": "CLA_Data * self,\t int n",
                                     "C_return_type": "void",
                                     "F_C_name": "c_data_allocate",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->allocate(\tn)",
@@ -4589,7 +4644,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t n",
                                     "F_arguments": "obj,\t n",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "n": {
@@ -4607,9 +4663,12 @@
                                     "cxx_nonconst_ptr": "&n",
                                     "cxx_type": "int",
                                     "cxx_var": "n",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native"
+                                    "stmt_name": "c_in_native",
+                                    "typemap_name": "int"
                                 },
                                 "fmtf": {
                                     "c_addr": "&",
@@ -4626,15 +4685,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "n",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "n",
                                     "fc_var": "n",
                                     "i_var": "n",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native"
+                                    "stmt_name": "f_in_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -4705,7 +4765,8 @@
                                     "C_prototype": "CLA_Data * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_data_free",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->free(\t)",
@@ -4719,7 +4780,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -4812,7 +4874,8 @@
                                     "f_local_ptr": "SHT_prv",
                                     "idtor": "4",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr"
+                                    "stmt_name": "c_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Data"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->ctor(\t)",
@@ -4844,15 +4907,16 @@
                                     "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                                     "f_derived_type": "data",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_local_ptr": "SHT_prv",
                                     "f_type": "type(data)",
-                                    "f_type_module": "classes_mod",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "4",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr"
+                                    "stmt_name": "f_ctor_shadow_capptr",
+                                    "typemap_name": "classes::Data"
                                 }
                             }
                         },
@@ -4921,7 +4985,8 @@
                                     "C_prototype": "CLA_Data * self",
                                     "C_return_type": "void",
                                     "F_C_name": "c_data_dtor",
-                                    "stmt_name": "c_dtor"
+                                    "stmt_name": "c_dtor",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->dtor(\t)",
@@ -4936,7 +5001,8 @@
                                     "F_arg_c_call": "obj%cxxmem",
                                     "F_arguments": "obj",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_dtor"
+                                    "stmt_name": "f_dtor",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -5028,15 +5094,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5147,7 +5214,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -5166,15 +5234,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5308,9 +5377,9 @@
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "CLA_SHROUD_array",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "f_var_cdesc": "SHT_rv_cdesc",
                                     "fc_var": "SHT_rv",
@@ -5319,7 +5388,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5436,7 +5506,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -5456,9 +5527,9 @@
                                     "cxx_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_dimension": "(*)",
@@ -5467,7 +5538,8 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native*"
+                                    "stmt_name": "f_setter_native*",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -5752,14 +5824,15 @@
                             "cxx_type": "classes::Class1::DIRECTION",
                             "cxx_var": "SHCXX_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_enum"
+                            "stmt_name": "c_function_enum",
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "fmtf": {
                             "C_call_function": "classes::directionFunc(\tSHCXX_arg)",
@@ -5793,15 +5866,16 @@
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "fmtl": {
                             "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -5850,14 +5924,15 @@
                             "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_enum"
+                            "stmt_name": "c_in_enum",
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "fmtf": {
                             "c_abstract_decl": "enum CLA_Class1_DIRECTION",
@@ -5878,15 +5953,16 @@
                             "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -6057,7 +6133,8 @@
                             "C_prototype": "CLA_Class1 arg",
                             "C_return_type": "void",
                             "F_C_name": "c_pass_class_by_value",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "classes::passClassByValue(\t*SHCXX_arg)",
@@ -6072,7 +6149,8 @@
                             "F_arg_c_call": "arg%cxxmem",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -6090,9 +6168,12 @@
                             "cxx_nonconst_ptr": "SHCXX_arg",
                             "cxx_type": "classes::Class1",
                             "cxx_var": "SHCXX_arg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_shadow"
+                            "stmt_name": "c_in_shadow",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -6111,14 +6192,15 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_shadow"
+                            "stmt_name": "f_in_shadow",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -6283,7 +6365,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "classes::useclass(\tSHCXX_arg)",
@@ -6312,15 +6395,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -6354,9 +6438,12 @@
                             "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(SHCXX_arg)",
                             "cxx_type": "classes::Class1",
                             "cxx_var": "SHCXX_arg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_shadow*"
+                            "stmt_name": "c_in_shadow*",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -6375,14 +6462,15 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_shadow*"
+                            "stmt_name": "f_in_shadow*",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -6500,7 +6588,8 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow*_capptr"
+                            "stmt_name": "c_function_shadow*_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getclass2(\t)",
@@ -6530,15 +6619,16 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_local_ptr": "SHT_prv",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow*_capptr"
+                            "stmt_name": "f_function_shadow*_capptr",
+                            "typemap_name": "classes::Class1"
                         }
                     }
                 },
@@ -6645,7 +6735,8 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow*_capptr"
+                            "stmt_name": "c_function_shadow*_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getclass3(\t)",
@@ -6675,15 +6766,16 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_local_ptr": "SHT_prv",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow*_capptr"
+                            "stmt_name": "f_function_shadow*_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -6798,7 +6890,8 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow*_capsule"
+                            "stmt_name": "c_function_shadow*_capsule",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getclass2_void(\t)",
@@ -6827,14 +6920,15 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow*_capsule"
+                            "stmt_name": "f_function_shadow*_capsule",
+                            "typemap_name": "classes::Class1"
                         }
                     }
                 },
@@ -6927,7 +7021,8 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow*_capsule"
+                            "stmt_name": "c_function_shadow*_capsule",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getclass3_void(\t)",
@@ -6956,14 +7051,15 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow*_capsule"
+                            "stmt_name": "f_function_shadow*_capsule",
+                            "typemap_name": "classes::Class1"
                         }
                     }
                 },
@@ -7054,7 +7150,8 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow&_capptr"
+                            "stmt_name": "c_function_shadow&_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getConstClassReference(\t)",
@@ -7084,15 +7181,16 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_local_ptr": "SHT_prv",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow&_capptr"
+                            "stmt_name": "f_function_shadow&_capptr",
+                            "typemap_name": "classes::Class1"
                         }
                     }
                 },
@@ -7196,7 +7294,8 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow&_capptr"
+                            "stmt_name": "c_function_shadow&_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getClassReference(\t)",
@@ -7226,15 +7325,16 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_local_ptr": "SHT_prv",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow&_capptr"
+                            "stmt_name": "f_function_shadow&_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtpy": {
                             "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
@@ -7377,7 +7477,8 @@
                             "f_local_ptr": "SHT_prv",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_shadow_capptr"
+                            "stmt_name": "c_function_shadow_capptr",
+                            "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
                             "C_call_function": "classes::getClassCopy(\tflag)",
@@ -7410,15 +7511,16 @@
                             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
                             "f_derived_type": "class1",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_local_ptr": "SHT_prv",
                             "f_type": "type(class1)",
-                            "f_type_module": "classes_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_shadow_capptr"
+                            "stmt_name": "f_function_shadow_capptr",
+                            "typemap_name": "classes::Class1"
                         }
                     },
                     "flag": {
@@ -7436,9 +7538,12 @@
                             "cxx_nonconst_ptr": "&flag",
                             "cxx_type": "int",
                             "cxx_var": "flag",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -7455,15 +7560,16 @@
                             "cxx_type": "int",
                             "cxx_var": "flag",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "flag",
                             "fc_var": "flag",
                             "i_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -7590,7 +7696,8 @@
                             "C_prototype": "int arg",
                             "C_return_type": "void",
                             "F_C_name": "c_set_global_flag",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "classes::set_global_flag(\targ)",
@@ -7605,7 +7712,8 @@
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtl": {
                             "stmt": "lua_subroutine"
@@ -7626,9 +7734,12 @@
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "int",
                             "cxx_var": "arg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -7645,15 +7756,16 @@
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -7784,7 +7896,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "classes::get_global_flag(\t)",
@@ -7811,15 +7924,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtl": {
                             "c_var": "SHCXX_rv",
@@ -7967,14 +8081,15 @@
                             "cxx_var": "SHCXX_rv",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "classes::LastFunctionCalled(\t)",
@@ -8008,9 +8123,9 @@
                             "f_c_suffix": "_bufferify",
                             "f_char_len": "len=30",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "f_var_len": "SHT_rv_len",
                             "fc_var": "SHT_rv",
@@ -8018,7 +8133,8 @@
                             "i_var_len": "SHT_rv_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_buf_copy"
+                            "stmt_name": "f_function_string&_buf_copy",
+                            "typemap_name": "std::string"
                         },
                         "fmtl": {
                             "c_abstract_decl": "const char *",

@@ -140,9 +140,8 @@ class ToDict(visitor.Visitor):
                          "default_name",
                         ])
 
-        if node.typemap.base != "template":
-            # Only print name to avoid too much nesting.
-            d["typemap_name"] = node.typemap.name
+        # Only print name to avoid too much nesting.
+        d["typemap_name"] = node.typemap.name
 
         attrs = {key: value
                  for (key, value) in node.attrs.items()
@@ -282,8 +281,12 @@ class ToDict(visitor.Visitor):
         d = {}
         skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
         for key, value in node.__dict__.items():
-            if key in ["targs"]:
+            if key in ["arg"]:
+                continue
+            elif key in ["targs"]:
                 d[key] = self.visit(value)
+            elif key == "typemap":
+                d["typemap_name"] = value.name
             elif not key.startswith(skip):
                 d[key] = value
         return d

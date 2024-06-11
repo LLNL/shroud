@@ -321,15 +321,16 @@
                             "cxx_var": "SHC_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -368,15 +369,16 @@
                             "cxx_val": "(enum Color) in",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum Color",
@@ -521,15 +523,16 @@
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -568,15 +571,16 @@
                             "cxx_val": "(enum Color) in",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "Color"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "enum Color",
@@ -697,7 +701,8 @@
                             "F_arguments": "out",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "out": {
@@ -716,15 +721,16 @@
                             "cxx_type": "enum Color",
                             "cxx_var": "SHCXX_out",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "out",
                             "fc_var": "out",
                             "i_var": "out",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_out_enum*"
+                            "stmt_name": "f_out_enum*",
+                            "typemap_name": "Color"
                         }
                     }
                 },
@@ -840,15 +846,16 @@
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "Color"
                         }
                     },
                     "inout": {
@@ -867,15 +874,16 @@
                             "cxx_type": "enum Color",
                             "cxx_var": "SHCXX_inout",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "C_SHORT",
                             "f_type": "integer(C_SHORT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "inout",
                             "fc_var": "inout",
                             "i_var": "inout",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_SHORT",
-                            "stmt_name": "f_inout_enum*"
+                            "stmt_name": "f_inout_enum*",
+                            "typemap_name": "Color"
                         }
                     }
                 },

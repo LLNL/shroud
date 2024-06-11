@@ -747,6 +747,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             c_temp_lower_decl="",    # Assume scalar.
             c_temp_lower_use="NULL",   # Assume scalar in CFI_setpointer.
 
+            f_abstract_interface="",
             f_array_allocate="",
             f_array_shape="",
             f_assumed_shape="",  # scalar
@@ -756,6 +757,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_declare_shape_array="",
             f_get_shape_array="",
             f_intent="",
+            f_intent_attr="",
             f_kind="",
             f_shape_var="",
             f_type="",
@@ -820,6 +822,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
 #                cxx_T="short",   # Needs to be a actual type to find helper.
                 F_C_var="XXXF_C_var",
+                f_abstract_interface="XXXf_abstract_interface=",
                 f_capsule_data_type="XXXf_capsule_data_type",
                 f_cdesc_shape="XXXf_cdesc_shape",
                 f_intent="XXXf_intent",
@@ -1943,6 +1946,7 @@ class TypedefNode(AstNode):
             self.options.update(options, replace=True)
         self.wrap = WrapFlags(self.options)
 
+        self.fmtdict = util.Scope(parent.fmtdict)
         self.user_fmt = format
         self.default_format(parent, format)
         if self.user_fmt:
@@ -1952,6 +1956,7 @@ class TypedefNode(AstNode):
         self.ast = ast
         self.user_fields = fields
         self._bind = {}                   # Access with get_arg_bind
+        self._fmtargs = {}                # Used with function pointer arguments
 
         # save info from original type used in generated declarations.
         ntypemap = ast.typemap
@@ -2524,6 +2529,7 @@ def create_library_from_dictionary(node, symtab):
     """
 
     cursor = error.get_cursor()
+    cursor.nwarning = 0  # reset for tests
     cursor.push_phase("Create library")
     if "copyright" in node:
         clean_list(node["copyright"])

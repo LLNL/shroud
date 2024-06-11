@@ -744,7 +744,7 @@ rv = .false.
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
         """Add declarations from fc_statements.
 
-        Return True if arg_decl found.
+        Return True if f_arg_decl found.
         """
         found = False
         if stmts.f_arg_decl:
@@ -948,7 +948,7 @@ rv = .false.
                 self._pop_splicer(key)
         self._pop_splicer("generic")
 
-    def add_abstract_interface(self, node, arg, fileinfo, name=None):
+    def add_abstract_interface(self, node, arg, fileinfo, fmt_arg=None, name=None):
         """Record an abstract interface.
 
         Function pointers are converted to abstract interfaces.
@@ -957,16 +957,22 @@ rv = .false.
         If from a typedef, then name argument will be set.
 
         Args:
-            node -
-            arg -
+            node -  ast.TypedefNode  ast.FunctionNode
+            arg -   declast.Declaration
             fileinfo - ModuleInfo
         """
-        fmt = util.Scope(node.fmtdict)
-        fmt.argname = arg.declarator.user_name
+        if fmt_arg:
+            fmt = fmt_arg
+        else:
+            fmt = node.fmtdict
         if name is None:
+            fmt_tmp = util.Scope(fmt)
+            fmt_tmp.argname = arg.declarator.user_name
+            # argname used in F_abstract_interface_subroutine_template
             name = wformat(
-                node.options.F_abstract_interface_subprogram_template, fmt
+                node.options.F_abstract_interface_subprogram_template, fmt_tmp
             )
+        fmt.f_abstract_interface = name
         entry = fileinfo.f_abstract_interface.get(name)
         if entry is None:
             meta = get_arg_bind(node, arg, "f").meta
@@ -995,25 +1001,36 @@ rv = .false.
                 arg_f_names = []
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
+                imports = {}  # indexed as [symbol]
+                fmtargs = fptr._fmtargs
+                fmt_result = fmtargs["+result"]["fmtf"]
+                abstract_names = fmt_result.f_abstract_names
                 for i, param in enumerate(fptr.ast.declarator.params):
-                    name = param.declarator.user_name
-                    meta = get_arg_bind(fptr, param, "f").meta
-                    intent = meta["intent"]
-                    if name is None:
-                        fmt.index = str(i)
-                        name = wformat(
-                            options.F_abstract_interface_argument_template,
-                            fmt,
-                        )
-                    arg_f_names.append(name)
-                    arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
+                    bind = get_arg_bind(fptr, param, "f")
+                    meta = bind.meta
+                    stmts = bind.stmt
+                    fmt_arg = fmtargs[abstract_names[i]]["fmtf"]
+                    # See also build_arg_list_interface
+                    if stmts.i_arg_decl is not None:
+                        # Use explicit declaration from CStmt, both must exist.
+                        for name in stmts.i_arg_names:
+                            append_format(arg_f_names, name, fmt_arg)
+                        for arg in stmts.i_arg_decl:
+                            append_format(arg_c_decl, arg, fmt_arg)
+                        self.add_i_module_from_stmts(stmts, modules, imports, fmt_arg)
+                    else:
+                        # XXX - convert the others later
+                        name = fmt_arg.f_abstract_name
+                        intent = meta["intent"]
+                        arg_f_names.append(name)
+                        arg_c_decl.append(bind_c(param, modules, intent=intent, name=name))
 
-                    arg_typemap = param.typemap
-                    self.update_f_module(
-                        modules,
-                        arg_typemap.i_module or arg_typemap.f_module,
-                        fmt
-                    )
+                        arg_typemap = param.typemap
+                        self.update_f_module(
+                            modules,
+                            arg_typemap.i_module or arg_typemap.f_module,
+                            fmt
+                        )
 
                 if subprogram == "function":
                     arg_c_decl.append(bind_c(fptr.ast,
@@ -1028,7 +1045,6 @@ rv = .false.
                     "{} {}({}) bind(C)".format(subprogram, key, arguments)
                 )
                 iface.append(1)
-                imports = {}
                 arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)
                 iface.extend(arg_f_use)
                 if imports:
@@ -1126,7 +1142,7 @@ rv = .false.
                     )
                     self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
                 else:
-                    absiface = self.add_abstract_interface(node, ast, fileinfo)
+                    absiface = fmt.f_abstract_interface
                     arg_c_decl.append(
                         "procedure({}) :: {}".format(absiface, name)
                     )
@@ -1134,7 +1150,7 @@ rv = .false.
             elif declarator.is_array() > 1:
                 # Treat too many pointers as a type(C_PTR)
                 # and let the wrapper sort it out.
-                # 'char **' uses c_char_**_in as a special case.
+                # 'char **' uses c_in_char** as a special case.
                 append_format(arg_c_decl,
                               "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1598,6 +1614,17 @@ rv = .false.
             implied = f_attrs.get("implied", None)
             pass_obj = f_attrs.get("pass", None)
 
+            if arg_typemap.base == "procedure":
+                # typedef function pointer
+                do_use = False
+                fmt_arg.f_abstract_interface = arg_typemap.f_kind
+            elif f_declarator.is_function_pointer():
+                do_use = False
+                if "funptr" not in f_attrs:
+                    absiface = self.add_abstract_interface(node, f_arg, fileinfo, fmt_arg)
+            else:
+                do_use = True
+
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
                 arg_f_decl.append(
@@ -1615,42 +1642,6 @@ rv = .false.
                 )
                 arg_f_names.append(fmt_arg.f_var)
                 arg_c_call.append(fmt_arg.f_var)
-                continue
-            elif "external" in f_attrs:
-                # external is similar to assumed type, in that it will
-                # accept any function.  But external is not allowed
-                # in bind(C), so make sure a wrapper is generated.
-                arg_f_decl.append("external :: {}".format(fmt_arg.f_var))
-                need_wrapper = True
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                # function pointers are pass thru without any other action
-                continue
-            elif arg_typemap.base == "procedure":
-                if "funptr" in f_attrs:
-                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
-                else:
-                    # abstract interface already created via typedef
-                    arg_f_decl.append(
-                        "procedure({}) :: {}".format(fmt_arg.f_kind, fmt_arg.f_var)
-                    )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                # function pointers are pass thru without any other action
-                continue
-            elif f_declarator.is_function_pointer():
-                if "funptr" in f_attrs:
-                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-                    arg_f_decl.append("type(C_FUNPTR) :: {}".format(fmt_arg.f_var))
-                else:
-                    absiface = self.add_abstract_interface(node, f_arg, fileinfo)
-                    arg_f_decl.append(
-                        "procedure({}) :: {}".format(absiface, fmt_arg.f_var)
-                    )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                # function pointers are pass thru without any other action
                 continue
             elif implied:
                 # implied is computed then passed to C++.
@@ -1673,8 +1664,6 @@ rv = .false.
                 # Explicit declarations from fc_statements.
                 self.add_stmt_declaration(
                     arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
-                if not result_stmt.f_arg_name:
-                    arg_f_names.append(fmt_arg.f_var)
                 self.add_f_module_from_stmts(result_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
@@ -1696,7 +1685,10 @@ rv = .false.
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
 
-            self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
+            if do_use:
+                # XXX - function pointers confuse this code
+                # XXX - it adds a USE for the function pointers's return type.
+                self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic

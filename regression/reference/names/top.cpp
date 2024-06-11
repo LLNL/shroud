@@ -328,13 +328,13 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // Statement: c_in_char*
 // ----------------------------------------
 // Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
-// Statement: c_in_void
+// Statement: c_in_procedure
 // ----------------------------------------
 // Argument:  void ( * afree)(double * arr +intent(inout))
-// Statement: c_in_void
+// Statement: c_in_procedure
 // ----------------------------------------
 // Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
-// Statement: c_in_void
+// Statement: c_in_procedure
 void TES_external_funcs(const char * rdbase, const char * pkg,
     const char * name, void ( * alloc)(double * arr, int * err),
     void ( * afree)(double * arr), void ( * assoc)(double * arr,

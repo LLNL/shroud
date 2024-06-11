@@ -664,9 +664,9 @@
                             "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                             "f_helper_array_context": "SCO_SHROUD_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "f_var_cdesc": "SHT_rv_cdesc",
                             "fc_var": "SHT_rv",
@@ -675,7 +675,8 @@
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_getter_native*_cdesc_pointer"
+                            "stmt_name": "f_getter_native*_cdesc_pointer",
+                            "typemap_name": "int"
                         }
                     },
                     "SH_this": {
@@ -695,15 +696,16 @@
                             "cxx_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
-                            "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
                             "fc_var": "SH_this",
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct*"
+                            "stmt_name": "f_in_struct*",
+                            "typemap_name": "ns3::DataPointer"
                         }
                     }
                 },
@@ -842,7 +844,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {
@@ -862,15 +865,16 @@
                             "cxx_var": "SH_this",
                             "f_derived_type": "data_pointer",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "data_pointer",
                             "f_type": "type(data_pointer)",
-                            "f_type_module": "scope_ns3_mod",
                             "f_var": "SH_this",
                             "fc_var": "SH_this",
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct*"
+                            "stmt_name": "f_inout_struct*",
+                            "typemap_name": "ns3::DataPointer"
                         }
                     },
                     "val": {
@@ -890,9 +894,9 @@
                             "cxx_var": "val",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "val",
                             "fc_var": "val",
                             "i_dimension": "(*)",
@@ -901,7 +905,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_native*"
+                            "stmt_name": "f_setter_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1245,9 +1250,9 @@
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "SCO_SHROUD_array",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "f_var_cdesc": "SHT_rv_cdesc",
                                     "fc_var": "SHT_rv",
@@ -1256,7 +1261,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer",
+                                    "typemap_name": "int"
                                 }
                             },
                             "SH_this": {
@@ -1276,15 +1282,16 @@
                                     "cxx_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
-                                    "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
                                     "fc_var": "SH_this",
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct*"
+                                    "stmt_name": "f_in_struct*",
+                                    "typemap_name": "ns1::DataPointer"
                                 }
                             }
                         },
@@ -1423,7 +1430,8 @@
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "SH_this": {
@@ -1443,15 +1451,16 @@
                                     "cxx_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
-                                    "f_type_module": "scope_ns1_mod",
                                     "f_var": "SH_this",
                                     "fc_var": "SH_this",
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct*"
+                                    "stmt_name": "f_inout_struct*",
+                                    "typemap_name": "ns1::DataPointer"
                                 }
                             },
                             "val": {
@@ -1471,9 +1480,9 @@
                                     "cxx_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_dimension": "(*)",
@@ -1482,7 +1491,8 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native*"
+                                    "stmt_name": "f_setter_native*",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1853,9 +1863,9 @@
                                     "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                     "f_helper_array_context": "SCO_SHROUD_array",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "f_var_cdesc": "SHT_rv_cdesc",
                                     "fc_var": "SHT_rv",
@@ -1864,7 +1874,8 @@
                                     "idtor": "0",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native*_cdesc_pointer"
+                                    "stmt_name": "f_getter_native*_cdesc_pointer",
+                                    "typemap_name": "int"
                                 }
                             },
                             "SH_this": {
@@ -1884,15 +1895,16 @@
                                     "cxx_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
-                                    "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
                                     "fc_var": "SH_this",
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_in_struct*"
+                                    "stmt_name": "f_in_struct*",
+                                    "typemap_name": "ns2::DataPointer"
                                 }
                             }
                         },
@@ -2031,7 +2043,8 @@
                                     "F_arg_c_call": "SH_this,\t val",
                                     "F_arguments": "SH_this,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "SH_this": {
@@ -2051,15 +2064,16 @@
                                     "cxx_var": "SH_this",
                                     "f_derived_type": "data_pointer",
                                     "f_intent": "INOUT",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "f_kind": "data_pointer",
                                     "f_type": "type(data_pointer)",
-                                    "f_type_module": "scope_ns2_mod",
                                     "f_var": "SH_this",
                                     "fc_var": "SH_this",
                                     "i_var": "SH_this",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_STRUCT",
-                                    "stmt_name": "f_inout_struct*"
+                                    "stmt_name": "f_inout_struct*",
+                                    "typemap_name": "ns2::DataPointer"
                                 }
                             },
                             "val": {
@@ -2079,9 +2093,9 @@
                                     "cxx_var": "val",
                                     "f_assumed_shape": "(:)",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_dimension": "(*)",
@@ -2090,7 +2104,8 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_INT",
                                     "size": "size(val)",
-                                    "stmt_name": "f_setter_native*"
+                                    "stmt_name": "f_setter_native*",
+                                    "typemap_name": "int"
                                 }
                             }
                         },

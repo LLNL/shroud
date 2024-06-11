@@ -84,15 +84,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -203,7 +204,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -222,15 +224,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -325,15 +328,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -444,7 +448,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -463,15 +468,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -566,15 +572,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_intent": "OUT",
+                                    "f_intent_attr": ", intent(OUT)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "SHT_rv",
                                     "fc_var": "SHT_rv",
                                     "i_var": "SHT_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_getter_native"
+                                    "stmt_name": "f_getter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -685,7 +692,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t val",
                                     "F_arguments": "obj,\t val",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_setter"
+                                    "stmt_name": "f_setter",
+                                    "typemap_name": "void"
                                 }
                             },
                             "val": {
@@ -704,15 +712,16 @@
                                     "cxx_type": "int",
                                     "cxx_var": "val",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer(C_INT)",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "val",
                                     "fc_var": "val",
                                     "i_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native"
+                                    "stmt_name": "f_setter_native",
+                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -971,7 +980,8 @@
                             "F_C_arguments": "",
                             "F_C_name": "c_bad_fstatements",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "BadFstatements(\t)",
@@ -986,7 +996,8 @@
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -1164,7 +1175,8 @@
                             "F_C_arguments": "data",
                             "F_C_name": "c_assumed_rank",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1183,14 +1195,15 @@
                             "cxx_type": "int",
                             "cxx_var": "data",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "data",
                             "i_var": "data",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native*"
+                            "stmt_name": "c_inout_native*",
+                            "typemap_name": "int"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1314,7 +1327,8 @@
                             "F_arguments": "data",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1333,9 +1347,9 @@
                             "cxx_type": "int",
                             "cxx_var": "data",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "data",
                             "fc_var": "data",
                             "i_var": "data",
@@ -1343,7 +1357,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1451,7 +1466,8 @@
                             "F_arguments": "data",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1471,9 +1487,9 @@
                             "cxx_var": "data",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "data",
                             "fc_var": "data",
                             "i_dimension": "(*)",
@@ -1482,7 +1498,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(data)",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1590,7 +1607,8 @@
                             "F_arguments": "data",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "data": {
@@ -1610,9 +1628,9 @@
                             "cxx_var": "data",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "data",
                             "fc_var": "data",
                             "i_dimension": "(*)",
@@ -1621,7 +1639,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(data)",
-                            "stmt_name": "f_inout_native*"
+                            "stmt_name": "f_inout_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },

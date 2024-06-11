@@ -52,7 +52,9 @@ class StmtCursor(object):
             print("statement line", linenumber)
         if "name" in self.stmt:
             print("Statement:", self.stmt["name"])
-        
+        elif "alias" in self.stmt:
+            print("Statement:", self.stmt["alias"][0])
+            
 class Cursor(object):
     def __init__(self):
         self.phase_list = []
@@ -148,6 +150,7 @@ class Cursor(object):
 
     def check_for_warnings(self):
         if self.nwarning > 0:
+            print("Too many warnings: {}".format(self.nwarning))
             raise SystemExit
 
 class ShroudError(Exception):

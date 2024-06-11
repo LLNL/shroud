@@ -794,7 +794,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg"
+                                    "name": "arg",
+                                    "typemap_name": "--template-parameter--"
                                 },
                                 "specifier": [
                                     "ArgType"
@@ -883,7 +884,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg"
+                                    "name": "arg",
+                                    "typemap_name": "int"
                                 },
                                 "specifier": [
                                     "int"
@@ -1007,7 +1009,8 @@
                         "params": [
                             {
                                 "declarator": {
-                                    "name": "arg"
+                                    "name": "arg",
+                                    "typemap_name": "double"
                                 },
                                 "specifier": [
                                     "double"
@@ -1127,7 +1130,8 @@
                 "ast": {
                     "declarator": {
                         "name": "TemplateReturn",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "--template-parameter--"
                     },
                     "specifier": [
                         "RetType"
@@ -1202,7 +1206,8 @@
                 "ast": {
                     "declarator": {
                         "name": "TemplateReturn",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
@@ -1275,7 +1280,8 @@
                 "ast": {
                     "declarator": {
                         "name": "TemplateReturn",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "double"
                     },
                     "specifier": [
                         "double"
@@ -2591,15 +2597,6 @@
                                     "<FUNCTION>": "incr  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
                                             "name": "incr",
                                             "params": [
                                                 {
@@ -2619,14 +2616,20 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int ( * incr)(int)",
+                                    "decl": "int incr(int)",
                                     "name": "incr",
                                     "options": {},
                                     "wrap": {},
                                     "zz_bind": {
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             }
@@ -2883,6 +2886,11 @@
         }
     },
     "types": {
+        "int(*)(int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
         "tutorial::Color": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",

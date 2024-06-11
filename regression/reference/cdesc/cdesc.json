@@ -121,7 +121,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_rank2_in",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "Rank2In(\targ)",
@@ -137,7 +138,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -157,9 +159,9 @@
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "i_dimension": "(*)",
                             "i_var": "arg",
@@ -167,7 +169,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "c_in_native*"
+                            "stmt_name": "c_in_native*",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -189,9 +192,9 @@
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:2) = shape(arg)",
                             "f_helper_array_context": "CDE_SHROUD_array",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
                             "fc_var": "arg",
@@ -202,7 +205,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_native*_cdesc"
+                            "stmt_name": "f_in_native*_cdesc",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -455,7 +459,8 @@
                             "F_C_arguments": "name,\t value",
                             "F_C_name": "c_get_scalar1",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -474,14 +479,15 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_string&"
+                            "stmt_name": "c_in_string&",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -500,15 +506,16 @@
                             "cxx_type": "void",
                             "cxx_var": "value",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "i_var": "value",
                             "idtor": "0",
                             "rank": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "1",
-                            "stmt_name": "c_in_void*"
+                            "stmt_name": "c_in_void*",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -680,7 +687,8 @@
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -701,9 +709,9 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
@@ -711,7 +719,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -734,9 +743,9 @@
                             "f_cdesc_shape": "",
                             "f_helper_array_context": "CDE_SHROUD_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "f_var_cdesc": "SHT_value_cdesc",
                             "fc_var": "value",
@@ -746,7 +755,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmt_name": "f_out_native*_cdesc"
+                            "stmt_name": "f_out_native*_cdesc",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -922,7 +932,8 @@
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -943,9 +954,9 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
@@ -953,7 +964,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -976,9 +988,9 @@
                             "f_cdesc_shape": "",
                             "f_helper_array_context": "CDE_SHROUD_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "f_var_cdesc": "SHT_value_cdesc",
                             "fc_var": "value",
@@ -988,7 +1000,8 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "1",
-                            "stmt_name": "f_out_native*_cdesc"
+                            "stmt_name": "f_out_native*_cdesc",
+                            "typemap_name": "double"
                         }
                     }
                 },
@@ -1008,7 +1021,8 @@
                 "ast": {
                     "declarator": {
                         "name": "getData",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "--template-parameter--"
                     },
                     "specifier": [
                         "DataType"
@@ -1083,7 +1097,8 @@
                 "ast": {
                     "declarator": {
                         "name": "getData",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "int"
                     },
                     "specifier": [
                         "int"
@@ -1178,7 +1193,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "getData<int>(\t)",
@@ -1205,15 +1221,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1239,7 +1256,8 @@
                 "ast": {
                     "declarator": {
                         "name": "getData",
-                        "params": []
+                        "params": [],
+                        "typemap_name": "double"
                     },
                     "specifier": [
                         "double"
@@ -1338,7 +1356,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "double"
                         },
                         "fmtf": {
                             "C_call_function": "getData<double>(\t)",
@@ -1365,15 +1384,16 @@
                             "cxx_type": "double",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "double"
                         }
                     }
                 },
@@ -1728,7 +1748,8 @@
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -1749,9 +1770,9 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
@@ -1759,7 +1780,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -1778,15 +1800,16 @@
                             "cxx_type": "int",
                             "cxx_var": "value",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "fc_var": "value",
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1945,7 +1968,8 @@
                             "F_arguments": "name,\t value",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "name": {
@@ -1966,9 +1990,9 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "f_var_len": "SHT_name_len",
                             "fc_var": "name",
@@ -1976,7 +2000,8 @@
                             "i_var_len": "SHT_name_len",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_string&_buf"
+                            "stmt_name": "f_in_string&_buf",
+                            "typemap_name": "std::string"
                         }
                     },
                     "value": {
@@ -1995,15 +2020,16 @@
                             "cxx_type": "double",
                             "cxx_var": "value",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_DOUBLE",
                             "f_type": "real(C_DOUBLE)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "value",
                             "fc_var": "value",
                             "i_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_out_native*"
+                            "stmt_name": "f_out_native*",
+                            "typemap_name": "double"
                         }
                     }
                 },

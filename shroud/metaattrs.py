@@ -28,8 +28,13 @@ Fortran:
    hidden
    owner    attrs
 
+   fptr - FunctionNode for callback
+      Converted from a function pointer into a function.
+
 
 """
+
+import copy
 
 from . import ast
 from . import declast
@@ -182,7 +187,7 @@ class FillMeta(object):
             if is_fptr:
                 # intent is not defaulted for function pointer arguments
                 # for historical reasons.
-                pass
+                intent = "none"
             elif declarator.is_function_pointer():
                 intent = "in"
             elif not declarator.is_indirect():
@@ -326,7 +331,12 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
-        if ntypemap.name == "void":
+        if declarator.is_function_pointer() or ntypemap.base == "procedure":
+            if attrs.get("external"):
+                meta["deref"] = "external"
+            elif attrs.get("funptr"):
+                meta["deref"] = "funptr"
+        elif ntypemap.name == "void":
             # void cannot be dereferenced.
             pass
         elif intent not in ["out", "inout"]:
@@ -383,7 +393,12 @@ class FillMeta(object):
         # Set deref attribute for arguments which return values.
         intent = meta["intent"]
         spointer = declarator.get_indirect_stmt()
-        if ntypemap.name == "void":
+        if declarator.is_function_pointer() or ntypemap.base == "procedure":
+            if attrs.get("external"):
+                meta["deref"] = "external"
+            elif attrs.get("funptr"):
+                meta["deref"] = "funptr"
+        elif ntypemap.name == "void":
             # void cannot be dereferenced.
             pass
         elif intent not in ["out", "inout"]:
@@ -640,9 +655,11 @@ class FillMetaShare(FillMeta):
 
         arg = node.ast
         if arg.declarator.is_function_pointer():
-            fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
+            newarg = dereference_function_pointer(arg)
+            fptr = FunctionNode(gen_decl(newarg), parent=node, ast=newarg)
             r_bind.meta["fptr"] = fptr
-            self.meta_function_params(fptr, is_fptr=True)
+            statements.fetch_func_bind(fptr, wlang)
+            self.meta_function(None, fptr, is_fptr=True)
 
     def meta_variable(self, cls, node):
         wlang = self.wlang
@@ -651,7 +668,7 @@ class FillMetaShare(FillMeta):
 
         self.check_var_attrs(node, bind.meta)
 
-    def meta_function(self, cls, node):
+    def meta_function(self, cls, node, is_fptr=False):
         # node - ast.FunctionNode
         wlang = self.wlang
         func_cursor = self.cursor.current
@@ -661,7 +678,7 @@ class FillMetaShare(FillMeta):
         
         self.check_func_attrs(node, r_meta)
         self.set_func_intent(node, r_meta)
-        self.meta_function_params(node)
+        self.meta_function_params(node, is_fptr)
 
     def meta_function_params(self, node, is_fptr=False):
         """Set function argument meta attributes.
@@ -681,9 +698,11 @@ class FillMetaShare(FillMeta):
             self.check_value(arg, meta)
 
             if arg.declarator.is_function_pointer():
-                fptr = FunctionNode(gen_decl(arg), parent=node, ast=arg)
+                # Convert function pointer into function
+                newarg = dereference_function_pointer(arg)
+                fptr = FunctionNode(gen_decl(newarg), parent=node, ast=newarg)
                 meta["fptr"] = fptr
-                self.meta_function_params(fptr, is_fptr=True)
+                self.meta_function(None, fptr, is_fptr=True)
         # --- End loop over function parameters
         func_cursor.arg = None
 
@@ -708,6 +727,9 @@ class FillMetaShare(FillMeta):
                 "owner",
                 "pure",
                 "rank",
+
+                "external", # Only on function pointer
+                "funptr",   # Only on function pointer
                 "__line__",
             ]:
                 cursor.generate(
@@ -950,7 +972,9 @@ class FillMetaFortran(FillMeta):
 
         arg = node.ast
         if arg.declarator.is_function_pointer():
-            self.meta_function_params(meta["fptr"])
+            fptr = meta["fptr"]
+            statements.fetch_func_bind(fptr, wlang)
+            self.meta_function(None, fptr)
 
     def meta_variable(self, cls, node):
         wlang = self.wlang
@@ -1002,7 +1026,8 @@ class FillMetaFortran(FillMeta):
             self.set_arg_hidden(arg, meta)
 
             if arg.declarator.is_function_pointer():
-                self.meta_function_params(meta["fptr"])
+                fptr = meta["fptr"]
+                self.meta_function(None, fptr)
         func_cursor.arg = None
         
     def set_arg_fortran(self, node, arg, meta):
@@ -1169,6 +1194,25 @@ class FillMetaLua(FillMeta):
         # --- End loop over function parameters
         func_cursor.arg = None
 
+######################################################################
+#
+
+def dereference_function_pointer(declaration):
+    """Return a new Declaration with dereferenced function pointer.
+
+    Only pointer to function - no pointer to pointer to function.
+    """
+    declarator = declaration.declarator
+    if not declarator.is_function_pointer():
+        raise RuntimeError("Expected a function pointer")
+    if declarator.func.is_pointer() != 1:
+        raise RuntimeError("Expected single pointer to function")
+    newdecl = copy.copy(declaration)
+    newdecl.declarator = copy.copy(declarator)
+    newdecl.declarators = [ newdecl.declarator ]
+    newdecl.declarator.func = None
+    return newdecl
+    
 ######################################################################
 #
 

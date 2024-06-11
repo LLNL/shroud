@@ -117,14 +117,15 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&"
+                            "stmt_name": "c_function_string&",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "LastFunctionCalled(\t)",
@@ -163,9 +164,9 @@
                             "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "NS_SHROUD_copy_string",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "f_var_capsule": "SHT_rv_capsule",
                             "f_var_cdesc": "SHT_rv_cdesc",
@@ -175,7 +176,8 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cdesc_allocatable"
+                            "stmt_name": "f_function_string&_cdesc_allocatable",
+                            "typemap_name": "std::string"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -268,7 +270,8 @@
                             "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_name": "c_one",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "One(\t)",
@@ -281,7 +284,8 @@
                             "F_C_subprogram": "subroutine",
                             "F_arguments": "",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -733,7 +737,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_one",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer::One(\t)",
@@ -746,7 +751,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },

@@ -619,10 +619,16 @@ class Parser(ExprParser):
 
         # SSS Share fields between Declaration and Declarator for now
         for d2 in node.declarators:
-            d2.typemap = node.typemap
             if d2.func:
                 d2.func.typemap = node.typemap
-        
+                if "typedef" in node.storage:
+                    d2.typemap = node.typemap
+                else:
+                    d2.typemap = add_funptr_typemap(self.symtab, node, d2)
+                    d2.typemap = node.typemap  # work in progress
+            else:
+                d2.typemap = node.typemap
+                
         if "typedef" in node.storage:
             self.symtab.create_typedef(node)
         self.exit("declaration", str(node))
@@ -1434,13 +1440,15 @@ class Declarator(Node):
                 parts.append("{}({})".format(attr, value))
             space = ""
 
-    def __str__(self):
+    def to_string(self, abstract=False):
         out = []
         for ptr in self.pointer:
             out.append(str(ptr))
 
         if self.func:
-            out.append("(" + str(self.func) + ")")
+            out.append("(" + self.func.to_string(abstract) + ")")
+        elif abstract:
+            pass
         elif self.name:
             out.append(self.name)
 
@@ -1451,11 +1459,16 @@ class Declarator(Node):
                 for param in self.params:
                     out.append(comma)
                     out.append(str(param))
-                    s = str(param.declarator)
-                    if s:
-                        out.append(" ")
-                        out.append(s)
-                    comma = ", "
+                    s = param.declarator.to_string(abstract)
+                    if abstract:
+                        if s:
+                            out.append(s)
+                        comma = ","
+                    else:
+                        if s:
+                            out.append(" ")
+                            out.append(s)
+                        comma = ", "
             else:
                 out.append("void")
             out.append(")")
@@ -1469,9 +1482,16 @@ class Declarator(Node):
         if self.init is not None:
             out.append("=")
             out.append(str(self.init))
-        self.gen_attrs(self.attrs, out)
+        if not abstract:
+            self.gen_attrs(self.attrs, out)
 
         return "".join(out)
+
+    def abstract(self):
+        return self.to_string(abstract=True)
+
+    def __str__(self):
+        return self.to_string()
 
 
 class Declaration(Node):
@@ -1513,11 +1533,19 @@ class Declaration(Node):
         """Instantiate a template argument.
         node - Declaration node of template argument.
         Return a new copy of self and fill in type from node.
+        Also copy the declarators and replace typemap.
         If node is 'int *', the pointer is in the declarator.
         """
         # XXX - what if T = 'int *' and arg is 'T *arg'?
         new = copy.copy(self)
         new.set_type(node.typemap)
+        declarators = []
+        for declarator in self.declarators:
+            newd = copy.copy(declarator)
+            newd.typemap = node.typemap
+            declarators.append(newd)
+        new.declarators = declarators
+        new.declarator = declarators[0]
         return new
 
     def __str__(self):
@@ -2192,3 +2220,20 @@ def find_rank_of_dimension(dim):
         return None
     dim_ast = ExprParser(dim).dimension_shape()
     return len(dim_ast)
+
+def add_funptr_typemap(symtab, declaration, declarator):
+    """Create a typemap for a function pointer.
+    """
+    type_name = str(declaration) + declarator.abstract()
+    ntypemap = symtab.lookup_typemap(type_name)
+    if not ntypemap:
+        ntypemap = typemap.Typemap(
+            type_name,
+            base="procedure",
+            sgroup="procedure",
+
+            f_type="f-function-pointer",
+            #                ast=ast,  # XXX - maybe needed later
+        )
+        symtab.register_typemap(ntypemap.name, ntypemap)
+    return ntypemap

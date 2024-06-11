@@ -32,6 +32,20 @@ maplang = dict(f="ci_type", c="c_type")
 
 class FillFormat(object):
     """Loop over Nodes and fill fmt dictionaries.
+    Used for Fortran and C wrappers.
+
+    Creates the nested dictionary structure:
+    _fmtargs = {
+      '+result': {
+         'fmtc': Scope(_fmtfunc)
+      }
+      'arg1': {
+        'fmtc': Scope(_fmtfunc),
+        'fmtf': Scope(_fmtfunc)
+        'fmtl': Scope(_fmtfunc)
+        'fmtpy': Scope(_fmtfunc)
+      }
+    }
     """
     def __init__(self, newlibrary):
         self.newlibrary = newlibrary
@@ -44,6 +58,11 @@ class FillFormat(object):
     def fmt_namespace(self, node):
         cursor = self.cursor
         
+        cursor.push_phase("FillFormat typedef")
+        for typ in node.typedefs:
+            self.fmt_typedefs(typ)
+        cursor.pop_phase("FillFormat typedef")
+
         for cls in node.classes:
             cursor.push_phase("FillFormat class function")
             self.fmt_functions(cls, cls.functions)
@@ -56,6 +75,13 @@ class FillFormat(object):
         for ns in node.namespaces:
             self.fmt_namespace(ns)
 
+    def fmt_typedefs(self, node):
+        if node.wrap.fortran:
+            if node.ast.declarator.is_function_pointer():
+                meta = statements.fetch_typedef_bind(node, "f").meta
+                fptr = meta["fptr"]
+                self.fmt_function_pointer("f", fptr)
+            
     def fmt_functions(self, cls, functions):
         for node in functions:
             if node.wrap.c:
@@ -82,15 +108,13 @@ class FillFormat(object):
             node.eval_template("F_name_function")
             node.eval_template("F_name_generic")
 
-        ast = node.ast
-
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
-        fmt_result.stmt_name = result_stmt.name
+        set_share_function_format(node, fmt_result, bind_result)
         func_cursor.stmt = None
 
         # --- Loop over function parameters
-        for arg in ast.declarator.params:
+        for arg in node.ast.declarator.params:
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
@@ -100,9 +124,63 @@ class FillFormat(object):
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
-            fmt_arg.stmt_name = arg_stmt.name
 
+            set_f_arg_format(node, arg, fmt_arg, bind_arg)
+            if wlang == "f":
+                if arg.declarator.is_function_pointer():
+                    fptr = bind_arg.meta["fptr"]
+                    self.fmt_function_pointer(wlang, fptr)
         # --- End loop over function parameters
+        func_cursor.arg = None
+        func_cursor.stmt = None
+            
+        cursor.pop_node(node)
+
+    def fmt_function_pointer(self, wlang, node):
+        """
+        Set fmt.f_abstract_names on the result.
+          A list of abstract argument names including defaulted names.
+        Set fmt.f_abstract_name for arguments.
+        """
+        cursor = self.cursor
+        func_cursor = cursor.push_node(node)
+
+        fmtlang = "fmt" + wlang
+
+        fmt_func = node.fmtdict
+        fmtargs = node._fmtargs
+        fmt_arg0 = fmtargs.setdefault("+result", {})
+        fmt_result = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+        abstract_names = []
+
+        # --- Loop over function parameters
+        fmt_name = util.Scope(fmt_func)
+        for i, arg in enumerate(node.ast.declarator.params):
+            func_cursor.arg = arg
+            declarator = arg.declarator
+            arg_name = declarator.user_name
+            
+            if arg_name is None:
+                fmt_name.index = str(i)
+                arg_name = wformat(
+                    node.options.F_abstract_interface_argument_template,
+                    fmt_name,
+                )
+            abstract_names.append(arg_name)
+
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+            bind_arg = statements.fetch_arg_bind(node, arg, wlang)
+            arg_stmt = bind_arg.stmt
+            func_cursor.stmt = arg_stmt
+
+            if wlang == "f":
+                set_f_arg_format(node, arg, fmt_arg, bind_arg)
+                fmt_arg.f_abstract_name = arg_name
+                fmt_arg.i_var = arg_name
+                
+        # --- End loop over function parameters
+        fmt_result.f_abstract_names = abstract_names
         func_cursor.arg = None
         func_cursor.stmt = None
             
@@ -222,6 +300,7 @@ class FillFormat(object):
             fmt_result.i_var = fmt_result.F_result
             fmt_result.f_var = fmt_result.F_result
             fmt_result.f_intent = "OUT"
+            fmt_result.f_intent_attr = ", intent(OUT)"
             fmt_result.c_type = result_typemap.c_type  # c_return_type
             fmt_result.f_type = result_typemap.f_type
             self.set_fmt_fields_iface(node, ast, bind, fmt_result,
@@ -291,6 +370,7 @@ class FillFormat(object):
         fmt_arg.f_var = arg_name
         fmt_arg.fc_var = arg_name
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
+        fmt_arg.arg = FortranArgFormat(f_arg)
         arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind, fmt_arg)
         self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg, bind)
         self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
@@ -444,10 +524,9 @@ class FillFormat(object):
         elif subprogram == "function":
             # XXX this also gets set for subroutines
             fmt.f_intent = "OUT"
-        else:
-            fmt.f_intent = meta["intent"].upper()
-            if fmt.f_intent == "SETTER":
-                fmt.f_intent = "IN"
+            fmt.f_intent_attr = ", intent(OUT)"
+#        else:
+            # XXX - now set in fcfmt.set_f_arg_format
         
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
@@ -457,8 +536,6 @@ class FillFormat(object):
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         if ntypemap.f_derived_type:
             fmt.f_derived_type = ntypemap.f_derived_type
-        if ntypemap.f_module_name:
-            fmt.f_type_module = ntypemap.f_module_name
 
     def set_fmt_fields_f(self, cls, fcn, f_ast, c_ast, bind, fmt,
                          subprogram=None,
@@ -753,6 +830,26 @@ class ToDimension(todict.PrintNode):
                 
 ######################################################################
 
+def set_share_function_format(node, fmt, bind):
+    meta = bind.meta
+
+    fmt.stmt_name = bind.stmt.name
+    fmt.typemap = node.ast.typemap
+    
+def set_f_arg_format(node, arg, fmt, bind):
+    meta = bind.meta
+
+    fmt.stmt_name = bind.stmt.name
+    fmt.typemap = arg.declarator.typemap
+    
+    intent = meta["intent"].upper()
+    if intent == "SETTER":
+        intent = "IN"
+    if intent != "NONE":
+        fmt.f_intent = intent
+        fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+
+
 def compute_c_deref(arg, local_var, fmt):
     """Compute format fields to dereference C argument."""
     if local_var == "scalar":
@@ -829,3 +926,41 @@ def find_result_converter(wlang, language, ntypemap):
         converter = ntypemap.cxx_to_c
         lang = "c_type"
     return (converter, lang)
+
+######################################################################
+
+class FortranArgWorker(object):
+    def __init__(self, arg):
+        self.arg = arg
+
+    def procedure(self):
+        """Demonstration attribute"""
+        return "default-procedure"
+        if name is None:
+            name = wformat(
+                node.options.F_abstract_interface_subprogram_template, fmt
+            )
+
+
+class FortranArgFormat(object):
+    """
+    An instance is added to the format dictionary for every Fortran
+    argument. It is used to look up fields while processing
+    statements to add values.
+
+    The value is only looked up once then cached.
+    """
+
+    def __init__(self, arg):
+        self.worker = FortranArgWorker(arg)
+        self._cache = {}
+
+    def __getattr__(self, name):
+        if name in self._cache:
+            return self._cache[name]
+        try:
+            value = getattr(self.worker, name)()
+            self._cache[name] = value
+        except:
+            raise
+        return value

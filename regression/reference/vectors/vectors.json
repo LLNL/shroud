@@ -134,7 +134,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "vector_sum(\tSHCXX_arg)",
@@ -163,15 +164,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -191,6 +193,8 @@
                             "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&SHCXX_arg)",
                             "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_vector<native>&_buf",
@@ -199,7 +203,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -219,6 +224,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": null,
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -235,7 +241,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -373,7 +380,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out(\t*SHCXX_arg)",
@@ -389,7 +397,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -412,6 +421,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -428,7 +438,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -451,6 +462,7 @@
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -468,7 +480,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -637,7 +650,8 @@
                             "F_C_name": "c_vector_iota_out_with_num",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_with_num(\t*SHCXX_arg)",
@@ -657,12 +671,13 @@
                             "F_subprogram": "function",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "num",
                             "fc_var": "num",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -685,6 +700,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -701,7 +717,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -724,6 +741,7 @@
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -741,7 +759,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -898,7 +917,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_with_num2",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_with_num2(\t*SHCXX_arg)",
@@ -917,12 +937,13 @@
                             "F_subprogram": "function",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "num",
                             "fc_var": "num",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -945,6 +966,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -961,7 +983,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -984,6 +1007,7 @@
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -1001,7 +1025,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -1141,7 +1166,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_alloc",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_alloc(\t*SHCXX_arg)",
@@ -1157,7 +1183,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1180,6 +1207,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -1196,7 +1224,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1220,6 +1249,7 @@
                             "f_char_type": "character(len=SHT_arg_cdesc%elem_len) ::\t ",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -1237,7 +1267,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -1380,7 +1411,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_inout_alloc",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_inout_alloc(\t*SHCXX_arg)",
@@ -1396,7 +1428,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1419,6 +1452,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -1435,7 +1469,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1462,6 +1497,7 @@
                             "f_helper_array_context": "VEC_SHROUD_array",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -1480,7 +1516,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -1614,7 +1651,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_increment",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_increment(\t*SHCXX_arg)",
@@ -1630,7 +1668,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1652,6 +1691,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -1667,7 +1707,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1693,6 +1734,7 @@
                             "f_helper_array_context": "VEC_SHROUD_array",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -1711,7 +1753,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -1848,7 +1891,8 @@
                             "F_C_arguments": "arg,\t SHT_arg_size",
                             "F_C_name": "c_vector_iota_out_d",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_iota_out_d(\t*SHCXX_arg)",
@@ -1864,7 +1908,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -1887,6 +1932,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -1903,7 +1949,8 @@
                                     "cxx_T": "double",
                                     "typemap_name": "double"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -1926,6 +1973,7 @@
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -1943,7 +1991,8 @@
                                     "cxx_T": "double",
                                     "typemap_name": "double"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -2118,7 +2167,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "vector_of_pointers(\tSHCXX_arg1,\t num)",
@@ -2147,15 +2197,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg1": {
@@ -2176,6 +2227,8 @@
                             "cxx_nonconst_ptr": "&SHCXX_arg1",
                             "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg1",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_vector<native*>&_buf",
@@ -2184,7 +2237,8 @@
                                     "cxx_T": "const double *",
                                     "typemap_name": "double"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2205,6 +2259,7 @@
                             "cxx_var": "SHCXX_arg1",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": null,
                             "f_var": "arg1",
                             "fc_var": "arg1",
@@ -2222,7 +2277,8 @@
                                     "cxx_T": "const double *",
                                     "typemap_name": "double"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     },
                     "num": {
@@ -2240,9 +2296,12 @@
                             "cxx_nonconst_ptr": "&num",
                             "cxx_type": "int",
                             "cxx_var": "num",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -2259,15 +2318,16 @@
                             "cxx_type": "int",
                             "cxx_var": "num",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "num",
                             "fc_var": "num",
                             "i_var": "num",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -2409,7 +2469,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_count(\tSHCXX_arg)",
@@ -2438,15 +2499,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -2471,6 +2533,8 @@
                             "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&SHCXX_arg)",
                             "cxx_type": "std::vector<{cxx_T}>",
                             "cxx_var": "SHCXX_arg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_vector<string>&_buf",
@@ -2479,7 +2543,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2504,6 +2569,7 @@
                             "cxx_var": "SHCXX_arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": null,
                             "f_var": "arg",
                             "fc_var": "arg",
@@ -2524,7 +2590,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -2663,7 +2730,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_vector_string_fill",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_fill(\targ)",
@@ -2679,7 +2747,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -2700,6 +2769,7 @@
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -2714,7 +2784,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2737,6 +2808,7 @@
                             "f_cdesc_shape": "\nSHT_arg_cdesc%shape(1:1) = shape(arg)",
                             "f_helper_array_context": "VEC_SHROUD_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_cdesc": "SHT_arg_cdesc",
@@ -2754,7 +2826,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -2894,7 +2967,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_vector_string_fill_allocatable",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_fill_allocatable(\t*SHCXX_arg)",
@@ -2910,7 +2984,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -2931,6 +3006,7 @@
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -2945,7 +3021,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -2974,6 +3051,7 @@
                             "f_helper_capsule_dtor": "VEC_SHROUD_capsule_dtor",
                             "f_helper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_capsule": "SHT_arg_capsule",
@@ -2993,7 +3071,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -3134,7 +3213,8 @@
                             "F_C_arguments": "arg",
                             "F_C_name": "c_vector_string_fill_allocatable_len",
                             "F_C_subprogram": "subroutine",
-                            "stmt_name": "c_subroutine"
+                            "stmt_name": "c_subroutine",
+                            "typemap_name": "void"
                         },
                         "fmtf": {
                             "C_call_function": "vector_string_fill_allocatable_len(\t*SHCXX_arg)",
@@ -3150,7 +3230,8 @@
                             "F_arguments": "arg",
                             "F_subprogram": "subroutine",
                             "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg": {
@@ -3173,6 +3254,7 @@
                             "f_assumed_shape": "(:)",
                             "f_char_len": "len=20",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "i_dimension": "(*)",
@@ -3187,7 +3269,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3217,6 +3300,7 @@
                             "f_helper_capsule_dtor": "VEC_SHROUD_capsule_dtor",
                             "f_helper_vector_string_allocatable": "VEC_SHROUD_vector_string_allocatable",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "arg",
                             "f_var_capsule": "SHT_arg_capsule",
@@ -3236,7 +3320,8 @@
                                     "cxx_T": "std::string",
                                     "typemap_name": "std::string"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     }
                 },
@@ -3459,6 +3544,7 @@
                             "cxx_var": "SHCXX_rv",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "SHT_rv",
                             "i_dimension": "(*)",
@@ -3475,7 +3561,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         },
                         "fmtf": {
                             "C_call_function": "ReturnVectorAlloc(\tn)",
@@ -3511,6 +3598,7 @@
                             "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
                             "f_helper_copy_array": "VEC_SHROUD_copy_array",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_type": null,
                             "f_var": "SHT_rv",
                             "f_var_cdesc": "SHT_rv_cdesc",
@@ -3528,7 +3616,8 @@
                                     "cxx_T": "int",
                                     "typemap_name": "int"
                                 }
-                            ]
+                            ],
+                            "typemap_name": "std::vector"
                         }
                     },
                     "n": {
@@ -3547,14 +3636,15 @@
                             "cxx_type": "int",
                             "cxx_var": "n",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "n",
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3571,15 +3661,16 @@
                             "cxx_type": "int",
                             "cxx_var": "n",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "n",
                             "fc_var": "n",
                             "i_var": "n",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -3733,7 +3824,8 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native"
+                            "stmt_name": "c_function_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "C_call_function": "returnDim2(\targ,\t len)",
@@ -3762,15 +3854,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -3788,9 +3881,12 @@
                             "cxx_nonconst_ptr": "arg",
                             "cxx_type": "int",
                             "cxx_var": "arg",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native*"
+                            "stmt_name": "c_in_native*",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "",
@@ -3808,9 +3904,9 @@
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:,:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_dimension": "(*)",
@@ -3819,7 +3915,8 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_native*",
+                            "typemap_name": "int"
                         }
                     },
                     "len": {
@@ -3837,9 +3934,12 @@
                             "cxx_nonconst_ptr": "&len",
                             "cxx_type": "int",
                             "cxx_var": "len",
+                            "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native"
+                            "stmt_name": "c_in_native",
+                            "typemap_name": "int"
                         },
                         "fmtf": {
                             "c_addr": "&",
@@ -3856,16 +3956,17 @@
                             "cxx_type": "int",
                             "cxx_var": "len",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "len",
                             "fc_var": "SH_len",
                             "i_var": "len",
                             "idtor": "0",
                             "pre_call_intent": "size(arg,2,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },

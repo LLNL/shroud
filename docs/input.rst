@@ -500,6 +500,8 @@ scalar
 .. With the `decl` field, deref only applies to the Fortran wrapper.
    Must be added to a `bind.X.decl` to apply to other languages.
 
+.. function pointers meta[deref] for both the +external and +funptr.
+
 dimension
 ^^^^^^^^^
 
@@ -684,6 +686,8 @@ Valid values are ``in``, ``out``, ``inout``.
     The argument will be read from and written to.
   out
     The argument will be written to.
+  none
+    No intent. Default for function pointer arguments.
 
 Nonpointer arguments can only be *intent(in)*.
 If the argument is ``const``, the default is ``in``.

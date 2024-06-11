@@ -108,14 +108,15 @@
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string*_library"
+                            "stmt_name": "c_function_string*_library",
+                            "typemap_name": "std::string"
                         },
                         "fmtf": {
                             "C_call_function": "getConstStringPtrAlloc(\t)",
@@ -154,9 +155,9 @@
                             "f_helper_capsule_dtor": "STR_SHROUD_capsule_dtor",
                             "f_helper_copy_string": "STR_SHROUD_copy_string",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "f_var_capsule": "SHT_rv_capsule",
                             "f_var_cdesc": "SHT_rv_cdesc",
@@ -166,7 +167,8 @@
                             "i_var_cdesc": "SHT_rv_cdesc",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string*_cdesc_allocatable_library"
+                            "stmt_name": "f_function_string*_cdesc_allocatable_library",
+                            "typemap_name": "std::string"
                         }
                     }
                 },

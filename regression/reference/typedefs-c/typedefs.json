@@ -396,15 +396,16 @@
                             "cxx_type": "Alias",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "alias",
                             "f_type": "integer(alias)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "Alias"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -439,15 +440,16 @@
                             "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "alias",
                             "f_type": "integer(alias)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "Alias"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -578,15 +580,16 @@
                             "cxx_var": "SHC_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "alias",
                             "f_type": "integer(alias)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "Alias"
                         }
                     },
                     "arg": {
@@ -605,15 +608,16 @@
                             "cxx_type": "Alias",
                             "cxx_var": "arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "alias",
                             "f_type": "integer(alias)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "Alias"
                         }
                     }
                 },
@@ -735,15 +739,16 @@
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "i_color",
                             "f_type": "integer(i_color)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "iColor"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -782,15 +787,16 @@
                             "cxx_val": "(iColor) in",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "i_color",
                             "f_type": "integer(i_color)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "iColor"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "iColor",
@@ -935,15 +941,16 @@
                             "cxx_var": "SHCXX_rv",
                             "f_c_suffix": "_bufferify",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_enum"
+                            "stmt_name": "f_function_enum",
+                            "typemap_name": "TypeID"
                         },
                         "fmtpy": {
                             "c_deref": "",
@@ -982,15 +989,16 @@
                             "cxx_val": "(TypeID) in",
                             "cxx_var": "SHCXX_in",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "type_id",
                             "f_type": "integer(type_id)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_enum"
+                            "stmt_name": "f_in_enum",
+                            "typemap_name": "TypeID"
                         },
                         "fmtpy": {
                             "c_abstract_decl": "TypeID",
@@ -1118,7 +1126,8 @@
                             "F_arg_c_call": "arg1",
                             "F_arguments": "arg1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "arg1": {
@@ -1138,15 +1147,16 @@
                             "cxx_var": "arg1",
                             "f_derived_type": "s_struct1",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "struct1_rename",
                             "f_type": "type(struct1_rename)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "arg1",
                             "fc_var": "arg1",
                             "i_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct*"
+                            "stmt_name": "f_inout_struct*",
+                            "typemap_name": "Struct1Rename"
                         },
                         "fmtpy": {
                             "PYN_descr": "PY_s_Struct1_array_descr",
@@ -1274,15 +1284,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -1301,15 +1312,16 @@
                             "cxx_type": "IndexType",
                             "cxx_var": "arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "index_type",
                             "f_type": "integer(index_type)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "IndexType"
                         }
                     }
                 },
@@ -1447,15 +1459,16 @@
                             "cxx_type": "IndexType",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "index_type",
                             "f_type": "integer(index_type)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "IndexType"
                         }
                     },
                     "ndims": {
@@ -1474,15 +1487,16 @@
                             "cxx_type": "int",
                             "cxx_var": "ndims",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "ndims",
                             "fc_var": "ndims",
                             "i_var": "ndims",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "shape": {
@@ -1502,9 +1516,9 @@
                             "cxx_var": "shape",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "index_type",
                             "f_type": "integer(index_type)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "shape",
                             "fc_var": "shape",
                             "i_dimension": "(*)",
@@ -1513,7 +1527,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT32_T",
                             "size": "size(shape)",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_native*",
+                            "typemap_name": "IndexType"
                         }
                     }
                 },
@@ -1618,15 +1633,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "arg": {
@@ -1645,15 +1661,16 @@
                             "cxx_type": "IndexType2",
                             "cxx_var": "arg",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "LOCAL_Index_Type",
                             "f_type": "integer(LOCAL_Index_Type)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "IndexType2"
                         }
                     }
                 },
@@ -1791,15 +1808,16 @@
                             "cxx_type": "IndexType2",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "LOCAL_Index_Type",
                             "f_type": "integer(LOCAL_Index_Type)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT32_T",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "IndexType2"
                         }
                     },
                     "ndims": {
@@ -1818,15 +1836,16 @@
                             "cxx_type": "int",
                             "cxx_var": "ndims",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "ndims",
                             "fc_var": "ndims",
                             "i_var": "ndims",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "shape": {
@@ -1846,9 +1865,9 @@
                             "cxx_var": "shape",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "LOCAL_Index_Type",
                             "f_type": "integer(LOCAL_Index_Type)",
-                            "f_type_module": "typedefs_mod",
                             "f_var": "shape",
                             "fc_var": "shape",
                             "i_dimension": "(*)",
@@ -1857,7 +1876,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT32_T",
                             "size": "size(shape)",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_native*",
+                            "typemap_name": "IndexType2"
                         }
                     }
                 },

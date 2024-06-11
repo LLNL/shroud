@@ -486,7 +486,7 @@ module clibrary_mod
     ! Statement: f_inout_struct*
     ! ----------------------------------------
     ! Argument:  void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))
-    ! Statement: f_in_void
+    ! Statement: f_in_procedure
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &
                 bind(C, name="callback_set_alloc")
@@ -1021,6 +1021,9 @@ contains
     ! ----------------------------------------
     ! Argument:  array_info * arr +intent(inout)
     ! Statement: f_inout_struct*
+    ! ----------------------------------------
+    ! Argument:  void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))
+    ! Statement: f_in_procedure
     !>
     !! The function argument takes a struct argument
     !! which is defined in this library.

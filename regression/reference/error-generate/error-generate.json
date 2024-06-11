@@ -2412,15 +2412,6 @@
                                     "<FUNCTION>": "alloc  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "alloc",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "alloc",
                                             "params": [
                                                 {
@@ -2444,7 +2435,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * alloc)(int tc +intent(none))",
+                                    "decl": "void alloc(int tc +intent(none))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -2454,6 +2445,11 @@
                                     },
                                     "zz_bind": {
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "tc": {
                                                 "meta": {
                                                     "intent": "inout",
@@ -3122,16 +3118,17 @@
                             "f_array_allocate": "(narg2)",
                             "f_assumed_shape": "(:)",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_mixin_unknown"
+                            "stmt_name": "f_mixin_unknown",
+                            "typemap_name": "int"
                         }
                     },
                     "SH_this": {
@@ -3151,15 +3148,16 @@
                             "cxx_var": "SH_this",
                             "f_derived_type": "struct1",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "struct1",
                             "f_type": "type(struct1)",
-                            "f_type_module": "error_mod",
                             "f_var": "SH_this",
                             "fc_var": "SH_this",
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_struct*"
+                            "stmt_name": "f_in_struct*",
+                            "typemap_name": "struct1"
                         }
                     }
                 },
@@ -3298,7 +3296,8 @@
                             "F_arg_c_call": "SH_this,\t val",
                             "F_arguments": "SH_this,\t val",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_setter"
+                            "stmt_name": "f_setter",
+                            "typemap_name": "void"
                         }
                     },
                     "SH_this": {
@@ -3318,15 +3317,16 @@
                             "cxx_var": "SH_this",
                             "f_derived_type": "struct1",
                             "f_intent": "INOUT",
+                            "f_intent_attr": ", intent(INOUT)",
                             "f_kind": "struct1",
                             "f_type": "type(struct1)",
-                            "f_type_module": "error_mod",
                             "f_var": "SH_this",
                             "fc_var": "SH_this",
                             "i_var": "SH_this",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_inout_struct*"
+                            "stmt_name": "f_inout_struct*",
+                            "typemap_name": "struct1"
                         }
                     },
                     "val": {
@@ -3346,9 +3346,9 @@
                             "cxx_var": "val",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "val",
                             "fc_var": "val",
                             "i_dimension": "(*)",
@@ -3357,7 +3357,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(val)",
-                            "stmt_name": "f_setter_native*"
+                            "stmt_name": "f_setter_native*",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -3533,6 +3534,11 @@
             },
             "sgroup": "struct",
             "sh_type": "SH_TYPE_STRUCT"
+        },
+        "void(*)(int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
         }
     }
 }

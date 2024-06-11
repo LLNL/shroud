@@ -98,7 +98,8 @@
                                     "C_prototype": "LIB_Class2 * self,\t MPI_Fint comm",
                                     "C_return_type": "void",
                                     "F_C_name": "c_class2_method1",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method1(\tSHCXX_comm)",
@@ -113,7 +114,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t comm",
                                     "F_arguments": "obj,\t comm",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "comm": {
@@ -135,9 +137,12 @@
                                     "cxx_type": "MPI_Comm",
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
+                                    "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_unknown"
+                                    "stmt_name": "c_in_unknown",
+                                    "typemap_name": "MPI_Comm"
                                 },
                                 "fmtf": {
                                     "c_abstract_decl": "MPI_Fint",
@@ -158,15 +163,16 @@
                                     "cxx_val": "MPI_Comm_f2c(comm)",
                                     "cxx_var": "SHCXX_comm",
                                     "f_intent": "IN",
+                                    "f_intent_attr": ", intent(IN)",
                                     "f_kind": "C_INT",
                                     "f_type": "integer",
-                                    "f_type_module": "iso_c_binding",
                                     "f_var": "comm",
                                     "fc_var": "comm",
                                     "i_var": "comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_unknown"
+                                    "stmt_name": "f_in_unknown",
+                                    "typemap_name": "MPI_Comm"
                                 }
                             }
                         },
@@ -271,7 +277,8 @@
                                     "C_prototype": "LIB_Class2 * self,\t LIB_three_Class1 * c2",
                                     "C_return_type": "void",
                                     "F_C_name": "c_class2_method2",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "SH_this->method2(\tSHCXX_c2)",
@@ -286,7 +293,8 @@
                                     "F_arg_c_call": "obj%cxxmem,\t c2%cxxmem",
                                     "F_arguments": "obj,\t c2",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             },
                             "c2": {
@@ -304,9 +312,12 @@
                                     "cxx_nonconst_ptr": "SHCXX_c2",
                                     "cxx_type": "three::Class1",
                                     "cxx_var": "SHCXX_c2",
+                                    "f_intent": "INOUT",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_inout_shadow*"
+                                    "stmt_name": "c_inout_shadow*",
+                                    "typemap_name": "three::Class1"
                                 },
                                 "fmtf": {
                                     "c_addr": "",
@@ -325,14 +336,15 @@
                                     "f_capsule_data_type": "LIB_SHROUD_capsule_data",
                                     "f_derived_type": "class1",
                                     "f_intent": "INOUT",
+                                    "f_intent_attr": ", intent(INOUT)",
                                     "f_type": "type(class1)",
-                                    "f_type_module": "library_three_mod",
                                     "f_var": "c2",
                                     "fc_var": "c2",
                                     "i_var": "c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_inout_shadow*"
+                                    "stmt_name": "f_inout_shadow*",
+                                    "typemap_name": "three::Class1"
                                 }
                             }
                         },
@@ -453,7 +465,8 @@
                                             "C_prototype": "void",
                                             "C_return_type": "void",
                                             "F_C_name": "c_function1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "one::two::function1(\t)",
@@ -466,7 +479,8 @@
                                             "F_C_subprogram": "subroutine",
                                             "F_arguments": "",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -634,7 +648,8 @@
                                             "C_prototype": "LIB_three_Class1 * self,\t LIB_CustomType arg1",
                                             "C_return_type": "void",
                                             "F_C_name": "c_class1_method1",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method1(\targ1)",
@@ -649,7 +664,8 @@
                                             "F_arg_c_call": "obj%cxxmem,\t arg1",
                                             "F_arguments": "obj,\t arg1",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     },
                                     "arg1": {
@@ -667,9 +683,12 @@
                                             "cxx_nonconst_ptr": "&arg1",
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
+                                            "f_intent": "IN",
+                                            "f_intent_attr": ", intent(IN)",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "c_in_native"
+                                            "stmt_name": "c_in_native",
+                                            "typemap_name": "CustomType"
                                         },
                                         "fmtf": {
                                             "c_addr": "&",
@@ -686,15 +705,16 @@
                                             "cxx_type": "CustomType",
                                             "cxx_var": "arg1",
                                             "f_intent": "IN",
+                                            "f_intent_attr": ", intent(IN)",
                                             "f_kind": "custom_type",
                                             "f_type": "integer(custom_type)",
-                                            "f_type_module": "library_mod",
                                             "f_var": "arg1",
                                             "fc_var": "arg1",
                                             "i_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
-                                            "stmt_name": "f_in_native"
+                                            "stmt_name": "f_in_native",
+                                            "typemap_name": "CustomType"
                                         }
                                     }
                                 },
@@ -830,7 +850,8 @@
                                             "C_prototype": "LIB_outer1_class0 * self",
                                             "C_return_type": "void",
                                             "F_C_name": "c_class0_method",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method(\t)",
@@ -844,7 +865,8 @@
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -945,7 +967,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_outer_func",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer1::outer_func(\t)",
@@ -958,7 +981,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -1065,7 +1089,8 @@
                                             "C_prototype": "LIB_outer2_class0 * self",
                                             "C_return_type": "void",
                                             "F_C_name": "c_class0_method",
-                                            "stmt_name": "c_subroutine"
+                                            "stmt_name": "c_subroutine",
+                                            "typemap_name": "void"
                                         },
                                         "fmtf": {
                                             "C_call_function": "SH_this->method(\t)",
@@ -1079,7 +1104,8 @@
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_subprogram": "subroutine",
-                                            "stmt_name": "f_subroutine"
+                                            "stmt_name": "f_subroutine",
+                                            "typemap_name": "void"
                                         }
                                     }
                                 },
@@ -1180,7 +1206,8 @@
                                     "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_name": "c_outer_func",
-                                    "stmt_name": "c_subroutine"
+                                    "stmt_name": "c_subroutine",
+                                    "typemap_name": "void"
                                 },
                                 "fmtf": {
                                     "C_call_function": "outer2::outer_func(\t)",
@@ -1193,7 +1220,8 @@
                                     "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine"
+                                    "stmt_name": "f_subroutine",
+                                    "typemap_name": "void"
                                 }
                             }
                         },

@@ -142,10 +142,24 @@ def find_abstract_declarator(arg):
     If the argument type is a template, look for
     template specialization.
 
+    All function pointers are mapped to "procedure" without
+    any reference to the return type.
+       - decl: void callback_ptr(int *(*get)(void));
+       - decl: void callback_ptr(int  (*get)(void));
+    Are the same.
+    Funtion pointers from a typedef already have the correct typemap.
+
     Args:
         arg -
     """
-    decl = [arg.typemap.sgroup]
+    declarator = arg.declarator
+    if declarator.is_function_pointer():
+        decl = ["procedure"]
+        abstract = ""
+    else:
+        decl = [declarator.typemap.sgroup]
+        abstract = declarator.get_abstract_declarator()
+
     if arg.template_arguments:
         decl.append("<")
         for targ in arg.template_arguments:
@@ -153,7 +167,7 @@ def find_abstract_declarator(arg):
             decl.append(targ.declarator.get_abstract_declarator())
             decl.append(",")
         decl[-1] = ">"
-    decl.append(arg.declarator.get_abstract_declarator())
+    decl.append(abstract)
     return "".join(decl)
 
 def lookup_fc_stmts(path):
@@ -403,6 +417,7 @@ def append_mixin(stmt, mixin):
 
 valid_intents = [
     "in", "out", "inout",
+    "none",    # used with function pointers
     "mixin",
     "function", "subroutine",
     "getter", "setter",
@@ -775,7 +790,7 @@ CStmts = util.Scope(
     destructor=[],
     owner="library",
 
-    c_arg_decl=None,
+    c_arg_decl=None,    # C prototype
     i_arg_names=None,
     i_arg_decl=None,
 

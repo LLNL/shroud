@@ -240,7 +240,7 @@ void AA_example_nested_testmpi_serial(void)
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(void)
-// Statement: c_in_void
+// Statement: c_in_procedure
 void AA_example_nested_FuncPtr1(void ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr1
@@ -257,7 +257,7 @@ void AA_example_nested_FuncPtr1(void ( * get)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
-// Statement: c_in_native*
+// Statement: c_in_procedure
 void AA_example_nested_FuncPtr2(double * ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr2
@@ -274,7 +274,7 @@ void AA_example_nested_FuncPtr2(double * ( * get)(void))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(int i, int)
-// Statement: c_in_native
+// Statement: c_in_procedure
 void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr3
@@ -291,7 +291,7 @@ void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(double, int)
-// Statement: c_in_native
+// Statement: c_in_procedure
 void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr4
@@ -304,7 +304,7 @@ void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
-// Statement: c_in_void
+// Statement: c_in_procedure
 void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,

@@ -119,3 +119,4 @@ Templated function requires the 'cxx_template' field
 Node: process_twostruct
 line 139
 'cxx_template' field only used with a templated function
+Too many warnings: 27

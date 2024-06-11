@@ -20,5 +20,16 @@ Wrote pyUserLibrarymodule.cpp
 Wrote pyUserLibraryutil.cpp
 Wrote pyUserLibrarymodule.hpp
 Wrote setup.py
+
+----------------------------------------
+Phase: initial
+----------------------------------------
+Unknown statement: lua_in_procedure
+--------------------
+Unknown statement: lua_in_procedure
+--------------------
+Unknown statement: lua_in_procedure
+--------------------
+Unknown statement: lua_in_procedure
 Wrote luaUserLibrarymodule.hpp
 Wrote luaUserLibrarymodule.cpp

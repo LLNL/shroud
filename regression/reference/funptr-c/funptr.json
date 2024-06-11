@@ -22,7 +22,7 @@
                             {
                                 "declarator": {
                                     "func": {
-                                        "name": "incr",
+                                        "name": "incr1",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -30,7 +30,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "name": "incr",
+                                    "name": "incr1",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -47,8 +47,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback1(void (*incr)(void))",
-                "declgen": "void callback1(void (*incr)(void))",
+                "decl": "void callback1(void (*incr1)(void))",
+                "declgen": "void callback1(void (*incr1)(void))",
                 "doxygen": {
                     "brief": "Create abstract interface for function"
                 },
@@ -65,22 +65,13 @@
                             },
                             "stmt": "f_subroutine"
                         },
-                        "incr": {
+                        "incr1": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -89,22 +80,46 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void)",
-                                    "name": "incr",
+                                    "decl": "void incr1(void)",
+                                    "name": "incr1",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1",
+                                        "F_name_api": "incr1",
+                                        "function_name": "incr1"
                                     }
                                 },
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure"
                         }
                     },
                     "share": {
@@ -113,22 +128,13 @@
                                 "intent": "subroutine"
                             }
                         },
-                        "incr": {
+                        "incr1": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -137,16 +143,40 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void)",
-                                    "name": "incr",
+                                    "decl": "void incr1(void)",
+                                    "name": "incr1",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1",
+                                        "F_name_api": "incr1",
+                                        "function_name": "incr1"
                                     }
                                 },
                                 "intent": "in",
@@ -158,45 +188,48 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "callback1(\tincr)",
-                            "C_call_list": "incr",
+                            "C_call_function": "callback1(\tincr1)",
+                            "C_call_list": "incr1",
                             "C_name": "callback1",
-                            "C_prototype": "void ( * incr)(\tvoid)",
+                            "C_prototype": "void ( * incr1)(\tvoid)",
                             "C_return_type": "void",
-                            "F_C_arguments": "incr",
+                            "F_C_arguments": "incr1",
                             "F_C_call": "c_callback1",
                             "F_C_name": "callback1",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "incr",
-                            "F_arguments": "incr",
+                            "F_arg_c_call": "incr1",
+                            "F_arguments": "incr1",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
-                    "incr": {
+                    "incr1": {
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr)(\tvoid)",
+                            "c_proto_decl": "void ( * incr1)(\tvoid)",
                             "c_type": "void",
-                            "c_var": "incr",
+                            "c_var": "incr1",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_nonconst_ptr": "&incr1",
                             "cxx_type": "void",
-                            "cxx_var": "incr",
+                            "cxx_var": "incr1",
+                            "f_abstract_interface": "callback1_incr1",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "incr",
-                            "fc_var": "incr",
-                            "i_var": "incr",
+                            "f_var": "incr1",
+                            "fc_var": "incr1",
+                            "i_var": "incr1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -218,7 +251,7 @@
                             {
                                 "declarator": {
                                     "func": {
-                                        "name": "incr",
+                                        "name": "incr1_wrap",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -226,7 +259,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "name": "incr",
+                                    "name": "incr1_wrap",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -243,8 +276,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback1_wrap(void (*incr)(void))",
-                "declgen": "void callback1_wrap(void (*incr)(void))",
+                "decl": "void callback1_wrap(void (*incr1_wrap)(void))",
+                "declgen": "void callback1_wrap(void (*incr1_wrap)(void))",
                 "doxygen": {
                     "brief": "Create abstract interface for function",
                     "description": "Create a Fortran wrapper to call the bind(C) interface.\n"
@@ -264,22 +297,13 @@
                             },
                             "stmt": "f_subroutine"
                         },
-                        "incr": {
+                        "incr1_wrap": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1_wrap  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1_wrap",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -288,22 +312,46 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void)",
-                                    "name": "incr",
+                                    "decl": "void incr1_wrap(void)",
+                                    "name": "incr1_wrap",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1_wrap",
+                                        "F_name_api": "incr1_wrap",
+                                        "function_name": "incr1_wrap"
                                     }
                                 },
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure"
                         }
                     },
                     "share": {
@@ -312,22 +360,13 @@
                                 "intent": "subroutine"
                             }
                         },
-                        "incr": {
+                        "incr1_wrap": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1_wrap  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1_wrap",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -336,16 +375,40 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void)",
-                                    "name": "incr",
+                                    "decl": "void incr1_wrap(void)",
+                                    "name": "incr1_wrap",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1_wrap",
+                                        "F_name_api": "incr1_wrap",
+                                        "function_name": "incr1_wrap"
                                     }
                                 },
                                 "intent": "in",
@@ -357,45 +420,48 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "callback1_wrap(\tincr)",
-                            "C_call_list": "incr",
+                            "C_call_function": "callback1_wrap(\tincr1_wrap)",
+                            "C_call_list": "incr1_wrap",
                             "C_name": "callback1_wrap",
-                            "C_prototype": "void ( * incr)(\tvoid)",
+                            "C_prototype": "void ( * incr1_wrap)(\tvoid)",
                             "C_return_type": "void",
-                            "F_C_arguments": "incr",
+                            "F_C_arguments": "incr1_wrap",
                             "F_C_call": "c_callback1_wrap",
                             "F_C_name": "c_callback1_wrap",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "incr",
-                            "F_arguments": "incr",
+                            "F_arg_c_call": "incr1_wrap",
+                            "F_arguments": "incr1_wrap",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
-                    "incr": {
+                    "incr1_wrap": {
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr)(\tvoid)",
+                            "c_proto_decl": "void ( * incr1_wrap)(\tvoid)",
                             "c_type": "void",
-                            "c_var": "incr",
+                            "c_var": "incr1_wrap",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_nonconst_ptr": "&incr1_wrap",
                             "cxx_type": "void",
-                            "cxx_var": "incr",
+                            "cxx_var": "incr1_wrap",
+                            "f_abstract_interface": "callback1_wrap_incr1_wrap",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "incr",
-                            "fc_var": "incr",
-                            "i_var": "incr",
+                            "f_var": "incr1_wrap",
+                            "fc_var": "incr1_wrap",
+                            "i_var": "incr1_wrap",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -420,7 +486,7 @@
                                         "external": true
                                     },
                                     "func": {
-                                        "name": "incr",
+                                        "name": "incr1_external",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -428,7 +494,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "name": "incr",
+                                    "name": "incr1_external",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -445,8 +511,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback1_external(void (*incr)(void)+external)",
-                "declgen": "void callback1_external(void (*incr)(void) +external)",
+                "decl": "void callback1_external(void (*incr1_external)(void)+external)",
+                "declgen": "void callback1_external(void (*incr1_external)(void) +external)",
                 "doxygen": {
                     "brief": "Declare callback as external"
                 },
@@ -463,25 +529,17 @@
                             },
                             "stmt": "f_subroutine"
                         },
-                        "incr": {
+                        "incr1_external": {
                             "meta": {
+                                "deref": "external",
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1_external  None ****************************************",
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
                                                 "external": true
                                             },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1_external",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -490,22 +548,46 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +external",
-                                    "name": "incr",
+                                    "decl": "void incr1_external(void) +external",
+                                    "name": "incr1_external",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1_external",
+                                        "F_name_api": "incr1_external",
+                                        "function_name": "incr1_external"
                                     }
                                 },
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure_external"
                         }
                     },
                     "share": {
@@ -514,25 +596,16 @@
                                 "intent": "subroutine"
                             }
                         },
-                        "incr": {
+                        "incr1_external": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1_external  None ****************************************",
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
                                                 "external": true
                                             },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1_external",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -541,16 +614,40 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +external",
-                                    "name": "incr",
+                                    "decl": "void incr1_external(void) +external",
+                                    "name": "incr1_external",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1_external",
+                                        "F_name_api": "incr1_external",
+                                        "function_name": "incr1_external"
                                     }
                                 },
                                 "intent": "in",
@@ -562,45 +659,48 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "callback1_external(\tincr)",
-                            "C_call_list": "incr",
+                            "C_call_function": "callback1_external(\tincr1_external)",
+                            "C_call_list": "incr1_external",
                             "C_name": "callback1_external",
-                            "C_prototype": "void ( * incr)(\tvoid)",
+                            "C_prototype": "void ( * incr1_external)(\tvoid)",
                             "C_return_type": "void",
-                            "F_C_arguments": "incr",
+                            "F_C_arguments": "incr1_external",
                             "F_C_call": "c_callback1_external",
                             "F_C_name": "c_callback1_external",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "incr",
-                            "F_arguments": "incr",
+                            "F_arg_c_call": "incr1_external",
+                            "F_arguments": "incr1_external",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
-                    "incr": {
+                    "incr1_external": {
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr)(\tvoid)",
+                            "c_proto_decl": "void ( * incr1_external)(\tvoid)",
                             "c_type": "void",
-                            "c_var": "incr",
+                            "c_var": "incr1_external",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_nonconst_ptr": "&incr1_external",
                             "cxx_type": "void",
-                            "cxx_var": "incr",
+                            "cxx_var": "incr1_external",
+                            "f_abstract_interface": "callback1_external_incr1_external",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "incr",
-                            "fc_var": "incr",
-                            "i_var": "incr",
+                            "f_var": "incr1_external",
+                            "fc_var": "incr1_external",
+                            "i_var": "incr1_external",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure_external",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -625,7 +725,7 @@
                                         "funptr": true
                                     },
                                     "func": {
-                                        "name": "incr",
+                                        "name": "incr1_funptr",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -633,7 +733,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "name": "incr",
+                                    "name": "incr1_funptr",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -650,8 +750,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback1_funptr(void (*incr)(void)+funptr)",
-                "declgen": "void callback1_funptr(void (*incr)(void) +funptr)",
+                "decl": "void callback1_funptr(void (*incr1_funptr)(void)+funptr)",
+                "declgen": "void callback1_funptr(void (*incr1_funptr)(void) +funptr)",
                 "doxygen": {
                     "brief": "Declare callback as c_funptr",
                     "description": "The caller is responsible for using c_funloc to pass the function address.\n"
@@ -671,25 +771,17 @@
                             },
                             "stmt": "f_subroutine"
                         },
-                        "incr": {
+                        "incr1_funptr": {
                             "meta": {
+                                "deref": "funptr",
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1_funptr  None ****************************************",
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
                                                 "funptr": true
                                             },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1_funptr",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -698,22 +790,46 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +funptr",
-                                    "name": "incr",
+                                    "decl": "void incr1_funptr(void) +funptr",
+                                    "name": "incr1_funptr",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1_funptr",
+                                        "F_name_api": "incr1_funptr",
+                                        "function_name": "incr1_funptr"
                                     }
                                 },
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure_funptr"
                         }
                     },
                     "share": {
@@ -722,25 +838,16 @@
                                 "intent": "subroutine"
                             }
                         },
-                        "incr": {
+                        "incr1_funptr": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr1_funptr  None ****************************************",
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
                                                 "funptr": true
                                             },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr1_funptr",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -749,16 +856,40 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +funptr",
-                                    "name": "incr",
+                                    "decl": "void incr1_funptr(void) +funptr",
+                                    "name": "incr1_funptr",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr1_funptr",
+                                        "F_name_api": "incr1_funptr",
+                                        "function_name": "incr1_funptr"
                                     }
                                 },
                                 "intent": "in",
@@ -770,45 +901,47 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "callback1_funptr(\tincr)",
-                            "C_call_list": "incr",
+                            "C_call_function": "callback1_funptr(\tincr1_funptr)",
+                            "C_call_list": "incr1_funptr",
                             "C_name": "callback1_funptr",
-                            "C_prototype": "void ( * incr)(\tvoid)",
+                            "C_prototype": "void ( * incr1_funptr)(\tvoid)",
                             "C_return_type": "void",
-                            "F_C_arguments": "incr",
+                            "F_C_arguments": "incr1_funptr",
                             "F_C_call": "c_callback1_funptr",
                             "F_C_name": "callback1_funptr",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "incr",
-                            "F_arguments": "incr",
+                            "F_arg_c_call": "incr1_funptr",
+                            "F_arguments": "incr1_funptr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
-                    "incr": {
+                    "incr1_funptr": {
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr)(\tvoid)",
+                            "c_proto_decl": "void ( * incr1_funptr)(\tvoid)",
                             "c_type": "void",
-                            "c_var": "incr",
+                            "c_var": "incr1_funptr",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_nonconst_ptr": "&incr1_funptr",
                             "cxx_type": "void",
-                            "cxx_var": "incr",
+                            "cxx_var": "incr1_funptr",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "incr",
-                            "fc_var": "incr",
-                            "i_var": "incr",
+                            "f_var": "incr1_funptr",
+                            "fc_var": "incr1_funptr",
+                            "i_var": "incr1_funptr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure_funptr",
+                            "typemap_name": "void"
                         }
                     }
                 },
@@ -951,7 +1084,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -969,16 +1103,18 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "incrtype",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "incrtype",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
-                            "f_type_module": "funptr_mod",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "incrtype"
                         }
                     },
                     "ival": {
@@ -997,15 +1133,16 @@
                             "cxx_type": "int",
                             "cxx_var": "ival",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -1024,15 +1161,16 @@
                             "cxx_type": "char",
                             "cxx_var": "name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "fc_var": "name",
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1118,10 +1256,11 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "external",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_external"
                         },
                         "ival": {
                             "meta": {
@@ -1178,7 +1317,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -1196,16 +1336,18 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "incrtype",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "incrtype",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
-                            "f_type_module": "funptr_mod",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_external",
+                            "typemap_name": "incrtype"
                         }
                     },
                     "ival": {
@@ -1224,15 +1366,16 @@
                             "cxx_type": "int",
                             "cxx_var": "ival",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -1251,15 +1394,16 @@
                             "cxx_type": "char",
                             "cxx_var": "name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "fc_var": "name",
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1346,10 +1490,11 @@
                         },
                         "incr": {
                             "meta": {
+                                "deref": "funptr",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_procedure"
+                            "stmt": "f_in_procedure_funptr"
                         },
                         "ival": {
                             "meta": {
@@ -1406,7 +1551,8 @@
                             "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                             "F_arguments": "name,\t ival,\t incr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "incr": {
@@ -1424,16 +1570,18 @@
                             "cxx_nonconst_ptr": "&incr",
                             "cxx_type": "incrtype",
                             "cxx_var": "incr",
+                            "f_abstract_interface": "incrtype",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
-                            "f_type_module": "funptr_mod",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_procedure"
+                            "stmt_name": "f_in_procedure_funptr",
+                            "typemap_name": "incrtype"
                         }
                     },
                     "ival": {
@@ -1452,15 +1600,16 @@
                             "cxx_type": "int",
                             "cxx_var": "ival",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     },
                     "name": {
@@ -1479,15 +1628,16 @@
                             "cxx_type": "char",
                             "cxx_var": "name",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "name",
                             "fc_var": "name",
                             "i_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_char*"
+                            "stmt_name": "f_in_char*",
+                            "typemap_name": "char"
                         }
                     }
                 },
@@ -1541,7 +1691,7 @@
                                         "funptr": true
                                     },
                                     "func": {
-                                        "name": "incr",
+                                        "name": "incr3",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -1549,7 +1699,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "name": "incr",
+                                    "name": "incr3",
                                     "params": [],
                                     "typemap_name": "void"
                                 },
@@ -1566,8 +1716,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback3(int type, void *in+assumedtype+intent(in), void (*incr)(void)+funptr)",
-                "declgen": "void callback3(int type, void *in +assumedtype+intent(in), void (*incr)(void) +funptr)",
+                "decl": "void callback3(int type, void *in+assumedtype+intent(in), void (*incr3)(void)+funptr)",
+                "declgen": "void callback3(int type, void *in +assumedtype+intent(in), void (*incr3)(void) +funptr)",
                 "doxygen": {
                     "brief": "Test function pointer with assumedtype"
                 },
@@ -1592,25 +1742,17 @@
                             },
                             "stmt": "f_in_void*"
                         },
-                        "incr": {
+                        "incr3": {
                             "meta": {
+                                "deref": "funptr",
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr3  None ****************************************",
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
                                                 "funptr": true
                                             },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr3",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -1619,22 +1761,46 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +funptr",
-                                    "name": "incr",
+                                    "decl": "void incr3(void) +funptr",
+                                    "name": "incr3",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr3",
+                                        "F_name_api": "incr3",
+                                        "function_name": "incr3"
                                     }
                                 },
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_void"
+                            "stmt": "f_in_procedure_funptr"
                         },
                         "type": {
                             "meta": {
@@ -1657,25 +1823,16 @@
                                 "value": true
                             }
                         },
-                        "incr": {
+                        "incr3": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "incr  None ****************************************",
+                                    "<FUNCTION>": "incr3  None ****************************************",
                                     "ast": {
                                         "declarator": {
                                             "attrs": {
                                                 "funptr": true
                                             },
-                                            "func": {
-                                                "name": "incr",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
-                                            "name": "incr",
+                                            "name": "incr3",
                                             "params": [],
                                             "typemap_name": "void"
                                         },
@@ -1684,16 +1841,40 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void ( * incr)(void) +funptr",
-                                    "name": "incr",
+                                    "decl": "void incr3(void) +funptr",
+                                    "name": "incr3",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "incr",
-                                        "F_name_api": "incr",
-                                        "function_name": "incr"
+                                        "C_name_api": "incr3",
+                                        "F_name_api": "incr3",
+                                        "function_name": "incr3"
                                     }
                                 },
                                 "intent": "in",
@@ -1711,19 +1892,20 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "callback3(\ttype,\t in,\t incr)",
-                            "C_call_list": "type,\t in,\t incr",
+                            "C_call_function": "callback3(\ttype,\t in,\t incr3)",
+                            "C_call_list": "type,\t in,\t incr3",
                             "C_name": "callback3",
-                            "C_prototype": "int type,\t void * in,\t void ( * incr)(\tvoid)",
+                            "C_prototype": "int type,\t void * in,\t void ( * incr3)(\tvoid)",
                             "C_return_type": "void",
-                            "F_C_arguments": "type,\t in,\t incr",
+                            "F_C_arguments": "type,\t in,\t incr3",
                             "F_C_call": "c_callback3",
                             "F_C_name": "callback3",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "type,\t in,\t incr",
-                            "F_arguments": "type,\t in,\t incr",
+                            "F_arg_c_call": "type,\t in,\t incr3",
+                            "F_arguments": "type,\t in,\t incr3",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
                     "in": {
@@ -1742,40 +1924,42 @@
                             "cxx_type": "void",
                             "cxx_var": "in",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void*"
+                            "stmt_name": "f_in_void*",
+                            "typemap_name": "void"
                         }
                     },
-                    "incr": {
+                    "incr3": {
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr)(\tvoid)",
+                            "c_proto_decl": "void ( * incr3)(\tvoid)",
                             "c_type": "void",
-                            "c_var": "incr",
+                            "c_var": "incr3",
                             "cfi_type": "CFI_type_intptr_t",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_nonconst_ptr": "&incr3",
                             "cxx_type": "void",
-                            "cxx_var": "incr",
+                            "cxx_var": "incr3",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "incr",
-                            "fc_var": "incr",
-                            "i_var": "incr",
+                            "f_var": "incr3",
+                            "fc_var": "incr3",
+                            "i_var": "incr3",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt_name": "f_in_void"
+                            "stmt_name": "f_in_procedure_funptr",
+                            "typemap_name": "void"
                         }
                     },
                     "type": {
@@ -1794,15 +1978,16 @@
                             "cxx_type": "int",
                             "cxx_var": "type",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "type",
                             "fc_var": "type",
                             "i_var": "type",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1938,15 +2123,6 @@
                                     "<FUNCTION>": "actor  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "actor",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
                                             "name": "actor",
                                             "params": [
                                                 {
@@ -1989,7 +2165,7 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
+                                    "decl": "int actor(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
                                     "name": "actor",
                                     "options": {},
                                     "wrap": {
@@ -1997,20 +2173,33 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
                                                     "rank": 1
-                                                }
+                                                },
+                                                "stmt": "f_in_native*"
                                             },
                                             "nargs": {
                                                 "meta": {
                                                     "intent": "in",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_in_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
@@ -2025,6 +2214,36 @@
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "ilow",
+                                                    "nargs"
+                                                ]
+                                            }
+                                        },
+                                        "ilow": {
+                                            "fmtf": {
+                                                "f_abstract_name": "ilow",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "i_var": "ilow",
+                                                "stmt_name": "f_in_native*",
+                                                "typemap_name": "int"
+                                            }
+                                        },
+                                        "nargs": {
+                                            "fmtf": {
+                                                "f_abstract_name": "nargs",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "i_var": "nargs",
+                                                "stmt_name": "f_in_native",
+                                                "typemap_name": "int"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
                                         "C_name_api": "actor",
                                         "F_name_api": "actor",
@@ -2034,7 +2253,7 @@
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native"
+                            "stmt": "f_in_procedure"
                         },
                         "ilow": {
                             "meta": {
@@ -2063,15 +2282,6 @@
                                     "<FUNCTION>": "actor  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "actor",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
                                             "name": "actor",
                                             "params": [
                                                 {
@@ -2114,7 +2324,7 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
+                                    "decl": "int actor(int * ilow +intent(in)+rank(1), int nargs +intent(in))",
                                     "name": "actor",
                                     "options": {},
                                     "wrap": {
@@ -2122,6 +2332,33 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
+                                            "ilow": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "rank": 1
+                                                },
+                                                "stmt": "f_in_native*"
+                                            },
+                                            "nargs": {
+                                                "meta": {
+                                                    "intent": "in",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_in_native"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "ilow": {
                                                 "meta": {
                                                     "intent": "in",
@@ -2134,19 +2371,35 @@
                                                     "value": true
                                                 }
                                             }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "ilow",
+                                                    "nargs"
+                                                ]
+                                            }
                                         },
-                                        "share": {
-                                            "ilow": {
-                                                "meta": {
-                                                    "intent": "in",
-                                                    "rank": 1
-                                                }
-                                            },
-                                            "nargs": {
-                                                "meta": {
-                                                    "intent": "in",
-                                                    "value": true
-                                                }
+                                        "ilow": {
+                                            "fmtf": {
+                                                "f_abstract_name": "ilow",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "i_var": "ilow",
+                                                "stmt_name": "f_in_native*",
+                                                "typemap_name": "int"
+                                            }
+                                        },
+                                        "nargs": {
+                                            "fmtf": {
+                                                "f_abstract_name": "nargs",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "i_var": "nargs",
+                                                "stmt_name": "f_in_native",
+                                                "typemap_name": "int"
                                             }
                                         }
                                     },
@@ -2203,15 +2456,16 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
                     "actor": {
@@ -2229,16 +2483,18 @@
                             "cxx_nonconst_ptr": "&actor",
                             "cxx_type": "int",
                             "cxx_var": "actor",
+                            "f_abstract_interface": "callback4_actor",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "actor",
                             "fc_var": "actor",
                             "i_var": "actor",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "int"
                         }
                     },
                     "ilow": {
@@ -2258,9 +2514,9 @@
                             "cxx_var": "ilow",
                             "f_assumed_shape": "(:)",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "ilow",
                             "fc_var": "ilow",
                             "i_dimension": "(*)",
@@ -2269,7 +2525,8 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(ilow)",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_native*",
+                            "typemap_name": "int"
                         }
                     },
                     "nargs": {
@@ -2288,16 +2545,17 @@
                             "cxx_type": "int",
                             "cxx_var": "nargs",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "nargs",
                             "fc_var": "SH_nargs",
                             "i_var": "nargs",
                             "idtor": "0",
                             "pre_call_intent": "size(ilow,kind=C_INT)",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -2319,7 +2577,7 @@
                             {
                                 "declarator": {
                                     "func": {
-                                        "name": "get",
+                                        "name": "get_ptr",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -2327,7 +2585,7 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "name": "get",
+                                    "name": "get_ptr",
                                     "params": [],
                                     "pointer": [
                                         {
@@ -2349,8 +2607,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback_ptr(int *(*get)(void));",
-                "declgen": "void callback_ptr(int *(*get)(void))",
+                "decl": "void callback_ptr(int *(*get_ptr)(void));",
+                "declgen": "void callback_ptr(int *(*get_ptr)(void))",
                 "doxygen": {
                     "brief": "Return a C_PTR",
                     "description": "No other arguments to test that a function result\nuses iso_c_binding C_PTR.\n"
@@ -2368,22 +2626,13 @@
                             },
                             "stmt": "f_subroutine"
                         },
-                        "get": {
+                        "get_ptr": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "get  None ****************************************",
+                                    "<FUNCTION>": "get_ptr  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "get",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "get",
+                                            "name": "get_ptr",
                                             "params": [],
                                             "pointer": [
                                                 {
@@ -2397,21 +2646,46 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int * ( * get)(void)",
-                                    "name": "get",
+                                    "decl": "int * get_ptr(void)",
+                                    "name": "get_ptr",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "deref": "pointer",
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native*_pointer"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "get",
-                                        "F_name_api": "get",
-                                        "function_name": "get"
+                                        "C_name_api": "get_ptr",
+                                        "F_name_api": "get_ptr",
+                                        "function_name": "get_ptr"
                                     }
                                 },
                                 "intent": "in"
                             },
-                            "stmt": "f_in_native*"
+                            "stmt": "f_in_procedure"
                         }
                     },
                     "share": {
@@ -2420,22 +2694,13 @@
                                 "intent": "subroutine"
                             }
                         },
-                        "get": {
+                        "get_ptr": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "get  None ****************************************",
+                                    "<FUNCTION>": "get_ptr  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "get",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "get",
+                                            "name": "get_ptr",
                                             "params": [],
                                             "pointer": [
                                                 {
@@ -2449,16 +2714,41 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int * ( * get)(void)",
-                                    "name": "get",
+                                    "decl": "int * get_ptr(void)",
+                                    "name": "get_ptr",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "deref": "pointer",
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native*_pointer"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": []
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "get",
-                                        "F_name_api": "get",
-                                        "function_name": "get"
+                                        "C_name_api": "get_ptr",
+                                        "F_name_api": "get_ptr",
+                                        "function_name": "get_ptr"
                                     }
                                 },
                                 "intent": "in"
@@ -2469,46 +2759,49 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "callback_ptr(\tget)",
-                            "C_call_list": "get",
+                            "C_call_function": "callback_ptr(\tget_ptr)",
+                            "C_call_list": "get_ptr",
                             "C_name": "callback_ptr",
-                            "C_prototype": "int * ( * get)(\tvoid)",
+                            "C_prototype": "int * ( * get_ptr)(\tvoid)",
                             "C_return_type": "void",
-                            "F_C_arguments": "get",
+                            "F_C_arguments": "get_ptr",
                             "F_C_call": "c_callback_ptr",
                             "F_C_name": "callback_ptr",
                             "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "get",
-                            "F_arguments": "get",
+                            "F_arg_c_call": "get_ptr",
+                            "F_arguments": "get_ptr",
                             "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine"
+                            "stmt_name": "f_subroutine",
+                            "typemap_name": "void"
                         }
                     },
-                    "get": {
+                    "get_ptr": {
                         "fmtf": {
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "int * ( * get)(\tvoid)",
+                            "c_proto_decl": "int * ( * get_ptr)(\tvoid)",
                             "c_type": "int",
-                            "c_var": "get",
+                            "c_var": "get_ptr",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "get",
+                            "cxx_nonconst_ptr": "get_ptr",
                             "cxx_type": "int",
-                            "cxx_var": "get",
+                            "cxx_var": "get_ptr",
+                            "f_abstract_interface": "callback_ptr_get_ptr",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "get",
-                            "fc_var": "get",
-                            "i_var": "get",
+                            "f_var": "get_ptr",
+                            "fc_var": "get_ptr",
+                            "i_var": "get_ptr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native*"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -2540,7 +2833,7 @@
                             {
                                 "declarator": {
                                     "func": {
-                                        "name": "get",
+                                        "name": "get_abs",
                                         "pointer": [
                                             {
                                                 "ptr": "*"
@@ -2548,7 +2841,7 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "name": "get",
+                                    "name": "get_abs",
                                     "params": [
                                         {
                                             "declarator": {
@@ -2584,8 +2877,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int abstract1(int input, int (*get)(double, int));",
-                "declgen": "int abstract1(int input, int (*get)(double, int))",
+                "decl": "int abstract1(int input, int (*get_abs)(double, int));",
+                "declgen": "int abstract1(int input, int (*get_abs)(double, int))",
                 "doxygen": {
                     "brief": "abstract argument"
                 },
@@ -2606,22 +2899,13 @@
                             },
                             "stmt": "f_function_native"
                         },
-                        "get": {
+                        "get_abs": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "get  None ****************************************",
+                                    "<FUNCTION>": "get_abs  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "get",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "get",
+                                            "name": "get_abs",
                                             "params": [
                                                 {
                                                     "declarator": {
@@ -2649,48 +2933,91 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int ( * get)(double, int)",
-                                    "name": "get",
+                                    "decl": "int get_abs(double, int)",
+                                    "name": "get_abs",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "XX0arg",
+                                                    "XX1arg"
+                                                ]
+                                            }
+                                        },
+                                        "XX0arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX0arg",
+                                                "i_var": "XX0arg",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "double"
+                                            }
+                                        },
+                                        "XX1arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX1arg",
+                                                "i_var": "XX1arg",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "get",
-                                        "F_name_api": "get",
-                                        "function_name": "get"
+                                        "C_name_api": "get_abs",
+                                        "F_name_api": "get_abs",
+                                        "function_name": "get_abs"
                                     }
                                 },
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "f_in_native"
+                            "stmt": "f_in_procedure"
                         },
                         "input": {
                             "meta": {
@@ -2706,22 +3033,13 @@
                                 "intent": "function"
                             }
                         },
-                        "get": {
+                        "get_abs": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "get  None ****************************************",
+                                    "<FUNCTION>": "get_abs  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "get",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "get",
+                                            "name": "get_abs",
                                             "params": [
                                                 {
                                                     "declarator": {
@@ -2749,42 +3067,85 @@
                                         ],
                                         "typemap_name": "int"
                                     },
-                                    "decl": "int ( * get)(double, int)",
-                                    "name": "get",
+                                    "decl": "int get_abs(double, int)",
+                                    "name": "get_abs",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "XX0arg",
+                                                    "XX1arg"
+                                                ]
+                                            }
+                                        },
+                                        "XX0arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX0arg",
+                                                "i_var": "XX0arg",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "double"
+                                            }
+                                        },
+                                        "XX1arg": {
+                                            "fmtf": {
+                                                "f_abstract_name": "XX1arg",
+                                                "i_var": "XX1arg",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "get",
-                                        "F_name_api": "get",
-                                        "function_name": "get"
+                                        "C_name_api": "get_abs",
+                                        "F_name_api": "get_abs",
+                                        "function_name": "get_abs"
                                     }
                                 },
                                 "intent": "in",
@@ -2802,18 +3163,18 @@
                 "zz_fmtargs": {
                     "+result": {
                         "fmtf": {
-                            "C_call_function": "abstract1(\tinput,\t get)",
-                            "C_call_list": "input,\t get",
+                            "C_call_function": "abstract1(\tinput,\t get_abs)",
+                            "C_call_list": "input,\t get_abs",
                             "C_name": "abstract1",
-                            "C_prototype": "int input,\t int ( * get)(\tdouble,\t int)",
+                            "C_prototype": "int input,\t int ( * get_abs)(\tdouble,\t int)",
                             "C_return_type": "int",
-                            "F_C_arguments": "input,\t get",
+                            "F_C_arguments": "input,\t get_abs",
                             "F_C_call": "c_abstract1",
                             "F_C_name": "c_abstract1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "input,\t get",
-                            "F_arguments": "input,\t get",
+                            "F_arg_c_call": "input,\t get_abs",
+                            "F_arguments": "input,\t get_abs",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "c_const": "",
@@ -2828,42 +3189,45 @@
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_intent": "OUT",
+                            "f_intent_attr": ", intent(OUT)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "SHT_rv",
                             "fc_var": "SHT_rv",
                             "i_var": "SHT_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native"
+                            "stmt_name": "f_function_native",
+                            "typemap_name": "int"
                         }
                     },
-                    "get": {
+                    "get_abs": {
                         "fmtf": {
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ( * get)(\tdouble,\t int)",
+                            "c_proto_decl": "int ( * get_abs)(\tdouble,\t int)",
                             "c_type": "int",
-                            "c_var": "get",
+                            "c_var": "get_abs",
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&get",
+                            "cxx_nonconst_ptr": "&get_abs",
                             "cxx_type": "int",
-                            "cxx_var": "get",
+                            "cxx_var": "get_abs",
+                            "f_abstract_interface": "custom_funptr",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
-                            "f_var": "get",
-                            "fc_var": "get",
-                            "i_var": "get",
+                            "f_var": "get_abs",
+                            "fc_var": "get_abs",
+                            "i_var": "get_abs",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_procedure",
+                            "typemap_name": "int"
                         }
                     },
                     "input": {
@@ -2882,15 +3246,16 @@
                             "cxx_type": "int",
                             "cxx_var": "input",
                             "f_intent": "IN",
+                            "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
-                            "f_type_module": "iso_c_binding",
                             "f_var": "input",
                             "fc_var": "input",
                             "i_var": "input",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native"
+                            "stmt_name": "f_in_native",
+                            "typemap_name": "int"
                         }
                     }
                 },
@@ -3011,15 +3376,6 @@
                                     "<FUNCTION>": "incrtype  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incrtype",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "incrtype",
                                             "params": [
                                                 {
@@ -3053,7 +3409,7 @@
                                         ],
                                         "typemap_name": "incrtype"
                                     },
-                                    "decl": "typedef void ( * incrtype)(int i, TypeID j)",
+                                    "decl": "typedef void incrtype(int i, TypeID j)",
                                     "name": "incrtype",
                                     "options": {},
                                     "wrap": {
@@ -3061,27 +3417,70 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "i": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "j": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "i": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "j": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "i",
+                                                    "j"
+                                                ]
+                                            }
+                                        },
+                                        "i": {
+                                            "fmtf": {
+                                                "f_abstract_name": "i",
+                                                "i_var": "i",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
+                                            }
+                                        },
+                                        "j": {
+                                            "fmtf": {
+                                                "f_abstract_name": "j",
+                                                "i_var": "j",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "TypeID"
                                             }
                                         }
                                     },
@@ -3101,15 +3500,6 @@
                                     "<FUNCTION>": "incrtype  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "incrtype",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "void"
-                                            },
                                             "name": "incrtype",
                                             "params": [
                                                 {
@@ -3143,7 +3533,7 @@
                                         ],
                                         "typemap_name": "incrtype"
                                     },
-                                    "decl": "typedef void ( * incrtype)(int i, TypeID j)",
+                                    "decl": "typedef void incrtype(int i, TypeID j)",
                                     "name": "incrtype",
                                     "options": {},
                                     "wrap": {
@@ -3151,27 +3541,70 @@
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
                                             "i": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "j": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
                                             "i": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "j": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "i",
+                                                    "j"
+                                                ]
+                                            }
+                                        },
+                                        "i": {
+                                            "fmtf": {
+                                                "f_abstract_name": "i",
+                                                "i_var": "i",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
+                                            }
+                                        },
+                                        "j": {
+                                            "fmtf": {
+                                                "f_abstract_name": "j",
+                                                "i_var": "j",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "TypeID"
                                             }
                                         }
                                     },
@@ -3191,15 +3624,16 @@
                     "F_name_api": "incrtype",
                     "F_name_typedef": "incrtype",
                     "cxx_type": "incrtype",
+                    "f_abstract_interface": "incrtype",
                     "typedef_name": "incrtype"
                 }
             },
             {
-                "<TYPEDEF>": "get ****************************************",
+                "<TYPEDEF>": "get_int ****************************************",
                 "ast": {
                     "declarator": {
                         "func": {
-                            "name": "get",
+                            "name": "get_int",
                             "pointer": [
                                 {
                                     "ptr": "*"
@@ -3207,7 +3641,7 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "name": "get",
+                        "name": "get_int",
                         "params": [
                             {
                                 "declarator": {
@@ -3236,31 +3670,22 @@
                     "storage": [
                         "typedef"
                     ],
-                    "typemap_name": "get"
+                    "typemap_name": "get_int"
                 },
-                "name": "get",
+                "name": "get_int",
                 "options": {},
                 "wrap": {
                     "fortran": true
                 },
                 "zz_bind": {
                     "f": {
-                        "get": {
+                        "get_int": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "get  None ****************************************",
+                                    "<FUNCTION>": "get_int  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "get",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "get",
+                                            "name": "get_int",
                                             "params": [
                                                 {
                                                     "declarator": {
@@ -3289,66 +3714,100 @@
                                         "storage": [
                                             "typedef"
                                         ],
-                                        "typemap_name": "get"
+                                        "typemap_name": "get_int"
                                     },
-                                    "decl": "typedef int ( * get)(double, int)",
-                                    "name": "get",
+                                    "decl": "typedef int get_int(double, int)",
+                                    "name": "get_int",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0",
+                                                    "arg1"
+                                                ]
+                                            }
+                                        },
+                                        "arg0": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg0",
+                                                "i_var": "arg0",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "double"
+                                            }
+                                        },
+                                        "arg1": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg1",
+                                                "i_var": "arg1",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "get",
-                                        "F_name_api": "get",
-                                        "function_name": "get"
+                                        "C_name_api": "get_int",
+                                        "F_name_api": "get_int",
+                                        "function_name": "get_int"
                                     }
                                 }
                             }
                         }
                     },
                     "share": {
-                        "get": {
+                        "get_int": {
                             "meta": {
                                 "fptr": {
-                                    "<FUNCTION>": "get  None ****************************************",
+                                    "<FUNCTION>": "get_int  None ****************************************",
                                     "ast": {
                                         "declarator": {
-                                            "func": {
-                                                "name": "get",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ],
-                                                "typemap_name": "int"
-                                            },
-                                            "name": "get",
+                                            "name": "get_int",
                                             "params": [
                                                 {
                                                     "declarator": {
@@ -3377,44 +3836,87 @@
                                         "storage": [
                                             "typedef"
                                         ],
-                                        "typemap_name": "get"
+                                        "typemap_name": "get_int"
                                     },
-                                    "decl": "typedef int ( * get)(double, int)",
-                                    "name": "get",
+                                    "decl": "typedef int get_int(double, int)",
+                                    "name": "get_int",
                                     "options": {},
                                     "wrap": {
                                         "fortran": true
                                     },
                                     "zz_bind": {
                                         "f": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
-                                                }
+                                                },
+                                                "stmt": "f_none_native"
                                             }
                                         },
                                         "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
                                             "arg1": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "intent": "none",
                                                     "value": true
                                                 }
                                             }
                                         }
                                     },
+                                    "zz_fmtargs": {
+                                        "+result": {
+                                            "fmtf": {
+                                                "f_abstract_names": [
+                                                    "arg0",
+                                                    "arg1"
+                                                ]
+                                            }
+                                        },
+                                        "arg0": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg0",
+                                                "i_var": "arg0",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "double"
+                                            }
+                                        },
+                                        "arg1": {
+                                            "fmtf": {
+                                                "f_abstract_name": "arg1",
+                                                "i_var": "arg1",
+                                                "stmt_name": "f_none_native",
+                                                "typemap_name": "int"
+                                            }
+                                        }
+                                    },
                                     "zz_fmtdict": {
-                                        "C_name_api": "get",
-                                        "F_name_api": "get",
-                                        "function_name": "get"
+                                        "C_name_api": "get_int",
+                                        "F_name_api": "get_int",
+                                        "function_name": "get_int"
                                     }
                                 }
                             }
@@ -3422,12 +3924,13 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "get",
-                    "C_name_typedef": "get",
-                    "F_name_api": "get",
-                    "F_name_typedef": "get",
-                    "cxx_type": "get",
-                    "typedef_name": "get"
+                    "C_name_api": "get_int",
+                    "C_name_typedef": "get_int",
+                    "F_name_api": "get_int",
+                    "F_name_typedef": "get_int",
+                    "cxx_type": "get_int",
+                    "f_abstract_interface": "get_int",
+                    "typedef_name": "get_int"
                 }
             }
         ],
@@ -3470,22 +3973,22 @@
                 "wrapfunptr.h"
             ]
         },
-        "get": {
+        "get_int": {
             "base": "procedure",
-            "c_type": "get",
-            "cxx_type": "get",
-            "f_kind": "get",
+            "c_type": "get_int",
+            "cxx_type": "get_int",
+            "f_kind": "get_int",
             "f_module": {
                 "funptr_mod": [
-                    "get"
+                    "get_int"
                 ]
             },
             "f_module_name": "funptr_mod",
-            "f_type": "procedure(get)",
-            "flat_name": "get",
+            "f_type": "procedure(get_int)",
+            "flat_name": "get_int",
             "i_module": {
                 "funptr_mod": [
-                    "get"
+                    "get_int"
                 ]
             },
             "sgroup": "procedure",
@@ -3515,6 +4018,26 @@
             "wrap_header": [
                 "wrapfunptr.h"
             ]
+        },
+        "int(*)(double,int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "int(*)(int*,int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "int*(*)(void)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "void(*)(void)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
         }
     }
 }

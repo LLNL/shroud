@@ -963,12 +963,14 @@ stmts:
             - _ast: Declaration
               declarator:
                 name: arg1
+                typemap_name: --template-parameter--
               specifier:
               - T
               template_argument: T
             - _ast: Declaration
               declarator:
                 name: arg2
+                typemap_name: --template-parameter--
               specifier:
               - U
               template_argument: U
@@ -1047,12 +1049,14 @@ stmts:
           name: values
           pointer:
           - ptr: '*'
+          typemap_name: --template-parameter--
         specifier:
         - T
         template_argument: T
       - _ast: Declaration
         declarator:
           name: length
+          typemap_name: --template-parameter--
         specifier:
         - U
         template_argument: U
@@ -1080,12 +1084,14 @@ stmts:
         - twostruct
         template_arguments:
         - _ast: Declaration
-          declarator: {}
+          declarator:
+            typemap_name: --template-parameter--
           specifier:
           - T
           template_argument: T
         - _ast: Declaration
-          declarator: {}
+          declarator:
+            typemap_name: --template-parameter--
           specifier:
           - U
           template_argument: U
@@ -1315,6 +1321,11 @@ stmts:
   typemap_name: int
 XXXX SymbolTable
 cls: Global
+XXXX Typemap
+int(*)(int):
+  base: procedure
+  f_type: f-function-pointer
+  sgroup: procedure
 
 XXXXXXXXXXXXXXXXXXXX
 # declstr language=c++ create_std
@@ -1487,3 +1498,8 @@ symbols:
   uint8_t:
     cls: Typedef
     typemap: uint8_t
+XXXX Typemap
+int(*)(int):
+  base: procedure
+  f_type: f-function-pointer
+  sgroup: procedure

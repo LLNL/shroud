@@ -13,6 +13,7 @@ library: funptr
 cxx_header: funptr.h
 
 options:
+  debug: True
   wrap_lua: False
   wrap_python: False
 
@@ -21,11 +22,11 @@ declarations:
 # Function pointers with no arguments
 # Define function pointer in prototype (not via a typedef).
 
-- decl: void callback1(void (*incr)(void))
+- decl: void callback1(void (*incr1)(void))
   doxygen:
     brief: Create abstract interface for function
 
-- decl: void callback1_wrap(void (*incr)(void))
+- decl: void callback1_wrap(void (*incr1_wrap)(void))
   doxygen:
     brief: Create abstract interface for function
     description: |
@@ -33,11 +34,11 @@ declarations:
   options:
     F_force_wrapper: True
 
-- decl: void callback1_external(void (*incr)(void)+external)
+- decl: void callback1_external(void (*incr1_external)(void)+external)
   doxygen:
     brief: Declare callback as external
 
-- decl: void callback1_funptr(void (*incr)(void)+funptr)
+- decl: void callback1_funptr(void (*incr1_funptr)(void)+funptr)
   doxygen:
     brief: Declare callback as c_funptr
     description: |
@@ -72,7 +73,7 @@ declarations:
 # Test assumedtype
 
 - decl: void callback3(int type, void *in+assumedtype+intent(in),
-                       void (*incr)(void)+funptr)
+                       void (*incr3)(void)+funptr)
   doxygen:
     brief: Test function pointer with assumedtype
 
@@ -86,7 +87,7 @@ declarations:
 
 #####
 
-- decl: void callback_ptr(int *(*get)(void));
+- decl: void callback_ptr(int *(*get_ptr)(void));
   doxygen:
     brief: Return a C_PTR
     description: |
@@ -95,11 +96,11 @@ declarations:
 
 #####
 
-- decl: typedef int (*get)(double, int);
+- decl: typedef int (*get_int)(double, int);
   doxygen:
     brief: abstract argument
 
-- decl: int abstract1(int input, int (*get)(double, int));
+- decl: int abstract1(int input, int (*get_abs)(double, int));
   doxygen:
     brief: abstract argument
   options:
