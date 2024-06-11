@@ -1564,7 +1564,8 @@
         ],
         "notes": [
             "char *getname() +len(30)",
-            "Copy result into caller's buffer."
+            "Copy result into caller's buffer.",
+            "XXX - maybe fmtdict to rename c_local_cxx as output"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -2975,7 +2976,6 @@
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow"
         ],
-        "cxx_local_var": "result",
         "c_post_call": [
             "{c_var}->addr = {cxx_nonconst_ptr};",
             "{c_var}->idtor = {idtor};"

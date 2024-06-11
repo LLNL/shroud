@@ -834,6 +834,7 @@ c_function_char*_buf_copy:
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
+  - XXX - maybe fmtdict to rename c_local_cxx as output
   owner: library
 c_function_enum:
   intent: function
@@ -1071,7 +1072,6 @@ c_function_shadow*_capsule:
   c_return_type: void
   comments:
   - Return a C_capsule_data_type.
-  cxx_local_var: result
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -4236,6 +4236,7 @@ f_function_char*_buf_copy:
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
+  - XXX - maybe fmtdict to rename c_local_cxx as output
   owner: library
 f_function_char*_cdesc_allocatable:
   c_arg_decl:
@@ -5385,7 +5386,6 @@ f_function_shadow*_capsule:
   c_return_type: void
   comments:
   - Return a C_capsule_data_type.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
