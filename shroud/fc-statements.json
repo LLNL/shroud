@@ -2599,9 +2599,17 @@
         "c_helper": [
             "char_copy"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx",
+            "i",
+            "n",
+            "s"
+        ],
         "c_pre_call": [
-            "{c_const}std::vector<{cxx_T}> {cxx_var};"
+            "{c_const}std::vector<{cxx_T}> {c_local_var};"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ],
         "c_post_call": [
             "{{+",
@@ -2609,17 +2617,12 @@
             "std::vector<{cxx_T}>::size_type",
             "+{c_local_i} = 0,",
             "{c_local_n} = {c_var_size};",
-            "{c_local_n} = std::min({cxx_var}.size(),{c_local_n});",
+            "{c_local_n} = std::min({c_local_var}.size(),{c_local_n});",
             "-for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+",
-            "{c_helper_char_copy}({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t {cxx_var}[{c_local_i}].size());",
+            "{c_helper_char_copy}({c_local_s}, {c_var_len},\t {c_local_var}[{c_local_i}].data(),\t {c_local_var}[{c_local_i}].size());",
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}"
-        ],
-        "c_local": [
-            "i",
-            "n",
-            "s"
         ]
     },
     {
@@ -2627,7 +2630,12 @@
         "mixin": [
             "f_mixin_in_string_array_buf"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx",
+            "i",
+            "n",
+            "s"
+        ],
         "c_helper": [
             "char_len_trim"
         ],
@@ -2644,6 +2652,9 @@
             "-}}",
             "-}}"
         ],
+        "c_arg_call": [
+            "{c_local_cxx}"
+        ],
         "c_post_call": [
             "{{+",
             "char * {c_local_s} = {c_var};",
@@ -2656,11 +2667,6 @@
             "{c_local_s} += {c_var_len};",
             "-}}",
             "-}}"
-        ],
-        "c_local": [
-            "i",
-            "n",
-            "s"
         ]
     },
     {

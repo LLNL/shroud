@@ -10041,6 +10041,8 @@ f_inout_vector<native>&_cdesc_allocatable:
   name: f_inout_vector<native>&_cdesc_allocatable
   owner: library
 f_inout_vector_buf_targ_string_scalar:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -10048,6 +10050,7 @@ f_inout_vector_buf_targ_string_scalar:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
@@ -10082,7 +10085,6 @@ f_inout_vector_buf_targ_string_scalar:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -12088,6 +12090,8 @@ f_out_vector<string>&_cdesc_allocatable:
   name: f_out_vector<string>&_cdesc_allocatable
   owner: library
 f_out_vector_buf_targ_string_scalar:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -12095,6 +12099,7 @@ f_out_vector_buf_targ_string_scalar:
   c_helper:
   - char_copy
   c_local:
+  - cxx
   - i
   - n
   - s
@@ -12104,21 +12109,20 @@ f_out_vector_buf_targ_string_scalar:
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
-  - '{c_local_n} = std::min({cxx_var}.size(),{c_local_n});'
+  - '{c_local_n} = std::min({c_local_var}.size(),{c_local_n});'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{c_helper_char_copy}({c_local_s}, {c_var_len},\t {cxx_var}[{c_local_i}].data(),\t\
-    \ {cxx_var}[{c_local_i}].size());"
+  - "{c_helper_char_copy}({c_local_s}, {c_var_len},\t {c_local_var}[{c_local_i}].data(),\t\
+    \ {c_local_var}[{c_local_i}].size());"
   - '{c_local_s} += {c_var_len};'
   - -}}
   - -}}
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  - '{c_const}std::vector<{cxx_T}> {c_local_var};'
   c_temps:
   - size
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
