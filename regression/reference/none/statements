@@ -8928,14 +8928,17 @@ f_in_string&_buf:
   - C wrapper will fill argument.
   owner: library
 f_in_string&_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - trim
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
   c_temps:
@@ -8943,7 +8946,6 @@ f_in_string&_cfi:
   comments:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -9012,14 +9014,17 @@ f_in_string*_buf:
   - C wrapper will fill argument.
   owner: library
 f_in_string*_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - trim
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
   c_temps:
@@ -9027,7 +9032,6 @@ f_in_string*_cfi:
   comments:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -9091,14 +9095,17 @@ f_in_string_buf:
   - C wrapper will fill argument.
   owner: library
 f_in_string_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - trim
   c_pre_call:
-  - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
+  - char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);
   - '{c_const}std::string {cxx_var}({c_var}, {c_local_trim});'
   c_temps:
@@ -9106,7 +9113,6 @@ f_in_string_cfi:
   comments:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(len=*){f_intent_attr} :: {i_var}'
   i_arg_names:

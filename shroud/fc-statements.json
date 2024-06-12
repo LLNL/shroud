@@ -3861,14 +3861,18 @@
         "c_helper": [
             "char_len_trim"
         ],
-        "cxx_local_var": "scalar",
+        "cxx_local_var": null,
+        "c_local": [
+            "cxx",
+            "trim"
+        ],
         "c_pre_call": [
-            "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
+            "char *{c_local_cxx} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "size_t {c_local_trim} = {c_helper_char_len_trim}({c_var}, {c_var_cfi}->elem_len);",
             "{c_const}std::string {cxx_var}({c_var}, {c_local_trim});"
         ],
-        "c_local": [
-            "trim"
+        "c_arg_call": [
+            "{c_local_cxx}"
         ]
     },
     {
