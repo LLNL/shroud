@@ -2180,16 +2180,9 @@
         "c_pre_call": [
             "{cxx_type} {cxx_var};"
         ],
-        "lang_c": {
-            "c_post_call": [
-                "*{c_var} = ({c_type}) {cxx_var};"
-            ]
-        },
-        "lang_cxx": {
-            "c_post_call": [
-                "*{c_var} = static_cast<{c_type}>({cxx_var});"
-            ]
-        }
+        "c_post_call": [
+            "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+        ]
     },
     {
         "alias": [
@@ -2197,16 +2190,9 @@
             "c_inout_enum*"
         ],
         "base": "f_out_enum*",
-        "lang_c": {
-            "c_pre_call": [
-                "{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};"
-            ]
-        },
-        "lang_cxx": {
-            "c_pre_call": [
-                "{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});"
-            ]
-        }
+        "c_pre_call": [
+            "{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};"
+        ]
     },
     {
         "name": "c_function_vector<native>",

@@ -2363,17 +2363,11 @@ c_inout_char*_buf:
   owner: library
 c_inout_enum*:
   c_post_call:
-  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_pre_call:
-  - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  - '{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};'
   cxx_local_var: scalar
   intent: inout
-  lang_c:
-    c_pre_call:
-    - '{cxx_type} {cxx_var} = ({cxx_type}) *{c_var};'
-  lang_cxx:
-    c_pre_call:
-    - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
   name: c_inout_enum*
   owner: library
 c_inout_native&:
@@ -3256,17 +3250,11 @@ c_out_char_*_buf:
   owner: library
 c_out_enum*:
   c_post_call:
-  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_pre_call:
   - '{cxx_type} {cxx_var};'
   cxx_local_var: scalar
   intent: out
-  lang_c:
-    c_post_call:
-    - '*{c_var} = ({c_type}) {cxx_var};'
-  lang_cxx:
-    c_post_call:
-    - '*{c_var} = static_cast<{c_type}>({cxx_var});'
   name: c_out_enum*
   owner: library
 c_out_native&:
@@ -9584,9 +9572,9 @@ f_inout_char*_cfi:
   owner: library
 f_inout_enum*:
   c_post_call:
-  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_pre_call:
-  - '{cxx_type} {cxx_var} = static_cast<{cxx_type}>(*{c_var});'
+  - '{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};'
   cxx_local_var: scalar
   intent: inout
   name: f_inout_enum*
@@ -11080,7 +11068,7 @@ f_out_char*_cfi:
   owner: library
 f_out_enum*:
   c_post_call:
-  - '*{c_var} = static_cast<{c_type}>({cxx_var});'
+  - '*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};'
   c_pre_call:
   - '{cxx_type} {cxx_var};'
   cxx_local_var: scalar
