@@ -3003,6 +3003,8 @@ c_mixin_in_character_buf:
   - C wrapper will fill argument.
   owner: library
 c_mixin_inout_vector<native>_cdesc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -3011,16 +3013,18 @@ c_mixin_inout_vector<native>_cdesc:
   - array_context
   - type_defines
   - copy_array
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
+  - "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
+    \ {c_var} + {c_var_size});"
   c_temps:
   - size
   - cdesc
@@ -3031,7 +3035,6 @@ c_mixin_inout_vector<native>_cdesc:
   - Pass array_type to C which will fill it in.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -3163,21 +3166,25 @@ c_mixin_out_native**:
   - double **count +intent(out)+dimension(ncount)
   owner: library
 c_mixin_out_vector<native>_cdesc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_helper:
   - type_defines
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   comments:
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
+  - Create a std::vector on the stack and pass to C++
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -3231,10 +3238,10 @@ c_mixin_vector_cdesc_fill-cdesc:
   c_helper:
   - type_defines
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   comments:
@@ -3615,25 +3622,28 @@ c_out_vector<native>&_buf_malloc:
   - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>&_cdesc:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
   - type_defines
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
   comments:
   - copy into user's existing array.
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -3647,7 +3657,7 @@ c_out_vector<native>&_cdesc:
   intent: out
   name: c_out_vector<native>&_cdesc
   notes:
-  - cxx_var is always a pointer to a vector.
+  - c_local_cxx is always a pointer to a vector.
   owner: library
 c_out_vector<native>*_buf_copy:
   c_arg_call:
@@ -3726,25 +3736,28 @@ c_out_vector<native>*_buf_malloc:
   - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>*_cdesc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
   - type_defines
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
   comments:
   - copy into user's existing array.
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -3758,7 +3771,7 @@ c_out_vector<native>*_cdesc:
   intent: out
   name: c_out_vector<native>*_cdesc
   notes:
-  - cxx_var is always a pointer to a vector.
+  - c_local_cxx is always a pointer to a vector.
   owner: library
 c_out_vector<native>_buf_copy:
   c_arg_call:
@@ -8049,18 +8062,22 @@ f_function_struct*_pointer:
 f_function_vector<native>_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
+  c_call:
+  - '*{c_local_cxx} = {function_name}({C_call_list});'
   c_helper:
   - copy_array
   - type_defines
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_return_type: void
   c_temps:
   - cdesc
@@ -8069,7 +8086,6 @@ f_function_vector<native>_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -10044,6 +10060,8 @@ f_inout_struct*:
   - C pointer -> void pointer -> C++ pointer
   owner: library
 f_inout_vector<native>&_cdesc:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -10052,16 +10070,18 @@ f_inout_vector<native>&_cdesc:
   - array_context
   - type_defines
   - copy_array
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
+  - "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
+    \ {c_var} + {c_var_size});"
   c_temps:
   - size
   - cdesc
@@ -10072,7 +10092,6 @@ f_inout_vector<native>&_cdesc:
   - Pass array_type to C which will fill it in.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -10117,6 +10136,8 @@ f_inout_vector<native>&_cdesc:
   name: f_inout_vector<native>&_cdesc
   owner: library
 f_inout_vector<native>&_cdesc_allocatable:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
@@ -10125,16 +10146,18 @@ f_inout_vector<native>&_cdesc_allocatable:
   - array_context
   - type_defines
   - copy_array
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var}\
-    \ + {c_var_size});"
+  - "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var},\
+    \ {c_var} + {c_var_size});"
   c_temps:
   - size
   - cdesc
@@ -10145,7 +10168,6 @@ f_inout_vector<native>&_cdesc_allocatable:
   - Pass array_type to C which will fill it in.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -11901,25 +11923,28 @@ f_out_struct*:
   - C pointer -> void pointer -> C++ pointer
   owner: library
 f_out_vector<native>&_cdesc:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
   - type_defines
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
   comments:
   - copy into user's existing array.
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -11953,29 +11978,33 @@ f_out_vector<native>&_cdesc:
   intent: out
   name: f_out_vector<native>&_cdesc
   notes:
-  - cxx_var is always a pointer to a vector.
+  - c_local_cxx is always a pointer to a vector.
   owner: library
 f_out_vector<native>&_cdesc_allocatable:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
+  - Create a std::vector on the stack and pass to C++
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -12013,25 +12042,28 @@ f_out_vector<native>&_cdesc_allocatable:
   - Copy into allocated array.
   owner: library
 f_out_vector<native>*_cdesc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
   - type_defines
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
   comments:
   - copy into user's existing array.
-  cxx_local_var: pointer
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
@@ -12065,29 +12097,33 @@ f_out_vector<native>*_cdesc:
   intent: out
   name: f_out_vector<native>*_cdesc
   notes:
-  - cxx_var is always a pointer to a vector.
+  - c_local_cxx is always a pointer to a vector.
   owner: library
 f_out_vector<native>*_cdesc_allocatable:
+  c_arg_call:
+  - '*{c_local_cxx}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_helper:
   - copy_array
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
   - '{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});'
-  - '{c_var_cdesc}->size = {cxx_var}->size();'
+  - '{c_var_cdesc}->size = {c_local_cxx}->size();'
   - '{c_var_cdesc}->rank = 1;'
   - '{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;'
   c_pre_call:
-  - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  - "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
   c_temps:
   - cdesc
   comments:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  cxx_local_var: pointer
+  - Create a std::vector on the stack and pass to C++
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;

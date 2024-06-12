@@ -2380,10 +2380,10 @@
             "type_defines"
         ],
         "c_post_call": [
-            "{c_var_cdesc}->base_addr = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();",
+            "{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();",
             "{c_var_cdesc}->type = {targs[0].sh_type};",
             "{c_var_cdesc}->elem_len = sizeof({targs[0].cxx_type});",
-            "{c_var_cdesc}->size = {cxx_var}->size();",
+            "{c_var_cdesc}->size = {c_local_cxx}->size();",
             "{c_var_cdesc}->rank = 1;",
             "{c_var_cdesc}->shape[0] = {c_var_cdesc}->size;"
         ]
@@ -2394,23 +2394,29 @@
             "c_mixin_destructor_new-vector",
             "c_mixin_vector_cdesc_fill-cdesc"
         ],
-        "cxx_local_var": "pointer",
+        "comments": [
+            "Create a std::vector on the stack and pass to C++"
+        ],
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+            "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ]
     },
     {
         "alias": [
             "f_out_vector<native>*_cdesc",
-            "f_out_vector<native>&_cdesc",
-            "c_out_vector<native>*_cdesc",
-            "c_out_vector<native>&_cdesc"
+            "c_out_vector<native>*_cdesc"
         ],
         "comments": [
             "copy into user's existing array."
         ],
         "notes": [
-            "cxx_var is always a pointer to a vector."
+            "c_local_cxx is always a pointer to a vector."
         ],
         "mixin": [
             "f_mixin_pass_cdesc",
@@ -2441,6 +2447,16 @@
         ]
     },
     {
+        "alias": [
+            "f_out_vector<native>&_cdesc",
+            "c_out_vector<native>&_cdesc"
+        ],
+        "base": "f_out_vector<native>*_cdesc",
+        "c_arg_call": [
+            "*{c_local_cxx}"
+        ]
+    },
+    {
         "name": "c_mixin_inout_vector<native>_cdesc",
         "mixin": [
             "f_mixin_inout_array_cdesc",
@@ -2454,9 +2470,14 @@
         "f_helper": [
             "copy_array"
         ],
-        "cxx_local_var": "pointer",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "std::vector<{cxx_T}> *{cxx_var} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
+            "std::vector<{cxx_T}> *{c_local_cxx} = \tnew std::vector<{cxx_T}>\t(\t{c_var}, {c_var} + {c_var_size});"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ]
     },
     {
@@ -2493,9 +2514,14 @@
             "allocate({f_var}({f_var_cdesc}%size))",
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
         ],
-        "cxx_local_var": "pointer",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+            "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
+        ],
+        "c_call": [
+            "*{c_local_cxx} = {function_name}({C_call_list});"
         ]
     },
     {
@@ -2843,6 +2869,9 @@
         ],
         "f_post_call": [
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ],
+        "c_arg_call": [
+            "*{c_local_cxx}"
         ]
     },
     {
@@ -2878,9 +2907,6 @@
             "f_mixin_pass_cdesc",
             "c_mixin_out_vector<native>_cdesc"
         ],
-        "c_helper": [
-            "copy_array"
-        ],
         "f_helper": [
             "copy_array"
         ],
@@ -2900,6 +2926,12 @@
         "f_post_call": [
             "allocate({f_var}({f_var_cdesc}%size))",
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ],
+        "c_helper": [
+            "copy_array"
+        ],
+        "c_arg_call": [
+            "*{c_local_cxx}"
         ]
     },
     {
@@ -2925,6 +2957,9 @@
             "if (allocated({f_var})) deallocate({f_var})",
             "allocate({f_var}({f_var_cdesc}%size))",
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ],
+        "c_arg_call": [
+            "*{c_local_cxx}"
         ]
     },
     {

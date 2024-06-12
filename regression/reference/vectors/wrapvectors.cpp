@@ -638,12 +638,12 @@ void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.ReturnVectorAlloc_bufferify
-    std::vector<int> *SHC_rv = new std::vector<int>;
-    *SHC_rv = ReturnVectorAlloc(n);
-    SHT_rv_cdesc->base_addr = SHC_rv->empty() ? nullptr : &SHC_rv->front();
+    std::vector<int> *SHCXX_SHC_rv = new std::vector<int>;
+    *SHCXX_SHC_rv = ReturnVectorAlloc(n);
+    SHT_rv_cdesc->base_addr = SHCXX_SHC_rv->empty() ? nullptr : &SHCXX_SHC_rv->front();
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
-    SHT_rv_cdesc->size = SHC_rv->size();
+    SHT_rv_cdesc->size = SHCXX_SHC_rv->size();
     SHT_rv_cdesc->rank = 1;
     SHT_rv_cdesc->shape[0] = SHT_rv_cdesc->size;
     // splicer end function.ReturnVectorAlloc_bufferify
