@@ -2349,18 +2349,21 @@
         "mixin": [
             "c_mixin_out_vector_buf_malloc"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx",
+            "bytes"
+        ],
         "c_pre_call": [
-            "{c_const}std::vector<{cxx_T}> {cxx_var}(*{c_var}, *{c_var} + *{c_var_size});"
+            "{c_const}std::vector<{cxx_T}> {c_local_cxx}(*{c_var}, *{c_var} + *{c_var_size});"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ],
         "c_post_call": [
-            "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);",
+            "size_t {c_local_bytes} =\t {c_local_cxx}.size()*sizeof({c_local_cxx}[0]);",
             "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::realloc(*{c_var},\t {c_local_bytes}));",
-            "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});",
-            "*{c_var_size} = {cxx_var}.size();"
-        ],
-        "c_local": [
-            "bytes"
+            "std::memcpy(*{c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});",
+            "*{c_var_size} = {c_local_cxx}.size();"
         ],
         "impl_header": [
             "<cstdlib>",
