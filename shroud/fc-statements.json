@@ -1447,7 +1447,7 @@
             "{f_var}"
         ],
         "c_call": [
-            "*{c_var} = {function_name}({C_call_list});"
+            "*{c_var} = {C_call_function};"
         ],
         "c_arg_decl": [
             "char *{c_var}"
@@ -1579,7 +1579,7 @@
             "char_copy"
         ],
         "c_call": [
-            "{c_const}char *{c_local_cxx} = {function_name}({C_call_list});"
+            "{c_const}char *{c_local_cxx} = {C_call_function};"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
@@ -2529,7 +2529,7 @@
             "{c_const}std::vector<{cxx_T}>\t *{c_local_cxx} = new std::vector<{cxx_T}>;"
         ],
         "c_call": [
-            "*{c_local_cxx} = {function_name}({C_call_list});"
+            "*{c_local_cxx} = {C_call_function};"
         ]
     },
     {
@@ -3090,7 +3090,7 @@
         ],
         "f_result": "subroutine",
         "c_call": [
-            "{CXX_this_call}{function_name}{CXX_template}({C_call_list});"
+            "{C_call_function};"
         ]
     },
     {
@@ -3132,7 +3132,7 @@
             "cxx"
         ],
         "c_call": [
-            "{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});"
+            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
         ],
         "c_post_call": [
             "{c_var}->addr = {cxx_nonconst_ptr};",
@@ -3154,7 +3154,7 @@
         ],
         "base": "f_function_shadow*_capptr",
         "c_call": [
-            "{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});"
+            "{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};"
         ]
     },
     {
@@ -3189,7 +3189,7 @@
             "{cxx_type} * {c_local_cxx} = new {cxx_type};"
         ],
         "c_call": [
-            "*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});"
+            "*{c_local_cxx} = {C_call_function};"
         ],
         "c_post_call": [
             "{c_var}->addr = {cxx_nonconst_ptr};",

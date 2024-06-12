@@ -696,7 +696,7 @@ c_function_char:
   c_arg_decl:
   - char *{c_var}
   c_call:
-  - '*{c_var} = {function_name}({C_call_list});'
+  - '*{c_var} = {C_call_function};'
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
@@ -724,7 +724,7 @@ c_function_char*_arg:
   - char *{c_var}
   - int {c_var_len}
   c_call:
-  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
   c_local:
@@ -765,7 +765,7 @@ c_function_char*_buf_arg:
   - char *{c_var}
   - int {c_var_len}
   c_call:
-  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
   c_local:
@@ -806,7 +806,7 @@ c_function_char*_buf_copy:
   - char *{c_var}
   - int {c_var_len}
   c_call:
-  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
   c_local:
@@ -893,7 +893,7 @@ c_function_shadow&_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -925,7 +925,7 @@ c_function_shadow&_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -957,7 +957,7 @@ c_function_shadow&_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -989,7 +989,7 @@ c_function_shadow*_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -1021,7 +1021,7 @@ c_function_shadow*_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -1053,7 +1053,7 @@ c_function_shadow*_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -1102,7 +1102,7 @@ c_function_shadow*_capsule:
   owner: library
 c_function_shadow*_this:
   c_call:
-  - '{CXX_this_call}{function_name}{CXX_template}({C_call_list});'
+  - '{C_call_function};'
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
@@ -1116,7 +1116,7 @@ c_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -1154,7 +1154,7 @@ c_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -4148,7 +4148,7 @@ f_function_char:
   c_arg_decl:
   - char *{c_var}
   c_call:
-  - '*{c_var} = {function_name}({C_call_list});'
+  - '*{c_var} = {C_call_function};'
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
@@ -4193,7 +4193,7 @@ f_function_char*_arg:
   - char *{c_var}
   - int {c_var_len}
   c_call:
-  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
   c_local:
@@ -4254,7 +4254,7 @@ f_function_char*_buf_arg:
   - char *{c_var}
   - int {c_var_len}
   c_call:
-  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
   c_local:
@@ -4315,7 +4315,7 @@ f_function_char*_buf_copy:
   - char *{c_var}
   - int {c_var_len}
   c_call:
-  - '{c_const}char *{c_local_cxx} = {function_name}({C_call_list});'
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
   c_local:
@@ -5270,7 +5270,7 @@ f_function_shadow&_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5315,7 +5315,7 @@ f_function_shadow&_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5360,7 +5360,7 @@ f_function_shadow&_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5405,7 +5405,7 @@ f_function_shadow*_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5450,7 +5450,7 @@ f_function_shadow*_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5495,7 +5495,7 @@ f_function_shadow*_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5564,7 +5564,7 @@ f_function_shadow*_capsule:
   owner: library
 f_function_shadow*_this:
   c_call:
-  - '{CXX_this_call}{function_name}{CXX_template}({C_call_list});'
+  - '{C_call_function};'
   c_return_type: void
   comments:
   - Call the C wrapper as a subroutine.
@@ -5581,7 +5581,7 @@ f_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5632,7 +5632,7 @@ f_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5683,7 +5683,7 @@ f_function_shadow_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -5734,7 +5734,7 @@ f_function_shadow_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_local:
   - cxx
   c_post_call:
@@ -8145,7 +8145,7 @@ f_function_vector<native>_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   c_call:
-  - '*{c_local_cxx} = {function_name}({C_call_list});'
+  - '*{c_local_cxx} = {C_call_function};'
   c_helper:
   - copy_array
   - type_defines

@@ -435,8 +435,8 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_subclass_args
-    Cstruct_as_subclass *SHCXX_SHC_rv = Create_Cstruct_as_subclass_args(x,
-        y, z);
+    Cstruct_as_subclass *SHCXX_SHC_rv = Create_Cstruct_as_subclass_args(
+        x, y, z);
     SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;

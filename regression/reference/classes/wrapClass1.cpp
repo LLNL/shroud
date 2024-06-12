@@ -190,8 +190,8 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
         (self->addr);
     // splicer begin class.Class1.method.returnThisBuffer
     std::string SHCXX_name(name);
-    classes::Class1 *SHCXX_SHC_rv = SH_this->returnThisBuffer(SHCXX_name,
-        flag);
+    classes::Class1 *SHCXX_SHC_rv = SH_this->returnThisBuffer(
+        SHCXX_name, flag);
     SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;
@@ -220,8 +220,8 @@ CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
         (self->addr);
     // splicer begin class.Class1.method.returnThisBuffer_bufferify
     std::string SHCXX_name(name, ShroudCharLenTrim(name, SHT_name_len));
-    classes::Class1 *SHCXX_SHC_rv = SH_this->returnThisBuffer(SHCXX_name,
-        flag);
+    classes::Class1 *SHCXX_SHC_rv = SH_this->returnThisBuffer(
+        SHCXX_name, flag);
     SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 0;
     return SHC_rv;

@@ -185,7 +185,8 @@ void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getConstClassReference
-    const classes::Class1 &SHCXX_SHC_rv = classes::getConstClassReference();
+    const classes::Class1 &SHCXX_SHC_rv = classes::getConstClassReference(
+        );
     SHC_rv->addr = const_cast<classes::Class1 *>(&SHCXX_SHC_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
