@@ -2615,18 +2615,21 @@ c_inout_struct*:
   - C pointer -> void pointer -> C++ pointer
   owner: library
 c_inout_vector<native>&_buf_copy:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
+  c_local:
+  - cxx
   c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
+  - '*{c_var_size} = {c_local_cxx}->size()'
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + *{c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by reference to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {i_var}(*)'
   - 'integer(C_SIZE_T){f_intent_attr} :: {i_var_size}'
@@ -2677,18 +2680,21 @@ c_inout_vector<native>&_buf_malloc:
   name: c_inout_vector<native>&_buf_malloc
   owner: library
 c_inout_vector<native>*_buf_copy:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
+  c_local:
+  - cxx
   c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
+  - '*{c_var_size} = {c_local_cxx}->size()'
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + *{c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by reference to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {i_var}(*)'
   - 'integer(C_SIZE_T){f_intent_attr} :: {i_var_size}'
@@ -2739,18 +2745,21 @@ c_inout_vector<native>*_buf_malloc:
   name: c_inout_vector<native>*_buf_malloc
   owner: library
 c_inout_vector<native>_buf_copy:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
+  c_local:
+  - cxx
   c_post_call:
-  - '*{c_var_size} = {cxx_var}->size()'
+  - '*{c_var_size} = {c_local_cxx}->size()'
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + *{c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by reference to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}{f_intent_attr} :: {i_var}(*)'
   - 'integer(C_SIZE_T){f_intent_attr} :: {i_var_size}'

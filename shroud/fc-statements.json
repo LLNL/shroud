@@ -2285,12 +2285,17 @@
         "mixin": [
             "f_mixin_out_vector_buf"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + *{c_var_size});"
+            "{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + *{c_var_size});"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ],
         "c_post_call": [
-            "*{c_var_size} = {cxx_var}->size()"
+            "*{c_var_size} = {c_local_cxx}->size()"
         ],
         "notimplemented": true
     },
