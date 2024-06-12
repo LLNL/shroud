@@ -4488,18 +4488,21 @@ f_function_char*_cfi_allocatable:
 f_function_char*_cfi_arg:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - cfi
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}'
   f_arg_decl:
@@ -4526,17 +4529,20 @@ f_function_char*_cfi_arg:
 f_function_char*_cfi_copy:
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_helper:
   - char_copy
+  c_local:
+  - cxx
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
-  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
+  - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
   c_return_type: void
   c_temps:
   - cfi
   comments:
   - Copy result into caller's buffer.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}'
   f_call:

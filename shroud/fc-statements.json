@@ -3773,14 +3773,20 @@
             "{f_var}"
         ],
         "f_need_wrapper": true,
-        "cxx_local_var": "result",
+        "cxx_local_var": null,
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [],
         "c_helper": [
             "char_copy"
         ],
         "c_post_call": [
             "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
-            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {cxx_var},\t -1);"
+            "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
+        ],
+        "c_call": [
+            "{c_const}char *{c_local_cxx} = {C_call_function};"
         ]
     },
     {

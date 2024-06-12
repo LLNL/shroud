@@ -318,9 +318,9 @@ const char * STR_getCharPtr2(void)
 void STR_getCharPtr2_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getCharPtr2_CFI
-    const char * SHCXX_rv = getCharPtr2();
+    const char *SHCXX_SHC_rv = getCharPtr2();
     char *SHC_rv = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_rv, -1);
+    ShroudCharCopy(SHC_rv, SHT_rv_cfi->elem_len, SHCXX_SHC_rv, -1);
     // splicer end function.getCharPtr2_CFI
 }
 // end STR_getCharPtr2_CFI
@@ -353,9 +353,9 @@ const char * STR_getCharPtr3(void)
 void STR_getCharPtr3_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.getCharPtr3_CFI
-    const char * SHCXX_rv = getCharPtr3();
+    const char *SHCXX_SHC_rv = getCharPtr3();
     char *output = static_cast<char *>(SHT_rv_cfi->base_addr);
-    ShroudCharCopy(output, SHT_rv_cfi->elem_len, SHCXX_rv, -1);
+    ShroudCharCopy(output, SHT_rv_cfi->elem_len, SHCXX_SHC_rv, -1);
     // splicer end function.getCharPtr3_CFI
 }
 // end STR_getCharPtr3_CFI
