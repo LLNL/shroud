@@ -779,7 +779,6 @@ CStmts = util.Scope(
     c_temps=None,
     c_local=None,
     c_helper=[],
-    cxx_local_var=None,
     c_arg_call=[],
     c_pre_call=[],
     c_call=[],

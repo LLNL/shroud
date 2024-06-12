@@ -148,30 +148,6 @@ There is no current way to add additional helper functions.
 
 .. These functions are defined in whelper.py.
 
-cxx_local_var
-^^^^^^^^^^^^^
-
-If a local C++ variable is created for an argument by *c_pre_call*,
-*cxx_local_var*
-indicates if the local variable is a **pointer**, **scalar** or **result**.
-.. This sets *cxx_var* is set to ``SH_{c_var}``.
-This will properly dereference the variable when passed to the
-C++ function.
-It will also set the format fields *cxx_member*.
-For example, a ``std::string`` argument is created for the C++ function
-from the ``char *`` argument passed into the C API wrapper.
-
-.. code-block:: yaml
-
-        name="c_inout_string",
-        cxx_local_var="scalar",
-        c_pre_call=["{c_const}std::string {cxx_var}({c_var});"],
-
- Set to **return** when the *c_var* is passed in as an argument and
- a C++ variable must be created.
- Ex ``c_function_shadow``.
- In this case, *cxx_to_c* is defined so a local variable will already
- be created, unless *language=c* in which case *cxx_to_c* is unneeded.
 
 c_arg_decl
 ^^^^^^^^^^
