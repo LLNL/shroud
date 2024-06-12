@@ -1235,12 +1235,12 @@ int * POI_returnIntPtrToScalar(void)
 void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.returnIntPtrToScalar_CFI
-    int * SHC_rv = returnIntPtrToScalar();
+    int *SHCXX_SHC_rv = returnIntPtrToScalar();
     {
         CFI_CDESC_T(0) SHC_rv_fptr;
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
-        void *SHC_rv_cptr = const_cast<int *>(SHC_rv);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_SHC_rv);
         int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
             CFI_attribute_pointer, CFI_type_int, 0, 0, NULL);
         if (SHC_rv_err == CFI_SUCCESS) {
@@ -1271,12 +1271,12 @@ int * POI_returnIntPtrToFixedArray(void)
 void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.returnIntPtrToFixedArray_CFI
-    int * SHC_rv = returnIntPtrToFixedArray();
+    int *SHCXX_SHC_rv = returnIntPtrToFixedArray();
     {
         CFI_CDESC_T(1) SHC_rv_fptr;
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
-        void *SHC_rv_cptr = const_cast<int *>(SHC_rv);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_SHC_rv);
         CFI_index_t SHT_rv_extents[1];
         SHT_rv_extents[0] = 10;
         CFI_index_t SHT_rv_lower[1] = {1};
@@ -1311,12 +1311,12 @@ const int * POI_returnIntPtrToConstScalar(void)
 void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.returnIntPtrToConstScalar_CFI
-    const int * SHC_rv = returnIntPtrToConstScalar();
+    const int *SHCXX_SHC_rv = returnIntPtrToConstScalar();
     {
         CFI_CDESC_T(0) SHC_rv_fptr;
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
-        void *SHC_rv_cptr = const_cast<int *>(SHC_rv);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_SHC_rv);
         int SHC_rv_err = CFI_establish(SHC_rv_cdesc, SHC_rv_cptr,
             CFI_attribute_pointer, CFI_type_int, 0, 0, NULL);
         if (SHC_rv_err == CFI_SUCCESS) {
@@ -1347,12 +1347,12 @@ const int * POI_returnIntPtrToFixedConstArray(void)
 void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.returnIntPtrToFixedConstArray_CFI
-    const int * SHC_rv = returnIntPtrToFixedConstArray();
+    const int *SHCXX_SHC_rv = returnIntPtrToFixedConstArray();
     {
         CFI_CDESC_T(1) SHC_rv_fptr;
         CFI_cdesc_t *SHC_rv_cdesc = reinterpret_cast<CFI_cdesc_t *>
             (&SHC_rv_fptr);
-        void *SHC_rv_cptr = const_cast<int *>(SHC_rv);
+        void *SHC_rv_cptr = const_cast<int *>(SHCXX_SHC_rv);
         CFI_index_t SHT_rv_extents[1];
         SHT_rv_extents[0] = 10;
         CFI_index_t SHT_rv_lower[1] = {1};
@@ -1489,15 +1489,15 @@ int * POI_returnIntAllocToFixedArray(void)
 void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.returnIntAllocToFixedArray_CFI
-    int * SHC_rv = returnIntAllocToFixedArray();
-    if (SHC_rv != nullptr) {
+    int *SHCXX_SHC_rv = returnIntAllocToFixedArray();
+    if (SHCXX_SHC_rv != nullptr) {
         CFI_index_t SHT_rv_lower[1] = {1};
         CFI_index_t SHT_rv_extents[1];
         SHT_rv_extents[0] = 10;
         int SH_ret = CFI_allocate(SHT_rv_cfi, SHT_rv_lower, 
             SHT_rv_extents, 0);
         if (SH_ret == CFI_SUCCESS) {
-            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
+            std::memcpy(SHT_rv_cfi->base_addr, SHCXX_SHC_rv, 
                 SHT_rv_cfi->elem_len);
         }
     }

@@ -2911,14 +2911,17 @@ c_mixin_arg_character_cfi:
   name: c_mixin_arg_character_cfi
   owner: library
 c_mixin_arg_native_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cxx
   c_temps:
   - cfi
   comments:
   - Make the argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}{f_intent_attr} :: {i_var}{f_assumed_shape}'
   i_arg_names:
@@ -3124,11 +3127,11 @@ c_mixin_native_cdesc_fill-cdesc:
   owner: library
 c_mixin_native_cfi_allocatable:
   c_post_call:
-  - if ({cxx_var} != {nullptr}) {{+
+  - if ({c_local_cxx} != {nullptr}) {{+
   - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
     \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
   c_temps:
@@ -3149,7 +3152,7 @@ c_mixin_native_cfi_pointer:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
     \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -5085,14 +5088,20 @@ f_function_native*_cdesc_pointer_caller:
   - The capsule contains information used to delete the memory.
   owner: library
 f_function_native*_cfi_allocatable:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  c_local:
+  - cxx
   c_post_call:
-  - if ({cxx_var} != {nullptr}) {{+
+  - if ({c_local_cxx} != {nullptr}) {{+
   - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
     \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
   c_return_type: void
@@ -5123,9 +5132,14 @@ f_function_native*_cfi_allocatable:
   name: f_function_native*_cfi_allocatable
   owner: library
 f_function_native*_cfi_pointer:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_call:
+  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -5134,7 +5148,7 @@ f_function_native*_cfi_pointer:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
     \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -8765,16 +8779,19 @@ f_in_native*_cdesc:
   name: f_in_native*_cdesc
   owner: library
 f_in_native*_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - '{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_temps:
   - cfi
   comments:
   - Make the argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}{f_intent_attr} :: {i_var}{f_assumed_shape}'
   i_arg_names:
@@ -9831,16 +9848,19 @@ f_inout_native*_cdesc:
   name: f_inout_native*_cdesc
   owner: library
 f_inout_native*_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
+  - '{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};'
   c_temps:
   - cfi
   comments:
   - Make the argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
-  cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}{f_intent_attr} :: {i_var}{f_assumed_shape}'
   i_arg_names:
@@ -11530,26 +11550,27 @@ f_out_native**_cdesc_pointer:
   owner: library
 f_out_native**_cfi_allocatable:
   c_arg_call:
-  - '&{cxx_var}'
+  - '&{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
+  c_local:
+  - cxx
   c_post_call:
-  - if ({cxx_var} != {nullptr}) {{+
+  - if ({c_local_cxx} != {nullptr}) {{+
   - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
     \ \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);"
   - if (SH_ret == CFI_SUCCESS) {{+
-  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);"
+  - "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);"
   - -}}
   - -}}
   c_pre_call:
-  - '{c_const}{c_type} * {cxx_var};'
+  - '{c_const}{c_type} * {c_local_cxx};'
   c_temps:
   - cfi
   - extents
   - lower
   comments:
   - Set Fortran pointer to point to cxx_var.
-  cxx_local_var: pointer
   i_arg_decl:
   - '{f_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}'
   i_arg_names:
@@ -11564,10 +11585,11 @@ f_out_native**_cfi_allocatable:
   owner: library
 f_out_native**_cfi_pointer:
   c_arg_call:
-  - '&{cxx_var}'
+  - '&{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_local:
+  - cxx
   - cptr
   - fptr
   - cdesc
@@ -11576,7 +11598,7 @@ f_out_native**_cfi_pointer:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
   - CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};
-  - void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});
+  - void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});
   - "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t\
     \ {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});"
   - if ({c_local_err} == CFI_SUCCESS) {{+
@@ -11584,14 +11606,13 @@ f_out_native**_cfi_pointer:
   - -}}
   - -}}
   c_pre_call:
-  - '{c_const}{c_type} * {cxx_var};'
+  - '{c_const}{c_type} * {c_local_cxx};'
   c_temps:
   - cfi
   - extents
   - lower
   comments:
-  - Set Fortran pointer to point to cxx_var.
-  cxx_local_var: pointer
+  - Set Fortran pointer to point to c_local_cxx.
   i_arg_decl:
   - '{f_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}'
   i_arg_names:

@@ -3647,7 +3647,6 @@
         "mixin": [
             "c_mixin_arg_cfi"
         ],
-        "cxx_local_var": "pointer",
         "i_arg_decl": [
             "{f_type}{f_intent_attr} :: {i_var}{f_assumed_shape}"
         ],
@@ -3658,6 +3657,12 @@
         },
         "i_arg_names": [
             "{i_var}"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
         ]
     },
     {
@@ -3670,10 +3675,10 @@
             "lower"
         ],
         "c_post_call": [
-            "if ({cxx_var} != {nullptr}) {{+",
+            "if ({c_local_cxx} != {nullptr}) {{+",
             "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi}, \t{c_temp_lower_use}, \t{c_temp_extents_use}, \t0);",
             "if (SH_ret == CFI_SUCCESS) {{+",
-            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{cxx_var}, \t{c_var_cfi}->elem_len);",
+            "{stdlib}memcpy({c_var_cfi}->base_addr, \t{c_local_cxx}, \t{c_var_cfi}->elem_len);",
             "-}}",
             "-}}"
         ]
@@ -3691,7 +3696,7 @@
             "{{+",
             "CFI_CDESC_T({rank}) {c_local_fptr};",
             "CFI_cdesc_t *{c_local_cdesc} = {cast_reinterpret}CFI_cdesc_t *{cast1}&{c_local_fptr}{cast2};",
-            "void *{c_local_cptr} = const_cast<{c_type} *>({cxx_var});",
+            "void *{c_local_cptr} = const_cast<{c_type} *>({c_local_cxx});",
             "{c_temp_extents_decl}{c_temp_lower_decl}int {c_local_err} = CFI_establish({c_local_cdesc},\t {c_local_cptr},\t CFI_attribute_pointer,\t {cfi_type},\t 0,\t {rank},\t {c_temp_extents_use});",
             "if ({c_local_err} == CFI_SUCCESS) {{+",
             "{c_local_err} = CFI_setpointer(\t{c_var_cfi},\t {c_local_cdesc},\t {c_temp_lower_use});",
@@ -3714,7 +3719,7 @@
             "c_mixin_arg_native_cfi"
         ],
         "c_pre_call": [
-            "{cxx_type} *{cxx_var} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
+            "{cxx_type} *{c_local_cxx} = {cast_static}{cxx_type} *{cast1}{c_var_cfi}->base_addr{cast2};"
         ]
     },
     {
@@ -4314,16 +4319,16 @@
             "{f_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
         ],
         "c_pre_call": [
-            "{c_const}{c_type} * {cxx_var};"
+            "{c_const}{c_type} * {c_local_cxx};"
         ],
         "c_arg_call": [
-            "&{cxx_var}"
+            "&{c_local_cxx}"
         ]
     },
     {
         "name": "f_out_native**_cfi_pointer",
         "comments": [
-            "Set Fortran pointer to point to cxx_var."
+            "Set Fortran pointer to point to c_local_cxx."
         ],
         "mixin": [
             "c_mixin_arg_native_cfi",
@@ -4333,10 +4338,10 @@
             "{f_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
         ],
         "c_pre_call": [
-            "{c_const}{c_type} * {cxx_var};"
+            "{c_const}{c_type} * {c_local_cxx};"
         ],
         "c_arg_call": [
-            "&{cxx_var}"
+            "&{c_local_cxx}"
         ]
     },
     {
@@ -4360,7 +4365,10 @@
         "i_arg_decl": [
             "{f_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
         ],
-        "cxx_local_var": null
+        "cxx_local_var": null,
+        "c_call": [
+            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
+        ]
     },
     {
         "name": "f_function_native*_cfi_pointer",
@@ -4386,7 +4394,10 @@
         "i_arg_decl": [
             "{f_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
         ],
-        "cxx_local_var": null
+        "cxx_local_var": null,
+        "c_call": [
+            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
+        ]
     },
     {
         "alias": [
