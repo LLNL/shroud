@@ -8523,18 +8523,23 @@ f_in_char**_buf:
   name: f_in_char**_buf
   owner: library
 f_in_char**_cfi:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
   c_helper:
   - char_array_alloc
   - char_array_free
+  c_local:
+  - cxx
   c_post_call:
-  - '{c_helper_char_array_free}({cxx_var}, {c_var_size});'
+  - '{c_helper_char_array_free}({c_local_cxx}, {c_var_size});'
   c_pre_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - size_t {c_var_len} = {c_var_cfi}->elem_len;
   - size_t {c_var_size} = {c_var_cfi}->dim[0].extent;
-  - "char **{cxx_var} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t {c_var_len});"
+  - "char **{c_local_cxx} = {c_helper_char_array_alloc}({c_var},\t {c_var_size},\t\
+    \ {c_var_len});"
   c_temps:
   - cfi
   - len
@@ -8542,7 +8547,6 @@ f_in_char**_cfi:
   comments:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
-  cxx_local_var: pointer
   f_arg_decl:
   - 'character(len=*){f_intent_attr} :: {f_var}(:)'
   f_arg_name:
