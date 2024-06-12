@@ -2176,9 +2176,14 @@
             "f_out_enum*",
             "c_out_enum*"
         ],
-        "cxx_local_var": "scalar",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
             "{cxx_type} {cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{c_local_cxx}"
         ],
         "c_post_call": [
             "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
