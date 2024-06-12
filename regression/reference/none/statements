@@ -3570,24 +3570,26 @@ c_out_vector<native>&_buf_copy:
   - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>&_buf_malloc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
+  - cxx
   - bytes
   c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "size_t {c_local_bytes} =\t {c_local_cxx}.size()*sizeof({c_local_cxx}[0]);"
   - "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
+  - "std::memcpy(*{c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {c_local_cxx}.size();'
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx};'
   c_temps:
   - size
   comments:
   - Create empty local vector then copy result to
   - malloc allocated array.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {i_var}'
   - 'integer(C_SIZE_T){f_intent_attr} :: {i_var_size}'
@@ -3603,6 +3605,8 @@ c_out_vector<native>&_buf_malloc:
   - <cstring>
   intent: out
   name: c_out_vector<native>&_buf_malloc
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>&_cdesc:
   c_arg_decl:
@@ -3677,24 +3681,26 @@ c_out_vector<native>*_buf_copy:
   - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>*_buf_malloc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
+  - cxx
   - bytes
   c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "size_t {c_local_bytes} =\t {c_local_cxx}.size()*sizeof({c_local_cxx}[0]);"
   - "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
+  - "std::memcpy(*{c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {c_local_cxx}.size();'
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx};'
   c_temps:
   - size
   comments:
   - Create empty local vector then copy result to
   - malloc allocated array.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {i_var}'
   - 'integer(C_SIZE_T){f_intent_attr} :: {i_var_size}'
@@ -3710,6 +3716,8 @@ c_out_vector<native>*_buf_malloc:
   - <cstring>
   intent: out
   name: c_out_vector<native>*_buf_malloc
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>*_cdesc:
   c_arg_decl:
@@ -3784,24 +3792,26 @@ c_out_vector<native>_buf_copy:
   - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<native>_buf_malloc:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
   c_local:
+  - cxx
   - bytes
   c_post_call:
-  - "size_t {c_local_bytes} =\t {cxx_var}.size()*sizeof({cxx_var}[0]);"
+  - "size_t {c_local_bytes} =\t {c_local_cxx}.size()*sizeof({c_local_cxx}[0]);"
   - "*{c_var} = static_cast<{targs[0].cxx_type} *>\t(std::malloc({c_local_bytes}));"
-  - "std::memcpy(*{c_var},\t {cxx_var}.data(),\t {c_local_bytes});"
-  - '*{c_var_size} = {cxx_var}.size();'
+  - "std::memcpy(*{c_var},\t {c_local_cxx}.data(),\t {c_local_bytes});"
+  - '*{c_var_size} = {c_local_cxx}.size();'
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var};'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx};'
   c_temps:
   - size
   comments:
   - Create empty local vector then copy result to
   - malloc allocated array.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {i_var}'
   - 'integer(C_SIZE_T){f_intent_attr} :: {i_var_size}'
@@ -3817,6 +3827,8 @@ c_out_vector<native>_buf_malloc:
   - <cstring>
   intent: out
   name: c_out_vector<native>_buf_malloc
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_out_vector<string>&:
   comments:
