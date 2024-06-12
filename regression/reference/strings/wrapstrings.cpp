@@ -458,13 +458,13 @@ void STR_getConstStringResult_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringResult_bufferify
-    std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = getConstStringResult();
+    std::string *SHCXX_SHC_rv = new std::string;
+    *SHCXX_SHC_rv = getConstStringResult();
     // C_error_pattern
     // Some error code for buf
 
-    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_SHC_rv);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_SHC_rv);
     SHT_rv_capsule->idtor = 1;
     // splicer end function.getConstStringResult_bufferify
 }
@@ -585,10 +585,10 @@ void STR_getConstStringAlloc_bufferify(STR_SHROUD_array *SHT_rv_cdesc,
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringAlloc_bufferify
-    std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = getConstStringAlloc();
-    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    std::string *SHCXX_SHC_rv = new std::string;
+    *SHCXX_SHC_rv = getConstStringAlloc();
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_SHC_rv);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_SHC_rv);
     SHT_rv_capsule->idtor = 1;
     // splicer end function.getConstStringAlloc_bufferify
 }

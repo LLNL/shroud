@@ -155,10 +155,11 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
         ShroudCharLenTrim(arg1, SHT_arg1_len));
     const std::string SHCXX_arg2(arg2,
         ShroudCharLenTrim(arg2, SHT_arg2_len));
-    std::string * SHCXX_rv = new std::string;
-    *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
+    std::string *SHCXX_SHC_rv = new std::string;
+    *SHCXX_SHC_rv = tutorial::ConcatenateStrings(SHCXX_arg1,
+        SHCXX_arg2);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_SHC_rv);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_SHC_rv);
     SHT_rv_capsule->idtor = 1;
     // splicer end function.ConcatenateStrings_bufferify
 }

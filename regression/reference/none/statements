@@ -7436,16 +7436,20 @@ f_function_string_cdesc_allocatable:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
+  c_local:
+  - cxx
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
-  - std::string * {cxx_var} = new std::string;
+  - std::string *{cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
@@ -7460,7 +7464,6 @@ f_function_string_cdesc_allocatable:
   - Pass local capsule as argument to C wrapper.
   - Assign to capsule in C wrapper.
   - Release memory from capsule.
-  cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
@@ -7488,6 +7491,8 @@ f_function_string_cdesc_allocatable:
   f_temps:
   - cdesc
   - capsule
+  fmtdict:
+    cxx_addr: ''
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
@@ -7504,16 +7509,20 @@ f_function_string_cdesc_allocatable_caller:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
+  c_local:
+  - cxx
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
-  - std::string * {cxx_var} = new std::string;
+  - std::string *{cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
@@ -7528,7 +7537,6 @@ f_function_string_cdesc_allocatable_caller:
   - Pass local capsule as argument to C wrapper.
   - Assign to capsule in C wrapper.
   - Release memory from capsule.
-  cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
@@ -7556,6 +7564,8 @@ f_function_string_cdesc_allocatable_caller:
   f_temps:
   - cdesc
   - capsule
+  fmtdict:
+    cxx_addr: ''
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'
@@ -7572,16 +7582,20 @@ f_function_string_cdesc_allocatable_library:
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
   c_helper:
   - array_context
   - string_to_cdesc
   - copy_string
+  c_local:
+  - cxx
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
   c_pre_call:
-  - std::string * {cxx_var} = new std::string;
+  - std::string *{cxx_var} = new std::string;
   c_return_type: void
   c_temps:
   - cdesc
@@ -7596,7 +7610,6 @@ f_function_string_cdesc_allocatable_library:
   - Pass local capsule as argument to C wrapper.
   - Assign to capsule in C wrapper.
   - Release memory from capsule.
-  cxx_local_var: pointer
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
@@ -7624,6 +7637,8 @@ f_function_string_cdesc_allocatable_library:
   f_temps:
   - cdesc
   - capsule
+  fmtdict:
+    cxx_addr: ''
   i_arg_decl:
   - 'type({F_array_type}), intent(OUT) :: {i_var_cdesc}'
   - 'type({F_capsule_data_type}), intent(OUT) :: {i_var_capsule}'

@@ -2166,9 +2166,17 @@
             "f_mixin_char_cdesc_allocate",
             "f_mixin_use_capsule"
         ],
-        "cxx_local_var": "pointer",
+        "fmtdict": {
+            "cxx_addr": ""
+        },
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "std::string * {cxx_var} = new std::string;"
+            "std::string *{cxx_var} = new std::string;"
+        ],
+        "c_call": [
+            "*{c_local_cxx} = {C_call_function};"
         ]
     },
     {
