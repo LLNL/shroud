@@ -91,9 +91,9 @@ short ENU_returnEnum_bufferify(short in)
 void ENU_returnEnumOutArg(enum ENU_Color * out)
 {
     // splicer begin function.returnEnumOutArg
-    Color SHCXX_out;
-    returnEnumOutArg(&SHCXX_out);
-    *out = static_cast<enum ENU_Color>(SHCXX_out);
+    Color SHC_out_cxx;
+    returnEnumOutArg(&SHC_out_cxx);
+    *out = static_cast<enum ENU_Color>(SHC_out_cxx);
     // splicer end function.returnEnumOutArg
 }
 
@@ -106,9 +106,9 @@ void ENU_returnEnumOutArg(enum ENU_Color * out)
 void ENU_returnEnumOutArg_bufferify(short * out)
 {
     // splicer begin function.returnEnumOutArg_bufferify
-    Color SHCXX_out;
-    returnEnumOutArg(&SHCXX_out);
-    *out = static_cast<short>(SHCXX_out);
+    Color SHC_out_cxx;
+    returnEnumOutArg(&SHC_out_cxx);
+    *out = static_cast<short>(SHC_out_cxx);
     // splicer end function.returnEnumOutArg_bufferify
 }
 
@@ -121,9 +121,9 @@ void ENU_returnEnumOutArg_bufferify(short * out)
 enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout)
 {
     // splicer begin function.returnEnumInOutArg
-    Color SHCXX_inout = static_cast<Color>(*inout);
-    Color SHCXX_rv = returnEnumInOutArg(&SHCXX_inout);
-    *inout = static_cast<enum ENU_Color>(SHCXX_inout);
+    Color SHC_inout_cxx = static_cast<Color>(*inout);
+    Color SHCXX_rv = returnEnumInOutArg(&SHC_inout_cxx);
+    *inout = static_cast<enum ENU_Color>(SHC_inout_cxx);
     enum ENU_Color SHC_rv = static_cast<enum ENU_Color>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.returnEnumInOutArg
@@ -138,9 +138,9 @@ enum ENU_Color ENU_returnEnumInOutArg(enum ENU_Color * inout)
 short ENU_returnEnumInOutArg_bufferify(short * inout)
 {
     // splicer begin function.returnEnumInOutArg_bufferify
-    Color SHCXX_inout = static_cast<Color>(*inout);
-    Color SHCXX_rv = returnEnumInOutArg(&SHCXX_inout);
-    *inout = static_cast<short>(SHCXX_inout);
+    Color SHC_inout_cxx = static_cast<Color>(*inout);
+    Color SHCXX_rv = returnEnumInOutArg(&SHC_inout_cxx);
+    *inout = static_cast<short>(SHC_inout_cxx);
     short SHC_rv = static_cast<short>(SHCXX_rv);
     return SHC_rv;
     // splicer end function.returnEnumInOutArg_bufferify

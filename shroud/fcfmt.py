@@ -203,10 +203,7 @@ class FillFormat(object):
                 wlang, self.language, result_typemap)
             if ast.template_arguments:
                 statements.set_template_fields(ast, fmt_result)
-            if result_stmt.cxx_local_var == "result":
-                # C result is passed in as an argument. Create local C++ name.
-                fmt_result.cxx_var = fmt_result.CXX_local + fmt_result.C_result
-            elif converter is None:
+            if converter is None:
                 # C and C++ are compatible
                 fmt_result.cxx_var = fmt_result.c_var
             else:
@@ -225,8 +222,7 @@ class FillFormat(object):
                 name=fmt_result.cxx_var, add_params=False
             )
 
-            compute_cxx_deref(
-                CXX_ast, result_stmt.cxx_local_var, fmt_result)
+            compute_cxx_deref(CXX_ast, fmt_result)
 
         if result_stmt.c_return_type:
             # Override return type.
@@ -258,12 +254,12 @@ class FillFormat(object):
         converter, lang = find_arg_converter(wlang, self.language, arg_typemap)
         fmt_arg.c_proto_decl = gen_arg_as_c(arg, lang=lang)
         
-        if arg_stmt.cxx_local_var:
-            # Explicit conversion must be in pre_call.
-            fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
-        elif converter is None:
+        if converter is None:
             # Compatible
             fmt_arg.cxx_var = fmt_arg.c_var
+        elif arg_stmt.c_pre_call:
+            # statements have explicit code
+            pass
         else:
             # convert C argument to C++
             fmt_arg.c_abstract_decl = gen_arg_as_c(
@@ -281,7 +277,7 @@ class FillFormat(object):
                 pre_call, "{cxx_decl} =\t {cxx_val};", fmt_arg
             )
 
-        compute_cxx_deref(arg, arg_stmt.cxx_local_var, fmt_arg)
+        compute_cxx_deref(arg, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
         self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt, meta)
 
@@ -400,6 +396,9 @@ class FillFormat(object):
                 setattr(fmt,
                         "{}_local_{}".format(prefix, name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
+                if name == "cxx":
+                    # Enable cxx_nonconst_ptr to continue to work
+                    fmt.cxx_var = fmt.c_local_cxx
 
     def set_fmt_fields_c(self, wlang, cls, fcn, ast, ntypemap, fmt, meta, is_func):
         """
@@ -425,7 +424,7 @@ class FillFormat(object):
                 fmt.c_const = "const "
             else:
                 fmt.c_const = ""
-            compute_c_deref(ast, None, fmt)
+            compute_c_deref(ast, fmt)
             fmt.c_type = find_arg_type(wlang, ntypemap) #ntypemap.c_type + "xxx"
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
@@ -850,17 +849,9 @@ def set_f_arg_format(node, arg, fmt, bind):
         fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
 
 
-def compute_c_deref(arg, local_var, fmt):
+def compute_c_deref(arg, fmt):
     """Compute format fields to dereference C argument."""
-    if local_var == "scalar":
-        fmt.c_deref = ""
-        fmt.c_member = "."
-        fmt.c_addr = "&"
-    elif local_var == "pointer":
-        fmt.c_deref = "*"
-        fmt.c_member = "->"
-        fmt.c_addr = ""
-    elif arg.declarator.is_indirect(): #pointer():
+    if arg.declarator.is_indirect(): #pointer():
         fmt.c_deref = "*"
         fmt.c_member = "->"
         fmt.c_addr = ""
@@ -869,17 +860,9 @@ def compute_c_deref(arg, local_var, fmt):
         fmt.c_member = "."
         fmt.c_addr = "&"
 
-def compute_cxx_deref(arg, local_var, fmt):
+def compute_cxx_deref(arg, fmt):
     """Compute format fields to dereference C++ variable."""
-    if local_var == "scalar":
-#        fmt.cxx_deref = ""
-        fmt.cxx_member = "."
-        fmt.cxx_addr = "&"
-    elif local_var == "pointer":
-#        fmt.cxx_deref = "*"
-        fmt.cxx_member = "->"
-        fmt.cxx_addr = ""
-    elif arg.declarator.is_pointer():
+    if arg.declarator.is_pointer():
 #        fmt.cxx_deref = "*"
         fmt.cxx_member = "->"
         fmt.cxx_addr = ""

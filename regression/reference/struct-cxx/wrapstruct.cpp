@@ -344,8 +344,8 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
     STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class
-    Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class();
-    SHC_rv->addr = SHCXX_rv;
+    Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_class
@@ -365,8 +365,8 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_class_args
-    Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class_args(x, y);
-    SHC_rv->addr = SHCXX_rv;
+    Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_class_args
@@ -412,9 +412,9 @@ void STR_Return_Cstruct_as_class_args(int x, int y,
 int STR_Cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.Cstruct_as_class_sum
-    const Cstruct_as_class * SHCXX_point =
+    const Cstruct_as_class * SHC_point_cxx =
         static_cast<const Cstruct_as_class *>(point->addr);
-    int SHC_rv = Cstruct_as_class_sum(SHCXX_point);
+    int SHC_rv = Cstruct_as_class_sum(SHC_point_cxx);
     return SHC_rv;
     // splicer end function.Cstruct_as_class_sum
 }
@@ -435,9 +435,9 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHC_rv)
 {
     // splicer begin function.Create_Cstruct_as_subclass_args
-    Cstruct_as_subclass * SHCXX_rv = Create_Cstruct_as_subclass_args(x,
+    Cstruct_as_subclass *SHC_rv_cxx = Create_Cstruct_as_subclass_args(x,
         y, z);
-    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_subclass_args

@@ -1470,8 +1470,6 @@ cxx_nonconst_ptr
 
 cxx_member
     Syntax to access members of *cxx_var*.
-    If *cxx_local_var* is *object*, then set to ``.``;
-    if *pointer*, then set to ``->``.
 
 cxx_T
     The template parameters for templated arguments.

@@ -32,8 +32,8 @@
 int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues)
 {
     // splicer begin function.SumValues_CFI
-    int *SHCXX_values = (int *) SHT_values_cfi->base_addr;
-    int SHC_rv = SumValues(SHCXX_values, nvalues);
+    int *SHC_values_cxx = (int *) SHT_values_cfi->base_addr;
+    int SHC_rv = SumValues(SHC_values_cxx, nvalues);
     return SHC_rv;
     // splicer end function.SumValues_CFI
 }
@@ -90,8 +90,8 @@ void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto)
 {
     // splicer begin function.AssignValues_broadcast_CFI
-    int *SHCXX_to = (int *) SHT_to_cfi->base_addr;
-    AssignValues(from, nfrom, SHCXX_to, nto);
+    int *SHC_to_cxx = (int *) SHT_to_cfi->base_addr;
+    AssignValues(from, nfrom, SHC_to_cxx, nto);
     // splicer end function.AssignValues_broadcast_CFI
 }
 
@@ -119,9 +119,9 @@ void GEN_AssignValues_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto)
 {
     // splicer begin function.AssignValues_copy_CFI
-    int *SHCXX_from = (int *) SHT_from_cfi->base_addr;
-    int *SHCXX_to = (int *) SHT_to_cfi->base_addr;
-    AssignValues(SHCXX_from, nfrom, SHCXX_to, nto);
+    int *SHC_from_cxx = (int *) SHT_from_cfi->base_addr;
+    int *SHC_to_cxx = (int *) SHT_to_cfi->base_addr;
+    AssignValues(SHC_from_cxx, nfrom, SHC_to_cxx, nto);
     // splicer end function.AssignValues_copy_CFI
 }
 
@@ -143,8 +143,8 @@ void GEN_SavePointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.SavePointer_float1d_CFI
-    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
-    SavePointer(SHCXX_addr, type, size);
+    float *SHC_addr_cxx = (float *) SHT_addr_cfi->base_addr;
+    SavePointer(SHC_addr_cxx, type, size);
     // splicer end function.SavePointer_float1d_CFI
 }
 #endif  // if 1
@@ -167,8 +167,8 @@ void GEN_SavePointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.SavePointer_float2d_CFI
-    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
-    SavePointer(SHCXX_addr, type, size);
+    float *SHC_addr_cxx = (float *) SHT_addr_cfi->base_addr;
+    SavePointer(SHC_addr_cxx, type, size);
     // splicer end function.SavePointer_float2d_CFI
 }
 #endif  // if 1
@@ -190,11 +190,11 @@ void GEN_SavePointer2_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.SavePointer2_float1d_CFI
-    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
+    float *SHC_addr_cxx = (float *) SHT_addr_cfi->base_addr;
     // Test adding a blank line below.
 
     type = convert_type(type);
-    SavePointer2(SHCXX_addr, type, size);
+    SavePointer2(SHC_addr_cxx, type, size);
     // splicer end function.SavePointer2_float1d_CFI
 }
 
@@ -215,11 +215,11 @@ void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
     size_t size)
 {
     // splicer begin function.SavePointer2_float2d_CFI
-    float *SHCXX_addr = (float *) SHT_addr_cfi->base_addr;
+    float *SHC_addr_cxx = (float *) SHT_addr_cfi->base_addr;
     // Test adding a blank line below.
 
     type = convert_type(type);
-    SavePointer2(SHCXX_addr, type, size);
+    SavePointer2(SHC_addr_cxx, type, size);
     // splicer end function.SavePointer2_float2d_CFI
 }
 
@@ -240,14 +240,14 @@ void GEN_SavePointer2_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi, int type,
 void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
     // splicer begin function.GetPointerAsPointer_float1d_CFI
-    float * SHCXX_addr;
+    float * SHC_addr_cxx;
     int type;
     size_t size;
-    GetPointerAsPointer(&SHCXX_addr, &type, &size);
+    GetPointerAsPointer(&SHC_addr_cxx, &type, &size);
     {
         CFI_CDESC_T(0) SHC_addr_fptr;
         CFI_cdesc_t *SHC_addr_cdesc = (CFI_cdesc_t *) &SHC_addr_fptr;
-        void *SHC_addr_cptr = const_cast<float *>(SHCXX_addr);
+        void *SHC_addr_cptr = const_cast<float *>(SHC_addr_cxx);
         int SHC_addr_err = CFI_establish(SHC_addr_cdesc, SHC_addr_cptr,
             CFI_attribute_pointer, CFI_type_float, 0, 0, NULL);
         if (SHC_addr_err == CFI_SUCCESS) {
@@ -276,14 +276,14 @@ void GEN_GetPointerAsPointer_float1d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 void GEN_GetPointerAsPointer_float2d_CFI(CFI_cdesc_t *SHT_addr_cfi)
 {
     // splicer begin function.GetPointerAsPointer_float2d_CFI
-    float * SHCXX_addr;
+    float * SHC_addr_cxx;
     int type;
     size_t size;
-    GetPointerAsPointer(&SHCXX_addr, &type, &size);
+    GetPointerAsPointer(&SHC_addr_cxx, &type, &size);
     {
         CFI_CDESC_T(0) SHC_addr_fptr;
         CFI_cdesc_t *SHC_addr_cdesc = (CFI_cdesc_t *) &SHC_addr_fptr;
-        void *SHC_addr_cptr = const_cast<float *>(SHCXX_addr);
+        void *SHC_addr_cptr = const_cast<float *>(SHC_addr_cxx);
         int SHC_addr_err = CFI_establish(SHC_addr_cdesc, SHC_addr_cptr,
             CFI_attribute_pointer, CFI_type_float, 0, 0, NULL);
         if (SHC_addr_err == CFI_SUCCESS) {
@@ -302,8 +302,8 @@ GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
     GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.CreateStructAsClass_bufferify
-    StructAsClass * SHCXX_rv = CreateStructAsClass();
-    SHC_rv->addr = SHCXX_rv;
+    StructAsClass *SHC_rv_cxx = CreateStructAsClass();
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.CreateStructAsClass_bufferify
@@ -323,8 +323,8 @@ long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
     int inew)
 {
     // splicer begin function.UpdateStructAsClass_int_bufferify
-    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
-    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    StructAsClass * SHC_arg_cxx = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHC_arg_cxx, inew);
     return SHC_rv;
     // splicer end function.UpdateStructAsClass_int_bufferify
 }
@@ -343,8 +343,8 @@ long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
     long inew)
 {
     // splicer begin function.UpdateStructAsClass_long_bufferify
-    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
-    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    StructAsClass * SHC_arg_cxx = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHC_arg_cxx, inew);
     return SHC_rv;
     // splicer end function.UpdateStructAsClass_long_bufferify
 }

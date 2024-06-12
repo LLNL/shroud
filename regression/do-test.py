@@ -413,6 +413,7 @@ if __name__ == "__main__":
                  ]),
 
         TestDesc("pointers-cfi", yaml="pointers",
+                 keywords=["cfi"],
                  cmdline=[
                      "--option", "F_CFI=true",
                      "--option", "wrap_python=false",
@@ -547,6 +548,7 @@ if __name__ == "__main__":
         TestDesc("namespacedoc"),
         TestDesc("strings"),
         TestDesc("strings-cfi", yaml="strings",
+                 keywords=["cfi"],
                  cmdline=[
                      "--option", "F_CFI=true",
                      "--option", "wrap_python=false",
@@ -572,6 +574,7 @@ if __name__ == "__main__":
         TestDesc("ownership"),
         TestDesc("generic"),
         TestDesc("generic-cfi", yaml="generic",
+                 keywords=["cfi"],
                  cmdline=[
                      "--option", "F_CFI=true",
                  ]),

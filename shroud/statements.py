@@ -504,6 +504,8 @@ def process_mixin(stmts, defaults, stmtdict):
                 print("XXXX - Groups with mixin cannot have a 'base' field ", name)
             for mixin in stmt["mixin"]:
                 ### compute mixin permutations
+                if mixin[0] == "#":
+                    continue
                 mparts = mixin.split("_", 2)
                 if mparts[1] != "mixin":
                     cursor.warning("Mixin '{}' must have intent 'mixin'.".format(mixin))
@@ -774,8 +776,9 @@ CStmts = util.Scope(
     iface_header=[],
     impl_header=[],
     c_need_wrapper=False,
+    c_temps=None,
+    c_local=None,
     c_helper=[],
-    cxx_local_var=None,
     c_arg_call=[],
     c_pre_call=[],
     c_call=[],
@@ -783,8 +786,6 @@ CStmts = util.Scope(
     c_final=[],      # tested in strings.yaml, part of ownership
     c_return=[],
     c_return_type=None,
-    c_temps=None,
-    c_local=None,
 
     destructor_name=None,
     destructor=[],

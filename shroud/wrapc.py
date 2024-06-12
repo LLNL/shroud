@@ -1116,16 +1116,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if arg_stmt.c_arg_call:
                 for arg_call in arg_stmt.c_arg_call:
                     append_format(call_list, arg_call, fmt_arg)
-            elif arg_stmt.cxx_local_var == "scalar":
-                if declarator.is_pointer():
-                    call_list.append("&" + fmt_arg.cxx_var)
-                else:
-                    call_list.append(fmt_arg.cxx_var)
-            elif arg_stmt.cxx_local_var == "pointer":
-                if declarator.is_pointer():
-                    call_list.append(fmt_arg.cxx_var)
-                else:
-                    call_list.append("*" + fmt_arg.cxx_var)
             elif declarator.is_reference():
                 # reference to scalar  i.e. double &max
                 # void tutorial::getMinMax(int &min);
@@ -1179,19 +1169,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if result_stmt.c_call:
             raw_call_code = result_stmt.c_call
             need_wrapper = True
+            if result_stmt.intent == "function":
+                self.set_cxx_nonconst_ptr(ast, fmt_result)
         elif C_subprogram == "subroutine":
             raw_call_code = ["{C_call_function};"]
         else:
-            if result_stmt.cxx_local_var is None:
-                pass
-            elif result_stmt.cxx_local_var == "result":
-                pass
-            else:
-                # A C++ var is created by pre_call.
-                # Assign to it directly. ex c_function_shadow_scalar
-                fmt_result.cxx_addr = ""
-                fmt_result.cxx_rv_decl = "*" + fmt_result.cxx_var
-            
             raw_call_code = ["{cxx_rv_decl} =\t {C_call_function};"]
             # Return result from function
             converter, lang = fcfmt.find_result_converter(

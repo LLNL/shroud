@@ -1860,9 +1860,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.get_class_copy
-        SHT_prv = c_get_class_copy(flag, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_get_class_copy(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
 
