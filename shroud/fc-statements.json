@@ -2859,7 +2859,6 @@
             "f_mixin_pass_capsule",
             "f_mixin_out_array_cdesc_allocatable",
             "f_mixin_helper_vector_string_allocatable",
-            "#c_mixin_native_capsule_fill",
             "f_mixin_capsule_dtor"
         ]
     },
@@ -4437,6 +4436,5 @@
             "{f_var}"
         ],
         "f_need_wrapper": true
-
     }
 ]
