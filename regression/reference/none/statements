@@ -2144,6 +2144,8 @@ c_in_vector<string>&:
   notimplemented: true
   owner: library
 c_in_vector<string>&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -2151,18 +2153,19 @@ c_in_vector<string>&_buf:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
   - '{c_const}char * {c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+  - "{c_local_cxx}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
     \ {c_var_len})));"
   - '{c_local_s} += {c_var_len};'
   - -}}
@@ -2172,7 +2175,6 @@ c_in_vector<string>&_buf:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -2188,8 +2190,12 @@ c_in_vector<string>&_buf:
     - C_INT
   intent: in
   name: c_in_vector<string>&_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_in_vector<string>*_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -2197,18 +2203,19 @@ c_in_vector<string>*_buf:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
   - '{c_const}char * {c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+  - "{c_local_cxx}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
     \ {c_var_len})));"
   - '{c_local_s} += {c_var_len};'
   - -}}
@@ -2218,7 +2225,6 @@ c_in_vector<string>*_buf:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -2234,8 +2240,12 @@ c_in_vector<string>*_buf:
     - C_INT
   intent: in
   name: c_in_vector<string>*_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_in_vector<string>_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -2243,18 +2253,19 @@ c_in_vector<string>_buf:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
   - '{c_const}char * {c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+  - "{c_local_cxx}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
     \ {c_var_len})));"
   - '{c_local_s} += {c_var_len};'
   - -}}
@@ -2264,7 +2275,6 @@ c_in_vector<string>_buf:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -2280,6 +2290,8 @@ c_in_vector<string>_buf:
     - C_INT
   intent: in
   name: c_in_vector<string>_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_in_void:
   intent: in
@@ -9292,6 +9304,8 @@ f_in_vector<native>_buf:
   - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector<string>&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -9299,18 +9313,19 @@ f_in_vector<string>&_buf:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
   - '{c_const}char * {c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+  - "{c_local_cxx}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
     \ {c_var_len})));"
   - '{c_local_s} += {c_var_len};'
   - -}}
@@ -9320,7 +9335,6 @@ f_in_vector<string>&_buf:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9349,8 +9363,12 @@ f_in_vector<string>&_buf:
     - C_INT
   intent: in
   name: f_in_vector<string>&_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector<string>*_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -9358,18 +9376,19 @@ f_in_vector<string>*_buf:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
   - '{c_const}char * {c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+  - "{c_local_cxx}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
     \ {c_var_len})));"
   - '{c_local_s} += {c_var_len};'
   - -}}
@@ -9379,7 +9398,6 @@ f_in_vector<string>*_buf:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9408,8 +9426,12 @@ f_in_vector<string>*_buf:
     - C_INT
   intent: in
   name: f_in_vector<string>*_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector<string>_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - const char *{c_var}
   - size_t {c_var_size}
@@ -9417,18 +9439,19 @@ f_in_vector<string>_buf:
   c_helper:
   - char_len_trim
   c_local:
+  - cxx
   - i
   - n
   - s
   c_pre_call:
-  - std::vector<{cxx_T}> {cxx_var};
+  - std::vector<{cxx_T}> {c_local_cxx};
   - '{{+'
   - '{c_const}char * {c_local_s} = {c_var};'
   - std::vector<{cxx_T}>::size_type
   - +{c_local_i} = 0,
   - '{c_local_n} = {c_var_size};'
   - -for(; {c_local_i} < {c_local_n}; {c_local_i}++) {{+
-  - "{cxx_var}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
+  - "{c_local_cxx}.push_back(\tstd::string({c_local_s},\t{c_helper_char_len_trim}({c_local_s},\
     \ {c_var_len})));"
   - '{c_local_s} += {c_var_len};'
   - -}}
@@ -9438,7 +9461,6 @@ f_in_vector<string>_buf:
   - len
   comments:
   - Pass argument, size and len to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9467,6 +9489,8 @@ f_in_vector<string>_buf:
     - C_INT
   intent: in
   name: f_in_vector<string>_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector_&_cdesc_targ_native_scalar:
   intent: in
