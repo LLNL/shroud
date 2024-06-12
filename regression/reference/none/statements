@@ -5097,7 +5097,6 @@ f_function_native*_cfi_allocatable:
   - Pass result as an argument to C wrapper.
   - Convert to subroutine and pass result as an argument.
   - Return an allocated copy of data.
-  cxx_local_var: result
   f_arg_call:
   - '{f_var}'
   f_arg_decl:

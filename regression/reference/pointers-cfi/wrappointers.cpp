@@ -1489,15 +1489,15 @@ int * POI_returnIntAllocToFixedArray(void)
 void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 {
     // splicer begin function.returnIntAllocToFixedArray_CFI
-    int * SHCXX_rv = returnIntAllocToFixedArray();
-    if (SHCXX_rv != nullptr) {
+    int * SHC_rv = returnIntAllocToFixedArray();
+    if (SHC_rv != nullptr) {
         CFI_index_t SHT_rv_lower[1] = {1};
         CFI_index_t SHT_rv_extents[1];
         SHT_rv_extents[0] = 10;
         int SH_ret = CFI_allocate(SHT_rv_cfi, SHT_rv_lower, 
             SHT_rv_extents, 0);
         if (SH_ret == CFI_SUCCESS) {
-            std::memcpy(SHT_rv_cfi->base_addr, SHCXX_rv, 
+            std::memcpy(SHT_rv_cfi->base_addr, SHC_rv, 
                 SHT_rv_cfi->elem_len);
         }
     }
