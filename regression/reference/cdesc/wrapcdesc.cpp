@@ -91,8 +91,8 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 void CDE_GetScalar1(char * name, void * value)
 {
     // splicer begin function.GetScalar1
-    std::string SHCXX_name(name);
-    GetScalar1(SHCXX_name, value);
+    std::string SHC_name_cxx(name);
+    GetScalar1(SHC_name_cxx, value);
     // splicer end function.GetScalar1
 }
 

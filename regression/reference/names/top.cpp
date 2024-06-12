@@ -168,8 +168,8 @@ void YYY_TES_function3a_1(long i)
 int YYY_TES_function4(const char * rv)
 {
     // splicer begin function.function4
-    const std::string ARG_rv(rv);
-    int SHC_rv = function4(ARG_rv);
+    const std::string SHC_rv_cxx(rv);
+    int SHC_rv = function4(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.function4
 }
@@ -183,8 +183,8 @@ int YYY_TES_function4(const char * rv)
 int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len)
 {
     // splicer begin function.function4_bufferify
-    const std::string ARG_rv(rv, ShroudCharLenTrim(rv, SHT_rv_len));
-    int SHC_rv = function4(ARG_rv);
+    const std::string SHC_rv_cxx(rv, ShroudCharLenTrim(rv, SHT_rv_len));
+    int SHC_rv = function4(SHC_rv_cxx);
     return SHC_rv;
     // splicer end function.function4_bufferify
 }
@@ -307,9 +307,9 @@ int TES_UseImplWorker_instantiation3(void)
 int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
     // splicer begin function.Cstruct_as_class_sum
-    const Cstruct_as_class * ARG_point =
+    const Cstruct_as_class * SHC_point_cxx =
         static_cast<const Cstruct_as_class *>(point->addr);
-    int SHC_rv = Cstruct_as_class_sum(ARG_point);
+    int SHC_rv = Cstruct_as_class_sum(SHC_point_cxx);
     return SHC_rv;
     // splicer end function.Cstruct_as_class_sum
 }

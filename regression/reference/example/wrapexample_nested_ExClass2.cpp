@@ -90,9 +90,9 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
     const char * name, AA_example_nested_ExClass2 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor
-    const std::string SHCXX_name(name);
+    const std::string SHC_name_cxx(name);
     example::nested::ExClass2 *SHCXX_rv =
-        new example::nested::ExClass2(&SHCXX_name);
+        new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
     return SHC_rv;
@@ -113,10 +113,10 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
     char *name, int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
-    const std::string SHCXX_name(name,
+    const std::string SHC_name_cxx(name,
         ShroudCharLenTrim(name, SHT_name_len));
     example::nested::ExClass2 *SHCXX_rv =
-        new example::nested::ExClass2(&SHCXX_name);
+        new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
     return SHC_rv;
@@ -302,11 +302,11 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_class1
-    const example::nested::ExClass1 * SHCXX_in =
+    const example::nested::ExClass1 * SHC_in_cxx =
         static_cast<const example::nested::ExClass1 *>(in->addr);
-    example::nested::ExClass1 *SHCXX_SHC_rv = SH_this->get_class1(
-        SHCXX_in);
-    SHC_rv->addr = SHCXX_SHC_rv;
+    example::nested::ExClass1 *SHC_rv_cxx = SH_this->get_class1(
+        SHC_in_cxx);
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1

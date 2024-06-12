@@ -91,9 +91,9 @@ int CLA_directionFunc_bufferify(int arg)
 void CLA_passClassByValue(CLA_Class1 arg)
 {
     // splicer begin function.passClassByValue
-    classes::Class1 * SHCXX_arg = static_cast<classes::Class1 *>
+    classes::Class1 * SHC_arg_cxx = static_cast<classes::Class1 *>
         (arg.addr);
-    classes::passClassByValue(*SHCXX_arg);
+    classes::passClassByValue(*SHC_arg_cxx);
     // splicer end function.passClassByValue
 }
 
@@ -106,9 +106,9 @@ void CLA_passClassByValue(CLA_Class1 arg)
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass
-    const classes::Class1 * SHCXX_arg =
+    const classes::Class1 * SHC_arg_cxx =
         static_cast<const classes::Class1 *>(arg->addr);
-    int SHC_rv = classes::useclass(SHCXX_arg);
+    int SHC_rv = classes::useclass(SHC_arg_cxx);
     return SHC_rv;
     // splicer end function.useclass
 }
@@ -123,8 +123,8 @@ int CLA_useclass(CLA_Class1 * arg)
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass2
-    const classes::Class1 *SHCXX_SHC_rv = classes::getclass2();
-    SHC_rv->addr = const_cast<classes::Class1 *>(SHCXX_SHC_rv);
+    const classes::Class1 *SHC_rv_cxx = classes::getclass2();
+    SHC_rv->addr = const_cast<classes::Class1 *>(SHC_rv_cxx);
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getclass2
@@ -140,8 +140,8 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass3
-    classes::Class1 *SHCXX_SHC_rv = classes::getclass3();
-    SHC_rv->addr = SHCXX_SHC_rv;
+    classes::Class1 *SHC_rv_cxx = classes::getclass3();
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getclass3
@@ -185,9 +185,9 @@ void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getConstClassReference
-    const classes::Class1 &SHCXX_SHC_rv = classes::getConstClassReference(
+    const classes::Class1 &SHC_rv_cxx = classes::getConstClassReference(
         );
-    SHC_rv->addr = const_cast<classes::Class1 *>(&SHCXX_SHC_rv);
+    SHC_rv->addr = const_cast<classes::Class1 *>(&SHC_rv_cxx);
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getConstClassReference
@@ -199,8 +199,8 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassReference
-    classes::Class1 &SHCXX_SHC_rv = classes::getClassReference();
-    SHC_rv->addr = &SHCXX_SHC_rv;
+    classes::Class1 &SHC_rv_cxx = classes::getClassReference();
+    SHC_rv->addr = &SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getClassReference
@@ -219,9 +219,9 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
-    classes::Class1 * SHCXX_SHC_rv = new classes::Class1;
-    *SHCXX_SHC_rv = classes::getClassCopy(flag);
-    SHC_rv->addr = SHCXX_SHC_rv;
+    classes::Class1 * SHC_rv_cxx = new classes::Class1;
+    *SHC_rv_cxx = classes::getClassCopy(flag);
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end function.getClassCopy

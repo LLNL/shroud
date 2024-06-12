@@ -123,10 +123,10 @@ double TUT_PassByValue(double arg1, int arg2)
 const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
 {
     // splicer begin function.ConcatenateStrings
-    const std::string SHCXX_arg1(arg1);
-    const std::string SHCXX_arg2(arg2);
+    const std::string SHC_arg1_cxx(arg1);
+    const std::string SHC_arg2_cxx(arg2);
     const std::string SHCXX_rv = tutorial::ConcatenateStrings(
-        SHCXX_arg1, SHCXX_arg2);
+        SHC_arg1_cxx, SHC_arg2_cxx);
     const char SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.ConcatenateStrings
@@ -151,15 +151,15 @@ void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     TUT_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.ConcatenateStrings_bufferify
-    const std::string SHCXX_arg1(arg1,
+    const std::string SHC_arg1_cxx(arg1,
         ShroudCharLenTrim(arg1, SHT_arg1_len));
-    const std::string SHCXX_arg2(arg2,
+    const std::string SHC_arg2_cxx(arg2,
         ShroudCharLenTrim(arg2, SHT_arg2_len));
-    std::string *SHCXX_SHC_rv = new std::string;
-    *SHCXX_SHC_rv = tutorial::ConcatenateStrings(SHCXX_arg1,
-        SHCXX_arg2);
-    ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_SHC_rv);
-    SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_SHC_rv);
+    std::string *SHC_rv_cxx = new std::string;
+    *SHC_rv_cxx = tutorial::ConcatenateStrings(SHC_arg1_cxx,
+        SHC_arg2_cxx);
+    ShroudStringToCdesc(SHT_rv_cdesc, SHC_rv_cxx);
+    SHT_rv_capsule->addr  = const_cast<std::string *>(SHC_rv_cxx);
     SHT_rv_capsule->idtor = 1;
     // splicer end function.ConcatenateStrings_bufferify
 }
@@ -223,8 +223,8 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 void TUT_OverloadedFunction_from_name(const char * name)
 {
     // splicer begin function.OverloadedFunction_from_name
-    const std::string SHCXX_name(name);
-    tutorial::OverloadedFunction(SHCXX_name);
+    const std::string SHC_name_cxx(name);
+    tutorial::OverloadedFunction(SHC_name_cxx);
     // splicer end function.OverloadedFunction_from_name
 }
 
@@ -238,9 +238,9 @@ void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
 {
     // splicer begin function.OverloadedFunction_from_name_bufferify
-    const std::string SHCXX_name(name,
+    const std::string SHC_name_cxx(name,
         ShroudCharLenTrim(name, SHT_name_len));
-    tutorial::OverloadedFunction(SHCXX_name);
+    tutorial::OverloadedFunction(SHC_name_cxx);
     // splicer end function.OverloadedFunction_from_name_bufferify
 }
 
@@ -331,8 +331,8 @@ void TUT_FortranGenericOverloaded_0(void)
 void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1
-    const std::string SHCXX_name(name);
-    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
+    const std::string SHC_name_cxx(name);
+    tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
     // splicer end function.FortranGenericOverloaded_1
 }
 
@@ -350,9 +350,9 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1_float_bufferify
-    const std::string SHCXX_name(name,
+    const std::string SHC_name_cxx(name,
         ShroudCharLenTrim(name, SHT_name_len));
-    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
+    tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
     // splicer end function.FortranGenericOverloaded_1_float_bufferify
 }
 
@@ -370,9 +370,9 @@ void TUT_FortranGenericOverloaded_1_double_bufferify(char *name,
     int SHT_name_len, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1_double_bufferify
-    const std::string SHCXX_name(name,
+    const std::string SHC_name_cxx(name,
         ShroudCharLenTrim(name, SHT_name_len));
-    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
+    tutorial::FortranGenericOverloaded(SHC_name_cxx, arg2);
     // splicer end function.FortranGenericOverloaded_1_double_bufferify
 }
 

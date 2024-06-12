@@ -47,6 +47,16 @@ library
    A collection of C++ declarations wrapped at the same time.
    This creates a Fortran or Python module.
 
+name mangling
+
+    A technique used to solve various problems caused by the need to
+    resolve unique names for programming entities in many modern
+    programming languages.  -- wikipedia
+
+    Shroud creates unique name for C++ namespaced, overloaded and
+    templated function by adding additional components to the C and
+    Fortran names to make them unique.
+
 native type
 
    numeric type, intrinsic

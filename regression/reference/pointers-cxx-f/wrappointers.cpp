@@ -370,10 +370,10 @@ int POI_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len)
 {
     // splicer begin function.acceptCharArrayIn_bufferify
-    char **SHCXX_names = ShroudStrArrayAlloc(names, SHT_names_size,
+    char **SHC_names_cxx = ShroudStrArrayAlloc(names, SHT_names_size,
         SHT_names_len);
-    int SHC_rv = acceptCharArrayIn(SHCXX_names);
-    ShroudStrArrayFree(SHCXX_names, SHT_names_size);
+    int SHC_rv = acceptCharArrayIn(SHC_names_cxx);
+    ShroudStrArrayFree(SHC_names_cxx, SHT_names_size);
     return SHC_rv;
     // splicer end function.acceptCharArrayIn_bufferify
 }

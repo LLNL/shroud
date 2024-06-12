@@ -143,9 +143,9 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);
     // splicer begin class.Class1.method.equivalent
-    const classes::Class1 * SHCXX_obj2 =
+    const classes::Class1 * SHC_obj2_cxx =
         static_cast<const classes::Class1 *>(obj2->addr);
-    bool SHC_rv = SH_this->equivalent(*SHCXX_obj2);
+    bool SHC_rv = SH_this->equivalent(*SHC_obj2_cxx);
     return SHC_rv;
     // splicer end class.Class1.method.equivalent
 }
@@ -189,10 +189,10 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.returnThisBuffer
-    std::string SHCXX_name(name);
-    classes::Class1 *SHCXX_SHC_rv = SH_this->returnThisBuffer(
-        SHCXX_name, flag);
-    SHC_rv->addr = SHCXX_SHC_rv;
+    std::string SHC_name_cxx(name);
+    classes::Class1 *SHC_rv_cxx = SH_this->returnThisBuffer(
+        SHC_name_cxx, flag);
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.returnThisBuffer
@@ -219,10 +219,11 @@ CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.returnThisBuffer_bufferify
-    std::string SHCXX_name(name, ShroudCharLenTrim(name, SHT_name_len));
-    classes::Class1 *SHCXX_SHC_rv = SH_this->returnThisBuffer(
-        SHCXX_name, flag);
-    SHC_rv->addr = SHCXX_SHC_rv;
+    std::string SHC_name_cxx(name,
+        ShroudCharLenTrim(name, SHT_name_len));
+    classes::Class1 *SHC_rv_cxx = SH_this->returnThisBuffer(
+        SHC_name_cxx, flag);
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.returnThisBuffer_bufferify
@@ -243,8 +244,8 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     const classes::Class1 *SH_this =
         static_cast<const classes::Class1 *>(self->addr);
     // splicer begin class.Class1.method.getclass3
-    classes::Class1 *SHCXX_SHC_rv = SH_this->getclass3();
-    SHC_rv->addr = SHCXX_SHC_rv;
+    classes::Class1 *SHC_rv_cxx = SH_this->getclass3();
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Class1.method.getclass3

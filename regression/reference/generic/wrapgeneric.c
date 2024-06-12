@@ -329,8 +329,8 @@ GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
     GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.CreateStructAsClass_bufferify
-    StructAsClass *SHCXX_SHC_rv = CreateStructAsClass();
-    SHC_rv->addr = SHCXX_SHC_rv;
+    StructAsClass *SHC_rv_cxx = CreateStructAsClass();
+    SHC_rv->addr = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.CreateStructAsClass_bufferify
@@ -350,8 +350,8 @@ long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
     int inew)
 {
     // splicer begin function.UpdateStructAsClass_int_bufferify
-    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
-    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    StructAsClass * SHC_arg_cxx = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHC_arg_cxx, inew);
     return SHC_rv;
     // splicer end function.UpdateStructAsClass_int_bufferify
 }
@@ -370,8 +370,8 @@ long GEN_UpdateStructAsClass_long_bufferify(GEN_StructAsClass * arg,
     long inew)
 {
     // splicer begin function.UpdateStructAsClass_long_bufferify
-    StructAsClass * SHCXX_arg = (StructAsClass *) arg->addr;
-    long SHC_rv = UpdateStructAsClass(SHCXX_arg, inew);
+    StructAsClass * SHC_arg_cxx = (StructAsClass *) arg->addr;
+    long SHC_rv = UpdateStructAsClass(SHC_arg_cxx, inew);
     return SHC_rv;
     // splicer end function.UpdateStructAsClass_long_bufferify
 }

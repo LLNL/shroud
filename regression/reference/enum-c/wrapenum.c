@@ -55,9 +55,9 @@ short ENU_returnEnum_bufferify(short in)
 void ENU_returnEnumOutArg_bufferify(short * out)
 {
     // splicer begin function.returnEnumOutArg_bufferify
-    enum Color SHCXX_out;
-    returnEnumOutArg(&SHCXX_out);
-    *out = (short) SHCXX_out;
+    enum Color SHC_out_cxx;
+    returnEnumOutArg(&SHC_out_cxx);
+    *out = (short) SHC_out_cxx;
     // splicer end function.returnEnumOutArg_bufferify
 }
 
@@ -70,9 +70,9 @@ void ENU_returnEnumOutArg_bufferify(short * out)
 short ENU_returnEnumInOutArg_bufferify(short * inout)
 {
     // splicer begin function.returnEnumInOutArg_bufferify
-    enum Color SHCXX_inout = (enum Color) *inout;
-    enum Color SHCXX_rv = returnEnumInOutArg(&SHCXX_inout);
-    *inout = (short) SHCXX_inout;
+    enum Color SHC_inout_cxx = (enum Color) *inout;
+    enum Color SHCXX_rv = returnEnumInOutArg(&SHC_inout_cxx);
+    *inout = (short) SHC_inout_cxx;
     short SHC_rv = (short) SHCXX_rv;
     return SHC_rv;
     // splicer end function.returnEnumInOutArg_bufferify
