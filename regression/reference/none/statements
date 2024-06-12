@@ -2050,16 +2050,19 @@ c_in_vector<native>&:
   notimplemented: true
   owner: library
 c_in_vector<native>&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by value to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -2072,18 +2075,23 @@ c_in_vector<native>&_buf:
     - C_SIZE_T
   intent: in
   name: c_in_vector<native>&_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_in_vector<native>*_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by value to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -2096,18 +2104,23 @@ c_in_vector<native>*_buf:
     - C_SIZE_T
   intent: in
   name: c_in_vector<native>*_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_in_vector<native>_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by value to C.
-  cxx_local_var: scalar
   i_arg_decl:
   - '{targs[0].f_type}, intent(IN) :: {i_var}(*)'
   - 'integer(C_SIZE_T), intent(IN), value :: {i_var_size}'
@@ -2120,6 +2133,8 @@ c_in_vector<native>_buf:
     - C_SIZE_T
   intent: in
   name: c_in_vector<native>_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 c_in_vector<string>&:
   comments:
@@ -9084,16 +9099,19 @@ f_in_vector<native*>&_buf:
   - Specialize for std::vector<native *>
   owner: library
 f_in_vector<native>&_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by value to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9118,18 +9136,23 @@ f_in_vector<native>&_buf:
     - C_SIZE_T
   intent: in
   name: f_in_vector<native>&_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector<native>*_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by value to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9154,18 +9177,23 @@ f_in_vector<native>*_buf:
     - C_SIZE_T
   intent: in
   name: f_in_vector<native>*_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector<native>_buf:
+  c_arg_call:
+  - '{c_local_cxx}'
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
+  c_local:
+  - cxx
   c_pre_call:
-  - '{c_const}std::vector<{cxx_T}> {cxx_var}({c_var}, {c_var} + {c_var_size});'
+  - '{c_const}std::vector<{cxx_T}> {c_local_cxx}({c_var}, {c_var} + {c_var_size});'
   c_temps:
   - size
   comments:
   - Pass argument and size by value to C.
-  cxx_local_var: scalar
   f_arg_call:
   - '{f_var}'
   - size({f_var}, kind=C_SIZE_T)
@@ -9190,6 +9218,8 @@ f_in_vector<native>_buf:
     - C_SIZE_T
   intent: in
   name: f_in_vector<native>_buf
+  notes:
+  - XXX - need to test scalar and pointer versions
   owner: library
 f_in_vector<string>&_buf:
   c_arg_decl:
