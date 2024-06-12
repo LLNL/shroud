@@ -1115,19 +1115,22 @@ c_function_shadow*_this:
 c_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  c_local:
+  - cxx
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
   comments:
   - Return a instance by value.
-  cxx_local_var: pointer
   fmtdict:
-    f_local_ptr: '{F_result_ptr}'
+    cxx_addr: ''
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -1150,19 +1153,22 @@ c_function_shadow<native>_capptr:
 c_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  c_local:
+  - cxx
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
   comments:
   - Return a instance by value.
-  cxx_local_var: pointer
   fmtdict:
-    f_local_ptr: '{F_result_ptr}'
+    cxx_addr: ''
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -5476,17 +5482,20 @@ f_function_shadow*_this:
 f_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  c_local:
+  - cxx
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
   comments:
   - Return a instance by value.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -5501,7 +5510,7 @@ f_function_shadow<native>_capptr:
     - C_PTR
   f_need_wrapper: true
   fmtdict:
-    f_local_ptr: '{F_result_ptr}'
+    cxx_addr: ''
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -5524,17 +5533,20 @@ f_function_shadow<native>_capptr:
 f_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  c_local:
+  - cxx
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
   comments:
   - Return a instance by value.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -5549,7 +5561,7 @@ f_function_shadow_capptr:
     - C_PTR
   f_need_wrapper: true
   fmtdict:
-    f_local_ptr: '{F_result_ptr}'
+    cxx_addr: ''
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -5572,17 +5584,20 @@ f_function_shadow_capptr:
 f_function_shadow_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  c_local:
+  - cxx
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
   comments:
   - Return a instance by value.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -5597,7 +5612,7 @@ f_function_shadow_capptr_caller:
     - C_PTR
   f_need_wrapper: true
   fmtdict:
-    f_local_ptr: '{F_result_ptr}'
+    cxx_addr: ''
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:
@@ -5620,17 +5635,20 @@ f_function_shadow_capptr_caller:
 f_function_shadow_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - '*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});'
+  c_local:
+  - cxx
   c_post_call:
   - '{c_var}->addr = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_pre_call:
-  - '{cxx_type} * {cxx_var} = new {cxx_type};'
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
   comments:
   - Return a instance by value.
-  cxx_local_var: pointer
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_arg_decl:
@@ -5645,7 +5663,7 @@ f_function_shadow_capptr_library:
     - C_PTR
   f_need_wrapper: true
   fmtdict:
-    f_local_ptr: '{F_result_ptr}'
+    cxx_addr: ''
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_arg_names:

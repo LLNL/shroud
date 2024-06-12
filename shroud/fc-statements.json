@@ -3109,10 +3109,18 @@
             "f_mixin_function_shadow_capptr",
             "c_mixin_shadow"
         ],
-        "cxx_local_var": "pointer",
+        "fmtdict": {
+            "cxx_addr": ""
+        },
         "owner": "caller",
+        "c_local": [
+            "cxx"
+        ],
         "c_pre_call": [
-            "{cxx_type} * {cxx_var} = new {cxx_type};"
+            "{cxx_type} * {c_local_cxx} = new {cxx_type};"
+        ],
+        "c_call": [
+            "*{c_local_cxx} = {CXX_this_call}{function_name}({C_call_list});"
         ],
         "c_post_call": [
             "{c_var}->addr = {cxx_nonconst_ptr};",

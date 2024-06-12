@@ -29,9 +29,9 @@ extern "C" {
 TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
 {
     // splicer begin function.returnUserType
-    user<int> * SHCXX_rv = new user<int>;
-    *SHCXX_rv = returnUserType();
-    SHC_rv->addr = SHCXX_rv;
+    user<int> * SHCXX_SHC_rv = new user<int>;
+    *SHCXX_SHC_rv = returnUserType();
+    SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 5;
     return SHC_rv;
     // splicer end function.returnUserType

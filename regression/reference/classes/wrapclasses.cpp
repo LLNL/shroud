@@ -218,9 +218,9 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getClassCopy
-    classes::Class1 * SHCXX_rv = new classes::Class1;
-    *SHCXX_rv = classes::getClassCopy(flag);
-    SHC_rv->addr = SHCXX_rv;
+    classes::Class1 * SHCXX_SHC_rv = new classes::Class1;
+    *SHCXX_SHC_rv = classes::getClassCopy(flag);
+    SHC_rv->addr = SHCXX_SHC_rv;
     SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end function.getClassCopy
