@@ -16,6 +16,7 @@ import unittest
 
 from . import test_ast
 from . import test_declast
+from . import test_format
 from . import test_generate
 from . import test_statements
 from . import test_util
@@ -38,6 +39,7 @@ test_cases = (
     test_declast.CheckStruct,
     test_declast.CheckClass,
     test_ast.CheckAst,
+    test_format.WFormat,
     test_generate.CheckImplied,
     test_wrapf.CheckAllocatable,
     test_wrapp.CheckImplied,
