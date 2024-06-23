@@ -426,6 +426,7 @@
                     },
                     "arg": {
                         "fmtf": {
+                            "c_abstract_decl": "Alias",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -434,6 +435,7 @@
                             "c_type": "Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "Alias",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -594,6 +596,7 @@
                     },
                     "arg": {
                         "fmtf": {
+                            "c_abstract_decl": "Alias",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -602,6 +605,7 @@
                             "c_type": "Alias",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "Alias",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1132,6 +1136,7 @@
                     },
                     "arg1": {
                         "fmtf": {
+                            "c_abstract_decl": "Struct1Rename *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1140,6 +1145,7 @@
                             "c_type": "Struct1Rename",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_struct",
+                            "cxx_abstract_decl": "Struct1Rename *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -1298,6 +1304,7 @@
                     },
                     "arg": {
                         "fmtf": {
+                            "c_abstract_decl": "IndexType",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1306,6 +1313,7 @@
                             "c_type": "IndexType",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1473,6 +1481,7 @@
                     },
                     "ndims": {
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1481,6 +1490,7 @@
                             "c_type": "int",
                             "c_var": "ndims",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ndims",
@@ -1501,6 +1511,7 @@
                     },
                     "shape": {
                         "fmtf": {
+                            "c_abstract_decl": "const IndexType *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -1509,6 +1520,7 @@
                             "c_type": "IndexType",
                             "c_var": "shape",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "const IndexType *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(IndexType *) shape",
@@ -1647,6 +1659,7 @@
                     },
                     "arg": {
                         "fmtf": {
+                            "c_abstract_decl": "IndexType2",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1655,6 +1668,7 @@
                             "c_type": "IndexType2",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "IndexType2",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1822,6 +1836,7 @@
                     },
                     "ndims": {
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -1830,6 +1845,7 @@
                             "c_type": "int",
                             "c_var": "ndims",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&ndims",
@@ -1850,6 +1866,7 @@
                     },
                     "shape": {
                         "fmtf": {
+                            "c_abstract_decl": "const IndexType2 *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -1858,6 +1875,7 @@
                             "c_type": "IndexType2",
                             "c_var": "shape",
                             "cfi_type": "CFI_type_int32_t",
+                            "cxx_abstract_decl": "const IndexType2 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "(IndexType2 *) shape",

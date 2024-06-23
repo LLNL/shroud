@@ -498,6 +498,7 @@
                             },
                             "arg": {
                                 "fmtc": {
+                                    "c_abstract_decl": "TUT_Class1 *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -507,6 +508,7 @@
                                     "c_type": "TUT_Class1",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "tutorial::Class1 *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SHC_arg_cxx",
@@ -520,6 +522,7 @@
                                     "typemap_name": "tutorial::Class1"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "TUT_Class1 *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -529,6 +532,7 @@
                                     "c_type": "TUT_Class1",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "tutorial::Class1 *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SHC_arg_cxx",
@@ -744,6 +748,7 @@
                             },
                             "arg": {
                                 "fmtc": {
+                                    "c_abstract_decl": "FOR_Class3 *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -753,6 +758,7 @@
                                     "c_type": "FOR_Class3",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "forward::Class3 *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SHC_arg_cxx",
@@ -766,6 +772,7 @@
                                     "typemap_name": "forward::Class3"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "FOR_Class3 *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -775,6 +782,7 @@
                                     "c_type": "FOR_Class3",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "forward::Class3 *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SHC_arg_cxx",
@@ -1058,6 +1066,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "const Cstruct1 *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -1066,6 +1075,7 @@
                             "c_type": "Cstruct1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const Cstruct1 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",
@@ -1079,6 +1089,7 @@
                             "typemap_name": "Cstruct1"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const Cstruct1 *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -1087,6 +1098,7 @@
                             "c_type": "Cstruct1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const Cstruct1 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",

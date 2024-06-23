@@ -707,6 +707,7 @@
                     },
                     "out": {
                         "fmtf": {
+                            "c_abstract_decl": "enum Color *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -716,6 +717,7 @@
                             "c_type": "short",
                             "c_var": "out",
                             "cfi_type": "CFI_type_short",
+                            "cxx_abstract_decl": "enum Color *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_out_cxx",
@@ -862,6 +864,7 @@
                     },
                     "inout": {
                         "fmtf": {
+                            "c_abstract_decl": "enum Color *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -871,6 +874,7 @@
                             "c_type": "short",
                             "c_var": "inout",
                             "cfi_type": "CFI_type_short",
+                            "cxx_abstract_decl": "enum Color *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_inout_cxx",

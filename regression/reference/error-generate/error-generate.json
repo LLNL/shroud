@@ -3133,6 +3133,7 @@
                     },
                     "SH_this": {
                         "fmtf": {
+                            "c_abstract_decl": "ERR_struct1 *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3141,6 +3142,7 @@
                             "c_type": "ERR_struct1",
                             "c_var": "SH_this",
                             "cfi_type": "CFI_type_struct",
+                            "cxx_abstract_decl": "struct1 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SH_this",
@@ -3302,6 +3304,7 @@
                     },
                     "SH_this": {
                         "fmtf": {
+                            "c_abstract_decl": "ERR_struct1 *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3310,6 +3313,7 @@
                             "c_type": "ERR_struct1",
                             "c_var": "SH_this",
                             "cfi_type": "CFI_type_struct",
+                            "cxx_abstract_decl": "struct1 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SH_this",
@@ -3331,6 +3335,7 @@
                     },
                     "val": {
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3339,6 +3344,7 @@
                             "c_type": "int",
                             "c_var": "val",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "val",

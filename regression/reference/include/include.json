@@ -299,6 +299,7 @@
                             },
                             "c2": {
                                 "fmtc": {
+                                    "c_abstract_decl": "LIB_three_Class1 *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -308,6 +309,7 @@
                                     "c_type": "LIB_three_Class1",
                                     "c_var": "c2",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "three::Class1 *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SHC_c2_cxx",
@@ -321,6 +323,7 @@
                                     "typemap_name": "three::Class1"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "LIB_three_Class1 *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -330,6 +333,7 @@
                                     "c_type": "LIB_three_Class1",
                                     "c_var": "c2",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "three::Class1 *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SHC_c2_cxx",
@@ -673,6 +677,7 @@
                                     },
                                     "arg1": {
                                         "fmtc": {
+                                            "c_abstract_decl": "LIB_CustomType",
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -681,6 +686,7 @@
                                             "c_type": "LIB_CustomType",
                                             "c_var": "arg1",
                                             "cfi_type": "CFI_type_int",
+                                            "cxx_abstract_decl": "CustomType",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&arg1",
@@ -694,6 +700,7 @@
                                             "typemap_name": "CustomType"
                                         },
                                         "fmtf": {
+                                            "c_abstract_decl": "LIB_CustomType",
                                             "c_addr": "&",
                                             "c_const": "",
                                             "c_deref": "",
@@ -702,6 +709,7 @@
                                             "c_type": "LIB_CustomType",
                                             "c_var": "arg1",
                                             "cfi_type": "CFI_type_int",
+                                            "cxx_abstract_decl": "CustomType",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&arg1",

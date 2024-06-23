@@ -178,6 +178,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "const int *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -189,6 +190,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "const int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&arg)",
@@ -208,6 +210,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const int *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -219,6 +222,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "const int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&arg)",
@@ -406,6 +410,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -418,6 +423,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -447,6 +453,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -459,6 +466,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -689,6 +697,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -701,6 +710,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -730,6 +740,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -742,6 +753,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -959,6 +971,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -971,6 +984,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1000,6 +1014,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1012,6 +1027,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1204,6 +1220,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1216,6 +1233,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1245,6 +1263,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1257,6 +1276,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1453,6 +1473,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1465,6 +1486,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1494,6 +1516,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1508,6 +1531,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1697,6 +1721,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1708,6 +1733,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1736,6 +1762,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1750,6 +1777,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1941,6 +1969,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "double *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1953,6 +1982,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "double",
+                            "cxx_abstract_decl": "double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -1982,6 +2012,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "double *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1994,6 +2025,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "double",
+                            "cxx_abstract_decl": "double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -2242,6 +2274,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "double *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2254,6 +2287,7 @@
                             "c_var_size": "SHT_arg1_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "const double *",
+                            "cxx_abstract_decl": "double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -2273,6 +2307,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "double *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2285,6 +2320,7 @@
                             "c_var_size": "SHT_arg1_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "const double *",
+                            "cxx_abstract_decl": "double *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -2317,6 +2353,7 @@
                     },
                     "num": {
                         "fmtc": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2325,6 +2362,7 @@
                             "c_type": "int",
                             "c_var": "num",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&num",
@@ -2338,6 +2376,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -2346,6 +2385,7 @@
                             "c_type": "int",
                             "c_var": "num",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&num",
@@ -2547,6 +2587,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -2563,6 +2604,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&arg)",
@@ -2582,6 +2624,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -2598,6 +2641,7 @@
                             "c_var_size": "SHT_arg_size",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::vector<{cxx_T}> *>\t(&arg)",
@@ -2790,6 +2834,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2799,6 +2844,7 @@
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -2825,6 +2871,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -2836,6 +2883,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -3027,6 +3075,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3036,6 +3085,7 @@
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -3062,6 +3112,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3077,6 +3128,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -3275,6 +3327,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_char_len": "20",
                             "c_const": "",
@@ -3285,6 +3338,7 @@
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -3312,6 +3366,7 @@
                             "typemap_name": "std::vector"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_char_len": "20",
                             "c_const": "",
@@ -3328,6 +3383,7 @@
                             "c_var_cdesc": "SHT_arg_cdesc",
                             "cfi_type": "CFI_type_other",
                             "cxx_T": "std::string",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -3668,6 +3724,7 @@
                     },
                     "n": {
                         "fmtc": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3676,6 +3733,7 @@
                             "c_type": "int",
                             "c_var": "n",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&n",
@@ -3693,6 +3751,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3701,6 +3760,7 @@
                             "c_type": "int",
                             "c_var": "n",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&n",
@@ -3914,6 +3974,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3922,6 +3983,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -3935,6 +3997,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -3943,6 +4006,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg",
@@ -3967,6 +4031,7 @@
                     },
                     "len": {
                         "fmtc": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3975,6 +4040,7 @@
                             "c_type": "int",
                             "c_var": "len",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&len",
@@ -3988,6 +4054,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -3996,6 +4063,7 @@
                             "c_type": "int",
                             "c_var": "len",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&len",
