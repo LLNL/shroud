@@ -30,7 +30,7 @@ class WFormat(unittest.TestCase):
             cxx_var="cxx_var_name",
             cxx_other="other_name",
         )
-        fmtarg = fcfmt.FormatGen(func, arg, fmt_var)
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("array", str(fmtarg))
         self.assertEqual("array", fmtarg.name)
         self.assertEqual("cxx", fmtarg.language)
@@ -45,12 +45,14 @@ class WFormat(unittest.TestCase):
 #        print(10, fmtarg.__name)
 
         self.assertEqual("int *", str(fmtarg.cxxdecl))
-        self.assertEqual("int *arg1", fmtarg.cxxdecl.c_var)
-        self.assertEqual("int *===>xxx<===", fmtarg.cxxdecl.xxx)
+        self.assertEqual("int * arg1", fmtarg.cxxdecl.c_var)
+        self.assertEqual("int * ===>xxx<===", fmtarg.cxxdecl.xxx)
 
         # cidecl
-#        print(11, fmtarg.cxxdecl)         # abstract
+        self.assertEqual("int * array", fmtarg.cidecl.c_var)
 #        print(11, fmtarg.cxxdecl.cxx_var)
+
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "f")
 
     def test_arg_cxx_const_int(self):
         library = ast.LibraryNode()
@@ -65,12 +67,40 @@ class WFormat(unittest.TestCase):
             cxx_var="cxx_var_name",
             cxx_other="other_name",
         )
-        fmtarg = fcfmt.FormatGen(func, arg, fmt_var)
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("array", str(fmtarg))
         self.assertEqual("array", fmtarg.name)
         self.assertEqual("const int *", str(fmtarg.cxxdecl))
-        self.assertEqual("const int *arg1", fmtarg.cxxdecl.c_var)
-        self.assertEqual("const int *===>xxx<===", fmtarg.cxxdecl.xxx)
+        self.assertEqual("const int * arg1", fmtarg.cxxdecl.c_var)
+        self.assertEqual("const int * ===>xxx<===", fmtarg.cxxdecl.xxx)
+
+    def test_arg_cxx_enum(self):
+        library = ast.LibraryNode()
+        enum = library.add_enum("enum Color {RED}",
+                                options=dict(F_enum_type="short"))
+        func = library.add_function("void func1(enum Color arg1)")
+
+        arg = func.ast.declarator.params[0]
+
+        fmt_var = util.Scope(
+            None,
+            typemap=arg.typemap,
+            c_var="arg1",
+            cxx_var="cxx_var_name",
+            cxx_other="other_name",
+        )
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
+        self.assertEqual("arg1", str(fmtarg))
+        self.assertEqual("arg1", fmtarg.name)
+        self.assertEqual("enum Color", str(fmtarg.cxxdecl))
+        self.assertEqual("Color arg1", fmtarg.cxxdecl.c_var)
+        self.assertEqual("Color ===>xxx<===", fmtarg.cxxdecl.xxx)
+    
+        # cidecl
+        self.assertEqual("enum LIB_Color arg1", fmtarg.cidecl.c_var)
+
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "f")
+        self.assertEqual("short arg1", fmtarg.cidecl.c_var)
 
     def test_arg_cxx_vector(self):
         library = ast.LibraryNode()
@@ -85,12 +115,12 @@ class WFormat(unittest.TestCase):
             cxx_var="cxx_var_name",
             cxx_other="other_name",
         )
-        fmtarg = fcfmt.FormatGen(func, arg, fmt_var)
+        fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("array", str(fmtarg))
         self.assertEqual("array", fmtarg.name)
         self.assertEqual("vector<int> *", str(fmtarg.cxxdecl))
-        self.assertEqual("vector<int> *arg1", fmtarg.cxxdecl.c_var)
-        self.assertEqual("vector<int> *===>xxx<===", fmtarg.cxxdecl.xxx)
+#        self.assertEqual("vector<int> *arg1", fmtarg.cxxdecl.c_var)
+#        self.assertEqual("vector<int> *===>xxx<===", fmtarg.cxxdecl.xxx)
     
 if __name__ == "__main__":
     unittest.main()

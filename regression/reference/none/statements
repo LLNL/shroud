@@ -1683,8 +1683,24 @@ c_in_char*_buf:
   - C wrapper will fill argument.
   owner: library
 c_in_enum:
+  c_arg_decl:
+  - '{gen.cidecl.c_var}'
+  c_pre_call:
+  - "{gen.cxxdecl.cxx_var} =\t {gen.c_to_cxx};"
+  fmtdict:
+    cxx_var: '{CXX_local}{c_var}'
+  i_arg_decl:
+  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: in
   name: c_in_enum
+  notes:
+  - Use gen.cidecl to get the C interface type.
+  - enums use option.F_enum_type to control the C type.
   owner: library
 c_in_native:
   c_arg_decl:
@@ -8693,8 +8709,24 @@ f_in_char*_cfi:
   name: f_in_char*_cfi
   owner: library
 f_in_enum:
+  c_arg_decl:
+  - '{gen.cidecl.c_var}'
+  c_pre_call:
+  - "{gen.cxxdecl.cxx_var} =\t {gen.c_to_cxx};"
+  fmtdict:
+    cxx_var: '{CXX_local}{c_var}'
+  i_arg_decl:
+  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   intent: in
   name: f_in_enum
+  notes:
+  - Use gen.cidecl to get the C interface type.
+  - enums use option.F_enum_type to control the C type.
   owner: library
 f_in_native:
   c_arg_decl:

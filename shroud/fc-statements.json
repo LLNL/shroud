@@ -973,8 +973,6 @@
             "f_in_char*_capi",
             "f_out_char*_capi",
             "f_inout_char*_capi",
-            "f_in_enum",
-            "c_in_enum",
             "f_in_unknown",
             "c_in_unknown"
         ]
@@ -1408,6 +1406,45 @@
         "mixin": [
             "f_mixin_function_ptr"
         ]
+    },
+    {
+        "name":"############################################################"
+    },
+    {
+        "alias": [
+            "f_in_enum",
+            "c_in_enum"
+        ],
+        "notes": [
+            "Use gen.cidecl to get the C interface type.",
+            "enums use option.F_enum_type to control the C type."
+        ],
+        "i_arg_decl": [
+            "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cidecl.c_var}"
+        ],
+        "c_pre_call": [
+            "{gen.cxxdecl.cxx_var} =\t {gen.c_to_cxx};"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
+        "fmtdict": {
+            "cxx_var": "{CXX_local}{c_var}"
+        }
+    },
+    {
+        "name":"############################################################"
     },
     {
         "alias": [

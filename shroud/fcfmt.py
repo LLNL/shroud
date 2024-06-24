@@ -112,7 +112,7 @@ class FillFormat(object):
 
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
-        set_share_function_format(node, fmt_result, bind_result)
+        set_share_function_format(node, fmt_result, bind_result, wlang)
         func_cursor.stmt = None
 
         # --- Loop over function parameters
@@ -127,7 +127,7 @@ class FillFormat(object):
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 
-            set_f_arg_format(node, arg, fmt_arg, bind_arg)
+            set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
             if wlang == "f":
                 if arg.declarator.is_function_pointer():
                     fptr = bind_arg.meta["fptr"]
@@ -177,7 +177,7 @@ class FillFormat(object):
             func_cursor.stmt = arg_stmt
 
             if wlang == "f":
-                set_f_arg_format(node, arg, fmt_arg, bind_arg)
+                set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
                 fmt_arg.f_abstract_name = arg_name
                 fmt_arg.i_var = arg_name
                 
@@ -830,19 +830,19 @@ class ToDimension(todict.PrintNode):
                 
 ######################################################################
 
-def set_share_function_format(node, fmt, bind):
+def set_share_function_format(node, fmt, bind, wlang):
     meta = bind.meta
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = node.ast.typemap
-    fmt.gen = FormatGen(node, node.ast, fmt)
+    fmt.gen = FormatGen(node, node.ast, fmt, wlang)
     
-def set_f_arg_format(node, arg, fmt, bind):
+def set_f_arg_format(node, arg, fmt, bind, wlang):
     meta = bind.meta
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = arg.declarator.typemap
-    fmt.gen = FormatGen(node, arg, fmt)
+    fmt.gen = FormatGen(node, arg, fmt, wlang)
     
     intent = meta["intent"].upper()
     if intent == "SETTER":
@@ -915,7 +915,7 @@ def find_result_converter(wlang, language, ntypemap):
 
 ######################################################################
 
-StateTuple = collections.namedtuple("StateType", "ast fmtdict language")
+StateTuple = collections.namedtuple("StateType", "ast fmtdict language wlang")
 
 class NonConst(object):
     """Return a non-const pointer to argument"""
@@ -966,7 +966,27 @@ class FormatCdecl(object):
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
-        decl = self.state.ast.to_string_declarator(name=varname)
+#        decl = self.state.ast.to_string_declarator(name=varname)
+        decl = gen_arg_as_cxx(self.state.ast, name=varname)
+        return decl
+
+    def __str__(self):
+        decl = self.state.ast.to_string_declarator(abstract=True)
+        return decl
+            
+class FormatCIdecl(object):
+    """
+    Return a declaration used by the C interface.
+    The main purpose to to use the correct C type when
+    passing an enumeration.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        decl = gen_arg_as_c(self.state.ast, lang=maplang[self.state.wlang])
         return decl
 
     def __str__(self):
@@ -982,15 +1002,20 @@ class FormatGen(object):
       "{gen.cdecl}"
     """
 
-    def __init__(self, func, ast, fmtdict):
+    def __init__(self, func, ast, fmtdict, wlang):
         self.language = func.get_language()
         self.ast     = ast
         self.fmtdict = fmtdict
-        state = self.state = StateTuple(ast, fmtdict, self.language)
+        state = self.state = StateTuple(ast, fmtdict, self.language, wlang)
         self._cache = {}
 
         self.nonconst_addr = NonConst(state)
         self.cxxdecl = FormatCdecl(state)
+        self.cidecl = FormatCIdecl(state)
+
+    @property
+    def c_to_cxx(self):
+        return wformat(self.state.ast.typemap.c_to_cxx, self.state.fmtdict)
 
     @property
     def tester(self):
