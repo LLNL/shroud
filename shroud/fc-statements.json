@@ -1444,6 +1444,34 @@
         }
     },
     {
+        "alias": [
+            "f_out_enum*",
+            "c_out_enum*"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} {cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{c_local_cxx}"
+        ],
+        "c_post_call": [
+            "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+        ]
+    },
+    {
+        "alias": [
+            "f_inout_enum*",
+            "c_inout_enum*"
+        ],
+        "base": "f_out_enum*",
+        "c_pre_call": [
+            "{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};"
+        ]
+    },
+    {
         "name":"############################################################"
     },
     {
@@ -2214,34 +2242,6 @@
         ],
         "c_call": [
             "*{c_local_cxx} = {C_call_function};"
-        ]
-    },
-    {
-        "alias": [
-            "f_out_enum*",
-            "c_out_enum*"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} {cxx_var};"
-        ],
-        "c_arg_call": [
-            "&{c_local_cxx}"
-        ],
-        "c_post_call": [
-            "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
-        ]
-    },
-    {
-        "alias": [
-            "f_inout_enum*",
-            "c_inout_enum*"
-        ],
-        "base": "f_out_enum*",
-        "c_pre_call": [
-            "{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};"
         ]
     },
     {
