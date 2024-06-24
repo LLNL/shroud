@@ -1,0 +1,12 @@
+Read yaml wrap.yaml
+Close wrap_types.yaml
+class Class1
+C f int FuncInClass(void)
+Close wrapClass1.h
+Close wrapClass1.c
+class Class1
+Fortran int FuncInClass(void)
+C-interface f int FuncInClass(void)
+Close wrapfwrap.f
+Close utilwrap.c
+Close typeswrap.h
