@@ -1683,6 +1683,8 @@ c_in_char*_buf:
   - C wrapper will fill argument.
   owner: library
 c_in_enum:
+  c_arg_call:
+  - '{cxx_var}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_pre_call:
@@ -8709,6 +8711,8 @@ f_in_char*_cfi:
   name: f_in_char*_cfi
   owner: library
 f_in_enum:
+  c_arg_call:
+  - '{cxx_var}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_pre_call:
