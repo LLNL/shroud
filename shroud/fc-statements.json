@@ -942,24 +942,12 @@
     },
     {
         "alias": [
-            "c_out_native_&*"
-        ]
-    },
-    {
-        "alias": [
             "f_in_native*",
             "c_in_native*",
-            "f_in_native&",
-            "c_in_native&",
             "f_out_char*",
             "c_out_char*",
-            "f_out_native&",
-            "c_out_native&",
-            "c_out_native*&",
             "f_inout_native*",
             "c_inout_native*",
-            "f_inout_native&",
-            "c_inout_native&",
             "f_out_native***",
             "c_out_native***",
             "f_in_char*",
@@ -968,8 +956,6 @@
             "c_inout_char*",
             "f_in_void",
             "c_in_void",
-            "f_out_void*&",
-            "c_out_void*&",
             "f_in_char*_capi",
             "f_out_char*_capi",
             "f_inout_char*_capi",
@@ -1002,6 +988,25 @@
                 "{typemap.f_kind}"
             ]
         }
+    },
+    {
+        "alias": [
+            "f_in_native&",
+            "c_in_native&",
+            "f_out_native&",
+            "c_out_native&",
+            "f_inout_native&",
+            "c_inout_native&",
+            "c_out_native*&",
+            "f_out_void*&",
+            "c_out_void*&"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
+        ]
+    },
+    {
+        "name":"############################################################"
     },
     {
         "name": "f_mixin_local-logical-var",
@@ -2686,7 +2691,10 @@
             "iso_c_binding": [
                 "C_CHAR"
             ]
-        }
+        },
+        "c_arg_call": [
+            "*{cxx_var}"
+        ]
     },
     {
         "name": "f_out_vector_buf_targ_string_scalar",
@@ -3281,22 +3289,29 @@
         "alias": [
             "f_in_struct",
             "f_in_struct*",
-            "f_in_struct&",
             "f_out_struct*",
-            "f_out_struct&",
             "f_inout_struct*",
-            "f_inout_struct&",
             "c_in_struct",
             "c_in_struct*",
-            "c_in_struct&",
             "c_out_struct*",
-            "c_out_struct&",
-            "c_inout_struct*",
-            "c_inout_struct&"
+            "c_inout_struct*"
         ],
         "notes": [
             "Used with in, out, inout.",
             "C pointer -> void pointer -> C++ pointer"
+        ]
+    },
+    {
+        "alias": [
+            "f_in_struct&",
+            "c_in_struct&",
+            "f_out_struct&",
+            "c_out_struct&",
+            "f_inout_struct&",
+            "c_inout_struct&"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
         ]
     },
     {

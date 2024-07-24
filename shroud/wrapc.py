@@ -1086,6 +1086,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 # enums use the ci_type field.
                 # make sure a wrapper is written, and make sure a
                 # a C and C bufferify functions are created.
+                # And the C and Fortran wrappers have different arguments.
                 need_wrapper = True
                 stmt_indexes.append(wlang)
             
@@ -1116,13 +1117,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             if arg_stmt.c_arg_call:
                 for arg_call in arg_stmt.c_arg_call:
                     append_format(call_list, arg_call, fmt_arg)
-            elif declarator.is_reference():
-                # reference to scalar  i.e. double &max
-                # void tutorial::getMinMax(int &min);
-                # wrapper(int *min) {
-                #   tutorial::getMinMax(*min);
-                #}
-                call_list.append("*" + fmt_arg.cxx_var)
             else:
                 call_list.append(fmt_arg.cxx_var)
 

@@ -193,8 +193,6 @@ root
           buf -- c_out_char_*_buf
       char* -- c_out_char*
       enum* -- c_out_enum*
-      native
-        &* -- c_out_native_&*
       native& -- c_out_native&
         hidden -- c_out_native&_hidden
       native* -- c_out_native*
@@ -1720,6 +1718,8 @@ c_in_native:
   - An intent of 'none' is used with function pointers
   owner: library
 c_in_native&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: in
   name: c_in_native&
   owner: library
@@ -2000,11 +2000,10 @@ c_in_struct:
   - C pointer -> void pointer -> C++ pointer
   owner: library
 c_in_struct&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: in
   name: c_in_struct&
-  notes:
-  - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
   owner: library
 c_in_struct*:
   intent: in
@@ -2419,6 +2418,8 @@ c_inout_enum*:
   name: c_inout_enum*
   owner: library
 c_inout_native&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: inout
   name: c_inout_native&
   owner: library
@@ -2631,11 +2632,10 @@ c_inout_string*_buf:
   - C wrapper will fill argument.
   owner: library
 c_inout_struct&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: inout
   name: c_inout_struct&
-  notes:
-  - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
   owner: library
 c_inout_struct*:
   intent: inout
@@ -3337,6 +3337,8 @@ c_out_enum*:
   name: c_out_enum*
   owner: library
 c_out_native&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: c_out_native&
   owner: library
@@ -3355,6 +3357,8 @@ c_out_native*:
   name: c_out_native*
   owner: library
 c_out_native*&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: c_out_native*&
   owner: library
@@ -3409,10 +3413,6 @@ c_out_native*_hidden:
   - Declare a local variable and pass to C.
   intent: out
   name: c_out_native*_hidden
-  owner: library
-c_out_native_&*:
-  intent: out
-  name: c_out_native_&*
   owner: library
 c_out_string&:
   c_arg_call:
@@ -3561,11 +3561,10 @@ c_out_string*_buf:
   - C wrapper will fill argument.
   owner: library
 c_out_struct&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: c_out_struct&
-  notes:
-  - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
   owner: library
 c_out_struct*:
   intent: out
@@ -3893,6 +3892,8 @@ c_out_vector<string>&:
   notimplemented: true
   owner: library
 c_out_vector<string>&_buf_copy:
+  c_arg_call:
+  - '*{cxx_var}'
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {i_var}(*)'
   i_arg_names:
@@ -3979,6 +3980,8 @@ c_out_vector<string>&_cdesc_allocatable:
   name: c_out_vector<string>&_cdesc_allocatable
   owner: library
 c_out_vector<string>*_buf_copy:
+  c_arg_call:
+  - '*{cxx_var}'
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {i_var}(*)'
   i_arg_names:
@@ -3991,6 +3994,8 @@ c_out_vector<string>*_buf_copy:
   notimplemented: true
   owner: library
 c_out_vector<string>_buf_copy:
+  c_arg_call:
+  - '*{cxx_var}'
   i_arg_decl:
   - 'character(kind=C_CHAR), intent(OUT) :: {i_var}(*)'
   i_arg_names:
@@ -4003,6 +4008,8 @@ c_out_vector<string>_buf_copy:
   notimplemented: true
   owner: library
 c_out_void*&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: c_out_void*&
   owner: library
@@ -8748,6 +8755,8 @@ f_in_native:
   - An intent of 'none' is used with function pointers
   owner: library
 f_in_native&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: in
   name: f_in_native&
   owner: library
@@ -9221,11 +9230,10 @@ f_in_struct:
   - C pointer -> void pointer -> C++ pointer
   owner: library
 f_in_struct&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: in
   name: f_in_struct&
-  notes:
-  - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
   owner: library
 f_in_struct*:
   intent: in
@@ -9823,6 +9831,8 @@ f_inout_enum*:
   name: f_inout_enum*
   owner: library
 f_inout_native&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: inout
   name: f_inout_native&
   owner: library
@@ -10202,11 +10212,10 @@ f_inout_string*_cfi:
   name: f_inout_string*_cfi
   owner: library
 f_inout_struct&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: inout
   name: f_inout_struct&
-  notes:
-  - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
   owner: library
 f_inout_struct*:
   intent: inout
@@ -11338,6 +11347,8 @@ f_out_enum*:
   name: f_out_enum*
   owner: library
 f_out_native&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: f_out_native&
   owner: library
@@ -12075,11 +12086,10 @@ f_out_string*_cfi:
   name: f_out_string*_cfi
   owner: library
 f_out_struct&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: f_out_struct&
-  notes:
-  - Used with in, out, inout.
-  - C pointer -> void pointer -> C++ pointer
   owner: library
 f_out_struct*:
   intent: out
@@ -12514,6 +12524,8 @@ f_out_vector_buf_targ_string_scalar:
   name: f_out_vector_buf_targ_string_scalar
   owner: library
 f_out_void*&:
+  c_arg_call:
+  - '*{cxx_var}'
   intent: out
   name: f_out_void*&
   owner: library

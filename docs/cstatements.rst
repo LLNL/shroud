@@ -61,22 +61,16 @@ and attributes into an underscore delimited string.
 
 * intent - ``in``, ``out``, ``inout``, ``function``, ``ctor``, ``dtor``, ``getter``, ``setter``
 
-* group from typemap. ``native``
-
-* pointer - ``scalar``, ``*``, ``**``
+* Abstract declaration. For example, ``native``, ``native*`` or ``native**``.
+  May include template arguments ``vector<native>``.
+  Uses the typemap field **sgroup**.
 
 * api - from attribute
   ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
 
 * deref - from attribute
-  ``allocatable``, ``pointer``, ``raw``, ``result-as-arg``, ``scalar``
+  ``allocatable``, ``pointer``, ``raw``, ``scalar``
 
-
-template
-^^^^^^^^
-
-Each template argument is appended to the initial statement name.
-``targ``, *group* and *pointer*
     
 statements
 ----------
