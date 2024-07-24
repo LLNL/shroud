@@ -1169,11 +1169,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # Return result from function
             converter, lang = fcfmt.find_result_converter(
                 wlang, self.language, result_typemap)
-            if result_stmt.c_return_type == "void":
-                # Do not return C++ result in C wrapper.
-                # Probably assigned to an argument.
-                pass
-            elif len(result_stmt.c_post_call):
+            if len(result_stmt.c_post_call):
                 # c_var is created by the c_post_call clause or
                 # it may be passed in as an argument.
                 # For example, with struct and shadow.
