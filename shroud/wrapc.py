@@ -1114,11 +1114,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             stmt_need_wrapper = stmt_need_wrapper or arg_stmt.c_need_wrapper
 
             # Collect arguments to pass to wrapped function.
-            if arg_stmt.c_arg_call:
-                for arg_call in arg_stmt.c_arg_call:
-                    append_format(call_list, arg_call, fmt_arg)
-            else:
-                call_list.append(fmt_arg.cxx_var)
+            for arg_call in arg_stmt.c_arg_call:
+                append_format(call_list, arg_call, fmt_arg)
 
         # --- End loop over function parameters
         func_cursor.arg = None
