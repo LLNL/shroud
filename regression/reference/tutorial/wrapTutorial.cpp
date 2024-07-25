@@ -509,23 +509,6 @@ TUT_TypeID TUT_typefunc(TUT_TypeID arg)
 }
 
 // ----------------------------------------
-// Function:  EnumTypeID enumfunc
-// Statement: c_function_native
-// ----------------------------------------
-// Argument:  EnumTypeID arg
-// Statement: c_in_native
-TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg)
-{
-    // splicer begin function.enumfunc
-    tutorial::EnumTypeID SHCXX_arg =
-        static_cast<tutorial::EnumTypeID>(arg);
-    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SHCXX_arg);
-    TUT_EnumTypeID SHC_rv = static_cast<int>(SHCXX_rv);
-    return SHC_rv;
-    // splicer end function.enumfunc
-}
-
-// ----------------------------------------
 // Function:  Color colorfunc
 // Statement: c_function_enum
 // ----------------------------------------

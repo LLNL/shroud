@@ -24,11 +24,6 @@ declarations:
 
 - decl: typedef int TypeID;
 
-- decl: typedef int EnumTypeID
-  fields:
-    c_to_cxx : static_cast<tutorial::EnumTypeID>({c_var})
-    cxx_to_c : static_cast<int>({cxx_var})
-
 - decl: |
       enum Color {
         RED,
@@ -135,9 +130,7 @@ declarations:
 #  format:
 #    F_string_result_as_arg: output
   
-# TypeID and DataTypeId must be define in types
 - decl: TypeID typefunc(TypeID arg)
-- decl: EnumTypeID enumfunc(EnumTypeID arg)
 - decl: Color colorfunc(Color arg);
   
 - decl: void getMinMax(int &min +intent(out), int &max +intent(out))

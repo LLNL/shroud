@@ -397,34 +397,6 @@ PY_typefunc(
 // splicer end function.typefunc
 }
 
-static char PY_enumfunc__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_enumfunc(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.enumfunc
-    int arg;
-    const char *SHT_kwlist[] = {
-        "arg",
-        nullptr };
-    PyObject * SHTPy_rv = nullptr;
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:enumfunc",
-        const_cast<char **>(SHT_kwlist), &arg))
-        return nullptr;
-    tutorial::EnumTypeID SH_arg =
-        static_cast<tutorial::EnumTypeID>(arg);
-    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(SH_arg);
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
-    return (PyObject *) SHTPy_rv;
-// splicer end function.enumfunc
-}
-
 static char PY_colorfunc__doc__[] =
 "documentation"
 ;
@@ -660,8 +632,6 @@ static PyMethodDef PY_methods[] = {
     PY_UseDefaultArguments_arg1_arg2__doc__},
 {"typefunc", (PyCFunction)PY_typefunc, METH_VARARGS|METH_KEYWORDS,
     PY_typefunc__doc__},
-{"enumfunc", (PyCFunction)PY_enumfunc, METH_VARARGS|METH_KEYWORDS,
-    PY_enumfunc__doc__},
 {"colorfunc", (PyCFunction)PY_colorfunc, METH_VARARGS|METH_KEYWORDS,
     PY_colorfunc__doc__},
 {"getMinMax", (PyCFunction)PY_getMinMax, METH_NOARGS,

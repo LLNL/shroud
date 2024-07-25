@@ -1103,7 +1103,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseDefaultArguments  18 ****************************************",
+                "<FUNCTION>": "UseDefaultArguments  17 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -1234,7 +1234,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseDefaultArguments  19 ****************************************",
+                "<FUNCTION>": "UseDefaultArguments  18 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -1455,8 +1455,8 @@
             {
                 "<FUNCTION>": "UseDefaultArguments  3 ****************************************",
                 "_default_funcs": [
-                    18,
-                    19
+                    17,
+                    18
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -2480,7 +2480,7 @@
                 }
             },
             {
-                "<FUNCTION>": "TemplateArgument  20 ****************************************",
+                "<FUNCTION>": "TemplateArgument  19 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -2752,7 +2752,7 @@
                 }
             },
             {
-                "<FUNCTION>": "TemplateArgument  21 ****************************************",
+                "<FUNCTION>": "TemplateArgument  20 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -3096,7 +3096,7 @@
                 }
             },
             {
-                "<FUNCTION>": "TemplateReturn  22 ****************************************",
+                "<FUNCTION>": "TemplateReturn  21 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -3254,7 +3254,7 @@
                 }
             },
             {
-                "<FUNCTION>": "TemplateReturn  23 ****************************************",
+                "<FUNCTION>": "TemplateReturn  22 ****************************************",
                 "_generated": "cxx_template",
                 "_generated_path": [
                     "cxx_template"
@@ -3873,7 +3873,7 @@
                 }
             },
             {
-                "<FUNCTION>": "FortranGenericOverloaded  28 ****************************************",
+                "<FUNCTION>": "FortranGenericOverloaded  27 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 9,
                 "_generated": "fortran_generic",
@@ -4074,7 +4074,7 @@
                 }
             },
             {
-                "<FUNCTION>": "FortranGenericOverloaded  29 ****************************************",
+                "<FUNCTION>": "FortranGenericOverloaded  28 ****************************************",
                 "C_force_wrapper": true,
                 "_PTR_C_CXX_index": 9,
                 "_generated": "fortran_generic",
@@ -4275,7 +4275,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseDefaultOverload  24 ****************************************",
+                "<FUNCTION>": "UseDefaultOverload  23 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -4491,7 +4491,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseDefaultOverload  25 ****************************************",
+                "<FUNCTION>": "UseDefaultOverload  24 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -4793,8 +4793,8 @@
             {
                 "<FUNCTION>": "UseDefaultOverload  10 ****************************************",
                 "_default_funcs": [
-                    24,
-                    25
+                    23,
+                    24
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -5354,7 +5354,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseDefaultOverload  26 ****************************************",
+                "<FUNCTION>": "UseDefaultOverload  25 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -5648,7 +5648,7 @@
                 }
             },
             {
-                "<FUNCTION>": "UseDefaultOverload  27 ****************************************",
+                "<FUNCTION>": "UseDefaultOverload  26 ****************************************",
                 "_generated": "has_default_arg",
                 "_generated_path": [
                     "has_default_arg"
@@ -6028,8 +6028,8 @@
             {
                 "<FUNCTION>": "UseDefaultOverload  11 ****************************************",
                 "_default_funcs": [
-                    26,
-                    27
+                    25,
+                    26
                 ],
                 "_has_default_arg": true,
                 "_nargs": [
@@ -6999,317 +6999,7 @@
                 }
             },
             {
-                "<FUNCTION>": "enumfunc  13 ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "enumfunc",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "name": "arg",
-                                    "typemap_name": "tutorial::EnumTypeID"
-                                },
-                                "specifier": [
-                                    "EnumTypeID"
-                                ],
-                                "typemap_name": "tutorial::EnumTypeID"
-                            }
-                        ],
-                        "typemap_name": "tutorial::EnumTypeID"
-                    },
-                    "specifier": [
-                        "EnumTypeID"
-                    ],
-                    "typemap_name": "tutorial::EnumTypeID"
-                },
-                "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
-                "declgen": "EnumTypeID enumfunc(EnumTypeID arg)",
-                "name": "enumfunc",
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "lua": true,
-                    "python": true
-                },
-                "zz_bind": {
-                    "c": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "c_function_native"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "c_in_native"
-                        }
-                    },
-                    "f": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            },
-                            "stmt": "f_function_native"
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "f_in_native"
-                        }
-                    },
-                    "lua": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            }
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            }
-                        }
-                    },
-                    "py": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            }
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            }
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "intent": "function"
-                            }
-                        },
-                        "arg": {
-                            "meta": {
-                                "intent": "in",
-                                "value": true
-                            }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtc": {
-                            "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
-                            "C_call_list": "SHCXX_arg",
-                            "C_name": "TUT_enumfunc",
-                            "C_prototype": "TUT_EnumTypeID arg",
-                            "C_return_type": "TUT_EnumTypeID",
-                            "F_C_name": "c_enumfunc",
-                            "c_abstract_decl": "TUT_EnumTypeID",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_rv_decl": "TUT_EnumTypeID SHC_rv",
-                            "c_type": "TUT_EnumTypeID",
-                            "c_val": "static_cast<int>(SHCXX_rv)",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "tutorial::EnumTypeID",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_rv_decl": "tutorial::EnumTypeID SHCXX_rv",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native",
-                            "typemap_name": "tutorial::EnumTypeID"
-                        },
-                        "fmtf": {
-                            "C_call_function": "tutorial::enumfunc(\tSHCXX_arg)",
-                            "C_call_list": "SHCXX_arg",
-                            "C_name": "TUT_enumfunc",
-                            "C_prototype": "TUT_EnumTypeID arg",
-                            "C_return_type": "TUT_EnumTypeID",
-                            "F_C_arguments": "arg",
-                            "F_C_call": "c_enumfunc",
-                            "F_C_name": "enumfunc",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg",
-                            "F_arguments": "arg",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_abstract_decl": "TUT_EnumTypeID",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_rv_decl": "TUT_EnumTypeID SHC_rv",
-                            "c_type": "TUT_EnumTypeID",
-                            "c_val": "static_cast<int>(SHCXX_rv)",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "tutorial::EnumTypeID",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_rv_decl": "tutorial::EnumTypeID SHCXX_rv",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_var": "SHCXX_rv",
-                            "f_intent": "OUT",
-                            "f_intent_attr": ", intent(OUT)",
-                            "f_kind": "enum_type_id",
-                            "f_type": "integer(enum_type_id)",
-                            "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native",
-                            "typemap_name": "tutorial::EnumTypeID"
-                        },
-                        "fmtl": {
-                            "c_abstract_decl": "TUT_EnumTypeID",
-                            "c_var": "static_cast<int>(SHCXX_rv)",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "static_cast<int>(SHCXX_rv)",
-                            "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                            "stmt": "lua_function_native"
-                        },
-                        "fmtpy": {
-                            "c_deref": "",
-                            "c_var": "SHCXX_rv",
-                            "ctor_expr": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_var": "SHCXX_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHTPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_function_native",
-                            "value_var": "SHValue_rv"
-                        }
-                    },
-                    "arg": {
-                        "fmtc": {
-                            "c_abstract_decl": "TUT_EnumTypeID",
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_proto_decl": "TUT_EnumTypeID arg",
-                            "c_type": "TUT_EnumTypeID",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "tutorial::EnumTypeID",
-                            "cxx_addr": "&",
-                            "cxx_decl": "tutorial::EnumTypeID SHCXX_arg",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)",
-                            "cxx_var": "SHCXX_arg",
-                            "f_intent": "IN",
-                            "f_intent_attr": ", intent(IN)",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_in_native",
-                            "typemap_name": "tutorial::EnumTypeID"
-                        },
-                        "fmtf": {
-                            "c_abstract_decl": "TUT_EnumTypeID",
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_proto_decl": "TUT_EnumTypeID arg",
-                            "c_type": "TUT_EnumTypeID",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "tutorial::EnumTypeID",
-                            "cxx_addr": "&",
-                            "cxx_decl": "tutorial::EnumTypeID SHCXX_arg",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_arg",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)",
-                            "cxx_var": "SHCXX_arg",
-                            "f_intent": "IN",
-                            "f_intent_attr": ", intent(IN)",
-                            "f_kind": "enum_type_id",
-                            "f_type": "integer(enum_type_id)",
-                            "f_var": "arg",
-                            "fc_var": "arg",
-                            "i_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_in_native",
-                            "typemap_name": "tutorial::EnumTypeID"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "lua_tointeger(L, 1)",
-                            "c_var_len": "Larg",
-                            "cxx_abstract_decl": "tutorial::EnumTypeID",
-                            "cxx_member": ".",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "static_cast<tutorial::EnumTypeID>(lua_tointeger(L, 1))",
-                            "stmt": "lua_in_native"
-                        },
-                        "fmtpy": {
-                            "c_abstract_decl": "TUT_EnumTypeID",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "TUT_EnumTypeID",
-                            "c_var": "arg",
-                            "ctor_expr": "arg",
-                            "cxx_abstract_decl": "tutorial::EnumTypeID",
-                            "cxx_addr": "&",
-                            "cxx_decl": "tutorial::EnumTypeID SH_arg",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "tutorial::EnumTypeID",
-                            "cxx_val": "static_cast<tutorial::EnumTypeID>(arg)",
-                            "cxx_var": "SH_arg",
-                            "data_var": "SHData_arg",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg",
-                            "size_var": "SHSize_arg",
-                            "stmt": "py_in_native",
-                            "value_var": "SHValue_arg"
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "enumfunc",
-                    "F_name_api": "enumfunc",
-                    "F_name_function": "enumfunc",
-                    "F_name_generic": "enumfunc",
-                    "F_name_impl": "enumfunc",
-                    "LUA_name": "enumfunc",
-                    "LUA_name_api": "enumfunc",
-                    "LUA_name_impl": "l_enumfunc",
-                    "PY_name_impl": "PY_enumfunc",
-                    "function_name": "enumfunc"
-                }
-            },
-            {
-                "<FUNCTION>": "colorfunc  14 ****************************************",
+                "<FUNCTION>": "colorfunc  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "colorfunc",
@@ -7629,7 +7319,7 @@
                 }
             },
             {
-                "<FUNCTION>": "getMinMax  15 ****************************************",
+                "<FUNCTION>": "getMinMax  14 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "getMinMax",
@@ -7971,7 +7661,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback1  16 ****************************************",
+                "<FUNCTION>": "callback1  15 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback1",
@@ -8535,7 +8225,7 @@
                 }
             },
             {
-                "<FUNCTION>": "LastFunctionCalled  17 ****************************************",
+                "<FUNCTION>": "LastFunctionCalled  16 ****************************************",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -8789,59 +8479,6 @@
                     "cxx_type": "TypeID",
                     "typedef_name": "TypeID"
                 }
-            },
-            {
-                "<TYPEDEF>": "EnumTypeID ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "EnumTypeID",
-                        "typemap_name": "int"
-                    },
-                    "specifier": [
-                        "int"
-                    ],
-                    "storage": [
-                        "typedef"
-                    ],
-                    "typemap_name": "tutorial::EnumTypeID"
-                },
-                "f_kind": "C_INT",
-                "f_module": {
-                    "iso_c_binding": [
-                        "C_INT"
-                    ]
-                },
-                "name": "EnumTypeID",
-                "options": {},
-                "user_fields": {
-                    "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})",
-                    "cxx_to_c": "static_cast<int>({cxx_var})"
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "lua": true,
-                    "python": true
-                },
-                "zz_bind": {
-                    "c": {
-                        "EnumTypeID": {}
-                    },
-                    "f": {
-                        "EnumTypeID": {}
-                    },
-                    "share": {
-                        "EnumTypeID": {}
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "EnumTypeID",
-                    "C_name_typedef": "TUT_EnumTypeID",
-                    "F_name_api": "enum_type_id",
-                    "F_name_typedef": "enum_type_id",
-                    "cxx_type": "EnumTypeID",
-                    "typedef_name": "EnumTypeID"
-                }
             }
         ],
         "variables": [
@@ -8964,42 +8601,6 @@
             "is_enum": true,
             "sgroup": "enum",
             "sh_type": "SH_TYPE_INT"
-        },
-        "tutorial::EnumTypeID": {
-            "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
-            "LUA_type": "LUA_TNUMBER",
-            "PYN_typenum": "NPY_INT",
-            "PY_ctor": "PyInt_FromLong({ctor_expr})",
-            "PY_format": "i",
-            "PY_get": "PyInt_AsLong({py_var})",
-            "base": "integer",
-            "c_to_cxx": "static_cast<tutorial::EnumTypeID>({c_var})",
-            "c_type": "TUT_EnumTypeID",
-            "cfi_type": "CFI_type_int",
-            "cxx_to_c": "static_cast<int>({cxx_var})",
-            "cxx_type": "tutorial::EnumTypeID",
-            "f_cast": "int({f_var}, enum_type_id)",
-            "f_kind": "enum_type_id",
-            "f_module": {
-                "tutorial_mod": [
-                    "enum_type_id"
-                ]
-            },
-            "f_module_name": "tutorial_mod",
-            "f_type": "integer(enum_type_id)",
-            "flat_name": "int",
-            "i_module": {
-                "tutorial_mod": [
-                    "enum_type_id"
-                ]
-            },
-            "sgroup": "native",
-            "sh_type": "SH_TYPE_INT",
-            "typedef": "int",
-            "wrap_header": [
-                "wrapTutorial.h"
-            ]
         },
         "tutorial::TypeID": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

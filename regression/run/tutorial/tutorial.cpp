@@ -131,16 +131,7 @@ int UseDefaultOverload(double type, int num, int offset, int stride)
 TypeID typefunc(TypeID arg)
 {
     last_function_called = "typefunc";
-    return static_cast<int>(arg);
-}
-
-EnumTypeID enumfunc(EnumTypeID arg)
-{
-    last_function_called = "enumfunc";
-    switch (arg) {
-    default:
-	return ENUM2;
-    }
+    return arg;
 }
 
 Color colorfunc(Color arg)

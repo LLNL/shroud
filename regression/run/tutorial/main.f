@@ -133,11 +133,8 @@ contains
     rv_int = use_default_overload(1.0d0, 10, 11, 12)
     call assert_true(rv_int .eq. 142, "UseDefaultOverload 4")
 
-    rv_int = typefunc(2)
-    call assert_true(rv_int .eq. 2, "typefunc")
-
-    rv_int = enumfunc(1)
-    call assert_true(rv_int .eq. 2, "enumfunc")
+    rv_int = typefunc(white)
+    call assert_true(rv_int .eq. white, "typefunc")
 
     call get_min_max(minout, maxout)
     call assert_equals(-1, minout, "get_min_max minout")

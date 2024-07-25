@@ -45,11 +45,6 @@ enum TUT_Color {
 typedef int TUT_TypeID;
 // splicer end typedef.TypeID
 
-// typedef tutorial::EnumTypeID
-// splicer begin typedef.EnumTypeID
-typedef int TUT_EnumTypeID;
-// splicer end typedef.EnumTypeID
-
 void TUT_NoReturnNoArguments(void);
 
 double TUT_PassByValue(double arg1, int arg2);
@@ -104,8 +99,6 @@ int TUT_UseDefaultOverload_5(double type, int num, int offset,
     int stride);
 
 TUT_TypeID TUT_typefunc(TUT_TypeID arg);
-
-TUT_EnumTypeID TUT_enumfunc(TUT_EnumTypeID arg);
 
 enum TUT_Color TUT_colorfunc(enum TUT_Color arg);
 
