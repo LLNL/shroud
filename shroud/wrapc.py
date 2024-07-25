@@ -1181,7 +1181,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     CXX_ast, name=fmt_result.c_var, add_params=False, lang=lang)
                 fmt_result.c_val = wformat(converter, fmt_result)
                 append_format(
-                    return_code, "{c_rv_decl} =\t {c_val};", fmt_result
+                    post_call, "{c_rv_decl} =\t {c_val};", fmt_result
                 )
             self.set_cxx_nonconst_ptr(ast, fmt_result)
                 
