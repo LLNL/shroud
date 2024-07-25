@@ -399,68 +399,6 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
     // splicer end class.ExClass2.method.get_class1
 }
 
-// ExClass2 *declare(TypeID type, SidreLength len=1)
-// ----------------------------------------
-// Function:  ExClass2 * declare
-// Statement: lua_function_shadow*
-// ----------------------------------------
-// Argument:  TypeID type
-// Statement: lua_in_native
-// ----------------------------------------
-// Function:  ExClass2 * declare
-// Statement: lua_function_shadow*
-// ----------------------------------------
-// Argument:  TypeID type
-// Statement: lua_in_native
-// ----------------------------------------
-// Argument:  SidreLength len=1
-// Statement: lua_in_native
-static int l_example_nested_ExClass2_declare(lua_State *L)
-{
-    // splicer begin class.ExClass2.method.declare
-    int SH_nresult = 0;
-    int SH_nargs = lua_gettop(L);
-    int SH_itype1 = lua_type(L, 1);
-    int SH_itype2 = lua_type(L, 2);
-    switch (SH_nargs) {
-    case 1:
-        if (SH_itype1 == LUA_TNUMBER) {
-            TypeID type = getTypeID(lua_tointeger(L, 1));
-            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
-                luaL_checkudata(L, 1, "ExClass2.metatable");
-            example::nested::ExClass2 * SHCXX_rv =
-                SH_this->self->declare(type);
-            PUSH;
-            SH_nresult = 1;
-        }
-        else {
-            luaL_error(L, "error with arguments");
-        }
-        break;
-    case 2:
-        if (SH_itype1 == LUA_TNUMBER &&
-            SH_itype2 == LUA_TNUMBER) {
-            TypeID type = getTypeID(lua_tointeger(L, 1));
-            SidreLength len = lua_tointeger(L, 2);
-            l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
-                luaL_checkudata(L, 1, "ExClass2.metatable");
-            example::nested::ExClass2 * SHCXX_rv =
-                SH_this->self->declare(type, len);
-            PUSH;
-            SH_nresult = 1;
-        }
-        else {
-            luaL_error(L, "error with arguments");
-        }
-        break;
-    default:
-        luaL_error(L, "error with arguments");
-        break;
-    }
-    return SH_nresult;
-    // splicer end class.ExClass2.method.declare
-}
-
 // void destroyall(void)
 // ----------------------------------------
 // Function:  void destroyall
@@ -473,21 +411,6 @@ static int l_example_nested_ExClass2_destroyall(lua_State *L)
     SH_this->self->destroyall();
     return 0;
     // splicer end class.ExClass2.method.destroyall
-}
-
-// TypeID getTypeID(void) const
-// ----------------------------------------
-// Function:  TypeID getTypeID
-// Statement: lua_function_native
-static int l_example_nested_ExClass2_getTypeID(lua_State *L)
-{
-    // splicer begin class.ExClass2.method.getTypeID
-    l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
-        L, 1, "ExClass2.metatable");
-    TypeID SHCXX_rv = SH_this->self->getTypeID();
-    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
-    return 1;
-    // splicer end class.ExClass2.method.getTypeID
 }
 
 // void setValue(int value)
@@ -615,9 +538,7 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
     {"getName4", l_example_nested_ExClass2_getName4},
     {"GetNameLength", l_example_nested_ExClass2_GetNameLength},
     {"get_class1", l_example_nested_ExClass2_get_class1},
-    {"declare", l_example_nested_ExClass2_declare},
     {"destroyall", l_example_nested_ExClass2_destroyall},
-    {"getTypeID", l_example_nested_ExClass2_getTypeID},
     {"setValue", l_example_nested_ExClass2_setValue},
     {"getValue", l_example_nested_ExClass2_getValue},
     // splicer begin class.ExClass2.register

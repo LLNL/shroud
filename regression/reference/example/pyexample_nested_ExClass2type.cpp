@@ -365,71 +365,6 @@ PP_get_class1(
 }
 
 // ----------------------------------------
-// Function:  ExClass2 * declare
-// Statement: py_function_shadow*
-// ----------------------------------------
-// Argument:  TypeID type
-// Statement: py_in_native
-// ----------------------------------------
-// Argument:  SidreLength len=1
-// Statement: py_in_native
-static char PP_declare_1__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_declare_1(
-  PP_ExClass2 *self,
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin namespace.example::nested.class.ExClass2.method.declare
-    Py_ssize_t SH_nargs = 0;
-    int type;
-    long len;
-    const char *SHT_kwlist[] = {
-        "type",
-        "len",
-        nullptr };
-    example::nested::ExClass2 * SHCXX_rv;
-
-    if (args != nullptr) SH_nargs += PyTuple_Size(args);
-    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i|l:declare",
-        const_cast<char **>(SHT_kwlist), &type, &len))
-        return nullptr;
-    switch (SH_nargs) {
-    case 1:
-        {
-            // post_declare
-            TypeID SH_type = getTypeID(type);
-
-            SHCXX_rv = self->obj->declare(SH_type);
-            break;
-        }
-    case 2:
-        {
-            // post_declare
-            TypeID SH_type = getTypeID(type);
-
-            SHCXX_rv = self->obj->declare(SH_type, len);
-            break;
-        }
-    default:
-        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
-        return nullptr;
-    }
-
-    // post_call
-    PP_ExClass2 * SHTPy_rv =
-        PyObject_New(PP_ExClass2, &PP_ExClass2_Type);
-    SHTPy_rv->obj = SHCXX_rv;
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass2.method.declare
-}
-
-// ----------------------------------------
 // Function:  void destroyall
 // Statement: py_default
 static char PP_destroyall__doc__[] =
@@ -446,31 +381,6 @@ PP_destroyall(
     self->obj->destroyall();
     Py_RETURN_NONE;
 // splicer end namespace.example::nested.class.ExClass2.method.destroyall
-}
-
-// ----------------------------------------
-// Function:  TypeID getTypeID
-// Statement: py_function_native
-static char PP_getTypeID__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PP_getTypeID(
-  PP_ExClass2 *self,
-  PyObject *SHROUD_UNUSED(args),
-  PyObject *SHROUD_UNUSED(kwds))
-{
-// splicer begin namespace.example::nested.class.ExClass2.method.getTypeID
-    PyObject * SHTPy_rv = nullptr;
-
-    TypeID SHCXX_rv = self->obj->getTypeID();
-
-    // post_call
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
-
-    return (PyObject *) SHTPy_rv;
-// splicer end namespace.example::nested.class.ExClass2.method.getTypeID
 }
 
 // ----------------------------------------
@@ -731,12 +641,8 @@ static PyMethodDef PP_ExClass2_methods[] = {
         PP_GetNameLength__doc__},
     {"get_class1", (PyCFunction)PP_get_class1,
         METH_VARARGS|METH_KEYWORDS, PP_get_class1__doc__},
-    {"declare", (PyCFunction)PP_declare_1, METH_VARARGS|METH_KEYWORDS,
-        PP_declare_1__doc__},
     {"destroyall", (PyCFunction)PP_destroyall, METH_NOARGS,
         PP_destroyall__doc__},
-    {"getTypeID", (PyCFunction)PP_getTypeID, METH_NOARGS,
-        PP_getTypeID__doc__},
     {"setValue", (PyCFunction)PP_setValue, METH_VARARGS|METH_KEYWORDS,
         PP_setValue__doc__},
     {"getValue", (PyCFunction)PP_getValue, METH_VARARGS|METH_KEYWORDS,

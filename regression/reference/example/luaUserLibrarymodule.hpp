@@ -18,11 +18,6 @@ extern "C" {
 typedef long AA_SidreLength;
 // splicer end typedef.SidreLength
 
-// typedef TypeID
-// splicer begin typedef.TypeID
-typedef int AA_TypeID;
-// splicer end typedef.TypeID
-
 // splicer begin class.ExClass1.C_declaration
 // splicer end class.ExClass1.C_declaration
 
