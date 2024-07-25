@@ -17,12 +17,6 @@ extern int global_flag;
 namespace tutorial
 {
 
-enum EnumTypeID {
-    ENUM0,
-    ENUM1,
-    ENUM2
-};
-
 enum Color {
     RED,
     BLUE,
@@ -63,8 +57,6 @@ int UseDefaultOverload(int num, int offset = 0, int stride = 1);
 int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1);
 
 TypeID typefunc(TypeID arg);
-
-EnumTypeID enumfunc(EnumTypeID arg);
 
 Color colorfunc(Color arg);
 

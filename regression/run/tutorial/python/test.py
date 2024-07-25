@@ -104,9 +104,6 @@ class Tutorial(unittest.TestCase):
     def test_typefunc(self):
         self.assertEqual(2, tutorial.typefunc(2))
 
-    def test_enumfunc(self):
-        self.assertEqual(2, tutorial.enumfunc(1))
-
     def test_getMinMax(self):
         r = tutorial.getMinMax()
         self.assertEqual((-1,100), r)

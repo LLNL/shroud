@@ -133,3 +133,18 @@ Fortran array subscripting.
 See the sgroup.yaml test.
 
 .. f_in_twostruct<native,native> vs f_in_struct<native,native>.
+
+
+Format fields
+-------------
+
+Several format fields are defined to help use a set of statements with both
+pointers and references.
+
+* cxx_member
+
+.. code-block:: yaml
+
+    "c_post_call": [
+        "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+    ]

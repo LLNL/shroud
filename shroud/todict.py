@@ -281,7 +281,7 @@ class ToDict(visitor.Visitor):
         d = {}
         skip = "_" + node.__class__.__name__ + "__"  # __name is skipped
         for key, value in node.__dict__.items():
-            if key in ["arg"]:
+            if key in ["gen"]:
                 continue
             elif key in ["targs"]:
                 d[key] = self.visit(value)

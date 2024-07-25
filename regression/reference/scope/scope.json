@@ -681,6 +681,7 @@
                     },
                     "SH_this": {
                         "fmtf": {
+                            "c_abstract_decl": "SCO_datapointer *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -689,6 +690,7 @@
                             "c_type": "SCO_datapointer",
                             "c_var": "SH_this",
                             "cfi_type": "CFI_type_struct",
+                            "cxx_abstract_decl": "ns3::DataPointer *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SH_this",
@@ -850,6 +852,7 @@
                     },
                     "SH_this": {
                         "fmtf": {
+                            "c_abstract_decl": "SCO_datapointer *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -858,6 +861,7 @@
                             "c_type": "SCO_datapointer",
                             "c_var": "SH_this",
                             "cfi_type": "CFI_type_struct",
+                            "cxx_abstract_decl": "ns3::DataPointer *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SH_this",
@@ -879,6 +883,7 @@
                     },
                     "val": {
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -887,6 +892,7 @@
                             "c_type": "int",
                             "c_var": "val",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "val",
@@ -1267,6 +1273,7 @@
                             },
                             "SH_this": {
                                 "fmtf": {
+                                    "c_abstract_decl": "SCO_datapointer *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1275,6 +1282,7 @@
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
+                                    "cxx_abstract_decl": "ns1::DataPointer *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SH_this",
@@ -1436,6 +1444,7 @@
                             },
                             "SH_this": {
                                 "fmtf": {
+                                    "c_abstract_decl": "SCO_datapointer *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1444,6 +1453,7 @@
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
+                                    "cxx_abstract_decl": "ns1::DataPointer *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SH_this",
@@ -1465,6 +1475,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "int *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1473,6 +1484,7 @@
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "val",
@@ -1880,6 +1892,7 @@
                             },
                             "SH_this": {
                                 "fmtf": {
+                                    "c_abstract_decl": "SCO_datapointer *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1888,6 +1901,7 @@
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
+                                    "cxx_abstract_decl": "ns2::DataPointer *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SH_this",
@@ -2049,6 +2063,7 @@
                             },
                             "SH_this": {
                                 "fmtf": {
+                                    "c_abstract_decl": "SCO_datapointer *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -2057,6 +2072,7 @@
                                     "c_type": "SCO_datapointer",
                                     "c_var": "SH_this",
                                     "cfi_type": "CFI_type_struct",
+                                    "cxx_abstract_decl": "ns2::DataPointer *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "SH_this",
@@ -2078,6 +2094,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "int *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -2086,6 +2103,7 @@
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "val",

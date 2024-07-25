@@ -43,15 +43,8 @@ C c int GetNameLength(void) const
 C f int GetNameLength(void) const
 C c ExClass1 *get_class1(const ExClass1 *in)
 C f ExClass1 *get_class1(const ExClass1 *in)
-C c ExClass2 *declare(TypeID type)
-C f ExClass2 *declare(TypeID type)
-C c ExClass2 *declare(TypeID type, SidreLength len=1)
-C f ExClass2 *declare(TypeID type, int len=1)
-C f ExClass2 *declare(TypeID type, long len=1)
 C c void destroyall(void)
 C f void destroyall(void)
-C c TypeID getTypeID(void) const
-C f TypeID getTypeID(void) const
 C c void setValue(int value)
 C f void setValue(int value)
 C c void setValue(long value)
@@ -109,7 +102,6 @@ Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.h
 Close wrapUserLibrary.cpp
 typedef SidreLength
-typedef TypeID
 class ExClass1
 Fortran ExClass1(void)
 Fortran ExClass1(const string *name)
@@ -143,11 +135,7 @@ Fortran string &getName3(void) const
 Fortran string &getName4(void)
 Fortran int GetNameLength(void) const
 Fortran ExClass1 *get_class1(const ExClass1 *in)
-Fortran ExClass2 *declare(TypeID type)
-Fortran ExClass2 *declare(TypeID type, int len=1)
-Fortran ExClass2 *declare(TypeID type, long len=1)
 Fortran void destroyall(void)
-Fortran TypeID getTypeID(void) const
 Fortran void setValue(int value)
 Fortran void setValue(long value)
 Fortran void setValue(float value)
@@ -167,12 +155,7 @@ C-interface c string &getName4(void)
 C-interface f string &getName4(void)
 C-interface f int GetNameLength(void) const
 C-interface f ExClass1 *get_class1(const ExClass1 *in)
-C-interface f ExClass2 *declare(TypeID type)
-C-interface c ExClass2 *declare(TypeID type, SidreLength len=1)
-C-interface f ExClass2 *declare(TypeID type, int len=1)
-C-interface f ExClass2 *declare(TypeID type, long len=1)
 C-interface f void destroyall(void)
-C-interface f TypeID getTypeID(void) const
 C-interface f void setValue(int value)
 C-interface f void setValue(long value)
 C-interface f void setValue(float value)
@@ -246,9 +229,7 @@ Python method string &getName3(void) const
 Python method string &getName4(void)
 Python method int GetNameLength(void) const
 Python method ExClass1 *get_class1(const ExClass1 *in)
-Python method ExClass2 *declare(TypeID type, SidreLength len=1)
 Python method void destroyall(void)
-Python method TypeID getTypeID(void) const
 Python method void setValue(int value)
 Python method void setValue(long value)
 Python method void setValue(float value)
@@ -296,10 +277,7 @@ Lua method string &getName3(void) const
 Lua method string &getName4(void)
 Lua method int GetNameLength(void) const
 Lua method ExClass1 *get_class1(const ExClass1 *in)
-Lua method ExClass2 *declare(TypeID type, SidreLength len=1)
-Lua method ExClass2 *declare(TypeID type, SidreLength len=1)
 Lua method void destroyall(void)
-Lua method TypeID getTypeID(void) const
 Lua method void setValue(int value)
 Lua method void setValue(long value)
 Lua method void setValue(float value)

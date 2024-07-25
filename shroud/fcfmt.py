@@ -16,6 +16,8 @@ from . import util
 from . import whelpers
 from .util import wformat, append_format
 
+import collections
+
 # convert rank to f_assumed_shape.
 fortran_ranks = [
     "",
@@ -110,7 +112,7 @@ class FillFormat(object):
 
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
-        set_share_function_format(node, fmt_result, bind_result)
+        set_share_function_format(node, fmt_result, bind_result, wlang)
         func_cursor.stmt = None
 
         # --- Loop over function parameters
@@ -125,7 +127,7 @@ class FillFormat(object):
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 
-            set_f_arg_format(node, arg, fmt_arg, bind_arg)
+            set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
             if wlang == "f":
                 if arg.declarator.is_function_pointer():
                     fptr = bind_arg.meta["fptr"]
@@ -175,7 +177,7 @@ class FillFormat(object):
             func_cursor.stmt = arg_stmt
 
             if wlang == "f":
-                set_f_arg_format(node, arg, fmt_arg, bind_arg)
+                set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
                 fmt_arg.f_abstract_name = arg_name
                 fmt_arg.i_var = arg_name
                 
@@ -199,6 +201,8 @@ class FillFormat(object):
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.sh_type = result_typemap.sh_type
             fmt_result.cfi_type = result_typemap.cfi_type
+            if result_typemap.ci_type:
+                fmt_result.ci_type = result_typemap.ci_type
             converter, lang = find_result_converter(
                 wlang, self.language, result_typemap)
             if ast.template_arguments:
@@ -254,6 +258,10 @@ class FillFormat(object):
         converter, lang = find_arg_converter(wlang, self.language, arg_typemap)
         fmt_arg.c_proto_decl = gen_arg_as_c(arg, lang=lang)
         
+        fmt_arg.c_abstract_decl = gen_arg_as_c(
+            arg, name=False, add_params=False)
+        fmt_arg.cxx_abstract_decl = gen_arg_as_cxx(
+            arg, name=False, add_params=False, as_ptr=True)
         if converter is None:
             # Compatible
             fmt_arg.cxx_var = fmt_arg.c_var
@@ -262,10 +270,6 @@ class FillFormat(object):
             pass
         else:
             # convert C argument to C++
-            fmt_arg.c_abstract_decl = gen_arg_as_c(
-                arg, name=False, add_params=False)
-            fmt_arg.cxx_abstract_decl = gen_arg_as_cxx(
-                arg, name=False, add_params=False, as_ptr=True)
             fmt_arg.cxx_var = fmt_arg.CXX_local + fmt_arg.c_var
             fmt_arg.cxx_val = wformat(converter, fmt_arg)
             fmt_arg.cxx_decl = gen_arg_as_cxx(arg,
@@ -366,7 +370,6 @@ class FillFormat(object):
         fmt_arg.f_var = arg_name
         fmt_arg.fc_var = arg_name
         self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
-        fmt_arg.arg = FortranArgFormat(f_arg)
         arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind, fmt_arg)
         self.set_fmt_fields_dimension(cls, C_node, f_arg, fmt_arg, bind)
         self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
@@ -429,6 +432,8 @@ class FillFormat(object):
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.cfi_type = ntypemap.cfi_type
+            if ntypemap.ci_type:
+                fmt.ci_type = ntypemap.ci_type
             fmt.idtor = "0"
 
             if ntypemap.base != "shadow" and ast.template_arguments:
@@ -829,17 +834,19 @@ class ToDimension(todict.PrintNode):
                 
 ######################################################################
 
-def set_share_function_format(node, fmt, bind):
+def set_share_function_format(node, fmt, bind, wlang):
     meta = bind.meta
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = node.ast.typemap
+    fmt.gen = FormatGen(node, node.ast, fmt, wlang)
     
-def set_f_arg_format(node, arg, fmt, bind):
+def set_f_arg_format(node, arg, fmt, bind, wlang):
     meta = bind.meta
 
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = arg.declarator.typemap
+    fmt.gen = FormatGen(node, arg, fmt, wlang)
     
     intent = meta["intent"].upper()
     if intent == "SETTER":
@@ -912,38 +919,118 @@ def find_result_converter(wlang, language, ntypemap):
 
 ######################################################################
 
-class FortranArgWorker(object):
-    def __init__(self, arg):
-        self.arg = arg
+StateTuple = collections.namedtuple("StateType", "ast fmtdict language wlang")
 
-    def procedure(self):
-        """Demonstration attribute"""
-        return "default-procedure"
-        if name is None:
-            name = wformat(
-                node.options.F_abstract_interface_subprogram_template, fmt
-            )
+class NonConst(object):
+    """Return a non-const pointer to argument"""
+    def __init__(self, state):
+        self.state = state
 
-
-class FortranArgFormat(object):
-    """
-    An instance is added to the format dictionary for every Fortran
-    argument. It is used to look up fields while processing
-    statements to add values.
-
-    The value is only looked up once then cached.
-    """
-
-    def __init__(self, arg):
-        self.worker = FortranArgWorker(arg)
-        self._cache = {}
+    def __compute(self, name):
+        arg = self.state.ast
+        fmt = util.Scope(self.state.fmtdict)
+        if arg.declarator.is_pointer():
+            fmt.cxx_addr = ""
+        else:
+            fmt.cxx_addr = "&"
+        # This convoluted eval is to get the proper error message
+        # if name does not exist.
+#        fmt.cxx_var = wformat("{{{}}}".format(name), self.state.fmtdict)
+        fmt.cxx_var = self.state.fmtdict.get(name)
+        if fmt.cxx_var is None:
+            print("Missing name in nonconst.{}".format(name))
+            return "===>nonconst.{}<===".format(name)
+        if self.state.language == "c":
+            if arg.const:
+                value = wformat(
+                    "({typemap.cxx_type} *) {cxx_addr}{cxx_var}", fmt)
+            else:
+                value = wformat(
+                    "{cxx_addr}{cxx_var}", fmt)
+        elif arg.const:
+            # cast away constness
+            value = wformat("const_cast<{cxx_type} *>\t({cxx_addr}{cxx_var})", fmt)
+        else:
+            value = wformat("{cxx_addr}{cxx_var}", fmt)
+        return value
 
     def __getattr__(self, name):
-        if name in self._cache:
-            return self._cache[name]
-        try:
-            value = getattr(self.worker, name)()
-            self._cache[name] = value
-        except:
-            raise
-        return value
+        return self.__compute(name)
+
+    def __str__(self):
+        return self.__compute("cxx_var")
+
+class FormatCdecl(object):
+    """
+    Return the declaration from the ast.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+#        decl = self.state.ast.to_string_declarator(name=varname)
+        decl = gen_arg_as_cxx(self.state.ast, name=varname)
+        return decl
+
+    def __str__(self):
+        decl = self.state.ast.to_string_declarator(abstract=True)
+        return decl
+            
+class FormatCIdecl(object):
+    """
+    Return a declaration used by the C interface.
+    The main purpose to to use the correct C type when
+    passing an enumeration.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        decl = gen_arg_as_c(self.state.ast, lang=maplang[self.state.wlang])
+        return decl
+
+    def __str__(self):
+        decl = self.state.ast.to_string_declarator(abstract=True)
+        return decl
+            
+class FormatGen(object):
+    """
+    An instance is added to the format dictionary for every AST
+    as "gen". It is used to generate fields while processing
+    statements.
+
+      "{gen.cdecl}"
+    """
+
+    def __init__(self, func, ast, fmtdict, wlang):
+        self.language = func.get_language()
+        self.ast     = ast
+        self.fmtdict = fmtdict
+        state = self.state = StateTuple(ast, fmtdict, self.language, wlang)
+        self._cache = {}
+
+        self.nonconst_addr = NonConst(state)
+        self.cxxdecl = FormatCdecl(state)
+        self.cidecl = FormatCIdecl(state)
+
+    @property
+    def c_to_cxx(self):
+        return wformat(self.state.ast.typemap.c_to_cxx, self.state.fmtdict)
+
+    @property
+    def tester(self):
+        return "tester"
+        
+    @property
+    def name(self):
+        return self.state.ast.declarator.user_name
+
+    def __str__(self):
+        """  "{gen}" returns the name"""
+        return self.name
+
+    #@functools.cached_property

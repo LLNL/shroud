@@ -1440,7 +1440,7 @@ class Declarator(Node):
                 parts.append("{}({})".format(attr, value))
             space = ""
 
-    def to_string(self, abstract=False):
+    def to_string(self, abstract=False, name=None):
         out = []
         for ptr in self.pointer:
             out.append(str(ptr))
@@ -1449,6 +1449,8 @@ class Declarator(Node):
             out.append("(" + self.func.to_string(abstract) + ")")
         elif abstract:
             pass
+        elif name is not None:
+            out.append(name)
         elif self.name:
             out.append(self.name)
 
@@ -1572,6 +1574,15 @@ class Declaration(Node):
     def __repr__(self):
         return "<Declaration('{}')>".format(str(self))
 
+    def to_string_declarator(self, abstract=False, name=None):
+        """Return the declaration for the first declarator"""
+        declarator = self.declarator.to_string(abstract, name)
+        if declarator:
+            decl = "{} {}".format(str(self), declarator)
+        else:
+            decl = str(self)
+        return decl
+        
     def get_first_abstract_declarator(self):
         """Return an abstract declarator for the first declarator.
         The wrapping will split "int i,j" into "int i;int j"

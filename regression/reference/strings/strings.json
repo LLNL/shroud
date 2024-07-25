@@ -233,6 +233,7 @@
                     },
                     "status": {
                         "fmtc": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -241,6 +242,7 @@
                             "c_type": "char",
                             "c_var": "status",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
@@ -254,6 +256,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -262,6 +265,7 @@
                             "c_type": "char",
                             "c_var": "status",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
@@ -424,6 +428,7 @@
                     },
                     "status": {
                         "fmtc": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -432,6 +437,7 @@
                             "c_type": "char",
                             "c_var": "status",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
@@ -445,6 +451,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -453,6 +460,7 @@
                             "c_type": "char",
                             "c_var": "status",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
@@ -807,6 +815,7 @@
                     },
                     "dest": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -815,6 +824,7 @@
                             "c_type": "char",
                             "c_var": "dest",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -832,6 +842,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -842,6 +853,7 @@
                             "c_var": "dest",
                             "c_var_len": "SHT_dest_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -884,6 +896,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -892,6 +905,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -909,6 +923,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -917,6 +932,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -1106,6 +1122,7 @@
                     },
                     "s": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1114,6 +1131,7 @@
                             "c_type": "char",
                             "c_var": "s",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "s",
@@ -1131,6 +1149,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -1144,6 +1163,7 @@
                             "c_var_len": "SHT_s_len",
                             "c_var_str": "SHT_s_str",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "s",
@@ -2121,9 +2141,7 @@
                             "c_abstract_decl": "const char",
                             "c_const": "const ",
                             "c_get_value": "",
-                            "c_rv_decl": "const char SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string",
@@ -2310,9 +2328,7 @@
                             "c_char_len": 30,
                             "c_const": "const ",
                             "c_get_value": "",
-                            "c_rv_decl": "const char SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string",
@@ -2490,9 +2506,7 @@
                             "c_abstract_decl": "const char",
                             "c_const": "const ",
                             "c_get_value": "",
-                            "c_rv_decl": "const char SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string",
@@ -2666,9 +2680,7 @@
                             "c_abstract_decl": "const char",
                             "c_const": "const ",
                             "c_get_value": "",
-                            "c_rv_decl": "const char SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string",
@@ -2863,9 +2875,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -3056,9 +3066,7 @@
                             "c_abstract_decl": "const char *",
                             "c_char_len": 30,
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -3242,9 +3250,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -3424,9 +3430,7 @@
                             "c_abstract_decl": "const char *",
                             "c_char_len": 30,
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -3609,9 +3613,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -3809,9 +3811,7 @@
                             "c_abstract_decl": "const char *",
                             "c_char_len": 30,
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv->c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -4001,9 +4001,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv->c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -4202,9 +4200,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv->c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -4408,9 +4404,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv->c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -4598,9 +4592,7 @@
                             "F_C_subprogram": "function",
                             "c_abstract_decl": "const char *",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv->c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",
@@ -4815,6 +4807,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -4824,6 +4817,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg1)",
@@ -4842,6 +4836,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -4853,6 +4848,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg1)",
@@ -5043,6 +5039,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5052,6 +5049,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -5070,6 +5068,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5081,6 +5080,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -5271,6 +5271,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5280,6 +5281,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -5298,6 +5300,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5310,6 +5313,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -5497,6 +5501,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -5506,6 +5511,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(arg1)",
@@ -5524,6 +5530,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -5535,6 +5542,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(arg1)",
@@ -5722,6 +5730,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5731,6 +5740,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -5749,6 +5759,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5761,6 +5772,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -5951,6 +5963,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5960,6 +5973,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -5978,6 +5992,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -5989,6 +6004,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -6217,6 +6233,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6226,6 +6243,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -6244,6 +6262,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6256,6 +6275,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -6298,6 +6318,7 @@
                     },
                     "nlen": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6306,6 +6327,7 @@
                             "c_type": "int",
                             "c_var": "nlen",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nlen",
@@ -6323,6 +6345,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6331,6 +6354,7 @@
                             "c_type": "int",
                             "c_var": "nlen",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nlen",
@@ -6558,6 +6582,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6567,6 +6592,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -6585,6 +6611,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6596,6 +6623,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -6638,6 +6666,7 @@
                     },
                     "nlen": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6646,6 +6675,7 @@
                             "c_type": "int",
                             "c_var": "nlen",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nlen",
@@ -6663,6 +6693,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -6671,6 +6702,7 @@
                             "c_type": "int",
                             "c_var": "nlen",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nlen",
@@ -6911,6 +6943,7 @@
                     },
                     "arg1": {
                         "fmtc": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -6919,6 +6952,7 @@
                             "c_type": "char",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -6936,6 +6970,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -6948,6 +6983,7 @@
                             "c_var": "arg1",
                             "c_var_len": "SHT_arg1_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -7340,6 +7376,7 @@
                     },
                     "nstrs": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -7348,6 +7385,7 @@
                             "c_type": "int",
                             "c_var": "nstrs",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nstrs",
@@ -7365,6 +7403,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -7373,6 +7412,7 @@
                             "c_type": "int",
                             "c_var": "nstrs",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nstrs",
@@ -7392,6 +7432,7 @@
                     },
                     "strs": {
                         "fmtc": {
+                            "c_abstract_decl": "char * *",
                             "c_addr": "",
                             "c_array_size2": "nstrs",
                             "c_const": "",
@@ -7401,6 +7442,7 @@
                             "c_type": "char",
                             "c_var": "strs",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string * *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "strs",
@@ -7421,6 +7463,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char * *",
                             "c_addr": "",
                             "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
                             "c_array_size": "SHT_strs_cdesc->shape[0]",
@@ -7434,6 +7477,7 @@
                             "c_var": "strs",
                             "c_var_cdesc": "SHT_strs_cdesc",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string * *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "strs",
@@ -7665,6 +7709,7 @@
                     },
                     "nstrs": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -7673,6 +7718,7 @@
                             "c_type": "int",
                             "c_var": "nstrs",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nstrs",
@@ -7690,6 +7736,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -7698,6 +7745,7 @@
                             "c_type": "int",
                             "c_var": "nstrs",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nstrs",
@@ -7717,6 +7765,7 @@
                     },
                     "strs": {
                         "fmtc": {
+                            "c_abstract_decl": "char * *",
                             "c_addr": "",
                             "c_array_size2": "nstrs",
                             "c_const": "",
@@ -7726,6 +7775,7 @@
                             "c_type": "char",
                             "c_var": "strs",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string * *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "strs",
@@ -7746,6 +7796,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char * *",
                             "c_addr": "",
                             "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
                             "c_array_size": "SHT_strs_cdesc->shape[0]",
@@ -7762,6 +7813,7 @@
                             "c_var_capsule": "SHT_strs_capsule",
                             "c_var_cdesc": "SHT_strs_cdesc",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string * *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "strs",
@@ -7999,6 +8051,7 @@
                     },
                     "nstrs": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -8007,6 +8060,7 @@
                             "c_type": "int",
                             "c_var": "nstrs",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nstrs",
@@ -8024,6 +8078,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -8032,6 +8087,7 @@
                             "c_type": "int",
                             "c_var": "nstrs",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nstrs",
@@ -8051,6 +8107,7 @@
                     },
                     "strs": {
                         "fmtc": {
+                            "c_abstract_decl": "char * *",
                             "c_addr": "",
                             "c_array_size2": "nstrs",
                             "c_char_len": "20",
@@ -8061,6 +8118,7 @@
                             "c_type": "char",
                             "c_var": "strs",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string * *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "strs",
@@ -8082,6 +8140,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char * *",
                             "c_addr": "",
                             "c_array_shape": "\nSHT_strs_cdesc->shape[0] = nstrs;",
                             "c_array_size": "SHT_strs_cdesc->shape[0]",
@@ -8099,6 +8158,7 @@
                             "c_var_capsule": "SHT_strs_capsule",
                             "c_var_cdesc": "SHT_strs_cdesc",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string * *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "strs",
@@ -8335,6 +8395,7 @@
                     },
                     "name": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -8343,6 +8404,7 @@
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -8356,6 +8418,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -8364,6 +8427,7 @@
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -8539,6 +8603,7 @@
                     },
                     "name": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_char_len": "AAtrim",
                             "c_const": "",
@@ -8548,6 +8613,7 @@
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -8566,6 +8632,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_char_len": "AAtrim",
                             "c_const": "",
@@ -8577,6 +8644,7 @@
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -8735,6 +8803,7 @@
                     },
                     "status": {
                         "fmtc": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -8743,6 +8812,7 @@
                             "c_type": "char",
                             "c_var": "status",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
@@ -8756,6 +8826,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -8764,6 +8835,7 @@
                             "c_type": "char",
                             "c_var": "status",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
@@ -9128,6 +9200,7 @@
                     },
                     "dest": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9136,6 +9209,7 @@
                             "c_type": "char",
                             "c_var": "dest",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -9153,6 +9227,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9163,6 +9238,7 @@
                             "c_var": "dest",
                             "c_var_len": "SHT_dest_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -9185,6 +9261,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -9193,6 +9270,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -9210,6 +9288,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_blanknull": "1",
                             "c_const": "const ",
@@ -9223,6 +9302,7 @@
                             "c_var_len": "SHT_src_len",
                             "c_var_str": "SHT_src_str",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -9420,6 +9500,7 @@
                     },
                     "dest": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9428,6 +9509,7 @@
                             "c_type": "char",
                             "c_var": "dest",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -9445,6 +9527,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9455,6 +9538,7 @@
                             "c_var": "dest",
                             "c_var_len": "SHT_dest_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -9477,6 +9561,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -9485,6 +9570,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -9502,6 +9588,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_blanknull": "1",
                             "c_const": "const ",
@@ -9515,6 +9602,7 @@
                             "c_var_len": "SHT_src_len",
                             "c_var_str": "SHT_src_str",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -9729,6 +9817,7 @@
                     },
                     "count": {
                         "fmtc": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9737,6 +9826,7 @@
                             "c_type": "int",
                             "c_var": "count",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -9758,6 +9848,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9766,6 +9857,7 @@
                             "c_type": "int",
                             "c_var": "count",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -9811,6 +9903,7 @@
                     },
                     "name": {
                         "fmtc": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9820,6 +9913,7 @@
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&name",
@@ -9838,6 +9932,7 @@
                             "typemap_name": "std::string"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "char *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -9850,6 +9945,7 @@
                             "c_var": "name",
                             "c_var_len": "SHT_name_len",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "std::string *",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&name",
@@ -10071,6 +10167,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10079,6 +10176,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -10096,6 +10194,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10108,6 +10207,7 @@
                             "c_var_len": "SHT_src_len",
                             "c_var_str": "SHT_src_str",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -10330,6 +10430,7 @@
                     },
                     "addr": {
                         "fmtc": {
+                            "c_abstract_decl": "void *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -10338,6 +10439,7 @@
                             "c_type": "void",
                             "c_var": "addr",
                             "cfi_type": "CFI_type_intptr_t",
+                            "cxx_abstract_decl": "void *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
@@ -10351,6 +10453,7 @@
                             "typemap_name": "void"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "void *",
                             "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
@@ -10359,6 +10462,7 @@
                             "c_type": "void",
                             "c_var": "addr",
                             "cfi_type": "CFI_type_intptr_t",
+                            "cxx_abstract_decl": "void *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
@@ -10378,6 +10482,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10386,6 +10491,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -10399,6 +10505,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10407,6 +10514,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -10624,6 +10732,7 @@
                     },
                     "in": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10632,6 +10741,7 @@
                             "c_type": "char",
                             "c_var": "in",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(in)",
@@ -10645,6 +10755,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10653,6 +10764,7 @@
                             "c_type": "char",
                             "c_var": "in",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(in)",
@@ -10673,6 +10785,7 @@
                     },
                     "src": {
                         "fmtc": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10681,6 +10794,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -10694,6 +10808,7 @@
                             "typemap_name": "char"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const char *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -10702,6 +10817,7 @@
                             "c_type": "char",
                             "c_var": "src",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const char *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",

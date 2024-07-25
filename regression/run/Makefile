@@ -98,7 +98,7 @@ fortran-test-list-std = \
   test-fortran-generic \
   test-fortran-statement \
   test-fortran-templates \
-  test-fortran-wrap
+  test-fortran-wrap-cxx
 
 fortran-test-list-cfi = \
   test-fortran-pointers-cfi \

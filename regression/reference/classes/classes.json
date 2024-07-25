@@ -499,6 +499,7 @@
                             },
                             "flag": {
                                 "fmtc": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -507,6 +508,7 @@
                                     "c_type": "int",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",
@@ -520,6 +522,7 @@
                                     "typemap_name": "int"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -528,6 +531,7 @@
                                     "c_type": "int",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",
@@ -1071,6 +1075,7 @@
                             },
                             "obj2": {
                                 "fmtc": {
+                                    "c_abstract_decl": "const CLA_Class1 *",
                                     "c_addr": "",
                                     "c_const": "const ",
                                     "c_deref": "*",
@@ -1080,6 +1085,7 @@
                                     "c_type": "CLA_Class1",
                                     "c_var": "obj2",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "const classes::Class1 *",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(&SHC_obj2_cxx)",
@@ -1093,6 +1099,7 @@
                                     "typemap_name": "classes::Class1"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "const CLA_Class1 *",
                                     "c_addr": "",
                                     "c_const": "const ",
                                     "c_deref": "*",
@@ -1102,6 +1109,7 @@
                                     "c_type": "CLA_Class1",
                                     "c_var": "obj2",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "const classes::Class1 *",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(&SHC_obj2_cxx)",
@@ -1516,6 +1524,7 @@
                             },
                             "flag": {
                                 "fmtc": {
+                                    "c_abstract_decl": "bool",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -1524,6 +1533,7 @@
                                     "c_type": "bool",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_Bool",
+                                    "cxx_abstract_decl": "bool",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",
@@ -1541,6 +1551,7 @@
                                     "typemap_name": "bool"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "bool",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -1549,6 +1560,7 @@
                                     "c_type": "bool",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_Bool",
+                                    "cxx_abstract_decl": "bool",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",
@@ -1570,6 +1582,7 @@
                             },
                             "name": {
                                 "fmtc": {
+                                    "c_abstract_decl": "char *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1579,6 +1592,7 @@
                                     "c_type": "char",
                                     "c_var": "name",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "std::string *",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&name",
@@ -1597,6 +1611,7 @@
                                     "typemap_name": "std::string"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "char *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -1608,6 +1623,7 @@
                                     "c_var": "name",
                                     "c_var_len": "SHT_name_len",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "std::string *",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&name",
@@ -1921,9 +1937,7 @@
                                     "F_C_subprogram": "function",
                                     "c_abstract_decl": "const char *",
                                     "c_const": "const ",
-                                    "c_rv_decl": "const char * SHC_rv",
                                     "c_type": "char",
-                                    "c_val": "SHCXX_rv.c_str()",
                                     "c_var": "SHC_rv",
                                     "cfi_type": "CFI_type_other",
                                     "cxx_abstract_decl": "const std::string *",
@@ -2162,11 +2176,10 @@
                                     "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_const": "",
                                     "c_get_value": "",
-                                    "c_rv_decl": "enum CLA_Class1_DIRECTION SHC_rv",
                                     "c_type": "enum CLA_Class1_DIRECTION",
-                                    "c_val": "static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv)",
                                     "c_var": "SHC_rv",
                                     "cfi_type": "CFI_type_int",
+                                    "ci_type": "int",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -2203,11 +2216,10 @@
                                     "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                     "c_const": "",
                                     "c_get_value": "",
-                                    "c_rv_decl": "int SHC_rv",
                                     "c_type": "enum CLA_Class1_DIRECTION",
-                                    "c_val": "static_cast<int>(SHCXX_rv)",
                                     "c_var": "SHC_rv",
                                     "cfi_type": "CFI_type_int",
+                                    "ci_type": "int",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
@@ -2266,13 +2278,12 @@
                                     "c_type": "enum CLA_Class1_DIRECTION",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_int",
+                                    "ci_type": "int",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
                                     "cxx_addr": "&",
-                                    "cxx_decl": "classes::Class1::DIRECTION SHCXX_arg",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&SHCXX_arg",
                                     "cxx_type": "classes::Class1::DIRECTION",
-                                    "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
                                     "f_intent": "IN",
                                     "f_intent_attr": ", intent(IN)",
@@ -2295,13 +2306,12 @@
                                     "c_type": "int",
                                     "c_var": "arg",
                                     "cfi_type": "CFI_type_int",
+                                    "ci_type": "int",
                                     "cxx_abstract_decl": "classes::Class1::DIRECTION",
                                     "cxx_addr": "&",
-                                    "cxx_decl": "classes::Class1::DIRECTION SHCXX_arg",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&SHCXX_arg",
                                     "cxx_type": "classes::Class1::DIRECTION",
-                                    "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                     "cxx_var": "SHCXX_arg",
                                     "f_intent": "IN",
                                     "f_intent_attr": ", intent(IN)",
@@ -2675,6 +2685,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -2683,6 +2694,7 @@
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -2919,6 +2931,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "bool",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -2927,6 +2940,7 @@
                                     "c_type": "bool",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_Bool",
+                                    "cxx_abstract_decl": "bool",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -3187,6 +3201,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "char",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -3196,6 +3211,7 @@
                                     "c_var": "val",
                                     "c_var_len": "SHT_val_len",
                                     "cfi_type": "CFI_type_other",
+                                    "cxx_abstract_decl": "std::string",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -3529,9 +3545,7 @@
                                     "F_C_subprogram": "function",
                                     "c_abstract_decl": "const char *",
                                     "c_const": "const ",
-                                    "c_rv_decl": "const char * SHC_rv",
                                     "c_type": "char",
-                                    "c_val": "SHCXX_rv.c_str()",
                                     "c_var": "SHC_rv",
                                     "cfi_type": "CFI_type_other",
                                     "cxx_abstract_decl": "const std::string *",
@@ -4681,6 +4695,7 @@
                             },
                             "n": {
                                 "fmtc": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -4689,6 +4704,7 @@
                                     "c_type": "int",
                                     "c_var": "n",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&n",
@@ -4702,6 +4718,7 @@
                                     "typemap_name": "int"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -4710,6 +4727,7 @@
                                     "c_type": "int",
                                     "c_var": "n",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&n",
@@ -5251,6 +5269,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -5259,6 +5278,7 @@
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&val",
@@ -5543,6 +5563,7 @@
                             },
                             "val": {
                                 "fmtf": {
+                                    "c_abstract_decl": "int *",
                                     "c_addr": "",
                                     "c_const": "",
                                     "c_deref": "*",
@@ -5551,6 +5572,7 @@
                                     "c_type": "int",
                                     "c_var": "val",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int *",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "val",
@@ -5842,11 +5864,10 @@
                             "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_rv_decl": "enum CLA_Class1_DIRECTION SHC_rv",
                             "c_type": "enum CLA_Class1_DIRECTION",
-                            "c_val": "static_cast<enum CLA_Class1_DIRECTION>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "ci_type": "int",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -5883,11 +5904,10 @@
                             "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                             "c_const": "",
                             "c_get_value": "",
-                            "c_rv_decl": "int SHC_rv",
                             "c_type": "enum CLA_Class1_DIRECTION",
-                            "c_val": "static_cast<int>(SHCXX_rv)",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_int",
+                            "ci_type": "int",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -5946,13 +5966,12 @@
                             "c_type": "enum CLA_Class1_DIRECTION",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "ci_type": "int",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
                             "cxx_addr": "&",
-                            "cxx_decl": "classes::Class1::DIRECTION SHCXX_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
                             "cxx_type": "classes::Class1::DIRECTION",
-                            "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
@@ -5975,13 +5994,12 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "ci_type": "int",
                             "cxx_abstract_decl": "classes::Class1::DIRECTION",
                             "cxx_addr": "&",
-                            "cxx_decl": "classes::Class1::DIRECTION SHCXX_arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_arg",
                             "cxx_type": "classes::Class1::DIRECTION",
-                            "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                             "cxx_var": "SHCXX_arg",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
@@ -6186,6 +6204,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "CLA_Class1",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -6195,6 +6214,7 @@
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "classes::Class1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_arg_cxx",
@@ -6208,6 +6228,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "CLA_Class1",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -6217,6 +6238,7 @@
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "classes::Class1",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_arg_cxx",
@@ -6459,6 +6481,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "const CLA_Class1 *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -6468,6 +6491,7 @@
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const classes::Class1 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(SHC_arg_cxx)",
@@ -6481,6 +6505,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "const CLA_Class1 *",
                             "c_addr": "",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -6490,6 +6515,7 @@
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_other",
+                            "cxx_abstract_decl": "const classes::Class1 *",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(SHC_arg_cxx)",
@@ -7600,6 +7626,7 @@
                     },
                     "flag": {
                         "fmtc": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -7608,6 +7635,7 @@
                             "c_type": "int",
                             "c_var": "flag",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
@@ -7621,6 +7649,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -7629,6 +7658,7 @@
                             "c_type": "int",
                             "c_var": "flag",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
@@ -7796,6 +7826,7 @@
                     },
                     "arg": {
                         "fmtc": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -7804,6 +7835,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -7817,6 +7849,7 @@
                             "typemap_name": "int"
                         },
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -7825,6 +7858,7 @@
                             "c_type": "int",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
@@ -8142,9 +8176,7 @@
                             "c_abstract_decl": "const char *",
                             "c_char_len": "30",
                             "c_const": "const ",
-                            "c_rv_decl": "const char * SHC_rv",
                             "c_type": "char",
-                            "c_val": "SHCXX_rv.c_str()",
                             "c_var": "SHC_rv",
                             "cfi_type": "CFI_type_other",
                             "cxx_abstract_decl": "const std::string *",

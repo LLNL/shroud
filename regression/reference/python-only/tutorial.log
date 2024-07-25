@@ -13,7 +13,6 @@ Python function void FortranGenericOverloaded(const std::string &name, double ar
 Python function int UseDefaultOverload(int num, int offset=0, int stride=1)
 Python function int UseDefaultOverload(double type, int num, int offset=0, int stride=1)
 Python function TypeID typefunc(TypeID arg)
-Python function EnumTypeID enumfunc(EnumTypeID arg)
 Python function Color colorfunc(Color arg)
 Python function void getMinMax(int &min +intent(out), int &max +intent(out))
 Python function const std::string &LastFunctionCalled(void) +len(30)

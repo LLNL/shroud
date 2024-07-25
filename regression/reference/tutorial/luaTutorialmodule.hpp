@@ -21,11 +21,6 @@ extern "C" {
 typedef int TUT_TypeID;
 // splicer end typedef.TypeID
 
-// typedef tutorial::EnumTypeID
-// splicer begin typedef.EnumTypeID
-typedef int TUT_EnumTypeID;
-// splicer end typedef.EnumTypeID
-
 int luaopen_tutorial(lua_State *L);
 
 #ifdef __cplusplus

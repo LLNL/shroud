@@ -47,14 +47,6 @@ declarations:
 #      iso_c_binding:
 #      - C_LONG
 
-- decl: typedef int TypeID
-  fields:
-    # enum for types
-    c_header : sidre/SidreTypes.h
-    cxx_header : sidre/SidreWrapperHelpers.hpp
-    cxx_to_c : static_cast<int>({cxx_var})
-    c_to_cxx : getTypeID({c_var})
-
 - decl: namespace example
   declarations:
   - decl: namespace nested
@@ -157,22 +149,8 @@ declarations:
       # test forward declarations
       - decl: ExClass1 *get_class1(const ExClass1 *in)
 
-      # typedefs that require modules
-      - decl: ExClass2 * declare(TypeID type, SidreLength len = 1)
-        # by returning this,the C++ function allows chaining.
-        # make them subroutines in Fortran.
-        return_this: True
-        fortran_generic:
-        -  decl: (int len=1)
-           function_suffix: _int
-        -  decl: (long len=1)
-           function_suffix: _long
-
       # void function
       - decl: void destroyall()
-
-      # return typedef'd type
-      - decl: TypeID getTypeID() const
 
       - decl: template<typename ValueType> void setValue(ValueType value)
         cxx_template:

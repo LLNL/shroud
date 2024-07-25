@@ -92,11 +92,6 @@ module tutorial_mod
     integer, parameter :: type_id = C_INT
     ! splicer end typedef.TypeID
 
-    ! typedef tutorial::EnumTypeID
-    ! splicer begin typedef.EnumTypeID
-    integer, parameter :: enum_type_id = C_INT
-    ! splicer end typedef.EnumTypeID
-
     ! start abstract callback1_incr
     abstract interface
         function callback1_incr(arg0) bind(C)
@@ -587,23 +582,6 @@ module tutorial_mod
             integer(type_id), value, intent(IN) :: arg
             integer(type_id) :: SHT_rv
         end function typefunc
-    end interface
-
-    ! ----------------------------------------
-    ! Function:  EnumTypeID enumfunc
-    ! Statement: f_function_native
-    ! ----------------------------------------
-    ! Argument:  EnumTypeID arg
-    ! Statement: f_in_native
-    interface
-        function enumfunc(arg) &
-                result(SHT_rv) &
-                bind(C, name="TUT_enumfunc")
-            import :: enum_type_id
-            implicit none
-            integer(enum_type_id), value, intent(IN) :: arg
-            integer(enum_type_id) :: SHT_rv
-        end function enumfunc
     end interface
 
     ! ----------------------------------------
@@ -1202,24 +1180,6 @@ contains
         SHT_rv = c_typefunc(arg)
         ! splicer end function.typefunc
     end function typefunc
-#endif
-
-#if 0
-    ! Only the interface is needed
-    ! ----------------------------------------
-    ! Function:  EnumTypeID enumfunc
-    ! Statement: f_function_native
-    ! ----------------------------------------
-    ! Argument:  EnumTypeID arg
-    ! Statement: f_in_native
-    function enumfunc(arg) &
-            result(SHT_rv)
-        integer(enum_type_id), value, intent(IN) :: arg
-        integer(enum_type_id) :: SHT_rv
-        ! splicer begin function.enumfunc
-        SHT_rv = c_enumfunc(arg)
-        ! splicer end function.enumfunc
-    end function enumfunc
 #endif
 
 #if 0

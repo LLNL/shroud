@@ -15,13 +15,6 @@
 #ifndef WRAPEXAMPLE_NESTED_EXCLASS2_H
 #define WRAPEXAMPLE_NESTED_EXCLASS2_H
 
-// typemap
-#include "wrapUserLibrary.h"
-#ifdef __cplusplus
-#include "sidre/SidreWrapperHelpers.hpp"
-#else
-#include "sidre/SidreTypes.h"
-#endif
 // shroud
 #include "typesUserLibrary.h"
 
@@ -79,18 +72,8 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
     AA_example_nested_ExClass1 * SHC_rv);
 
-void AA_example_nested_ExClass2_declare_0(
-    AA_example_nested_ExClass2 * self, AA_TypeID type);
-
-void AA_example_nested_ExClass2_declare_1(
-    AA_example_nested_ExClass2 * self, AA_TypeID type,
-    SIDRE_SidreLength len);
-
 void AA_example_nested_ExClass2_destroyall(
     AA_example_nested_ExClass2 * self);
-
-AA_TypeID AA_example_nested_ExClass2_getTypeID(
-    const AA_example_nested_ExClass2 * self);
 
 void AA_example_nested_ExClass2_setValue_int(
     AA_example_nested_ExClass2 * self, int value);

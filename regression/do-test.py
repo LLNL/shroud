@@ -579,7 +579,14 @@ if __name__ == "__main__":
                      "--option", "F_CFI=true",
                  ]),
         TestDesc("memdoc"),
-        TestDesc("wrap"),
+        TestDesc("wrap-c", yaml="wrap",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("wrap-cxx", yaml="wrap",
+                 cmdline=[
+                     "--language", "c++",
+                 ]),
         TestDesc("error",
                  keywords=["err"]),
         TestDesc("error-stmt",

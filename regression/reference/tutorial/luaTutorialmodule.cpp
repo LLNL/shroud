@@ -463,24 +463,6 @@ static int l_typefunc(lua_State *L)
     // splicer end function.typefunc
 }
 
-// EnumTypeID enumfunc(EnumTypeID arg)
-// ----------------------------------------
-// Function:  EnumTypeID enumfunc
-// Statement: lua_function_native
-// ----------------------------------------
-// Argument:  EnumTypeID arg
-// Statement: lua_in_native
-static int l_enumfunc(lua_State *L)
-{
-    // splicer begin function.enumfunc
-    tutorial::EnumTypeID arg =
-        static_cast<tutorial::EnumTypeID>(lua_tointeger(L, 1));
-    tutorial::EnumTypeID SHCXX_rv = tutorial::enumfunc(arg);
-    lua_pushinteger(L, static_cast<int>(SHCXX_rv));
-    return 1;
-    // splicer end function.enumfunc
-}
-
 // Color colorfunc(Color arg)
 // ----------------------------------------
 // Function:  Color colorfunc
@@ -525,7 +507,6 @@ static const struct luaL_Reg l_Tutorial_Reg [] = {
     {"FortranGenericOverloaded", l_FortranGenericOverloaded},
     {"UseDefaultOverload", l_UseDefaultOverload},
     {"typefunc", l_typefunc},
-    {"enumfunc", l_enumfunc},
     {"colorfunc", l_colorfunc},
     {"LastFunctionCalled", l_LastFunctionCalled},
     // splicer begin register

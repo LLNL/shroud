@@ -37,9 +37,7 @@
     {
         "alias": [
             "f_function_native",
-            "c_function_native",
-            "f_function_enum",
-            "c_function_enum"
+            "c_function_native"
         ]
     },
     {
@@ -942,24 +940,12 @@
     },
     {
         "alias": [
-            "c_out_native_&*"
-        ]
-    },
-    {
-        "alias": [
             "f_in_native*",
             "c_in_native*",
-            "f_in_native&",
-            "c_in_native&",
             "f_out_char*",
             "c_out_char*",
-            "f_out_native&",
-            "c_out_native&",
-            "c_out_native*&",
             "f_inout_native*",
             "c_inout_native*",
-            "f_inout_native&",
-            "c_inout_native&",
             "f_out_native***",
             "c_out_native***",
             "f_in_char*",
@@ -968,13 +954,9 @@
             "c_inout_char*",
             "f_in_void",
             "c_in_void",
-            "f_out_void*&",
-            "c_out_void*&",
             "f_in_char*_capi",
             "f_out_char*_capi",
             "f_inout_char*_capi",
-            "f_in_enum",
-            "c_in_enum",
             "f_in_unknown",
             "c_in_unknown"
         ]
@@ -1004,6 +986,25 @@
                 "{typemap.f_kind}"
             ]
         }
+    },
+    {
+        "alias": [
+            "f_in_native&",
+            "c_in_native&",
+            "f_out_native&",
+            "c_out_native&",
+            "f_inout_native&",
+            "c_inout_native&",
+            "c_out_native*&",
+            "f_out_void*&",
+            "c_out_void*&"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
+        ]
+    },
+    {
+        "name":"############################################################"
     },
     {
         "name": "f_mixin_local-logical-var",
@@ -1408,6 +1409,92 @@
         "mixin": [
             "f_mixin_function_ptr"
         ]
+    },
+    {
+        "name":"##### enum #################################################"
+    },
+    {
+        "alias": [
+            "f_in_enum",
+            "c_in_enum"
+        ],
+        "notes": [
+            "Use gen.cidecl to get the C interface type.",
+            "enums use option.F_enum_type to control the C type."
+        ],
+        "i_arg_decl": [
+            "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cidecl.c_var}"
+        ],
+        "c_pre_call": [
+            "{gen.cxxdecl.cxx_var} =\t {gen.c_to_cxx};"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
+        "fmtdict": {
+            "cxx_var": "{CXX_local}{c_var}"
+        }
+    },
+    {
+        "alias": [
+            "f_out_enum*",
+            "c_out_enum*"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} {cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{c_local_cxx}"
+        ],
+        "c_post_call": [
+            "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+        ]
+    },
+    {
+        "alias": [
+            "f_inout_enum*",
+            "c_inout_enum*"
+        ],
+        "base": "f_out_enum*",
+        "c_pre_call": [
+            "{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_enum"
+        ],
+        "comments": [
+            "Return as the Fortran bind(C) type."
+        ],
+        "c_post_call": [
+            "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
+        ]
+    },
+    {
+        "alias": [
+            "c_function_enum"
+        ],
+        "c_post_call": [
+            "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
+        ]
+    },
+    {
+        "name":"############################################################"
     },
     {
         "alias": [
@@ -2002,13 +2089,19 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
-        }
+        },
+        "c_post_call": [
+            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+        ]
     },
     {
         "name": "c_function_string",
         "notimplemented": true,
         "comments": [
             "Cannot return a char array by value."
+        ],
+        "c_post_call": [
+            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
         ]
     },
     {
@@ -2177,34 +2270,6 @@
         ],
         "c_call": [
             "*{c_local_cxx} = {C_call_function};"
-        ]
-    },
-    {
-        "alias": [
-            "f_out_enum*",
-            "c_out_enum*"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} {cxx_var};"
-        ],
-        "c_arg_call": [
-            "&{c_local_cxx}"
-        ],
-        "c_post_call": [
-            "*{c_var} = {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
-        ]
-    },
-    {
-        "alias": [
-            "f_inout_enum*",
-            "c_inout_enum*"
-        ],
-        "base": "f_out_enum*",
-        "c_pre_call": [
-            "{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};"
         ]
     },
     {
@@ -2649,7 +2714,10 @@
             "iso_c_binding": [
                 "C_CHAR"
             ]
-        }
+        },
+        "c_arg_call": [
+            "*{cxx_var}"
+        ]
     },
     {
         "name": "f_out_vector_buf_targ_string_scalar",
@@ -3244,22 +3312,29 @@
         "alias": [
             "f_in_struct",
             "f_in_struct*",
-            "f_in_struct&",
             "f_out_struct*",
-            "f_out_struct&",
             "f_inout_struct*",
-            "f_inout_struct&",
             "c_in_struct",
             "c_in_struct*",
-            "c_in_struct&",
             "c_out_struct*",
-            "c_out_struct&",
-            "c_inout_struct*",
-            "c_inout_struct&"
+            "c_inout_struct*"
         ],
         "notes": [
             "Used with in, out, inout.",
             "C pointer -> void pointer -> C++ pointer"
+        ]
+    },
+    {
+        "alias": [
+            "f_in_struct&",
+            "c_in_struct&",
+            "f_out_struct&",
+            "c_out_struct&",
+            "f_inout_struct&",
+            "c_inout_struct&"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
         ]
     },
     {

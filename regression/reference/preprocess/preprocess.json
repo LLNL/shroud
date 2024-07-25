@@ -428,6 +428,7 @@
                             },
                             "i": {
                                 "fmtc": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -436,6 +437,7 @@
                                     "c_type": "int",
                                     "c_var": "i",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&i",
@@ -449,6 +451,7 @@
                                     "typemap_name": "int"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -457,6 +460,7 @@
                                     "c_type": "int",
                                     "c_var": "i",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&i",
@@ -774,6 +778,7 @@
                             },
                             "flag": {
                                 "fmtc": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -782,6 +787,7 @@
                                     "c_type": "int",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",
@@ -795,6 +801,7 @@
                                     "typemap_name": "int"
                                 },
                                 "fmtf": {
+                                    "c_abstract_decl": "int",
                                     "c_addr": "&",
                                     "c_const": "",
                                     "c_deref": "",
@@ -803,6 +810,7 @@
                                     "c_type": "int",
                                     "c_var": "flag",
                                     "cfi_type": "CFI_type_int",
+                                    "cxx_abstract_decl": "int",
                                     "cxx_addr": "&",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",

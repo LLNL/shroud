@@ -204,6 +204,7 @@
                     },
                     "arg1": {
                         "fmtf": {
+                            "c_abstract_decl": "double",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -212,6 +213,7 @@
                             "c_type": "double",
                             "c_var": "arg1",
                             "cfi_type": "CFI_type_double",
+                            "cxx_abstract_decl": "double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -232,6 +234,7 @@
                     },
                     "arg2": {
                         "fmtf": {
+                            "c_abstract_decl": "int",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -240,6 +243,7 @@
                             "c_type": "int",
                             "c_var": "arg2",
                             "cfi_type": "CFI_type_int",
+                            "cxx_abstract_decl": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg2",
