@@ -855,6 +855,8 @@ c_function_char*_buf_copy:
 c_function_enum:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
   intent: function
   name: c_function_enum
   owner: library
@@ -1241,6 +1243,8 @@ c_function_shadow_capptr:
 c_function_string:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   comments:
   - Cannot return a char array by value.
   intent: function
@@ -1250,6 +1254,8 @@ c_function_string:
 c_function_string&:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   i_module:
@@ -1349,6 +1355,8 @@ c_function_string&_buf_copy:
 c_function_string&_copy:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   i_module:
@@ -1365,6 +1373,8 @@ c_function_string&_copy:
 c_function_string*:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   i_module:
@@ -1419,6 +1429,8 @@ c_function_string*_buf_copy:
 c_function_string*_caller:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   i_module:
@@ -1435,6 +1447,8 @@ c_function_string*_caller:
 c_function_string*_copy:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   i_module:
@@ -1451,6 +1465,8 @@ c_function_string*_copy:
 c_function_string*_library:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
   - return {c_var};
   i_module:
@@ -5115,6 +5131,10 @@ f_function_char_cfi_pointer:
 f_function_enum:
   c_arg_call:
   - '{cxx_var}'
+  c_post_call:
+  - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
+  comments:
+  - Return as the Fortran bind(C) type.
   intent: function
   name: f_function_enum
   owner: library

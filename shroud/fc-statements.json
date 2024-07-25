@@ -37,9 +37,7 @@
     {
         "alias": [
             "f_function_native",
-            "c_function_native",
-            "f_function_enum",
-            "c_function_enum"
+            "c_function_native"
         ]
     },
     {
@@ -1413,7 +1411,7 @@
         ]
     },
     {
-        "name":"############################################################"
+        "name":"##### enum #################################################"
     },
     {
         "alias": [
@@ -1474,6 +1472,25 @@
         "base": "f_out_enum*",
         "c_pre_call": [
             "{cxx_type} {cxx_var} = {cast_static}{cxx_type}{cast1}*{c_var}{cast2};"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_enum"
+        ],
+        "comments": [
+            "Return as the Fortran bind(C) type."
+        ],
+        "c_post_call": [
+            "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
+        ]
+    },
+    {
+        "alias": [
+            "c_function_enum"
+        ],
+        "c_post_call": [
+            "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
         ]
     },
     {
@@ -2072,13 +2089,19 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
-        }
+        },
+        "c_post_call": [
+            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
+        ]
     },
     {
         "name": "c_function_string",
         "notimplemented": true,
         "comments": [
             "Cannot return a char array by value."
+        ],
+        "c_post_call": [
+            "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
         ]
     },
     {

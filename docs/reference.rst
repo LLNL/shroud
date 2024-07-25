@@ -1425,6 +1425,9 @@ c_helper_*
     It will contain the name of the C function for the helper.
     Used by statements *c_pre_call* and *c_post_call* statements.
 
+c_type
+    The C type of the argument.
+
 c_var
     The C name of the argument.
 
@@ -1453,6 +1456,10 @@ c_var_cdesc2
 c_var_extents
 
 c_var_lower
+
+ci_type
+    The C type of the argument for the Fortran interface.
+    Used with enumerations and option *F_enum_type*.
 
 cxx_abstract_decl
   Includes the declaration and any declarators.

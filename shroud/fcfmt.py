@@ -201,6 +201,8 @@ class FillFormat(object):
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.sh_type = result_typemap.sh_type
             fmt_result.cfi_type = result_typemap.cfi_type
+            if result_typemap.ci_type:
+                fmt_result.ci_type = result_typemap.ci_type
             converter, lang = find_result_converter(
                 wlang, self.language, result_typemap)
             if ast.template_arguments:
