@@ -432,6 +432,8 @@ class FillFormat(object):
             fmt.cxx_type = ntypemap.cxx_type
             fmt.sh_type = ntypemap.sh_type
             fmt.cfi_type = ntypemap.cfi_type
+            if ntypemap.ci_type:
+                fmt.ci_type = ntypemap.ci_type
             fmt.idtor = "0"
 
             if ntypemap.base != "shadow" and ast.template_arguments:
