@@ -52,6 +52,9 @@
         "comments": [
             "Call the C wrapper as a subroutine."
         ],
+        "mixin": [
+            "c_mixin_noargs"
+        ],
         "f_call": [
             "call {F_C_call}({F_arg_c_call})"
         ],
@@ -3184,7 +3187,6 @@
             "Do not return anything."
         ],
         "mixin": [
-            "c_mixin_noargs",
             "f_mixin_function-to-subroutine"
         ],
         "f_result": "subroutine",
@@ -3321,7 +3323,6 @@
             "c_dtor"
         ],
         "mixin": [
-            "c_mixin_noargs",
             "f_mixin_function-to-subroutine"
         ],
         "lang_c": {
