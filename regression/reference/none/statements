@@ -149,7 +149,7 @@ root
       destructor
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
-      function
+      function -- c_mixin_function
         char*
           cdesc -- c_mixin_function_char*_cdesc
         string
@@ -692,9 +692,9 @@ c_function:
   owner: library
 c_function_bool:
   name: c_function_bool
+  comments:
+  - No arguments to a function.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_char:
   name: c_function_char
@@ -852,9 +852,9 @@ c_function_char*_buf_copy:
   owner: library
 c_function_enum:
   name: c_function_enum
+  comments:
+  - No arguments to a function.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -1147,13 +1147,12 @@ c_function_shadow*_capsule:
 c_function_shadow*_this:
   name: c_function_shadow*_this
   comments:
+  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   notes:
   - Input set return_this.
   - Do not return anything.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{C_call_function};'
   c_return_type: void
@@ -1251,6 +1250,8 @@ c_function_string:
   notimplemented: true
 c_function_string&:
   name: c_function_string&
+  comments:
+  - No arguments to a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1260,8 +1261,6 @@ c_function_string&:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
@@ -1352,6 +1351,8 @@ c_function_string&_buf_copy:
   owner: library
 c_function_string&_copy:
   name: c_function_string&_copy
+  comments:
+  - No arguments to a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1361,8 +1362,6 @@ c_function_string&_copy:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
@@ -1370,6 +1369,8 @@ c_function_string&_copy:
   owner: library
 c_function_string*:
   name: c_function_string*
+  comments:
+  - No arguments to a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1379,8 +1380,6 @@ c_function_string*:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
@@ -1426,6 +1425,8 @@ c_function_string*_buf_copy:
   owner: library
 c_function_string*_caller:
   name: c_function_string*_caller
+  comments:
+  - No arguments to a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1435,8 +1436,6 @@ c_function_string*_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
@@ -1444,6 +1443,8 @@ c_function_string*_caller:
   owner: library
 c_function_string*_copy:
   name: c_function_string*_copy
+  comments:
+  - No arguments to a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1453,8 +1454,6 @@ c_function_string*_copy:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
@@ -1462,6 +1461,8 @@ c_function_string*_copy:
   owner: library
 c_function_string*_library:
   name: c_function_string*_library
+  comments:
+  - No arguments to a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1471,8 +1472,6 @@ c_function_string*_library:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   c_return:
@@ -3134,6 +3133,12 @@ c_mixin_destructor_new-vector:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
   - delete cxx_ptr;
   owner: library
+c_mixin_function:
+  name: c_mixin_function
+  comments:
+  - No arguments to a function.
+  intent: mixin
+  owner: library
 c_mixin_function_char*_cdesc:
   name: c_mixin_function_char*_cdesc
   comments:
@@ -4394,10 +4399,12 @@ f_dtor:
   owner: library
 f_function_bool:
   name: f_function_bool
+  comments:
+  - No arguments to a function.
   intent: function
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_char:
   name: f_function_char
@@ -5119,8 +5126,8 @@ f_function_enum:
   comments:
   - Return as the Fortran bind(C) type.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5898,6 +5905,7 @@ f_function_shadow*_capsule:
 f_function_shadow*_this:
   name: f_function_shadow*_this
   comments:
+  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   notes:
   - Input set return_this.
@@ -5906,8 +5914,6 @@ f_function_shadow*_this:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{C_call_function};'
   c_return_type: void
@@ -11079,11 +11085,11 @@ f_mixin_char_cdesc_pointer:
   owner: library
 f_mixin_function:
   name: f_mixin_function
+  comments:
+  - No arguments to a function.
   intent: mixin
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
