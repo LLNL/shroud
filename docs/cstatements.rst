@@ -4,24 +4,26 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+.. _top_C_Statements:
+   
 C Statements
 ============
 
 .. note:: Work in progress
 
+``{}`` denotes a format field. ``[]`` is a statement field.
 
 .. code-block:: text
 
     extern "C"
-    {C_return_type} {C_name}(c_arg_decl)
+    {C_return_type} {C_name}({C_prototype})
     {
-        {c_pre_call}
-        {c_call_code}
-        {c_call}    c_arg_call
-        {post_call_pattern}
-        {c_post_call}
-        {c_final}
-        {c_return}
+        [c_pre_call]
+        [c_call]
+        [post_call_pattern]
+        [c_post_call]
+        [c_final]
+        [c_return]
     }
 
 A corresponding ``bind(C)`` interface can be created for Fortran.
@@ -29,12 +31,12 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
 .. code-block:: text
 
     {F_C_subprogram} {F_C_name}({i_arg_names}) &
-        [result({i_result_var}) & ]
+        result({i_result_var}) &
         bind(C, name="{C_name}")
-        i_module
-        i_import
-        i_arg_decl
-        i_result_decl
+        [i_module]
+        [i_import]
+        [i_arg_decl]
+        [i_result_decl]
     end {F_C_subprogram} {F_C_name}
 
 .. Typically have different groups for pointer vs reference
@@ -45,7 +47,13 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
 Format fields
 -------------
 
-* C_prototype -> c_arg_decl
+* C_prototype
+  Built up from *c_arg_decl*.
+
+* C_call_function
+  Built up from *c_arg_call*.
+  Used with statement *c_call*.
+  
 * F_C_clause =
 * F_C_arguments     = i_arg_names
 * F_C_result_clause = i_result_var
@@ -127,15 +135,12 @@ Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 c_arg_decl
 ^^^^^^^^^^
 
-A list of declarations to append to the prototype in the C wrapper.
-Defaults to *None* which will cause Shroud to generate an argument from
-the wrapped function's argument.
+A list of declarations to create the format field *C_prototype*.
 An empty list will cause no declaration to be added.
-Functions do not add arguments by default.
-A trailing semicolon will be provided.
+Functions do not add an argument by default.
 
 .. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
-          exist in a group and have the same number of names.
+          exist together in a statement group and have the same number of names.
 
 c_arg_call
 ^^^^^^^^^^
@@ -163,9 +168,12 @@ Code used with *intent(in)* arguments to convert from C to C++.
 c_call
 ^^^^^^
 
-Code to call function.  This is usually generated.
-An exception which require explicit call code are constructors
-and destructors for shadow types.
+Code to call function.  This is usually defaulted.
+For ``void`` functions ``{C_call_function};`` and for other functions
+``{cxx_rv_decl} = {C_call_function}``.
+
+An example of explicit *c_call* code are constructors and destructors
+for shadow types.
 
 .. sets need_wrapper
 

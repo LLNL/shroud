@@ -671,8 +671,6 @@ c_dtor:
   - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: dtor
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
@@ -862,9 +860,9 @@ c_function_enum:
   owner: library
 c_function_native:
   name: c_function_native
+  comments:
+  - No arguments to a function.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_native&:
   name: c_function_native&
@@ -1657,8 +1655,6 @@ c_getter_native:
   comments:
   - No arguments to a function.
   intent: getter
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -1669,8 +1665,6 @@ c_getter_native*:
   comments:
   - No arguments to a function.
   intent: getter
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -3380,8 +3374,6 @@ c_mixin_noargs:
   comments:
   - No arguments to a function.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_mixin_out_native**:
   name: c_mixin_out_native**
@@ -4287,8 +4279,6 @@ c_setter:
   comments:
   - No arguments to a function.
   intent: setter
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_setter
   owner: library
@@ -4344,8 +4334,6 @@ c_subroutine:
   comments:
   - No arguments to a function.
   intent: subroutine
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_ctor_shadow_capptr:
   name: f_ctor_shadow_capptr
@@ -4397,8 +4385,6 @@ f_dtor:
   intent: dtor
   f_call:
   - call {F_C_call}({F_arg_c_call})
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
@@ -5140,9 +5126,11 @@ f_function_enum:
   owner: library
 f_function_native:
   name: f_function_native
+  comments:
+  - No arguments to a function.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   owner: library
 f_function_native&:
   name: f_function_native&
@@ -8685,8 +8673,6 @@ f_getter_bool:
   comments:
   - No arguments to a function.
   intent: getter
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8697,8 +8683,6 @@ f_getter_native:
   comments:
   - No arguments to a function.
   intent: getter
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8762,8 +8746,6 @@ f_getter_native*_pointer:
   comments:
   - No arguments to a function.
   intent: getter
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -13193,8 +13175,6 @@ f_setter:
   intent: setter
   f_call:
   - call {F_C_call}({F_arg_c_call})
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - // skip call c_setter
   owner: library
@@ -13332,8 +13312,6 @@ f_subroutine:
   intent: subroutine
   f_call:
   - call {F_C_call}({F_arg_c_call})
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 ***** Python
 root

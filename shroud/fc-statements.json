@@ -4,6 +4,7 @@
         "comments": [
             "No arguments to a function."
         ],
+        "c_arg_call": [],
         "c_arg_decl": [],
         "i_arg_decl": [],
         "i_arg_names": []
@@ -38,6 +39,10 @@
         "alias": [
             "f_function_native",
             "c_function_native"
+        ],
+        "mixin": [
+            "c_mixin_noargs",
+            "f_mixin_function"
         ]
     },
     {

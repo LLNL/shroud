@@ -10,10 +10,16 @@ Statements
 ==========
 
 Shroud can be thought of as a fancy macro processor.
-The statement data structure is used to define code that should be
+The statement data structure is used to define code snippets that should be
 used to create the wrapper.
 Combinations of language, type and attributes are used to select
-a statement entry.
+a statement name based on the YAML input.
+
+Details for :ref:`C <top_C_Statements>` and :ref:`Fortran <top_Fortran_Statements>`
+are provided in other sections.
+
+
+Python format fields....
 
 
 Statement names or alias which start with a ``#`` are ignored.
