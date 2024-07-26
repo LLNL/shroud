@@ -5,7 +5,7 @@ root
       shadow
         capptr -- c_ctor_shadow_capptr
     dtor -- c_dtor
-    function -- c_function
+    function
       bool -- c_function_bool
       char -- c_function_char
       char* -- c_function_char*
@@ -684,12 +684,6 @@ c_dtor:
   lang_cxx:
     impl_header:
     - <cstddef>
-c_function:
-  name: c_function
-  intent: function
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
 c_function_bool:
   name: c_function_bool
   comments:
