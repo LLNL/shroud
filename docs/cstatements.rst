@@ -50,108 +50,23 @@ Format fields
 * F_C_arguments     = i_arg_names
 * F_C_result_clause = i_result_var
 
-Lookup statements
------------------
-
-The statements for an argument are looked up by converting the type
-and attributes into an underscore delimited string.
-
-
-* language - ``c``
-
-* intent - ``in``, ``out``, ``inout``, ``function``, ``ctor``, ``dtor``, ``getter``, ``setter``
-
-* Abstract declaration. For example, ``native``, ``native*`` or ``native**``.
-  May include template arguments ``vector<native>``.
-  Uses the typemap field **sgroup**.
-
-* api - from attribute
-  ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
-
-* deref - from attribute
-  ``allocatable``, ``pointer``, ``raw``, ``scalar``
-
     
-statements
+Statements
 ----------
 
-..        name="c_default",
+These are listed in the order they appear in the wrapper.
 
 name
 ^^^^
 
-A name can contain variants separated by ``/``.
+Must start with a ``c``.
 
-.. code-block:: yaml
-
-    - name: c_in/out/inout_native_*_cfi
-
-This is equivelent to having three groups:
-    
-.. code-block:: yaml
-
-    - name: c_in_native_*_cfi
-    - name: c_out_native_*_cfi
-    - name: c_inout_native_*_cfi
-
-
-iface_header
-^^^^^^^^^^^^
-
-List of header files which will be included in the generated header
-for the C wrapper.  These headers must be C only and will be
-included after ``ifdef __cplusplus``.
-Used for headers needed for declarations in *c_arg_decl*.
-Can contain headers required for the generated prototypes.
-
-For example, ``ISO_Fortran_binding.h`` is C only.
-
-.. The Cray ftn compiler requires extern "C".
-
-.. note that typemaps will also add c_headers.
-
-impl_header
+i_arg_names
 ^^^^^^^^^^^
 
-A list of header files which will be added to the C
-wrapper implementation.
-These headers may include C++ code.
-
-.. listed in fc_statements as *c_impl_header* and *cxx_impl_header*
-
-c_helper
-^^^^^^^^
-
-A list of helper functions which will be added to the wrapper file.
-The format dictionary will be applied to the list for additional
-flexibility.
-
-.. code-block:: yaml
-
-    c_helper:
-    - capsule_data_helper
-    - vector_context
-    - vector_copy_{cxx_T}
-
-Each helper will add an entry into the format dictionary with
-the name of the function or type created by the helper.
-The format value is the helper name prefixed by *c_helper_*.
-For example, format field *c_helper_capsule_data_helper* may be ``TEM_SHROUD_capsule_data``.
-
-There is no current way to add additional helper functions.
-
-.. These functions are defined in whelper.py.
-
-
-c_arg_decl
-^^^^^^^^^^
-
-A list of declarations to append to the prototype in the C wrapper.
-Defaults to *None* which will cause Shroud to generate an argument from
-the wrapped function's argument.
+Names of arguments to pass to C function.
+Defaults to ``{F_C_var}``.
 An empty list will cause no declaration to be added.
-Functions do not add arguments by default.
-A trailing semicolon will be provided.
 
 .. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
           exist in a group and have the same number of names.
@@ -170,16 +85,6 @@ An empty list will cause no declaration to be added.
 
 .. c_var  c_f_dimension
 
-i_arg_names
-^^^^^^^^^^^
-
-Names of arguments to pass to C function.
-Defaults to ``{F_C_var}``.
-An empty list will cause no declaration to be added.
-
-.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
-          exist in a group and have the same number of names.
-
 i_result_decl
 ^^^^^^^^^^^^^
 
@@ -187,6 +92,9 @@ A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
 
+i_result_var
+^^^^^^^^^^^^
+   
 i_import
 ^^^^^^^^
 
@@ -215,6 +123,19 @@ Fortran modules used in the Fortran interface:
 Fields will be expanded using the format dictionary before being used.
 If unset, then *f_module* will be used when creating the interface.
 Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
+
+c_arg_decl
+^^^^^^^^^^
+
+A list of declarations to append to the prototype in the C wrapper.
+Defaults to *None* which will cause Shroud to generate an argument from
+the wrapped function's argument.
+An empty list will cause no declaration to be added.
+Functions do not add arguments by default.
+A trailing semicolon will be provided.
+
+.. note:: *c_arg_decl*, *i_arg_decl*, and *i_arg_names* must all
+          exist in a group and have the same number of names.
 
 c_arg_call
 ^^^^^^^^^^
@@ -247,17 +168,6 @@ An exception which require explicit call code are constructors
 and destructors for shadow types.
 
 .. sets need_wrapper
-
-c_need_wrapper
-^^^^^^^^^^^^^^
-
-There are occassions when a C wrapper is not needed when the Fortran
-wrapper can call the library function directly. For example, when
-language=c or the C++ library function is ``extern "C"``.
-
-*c_need_wrapper* can be set to *True* to force the C wrapper to be
-created.  This is useful when the wrapper is modified via other fields
-such as *c_return_type*.
 
 c_post_call
 ^^^^^^^^^^^
@@ -315,7 +225,94 @@ The Fortran wrapper is also changed to call the C wrapper as a subroutine.
    however, the Fortran wrapper does not parse the value so
    if it is a pointer, ``int *``, the typemap will not be found.
    It will also be necessary to set i_result_decl.
- 
+
+c_temps
+^^^^^^^
+
+A list of suffixes for temporary variable names.
+
+.. code-block:: yaml
+
+    c_temps=["len"]
+
+Create variable names in the format dictionary using
+``{fmt.c_temp}{rootname}_{name}``.
+For example, argument *foo* creates *SHT_foo_len*.
+
+The format field is named *c_var_{name}*.
+
+This field is also used to create names for the Fortran interface.
+In this case the format field is named *i_var_{name}*.
+
+c_local
+^^^^^^^
+
+Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
+*temps* is intended for arguments and is typically used in a mixin
+group.  *local* is used by group to generate names for local
+variables.  This allows creating names without conflicting with
+*temps* from a *mixin* group.
+
+The format field is named *c_local_{name}*.
+   
+c_helper
+^^^^^^^^
+
+A list of helper functions which will be added to the wrapper file.
+The format dictionary will be applied to the list for additional
+flexibility.
+
+.. code-block:: yaml
+
+    c_helper:
+    - capsule_data_helper
+    - vector_context
+    - vector_copy_{cxx_T}
+
+Each helper will add an entry into the format dictionary with
+the name of the function or type created by the helper.
+The format value is the helper name prefixed by *c_helper_*.
+For example, format field *c_helper_capsule_data_helper* may be ``TEM_SHROUD_capsule_data``.
+
+There is no current way to add additional helper functions.
+
+.. These functions are defined in whelper.py.
+
+c_need_wrapper
+^^^^^^^^^^^^^^
+
+There are occassions when a C wrapper is not needed when the Fortran
+wrapper can call the library function directly. For example, when
+language=c or the C++ library function is ``extern "C"``.
+
+*c_need_wrapper* can be set to *True* to force the C wrapper to be
+created.  This is useful when the wrapper is modified via other fields
+such as *c_return_type*.
+
+iface_header
+^^^^^^^^^^^^
+
+List of header files which will be included in the generated header
+for the C wrapper.  These headers must be C only and will be
+included after ``ifdef __cplusplus``.
+Used for headers needed for declarations in *c_arg_decl*.
+Can contain headers required for the generated prototypes.
+
+For example, ``ISO_Fortran_binding.h`` is C only.
+
+.. The Cray ftn compiler requires extern "C".
+
+.. note that typemaps will also add c_headers.
+
+impl_header
+^^^^^^^^^^^
+
+A list of header files which will be added to the C
+wrapper implementation.
+These headers may include C++ code.
+
+.. listed in fc_statements as *c_impl_header* and *cxx_impl_header*
+
 destructor_name
 ^^^^^^^^^^^^^^^
 
@@ -356,36 +353,6 @@ from the C++ library function.  The Fortran shadow class must keep
 this copy until the shadow class is deleted.
 
 Defaults to *library*.
-
-c_temps
-^^^^^^^
-
-A list of suffixes for temporary variable names.
-
-.. code-block:: yaml
-
-    c_temps=["len"]
-
-Create variable names in the format dictionary using
-``{fmt.c_temp}{rootname}_{name}``.
-For example, argument *foo* creates *SHT_foo_len*.
-
-The format field is named *c_var_{name}*.
-
-This field is also used to create names for the Fortran interface.
-In this case the format field is named *i_var_{name}*.
-
-c_local
-^^^^^^^
-
-Similar to *temps* but uses ``{fmt.C_local}{rootname}_{name}``.
-*temps* is intended for arguments and is typically used in a mixin
-group.  *local* is used by group to generate names for local
-variables.  This allows creating names without conflicting with
-*temps* from a *mixin* group.
-
-The format field is named *c_local_{name}*.
-
 
 
 lang_c and lang_cxx

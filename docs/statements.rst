@@ -16,8 +16,16 @@ Combinations of language, type and attributes are used to select
 a statement entry.
 
 
-Statement names or alias which start with a `#` are ignored.
+Statement names or alias which start with a ``#`` are ignored.
+This provides a way to add comments into the JSON file.
+(which does not support comments)
 
+.. code-block:: json
+
+    {
+        "name":"##### enum #################################################"
+    },
+                
 .. name
 
 .. comments
@@ -92,7 +100,68 @@ Statement names or alias which start with a `#` are ignored.
     - f_mixin_one
     f_pre_call:
     - "! comment two"            # replaces
-   
+
+
+Lookup statements
+-----------------
+
+The statements for an argument are looked up by converting the type
+and attributes into an underscore delimited string.
+
+
+* language - ``c``
+
+* intent - ``in``, ``out``, ``inout``, ``function``, ``ctor``, ``dtor``, ``getter``, ``setter``
+
+* Abstract declaration. For example, ``native``, ``native*`` or ``native**``.
+  May include template arguments ``vector<native>``.
+  Uses the typemap field **sgroup**.
+
+* api - from attribute
+  ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
+
+* deref - from attribute
+  ``allocatable``, ``pointer``, ``raw``, ``scalar``
+
+
+Common Statement Fields
+-----------------------
+
+name
+^^^^
+
+A name can contain variants separated by ``/``.
+
+.. code-block:: yaml
+
+    - name: c_in/out/inout_native_*_cfi
+
+This is equivelent to having three groups:
+    
+.. code-block:: yaml
+
+    - name: c_in_native_*_cfi
+    - name: c_out_native_*_cfi
+    - name: c_inout_native_*_cfi
+
+alias
+^^^^^
+
+List of other names which will be used for its contents.
+
+.. code-block:: yaml
+
+        name="fc_out_string_**_cdesc_allocatable",
+        alias=[
+            "f_out_string_**_cdesc_allocatable",
+            "c_out_string_**_cdesc_allocatable",
+        ],
+
+comments
+^^^^^^^^
+
+notes
+^^^^^
 
 Passing function result as an argument
 --------------------------------------
