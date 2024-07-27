@@ -399,6 +399,9 @@ def append_mixin(stmt, mixin):
         if key in ["alias", "base", "mixin", "name"]:
             pass
         elif isinstance(value, list):
+            if key == "notes":
+                # notes do not accumulate like other fields.
+                continue
             if key not in stmt:
                 stmt[key] = []
             if False:#True:

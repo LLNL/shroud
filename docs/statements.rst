@@ -35,8 +35,13 @@ This provides a way to add comments into the JSON file.
 .. name
 
 .. comments
+   Comments are appended as part of the mixin process.
+   The final group's comment will be a collection of all of the mixin's comments.
+   Each mixin can contribute a step in the wrapping process.
 
 .. notes
+   Notes are used provide usage notes for a group.
+   Notes are not mixed into groups.
 
 .. base - must be single name.
           Applied after all of the others mixins as parent of Scope.

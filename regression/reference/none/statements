@@ -668,7 +668,6 @@ c_ctor_shadow_capptr:
 c_dtor:
   name: c_dtor
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: dtor
   c_call:
@@ -687,13 +686,12 @@ c_dtor:
 c_function_bool:
   name: c_function_bool
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   owner: library
 c_function_char:
   name: c_function_char
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: function
   i_arg_names:
@@ -712,7 +710,7 @@ c_function_char:
 c_function_char*:
   name: c_function_char*
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
@@ -723,7 +721,6 @@ c_function_char*:
 c_function_char*_arg:
   name: c_function_char*_arg
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   notes:
@@ -765,7 +762,6 @@ c_function_char*_arg:
 c_function_char*_buf_arg:
   name: c_function_char*_buf_arg
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   notes:
@@ -807,7 +803,6 @@ c_function_char*_buf_arg:
 c_function_char*_buf_copy:
   name: c_function_char*_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   notes:
@@ -843,7 +838,7 @@ c_function_char*_buf_copy:
 c_function_enum:
   name: c_function_enum
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   c_post_call:
   - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
@@ -851,13 +846,13 @@ c_function_enum:
 c_function_native:
   name: c_function_native
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   owner: library
 c_function_native&:
   name: c_function_native&
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
@@ -868,7 +863,7 @@ c_function_native&:
 c_function_native*:
   name: c_function_native*
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
@@ -879,7 +874,7 @@ c_function_native*:
 c_function_native**:
   name: c_function_native**
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
@@ -890,7 +885,7 @@ c_function_native**:
 c_function_native*_caller:
   name: c_function_native*_caller
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
@@ -1135,7 +1130,6 @@ c_function_shadow*_capsule:
 c_function_shadow*_this:
   name: c_function_shadow*_this
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   notes:
   - Input set return_this.
@@ -1237,7 +1231,7 @@ c_function_string:
 c_function_string&:
   name: c_function_string&
   comments:
-  - No arguments to a function.
+  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1257,11 +1251,6 @@ c_function_string&_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1298,14 +1287,8 @@ c_function_string&_buf_arg:
 c_function_string&_buf_copy:
   name: c_function_string&_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1335,7 +1318,7 @@ c_function_string&_buf_copy:
 c_function_string&_copy:
   name: c_function_string&_copy
   comments:
-  - No arguments to a function.
+  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1353,7 +1336,7 @@ c_function_string&_copy:
 c_function_string*:
   name: c_function_string*
   comments:
-  - No arguments to a function.
+  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1371,14 +1354,8 @@ c_function_string*:
 c_function_string*_buf_copy:
   name: c_function_string*_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1408,7 +1385,7 @@ c_function_string*_buf_copy:
 c_function_string*_caller:
   name: c_function_string*_caller
   comments:
-  - No arguments to a function.
+  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1426,7 +1403,7 @@ c_function_string*_caller:
 c_function_string*_copy:
   name: c_function_string*_copy
   comments:
-  - No arguments to a function.
+  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1444,7 +1421,7 @@ c_function_string*_copy:
 c_function_string*_library:
   name: c_function_string*_library
   comments:
-  - No arguments to a function.
+  - Call a function.
   notes:
   - Fortran calling a C function without
   - any api argument - is this useful?
@@ -1464,11 +1441,6 @@ c_function_string_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1505,14 +1477,8 @@ c_function_string_buf_arg:
 c_function_string_buf_copy:
   name: c_function_string_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   i_arg_names:
   - '{i_var}'
@@ -1542,7 +1508,6 @@ c_function_string_buf_copy:
 c_function_struct:
   name: c_function_struct
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: function
   i_arg_names:
@@ -1622,13 +1587,11 @@ c_function_vector<native>_malloc:
 c_function_void*:
   name: c_function_void*
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   owner: library
 c_getter_native:
   name: c_getter_native
-  comments:
-  - No arguments to a function.
   intent: getter
   c_call:
   - // skip call c_getter
@@ -1637,8 +1600,6 @@ c_getter_native:
   owner: library
 c_getter_native*:
   name: c_getter_native*
-  comments:
-  - No arguments to a function.
   intent: getter
   c_call:
   - // skip call c_getter
@@ -1731,11 +1692,6 @@ c_in_char*_buf:
   name: c_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -1979,11 +1935,6 @@ c_in_string&_buf:
   name: c_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2024,11 +1975,6 @@ c_in_string*_buf:
   name: c_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2059,11 +2005,6 @@ c_in_string_buf:
   name: c_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2494,11 +2435,6 @@ c_inout_char*_buf:
   name: c_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2646,8 +2582,6 @@ c_inout_string&:
   name: c_inout_string&
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
   intent: inout
   c_arg_call:
   - '{c_local_cxx}'
@@ -2667,11 +2601,6 @@ c_inout_string&_buf:
   name: c_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -2704,8 +2633,6 @@ c_inout_string*:
   name: c_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
   intent: inout
   c_arg_call:
   - '&{c_local_cxx}'
@@ -2725,11 +2652,6 @@ c_inout_string*_buf:
   name: c_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -3112,7 +3034,7 @@ c_mixin_destructor_new-vector:
 c_mixin_function:
   name: c_mixin_function
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: mixin
   owner: library
 c_mixin_function_char*_cdesc:
@@ -3170,10 +3092,6 @@ c_mixin_function_vector_malloc:
   owner: library
 c_mixin_in_character_buf:
   name: c_mixin_in_character_buf
-  notes:
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: mixin
   i_arg_names:
   - '{i_var}'
@@ -3352,14 +3270,10 @@ c_mixin_native_cfi_pointer:
   owner: library
 c_mixin_noargs:
   name: c_mixin_noargs
-  comments:
-  - No arguments to a function.
   intent: mixin
   owner: library
 c_mixin_out_native**:
   name: c_mixin_out_native**
-  notes:
-  - double **count +intent(out)+dimension(ncount)
   intent: mixin
   c_arg_call:
   - '&{cxx_var}'
@@ -3475,11 +3389,6 @@ c_out_char_*_buf:
   name: c_out_char_*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3626,11 +3535,6 @@ c_out_string&_buf:
   name: c_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -3719,11 +3623,6 @@ c_out_string*_buf:
   name: c_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: out
   i_arg_names:
   - '{i_var}'
@@ -4257,8 +4156,6 @@ c_out_void*_cdesc:
     - "{cxx_type} * {c_var} = static_cast<{cxx_type} *>\t(const_cast<void *>({c_var_cdesc}->base_addr));"
 c_setter:
   name: c_setter
-  comments:
-  - No arguments to a function.
   intent: setter
   c_call:
   - // skip call c_setter
@@ -4284,11 +4181,6 @@ c_setter_string_scalar_buf:
   comments:
   - Extract meta data and pass to C.
   - Create std::string from Fortran meta data.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: setter
   i_arg_names:
   - '{i_var}'
@@ -4312,8 +4204,6 @@ c_setter_string_scalar_buf:
   owner: library
 c_subroutine:
   name: c_subroutine
-  comments:
-  - No arguments to a function.
   intent: subroutine
   owner: library
 f_ctor_shadow_capptr:
@@ -4361,7 +4251,6 @@ f_ctor_shadow_capptr:
 f_dtor:
   name: f_dtor
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: dtor
   f_call:
@@ -4376,7 +4265,7 @@ f_dtor:
 f_function_bool:
   name: f_function_bool
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
@@ -4385,7 +4274,6 @@ f_function_bool:
 f_function_char:
   name: f_function_char
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: function
   f_arg_call:
@@ -4408,7 +4296,7 @@ f_function_char:
 f_function_char*:
   name: f_function_char*
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4423,7 +4311,7 @@ f_function_char*:
 f_function_char*_allocatable:
   name: f_function_char*_allocatable
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4438,7 +4326,6 @@ f_function_char*_allocatable:
 f_function_char*_arg:
   name: f_function_char*_arg
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   notes:
@@ -4500,7 +4387,6 @@ f_function_char*_arg:
 f_function_char*_buf_arg:
   name: f_function_char*_buf_arg
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   notes:
@@ -4562,7 +4448,6 @@ f_function_char*_buf_arg:
 f_function_char*_buf_copy:
   name: f_function_char*_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   notes:
@@ -4613,7 +4498,6 @@ f_function_char*_buf_copy:
 f_function_char*_cdesc_allocatable:
   name: f_function_char*_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -4662,7 +4546,6 @@ f_function_char*_cdesc_allocatable:
 f_function_char*_cdesc_pointer:
   name: f_function_char*_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from char * in the C wrapper.
@@ -4711,7 +4594,6 @@ f_function_char*_cdesc_pointer:
 f_function_char*_cfi_allocatable:
   name: f_function_char*_cfi_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -4823,7 +4705,6 @@ f_function_char*_cfi_copy:
 f_function_char*_cfi_pointer:
   name: f_function_char*_cfi_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   intent: function
@@ -4871,7 +4752,7 @@ f_function_char*_cfi_pointer:
 f_function_char*_copy:
   name: f_function_char*_copy
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4886,7 +4767,7 @@ f_function_char*_copy:
 f_function_char*_pointer:
   name: f_function_char*_pointer
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4901,7 +4782,7 @@ f_function_char*_pointer:
 f_function_char*_raw:
   name: f_function_char*_raw
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -4916,7 +4797,6 @@ f_function_char*_raw:
 f_function_char_cdesc_allocatable:
   name: f_function_char_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc.
@@ -4965,7 +4845,6 @@ f_function_char_cdesc_allocatable:
 f_function_char_cdesc_pointer:
   name: f_function_char_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from char * in the C wrapper.
@@ -5014,7 +4893,6 @@ f_function_char_cdesc_pointer:
 f_function_char_cfi_allocatable:
   name: f_function_char_cfi_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -5050,7 +4928,6 @@ f_function_char_cfi_allocatable:
 f_function_char_cfi_pointer:
   name: f_function_char_cfi_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   intent: function
@@ -5108,7 +4985,7 @@ f_function_enum:
 f_function_native:
   name: f_function_native
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
@@ -5116,7 +4993,6 @@ f_function_native:
 f_function_native&:
   name: f_function_native&
   comments:
-  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5146,7 +5022,6 @@ f_function_native&:
 f_function_native&_pointer:
   name: f_function_native&_pointer
   comments:
-  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5176,7 +5051,7 @@ f_function_native&_pointer:
 f_function_native**:
   name: f_function_native**
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -5192,7 +5067,6 @@ f_function_native**:
 f_function_native*_cdesc_allocatable:
   name: f_function_native*_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
@@ -5261,7 +5135,6 @@ f_function_native*_cdesc_allocatable:
 f_function_native*_cdesc_pointer:
   name: f_function_native*_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
@@ -5308,7 +5181,6 @@ f_function_native*_cdesc_pointer:
 f_function_native*_cdesc_pointer_caller:
   name: f_function_native*_cdesc_pointer_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Add a capsule argument to the Fortran wrapper.
@@ -5474,7 +5346,6 @@ f_function_native*_cfi_pointer:
 f_function_native*_pointer:
   name: f_function_native*_pointer
   comments:
-  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5504,7 +5375,6 @@ f_function_native*_pointer:
 f_function_native*_pointer_caller:
   name: f_function_native*_pointer_caller
   comments:
-  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5534,7 +5404,7 @@ f_function_native*_pointer_caller:
 f_function_native*_raw:
   name: f_function_native*_raw
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -5870,7 +5740,6 @@ f_function_shadow*_capsule:
 f_function_shadow*_this:
   name: f_function_shadow*_this
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   notes:
   - Input set return_this.
@@ -6098,14 +5967,8 @@ f_function_shadow_capptr_library:
 f_function_string&_buf:
   name: f_function_string&_buf
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -6152,11 +6015,6 @@ f_function_string&_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -6213,14 +6071,8 @@ f_function_string&_buf_arg:
 f_function_string&_buf_copy:
   name: f_function_string&_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -6265,7 +6117,6 @@ f_function_string&_buf_copy:
 f_function_string&_cdesc_allocatable:
   name: f_function_string&_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Pass local capsule as argument to C wrapper.
@@ -6327,7 +6178,6 @@ f_function_string&_cdesc_allocatable:
 f_function_string&_cdesc_allocatable_caller:
   name: f_function_string&_cdesc_allocatable_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Pass local capsule as argument to C wrapper.
@@ -6389,7 +6239,6 @@ f_function_string&_cdesc_allocatable_caller:
 f_function_string&_cdesc_allocatable_library:
   name: f_function_string&_cdesc_allocatable_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Pass local capsule as argument to C wrapper.
@@ -6451,7 +6300,6 @@ f_function_string&_cdesc_allocatable_library:
 f_function_string&_cdesc_pointer:
   name: f_function_string&_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -6497,7 +6345,6 @@ f_function_string&_cdesc_pointer:
 f_function_string&_cdesc_pointer_caller:
   name: f_function_string&_cdesc_pointer_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -6543,7 +6390,6 @@ f_function_string&_cdesc_pointer_caller:
 f_function_string&_cdesc_pointer_library:
   name: f_function_string&_cdesc_pointer_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -6589,11 +6435,8 @@ f_function_string&_cdesc_pointer_library:
 f_function_string&_cfi_allocatable:
   name: f_function_string&_cfi_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -6625,11 +6468,8 @@ f_function_string&_cfi_allocatable:
 f_function_string&_cfi_allocatable_caller:
   name: f_function_string&_cfi_allocatable_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -6661,11 +6501,8 @@ f_function_string&_cfi_allocatable_caller:
 f_function_string&_cfi_allocatable_library:
   name: f_function_string&_cfi_allocatable_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -6745,7 +6582,6 @@ f_function_string&_cfi_arg:
 f_function_string&_cfi_copy:
   name: f_function_string&_cfi_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
@@ -6786,7 +6622,6 @@ f_function_string&_cfi_copy:
 f_function_string&_cfi_pointer:
   name: f_function_string&_cfi_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -6837,7 +6672,6 @@ f_function_string&_cfi_pointer:
 f_function_string&_cfi_pointer_caller:
   name: f_function_string&_cfi_pointer_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -6888,7 +6722,6 @@ f_function_string&_cfi_pointer_caller:
 f_function_string&_cfi_pointer_library:
   name: f_function_string&_cfi_pointer_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -6939,14 +6772,8 @@ f_function_string&_cfi_pointer_library:
 f_function_string*_buf:
   name: f_function_string*_buf
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -6991,14 +6818,8 @@ f_function_string*_buf:
 f_function_string*_buf_copy:
   name: f_function_string*_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -7043,7 +6864,6 @@ f_function_string*_buf_copy:
 f_function_string*_cdesc_allocatable:
   name: f_function_string*_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Pass local capsule as argument to C wrapper.
@@ -7105,7 +6925,6 @@ f_function_string*_cdesc_allocatable:
 f_function_string*_cdesc_allocatable_caller:
   name: f_function_string*_cdesc_allocatable_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Pass local capsule as argument to C wrapper.
@@ -7167,7 +6986,6 @@ f_function_string*_cdesc_allocatable_caller:
 f_function_string*_cdesc_allocatable_library:
   name: f_function_string*_cdesc_allocatable_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Pass local capsule as argument to C wrapper.
@@ -7229,7 +7047,6 @@ f_function_string*_cdesc_allocatable_library:
 f_function_string*_cdesc_pointer:
   name: f_function_string*_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -7275,7 +7092,6 @@ f_function_string*_cdesc_pointer:
 f_function_string*_cdesc_pointer_caller:
   name: f_function_string*_cdesc_pointer_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -7321,7 +7137,6 @@ f_function_string*_cdesc_pointer_caller:
 f_function_string*_cdesc_pointer_library:
   name: f_function_string*_cdesc_pointer_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -7367,11 +7182,8 @@ f_function_string*_cdesc_pointer_library:
 f_function_string*_cfi_allocatable:
   name: f_function_string*_cfi_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -7403,11 +7215,8 @@ f_function_string*_cfi_allocatable:
 f_function_string*_cfi_allocatable_caller:
   name: f_function_string*_cfi_allocatable_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -7439,11 +7248,8 @@ f_function_string*_cfi_allocatable_caller:
 f_function_string*_cfi_allocatable_library:
   name: f_function_string*_cfi_allocatable_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -7475,7 +7281,6 @@ f_function_string*_cfi_allocatable_library:
 f_function_string*_cfi_copy:
   name: f_function_string*_cfi_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
@@ -7516,7 +7321,6 @@ f_function_string*_cfi_copy:
 f_function_string*_cfi_pointer:
   name: f_function_string*_cfi_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -7567,7 +7371,6 @@ f_function_string*_cfi_pointer:
 f_function_string*_cfi_pointer_caller:
   name: f_function_string*_cfi_pointer_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -7618,7 +7421,6 @@ f_function_string*_cfi_pointer_caller:
 f_function_string*_cfi_pointer_library:
   name: f_function_string*_cfi_pointer_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -7669,14 +7471,8 @@ f_function_string*_cfi_pointer_library:
 f_function_string_buf:
   name: f_function_string_buf
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -7723,11 +7519,6 @@ f_function_string_buf_arg:
   comments:
   - Change function result into an argument.
   - Use F_string_result_as_arg as the argument name.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_arg_name:
   - '{f_var}'
@@ -7784,14 +7575,8 @@ f_function_string_buf_arg:
 f_function_string_buf_copy:
   name: f_function_string_buf_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: function
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -7836,7 +7621,6 @@ f_function_string_buf_copy:
 f_function_string_cdesc_allocatable:
   name: f_function_string_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -7910,7 +7694,6 @@ f_function_string_cdesc_allocatable:
 f_function_string_cdesc_allocatable_caller:
   name: f_function_string_cdesc_allocatable_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -7984,7 +7767,6 @@ f_function_string_cdesc_allocatable_caller:
 f_function_string_cdesc_allocatable_library:
   name: f_function_string_cdesc_allocatable_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
@@ -8058,7 +7840,6 @@ f_function_string_cdesc_allocatable_library:
 f_function_string_cfi_allocatable:
   name: f_function_string_cfi_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -8092,11 +7873,8 @@ f_function_string_cfi_allocatable:
 f_function_string_cfi_allocatable_caller:
   name: f_function_string_cfi_allocatable_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -8128,11 +7906,8 @@ f_function_string_cfi_allocatable_caller:
 f_function_string_cfi_allocatable_library:
   name: f_function_string_cfi_allocatable_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: function
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -8212,7 +7987,6 @@ f_function_string_cfi_arg:
 f_function_string_cfi_copy:
   name: f_function_string_cfi_copy
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
@@ -8253,7 +8027,6 @@ f_function_string_cfi_copy:
 f_function_string_cfi_pointer:
   name: f_function_string_cfi_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -8304,7 +8077,6 @@ f_function_string_cfi_pointer:
 f_function_string_cfi_pointer_caller:
   name: f_function_string_cfi_pointer_caller
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -8355,7 +8127,6 @@ f_function_string_cfi_pointer_caller:
 f_function_string_cfi_pointer_library:
   name: f_function_string_cfi_pointer_library
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Make the argument a CFI_desc_t.
   notes:
@@ -8406,7 +8177,6 @@ f_function_string_cfi_pointer_library:
 f_function_struct:
   name: f_function_struct
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: function
   f_arg_call:
@@ -8429,7 +8199,6 @@ f_function_struct:
 f_function_struct*_cdesc_pointer:
   name: f_function_struct*_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
@@ -8502,7 +8271,6 @@ f_function_struct*_pointer:
 f_function_vector<native>_cdesc_allocatable:
   name: f_function_vector<native>_cdesc_allocatable
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information,
@@ -8586,7 +8354,7 @@ f_function_vector_scalar_cdesc:
 f_function_void*:
   name: f_function_void*
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -8596,8 +8364,6 @@ f_function_void*:
   owner: library
 f_getter_bool:
   name: f_getter_bool
-  comments:
-  - No arguments to a function.
   intent: getter
   c_call:
   - // skip call c_getter
@@ -8606,8 +8372,6 @@ f_getter_bool:
   owner: library
 f_getter_native:
   name: f_getter_native
-  comments:
-  - No arguments to a function.
   intent: getter
   c_call:
   - // skip call c_getter
@@ -8617,7 +8381,6 @@ f_getter_native:
 f_getter_native*_cdesc_pointer:
   name: f_getter_native*_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Set Fortran pointer to native array.
@@ -8668,8 +8431,6 @@ f_getter_native*_cdesc_pointer:
   owner: library
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
-  comments:
-  - No arguments to a function.
   intent: getter
   c_call:
   - // skip call c_getter
@@ -8721,7 +8482,6 @@ f_getter_string_cdesc_allocatable:
 f_getter_struct**_cdesc_raw:
   name: f_getter_struct**_cdesc_raw
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Set Fortran pointer to pointers to arrays.
@@ -8773,7 +8533,6 @@ f_getter_struct**_cdesc_raw:
 f_getter_struct*_cdesc_pointer:
   name: f_getter_struct*_cdesc_pointer
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Set Fortran pointer to native array.
@@ -8989,11 +8748,6 @@ f_in_char*_buf:
   name: f_in_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -9350,11 +9104,6 @@ f_in_string&_buf:
   name: f_in_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -9436,11 +9185,6 @@ f_in_string*_buf:
   name: f_in_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -9512,11 +9256,6 @@ f_in_string_buf:
   name: f_in_string_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: in
   f_arg_name:
   - '{f_var}'
@@ -10124,11 +9863,6 @@ f_inout_char*_buf:
   name: f_inout_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -10384,8 +10118,6 @@ f_inout_string&:
   name: f_inout_string&
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -10415,11 +10147,6 @@ f_inout_string&_buf:
   name: f_inout_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -10497,8 +10224,6 @@ f_inout_string*:
   name: f_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -10528,11 +10253,6 @@ f_inout_string*_buf:
   name: f_inout_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -11001,7 +10721,7 @@ f_mixin_char_cdesc_pointer:
 f_mixin_function:
   name: f_mixin_function
   comments:
-  - No arguments to a function.
+  - Call a function.
   intent: mixin
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
@@ -11009,7 +10729,6 @@ f_mixin_function:
 f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
   comments:
-  - No arguments to a function.
   - Call the C wrapper as a subroutine.
   intent: mixin
   f_call:
@@ -11019,7 +10738,6 @@ f_mixin_function-to-subroutine:
 f_mixin_function_c-ptr:
   name: f_mixin_function_c-ptr
   comments:
-  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   intent: mixin
   f_arg_decl:
@@ -11046,7 +10764,7 @@ f_mixin_function_c-ptr:
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
   comments:
-  - No arguments to a function.
+  - Return a C pointer directly as type(C_PTR).
   intent: mixin
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -11104,8 +10822,6 @@ f_mixin_function_shadow_capsule:
   owner: library
 f_mixin_function_string_cfi_allocatable:
   name: f_mixin_function_string_cfi_allocatable
-  notes:
-  - similar to f_char_scalar_allocatable.
   intent: mixin
   f_arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
@@ -11139,10 +10855,6 @@ f_mixin_helper_array_string_allocatable:
   - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
-  notes:
-  - Pass a cdesc down to describe the memory and a capsule to hold the
-  - C++ array. Allocate in fortran, fill from C.
-  - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   intent: mixin
   f_post_call:
   - call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})
@@ -11238,8 +10950,6 @@ f_mixin_in_character_buf:
   name: f_mixin_in_character_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
   intent: mixin
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -11441,8 +11151,6 @@ f_mixin_native_cdesc_raw:
   owner: library
 f_mixin_native_default:
   name: f_mixin_native_default
-  notes:
-  - Accept an argument of native type.
   intent: mixin
   f_arg_name:
   - '{f_var}'
@@ -11627,8 +11335,6 @@ f_mixin_str_array:
   name: f_mixin_str_array
   comments:
   - Collect information about a string argument.
-  notes:
-  - XXX - maybe use character(*) directly in f_arg_decl
   intent: mixin
   f_arg_name:
   - '{f_var}'
@@ -11735,11 +11441,6 @@ f_out_char*_buf:
   name: f_out_char*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: out
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -12231,11 +11932,6 @@ f_out_string&_buf:
   name: f_out_string&_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: out
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -12316,10 +12012,6 @@ f_out_string**_cdesc_allocatable:
   - Copy into Fortran allocated memory.
   - Assign to capsule in C wrapper.
   - Release memory from capsule.
-  notes:
-  - Pass a cdesc down to describe the memory and a capsule to hold the
-  - C++ array. Allocate in fortran, fill from C.
-  - '[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]'
   intent: out
   f_arg_name:
   - '{f_var}'
@@ -12498,11 +12190,6 @@ f_out_string*_buf:
   name: f_out_string*_buf
   comments:
   - Pass CHARACTER and LEN to C wrapper.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: out
   f_declare:
   - integer(C_INT) {f_var_len}
@@ -13089,8 +12776,6 @@ f_out_void*_cdesc:
   owner: library
 f_setter:
   name: f_setter
-  comments:
-  - No arguments to a function.
   intent: setter
   f_call:
   - call {F_C_call}({F_arg_c_call})
@@ -13142,11 +12827,6 @@ f_setter_string_buf:
   comments:
   - Extract meta data and pass to C.
   - Create std::string from Fortran meta data.
-  notes:
-  - Do not use arg_decl here since it does not understand +len(30) on functions.
-  - Used with function which pass in character argument.
-  - Used with function which return a char *.
-  - C wrapper will fill argument.
   intent: setter
   f_arg_name:
   - '{f_var}'
@@ -13226,8 +12906,6 @@ f_setter_struct*_pointer:
   owner: library
 f_subroutine:
   name: f_subroutine
-  comments:
-  - No arguments to a function.
   intent: subroutine
   f_call:
   - call {F_C_call}({F_arg_c_call})

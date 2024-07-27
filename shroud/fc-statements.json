@@ -1,7 +1,7 @@
 [
     {
         "name": "c_mixin_noargs",
-        "comments": [
+        "notes": [
             "No arguments to a function."
         ],
         "f_arg_name": [],
@@ -26,8 +26,8 @@
     },
     {
         "name": "c_mixin_function",
-        "comment": [
-            "Default code to call a function."
+        "comments": [
+            "Call a function."
         ],
         "mixin": [
             "c_mixin_noargs"
@@ -35,8 +35,8 @@
     },
     {
         "name": "f_mixin_function",
-        "comment": [
-            "Default code to call a function."
+        "comments": [
+            "Call a function."
         ],
         "mixin": [
             "c_mixin_noargs"
@@ -86,7 +86,7 @@
     },
     {
         "name": "f_mixin_function_ptr",
-        "comment": [
+        "comments": [
             "Return a C pointer directly as type(C_PTR)."
         ],
         "mixin": [
