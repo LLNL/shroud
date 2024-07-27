@@ -851,6 +851,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 append_format(proto_list, arg, fmt)
         elif stmts_blk.intent == "function":
             # Functions do not pass an argument by default.
+            proto_list.append("XXXXX")
             pass
         else:
             proto_list.append(fmt.c_proto_decl)

@@ -711,14 +711,14 @@ c_function_char:
   owner: library
 c_function_char*:
   name: c_function_char*
+  comments:
+  - No arguments to a function.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_char*_arg:
   name: c_function_char*_arg
@@ -856,47 +856,47 @@ c_function_native:
   owner: library
 c_function_native&:
   name: c_function_native&
+  comments:
+  - No arguments to a function.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_native*:
   name: c_function_native*
+  comments:
+  - No arguments to a function.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_native**:
   name: c_function_native**
+  comments:
+  - No arguments to a function.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_native*_caller:
   name: c_function_native*_caller
+  comments:
+  - No arguments to a function.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_native*_scalar:
   name: c_function_native*_scalar
@@ -1230,8 +1230,6 @@ c_function_string:
   comments:
   - Cannot return a char array by value.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   owner: library
@@ -1570,8 +1568,6 @@ c_function_struct*:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 c_function_vector<native>:
@@ -1625,9 +1621,9 @@ c_function_vector<native>_malloc:
   owner: library
 c_function_void*:
   name: c_function_void*
+  comments:
+  - No arguments to a function.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_getter_native:
   name: c_getter_native
@@ -4411,29 +4407,33 @@ f_function_char:
   owner: library
 f_function_char*:
   name: f_function_char*
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_char*_allocatable:
   name: f_function_char*_allocatable
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_char*_arg:
   name: f_function_char*_arg
@@ -4870,42 +4870,48 @@ f_function_char*_cfi_pointer:
   owner: library
 f_function_char*_copy:
   name: f_function_char*_copy
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_char*_pointer:
   name: f_function_char*_pointer
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_char*_raw:
   name: f_function_char*_raw
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   i_result_decl:
   - type(C_PTR) {i_var}
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_char_cdesc_allocatable:
   name: f_function_char_cdesc_allocatable
@@ -5110,6 +5116,7 @@ f_function_native:
 f_function_native&:
   name: f_function_native&
   comments:
+  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5134,13 +5141,12 @@ f_function_native&:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 f_function_native&_pointer:
   name: f_function_native&_pointer
   comments:
+  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5165,12 +5171,12 @@ f_function_native&_pointer:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 f_function_native**:
   name: f_function_native**
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -5182,8 +5188,6 @@ f_function_native**:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_native*_cdesc_allocatable:
   name: f_function_native*_cdesc_allocatable
@@ -5470,6 +5474,7 @@ f_function_native*_cfi_pointer:
 f_function_native*_pointer:
   name: f_function_native*_pointer
   comments:
+  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5494,13 +5499,12 @@ f_function_native*_pointer:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 f_function_native*_pointer_caller:
   name: f_function_native*_pointer_caller
   comments:
+  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   notes:
   - Pointer to scalar.
@@ -5525,12 +5529,12 @@ f_function_native*_pointer_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 f_function_native*_raw:
   name: f_function_native*_raw
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -5542,16 +5546,14 @@ f_function_native*_raw:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_function_native*_scalar:
   name: f_function_native*_scalar
   comments:
   - Return a scalar to avoid doing the deref in Fortran.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
+  f_call:
+  - '{F_result} = {F_C_call}({F_arg_c_call})'
   c_return:
   - return *{cxx_var};
   c_return_type: '{c_type}'
@@ -8495,8 +8497,6 @@ f_function_struct*_pointer:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 f_function_vector<native>_cdesc_allocatable:
@@ -8585,14 +8585,14 @@ f_function_vector_scalar_cdesc:
   owner: library
 f_function_void*:
   name: f_function_void*
+  comments:
+  - No arguments to a function.
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_getter_bool:
   name: f_getter_bool
@@ -11019,6 +11019,7 @@ f_mixin_function-to-subroutine:
 f_mixin_function_c-ptr:
   name: f_mixin_function_c-ptr
   comments:
+  - No arguments to a function.
   - Return a C pointer as a type(C_PTR).
   intent: mixin
   f_arg_decl:
@@ -11040,12 +11041,12 @@ f_mixin_function_c-ptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   c_need_wrapper: true
   owner: library
 f_mixin_function_ptr:
   name: f_mixin_function_ptr
+  comments:
+  - No arguments to a function.
   intent: mixin
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
@@ -11057,8 +11058,6 @@ f_mixin_function_ptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_function_shadow_capptr:
   name: f_mixin_function_shadow_capptr

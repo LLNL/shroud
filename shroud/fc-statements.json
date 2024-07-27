@@ -75,6 +75,9 @@
         "comments": [
             "Return a scalar to avoid doing the deref in Fortran."
         ],
+        "mixin": [
+            "f_mixin_function"
+        ],
         "c_return_type": "{c_type}",
         "c_return": [
             "return *{cxx_var};"
@@ -85,6 +88,9 @@
         "name": "f_mixin_function_ptr",
         "comment": [
             "Return a C pointer directly as type(C_PTR)."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -107,6 +113,9 @@
         "name": "f_mixin_function_c-ptr",
         "comments": [
             "Return a C pointer as a type(C_PTR)."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
         ],
         "c_need_wrapper": true,
         "f_module": {
@@ -1309,6 +1318,9 @@
             "f_function_void*",
             "c_function_void*"
         ],
+        "mixin": [
+            "c_mixin_function"
+        ],
         "f_module": {
             "iso_c_binding": [
                 "C_PTR"
@@ -1588,6 +1600,9 @@
             "f_function_char*_copy",
             "f_function_char*_pointer",
             "f_function_char*_raw"
+        ],
+        "mixin": [
+            "f_mixin_function"
         ],
         "f_arg_decl": [
             "type(C_PTR) :: {f_var}"
@@ -2131,6 +2146,9 @@
         "notimplemented": true,
         "comments": [
             "Cannot return a char array by value."
+        ],
+        "mixin": [
+            "c_mixin_function"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
