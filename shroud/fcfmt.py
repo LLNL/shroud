@@ -962,7 +962,7 @@ class NonConst(object):
 
 class FormatCdecl(object):
     """
-    Return the declaration from the ast.
+    Return the C declaration from the ast.
     """
     def __init__(self, state):
         self.state = state
@@ -970,8 +970,27 @@ class FormatCdecl(object):
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
-#        decl = self.state.ast.to_string_declarator(name=varname)
-        decl = gen_arg_as_cxx(self.state.ast, name=varname)
+        decl = gen_arg_as_c(self.state.ast, name=varname)
+        return decl
+
+    def __str__(self):
+        #### Abstract declarator as C
+        decl = gen_arg_as_c(self.state.ast, name=False)
+        return decl
+            
+class FormatCXXdecl(object):
+    """
+    Return the original declaration from the ast.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        decl = gen_arg_as_cxx(self.state.ast,
+                              with_template_args=True,
+                              name=varname)
         return decl
 
     def __str__(self):
@@ -1014,7 +1033,8 @@ class FormatGen(object):
         self._cache = {}
 
         self.nonconst_addr = NonConst(state)
-        self.cxxdecl = FormatCdecl(state)
+        self.cdecl = FormatCdecl(state)
+        self.cxxdecl = FormatCXXdecl(state)
         self.cidecl = FormatCIdecl(state)
 
     @property
