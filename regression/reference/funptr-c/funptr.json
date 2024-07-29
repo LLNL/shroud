@@ -225,6 +225,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1",
                             "fc_var": "incr1",
                             "i_var": "incr1",
@@ -459,6 +460,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1_wrap",
                             "fc_var": "incr1_wrap",
                             "i_var": "incr1_wrap",
@@ -700,6 +702,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1_external",
                             "fc_var": "incr1_external",
                             "i_var": "incr1_external",
@@ -943,6 +946,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1_funptr",
                             "fc_var": "incr1_funptr",
                             "i_var": "incr1_funptr",
@@ -1118,6 +1122,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
+                            "f_value_attr": ", value",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
@@ -1148,6 +1153,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
@@ -1357,6 +1363,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
+                            "f_value_attr": ", value",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
@@ -1387,6 +1394,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
@@ -1597,6 +1605,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
+                            "f_value_attr": ", value",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
@@ -1627,6 +1636,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
@@ -1954,6 +1964,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
@@ -1983,6 +1994,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr3",
                             "fc_var": "incr3",
                             "i_var": "incr3",
@@ -2013,6 +2025,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "type",
                             "fc_var": "type",
                             "i_var": "type",
@@ -2270,6 +2283,7 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_value_attr": ", value",
                                                 "i_var": "nargs",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
@@ -2429,6 +2443,7 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_value_attr": ", value",
                                                 "i_var": "nargs",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
@@ -2522,6 +2537,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "actor",
                             "fc_var": "actor",
                             "i_var": "actor",
@@ -2586,6 +2602,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "nargs",
                             "fc_var": "SH_nargs",
                             "i_var": "nargs",
@@ -3034,6 +3051,7 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_value_attr": ", value",
                                                 "i_var": "XX0arg",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
@@ -3042,6 +3060,7 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_value_attr": ", value",
                                                 "i_var": "XX1arg",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
@@ -3168,6 +3187,7 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_value_attr": ", value",
                                                 "i_var": "XX0arg",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
@@ -3176,6 +3196,7 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_value_attr": ", value",
                                                 "i_var": "XX1arg",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
@@ -3263,6 +3284,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "get_abs",
                             "fc_var": "get_abs",
                             "i_var": "get_abs",
@@ -3293,6 +3315,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "input",
                             "fc_var": "input",
                             "i_var": "input",
@@ -3514,6 +3537,7 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_value_attr": ", value",
                                                 "i_var": "i",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
@@ -3522,6 +3546,7 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_value_attr": ", value",
                                                 "i_var": "j",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
@@ -3638,6 +3663,7 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_value_attr": ", value",
                                                 "i_var": "i",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
@@ -3646,6 +3672,7 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_value_attr": ", value",
                                                 "i_var": "j",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
@@ -3821,6 +3848,7 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_value_attr": ", value",
                                                 "i_var": "arg0",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
@@ -3829,6 +3857,7 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_value_attr": ", value",
                                                 "i_var": "arg1",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
@@ -3943,6 +3972,7 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_value_attr": ", value",
                                                 "i_var": "arg0",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
@@ -3951,6 +3981,7 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_value_attr": ", value",
                                                 "i_var": "arg1",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"

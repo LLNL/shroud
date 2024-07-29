@@ -518,6 +518,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "value",
                             "i_var": "value",
                             "idtor": "0",

@@ -13,6 +13,26 @@
         "c_arg_call": []
     },
     {
+        "name": "c_mixin_argument",
+        "notes": [
+            "Use typemap.cxx_to_c to create an argument"
+        ],
+        "i_arg_names": [
+            "{c_var}"
+        ],
+        "i_arg_decl": [
+            "{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
         "alias": [
             "f_subroutine",
             "c_subroutine"

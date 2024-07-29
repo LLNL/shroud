@@ -1499,12 +1499,20 @@ f_intent
     Instead use *f_intent_attr*.
 
 f_intent_attr
-    The value of the intent mataattribute.
-    Converted into a Fortran attribute.
+    The value of the intent metaattribute
+    converted into a Fortran attribute.
     ex ``, intent(IN)``.
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
-    If the intent is *none*, the value will be blank.
+    If *intent* is *none*, the format field will be blank.
+
+f_value_attr
+    The value of the value metaattribute
+    converted into a Fortran attribute.
+    ex ``, value``.
+    Used with argument declarations:
+    ``{f_type}{f_value_attr} ::``.
+    If *value* is *False*, the format field will be blank.
 
 size_var
     Name of variable which holds the size of an array in the

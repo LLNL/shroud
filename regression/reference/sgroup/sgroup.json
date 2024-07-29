@@ -177,6 +177,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "twostruct",
                             "f_type": "type(twostruct)",
+                            "f_value_attr": ", value",
                             "f_var": "arg",
                             "fc_var": "arg",
                             "i_var": "arg",
