@@ -9932,8 +9932,12 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "arg1",
                                                                 "i_var": "arg1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -9941,8 +9945,12 @@
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "i",
                                                                 "i_var": "i",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10066,8 +10074,12 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "arg1",
                                                                 "i_var": "arg1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10075,8 +10087,12 @@
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "i",
                                                                 "i_var": "i",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10199,8 +10215,12 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "arg1",
                                                                 "i_var": "arg1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10208,8 +10228,12 @@
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "i",
                                                                 "i_var": "i",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10331,8 +10355,12 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "arg1",
                                                                 "i_var": "arg1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10340,8 +10368,12 @@
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "i",
                                                                 "i_var": "i",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10463,8 +10495,12 @@
                                                         "arg1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "arg1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "arg1",
                                                                 "i_var": "arg1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10472,8 +10508,12 @@
                                                         "i": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "i",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "i",
                                                                 "i_var": "i",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10797,8 +10837,12 @@
                                                         "XX0arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX0arg",
+                                                                "f_kind": "C_DOUBLE",
+                                                                "f_type": "real(C_DOUBLE)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "XX0arg",
                                                                 "i_var": "XX0arg",
+                                                                "sh_type": "SH_TYPE_DOUBLE",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "double"
                                                             }
@@ -10806,8 +10850,12 @@
                                                         "XX1arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX1arg",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "XX1arg",
                                                                 "i_var": "XX1arg",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -10928,8 +10976,12 @@
                                                         "XX0arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX0arg",
+                                                                "f_kind": "C_DOUBLE",
+                                                                "f_type": "real(C_DOUBLE)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "XX0arg",
                                                                 "i_var": "XX0arg",
+                                                                "sh_type": "SH_TYPE_DOUBLE",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "double"
                                                             }
@@ -10937,8 +10989,12 @@
                                                         "XX1arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX1arg",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "XX1arg",
                                                                 "i_var": "XX1arg",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11058,8 +11114,12 @@
                                                         "XX0arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX0arg",
+                                                                "f_kind": "C_DOUBLE",
+                                                                "f_type": "real(C_DOUBLE)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "XX0arg",
                                                                 "i_var": "XX0arg",
+                                                                "sh_type": "SH_TYPE_DOUBLE",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "double"
                                                             }
@@ -11067,8 +11127,12 @@
                                                         "XX1arg": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "XX1arg",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "XX1arg",
                                                                 "i_var": "XX1arg",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11626,8 +11690,12 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname1",
                                                                 "i_var": "verylongname1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11635,8 +11703,12 @@
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname10",
                                                                 "i_var": "verylongname10",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11644,8 +11716,12 @@
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname2",
                                                                 "i_var": "verylongname2",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11653,8 +11729,12 @@
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname3",
                                                                 "i_var": "verylongname3",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11662,8 +11742,12 @@
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname4",
                                                                 "i_var": "verylongname4",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11671,8 +11755,12 @@
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname5",
                                                                 "i_var": "verylongname5",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11680,8 +11768,12 @@
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname6",
                                                                 "i_var": "verylongname6",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11689,8 +11781,12 @@
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname7",
                                                                 "i_var": "verylongname7",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11698,8 +11794,12 @@
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname8",
                                                                 "i_var": "verylongname8",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -11707,8 +11807,12 @@
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname9",
                                                                 "i_var": "verylongname9",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12025,8 +12129,12 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname1",
                                                                 "i_var": "verylongname1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12034,8 +12142,12 @@
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname10",
                                                                 "i_var": "verylongname10",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12043,8 +12155,12 @@
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname2",
                                                                 "i_var": "verylongname2",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12052,8 +12168,12 @@
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname3",
                                                                 "i_var": "verylongname3",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12061,8 +12181,12 @@
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname4",
                                                                 "i_var": "verylongname4",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12070,8 +12194,12 @@
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname5",
                                                                 "i_var": "verylongname5",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12079,8 +12207,12 @@
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname6",
                                                                 "i_var": "verylongname6",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12088,8 +12220,12 @@
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname7",
                                                                 "i_var": "verylongname7",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12097,8 +12233,12 @@
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname8",
                                                                 "i_var": "verylongname8",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12106,8 +12246,12 @@
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname9",
                                                                 "i_var": "verylongname9",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12423,8 +12567,12 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname1",
                                                                 "i_var": "verylongname1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12432,8 +12580,12 @@
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname10",
                                                                 "i_var": "verylongname10",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12441,8 +12593,12 @@
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname2",
                                                                 "i_var": "verylongname2",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12450,8 +12606,12 @@
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname3",
                                                                 "i_var": "verylongname3",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12459,8 +12619,12 @@
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname4",
                                                                 "i_var": "verylongname4",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12468,8 +12632,12 @@
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname5",
                                                                 "i_var": "verylongname5",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12477,8 +12645,12 @@
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname6",
                                                                 "i_var": "verylongname6",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12486,8 +12658,12 @@
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname7",
                                                                 "i_var": "verylongname7",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12495,8 +12671,12 @@
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname8",
                                                                 "i_var": "verylongname8",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12504,8 +12684,12 @@
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname9",
                                                                 "i_var": "verylongname9",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12820,8 +13004,12 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname1",
                                                                 "i_var": "verylongname1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12829,8 +13017,12 @@
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname10",
                                                                 "i_var": "verylongname10",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12838,8 +13030,12 @@
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname2",
                                                                 "i_var": "verylongname2",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12847,8 +13043,12 @@
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname3",
                                                                 "i_var": "verylongname3",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12856,8 +13056,12 @@
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname4",
                                                                 "i_var": "verylongname4",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12865,8 +13069,12 @@
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname5",
                                                                 "i_var": "verylongname5",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12874,8 +13082,12 @@
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname6",
                                                                 "i_var": "verylongname6",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12883,8 +13095,12 @@
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname7",
                                                                 "i_var": "verylongname7",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12892,8 +13108,12 @@
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname8",
                                                                 "i_var": "verylongname8",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -12901,8 +13121,12 @@
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname9",
                                                                 "i_var": "verylongname9",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13217,8 +13441,12 @@
                                                         "verylongname1": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname1",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname1",
                                                                 "i_var": "verylongname1",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13226,8 +13454,12 @@
                                                         "verylongname10": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname10",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname10",
                                                                 "i_var": "verylongname10",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13235,8 +13467,12 @@
                                                         "verylongname2": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname2",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname2",
                                                                 "i_var": "verylongname2",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13244,8 +13480,12 @@
                                                         "verylongname3": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname3",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname3",
                                                                 "i_var": "verylongname3",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13253,8 +13493,12 @@
                                                         "verylongname4": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname4",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname4",
                                                                 "i_var": "verylongname4",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13262,8 +13506,12 @@
                                                         "verylongname5": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname5",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname5",
                                                                 "i_var": "verylongname5",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13271,8 +13519,12 @@
                                                         "verylongname6": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname6",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname6",
                                                                 "i_var": "verylongname6",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13280,8 +13532,12 @@
                                                         "verylongname7": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname7",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname7",
                                                                 "i_var": "verylongname7",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13289,8 +13545,12 @@
                                                         "verylongname8": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname8",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname8",
                                                                 "i_var": "verylongname8",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -13298,8 +13558,12 @@
                                                         "verylongname9": {
                                                             "fmtf": {
                                                                 "f_abstract_name": "verylongname9",
+                                                                "f_kind": "C_INT",
+                                                                "f_type": "integer(C_INT)",
                                                                 "f_value_attr": ", value",
+                                                                "f_var": "verylongname9",
                                                                 "i_var": "verylongname9",
+                                                                "sh_type": "SH_TYPE_INT",
                                                                 "stmt_name": "f_none_native",
                                                                 "typemap_name": "int"
                                                             }
@@ -16747,6 +17011,7 @@
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "out",
                                             "fc_var": "out",
+                                            "i_dimension": "(*)",
                                             "i_var": "out",
                                             "idtor": "0",
                                             "rank": "1",

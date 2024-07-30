@@ -7870,8 +7870,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -7976,8 +7980,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -8080,8 +8088,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }

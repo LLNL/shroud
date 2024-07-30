@@ -3190,9 +3190,17 @@
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
+                                                "f_assumed_shape": "(:)",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "ilow",
+                                                "i_dimension": "(*)",
                                                 "i_var": "ilow",
+                                                "rank": "1",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "size": "size(ilow)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3202,8 +3210,12 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "nargs",
                                                 "i_var": "nargs",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -3352,9 +3364,17 @@
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
+                                                "f_assumed_shape": "(:)",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "ilow",
+                                                "i_dimension": "(*)",
                                                 "i_var": "ilow",
+                                                "rank": "1",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "size": "size(ilow)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3364,8 +3384,12 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "nargs",
                                                 "i_var": "nargs",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -3513,9 +3537,17 @@
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
+                                                "f_assumed_shape": "(:)",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "ilow",
+                                                "i_dimension": "(*)",
                                                 "i_var": "ilow",
+                                                "rank": "1",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "size": "size(ilow)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3525,8 +3557,12 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "nargs",
                                                 "i_var": "nargs",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -4335,8 +4371,12 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "XX0arg",
                                                 "i_var": "XX0arg",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -4344,8 +4384,12 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "XX1arg",
                                                 "i_var": "XX1arg",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -4473,8 +4517,12 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "XX0arg",
                                                 "i_var": "XX0arg",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -4482,8 +4530,12 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "XX1arg",
                                                 "i_var": "XX1arg",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -4610,8 +4662,12 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "XX0arg",
                                                 "i_var": "XX0arg",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -4619,8 +4675,12 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "XX1arg",
                                                 "i_var": "XX1arg",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5037,8 +5097,12 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "i",
                                                 "i_var": "i",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5046,8 +5110,12 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "j",
                                                 "i_var": "j",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
                                             }
@@ -5164,8 +5232,12 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "i",
                                                 "i_var": "i",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5173,8 +5245,12 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "j",
                                                 "i_var": "j",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
                                             }
@@ -5291,8 +5367,12 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "i",
                                                 "i_var": "i",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5300,8 +5380,12 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "j",
                                                 "i_var": "j",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
                                             }
@@ -5478,8 +5562,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -5487,8 +5575,12 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg1",
                                                 "i_var": "arg1",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5603,8 +5695,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -5612,8 +5708,12 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg1",
                                                 "i_var": "arg1",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5728,8 +5828,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -5737,8 +5841,12 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "arg1",
                                                 "i_var": "arg1",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }

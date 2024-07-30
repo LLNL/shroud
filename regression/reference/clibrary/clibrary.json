@@ -5108,9 +5108,14 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_derived_type": "array_info",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "array_info",
+                                                "f_type": "type(array_info)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_STRUCT",
                                                 "stmt_name": "f_inout_struct*",
                                                 "typemap_name": "array_info"
                                             }
@@ -5120,8 +5125,12 @@
                                                 "f_abstract_name": "tc",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "tc",
                                                 "i_var": "tc",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -5264,9 +5273,14 @@
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
+                                                "f_derived_type": "array_info",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "array_info",
+                                                "f_type": "type(array_info)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_STRUCT",
                                                 "stmt_name": "f_inout_struct*",
                                                 "typemap_name": "array_info"
                                             }
@@ -5276,8 +5290,12 @@
                                                 "f_abstract_name": "tc",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
                                                 "f_value_attr": ", value",
+                                                "f_var": "tc",
                                                 "i_var": "tc",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }

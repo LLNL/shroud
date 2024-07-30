@@ -3691,7 +3691,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
                                             }
@@ -3820,7 +3824,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
                                             }
@@ -3830,7 +3838,11 @@
                                                 "f_abstract_name": "err",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "err",
                                                 "i_var": "err",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3959,7 +3971,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
                                             }
@@ -3969,7 +3985,11 @@
                                                 "f_abstract_name": "err",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "err",
                                                 "i_var": "err",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
                                             }
@@ -4094,7 +4114,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
                                             }
@@ -4223,7 +4247,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
                                             }
@@ -4233,7 +4261,11 @@
                                                 "f_abstract_name": "err",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "err",
                                                 "i_var": "err",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
                                             }
@@ -4362,7 +4394,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
                                             }
@@ -4372,7 +4408,11 @@
                                                 "f_abstract_name": "err",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "err",
                                                 "i_var": "err",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
                                             }
@@ -4499,7 +4539,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
                                             }
@@ -4627,7 +4671,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "INOUT",
                                                 "f_intent_attr": ", intent(INOUT)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_inout_native*",
                                                 "typemap_name": "double"
                                             }
@@ -4637,7 +4685,11 @@
                                                 "f_abstract_name": "err",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "err",
                                                 "i_var": "err",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
                                             }
@@ -4765,7 +4817,11 @@
                                                 "f_abstract_name": "arr",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_var": "arr",
                                                 "i_var": "arr",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "double"
                                             }
@@ -4775,7 +4831,11 @@
                                                 "f_abstract_name": "err",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "err",
                                                 "i_var": "err",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_out_native*",
                                                 "typemap_name": "int"
                                             }

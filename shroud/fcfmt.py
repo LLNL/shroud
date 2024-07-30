@@ -179,7 +179,13 @@ class FillFormat(object):
             if wlang == "f":
                 set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
                 fmt_arg.f_abstract_name = arg_name
+                fmt_arg.f_var = arg_name
                 fmt_arg.i_var = arg_name
+
+                # XXX - fill_interface_arg
+                self.set_fmt_fields_iface(node, arg, bind_arg, fmt_arg, arg_name, arg.typemap)
+                self.set_fmt_fields_dimension(None, node, arg, fmt_arg, bind_arg)
+
                 
         # --- End loop over function parameters
         fmt_result.f_abstract_names = abstract_names
@@ -621,6 +627,7 @@ class FillFormat(object):
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.i_dimension = "(*)"
                 # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if hasattr(fmt, "f_var_cdesc"):
