@@ -1750,7 +1750,7 @@ c_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -1768,6 +1768,15 @@ c_in_native&:
 c_in_native*:
   name: c_in_native*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -2366,6 +2375,15 @@ c_in_vector<string>_buf:
 c_in_void:
   name: c_in_void
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -2496,6 +2514,15 @@ c_inout_native&_hidden:
 c_inout_native*:
   name: c_inout_native*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3018,7 +3045,7 @@ c_mixin_argument:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -8870,7 +8897,7 @@ f_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -8888,6 +8915,15 @@ f_in_native&:
 f_in_native*:
   name: f_in_native*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9744,6 +9780,15 @@ f_in_vector_&_cdesc_targ_native_scalar:
 f_in_void:
   name: f_in_void
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9990,6 +10035,15 @@ f_inout_native&_hidden:
 f_inout_native*:
   name: f_inout_native*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11424,7 +11478,7 @@ f_none_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'

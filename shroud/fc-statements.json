@@ -21,7 +21,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}"
+            "{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
             "{typemap.f_module_name}": [
@@ -991,23 +991,13 @@
         "alias": [
             "f_in_native*",
             "c_in_native*",
-            "f_out_char*",
-            "c_out_char*",
             "f_inout_native*",
             "c_inout_native*",
-            "f_out_native***",
-            "c_out_native***",
-            "f_in_char*",
-            "c_in_char*",
-            "f_inout_char*",
-            "c_inout_char*",
             "f_in_void",
-            "c_in_void",
-            "f_in_char*_capi",
-            "f_out_char*_capi",
-            "f_inout_char*_capi",
-            "f_in_unknown",
-            "c_in_unknown"
+            "c_in_void"
+        ],
+        "mixin": [
+            "c_mixin_argument"
         ]
     },
     {
@@ -1037,6 +1027,18 @@
         ],
         "c_arg_call": [
             "*{cxx_var}"
+        ]
+    },
+    {
+        "alias": [
+            "f_out_native***",
+            "c_out_native***"
+        ]
+    },
+    {
+        "alias": [
+            "f_in_unknown",
+            "c_in_unknown"
         ]
     },
     {
@@ -1622,6 +1624,19 @@
                 "C_PTR"
             ]
         }
+    },
+    {
+        "alias": [
+            "f_in_char*",
+            "c_in_char*",
+            "f_out_char*",
+            "c_out_char*",
+            "f_inout_char*",
+            "c_inout_char*",
+            "f_in_char*_capi",
+            "f_out_char*_capi",
+            "f_inout_char*_capi"
+        ]
     },
     {
         "alias": [
