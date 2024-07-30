@@ -1750,12 +1750,12 @@ c_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
   c_arg_decl:
-  - '{c_const}{c_type} {c_var}'
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3016,7 +3016,7 @@ c_mixin_argument:
   name: c_mixin_argument
   intent: mixin
   i_arg_names:
-  - '{c_var}'
+  - '{i_var}'
   i_arg_decl:
   - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
   i_module:
@@ -8870,12 +8870,12 @@ f_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
   c_arg_decl:
-  - '{c_const}{c_type} {c_var}'
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11424,12 +11424,12 @@ f_none_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}'
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
   c_arg_decl:
-  - '{c_const}{c_type} {c_var}'
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
