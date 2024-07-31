@@ -1598,6 +1598,12 @@ f_declare_shape_array
 f_derived_type
    Derived type name for shadow class.
 
+f_dimension
+    Dimension used in Fortran wrapper based on *dimension* or *rank* attribute.
+    May be a literal shape, ``(10)``,
+    assumed-shape, ``(:)``
+    or assumed-rank, ``(..)``.
+
 f_get_shape_array
 
 f_helper_*

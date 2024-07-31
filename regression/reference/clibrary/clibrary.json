@@ -4633,6 +4633,7 @@
                             "cxx_type": "void",
                             "cxx_var": "arg",
                             "f_assumed_shape": "(:)",
+                            "f_dimension": "(:)",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",

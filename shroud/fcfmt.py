@@ -606,6 +606,7 @@ class FillFormat(object):
         rank = meta["rank"]
         if meta["dimension"] == "..":   # assumed-rank
             fmt.i_dimension = "(..)"
+            fmt.f_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
             fmt.rank = str(rank)
@@ -617,6 +618,7 @@ class FillFormat(object):
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.f_dimension = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
                 if hasattr(fmt, "f_var_cdesc"):
                     fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
@@ -630,6 +632,10 @@ class FillFormat(object):
                 fmt.i_dimension = "(*)"
                 # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
+                if visitor.compute_shape:
+                    fmt.f_dimension = fmt.f_assumed_shape
+                else:
+                    fmt.f_dimension = fmt.f_array_allocate
                 if hasattr(fmt, "f_var_cdesc"):
                     # XXX kludge, name is assumed to be f_var_cdesc.
                     fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
@@ -793,6 +799,7 @@ class ToDimension(todict.PrintNode):
         self.rank = 0
         self.shape = []
         self.need_helper = False
+        self.compute_shape = False
 
     def visit_list(self, node):
         # list of dimension expressions
@@ -806,6 +813,7 @@ class ToDimension(todict.PrintNode):
         # Look for Fortran intrinsics
         if argname == "size" and node.args:
             # size(in)
+            self.compute_shape = True
             return self.param_list(node) # function
         # Look for members of class/struct.
         elif self.cls is not None and argname in self.cls.map_name_to_node:
@@ -817,12 +825,14 @@ class ToDimension(todict.PrintNode):
                 if node.args is None:
                     print("{} must have arguments".format(argname))
                 else:
+                    self.compute_shape = True
                     return "obj->{}({})".format(
                         argname, self.comma_list(node.args))
             else:
                 if node.args is not None:
                     print("{} must not have arguments".format(argname))
                 else:
+                    self.compute_shape = True
                     return "obj->{}".format(argname)
         else:
             if self.fcn.ast.declarator.find_arg_by_name(argname) is None:
@@ -830,6 +840,7 @@ class ToDimension(todict.PrintNode):
             if node.args is None:
                 return argname  # variable
             else:
+                self.compute_shape = True
                 return self.param_list(node) # function
         return "--??--"
 
