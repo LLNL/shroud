@@ -5102,6 +5102,7 @@
                         "offset": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "c_in_native"
@@ -5109,6 +5110,7 @@
                         "stride": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "c_in_native"
@@ -5131,6 +5133,7 @@
                         "offset": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "f_in_native"
@@ -5138,6 +5141,7 @@
                         "stride": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "f_in_native"
@@ -5158,12 +5162,14 @@
                         "offset": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             }
                         },
                         "stride": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             }
                         }
@@ -5272,6 +5278,7 @@
                             "cxx_var": "offset",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_optional_attr": ", optional",
                             "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5298,6 +5305,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "INDEXTYPE",
+                            "f_optional_attr": ", optional",
                             "f_type": "integer(INDEXTYPE)",
                             "f_value_attr": ", value",
                             "f_var": "offset",
@@ -5328,6 +5336,7 @@
                             "cxx_var": "stride",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_optional_attr": ", optional",
                             "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5354,6 +5363,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "INDEXTYPE",
+                            "f_optional_attr": ", optional",
                             "f_type": "integer(INDEXTYPE)",
                             "f_value_attr": ", value",
                             "f_var": "stride",
@@ -5465,6 +5475,7 @@
                         "offset": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "c_in_native"
@@ -5472,6 +5483,7 @@
                         "stride": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "c_in_native"
@@ -5501,6 +5513,7 @@
                         "offset": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "f_in_native"
@@ -5508,6 +5521,7 @@
                         "stride": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             },
                             "stmt": "f_in_native"
@@ -5535,12 +5549,14 @@
                         "offset": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             }
                         },
                         "stride": {
                             "meta": {
                                 "intent": "in",
+                                "optional": true,
                                 "value": true
                             }
                         },
@@ -5655,6 +5671,7 @@
                             "cxx_var": "offset",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_optional_attr": ", optional",
                             "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5681,6 +5698,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "INDEXTYPE",
+                            "f_optional_attr": ", optional",
                             "f_type": "integer(INDEXTYPE)",
                             "f_value_attr": ", value",
                             "f_var": "offset",
@@ -5711,6 +5729,7 @@
                             "cxx_var": "stride",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_optional_attr": ", optional",
                             "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
@@ -5737,6 +5756,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "INDEXTYPE",
+                            "f_optional_attr": ", optional",
                             "f_type": "integer(INDEXTYPE)",
                             "f_value_attr": ", value",
                             "f_var": "stride",

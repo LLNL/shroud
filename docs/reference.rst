@@ -1499,15 +1499,23 @@ f_intent
     Instead use *f_intent_attr*.
 
 f_intent_attr
-    The value of the intent metaattribute
+    The value of the *intent* metaattribute
     converted into a Fortran attribute.
     ex ``, intent(IN)``.
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
     If *intent* is *none*, the format field will be blank.
 
+f_optional_attr
+    The value of the *optional* metaattribute
+    converted into a Fortran attribute.
+    ex ``, optional``.
+    Used with argument declarations:
+    ``{f_type}{f_optional_attr} ::``.
+    If *optional* is *False*, the format field will be blank.
+
 f_value_attr
-    The value of the value metaattribute
+    The value of the *value* metaattribute
     converted into a Fortran attribute.
     ex ``, value``.
     Used with argument declarations:

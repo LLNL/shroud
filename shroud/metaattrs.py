@@ -629,7 +629,7 @@ class FillMeta(object):
                 "assumedtype",
                 "dimension", "dim_ast",
                 "free_pattern", "hidden", "owner", "rank",
-                "fptr", "value",
+                "fptr", "value", "optional",
         ]:
             meta[attr] = share_meta[attr]
         
@@ -696,6 +696,9 @@ class FillMetaShare(FillMeta):
             self.check_arg_attrs(node, arg, meta)
             self.set_arg_intent(arg, meta, is_fptr)
             self.check_value(arg, meta)
+
+            if node.options.F_default_args == "optional" and arg.declarator.init is not None:
+                meta["optional"] = True
 
             if arg.declarator.is_function_pointer():
                 # Convert function pointer into function

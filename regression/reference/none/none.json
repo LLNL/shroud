@@ -245,6 +245,7 @@
             "f_intent": "",
             "f_intent_attr": "",
             "f_kind": "",
+            "f_optional_attr": "",
             "f_shape_var": "",
             "f_type": "",
             "f_value_attr": "",

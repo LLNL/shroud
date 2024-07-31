@@ -1660,16 +1660,17 @@ rv = .false.
                 self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
                 continue
-            elif arg_stmt.f_arg_decl:
+
+            if arg_meta["optional"]:
+                fmt_arg.default_value = f_arg.declarator.init
+                optattr = True
+            if arg_stmt.f_arg_decl:
                 # Explicit declarations from fc_statements.
                 self.add_stmt_declaration(
                     arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
                 self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
-                if options.F_default_args == "optional" and f_arg.declarator.init is not None:
-                    fmt_arg.default_value = f_arg.declarator.init
-                    optattr = True
                 intent = arg_bind.meta["intent"]
                 arg_f_decl.append(gen_arg_as_fortran(f_arg,
                     intent=intent, pass_obj=pass_obj, optional=optattr))
