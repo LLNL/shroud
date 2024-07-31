@@ -1115,7 +1115,7 @@ contains
     subroutine get_values(nvalues, values)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(OUT) :: nvalues
-        integer(C_INT), intent(OUT) :: values(:)
+        integer(C_INT), intent(OUT) :: values(3)
         ! splicer begin function.get_values
         call c_get_values_bufferify(nvalues, values)
         ! splicer end function.get_values
@@ -1143,8 +1143,8 @@ contains
     ! start get_values2
     subroutine get_values2(arg1, arg2)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: arg1(:)
-        integer(C_INT), intent(OUT) :: arg2(:)
+        integer(C_INT), intent(OUT) :: arg1(3)
+        integer(C_INT), intent(OUT) :: arg2(3)
         ! splicer begin function.get_values2
         call c_get_values2_bufferify(arg1, arg2)
         ! splicer end function.get_values2
@@ -1167,7 +1167,7 @@ contains
     subroutine iota_dimension(nvar, values)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: nvar
-        integer(C_INT), intent(OUT) :: values(:)
+        integer(C_INT), intent(OUT) :: values(nvar)
         ! splicer begin function.iota_dimension
         call c_iota_dimension_bufferify(nvar, values)
         ! splicer end function.iota_dimension
@@ -1211,7 +1211,7 @@ contains
     ! start fill_int_array
     subroutine fill_int_array(out)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: out(:)
+        integer(C_INT), intent(OUT) :: out(3)
         ! splicer begin function.fill_int_array
         call c_fill_int_array_bufferify(out)
         ! splicer end function.fill_int_array

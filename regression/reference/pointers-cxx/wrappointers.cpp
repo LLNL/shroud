@@ -830,7 +830,7 @@ void POI_getRawPtrToInt2d(int * * * arg)
 // Argument:  int * * arg +intent(in)
 // Statement: c_in_native**
 // start POI_checkInt2d
-int POI_checkInt2d(int **arg)
+int POI_checkInt2d(int * * arg)
 {
     // splicer begin function.checkInt2d
     int SHC_rv = checkInt2d(arg);

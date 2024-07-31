@@ -4502,7 +4502,7 @@
                             "C_call_function": "checkInt2d(\targ)",
                             "C_call_list": "arg",
                             "C_name": "POI_checkInt2d",
-                            "C_prototype": "int **arg",
+                            "C_prototype": "int * * arg",
                             "C_return_type": "int",
                             "F_C_name": "c_check_int2d",
                             "c_const": "",

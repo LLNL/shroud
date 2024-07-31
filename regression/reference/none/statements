@@ -1794,7 +1794,7 @@ c_in_native**:
     iso_c_binding:
     - C_PTR
   c_arg_decl:
-  - '{cxx_type} **{cxx_var}'
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3486,6 +3486,15 @@ c_out_native&_hidden:
 c_out_native*:
   name: c_out_native*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -8941,6 +8950,10 @@ f_in_native**:
   - Any array of pointers.  Assumed to be non-contiguous memory.
   - All Fortran can do is treat as a type(C_PTR).
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8949,7 +8962,7 @@ f_in_native**:
     iso_c_binding:
     - C_PTR
   c_arg_decl:
-  - '{cxx_type} **{cxx_var}'
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11634,7 +11647,16 @@ f_out_native*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library

@@ -689,7 +689,7 @@ void POI_getRawPtrToInt2d_bufferify(int * * * arg)
 // Argument:  int * * arg +intent(in)
 // Statement: f_in_native**
 // start POI_checkInt2d_bufferify
-int POI_checkInt2d_bufferify(int **arg)
+int POI_checkInt2d_bufferify(int * * arg)
 {
     // splicer begin function.checkInt2d_bufferify
     int SHC_rv = checkInt2d(arg);
