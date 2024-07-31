@@ -1664,7 +1664,7 @@ rv = .false.
                 # Explicit declarations from fc_statements.
                 self.add_stmt_declaration(
                     arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
-                self.add_f_module_from_stmts(result_stmt, modules, fmt_arg)
+                self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
             else:
                 # Generate declaration from argument.
                 if options.F_default_args == "optional" and f_arg.declarator.init is not None:
