@@ -537,6 +537,7 @@ root
         char
           array
             cdesc -- f_mixin_inout_char_array_cdesc
+      kind-argument -- f_mixin_kind-argument
       local-logical-var -- f_mixin_local-logical-var
       native
         cdesc
@@ -8986,6 +8987,8 @@ f_in_native*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -9898,6 +9901,8 @@ f_in_void*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -10096,6 +10101,8 @@ f_inout_native*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -10712,6 +10719,8 @@ f_inout_void*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -11181,6 +11190,15 @@ f_mixin_inout_char_array_cdesc:
   c_arg_call:
   - '{cxx_var}'
   owner: library
+f_mixin_kind-argument:
+  name: f_mixin_kind-argument
+  intent: mixin
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_mixin_local-logical-var:
   name: f_mixin_local-logical-var
   intent: mixin
@@ -11314,6 +11332,8 @@ f_mixin_out_native_cdesc_pointer:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   c_arg_call:
@@ -11678,6 +11698,8 @@ f_out_native*&_cdesc:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -11726,6 +11748,8 @@ f_out_native*&_cdesc_pointer:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -11792,6 +11816,8 @@ f_out_native**_cdesc_allocatable:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -11857,6 +11883,8 @@ f_out_native**_cdesc_pointer:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -11974,6 +12002,8 @@ f_out_native**_raw:
   f_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {f_var}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
   c_arg_call:
@@ -11999,6 +12029,8 @@ f_out_native*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -12861,6 +12893,8 @@ f_out_void*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:

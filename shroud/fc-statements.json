@@ -39,6 +39,18 @@
         ]
     },
     {
+        "name": "f_mixin_kind-argument",
+        "notes": [
+            "XXX - work in progress",
+            "Fortran fields for a native type"
+        ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        }
+    },
+    {
         "alias": [
             "f_subroutine",
             "c_subroutine"
@@ -399,6 +411,9 @@
             "Set Fortran pointer to native array."
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "c_f_pointer"
             ]
@@ -1074,6 +1089,9 @@
             "type(C_PTR){f_intent_attr} :: {f_var}"
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "C_PTR"
             ]
@@ -1192,6 +1210,7 @@
             "with a Fortran pointer."
         ],
         "mixin": [
+            "f_mixin_kind-argument",
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native**",
@@ -1242,6 +1261,9 @@
             "array_context"
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "C_LOC"
             ]

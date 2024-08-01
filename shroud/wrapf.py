@@ -1622,6 +1622,8 @@ rv = .false.
                 do_use = False
                 if "funptr" not in f_attrs:
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo, fmt_arg)
+            elif arg_stmt.f_module:
+                do_use = False
             else:
                 do_use = True
 
