@@ -3510,12 +3510,30 @@ c_out_native**:
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
 c_out_native***:
   name: c_out_native***
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3524,6 +3542,15 @@ c_out_native**_raw:
   notes:
   - Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11783,6 +11810,22 @@ f_out_native*&_cdesc_pointer:
 f_out_native***:
   name: f_out_native***
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -12006,6 +12049,15 @@ f_out_native**_raw:
     - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library

@@ -1833,8 +1833,8 @@ contains
     !<
     ! start get_raw_ptr_to_int2d
     subroutine get_raw_ptr_to_int2d(arg)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: arg
+        use iso_c_binding, only : C_PTR
+        type(C_PTR), intent(OUT) :: arg
         ! splicer begin function.get_raw_ptr_to_int2d
         call c_get_raw_ptr_to_int2d(arg)
         ! splicer end function.get_raw_ptr_to_int2d

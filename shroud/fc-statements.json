@@ -1082,8 +1082,8 @@
         "notes": [
             "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'"
         ],
-        "f_arg_name": [
-            "{f_var}"
+        "mixin": [
+            "c_mixin_argument"
         ],
         "f_arg_decl": [
             "type(C_PTR){f_intent_attr} :: {f_var}"
@@ -1095,13 +1095,40 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
+        },
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
         }
     },
     {
         "alias": [
             "f_out_native***",
             "c_out_native***"
-        ]
+        ],
+        "mixin": [
+            "c_mixin_argument"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
     },
     {
         "alias": [
