@@ -1678,6 +1678,20 @@
             "f_in_char*_capi",
             "f_out_char*_capi",
             "f_inout_char*_capi"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
         ]
     },
     {

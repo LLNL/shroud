@@ -1632,6 +1632,15 @@ c_in_char:
 c_in_char*:
   name: c_in_char*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -2448,6 +2457,15 @@ c_inout_bool_*:
 c_inout_char*:
   name: c_inout_char*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3426,6 +3444,15 @@ c_out_bool_*:
 c_out_char*:
   name: c_out_char*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -8715,6 +8742,15 @@ f_in_char:
 f_in_char*:
   name: f_in_char*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -8871,6 +8907,15 @@ f_in_char*_buf:
 f_in_char*_capi:
   name: f_in_char*_capi
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9974,6 +10019,15 @@ f_inout_bool*:
 f_inout_char*:
   name: f_inout_char*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -10026,6 +10080,15 @@ f_inout_char*_buf:
 f_inout_char*_capi:
   name: f_inout_char*_capi
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11584,6 +11647,15 @@ f_out_bool*:
 f_out_char*:
   name: f_out_char*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11630,6 +11702,15 @@ f_out_char*_buf:
 f_out_char*_capi:
   name: f_out_char*_capi
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
