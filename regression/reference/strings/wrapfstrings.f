@@ -1057,7 +1057,7 @@ module strings_mod
                 bind(C, name="STR_fetchArrayStringArg")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(C_PTR), intent(OUT) :: strs
+            type(C_PTR), intent(OUT), value :: strs
             integer(C_INT), intent(OUT) :: nstrs
         end subroutine c_fetch_array_string_arg
     end interface
@@ -1094,7 +1094,7 @@ module strings_mod
                 bind(C, name="STR_fetchArrayStringAlloc")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(C_PTR), intent(OUT) :: strs
+            type(C_PTR), intent(OUT), value :: strs
             integer(C_INT), intent(OUT) :: nstrs
         end subroutine c_fetch_array_string_alloc
     end interface
@@ -1133,7 +1133,7 @@ module strings_mod
                 bind(C, name="STR_fetchArrayStringAllocLen")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(C_PTR), intent(OUT) :: strs
+            type(C_PTR), intent(OUT), value :: strs
             integer(C_INT), intent(OUT) :: nstrs
         end subroutine c_fetch_array_string_alloc_len
     end interface

@@ -147,6 +147,7 @@ root
         native
           cfi -- c_mixin_arg_native_cfi
       argument -- c_mixin_argument
+      character -- c_mixin_character
       destructor
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
@@ -495,6 +496,7 @@ root
     mixin
       arg
         capsule -- f_mixin_arg_capsule
+      argument-as-cptr -- f_mixin_argument-as-cptr
       capsule
         dtor -- f_mixin_capsule_dtor
       char
@@ -1944,6 +1946,15 @@ c_in_string&:
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
@@ -1984,6 +1995,15 @@ c_in_string&_buf:
 c_in_string*:
   name: c_in_string*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -2630,6 +2650,15 @@ c_inout_string&:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
@@ -2681,6 +2710,15 @@ c_inout_string*:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -3068,6 +3106,21 @@ c_mixin_argument:
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+c_mixin_character:
+  name: c_mixin_character
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3624,6 +3677,15 @@ c_out_string&:
   notes:
   - Similar to f_out_string*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
@@ -3672,6 +3734,15 @@ c_out_string&_buf:
 c_out_string*:
   name: c_out_string*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -3693,6 +3764,15 @@ c_out_string**:
   - Returning a pointer to a string*. However, this needs additional
   - mapping for the C interface.  Fortran calls the +api(cdesc) variant.
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9241,6 +9321,15 @@ f_in_string&:
   notes:
   - Similar to f_in_string*, but c_arg_call is pass by value
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
@@ -9322,6 +9411,15 @@ f_in_string&_cfi:
 f_in_string*:
   name: f_in_string*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -10328,6 +10426,15 @@ f_inout_string&:
   f_temps:
   - len
   f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{c_local_cxx}'
   c_pre_call:
@@ -10434,6 +10541,15 @@ f_inout_string*:
   f_temps:
   - len
   f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -10868,6 +10984,21 @@ f_mixin_arg_capsule:
   - capsule
   fmtdict:
     f_var_capsule: Crv
+  owner: library
+f_mixin_argument-as-cptr:
+  name: f_mixin_argument-as-cptr
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 f_mixin_capsule_dtor:
   name: f_mixin_capsule_dtor
@@ -12459,6 +12590,15 @@ f_out_string**_copy:
   - Returning a pointer to a string*. However, this needs additional
   - mapping for the C interface.  Fortran calls the +api(cdesc) variant.
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library

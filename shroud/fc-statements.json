@@ -51,6 +51,27 @@
         }
     },
     {
+        "name": "f_mixin_argument-as-cptr",
+        "notes": [
+            "Pass the address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr}, value :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
         "alias": [
             "f_subroutine",
             "c_subroutine"
@@ -1668,6 +1689,26 @@
         }
     },
     {
+        "name": "c_mixin_character",
+        "notes": [
+            "Create a character argument"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
         "alias": [
             "f_in_char*",
             "c_in_char*",
@@ -1915,6 +1956,9 @@
             "f_in_string*",
             "c_in_string*"
         ],
+        "mixin": [
+            "c_mixin_character"
+        ],
         "c_local": [
             "cxx"
         ],
@@ -1933,6 +1977,9 @@
         "notes": [
             "Similar to f_in_string*, but c_arg_call is pass by value"
         ],
+        "mixin": [
+            "c_mixin_character"
+        ],
         "c_local": [
             "cxx"
         ],
@@ -1946,6 +1993,9 @@
     {
         "alias": [
             "c_out_string*"
+        ],
+        "mixin": [
+            "c_mixin_character"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -1972,6 +2022,9 @@
         "notes": [
             "Similar to f_out_string*"
         ],
+        "mixin": [
+            "c_mixin_character"
+        ],
         "lang_cxx": {
             "impl_header": [
                 "<cstring>"
@@ -1996,7 +2049,8 @@
             "c_inout_string*"
         ],
         "mixin": [
-            "f_mixin_in_character_buf"
+            "f_mixin_in_character_buf",
+            "c_mixin_character"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -2022,7 +2076,8 @@
             "c_inout_string&"
         ],
         "mixin": [
-            "f_mixin_in_character_buf"
+            "f_mixin_in_character_buf",
+            "c_mixin_character"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -4442,6 +4497,9 @@
             "std::string **arg+intent(out)+dimension(size)",
             "Returning a pointer to a string*. However, this needs additional",
             "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
+        ],
+        "mixin": [
+            "f_mixin_argument-as-cptr"
         ],
         "notimplemented": true
     },
