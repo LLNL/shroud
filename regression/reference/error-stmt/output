@@ -69,11 +69,6 @@ statement line 62
 Statement: f_in_foo7
 c_arg_decl must be a list.
 --------------------
-statement line 62
-Statement: f_in_foo7
-c_arg_decl, i_arg_decl and i_arg_names must all exist together.
-Missing i_arg_decl, i_arg_names.
---------------------
 statement line 64
 Statement: f_in_foo8
 c_arg_decl, i_arg_decl and i_arg_names must all be same length. Used 1, 1, 2.

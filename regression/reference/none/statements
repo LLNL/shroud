@@ -2420,6 +2420,8 @@ c_in_void:
 c_in_void*:
   name: c_in_void*
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -10000,6 +10002,8 @@ f_in_void*:
   f_module:
     iso_c_binding:
     - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library

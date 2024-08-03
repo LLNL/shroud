@@ -355,10 +355,10 @@ def post_mixin_check_statement(name, stmt):
                 elif not isinstance(fvalue, list):
                     err = True
                     error.cursor.warning("{} must be a list.".format(field))
-            if missing:
-                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
-                                     "Missing {}.".format(", ".join(missing)))
-                err = True
+#            if missing:
+#                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
+#                                     "Missing {}.".format(", ".join(missing)))
+#                err = True
             if not err:
                 length = len(c_arg_decl)
                 if any(len(lst) != length for lst in [i_arg_decl, i_arg_names]):

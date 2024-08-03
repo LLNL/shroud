@@ -1383,6 +1383,9 @@
         ],
         "f_arg_decl": [
             "type(C_PTR), intent(IN) :: {f_var}"
+        ],
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
         ]
     },
     {
