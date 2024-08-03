@@ -2109,7 +2109,11 @@ c_in_struct*:
   owner: library
 c_in_unknown:
   name: c_in_unknown
+  notes:
+  - Used with MPI types
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -4401,6 +4405,8 @@ c_setter:
 c_setter_native:
   name: c_setter_native
   intent: setter
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -4409,6 +4415,8 @@ c_setter_native:
 c_setter_native*:
   name: c_setter_native*
   intent: setter
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -9661,7 +9669,11 @@ f_in_struct*:
   owner: library
 f_in_unknown:
   name: f_in_unknown
+  notes:
+  - Used with MPI types
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -13297,6 +13309,8 @@ f_setter_bool:
   - '{f_var_cxx}'
   f_temps:
   - cxx
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -13309,6 +13323,8 @@ f_setter_native:
   - '{f_var}'
   f_arg_call:
   - '{fc_var}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -13321,6 +13337,8 @@ f_setter_native*:
   - '{f_var}'
   f_arg_call:
   - '{fc_var}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -13376,6 +13394,8 @@ f_setter_struct*:
   - '{i_var}'
   i_arg_decl:
   - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -13391,6 +13411,8 @@ f_setter_struct**:
   i_module:
     iso_c_binding:
     - C_PTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
@@ -13403,6 +13425,8 @@ f_setter_struct*_pointer:
   - '{i_var}'
   i_arg_decl:
   - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   c_post_call:
