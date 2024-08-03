@@ -4697,6 +4697,9 @@
             "f_in_procedure",
             "c_in_procedure"
         ],
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "f_arg_decl": [
             "procedure({f_abstract_interface}) :: {f_var}"
         ],
@@ -4708,6 +4711,9 @@
         "alias": [
             "f_in_procedure_funptr",
             "c_in_procedure_funptr"
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -4731,6 +4737,9 @@
         ],
         "notes": [
             "EXTERNAL is not allowed in BIND(C), so force wrapper."
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ],
         "f_arg_decl": [
             "external :: {f_var}"

@@ -1846,6 +1846,8 @@ c_in_native*_cdesc:
 c_in_procedure:
   name: c_in_procedure
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -1854,12 +1856,16 @@ c_in_procedure_external:
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9262,6 +9268,8 @@ f_in_procedure:
   - '{f_var}'
   f_arg_decl:
   - 'procedure({f_abstract_interface}) :: {f_var}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9277,6 +9285,8 @@ f_in_procedure_external:
   f_arg_call:
   - '{f_var}'
   f_need_wrapper: true
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9292,6 +9302,8 @@ f_in_procedure_funptr:
   f_module:
     iso_c_binding:
     - C_FUNPTR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
