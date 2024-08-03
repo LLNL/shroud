@@ -13,6 +13,15 @@
         "c_arg_call": []
     },
     {
+        "name": "c_mixin_argument2",
+        "notes": [
+            "XXX - work in progress"
+        ],
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
         "name": "c_mixin_argument",
         "notes": [
             "Use typemap.cxx_to_c to create an argument"
@@ -1069,6 +1078,9 @@
             "f_out_void*&",
             "c_out_void*&"
         ],
+        "mixin": [
+            "c_mixin_argument2"            
+        ],
         "c_arg_call": [
             "*{cxx_var}"
         ]
@@ -1178,6 +1190,7 @@
             "c_in_bool"
         ],
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -1190,6 +1203,7 @@
             "c_out_bool_*"
         ],
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_post_call": [
@@ -1202,6 +1216,7 @@
             "c_inout_bool_*"
         ],
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -1560,6 +1575,9 @@
         "alias": [
             "f_out_enum*",
             "c_out_enum*"
+        ],
+        "c_arg_decl": [
+            "{gen.cidecl.c_var}"
         ],
         "c_local": [
             "cxx"
@@ -2890,6 +2908,9 @@
             "c_out_vector<string>&_buf_copy"
         ],
         "notimplemented": true,
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "i_arg_names": [
             "{i_var}"
         ],
@@ -3507,6 +3528,9 @@
         "notes": [
             "Used with in, out, inout.",
             "C pointer -> void pointer -> C++ pointer"
+        ],
+        "mixin": [
+            "c_mixin_argument2"            
         ]
     },
     {
@@ -3517,6 +3541,9 @@
             "c_out_struct&",
             "f_inout_struct&",
             "c_inout_struct&"
+        ],
+        "mixin": [
+            "c_mixin_argument2"            
         ],
         "c_arg_call": [
             "*{cxx_var}"

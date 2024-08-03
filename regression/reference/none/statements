@@ -147,6 +147,7 @@ root
         native
           cfi -- c_mixin_arg_native_cfi
       argument -- c_mixin_argument
+      argument2 -- c_mixin_argument2
       character -- c_mixin_character
       destructor
         new-string -- c_mixin_destructor_new-string
@@ -1613,6 +1614,8 @@ c_getter_native*:
 c_in_bool:
   name: c_in_bool
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -1774,6 +1777,8 @@ c_in_native:
 c_in_native&:
   name: c_in_native&
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -2078,12 +2083,16 @@ c_in_struct:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
 c_in_struct&:
   name: c_in_struct&
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -2093,6 +2102,8 @@ c_in_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -2473,6 +2484,8 @@ c_in_void*_cdesc:
 c_inout_bool_*:
   name: c_inout_bool_*
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -2527,6 +2540,8 @@ c_inout_char*_buf:
 c_inout_enum*:
   name: c_inout_enum*
   intent: inout
+  c_arg_decl:
+  - '{gen.cidecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -2539,6 +2554,8 @@ c_inout_enum*:
 c_inout_native&:
   name: c_inout_native&
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -2770,6 +2787,8 @@ c_inout_string*_buf:
 c_inout_struct&:
   name: c_inout_struct&
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -2779,6 +2798,8 @@ c_inout_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3108,6 +3129,14 @@ c_mixin_argument:
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+c_mixin_argument2:
+  name: c_mixin_argument2
+  intent: mixin
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3493,6 +3522,8 @@ c_mixin_vector_cdesc_fill-cdesc:
 c_out_bool_*:
   name: c_out_bool_*
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -3541,6 +3572,8 @@ c_out_char_*_buf:
 c_out_enum*:
   name: c_out_enum*
   intent: out
+  c_arg_decl:
+  - '{gen.cidecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -3553,6 +3586,8 @@ c_out_enum*:
 c_out_native&:
   name: c_out_native&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -3584,6 +3619,8 @@ c_out_native*:
 c_out_native*&:
   name: c_out_native*&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -3842,6 +3879,8 @@ c_out_string*_buf:
 c_out_struct&:
   name: c_out_struct&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -3851,6 +3890,8 @@ c_out_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -4186,6 +4227,8 @@ c_out_vector<string>&_buf_copy:
   i_module:
     iso_c_binding:
     - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -4274,6 +4317,8 @@ c_out_vector<string>*_buf_copy:
   i_module:
     iso_c_binding:
     - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -4288,6 +4333,8 @@ c_out_vector<string>_buf_copy:
   i_module:
     iso_c_binding:
     - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -4295,6 +4342,8 @@ c_out_vector<string>_buf_copy:
 c_out_void*&:
   name: c_out_void*&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -8799,6 +8848,8 @@ f_in_bool:
   - '{f_var_cxx}'
   f_temps:
   - cxx
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -9077,6 +9128,8 @@ f_in_native:
 f_in_native&:
   name: f_in_native&
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -9582,12 +9635,16 @@ f_in_struct:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
 f_in_struct&:
   name: f_in_struct&
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -9597,6 +9654,8 @@ f_in_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -10115,6 +10174,8 @@ f_inout_bool*:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_temps:
   - cxx
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -10229,6 +10290,8 @@ f_inout_char*_cfi:
 f_inout_enum*:
   name: f_inout_enum*
   intent: inout
+  c_arg_decl:
+  - '{gen.cidecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -10241,6 +10304,8 @@ f_inout_enum*:
 f_inout_native&:
   name: f_inout_native&
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -10645,6 +10710,8 @@ f_inout_string*_cfi:
 f_inout_struct&:
   name: f_inout_struct&
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -10654,6 +10721,8 @@ f_inout_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: inout
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11776,6 +11845,8 @@ f_out_bool*:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_temps:
   - cxx
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11879,6 +11950,8 @@ f_out_char*_cfi:
 f_out_enum*:
   name: f_out_enum*
   intent: out
+  c_arg_decl:
+  - '{gen.cidecl.c_var}'
   c_arg_call:
   - '&{c_local_cxx}'
   c_pre_call:
@@ -11891,6 +11964,8 @@ f_out_enum*:
 f_out_native&:
   name: f_out_native&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -12683,6 +12758,8 @@ f_out_string*_cfi:
 f_out_struct&:
   name: f_out_struct&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
@@ -12692,6 +12769,8 @@ f_out_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -13123,6 +13202,8 @@ f_out_vector_buf_targ_string_scalar:
 f_out_void*&:
   name: f_out_void*&
   intent: out
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '*{cxx_var}'
   owner: library
