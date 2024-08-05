@@ -179,7 +179,13 @@ class FillFormat(object):
             if wlang == "f":
                 set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
                 fmt_arg.f_abstract_name = arg_name
+                fmt_arg.f_var = arg_name
                 fmt_arg.i_var = arg_name
+
+                # XXX - fill_interface_arg
+                self.set_fmt_fields_iface(node, arg, bind_arg, fmt_arg, arg_name, arg.typemap)
+                self.set_fmt_fields_dimension(None, node, arg, fmt_arg, bind_arg)
+
                 
         # --- End loop over function parameters
         fmt_result.f_abstract_names = abstract_names
@@ -256,7 +262,6 @@ class FillFormat(object):
 
         # prototype:  vector<int> -> int *
         converter, lang = find_arg_converter(wlang, self.language, arg_typemap)
-        fmt_arg.c_proto_decl = gen_arg_as_c(arg, lang=lang)
         
         fmt_arg.c_abstract_decl = gen_arg_as_c(
             arg, name=False, add_params=False)
@@ -600,6 +605,7 @@ class FillFormat(object):
         rank = meta["rank"]
         if meta["dimension"] == "..":   # assumed-rank
             fmt.i_dimension = "(..)"
+            fmt.f_dimension = "(..)"
             fmt.f_assumed_shape = "(..)"
         elif rank is not None:
             fmt.rank = str(rank)
@@ -611,6 +617,7 @@ class FillFormat(object):
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.f_dimension = fortran_ranks[rank]
                 fmt.i_dimension = "(*)"
                 if hasattr(fmt, "f_var_cdesc"):
                     fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
@@ -621,8 +628,13 @@ class FillFormat(object):
             fmt.rank = str(rank)
             if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.i_dimension = "(*)"
                 # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
+                if visitor.compute_shape:
+                    fmt.f_dimension = fmt.f_assumed_shape
+                else:
+                    fmt.f_dimension = fmt.f_array_allocate
                 if hasattr(fmt, "f_var_cdesc"):
                     # XXX kludge, name is assumed to be f_var_cdesc.
                     fmt.f_cdesc_shape = wformat("\n{f_var_cdesc}%shape(1:{rank}) = shape({f_var})", fmt)
@@ -786,6 +798,7 @@ class ToDimension(todict.PrintNode):
         self.rank = 0
         self.shape = []
         self.need_helper = False
+        self.compute_shape = False
 
     def visit_list(self, node):
         # list of dimension expressions
@@ -799,6 +812,7 @@ class ToDimension(todict.PrintNode):
         # Look for Fortran intrinsics
         if argname == "size" and node.args:
             # size(in)
+            self.compute_shape = True
             return self.param_list(node) # function
         # Look for members of class/struct.
         elif self.cls is not None and argname in self.cls.map_name_to_node:
@@ -810,12 +824,14 @@ class ToDimension(todict.PrintNode):
                 if node.args is None:
                     print("{} must have arguments".format(argname))
                 else:
+                    self.compute_shape = True
                     return "obj->{}({})".format(
                         argname, self.comma_list(node.args))
             else:
                 if node.args is not None:
                     print("{} must not have arguments".format(argname))
                 else:
+                    self.compute_shape = True
                     return "obj->{}".format(argname)
         else:
             if self.fcn.ast.declarator.find_arg_by_name(argname) is None:
@@ -823,6 +839,7 @@ class ToDimension(todict.PrintNode):
             if node.args is None:
                 return argname  # variable
             else:
+                self.compute_shape = True
                 return self.param_list(node) # function
         return "--??--"
 
@@ -854,6 +871,11 @@ def set_f_arg_format(node, arg, fmt, bind, wlang):
     if intent != "NONE":
         fmt.f_intent = intent
         fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+
+    if meta["optional"]:
+        fmt.f_optional_attr = ", optional"
+    if meta["value"]:
+        fmt.f_value_attr = ", value"
 
 
 def compute_c_deref(arg, fmt):
@@ -962,7 +984,7 @@ class NonConst(object):
 
 class FormatCdecl(object):
     """
-    Return the declaration from the ast.
+    Return the C declaration from the ast.
     """
     def __init__(self, state):
         self.state = state
@@ -970,8 +992,27 @@ class FormatCdecl(object):
     def __getattr__(self, name):
         """If name is in fmtdict, use it. Else use name directly"""
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
-#        decl = self.state.ast.to_string_declarator(name=varname)
-        decl = gen_arg_as_cxx(self.state.ast, name=varname)
+        decl = gen_arg_as_c(self.state.ast, name=varname)
+        return decl
+
+    def __str__(self):
+        #### Abstract declarator as C
+        decl = gen_arg_as_c(self.state.ast, name=False)
+        return decl
+            
+class FormatCXXdecl(object):
+    """
+    Return the original declaration from the ast.
+    """
+    def __init__(self, state):
+        self.state = state
+
+    def __getattr__(self, name):
+        """If name is in fmtdict, use it. Else use name directly"""
+        varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
+        decl = gen_arg_as_cxx(self.state.ast,
+                              with_template_args=True,
+                              name=varname)
         return decl
 
     def __str__(self):
@@ -1014,7 +1055,8 @@ class FormatGen(object):
         self._cache = {}
 
         self.nonconst_addr = NonConst(state)
-        self.cxxdecl = FormatCdecl(state)
+        self.cdecl = FormatCdecl(state)
+        self.cxxdecl = FormatCXXdecl(state)
         self.cidecl = FormatCIdecl(state)
 
     @property

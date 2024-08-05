@@ -1,12 +1,84 @@
 [
     {
         "name": "c_mixin_noargs",
-        "comments": [
+        "notes": [
             "No arguments to a function."
         ],
-        "c_arg_decl": [],
+        "f_arg_name": [],
+        "f_arg_decl": [],
+        "f_arg_call": [],
+        "i_arg_names": [],
         "i_arg_decl": [],
-        "i_arg_names": []
+        "c_arg_decl": [],
+        "c_arg_call": []
+    },
+    {
+        "name": "c_mixin_argument2",
+        "notes": [
+            "XXX - work in progress"
+        ],
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
+        "name": "c_mixin_argument",
+        "notes": [
+            "Use typemap.cxx_to_c to create an argument"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
+        "name": "f_mixin_kind-argument",
+        "notes": [
+            "XXX - work in progress",
+            "Fortran fields for a native type"
+        ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        }
+    },
+    {
+        "name": "f_mixin_argument-as-cptr",
+        "notes": [
+            "Pass the address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr}, value :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
     },
     {
         "alias": [
@@ -16,34 +88,63 @@
         "mixin": [
             "c_mixin_noargs"
         ],
-        "f_arg_call": [],
         "f_call": [
             "call {F_C_call}({F_arg_c_call})"
         ]
     },
     {
-        "name": "c_function"
+        "name": "c_mixin_function",
+        "comments": [
+            "Call a function."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
+        ]
     },
     {
         "name": "f_mixin_function",
-        "comment": [
-            "Default code to call a function."
+        "comments": [
+            "Call a function."
         ],
-        "f_arg_call": [],
+        "mixin": [
+            "c_mixin_noargs"
+        ],
         "f_call": [
             "{F_result} = {F_C_call}({F_arg_c_call})"
         ]
     },
     {
+        "name": "f_mixin_function-to-subroutine",
+        "comments": [
+            "Call the C wrapper as a subroutine."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
+        ],
+        "f_call": [
+            "call {F_C_call}({F_arg_c_call})"
+        ],
+        "c_return_type": "void"
+    },
+    {
+        "name":"##### native ###############################################"
+    },
+    {
         "alias": [
             "f_function_native",
             "c_function_native"
+        ],
+        "mixin": [
+            "f_mixin_function"
         ]
     },
     {
         "name": "f_function_native*_scalar",
         "comments": [
             "Return a scalar to avoid doing the deref in Fortran."
+        ],
+        "mixin": [
+            "f_mixin_function"
         ],
         "c_return_type": "{c_type}",
         "c_return": [
@@ -52,19 +153,12 @@
         "c_need_wrapper": true
     },
     {
-        "name": "f_mixin_function-to-subroutine",
-        "comments": [
-            "Call the C wrapper as a subroutine."
-        ],
-        "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
-        ],
-        "c_return_type": "void"
-    },
-    {
         "name": "f_mixin_function_ptr",
-        "comment": [
+        "comments": [
             "Return a C pointer directly as type(C_PTR)."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -87,6 +181,9 @@
         "name": "f_mixin_function_c-ptr",
         "comments": [
             "Return a C pointer as a type(C_PTR)."
+        ],
+        "mixin": [
+            "c_mixin_noargs"
         ],
         "c_need_wrapper": true,
         "f_module": {
@@ -344,6 +441,9 @@
             "Set Fortran pointer to native array."
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "c_f_pointer"
             ]
@@ -942,23 +1042,15 @@
         "alias": [
             "f_in_native*",
             "c_in_native*",
-            "f_out_char*",
-            "c_out_char*",
+            "f_out_native*",
+            "c_out_native*",
             "f_inout_native*",
             "c_inout_native*",
-            "f_out_native***",
-            "c_out_native***",
-            "f_in_char*",
-            "c_in_char*",
-            "f_inout_char*",
-            "c_inout_char*",
             "f_in_void",
-            "c_in_void",
-            "f_in_char*_capi",
-            "f_out_char*_capi",
-            "f_inout_char*_capi",
-            "f_in_unknown",
-            "c_in_unknown"
+            "c_in_void"
+        ],
+        "mixin": [
+            "c_mixin_argument"
         ]
     },
     {
@@ -970,22 +1062,9 @@
         "notes": [
             "An intent of 'none' is used with function pointers"
         ],
-        "c_arg_decl": [
-            "{c_const}{c_type} {c_var}"
-        ],
-        "i_arg_names":
-        [
-            "{i_var}"
-        ],
-        "i_arg_decl":
-        [
-            "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
-        ],
-        "i_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
-            ]
-        }
+        "mixin": [
+            "c_mixin_argument"
+        ]
     },
     {
         "alias": [
@@ -999,8 +1078,101 @@
             "f_out_void*&",
             "c_out_void*&"
         ],
+        "mixin": [
+            "c_mixin_argument2"            
+        ],
         "c_arg_call": [
             "*{cxx_var}"
+        ]
+    },
+    {
+        "alias": [
+            "f_in_native**",
+            "c_in_native**"
+        ],
+        "notes": [
+            "Any array of pointers.  Assumed to be non-contiguous memory.",
+            "All Fortran can do is treat as a type(C_PTR)."
+        ],
+        "mixin": [
+            "c_mixin_argument"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR), intent(IN), value :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "alias": [
+            "f_out_native**_raw",
+            "c_out_native**_raw",
+            "c_out_native**"
+        ],
+        "notes": [
+            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'"
+        ],
+        "mixin": [
+            "c_mixin_argument"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "alias": [
+            "f_out_native***",
+            "c_out_native***"
+        ],
+        "mixin": [
+            "c_mixin_argument"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
+        "alias": [
+            "f_in_unknown",
+            "c_in_unknown"
+        ],
+        "notes": [
+            "Used with MPI types"
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ]
     },
     {
@@ -1024,6 +1196,7 @@
             "c_in_bool"
         ],
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -1036,6 +1209,7 @@
             "c_out_bool_*"
         ],
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_post_call": [
@@ -1048,6 +1222,7 @@
             "c_inout_bool_*"
         ],
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -1062,43 +1237,10 @@
             "f_function_bool",
             "c_function_bool"
         ],
+        "mixin": [
+            "f_mixin_function"
+        ],
         "f_need_wrapper": true
-    },
-    {
-        "alias": [
-            "f_out_native*",
-            "c_out_native*"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "{f_type}{f_intent_attr} :: {f_var}{f_assumed_shape}"
-        ]
-    },
-    {
-        "alias": [
-            "f_in_native**",
-            "c_in_native**"
-        ],
-        "notes": [
-            "Any array of pointers.  Assumed to be non-contiguous memory.",
-            "All Fortran can do is treat as a type(C_PTR)."
-        ],
-        "c_arg_decl": [
-            "{cxx_type} **{cxx_var}"
-        ],
-        "i_arg_decl": [
-            "type(C_PTR), intent(IN), value :: {i_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
     },
     {
         "name": "c_mixin_out_native**",
@@ -1137,6 +1279,7 @@
             "with a Fortran pointer."
         ],
         "mixin": [
+            "f_mixin_kind-argument",
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native**",
@@ -1157,27 +1300,6 @@
             "c_mixin_native_cdesc_fill-cdesc",
             "f_mixin_out_native_cdesc_pointer"
         ]
-    },
-    {
-        "alias": [
-            "f_out_native**_raw",
-            "c_out_native**_raw",
-            "c_out_native**"
-        ],
-        "notes": [
-            "Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {f_var}"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        }
     },
     {
         "alias": [
@@ -1208,6 +1330,9 @@
             "array_context"
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "C_LOC"
             ]
@@ -1279,12 +1404,18 @@
         ],
         "f_arg_decl": [
             "type(C_PTR), intent(IN) :: {f_var}"
+        ],
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
         ]
     },
     {
         "alias": [
             "f_function_void*",
             "c_function_void*"
+        ],
+        "mixin": [
+            "c_mixin_function"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -1451,6 +1582,9 @@
             "f_out_enum*",
             "c_out_enum*"
         ],
+        "c_arg_decl": [
+            "{gen.cidecl.c_var}"
+        ],
         "c_local": [
             "cxx"
         ],
@@ -1481,6 +1615,9 @@
         "comments": [
             "Return as the Fortran bind(C) type."
         ],
+        "mixin": [
+            "f_mixin_function"
+        ],
         "c_post_call": [
             "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
         ]
@@ -1488,6 +1625,9 @@
     {
         "alias": [
             "c_function_enum"
+        ],
+        "mixin": [
+            "c_mixin_function"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
@@ -1560,6 +1700,9 @@
             "f_function_char*_pointer",
             "f_function_char*_raw"
         ],
+        "mixin": [
+            "f_mixin_function"
+        ],
         "f_arg_decl": [
             "type(C_PTR) :: {f_var}"
         ],
@@ -1571,6 +1714,53 @@
                 "C_PTR"
             ]
         }
+    },
+    {
+        "name": "c_mixin_character",
+        "notes": [
+            "Create a character argument"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
+        "alias": [
+            "f_in_char*",
+            "c_in_char*",
+            "f_out_char*",
+            "c_out_char*",
+            "f_inout_char*",
+            "c_inout_char*",
+            "f_in_char*_capi",
+            "f_out_char*_capi",
+            "f_inout_char*_capi"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
     },
     {
         "alias": [
@@ -1793,6 +1983,9 @@
             "f_in_string*",
             "c_in_string*"
         ],
+        "mixin": [
+            "c_mixin_character"
+        ],
         "c_local": [
             "cxx"
         ],
@@ -1811,6 +2004,9 @@
         "notes": [
             "Similar to f_in_string*, but c_arg_call is pass by value"
         ],
+        "mixin": [
+            "c_mixin_character"
+        ],
         "c_local": [
             "cxx"
         ],
@@ -1824,6 +2020,9 @@
     {
         "alias": [
             "c_out_string*"
+        ],
+        "mixin": [
+            "c_mixin_character"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -1850,6 +2049,9 @@
         "notes": [
             "Similar to f_out_string*"
         ],
+        "mixin": [
+            "c_mixin_character"
+        ],
         "lang_cxx": {
             "impl_header": [
                 "<cstring>"
@@ -1874,7 +2076,8 @@
             "c_inout_string*"
         ],
         "mixin": [
-            "f_mixin_in_character_buf"
+            "f_mixin_in_character_buf",
+            "c_mixin_character"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -1900,7 +2103,8 @@
             "c_inout_string&"
         ],
         "mixin": [
-            "f_mixin_in_character_buf"
+            "f_mixin_in_character_buf",
+            "c_mixin_character"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -2079,6 +2283,9 @@
             "Fortran calling a C function without",
             "any api argument - is this useful?"
         ],
+        "mixin": [
+            "c_mixin_function"
+        ],
         "c_return": [
             "return {c_var};"
         ],
@@ -2099,6 +2306,9 @@
         "notimplemented": true,
         "comments": [
             "Cannot return a char array by value."
+        ],
+        "mixin": [
+            "c_mixin_function"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
@@ -2704,6 +2914,9 @@
             "c_out_vector<string>&_buf_copy"
         ],
         "notimplemented": true,
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "i_arg_names": [
             "{i_var}"
         ],
@@ -3289,7 +3502,6 @@
             "c_dtor"
         ],
         "mixin": [
-            "c_mixin_noargs",
             "f_mixin_function-to-subroutine"
         ],
         "lang_c": {
@@ -3322,6 +3534,9 @@
         "notes": [
             "Used with in, out, inout.",
             "C pointer -> void pointer -> C++ pointer"
+        ],
+        "mixin": [
+            "c_mixin_argument2"            
         ]
     },
     {
@@ -3332,6 +3547,9 @@
             "c_out_struct&",
             "f_inout_struct&",
             "c_inout_struct&"
+        ],
+        "mixin": [
+            "c_mixin_argument2"            
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -3405,6 +3623,9 @@
             "f_setter_struct*_pointer",
             "f_setter_struct*"
         ],
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "i_arg_names": [
             "{i_var}"
         ],
@@ -3417,6 +3638,9 @@
     },
     {
         "name": "f_setter_struct**",
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "i_arg_names": [
             "{i_var}"
         ],
@@ -3448,6 +3672,7 @@
     {
         "name": "f_setter_bool",
         "mixin": [
+            "c_mixin_argument2",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -3497,6 +3722,9 @@
             "f_setter_native*",
             "c_setter_native",
             "c_setter_native*"
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ],
         "f_arg_name": [
             "{f_var}"
@@ -4316,6 +4544,9 @@
             "Returning a pointer to a string*. However, this needs additional",
             "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
         ],
+        "mixin": [
+            "f_mixin_argument-as-cptr"
+        ],
         "notimplemented": true
     },
     {
@@ -4466,6 +4697,9 @@
             "f_in_procedure",
             "c_in_procedure"
         ],
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "f_arg_decl": [
             "procedure({f_abstract_interface}) :: {f_var}"
         ],
@@ -4477,6 +4711,9 @@
         "alias": [
             "f_in_procedure_funptr",
             "c_in_procedure_funptr"
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ],
         "f_module": {
             "iso_c_binding": [
@@ -4500,6 +4737,9 @@
         ],
         "notes": [
             "EXTERNAL is not allowed in BIND(C), so force wrapper."
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ],
         "f_arg_decl": [
             "external :: {f_var}"

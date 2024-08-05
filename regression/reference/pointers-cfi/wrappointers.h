@@ -125,7 +125,7 @@ void POI_getRawPtrToFixedArrayForce(int * * count);
 
 void POI_getRawPtrToInt2d(int * * * arg);
 
-int POI_checkInt2d(int **arg);
+int POI_checkInt2d(int * * arg);
 
 void POI_DimensionIn(const int * arg);
 

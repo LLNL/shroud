@@ -289,7 +289,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1",
                             "cfi_type": "CFI_type_intptr_t",
@@ -301,6 +300,7 @@
                             "cxx_var": "incr1",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure",
@@ -312,7 +312,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1",
                             "cfi_type": "CFI_type_intptr_t",
@@ -326,6 +325,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1",
                             "fc_var": "incr1",
                             "i_var": "incr1",
@@ -624,7 +624,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1_wrap)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1_wrap",
                             "cfi_type": "CFI_type_intptr_t",
@@ -636,6 +635,7 @@
                             "cxx_var": "incr1_wrap",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure",
@@ -647,7 +647,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1_wrap)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1_wrap",
                             "cfi_type": "CFI_type_intptr_t",
@@ -661,6 +660,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1_wrap",
                             "fc_var": "incr1_wrap",
                             "i_var": "incr1_wrap",
@@ -970,7 +970,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1_external)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1_external",
                             "cfi_type": "CFI_type_intptr_t",
@@ -982,6 +981,7 @@
                             "cxx_var": "incr1_external",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure_external",
@@ -993,7 +993,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1_external)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1_external",
                             "cfi_type": "CFI_type_intptr_t",
@@ -1007,6 +1006,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1_external",
                             "fc_var": "incr1_external",
                             "i_var": "incr1_external",
@@ -1319,7 +1319,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1_funptr)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1_funptr",
                             "cfi_type": "CFI_type_intptr_t",
@@ -1331,6 +1330,7 @@
                             "cxx_var": "incr1_funptr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure_funptr",
@@ -1342,7 +1342,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr1_funptr)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr1_funptr",
                             "cfi_type": "CFI_type_intptr_t",
@@ -1355,6 +1354,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr1_funptr",
                             "fc_var": "incr1_funptr",
                             "i_var": "incr1_funptr",
@@ -1554,7 +1554,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "FUN_incrtype incr",
                             "c_type": "FUN_incrtype",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
@@ -1566,6 +1565,7 @@
                             "cxx_var": "incr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_procedure",
@@ -1577,7 +1577,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "FUN_incrtype incr",
                             "c_type": "FUN_incrtype",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
@@ -1592,6 +1591,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
+                            "f_value_attr": ", value",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
@@ -1608,7 +1608,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ival",
                             "c_type": "int",
                             "c_var": "ival",
                             "cfi_type": "CFI_type_int",
@@ -1620,6 +1619,7 @@
                             "cxx_var": "ival",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -1631,7 +1631,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ival",
                             "c_type": "int",
                             "c_var": "ival",
                             "cfi_type": "CFI_type_int",
@@ -1645,6 +1644,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
@@ -1661,7 +1661,6 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -1684,7 +1683,6 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -1902,7 +1900,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "FUN_incrtype incr",
                             "c_type": "FUN_incrtype",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
@@ -1914,6 +1911,7 @@
                             "cxx_var": "incr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_procedure_external",
@@ -1925,7 +1923,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "FUN_incrtype incr",
                             "c_type": "FUN_incrtype",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
@@ -1940,6 +1937,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
+                            "f_value_attr": ", value",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
@@ -1956,7 +1954,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ival",
                             "c_type": "int",
                             "c_var": "ival",
                             "cfi_type": "CFI_type_int",
@@ -1968,6 +1965,7 @@
                             "cxx_var": "ival",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -1979,7 +1977,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ival",
                             "c_type": "int",
                             "c_var": "ival",
                             "cfi_type": "CFI_type_int",
@@ -1993,6 +1990,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
@@ -2009,7 +2007,6 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -2032,7 +2029,6 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -2251,7 +2247,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "FUN_incrtype incr",
                             "c_type": "FUN_incrtype",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
@@ -2263,6 +2258,7 @@
                             "cxx_var": "incr",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_procedure_funptr",
@@ -2274,7 +2270,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "FUN_incrtype incr",
                             "c_type": "FUN_incrtype",
                             "c_var": "incr",
                             "cfi_type": "CFI_type_other",
@@ -2289,6 +2284,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "incrtype",
                             "f_type": "procedure(incrtype)",
+                            "f_value_attr": ", value",
                             "f_var": "incr",
                             "fc_var": "incr",
                             "i_var": "incr",
@@ -2305,7 +2301,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ival",
                             "c_type": "int",
                             "c_var": "ival",
                             "cfi_type": "CFI_type_int",
@@ -2317,6 +2312,7 @@
                             "cxx_var": "ival",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -2328,7 +2324,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ival",
                             "c_type": "int",
                             "c_var": "ival",
                             "cfi_type": "CFI_type_int",
@@ -2342,6 +2337,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "ival",
                             "fc_var": "ival",
                             "i_var": "ival",
@@ -2358,7 +2354,6 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -2381,7 +2376,6 @@
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",
@@ -2776,7 +2770,6 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "void * in",
                             "c_type": "void",
                             "c_var": "in",
                             "cfi_type": "CFI_type_intptr_t",
@@ -2788,6 +2781,7 @@
                             "cxx_var": "in",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_void*",
@@ -2799,7 +2793,6 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "void * in",
                             "c_type": "void",
                             "c_var": "in",
                             "cfi_type": "CFI_type_intptr_t",
@@ -2812,6 +2805,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "in",
                             "fc_var": "in",
                             "i_var": "in",
@@ -2828,7 +2822,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr3)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr3",
                             "cfi_type": "CFI_type_intptr_t",
@@ -2840,6 +2833,7 @@
                             "cxx_var": "incr3",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt_name": "c_in_procedure_funptr",
@@ -2851,7 +2845,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "void ( * incr3)(\tvoid)",
                             "c_type": "void",
                             "c_var": "incr3",
                             "cfi_type": "CFI_type_intptr_t",
@@ -2864,6 +2857,7 @@
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_type": "type(C_PTR)",
+                            "f_value_attr": ", value",
                             "f_var": "incr3",
                             "fc_var": "incr3",
                             "i_var": "incr3",
@@ -2880,7 +2874,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int type",
                             "c_type": "int",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
@@ -2892,6 +2885,7 @@
                             "cxx_var": "type",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -2903,7 +2897,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int type",
                             "c_type": "int",
                             "c_var": "type",
                             "cfi_type": "CFI_type_int",
@@ -2917,6 +2910,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "type",
                             "fc_var": "type",
                             "i_var": "type",
@@ -3164,9 +3158,18 @@
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
+                                                "f_assumed_shape": "(:)",
+                                                "f_dimension": "(:)",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "ilow",
+                                                "i_dimension": "(*)",
                                                 "i_var": "ilow",
+                                                "rank": "1",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "size": "size(ilow)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3176,7 +3179,12 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "nargs",
                                                 "i_var": "nargs",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -3325,9 +3333,18 @@
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
+                                                "f_assumed_shape": "(:)",
+                                                "f_dimension": "(:)",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "ilow",
+                                                "i_dimension": "(*)",
                                                 "i_var": "ilow",
+                                                "rank": "1",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "size": "size(ilow)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3337,7 +3354,12 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "nargs",
                                                 "i_var": "nargs",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -3485,9 +3507,18 @@
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
+                                                "f_assumed_shape": "(:)",
+                                                "f_dimension": "(:)",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_var": "ilow",
+                                                "i_dimension": "(*)",
                                                 "i_var": "ilow",
+                                                "rank": "1",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "size": "size(ilow)",
                                                 "stmt_name": "f_in_native*",
                                                 "typemap_name": "int"
                                             }
@@ -3497,7 +3528,12 @@
                                                 "f_abstract_name": "nargs",
                                                 "f_intent": "IN",
                                                 "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "nargs",
                                                 "i_var": "nargs",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_in_native",
                                                 "typemap_name": "int"
                                             }
@@ -3598,7 +3634,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ( * actor)(\tint * ilow,\t int nargs)",
                             "c_type": "int",
                             "c_var": "actor",
                             "cfi_type": "CFI_type_int",
@@ -3610,6 +3645,7 @@
                             "cxx_var": "actor",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_procedure",
@@ -3621,7 +3657,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ( * actor)(\tint * ilow,\t int nargs)",
                             "c_type": "int",
                             "c_var": "actor",
                             "cfi_type": "CFI_type_int",
@@ -3636,6 +3671,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "actor",
                             "fc_var": "actor",
                             "i_var": "actor",
@@ -3652,7 +3688,6 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "int * ilow",
                             "c_type": "int",
                             "c_var": "ilow",
                             "cfi_type": "CFI_type_int",
@@ -3675,7 +3710,6 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "int * ilow",
                             "c_type": "int",
                             "c_var": "ilow",
                             "cfi_type": "CFI_type_int",
@@ -3686,6 +3720,7 @@
                             "cxx_type": "int",
                             "cxx_var": "ilow",
                             "f_assumed_shape": "(:)",
+                            "f_dimension": "(:)",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
@@ -3709,7 +3744,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int nargs",
                             "c_type": "int",
                             "c_var": "nargs",
                             "cfi_type": "CFI_type_int",
@@ -3721,6 +3755,7 @@
                             "cxx_var": "nargs",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -3732,7 +3767,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int nargs",
                             "c_type": "int",
                             "c_var": "nargs",
                             "cfi_type": "CFI_type_int",
@@ -3746,6 +3780,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "nargs",
                             "fc_var": "SH_nargs",
                             "i_var": "nargs",
@@ -4063,7 +4098,6 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "int * ( * get_ptr)(\tvoid)",
                             "c_type": "int",
                             "c_var": "get_ptr",
                             "cfi_type": "CFI_type_int",
@@ -4086,7 +4120,6 @@
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
-                            "c_proto_decl": "int * ( * get_ptr)(\tvoid)",
                             "c_type": "int",
                             "c_var": "get_ptr",
                             "cfi_type": "CFI_type_int",
@@ -4302,7 +4335,12 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "XX0arg",
                                                 "i_var": "XX0arg",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -4310,7 +4348,12 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "XX1arg",
                                                 "i_var": "XX1arg",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -4438,7 +4481,12 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "XX0arg",
                                                 "i_var": "XX0arg",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -4446,7 +4494,12 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "XX1arg",
                                                 "i_var": "XX1arg",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -4573,7 +4626,12 @@
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "XX0arg",
                                                 "i_var": "XX0arg",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -4581,7 +4639,12 @@
                                         "XX1arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX1arg",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "XX1arg",
                                                 "i_var": "XX1arg",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -4676,7 +4739,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ( * get_abs)(\tdouble,\t int)",
                             "c_type": "int",
                             "c_var": "get_abs",
                             "cfi_type": "CFI_type_int",
@@ -4688,6 +4750,7 @@
                             "cxx_var": "get_abs",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_procedure",
@@ -4699,7 +4762,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int ( * get_abs)(\tdouble,\t int)",
                             "c_type": "int",
                             "c_var": "get_abs",
                             "cfi_type": "CFI_type_int",
@@ -4714,6 +4776,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "get_abs",
                             "fc_var": "get_abs",
                             "i_var": "get_abs",
@@ -4730,7 +4793,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int input",
                             "c_type": "int",
                             "c_var": "input",
                             "cfi_type": "CFI_type_int",
@@ -4742,6 +4804,7 @@
                             "cxx_var": "input",
                             "f_intent": "IN",
                             "f_intent_attr": ", intent(IN)",
+                            "f_value_attr": ", value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "c_in_native",
@@ -4753,7 +4816,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int input",
                             "c_type": "int",
                             "c_var": "input",
                             "cfi_type": "CFI_type_int",
@@ -4767,6 +4829,7 @@
                             "f_intent_attr": ", intent(IN)",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
+                            "f_value_attr": ", value",
                             "f_var": "input",
                             "fc_var": "input",
                             "i_var": "input",
@@ -4994,7 +5057,12 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "i",
                                                 "i_var": "i",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5002,7 +5070,12 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "j",
                                                 "i_var": "j",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
                                             }
@@ -5119,7 +5192,12 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "i",
                                                 "i_var": "i",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5127,7 +5205,12 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "j",
                                                 "i_var": "j",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
                                             }
@@ -5244,7 +5327,12 @@
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "i",
                                                 "i_var": "i",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5252,7 +5340,12 @@
                                         "j": {
                                             "fmtf": {
                                                 "f_abstract_name": "j",
+                                                "f_kind": "type_id",
+                                                "f_type": "integer(type_id)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "j",
                                                 "i_var": "j",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "TypeID"
                                             }
@@ -5429,7 +5522,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -5437,7 +5535,12 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg1",
                                                 "i_var": "arg1",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5552,7 +5655,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -5560,7 +5668,12 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg1",
                                                 "i_var": "arg1",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }
@@ -5675,7 +5788,12 @@
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
+                                                "f_kind": "C_DOUBLE",
+                                                "f_type": "real(C_DOUBLE)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg0",
                                                 "i_var": "arg0",
+                                                "sh_type": "SH_TYPE_DOUBLE",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "double"
                                             }
@@ -5683,7 +5801,12 @@
                                         "arg1": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg1",
+                                                "f_kind": "C_INT",
+                                                "f_type": "integer(C_INT)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg1",
                                                 "i_var": "arg1",
+                                                "sh_type": "SH_TYPE_INT",
                                                 "stmt_name": "f_none_native",
                                                 "typemap_name": "int"
                                             }

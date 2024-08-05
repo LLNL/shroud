@@ -99,7 +99,7 @@ void POI_getRawPtrToFixedArrayForce_bufferify(int * * count);
 
 void POI_getRawPtrToInt2d_bufferify(int * * * arg);
 
-int POI_checkInt2d_bufferify(int **arg);
+int POI_checkInt2d_bufferify(int * * arg);
 
 void POI_DimensionIn_bufferify(const int * arg);
 

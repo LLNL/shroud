@@ -28,7 +28,7 @@ class WFormat(unittest.TestCase):
             typemap=arg.typemap,
             c_var="arg1",
             cxx_var="cxx_var_name",
-            cxx_other="other_name",
+            other="other_name",
         )
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("array", str(fmtarg))
@@ -44,9 +44,18 @@ class WFormat(unittest.TestCase):
 #        print(8, fmtarg.tester)
 #        print(10, fmtarg.__name)
 
-        self.assertEqual("int *", str(fmtarg.cxxdecl))
-        self.assertEqual("int * arg1", fmtarg.cxxdecl.c_var)
-        self.assertEqual("int * ===>xxx<===", fmtarg.cxxdecl.xxx)
+        self.assertEqual("int *",
+                         str(fmtarg.cdecl))
+        self.assertEqual("int * arg1",
+                         str(fmtarg.cdecl.c_var))
+        self.assertEqual("int * other_name",
+                         str(fmtarg.cdecl.other))
+        self.assertEqual("int *",
+                         str(fmtarg.cxxdecl))
+        self.assertEqual("int * other_name",
+                         str(fmtarg.cxxdecl.other))
+        self.assertEqual("int * ===>xxx<===",
+                         fmtarg.cxxdecl.xxx)
 
         # cidecl
         self.assertEqual("int * array", fmtarg.cidecl.c_var)
@@ -65,14 +74,23 @@ class WFormat(unittest.TestCase):
             typemap=arg.typemap,
             c_var="arg1",
             cxx_var="cxx_var_name",
-            cxx_other="other_name",
+            other="other_name",
         )
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("array", str(fmtarg))
         self.assertEqual("array", fmtarg.name)
-        self.assertEqual("const int *", str(fmtarg.cxxdecl))
-        self.assertEqual("const int * arg1", fmtarg.cxxdecl.c_var)
-        self.assertEqual("const int * ===>xxx<===", fmtarg.cxxdecl.xxx)
+        self.assertEqual("const int *",
+                         str(fmtarg.cdecl))
+        self.assertEqual("const int * arg1",
+                         str(fmtarg.cdecl.c_var))
+        self.assertEqual("const int * other_name",
+                         str(fmtarg.cdecl.other))
+        self.assertEqual("const int *",
+                         str(fmtarg.cxxdecl))
+        self.assertEqual("const int * other_name",
+                         fmtarg.cxxdecl.other)
+        self.assertEqual("const int * ===>xxx<===",
+                         fmtarg.cxxdecl.xxx)
 
     def test_arg_cxx_enum(self):
         library = ast.LibraryNode()
@@ -87,14 +105,23 @@ class WFormat(unittest.TestCase):
             typemap=arg.typemap,
             c_var="arg1",
             cxx_var="cxx_var_name",
-            cxx_other="other_name",
+            other="other_name",
         )
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("arg1", str(fmtarg))
         self.assertEqual("arg1", fmtarg.name)
-        self.assertEqual("enum Color", str(fmtarg.cxxdecl))
-        self.assertEqual("Color arg1", fmtarg.cxxdecl.c_var)
-        self.assertEqual("Color ===>xxx<===", fmtarg.cxxdecl.xxx)
+        self.assertEqual("enum LIB_Color",
+                         str(fmtarg.cdecl))
+        self.assertEqual("enum LIB_Color arg1",
+                         str(fmtarg.cdecl.c_var))
+        self.assertEqual("enum LIB_Color other_name",
+                         str(fmtarg.cdecl.other))
+        self.assertEqual("enum Color",
+                         str(fmtarg.cxxdecl))
+        self.assertEqual("Color cxx_var_name",
+                         fmtarg.cxxdecl.cxx_var)
+        self.assertEqual("Color ===>xxx<===",
+                         fmtarg.cxxdecl.xxx)
     
         # cidecl
         self.assertEqual("enum LIB_Color arg1", fmtarg.cidecl.c_var)
@@ -113,14 +140,23 @@ class WFormat(unittest.TestCase):
             typemap=arg.typemap,
             c_var="arg1",
             cxx_var="cxx_var_name",
-            cxx_other="other_name",
+            other="other_name",
         )
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "c")
         self.assertEqual("array", str(fmtarg))
         self.assertEqual("array", fmtarg.name)
-        self.assertEqual("vector<int> *", str(fmtarg.cxxdecl))
-#        self.assertEqual("vector<int> *arg1", fmtarg.cxxdecl.c_var)
-#        self.assertEqual("vector<int> *===>xxx<===", fmtarg.cxxdecl.xxx)
+        self.assertEqual("int *",
+                         str(fmtarg.cdecl))
+        self.assertEqual("int * arg1",
+                         str(fmtarg.cdecl.c_var))
+        self.assertEqual("int * other_name",
+                         str(fmtarg.cdecl.other))
+        self.assertEqual("vector<int> *",
+                         str(fmtarg.cxxdecl))
+        self.assertEqual("std::vector<int> * other_name",
+                         fmtarg.cxxdecl.other)
+        self.assertEqual("std::vector<int> * ===>xxx<===",
+                         fmtarg.cxxdecl.xxx)
     
 if __name__ == "__main__":
     unittest.main()

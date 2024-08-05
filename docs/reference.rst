@@ -1389,9 +1389,6 @@ c_abstract_decl
 
 .. used with cxx_to_c static_cast
 
-c_proto_decl
-  Declaration used with function prototype.
-
 c_array_shape
 
 c_array_size
@@ -1499,12 +1496,28 @@ f_intent
     Instead use *f_intent_attr*.
 
 f_intent_attr
-    The value of the intent mataattribute.
-    Converted into a Fortran attribute.
+    The value of the *intent* metaattribute
+    converted into a Fortran attribute.
     ex ``, intent(IN)``.
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
-    If the intent is *none*, the value will be blank.
+    If *intent* is *none*, the format field will be blank.
+
+f_optional_attr
+    The value of the *optional* metaattribute
+    converted into a Fortran attribute.
+    ex ``, optional``.
+    Used with argument declarations:
+    ``{f_type}{f_optional_attr} ::``.
+    If *optional* is *False*, the format field will be blank.
+
+f_value_attr
+    The value of the *value* metaattribute
+    converted into a Fortran attribute.
+    ex ``, value``.
+    Used with argument declarations:
+    ``{f_type}{f_value_attr} ::``.
+    If *value* is *False*, the format field will be blank.
 
 size_var
     Name of variable which holds the size of an array in the
@@ -1581,6 +1594,12 @@ f_declare_shape_array
 
 f_derived_type
    Derived type name for shadow class.
+
+f_dimension
+    Dimension used in Fortran wrapper based on *dimension* or *rank* attribute.
+    May be a literal shape, ``(10)``,
+    assumed-shape, ``(:)``
+    or assumed-rank, ``(..)``.
 
 f_get_shape_array
 

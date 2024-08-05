@@ -10,19 +10,38 @@ Statements
 ==========
 
 Shroud can be thought of as a fancy macro processor.
-The statement data structure is used to define code that should be
+The statement data structure is used to define code snippets that should be
 used to create the wrapper.
 Combinations of language, type and attributes are used to select
-a statement entry.
+a statement name based on the YAML input.
+
+Details for :ref:`C <top_C_Statements>` and :ref:`Fortran <top_Fortran_Statements>`
+are provided in other sections.
 
 
-Statement names or alias which start with a `#` are ignored.
+Python format fields....
 
+
+Statement names or alias which start with a ``#`` are ignored.
+This provides a way to add comments into the JSON file.
+(which does not support comments)
+
+.. code-block:: json
+
+    {
+        "name":"##### enum #################################################"
+    },
+                
 .. name
 
 .. comments
+   Comments are appended as part of the mixin process.
+   The final group's comment will be a collection of all of the mixin's comments.
+   Each mixin can contribute a step in the wrapping process.
 
 .. notes
+   Notes are used provide usage notes for a group.
+   Notes are not mixed into groups.
 
 .. base - must be single name.
           Applied after all of the others mixins as parent of Scope.
@@ -92,7 +111,68 @@ Statement names or alias which start with a `#` are ignored.
     - f_mixin_one
     f_pre_call:
     - "! comment two"            # replaces
-   
+
+
+Lookup statements
+-----------------
+
+The statements for an argument are looked up by converting the type
+and attributes into an underscore delimited string.
+
+
+* language - ``c``
+
+* intent - ``in``, ``out``, ``inout``, ``function``, ``ctor``, ``dtor``, ``getter``, ``setter``
+
+* Abstract declaration. For example, ``native``, ``native*`` or ``native**``.
+  May include template arguments ``vector<native>``.
+  Uses the typemap field **sgroup**.
+
+* api - from attribute
+  ``buf``, ``capsule``, ``capptr``, ``cdesc`` and ``cfi``.
+
+* deref - from attribute
+  ``allocatable``, ``pointer``, ``raw``, ``scalar``
+
+
+Common Statement Fields
+-----------------------
+
+name
+^^^^
+
+A name can contain variants separated by ``/``.
+
+.. code-block:: yaml
+
+    - name: c_in/out/inout_native_*_cfi
+
+This is equivelent to having three groups:
+    
+.. code-block:: yaml
+
+    - name: c_in_native_*_cfi
+    - name: c_out_native_*_cfi
+    - name: c_inout_native_*_cfi
+
+alias
+^^^^^
+
+List of other names which will be used for its contents.
+
+.. code-block:: yaml
+
+        name="fc_out_string_**_cdesc_allocatable",
+        alias=[
+            "f_out_string_**_cdesc_allocatable",
+            "c_out_string_**_cdesc_allocatable",
+        ],
+
+comments
+^^^^^^^^
+
+notes
+^^^^^
 
 Passing function result as an argument
 --------------------------------------

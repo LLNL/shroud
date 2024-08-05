@@ -4,6 +4,7 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+.. _top_Fortran_Statements:
 
 Fortran Statements
 ==================
@@ -53,56 +54,10 @@ Format fields
 statements
 ----------
 
-f_helper
-^^^^^^^^
+name
+^^^^
 
-A list of Fortran helper function names to add to generated
-Fortran code.
-The format dictionary will be applied to the list for additional
-flexibility.
-
-.. code-block:: yaml
-
-    f_helper:
-    - array_context
-
-Each helper will add an entry into the format dictionary with
-the name of the function or type created by the helper.
-The format value is the helper name prefixed by *f_helper_*.
-For example,format field *f_helper_array_context* may be ``VEC_SHROUD_array``.
-
-There is no current way to add user defined helper functions.
-
-.. These functions are defined in whelper.py.
-
-f_module
-^^^^^^^^
-
-``USE`` statements to add to Fortran wrapper.
-A dictionary of list of ``ONLY`` names:
-
-.. code-block:: yaml
-
-        f_module:
-          iso_c_binding:
-          - C_SIZE_T
-   
-f_need_wrapper
-^^^^^^^^^^^^^^
-
-Shroud tries to only create an interface for a C function to
-avoid the extra layer of a Fortran wrapper.
-However, often the Fortran wrapper needs to do some work that
-the C wrapper cannot.
-This field can be set to True to ensure the Fortran wrapper
-is created.
-This is used when an assignment is needed to do a type coercion;
-for example, with logical types.
-
-A wrapper will always be created if the **F_force_wrapper**
-option is set.
-
-.. XXX tends to call bufferify version
+Must start with a ``f``.
 
 f_arg_name
 ^^^^^^^^^^
@@ -137,6 +92,23 @@ Additional declarations can be added within the splicer via *f_declare*.
 It is also used to declare a result defined with *f_result* when
 converting a subroutine into a function.
 
+f_declare
+^^^^^^^^^
+
+A list of declarations needed by *f_pre_call* or *f_post_call*.
+Usually a *c_local_var* is sufficient.
+No executable statements should be used since all declarations must be
+grouped together.
+Implies *f_need_wrapper*.
+Added within the splicer to make it easier to replace in the YAML file.
+
+f_pre_call
+^^^^^^^^^^
+
+Statement to execute before call, often to coerce types when *f_cast*
+cannot be used.
+Implies *f_need_wrapper*.
+   
 f_arg_call
 ^^^^^^^^^^
 
@@ -173,36 +145,6 @@ argument, it will pass no arguments.
 The value of *None* will pass the Fortran argument
 to the C wrapper.
 
-f_declare
-^^^^^^^^^
-
-A list of declarations needed by *f_pre_call* or *f_post_call*.
-Usually a *c_local_var* is sufficient.
-No executable statements should be used since all declarations must be
-grouped together.
-Implies *f_need_wrapper*.
-Added within the splicer to make it easier to replace in the YAML file.
-
-f_module
-^^^^^^^^
-
-Fortran modules used in the Fortran wrapper:
-
-.. code-block:: yaml
-
-        f_module:
-          iso_c_binding:
-          - C_PTR
-
-Fields will be expanded using the format dictionary before being used.
-
-f_pre_call
-^^^^^^^^^^
-
-Statement to execute before call, often to coerce types when *f_cast*
-cannot be used.
-Implies *f_need_wrapper*.
-   
 f_call
 ^^^^^^
 
@@ -263,6 +205,19 @@ memory allocations by copying directly into the callers variable.
 
 .. deref(arg)
 
+f_module
+^^^^^^^^
+
+``USE`` statements to add to Fortran wrapper.
+A dictionary of list of ``ONLY`` names:
+
+.. code-block:: yaml
+
+        f_module:
+          iso_c_binding:
+          - C_SIZE_T
+
+            
 f_temps
 ^^^^^^^
 
@@ -289,6 +244,45 @@ variables.  This allows creating names without conflicting with
 
 The format field is named *f_local_{name}*.
 
+f_helper
+^^^^^^^^
+
+A list of Fortran helper function names to add to generated
+Fortran code.
+The format dictionary will be applied to the list for additional
+flexibility.
+
+.. code-block:: yaml
+
+    f_helper:
+    - array_context
+
+Each helper will add an entry into the format dictionary with
+the name of the function or type created by the helper.
+The format value is the helper name prefixed by *f_helper_*.
+For example,format field *f_helper_array_context* may be ``VEC_SHROUD_array``.
+
+There is no current way to add user defined helper functions.
+
+.. These functions are defined in whelper.py.
+
+f_need_wrapper
+^^^^^^^^^^^^^^
+
+Shroud tries to only create an interface for a C function to
+avoid the extra layer of a Fortran wrapper.
+However, often the Fortran wrapper needs to do some work that
+the C wrapper cannot.
+This field can be set to True to ensure the Fortran wrapper
+is created.
+This is used when an assignment is needed to do a type coercion;
+for example, with logical types.
+
+A wrapper will always be created if the **F_force_wrapper**
+option is set.
+
+.. XXX tends to call bufferify version
+
 notimplemented
 --------------
 
@@ -301,19 +295,3 @@ the notimplemented wrapper is not needed. For example, the C wrapper
 for a C++ function when only the C bufferify wrapper is needed for
 Fortran.  The statements should eventually be completed to wrap the
 function properly.
-             
-How typemaps are found
-----------------------
-
-alias
-^^^^^
-
-List of other names which will be used for its contents.
-
-.. code-block:: yaml
-
-        name="fc_out_string_**_cdesc_allocatable",
-        alias=[
-            "f_out_string_**_cdesc_allocatable",
-            "c_out_string_**_cdesc_allocatable",
-        ],

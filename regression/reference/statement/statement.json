@@ -453,7 +453,6 @@
                             "c_deref": "*",
                             "c_local_cxx": "SHC_name_cxx",
                             "c_member": "->",
-                            "c_proto_decl": "const char * name",
                             "c_type": "char",
                             "c_var": "name",
                             "cfi_type": "CFI_type_other",

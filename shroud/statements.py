@@ -355,10 +355,10 @@ def post_mixin_check_statement(name, stmt):
                 elif not isinstance(fvalue, list):
                     err = True
                     error.cursor.warning("{} must be a list.".format(field))
-            if missing:
-                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
-                                     "Missing {}.".format(", ".join(missing)))
-                err = True
+#            if missing:
+#                error.cursor.warning("c_arg_decl, i_arg_decl and i_arg_names must all exist together.\n" +
+#                                     "Missing {}.".format(", ".join(missing)))
+#                err = True
             if not err:
                 length = len(c_arg_decl)
                 if any(len(lst) != length for lst in [i_arg_decl, i_arg_names]):
@@ -399,6 +399,9 @@ def append_mixin(stmt, mixin):
         if key in ["alias", "base", "mixin", "name"]:
             pass
         elif isinstance(value, list):
+            if key == "notes":
+                # notes do not accumulate like other fields.
+                continue
             if key not in stmt:
                 stmt[key] = []
             if False:#True:
@@ -748,8 +751,12 @@ def print_tree_statements(fp, statements, defaults):
 #            if val:
 #                all[key] = val
         complete[name] = all
-    yaml.safe_dump(complete, fp)
-            
+    yaml.safe_dump(complete, fp, sort_keys=False)
+
+
+# Listed in the order they are used in the wrapper.
+# This order is preserved with option --write-statements.
+#  Fortran - interface - C
 
 # C Statements.
 #  intent      - Set from name.
@@ -772,13 +779,16 @@ CStmts = util.Scope(
     notes=[],      # implementation notes
     index="X",
     intent=None,
-    fmtdict=None,
-    iface_header=[],
-    impl_header=[],
-    c_need_wrapper=False,
-    c_temps=None,
-    c_local=None,
-    c_helper=[],
+
+    i_arg_names=None,
+    i_arg_decl=None,
+
+    i_result_decl=None,
+    i_result_var=None,
+    i_import=None,
+    i_module=None,
+
+    c_arg_decl=None,    # C prototype
     c_arg_call=["{cxx_var}"],
     c_pre_call=[],
     c_call=[],
@@ -786,19 +796,17 @@ CStmts = util.Scope(
     c_final=[],      # tested in strings.yaml, part of ownership
     c_return=[],
     c_return_type=None,
+    c_temps=None,
+    c_local=None,
+    c_helper=[],
+    fmtdict=None,
+    c_need_wrapper=False,
 
+    iface_header=[],
+    impl_header=[],
     destructor_name=None,
     destructor=[],
     owner="library",
-
-    c_arg_decl=None,    # C prototype
-    i_arg_names=None,
-    i_arg_decl=None,
-
-    i_result_decl=None,
-    i_result_var=None,
-    i_module=None,
-    i_import=None,
 
     notimplemented=False,
 )
@@ -807,20 +815,24 @@ CStmts = util.Scope(
 FStmts = util.Scope(
     None,
     name="f_default",
+    comments=[],
+    notes=[],      # implementation notes
+    index="X",
     intent=None,
-    f_helper=[],
-    f_module=None,
-    f_need_wrapper=False,
+
     f_arg_name=None,
     f_arg_decl=None,
-    f_arg_call=None,
     f_declare=[],
     f_pre_call=[],
+    f_arg_call=None,
     f_call=[],
     f_post_call=[],
     f_result=None,  # name of result variable
+    f_module=None,
     f_temps=None,
     f_local=None,
+    f_helper=[],
+    f_need_wrapper=False,
 )
 
 # Fortran/C Statements - both sets of defaults.
