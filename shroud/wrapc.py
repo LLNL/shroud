@@ -849,12 +849,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         if stmts_blk.c_arg_decl is not None:
             for arg in stmts_blk.c_arg_decl:
                 append_format(proto_list, arg, fmt)
-        elif stmts_blk.intent == "function":
-            # Functions do not pass an argument by default.
-            proto_list.append("XXXXX")
-            pass
-        else:
-            proto_list.append(fmt.c_proto_decl)
 
     def add_code_from_statements(
         self, fmt, intent_blk, pre_call, post_call, need_wrapper
