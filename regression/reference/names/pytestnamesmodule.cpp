@@ -46,7 +46,7 @@ PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 // Function:  void getName
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * name +len(worklen)+len_trim(worktrim)
+// Argument:  char *name +len(worklen)+len_trim(worktrim)
 // Statement: py_inout_char*
 static char PY_getName__doc__[] =
 "documentation"
@@ -59,7 +59,7 @@ PY_getName(
   PyObject *kwds)
 {
 // splicer begin function.getName
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -173,7 +173,7 @@ PY_function3a_1(
 // Function:  int function4
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const std::string & rv
+// Argument:  const std::string &rv
 // Statement: py_in_string&
 static char PY_function4__doc__[] =
 "documentation"
@@ -231,10 +231,10 @@ PY_fiveplus(
 // Function:  void TestMultilineSplicer
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string & name
+// Argument:  std::string &name
 // Statement: py_inout_string&
 // ----------------------------------------
-// Argument:  int * value +intent(out)
+// Argument:  int *value +intent(out)
 // Statement: py_out_native*
 static char PY_TestMultilineSplicer__doc__[] =
 "documentation"
@@ -360,7 +360,7 @@ PY_UseImplWorker_instantiation3(
 // Function:  int Cstruct_as_class_sum
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const Cstruct_as_class * point +pass
+// Argument:  const Cstruct_as_class *point +pass
 // Statement: py_in_shadow*
 static char PY_Cstruct_as_class_sum__doc__[] =
 "documentation"

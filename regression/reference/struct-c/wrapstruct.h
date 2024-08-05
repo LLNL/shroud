@@ -23,7 +23,7 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int STR_passStruct2_bufferify(const Cstruct1 * s1, char *outbuf,
+int STR_passStruct2_bufferify(const Cstruct1 *s1, char *outbuf,
     int SHT_outbuf_len);
 
 void STR_returnStructByValue_bufferify(int i, double d,
@@ -60,19 +60,19 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args_bufferify(
 void STR_Return_Cstruct_as_subclass_args_bufferify(int x, int y, int z,
     STR_Cstruct_as_subclass * SHC_rv);
 
-const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr * SH_this);
+const double * STR_Cstruct_ptr_get_const_dvalue(Cstruct_ptr *SH_this);
 
-void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr * SH_this,
-    const double * val);
+void STR_Cstruct_ptr_set_const_dvalue(Cstruct_ptr *SH_this,
+    const double *val);
 
-void STR_Cstruct_list_get_ivalue(Cstruct_list * SH_this,
+void STR_Cstruct_list_get_ivalue(Cstruct_list *SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
-void STR_Cstruct_list_set_ivalue(Cstruct_list * SH_this, int * val);
+void STR_Cstruct_list_set_ivalue(Cstruct_list *SH_this, int *val);
 
-void STR_Cstruct_list_get_dvalue(Cstruct_list * SH_this,
+void STR_Cstruct_list_get_dvalue(Cstruct_list *SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
-void STR_Cstruct_list_set_dvalue(Cstruct_list * SH_this, double * val);
+void STR_Cstruct_list_set_dvalue(Cstruct_list *SH_this, double *val);
 
 #endif  // WRAPSTRUCT_H

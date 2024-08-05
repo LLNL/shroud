@@ -28,10 +28,10 @@
 
 int GEN_SumValues_CFI(CFI_cdesc_t *SHT_values_cfi, int nvalues);
 
-void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
-    int * to, int nto);
+void GEN_AssignValues_scalar_bufferify(const int *from, int nfrom,
+    int *to, int nto);
 
-void GEN_AssignValues_broadcast_CFI(const int * from, int nfrom,
+void GEN_AssignValues_broadcast_CFI(const int *from, int nfrom,
     CFI_cdesc_t *SHT_to_cfi, int nto);
 
 void GEN_AssignValues_copy_CFI(CFI_cdesc_t *SHT_from_cfi, int nfrom,

@@ -68,7 +68,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Function:  int acceptCharArrayIn
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  char * * names +intent(in)
+// Argument:  char **names +intent(in)
 // Statement: f_in_char**_buf
 // start POI_acceptCharArrayIn_bufferify
 int POI_acceptCharArrayIn_bufferify(const char *names,
@@ -88,7 +88,7 @@ int POI_acceptCharArrayIn_bufferify(const char *names,
 // Function:  void getPtrToScalar
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * nitems +intent(out)
+// Argument:  int **nitems +intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToScalar_bufferify
 void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
@@ -112,7 +112,7 @@ void POI_getPtrToScalar_bufferify(POI_SHROUD_array *SHT_nitems_cdesc)
 // Function:  void getPtrToFixedArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(10)+intent(out)
+// Argument:  int **count +dimension(10)+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToFixedArray_bufferify
 void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
@@ -138,10 +138,10 @@ void POI_getPtrToFixedArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Function:  void getPtrToDynamicArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(ncount)+intent(out)
+// Argument:  int **count +dimension(ncount)+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // start POI_getPtrToDynamicArray_bufferify
 void POI_getPtrToDynamicArray_bufferify(
@@ -170,7 +170,7 @@ void POI_getPtrToDynamicArray_bufferify(
 // Function:  void getPtrToFuncArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(getLen())+intent(out)
+// Argument:  int **count +dimension(getLen())+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToFuncArray_bufferify
 void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
@@ -192,7 +192,7 @@ void POI_getPtrToFuncArray_bufferify(POI_SHROUD_array *SHT_count_cdesc)
 // Function:  void getPtrToConstScalar
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * * nitems +intent(out)
+// Argument:  const int **nitems +intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToConstScalar_bufferify
 void POI_getPtrToConstScalar_bufferify(
@@ -214,7 +214,7 @@ void POI_getPtrToConstScalar_bufferify(
 // Function:  void getPtrToFixedConstArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +dimension(10)+intent(out)
+// Argument:  const int **count +dimension(10)+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // start POI_getPtrToFixedConstArray_bufferify
 void POI_getPtrToFixedConstArray_bufferify(
@@ -237,10 +237,10 @@ void POI_getPtrToFixedConstArray_bufferify(
 // Function:  void getPtrToDynamicConstArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +dimension(ncount)+intent(out)
+// Argument:  const int **count +dimension(ncount)+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // start POI_getPtrToDynamicConstArray_bufferify
 void POI_getPtrToDynamicConstArray_bufferify(
@@ -267,7 +267,7 @@ void POI_getPtrToDynamicConstArray_bufferify(
 // Function:  void getAllocToFixedArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+// Argument:  int **count +deref(allocatable)+dimension(10)+intent(out)
 // Statement: f_out_native**_cdesc_allocatable
 // start POI_getAllocToFixedArray_bufferify
 void POI_getAllocToFixedArray_bufferify(
@@ -290,27 +290,27 @@ void POI_getAllocToFixedArray_bufferify(
 // end POI_getAllocToFixedArray_bufferify
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int *returnIntPtrToScalar
 // Statement: f_function_native*_pointer
 // start POI_returnIntPtrToScalar_bufferify
 int * POI_returnIntPtrToScalar_bufferify(void)
 {
     // splicer begin function.returnIntPtrToScalar_bufferify
-    int * SHC_rv = returnIntPtrToScalar();
+    int *SHC_rv = returnIntPtrToScalar();
     return SHC_rv;
     // splicer end function.returnIntPtrToScalar_bufferify
 }
 // end POI_returnIntPtrToScalar_bufferify
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int *returnIntPtrToFixedArray +dimension(10)
 // Statement: f_function_native*_cdesc_pointer
 // start POI_returnIntPtrToFixedArray_bufferify
 void POI_returnIntPtrToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.returnIntPtrToFixedArray_bufferify
-    int * SHC_rv = returnIntPtrToFixedArray();
+    int *SHC_rv = returnIntPtrToFixedArray();
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -322,27 +322,27 @@ void POI_returnIntPtrToFixedArray_bufferify(
 // end POI_returnIntPtrToFixedArray_bufferify
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int *returnIntPtrToConstScalar
 // Statement: f_function_native*_pointer
 // start POI_returnIntPtrToConstScalar_bufferify
 const int * POI_returnIntPtrToConstScalar_bufferify(void)
 {
     // splicer begin function.returnIntPtrToConstScalar_bufferify
-    const int * SHC_rv = returnIntPtrToConstScalar();
+    const int *SHC_rv = returnIntPtrToConstScalar();
     return SHC_rv;
     // splicer end function.returnIntPtrToConstScalar_bufferify
 }
 // end POI_returnIntPtrToConstScalar_bufferify
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
 // Statement: f_function_native*_cdesc_pointer
 // start POI_returnIntPtrToFixedConstArray_bufferify
 void POI_returnIntPtrToFixedConstArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.returnIntPtrToFixedConstArray_bufferify
-    const int * SHC_rv = returnIntPtrToFixedConstArray();
+    const int *SHC_rv = returnIntPtrToFixedConstArray();
     SHT_rv_cdesc->base_addr = (int *) SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -354,20 +354,20 @@ void POI_returnIntPtrToFixedConstArray_bufferify(
 // end POI_returnIntPtrToFixedConstArray_bufferify
 
 // ----------------------------------------
-// Function:  int * returnIntScalar +deref(scalar)
+// Function:  int *returnIntScalar +deref(scalar)
 // Statement: f_function_native*_scalar
 // start POI_returnIntScalar_bufferify
 int POI_returnIntScalar_bufferify(void)
 {
     // splicer begin function.returnIntScalar_bufferify
-    int * SHC_rv = returnIntScalar();
+    int *SHC_rv = returnIntScalar();
     return *SHC_rv;
     // splicer end function.returnIntScalar_bufferify
 }
 // end POI_returnIntScalar_bufferify
 
 // ----------------------------------------
-// Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+// Function:  int *returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Statement: f_function_native*_cdesc_allocatable
 // start POI_returnIntAllocToFixedArray_bufferify
 void POI_returnIntAllocToFixedArray_bufferify(
@@ -375,7 +375,7 @@ void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.returnIntAllocToFixedArray_bufferify
-    int * SHC_rv = returnIntAllocToFixedArray();
+    int *SHC_rv = returnIntAllocToFixedArray();
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);

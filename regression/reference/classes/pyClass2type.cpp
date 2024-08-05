@@ -40,7 +40,7 @@ PY_Class2_tp_del (PY_Class2 *self)
 }
 
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: py_function_string&
 static char PY_getName__doc__[] =
 "documentation"
@@ -59,7 +59,7 @@ PY_getName(
 // splicer begin class.Class2.method.getName
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = self->obj->getName();
+    const std::string &SHCXX_rv = self->obj->getName();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

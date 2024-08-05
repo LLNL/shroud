@@ -134,10 +134,10 @@ int TYP_returnTypeID_bufferify(int in)
 // Function:  void typestruct
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  Struct1Rename * arg1
+// Argument:  Struct1Rename *arg1
 // Statement: c_inout_struct*
 // start TYP_typestruct
-void TYP_typestruct(TYP_Struct1Rename * arg1)
+void TYP_typestruct(TYP_Struct1Rename *arg1)
 {
     // splicer begin function.typestruct
     typestruct(arg1);
@@ -168,11 +168,10 @@ int TYP_returnBytesForIndexType(TYP_IndexType arg)
 // Argument:  int ndims
 // Statement: c_in_native
 // ----------------------------------------
-// Argument:  const IndexType * shape +intent(in)+rank(1)
+// Argument:  const IndexType *shape +intent(in)+rank(1)
 // Statement: c_in_native*
 // start TYP_returnShapeSize
-TYP_IndexType TYP_returnShapeSize(int ndims,
-    const TYP_IndexType * shape)
+TYP_IndexType TYP_returnShapeSize(int ndims, const TYP_IndexType *shape)
 {
     // splicer begin function.returnShapeSize
     IndexType SHC_rv = returnShapeSize(ndims, shape);
@@ -204,11 +203,11 @@ int TYP_returnBytesForIndexType2(LOCAL_IndexType arg)
 // Argument:  int ndims
 // Statement: c_in_native
 // ----------------------------------------
-// Argument:  const IndexType2 * shape +intent(in)+rank(1)
+// Argument:  const IndexType2 *shape +intent(in)+rank(1)
 // Statement: c_in_native*
 // start TYP_returnShapeSize2
 LOCAL_IndexType TYP_returnShapeSize2(int ndims,
-    const LOCAL_IndexType * shape)
+    const LOCAL_IndexType *shape)
 {
     // splicer begin function.returnShapeSize2
     IndexType2 SHC_rv = returnShapeSize2(ndims, shape);

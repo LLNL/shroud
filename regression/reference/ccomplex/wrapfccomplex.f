@@ -24,7 +24,7 @@ module ccomplex_mod
     ! Function:  void acceptFloatComplexInoutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float complex * arg1
+    ! Argument:  float complex *arg1
     ! Statement: f_inout_native*
     interface
         subroutine accept_float_complex_inout_ptr(arg1) &
@@ -39,7 +39,7 @@ module ccomplex_mod
     ! Function:  void acceptDoubleComplexInoutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double complex * arg1
+    ! Argument:  double complex *arg1
     ! Statement: f_inout_native*
     interface
         subroutine accept_double_complex_inout_ptr(arg1) &
@@ -54,7 +54,7 @@ module ccomplex_mod
     ! Function:  void acceptDoubleComplexOutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double complex * arg1 +intent(out)
+    ! Argument:  double complex *arg1 +intent(out)
     ! Statement: f_out_native*
     interface
         subroutine accept_double_complex_out_ptr(arg1) &
@@ -69,10 +69,10 @@ module ccomplex_mod
     ! Function:  void acceptDoubleComplexOutPtrFlag
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double complex * arg1 +intent(out)
+    ! Argument:  double complex *arg1 +intent(out)
     ! Statement: f_out_native*
     ! ----------------------------------------
-    ! Argument:  int * flag +intent(out)
+    ! Argument:  int *flag +intent(out)
     ! Statement: f_out_native*
     interface
         subroutine accept_double_complex_out_ptr_flag(arg1, flag) &
@@ -95,7 +95,7 @@ contains
     ! Function:  void acceptFloatComplexInoutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float complex * arg1
+    ! Argument:  float complex *arg1
     ! Statement: f_inout_native*
     subroutine accept_float_complex_inout_ptr(arg1)
         use iso_c_binding, only : C_FLOAT_COMPLEX
@@ -112,7 +112,7 @@ contains
     ! Function:  void acceptDoubleComplexInoutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double complex * arg1
+    ! Argument:  double complex *arg1
     ! Statement: f_inout_native*
     subroutine accept_double_complex_inout_ptr(arg1)
         use iso_c_binding, only : C_DOUBLE_COMPLEX
@@ -129,7 +129,7 @@ contains
     ! Function:  void acceptDoubleComplexOutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double complex * arg1 +intent(out)
+    ! Argument:  double complex *arg1 +intent(out)
     ! Statement: f_out_native*
     subroutine accept_double_complex_out_ptr(arg1)
         use iso_c_binding, only : C_DOUBLE_COMPLEX
@@ -146,10 +146,10 @@ contains
     ! Function:  void acceptDoubleComplexOutPtrFlag
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double complex * arg1 +intent(out)
+    ! Argument:  double complex *arg1 +intent(out)
     ! Statement: f_out_native*
     ! ----------------------------------------
-    ! Argument:  int * flag +intent(out)
+    ! Argument:  int *flag +intent(out)
     ! Statement: f_out_native*
     !>
     !! Return two values so Py_BuildValue is used.

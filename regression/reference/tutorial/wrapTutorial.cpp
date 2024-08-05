@@ -115,12 +115,12 @@ double TUT_PassByValue(double arg1, int arg2)
 // Function:  const std::string ConcatenateStrings
 // Statement: c_function_string
 // ----------------------------------------
-// Argument:  const std::string & arg1
+// Argument:  const std::string &arg1
 // Statement: c_in_string&
 // ----------------------------------------
-// Argument:  const std::string & arg2
+// Argument:  const std::string &arg2
 // Statement: c_in_string&
-const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
+const char TUT_ConcatenateStrings(const char *arg1, const char *arg2)
 {
     // splicer begin function.ConcatenateStrings
     const std::string SHC_arg1_cxx(arg1);
@@ -141,10 +141,10 @@ const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
 // Function:  const std::string ConcatenateStrings
 // Statement: f_function_string_cdesc_allocatable
 // ----------------------------------------
-// Argument:  const std::string & arg1
+// Argument:  const std::string &arg1
 // Statement: f_in_string&_buf
 // ----------------------------------------
-// Argument:  const std::string & arg2
+// Argument:  const std::string &arg2
 // Statement: f_in_string&_buf
 void TUT_ConcatenateStrings_bufferify(char *arg1, int SHT_arg1_len,
     char *arg2, int SHT_arg2_len, TUT_SHROUD_array *SHT_rv_cdesc,
@@ -218,9 +218,9 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 // Function:  void OverloadedFunction
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: c_in_string&
-void TUT_OverloadedFunction_from_name(const char * name)
+void TUT_OverloadedFunction_from_name(const char *name)
 {
     // splicer begin function.OverloadedFunction_from_name
     const std::string SHC_name_cxx(name);
@@ -232,7 +232,7 @@ void TUT_OverloadedFunction_from_name(const char * name)
 // Function:  void OverloadedFunction
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: f_in_string&_buf
 void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len)
@@ -323,12 +323,12 @@ void TUT_FortranGenericOverloaded_0(void)
 // Function:  void FortranGenericOverloaded
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: c_in_string&
 // ----------------------------------------
 // Argument:  double arg2
 // Statement: c_in_native
-void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
+void TUT_FortranGenericOverloaded_1(const char *name, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1
     const std::string SHC_name_cxx(name);
@@ -341,7 +341,7 @@ void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
 // Function:  void FortranGenericOverloaded
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  float arg2
@@ -361,7 +361,7 @@ void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
 // Function:  void FortranGenericOverloaded
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  double arg2
@@ -548,13 +548,13 @@ int TUT_colorfunc_bufferify(int arg)
 // Function:  void getMinMax
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int & min +intent(out)
+// Argument:  int &min +intent(out)
 // Statement: c_out_native&
 // ----------------------------------------
-// Argument:  int & max +intent(out)
+// Argument:  int &max +intent(out)
 // Statement: c_out_native&
 // start TUT_getMinMax
-void TUT_getMinMax(int * min, int * max)
+void TUT_getMinMax(int *min, int *max)
 {
     // splicer begin function.getMinMax
     tutorial::getMinMax(*min, *max);
@@ -573,10 +573,10 @@ void TUT_getMinMax(int * min, int * max)
 // Argument:  int in
 // Statement: c_in_native
 // ----------------------------------------
-// Argument:  int ( * incr)(int)
+// Argument:  int (*incr)(int)
 // Statement: c_in_procedure
 // start TUT_callback1
-int TUT_callback1(int in, int ( * incr)(int))
+int TUT_callback1(int in, int (*incr)(int))
 {
     // splicer begin function.callback1
     int SHC_rv = tutorial::callback1(in, incr);
@@ -586,24 +586,24 @@ int TUT_callback1(int in, int ( * incr)(int))
 // end TUT_callback1
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: c_function_string&
 const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: f_function_string&_buf_copy
 void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {

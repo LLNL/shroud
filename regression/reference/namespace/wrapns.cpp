@@ -43,25 +43,25 @@ static void ShroudStringToCdesc(NS_SHROUD_array *cdesc,
 // splicer end C_definitions
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled
+// Function:  const std::string &LastFunctionCalled
 // Statement: c_function_string&
 const char * NS_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = LastFunctionCalled();
+    const std::string &SHCXX_rv = LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled
+// Function:  const std::string &LastFunctionCalled
 // Statement: f_function_string&_cdesc_allocatable
 void NS_LastFunctionCalled_bufferify(NS_SHROUD_array *SHT_rv_cdesc,
     NS_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string & SHCXX_rv = LastFunctionCalled();
+    const std::string &SHCXX_rv = LastFunctionCalled();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
     SHT_rv_capsule->idtor = 0;

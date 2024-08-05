@@ -59,12 +59,12 @@ Unexpected value of option C_API_case: none
 --------------------
 Node: returnThis
 line 72
-void * returnThis(void)
+void *returnThis(void)
 return_this can only be set for class methods
 --------------------
 Node: returnThis
 line 82
-void * returnThis(void)
+void *returnThis(void)
 return_this must return a pointer to the class
 --------------------
 Node: returnThis2

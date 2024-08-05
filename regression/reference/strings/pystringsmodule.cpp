@@ -170,10 +170,10 @@ PY_returnChar(
 // Function:  void passCharPtr
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * dest +charlen(40)+intent(out)
+// Argument:  char *dest +charlen(40)+intent(out)
 // Statement: py_out_char*_charlen
 // ----------------------------------------
-// Argument:  const char * src
+// Argument:  const char *src
 // Statement: py_in_char*
 static char PY_passCharPtr__doc__[] =
 "documentation"
@@ -194,7 +194,7 @@ PY_passCharPtr(
 {
 // splicer begin function.passCharPtr
     char dest[40];  // intent(out)
-    char * src;
+    char *src;
     const char *SHT_kwlist[] = {
         "src",
         nullptr };
@@ -217,7 +217,7 @@ PY_passCharPtr(
 // Function:  void passCharPtrInOut
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * s +intent(inout)
+// Argument:  char *s +intent(inout)
 // Statement: py_inout_char*
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
@@ -236,7 +236,7 @@ PY_passCharPtrInOut(
   PyObject *kwds)
 {
 // splicer begin function.passCharPtrInOut
-    char * s;
+    char *s;
     const char *SHT_kwlist[] = {
         "s",
         nullptr };
@@ -256,7 +256,7 @@ PY_passCharPtrInOut(
 }
 
 // ----------------------------------------
-// Function:  const char * getCharPtr1
+// Function:  const char *getCharPtr1
 // Statement: py_function_char*
 static char PY_getCharPtr1__doc__[] =
 "documentation"
@@ -275,7 +275,7 @@ PY_getCharPtr1(
 // splicer begin function.getCharPtr1
     PyObject * SHTPy_rv = nullptr;
 
-    const char * SHCXX_rv = getCharPtr1();
+    const char *SHCXX_rv = getCharPtr1();
 
     // post_call
     SHTPy_rv = PyString_FromString(SHCXX_rv);
@@ -285,7 +285,7 @@ PY_getCharPtr1(
 }
 
 // ----------------------------------------
-// Function:  const char * getCharPtr2 +len(30)
+// Function:  const char *getCharPtr2 +len(30)
 // Statement: py_function_char*
 static char PY_getCharPtr2__doc__[] =
 "documentation"
@@ -304,7 +304,7 @@ PY_getCharPtr2(
 // splicer begin function.getCharPtr2
     PyObject * SHTPy_rv = nullptr;
 
-    const char * SHCXX_rv = getCharPtr2();
+    const char *SHCXX_rv = getCharPtr2();
 
     // post_call
     SHTPy_rv = PyString_FromString(SHCXX_rv);
@@ -314,7 +314,7 @@ PY_getCharPtr2(
 }
 
 // ----------------------------------------
-// Function:  const char * getCharPtr3
+// Function:  const char *getCharPtr3
 // Statement: py_function_char*
 static char PY_getCharPtr3__doc__[] =
 "documentation"
@@ -333,7 +333,7 @@ PY_getCharPtr3(
 // splicer begin function.getCharPtr3
     PyObject * SHTPy_rv = nullptr;
 
-    const char * SHCXX_rv = getCharPtr3();
+    const char *SHCXX_rv = getCharPtr3();
 
     // post_call
     SHTPy_rv = PyString_FromString(SHCXX_rv);
@@ -459,7 +459,7 @@ PY_getConstStringAlloc(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefPure
+// Function:  const string &getConstStringRefPure
 // Statement: py_function_string&
 static char PY_getConstStringRefPure__doc__[] =
 "documentation"
@@ -478,7 +478,7 @@ PY_getConstStringRefPure(
 // splicer begin function.getConstStringRefPure
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = getConstStringRefPure();
+    const std::string &SHCXX_rv = getConstStringRefPure();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -489,7 +489,7 @@ PY_getConstStringRefPure(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefLen +len(30)
+// Function:  const string &getConstStringRefLen +len(30)
 // Statement: py_function_string&
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
@@ -511,7 +511,7 @@ PY_getConstStringRefLen(
 // splicer begin function.getConstStringRefLen
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = getConstStringRefLen();
+    const std::string &SHCXX_rv = getConstStringRefLen();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -522,7 +522,7 @@ PY_getConstStringRefLen(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefAsArg
+// Function:  const string &getConstStringRefAsArg
 // Statement: py_function_string&
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
@@ -543,7 +543,7 @@ PY_getConstStringRefAsArg(
 // splicer begin function.getConstStringRefAsArg
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = getConstStringRefAsArg();
+    const std::string &SHCXX_rv = getConstStringRefAsArg();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -554,7 +554,7 @@ PY_getConstStringRefAsArg(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefLenEmpty +len(30)
+// Function:  const string &getConstStringRefLenEmpty +len(30)
 // Statement: py_function_string&
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
@@ -573,7 +573,7 @@ PY_getConstStringRefLenEmpty(
 // splicer begin function.getConstStringRefLenEmpty
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = getConstStringRefLenEmpty();
+    const std::string &SHCXX_rv = getConstStringRefLenEmpty();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -584,7 +584,7 @@ PY_getConstStringRefLenEmpty(
 }
 
 // ----------------------------------------
-// Function:  const std::string & getConstStringRefAlloc
+// Function:  const std::string &getConstStringRefAlloc
 // Statement: py_function_string&
 static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
@@ -599,7 +599,7 @@ PY_getConstStringRefAlloc(
 // splicer begin function.getConstStringRefAlloc
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = getConstStringRefAlloc();
+    const std::string &SHCXX_rv = getConstStringRefAlloc();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -610,7 +610,7 @@ PY_getConstStringRefAlloc(
 }
 
 // ----------------------------------------
-// Function:  const string * getConstStringPtrLen +len(30)
+// Function:  const string *getConstStringPtrLen +len(30)
 // Statement: py_function_string*
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
@@ -633,7 +633,7 @@ PY_getConstStringPtrLen(
 // splicer begin function.getConstStringPtrLen
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string * SHCXX_rv = getConstStringPtrLen();
+    const std::string *SHCXX_rv = getConstStringPtrLen();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
@@ -644,7 +644,7 @@ PY_getConstStringPtrLen(
 }
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrAlloc +owner(library)
+// Function:  const std::string *getConstStringPtrAlloc +owner(library)
 // Statement: py_function_string*
 static char PY_getConstStringPtrAlloc__doc__[] =
 "documentation"
@@ -659,7 +659,7 @@ PY_getConstStringPtrAlloc(
 // splicer begin function.getConstStringPtrAlloc
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string * SHCXX_rv = getConstStringPtrAlloc();
+    const std::string *SHCXX_rv = getConstStringPtrAlloc();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
@@ -670,7 +670,7 @@ PY_getConstStringPtrAlloc(
 }
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
+// Function:  const std::string *getConstStringPtrOwnsAlloc +owner(caller)
 // Statement: py_function_string*
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
@@ -692,7 +692,7 @@ PY_getConstStringPtrOwnsAlloc(
 // splicer begin function.getConstStringPtrOwnsAlloc
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
+    const std::string *SHCXX_rv = getConstStringPtrOwnsAlloc();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
@@ -703,7 +703,7 @@ PY_getConstStringPtrOwnsAlloc(
 }
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+// Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
 // Statement: py_function_string*
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
@@ -721,7 +721,7 @@ PY_getConstStringPtrOwnsAllocPattern(
 // splicer begin function.getConstStringPtrOwnsAllocPattern
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string * SHCXX_rv = getConstStringPtrOwnsAllocPattern();
+    const std::string *SHCXX_rv = getConstStringPtrOwnsAllocPattern();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv->data(),
@@ -735,7 +735,7 @@ PY_getConstStringPtrOwnsAllocPattern(
 // Function:  void acceptStringConstReference
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const std::string & arg1
+// Argument:  const std::string &arg1
 // Statement: py_in_string&
 static char PY_acceptStringConstReference__doc__[] =
 "documentation"
@@ -777,7 +777,7 @@ PY_acceptStringConstReference(
 // Function:  void acceptStringReferenceOut
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(out)
+// Argument:  std::string &arg1 +intent(out)
 // Statement: py_out_string&
 static char PY_acceptStringReferenceOut__doc__[] =
 "documentation"
@@ -816,7 +816,7 @@ PY_acceptStringReferenceOut(
 // Function:  void acceptStringReference
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string & arg1
+// Argument:  std::string &arg1
 // Statement: py_inout_string&
 static char PY_acceptStringReference__doc__[] =
 "documentation"
@@ -864,7 +864,7 @@ PY_acceptStringReference(
 // Function:  void acceptStringPointerConst
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const std::string * arg1
+// Argument:  const std::string *arg1
 // Statement: py_in_string*
 static char PY_acceptStringPointerConst__doc__[] =
 "documentation"
@@ -903,7 +903,7 @@ PY_acceptStringPointerConst(
 // Function:  void acceptStringPointer
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string * arg1
+// Argument:  std::string *arg1
 // Statement: py_inout_string*
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
@@ -948,7 +948,7 @@ PY_acceptStringPointer(
 // Function:  void fetchStringPointer
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(out)
+// Argument:  std::string *arg1 +intent(out)
 // Statement: py_out_string*
 static char PY_fetchStringPointer__doc__[] =
 "documentation"
@@ -985,10 +985,10 @@ PY_fetchStringPointer(
 // Function:  void acceptStringPointerLen
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string * arg1
+// Argument:  std::string *arg1
 // Statement: py_inout_string*
 // ----------------------------------------
-// Argument:  int * nlen +intent(out)
+// Argument:  int *nlen +intent(out)
 // Statement: py_out_native*
 static char PY_acceptStringPointerLen__doc__[] =
 "documentation"
@@ -1036,10 +1036,10 @@ PY_acceptStringPointerLen(
 // Function:  void fetchStringPointerLen
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(out)
+// Argument:  std::string *arg1 +intent(out)
 // Statement: py_out_string*
 // ----------------------------------------
-// Argument:  int * nlen +intent(out)
+// Argument:  int *nlen +intent(out)
 // Statement: py_out_native*
 static char PY_fetchStringPointerLen__doc__[] =
 "documentation"
@@ -1123,10 +1123,10 @@ PY_acceptStringInstance(
 // Function:  void returnStrings
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(out)
+// Argument:  std::string &arg1 +intent(out)
 // Statement: py_out_string&
 // ----------------------------------------
-// Argument:  std::string & arg2 +intent(out)
+// Argument:  std::string &arg2 +intent(out)
 // Statement: py_out_string&
 static char PY_returnStrings__doc__[] =
 "documentation"
@@ -1163,7 +1163,7 @@ PY_returnStrings(
 // Function:  void explicit1
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * name +intent(in)+len_trim(AAlen)
+// Argument:  char *name +intent(in)+len_trim(AAlen)
 // Statement: py_in_char*
 static char PY_explicit1__doc__[] =
 "documentation"
@@ -1176,7 +1176,7 @@ PY_explicit1(
   PyObject *kwds)
 {
 // splicer begin function.explicit1
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -1258,10 +1258,10 @@ PY_CreturnChar(
 // Function:  void PostDeclare
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * count +intent(in)+rank(1)
+// Argument:  int *count +intent(in)+rank(1)
 // Statement: py_in_native*_list
 // ----------------------------------------
-// Argument:  std::string & name
+// Argument:  std::string &name
 // Statement: py_inout_string&
 static char PY_PostDeclare__doc__[] =
 "documentation"

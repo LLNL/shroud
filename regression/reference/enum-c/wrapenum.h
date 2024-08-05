@@ -27,8 +27,8 @@ int ENU_convert_to_int_bufferify(short in);
 
 short ENU_returnEnum_bufferify(short in);
 
-void ENU_returnEnumOutArg_bufferify(short * out);
+void ENU_returnEnumOutArg_bufferify(short *out);
 
-short ENU_returnEnumInOutArg_bufferify(short * inout);
+short ENU_returnEnumInOutArg_bufferify(short *inout);
 
 #endif  // WRAPENUM_H

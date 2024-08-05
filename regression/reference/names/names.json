@@ -506,7 +506,7 @@
                             "C_call_function": "getName(\tname)",
                             "C_call_list": "name",
                             "C_name": "TES_getName",
-                            "C_prototype": "char * name",
+                            "C_prototype": "char *name",
                             "C_return_type": "void",
                             "F_C_arguments": "name",
                             "F_C_name": "c_get_name",
@@ -1339,7 +1339,7 @@
                             "C_call_function": "function4(\tSHC_rv_cxx)",
                             "C_call_list": "SHC_rv_cxx",
                             "C_name": "YYY_TES_function4",
-                            "C_prototype": "const char * rv",
+                            "C_prototype": "const char *rv",
                             "C_return_type": "int",
                             "F_C_arguments": "rv",
                             "F_C_name": "YYY_TES_function4",
@@ -1776,7 +1776,7 @@
                             "C_call_function": "TestMultilineSplicer(\tSHC_name_cxx,\t value)",
                             "C_call_list": "SHC_name_cxx,\t value",
                             "C_name": "TES_TestMultilineSplicer",
-                            "C_prototype": "char * name,\t int * value",
+                            "C_prototype": "char *name,\t int *value",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t value",
                             "F_C_name": "c_test_multiline_splicer",
@@ -1788,7 +1788,7 @@
                             "C_call_function": "TestMultilineSplicer(\tSHC_name_cxx,\t value)",
                             "C_call_list": "SHC_name_cxx,\t value",
                             "C_name": "TES_TestMultilineSplicer_bufferify",
-                            "C_prototype": "char *name,\t int SHT_name_len,\t int * value",
+                            "C_prototype": "char *name,\t int SHT_name_len,\t int *value",
                             "C_return_type": "void",
                             "F_C_arguments": "name,\t SHT_name_len,\t value",
                             "F_C_call": "c_test_multiline_splicer_bufferify",
@@ -3621,7 +3621,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void afree(double * arr +intent(inout))",
+                                    "decl": "void afree(double *arr +intent(inout))",
                                     "name": "afree",
                                     "options": {},
                                     "wrap": {
@@ -3742,7 +3742,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void alloc(double * arr +intent(inout), int * err +intent(out))",
+                                    "decl": "void alloc(double *arr +intent(inout), int *err +intent(out))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -3889,7 +3889,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void assoc(double * arr +intent(in), int * err +intent(out))",
+                                    "decl": "void assoc(double *arr +intent(in), int *err +intent(out))",
                                     "name": "assoc",
                                     "options": {},
                                     "wrap": {
@@ -4044,7 +4044,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void afree(double * arr +intent(inout))",
+                                    "decl": "void afree(double *arr +intent(inout))",
                                     "name": "afree",
                                     "options": {},
                                     "wrap": {
@@ -4165,7 +4165,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void alloc(double * arr +intent(inout), int * err +intent(out))",
+                                    "decl": "void alloc(double *arr +intent(inout), int *err +intent(out))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -4312,7 +4312,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void assoc(double * arr +intent(in), int * err +intent(out))",
+                                    "decl": "void assoc(double *arr +intent(in), int *err +intent(out))",
                                     "name": "assoc",
                                     "options": {},
                                     "wrap": {
@@ -4469,7 +4469,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void afree(double * arr +intent(inout))",
+                                    "decl": "void afree(double *arr +intent(inout))",
                                     "name": "afree",
                                     "options": {},
                                     "wrap": {
@@ -4589,7 +4589,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void alloc(double * arr +intent(inout), int * err +intent(out))",
+                                    "decl": "void alloc(double *arr +intent(inout), int *err +intent(out))",
                                     "name": "alloc",
                                     "options": {},
                                     "wrap": {
@@ -4735,7 +4735,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void assoc(double * arr +intent(in), int * err +intent(out))",
+                                    "decl": "void assoc(double *arr +intent(in), int *err +intent(out))",
                                     "name": "assoc",
                                     "options": {},
                                     "wrap": {
@@ -4852,7 +4852,7 @@
                             "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
                             "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "C_name": "TES_external_funcs",
-                            "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
+                            "C_prototype": "const char *rdbase,\t const char *pkg,\t const char *name,\t void (*alloc)(\tdouble *arr,\t int *err),\t void (*afree)(\tdouble *arr),\t void (*assoc)(\tdouble *arr,\t int *err)",
                             "C_return_type": "void",
                             "F_C_name": "c_external_funcs",
                             "stmt_name": "c_subroutine",
@@ -4862,7 +4862,7 @@
                             "C_call_function": "external_funcs(\trdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc)",
                             "C_call_list": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "C_name": "TES_external_funcs",
-                            "C_prototype": "const char * rdbase,\t const char * pkg,\t const char * name,\t void ( * alloc)(\tdouble * arr,\t int * err),\t void ( * afree)(\tdouble * arr),\t void ( * assoc)(\tdouble * arr,\t int * err)",
+                            "C_prototype": "const char *rdbase,\t const char *pkg,\t const char *name,\t void (*alloc)(\tdouble *arr,\t int *err),\t void (*afree)(\tdouble *arr),\t void (*assoc)(\tdouble *arr,\t int *err)",
                             "C_return_type": "void",
                             "F_C_arguments": "rdbase,\t pkg,\t name,\t alloc,\t afree,\t assoc",
                             "F_C_call": "c_external_funcs",
@@ -4877,7 +4877,7 @@
                     },
                     "afree": {
                         "fmtc": {
-                            "c_abstract_decl": "void ( *)",
+                            "c_abstract_decl": "void (*)",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -4885,7 +4885,7 @@
                             "c_type": "void",
                             "c_var": "afree",
                             "cfi_type": "CFI_type_intptr_t",
-                            "cxx_abstract_decl": "void ( *)",
+                            "cxx_abstract_decl": "void (*)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&afree",
@@ -4900,7 +4900,7 @@
                             "typemap_name": "void"
                         },
                         "fmtf": {
-                            "c_abstract_decl": "void ( *)",
+                            "c_abstract_decl": "void (*)",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -4908,7 +4908,7 @@
                             "c_type": "void",
                             "c_var": "afree",
                             "cfi_type": "CFI_type_intptr_t",
-                            "cxx_abstract_decl": "void ( *)",
+                            "cxx_abstract_decl": "void (*)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&afree",
@@ -4930,7 +4930,7 @@
                     },
                     "alloc": {
                         "fmtc": {
-                            "c_abstract_decl": "void ( *)",
+                            "c_abstract_decl": "void (*)",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -4938,7 +4938,7 @@
                             "c_type": "void",
                             "c_var": "alloc",
                             "cfi_type": "CFI_type_intptr_t",
-                            "cxx_abstract_decl": "void ( *)",
+                            "cxx_abstract_decl": "void (*)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&alloc",
@@ -4953,7 +4953,7 @@
                             "typemap_name": "void"
                         },
                         "fmtf": {
-                            "c_abstract_decl": "void ( *)",
+                            "c_abstract_decl": "void (*)",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -4961,7 +4961,7 @@
                             "c_type": "void",
                             "c_var": "alloc",
                             "cfi_type": "CFI_type_intptr_t",
-                            "cxx_abstract_decl": "void ( *)",
+                            "cxx_abstract_decl": "void (*)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&alloc",
@@ -4983,7 +4983,7 @@
                     },
                     "assoc": {
                         "fmtc": {
-                            "c_abstract_decl": "void ( *)",
+                            "c_abstract_decl": "void (*)",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -4991,7 +4991,7 @@
                             "c_type": "void",
                             "c_var": "assoc",
                             "cfi_type": "CFI_type_intptr_t",
-                            "cxx_abstract_decl": "void ( *)",
+                            "cxx_abstract_decl": "void (*)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&assoc",
@@ -5006,7 +5006,7 @@
                             "typemap_name": "void"
                         },
                         "fmtf": {
-                            "c_abstract_decl": "void ( *)",
+                            "c_abstract_decl": "void (*)",
                             "c_addr": "&",
                             "c_const": "",
                             "c_deref": "",
@@ -5014,7 +5014,7 @@
                             "c_type": "void",
                             "c_var": "assoc",
                             "cfi_type": "CFI_type_intptr_t",
-                            "cxx_abstract_decl": "void ( *)",
+                            "cxx_abstract_decl": "void (*)",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&assoc",

@@ -36,7 +36,7 @@ PyObject *PY_error_obj;
 // splicer end additional_functions
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Function:  int *ReturnIntPtrScalar +deref(scalar)
 // Statement: py_function_native*_scalar
 static char PY_ReturnIntPtrScalar__doc__[] =
 "documentation"
@@ -51,7 +51,7 @@ PY_ReturnIntPtrScalar(
 // splicer begin function.ReturnIntPtrScalar
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrScalar();
+    int *SHCXX_rv = ReturnIntPtrScalar();
 
     // post_call
     SHTPy_rv = PyInt_FromLong(*SHCXX_rv);
@@ -61,7 +61,7 @@ PY_ReturnIntPtrScalar(
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Function:  int *ReturnIntPtrPointer +deref(pointer)
 // Statement: py_function_native*_numpy
 static char PY_ReturnIntPtrPointer__doc__[] =
 "documentation"
@@ -76,7 +76,7 @@ PY_ReturnIntPtrPointer(
 // splicer begin function.ReturnIntPtrPointer
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrPointer();
+    int *SHCXX_rv = ReturnIntPtrPointer();
 
     // post_call
     SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_INT, SHCXX_rv);
@@ -91,10 +91,10 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+// Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_ReturnIntPtrDimPointer__doc__[] =
 "documentation"
@@ -111,7 +111,7 @@ PY_ReturnIntPtrDimPointer(
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrDimPointer(&len);
+    int *SHCXX_rv = ReturnIntPtrDimPointer(&len);
 
     // post_call
     SHD_rv[0] = len;
@@ -127,10 +127,10 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+// Function:  int *ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_ReturnIntPtrDimAlloc__doc__[] =
 "documentation"
@@ -147,7 +147,7 @@ PY_ReturnIntPtrDimAlloc(
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrDimAlloc(&len);
+    int *SHCXX_rv = ReturnIntPtrDimAlloc(&len);
 
     // post_call
     SHD_rv[0] = len;
@@ -163,10 +163,10 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefault +dimension(len)
+// Function:  int *ReturnIntPtrDimDefault +dimension(len)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_ReturnIntPtrDimDefault__doc__[] =
 "documentation"
@@ -183,7 +183,7 @@ PY_ReturnIntPtrDimDefault(
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrDimDefault(&len);
+    int *SHCXX_rv = ReturnIntPtrDimDefault(&len);
 
     // post_call
     SHD_rv[0] = len;
@@ -199,10 +199,10 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_ReturnIntPtrDimPointerNew__doc__[] =
 "documentation"
@@ -219,7 +219,7 @@ PY_ReturnIntPtrDimPointerNew(
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrDimPointerNew(&len);
+    int *SHCXX_rv = ReturnIntPtrDimPointerNew(&len);
 
     // post_call
     SHD_rv[0] = len;
@@ -235,10 +235,10 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_ReturnIntPtrDimAllocNew__doc__[] =
 "documentation"
@@ -255,7 +255,7 @@ PY_ReturnIntPtrDimAllocNew(
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrDimAllocNew(&len);
+    int *SHCXX_rv = ReturnIntPtrDimAllocNew(&len);
 
     // post_call
     SHD_rv[0] = len;
@@ -271,10 +271,10 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Statement: py_function_native*_numpy
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_ReturnIntPtrDimDefaultNew__doc__[] =
 "documentation"
@@ -291,7 +291,7 @@ PY_ReturnIntPtrDimDefaultNew(
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
 
-    int * SHCXX_rv = ReturnIntPtrDimDefaultNew(&len);
+    int *SHCXX_rv = ReturnIntPtrDimDefaultNew(&len);
 
     // post_call
     SHD_rv[0] = len;
@@ -338,7 +338,7 @@ PY_createClassStatic(
 }
 
 // ----------------------------------------
-// Function:  Class1 * getClassStatic +owner(library)
+// Function:  Class1 *getClassStatic +owner(library)
 // Statement: py_function_shadow*
 static char PY_getClassStatic__doc__[] =
 "documentation"
@@ -351,7 +351,7 @@ PY_getClassStatic(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.getClassStatic
-    Class1 * SHCXX_rv = getClassStatic();
+    Class1 *SHCXX_rv = getClassStatic();
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
@@ -362,7 +362,7 @@ PY_getClassStatic(
 }
 
 // ----------------------------------------
-// Function:  Class1 * getClassNew +owner(caller)
+// Function:  Class1 *getClassNew +owner(caller)
 // Statement: py_function_shadow*
 // ----------------------------------------
 // Argument:  int flag
@@ -391,7 +391,7 @@ PY_getClassNew(
         const_cast<char **>(SHT_kwlist), &flag))
         return nullptr;
 
-    Class1 * SHCXX_rv = getClassNew(flag);
+    Class1 *SHCXX_rv = getClassNew(flag);
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);

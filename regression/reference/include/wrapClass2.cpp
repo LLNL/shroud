@@ -34,7 +34,7 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // Function:  void method2
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  three::Class1 * c2
+// Argument:  three::Class1 *c2
 // Statement: c_inout_shadow*
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)
 {

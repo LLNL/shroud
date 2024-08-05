@@ -78,7 +78,7 @@ PY_passStructByValue(
 // Function:  int passStruct1
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const Cstruct1 * arg
+// Argument:  const Cstruct1 *arg
 // Statement: py_in_struct*_class
 static char PY_passStruct1__doc__[] =
 "documentation"
@@ -117,10 +117,10 @@ PY_passStruct1(
 // Function:  int passStruct2
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const Cstruct1 * s1
+// Argument:  const Cstruct1 *s1
 // Statement: py_in_struct*_class
 // ----------------------------------------
-// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Argument:  char *outbuf +charlen(LENOUTBUF)+intent(out)
 // Statement: py_out_char*_charlen
 static char PY_passStruct2__doc__[] =
 "documentation"
@@ -163,7 +163,7 @@ PY_passStruct2(
 // Function:  int acceptStructInPtr
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  Cstruct1 * arg +intent(in)
+// Argument:  Cstruct1 *arg +intent(in)
 // Statement: py_in_struct*_class
 static char PY_acceptStructInPtr__doc__[] =
 "documentation"
@@ -202,7 +202,7 @@ PY_acceptStructInPtr(
 // Function:  void acceptStructOutPtr
 // Statement: py_default
 // ----------------------------------------
-// Argument:  Cstruct1 * arg +intent(out)
+// Argument:  Cstruct1 *arg +intent(out)
 // Statement: py_out_struct*_class
 // ----------------------------------------
 // Argument:  int i
@@ -258,7 +258,7 @@ fail:
 // Function:  void acceptStructInOutPtr
 // Statement: py_default
 // ----------------------------------------
-// Argument:  Cstruct1 * arg +intent(inout)
+// Argument:  Cstruct1 *arg +intent(inout)
 // Statement: py_inout_struct*_class
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
@@ -319,7 +319,7 @@ PY_returnStructByValue(
         "i",
         "d",
         NULL };
-    Cstruct1 * SHCXX_rv = NULL;
+    Cstruct1 *SHCXX_rv = NULL;
     PyObject *SHTPy_rv = NULL;  // struct_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -351,7 +351,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1
+// Function:  Cstruct1 *returnStructPtr1
 // Statement: py_function_struct*_class
 // ----------------------------------------
 // Argument:  int i
@@ -387,7 +387,7 @@ PY_returnStructPtr1(
         SHT_kwlist, &i, &d))
         return NULL;
 
-    Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
+    Cstruct1 *SHCXX_rv = returnStructPtr1(i, d);
 
     // post_call
     SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 0);
@@ -402,7 +402,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2
+// Function:  Cstruct1 *returnStructPtr2
 // Statement: py_function_struct*_class
 // ----------------------------------------
 // Argument:  int i
@@ -411,7 +411,7 @@ fail:
 // Argument:  double d
 // Statement: py_in_native
 // ----------------------------------------
-// Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Argument:  char *outbuf +charlen(LENOUTBUF)+intent(out)
 // Statement: py_out_char*_charlen
 static char PY_returnStructPtr2__doc__[] =
 "documentation"
@@ -443,7 +443,7 @@ PY_returnStructPtr2(
         SHT_kwlist, &i, &d))
         return NULL;
 
-    Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
+    Cstruct1 *SHCXX_rv = returnStructPtr2(i, d, outbuf);
 
     // post_call
     SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 0);
@@ -459,7 +459,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+// Function:  Cstruct1 *returnStructPtrArray +dimension(2)
 // Statement: py_function_struct*_class
 static char PY_returnStructPtrArray__doc__[] =
 "documentation"
@@ -478,7 +478,7 @@ PY_returnStructPtrArray(
 // splicer begin function.returnStructPtrArray
     PyObject *SHTPy_rv = NULL;  // struct_class
 
-    Cstruct1 * SHCXX_rv = returnStructPtrArray();
+    Cstruct1 *SHCXX_rv = returnStructPtrArray();
 
     // post_call
     SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 0);
@@ -493,7 +493,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list
+// Function:  Cstruct_list *get_global_struct_list
 // Statement: py_function_struct*_class
 static char PY_get_global_struct_list__doc__[] =
 "documentation"
@@ -508,7 +508,7 @@ PY_get_global_struct_list(
 // splicer begin function.get_global_struct_list
     PyObject *SHTPy_rv = NULL;  // struct_class
 
-    Cstruct_list * SHCXX_rv = get_global_struct_list();
+    Cstruct_list *SHCXX_rv = get_global_struct_list();
 
     // post_call
     SHTPy_rv = PP_Cstruct_list_to_Object_idtor(SHCXX_rv, 0);

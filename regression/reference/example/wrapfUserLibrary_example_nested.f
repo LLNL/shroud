@@ -203,7 +203,7 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass1
         ! Statement: c_ctor_shadow_capptr
         ! ----------------------------------------
-        ! Argument:  const string * name
+        ! Argument:  const string *name
         ! Statement: c_in_string*
         function c_ex_class1_ctor_1(name, SHT_rv) &
                 result(SHT_prv) &
@@ -220,7 +220,7 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass1
         ! Statement: f_ctor_shadow_capptr
         ! ----------------------------------------
-        ! Argument:  const string * name
+        ! Argument:  const string *name
         ! Statement: f_in_string*_buf
         function c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
                 SHT_rv) &
@@ -263,7 +263,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class1_increment_count
 
         ! ----------------------------------------
-        ! Function:  const string & getNameErrorCheck
+        ! Function:  const string &getNameErrorCheck
         ! Statement: c_function_string&
         pure function c_ex_class1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -276,7 +276,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class1_get_name_error_check
 
         ! ----------------------------------------
-        ! Function:  const string & getNameErrorCheck
+        ! Function:  const string &getNameErrorCheck
         ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class1_get_name_error_check_bufferify(self, &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -289,7 +289,7 @@ module userlibrary_example_nested_mod
         end subroutine c_ex_class1_get_name_error_check_bufferify
 
         ! ----------------------------------------
-        ! Function:  const string & getNameArg
+        ! Function:  const string &getNameArg
         ! Statement: c_function_string&
         pure function c_ex_class1_get_name_arg(self) &
                 result(SHT_rv) &
@@ -302,7 +302,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class1_get_name_arg
 
         ! ----------------------------------------
-        ! Function:  const string & getNameArg
+        ! Function:  const string &getNameArg
         ! Statement: f_function_string&_buf_arg
         subroutine c_ex_class1_get_name_arg_bufferify(self, name, nname) &
                 bind(C, name="AA_example_nested_ExClass1_getNameArg_bufferify")
@@ -379,7 +379,7 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass2
         ! Statement: c_ctor_shadow_capptr
         ! ----------------------------------------
-        ! Argument:  const string * name +len_trim(trim_name)
+        ! Argument:  const string *name +len_trim(trim_name)
         ! Statement: c_in_string*
         function c_ex_class2_ctor(name, SHT_rv) &
                 result(SHT_prv) &
@@ -396,7 +396,7 @@ module userlibrary_example_nested_mod
         ! Function:  ExClass2
         ! Statement: f_ctor_shadow_capptr
         ! ----------------------------------------
-        ! Argument:  const string * name +len_trim(trim_name)
+        ! Argument:  const string *name +len_trim(trim_name)
         ! Statement: f_in_string*_buf
         function c_ex_class2_ctor_bufferify(name, SHT_name_len, SHT_rv) &
                 result(SHT_prv) &
@@ -421,7 +421,7 @@ module userlibrary_example_nested_mod
         end subroutine c_ex_class2_dtor
 
         ! ----------------------------------------
-        ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+        ! Function:  const string &getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Statement: c_function_string&
         pure function c_ex_class2_get_name(self) &
                 result(SHT_rv) &
@@ -434,7 +434,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class2_get_name
 
         ! ----------------------------------------
-        ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+        ! Function:  const string &getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Statement: f_function_string&_buf_copy
         subroutine c_ex_class2_get_name_bufferify(self, SHT_rv, &
                 SHT_rv_len) &
@@ -448,7 +448,7 @@ module userlibrary_example_nested_mod
         end subroutine c_ex_class2_get_name_bufferify
 
         ! ----------------------------------------
-        ! Function:  const string & getName2
+        ! Function:  const string &getName2
         ! Statement: c_function_string&
         function c_ex_class2_get_name2(self) &
                 result(SHT_rv) &
@@ -461,7 +461,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class2_get_name2
 
         ! ----------------------------------------
-        ! Function:  const string & getName2
+        ! Function:  const string &getName2
         ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class2_get_name2_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -474,7 +474,7 @@ module userlibrary_example_nested_mod
         end subroutine c_ex_class2_get_name2_bufferify
 
         ! ----------------------------------------
-        ! Function:  string & getName3
+        ! Function:  string &getName3
         ! Statement: c_function_string&
         pure function c_ex_class2_get_name3(self) &
                 result(SHT_rv) &
@@ -487,7 +487,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class2_get_name3
 
         ! ----------------------------------------
-        ! Function:  string & getName3
+        ! Function:  string &getName3
         ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class2_get_name3_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -500,7 +500,7 @@ module userlibrary_example_nested_mod
         end subroutine c_ex_class2_get_name3_bufferify
 
         ! ----------------------------------------
-        ! Function:  string & getName4
+        ! Function:  string &getName4
         ! Statement: c_function_string&
         function c_ex_class2_get_name4(self) &
                 result(SHT_rv) &
@@ -513,7 +513,7 @@ module userlibrary_example_nested_mod
         end function c_ex_class2_get_name4
 
         ! ----------------------------------------
-        ! Function:  string & getName4
+        ! Function:  string &getName4
         ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_ex_class2_get_name4_bufferify(self, SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -539,10 +539,10 @@ module userlibrary_example_nested_mod
         end function c_ex_class2_get_name_length
 
         ! ----------------------------------------
-        ! Function:  ExClass1 * get_class1
+        ! Function:  ExClass1 *get_class1
         ! Statement: f_function_shadow*_capptr
         ! ----------------------------------------
-        ! Argument:  const ExClass1 * in
+        ! Argument:  const ExClass1 *in
         ! Statement: f_in_shadow*
         function c_ex_class2_get_class1(self, in, SHT_rv) &
                 result(SHT_prv) &
@@ -670,7 +670,7 @@ module userlibrary_example_nested_mod
         ! Function:  bool isNameValid
         ! Statement: c_function_bool
         ! ----------------------------------------
-        ! Argument:  const std::string & name
+        ! Argument:  const std::string &name
         ! Statement: c_in_string&
         function c_is_name_valid(name) &
                 result(SHT_rv) &
@@ -685,7 +685,7 @@ module userlibrary_example_nested_mod
         ! Function:  bool isNameValid
         ! Statement: f_function_bool
         ! ----------------------------------------
-        ! Argument:  const std::string & name
+        ! Argument:  const std::string &name
         ! Statement: f_in_string&_buf
         function c_is_name_valid_bufferify(name, SHT_name_len) &
                 result(SHT_rv) &
@@ -712,7 +712,7 @@ module userlibrary_example_nested_mod
         ! Function:  void test_names
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  const std::string & name
+        ! Argument:  const std::string &name
         ! Statement: c_in_string&
         subroutine c_test_names(name) &
                 bind(C, name="AA_example_nested_test_names")
@@ -725,7 +725,7 @@ module userlibrary_example_nested_mod
         ! Function:  void test_names
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const std::string & name
+        ! Argument:  const std::string &name
         ! Statement: f_in_string&_buf
         subroutine c_test_names_bufferify(name, SHT_name_len) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
@@ -739,7 +739,7 @@ module userlibrary_example_nested_mod
         ! Function:  void test_names
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  const std::string & name
+        ! Argument:  const std::string &name
         ! Statement: c_in_string&
         ! ----------------------------------------
         ! Argument:  int flag
@@ -756,7 +756,7 @@ module userlibrary_example_nested_mod
         ! Function:  void test_names
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const std::string & name
+        ! Argument:  const std::string &name
         ! Statement: f_in_string&_buf
         ! ----------------------------------------
         ! Argument:  int flag
@@ -850,7 +850,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * get)(void)
+        ! Argument:  void (*get)(void)
         ! Statement: f_in_procedure
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_FuncPtr1")
@@ -863,7 +863,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr2
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double * ( * get)(void)
+        ! Argument:  double *(*get)(void)
         ! Statement: f_in_procedure
         subroutine func_ptr2(get) &
                 bind(C, name="AA_example_nested_FuncPtr2")
@@ -876,7 +876,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr3
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double ( * get)(int i, int)
+        ! Argument:  double (*get)(int i, int)
         ! Statement: f_in_procedure
         subroutine c_func_ptr3(get) &
                 bind(C, name="AA_example_nested_FuncPtr3")
@@ -889,7 +889,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr4
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double ( * get)(double, int)
+        ! Argument:  double (*get)(double, int)
         ! Statement: f_in_procedure
         subroutine c_func_ptr4(get) &
                 bind(C, name="AA_example_nested_FuncPtr4")
@@ -902,7 +902,7 @@ module userlibrary_example_nested_mod
         ! Function:  void FuncPtr5
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
+        ! Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
         ! Statement: f_in_procedure
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_FuncPtr5")
@@ -915,34 +915,34 @@ module userlibrary_example_nested_mod
         ! Function:  void verylongfunctionname1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int * verylongname1 +intent(inout)
+        ! Argument:  int *verylongname1 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname2 +intent(inout)
+        ! Argument:  int *verylongname2 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname3 +intent(inout)
+        ! Argument:  int *verylongname3 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname4 +intent(inout)
+        ! Argument:  int *verylongname4 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname5 +intent(inout)
+        ! Argument:  int *verylongname5 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname6 +intent(inout)
+        ! Argument:  int *verylongname6 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname7 +intent(inout)
+        ! Argument:  int *verylongname7 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname8 +intent(inout)
+        ! Argument:  int *verylongname8 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname9 +intent(inout)
+        ! Argument:  int *verylongname9 +intent(inout)
         ! Statement: f_inout_native*
         ! ----------------------------------------
-        ! Argument:  int * verylongname10 +intent(inout)
+        ! Argument:  int *verylongname10 +intent(inout)
         ! Statement: f_inout_native*
         subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
                 verylongname3, verylongname4, verylongname5, &
@@ -1021,10 +1021,10 @@ module userlibrary_example_nested_mod
         ! Function:  void cos_doubles
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double * in +intent(in)+rank(2)
+        ! Argument:  double *in +intent(in)+rank(2)
         ! Statement: f_in_native*
         ! ----------------------------------------
-        ! Argument:  double * out +dimension(shape(in))+intent(out)
+        ! Argument:  double *out +dimension(shape(in))+intent(out)
         ! Statement: f_out_native*
         ! ----------------------------------------
         ! Argument:  int sizein +implied(size(in))
@@ -1126,7 +1126,7 @@ contains
     ! Function:  ExClass1
     ! Statement: f_ctor_shadow_capptr
     ! ----------------------------------------
-    ! Argument:  const string * name
+    ! Argument:  const string *name
     ! Statement: f_in_string*_buf
     !>
     !! \brief constructor
@@ -1183,7 +1183,7 @@ contains
     end function ex_class1_increment_count
 
     ! ----------------------------------------
-    ! Function:  const string & getNameErrorCheck
+    ! Function:  const string &getNameErrorCheck
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class1_get_name_error_check(obj) &
             result(SHT_rv)
@@ -1202,7 +1202,7 @@ contains
     end function ex_class1_get_name_error_check
 
     ! ----------------------------------------
-    ! Function:  const string & getNameArg
+    ! Function:  const string &getNameArg
     ! Statement: f_function_string&_buf_arg
     subroutine ex_class1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
@@ -1301,7 +1301,7 @@ contains
     ! Function:  ExClass2
     ! Statement: f_ctor_shadow_capptr
     ! ----------------------------------------
-    ! Argument:  const string * name +len_trim(trim_name)
+    ! Argument:  const string *name +len_trim(trim_name)
     ! Statement: f_in_string*_buf
     !>
     !! \brief constructor
@@ -1336,7 +1336,7 @@ contains
     end subroutine ex_class2_dtor
 
     ! ----------------------------------------
-    ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+    ! Function:  const string &getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! Statement: f_function_string&_buf_copy
     function ex_class2_get_name(obj) &
             result(SHT_rv)
@@ -1352,7 +1352,7 @@ contains
     end function ex_class2_get_name
 
     ! ----------------------------------------
-    ! Function:  const string & getName2
+    ! Function:  const string &getName2
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name2(obj) &
             result(SHT_rv)
@@ -1371,7 +1371,7 @@ contains
     end function ex_class2_get_name2
 
     ! ----------------------------------------
-    ! Function:  string & getName3
+    ! Function:  string &getName3
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name3(obj) &
             result(SHT_rv)
@@ -1390,7 +1390,7 @@ contains
     end function ex_class2_get_name3
 
     ! ----------------------------------------
-    ! Function:  string & getName4
+    ! Function:  string &getName4
     ! Statement: f_function_string&_cdesc_allocatable
     function ex_class2_get_name4(obj) &
             result(SHT_rv)
@@ -1426,10 +1426,10 @@ contains
     end function ex_class2_get_name_length
 
     ! ----------------------------------------
-    ! Function:  ExClass1 * get_class1
+    ! Function:  ExClass1 *get_class1
     ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
-    ! Argument:  const ExClass1 * in
+    ! Argument:  const ExClass1 *in
     ! Statement: f_in_shadow*
     function ex_class2_get_class1(obj, in) &
             result(SHT_rv)
@@ -1580,7 +1580,7 @@ contains
     ! Function:  bool isNameValid
     ! Statement: f_function_bool
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     function is_name_valid(name) &
             result(SHT_rv)
@@ -1608,7 +1608,7 @@ contains
     ! Function:  void test_names
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
@@ -1624,7 +1624,7 @@ contains
     ! Function:  void test_names
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  int flag
@@ -1730,7 +1730,7 @@ contains
     ! Function:  void FuncPtr1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * get)(void)
+    ! Argument:  void (*get)(void)
     ! Statement: f_in_procedure
     !>
     !! \brief subroutine
@@ -1750,7 +1750,7 @@ contains
     ! Function:  void FuncPtr2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double * ( * get)(void)
+    ! Argument:  double *(*get)(void)
     ! Statement: f_in_procedure
     !>
     !! \brief return a pointer
@@ -1768,7 +1768,7 @@ contains
     ! Function:  void FuncPtr3
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double ( * get)(int i, int)
+    ! Argument:  double (*get)(int i, int)
     ! Statement: f_in_procedure
     !>
     !! \brief abstract argument
@@ -1785,7 +1785,7 @@ contains
     ! Function:  void FuncPtr4
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double ( * get)(double, int)
+    ! Argument:  double (*get)(double, int)
     ! Statement: f_in_procedure
     !>
     !! \brief abstract argument
@@ -1804,7 +1804,7 @@ contains
     ! Function:  void FuncPtr5
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
+    ! Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
     ! Statement: f_in_procedure
     subroutine func_ptr5(get)
         procedure(func_ptr5_get) :: get
@@ -1818,34 +1818,34 @@ contains
     ! Function:  void verylongfunctionname1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * verylongname1 +intent(inout)
+    ! Argument:  int *verylongname1 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname2 +intent(inout)
+    ! Argument:  int *verylongname2 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname3 +intent(inout)
+    ! Argument:  int *verylongname3 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname4 +intent(inout)
+    ! Argument:  int *verylongname4 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname5 +intent(inout)
+    ! Argument:  int *verylongname5 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname6 +intent(inout)
+    ! Argument:  int *verylongname6 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname7 +intent(inout)
+    ! Argument:  int *verylongname7 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname8 +intent(inout)
+    ! Argument:  int *verylongname8 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname9 +intent(inout)
+    ! Argument:  int *verylongname9 +intent(inout)
     ! Statement: f_inout_native*
     ! ----------------------------------------
-    ! Argument:  int * verylongname10 +intent(inout)
+    ! Argument:  int *verylongname10 +intent(inout)
     ! Statement: f_inout_native*
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
@@ -1928,10 +1928,10 @@ contains
     ! Function:  void cos_doubles
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double * in +intent(in)+rank(2)
+    ! Argument:  double *in +intent(in)+rank(2)
     ! Statement: f_in_native*
     ! ----------------------------------------
-    ! Argument:  double * out +dimension(shape(in))+intent(out)
+    ! Argument:  double *out +dimension(shape(in))+intent(out)
     ! Statement: f_out_native*
     !>
     !! \brief Test multidimensional arrays with allocatable

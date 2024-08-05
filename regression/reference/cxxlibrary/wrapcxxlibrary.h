@@ -51,9 +51,9 @@ typedef struct s_CXX_nested CXX_nested;
 struct s_CXX_nested {
     int index;
     int sublevels;
-    CXX_nested * parent;
-    CXX_nested * * child;
-    CXX_nested * array;
+    CXX_nested *parent;
+    CXX_nested **child;
+    CXX_nested *array;
 };
 #endif  // __cplusplus
 
@@ -63,11 +63,11 @@ extern "C" {
 
 bool CXX_defaultPtrIsNULL_0(void);
 
-bool CXX_defaultPtrIsNULL_1(double * data);
+bool CXX_defaultPtrIsNULL_1(double *data);
 
-void CXX_defaultArgsInOut_0(int in1, int * out1, int * out2);
+void CXX_defaultArgsInOut_0(int in1, int *out1, int *out2);
 
-void CXX_defaultArgsInOut_1(int in1, int * out1, int * out2, bool flag);
+void CXX_defaultArgsInOut_1(int in1, int *out1, int *out2, bool flag);
 
 const char * CXX_getGroupName(long idx);
 
@@ -77,20 +77,20 @@ void CXX_getGroupName_int32_t_bufferify(int32_t idx, char *SHC_rv,
 void CXX_getGroupName_int64_t_bufferify(int64_t idx, char *SHC_rv,
     int SHT_rv_len);
 
-void CXX_nested_get_parent(CXX_nested * SH_this,
+void CXX_nested_get_parent(CXX_nested *SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 
-void CXX_nested_set_parent(CXX_nested * SH_this, CXX_nested * val);
+void CXX_nested_set_parent(CXX_nested *SH_this, CXX_nested *val);
 
-void CXX_nested_get_child(CXX_nested * SH_this,
+void CXX_nested_get_child(CXX_nested *SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 
-void CXX_nested_set_child(CXX_nested * SH_this, CXX_nested * * val);
+void CXX_nested_set_child(CXX_nested *SH_this, CXX_nested **val);
 
-void CXX_nested_get_array(CXX_nested * SH_this,
+void CXX_nested_get_array(CXX_nested *SH_this,
     CXX_SHROUD_array *SHT_rv_cdesc);
 
-void CXX_nested_set_array(CXX_nested * SH_this, CXX_nested * val);
+void CXX_nested_set_array(CXX_nested *SH_this, CXX_nested *val);
 
 #ifdef __cplusplus
 }

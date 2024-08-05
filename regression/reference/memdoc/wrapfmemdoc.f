@@ -80,7 +80,7 @@ module memdoc_mod
     ! end helper capsule_data_helper
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Function:  const std::string *getConstStringPtrAlloc +owner(library)
     ! Statement: c_function_string*_library
     ! start c_get_const_string_ptr_alloc
     interface
@@ -95,7 +95,7 @@ module memdoc_mod
     ! end c_get_const_string_ptr_alloc
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Function:  const std::string *getConstStringPtrAlloc +owner(library)
     ! Statement: f_function_string*_cdesc_allocatable_library
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
@@ -140,7 +140,7 @@ module memdoc_mod
 contains
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Function:  const std::string *getConstStringPtrAlloc +owner(library)
     ! Statement: f_function_string*_cdesc_allocatable_library
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &

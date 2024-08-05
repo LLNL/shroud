@@ -58,7 +58,7 @@ PP_local_function1(
 // Function:  bool isNameValid
 // Statement: py_function_bool
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: py_in_string&
 static char PP_isNameValid__doc__[] =
 "documentation"
@@ -132,7 +132,7 @@ fail:
 // Function:  void test_names
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: py_in_string&
 static PyObject *
 PP_test_names(
@@ -162,7 +162,7 @@ PP_test_names(
 // Function:  void test_names
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: py_in_string&
 // ----------------------------------------
 // Argument:  int flag
@@ -322,7 +322,7 @@ PP_testmpi_serial(
 // Function:  void FuncPtr1
 // Statement: py_default
 // ----------------------------------------
-// Argument:  void ( * get)(void)
+// Argument:  void (*get)(void)
 // Exact:     py_default
 static char PP_FuncPtr1__doc__[] =
 "documentation"
@@ -339,7 +339,7 @@ PP_FuncPtr1(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.FuncPtr1
-    void ( * get)(void);
+    void (*get)(void);
     const char *SHT_kwlist[] = {
         "get",
         nullptr };
@@ -357,7 +357,7 @@ PP_FuncPtr1(
 // Function:  void FuncPtr2
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double * ( * get)(void)
+// Argument:  double *(*get)(void)
 // Exact:     py_default
 static char PP_FuncPtr2__doc__[] =
 "documentation"
@@ -374,7 +374,7 @@ PP_FuncPtr2(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.FuncPtr2
-    double * ( * get)(void);
+    double *(*get)(void);
     const char *SHT_kwlist[] = {
         "get",
         nullptr };
@@ -392,7 +392,7 @@ PP_FuncPtr2(
 // Function:  void FuncPtr3
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double ( * get)(int i, int)
+// Argument:  double (*get)(int i, int)
 // Exact:     py_default
 static char PP_FuncPtr3__doc__[] =
 "documentation"
@@ -409,7 +409,7 @@ PP_FuncPtr3(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.FuncPtr3
-    double ( * get)(int i, int);
+    double (*get)(int i, int);
     const char *SHT_kwlist[] = {
         "get",
         nullptr };
@@ -427,7 +427,7 @@ PP_FuncPtr3(
 // Function:  void FuncPtr5
 // Statement: py_default
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
+// Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // Exact:     py_default
 static char PP_FuncPtr5__doc__[] =
 "documentation"
@@ -440,10 +440,10 @@ PP_FuncPtr5(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.FuncPtr5
-    void ( * get)(int verylongname1, int verylongname2,
-        int verylongname3, int verylongname4, int verylongname5,
-        int verylongname6, int verylongname7, int verylongname8,
-        int verylongname9, int verylongname10);
+    void (*get)(int verylongname1, int verylongname2, int verylongname3,
+        int verylongname4, int verylongname5, int verylongname6,
+        int verylongname7, int verylongname8, int verylongname9,
+        int verylongname10);
     const char *SHT_kwlist[] = {
         "get",
         nullptr };
@@ -461,34 +461,34 @@ PP_FuncPtr5(
 // Function:  void verylongfunctionname1
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * verylongname1 +intent(inout)
+// Argument:  int *verylongname1 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname2 +intent(inout)
+// Argument:  int *verylongname2 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname3 +intent(inout)
+// Argument:  int *verylongname3 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname4 +intent(inout)
+// Argument:  int *verylongname4 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname5 +intent(inout)
+// Argument:  int *verylongname5 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname6 +intent(inout)
+// Argument:  int *verylongname6 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname7 +intent(inout)
+// Argument:  int *verylongname7 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname8 +intent(inout)
+// Argument:  int *verylongname8 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname9 +intent(inout)
+// Argument:  int *verylongname9 +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname10 +intent(inout)
+// Argument:  int *verylongname10 +intent(inout)
 // Statement: py_inout_native*
 static char PP_verylongfunctionname1__doc__[] =
 "documentation"
@@ -639,10 +639,10 @@ PP_verylongfunctionname2(
 // Function:  void cos_doubles
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(2)
+// Argument:  double *in +intent(in)+rank(2)
 // Statement: py_in_native*_numpy
 // ----------------------------------------
-// Argument:  double * out +dimension(shape(in))+intent(out)
+// Argument:  double *out +dimension(shape(in))+intent(out)
 // Statement: py_out_native*_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
@@ -662,10 +662,10 @@ PP_cos_doubles(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.cos_doubles
-    double * in;
+    double *in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = nullptr;
-    double * out;
+    double *out;
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = nullptr;
     int sizein;

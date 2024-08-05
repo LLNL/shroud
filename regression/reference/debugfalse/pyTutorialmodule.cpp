@@ -462,7 +462,7 @@ PY_LastFunctionCalled(
 // splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
         SHCXX_rv.size());
     return (PyObject *) SHTPy_rv;

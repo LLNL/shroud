@@ -59,7 +59,7 @@ double TUT_UseDefaultArguments_arg1(double arg1);
 
 double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2);
 
-void TUT_OverloadedFunction_from_name(const char * name);
+void TUT_OverloadedFunction_from_name(const char *name);
 
 void TUT_OverloadedFunction_from_name_bufferify(char *name,
     int SHT_name_len);
@@ -76,7 +76,7 @@ double TUT_TemplateReturn_double(void);
 
 void TUT_FortranGenericOverloaded_0(void);
 
-void TUT_FortranGenericOverloaded_1(const char * name, double arg2);
+void TUT_FortranGenericOverloaded_1(const char *name, double arg2);
 
 void TUT_FortranGenericOverloaded_1_float_bufferify(char *name,
     int SHT_name_len, float arg2);
@@ -104,9 +104,9 @@ enum TUT_Color TUT_colorfunc(enum TUT_Color arg);
 
 int TUT_colorfunc_bufferify(int arg);
 
-void TUT_getMinMax(int * min, int * max);
+void TUT_getMinMax(int *min, int *max);
 
-int TUT_callback1(int in, int ( * incr)(int));
+int TUT_callback1(int in, int (*incr)(int));
 
 const char * TUT_LastFunctionCalled(void);
 

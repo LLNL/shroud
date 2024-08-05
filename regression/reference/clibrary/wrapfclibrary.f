@@ -86,10 +86,10 @@ module clibrary_mod
     ! Function:  void PassByReference
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double * arg1 +intent(in)
+    ! Argument:  double *arg1 +intent(in)
     ! Statement: f_in_native*
     ! ----------------------------------------
-    ! Argument:  int * arg2 +intent(out)
+    ! Argument:  int *arg2 +intent(out)
     ! Statement: f_out_native*
     ! start pass_by_reference
     interface
@@ -127,10 +127,10 @@ module clibrary_mod
     ! Argument:  const bool arg1
     ! Statement: f_in_bool
     ! ----------------------------------------
-    ! Argument:  bool * arg2 +intent(out)
+    ! Argument:  bool *arg2 +intent(out)
     ! Statement: f_out_bool*
     ! ----------------------------------------
-    ! Argument:  bool * arg3 +intent(inout)
+    ! Argument:  bool *arg3 +intent(inout)
     ! Statement: f_inout_bool*
     ! start c_check_bool
     interface
@@ -146,13 +146,13 @@ module clibrary_mod
     ! end c_check_bool
 
     ! ----------------------------------------
-    ! Function:  char * Function4a +len(30)
+    ! Function:  char *Function4a +len(30)
     ! Statement: f_function_char*_buf_copy
     ! ----------------------------------------
-    ! Argument:  const char * arg1
+    ! Argument:  const char *arg1
     ! Statement: f_in_char*
     ! ----------------------------------------
-    ! Argument:  const char * arg2
+    ! Argument:  const char *arg2
     ! Statement: f_in_char*
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHT_rv, &
@@ -171,7 +171,7 @@ module clibrary_mod
     ! Function:  void acceptName
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const char * name
+    ! Argument:  const char *name
     ! Statement: f_in_char*
     ! start c_accept_name
     interface
@@ -188,7 +188,7 @@ module clibrary_mod
     ! Function:  void passCharPtrInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
+    ! Argument:  char *s +intent(inout)
     ! Statement: f_inout_char*_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, SHT_s_len) &
@@ -207,10 +207,10 @@ module clibrary_mod
     ! Argument:  int n
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  char * in +api(capi)+intent(inout)
+    ! Argument:  char *in +api(capi)+intent(inout)
     ! Statement: f_inout_char*_capi
     ! ----------------------------------------
-    ! Argument:  char * out +api(capi)+intent(out)
+    ! Argument:  char *out +api(capi)+intent(out)
     ! Statement: f_out_char*_capi
     interface
         subroutine pass_char_ptr_capi(n, in, out) &
@@ -227,7 +227,7 @@ module clibrary_mod
     ! Function:  void returnOneName
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *name1 +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     ! start c_return_one_name_bufferify
     interface
@@ -245,10 +245,10 @@ module clibrary_mod
     ! Function:  void returnTwoNames
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *name1 +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     ! ----------------------------------------
-    ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *name2 +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     interface
         subroutine c_return_two_names_bufferify(name1, SHT_name1_len, &
@@ -267,7 +267,7 @@ module clibrary_mod
     ! Function:  void ImpliedTextLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * text +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *text +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))
@@ -290,7 +290,7 @@ module clibrary_mod
     ! Function:  int ImpliedLen
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * text +api(capi)
+    ! Argument:  const char *text +api(capi)
     ! Statement: f_in_char*_capi
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))
@@ -315,7 +315,7 @@ module clibrary_mod
     ! Function:  int ImpliedLenTrim
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * text +api(capi)
+    ! Argument:  const char *text +api(capi)
     ! Statement: f_in_char*_capi
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len_trim(text))
@@ -384,7 +384,7 @@ module clibrary_mod
     ! Function:  void bindC2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)
+    ! Argument:  char *outbuf +intent(out)
     ! Statement: f_out_char*_buf
     interface
         subroutine c_bind_c2_bufferify(outbuf, SHT_outbuf_len) &
@@ -400,10 +400,10 @@ module clibrary_mod
     ! Function:  void passVoidStarStar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * in +intent(in)
+    ! Argument:  void *in +intent(in)
     ! Statement: f_in_void*
     ! ----------------------------------------
-    ! Argument:  void * * out +intent(out)
+    ! Argument:  void **out +intent(out)
     ! Statement: f_out_void**
     ! start pass_void_star_star
     interface
@@ -421,7 +421,7 @@ module clibrary_mod
     ! Function:  int passAssumedType
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype
+    ! Argument:  void *arg +assumedtype
     ! Statement: f_in_void*
     ! start pass_assumed_type
     interface
@@ -440,7 +440,7 @@ module clibrary_mod
     ! Function:  void passAssumedTypeDim
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype+rank(1)
+    ! Argument:  void *arg +assumedtype+rank(1)
     ! Statement: f_in_void*
     ! start pass_assumed_type_dim
     interface
@@ -456,10 +456,10 @@ module clibrary_mod
     ! Function:  int passAssumedTypeBuf
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype
+    ! Argument:  void *arg +assumedtype
     ! Statement: f_in_void*
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)
+    ! Argument:  char *outbuf +intent(out)
     ! Statement: f_out_char*_buf
     interface
         function c_pass_assumed_type_buf_bufferify(arg, outbuf, &
@@ -482,10 +482,10 @@ module clibrary_mod
     ! Argument:  int tc
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  array_info * arr +intent(inout)
+    ! Argument:  array_info *arr +intent(inout)
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))
+    ! Argument:  void (*alloc)(int tc +intent(in), array_info *arr +intent(inout))
     ! Statement: f_in_procedure
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &
@@ -549,10 +549,10 @@ contains
     ! Function:  void PassByReference
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double * arg1 +intent(in)
+    ! Argument:  double *arg1 +intent(in)
     ! Statement: f_in_native*
     ! ----------------------------------------
-    ! Argument:  int * arg2 +intent(out)
+    ! Argument:  int *arg2 +intent(out)
     ! Statement: f_out_native*
     ! start pass_by_reference
     subroutine pass_by_reference(arg1, arg2)
@@ -596,10 +596,10 @@ contains
     ! Argument:  const bool arg1
     ! Statement: f_in_bool
     ! ----------------------------------------
-    ! Argument:  bool * arg2 +intent(out)
+    ! Argument:  bool *arg2 +intent(out)
     ! Statement: f_out_bool*
     ! ----------------------------------------
-    ! Argument:  bool * arg3 +intent(inout)
+    ! Argument:  bool *arg3 +intent(inout)
     ! Statement: f_inout_bool*
     !>
     !! \brief Check intent with bool
@@ -625,7 +625,7 @@ contains
     ! end check_bool
 
     ! ----------------------------------------
-    ! Function:  char * Function4a +len(30)
+    ! Function:  char *Function4a +len(30)
     ! Statement: f_function_char*_buf_copy
     function function4a(arg1, arg2) &
             result(SHT_rv)
@@ -658,7 +658,7 @@ contains
     ! Function:  void passCharPtrInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
+    ! Argument:  char *s +intent(inout)
     ! Statement: f_inout_char*_buf
     !>
     !! \brief toupper
@@ -685,10 +685,10 @@ contains
     ! Argument:  int n
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  char * in +api(capi)+intent(inout)
+    ! Argument:  char *in +api(capi)+intent(inout)
     ! Statement: f_inout_char*_capi
     ! ----------------------------------------
-    ! Argument:  char * out +api(capi)+intent(out)
+    ! Argument:  char *out +api(capi)+intent(out)
     ! Statement: f_out_char*_capi
     !>
     !! \brief api(capi) with intent(out) and intent(inout)
@@ -710,7 +710,7 @@ contains
     ! Function:  void returnOneName
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *name1 +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! \brief Test charlen attribute
@@ -735,10 +735,10 @@ contains
     ! Function:  void returnTwoNames
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *name1 +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     ! ----------------------------------------
-    ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *name2 +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! \brief Test charlen attribute
@@ -765,7 +765,7 @@ contains
     ! Function:  void ImpliedTextLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * text +charlen(MAXNAME)+intent(out)
+    ! Argument:  char *text +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! \brief Fill text, at most ltext characters.
@@ -789,7 +789,7 @@ contains
     ! Function:  int ImpliedLen
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * text +api(capi)
+    ! Argument:  const char *text +api(capi)
     ! Statement: f_in_char*_capi
     !>
     !! \brief Return the implied argument - text length
@@ -815,7 +815,7 @@ contains
     ! Function:  int ImpliedLenTrim
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * text +api(capi)
+    ! Argument:  const char *text +api(capi)
     ! Statement: f_in_char*_capi
     !>
     !! \brief Return the implied argument - text length
@@ -894,7 +894,7 @@ contains
     ! Function:  void bindC2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)
+    ! Argument:  char *outbuf +intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! \brief Rename Fortran name for interface only function
@@ -917,10 +917,10 @@ contains
     ! Function:  void passVoidStarStar
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * in +intent(in)
+    ! Argument:  void *in +intent(in)
     ! Statement: f_in_void*
     ! ----------------------------------------
-    ! Argument:  void * * out +intent(out)
+    ! Argument:  void **out +intent(out)
     ! Statement: f_out_void**
     !>
     !! \brief Assign in to out.
@@ -987,7 +987,7 @@ contains
     ! Function:  int passAssumedTypeBuf
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  char * outbuf +intent(out)
+    ! Argument:  char *outbuf +intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! \brief Test assumed-type
@@ -1019,10 +1019,10 @@ contains
     ! Argument:  int tc
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  array_info * arr +intent(inout)
+    ! Argument:  array_info *arr +intent(inout)
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  void ( * alloc)(int tc +intent(in), array_info * arr +intent(inout))
+    ! Argument:  void (*alloc)(int tc +intent(in), array_info *arr +intent(inout))
     ! Statement: f_in_procedure
     !>
     !! The function argument takes a struct argument

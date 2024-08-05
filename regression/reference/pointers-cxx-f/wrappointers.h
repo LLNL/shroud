@@ -34,34 +34,33 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void POI_intargs_in_bufferify(const int * arg);
+void POI_intargs_in_bufferify(const int *arg);
 
-void POI_intargs_inout_bufferify(int * arg);
+void POI_intargs_inout_bufferify(int *arg);
 
-void POI_intargs_out_bufferify(int * arg);
+void POI_intargs_out_bufferify(int *arg);
 
-void POI_intargs_bufferify(const int argin, int * arginout,
-    int * argout);
+void POI_intargs_bufferify(const int argin, int *arginout, int *argout);
 
-void POI_cos_doubles_bufferify(double * in, double * out, int sizein);
+void POI_cos_doubles_bufferify(double *in, double *out, int sizein);
 
-void POI_truncate_to_int_bufferify(double * in, int * out, int sizein);
+void POI_truncate_to_int_bufferify(double *in, int *out, int sizein);
 
-void POI_get_values_bufferify(int * nvalues, int * values);
+void POI_get_values_bufferify(int *nvalues, int *values);
 
-void POI_get_values2_bufferify(int * arg1, int * arg2);
+void POI_get_values2_bufferify(int *arg1, int *arg2);
 
-void POI_iota_dimension_bufferify(int nvar, int * values);
+void POI_iota_dimension_bufferify(int nvar, int *values);
 
-void POI_Sum_bufferify(int len, const int * values, int * result);
+void POI_Sum_bufferify(int len, const int *values, int *result);
 
-void POI_fillIntArray_bufferify(int * out);
+void POI_fillIntArray_bufferify(int *out);
 
-void POI_incrementIntArray_bufferify(int * array, int sizein);
+void POI_incrementIntArray_bufferify(int *array, int sizein);
 
-void POI_fill_with_zeros_bufferify(double * x, int x_length);
+void POI_fill_with_zeros_bufferify(double *x, int x_length);
 
-int POI_accumulate_bufferify(const int * arr, size_t len);
+int POI_accumulate_bufferify(const int *arr, size_t len);
 
 int POI_acceptCharArrayIn_bufferify(const char *names,
     size_t SHT_names_size, int SHT_names_len);
@@ -89,19 +88,19 @@ void POI_getPtrToFixedConstArray_bufferify(
 void POI_getPtrToDynamicConstArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc);
 
-void POI_getRawPtrToScalar_bufferify(int * * nitems);
+void POI_getRawPtrToScalar_bufferify(int **nitems);
 
-void POI_getRawPtrToScalarForce_bufferify(int * * nitems);
+void POI_getRawPtrToScalarForce_bufferify(int **nitems);
 
-void POI_getRawPtrToFixedArray_bufferify(int * * count);
+void POI_getRawPtrToFixedArray_bufferify(int **count);
 
-void POI_getRawPtrToFixedArrayForce_bufferify(int * * count);
+void POI_getRawPtrToFixedArrayForce_bufferify(int **count);
 
-void POI_getRawPtrToInt2d_bufferify(int * * * arg);
+void POI_getRawPtrToInt2d_bufferify(int ***arg);
 
-int POI_checkInt2d_bufferify(int * * arg);
+int POI_checkInt2d_bufferify(int **arg);
 
-void POI_DimensionIn_bufferify(const int * arg);
+void POI_DimensionIn_bufferify(const int *arg);
 
 void POI_getAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_count_cdesc,
@@ -131,9 +130,9 @@ int POI_returnIntScalar_bufferify(void);
 
 int * POI_returnIntRaw_bufferify(void);
 
-int * POI_returnIntRawWithArgs_bufferify(const char * name);
+int * POI_returnIntRawWithArgs_bufferify(const char *name);
 
-int * * POI_returnRawPtrToInt2d_bufferify(void);
+int ** POI_returnRawPtrToInt2d_bufferify(void);
 
 void POI_returnIntAllocToFixedArray_bufferify(
     POI_SHROUD_array *SHT_rv_cdesc,

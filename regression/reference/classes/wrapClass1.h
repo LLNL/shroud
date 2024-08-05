@@ -55,7 +55,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2);
 
 void CLA_Class1_returnThis(CLA_Class1 * self);
 
-CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
+CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
     bool flag, CLA_Class1 * SHC_rv);
 
 CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,

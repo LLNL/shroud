@@ -154,7 +154,7 @@ PY_returnTypeID(
 // Function:  void typestruct
 // Statement: py_default
 // ----------------------------------------
-// Argument:  Struct1Rename * arg1
+// Argument:  Struct1Rename *arg1
 // Statement: py_inout_struct*_list
 static char PY_typestruct__doc__[] =
 "documentation"

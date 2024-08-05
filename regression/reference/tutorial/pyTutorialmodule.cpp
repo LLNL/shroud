@@ -96,10 +96,10 @@ PY_PassByValue(
 // Function:  const std::string ConcatenateStrings
 // Statement: py_function_string
 // ----------------------------------------
-// Argument:  const std::string & arg1
+// Argument:  const std::string &arg1
 // Statement: py_in_string&
 // ----------------------------------------
-// Argument:  const std::string & arg2
+// Argument:  const std::string &arg2
 // Statement: py_in_string&
 static char PY_ConcatenateStrings__doc__[] =
 "documentation"
@@ -212,7 +212,7 @@ PY_UseDefaultArguments_arg1_arg2(
 // Function:  void OverloadedFunction
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: py_in_string&
 static PyObject *
 PY_OverloadedFunction_from_name(
@@ -338,7 +338,7 @@ PY_FortranGenericOverloaded_0(
 // Function:  void FortranGenericOverloaded
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: py_in_string&
 // ----------------------------------------
 // Argument:  double arg2
@@ -573,10 +573,10 @@ PY_colorfunc(
 // Function:  void getMinMax
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int & min +intent(out)
+// Argument:  int &min +intent(out)
 // Statement: py_out_native&
 // ----------------------------------------
-// Argument:  int & max +intent(out)
+// Argument:  int &max +intent(out)
 // Statement: py_out_native&
 static char PY_getMinMax__doc__[] =
 "documentation"
@@ -607,7 +607,7 @@ PY_getMinMax(
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: py_function_string&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
@@ -622,7 +622,7 @@ PY_LastFunctionCalled(
 // splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

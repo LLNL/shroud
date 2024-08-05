@@ -356,9 +356,9 @@ bool TYP_bool_func(bool arg)
 // Function:  bool returnBoolAndOthers
 // Statement: c_function_bool
 // ----------------------------------------
-// Argument:  int * flag +intent(out)
+// Argument:  int *flag +intent(out)
 // Statement: c_out_native*
-bool TYP_returnBoolAndOthers(int * flag)
+bool TYP_returnBoolAndOthers(int *flag)
 {
     // splicer begin function.returnBoolAndOthers
     bool SHC_rv = returnBoolAndOthers(flag);

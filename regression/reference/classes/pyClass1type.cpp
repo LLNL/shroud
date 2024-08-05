@@ -124,7 +124,7 @@ PY_Method1(
 // Function:  bool equivalent
 // Statement: py_function_bool
 // ----------------------------------------
-// Argument:  const Class1 & obj2
+// Argument:  const Class1 &obj2
 // Statement: py_in_shadow&
 static char PY_equivalent__doc__[] =
 "documentation"
@@ -169,7 +169,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Class1 * getclass3
+// Function:  Class1 *getclass3
 // Statement: py_function_shadow*
 static char PY_getclass3__doc__[] =
 "documentation"
@@ -186,7 +186,7 @@ PY_getclass3(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.Class1.method.getclass3
-    classes::Class1 * SHCXX_rv = self->obj->getclass3();
+    classes::Class1 *SHCXX_rv = self->obj->getclass3();
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
@@ -197,7 +197,7 @@ PY_getclass3(
 }
 
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: py_function_string&
 static char PY_getName__doc__[] =
 "documentation"
@@ -216,7 +216,7 @@ PY_getName(
 // splicer begin class.Class1.method.getName
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = self->obj->getName();
+    const std::string &SHCXX_rv = self->obj->getName();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

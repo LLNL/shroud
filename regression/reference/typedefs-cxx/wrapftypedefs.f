@@ -208,7 +208,7 @@ module typedefs_mod
     ! Function:  void typestruct
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Struct1Rename * arg1
+    ! Argument:  Struct1Rename *arg1
     ! Statement: f_inout_struct*
     ! start typestruct
     interface
@@ -248,7 +248,7 @@ module typedefs_mod
     ! Argument:  int ndims
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  const IndexType * shape +intent(in)+rank(1)
+    ! Argument:  const IndexType *shape +intent(in)+rank(1)
     ! Statement: f_in_native*
     ! start return_shape_size
     interface
@@ -292,7 +292,7 @@ module typedefs_mod
     ! Argument:  int ndims
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  const IndexType2 * shape +intent(in)+rank(1)
+    ! Argument:  const IndexType2 *shape +intent(in)+rank(1)
     ! Statement: f_in_native*
     ! start return_shape_size2
     interface
@@ -406,7 +406,7 @@ contains
     ! Function:  void typestruct
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Struct1Rename * arg1
+    ! Argument:  Struct1Rename *arg1
     ! Statement: f_inout_struct*
     ! start typestruct
     subroutine typestruct(arg1)
@@ -448,7 +448,7 @@ contains
     ! Argument:  int ndims
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  const IndexType * shape +intent(in)+rank(1)
+    ! Argument:  const IndexType *shape +intent(in)+rank(1)
     ! Statement: f_in_native*
     ! start return_shape_size
     function return_shape_size(ndims, shape) &
@@ -494,7 +494,7 @@ contains
     ! Argument:  int ndims
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  const IndexType2 * shape +intent(in)+rank(1)
+    ! Argument:  const IndexType2 *shape +intent(in)+rank(1)
     ! Statement: f_in_native*
     ! start return_shape_size2
     function return_shape_size2(ndims, shape) &

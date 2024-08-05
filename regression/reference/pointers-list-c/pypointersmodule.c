@@ -270,7 +270,7 @@ PyObject *PY_error_obj;
 // Function:  void intargs_in
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const int * arg
+// Argument:  const int *arg
 // Statement: py_in_native*
 static char PY_intargs_in__doc__[] =
 "documentation"
@@ -301,7 +301,7 @@ PY_intargs_in(
 // Function:  void intargs_inout
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * arg
+// Argument:  int *arg
 // Statement: py_inout_native*
 static char PY_intargs_inout__doc__[] =
 "documentation"
@@ -340,7 +340,7 @@ PY_intargs_inout(
 // Function:  void intargs_out
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * arg +intent(out)
+// Argument:  int *arg +intent(out)
 // Statement: py_out_native*
 static char PY_intargs_out__doc__[] =
 "documentation"
@@ -372,10 +372,10 @@ PY_intargs_out(
 // Argument:  const int argin +intent(in)
 // Statement: py_in_native
 // ----------------------------------------
-// Argument:  int * arginout +intent(inout)
+// Argument:  int *arginout +intent(inout)
 // Statement: py_inout_native*
 // ----------------------------------------
-// Argument:  int * argout +intent(out)
+// Argument:  int *argout +intent(out)
 // Statement: py_out_native*
 static char PY_intargs__doc__[] =
 "documentation"
@@ -414,10 +414,10 @@ PY_intargs(
 // Function:  void cos_doubles
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(1)
+// Argument:  double *in +intent(in)+rank(1)
 // Statement: py_in_native*_list
 // ----------------------------------------
-// Argument:  double * out +dimension(size(in))+intent(out)
+// Argument:  double *out +dimension(size(in))+intent(out)
 // Statement: py_out_native*_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
@@ -493,10 +493,10 @@ fail:
 // Function:  void truncate_to_int
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(1)
+// Argument:  double *in +intent(in)+rank(1)
 // Statement: py_in_native*_list
 // ----------------------------------------
-// Argument:  int * out +dimension(size(in))+intent(out)
+// Argument:  int *out +dimension(size(in))+intent(out)
 // Statement: py_out_native*_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
@@ -573,10 +573,10 @@ fail:
 // Function:  void get_values
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * nvalues +intent(OUT)
+// Argument:  int *nvalues +intent(OUT)
 // Statement: py_out_native*
 // ----------------------------------------
-// Argument:  int * values +dimension(3)+intent(out)
+// Argument:  int *values +dimension(3)+intent(out)
 // Statement: py_out_native*_list
 static char PY_get_values__doc__[] =
 "documentation"
@@ -633,10 +633,10 @@ fail:
 // Function:  void get_values2
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * arg1 +dimension(3)+intent(out)
+// Argument:  int *arg1 +dimension(3)+intent(out)
 // Statement: py_out_native*_list
 // ----------------------------------------
-// Argument:  int * arg2 +dimension(3)+intent(out)
+// Argument:  int *arg2 +dimension(3)+intent(out)
 // Statement: py_out_native*_list
 static char PY_get_values2__doc__[] =
 "documentation"
@@ -706,7 +706,7 @@ fail:
 // Argument:  int nvar
 // Statement: py_in_native
 // ----------------------------------------
-// Argument:  int * values +dimension(nvar)+intent(out)
+// Argument:  int *values +dimension(nvar)+intent(out)
 // Statement: py_out_native*_list
 static char PY_iota_dimension__doc__[] =
 "documentation"
@@ -763,10 +763,10 @@ fail:
 // Argument:  int len +implied(size(values))
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const int * values +rank(1)
+// Argument:  const int *values +rank(1)
 // Statement: py_in_native*_list
 // ----------------------------------------
-// Argument:  int * result +intent(out)
+// Argument:  int *result +intent(out)
 // Statement: py_out_native*
 static char PY_Sum__doc__[] =
 "documentation"
@@ -825,7 +825,7 @@ fail:
 // Function:  void fillIntArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * out +dimension(3)+intent(out)
+// Argument:  int *out +dimension(3)+intent(out)
 // Statement: py_out_native*_list
 static char PY_fillIntArray__doc__[] =
 "documentation"
@@ -874,7 +874,7 @@ fail:
 // Function:  void incrementIntArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * array +intent(inout)+rank(1)
+// Argument:  int *array +intent(inout)+rank(1)
 // Statement: py_inout_native*_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))
@@ -939,7 +939,7 @@ fail:
 // Function:  void fill_with_zeros
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double * x +rank(1)
+// Argument:  double *x +rank(1)
 // Statement: py_inout_native*_list
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))
@@ -1000,7 +1000,7 @@ fail:
 // Function:  int accumulate
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const int * arr +rank(1)
+// Argument:  const int *arr +rank(1)
 // Statement: py_in_native*_list
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))
@@ -1061,7 +1061,7 @@ fail:
 // Function:  int acceptCharArrayIn
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  char * * names +intent(in)
+// Argument:  char **names +intent(in)
 // Statement: py_in_char**
 static char PY_acceptCharArrayIn__doc__[] =
 "documentation"
@@ -1175,7 +1175,7 @@ PY_sumFixedArray(
 // Function:  void getPtrToFixedArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * * count +dimension(10)+intent(out)
+// Argument:  int **count +dimension(10)+intent(out)
 // Statement: py_out_native**_list
 static char PY_getPtrToFixedArray__doc__[] =
 "documentation"
@@ -1212,10 +1212,10 @@ fail:
 // Function:  void getPtrToDynamicArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * * count +dimension(ncount)+intent(out)
+// Argument:  int **count +dimension(ncount)+intent(out)
 // Statement: py_out_native**_list
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_getPtrToDynamicArray__doc__[] =
 "documentation"
@@ -1254,7 +1254,7 @@ fail:
 // Function:  void getPtrToFuncArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * * count +dimension(getLen())+intent(out)
+// Argument:  int **count +dimension(getLen())+intent(out)
 // Statement: py_out_native**_list
 static char PY_getPtrToFuncArray__doc__[] =
 "documentation"
@@ -1293,7 +1293,7 @@ fail:
 // Function:  void getPtrToFixedConstArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const int * * count +dimension(10)+intent(out)
+// Argument:  const int **count +dimension(10)+intent(out)
 // Statement: py_out_native**_list
 static char PY_getPtrToFixedConstArray__doc__[] =
 "documentation"
@@ -1327,10 +1327,10 @@ fail:
 // Function:  void getPtrToDynamicConstArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const int * * count +dimension(ncount)+intent(out)
+// Argument:  const int **count +dimension(ncount)+intent(out)
 // Statement: py_out_native**_list
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: py_out_native*
 static char PY_getPtrToDynamicConstArray__doc__[] =
 "documentation"
@@ -1365,7 +1365,7 @@ fail:
 // Function:  void getRawPtrToScalar
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * * nitems +deref(raw)+intent(out)
+// Argument:  int **nitems +deref(raw)+intent(out)
 // Statement: py_out_native**_raw
 static char PY_getRawPtrToScalar__doc__[] =
 "documentation"
@@ -1397,7 +1397,7 @@ PY_getRawPtrToScalar(
 // Function:  void getRawPtrToFixedArray
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * * count +deref(raw)+intent(out)
+// Argument:  int **count +deref(raw)+intent(out)
 // Statement: py_out_native**_raw
 static char PY_getRawPtrToFixedArray__doc__[] =
 "documentation"
@@ -1428,7 +1428,7 @@ PY_getRawPtrToFixedArray(
 }
 
 // ----------------------------------------
-// Function:  void * returnAddress1
+// Function:  void *returnAddress1
 // Statement: py_function_void*
 // ----------------------------------------
 // Argument:  int flag
@@ -1454,7 +1454,7 @@ PY_returnAddress1(
         SHT_kwlist, &flag))
         return NULL;
 
-    void * SHCXX_rv = returnAddress1(flag);
+    void *SHCXX_rv = returnAddress1(flag);
 
     // post_call
     SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
@@ -1464,7 +1464,7 @@ PY_returnAddress1(
 }
 
 // ----------------------------------------
-// Function:  void * returnAddress2
+// Function:  void *returnAddress2
 // Statement: py_function_void*
 // ----------------------------------------
 // Argument:  int flag
@@ -1490,7 +1490,7 @@ PY_returnAddress2(
         SHT_kwlist, &flag))
         return NULL;
 
-    void * SHCXX_rv = returnAddress2(flag);
+    void *SHCXX_rv = returnAddress2(flag);
 
     // post_call
     SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
@@ -1503,7 +1503,7 @@ PY_returnAddress2(
 // Function:  void fetchVoidPtr
 // Statement: py_default
 // ----------------------------------------
-// Argument:  void * * addr +intent(out)
+// Argument:  void **addr +intent(out)
 // Statement: py_out_void**
 static char PY_fetchVoidPtr__doc__[] =
 "documentation"
@@ -1529,7 +1529,7 @@ PY_fetchVoidPtr(
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int *returnIntPtrToScalar
 // Statement: py_function_native*_list
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
@@ -1544,7 +1544,7 @@ PY_returnIntPtrToScalar(
 // splicer begin function.returnIntPtrToScalar
     PyObject *SHTPy_rv = NULL;
 
-    int * SHCXX_rv = returnIntPtrToScalar();
+    int *SHCXX_rv = returnIntPtrToScalar();
 
     // post_call
     SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 1);
@@ -1559,7 +1559,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int *returnIntPtrToFixedArray +dimension(10)
 // Statement: py_function_native*_list
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
@@ -1574,7 +1574,7 @@ PY_returnIntPtrToFixedArray(
 // splicer begin function.returnIntPtrToFixedArray
     PyObject *SHTPy_rv = NULL;
 
-    int * SHCXX_rv = returnIntPtrToFixedArray();
+    int *SHCXX_rv = returnIntPtrToFixedArray();
 
     // post_call
     SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 10);
@@ -1589,7 +1589,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int *returnIntPtrToConstScalar
 // Statement: py_function_native*_list
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
@@ -1604,7 +1604,7 @@ PY_returnIntPtrToConstScalar(
 // splicer begin function.returnIntPtrToConstScalar
     PyObject *SHTPy_rv = NULL;
 
-    const int * SHCXX_rv = returnIntPtrToConstScalar();
+    const int *SHCXX_rv = returnIntPtrToConstScalar();
 
     // post_call
     SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 1);
@@ -1619,7 +1619,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
 // Statement: py_function_native*_list
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"
@@ -1634,7 +1634,7 @@ PY_returnIntPtrToFixedConstArray(
 // splicer begin function.returnIntPtrToFixedConstArray
     PyObject *SHTPy_rv = NULL;
 
-    const int * SHCXX_rv = returnIntPtrToFixedConstArray();
+    const int *SHCXX_rv = returnIntPtrToFixedConstArray();
 
     // post_call
     SHTPy_rv = SHROUD_to_PyList_int(SHCXX_rv, 10);
@@ -1649,7 +1649,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * returnIntScalar +deref(scalar)
+// Function:  int *returnIntScalar +deref(scalar)
 // Statement: py_function_native*_scalar
 static char PY_returnIntScalar__doc__[] =
 "documentation"
@@ -1664,7 +1664,7 @@ PY_returnIntScalar(
 // splicer begin function.returnIntScalar
     PyObject * SHTPy_rv = NULL;
 
-    int * SHCXX_rv = returnIntScalar();
+    int *SHCXX_rv = returnIntScalar();
 
     // post_call
     SHTPy_rv = PyInt_FromLong(*SHCXX_rv);

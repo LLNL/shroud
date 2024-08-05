@@ -27,9 +27,9 @@ extern "C" {
 // Function:  int passStructByReference
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  Cstruct1 & arg
+// Argument:  Cstruct1 &arg
 // Statement: c_inout_struct&
-int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
+int CXX_structns_passStructByReference(CXX_cstruct1 *arg)
 {
     // splicer begin namespace.structns.function.passStructByReference
     int SHC_rv = structns::passStructByReference(*arg);
@@ -44,9 +44,9 @@ int CXX_structns_passStructByReference(CXX_cstruct1 * arg)
 // Function:  int passStructByReferenceIn
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  const Cstruct1 & arg
+// Argument:  const Cstruct1 &arg
 // Statement: c_in_struct&
-int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
+int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 *arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceIn
     int SHC_rv = structns::passStructByReferenceIn(*arg);
@@ -58,9 +58,9 @@ int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg)
 // Function:  void passStructByReferenceInout
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(inout)
+// Argument:  Cstruct1 &arg +intent(inout)
 // Statement: c_inout_struct&
-void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
+void CXX_structns_passStructByReferenceInout(CXX_cstruct1 *arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceInout
     structns::passStructByReferenceInout(*arg);
@@ -71,9 +71,9 @@ void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg)
 // Function:  void passStructByReferenceOut
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(out)
+// Argument:  Cstruct1 &arg +intent(out)
 // Statement: c_out_struct&
-void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg)
+void CXX_structns_passStructByReferenceOut(CXX_cstruct1 *arg)
 {
     // splicer begin namespace.structns.function.passStructByReferenceOut
     structns::passStructByReferenceOut(*arg);

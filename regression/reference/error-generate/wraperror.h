@@ -45,7 +45,7 @@ typedef struct s_ERR_struct1 ERR_struct1;
 struct s_ERR_struct1 {
     int arg1;
     int narg2;
-    int * arg2;
+    int *arg2;
 };
 
 typedef struct s_ERR_nested ERR_nested;
@@ -58,9 +58,9 @@ struct s_ERR_nested {
 extern "C" {
 #endif
 
-int * ERR_struct1_get_arg2(ERR_struct1 * SH_this, ===>SHC_rv<===);
+int * ERR_struct1_get_arg2(ERR_struct1 *SH_this, ===>SHC_rv<===);
 
-void ERR_struct1_set_arg2(ERR_struct1 * SH_this, int * val);
+void ERR_struct1_set_arg2(ERR_struct1 *SH_this, int *val);
 
 #ifdef __cplusplus
 }

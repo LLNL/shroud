@@ -118,7 +118,7 @@ class DeclStr(object):
 
         self.declarator(declaration.declarator)
 
-    def declarator(self, declarator):
+    def declarator(self, declarator, leading_blank=True):
         """Generate string for Declarator.
 
         Appending text to self.parts.
@@ -131,24 +131,33 @@ class DeclStr(object):
         parts = self.parts
         if self.force_ptr:
             # Force to be a pointer, even if scalar
-            parts.append(" *")
-        else:
+            if leading_blank:
+                parts.append(" ")
+                leading_blank = False
+            parts.append("*")
+        elif declarator.pointer:
             for ptr in declarator.pointer:
-                self.ptr(ptr)
+                leading_blank = self.ptr(ptr, leading_blank)
         if declarator.func:
-            parts.append(" (")
-            self.declarator(declarator.func)
+            if leading_blank:
+                parts.append(" ")
+                leading_blank = False
+            parts.append("(")
+            self.declarator(declarator.func, leading_blank=False)
             parts.append(")")
         elif self.name is False:
             pass
         elif self.name is not None:
-            parts.append(" ")
+            if leading_blank:
+                parts.append(" ")
             parts.append(self.name)
         elif declarator.name:
-            parts.append(" ")
+            if leading_blank:
+                parts.append(" ")
             parts.append(declarator.name)
         elif self.ctor_dtor and declarator.ctor_dtor_name:
-            parts.append(" ")
+            if leading_blank:
+                parts.append(" ")
             parts.append(declarator.ctor_dtor_name)
 
         if self.append_init and declarator.init is not None:
@@ -199,12 +208,15 @@ class DeclStr(object):
                 parts.append("{}({})".format(attr, value))
             space = ""
 
-    def ptr(self, pointer):
+    def ptr(self, pointer, leading_blank=True):
         """Generate string by appending text to decl.
         """
         parts = self.parts
+        orig_blank = leading_blank
         if pointer.ptr:
-            parts.append(" ")
+            if leading_blank:
+                parts.append(" ")
+                leading_blank = False
             if self.as_c:
                 # references become pointers with as_c
                 parts.append("*")
@@ -214,9 +226,16 @@ class DeclStr(object):
             else:
                 parts.append(pointer.ptr)
         if pointer.const:
-            parts.append(" const")
+            if orig_blank:
+                parts.append(" ")
+            parts.append("const")
+            leading_blank = True
         if pointer.volatile:
-            parts.append(" volatile")
+            if orig_blank:
+                parts.append(" ")
+            parts.append("volatile")
+            leading_blank = True
+        return leading_blank
 
     ##########
 

@@ -136,17 +136,17 @@ TYP_TypeID TYP_returnTypeID(TYP_TypeID in);
 
 int TYP_returnTypeID_bufferify(int in);
 
-void TYP_typestruct(TYP_Struct1Rename * arg1);
+void TYP_typestruct(TYP_Struct1Rename *arg1);
 
 int TYP_returnBytesForIndexType(TYP_IndexType arg);
 
 TYP_IndexType TYP_returnShapeSize(int ndims,
-    const TYP_IndexType * shape);
+    const TYP_IndexType *shape);
 
 int TYP_returnBytesForIndexType2(LOCAL_IndexType arg);
 
 LOCAL_IndexType TYP_returnShapeSize2(int ndims,
-    const LOCAL_IndexType * shape);
+    const LOCAL_IndexType *shape);
 
 #ifdef __cplusplus
 }

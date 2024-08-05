@@ -142,10 +142,10 @@ module tutorial_mod
     ! Function:  const std::string ConcatenateStrings
     ! Statement: c_function_string
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1
+    ! Argument:  const std::string &arg1
     ! Statement: c_in_string&
     ! ----------------------------------------
-    ! Argument:  const std::string & arg2
+    ! Argument:  const std::string &arg2
     ! Statement: c_in_string&
     interface
         function c_concatenate_strings(arg1, arg2) &
@@ -164,10 +164,10 @@ module tutorial_mod
     ! Function:  const std::string ConcatenateStrings
     ! Statement: f_function_string_cdesc_allocatable
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1
+    ! Argument:  const std::string &arg1
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & arg2
+    ! Argument:  const std::string &arg2
     ! Statement: f_in_string&_buf
     interface
         subroutine c_concatenate_strings_bufferify(arg1, SHT_arg1_len, &
@@ -248,7 +248,7 @@ module tutorial_mod
     ! Function:  void OverloadedFunction
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: c_in_string&
     interface
         subroutine c_overloaded_function_from_name(name) &
@@ -263,7 +263,7 @@ module tutorial_mod
     ! Function:  void OverloadedFunction
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
@@ -365,7 +365,7 @@ module tutorial_mod
     ! Function:  void FortranGenericOverloaded
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: c_in_string&
     ! ----------------------------------------
     ! Argument:  double arg2
@@ -385,7 +385,7 @@ module tutorial_mod
     ! Function:  void FortranGenericOverloaded
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  float arg2
@@ -407,7 +407,7 @@ module tutorial_mod
     ! Function:  void FortranGenericOverloaded
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  double arg2
@@ -622,10 +622,10 @@ module tutorial_mod
     ! Function:  void getMinMax
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int & min +intent(out)
+    ! Argument:  int &min +intent(out)
     ! Statement: f_out_native&
     ! ----------------------------------------
-    ! Argument:  int & max +intent(out)
+    ! Argument:  int &max +intent(out)
     ! Statement: f_out_native&
     ! start get_min_max
     interface
@@ -646,7 +646,7 @@ module tutorial_mod
     ! Argument:  int in
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int ( * incr)(int)
+    ! Argument:  int (*incr)(int)
     ! Statement: f_in_procedure
     ! start callback1
     interface
@@ -664,7 +664,7 @@ module tutorial_mod
     ! end callback1
 
     ! ----------------------------------------
-    ! Function:  const std::string & LastFunctionCalled +len(30)
+    ! Function:  const std::string &LastFunctionCalled +len(30)
     ! Statement: c_function_string&
     interface
         function c_last_function_called() &
@@ -677,7 +677,7 @@ module tutorial_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string & LastFunctionCalled +len(30)
+    ! Function:  const std::string &LastFunctionCalled +len(30)
     ! Statement: f_function_string&_buf_copy
     interface
         subroutine c_last_function_called_bufferify(SHT_rv, SHT_rv_len) &
@@ -798,10 +798,10 @@ contains
     ! Function:  const std::string ConcatenateStrings
     ! Statement: f_function_string_cdesc_allocatable
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1
+    ! Argument:  const std::string &arg1
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & arg2
+    ! Argument:  const std::string &arg2
     ! Statement: f_in_string&_buf
     !>
     !! Note that since a reference is returned, no intermediate string
@@ -891,7 +891,7 @@ contains
     ! Function:  void OverloadedFunction
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
@@ -988,7 +988,7 @@ contains
     ! Function:  void FortranGenericOverloaded
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  float arg2
@@ -1010,7 +1010,7 @@ contains
     ! Function:  void FortranGenericOverloaded
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & name
+    ! Argument:  const std::string &name
     ! Statement: f_in_string&_buf
     ! ----------------------------------------
     ! Argument:  double arg2
@@ -1207,10 +1207,10 @@ contains
     ! Function:  void getMinMax
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int & min +intent(out)
+    ! Argument:  int &min +intent(out)
     ! Statement: f_out_native&
     ! ----------------------------------------
-    ! Argument:  int & max +intent(out)
+    ! Argument:  int &max +intent(out)
     ! Statement: f_out_native&
     !>
     !! \brief Pass in reference to scalar
@@ -1237,7 +1237,7 @@ contains
     ! Argument:  int in
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int ( * incr)(int)
+    ! Argument:  int (*incr)(int)
     ! Statement: f_in_procedure
     !>
     !! \brief Test function pointer
@@ -1258,7 +1258,7 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  const std::string & LastFunctionCalled +len(30)
+    ! Function:  const std::string &LastFunctionCalled +len(30)
     ! Statement: f_function_string&_buf_copy
     function last_function_called() &
             result(SHT_rv)

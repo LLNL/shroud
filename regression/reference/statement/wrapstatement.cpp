@@ -55,12 +55,12 @@ int STMT_GetNameLength(void)
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorPattern +len(get_name_length())
+// Function:  const string &getNameErrorPattern +len(get_name_length())
 // Statement: c_function_string&
 const char * STMT_getNameErrorPattern(void)
 {
     // splicer begin function.getNameErrorPattern
-    const std::string & SHCXX_rv = getNameErrorPattern();
+    const std::string &SHCXX_rv = getNameErrorPattern();
     // C_error_pattern
     if (! isNameValid(SHCXX_rv)) {
         return NULL;
@@ -72,12 +72,12 @@ const char * STMT_getNameErrorPattern(void)
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorPattern +len(get_name_length())
+// Function:  const string &getNameErrorPattern +len(get_name_length())
 // Statement: f_function_string&_buf_copy
 void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.getNameErrorPattern_bufferify
-    const std::string & SHCXX_rv = getNameErrorPattern();
+    const std::string &SHCXX_rv = getNameErrorPattern();
     if (SHCXX_rv.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
@@ -91,9 +91,9 @@ void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len)
 // Function:  bool nameIsValid
 // Statement: c_function_bool
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: c_in_string&
-bool STMT_nameIsValid(const char * name)
+bool STMT_nameIsValid(const char *name)
 {
     // splicer begin function.nameIsValid
     return name != NULL;

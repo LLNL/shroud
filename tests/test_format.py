@@ -46,19 +46,19 @@ class WFormat(unittest.TestCase):
 
         self.assertEqual("int *",
                          str(fmtarg.cdecl))
-        self.assertEqual("int * arg1",
+        self.assertEqual("int *arg1",
                          str(fmtarg.cdecl.c_var))
-        self.assertEqual("int * other_name",
+        self.assertEqual("int *other_name",
                          str(fmtarg.cdecl.other))
         self.assertEqual("int *",
                          str(fmtarg.cxxdecl))
-        self.assertEqual("int * other_name",
+        self.assertEqual("int *other_name",
                          str(fmtarg.cxxdecl.other))
-        self.assertEqual("int * ===>xxx<===",
+        self.assertEqual("int *===>xxx<===",
                          fmtarg.cxxdecl.xxx)
 
         # cidecl
-        self.assertEqual("int * array", fmtarg.cidecl.c_var)
+        self.assertEqual("int *array", fmtarg.cidecl.c_var)
 #        print(11, fmtarg.cxxdecl.cxx_var)
 
         fmtarg = fcfmt.FormatGen(func, arg, fmt_var, "f")
@@ -81,15 +81,15 @@ class WFormat(unittest.TestCase):
         self.assertEqual("array", fmtarg.name)
         self.assertEqual("const int *",
                          str(fmtarg.cdecl))
-        self.assertEqual("const int * arg1",
+        self.assertEqual("const int *arg1",
                          str(fmtarg.cdecl.c_var))
-        self.assertEqual("const int * other_name",
+        self.assertEqual("const int *other_name",
                          str(fmtarg.cdecl.other))
         self.assertEqual("const int *",
                          str(fmtarg.cxxdecl))
-        self.assertEqual("const int * other_name",
+        self.assertEqual("const int *other_name",
                          fmtarg.cxxdecl.other)
-        self.assertEqual("const int * ===>xxx<===",
+        self.assertEqual("const int *===>xxx<===",
                          fmtarg.cxxdecl.xxx)
 
     def test_arg_cxx_enum(self):
@@ -147,15 +147,15 @@ class WFormat(unittest.TestCase):
         self.assertEqual("array", fmtarg.name)
         self.assertEqual("int *",
                          str(fmtarg.cdecl))
-        self.assertEqual("int * arg1",
+        self.assertEqual("int *arg1",
                          str(fmtarg.cdecl.c_var))
-        self.assertEqual("int * other_name",
+        self.assertEqual("int *other_name",
                          str(fmtarg.cdecl.other))
         self.assertEqual("vector<int> *",
                          str(fmtarg.cxxdecl))
-        self.assertEqual("std::vector<int> * other_name",
+        self.assertEqual("std::vector<int> *other_name",
                          fmtarg.cxxdecl.other)
-        self.assertEqual("std::vector<int> * ===>xxx<===",
+        self.assertEqual("std::vector<int> *===>xxx<===",
                          fmtarg.cxxdecl.xxx)
     
 if __name__ == "__main__":

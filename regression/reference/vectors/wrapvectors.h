@@ -82,7 +82,7 @@ int * VEC_ReturnVectorAlloc(int n, size_t *SHT_rv_size);
 void VEC_ReturnVectorAlloc_bufferify(int n,
     VEC_SHROUD_array *SHT_rv_cdesc);
 
-int VEC_returnDim2(int * arg, int len);
+int VEC_returnDim2(int *arg, int len);
 
 #ifdef __cplusplus
 }

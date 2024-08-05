@@ -105,7 +105,7 @@ module ns_mod
     interface
 
         ! ----------------------------------------
-        ! Function:  const std::string & LastFunctionCalled
+        ! Function:  const std::string &LastFunctionCalled
         ! Statement: c_function_string&
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -116,7 +116,7 @@ module ns_mod
         end function c_last_function_called
 
         ! ----------------------------------------
-        ! Function:  const std::string & LastFunctionCalled
+        ! Function:  const std::string &LastFunctionCalled
         ! Statement: f_function_string&_cdesc_allocatable
         subroutine c_last_function_called_bufferify(SHT_rv_cdesc, &
                 SHT_rv_capsule) &
@@ -166,7 +166,7 @@ module ns_mod
 contains
 
     ! ----------------------------------------
-    ! Function:  const std::string & LastFunctionCalled
+    ! Function:  const std::string &LastFunctionCalled
     ! Statement: f_function_string&_cdesc_allocatable
     function last_function_called() &
             result(SHT_rv)

@@ -43,13 +43,13 @@ static void ShroudStringToCdesc(STR_SHROUD_array *cdesc,
 // splicer end C_definitions
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrAlloc +owner(library)
+// Function:  const std::string *getConstStringPtrAlloc +owner(library)
 // Statement: c_function_string*_library
 // start STR_getConstStringPtrAlloc
 const char * STR_getConstStringPtrAlloc(void)
 {
     // splicer begin function.getConstStringPtrAlloc
-    const std::string * SHCXX_rv = getConstStringPtrAlloc();
+    const std::string *SHCXX_rv = getConstStringPtrAlloc();
     const char * SHC_rv = SHCXX_rv->c_str();
     return SHC_rv;
     // splicer end function.getConstStringPtrAlloc
@@ -57,7 +57,7 @@ const char * STR_getConstStringPtrAlloc(void)
 // end STR_getConstStringPtrAlloc
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrAlloc +owner(library)
+// Function:  const std::string *getConstStringPtrAlloc +owner(library)
 // Statement: f_function_string*_cdesc_allocatable_library
 // start STR_getConstStringPtrAlloc_bufferify
 void STR_getConstStringPtrAlloc_bufferify(
@@ -65,7 +65,7 @@ void STR_getConstStringPtrAlloc_bufferify(
     STR_SHROUD_capsule_data *SHT_rv_capsule)
 {
     // splicer begin function.getConstStringPtrAlloc_bufferify
-    const std::string * SHCXX_rv = getConstStringPtrAlloc();
+    const std::string *SHCXX_rv = getConstStringPtrAlloc();
     ShroudStringToCdesc(SHT_rv_cdesc, SHCXX_rv);
     SHT_rv_capsule->addr  = const_cast<std::string *>(SHCXX_rv);
     SHT_rv_capsule->idtor = 0;

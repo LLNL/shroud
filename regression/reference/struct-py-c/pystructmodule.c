@@ -40,10 +40,10 @@ PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 // Function:  int acceptBothStructs
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  Cstruct_as_class * s1 +intent(in)
+// Argument:  Cstruct_as_class *s1 +intent(in)
 // Statement: py_in_struct*_class
 // ----------------------------------------
-// Argument:  Cstruct_as_numpy * s2 +intent(in)
+// Argument:  Cstruct_as_numpy *s2 +intent(in)
 // Statement: py_in_struct*_numpy
 static char PY_acceptBothStructs__doc__[] =
 "documentation"

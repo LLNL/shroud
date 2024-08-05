@@ -32,13 +32,13 @@ void ERR_BadFstatements(void);
 
 no-such-type ERR_BadFstatements_bufferify(void);
 
-void ERR_AssumedRank(int * data);
+void ERR_AssumedRank(int *data);
 
-void ERR_AssumedRank_0d_bufferify(int * data);
+void ERR_AssumedRank_0d_bufferify(int *data);
 
-void ERR_AssumedRank_1d_bufferify(int * data);
+void ERR_AssumedRank_1d_bufferify(int *data);
 
-void ERR_AssumedRank_2d_bufferify(int * data);
+void ERR_AssumedRank_2d_bufferify(int *data);
 
 #ifdef __cplusplus
 }

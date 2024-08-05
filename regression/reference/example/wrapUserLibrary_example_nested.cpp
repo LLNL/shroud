@@ -51,9 +51,9 @@ void AA_example_nested_local_function1(void)
 // Function:  bool isNameValid
 // Statement: c_function_bool
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: c_in_string&
-bool AA_example_nested_isNameValid(const char * name)
+bool AA_example_nested_isNameValid(const char *name)
 {
     // splicer begin namespace.example::nested.function.isNameValid
     return name != NULL;
@@ -64,7 +64,7 @@ bool AA_example_nested_isNameValid(const char * name)
 // Function:  bool isNameValid
 // Statement: f_function_bool
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: f_in_string&_buf
 bool AA_example_nested_isNameValid_bufferify(char *name,
     int SHT_name_len)
@@ -89,9 +89,9 @@ bool AA_example_nested_isInitialized(void)
 // Function:  void test_names
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: c_in_string&
-void AA_example_nested_test_names(const char * name)
+void AA_example_nested_test_names(const char *name)
 {
     // splicer begin namespace.example::nested.function.test_names
     const std::string SHC_name_cxx(name);
@@ -103,7 +103,7 @@ void AA_example_nested_test_names(const char * name)
 // Function:  void test_names
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: f_in_string&_buf
 void AA_example_nested_test_names_bufferify(char *name,
     int SHT_name_len)
@@ -119,12 +119,12 @@ void AA_example_nested_test_names_bufferify(char *name,
 // Function:  void test_names
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: c_in_string&
 // ----------------------------------------
 // Argument:  int flag
 // Statement: c_in_native
-void AA_example_nested_test_names_flag(const char * name, int flag)
+void AA_example_nested_test_names_flag(const char *name, int flag)
 {
     // splicer begin namespace.example::nested.function.test_names_flag
     const std::string SHC_name_cxx(name);
@@ -136,7 +136,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Function:  void test_names
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  int flag
@@ -239,9 +239,9 @@ void AA_example_nested_testmpi_serial(void)
 // Function:  void FuncPtr1
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(void)
+// Argument:  void (*get)(void)
 // Statement: c_in_procedure
-void AA_example_nested_FuncPtr1(void ( * get)(void))
+void AA_example_nested_FuncPtr1(void (*get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr1
     example::nested::FuncPtr1(get);
@@ -256,9 +256,9 @@ void AA_example_nested_FuncPtr1(void ( * get)(void))
 // Function:  void FuncPtr2
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * ( * get)(void)
+// Argument:  double *(*get)(void)
 // Statement: c_in_procedure
-void AA_example_nested_FuncPtr2(double * ( * get)(void))
+void AA_example_nested_FuncPtr2(double *(*get)(void))
 {
     // splicer begin namespace.example::nested.function.FuncPtr2
     example::nested::FuncPtr2(get);
@@ -273,9 +273,9 @@ void AA_example_nested_FuncPtr2(double * ( * get)(void))
 // Function:  void FuncPtr3
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double ( * get)(int i, int)
+// Argument:  double (*get)(int i, int)
 // Statement: c_in_procedure
-void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
+void AA_example_nested_FuncPtr3(double (*get)(int i, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr3
     example::nested::FuncPtr3(get);
@@ -290,9 +290,9 @@ void AA_example_nested_FuncPtr3(double ( * get)(int i, int))
 // Function:  void FuncPtr4
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double ( * get)(double, int)
+// Argument:  double (*get)(double, int)
 // Statement: c_in_procedure
-void AA_example_nested_FuncPtr4(double ( * get)(double, int))
+void AA_example_nested_FuncPtr4(double (*get)(double, int))
 {
     // splicer begin namespace.example::nested.function.FuncPtr4
     example::nested::FuncPtr4(get);
@@ -303,9 +303,9 @@ void AA_example_nested_FuncPtr4(double ( * get)(double, int))
 // Function:  void FuncPtr5
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
+// Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // Statement: c_in_procedure
-void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
+void AA_example_nested_FuncPtr5(void (*get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
     int verylongname8, int verylongname9, int verylongname10))
@@ -319,39 +319,39 @@ void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
 // Function:  void verylongfunctionname1
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * verylongname1 +intent(inout)
+// Argument:  int *verylongname1 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname2 +intent(inout)
+// Argument:  int *verylongname2 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname3 +intent(inout)
+// Argument:  int *verylongname3 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname4 +intent(inout)
+// Argument:  int *verylongname4 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname5 +intent(inout)
+// Argument:  int *verylongname5 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname6 +intent(inout)
+// Argument:  int *verylongname6 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname7 +intent(inout)
+// Argument:  int *verylongname7 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname8 +intent(inout)
+// Argument:  int *verylongname8 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname9 +intent(inout)
+// Argument:  int *verylongname9 +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname10 +intent(inout)
+// Argument:  int *verylongname10 +intent(inout)
 // Statement: c_inout_native*
-void AA_example_nested_verylongfunctionname1(int * verylongname1,
-    int * verylongname2, int * verylongname3, int * verylongname4,
-    int * verylongname5, int * verylongname6, int * verylongname7,
-    int * verylongname8, int * verylongname9, int * verylongname10)
+void AA_example_nested_verylongfunctionname1(int *verylongname1,
+    int *verylongname2, int *verylongname3, int *verylongname4,
+    int *verylongname5, int *verylongname6, int *verylongname7,
+    int *verylongname8, int *verylongname9, int *verylongname10)
 {
     // splicer begin namespace.example::nested.function.verylongfunctionname1
     example::nested::verylongfunctionname1(verylongname1, verylongname2,
@@ -415,16 +415,15 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 // Function:  void cos_doubles
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(2)
+// Argument:  double *in +intent(in)+rank(2)
 // Statement: c_in_native*
 // ----------------------------------------
-// Argument:  double * out +dimension(shape(in))+intent(out)
+// Argument:  double *out +dimension(shape(in))+intent(out)
 // Statement: c_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
 // Statement: c_in_native
-void AA_example_nested_cos_doubles(double * in, double * out,
-    int sizein)
+void AA_example_nested_cos_doubles(double *in, double *out, int sizein)
 {
     // splicer begin namespace.example::nested.function.cos_doubles
     example::nested::cos_doubles(in, out, sizein);

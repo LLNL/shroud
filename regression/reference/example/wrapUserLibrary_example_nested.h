@@ -40,19 +40,19 @@ extern "C" {
 
 void AA_example_nested_local_function1(void);
 
-bool AA_example_nested_isNameValid(const char * name);
+bool AA_example_nested_isNameValid(const char *name);
 
 bool AA_example_nested_isNameValid_bufferify(char *name,
     int SHT_name_len);
 
 bool AA_example_nested_isInitialized(void);
 
-void AA_example_nested_test_names(const char * name);
+void AA_example_nested_test_names(const char *name);
 
 void AA_example_nested_test_names_bufferify(char *name,
     int SHT_name_len);
 
-void AA_example_nested_test_names_flag(const char * name, int flag);
+void AA_example_nested_test_names_flag(const char *name, int flag);
 
 void AA_example_nested_test_names_flag_bufferify(char *name,
     int SHT_name_len, int flag);
@@ -73,31 +73,30 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm);
 void AA_example_nested_testmpi_serial(void);
 #endif
 
-void AA_example_nested_FuncPtr1(void ( * get)(void));
+void AA_example_nested_FuncPtr1(void (*get)(void));
 
-void AA_example_nested_FuncPtr2(double * ( * get)(void));
+void AA_example_nested_FuncPtr2(double *(*get)(void));
 
-void AA_example_nested_FuncPtr3(double ( * get)(int i, int));
+void AA_example_nested_FuncPtr3(double (*get)(int i, int));
 
-void AA_example_nested_FuncPtr4(double ( * get)(double, int));
+void AA_example_nested_FuncPtr4(double (*get)(double, int));
 
-void AA_example_nested_FuncPtr5(void ( * get)(int verylongname1,
+void AA_example_nested_FuncPtr5(void (*get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
     int verylongname8, int verylongname9, int verylongname10));
 
-void AA_example_nested_verylongfunctionname1(int * verylongname1,
-    int * verylongname2, int * verylongname3, int * verylongname4,
-    int * verylongname5, int * verylongname6, int * verylongname7,
-    int * verylongname8, int * verylongname9, int * verylongname10);
+void AA_example_nested_verylongfunctionname1(int *verylongname1,
+    int *verylongname2, int *verylongname3, int *verylongname4,
+    int *verylongname5, int *verylongname6, int *verylongname7,
+    int *verylongname8, int *verylongname9, int *verylongname10);
 
 int AA_example_nested_verylongfunctionname2(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,
     int verylongname5, int verylongname6, int verylongname7,
     int verylongname8, int verylongname9, int verylongname10);
 
-void AA_example_nested_cos_doubles(double * in, double * out,
-    int sizein);
+void AA_example_nested_cos_doubles(double *in, double *out, int sizein);
 
 #ifdef __cplusplus
 }

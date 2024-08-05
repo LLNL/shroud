@@ -135,7 +135,7 @@ int CLA_Class1_Method1(CLA_Class1 * self)
 // Function:  bool equivalent
 // Statement: c_function_bool
 // ----------------------------------------
-// Argument:  const Class1 & obj2
+// Argument:  const Class1 &obj2
 // Statement: c_in_shadow&
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
@@ -156,7 +156,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
  *
  */
 // ----------------------------------------
-// Function:  Class1 * returnThis
+// Function:  Class1 *returnThis
 // Statement: c_function_shadow*_this
 // start CLA_Class1_returnThis
 void CLA_Class1_returnThis(CLA_Class1 * self)
@@ -174,16 +174,16 @@ void CLA_Class1_returnThis(CLA_Class1 * self)
  *
  */
 // ----------------------------------------
-// Function:  Class1 * returnThisBuffer
+// Function:  Class1 *returnThisBuffer
 // Statement: c_function_shadow*_capptr
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: c_in_string&
 // ----------------------------------------
 // Argument:  bool flag
 // Statement: c_in_bool
 // start CLA_Class1_returnThisBuffer
-CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
+CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char *name,
     bool flag, CLA_Class1 * SHC_rv)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
@@ -204,10 +204,10 @@ CLA_Class1 * CLA_Class1_returnThisBuffer(CLA_Class1 * self, char * name,
  *
  */
 // ----------------------------------------
-// Function:  Class1 * returnThisBuffer
+// Function:  Class1 *returnThisBuffer
 // Statement: f_function_shadow*_capptr
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
 // ----------------------------------------
 // Argument:  bool flag
@@ -235,7 +235,7 @@ CLA_Class1 * CLA_Class1_returnThisBuffer_bufferify(CLA_Class1 * self,
  *
  */
 // ----------------------------------------
-// Function:  Class1 * getclass3
+// Function:  Class1 *getclass3
 // Statement: c_function_shadow*_capptr
 // start CLA_Class1_getclass3
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
@@ -257,7 +257,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
  *
  */
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: c_function_string&
 // start CLA_Class1_getName
 const char * CLA_Class1_getName(CLA_Class1 * self)
@@ -265,7 +265,7 @@ const char * CLA_Class1_getName(CLA_Class1 * self)
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.getName
-    const std::string & SHCXX_rv = SH_this->getName();
+    const std::string &SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end class.Class1.method.getName
@@ -277,7 +277,7 @@ const char * CLA_Class1_getName(CLA_Class1 * self)
  *
  */
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: f_function_string&_cdesc_allocatable
 // start CLA_Class1_getName_bufferify
 void CLA_Class1_getName_bufferify(CLA_Class1 * self,
@@ -287,7 +287,7 @@ void CLA_Class1_getName_bufferify(CLA_Class1 * self,
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.getName_bufferify
-    const std::string & SHCXX_rv = SH_this->getName();
+    const std::string &SHCXX_rv = SH_this->getName();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
     SHT_rv_capsule->idtor = 0;

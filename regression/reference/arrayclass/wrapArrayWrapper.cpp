@@ -64,9 +64,9 @@ int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self)
 // Function:  void fillSize
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int & size +intent(out)
+// Argument:  int &size +intent(out)
 // Statement: c_out_native&
-void ARR_ArrayWrapper_fillSize(ARR_ArrayWrapper * self, int * size)
+void ARR_ArrayWrapper_fillSize(ARR_ArrayWrapper * self, int *size)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fillSize
@@ -86,26 +86,26 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  double * getArray +dimension(getSize())
+// Function:  double *getArray +dimension(getSize())
 // Statement: c_function_native*
 double * ARR_ArrayWrapper_getArray(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.getArray
-    double * SHC_rv = SH_this->getArray();
+    double *SHC_rv = SH_this->getArray();
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.getArray
 }
 
 // ----------------------------------------
-// Function:  double * getArray +dimension(getSize())
+// Function:  double *getArray +dimension(getSize())
 // Statement: f_function_native*_cdesc_pointer
 void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.getArray_bufferify
-    double * SHC_rv = SH_this->getArray();
+    double *SHC_rv = SH_this->getArray();
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -116,20 +116,20 @@ void ARR_ArrayWrapper_getArray_bufferify(ARR_ArrayWrapper * self,
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +dimension(getSize())
+// Function:  double *getArrayConst +dimension(getSize())
 // Statement: c_function_native*
 double * ARR_ArrayWrapper_getArrayConst(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayConst
-    double * SHC_rv = SH_this->getArrayConst();
+    double *SHC_rv = SH_this->getArrayConst();
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.getArrayConst
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +dimension(getSize())
+// Function:  double *getArrayConst +dimension(getSize())
 // Statement: f_function_native*_cdesc_pointer
 void ARR_ArrayWrapper_getArrayConst_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc)
@@ -137,7 +137,7 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayConst_bufferify
-    double * SHC_rv = SH_this->getArrayConst();
+    double *SHC_rv = SH_this->getArrayConst();
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -148,26 +148,26 @@ void ARR_ArrayWrapper_getArrayConst_bufferify(
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +dimension(getSize())
+// Function:  const double *getArrayC +dimension(getSize())
 // Statement: c_function_native*
 const double * ARR_ArrayWrapper_getArrayC(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayC
-    const double * SHC_rv = SH_this->getArrayC();
+    const double *SHC_rv = SH_this->getArrayC();
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.getArrayC
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +dimension(getSize())
+// Function:  const double *getArrayC +dimension(getSize())
 // Statement: f_function_native*_cdesc_pointer
 void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_rv_cdesc)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayC_bufferify
-    const double * SHC_rv = SH_this->getArrayC();
+    const double *SHC_rv = SH_this->getArrayC();
     SHT_rv_cdesc->base_addr = const_cast<double *>(SHC_rv);
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -178,7 +178,7 @@ void ARR_ArrayWrapper_getArrayC_bufferify(ARR_ArrayWrapper * self,
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +dimension(getSize())
+// Function:  const double *getArrayConstC +dimension(getSize())
 // Statement: c_function_native*
 const double * ARR_ArrayWrapper_getArrayConstC(
     const ARR_ArrayWrapper * self)
@@ -186,13 +186,13 @@ const double * ARR_ArrayWrapper_getArrayConstC(
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayConstC
-    const double * SHC_rv = SH_this->getArrayConstC();
+    const double *SHC_rv = SH_this->getArrayConstC();
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.getArrayConstC
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +dimension(getSize())
+// Function:  const double *getArrayConstC +dimension(getSize())
 // Statement: f_function_native*_cdesc_pointer
 void ARR_ArrayWrapper_getArrayConstC_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_rv_cdesc)
@@ -200,7 +200,7 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
     // splicer begin class.ArrayWrapper.method.getArrayConstC_bufferify
-    const double * SHC_rv = SH_this->getArrayConstC();
+    const double *SHC_rv = SH_this->getArrayConstC();
     SHT_rv_cdesc->base_addr = const_cast<double *>(SHC_rv);
     SHT_rv_cdesc->type = SH_TYPE_DOUBLE;
     SHT_rv_cdesc->elem_len = sizeof(double);
@@ -214,13 +214,13 @@ void ARR_ArrayWrapper_getArrayConstC_bufferify(
 // Function:  void fetchArrayPtr
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * * array +dimension(isize)+intent(out)
+// Argument:  double **array +dimension(isize)+intent(out)
 // Statement: c_out_native**
 // ----------------------------------------
-// Argument:  int * isize +hidden
+// Argument:  int *isize +hidden
 // Statement: c_inout_native*
 void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
-    double * * array, int * isize)
+    double **array, int *isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetchArrayPtr
@@ -232,10 +232,10 @@ void ARR_ArrayWrapper_fetchArrayPtr(ARR_ArrayWrapper * self,
 // Function:  void fetchArrayPtr
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  double * * array +dimension(isize)+intent(out)
+// Argument:  double **array +dimension(isize)+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * isize +hidden
+// Argument:  int *isize +hidden
 // Statement: f_inout_native*_hidden
 void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_array_cdesc)
@@ -258,13 +258,13 @@ void ARR_ArrayWrapper_fetchArrayPtr_bufferify(ARR_ArrayWrapper * self,
 // Function:  void fetchArrayRef
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * & array +dimension(isize)+intent(out)
+// Argument:  double *&array +dimension(isize)+intent(out)
 // Statement: c_out_native*&
 // ----------------------------------------
-// Argument:  int & isize +hidden
+// Argument:  int &isize +hidden
 // Statement: c_inout_native&
 void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
-    double * * array, int * isize)
+    double **array, int *isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetchArrayRef
@@ -276,10 +276,10 @@ void ARR_ArrayWrapper_fetchArrayRef(ARR_ArrayWrapper * self,
 // Function:  void fetchArrayRef
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  double * & array +dimension(isize)+intent(out)
+// Argument:  double *&array +dimension(isize)+intent(out)
 // Statement: f_out_native*&_cdesc_pointer
 // ----------------------------------------
-// Argument:  int & isize +hidden
+// Argument:  int &isize +hidden
 // Statement: f_inout_native&_hidden
 void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *SHT_array_cdesc)
@@ -302,13 +302,13 @@ void ARR_ArrayWrapper_fetchArrayRef_bufferify(ARR_ArrayWrapper * self,
 // Function:  void fetchArrayPtrConst
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const double * * array +dimension(isize)+intent(out)
+// Argument:  const double **array +dimension(isize)+intent(out)
 // Statement: c_out_native**
 // ----------------------------------------
-// Argument:  int * isize +hidden
+// Argument:  int *isize +hidden
 // Statement: c_inout_native*
 void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
-    const double * * array, int * isize)
+    const double **array, int *isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetchArrayPtrConst
@@ -320,10 +320,10 @@ void ARR_ArrayWrapper_fetchArrayPtrConst(ARR_ArrayWrapper * self,
 // Function:  void fetchArrayPtrConst
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const double * * array +dimension(isize)+intent(out)
+// Argument:  const double **array +dimension(isize)+intent(out)
 // Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * isize +hidden
+// Argument:  int *isize +hidden
 // Statement: f_inout_native*_hidden
 void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
@@ -346,13 +346,13 @@ void ARR_ArrayWrapper_fetchArrayPtrConst_bufferify(
 // Function:  void fetchArrayRefConst
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const double * & array +dimension(isize)+intent(out)
+// Argument:  const double *&array +dimension(isize)+intent(out)
 // Statement: c_out_native*&
 // ----------------------------------------
-// Argument:  int & isize +hidden
+// Argument:  int &isize +hidden
 // Statement: c_inout_native&
 void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
-    const double * * array, int * isize)
+    const double **array, int *isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetchArrayRefConst
@@ -364,10 +364,10 @@ void ARR_ArrayWrapper_fetchArrayRefConst(ARR_ArrayWrapper * self,
 // Function:  void fetchArrayRefConst
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const double * & array +dimension(isize)+intent(out)
+// Argument:  const double *&array +dimension(isize)+intent(out)
 // Statement: f_out_native*&_cdesc_pointer
 // ----------------------------------------
-// Argument:  int & isize +hidden
+// Argument:  int &isize +hidden
 // Statement: f_inout_native&_hidden
 void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *SHT_array_cdesc)
@@ -390,7 +390,7 @@ void ARR_ArrayWrapper_fetchArrayRefConst_bufferify(
 // Function:  void fetchVoidPtr
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void * * array +intent(out)
+// Argument:  void **array +intent(out)
 // Statement: c_out_void**
 void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
     void **array)
@@ -405,10 +405,10 @@ void ARR_ArrayWrapper_fetchVoidPtr(ARR_ArrayWrapper * self,
 // Function:  void fetchVoidRef
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void * & array +intent(out)
+// Argument:  void *&array +intent(out)
 // Statement: c_out_void*&
 void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
-    void * * array)
+    void **array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.fetchVoidRef
@@ -420,9 +420,9 @@ void ARR_ArrayWrapper_fetchVoidRef(ARR_ArrayWrapper * self,
 // Function:  bool checkPtr
 // Statement: c_function_bool
 // ----------------------------------------
-// Argument:  void * array
+// Argument:  void *array
 // Statement: c_in_void*
-bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void * array)
+bool ARR_ArrayWrapper_checkPtr(ARR_ArrayWrapper * self, void *array)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.checkPtr

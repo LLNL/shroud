@@ -155,7 +155,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // Function:  ExClass2
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const string * name +len_trim(trim_name)
+// Argument:  const string *name +len_trim(trim_name)
 // Statement: py_in_string*
 /**
  * \brief constructor
@@ -191,7 +191,7 @@ PP_ExClass2_tp_init(
 }
 
 // ----------------------------------------
-// Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Function:  const string &getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Statement: py_function_string&
 static char PP_getName__doc__[] =
 "documentation"
@@ -206,7 +206,7 @@ PP_getName(
 // splicer begin namespace.example::nested.class.ExClass2.method.getName
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = self->obj->getName();
+    const std::string &SHCXX_rv = self->obj->getName();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -217,7 +217,7 @@ PP_getName(
 }
 
 // ----------------------------------------
-// Function:  const string & getName2
+// Function:  const string &getName2
 // Statement: py_function_string&
 static char PP_getName2__doc__[] =
 "documentation"
@@ -232,7 +232,7 @@ PP_getName2(
 // splicer begin namespace.example::nested.class.ExClass2.method.getName2
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = self->obj->getName2();
+    const std::string &SHCXX_rv = self->obj->getName2();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -243,7 +243,7 @@ PP_getName2(
 }
 
 // ----------------------------------------
-// Function:  string & getName3
+// Function:  string &getName3
 // Statement: py_function_string&
 static char PP_getName3__doc__[] =
 "documentation"
@@ -258,7 +258,7 @@ PP_getName3(
 // splicer begin namespace.example::nested.class.ExClass2.method.getName3
     PyObject * SHTPy_rv = nullptr;
 
-    std::string & SHCXX_rv = self->obj->getName3();
+    std::string &SHCXX_rv = self->obj->getName3();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -269,7 +269,7 @@ PP_getName3(
 }
 
 // ----------------------------------------
-// Function:  string & getName4
+// Function:  string &getName4
 // Statement: py_function_string&
 static char PP_getName4__doc__[] =
 "documentation"
@@ -284,7 +284,7 @@ PP_getName4(
 // splicer begin namespace.example::nested.class.ExClass2.method.getName4
     PyObject * SHTPy_rv = nullptr;
 
-    std::string & SHCXX_rv = self->obj->getName4();
+    std::string &SHCXX_rv = self->obj->getName4();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -324,10 +324,10 @@ PP_GetNameLength(
 }
 
 // ----------------------------------------
-// Function:  ExClass1 * get_class1
+// Function:  ExClass1 *get_class1
 // Statement: py_function_shadow*
 // ----------------------------------------
-// Argument:  const ExClass1 * in
+// Argument:  const ExClass1 *in
 // Statement: py_in_shadow*
 static char PP_get_class1__doc__[] =
 "documentation"
@@ -353,7 +353,7 @@ PP_get_class1(
     const example::nested::ExClass1 * in =
         SHPy_in ? SHPy_in->obj : nullptr;
 
-    example::nested::ExClass1 * SHCXX_rv = self->obj->get_class1(in);
+    example::nested::ExClass1 *SHCXX_rv = self->obj->get_class1(in);
 
     // post_call
     PP_ExClass1 * SHTPy_rv =

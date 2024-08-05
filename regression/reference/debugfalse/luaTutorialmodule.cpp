@@ -318,7 +318,7 @@ static int l_colorfunc(lua_State *L)
 static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.LastFunctionCalled
