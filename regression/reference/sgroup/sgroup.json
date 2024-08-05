@@ -161,7 +161,6 @@
                             "c_const": "",
                             "c_deref": "",
                             "c_member": ".",
-                            "c_proto_decl": "int arg",
                             "c_type": "SGR_twostruct",
                             "c_var": "arg",
                             "cfi_type": "CFI_type_struct",

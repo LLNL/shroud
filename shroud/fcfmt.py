@@ -262,7 +262,6 @@ class FillFormat(object):
 
         # prototype:  vector<int> -> int *
         converter, lang = find_arg_converter(wlang, self.language, arg_typemap)
-        fmt_arg.c_proto_decl = gen_arg_as_c(arg, lang=lang)
         
         fmt_arg.c_abstract_decl = gen_arg_as_c(
             arg, name=False, add_params=False)
