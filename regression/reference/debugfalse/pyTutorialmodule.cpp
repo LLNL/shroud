@@ -225,12 +225,12 @@ PY_TemplateArgument_int(
 }
 
 static PyObject *
-PY_TemplateArgument_double(
+PY_TemplateArgument_int(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.TemplateArgument_double
+// splicer begin function.TemplateArgument_int
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -239,9 +239,9 @@ PY_TemplateArgument_double(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:TemplateArgument",
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
-    tutorial::TemplateArgument<double>(arg);
+    tutorial::TemplateArgument<int>(arg);
     Py_RETURN_NONE;
-// splicer end function.TemplateArgument_double
+// splicer end function.TemplateArgument_int
 }
 
 static PyObject *

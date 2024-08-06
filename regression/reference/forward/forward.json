@@ -238,6 +238,26 @@
                             "PY_type_impl": "PY_Class2_tp_init",
                             "PY_type_method": "tp_init",
                             "function_name": "ctor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "forward::Class2 SHCXX_rv =\t ",
+                                "rv_decl": "forward::Class2 SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "forward::Class2 SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_self": true,
+                                "capsule_order": "1"
+                            }
                         }
                     },
                     {
@@ -346,6 +366,20 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_name": "__gc",
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_doc_string": "documentation",
+                                "PY_used_param_self": true
+                            }
                         }
                     },
                     {
@@ -588,6 +622,28 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
+                                "cxx_call_list": "arg",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "O!:func1",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
+                                "stmt": "py_default"
+                            }
                         }
                     },
                     {
@@ -832,6 +888,28 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
+                                "cxx_call_list": "arg",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "O!:acceptClass3",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&PY_Class3_Type,\t &SHPy_arg",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],

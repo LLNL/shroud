@@ -102,6 +102,16 @@
                     "F_name_impl": "init_test",
                     "PY_name_impl": "PY_init_test",
                     "function_name": "init_test"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -302,6 +312,21 @@
                     "F_name_impl": "pass_char",
                     "PY_name_impl": "PY_passChar",
                     "function_name": "passChar"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "status[0]",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:passChar",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&status",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -611,6 +636,19 @@
                     "F_name_impl": "return_char",
                     "PY_name_impl": "PY_returnChar",
                     "function_name": "returnChar"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "char SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "char SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -947,6 +985,22 @@
                     "F_name_impl": "pass_char_ptr",
                     "PY_name_impl": "PY_passCharPtr",
                     "function_name": "passCharPtr"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "dest,\t src",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:passCharPtr",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&src",
+                        "py_var": "SHPy_dest",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1173,6 +1227,22 @@
                     "F_name_impl": "pass_char_ptr_in_out",
                     "PY_name_impl": "PY_passCharPtrInOut",
                     "function_name": "passCharPtrInOut"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "s",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:passCharPtrInOut",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&s",
+                        "py_var": "SHPy_s",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1354,6 +1424,18 @@
                     "F_name_impl": "get_char_ptr1",
                     "PY_name_impl": "PY_getCharPtr1",
                     "function_name": "getCharPtr1"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const char *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const char *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -1534,6 +1616,18 @@
                     "F_name_impl": "get_char_ptr2",
                     "PY_name_impl": "PY_getCharPtr2",
                     "function_name": "getCharPtr2"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const char *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const char *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -1709,6 +1803,18 @@
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getCharPtr3",
                     "function_name": "getCharPtr3"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const char *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const char *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2178,6 +2284,18 @@
                     "F_name_impl": "get_const_string_result",
                     "PY_name_impl": "PY_getConstStringResult",
                     "function_name": "getConstStringResult"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2353,6 +2471,18 @@
                     "F_name_impl": "get_const_string_len",
                     "PY_name_impl": "PY_getConstStringLen",
                     "function_name": "getConstStringLen"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2523,6 +2653,18 @@
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringAsArg",
                     "function_name": "getConstStringAsArg"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2705,6 +2847,18 @@
                     "F_name_impl": "get_const_string_alloc",
                     "PY_name_impl": "PY_getConstStringAlloc",
                     "function_name": "getConstStringAlloc"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2895,6 +3049,18 @@
                     "F_name_impl": "get_const_string_ref_pure",
                     "PY_name_impl": "PY_getConstStringRefPure",
                     "function_name": "getConstStringRefPure"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3076,6 +3242,18 @@
                     "F_name_impl": "get_const_string_ref_len",
                     "PY_name_impl": "PY_getConstStringRefLen",
                     "function_name": "getConstStringRefLen"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3252,6 +3430,18 @@
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
                     "function_name": "getConstStringRefAsArg"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3432,6 +3622,18 @@
                     "F_name_impl": "get_const_string_ref_len_empty",
                     "PY_name_impl": "PY_getConstStringRefLenEmpty",
                     "function_name": "getConstStringRefLenEmpty"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3617,6 +3819,18 @@
                     "F_name_impl": "get_const_string_ref_alloc",
                     "PY_name_impl": "PY_getConstStringRefAlloc",
                     "function_name": "getConstStringRefAlloc"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3805,6 +4019,18 @@
                     "F_name_impl": "get_const_string_ptr_len",
                     "PY_name_impl": "PY_getConstStringPtrLen",
                     "function_name": "getConstStringPtrLen"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3997,6 +4223,18 @@
                     "F_name_impl": "get_const_string_ptr_alloc",
                     "PY_name_impl": "PY_getConstStringPtrAlloc",
                     "function_name": "getConstStringPtrAlloc"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -4192,6 +4430,18 @@
                     "F_name_impl": "get_const_string_ptr_owns_alloc",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAlloc",
                     "function_name": "getConstStringPtrOwnsAlloc"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -4392,6 +4642,18 @@
                     "F_name_impl": "get_const_string_ptr_owns_alloc_pattern",
                     "PY_name_impl": "PY_getConstStringPtrOwnsAllocPattern",
                     "function_name": "getConstStringPtrOwnsAllocPattern"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "const std::string *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -4774,6 +5036,21 @@
                     "F_name_impl": "accept_string_const_reference",
                     "PY_name_impl": "PY_acceptStringConstReference",
                     "function_name": "acceptStringConstReference"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:acceptStringConstReference",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -4998,6 +5275,17 @@
                     "F_name_impl": "accept_string_reference_out",
                     "PY_name_impl": "PY_acceptStringReferenceOut",
                     "function_name": "acceptStringReferenceOut"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "py_var": "SHPy_arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -5223,6 +5511,22 @@
                     "F_name_impl": "accept_string_reference",
                     "PY_name_impl": "PY_acceptStringReference",
                     "function_name": "acceptStringReference"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:acceptStringReference",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg1",
+                        "py_var": "SHPy_arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -5444,6 +5748,21 @@
                     "F_name_impl": "accept_string_pointer_const",
                     "PY_name_impl": "PY_acceptStringPointerConst",
                     "function_name": "acceptStringPointerConst"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:acceptStringPointerConst",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -5666,6 +5985,22 @@
                     "F_name_impl": "accept_string_pointer",
                     "PY_name_impl": "PY_acceptStringPointer",
                     "function_name": "acceptStringPointer"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:acceptStringPointer",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg1",
+                        "py_var": "SHPy_arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -5890,6 +6225,17 @@
                     "F_name_impl": "fetch_string_pointer",
                     "PY_name_impl": "PY_fetchStringPointer",
                     "function_name": "fetchStringPointer"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "py_var": "SHPy_arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -6225,6 +6571,23 @@
                     "F_name_impl": "accept_string_pointer_len",
                     "PY_name_impl": "PY_acceptStringPointerLen",
                     "function_name": "acceptStringPointerLen"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&SH_arg1,\t &nlen",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:acceptStringPointerLen",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg1",
+                        "PyBuild_format": "s#i",
+                        "PyBuild_vargs": "SH_arg1.data(),\t SH_arg1.size(),\t nlen",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -6561,6 +6924,18 @@
                     "F_name_impl": "fetch_string_pointer_len",
                     "PY_name_impl": "PY_fetchStringPointerLen",
                     "function_name": "fetchStringPointerLen"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&SH_arg1,\t &nlen",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PyBuild_format": "s#i",
+                        "PyBuild_vargs": "SH_arg1.data(),\t SH_arg1.size(),\t nlen",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -6839,6 +7214,23 @@
                     "F_name_impl": "accept_string_instance",
                     "PY_name_impl": "PY_acceptStringInstance",
                     "function_name": "acceptStringInstance"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "SH_arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_rv_asgn": "int SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:acceptStringInstance",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg1",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -6983,6 +7375,18 @@
                     "F_name_api": "return_strings",
                     "PY_name_impl": "PY_returnStrings",
                     "function_name": "returnStrings"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "SH_arg1,\t SH_arg2",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PyBuild_format": "s#s#",
+                        "PyBuild_vargs": "SH_arg1.data(),\t SH_arg1.size(),\t SH_arg2.data(),\t SH_arg2.size()",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -8243,6 +8647,21 @@
                     "F_name_impl": "explicit1",
                     "PY_name_impl": "PY_explicit1",
                     "function_name": "explicit1"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "name",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:explicit1",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&name",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -8636,6 +9055,21 @@
                     "F_name_impl": "cpass_char",
                     "PY_name_impl": "PY_CpassChar",
                     "function_name": "CpassChar"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "status[0]",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "s:CpassChar",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&status",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -8778,6 +9212,19 @@
                     "F_name_impl": "creturn_char",
                     "PY_name_impl": "PY_CreturnChar",
                     "function_name": "CreturnChar"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "char SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "char SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -9711,6 +10158,22 @@
                     "F_name_impl": "post_declare",
                     "PY_name_impl": "PY_PostDeclare",
                     "function_name": "PostDeclare"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "list",
+                        "PY_call_list": "count,\t SH_name",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "Os:PostDeclare",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&SHTPy_count,\t &name",
+                        "py_var": "SHPy_name",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {

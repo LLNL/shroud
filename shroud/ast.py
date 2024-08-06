@@ -1439,6 +1439,9 @@ class FunctionNode(AstNode):
 
 
     _fmtfunc = Scope()
+    _fmtlang = {
+       'f': Scope(_fmtfunc)
+    }
 
     _bind = {
        'f': {
@@ -1518,6 +1521,7 @@ class FunctionNode(AstNode):
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
+        self._fmtlang = {}
         self._function_index = None
         self._generated = False
         self._generated_path = []

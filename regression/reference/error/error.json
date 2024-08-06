@@ -981,6 +981,16 @@
                     "F_name_impl": "bad_fstatements",
                     "PY_name_impl": "PY_BadFstatements",
                     "function_name": "BadFstatements"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1198,6 +1208,22 @@
                     "F_name_api": "assumed_rank",
                     "PY_name_impl": "PY_AssumedRank",
                     "function_name": "AssumedRank"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&data",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:AssumedRank",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&data",
+                        "py_var": "SHPy_data",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1332,6 +1358,22 @@
                     "F_name_impl": "assumed_rank_0d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_0d"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&data",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:AssumedRank",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&data",
+                        "py_var": "SHPy_data",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1469,6 +1511,22 @@
                     "F_name_impl": "assumed_rank_1d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_1d"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&data",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:AssumedRank",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&data",
+                        "py_var": "SHPy_data",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1606,6 +1664,22 @@
                     "F_name_impl": "assumed_rank_2d",
                     "function_name": "AssumedRank",
                     "function_suffix": "_2d"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&data",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:AssumedRank",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&data",
+                        "py_var": "SHPy_data",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -1654,6 +1728,16 @@
                     "F_name_api": "py_good_function",
                     "PY_name_impl": "PY_PYGoodFunction",
                     "function_name": "PYGoodFunction"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "none",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "stmt": "py_default"
+                    }
                 }
             }
         ],

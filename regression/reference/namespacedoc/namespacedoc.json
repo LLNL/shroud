@@ -95,6 +95,16 @@
                     "F_name_impl": "inner3_worker3",
                     "PY_name_impl": "PY_worker3",
                     "function_name": "worker3"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -182,6 +192,16 @@
                     "F_name_impl": "worker",
                     "PY_name_impl": "PY_worker",
                     "function_name": "worker"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "stmt": "py_default"
+                    }
                 }
             }
         ],
@@ -275,6 +295,16 @@
                             "F_name_impl": "worker",
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],
@@ -398,6 +428,16 @@
                             "F_name_impl": "worker",
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],
@@ -521,6 +561,16 @@
                             "F_name_impl": "inner4_worker4",
                             "PY_name_impl": "PY_worker4",
                             "function_name": "worker4"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],

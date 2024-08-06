@@ -280,7 +280,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         declarator = ast.declarator
         fmt_func = node.fmtdict
         fmt_func.LUA_name_api = node.apply_LUA_API_option(node.name)
-        fmt = util.Scope(fmt_func)
+        fmt = node._fmtlang.setdefault("lua", util.Scope(fmt_func))
         node.eval_template("LUA_name")
         node.eval_template("LUA_name_impl")
 

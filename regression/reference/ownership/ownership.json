@@ -115,6 +115,20 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_name": "__gc",
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class1_Type *)\t luaL_checkudata(\tL, 1, \"Class1.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_doc_string": "documentation",
+                                "PY_used_param_self": true
+                            }
                         }
                     },
                     {
@@ -568,6 +582,18 @@
                     "F_name_impl": "return_int_ptr_scalar",
                     "PY_name_impl": "PY_ReturnIntPtrScalar",
                     "function_name": "ReturnIntPtrScalar"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -736,6 +762,19 @@
                     "F_name_impl": "return_int_ptr_pointer",
                     "PY_name_impl": "PY_ReturnIntPtrPointer",
                     "function_name": "ReturnIntPtrPointer"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -1235,6 +1274,19 @@
                     "F_name_impl": "return_int_ptr_dim_pointer",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointer",
                     "function_name": "ReturnIntPtrDimPointer"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&len",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -1601,6 +1653,19 @@
                     "F_name_impl": "return_int_ptr_dim_alloc",
                     "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
                     "function_name": "ReturnIntPtrDimAlloc"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&len",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -1955,6 +2020,19 @@
                     "F_name_impl": "return_int_ptr_dim_default",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefault",
                     "function_name": "ReturnIntPtrDimDefault"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&len",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2485,6 +2563,19 @@
                     "F_name_impl": "return_int_ptr_dim_pointer_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
                     "function_name": "ReturnIntPtrDimPointerNew"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&len",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2732,6 +2823,19 @@
                     "F_name_api": "return_int_ptr_dim_alloc_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
                     "function_name": "ReturnIntPtrDimAllocNew"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&len",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3096,6 +3200,19 @@
                     "F_name_impl": "return_int_ptr_dim_default_new",
                     "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
                     "function_name": "ReturnIntPtrDimDefaultNew"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&len",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -4082,6 +4199,21 @@
                     "F_name_impl": "create_class_static",
                     "PY_name_impl": "PY_createClassStatic",
                     "function_name": "createClassStatic"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "flag",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:createClassStatic",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&flag",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -4258,6 +4390,19 @@
                     "F_name_impl": "get_class_static",
                     "PY_name_impl": "PY_getClassStatic",
                     "function_name": "getClassStatic"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "Class1 *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "Class1 *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -4551,6 +4696,24 @@
                     "F_name_impl": "get_class_new",
                     "PY_name_impl": "PY_getClassNew",
                     "function_name": "getClassNew"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "Class1 *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "flag",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "Class1 *SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:getClassNew",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&flag",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             }
         ],

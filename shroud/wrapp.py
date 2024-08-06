@@ -1178,7 +1178,7 @@ return 1;""",
         self.log.write("Python {0} {1.declgen}\n".format(cls_function, node))
 
         fmt_func = node.fmtdict
-        fmt = util.Scope(fmt_func)
+        fmt = node._fmtlang.setdefault("py", util.Scope(fmt_func))
         fmt.PY_doc_string = "documentation"
         fmt.PY_array_arg = options.PY_array_arg
 

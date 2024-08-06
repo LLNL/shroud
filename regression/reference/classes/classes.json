@@ -277,6 +277,29 @@
                             "PY_type_method": "tp_init",
                             "function_name": "ctor",
                             "function_suffix": "_default"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "cxx_call_list": "flag",
+                                "iarg": 1,
+                                "itype": "LUA_TNUMBER",
+                                "itype_var": "SH_itype1",
+                                "nresults": 1,
+                                "rv_asgn": "classes::Class1 SHCXX_rv =\t ",
+                                "rv_decl": "classes::Class1 SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "classes::Class1 SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_self": true,
+                                "capsule_order": "1"
+                            }
                         }
                     },
                     {
@@ -583,6 +606,24 @@
                             "PY_type_method": "tp_init",
                             "function_name": "ctor",
                             "function_suffix": "_flag"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "classes::Class1 SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "flag",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "i:ctor",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&flag",
+                                "capsule_order": "1"
+                            }
                         }
                     },
                     {
@@ -694,6 +735,20 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "delete"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_name": "__gc",
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class1_Type *)\t luaL_checkudata(\tL, 1, \"Class1.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 0
+                            },
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_doc_string": "documentation",
+                                "PY_used_param_self": true
+                            }
                         }
                     },
                     {
@@ -860,6 +915,27 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "Method1"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class1_Type *)\t luaL_checkudata(\tL, 1, \"Class1.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "int SHCXX_rv =\t ",
+                                "rv_decl": "int SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "int SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_rv_asgn": "int SHCXX_rv =\t ",
+                                "PY_used_param_self": true,
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     },
                     {
@@ -1140,6 +1216,25 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "equivalent"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "bool SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "*obj2",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_result": "SHPyResult",
+                                "PY_rv_asgn": "bool SHCXX_rv =\t ",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "O!:equivalent",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_obj2",
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     },
                     {
@@ -1793,6 +1888,20 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getclass3"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "classes::Class1 *SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_result": "SHPyResult",
+                                "PY_rv_asgn": "classes::Class1 *SHCXX_rv =\t ",
+                                "PY_used_param_self": true,
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     },
                     {
@@ -2006,6 +2115,27 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getName"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class1_Type *)\t luaL_checkudata(\tL, 1, \"Class1.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "const std::string &SHCXX_rv =\t ",
+                                "rv_decl": "const std::string &SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "const std::string &SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                                "PY_used_param_self": true,
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     },
                     {
@@ -2324,6 +2454,32 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "directionFunc"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class1_Type *)\t luaL_checkudata(\tL, 1, \"Class1.metatable\")",
+                                "cxx_call_list": "arg",
+                                "nresults": 1,
+                                "rv_asgn": "classes::Class1::DIRECTION SHCXX_rv =\t ",
+                                "rv_decl": "classes::Class1::DIRECTION SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "SH_arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_rv_asgn": "classes::Class1::DIRECTION SHCXX_rv =\t ",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "i:directionFunc",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&arg",
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     },
                     {
@@ -3570,6 +3726,27 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getName"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "const std::string &SHCXX_rv =\t ",
+                                "rv_decl": "const std::string &SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "const std::string &SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                                "PY_used_param_self": true,
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     }
                 ],
@@ -3795,6 +3972,19 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "getReference"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "classes::Singleton &SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_STATIC|METH_NOARGS",
+                                "PY_result": "SHPyResult",
+                                "PY_rv_asgn": "classes::Singleton &SHCXX_rv =\t ",
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     }
                 ],
@@ -4025,6 +4215,26 @@
                             "PY_type_impl": "PY_Shape_tp_init",
                             "PY_type_method": "tp_init",
                             "function_name": "ctor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "classes::Shape SHCXX_rv =\t ",
+                                "rv_decl": "classes::Shape SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "classes::Shape SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_self": true,
+                                "capsule_order": "2"
+                            }
                         }
                     },
                     {
@@ -4190,6 +4400,27 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "get_ivar"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "c_var": "\t(l_Shape_Type *)\t luaL_checkudata(\tL, 1, \"Shape.metatable\")",
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "int SHCXX_rv =\t ",
+                                "rv_decl": "int SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "int SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_rv_asgn": "int SHCXX_rv =\t ",
+                                "PY_used_param_self": true,
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     }
                 ],
@@ -4425,6 +4656,26 @@
                             "PY_type_impl": "PY_Circle_tp_init",
                             "PY_type_method": "tp_init",
                             "function_name": "ctor"
+                        },
+                        "zz_fmtlang": {
+                            "lua": {
+                                "LUA_used_param_state": true,
+                                "cxx_call_list": "",
+                                "nresults": 1,
+                                "rv_asgn": "classes::Circle SHCXX_rv =\t ",
+                                "rv_decl": "classes::Circle SHCXX_rv"
+                            },
+                            "py": {
+                                "C_rv_decl": "classes::Circle SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_self": true,
+                                "capsule_order": "3"
+                            }
                         }
                     }
                 ],
@@ -5912,6 +6163,30 @@
                     "LUA_name_impl": "l_directionFunc",
                     "PY_name_impl": "PY_directionFunc",
                     "function_name": "directionFunc"
+                },
+                "zz_fmtlang": {
+                    "lua": {
+                        "LUA_used_param_state": true,
+                        "cxx_call_list": "arg",
+                        "nresults": 1,
+                        "rv_asgn": "classes::Class1::DIRECTION SHCXX_rv =\t ",
+                        "rv_decl": "classes::Class1::DIRECTION SHCXX_rv"
+                    },
+                    "py": {
+                        "C_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "SH_arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_rv_asgn": "classes::Class1::DIRECTION SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:directionFunc",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -6134,6 +6409,21 @@
                     "F_name_impl": "pass_class_by_value",
                     "PY_name_impl": "PY_passClassByValue",
                     "function_name": "passClassByValue"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "*arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "O!:passClassByValue",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -6404,6 +6694,23 @@
                     "F_name_impl": "useclass",
                     "PY_name_impl": "PY_useclass",
                     "function_name": "useclass"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_rv_asgn": "int SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "O!:useclass",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -6712,6 +7019,19 @@
                     "F_name_impl": "getclass3",
                     "PY_name_impl": "PY_getclass3",
                     "function_name": "getclass3"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "classes::Class1 *SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "classes::Class1 *SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -7277,6 +7597,19 @@
                     "F_name_impl": "get_class_reference",
                     "PY_name_impl": "PY_getClassReference",
                     "function_name": "getClassReference"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "classes::Class1 &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "classes::Class1 &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -7720,6 +8053,26 @@
                     "LUA_name_impl": "l_set_global_flag",
                     "PY_name_impl": "PY_set_global_flag",
                     "function_name": "set_global_flag"
+                },
+                "zz_fmtlang": {
+                    "lua": {
+                        "LUA_used_param_state": true,
+                        "cxx_call_list": "arg",
+                        "nresults": 0
+                    },
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i:set_global_flag",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&arg",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -7878,6 +8231,25 @@
                     "LUA_name_impl": "l_get_global_flag",
                     "PY_name_impl": "PY_get_global_flag",
                     "function_name": "get_global_flag"
+                },
+                "zz_fmtlang": {
+                    "lua": {
+                        "LUA_used_param_state": true,
+                        "cxx_call_list": "",
+                        "nresults": 1,
+                        "rv_asgn": "int SHCXX_rv =\t ",
+                        "rv_decl": "int SHCXX_rv"
+                    },
+                    "py": {
+                        "C_rv_decl": "int SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "int SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -8075,6 +8447,25 @@
                     "LUA_name_impl": "l_LastFunctionCalled",
                     "PY_name_impl": "PY_LastFunctionCalled",
                     "function_name": "LastFunctionCalled"
+                },
+                "zz_fmtlang": {
+                    "lua": {
+                        "LUA_used_param_state": true,
+                        "cxx_call_list": "",
+                        "nresults": 1,
+                        "rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "rv_decl": "const std::string &SHCXX_rv"
+                    },
+                    "py": {
+                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             }
         ],

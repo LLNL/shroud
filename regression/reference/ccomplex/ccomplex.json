@@ -283,6 +283,22 @@
                     "F_name_impl": "accept_double_complex_inout_ptr",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtr",
                     "function_name": "acceptDoubleComplexInoutPtr"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "NULL",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "D:acceptDoubleComplexInoutPtr",
+                        "PyArg_kwlist": "SHT_kwlist",
+                        "PyArg_vargs": "&SHCPY_arg1",
+                        "py_var": "SHPy_arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -438,6 +454,17 @@
                     "F_name_impl": "accept_double_complex_out_ptr",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtr",
                     "function_name": "acceptDoubleComplexOutPtr"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&arg1",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "NULL",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "py_var": "SHPy_arg1",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -583,6 +610,23 @@
                     "F_name_api": "accept_double_complex_inout_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
                     "function_name": "acceptDoubleComplexInoutPtrFlag"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&arg1,\t &flag",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "NULL",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "D:acceptDoubleComplexInoutPtrFlag",
+                        "PyArg_kwlist": "SHT_kwlist",
+                        "PyArg_vargs": "&SHCPY_arg1",
+                        "PyBuild_format": "Di",
+                        "PyBuild_vargs": "&SHCPY_arg1,\t flag",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -821,6 +865,18 @@
                     "F_name_impl": "accept_double_complex_out_ptr_flag",
                     "PY_name_impl": "PY_acceptDoubleComplexOutPtrFlag",
                     "function_name": "acceptDoubleComplexOutPtrFlag"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "&arg1,\t &flag",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "NULL",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "PyBuild_format": "Di",
+                        "PyBuild_vargs": "&SHCPY_arg1,\t flag",
+                        "stmt": "py_default"
+                    }
                 }
             }
         ],

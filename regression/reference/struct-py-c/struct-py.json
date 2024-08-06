@@ -172,6 +172,24 @@
                             "PY_type_impl": "PY_Cstruct_as_class_tp_init",
                             "PY_type_method": "tp_init",
                             "function_name": "Cstruct_as_class_ctor"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "Cstruct_as_class SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "x1,\t y1",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "|ii:Cstruct_as_class_ctor",
+                                "PyArg_kwlist": "SHT_kwlist",
+                                "PyArg_vargs": "&x1,\t &y1",
+                                "capsule_order": "1"
+                            }
                         }
                     }
                 ],
@@ -548,6 +566,23 @@
                     "F_name_api": "accept_both_structs",
                     "PY_name_impl": "PY_acceptBothStructs",
                     "function_name": "acceptBothStructs"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "s1,\t s2",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "NULL",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_rv_asgn": "SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "O!O:acceptBothStructs",
+                        "PyArg_kwlist": "SHT_kwlist",
+                        "PyArg_vargs": "&PY_Cstruct_as_class_Type,\t &SHPy_s1,\t &SHTPy_s2",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             }
         ],

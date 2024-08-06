@@ -174,6 +174,24 @@
                             "PY_type_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_method": "tp_init",
                             "function_name": "Cstruct1_cls_ctor"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "Cstruct1_cls SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "ifield,\t dfield",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "-1",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_result": "SHPyResult",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "|id:Cstruct1_cls_ctor",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&ifield,\t &dfield",
+                                "capsule_order": "1"
+                            }
                         }
                     }
                 ],
@@ -2429,6 +2447,24 @@
                     "F_name_api": "pass_struct_by_reference_cls",
                     "PY_name_impl": "PY_passStructByReferenceCls",
                     "function_name": "passStructByReferenceCls"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "*arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_rv_asgn": "int SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "O!:passStructByReferenceCls",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&PY_Cstruct1_cls_Type,\t &SHPy_arg",
+                        "PyBuild_format": "iN",
+                        "PyBuild_vargs": "SHCXX_rv,\t SHPy_arg"
+                    }
                 }
             },
             {
@@ -2542,6 +2578,23 @@
                     "F_name_api": "pass_struct_by_reference_in_cls",
                     "PY_name_impl": "PY_passStructByReferenceInCls",
                     "function_name": "passStructByReferenceInCls"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "int SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "*arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_rv_asgn": "int SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "O!:passStructByReferenceInCls",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&PY_Cstruct1_cls_Type,\t &SHPy_arg",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -2638,6 +2691,22 @@
                     "F_name_api": "pass_struct_by_reference_inout_cls",
                     "PY_name_impl": "PY_passStructByReferenceInoutCls",
                     "function_name": "passStructByReferenceInoutCls"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "*arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "O!:passStructByReferenceInoutCls",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&PY_Cstruct1_cls_Type,\t &SHPy_arg",
+                        "py_var": "SHPy_arg",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -2733,6 +2802,17 @@
                     "F_name_api": "pass_struct_by_reference_out_cls",
                     "PY_name_impl": "PY_passStructByReferenceOutCls",
                     "function_name": "passStructByReferenceOutCls"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "*arg",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_ml_flags": "METH_NOARGS",
+                        "py_var": "SHPy_arg",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -2853,6 +2933,23 @@
                     "F_name_impl": "default_ptr_is_null_0",
                     "function_name": "defaultPtrIsNULL",
                     "function_suffix": "_0"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "bool SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "data",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "|O:defaultPtrIsNULL",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&SHTPy_data",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3127,6 +3224,23 @@
                     "PY_name_impl": "PY_defaultPtrIsNULL_1",
                     "function_name": "defaultPtrIsNULL",
                     "function_suffix": "_1"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "C_rv_decl": "bool SHCXX_rv",
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "data",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_result": "SHPyResult",
+                        "PY_rv_asgn": "SHCXX_rv =\t ",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "|O:defaultPtrIsNULL",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&SHTPy_data",
+                        "py_var": "SHTPy_rv"
+                    }
                 }
             },
             {
@@ -3465,6 +3579,22 @@
                     "F_name_impl": "default_args_in_out_0",
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_0"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "in1,\t &out1,\t &out2,\t flag",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i|O!:defaultArgsInOut",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&in1,\t &PyBool_Type,\t &SHPy_flag",
+                        "PyBuild_format": "ii",
+                        "PyBuild_vargs": "out1,\t out2",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -3997,6 +4127,22 @@
                     "PY_name_impl": "PY_defaultArgsInOut_1",
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_1"
+                },
+                "zz_fmtlang": {
+                    "py": {
+                        "PY_array_arg": "numpy",
+                        "PY_call_list": "in1,\t &out1,\t &out2,\t flag",
+                        "PY_doc_string": "documentation",
+                        "PY_error_return": "nullptr",
+                        "PY_used_param_args": true,
+                        "PY_used_param_kwds": true,
+                        "PyArg_format": "i|O!:defaultArgsInOut",
+                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                        "PyArg_vargs": "&in1,\t &PyBool_Type,\t &SHPy_flag",
+                        "PyBuild_format": "ii",
+                        "PyBuild_vargs": "out1,\t out2",
+                        "stmt": "py_default"
+                    }
                 }
             },
             {
@@ -6063,6 +6209,24 @@
                             "F_name_impl": "pass_struct_by_reference",
                             "PY_name_impl": "PY_passStructByReference",
                             "function_name": "passStructByReference"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "int SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "*arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_rv_asgn": "SHCXX_rv =\t ",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PyArg_format": "O:passStructByReference",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&SHTPy_arg",
+                                "PyBuild_format": "iN",
+                                "PyBuild_vargs": "SHCXX_rv,\t SHPy_arg"
+                            }
                         }
                     },
                     {
@@ -6320,6 +6484,23 @@
                             "F_name_impl": "pass_struct_by_reference_in",
                             "PY_name_impl": "PY_passStructByReferenceIn",
                             "function_name": "passStructByReferenceIn"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "C_rv_decl": "int SHCXX_rv",
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "*arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_rv_asgn": "SHCXX_rv =\t ",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PyArg_format": "O:passStructByReferenceIn",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&SHTPy_arg",
+                                "py_var": "SHTPy_rv"
+                            }
                         }
                     },
                     {
@@ -6525,6 +6706,22 @@
                             "F_name_impl": "pass_struct_by_reference_inout",
                             "PY_name_impl": "PY_passStructByReferenceInout",
                             "function_name": "passStructByReferenceInout"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "*arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PyArg_format": "O:passStructByReferenceInout",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&SHTPy_arg",
+                                "py_var": "SHPy_arg",
+                                "stmt": "py_default"
+                            }
                         }
                     },
                     {
@@ -6729,6 +6926,17 @@
                             "F_name_impl": "pass_struct_by_reference_out",
                             "PY_name_impl": "PY_passStructByReferenceOut",
                             "function_name": "passStructByReferenceOut"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "*arg",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "py_var": "SHPy_arg",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],
