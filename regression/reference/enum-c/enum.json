@@ -295,11 +295,49 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_native",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum Color",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_type": "enum Color",
+                                "c_var": "in",
+                                "ctor_expr": "in",
+                                "cxx_abstract_decl": "enum Color",
+                                "cxx_addr": "&",
+                                "cxx_decl": "enum Color SH_in",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&in",
+                                "cxx_type": "enum Color",
+                                "cxx_val": "(enum Color) in",
+                                "cxx_var": "SH_in",
+                                "data_var": "SHData_in",
+                                "numpy_type": "NPY_SHORT",
+                                "py_var": "SHPy_in",
+                                "size_var": "SHSize_in",
+                                "stmt": "py_in_enum",
+                                "value_var": "SHValue_in"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -521,11 +559,49 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "enum Color",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_SHORT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_enum",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum Color",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_type": "enum Color",
+                                "c_var": "in",
+                                "ctor_expr": "in",
+                                "cxx_abstract_decl": "enum Color",
+                                "cxx_addr": "&",
+                                "cxx_decl": "enum Color SH_in",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&in",
+                                "cxx_type": "enum Color",
+                                "cxx_val": "(enum Color) in",
+                                "cxx_var": "SH_in",
+                                "data_var": "SHData_in",
+                                "numpy_type": "NPY_SHORT",
+                                "py_var": "SHPy_in",
+                                "size_var": "SHSize_in",
+                                "stmt": "py_in_enum",
+                                "value_var": "SHValue_in"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true

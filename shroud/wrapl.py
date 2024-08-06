@@ -521,6 +521,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         fmt_arg0 = fmtargs.setdefault("+result", {})
         fmt_result = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
+        bind = statements.get_func_bind(node, "lua")
+        bind.fmtdict = fmt_result
+        
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
             if is_ctor or declarator.is_pointer():
@@ -583,6 +586,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             arg_name = a_declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
+            bind = statements.get_arg_bind(node, arg, "py")
+            bind.fmtdict = fmt_arg
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name

@@ -1320,6 +1320,7 @@ return 1;""",
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
             bind = statements.get_arg_bind(node, arg, "py")
+            bind.fmtdict = fmt_arg
             meta = bind.meta
 
             self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
@@ -2020,6 +2021,7 @@ return 1;""",
         fmtargs = node._fmtargs
         fmt_arg0 = fmtargs.setdefault("+result", {})
         fmt_result = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))  # fmt_func
+        bind.fmtdict = fmt_result
         CXX_result = node.ast
 
         # Mangle result variable name to avoid possible conflict with arguments.

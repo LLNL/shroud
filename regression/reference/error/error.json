@@ -1262,6 +1262,25 @@
                             }
                         },
                         "data": {
+                            "fmtdict": {
+                                "array_size": "1",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_type": "int",
+                                "c_var": "data",
+                                "ctor_expr": "data",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "data",
+                                "cxx_type": "int",
+                                "cxx_var": "data",
+                                "data_var": "SHData_data",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHPy_data",
+                                "size_var": "SHSize_data",
+                                "stmt": "py_inout_native*",
+                                "value_var": "SHValue_data"
+                            },
                             "meta": {
                                 "intent": "inout"
                             }

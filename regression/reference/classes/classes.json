@@ -149,6 +149,14 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "CLA_Class1 *",
+                                        "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_var": "SHCXX_rv",
+                                        "stmt": "lua_ctor"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -156,6 +164,27 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PY_build_format": "O",
+                                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                        "PyObject": "PY_Class1",
+                                        "PyTypeObject": "PY_Class1_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "classes::Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_default",
+                                        "value_var": "SHValue_rv",
+                                        "vargs": "SHCXX_rv"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -411,6 +440,14 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "CLA_Class1 *",
+                                        "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_var": "SHCXX_rv",
+                                        "stmt": "lua_ctor"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -424,11 +461,45 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PY_build_format": "O",
+                                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                        "PyObject": "PY_Class1",
+                                        "PyTypeObject": "PY_Class1_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "classes::Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_default",
+                                        "value_var": "SHValue_rv",
+                                        "vargs": "SHCXX_rv"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
                                 },
                                 "flag": {
+                                    "fmtdict": {
+                                        "LUA_index": 1,
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_var": "flag",
+                                        "c_var_len": "Lflag",
+                                        "cxx_member": ".",
+                                        "cxx_type": "int",
+                                        "cxx_var": "flag",
+                                        "lua_var": "SH_Lua_flag",
+                                        "pop_expr": "lua_tointeger(L, 1)",
+                                        "stmt": "lua_in_native"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -693,6 +764,9 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "lua_dtor"
+                                    },
                                     "meta": {
                                         "intent": "dtor"
                                     }
@@ -806,6 +880,15 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_var": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "push_arg": "SHCXX_rv",
+                                        "push_expr": "lua_pushinteger(L, SHCXX_rv)",
+                                        "stmt": "lua_function_native"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -813,6 +896,22 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_native",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -1072,11 +1171,51 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PyTypeObject": "PyBool_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "bool",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": "NPY_BOOL",
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_bool",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
                                 },
                                 "obj2": {
+                                    "fmtdict": {
+                                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                        "PyObject": "PY_Class1",
+                                        "PyTypeObject": "PY_Class1_Type",
+                                        "array_size": "1",
+                                        "c_const": "const ",
+                                        "c_deref": "",
+                                        "c_type": "CLA_Class1",
+                                        "c_var": "obj2",
+                                        "ctor_expr": "obj2",
+                                        "cxx_addr": "&",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(&obj2)",
+                                        "cxx_type": "classes::Class1",
+                                        "cxx_var": "obj2",
+                                        "data_var": "SHData_obj2",
+                                        "numpy_type": null,
+                                        "py_object": "PY_Class1",
+                                        "py_var": "SHPy_obj2",
+                                        "size_var": "SHSize_obj2",
+                                        "stmt": "py_in_shadow&",
+                                        "value_var": "SHValue_obj2"
+                                    },
                                     "meta": {
                                         "intent": "in"
                                     }
@@ -1937,6 +2076,26 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                        "PyObject": "PY_Class1",
+                                        "PyTypeObject": "PY_Class1_Type",
+                                        "array_size": "1",
+                                        "c_deref": "*",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "*SHCXX_rv",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_type": "classes::Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_shadow*",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -2121,6 +2280,16 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "const char *",
+                                        "c_var": "SHCXX_rv.c_str()",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "push_arg": "SHCXX_rv.c_str()",
+                                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                        "stmt": "lua_function_string&"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -2128,6 +2297,23 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "array_size": "1",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_string&",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -2397,6 +2583,16 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "enum CLA_Class1_DIRECTION",
+                                        "c_var": "static_cast<int>(SHCXX_rv)",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "push_arg": "static_cast<int>(SHCXX_rv)",
+                                        "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
+                                        "stmt": "lua_function_enum"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -2410,11 +2606,41 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "classes::Class1::DIRECTION",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_enum",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
                                 },
                                 "arg": {
+                                    "fmtdict": {
+                                        "LUA_index": 1,
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_var": "lua_tointeger(L, 1)",
+                                        "c_var_len": "Larg",
+                                        "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                        "cxx_member": ".",
+                                        "cxx_type": "classes::Class1::DIRECTION",
+                                        "cxx_var": "arg",
+                                        "lua_var": "SH_Lua_arg",
+                                        "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
+                                        "stmt": "lua_in_enum"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -3874,6 +4100,16 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "const char *",
+                                        "c_var": "SHCXX_rv.c_str()",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "push_arg": "SHCXX_rv.c_str()",
+                                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                        "stmt": "lua_function_string&"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -3881,6 +4117,23 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "array_size": "1",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                        "cxx_type": "std::string",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_string&",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -4134,6 +4387,26 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PY_to_object_idtor_func": "PP_Singleton_to_Object_idtor",
+                                        "PyObject": "PY_Singleton",
+                                        "PyTypeObject": "PY_Singleton_Type",
+                                        "array_size": "1",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "classes::Singleton",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_shadow&",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -4356,6 +4629,14 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "CLA_Shape *",
+                                        "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_var": "SHCXX_rv",
+                                        "stmt": "lua_ctor"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -4363,6 +4644,27 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PY_build_format": "O",
+                                        "PY_to_object_idtor_func": "PP_Shape_to_Object_idtor",
+                                        "PyObject": "PY_Shape",
+                                        "PyTypeObject": "PY_Shape_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "classes::Shape",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_default",
+                                        "value_var": "SHValue_rv",
+                                        "vargs": "SHCXX_rv"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -4532,6 +4834,15 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_var": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_var": "SHCXX_rv",
+                                        "push_arg": "SHCXX_rv",
+                                        "push_expr": "lua_pushinteger(L, SHCXX_rv)",
+                                        "stmt": "lua_function_native"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -4539,6 +4850,22 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_function_native",
+                                        "value_var": "SHValue_rv"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     }
@@ -4764,6 +5091,14 @@
                             },
                             "lua": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "CLA_Circle *",
+                                        "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_var": "SHCXX_rv",
+                                        "stmt": "lua_ctor"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -4771,6 +5106,27 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "PY_build_format": "O",
+                                        "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
+                                        "PyObject": "PY_Circle",
+                                        "PyTypeObject": "PY_Circle_Type",
+                                        "c_deref": "",
+                                        "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                                        "cxx_type": "classes::Circle",
+                                        "cxx_var": "SHCXX_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt": "py_default",
+                                        "value_var": "SHValue_rv",
+                                        "vargs": "SHCXX_rv"
+                                    },
                                     "meta": {
                                         "intent": "ctor"
                                     }
@@ -6343,6 +6699,16 @@
                     },
                     "lua": {
                         "+result": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum CLA_Class1_DIRECTION",
+                                "c_var": "static_cast<int>(SHCXX_rv)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "static_cast<int>(SHCXX_rv)",
+                                "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
+                                "stmt": "lua_function_enum"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
@@ -6356,11 +6722,41 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "classes::Class1::DIRECTION",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_enum",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
                         },
                         "arg": {
+                            "fmtdict": {
+                                "LUA_index": 1,
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_var": "lua_tointeger(L, 1)",
+                                "c_var_len": "Larg",
+                                "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                "cxx_member": ".",
+                                "cxx_type": "classes::Class1::DIRECTION",
+                                "cxx_var": "arg",
+                                "lua_var": "SH_Lua_arg",
+                                "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
+                                "stmt": "lua_in_enum"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6740,6 +7136,28 @@
                             }
                         },
                         "arg": {
+                            "fmtdict": {
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                "PyObject": "PY_Class1",
+                                "PyTypeObject": "PY_Class1_Type",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_type": "CLA_Class1",
+                                "c_var": "arg",
+                                "ctor_expr": "arg",
+                                "cxx_addr": "&",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "classes::Class1",
+                                "cxx_var": "arg",
+                                "data_var": "SHData_arg",
+                                "numpy_type": null,
+                                "py_object": "PY_Class1",
+                                "py_var": "SHPy_arg",
+                                "size_var": "SHSize_arg",
+                                "stmt": "py_in_shadow",
+                                "value_var": "SHValue_arg"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7016,11 +7434,50 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_native",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
                         },
                         "arg": {
+                            "fmtdict": {
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                "PyObject": "PY_Class1",
+                                "PyTypeObject": "PY_Class1_Type",
+                                "array_size": "1",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_type": "CLA_Class1",
+                                "c_var": "arg",
+                                "ctor_expr": "*arg",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(arg)",
+                                "cxx_type": "classes::Class1",
+                                "cxx_var": "arg",
+                                "data_var": "SHData_arg",
+                                "numpy_type": null,
+                                "py_object": "PY_Class1",
+                                "py_var": "SHPy_arg",
+                                "size_var": "SHSize_arg",
+                                "stmt": "py_in_shadow*",
+                                "value_var": "SHValue_arg"
+                            },
                             "meta": {
                                 "intent": "in"
                             }
@@ -7409,6 +7866,26 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                "PyObject": "PY_Class1",
+                                "PyTypeObject": "PY_Class1_Type",
+                                "array_size": "1",
+                                "c_deref": "*",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "*SHCXX_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHCXX_rv",
+                                "cxx_type": "classes::Class1",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_shadow*",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
@@ -7990,6 +8467,26 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                                "PyObject": "PY_Class1",
+                                "PyTypeObject": "PY_Class1_Type",
+                                "array_size": "1",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "classes::Class1",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_shadow&",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
@@ -8494,6 +8991,9 @@
                     },
                     "lua": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "lua_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             }
@@ -8512,6 +9012,19 @@
                             }
                         },
                         "arg": {
+                            "fmtdict": {
+                                "LUA_index": 1,
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_var": "arg",
+                                "c_var_len": "Larg",
+                                "cxx_member": ".",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "lua_var": "SH_Lua_arg",
+                                "pop_expr": "lua_tointeger(L, 1)",
+                                "stmt": "lua_in_native"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -8704,6 +9217,15 @@
                     },
                     "lua": {
                         "+result": {
+                            "fmtdict": {
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "SHCXX_rv",
+                                "push_expr": "lua_pushinteger(L, SHCXX_rv)",
+                                "stmt": "lua_function_native"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
@@ -8711,6 +9233,22 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_native",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
@@ -8882,6 +9420,16 @@
                     },
                     "lua": {
                         "+result": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_var": "SHCXX_rv.c_str()",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "SHCXX_rv.c_str()",
+                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                "stmt": "lua_function_string&"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
@@ -8889,6 +9437,23 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "array_size": "1",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt": "py_function_string&",
+                                "value_var": "SHValue_rv"
+                            },
                             "meta": {
                                 "intent": "function"
                             }
