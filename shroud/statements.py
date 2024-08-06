@@ -106,13 +106,6 @@ def fetch_name_bind(bind, wlang, name):
         bindarg.meta = collections.defaultdict(lambda: None)
     return bindarg
 
-def get_func_metaattrs(node, wlang):
-    return node._bind[wlang]["+result"].meta
-
-def get_arg_metaattrs(node, arg, wlang):
-    name = arg.declarator.user_name or arg.declarator.arg_name
-    return node._bind[wlang][name].meta
-
 def get_var_bind(node, wlang):
     return node._bind[wlang]
 
