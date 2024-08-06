@@ -225,75 +225,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->ctor(\t)",
-                                    "C_name": "FOR_Class2_ctor",
-                                    "C_prototype": "FOR_Class2 * SHC_rv",
-                                    "C_return_type": "FOR_Class2 *",
-                                    "F_C_name": "c_class2_ctor",
-                                    "c_abstract_decl": "FOR_Class2 *",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "FOR_Class2",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "forward::Class2",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_rv_decl": "forward::Class2 SHCXX_rv",
-                                    "cxx_type": "forward::Class2",
-                                    "cxx_var": "SHCXX_rv",
-                                    "f_local_ptr": "SHT_prv",
-                                    "idtor": "1",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr",
-                                    "typemap_name": "forward::Class2"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->ctor(\t)",
-                                    "C_name": "FOR_Class2_ctor",
-                                    "C_prototype": "FOR_Class2 * SHC_rv",
-                                    "C_return_type": "FOR_Class2 *",
-                                    "F_C_arguments": "SHT_rv",
-                                    "F_C_call": "c_class2_ctor",
-                                    "F_C_name": "c_class2_ctor",
-                                    "F_C_result_clause": "\fresult(SHT_prv)",
-                                    "F_C_subprogram": "function",
-                                    "F_arg_c_call": "SHT_rv%cxxmem",
-                                    "F_arguments": "",
-                                    "F_result": "SHT_prv",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_abstract_decl": "FOR_Class2 *",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "FOR_Class2",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "forward::Class2",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_rv_decl": "forward::Class2 SHCXX_rv",
-                                    "cxx_type": "forward::Class2",
-                                    "cxx_var": "SHCXX_rv",
-                                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
-                                    "f_derived_type": "class2",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_local_ptr": "SHT_prv",
-                                    "f_type": "type(class2)",
-                                    "f_var": "SHT_rv",
-                                    "fc_var": "SHT_rv",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "1",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr",
-                                    "typemap_name": "forward::Class2"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "ctor",
                             "F_name_api": "ctor",
@@ -398,35 +329,6 @@
                                     "meta": {
                                         "intent": "dtor"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->dtor(\t)",
-                                    "C_name": "FOR_Class2_dtor",
-                                    "C_prototype": "FOR_Class2 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_class2_dtor",
-                                    "stmt_name": "c_dtor",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->dtor(\t)",
-                                    "C_name": "FOR_Class2_dtor",
-                                    "C_prototype": "FOR_Class2 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_class2_dtor",
-                                    "F_C_name": "c_class2_dtor",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_dtor",
-                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -672,34 +574,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->func1(\tSHC_arg_cxx)",
-                                    "C_call_list": "SHC_arg_cxx",
-                                    "C_name": "FOR_Class2_func1",
-                                    "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_class2_func1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->func1(\tSHC_arg_cxx)",
-                                    "C_call_list": "SHC_arg_cxx",
-                                    "C_name": "FOR_Class2_func1",
-                                    "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t arg",
-                                    "F_C_call": "c_class2_func1",
-                                    "F_C_name": "c_class2_func1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
-                                    "F_arguments": "obj,\t arg",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "arg": {
                                 "fmtc": {
                                     "c_abstract_decl": "TUT_Class1 *",
@@ -1001,34 +875,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->acceptClass3(\tSHC_arg_cxx)",
-                                    "C_call_list": "SHC_arg_cxx",
-                                    "C_name": "FOR_Class2_acceptClass3",
-                                    "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_class2_accept_class3",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->acceptClass3(\tSHC_arg_cxx)",
-                                    "C_call_list": "SHC_arg_cxx",
-                                    "C_name": "FOR_Class2_acceptClass3",
-                                    "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t arg",
-                                    "F_C_call": "c_class2_accept_class3",
-                                    "F_C_name": "c_class2_accept_class3",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t arg%cxxmem",
-                                    "F_arguments": "obj,\t arg",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "arg": {
                                 "fmtc": {
                                     "c_abstract_decl": "FOR_Class3 *",
@@ -1356,69 +1202,6 @@
                     }
                 },
                 "zz_fmtargs": {
-                    "+result": {
-                        "fmtc": {
-                            "C_call_function": "forward::passStruct1(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "FOR_passStruct1",
-                            "C_prototype": "const Cstruct1 *arg",
-                            "C_return_type": "int",
-                            "F_C_name": "c_pass_struct1",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_function_native",
-                            "typemap_name": "int"
-                        },
-                        "fmtf": {
-                            "C_call_function": "forward::passStruct1(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "FOR_passStruct1",
-                            "C_prototype": "const Cstruct1 *arg",
-                            "C_return_type": "int",
-                            "F_C_arguments": "arg",
-                            "F_C_call": "c_pass_struct1",
-                            "F_C_name": "pass_struct1",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg",
-                            "F_arguments": "arg",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "int",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_intent_attr": ", intent(OUT)",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "f_function_native",
-                            "typemap_name": "int"
-                        }
-                    },
                     "arg": {
                         "fmtc": {
                             "c_abstract_decl": "const Cstruct1 *",

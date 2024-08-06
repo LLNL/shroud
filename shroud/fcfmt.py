@@ -99,11 +99,13 @@ class FillFormat(object):
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        fmt_arg0 = fmtargs.setdefault("+result", {})
-        fmt_result = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
 
         bind_result = statements.fetch_func_bind(node, wlang)
-        bind_result.fmtdict = fmt_result
+        if bind_result.fmtdict:
+            fmt_result = bind_result.fmtdict
+        else:
+            fmt_result = util.Scope(fmt_func)
+            bind_result.fmtdict = fmt_result
 
         if wlang == "f":
             node.eval_template("F_name_impl")

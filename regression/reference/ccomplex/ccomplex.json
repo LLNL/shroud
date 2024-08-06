@@ -124,24 +124,6 @@
                     }
                 },
                 "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "acceptFloatComplexInoutPtr(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "acceptFloatComplexInoutPtr",
-                            "C_prototype": "float complex *arg1",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg1",
-                            "F_C_call": "c_accept_float_complex_inout_ptr",
-                            "F_C_name": "accept_float_complex_inout_ptr",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "arg1",
-                            "F_arguments": "arg1",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
-                        }
-                    },
                     "arg1": {
                         "fmtf": {
                             "c_abstract_decl": "float complex *",
@@ -325,24 +307,6 @@
                     }
                 },
                 "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "acceptDoubleComplexInoutPtr(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "acceptDoubleComplexInoutPtr",
-                            "C_prototype": "double complex *arg1",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg1",
-                            "F_C_call": "c_accept_double_complex_inout_ptr",
-                            "F_C_name": "accept_double_complex_inout_ptr",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "arg1",
-                            "F_arguments": "arg1",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
-                        }
-                    },
                     "arg1": {
                         "fmtf": {
                             "c_abstract_decl": "double complex *",
@@ -529,24 +493,6 @@
                     }
                 },
                 "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "acceptDoubleComplexOutPtr(\targ1)",
-                            "C_call_list": "arg1",
-                            "C_name": "acceptDoubleComplexOutPtr",
-                            "C_prototype": "double complex *arg1",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg1",
-                            "F_C_call": "c_accept_double_complex_out_ptr",
-                            "F_C_name": "accept_double_complex_out_ptr",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "arg1",
-                            "F_arguments": "arg1",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
-                        }
-                    },
                     "arg1": {
                         "fmtf": {
                             "c_abstract_decl": "double complex *",
@@ -961,24 +907,6 @@
                     }
                 },
                 "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "acceptDoubleComplexOutPtrFlag(\targ1,\t flag)",
-                            "C_call_list": "arg1,\t flag",
-                            "C_name": "acceptDoubleComplexOutPtrFlag",
-                            "C_prototype": "double complex *arg1,\t int *flag",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg1,\t flag",
-                            "F_C_call": "c_accept_double_complex_out_ptr_flag",
-                            "F_C_name": "accept_double_complex_out_ptr_flag",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "arg1,\t flag",
-                            "F_arguments": "arg1,\t flag",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
-                        }
-                    },
                     "arg1": {
                         "fmtf": {
                             "c_abstract_decl": "double complex *",

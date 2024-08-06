@@ -88,34 +88,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method1(\t)",
-                                    "C_name": "PRE_User1_method1",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method1(\t)",
-                                    "C_name": "PRE_User1_method1",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user1_method1",
-                                    "F_C_name": "c_user1_method1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "method1",
                             "F_name_api": "method1",
@@ -208,34 +180,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method2(\t)",
-                                    "C_name": "PRE_User1_method2",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method2",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method2(\t)",
-                                    "C_name": "PRE_User1_method2",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user1_method2",
-                                    "F_C_name": "c_user1_method2",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "method2",
                             "F_name_api": "method2",
@@ -323,34 +267,6 @@
                                     "meta": {
                                         "intent": "subroutine"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method3def(\t)",
-                                    "C_name": "PRE_User1_method3def_0",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method3def_0",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method3def(\t)",
-                                    "C_name": "PRE_User1_method3def_0",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user1_method3def_0",
-                                    "F_C_name": "c_user1_method3def_0",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -565,34 +481,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method3def(\ti)",
-                                    "C_call_list": "i",
-                                    "C_name": "PRE_User1_method3def_1",
-                                    "C_prototype": "PRE_User1 * self,\t int i",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method3def_1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method3def(\ti)",
-                                    "C_call_list": "i",
-                                    "C_name": "PRE_User1_method3def_1",
-                                    "C_prototype": "PRE_User1 * self,\t int i",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t i",
-                                    "F_C_call": "c_user1_method3def_1",
-                                    "F_C_name": "c_user1_method3def_1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t i",
-                                    "F_arguments": "obj,\t i",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "i": {
                                 "fmtc": {
                                     "c_abstract_decl": "int",
@@ -782,34 +670,6 @@
                                     "meta": {
                                         "intent": "subroutine"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->exfunc(\t)",
-                                    "C_name": "PRE_User2_exfunc_0",
-                                    "C_prototype": "PRE_User2 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user2_exfunc_0",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->exfunc(\t)",
-                                    "C_name": "PRE_User2_exfunc_0",
-                                    "C_prototype": "PRE_User2 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user2_exfunc_0",
-                                    "F_C_name": "c_user2_exfunc_0",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -1016,34 +876,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->exfunc(\tflag)",
-                                    "C_call_list": "flag",
-                                    "C_name": "PRE_User2_exfunc_1",
-                                    "C_prototype": "PRE_User2 * self,\t int flag",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user2_exfunc_1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->exfunc(\tflag)",
-                                    "C_call_list": "flag",
-                                    "C_name": "PRE_User2_exfunc_1",
-                                    "C_prototype": "PRE_User2 * self,\t int flag",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t flag",
-                                    "F_C_call": "c_user2_exfunc_1",
-                                    "F_C_name": "c_user2_exfunc_1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t flag",
-                                    "F_arguments": "obj,\t flag",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "flag": {
                                 "fmtc": {
                                     "c_abstract_decl": "int",

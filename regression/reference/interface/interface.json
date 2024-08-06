@@ -64,24 +64,6 @@
                         }
                     }
                 },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "Function1(\t)",
-                            "C_name": "Function1",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_arguments": "",
-                            "F_C_call": "c_function1",
-                            "F_C_name": "function1",
-                            "F_C_subprogram": "subroutine",
-                            "F_arguments": "",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "Function1",
                     "F_name_api": "function1",
@@ -270,46 +252,6 @@
                     }
                 },
                 "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "Function2(\targ1,\t arg2)",
-                            "C_call_list": "arg1,\t arg2",
-                            "C_name": "Function2",
-                            "C_prototype": "double arg1,\t int arg2",
-                            "C_return_type": "double",
-                            "F_C_arguments": "arg1,\t arg2",
-                            "F_C_call": "c_function2",
-                            "F_C_name": "function2",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_arg_c_call": "arg1,\t arg2",
-                            "F_arguments": "arg1,\t arg2",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_const": "",
-                            "c_get_value": "",
-                            "c_type": "double",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_double",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHC_rv",
-                            "cxx_rv_decl": "double SHC_rv",
-                            "cxx_type": "double",
-                            "cxx_var": "SHC_rv",
-                            "f_intent": "OUT",
-                            "f_intent_attr": ", intent(OUT)",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_var": "SHT_rv",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt_name": "f_function_native",
-                            "typemap_name": "double"
-                        }
-                    },
                     "arg1": {
                         "fmtf": {
                             "c_abstract_decl": "double",

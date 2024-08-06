@@ -192,94 +192,6 @@
                         }
                     }
                 },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtc": {
-                            "C_call_function": "LastFunctionCalled(\t)",
-                            "C_name": "NS_LastFunctionCalled",
-                            "C_prototype": "void",
-                            "C_return_type": "const char *",
-                            "F_C_arguments": "",
-                            "F_C_name": "c_last_function_called",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "c_abstract_decl": "const char *",
-                            "c_const": "const ",
-                            "c_type": "char",
-                            "c_var": "SHC_rv",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_abstract_decl": "const std::string *",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                            "cxx_rv_decl": "const std::string &SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "f_intent": "OUT",
-                            "f_intent_attr": ", intent(OUT)",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_function_string&",
-                            "typemap_name": "std::string"
-                        },
-                        "fmtf": {
-                            "C_call_function": "LastFunctionCalled(\t)",
-                            "C_name": "NS_LastFunctionCalled_bufferify",
-                            "C_prototype": "NS_SHROUD_array *SHT_rv_cdesc,\t NS_SHROUD_capsule_data *SHT_rv_capsule",
-                            "C_return_type": "void",
-                            "F_C_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
-                            "F_C_call": "c_last_function_called_bufferify",
-                            "F_C_name": "c_last_function_called_bufferify",
-                            "F_C_result_clause": "",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "SHT_rv_cdesc,\t SHT_rv_capsule",
-                            "F_arguments": "",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_abstract_decl": "const char *",
-                            "c_const": "const ",
-                            "c_helper_array_context": "NS_SHROUD_array",
-                            "c_helper_copy_string": "NS_ShroudCopyString",
-                            "c_helper_string_to_cdesc": "ShroudStringToCdesc",
-                            "c_type": "char",
-                            "c_var": "SHC_rv",
-                            "c_var_capsule": "SHT_rv_capsule",
-                            "c_var_cdesc": "SHT_rv_cdesc",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_abstract_decl": "const std::string *",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                            "cxx_rv_decl": "const std::string &SHCXX_rv",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "f_c_suffix": "_bufferify",
-                            "f_char_type": "character(len=SHT_rv_cdesc%elem_len) ::\t ",
-                            "f_helper_array_context": "NS_SHROUD_array",
-                            "f_helper_capsule_dtor": "NS_SHROUD_capsule_dtor",
-                            "f_helper_copy_string": "NS_SHROUD_copy_string",
-                            "f_intent": "OUT",
-                            "f_intent_attr": ", intent(OUT)",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "f_var_capsule": "SHT_rv_capsule",
-                            "f_var_cdesc": "SHT_rv_cdesc",
-                            "fc_var": "SHT_rv",
-                            "i_var": "SHT_rv",
-                            "i_var_capsule": "SHT_rv_capsule",
-                            "i_var_cdesc": "SHT_rv_cdesc",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_function_string&_cdesc_allocatable",
-                            "typemap_name": "std::string"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "LastFunctionCalled",
                     "F_name_api": "last_function_called",
@@ -364,33 +276,6 @@
                             "meta": {
                                 "intent": "subroutine"
                             }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtc": {
-                            "C_call_function": "One(\t)",
-                            "C_name": "NS_One",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_name": "c_one",
-                            "stmt_name": "c_subroutine",
-                            "typemap_name": "void"
-                        },
-                        "fmtf": {
-                            "C_call_function": "One(\t)",
-                            "C_name": "NS_One",
-                            "C_prototype": "void",
-                            "C_return_type": "void",
-                            "F_C_arguments": "",
-                            "F_C_call": "c_one",
-                            "F_C_name": "one",
-                            "F_C_subprogram": "subroutine",
-                            "F_arguments": "",
-                            "F_subprogram": "subroutine",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
                         }
                     }
                 },
@@ -846,33 +731,6 @@
                                     "meta": {
                                         "intent": "subroutine"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "outer::One(\t)",
-                                    "C_name": "NS_outer_One",
-                                    "C_prototype": "void",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_one",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "outer::One(\t)",
-                                    "C_name": "NS_outer_One",
-                                    "C_prototype": "void",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "",
-                                    "F_C_call": "c_one",
-                                    "F_C_name": "one",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arguments": "",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
                                 }
                             }
                         },

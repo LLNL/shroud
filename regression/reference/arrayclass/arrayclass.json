@@ -156,75 +156,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->ctor(\t)",
-                                    "C_name": "ARR_ArrayWrapper_ctor",
-                                    "C_prototype": "ARR_ArrayWrapper * SHC_rv",
-                                    "C_return_type": "ARR_ArrayWrapper *",
-                                    "F_C_name": "c_ArrayWrapper_ctor",
-                                    "c_abstract_decl": "ARR_ArrayWrapper *",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "ARR_ArrayWrapper",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "ArrayWrapper",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
-                                    "cxx_type": "ArrayWrapper",
-                                    "cxx_var": "SHCXX_rv",
-                                    "f_local_ptr": "SHT_prv",
-                                    "idtor": "1",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_ctor_shadow_capptr",
-                                    "typemap_name": "ArrayWrapper"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->ctor(\t)",
-                                    "C_name": "ARR_ArrayWrapper_ctor",
-                                    "C_prototype": "ARR_ArrayWrapper * SHC_rv",
-                                    "C_return_type": "ARR_ArrayWrapper *",
-                                    "F_C_arguments": "SHT_rv",
-                                    "F_C_call": "c_ArrayWrapper_ctor",
-                                    "F_C_name": "c_ArrayWrapper_ctor",
-                                    "F_C_result_clause": "\fresult(SHT_prv)",
-                                    "F_C_subprogram": "function",
-                                    "F_arg_c_call": "SHT_rv%cxxmem",
-                                    "F_arguments": "",
-                                    "F_result": "SHT_prv",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_abstract_decl": "ARR_ArrayWrapper *",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "ARR_ArrayWrapper",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "ArrayWrapper",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_rv_decl": "ArrayWrapper SHCXX_rv",
-                                    "cxx_type": "ArrayWrapper",
-                                    "cxx_var": "SHCXX_rv",
-                                    "f_capsule_data_type": "ARR_SHROUD_capsule_data",
-                                    "f_derived_type": "ArrayWrapper",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_local_ptr": "SHT_prv",
-                                    "f_type": "type(ArrayWrapper)",
-                                    "f_var": "SHT_rv",
-                                    "fc_var": "SHT_rv",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "1",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_ctor_shadow_capptr",
-                                    "typemap_name": "ArrayWrapper"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "ctor",
                             "F_name_api": "ctor",
@@ -424,34 +355,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->setSize(\tsize)",
-                                    "C_call_list": "size",
-                                    "C_name": "ARR_ArrayWrapper_setSize",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t int size",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_ArrayWrapper_setSize",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->setSize(\tsize)",
-                                    "C_call_list": "size",
-                                    "C_name": "ARR_ArrayWrapper_setSize",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t int size",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t size",
-                                    "F_C_call": "c_ArrayWrapper_setSize",
-                                    "F_C_name": "c_ArrayWrapper_setSize",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t size",
-                                    "F_arguments": "obj,\t size",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "size": {
                                 "fmtc": {
                                     "c_abstract_decl": "int",
@@ -648,70 +551,6 @@
                                     "meta": {
                                         "intent": "function"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->getSize(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getSize",
-                                    "C_prototype": "const ARR_ArrayWrapper * self",
-                                    "C_return_type": "int",
-                                    "F_C_name": "c_ArrayWrapper_getSize",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "int",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHC_rv",
-                                    "cxx_rv_decl": "int SHC_rv",
-                                    "cxx_type": "int",
-                                    "cxx_var": "SHC_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_function_native",
-                                    "typemap_name": "int"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->getSize(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getSize",
-                                    "C_prototype": "const ARR_ArrayWrapper * self",
-                                    "C_return_type": "int",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_ArrayWrapper_getSize",
-                                    "F_C_name": "c_ArrayWrapper_getSize",
-                                    "F_C_pure_clause": "pure ",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "int",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHC_rv",
-                                    "cxx_rv_decl": "int SHC_rv",
-                                    "cxx_type": "int",
-                                    "cxx_var": "SHC_rv",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_var": "SHT_rv",
-                                    "fc_var": "SHT_rv",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_function_native",
-                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -919,34 +758,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fillSize(\t*size)",
-                                    "C_call_list": "*size",
-                                    "C_name": "ARR_ArrayWrapper_fillSize",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t int *size",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_ArrayWrapper_fillSize",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fillSize(\t*size)",
-                                    "C_call_list": "*size",
-                                    "C_name": "ARR_ArrayWrapper_fillSize",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t int *size",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t size",
-                                    "F_C_call": "c_ArrayWrapper_fillSize",
-                                    "F_C_name": "c_ArrayWrapper_fillSize",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t size",
-                                    "F_arguments": "obj,\t size",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "size": {
                                 "fmtc": {
                                     "c_abstract_decl": "int *",
@@ -1088,34 +899,6 @@
                                     "meta": {
                                         "intent": "subroutine"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->allocate(\t)",
-                                    "C_name": "ARR_ArrayWrapper_allocate",
-                                    "C_prototype": "ARR_ArrayWrapper * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_ArrayWrapper_allocate",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->allocate(\t)",
-                                    "C_name": "ARR_ArrayWrapper_allocate",
-                                    "C_prototype": "ARR_ArrayWrapper * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_ArrayWrapper_allocate",
-                                    "F_C_name": "c_ArrayWrapper_allocate",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -1341,99 +1124,6 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->getArray(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArray",
-                                    "C_prototype": "ARR_ArrayWrapper * self",
-                                    "C_return_type": "double *",
-                                    "F_C_arguments": "self",
-                                    "F_C_name": "c_ArrayWrapper_getArray",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_rv",
-                                    "cxx_rv_decl": "double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(obj->getSize())",
-                                    "f_assumed_shape": "(:)",
-                                    "f_dimension": "(:)",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*",
-                                    "typemap_name": "double"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->getArray(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArray_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_getArray_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_getArray_bufferify",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                    "F_arguments": "obj",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "c_var_cdesc": "SHT_rv_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_rv",
-                                    "cxx_rv_decl": "double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_c_suffix": "_bufferify",
-                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                    "f_dimension": "(:)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "f_var_cdesc": "SHT_rv_cdesc",
-                                    "fc_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "i_var_cdesc": "SHT_rv_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer",
-                                    "typemap_name": "double"
                                 }
                             }
                         },
@@ -1664,100 +1354,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->getArrayConst(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArrayConst",
-                                    "C_prototype": "const ARR_ArrayWrapper * self",
-                                    "C_return_type": "double *",
-                                    "F_C_arguments": "self",
-                                    "F_C_name": "c_ArrayWrapper_getArrayConst",
-                                    "F_C_pure_clause": "pure ",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_rv",
-                                    "cxx_rv_decl": "double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(obj->getSize())",
-                                    "f_assumed_shape": "(:)",
-                                    "f_dimension": "(:)",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*",
-                                    "typemap_name": "double"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->getArrayConst(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArrayConst_bufferify",
-                                    "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_getArrayConst_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_getArrayConst_bufferify",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                    "F_arguments": "obj",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "c_var_cdesc": "SHT_rv_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_rv",
-                                    "cxx_rv_decl": "double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_c_suffix": "_bufferify",
-                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                    "f_dimension": "(:)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "f_var_cdesc": "SHT_rv_cdesc",
-                                    "fc_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "i_var_cdesc": "SHT_rv_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer",
-                                    "typemap_name": "double"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "getArrayConst",
                             "F_name_api": "getArrayConst",
@@ -1981,99 +1577,6 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->getArrayC(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArrayC",
-                                    "C_prototype": "ARR_ArrayWrapper * self",
-                                    "C_return_type": "const double *",
-                                    "F_C_arguments": "self",
-                                    "F_C_name": "c_ArrayWrapper_getArrayC",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "const ",
-                                    "c_get_value": "",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                    "cxx_rv_decl": "const double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(obj->getSize())",
-                                    "f_assumed_shape": "(:)",
-                                    "f_dimension": "(:)",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*",
-                                    "typemap_name": "double"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->getArrayC(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArrayC_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_getArrayC_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_getArrayC_bufferify",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                    "F_arguments": "obj",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "const ",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "c_var_cdesc": "SHT_rv_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                    "cxx_rv_decl": "const double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_c_suffix": "_bufferify",
-                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                    "f_dimension": "(:)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "f_var_cdesc": "SHT_rv_cdesc",
-                                    "fc_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "i_var_cdesc": "SHT_rv_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer",
-                                    "typemap_name": "double"
                                 }
                             }
                         },
@@ -2302,100 +1805,6 @@
                                         "dimension": "getSize()",
                                         "intent": "function"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->getArrayConstC(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArrayConstC",
-                                    "C_prototype": "const ARR_ArrayWrapper * self",
-                                    "C_return_type": "const double *",
-                                    "F_C_arguments": "self",
-                                    "F_C_name": "c_ArrayWrapper_getArrayConstC",
-                                    "F_C_pure_clause": "pure ",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "const ",
-                                    "c_get_value": "",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                    "cxx_rv_decl": "const double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(obj->getSize())",
-                                    "f_assumed_shape": "(:)",
-                                    "f_dimension": "(:)",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native*",
-                                    "typemap_name": "double"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->getArrayConstC(\t)",
-                                    "C_name": "ARR_ArrayWrapper_getArrayConstC_bufferify",
-                                    "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_rv_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_rv_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_getArrayConstC_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_getArrayConstC_bufferify",
-                                    "F_C_result_clause": "",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_rv_cdesc",
-                                    "F_arguments": "obj",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->getSize();",
-                                    "c_array_size": "SHT_rv_cdesc->shape[0]",
-                                    "c_array_size2": "SH_this->getSize()",
-                                    "c_const": "const ",
-                                    "c_helper_array_context": "ARR_SHROUD_array",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "c_var_cdesc": "SHT_rv_cdesc",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "const_cast<double *>\t(SHC_rv)",
-                                    "cxx_rv_decl": "const double *SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
-                                    "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
-                                    "f_assumed_shape": "(:)",
-                                    "f_c_suffix": "_bufferify",
-                                    "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                    "f_dimension": "(:)",
-                                    "f_helper_array_context": "ARR_SHROUD_array",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "f_var_cdesc": "SHT_rv_cdesc",
-                                    "fc_var": "SHT_rv",
-                                    "i_dimension": "(*)",
-                                    "i_var": "SHT_rv",
-                                    "i_var_cdesc": "SHT_rv_cdesc",
-                                    "idtor": "0",
-                                    "rank": "1",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native*_cdesc_pointer",
-                                    "typemap_name": "double"
                                 }
                             }
                         },
@@ -2787,37 +2196,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchArrayPtr(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtr",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t double **array,\t int *isize",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array,\t isize",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtr",
-                                    "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayPtr(\t&array,\t &isize)",
-                                    "C_call_list": "&array,\t &isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtr_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayPtr_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtr_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "double **",
@@ -3337,37 +2715,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchArrayRef(\t*array,\t *isize)",
-                                    "C_call_list": "*array,\t *isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayRef",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t double **array,\t int *isize",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array,\t isize",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayRef",
-                                    "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayRef(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayRef_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayRef_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayRef_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "double **",
@@ -3888,37 +3235,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchArrayPtrConst(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtrConst",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t const double **array,\t int *isize",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array,\t isize",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst",
-                                    "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayPtrConst(\t&array,\t &isize)",
-                                    "C_call_list": "&array,\t &isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayPtrConst_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "const double **",
@@ -4439,37 +3755,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchArrayRefConst(\t*array,\t *isize)",
-                                    "C_call_list": "*array,\t *isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayRefConst",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t const double **array,\t int *isize",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array,\t isize",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayRefConst",
-                                    "F_C_subprogram": "subroutine",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchArrayRefConst(\tarray,\t isize)",
-                                    "C_call_list": "array,\t isize",
-                                    "C_name": "ARR_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *SHT_array_cdesc",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t SHT_array_cdesc",
-                                    "F_C_call": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                    "F_C_name": "c_ArrayWrapper_fetchArrayRefConst_bufferify",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t SHT_array_cdesc",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "f_c_suffix": "_bufferify",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "const double **",
@@ -4807,34 +4092,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchVoidPtr(\tarray)",
-                                    "C_call_list": "array",
-                                    "C_name": "ARR_ArrayWrapper_fetchVoidPtr",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_ArrayWrapper_fetchVoidPtr",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchVoidPtr(\tarray)",
-                                    "C_call_list": "array",
-                                    "C_name": "ARR_ArrayWrapper_fetchVoidPtr",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array",
-                                    "F_C_call": "c_ArrayWrapper_fetchVoidPtr",
-                                    "F_C_name": "c_ArrayWrapper_fetchVoidPtr",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t array",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "void **",
@@ -5092,34 +4349,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->fetchVoidRef(\t*array)",
-                                    "C_call_list": "*array",
-                                    "C_name": "ARR_ArrayWrapper_fetchVoidRef",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_ArrayWrapper_fetchVoidRef",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->fetchVoidRef(\t*array)",
-                                    "C_call_list": "*array",
-                                    "C_name": "ARR_ArrayWrapper_fetchVoidRef",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t void **array",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t array",
-                                    "F_C_call": "c_ArrayWrapper_fetchVoidRef",
-                                    "F_C_name": "c_ArrayWrapper_fetchVoidRef",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t array",
-                                    "F_arguments": "obj,\t array",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "void **",
@@ -5430,69 +4659,6 @@
                             }
                         },
                         "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->checkPtr(\tarray)",
-                                    "C_call_list": "array",
-                                    "C_name": "ARR_ArrayWrapper_checkPtr",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t void *array",
-                                    "C_return_type": "bool",
-                                    "F_C_name": "c_ArrayWrapper_checkPtr",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "bool",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_Bool",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHC_rv",
-                                    "cxx_rv_decl": "bool SHC_rv",
-                                    "cxx_type": "bool",
-                                    "cxx_var": "SHC_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "c_function_bool",
-                                    "typemap_name": "bool"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->checkPtr(\tarray)",
-                                    "C_call_list": "array",
-                                    "C_name": "ARR_ArrayWrapper_checkPtr",
-                                    "C_prototype": "ARR_ArrayWrapper * self,\t void *array",
-                                    "C_return_type": "bool",
-                                    "F_C_arguments": "self,\t array",
-                                    "F_C_call": "c_ArrayWrapper_checkPtr",
-                                    "F_C_name": "c_ArrayWrapper_checkPtr",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "F_arg_c_call": "obj%cxxmem,\t array",
-                                    "F_arguments": "obj,\t array",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "bool",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_Bool",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHC_rv",
-                                    "cxx_rv_decl": "bool SHC_rv",
-                                    "cxx_type": "bool",
-                                    "cxx_var": "SHC_rv",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_BOOL",
-                                    "f_type": "logical",
-                                    "f_var": "SHT_rv",
-                                    "fc_var": "SHT_rv",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_BOOL",
-                                    "stmt_name": "f_function_bool",
-                                    "typemap_name": "bool"
-                                }
-                            },
                             "array": {
                                 "fmtc": {
                                     "c_abstract_decl": "void *",
@@ -5686,69 +4852,6 @@
                                     "meta": {
                                         "intent": "function"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->sumArray(\t)",
-                                    "C_name": "ARR_ArrayWrapper_sumArray",
-                                    "C_prototype": "ARR_ArrayWrapper * self",
-                                    "C_return_type": "double",
-                                    "F_C_name": "c_ArrayWrapper_sumArray",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHC_rv",
-                                    "cxx_rv_decl": "double SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "c_function_native",
-                                    "typemap_name": "double"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->sumArray(\t)",
-                                    "C_name": "ARR_ArrayWrapper_sumArray",
-                                    "C_prototype": "ARR_ArrayWrapper * self",
-                                    "C_return_type": "double",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_ArrayWrapper_sumArray",
-                                    "F_C_name": "c_ArrayWrapper_sumArray",
-                                    "F_C_result_clause": "\fresult(SHT_rv)",
-                                    "F_C_subprogram": "function",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_result_clause": "\fresult(SHT_rv)",
-                                    "F_subprogram": "function",
-                                    "c_const": "",
-                                    "c_get_value": "",
-                                    "c_type": "double",
-                                    "c_var": "SHC_rv",
-                                    "cfi_type": "CFI_type_double",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&SHC_rv",
-                                    "cxx_rv_decl": "double SHC_rv",
-                                    "cxx_type": "double",
-                                    "cxx_var": "SHC_rv",
-                                    "f_intent": "OUT",
-                                    "f_intent_attr": ", intent(OUT)",
-                                    "f_kind": "C_DOUBLE",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "f_var": "SHT_rv",
-                                    "fc_var": "SHT_rv",
-                                    "i_var": "SHT_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_DOUBLE",
-                                    "stmt_name": "f_function_native",
-                                    "typemap_name": "double"
                                 }
                             }
                         },
