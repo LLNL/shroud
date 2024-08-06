@@ -586,7 +586,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             arg_name = a_declarator.user_name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
-            bind = statements.get_arg_bind(node, arg, "py")
+            bind = statements.get_arg_bind(node, arg, "lua")
             bind.fmtdict = fmt_arg
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name

@@ -617,18 +617,6 @@
                                     }
                                 },
                                 "arg": {
-                                    "meta": {
-                                        "intent": "in"
-                                    }
-                                }
-                            },
-                            "py": {
-                                "+result": {
-                                    "meta": {
-                                        "intent": "subroutine"
-                                    }
-                                },
-                                "arg": {
                                     "fmtdict": {
                                         "LUA_index": 1,
                                         "c_deref": " *",
@@ -642,6 +630,39 @@
                                         "lua_var": "SH_Lua_arg",
                                         "pop_expr": "static_cast<tutorial::Class1 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
                                         "stmt": "lua_in_shadow*"
+                                    },
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "fmtdict": {
+                                        "PyTypeObject": "PY_Class1_Type",
+                                        "array_size": "1",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_type": "TUT_Class1",
+                                        "c_var": "arg",
+                                        "ctor_expr": "*arg",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "arg",
+                                        "cxx_type": "tutorial::Class1",
+                                        "cxx_var": "arg",
+                                        "data_var": "SHData_arg",
+                                        "numpy_type": null,
+                                        "py_object": "PyObject",
+                                        "py_var": "SHPy_arg",
+                                        "size_var": "SHSize_arg",
+                                        "stmt": "py_in_shadow*",
+                                        "value_var": "SHValue_arg"
                                     },
                                     "meta": {
                                         "intent": "in"
@@ -940,18 +961,6 @@
                                     }
                                 },
                                 "arg": {
-                                    "meta": {
-                                        "intent": "in"
-                                    }
-                                }
-                            },
-                            "py": {
-                                "+result": {
-                                    "meta": {
-                                        "intent": "subroutine"
-                                    }
-                                },
-                                "arg": {
                                     "fmtdict": {
                                         "LUA_index": 1,
                                         "c_deref": " *",
@@ -965,6 +974,41 @@
                                         "lua_var": "SH_Lua_arg",
                                         "pop_expr": "static_cast<forward::Class3 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
                                         "stmt": "lua_in_shadow*"
+                                    },
+                                    "meta": {
+                                        "intent": "in"
+                                    }
+                                }
+                            },
+                            "py": {
+                                "+result": {
+                                    "meta": {
+                                        "intent": "subroutine"
+                                    }
+                                },
+                                "arg": {
+                                    "fmtdict": {
+                                        "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",
+                                        "PyObject": "PY_Class3",
+                                        "PyTypeObject": "PY_Class3_Type",
+                                        "array_size": "1",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_type": "FOR_Class3",
+                                        "c_var": "arg",
+                                        "ctor_expr": "*arg",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "arg",
+                                        "cxx_type": "forward::Class3",
+                                        "cxx_var": "arg",
+                                        "data_var": "SHData_arg",
+                                        "numpy_type": null,
+                                        "py_object": "PY_Class3",
+                                        "py_var": "SHPy_arg",
+                                        "size_var": "SHSize_arg",
+                                        "stmt": "py_in_shadow*",
+                                        "value_var": "SHValue_arg"
                                     },
                                     "meta": {
                                         "intent": "in"

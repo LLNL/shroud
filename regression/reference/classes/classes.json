@@ -564,6 +564,19 @@
                                     }
                                 },
                                 "flag": {
+                                    "fmtdict": {
+                                        "LUA_index": 1,
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_var": "flag",
+                                        "c_var_len": "Lflag",
+                                        "cxx_member": ".",
+                                        "cxx_type": "int",
+                                        "cxx_var": "flag",
+                                        "lua_var": "SH_Lua_flag",
+                                        "pop_expr": "lua_tointeger(L, 1)",
+                                        "stmt": "lua_in_native"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -599,17 +612,22 @@
                                 },
                                 "flag": {
                                     "fmtdict": {
-                                        "LUA_index": 1,
+                                        "c_const": "",
                                         "c_deref": "",
-                                        "c_member": ".",
+                                        "c_type": "int",
                                         "c_var": "flag",
-                                        "c_var_len": "Lflag",
+                                        "ctor_expr": "flag",
+                                        "cxx_addr": "&",
                                         "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&flag",
                                         "cxx_type": "int",
                                         "cxx_var": "flag",
-                                        "lua_var": "SH_Lua_flag",
-                                        "pop_expr": "lua_tointeger(L, 1)",
-                                        "stmt": "lua_in_native"
+                                        "data_var": "SHData_flag",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHPy_flag",
+                                        "size_var": "SHSize_flag",
+                                        "stmt": "py_in_native",
+                                        "value_var": "SHValue_flag"
                                     },
                                     "meta": {
                                         "intent": "in",
@@ -3095,6 +3113,20 @@
                                     }
                                 },
                                 "arg": {
+                                    "fmtdict": {
+                                        "LUA_index": 1,
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_var": "lua_tointeger(L, 1)",
+                                        "c_var_len": "Larg",
+                                        "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                        "cxx_member": ".",
+                                        "cxx_type": "classes::Class1::DIRECTION",
+                                        "cxx_var": "arg",
+                                        "lua_var": "SH_Lua_arg",
+                                        "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
+                                        "stmt": "lua_in_enum"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -3125,18 +3157,26 @@
                                 },
                                 "arg": {
                                     "fmtdict": {
-                                        "LUA_index": 1,
+                                        "c_abstract_decl": "enum CLA_Class1_DIRECTION",
+                                        "c_const": "",
                                         "c_deref": "",
-                                        "c_member": ".",
-                                        "c_var": "lua_tointeger(L, 1)",
-                                        "c_var_len": "Larg",
+                                        "c_type": "enum CLA_Class1_DIRECTION",
+                                        "c_var": "arg",
+                                        "ctor_expr": "arg",
                                         "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                        "cxx_addr": "&",
+                                        "cxx_decl": "classes::Class1::DIRECTION SH_arg",
                                         "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&arg",
                                         "cxx_type": "classes::Class1::DIRECTION",
-                                        "cxx_var": "arg",
-                                        "lua_var": "SH_Lua_arg",
-                                        "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                                        "stmt": "lua_in_enum"
+                                        "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
+                                        "cxx_var": "SH_arg",
+                                        "data_var": "SHData_arg",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHPy_arg",
+                                        "size_var": "SHSize_arg",
+                                        "stmt": "py_in_enum",
+                                        "value_var": "SHValue_arg"
                                     },
                                     "meta": {
                                         "intent": "in",
@@ -7952,6 +7992,20 @@
                             }
                         },
                         "arg": {
+                            "fmtdict": {
+                                "LUA_index": 1,
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_var": "lua_tointeger(L, 1)",
+                                "c_var_len": "Larg",
+                                "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                "cxx_member": ".",
+                                "cxx_type": "classes::Class1::DIRECTION",
+                                "cxx_var": "arg",
+                                "lua_var": "SH_Lua_arg",
+                                "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
+                                "stmt": "lua_in_enum"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7982,18 +8036,26 @@
                         },
                         "arg": {
                             "fmtdict": {
-                                "LUA_index": 1,
+                                "c_abstract_decl": "enum CLA_Class1_DIRECTION",
+                                "c_const": "",
                                 "c_deref": "",
-                                "c_member": ".",
-                                "c_var": "lua_tointeger(L, 1)",
-                                "c_var_len": "Larg",
+                                "c_type": "enum CLA_Class1_DIRECTION",
+                                "c_var": "arg",
+                                "ctor_expr": "arg",
                                 "cxx_abstract_decl": "classes::Class1::DIRECTION",
+                                "cxx_addr": "&",
+                                "cxx_decl": "classes::Class1::DIRECTION SH_arg",
                                 "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
                                 "cxx_type": "classes::Class1::DIRECTION",
-                                "cxx_var": "arg",
-                                "lua_var": "SH_Lua_arg",
-                                "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                                "stmt": "lua_in_enum"
+                                "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
+                                "cxx_var": "SH_arg",
+                                "data_var": "SHData_arg",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHPy_arg",
+                                "size_var": "SHSize_arg",
+                                "stmt": "py_in_enum",
+                                "value_var": "SHValue_arg"
                             },
                             "meta": {
                                 "intent": "in",
@@ -10676,6 +10738,19 @@
                             }
                         },
                         "arg": {
+                            "fmtdict": {
+                                "LUA_index": 1,
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_var": "arg",
+                                "c_var_len": "Larg",
+                                "cxx_member": ".",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "lua_var": "SH_Lua_arg",
+                                "pop_expr": "lua_tointeger(L, 1)",
+                                "stmt": "lua_in_native"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -10690,17 +10765,22 @@
                         },
                         "arg": {
                             "fmtdict": {
-                                "LUA_index": 1,
+                                "c_const": "",
                                 "c_deref": "",
-                                "c_member": ".",
+                                "c_type": "int",
                                 "c_var": "arg",
-                                "c_var_len": "Larg",
+                                "ctor_expr": "arg",
+                                "cxx_addr": "&",
                                 "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
                                 "cxx_type": "int",
                                 "cxx_var": "arg",
-                                "lua_var": "SH_Lua_arg",
-                                "pop_expr": "lua_tointeger(L, 1)",
-                                "stmt": "lua_in_native"
+                                "data_var": "SHData_arg",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHPy_arg",
+                                "size_var": "SHSize_arg",
+                                "stmt": "py_in_native",
+                                "value_var": "SHValue_arg"
                             },
                             "meta": {
                                 "intent": "in",

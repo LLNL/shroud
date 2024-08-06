@@ -527,6 +527,19 @@
                                                     }
                                                 },
                                                 "name": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": " *",
+                                                        "c_member": "->",
+                                                        "c_var": "name",
+                                                        "c_var_len": "Lname",
+                                                        "cxx_member": "->",
+                                                        "cxx_type": "std::string",
+                                                        "cxx_var": "name",
+                                                        "lua_var": "SH_Lua_name",
+                                                        "pop_expr": "lua_tostring(L, 1)",
+                                                        "stmt": "lua_in_string*"
+                                                    },
                                                     "meta": {
                                                         "intent": "in"
                                                     }
@@ -561,17 +574,23 @@
                                                 },
                                                 "name": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
-                                                        "c_deref": " *",
-                                                        "c_member": "->",
+                                                        "array_size": "1",
+                                                        "c_const": "const ",
+                                                        "c_deref": "*",
+                                                        "c_type": "char",
                                                         "c_var": "name",
-                                                        "c_var_len": "Lname",
-                                                        "cxx_member": "->",
+                                                        "ctor_expr": "SH_name.data(),\t SH_name.size()",
+                                                        "cxx_addr": "",
+                                                        "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(name)",
                                                         "cxx_type": "std::string",
-                                                        "cxx_var": "name",
-                                                        "lua_var": "SH_Lua_name",
-                                                        "pop_expr": "lua_tostring(L, 1)",
-                                                        "stmt": "lua_in_string*"
+                                                        "cxx_var": "SH_name",
+                                                        "data_var": "SHData_name",
+                                                        "numpy_type": null,
+                                                        "py_var": "SHPy_name",
+                                                        "size_var": "SHSize_name",
+                                                        "stmt": "py_in_string*",
+                                                        "value_var": "SHValue_name"
                                                     },
                                                     "meta": {
                                                         "intent": "in"
@@ -1111,6 +1130,19 @@
                                                     }
                                                 },
                                                 "incr": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "incr",
+                                                        "c_var_len": "Lincr",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "int",
+                                                        "cxx_var": "incr",
+                                                        "lua_var": "SH_Lua_incr",
+                                                        "pop_expr": "lua_tointeger(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -1141,17 +1173,22 @@
                                                 },
                                                 "incr": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "int",
                                                         "c_var": "incr",
-                                                        "c_var_len": "Lincr",
+                                                        "ctor_expr": "incr",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&incr",
                                                         "cxx_type": "int",
                                                         "cxx_var": "incr",
-                                                        "lua_var": "SH_Lua_incr",
-                                                        "pop_expr": "lua_tointeger(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_incr",
+                                                        "numpy_type": "NPY_INT",
+                                                        "py_var": "SHPy_incr",
+                                                        "size_var": "SHSize_incr",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_incr"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -2124,6 +2161,19 @@
                                                     }
                                                 },
                                                 "value": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "value",
+                                                        "c_var_len": "Lvalue",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "int",
+                                                        "cxx_var": "value",
+                                                        "lua_var": "SH_Lua_value",
+                                                        "pop_expr": "lua_tointeger(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -2154,17 +2204,22 @@
                                                 },
                                                 "value": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "int",
                                                         "c_var": "value",
-                                                        "c_var_len": "Lvalue",
+                                                        "ctor_expr": "value",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&value",
                                                         "cxx_type": "int",
                                                         "cxx_var": "value",
-                                                        "lua_var": "SH_Lua_value",
-                                                        "pop_expr": "lua_tointeger(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_value",
+                                                        "numpy_type": "NPY_INT",
+                                                        "py_var": "SHPy_value",
+                                                        "size_var": "SHSize_value",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_value"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -2538,6 +2593,19 @@
                                                     }
                                                 },
                                                 "value": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "value",
+                                                        "c_var_len": "Lvalue",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "long",
+                                                        "cxx_var": "value",
+                                                        "lua_var": "SH_Lua_value",
+                                                        "pop_expr": "lua_tointeger(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -2568,17 +2636,22 @@
                                                 },
                                                 "value": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "long",
                                                         "c_var": "value",
-                                                        "c_var_len": "Lvalue",
+                                                        "ctor_expr": "value",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&value",
                                                         "cxx_type": "long",
                                                         "cxx_var": "value",
-                                                        "lua_var": "SH_Lua_value",
-                                                        "pop_expr": "lua_tointeger(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_value",
+                                                        "numpy_type": "NPY_LONG",
+                                                        "py_var": "SHPy_value",
+                                                        "size_var": "SHSize_value",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_value"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -2949,6 +3022,19 @@
                                                     }
                                                 },
                                                 "in": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "in",
+                                                        "c_var_len": "Lin",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "bool",
+                                                        "cxx_var": "in",
+                                                        "lua_var": "SH_Lua_in",
+                                                        "pop_expr": "lua_toboolean(L, 1)",
+                                                        "stmt": "lua_in_bool"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -2980,17 +3066,24 @@
                                                 },
                                                 "in": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "PyTypeObject": "PyBool_Type",
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "bool",
                                                         "c_var": "in",
-                                                        "c_var_len": "Lin",
+                                                        "ctor_expr": "in",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&in",
                                                         "cxx_type": "bool",
                                                         "cxx_var": "in",
-                                                        "lua_var": "SH_Lua_in",
-                                                        "pop_expr": "lua_toboolean(L, 1)",
-                                                        "stmt": "lua_in_bool"
+                                                        "data_var": "SHData_in",
+                                                        "numpy_type": "NPY_BOOL",
+                                                        "py_object": "PyObject",
+                                                        "py_var": "SHPy_in",
+                                                        "size_var": "SHSize_in",
+                                                        "stmt": "py_in_bool",
+                                                        "value_var": "SHValue_in"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -3643,6 +3736,19 @@
                                                     }
                                                 },
                                                 "name": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": " *",
+                                                        "c_member": "->",
+                                                        "c_var": "name",
+                                                        "c_var_len": "Lname",
+                                                        "cxx_member": "->",
+                                                        "cxx_type": "std::string",
+                                                        "cxx_var": "name",
+                                                        "lua_var": "SH_Lua_name",
+                                                        "pop_expr": "lua_tostring(L, 1)",
+                                                        "stmt": "lua_in_string*"
+                                                    },
                                                     "meta": {
                                                         "intent": "in"
                                                     }
@@ -3677,17 +3783,23 @@
                                                 },
                                                 "name": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
-                                                        "c_deref": " *",
-                                                        "c_member": "->",
+                                                        "array_size": "1",
+                                                        "c_const": "const ",
+                                                        "c_deref": "*",
+                                                        "c_type": "char",
                                                         "c_var": "name",
-                                                        "c_var_len": "Lname",
-                                                        "cxx_member": "->",
+                                                        "ctor_expr": "SH_name.data(),\t SH_name.size()",
+                                                        "cxx_addr": "",
+                                                        "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(name)",
                                                         "cxx_type": "std::string",
-                                                        "cxx_var": "name",
-                                                        "lua_var": "SH_Lua_name",
-                                                        "pop_expr": "lua_tostring(L, 1)",
-                                                        "stmt": "lua_in_string*"
+                                                        "cxx_var": "SH_name",
+                                                        "data_var": "SHData_name",
+                                                        "numpy_type": null,
+                                                        "py_var": "SHPy_name",
+                                                        "size_var": "SHSize_name",
+                                                        "stmt": "py_in_string*",
+                                                        "value_var": "SHValue_name"
                                                     },
                                                     "meta": {
                                                         "intent": "in"
@@ -5719,6 +5831,20 @@
                                                     }
                                                 },
                                                 "in": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": " *",
+                                                        "c_member": "->",
+                                                        "c_var": "\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")",
+                                                        "c_var_len": "Lin",
+                                                        "cxx_abstract_decl": "const example::nested::ExClass1 *",
+                                                        "cxx_member": "->",
+                                                        "cxx_type": "example::nested::ExClass1",
+                                                        "cxx_var": "in",
+                                                        "lua_var": "SH_Lua_in",
+                                                        "pop_expr": "static_cast<example::nested::ExClass1 *>\t(\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")->addr)",
+                                                        "stmt": "lua_in_shadow*"
+                                                    },
                                                     "meta": {
                                                         "intent": "in"
                                                     }
@@ -5752,18 +5878,27 @@
                                                 },
                                                 "in": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
-                                                        "c_deref": " *",
-                                                        "c_member": "->",
-                                                        "c_var": "\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")",
-                                                        "c_var_len": "Lin",
-                                                        "cxx_abstract_decl": "const example::nested::ExClass1 *",
+                                                        "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
+                                                        "PyObject": "PP_ExClass1",
+                                                        "PyTypeObject": "PP_ExClass1_Type",
+                                                        "array_size": "1",
+                                                        "c_const": "const ",
+                                                        "c_deref": "*",
+                                                        "c_type": "AA_example_nested_ExClass1",
+                                                        "c_var": "in",
+                                                        "ctor_expr": "*in",
+                                                        "cxx_addr": "",
                                                         "cxx_member": "->",
+                                                        "cxx_nonconst_ptr": "const_cast<example::nested::ExClass1 *>\t(in)",
                                                         "cxx_type": "example::nested::ExClass1",
                                                         "cxx_var": "in",
-                                                        "lua_var": "SH_Lua_in",
-                                                        "pop_expr": "static_cast<example::nested::ExClass1 *>\t(\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")->addr)",
-                                                        "stmt": "lua_in_shadow*"
+                                                        "data_var": "SHData_in",
+                                                        "numpy_type": null,
+                                                        "py_object": "PP_ExClass1",
+                                                        "py_var": "SHPy_in",
+                                                        "size_var": "SHSize_in",
+                                                        "stmt": "py_in_shadow*",
+                                                        "value_var": "SHValue_in"
                                                     },
                                                     "meta": {
                                                         "intent": "in"
@@ -6408,6 +6543,19 @@
                                                     }
                                                 },
                                                 "value": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "value",
+                                                        "c_var_len": "Lvalue",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "int",
+                                                        "cxx_var": "value",
+                                                        "lua_var": "SH_Lua_value",
+                                                        "pop_expr": "lua_tointeger(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -6422,17 +6570,22 @@
                                                 },
                                                 "value": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "int",
                                                         "c_var": "value",
-                                                        "c_var_len": "Lvalue",
+                                                        "ctor_expr": "value",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&value",
                                                         "cxx_type": "int",
                                                         "cxx_var": "value",
-                                                        "lua_var": "SH_Lua_value",
-                                                        "pop_expr": "lua_tointeger(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_value",
+                                                        "numpy_type": "NPY_INT",
+                                                        "py_var": "SHPy_value",
+                                                        "size_var": "SHSize_value",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_value"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -6781,6 +6934,19 @@
                                                     }
                                                 },
                                                 "value": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "value",
+                                                        "c_var_len": "Lvalue",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "long",
+                                                        "cxx_var": "value",
+                                                        "lua_var": "SH_Lua_value",
+                                                        "pop_expr": "lua_tointeger(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -6795,17 +6961,22 @@
                                                 },
                                                 "value": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "long",
                                                         "c_var": "value",
-                                                        "c_var_len": "Lvalue",
+                                                        "ctor_expr": "value",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&value",
                                                         "cxx_type": "long",
                                                         "cxx_var": "value",
-                                                        "lua_var": "SH_Lua_value",
-                                                        "pop_expr": "lua_tointeger(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_value",
+                                                        "numpy_type": "NPY_LONG",
+                                                        "py_var": "SHPy_value",
+                                                        "size_var": "SHSize_value",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_value"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -7151,6 +7322,19 @@
                                                     }
                                                 },
                                                 "value": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "value",
+                                                        "c_var_len": "Lvalue",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "float",
+                                                        "cxx_var": "value",
+                                                        "lua_var": "SH_Lua_value",
+                                                        "pop_expr": "lua_tonumber(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -7165,17 +7349,22 @@
                                                 },
                                                 "value": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "float",
                                                         "c_var": "value",
-                                                        "c_var_len": "Lvalue",
+                                                        "ctor_expr": "value",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&value",
                                                         "cxx_type": "float",
                                                         "cxx_var": "value",
-                                                        "lua_var": "SH_Lua_value",
-                                                        "pop_expr": "lua_tonumber(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_value",
+                                                        "numpy_type": "NPY_FLOAT",
+                                                        "py_var": "SHPy_value",
+                                                        "size_var": "SHSize_value",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_value"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -7527,6 +7716,19 @@
                                                     }
                                                 },
                                                 "value": {
+                                                    "fmtdict": {
+                                                        "LUA_index": 1,
+                                                        "c_deref": "",
+                                                        "c_member": ".",
+                                                        "c_var": "value",
+                                                        "c_var_len": "Lvalue",
+                                                        "cxx_member": ".",
+                                                        "cxx_type": "double",
+                                                        "cxx_var": "value",
+                                                        "lua_var": "SH_Lua_value",
+                                                        "pop_expr": "lua_tonumber(L, 1)",
+                                                        "stmt": "lua_in_native"
+                                                    },
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
@@ -7541,17 +7743,22 @@
                                                 },
                                                 "value": {
                                                     "fmtdict": {
-                                                        "LUA_index": 1,
+                                                        "c_const": "",
                                                         "c_deref": "",
-                                                        "c_member": ".",
+                                                        "c_type": "double",
                                                         "c_var": "value",
-                                                        "c_var_len": "Lvalue",
+                                                        "ctor_expr": "value",
+                                                        "cxx_addr": "&",
                                                         "cxx_member": ".",
+                                                        "cxx_nonconst_ptr": "&value",
                                                         "cxx_type": "double",
                                                         "cxx_var": "value",
-                                                        "lua_var": "SH_Lua_value",
-                                                        "pop_expr": "lua_tonumber(L, 1)",
-                                                        "stmt": "lua_in_native"
+                                                        "data_var": "SHData_value",
+                                                        "numpy_type": "NPY_DOUBLE",
+                                                        "py_var": "SHPy_value",
+                                                        "size_var": "SHSize_value",
+                                                        "stmt": "py_in_native",
+                                                        "value_var": "SHValue_value"
                                                     },
                                                     "meta": {
                                                         "intent": "in",
@@ -8738,6 +8945,19 @@
                                             }
                                         },
                                         "name": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_var": "name",
+                                                "c_var_len": "Lname",
+                                                "cxx_member": ".",
+                                                "cxx_type": "std::string",
+                                                "cxx_var": "name",
+                                                "lua_var": "SH_Lua_name",
+                                                "pop_expr": "lua_tostring(L, 1)",
+                                                "stmt": "lua_in_string&"
+                                            },
                                             "meta": {
                                                 "intent": "in"
                                             }
@@ -8768,17 +8988,23 @@
                                         },
                                         "name": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
+                                                "array_size": "1",
+                                                "c_const": "const ",
                                                 "c_deref": "",
-                                                "c_member": ".",
+                                                "c_type": "char",
                                                 "c_var": "name",
-                                                "c_var_len": "Lname",
+                                                "ctor_expr": "SH_name.data(),\t SH_name.size()",
+                                                "cxx_addr": "&",
                                                 "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
                                                 "cxx_type": "std::string",
-                                                "cxx_var": "name",
-                                                "lua_var": "SH_Lua_name",
-                                                "pop_expr": "lua_tostring(L, 1)",
-                                                "stmt": "lua_in_string&"
+                                                "cxx_var": "SH_name",
+                                                "data_var": "SHData_name",
+                                                "numpy_type": null,
+                                                "py_var": "SHPy_name",
+                                                "size_var": "SHSize_name",
+                                                "stmt": "py_in_string&",
+                                                "value_var": "SHValue_name"
                                             },
                                             "meta": {
                                                 "intent": "in"
@@ -9380,6 +9606,19 @@
                                             }
                                         },
                                         "name": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_var": "name",
+                                                "c_var_len": "Lname",
+                                                "cxx_member": ".",
+                                                "cxx_type": "std::string",
+                                                "cxx_var": "name",
+                                                "lua_var": "SH_Lua_name",
+                                                "pop_expr": "lua_tostring(L, 1)",
+                                                "stmt": "lua_in_string&"
+                                            },
                                             "meta": {
                                                 "intent": "in"
                                             }
@@ -9393,17 +9632,23 @@
                                         },
                                         "name": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
+                                                "array_size": "1",
+                                                "c_const": "const ",
                                                 "c_deref": "",
-                                                "c_member": ".",
+                                                "c_type": "char",
                                                 "c_var": "name",
-                                                "c_var_len": "Lname",
+                                                "ctor_expr": "SH_name.data(),\t SH_name.size()",
+                                                "cxx_addr": "&",
                                                 "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
                                                 "cxx_type": "std::string",
-                                                "cxx_var": "name",
-                                                "lua_var": "SH_Lua_name",
-                                                "pop_expr": "lua_tostring(L, 1)",
-                                                "stmt": "lua_in_string&"
+                                                "cxx_var": "SH_name",
+                                                "data_var": "SHData_name",
+                                                "numpy_type": null,
+                                                "py_var": "SHPy_name",
+                                                "size_var": "SHSize_name",
+                                                "stmt": "py_in_string&",
+                                                "value_var": "SHValue_name"
                                             },
                                             "meta": {
                                                 "intent": "in"
@@ -9807,24 +10052,6 @@
                                             }
                                         },
                                         "flag": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "name": {
-                                            "meta": {
-                                                "intent": "in"
-                                            }
-                                        }
-                                    },
-                                    "py": {
-                                        "+result": {
-                                            "meta": {
-                                                "intent": "subroutine"
-                                            }
-                                        },
-                                        "flag": {
                                             "fmtdict": {
                                                 "LUA_index": 2,
                                                 "c_deref": "",
@@ -9856,6 +10083,61 @@
                                                 "lua_var": "SH_Lua_name",
                                                 "pop_expr": "lua_tostring(L, 1)",
                                                 "stmt": "lua_in_string&"
+                                            },
+                                            "meta": {
+                                                "intent": "in"
+                                            }
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "flag": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "flag",
+                                                "ctor_expr": "flag",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&flag",
+                                                "cxx_type": "int",
+                                                "cxx_var": "flag",
+                                                "data_var": "SHData_flag",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_flag",
+                                                "size_var": "SHSize_flag",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_flag"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "name": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "const ",
+                                                "c_deref": "",
+                                                "c_type": "char",
+                                                "c_var": "name",
+                                                "ctor_expr": "SH_name.data(),\t SH_name.size()",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                                "cxx_type": "std::string",
+                                                "cxx_var": "SH_name",
+                                                "data_var": "SHData_name",
+                                                "numpy_type": null,
+                                                "py_var": "SHPy_name",
+                                                "size_var": "SHSize_name",
+                                                "stmt": "py_in_string&",
+                                                "value_var": "SHValue_name"
                                             },
                                             "meta": {
                                                 "intent": "in"
@@ -10679,25 +10961,6 @@
                                             }
                                         },
                                         "i": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "j": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        }
-                                    },
-                                    "py": {
-                                        "+result": {
-                                            "meta": {
-                                                "intent": "subroutine"
-                                            }
-                                        },
-                                        "i": {
                                             "fmtdict": {
                                                 "LUA_index": 1,
                                                 "c_deref": "",
@@ -10729,6 +10992,61 @@
                                                 "lua_var": "SH_Lua_j",
                                                 "pop_expr": "lua_tointeger(L, 2)",
                                                 "stmt": "lua_in_native"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "i": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "i",
+                                                "ctor_expr": "i",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&i",
+                                                "cxx_type": "int",
+                                                "cxx_var": "i",
+                                                "data_var": "SHData_i",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_i",
+                                                "size_var": "SHSize_i",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_i"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "j": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "long",
+                                                "c_var": "j",
+                                                "ctor_expr": "j",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&j",
+                                                "cxx_type": "long",
+                                                "cxx_var": "j",
+                                                "data_var": "SHData_j",
+                                                "numpy_type": "NPY_LONG",
+                                                "py_var": "SHPy_j",
+                                                "size_var": "SHSize_j",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_j"
                                             },
                                             "meta": {
                                                 "intent": "in",
@@ -11325,6 +11643,20 @@
                                             }
                                         },
                                         "comm": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_var": "POP",
+                                                "c_var_len": "Lcomm",
+                                                "cxx_abstract_decl": "MPI_Comm",
+                                                "cxx_member": ".",
+                                                "cxx_type": "MPI_Comm",
+                                                "cxx_var": "comm",
+                                                "lua_var": "SH_Lua_comm",
+                                                "pop_expr": "MPI_Comm_f2c(POP)",
+                                                "stmt": "lua_in_unknown"
+                                            },
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
@@ -11339,18 +11671,26 @@
                                         },
                                         "comm": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
+                                                "c_abstract_decl": "MPI_Fint",
+                                                "c_const": "",
                                                 "c_deref": "",
-                                                "c_member": ".",
-                                                "c_var": "POP",
-                                                "c_var_len": "Lcomm",
+                                                "c_type": "MPI_Fint",
+                                                "c_var": "comm",
+                                                "ctor_expr": "comm",
                                                 "cxx_abstract_decl": "MPI_Comm",
+                                                "cxx_addr": "&",
+                                                "cxx_decl": "MPI_Comm SH_comm",
                                                 "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&comm",
                                                 "cxx_type": "MPI_Comm",
-                                                "cxx_var": "comm",
-                                                "lua_var": "SH_Lua_comm",
-                                                "pop_expr": "MPI_Comm_f2c(POP)",
-                                                "stmt": "lua_in_unknown"
+                                                "cxx_val": "MPI_Comm_f2c(comm)",
+                                                "cxx_var": "SH_comm",
+                                                "data_var": "SHData_comm",
+                                                "numpy_type": null,
+                                                "py_var": "SHPy_comm",
+                                                "size_var": "SHSize_comm",
+                                                "stmt": "py_in_unknown",
+                                                "value_var": "SHValue_comm"
                                             },
                                             "meta": {
                                                 "intent": "in",
@@ -11892,6 +12232,19 @@
                                             }
                                         },
                                         "get": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_var": "get",
+                                                "c_var_len": "Lget",
+                                                "cxx_member": ".",
+                                                "cxx_type": "void",
+                                                "cxx_var": "get",
+                                                "lua_var": "SH_Lua_get",
+                                                "pop_expr": "POP",
+                                                "stmt": "lua_mixin_unknown"
+                                            },
                                             "meta": {
                                                 "fptr": {
                                                     "<FUNCTION>": "get  None ****************************************",
@@ -11958,17 +12311,21 @@
                                         },
                                         "get": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
+                                                "c_const": "",
                                                 "c_deref": "",
-                                                "c_member": ".",
+                                                "c_type": "void",
                                                 "c_var": "get",
-                                                "c_var_len": "Lget",
+                                                "ctor_expr": "get",
+                                                "cxx_addr": "&",
                                                 "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&get",
                                                 "cxx_type": "void",
                                                 "cxx_var": "get",
-                                                "lua_var": "SH_Lua_get",
-                                                "pop_expr": "POP",
-                                                "stmt": "lua_mixin_unknown"
+                                                "data_var": "SHData_get",
+                                                "numpy_type": null,
+                                                "py_var": "SHPy_get",
+                                                "size_var": "SHSize_get",
+                                                "value_var": "SHValue_get"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -12489,6 +12846,19 @@
                                             }
                                         },
                                         "get": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": " *",
+                                                "c_member": "->",
+                                                "c_var": "get",
+                                                "c_var_len": "Lget",
+                                                "cxx_member": "->",
+                                                "cxx_type": "double",
+                                                "cxx_var": "get",
+                                                "lua_var": "SH_Lua_get",
+                                                "pop_expr": "lua_tonumber(L, 1)",
+                                                "stmt": "lua_mixin_unknown"
+                                            },
                                             "meta": {
                                                 "fptr": {
                                                     "<FUNCTION>": "get  None ****************************************",
@@ -12560,17 +12930,22 @@
                                         },
                                         "get": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
-                                                "c_deref": " *",
-                                                "c_member": "->",
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "double",
                                                 "c_var": "get",
-                                                "c_var_len": "Lget",
+                                                "ctor_expr": "*get",
+                                                "cxx_addr": "",
                                                 "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "get",
                                                 "cxx_type": "double",
                                                 "cxx_var": "get",
-                                                "lua_var": "SH_Lua_get",
-                                                "pop_expr": "lua_tonumber(L, 1)",
-                                                "stmt": "lua_mixin_unknown"
+                                                "data_var": "SHData_get",
+                                                "numpy_type": "NPY_DOUBLE",
+                                                "py_var": "SHPy_get",
+                                                "size_var": "SHSize_get",
+                                                "value_var": "SHValue_get"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -13303,6 +13678,19 @@
                                             }
                                         },
                                         "get": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_var": "get",
+                                                "c_var_len": "Lget",
+                                                "cxx_member": ".",
+                                                "cxx_type": "double",
+                                                "cxx_var": "get",
+                                                "lua_var": "SH_Lua_get",
+                                                "pop_expr": "lua_tonumber(L, 1)",
+                                                "stmt": "lua_mixin_unknown"
+                                            },
                                             "meta": {
                                                 "fptr": {
                                                     "<FUNCTION>": "get  None ****************************************",
@@ -13466,17 +13854,21 @@
                                         },
                                         "get": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
+                                                "c_const": "",
                                                 "c_deref": "",
-                                                "c_member": ".",
+                                                "c_type": "double",
                                                 "c_var": "get",
-                                                "c_var_len": "Lget",
+                                                "ctor_expr": "get",
+                                                "cxx_addr": "&",
                                                 "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&get",
                                                 "cxx_type": "double",
                                                 "cxx_var": "get",
-                                                "lua_var": "SH_Lua_get",
-                                                "pop_expr": "lua_tonumber(L, 1)",
-                                                "stmt": "lua_mixin_unknown"
+                                                "data_var": "SHData_get",
+                                                "numpy_type": "NPY_DOUBLE",
+                                                "py_var": "SHPy_get",
+                                                "size_var": "SHSize_get",
+                                                "value_var": "SHValue_get"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -15964,6 +16356,19 @@
                                             }
                                         },
                                         "get": {
+                                            "fmtdict": {
+                                                "LUA_index": 1,
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_var": "get",
+                                                "c_var_len": "Lget",
+                                                "cxx_member": ".",
+                                                "cxx_type": "void",
+                                                "cxx_var": "get",
+                                                "lua_var": "SH_Lua_get",
+                                                "pop_expr": "POP",
+                                                "stmt": "lua_mixin_unknown"
+                                            },
                                             "meta": {
                                                 "fptr": {
                                                     "<FUNCTION>": "get  None ****************************************",
@@ -16512,17 +16917,21 @@
                                         },
                                         "get": {
                                             "fmtdict": {
-                                                "LUA_index": 1,
+                                                "c_const": "",
                                                 "c_deref": "",
-                                                "c_member": ".",
+                                                "c_type": "void",
                                                 "c_var": "get",
-                                                "c_var_len": "Lget",
+                                                "ctor_expr": "get",
+                                                "cxx_addr": "&",
                                                 "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&get",
                                                 "cxx_type": "void",
                                                 "cxx_var": "get",
-                                                "lua_var": "SH_Lua_get",
-                                                "pop_expr": "POP",
-                                                "stmt": "lua_mixin_unknown"
+                                                "data_var": "SHData_get",
+                                                "numpy_type": null,
+                                                "py_var": "SHPy_get",
+                                                "size_var": "SHSize_get",
+                                                "value_var": "SHValue_get"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -18593,63 +19002,6 @@
                                             }
                                         },
                                         "verylongname1": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname10": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname2": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname3": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname4": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname5": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname6": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname7": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname8": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        },
-                                        "verylongname9": {
-                                            "meta": {
-                                                "intent": "inout"
-                                            }
-                                        }
-                                    },
-                                    "py": {
-                                        "+result": {
-                                            "meta": {
-                                                "intent": "subroutine"
-                                            }
-                                        },
-                                        "verylongname1": {
                                             "fmtdict": {
                                                 "LUA_index": 1,
                                                 "c_deref": " *",
@@ -18824,6 +19176,253 @@
                                                 "lua_var": "SH_Lua_verylongname9",
                                                 "pop_expr": "lua_tointeger(L, 9)",
                                                 "stmt": "lua_inout_native*"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "verylongname1": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname1",
+                                                "ctor_expr": "verylongname1",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname1",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname1",
+                                                "data_var": "SHData_verylongname1",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname1",
+                                                "size_var": "SHSize_verylongname1",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname1"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname10": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname10",
+                                                "ctor_expr": "verylongname10",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname10",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname10",
+                                                "data_var": "SHData_verylongname10",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname10",
+                                                "size_var": "SHSize_verylongname10",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname10"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname2": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname2",
+                                                "ctor_expr": "verylongname2",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname2",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname2",
+                                                "data_var": "SHData_verylongname2",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname2",
+                                                "size_var": "SHSize_verylongname2",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname2"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname3": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname3",
+                                                "ctor_expr": "verylongname3",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname3",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname3",
+                                                "data_var": "SHData_verylongname3",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname3",
+                                                "size_var": "SHSize_verylongname3",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname3"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname4": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname4",
+                                                "ctor_expr": "verylongname4",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname4",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname4",
+                                                "data_var": "SHData_verylongname4",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname4",
+                                                "size_var": "SHSize_verylongname4",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname4"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname5": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname5",
+                                                "ctor_expr": "verylongname5",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname5",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname5",
+                                                "data_var": "SHData_verylongname5",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname5",
+                                                "size_var": "SHSize_verylongname5",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname5"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname6": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname6",
+                                                "ctor_expr": "verylongname6",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname6",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname6",
+                                                "data_var": "SHData_verylongname6",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname6",
+                                                "size_var": "SHSize_verylongname6",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname6"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname7": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname7",
+                                                "ctor_expr": "verylongname7",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname7",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname7",
+                                                "data_var": "SHData_verylongname7",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname7",
+                                                "size_var": "SHSize_verylongname7",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname7"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname8": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname8",
+                                                "ctor_expr": "verylongname8",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname8",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname8",
+                                                "data_var": "SHData_verylongname8",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname8",
+                                                "size_var": "SHSize_verylongname8",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname8"
+                                            },
+                                            "meta": {
+                                                "intent": "inout"
+                                            }
+                                        },
+                                        "verylongname9": {
+                                            "fmtdict": {
+                                                "array_size": "1",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "int",
+                                                "c_var": "verylongname9",
+                                                "ctor_expr": "verylongname9",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "verylongname9",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname9",
+                                                "data_var": "SHData_verylongname9",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname9",
+                                                "size_var": "SHSize_verylongname9",
+                                                "stmt": "py_inout_native*",
+                                                "value_var": "SHValue_verylongname9"
                                             },
                                             "meta": {
                                                 "intent": "inout"
@@ -20446,89 +21045,6 @@
                                             }
                                         },
                                         "verylongname1": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname10": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname2": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname3": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname4": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname5": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname6": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname7": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname8": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        },
-                                        "verylongname9": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        }
-                                    },
-                                    "py": {
-                                        "+result": {
-                                            "fmtdict": {
-                                                "c_deref": "",
-                                                "c_var": "SHCXX_rv",
-                                                "ctor_expr": "SHCXX_rv",
-                                                "cxx_addr": "&",
-                                                "cxx_member": ".",
-                                                "cxx_nonconst_ptr": "&SHCXX_rv",
-                                                "cxx_type": "int",
-                                                "cxx_var": "SHCXX_rv",
-                                                "data_var": "SHData_rv",
-                                                "numpy_type": "NPY_INT",
-                                                "py_var": "SHTPy_rv",
-                                                "size_var": "SHSize_rv",
-                                                "stmt": "py_function_native",
-                                                "value_var": "SHValue_rv"
-                                            },
-                                            "meta": {
-                                                "intent": "function"
-                                            }
-                                        },
-                                        "verylongname1": {
                                             "fmtdict": {
                                                 "LUA_index": 1,
                                                 "c_deref": "",
@@ -20712,6 +21228,269 @@
                                                 "lua_var": "SH_Lua_verylongname9",
                                                 "pop_expr": "lua_tointeger(L, 9)",
                                                 "stmt": "lua_in_native"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "fmtdict": {
+                                                "c_deref": "",
+                                                "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                                "cxx_type": "int",
+                                                "cxx_var": "SHCXX_rv",
+                                                "data_var": "SHData_rv",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHTPy_rv",
+                                                "size_var": "SHSize_rv",
+                                                "stmt": "py_function_native",
+                                                "value_var": "SHValue_rv"
+                                            },
+                                            "meta": {
+                                                "intent": "function"
+                                            }
+                                        },
+                                        "verylongname1": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname1",
+                                                "ctor_expr": "verylongname1",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname1",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname1",
+                                                "data_var": "SHData_verylongname1",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname1",
+                                                "size_var": "SHSize_verylongname1",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname1"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname10": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname10",
+                                                "ctor_expr": "verylongname10",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname10",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname10",
+                                                "data_var": "SHData_verylongname10",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname10",
+                                                "size_var": "SHSize_verylongname10",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname10"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname2": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname2",
+                                                "ctor_expr": "verylongname2",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname2",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname2",
+                                                "data_var": "SHData_verylongname2",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname2",
+                                                "size_var": "SHSize_verylongname2",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname2"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname3": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname3",
+                                                "ctor_expr": "verylongname3",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname3",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname3",
+                                                "data_var": "SHData_verylongname3",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname3",
+                                                "size_var": "SHSize_verylongname3",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname3"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname4": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname4",
+                                                "ctor_expr": "verylongname4",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname4",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname4",
+                                                "data_var": "SHData_verylongname4",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname4",
+                                                "size_var": "SHSize_verylongname4",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname4"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname5": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname5",
+                                                "ctor_expr": "verylongname5",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname5",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname5",
+                                                "data_var": "SHData_verylongname5",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname5",
+                                                "size_var": "SHSize_verylongname5",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname5"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname6": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname6",
+                                                "ctor_expr": "verylongname6",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname6",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname6",
+                                                "data_var": "SHData_verylongname6",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname6",
+                                                "size_var": "SHSize_verylongname6",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname6"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname7": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname7",
+                                                "ctor_expr": "verylongname7",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname7",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname7",
+                                                "data_var": "SHData_verylongname7",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname7",
+                                                "size_var": "SHSize_verylongname7",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname7"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname8": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname8",
+                                                "ctor_expr": "verylongname8",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname8",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname8",
+                                                "data_var": "SHData_verylongname8",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname8",
+                                                "size_var": "SHSize_verylongname8",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname8"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        },
+                                        "verylongname9": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "verylongname9",
+                                                "ctor_expr": "verylongname9",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&verylongname9",
+                                                "cxx_type": "int",
+                                                "cxx_var": "verylongname9",
+                                                "data_var": "SHData_verylongname9",
+                                                "numpy_type": "NPY_INT",
+                                                "py_var": "SHPy_verylongname9",
+                                                "size_var": "SHSize_verylongname9",
+                                                "stmt": "py_in_native",
+                                                "value_var": "SHValue_verylongname9"
                                             },
                                             "meta": {
                                                 "intent": "in",
@@ -21892,41 +22671,6 @@
                                             }
                                         },
                                         "in": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "rank": 2
-                                            }
-                                        },
-                                        "out": {
-                                            "meta": {
-                                                "dim_ast": [
-                                                    {
-                                                        "args": [
-                                                            {
-                                                                "name": "in"
-                                                            }
-                                                        ],
-                                                        "name": "shape"
-                                                    }
-                                                ],
-                                                "dimension": "shape(in)",
-                                                "intent": "out"
-                                            }
-                                        },
-                                        "sizein": {
-                                            "meta": {
-                                                "intent": "in",
-                                                "value": true
-                                            }
-                                        }
-                                    },
-                                    "py": {
-                                        "+result": {
-                                            "meta": {
-                                                "intent": "subroutine"
-                                            }
-                                        },
-                                        "in": {
                                             "fmtdict": {
                                                 "LUA_index": 1,
                                                 "c_deref": " *",
@@ -21986,6 +22730,103 @@
                                                 "lua_var": "SH_Lua_sizein",
                                                 "pop_expr": "lua_tointeger(L, 2)",
                                                 "stmt": "lua_in_native"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "value": true
+                                            }
+                                        }
+                                    },
+                                    "py": {
+                                        "+result": {
+                                            "meta": {
+                                                "intent": "subroutine"
+                                            }
+                                        },
+                                        "in": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "double",
+                                                "c_var": "in",
+                                                "ctor_expr": "*in",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "in",
+                                                "cxx_type": "double",
+                                                "cxx_var": "in",
+                                                "data_var": "SHData_in",
+                                                "numpy_type": "NPY_DOUBLE",
+                                                "py_var": "SHPy_in",
+                                                "pytmp_var": "SHTPy_in",
+                                                "rank": "2",
+                                                "size_var": "SHSize_in",
+                                                "stmt": "py_in_native*_numpy",
+                                                "value_var": "SHValue_in"
+                                            },
+                                            "meta": {
+                                                "intent": "in",
+                                                "rank": 2
+                                            }
+                                        },
+                                        "out": {
+                                            "fmtdict": {
+                                                "array_size": "shape(in)",
+                                                "c_const": "",
+                                                "c_deref": "*",
+                                                "c_type": "double",
+                                                "c_var": "out",
+                                                "ctor_expr": "*out",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "out",
+                                                "cxx_type": "double",
+                                                "cxx_var": "out",
+                                                "data_var": "SHData_out",
+                                                "npy_dims_var": "SHD_out",
+                                                "npy_intp_asgn": "SHD_out[0] = shape(in);\n",
+                                                "npy_intp_decl": "npy_intp SHD_out[1];\n",
+                                                "npy_rank": "1",
+                                                "numpy_type": "NPY_DOUBLE",
+                                                "py_var": "SHPy_out",
+                                                "rank": "1",
+                                                "size_var": "SHSize_out",
+                                                "stmt": "py_out_native*_numpy",
+                                                "value_var": "SHValue_out"
+                                            },
+                                            "meta": {
+                                                "dim_ast": [
+                                                    {
+                                                        "args": [
+                                                            {
+                                                                "name": "in"
+                                                            }
+                                                        ],
+                                                        "name": "shape"
+                                                    }
+                                                ],
+                                                "dimension": "shape(in)",
+                                                "intent": "out"
+                                            }
+                                        },
+                                        "sizein": {
+                                            "fmtdict": {
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_type": "int",
+                                                "c_var": "sizein",
+                                                "ctor_expr": "sizein",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&sizein",
+                                                "cxx_type": "int",
+                                                "cxx_var": "sizein",
+                                                "data_var": "SHData_sizein",
+                                                "numpy_type": "NPY_INT",
+                                                "pre_call_intent": "PyArray_SIZE(SHPy_in)",
+                                                "py_var": "SHPy_sizein",
+                                                "size_var": "SHSize_sizein",
+                                                "value_var": "SHValue_sizein"
                                             },
                                             "meta": {
                                                 "intent": "in",
