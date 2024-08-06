@@ -873,7 +873,7 @@ fail:
 // Function:  bool returnBoolAndOthers
 // Statement: py_function_bool
 // ----------------------------------------
-// Argument:  int * flag +intent(out)
+// Argument:  int *flag +intent(out)
 // Statement: py_out_native*
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"

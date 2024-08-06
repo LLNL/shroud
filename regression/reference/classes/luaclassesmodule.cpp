@@ -115,7 +115,7 @@ static int l_Class1_Method1(lua_State *L)
 
 // const std::string &getName(void)
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: lua_function_string&
 /**
  * \brief test helper
@@ -126,7 +126,7 @@ static int l_Class1_getName(lua_State *L)
     // splicer begin class.Class1.method.getName
     l_Class1_Type * SH_this = (l_Class1_Type *) luaL_checkudata(
         L, 1, "Class1.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getName();
+    const std::string &SHCXX_rv = SH_this->self->getName();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.Class1.method.getName
@@ -168,7 +168,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
 
 // const std::string &getName(void)
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: lua_function_string&
 /**
  * \brief test helper
@@ -179,7 +179,7 @@ static int l_Class2_getName(lua_State *L)
     // splicer begin class.Class2.method.getName
     l_Class2_Type * SH_this = (l_Class2_Type *) luaL_checkudata(
         L, 1, "Class2.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getName();
+    const std::string &SHCXX_rv = SH_this->self->getName();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.Class2.method.getName
@@ -314,12 +314,12 @@ static int l_get_global_flag(lua_State *L)
 
 // const std::string &LastFunctionCalled(void) +len(30)
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: lua_function_string&
 static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = classes::LastFunctionCalled();
+    const std::string &SHCXX_rv = classes::LastFunctionCalled();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.LastFunctionCalled

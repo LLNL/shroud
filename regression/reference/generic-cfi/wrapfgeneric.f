@@ -171,7 +171,7 @@ module generic_mod
     ! Function:  int SumValues
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const int * values +dimension(..)
+    ! Argument:  const int *values +dimension(..)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues
@@ -193,13 +193,13 @@ module generic_mod
     ! Function:  void AssignValues
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * from
+    ! Argument:  const int *from
     ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int * to
+    ! Argument:  int *to
     ! Statement: f_inout_native*
     ! ----------------------------------------
     ! Argument:  int nto
@@ -222,13 +222,13 @@ module generic_mod
     ! Function:  void AssignValues
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * from
+    ! Argument:  const int *from
     ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int * to +rank(1)
+    ! Argument:  int *to +rank(1)
     ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
@@ -250,13 +250,13 @@ module generic_mod
     ! Function:  void AssignValues
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * from +rank(1)
+    ! Argument:  const int *from +rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nfrom
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int * to +rank(1)
+    ! Argument:  int *to +rank(1)
     ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
@@ -279,7 +279,7 @@ module generic_mod
     ! Function:  void SavePointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Argument:  float *addr +intent(in)+rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)
@@ -305,7 +305,7 @@ module generic_mod
     ! Function:  void SavePointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Argument:  float *addr +intent(in)+rank(2)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(T_FLOAT)
@@ -330,7 +330,7 @@ module generic_mod
     ! Function:  void SavePointer2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Argument:  float *addr +intent(in)+rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))
@@ -354,7 +354,7 @@ module generic_mod
     ! Function:  void SavePointer2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Argument:  float *addr +intent(in)+rank(2)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))
@@ -377,13 +377,13 @@ module generic_mod
     ! Function:  void GetPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * * addr +intent(out)
+    ! Argument:  void **addr +intent(out)
     ! Statement: f_out_void**
     ! ----------------------------------------
-    ! Argument:  int * type +intent(out)
+    ! Argument:  int *type +intent(out)
     ! Statement: f_out_native*
     ! ----------------------------------------
-    ! Argument:  size_t * size +intent(out)
+    ! Argument:  size_t *size +intent(out)
     ! Statement: f_out_native*
     interface
         subroutine get_pointer(addr, type, size) &
@@ -402,7 +402,7 @@ module generic_mod
     ! Function:  void GetPointerAsPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
+    ! Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
     ! Statement: f_out_native**_cfi_pointer
     interface
         subroutine c_get_pointer_as_pointer_float1d_CFI(addr) &
@@ -420,7 +420,7 @@ module generic_mod
     ! Function:  void GetPointerAsPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
+    ! Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
     ! Statement: f_out_native**_cfi_pointer
     interface
         subroutine c_get_pointer_as_pointer_float2d_CFI(addr) &
@@ -433,7 +433,7 @@ module generic_mod
 #endif
 
     ! ----------------------------------------
-    ! Function:  StructAsClass * CreateStructAsClass
+    ! Function:  StructAsClass *CreateStructAsClass
     ! Statement: f_function_shadow*_capptr
     interface
         function c_create_struct_as_class_bufferify(SHT_rv) &
@@ -452,7 +452,7 @@ module generic_mod
     ! Function:  long UpdateStructAsClass
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  StructAsClass * arg
+    ! Argument:  StructAsClass *arg
     ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  int inew
@@ -475,7 +475,7 @@ module generic_mod
     ! Function:  long UpdateStructAsClass
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  StructAsClass * arg
+    ! Argument:  StructAsClass *arg
     ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  long inew
@@ -723,7 +723,7 @@ contains
     ! Function:  int SumValues
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const int * values +dimension(..)
+    ! Argument:  const int *values +dimension(..)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nvalues
@@ -749,13 +749,13 @@ contains
     ! Function:  void AssignValues
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * from
+    ! Argument:  const int *from
     ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int * to
+    ! Argument:  int *to
     ! Statement: f_inout_native*
     ! ----------------------------------------
     ! Argument:  int nto
@@ -780,13 +780,13 @@ contains
     ! Function:  void AssignValues
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * from
+    ! Argument:  const int *from
     ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int nfrom
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int * to +rank(1)
+    ! Argument:  int *to +rank(1)
     ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
@@ -811,13 +811,13 @@ contains
     ! Function:  void AssignValues
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const int * from +rank(1)
+    ! Argument:  const int *from +rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nfrom
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int * to +rank(1)
+    ! Argument:  int *to +rank(1)
     ! Statement: f_inout_native*_cfi
     ! ----------------------------------------
     ! Argument:  int nto
@@ -843,7 +843,7 @@ contains
     ! Function:  void SavePointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Argument:  float *addr +intent(in)+rank(1)
     ! Statement: f_in_native*_cfi
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -864,7 +864,7 @@ contains
     ! Function:  void SavePointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Argument:  float *addr +intent(in)+rank(2)
     ! Statement: f_in_native*_cfi
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -884,7 +884,7 @@ contains
     ! Function:  void SavePointer2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(1)
+    ! Argument:  float *addr +intent(in)+rank(1)
     ! Statement: f_in_native*_cfi
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -903,7 +903,7 @@ contains
     ! Function:  void SavePointer2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * addr +intent(in)+rank(2)
+    ! Argument:  float *addr +intent(in)+rank(2)
     ! Statement: f_in_native*_cfi
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
@@ -923,13 +923,13 @@ contains
     ! Function:  void GetPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * * addr +intent(out)
+    ! Argument:  void **addr +intent(out)
     ! Statement: f_out_void**
     ! ----------------------------------------
-    ! Argument:  int * type +intent(out)
+    ! Argument:  int *type +intent(out)
     ! Statement: f_out_native*
     ! ----------------------------------------
-    ! Argument:  size_t * size +intent(out)
+    ! Argument:  size_t *size +intent(out)
     ! Statement: f_out_native*
     subroutine get_pointer(addr, type, size)
         use iso_c_binding, only : C_INT, C_PTR, C_SIZE_T
@@ -948,7 +948,7 @@ contains
     ! Function:  void GetPointerAsPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
+    ! Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
     ! Statement: f_out_native**_cfi_pointer
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT
@@ -965,7 +965,7 @@ contains
     ! Function:  void GetPointerAsPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
+    ! Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
     ! Statement: f_out_native**_cfi_pointer
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT
@@ -977,7 +977,7 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  StructAsClass * CreateStructAsClass
+    ! Function:  StructAsClass *CreateStructAsClass
     ! Statement: f_function_shadow*_capptr
     function create_struct_as_class() &
             result(SHT_rv)
@@ -994,7 +994,7 @@ contains
     ! Function:  long UpdateStructAsClass
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  StructAsClass * arg
+    ! Argument:  StructAsClass *arg
     ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  int inew
@@ -1016,7 +1016,7 @@ contains
     ! Function:  long UpdateStructAsClass
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  StructAsClass * arg
+    ! Argument:  StructAsClass *arg
     ! Statement: f_inout_shadow*
     ! ----------------------------------------
     ! Argument:  long inew

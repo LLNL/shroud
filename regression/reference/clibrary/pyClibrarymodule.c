@@ -96,10 +96,10 @@ PY_PassByValue(
 // Function:  void PassByReference
 // Statement: py_default
 // ----------------------------------------
-// Argument:  double * arg1 +intent(in)
+// Argument:  double *arg1 +intent(in)
 // Statement: py_in_native*
 // ----------------------------------------
-// Argument:  int * arg2 +intent(out)
+// Argument:  int *arg2 +intent(out)
 // Statement: py_out_native*
 static char PY_PassByReference__doc__[] =
 "documentation"
@@ -179,10 +179,10 @@ PY_PassByValueMacro(
 // Argument:  const bool arg1
 // Statement: py_in_bool
 // ----------------------------------------
-// Argument:  bool * arg2 +intent(out)
+// Argument:  bool *arg2 +intent(out)
 // Statement: py_out_bool*
 // ----------------------------------------
-// Argument:  bool * arg3 +intent(inout)
+// Argument:  bool *arg3 +intent(inout)
 // Statement: py_inout_bool*
 static char PY_checkBool__doc__[] =
 "documentation"
@@ -238,13 +238,13 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  char * Function4a +len(30)
+// Function:  char *Function4a +len(30)
 // Statement: py_function_char*
 // ----------------------------------------
-// Argument:  const char * arg1
+// Argument:  const char *arg1
 // Statement: py_in_char*
 // ----------------------------------------
-// Argument:  const char * arg2
+// Argument:  const char *arg2
 // Statement: py_in_char*
 static char PY_Function4a__doc__[] =
 "documentation"
@@ -257,8 +257,8 @@ PY_Function4a(
   PyObject *kwds)
 {
 // splicer begin function.Function4a
-    char * arg1;
-    char * arg2;
+    char *arg1;
+    char *arg2;
     char *SHT_kwlist[] = {
         "arg1",
         "arg2",
@@ -269,7 +269,7 @@ PY_Function4a(
         SHT_kwlist, &arg1, &arg2))
         return NULL;
 
-    char * SHCXX_rv = Function4a(arg1, arg2);
+    char *SHCXX_rv = Function4a(arg1, arg2);
 
     // post_call
     SHTPy_rv = PyString_FromString(SHCXX_rv);
@@ -282,7 +282,7 @@ PY_Function4a(
 // Function:  void acceptName
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const char * name
+// Argument:  const char *name
 // Statement: py_in_char*
 static char PY_acceptName__doc__[] =
 "documentation"
@@ -295,7 +295,7 @@ PY_acceptName(
   PyObject *kwds)
 {
 // splicer begin function.acceptName
-    char * name;
+    char *name;
     char *SHT_kwlist[] = {
         "name",
         NULL };
@@ -313,7 +313,7 @@ PY_acceptName(
 // Function:  void passCharPtrInOut
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * s +intent(inout)
+// Argument:  char *s +intent(inout)
 // Statement: py_inout_char*
 static char PY_passCharPtrInOut__doc__[] =
 "documentation"
@@ -332,7 +332,7 @@ PY_passCharPtrInOut(
   PyObject *kwds)
 {
 // splicer begin function.passCharPtrInOut
-    char * s;
+    char *s;
     char *SHT_kwlist[] = {
         "s",
         NULL };
@@ -355,7 +355,7 @@ PY_passCharPtrInOut(
 // Function:  void returnOneName
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * name1 +charlen(MAXNAME)+intent(out)
+// Argument:  char *name1 +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen
 static char PY_returnOneName__doc__[] =
 "documentation"
@@ -391,10 +391,10 @@ PY_returnOneName(
 // Function:  void returnTwoNames
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * name1 +charlen(MAXNAME)+intent(out)
+// Argument:  char *name1 +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen
 // ----------------------------------------
-// Argument:  char * name2 +charlen(MAXNAME)+intent(out)
+// Argument:  char *name2 +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen
 static char PY_returnTwoNames__doc__[] =
 "documentation"
@@ -431,7 +431,7 @@ PY_returnTwoNames(
 // Function:  void ImpliedTextLen
 // Statement: py_default
 // ----------------------------------------
-// Argument:  char * text +charlen(MAXNAME)+intent(out)
+// Argument:  char *text +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
@@ -471,7 +471,7 @@ PY_ImpliedTextLen(
 // Function:  int ImpliedLen
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const char * text +api(capi)
+// Argument:  const char *text +api(capi)
 // Statement: py_in_char*
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
@@ -496,7 +496,7 @@ PY_ImpliedLen(
   PyObject *kwds)
 {
 // splicer begin function.ImpliedLen
-    char * text;
+    char *text;
     int ltext;
     bool flag;
     char *SHT_kwlist[] = {
@@ -525,7 +525,7 @@ PY_ImpliedLen(
 // Function:  int ImpliedLenTrim
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const char * text +api(capi)
+// Argument:  const char *text +api(capi)
 // Statement: py_in_char*
 // ----------------------------------------
 // Argument:  int ltext +implied(len_trim(text))
@@ -550,7 +550,7 @@ PY_ImpliedLenTrim(
   PyObject *kwds)
 {
 // splicer begin function.ImpliedLenTrim
-    char * text;
+    char *text;
     int ltext;
     bool flag;
     char *SHT_kwlist[] = {

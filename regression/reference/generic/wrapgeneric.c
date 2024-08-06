@@ -25,12 +25,12 @@
 // Function:  int SumValues
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  const int * values +rank(0)
+// Argument:  const int *values +rank(0)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int nvalues
 // Statement: f_in_native
-int GEN_SumValues_0d_bufferify(const int * values, int nvalues)
+int GEN_SumValues_0d_bufferify(const int *values, int nvalues)
 {
     // splicer begin function.SumValues_0d_bufferify
     int SHC_rv = SumValues(values, nvalues);
@@ -47,12 +47,12 @@ int GEN_SumValues_0d_bufferify(const int * values, int nvalues)
 // Function:  int SumValues
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  const int * values +rank(1)
+// Argument:  const int *values +rank(1)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int nvalues
 // Statement: f_in_native
-int GEN_SumValues_1d_bufferify(const int * values, int nvalues)
+int GEN_SumValues_1d_bufferify(const int *values, int nvalues)
 {
     // splicer begin function.SumValues_1d_bufferify
     int SHC_rv = SumValues(values, nvalues);
@@ -69,12 +69,12 @@ int GEN_SumValues_1d_bufferify(const int * values, int nvalues)
 // Function:  int SumValues
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  const int * values +rank(2)
+// Argument:  const int *values +rank(2)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int nvalues
 // Statement: f_in_native
-int GEN_SumValues_2d_bufferify(const int * values, int nvalues)
+int GEN_SumValues_2d_bufferify(const int *values, int nvalues)
 {
     // splicer begin function.SumValues_2d_bufferify
     int SHC_rv = SumValues(values, nvalues);
@@ -91,19 +91,19 @@ int GEN_SumValues_2d_bufferify(const int * values, int nvalues)
 // Function:  void AssignValues
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * from
+// Argument:  const int *from
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int nfrom
 // Statement: f_in_native
 // ----------------------------------------
-// Argument:  int * to
+// Argument:  int *to
 // Statement: f_inout_native*
 // ----------------------------------------
 // Argument:  int nto
 // Statement: f_in_native
-void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
-    int * to, int nto)
+void GEN_AssignValues_scalar_bufferify(const int *from, int nfrom,
+    int *to, int nto)
 {
     // splicer begin function.AssignValues_scalar_bufferify
     AssignValues(from, nfrom, to, nto);
@@ -119,19 +119,19 @@ void GEN_AssignValues_scalar_bufferify(const int * from, int nfrom,
 // Function:  void AssignValues
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * from
+// Argument:  const int *from
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int nfrom
 // Statement: f_in_native
 // ----------------------------------------
-// Argument:  int * to +rank(1)
+// Argument:  int *to +rank(1)
 // Statement: f_inout_native*
 // ----------------------------------------
 // Argument:  int nto
 // Statement: f_in_native
-void GEN_AssignValues_broadcast_bufferify(const int * from, int nfrom,
-    int * to, int nto)
+void GEN_AssignValues_broadcast_bufferify(const int *from, int nfrom,
+    int *to, int nto)
 {
     // splicer begin function.AssignValues_broadcast_bufferify
     AssignValues(from, nfrom, to, nto);
@@ -147,19 +147,19 @@ void GEN_AssignValues_broadcast_bufferify(const int * from, int nfrom,
 // Function:  void AssignValues
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * from +rank(1)
+// Argument:  const int *from +rank(1)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int nfrom
 // Statement: f_in_native
 // ----------------------------------------
-// Argument:  int * to +rank(1)
+// Argument:  int *to +rank(1)
 // Statement: f_inout_native*
 // ----------------------------------------
 // Argument:  int nto
 // Statement: f_in_native
-void GEN_AssignValues_copy_bufferify(const int * from, int nfrom,
-    int * to, int nto)
+void GEN_AssignValues_copy_bufferify(const int *from, int nfrom,
+    int *to, int nto)
 {
     // splicer begin function.AssignValues_copy_bufferify
     AssignValues(from, nfrom, to, nto);
@@ -172,7 +172,7 @@ void GEN_AssignValues_copy_bufferify(const int * from, int nfrom,
 // Function:  void SavePointer
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  float * addr +intent(in)+rank(1)
+// Argument:  float *addr +intent(in)+rank(1)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)
@@ -180,7 +180,7 @@ void GEN_AssignValues_copy_bufferify(const int * from, int nfrom,
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native
-void GEN_SavePointer_float1d_bufferify(float * addr, int type,
+void GEN_SavePointer_float1d_bufferify(float *addr, int type,
     size_t size)
 {
     // splicer begin function.SavePointer_float1d_bufferify
@@ -195,7 +195,7 @@ void GEN_SavePointer_float1d_bufferify(float * addr, int type,
 // Function:  void SavePointer
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  float * addr +intent(in)+rank(2)
+// Argument:  float *addr +intent(in)+rank(2)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int type +implied(T_FLOAT)
@@ -203,7 +203,7 @@ void GEN_SavePointer_float1d_bufferify(float * addr, int type,
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native
-void GEN_SavePointer_float2d_bufferify(float * addr, int type,
+void GEN_SavePointer_float2d_bufferify(float *addr, int type,
     size_t size)
 {
     // splicer begin function.SavePointer_float2d_bufferify
@@ -217,7 +217,7 @@ void GEN_SavePointer_float2d_bufferify(float * addr, int type,
 // Function:  void SavePointer2
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  float * addr +intent(in)+rank(1)
+// Argument:  float *addr +intent(in)+rank(1)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))
@@ -225,7 +225,7 @@ void GEN_SavePointer_float2d_bufferify(float * addr, int type,
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native
-void GEN_SavePointer2_float1d_bufferify(float * addr, int type,
+void GEN_SavePointer2_float1d_bufferify(float *addr, int type,
     size_t size)
 {
     // splicer begin function.SavePointer2_float1d_bufferify
@@ -241,7 +241,7 @@ void GEN_SavePointer2_float1d_bufferify(float * addr, int type,
 // Function:  void SavePointer2
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  float * addr +intent(in)+rank(2)
+// Argument:  float *addr +intent(in)+rank(2)
 // Statement: f_in_native*
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))
@@ -249,7 +249,7 @@ void GEN_SavePointer2_float1d_bufferify(float * addr, int type,
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))
 // Statement: f_in_native
-void GEN_SavePointer2_float2d_bufferify(float * addr, int type,
+void GEN_SavePointer2_float2d_bufferify(float *addr, int type,
     size_t size)
 {
     // splicer begin function.SavePointer2_float2d_bufferify
@@ -266,13 +266,13 @@ void GEN_SavePointer2_float2d_bufferify(float * addr, int type,
 // Function:  void GetPointerAsPointer
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
+// Argument:  float **addr +deref(pointer)+intent(out)+rank(1)
 // Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * type +hidden+intent(out)
+// Argument:  int *type +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // ----------------------------------------
-// Argument:  size_t * size +hidden+intent(out)
+// Argument:  size_t *size +hidden+intent(out)
 // Statement: f_out_native*_hidden
 void GEN_GetPointerAsPointer_float1d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc)
@@ -297,13 +297,13 @@ void GEN_GetPointerAsPointer_float1d_bufferify(
 // Function:  void GetPointerAsPointer
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
+// Argument:  float **addr +deref(pointer)+intent(out)+rank(2)
 // Statement: f_out_native**_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * type +hidden+intent(out)
+// Argument:  int *type +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // ----------------------------------------
-// Argument:  size_t * size +hidden+intent(out)
+// Argument:  size_t *size +hidden+intent(out)
 // Statement: f_out_native*_hidden
 void GEN_GetPointerAsPointer_float2d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc)
@@ -323,7 +323,7 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
 #endif  // if 0
 
 // ----------------------------------------
-// Function:  StructAsClass * CreateStructAsClass
+// Function:  StructAsClass *CreateStructAsClass
 // Statement: f_function_shadow*_capptr
 GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
     GEN_StructAsClass * SHC_rv)
@@ -341,7 +341,7 @@ GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
 // Function:  long UpdateStructAsClass
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  StructAsClass * arg
+// Argument:  StructAsClass *arg
 // Statement: f_inout_shadow*
 // ----------------------------------------
 // Argument:  int inew
@@ -361,7 +361,7 @@ long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
 // Function:  long UpdateStructAsClass
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  StructAsClass * arg
+// Argument:  StructAsClass *arg
 // Statement: f_inout_shadow*
 // ----------------------------------------
 // Argument:  long inew

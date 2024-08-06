@@ -48,23 +48,23 @@ struct s_STR_cstruct1 {
 
 typedef struct s_STR_cstruct_ptr STR_cstruct_ptr;
 struct s_STR_cstruct_ptr {
-    char * cfield;
-    const double * const_dvalue;
+    char *cfield;
+    const double *const_dvalue;
 };
 
 typedef struct s_STR_cstruct_list STR_cstruct_list;
 struct s_STR_cstruct_list {
     int nitems;
-    int * ivalue;
-    double * dvalue;
-    char * * svalue;
+    int *ivalue;
+    double *dvalue;
+    char **svalue;
 };
 
 typedef struct s_STR_cstruct_numpy STR_cstruct_numpy;
 struct s_STR_cstruct_numpy {
     int nitems;
-    int * ivalue;
-    double * dvalue;
+    int *ivalue;
+    double *dvalue;
 };
 
 typedef struct s_STR_arrays1 STR_arrays1;
@@ -85,18 +85,18 @@ extern "C" {
 
 int STR_passStructByValue(STR_cstruct1 arg);
 
-int STR_passStruct1(const STR_cstruct1 * arg);
+int STR_passStruct1(const STR_cstruct1 *arg);
 
-int STR_passStruct2(const STR_cstruct1 * s1, char * outbuf);
+int STR_passStruct2(const STR_cstruct1 *s1, char *outbuf);
 
-int STR_passStruct2_bufferify(const STR_cstruct1 * s1, char *outbuf,
+int STR_passStruct2_bufferify(const STR_cstruct1 *s1, char *outbuf,
     int SHT_outbuf_len);
 
-int STR_acceptStructInPtr(STR_cstruct1 * arg);
+int STR_acceptStructInPtr(STR_cstruct1 *arg);
 
-void STR_acceptStructOutPtr(STR_cstruct1 * arg, int i, double d);
+void STR_acceptStructOutPtr(STR_cstruct1 *arg, int i, double d);
 
-void STR_acceptStructInOutPtr(STR_cstruct1 * arg);
+void STR_acceptStructInOutPtr(STR_cstruct1 *arg);
 
 void STR_returnStructByValue(int i, double d, STR_cstruct1 *SHC_rv);
 
@@ -105,7 +105,7 @@ STR_cstruct1 * STR_returnStructPtr1(int i, double d);
 void STR_returnStructPtr1_bufferify(int i, double d,
     STR_SHROUD_array *SHT_rv_cdesc);
 
-STR_cstruct1 * STR_returnStructPtr2(int i, double d, char * outbuf);
+STR_cstruct1 * STR_returnStructPtr2(int i, double d, char *outbuf);
 
 void STR_returnStructPtr2_bufferify(int i, double d, char *outbuf,
     int SHT_outbuf_len, STR_SHROUD_array *SHT_rv_cdesc);
@@ -139,21 +139,21 @@ void STR_Return_Cstruct_as_subclass_args(int x, int y, int z,
     STR_Cstruct_as_subclass * SHC_rv);
 
 const double * STR_Cstruct_ptr_get_const_dvalue(
-    STR_cstruct_ptr * SH_this);
+    STR_cstruct_ptr *SH_this);
 
-void STR_Cstruct_ptr_set_const_dvalue(STR_cstruct_ptr * SH_this,
-    const double * val);
+void STR_Cstruct_ptr_set_const_dvalue(STR_cstruct_ptr *SH_this,
+    const double *val);
 
-void STR_Cstruct_list_get_ivalue(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_get_ivalue(STR_cstruct_list *SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
-void STR_Cstruct_list_set_ivalue(STR_cstruct_list * SH_this, int * val);
+void STR_Cstruct_list_set_ivalue(STR_cstruct_list *SH_this, int *val);
 
-void STR_Cstruct_list_get_dvalue(STR_cstruct_list * SH_this,
+void STR_Cstruct_list_get_dvalue(STR_cstruct_list *SH_this,
     STR_SHROUD_array *SHT_rv_cdesc);
 
-void STR_Cstruct_list_set_dvalue(STR_cstruct_list * SH_this,
-    double * val);
+void STR_Cstruct_list_set_dvalue(STR_cstruct_list *SH_this,
+    double *val);
 
 #ifdef __cplusplus
 }

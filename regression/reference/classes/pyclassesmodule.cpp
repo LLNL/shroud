@@ -115,7 +115,7 @@ PY_passClassByValue(
 // Function:  int useclass
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const Class1 * arg
+// Argument:  const Class1 *arg
 // Statement: py_in_shadow*
 static char PY_useclass__doc__[] =
 "documentation"
@@ -151,7 +151,7 @@ PY_useclass(
 }
 
 // ----------------------------------------
-// Function:  Class1 * getclass3
+// Function:  Class1 *getclass3
 // Statement: py_function_shadow*
 static char PY_getclass3__doc__[] =
 "documentation"
@@ -168,7 +168,7 @@ PY_getclass3(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.getclass3
-    classes::Class1 * SHCXX_rv = classes::getclass3();
+    classes::Class1 *SHCXX_rv = classes::getclass3();
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
@@ -179,7 +179,7 @@ PY_getclass3(
 }
 
 // ----------------------------------------
-// Function:  Class1 & getClassReference
+// Function:  Class1 &getClassReference
 // Statement: py_function_shadow&
 static char PY_getClassReference__doc__[] =
 "documentation"
@@ -192,7 +192,7 @@ PY_getClassReference(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.getClassReference
-    classes::Class1 & SHCXX_rv = classes::getClassReference();
+    classes::Class1 &SHCXX_rv = classes::getClassReference();
 
     // post_call
     PY_Class1 * SHTPy_rv = PyObject_New(PY_Class1, &PY_Class1_Type);
@@ -259,7 +259,7 @@ PY_get_global_flag(
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: py_function_string&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
@@ -274,7 +274,7 @@ PY_LastFunctionCalled(
 // splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = classes::LastFunctionCalled();
+    const std::string &SHCXX_rv = classes::LastFunctionCalled();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

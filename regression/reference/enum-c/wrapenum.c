@@ -50,9 +50,9 @@ short ENU_returnEnum_bufferify(short in)
 // Function:  void returnEnumOutArg
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  enum Color * out +intent(out)
+// Argument:  enum Color *out +intent(out)
 // Statement: f_out_enum*
-void ENU_returnEnumOutArg_bufferify(short * out)
+void ENU_returnEnumOutArg_bufferify(short *out)
 {
     // splicer begin function.returnEnumOutArg_bufferify
     enum Color SHC_out_cxx;
@@ -65,9 +65,9 @@ void ENU_returnEnumOutArg_bufferify(short * out)
 // Function:  enum Color returnEnumInOutArg
 // Statement: f_function_enum
 // ----------------------------------------
-// Argument:  enum Color * inout +intent(inout)
+// Argument:  enum Color *inout +intent(inout)
 // Statement: f_inout_enum*
-short ENU_returnEnumInOutArg_bufferify(short * inout)
+short ENU_returnEnumInOutArg_bufferify(short *inout)
 {
     // splicer begin function.returnEnumInOutArg_bufferify
     enum Color SHC_inout_cxx = (enum Color) *inout;

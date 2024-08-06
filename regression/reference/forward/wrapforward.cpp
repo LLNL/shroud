@@ -24,9 +24,9 @@ extern "C" {
 // Function:  int passStruct1
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  const Cstruct1 * arg
+// Argument:  const Cstruct1 *arg
 // Statement: c_in_struct*
-int FOR_passStruct1(const Cstruct1 * arg)
+int FOR_passStruct1(const Cstruct1 *arg)
 {
     // splicer begin function.passStruct1
     int SHC_rv = forward::passStruct1(arg);

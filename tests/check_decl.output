@@ -1213,40 +1213,40 @@ ns::name:
 XXXXXXXXXXXXXXXXXXXX
 # declstr language=c
 XXXX CODE
-int fun1(int arg1, int *arg2, const int *arg3);
+int fun1(int arg1, int *arg2, const int **arg3);
 int callback1(int in, int (*incr)(int));
 XXXX PRINT
 0 int
-   fun1(int arg1, int *arg2, const int *arg3)
+   fun1(int arg1, int *arg2, const int **arg3)
 XXXX DeclStr
-     gen_decl: 0 int fun1(int arg1, int * arg2, const int * arg3)
+     gen_decl: 0 int fun1(int arg1, int *arg2, const int **arg3)
      as_c    : 0 int fun1
      as_cxx  : 0 int fun1
      no params: int fun1
          gen_decl: 0 int arg1
          as_c    : 0 int arg1
          as_cxx  : 0 int arg1
-         gen_decl: 1 int * arg2
-         as_c    : 1 int * arg2
-         as_cxx  : 1 int * arg2
-         gen_decl: 2 const int * arg3
-         as_c    : 2 const int * arg3
-         as_cxx  : 2 const int * arg3
+         gen_decl: 1 int *arg2
+         as_c    : 1 int *arg2
+         as_cxx  : 1 int *arg2
+         gen_decl: 2 const int **arg3
+         as_c    : 2 const int **arg3
+         as_cxx  : 2 const int **arg3
 1 int
    callback1(int in, int (*incr)(int))
 XXXX DeclStr
-     gen_decl: 1 int callback1(int in, int ( * incr)(int))
+     gen_decl: 1 int callback1(int in, int (*incr)(int))
      as_c    : 1 int callback1
      as_cxx  : 1 int callback1
      no params: int callback1
          gen_decl: 0 int in
          as_c    : 0 int in
          as_cxx  : 0 int in
-         gen_decl: 1 int ( * incr)(int)
-         as_c    : 1 int ( * incr)(int)
-         as_cxx  : 1 int ( * incr)(int)
+         gen_decl: 1 int (*incr)(int)
+         as_c    : 1 int (*incr)(int)
+         as_cxx  : 1 int (*incr)(int)
 XXXX PRINT_NODE
-int fun1(int arg1, int *arg2, const int *arg3);
+int fun1(int arg1, int *arg2, const int **arg3);
 int callback1(int in, int (*incr)(int));
 
 XXXX AST
@@ -1276,6 +1276,7 @@ stmts:
       declarator:
         name: arg3
         pointer:
+        - ptr: '*'
         - ptr: '*'
         typemap_name: int
       specifier:
@@ -1336,32 +1337,32 @@ XXXX PRINT
 0 int
    fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3)
 XXXX DeclStr
-     gen_decl: 0 int fun1(std::vector<int> arg1, std::vector<int> * arg2, std::vector<int> & arg3)
+     gen_decl: 0 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3)
      as_c    : 0 int fun1
      as_cxx  : 0 int fun1
      no params: int fun1
          gen_decl: 0 std::vector<int> arg1
          as_c    : 0 int arg1
          as_cxx  : 0 int arg1
-         gen_decl: 1 std::vector<int> * arg2
-         as_c    : 1 int * arg2
-         as_cxx  : 1 int * arg2
-         gen_decl: 2 std::vector<int> & arg3
-         as_c    : 2 int * arg3
-         as_cxx  : 2 int & arg3
+         gen_decl: 1 std::vector<int> *arg2
+         as_c    : 1 int *arg2
+         as_cxx  : 1 int *arg2
+         gen_decl: 2 std::vector<int> &arg3
+         as_c    : 2 int *arg3
+         as_cxx  : 2 int &arg3
 1 int
    callback1(int in, int (*incr)(int))
 XXXX DeclStr
-     gen_decl: 1 int callback1(int in, int ( * incr)(int))
+     gen_decl: 1 int callback1(int in, int (*incr)(int))
      as_c    : 1 int callback1
      as_cxx  : 1 int callback1
      no params: int callback1
          gen_decl: 0 int in
          as_c    : 0 int in
          as_cxx  : 0 int in
-         gen_decl: 1 int ( * incr)(int)
-         as_c    : 1 int ( * incr)(int)
-         as_cxx  : 1 int ( * incr)(int)
+         gen_decl: 1 int (*incr)(int)
+         as_c    : 1 int (*incr)(int)
+         as_cxx  : 1 int (*incr)(int)
 XXXX PRINT_NODE
 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
 int callback1(int in, int (*incr)(int));

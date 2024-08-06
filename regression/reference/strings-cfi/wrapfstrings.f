@@ -77,10 +77,10 @@ module strings_mod
     ! Function:  void passCharPtr
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)
+    ! Argument:  char *dest +charlen(40)+intent(out)
     ! Statement: c_out_char*
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: c_in_char*
     ! start c_pass_char_ptr
     interface
@@ -98,10 +98,10 @@ module strings_mod
     ! Function:  void passCharPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)
+    ! Argument:  char *dest +charlen(40)+intent(out)
     ! Statement: f_out_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
     ! start pass_char_ptr
     interface
@@ -118,7 +118,7 @@ module strings_mod
     ! Function:  void passCharPtrInOut
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
+    ! Argument:  char *s +intent(inout)
     ! Statement: c_inout_char*
     interface
         subroutine c_pass_char_ptr_in_out(s) &
@@ -133,7 +133,7 @@ module strings_mod
     ! Function:  void passCharPtrInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
+    ! Argument:  char *s +intent(inout)
     ! Statement: f_inout_char*_cfi
     interface
         subroutine pass_char_ptr_in_out(s) &
@@ -144,7 +144,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr1
+    ! Function:  const char *getCharPtr1
     ! Statement: c_function_char*
     ! start c_get_char_ptr1
     interface
@@ -159,7 +159,7 @@ module strings_mod
     ! end c_get_char_ptr1
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr1
+    ! Function:  const char *getCharPtr1
     ! Statement: f_function_char*_cfi_allocatable
     ! start c_get_char_ptr1_CFI
     interface
@@ -172,7 +172,7 @@ module strings_mod
     ! end c_get_char_ptr1_CFI
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr2 +len(30)
+    ! Function:  const char *getCharPtr2 +len(30)
     ! Statement: c_function_char*
     ! start c_get_char_ptr2
     interface
@@ -187,7 +187,7 @@ module strings_mod
     ! end c_get_char_ptr2
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr2 +len(30)
+    ! Function:  const char *getCharPtr2 +len(30)
     ! Statement: f_function_char*_cfi_copy
     ! start c_get_char_ptr2_CFI
     interface
@@ -200,7 +200,7 @@ module strings_mod
     ! end c_get_char_ptr2_CFI
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr3
+    ! Function:  const char *getCharPtr3
     ! Statement: c_function_char*
     ! start c_get_char_ptr3
     interface
@@ -215,7 +215,7 @@ module strings_mod
     ! end c_get_char_ptr3
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr3
+    ! Function:  const char *getCharPtr3
     ! Statement: f_function_char*_cfi_arg
     ! start c_get_char_ptr3_CFI
     interface
@@ -228,7 +228,7 @@ module strings_mod
     ! end c_get_char_ptr3_CFI
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr4 +deref(raw)
+    ! Function:  const char *getCharPtr4 +deref(raw)
     ! Statement: f_function_char*_raw
     interface
         function get_char_ptr4() &
@@ -242,7 +242,7 @@ module strings_mod
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr5 +deref(pointer)
+    ! Function:  const char *getCharPtr5 +deref(pointer)
     ! Statement: c_function_char*
     interface
         function c_get_char_ptr5() &
@@ -257,7 +257,7 @@ module strings_mod
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr5 +deref(pointer)
+    ! Function:  const char *getCharPtr5 +deref(pointer)
     ! Statement: f_function_char*_cfi_pointer
     interface
         subroutine c_get_char_ptr5_CFI(SHT_rv) &
@@ -377,7 +377,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefPure
+    ! Function:  const string &getConstStringRefPure
     ! Statement: c_function_string&
     ! start c_get_const_string_ref_pure
     interface
@@ -392,7 +392,7 @@ module strings_mod
     ! end c_get_const_string_ref_pure
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefPure
+    ! Function:  const string &getConstStringRefPure
     ! Statement: f_function_string&_cfi_allocatable
     ! start c_get_const_string_ref_pure_CFI
     interface
@@ -405,7 +405,7 @@ module strings_mod
     ! end c_get_const_string_ref_pure_CFI
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLen +len(30)
+    ! Function:  const string &getConstStringRefLen +len(30)
     ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_len() &
@@ -418,7 +418,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLen +len(30)
+    ! Function:  const string &getConstStringRefLen +len(30)
     ! Statement: f_function_string&_cfi_copy
     interface
         subroutine c_get_const_string_ref_len_CFI(SHT_rv) &
@@ -429,7 +429,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefAsArg
+    ! Function:  const string &getConstStringRefAsArg
     ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_as_arg() &
@@ -442,7 +442,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefAsArg
+    ! Function:  const string &getConstStringRefAsArg
     ! Statement: f_function_string&_cfi_arg
     interface
         subroutine c_get_const_string_ref_as_arg_CFI(output) &
@@ -453,7 +453,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLenEmpty +len(30)
+    ! Function:  const string &getConstStringRefLenEmpty +len(30)
     ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_len_empty() &
@@ -466,7 +466,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLenEmpty +len(30)
+    ! Function:  const string &getConstStringRefLenEmpty +len(30)
     ! Statement: f_function_string&_cfi_copy
     interface
         subroutine c_get_const_string_ref_len_empty_CFI(SHT_rv) &
@@ -477,7 +477,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string & getConstStringRefAlloc
+    ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: c_function_string&
     interface
         function c_get_const_string_ref_alloc() &
@@ -490,7 +490,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string & getConstStringRefAlloc
+    ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cfi_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_CFI(SHT_rv) &
@@ -501,7 +501,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string * getConstStringPtrLen +len(30)
+    ! Function:  const string *getConstStringPtrLen +len(30)
     ! Statement: c_function_string*
     interface
         function c_get_const_string_ptr_len() &
@@ -514,7 +514,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string * getConstStringPtrLen +len(30)
+    ! Function:  const string *getConstStringPtrLen +len(30)
     ! Statement: f_function_string*_cfi_copy
     interface
         subroutine c_get_const_string_ptr_len_CFI(SHT_rv) &
@@ -525,7 +525,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Function:  const std::string *getConstStringPtrAlloc +owner(library)
     ! Statement: c_function_string*_library
     interface
         function c_get_const_string_ptr_alloc() &
@@ -538,7 +538,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Function:  const std::string *getConstStringPtrAlloc +owner(library)
     ! Statement: f_function_string*_cfi_allocatable_library
     interface
         subroutine c_get_const_string_ptr_alloc_CFI(SHT_rv) &
@@ -549,7 +549,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAlloc +owner(caller)
     ! Statement: c_function_string*_caller
     interface
         function c_get_const_string_ptr_owns_alloc() &
@@ -562,7 +562,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAlloc +owner(caller)
     ! Statement: f_function_string*_cfi_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_CFI(SHT_rv) &
@@ -573,7 +573,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Statement: c_function_string*_caller
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
@@ -586,7 +586,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Statement: f_function_string*_cfi_allocatable_caller
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_CFI(SHT_rv) &
@@ -598,7 +598,7 @@ module strings_mod
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+    ! Function:  const std::string *getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Statement: c_function_string*_library
     interface
         function c_get_const_string_ptr_pointer() &
@@ -613,7 +613,7 @@ module strings_mod
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+    ! Function:  const std::string *getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Statement: f_function_string*_cfi_pointer_library
     interface
         subroutine c_get_const_string_ptr_pointer_CFI(SHT_rv) &
@@ -628,7 +628,7 @@ module strings_mod
     ! Function:  void acceptStringConstReference
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1
+    ! Argument:  const std::string &arg1
     ! Statement: c_in_string&
     interface
         subroutine c_accept_string_const_reference(arg1) &
@@ -643,7 +643,7 @@ module strings_mod
     ! Function:  void acceptStringConstReference
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1
+    ! Argument:  const std::string &arg1
     ! Statement: f_in_string&_cfi
     interface
         subroutine accept_string_const_reference(arg1) &
@@ -657,7 +657,7 @@ module strings_mod
     ! Function:  void acceptStringReferenceOut
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)
+    ! Argument:  std::string &arg1 +intent(out)
     ! Statement: c_out_string&
     interface
         subroutine c_accept_string_reference_out(arg1) &
@@ -672,7 +672,7 @@ module strings_mod
     ! Function:  void acceptStringReferenceOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)
+    ! Argument:  std::string &arg1 +intent(out)
     ! Statement: f_out_string&_cfi
     interface
         subroutine accept_string_reference_out(arg1) &
@@ -686,7 +686,7 @@ module strings_mod
     ! Function:  void acceptStringReference
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1
+    ! Argument:  std::string &arg1
     ! Statement: c_inout_string&
     ! start c_accept_string_reference
     interface
@@ -703,7 +703,7 @@ module strings_mod
     ! Function:  void acceptStringReference
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1
+    ! Argument:  std::string &arg1
     ! Statement: f_inout_string&_cfi
     ! start accept_string_reference
     interface
@@ -719,7 +719,7 @@ module strings_mod
     ! Function:  void acceptStringPointerConst
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string * arg1
+    ! Argument:  const std::string *arg1
     ! Statement: c_in_string*
     interface
         subroutine c_accept_string_pointer_const(arg1) &
@@ -734,7 +734,7 @@ module strings_mod
     ! Function:  void acceptStringPointerConst
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string * arg1
+    ! Argument:  const std::string *arg1
     ! Statement: f_in_string*_cfi
     interface
         subroutine accept_string_pointer_const(arg1) &
@@ -748,7 +748,7 @@ module strings_mod
     ! Function:  void acceptStringPointer
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1
+    ! Argument:  std::string *arg1
     ! Statement: c_inout_string*
     interface
         subroutine c_accept_string_pointer(arg1) &
@@ -763,7 +763,7 @@ module strings_mod
     ! Function:  void acceptStringPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1
+    ! Argument:  std::string *arg1
     ! Statement: f_inout_string*_cfi
     interface
         subroutine accept_string_pointer(arg1) &
@@ -777,7 +777,7 @@ module strings_mod
     ! Function:  void fetchStringPointer
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
+    ! Argument:  std::string *arg1 +intent(out)
     ! Statement: c_out_string*
     interface
         subroutine c_fetch_string_pointer(arg1) &
@@ -792,7 +792,7 @@ module strings_mod
     ! Function:  void fetchStringPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
+    ! Argument:  std::string *arg1 +intent(out)
     ! Statement: f_out_string*_cfi
     interface
         subroutine fetch_string_pointer(arg1) &
@@ -806,10 +806,10 @@ module strings_mod
     ! Function:  void acceptStringPointerLen
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1
+    ! Argument:  std::string *arg1
     ! Statement: c_inout_string*
     ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
+    ! Argument:  int *nlen +intent(out)
     ! Statement: c_out_native*
     interface
         subroutine c_accept_string_pointer_len(arg1, nlen) &
@@ -825,10 +825,10 @@ module strings_mod
     ! Function:  void acceptStringPointerLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1
+    ! Argument:  std::string *arg1
     ! Statement: f_inout_string*_cfi
     ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
+    ! Argument:  int *nlen +intent(out)
     ! Statement: f_out_native*
     interface
         subroutine accept_string_pointer_len(arg1, nlen) &
@@ -844,10 +844,10 @@ module strings_mod
     ! Function:  void fetchStringPointerLen
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
+    ! Argument:  std::string *arg1 +intent(out)
     ! Statement: c_out_string*
     ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
+    ! Argument:  int *nlen +intent(out)
     ! Statement: c_out_native*
     interface
         subroutine c_fetch_string_pointer_len(arg1, nlen) &
@@ -863,10 +863,10 @@ module strings_mod
     ! Function:  void fetchStringPointerLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
+    ! Argument:  std::string *arg1 +intent(out)
     ! Statement: f_out_string*_cfi
     ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
+    ! Argument:  int *nlen +intent(out)
     ! Statement: f_out_native*
     interface
         subroutine fetch_string_pointer_len(arg1, nlen) &
@@ -918,10 +918,10 @@ module strings_mod
     ! Function:  void fetchArrayStringArg
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Argument:  std::string **strs +dimension(nstrs)+intent(out)
     ! Statement: c_out_string**
     ! ----------------------------------------
-    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Argument:  int *nstrs +hidden+intent(out)
     ! Statement: c_out_native*
     interface
         subroutine c_fetch_array_string_arg(strs, nstrs) &
@@ -938,7 +938,7 @@ module strings_mod
     ! Function:  void fetchArrayStringArg
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Argument:  std::string **strs +dimension(nstrs)+intent(out)
     ! Statement: f_out_string**_cfi_copy
     interface
         subroutine fetch_array_string_arg(strs) &
@@ -954,10 +954,10 @@ module strings_mod
     ! Function:  void fetchArrayStringAlloc
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+    ! Argument:  std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Statement: c_out_string**
     ! ----------------------------------------
-    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Argument:  int *nstrs +hidden+intent(out)
     ! Statement: c_out_native*
     interface
         subroutine c_fetch_array_string_alloc(strs, nstrs) &
@@ -974,7 +974,7 @@ module strings_mod
     ! Function:  void fetchArrayStringAlloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+    ! Argument:  std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Statement: f_out_string**_cfi_allocatable
     interface
         subroutine fetch_array_string_alloc(strs) &
@@ -990,10 +990,10 @@ module strings_mod
     ! Function:  void fetchArrayStringAllocLen
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
+    ! Argument:  std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Statement: c_out_string**
     ! ----------------------------------------
-    ! Argument:  int * nstrs +hidden+intent(out)
+    ! Argument:  int *nstrs +hidden+intent(out)
     ! Statement: c_out_native*
     interface
         subroutine c_fetch_array_string_alloc_len(strs, nstrs) &
@@ -1010,7 +1010,7 @@ module strings_mod
     ! Function:  void fetchArrayStringAllocLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
+    ! Argument:  std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Statement: f_out_string**_cfi_allocatable
     interface
         subroutine fetch_array_string_alloc_len(strs) &
@@ -1024,7 +1024,7 @@ module strings_mod
     ! Function:  void explicit1
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(in)+len_trim(AAlen)
+    ! Argument:  char *name +intent(in)+len_trim(AAlen)
     ! Statement: c_in_char*
     interface
         subroutine c_explicit1(name) &
@@ -1039,7 +1039,7 @@ module strings_mod
     ! Function:  void explicit1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(in)+len_trim(AAlen)
+    ! Argument:  char *name +intent(in)+len_trim(AAlen)
     ! Statement: f_in_char*_cfi
     interface
         subroutine explicit1(name) &
@@ -1053,7 +1053,7 @@ module strings_mod
     ! Function:  void explicit2
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(out)+len(AAtrim)
+    ! Argument:  char *name +intent(out)+len(AAtrim)
     ! Statement: c_out_char*
     interface
         subroutine c_explicit2(name) &
@@ -1068,7 +1068,7 @@ module strings_mod
     ! Function:  void explicit2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(out)+len(AAtrim)
+    ! Argument:  char *name +intent(out)+len(AAtrim)
     ! Statement: f_out_char*_cfi
     interface
         subroutine explicit2(name) &
@@ -1109,10 +1109,10 @@ module strings_mod
     ! Function:  void CpassCharPtr
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char *dest +intent(out)
     ! Statement: c_out_char*
     ! ----------------------------------------
-    ! Argument:  const char * src +blanknull
+    ! Argument:  const char *src +blanknull
     ! Statement: c_in_char*
     interface
         subroutine c_cpass_char_ptr(dest, src) &
@@ -1128,10 +1128,10 @@ module strings_mod
     ! Function:  void CpassCharPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char *dest +intent(out)
     ! Statement: f_out_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +blanknull
+    ! Argument:  const char *src +blanknull
     ! Statement: f_in_char*_cfi
     interface
         subroutine cpass_char_ptr(dest, src) &
@@ -1146,10 +1146,10 @@ module strings_mod
     ! Function:  void CpassCharPtrBlank
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char *dest +intent(out)
     ! Statement: c_out_char*
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: c_in_char*
     interface
         subroutine c_cpass_char_ptr_blank(dest, src) &
@@ -1165,10 +1165,10 @@ module strings_mod
     ! Function:  void CpassCharPtrBlank
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char *dest +intent(out)
     ! Statement: f_out_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
     interface
         subroutine cpass_char_ptr_blank(dest, src) &
@@ -1183,10 +1183,10 @@ module strings_mod
     ! Function:  void PostDeclare
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  int * count +intent(in)+rank(1)
+    ! Argument:  int *count +intent(in)+rank(1)
     ! Statement: c_in_native*
     ! ----------------------------------------
-    ! Argument:  std::string & name
+    ! Argument:  std::string &name
     ! Statement: c_inout_string&
     interface
         subroutine c_post_declare(count, name) &
@@ -1202,10 +1202,10 @@ module strings_mod
     ! Function:  void PostDeclare
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * count +intent(in)+rank(1)
+    ! Argument:  int *count +intent(in)+rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
-    ! Argument:  std::string & name
+    ! Argument:  std::string &name
     ! Statement: f_inout_string&_cfi
     interface
         subroutine post_declare(count, name) &
@@ -1221,7 +1221,7 @@ module strings_mod
     ! Function:  int CpassCharPtrNotrim
     ! Statement: c_function_native
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: c_in_char*
     interface
         function c_cpass_char_ptr_notrim(src) &
@@ -1238,7 +1238,7 @@ module strings_mod
     ! Function:  int CpassCharPtrNotrim
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
     interface
         function cpass_char_ptr_notrim(src) &
@@ -1255,10 +1255,10 @@ module strings_mod
     ! Function:  int CpassCharPtrCAPI
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  void * addr
+    ! Argument:  void *addr
     ! Statement: f_in_void*
     ! ----------------------------------------
-    ! Argument:  const char * src +api(capi)
+    ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
     interface
         function cpass_char_ptr_capi(addr, src) &
@@ -1276,10 +1276,10 @@ module strings_mod
     ! Function:  int CpassCharPtrCAPI2
     ! Statement: c_function_native
     ! ----------------------------------------
-    ! Argument:  const char * in
+    ! Argument:  const char *in
     ! Statement: c_in_char*
     ! ----------------------------------------
-    ! Argument:  const char * src +api(capi)
+    ! Argument:  const char *src +api(capi)
     ! Statement: c_in_char*
     interface
         function c_cpass_char_ptr_capi2(in, src) &
@@ -1297,10 +1297,10 @@ module strings_mod
     ! Function:  int CpassCharPtrCAPI2
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * in
+    ! Argument:  const char *in
     ! Statement: f_in_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +api(capi)
+    ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
     interface
         function cpass_char_ptr_capi2(in, src) &
@@ -1389,10 +1389,10 @@ contains
     ! Function:  void passCharPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)
+    ! Argument:  char *dest +charlen(40)+intent(out)
     ! Statement: f_out_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
     !>
     !! \brief strcpy like behavior
@@ -1418,7 +1418,7 @@ contains
     ! Function:  void passCharPtrInOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
+    ! Argument:  char *s +intent(inout)
     ! Statement: f_inout_char*_cfi
     !>
     !! \brief toupper
@@ -1435,7 +1435,7 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr1
+    ! Function:  const char *getCharPtr1
     ! Statement: f_function_char*_cfi_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
@@ -1452,7 +1452,7 @@ contains
     ! end get_char_ptr1
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr2 +len(30)
+    ! Function:  const char *getCharPtr2 +len(30)
     ! Statement: f_function_char*_cfi_copy
     !>
     !! \brief return 'const char *' with fixed size (len=30)
@@ -1469,7 +1469,7 @@ contains
     ! end get_char_ptr2
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr3
+    ! Function:  const char *getCharPtr3
     ! Statement: f_function_char*_cfi_arg
     !>
     !! \brief return a 'const char *' as argument
@@ -1487,7 +1487,7 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr4 +deref(raw)
+    ! Function:  const char *getCharPtr4 +deref(raw)
     ! Statement: f_function_char*_raw
     !>
     !! \brief return a 'const char *' as type(C_PTR)
@@ -1504,7 +1504,7 @@ contains
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr5 +deref(pointer)
+    ! Function:  const char *getCharPtr5 +deref(pointer)
     ! Statement: f_function_char*_cfi_pointer
     !>
     !! \brief return a 'const char *' as character(:) pointer
@@ -1575,7 +1575,7 @@ contains
     end function get_const_string_alloc
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefPure
+    ! Function:  const string &getConstStringRefPure
     ! Statement: f_function_string&_cfi_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
@@ -1592,7 +1592,7 @@ contains
     ! end get_const_string_ref_pure
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLen +len(30)
+    ! Function:  const string &getConstStringRefLen +len(30)
     ! Statement: f_function_string&_cfi_copy
     !>
     !! \brief return 'const string&' with fixed size (len=30)
@@ -1610,7 +1610,7 @@ contains
     end function get_const_string_ref_len
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefAsArg
+    ! Function:  const string &getConstStringRefAsArg
     ! Statement: f_function_string&_cfi_arg
     !>
     !! \brief return a 'const string&' as argument
@@ -1626,7 +1626,7 @@ contains
     end subroutine get_const_string_ref_as_arg
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLenEmpty +len(30)
+    ! Function:  const string &getConstStringRefLenEmpty +len(30)
     ! Statement: f_function_string&_cfi_copy
     !>
     !! \brief Test returning empty string reference
@@ -1641,7 +1641,7 @@ contains
     end function get_const_string_ref_len_empty
 
     ! ----------------------------------------
-    ! Function:  const std::string & getConstStringRefAlloc
+    ! Function:  const std::string &getConstStringRefAlloc
     ! Statement: f_function_string&_cfi_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
@@ -1652,7 +1652,7 @@ contains
     end function get_const_string_ref_alloc
 
     ! ----------------------------------------
-    ! Function:  const string * getConstStringPtrLen +len(30)
+    ! Function:  const string *getConstStringPtrLen +len(30)
     ! Statement: f_function_string*_cfi_copy
     !>
     !! \brief return a 'const string *' as character(30)
@@ -1671,7 +1671,7 @@ contains
     end function get_const_string_ptr_len
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Function:  const std::string *getConstStringPtrAlloc +owner(library)
     ! Statement: f_function_string*_cfi_allocatable_library
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
@@ -1682,7 +1682,7 @@ contains
     end function get_const_string_ptr_alloc
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAlloc +owner(caller)
     ! Statement: f_function_string*_cfi_allocatable_caller
     !>
     !! It is the caller's responsibility to release the string
@@ -1700,7 +1700,7 @@ contains
     end function get_const_string_ptr_owns_alloc
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string *getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Statement: f_function_string*_cfi_allocatable_caller
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
@@ -1715,7 +1715,7 @@ contains
 
 #ifdef HAVE_CHARACTER_POINTER_FUNCTION
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrPointer +deref(pointer)+owner(library)
+    ! Function:  const std::string *getConstStringPtrPointer +deref(pointer)+owner(library)
     ! Statement: f_function_string*_cfi_pointer_library
     function get_const_string_ptr_pointer() &
             result(SHT_rv)
@@ -1732,7 +1732,7 @@ contains
     ! Function:  void acceptStringConstReference
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1
+    ! Argument:  const std::string &arg1
     ! Statement: f_in_string&_cfi
     !>
     !! \brief Accept a const string reference
@@ -1755,7 +1755,7 @@ contains
     ! Function:  void acceptStringReferenceOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)
+    ! Argument:  std::string &arg1 +intent(out)
     ! Statement: f_out_string&_cfi
     !>
     !! \brief Accept a string reference
@@ -1778,7 +1778,7 @@ contains
     ! Function:  void acceptStringReference
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & arg1
+    ! Argument:  std::string &arg1
     ! Statement: f_inout_string&_cfi
     !>
     !! \brief Accept a string reference
@@ -1803,7 +1803,7 @@ contains
     ! Function:  void acceptStringPointerConst
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const std::string * arg1
+    ! Argument:  const std::string *arg1
     ! Statement: f_in_string*_cfi
     !>
     !! \brief Accept a const string pointer - intent(in)
@@ -1823,7 +1823,7 @@ contains
     ! Function:  void acceptStringPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1
+    ! Argument:  std::string *arg1
     ! Statement: f_inout_string*_cfi
     !>
     !! \brief Accept a string pointer - intent(inout)
@@ -1843,7 +1843,7 @@ contains
     ! Function:  void fetchStringPointer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
+    ! Argument:  std::string *arg1 +intent(out)
     ! Statement: f_out_string*_cfi
     !>
     !! \brief Accept a string pointer - intent(out)
@@ -1864,10 +1864,10 @@ contains
     ! Function:  void acceptStringPointerLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1
+    ! Argument:  std::string *arg1
     ! Statement: f_inout_string*_cfi
     ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
+    ! Argument:  int *nlen +intent(out)
     ! Statement: f_out_native*
     !>
     !! \brief Accept a string pointer - intent(inout)
@@ -1891,10 +1891,10 @@ contains
     ! Function:  void fetchStringPointerLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
+    ! Argument:  std::string *arg1 +intent(out)
     ! Statement: f_out_string*_cfi
     ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
+    ! Argument:  int *nlen +intent(out)
     ! Statement: f_out_native*
     !>
     !! \brief Accept a string pointer - intent(out)
@@ -1942,7 +1942,7 @@ contains
     ! Function:  void fetchArrayStringArg
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +dimension(nstrs)+intent(out)
+    ! Argument:  std::string **strs +dimension(nstrs)+intent(out)
     ! Statement: f_out_string**_cfi_copy
     !>
     !! Copy output into argument strs which must be large enough
@@ -1965,7 +1965,7 @@ contains
     ! Function:  void fetchArrayStringAlloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)
+    ! Argument:  std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)
     ! Statement: f_out_string**_cfi_allocatable
     !>
     !! Copy output into argument strs which must be large enough
@@ -1989,7 +1989,7 @@ contains
     ! Function:  void fetchArrayStringAllocLen
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string * * strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
+    ! Argument:  std::string **strs +deref(allocatable)+dimension(nstrs)+intent(out)+len(20)
     ! Statement: f_out_string**_cfi_allocatable
     !>
     !! Copy output into argument strs which must be large enough
@@ -2013,7 +2013,7 @@ contains
     ! Function:  void explicit1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(in)+len_trim(AAlen)
+    ! Argument:  char *name +intent(in)+len_trim(AAlen)
     ! Statement: f_in_char*_cfi
     subroutine explicit1(name)
         character(len=*), intent(IN) :: name
@@ -2029,7 +2029,7 @@ contains
     ! Function:  void explicit2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +intent(out)+len(AAtrim)
+    ! Argument:  char *name +intent(out)+len(AAtrim)
     ! Statement: f_out_char*_cfi
     subroutine explicit2(name)
         character(len=*), intent(OUT) :: name
@@ -2080,10 +2080,10 @@ contains
     ! Function:  void CpassCharPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char *dest +intent(out)
     ! Statement: f_out_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +blanknull
+    ! Argument:  const char *src +blanknull
     ! Statement: f_in_char*_cfi
     !>
     !! \brief strcpy like behavior
@@ -2108,10 +2108,10 @@ contains
     ! Function:  void CpassCharPtrBlank
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char *dest +intent(out)
     ! Statement: f_out_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
     !>
     !! \brief Test F_blanknull option
@@ -2132,10 +2132,10 @@ contains
     ! Function:  void PostDeclare
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * count +intent(in)+rank(1)
+    ! Argument:  int *count +intent(in)+rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
-    ! Argument:  std::string & name
+    ! Argument:  std::string &name
     ! Statement: f_inout_string&_cfi
     !>
     !! Test post_declare.
@@ -2159,7 +2159,7 @@ contains
     ! Function:  int CpassCharPtrNotrim
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * src
+    ! Argument:  const char *src
     ! Statement: f_in_char*_cfi
     !>
     !! \brief NULL terminate input string in C, not in Fortran.
@@ -2182,10 +2182,10 @@ contains
     ! Function:  int CpassCharPtrCAPI
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  void * addr
+    ! Argument:  void *addr
     ! Statement: f_in_void*
     ! ----------------------------------------
-    ! Argument:  const char * src +api(capi)
+    ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
     !>
     !! \brief Do not NULL terminate input string
@@ -2217,10 +2217,10 @@ contains
     ! Function:  int CpassCharPtrCAPI2
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const char * in
+    ! Argument:  const char *in
     ! Statement: f_in_char*_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +api(capi)
+    ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi
     !>
     !! \brief Mix api(buf) and api(capi)

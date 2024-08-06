@@ -46,13 +46,13 @@ struct s_CXX_cstruct1 {
 extern "C" {
 #endif
 
-int CXX_structns_passStructByReference(CXX_cstruct1 * arg);
+int CXX_structns_passStructByReference(CXX_cstruct1 *arg);
 
-int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 * arg);
+int CXX_structns_passStructByReferenceIn(const CXX_cstruct1 *arg);
 
-void CXX_structns_passStructByReferenceInout(CXX_cstruct1 * arg);
+void CXX_structns_passStructByReferenceInout(CXX_cstruct1 *arg);
 
-void CXX_structns_passStructByReferenceOut(CXX_cstruct1 * arg);
+void CXX_structns_passStructByReferenceOut(CXX_cstruct1 *arg);
 
 #ifdef __cplusplus
 }

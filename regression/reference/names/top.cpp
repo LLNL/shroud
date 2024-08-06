@@ -88,9 +88,9 @@ static void ShroudCharFree(char *src)
 // Function:  void getName
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  char * name +len(worklen)+len_trim(worktrim)
+// Argument:  char *name +len(worklen)+len_trim(worktrim)
 // Statement: c_inout_char*
-void TES_getName(char * name)
+void TES_getName(char *name)
 {
     // splicer begin function.getName
     getName(name);
@@ -101,7 +101,7 @@ void TES_getName(char * name)
 // Function:  void getName
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  char * name +len(worklen)+len_trim(worktrim)
+// Argument:  char *name +len(worklen)+len_trim(worktrim)
 // Statement: f_inout_char*_buf
 void TES_getName_bufferify(char *name, int SHT_name_len)
 {
@@ -163,9 +163,9 @@ void YYY_TES_function3a_1(long i)
 // Function:  int function4
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  const std::string & rv
+// Argument:  const std::string &rv
 // Statement: c_in_string&
-int YYY_TES_function4(const char * rv)
+int YYY_TES_function4(const char *rv)
 {
     // splicer begin function.function4
     const std::string SHC_rv_cxx(rv);
@@ -178,7 +178,7 @@ int YYY_TES_function4(const char * rv)
 // Function:  int function4
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  const std::string & rv
+// Argument:  const std::string &rv
 // Statement: f_in_string&_buf
 int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len)
 {
@@ -206,12 +206,12 @@ void YYY_TES_fiveplus(void)
 // Function:  void TestMultilineSplicer
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::string & name
+// Argument:  std::string &name
 // Statement: c_inout_string&
 // ----------------------------------------
-// Argument:  int * value +intent(out)
+// Argument:  int *value +intent(out)
 // Statement: c_out_native*
-void TES_TestMultilineSplicer(char * name, int * value)
+void TES_TestMultilineSplicer(char *name, int *value)
 {
     // splicer begin function.TestMultilineSplicer
     // line 1
@@ -226,13 +226,13 @@ void TES_TestMultilineSplicer(char * name, int * value)
 // Function:  void TestMultilineSplicer
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::string & name
+// Argument:  std::string &name
 // Statement: f_inout_string&_buf
 // ----------------------------------------
-// Argument:  int * value +intent(out)
+// Argument:  int *value +intent(out)
 // Statement: f_out_native*
 void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
-    int * value)
+    int *value)
 {
     // splicer begin function.TestMultilineSplicer_bufferify
     // buf line 1
@@ -302,7 +302,7 @@ int TES_UseImplWorker_instantiation3(void)
 // Function:  int Cstruct_as_class_sum
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  const Cstruct_as_class * point +pass
+// Argument:  const Cstruct_as_class *point +pass
 // Statement: c_in_shadow*
 int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
@@ -318,27 +318,26 @@ int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point)
 // Function:  void external_funcs
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const char * rdbase
+// Argument:  const char *rdbase
 // Statement: c_in_char*
 // ----------------------------------------
-// Argument:  const char * pkg
+// Argument:  const char *pkg
 // Statement: c_in_char*
 // ----------------------------------------
-// Argument:  const char * name
+// Argument:  const char *name
 // Statement: c_in_char*
 // ----------------------------------------
-// Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
+// Argument:  void (*alloc)(double *arr +intent(inout), int *err +intent(out))
 // Statement: c_in_procedure
 // ----------------------------------------
-// Argument:  void ( * afree)(double * arr +intent(inout))
+// Argument:  void (*afree)(double *arr +intent(inout))
 // Statement: c_in_procedure
 // ----------------------------------------
-// Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
+// Argument:  void (*assoc)(double *arr +intent(in), int *err +intent(out))
 // Statement: c_in_procedure
-void TES_external_funcs(const char * rdbase, const char * pkg,
-    const char * name, void ( * alloc)(double * arr, int * err),
-    void ( * afree)(double * arr), void ( * assoc)(double * arr,
-    int * err))
+void TES_external_funcs(const char *rdbase, const char *pkg,
+    const char *name, void (*alloc)(double *arr, int *err),
+    void (*afree)(double *arr), void (*assoc)(double *arr, int *err))
 {
     // splicer begin function.external_funcs
     external_funcs(rdbase, pkg, name, alloc, afree, assoc);

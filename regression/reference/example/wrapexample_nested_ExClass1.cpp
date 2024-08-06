@@ -102,10 +102,10 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // Function:  ExClass1
 // Statement: c_ctor_shadow_capptr
 // ----------------------------------------
-// Argument:  const string * name
+// Argument:  const string *name
 // Statement: c_in_string*
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
-    const char * name, AA_example_nested_ExClass1 * SHC_rv)
+    const char *name, AA_example_nested_ExClass1 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
     const std::string SHC_name_cxx(name);
@@ -129,7 +129,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Function:  ExClass1
 // Statement: f_ctor_shadow_capptr
 // ----------------------------------------
-// Argument:  const string * name
+// Argument:  const string *name
 // Statement: f_in_string*_buf
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     char *name, int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv)
@@ -181,7 +181,7 @@ int AA_example_nested_ExClass1_incrementCount(
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorCheck
+// Function:  const string &getNameErrorCheck
 // Statement: c_function_string&
 const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const AA_example_nested_ExClass1 * self)
@@ -189,14 +189,14 @@ const char * AA_example_nested_ExClass1_getNameErrorCheck(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck
-    const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
+    const std::string &SHCXX_rv = SH_this->getNameErrorCheck();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameErrorCheck
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorCheck
+// Function:  const string &getNameErrorCheck
 // Statement: f_function_string&_cdesc_allocatable
 void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const AA_example_nested_ExClass1 * self,
@@ -206,7 +206,7 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck_bufferify
-    const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
+    const std::string &SHCXX_rv = SH_this->getNameErrorCheck();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
     SHT_rv_capsule->idtor = 0;
@@ -214,7 +214,7 @@ void AA_example_nested_ExClass1_getNameErrorCheck_bufferify(
 }
 
 // ----------------------------------------
-// Function:  const string & getNameArg
+// Function:  const string &getNameArg
 // Statement: c_function_string&
 const char * AA_example_nested_ExClass1_getNameArg(
     const AA_example_nested_ExClass1 * self)
@@ -222,14 +222,14 @@ const char * AA_example_nested_ExClass1_getNameArg(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
-    const std::string & SHCXX_rv = SH_this->getNameArg();
+    const std::string &SHCXX_rv = SH_this->getNameArg();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.getNameArg
 }
 
 // ----------------------------------------
-// Function:  const string & getNameArg
+// Function:  const string &getNameArg
 // Statement: f_function_string&_buf_arg
 void AA_example_nested_ExClass1_getNameArg_bufferify(
     const AA_example_nested_ExClass1 * self, char *name, int nname)
@@ -237,7 +237,7 @@ void AA_example_nested_ExClass1_getNameArg_bufferify(
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg_bufferify
-    const std::string & SHCXX_rv = SH_this->getNameArg();
+    const std::string &SHCXX_rv = SH_this->getNameArg();
     if (SHCXX_rv.empty()) {
         ShroudCharCopy(name, nname, nullptr, 0);
     } else {

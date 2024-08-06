@@ -96,7 +96,7 @@ double TUT_PassByValue(double arg1, int arg2)
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-const char TUT_ConcatenateStrings(const char * arg1, const char * arg2)
+const char TUT_ConcatenateStrings(const char *arg1, const char *arg2)
 {
     // splicer begin function.ConcatenateStrings
     const std::string SHC_arg1_cxx(arg1);
@@ -161,7 +161,7 @@ double TUT_UseDefaultArguments_arg1_arg2(double arg1, bool arg2)
 }
 // end TUT_UseDefaultArguments_arg1_arg2
 
-void TUT_OverloadedFunction_from_name(const char * name)
+void TUT_OverloadedFunction_from_name(const char *name)
 {
     // splicer begin function.OverloadedFunction_from_name
     const std::string SHC_name_cxx(name);
@@ -223,7 +223,7 @@ void TUT_FortranGenericOverloaded_0(void)
     // splicer end function.FortranGenericOverloaded_0
 }
 
-void TUT_FortranGenericOverloaded_1(const char * name, double arg2)
+void TUT_FortranGenericOverloaded_1(const char *name, double arg2)
 {
     // splicer begin function.FortranGenericOverloaded_1
     const std::string SHC_name_cxx(name);
@@ -335,7 +335,7 @@ int TUT_colorfunc_bufferify(int arg)
  *
  */
 // start TUT_getMinMax
-void TUT_getMinMax(int * min, int * max)
+void TUT_getMinMax(int *min, int *max)
 {
     // splicer begin function.getMinMax
     tutorial::getMinMax(*min, *max);
@@ -348,7 +348,7 @@ void TUT_getMinMax(int * min, int * max)
  *
  */
 // start TUT_callback1
-int TUT_callback1(int in, int ( * incr)(int))
+int TUT_callback1(int in, int (*incr)(int))
 {
     // splicer begin function.callback1
     int SHC_rv = tutorial::callback1(in, incr);
@@ -360,7 +360,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 const char * TUT_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
@@ -369,7 +369,7 @@ const char * TUT_LastFunctionCalled(void)
 void TUT_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {

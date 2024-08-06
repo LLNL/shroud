@@ -83,7 +83,7 @@ module vectors_mod
     ! Function:  int vector_sum
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const std::vector<int> & arg
+    ! Argument:  const std::vector<int> &arg
     ! Statement: f_in_vector<native>&_buf
     ! start c_vector_sum
     interface
@@ -103,7 +103,7 @@ module vectors_mod
     ! Function:  void vector_iota_out
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: c_out_vector<native>&_buf_copy
     ! start c_vector_iota_out
     interface
@@ -121,7 +121,7 @@ module vectors_mod
     ! Function:  void vector_iota_out
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     ! start c_vector_iota_out_bufferify
     interface
@@ -138,7 +138,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_with_num
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: c_out_vector<native>&_buf_copy
     ! start c_vector_iota_out_with_num
     interface
@@ -158,7 +158,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_with_num
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     ! start c_vector_iota_out_with_num_bufferify
     interface
@@ -178,7 +178,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_with_num2
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: c_out_vector<native>&_buf_copy
     ! start c_vector_iota_out_with_num2
     interface
@@ -196,7 +196,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_with_num2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     ! start c_vector_iota_out_with_num2_bufferify
     interface
@@ -213,7 +213,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_alloc
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)
+    ! Argument:  std::vector<int> &arg +deref(allocatable)+intent(out)
     ! Statement: c_out_vector<native>&_buf_malloc
     ! start c_vector_iota_out_alloc
     interface
@@ -231,7 +231,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_alloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)
+    ! Argument:  std::vector<int> &arg +deref(allocatable)+intent(out)
     ! Statement: f_out_vector<native>&_cdesc_allocatable
     ! start c_vector_iota_out_alloc_bufferify
     interface
@@ -248,7 +248,7 @@ module vectors_mod
     ! Function:  void vector_iota_inout_alloc
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)
+    ! Argument:  std::vector<int> &arg +deref(allocatable)+intent(inout)
     ! Statement: c_inout_vector<native>&_buf_malloc
     ! start c_vector_iota_inout_alloc
     interface
@@ -266,7 +266,7 @@ module vectors_mod
     ! Function:  void vector_iota_inout_alloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)
+    ! Argument:  std::vector<int> &arg +deref(allocatable)+intent(inout)
     ! Statement: f_inout_vector<native>&_cdesc_allocatable
     ! start c_vector_iota_inout_alloc_bufferify
     interface
@@ -289,7 +289,7 @@ module vectors_mod
     ! Function:  void vector_increment
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg
+    ! Argument:  std::vector<int> &arg
     ! Statement: c_inout_vector<native>&_buf_copy
     interface
         subroutine c_vector_increment(arg, SHT_arg_size) &
@@ -306,7 +306,7 @@ module vectors_mod
     ! Function:  void vector_increment
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg
+    ! Argument:  std::vector<int> &arg
     ! Statement: f_inout_vector<native>&_cdesc
     interface
         subroutine c_vector_increment_bufferify(arg, SHT_arg_size, &
@@ -325,7 +325,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_d
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<double> & arg +intent(out)
+    ! Argument:  std::vector<double> &arg +intent(out)
     ! Statement: c_out_vector<native>&_buf_copy
     interface
         subroutine c_vector_iota_out_d(arg, SHT_arg_size) &
@@ -341,7 +341,7 @@ module vectors_mod
     ! Function:  void vector_iota_out_d
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<double> & arg +intent(out)
+    ! Argument:  std::vector<double> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     interface
         subroutine c_vector_iota_out_d_bufferify(SHT_arg_cdesc) &
@@ -356,7 +356,7 @@ module vectors_mod
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  std::vector<const double *> & arg1 +intent(in)
+    ! Argument:  std::vector<const double *> &arg1 +intent(in)
     ! Statement: f_in_vector<native*>&_buf
     ! ----------------------------------------
     ! Argument:  int num
@@ -380,7 +380,7 @@ module vectors_mod
     ! Function:  int vector_string_count
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const std::vector<std::string> & arg
+    ! Argument:  const std::vector<std::string> &arg
     ! Statement: f_in_vector<string>&_buf
     interface
         function c_vector_string_count(arg, SHT_arg_size, SHT_arg_len) &
@@ -401,7 +401,7 @@ module vectors_mod
     ! Function:  void vector_string_fill
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +intent(out)
+    ! Argument:  std::vector<std::string> &arg +intent(out)
     ! Statement: c_out_vector<string>&_buf_copy
     interface
         subroutine c_vector_string_fill(arg) &
@@ -417,7 +417,7 @@ module vectors_mod
     ! Function:  void vector_string_fill
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +intent(out)
+    ! Argument:  std::vector<std::string> &arg +intent(out)
     ! Statement: f_out_vector<string>&_cdesc
     interface
         subroutine c_vector_string_fill_bufferify(SHT_arg_cdesc) &
@@ -434,7 +434,7 @@ module vectors_mod
     ! Function:  void vector_string_fill_allocatable
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)
+    ! Argument:  std::vector<std::string> &arg +deref(allocatable)+intent(out)
     ! Statement: c_out_vector<string>&_buf_copy
     interface
         subroutine c_vector_string_fill_allocatable(arg) &
@@ -450,7 +450,7 @@ module vectors_mod
     ! Function:  void vector_string_fill_allocatable
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)
+    ! Argument:  std::vector<std::string> &arg +deref(allocatable)+intent(out)
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     interface
         subroutine c_vector_string_fill_allocatable_bufferify( &
@@ -469,7 +469,7 @@ module vectors_mod
     ! Function:  void vector_string_fill_allocatable_len
     ! Statement: c_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)
+    ! Argument:  std::vector<std::string> &arg +deref(allocatable)+intent(out)+len(20)
     ! Statement: c_out_vector<string>&_buf_copy
     interface
         subroutine c_vector_string_fill_allocatable_len(arg) &
@@ -485,7 +485,7 @@ module vectors_mod
     ! Function:  void vector_string_fill_allocatable_len
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)
+    ! Argument:  std::vector<std::string> &arg +deref(allocatable)+intent(out)+len(20)
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     interface
         subroutine c_vector_string_fill_allocatable_len_bufferify( &
@@ -537,7 +537,7 @@ module vectors_mod
     ! Function:  int returnDim2
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  int * arg +intent(in)+rank(2)
+    ! Argument:  int *arg +intent(in)+rank(2)
     ! Statement: f_in_native*
     ! ----------------------------------------
     ! Argument:  int len +implied(size(arg,2))
@@ -598,7 +598,7 @@ contains
     ! Function:  int vector_sum
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const std::vector<int> & arg
+    ! Argument:  const std::vector<int> &arg
     ! Statement: f_in_vector<native>&_buf
     ! start vector_sum
     function vector_sum(arg) &
@@ -616,7 +616,7 @@ contains
     ! Function:  void vector_iota_out
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -639,7 +639,7 @@ contains
     ! Function:  void vector_iota_out_with_num
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -667,7 +667,7 @@ contains
     ! Function:  void vector_iota_out_with_num2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +intent(out)
+    ! Argument:  std::vector<int> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -696,7 +696,7 @@ contains
     ! Function:  void vector_iota_out_alloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)
+    ! Argument:  std::vector<int> &arg +deref(allocatable)+intent(out)
     ! Statement: f_out_vector<native>&_cdesc_allocatable
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -720,7 +720,7 @@ contains
     ! Function:  void vector_iota_inout_alloc
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)
+    ! Argument:  std::vector<int> &arg +deref(allocatable)+intent(inout)
     ! Statement: f_inout_vector<native>&_cdesc_allocatable
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -746,7 +746,7 @@ contains
     ! Function:  void vector_increment
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<int> & arg
+    ! Argument:  std::vector<int> &arg
     ! Statement: f_inout_vector<native>&_cdesc
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
@@ -764,7 +764,7 @@ contains
     ! Function:  void vector_iota_out_d
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<double> & arg +intent(out)
+    ! Argument:  std::vector<double> &arg +intent(out)
     ! Statement: f_out_vector<native>&_cdesc
     !>
     !! \brief Copy vector into Fortran input array
@@ -785,7 +785,7 @@ contains
     ! Function:  int vector_of_pointers
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  std::vector<const double *> & arg1 +intent(in)
+    ! Argument:  std::vector<const double *> &arg1 +intent(in)
     ! Statement: f_in_vector<native*>&_buf
     ! ----------------------------------------
     ! Argument:  int num
@@ -811,7 +811,7 @@ contains
     ! Function:  int vector_string_count
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const std::vector<std::string> & arg
+    ! Argument:  const std::vector<std::string> &arg
     ! Statement: f_in_vector<string>&_buf
     !>
     !! \brief count number of underscore in vector of strings
@@ -832,7 +832,7 @@ contains
     ! Function:  void vector_string_fill
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +intent(out)
+    ! Argument:  std::vector<std::string> &arg +intent(out)
     ! Statement: f_out_vector<string>&_cdesc
     !>
     !! \brief Fill in arg with some animal names
@@ -859,7 +859,7 @@ contains
     ! Function:  void vector_string_fill_allocatable
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)
+    ! Argument:  std::vector<std::string> &arg +deref(allocatable)+intent(out)
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     subroutine vector_string_fill_allocatable(arg)
         use iso_c_binding, only : C_LOC
@@ -881,7 +881,7 @@ contains
     ! Function:  void vector_string_fill_allocatable_len
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::vector<std::string> & arg +deref(allocatable)+intent(out)+len(20)
+    ! Argument:  std::vector<std::string> &arg +deref(allocatable)+intent(out)+len(20)
     ! Statement: f_out_vector<string>&_cdesc_allocatable
     subroutine vector_string_fill_allocatable_len(arg)
         use iso_c_binding, only : C_LOC
@@ -927,7 +927,7 @@ contains
     ! Function:  int returnDim2
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  int * arg +intent(in)+rank(2)
+    ! Argument:  int *arg +intent(in)+rank(2)
     ! Statement: f_in_native*
     function return_dim2(arg) &
             result(SHT_rv)

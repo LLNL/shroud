@@ -93,7 +93,7 @@ module forward_mod
         ! Function:  void func1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  tutorial::Class1 * arg +intent(in)
+        ! Argument:  tutorial::Class1 *arg +intent(in)
         ! Statement: f_in_shadow*
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
@@ -108,7 +108,7 @@ module forward_mod
         ! Function:  void acceptClass3
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  Class3 * arg +intent(in)
+        ! Argument:  Class3 *arg +intent(in)
         ! Statement: f_in_shadow*
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_acceptClass3")
@@ -122,7 +122,7 @@ module forward_mod
         ! Function:  int passStruct1
         ! Statement: f_function_native
         ! ----------------------------------------
-        ! Argument:  const Cstruct1 * arg
+        ! Argument:  const Cstruct1 *arg
         ! Statement: f_in_struct*
         function pass_struct1(arg) &
                 result(SHT_rv) &
@@ -197,7 +197,7 @@ contains
     ! Function:  void func1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  tutorial::Class1 * arg +intent(in)
+    ! Argument:  tutorial::Class1 *arg +intent(in)
     ! Statement: f_in_shadow*
     subroutine class2_func1(obj, arg)
         use tutorial_mod, only : class1
@@ -212,7 +212,7 @@ contains
     ! Function:  void acceptClass3
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Class3 * arg +intent(in)
+    ! Argument:  Class3 *arg +intent(in)
     ! Statement: f_in_shadow*
     subroutine class2_accept_class3(obj, arg)
         class(class2) :: obj
@@ -254,7 +254,7 @@ contains
     ! Function:  int passStruct1
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * arg
+    ! Argument:  const Cstruct1 *arg
     ! Statement: f_in_struct*
     function pass_struct1(arg) &
             result(SHT_rv)

@@ -158,7 +158,7 @@ module arrayclass_mod
         ! Function:  void fillSize
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int & size +intent(out)
+        ! Argument:  int &size +intent(out)
         ! Statement: f_out_native&
         subroutine c_ArrayWrapper_fillSize(self, size) &
                 bind(C, name="ARR_ArrayWrapper_fillSize")
@@ -180,7 +180,7 @@ module arrayclass_mod
         end subroutine c_ArrayWrapper_allocate
 
         ! ----------------------------------------
-        ! Function:  double * getArray +dimension(getSize())
+        ! Function:  double *getArray +dimension(getSize())
         ! Statement: c_function_native*
         function c_ArrayWrapper_getArray(self) &
                 result(SHT_rv) &
@@ -193,7 +193,7 @@ module arrayclass_mod
         end function c_ArrayWrapper_getArray
 
         ! ----------------------------------------
-        ! Function:  double * getArray +dimension(getSize())
+        ! Function:  double *getArray +dimension(getSize())
         ! Statement: f_function_native*_cdesc_pointer
         subroutine c_ArrayWrapper_getArray_bufferify(self, SHT_rv_cdesc) &
                 bind(C, name="ARR_ArrayWrapper_getArray_bufferify")
@@ -204,7 +204,7 @@ module arrayclass_mod
         end subroutine c_ArrayWrapper_getArray_bufferify
 
         ! ----------------------------------------
-        ! Function:  double * getArrayConst +dimension(getSize())
+        ! Function:  double *getArrayConst +dimension(getSize())
         ! Statement: c_function_native*
         pure function c_ArrayWrapper_getArrayConst(self) &
                 result(SHT_rv) &
@@ -217,7 +217,7 @@ module arrayclass_mod
         end function c_ArrayWrapper_getArrayConst
 
         ! ----------------------------------------
-        ! Function:  double * getArrayConst +dimension(getSize())
+        ! Function:  double *getArrayConst +dimension(getSize())
         ! Statement: f_function_native*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayConst_bufferify(self, &
                 SHT_rv_cdesc) &
@@ -229,7 +229,7 @@ module arrayclass_mod
         end subroutine c_ArrayWrapper_getArrayConst_bufferify
 
         ! ----------------------------------------
-        ! Function:  const double * getArrayC +dimension(getSize())
+        ! Function:  const double *getArrayC +dimension(getSize())
         ! Statement: c_function_native*
         function c_ArrayWrapper_getArrayC(self) &
                 result(SHT_rv) &
@@ -242,7 +242,7 @@ module arrayclass_mod
         end function c_ArrayWrapper_getArrayC
 
         ! ----------------------------------------
-        ! Function:  const double * getArrayC +dimension(getSize())
+        ! Function:  const double *getArrayC +dimension(getSize())
         ! Statement: f_function_native*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayC_bufferify(self, &
                 SHT_rv_cdesc) &
@@ -254,7 +254,7 @@ module arrayclass_mod
         end subroutine c_ArrayWrapper_getArrayC_bufferify
 
         ! ----------------------------------------
-        ! Function:  const double * getArrayConstC +dimension(getSize())
+        ! Function:  const double *getArrayConstC +dimension(getSize())
         ! Statement: c_function_native*
         pure function c_ArrayWrapper_getArrayConstC(self) &
                 result(SHT_rv) &
@@ -267,7 +267,7 @@ module arrayclass_mod
         end function c_ArrayWrapper_getArrayConstC
 
         ! ----------------------------------------
-        ! Function:  const double * getArrayConstC +dimension(getSize())
+        ! Function:  const double *getArrayConstC +dimension(getSize())
         ! Statement: f_function_native*_cdesc_pointer
         subroutine c_ArrayWrapper_getArrayConstC_bufferify(self, &
                 SHT_rv_cdesc) &
@@ -282,10 +282,10 @@ module arrayclass_mod
         ! Function:  void fetchArrayPtr
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  double * * array +dimension(isize)+intent(out)
+        ! Argument:  double **array +dimension(isize)+intent(out)
         ! Statement: c_out_native**
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden
+        ! Argument:  int *isize +hidden
         ! Statement: c_inout_native*
         subroutine c_ArrayWrapper_fetchArrayPtr(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtr")
@@ -301,7 +301,7 @@ module arrayclass_mod
         ! Function:  void fetchArrayPtr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double * * array +dimension(isize)+intent(out)
+        ! Argument:  double **array +dimension(isize)+intent(out)
         ! Statement: f_out_native**_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayPtr_bufferify(self, &
                 SHT_array_cdesc) &
@@ -316,10 +316,10 @@ module arrayclass_mod
         ! Function:  void fetchArrayRef
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  double * & array +dimension(isize)+intent(out)
+        ! Argument:  double *&array +dimension(isize)+intent(out)
         ! Statement: c_out_native*&
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden
+        ! Argument:  int &isize +hidden
         ! Statement: c_inout_native&
         subroutine c_ArrayWrapper_fetchArrayRef(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRef")
@@ -335,7 +335,7 @@ module arrayclass_mod
         ! Function:  void fetchArrayRef
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  double * & array +dimension(isize)+intent(out)
+        ! Argument:  double *&array +dimension(isize)+intent(out)
         ! Statement: f_out_native*&_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayRef_bufferify(self, &
                 SHT_array_cdesc) &
@@ -350,10 +350,10 @@ module arrayclass_mod
         ! Function:  void fetchArrayPtrConst
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  const double * * array +dimension(isize)+intent(out)
+        ! Argument:  const double **array +dimension(isize)+intent(out)
         ! Statement: c_out_native**
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden
+        ! Argument:  int *isize +hidden
         ! Statement: c_inout_native*
         subroutine c_ArrayWrapper_fetchArrayPtrConst(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayPtrConst")
@@ -369,7 +369,7 @@ module arrayclass_mod
         ! Function:  void fetchArrayPtrConst
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const double * * array +dimension(isize)+intent(out)
+        ! Argument:  const double **array +dimension(isize)+intent(out)
         ! Statement: f_out_native**_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayPtrConst_bufferify(self, &
                 SHT_array_cdesc) &
@@ -384,10 +384,10 @@ module arrayclass_mod
         ! Function:  void fetchArrayRefConst
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  const double * & array +dimension(isize)+intent(out)
+        ! Argument:  const double *&array +dimension(isize)+intent(out)
         ! Statement: c_out_native*&
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden
+        ! Argument:  int &isize +hidden
         ! Statement: c_inout_native&
         subroutine c_ArrayWrapper_fetchArrayRefConst(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetchArrayRefConst")
@@ -403,7 +403,7 @@ module arrayclass_mod
         ! Function:  void fetchArrayRefConst
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const double * & array +dimension(isize)+intent(out)
+        ! Argument:  const double *&array +dimension(isize)+intent(out)
         ! Statement: f_out_native*&_cdesc_pointer
         subroutine c_ArrayWrapper_fetchArrayRefConst_bufferify(self, &
                 SHT_array_cdesc) &
@@ -418,7 +418,7 @@ module arrayclass_mod
         ! Function:  void fetchVoidPtr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void * * array +intent(out)
+        ! Argument:  void **array +intent(out)
         ! Statement: f_out_void**
         subroutine c_ArrayWrapper_fetchVoidPtr(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetchVoidPtr")
@@ -433,7 +433,7 @@ module arrayclass_mod
         ! Function:  void fetchVoidRef
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void * & array +intent(out)
+        ! Argument:  void *&array +intent(out)
         ! Statement: f_out_void*&
         subroutine c_ArrayWrapper_fetchVoidRef(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetchVoidRef")
@@ -448,7 +448,7 @@ module arrayclass_mod
         ! Function:  bool checkPtr
         ! Statement: f_function_bool
         ! ----------------------------------------
-        ! Argument:  void * array
+        ! Argument:  void *array
         ! Statement: f_in_void*
         function c_ArrayWrapper_checkPtr(self, array) &
                 result(SHT_rv) &
@@ -529,7 +529,7 @@ contains
     ! Function:  void fillSize
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int & size +intent(out)
+    ! Argument:  int &size +intent(out)
     ! Statement: f_out_native&
     subroutine ArrayWrapper_fillSize(obj, size)
         use iso_c_binding, only : C_INT
@@ -551,7 +551,7 @@ contains
     end subroutine ArrayWrapper_allocate
 
     ! ----------------------------------------
-    ! Function:  double * getArray +dimension(getSize())
+    ! Function:  double *getArray +dimension(getSize())
     ! Statement: f_function_native*_cdesc_pointer
     function ArrayWrapper_getArray(obj) &
             result(SHT_rv)
@@ -567,7 +567,7 @@ contains
     end function ArrayWrapper_getArray
 
     ! ----------------------------------------
-    ! Function:  double * getArrayConst +dimension(getSize())
+    ! Function:  double *getArrayConst +dimension(getSize())
     ! Statement: f_function_native*_cdesc_pointer
     function ArrayWrapper_getArrayConst(obj) &
             result(SHT_rv)
@@ -584,7 +584,7 @@ contains
     end function ArrayWrapper_getArrayConst
 
     ! ----------------------------------------
-    ! Function:  const double * getArrayC +dimension(getSize())
+    ! Function:  const double *getArrayC +dimension(getSize())
     ! Statement: f_function_native*_cdesc_pointer
     function ArrayWrapper_getArrayC(obj) &
             result(SHT_rv)
@@ -601,7 +601,7 @@ contains
     end function ArrayWrapper_getArrayC
 
     ! ----------------------------------------
-    ! Function:  const double * getArrayConstC +dimension(getSize())
+    ! Function:  const double *getArrayConstC +dimension(getSize())
     ! Statement: f_function_native*_cdesc_pointer
     function ArrayWrapper_getArrayConstC(obj) &
             result(SHT_rv)
@@ -621,7 +621,7 @@ contains
     ! Function:  void fetchArrayPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double * * array +dimension(isize)+intent(out)
+    ! Argument:  double **array +dimension(isize)+intent(out)
     ! Statement: f_out_native**_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayPtr(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -640,7 +640,7 @@ contains
     ! Function:  void fetchArrayRef
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  double * & array +dimension(isize)+intent(out)
+    ! Argument:  double *&array +dimension(isize)+intent(out)
     ! Statement: f_out_native*&_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayRef(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -659,7 +659,7 @@ contains
     ! Function:  void fetchArrayPtrConst
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const double * * array +dimension(isize)+intent(out)
+    ! Argument:  const double **array +dimension(isize)+intent(out)
     ! Statement: f_out_native**_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayPtrConst(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -678,7 +678,7 @@ contains
     ! Function:  void fetchArrayRefConst
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  const double * & array +dimension(isize)+intent(out)
+    ! Argument:  const double *&array +dimension(isize)+intent(out)
     ! Statement: f_out_native*&_cdesc_pointer
     subroutine ArrayWrapper_fetchArrayRefConst(obj, array)
         use iso_c_binding, only : C_DOUBLE, c_f_pointer
@@ -697,7 +697,7 @@ contains
     ! Function:  void fetchVoidPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * * array +intent(out)
+    ! Argument:  void **array +intent(out)
     ! Statement: f_out_void**
     subroutine ArrayWrapper_fetchVoidPtr(obj, array)
         use iso_c_binding, only : C_PTR
@@ -712,7 +712,7 @@ contains
     ! Function:  void fetchVoidRef
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void * & array +intent(out)
+    ! Argument:  void *&array +intent(out)
     ! Statement: f_out_void*&
     subroutine ArrayWrapper_fetchVoidRef(obj, array)
         class(ArrayWrapper) :: obj
@@ -726,7 +726,7 @@ contains
     ! Function:  bool checkPtr
     ! Statement: f_function_bool
     ! ----------------------------------------
-    ! Argument:  void * array
+    ! Argument:  void *array
     ! Statement: f_in_void*
     function ArrayWrapper_checkPtr(obj, array) &
             result(SHT_rv)

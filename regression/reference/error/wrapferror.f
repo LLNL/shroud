@@ -165,7 +165,7 @@ module error_mod
         ! Function:  void AssumedRank
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  int * data
+        ! Argument:  int *data
         ! Statement: c_inout_native*
         subroutine c_assumed_rank(data) &
                 bind(C, name="ERR_AssumedRank")
@@ -179,7 +179,7 @@ module error_mod
         ! Function:  void AssumedRank
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int * data +rank(0)
+        ! Argument:  int *data +rank(0)
         ! Statement: f_inout_native*
         subroutine c_assumed_rank_0d_bufferify(data) &
                 bind(C, name="ERR_AssumedRank_0d_bufferify")
@@ -193,7 +193,7 @@ module error_mod
         ! Function:  void AssumedRank
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int * data +rank(1)
+        ! Argument:  int *data +rank(1)
         ! Statement: f_inout_native*
         subroutine c_assumed_rank_1d_bufferify(data) &
                 bind(C, name="ERR_AssumedRank_1d_bufferify")
@@ -207,7 +207,7 @@ module error_mod
         ! Function:  void AssumedRank
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int * data +rank(2)
+        ! Argument:  int *data +rank(2)
         ! Statement: f_inout_native*
         subroutine c_assumed_rank_2d_bufferify(data) &
                 bind(C, name="ERR_AssumedRank_2d_bufferify")
@@ -359,7 +359,7 @@ contains
     ! Function:  void AssumedRank
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * data +rank(0)
+    ! Argument:  int *data +rank(0)
     ! Statement: f_inout_native*
     subroutine assumed_rank_0d(data)
         use iso_c_binding, only : C_INT
@@ -374,7 +374,7 @@ contains
     ! Function:  void AssumedRank
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * data +rank(1)
+    ! Argument:  int *data +rank(1)
     ! Statement: f_inout_native*
     subroutine assumed_rank_1d(data)
         use iso_c_binding, only : C_INT
@@ -389,7 +389,7 @@ contains
     ! Function:  void AssumedRank
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * data +rank(2)
+    ! Argument:  int *data +rank(2)
     ! Statement: f_inout_native*
     subroutine assumed_rank_2d(data)
         use iso_c_binding, only : C_INT

@@ -43,7 +43,7 @@ enum TES_Color {
     // splicer end enum.Color
 };
 
-void TES_getName(char * name);
+void TES_getName(char *name);
 
 void TES_getName_bufferify(char *name, int SHT_name_len);
 
@@ -55,16 +55,16 @@ void YYY_TES_function3a_0(int i);
 
 void YYY_TES_function3a_1(long i);
 
-int YYY_TES_function4(const char * rv);
+int YYY_TES_function4(const char *rv);
 
 int YYY_TES_function4_bufferify(char *rv, int SHT_rv_len);
 
 void YYY_TES_fiveplus(void);
 
-void TES_TestMultilineSplicer(char * name, int * value);
+void TES_TestMultilineSplicer(char *name, int *value);
 
 void TES_TestMultilineSplicer_bufferify(char *name, int SHT_name_len,
-    int * value);
+    int *value);
 
 void c_name_instantiation1(int arg1, long arg2);
 
@@ -74,10 +74,9 @@ int TES_UseImplWorker_instantiation3(void);
 
 int TES_Cstruct_as_class_sum(TES_Cstruct_as_class * point);
 
-void TES_external_funcs(const char * rdbase, const char * pkg,
-    const char * name, void ( * alloc)(double * arr, int * err),
-    void ( * afree)(double * arr), void ( * assoc)(double * arr,
-    int * err));
+void TES_external_funcs(const char *rdbase, const char *pkg,
+    const char *name, void (*alloc)(double *arr, int *err),
+    void (*afree)(double *arr), void (*assoc)(double *arr, int *err));
 
 void TES_bindtest(int arg1);
 

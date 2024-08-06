@@ -32,7 +32,7 @@ extern "C" {
 // Function:  ExClass1
 // Statement: lua_ctor
 // ----------------------------------------
-// Argument:  const string * name
+// Argument:  const string *name
 // Statement: lua_in_string*
 /**
  * \brief constructor
@@ -126,14 +126,14 @@ static int l_example_nested_ExClass1_incrementCount(lua_State *L)
 
 // const string &getNameErrorCheck(void) const
 // ----------------------------------------
-// Function:  const string & getNameErrorCheck
+// Function:  const string &getNameErrorCheck
 // Statement: lua_function_string&
 static int l_example_nested_ExClass1_getNameErrorCheck(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameErrorCheck
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
         L, 1, "ExClass1.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getNameErrorCheck();
+    const std::string &SHCXX_rv = SH_this->self->getNameErrorCheck();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.ExClass1.method.getNameErrorCheck
@@ -141,14 +141,14 @@ static int l_example_nested_ExClass1_getNameErrorCheck(lua_State *L)
 
 // const string &getNameArg(void) const
 // ----------------------------------------
-// Function:  const string & getNameArg
+// Function:  const string &getNameArg
 // Statement: lua_function_string&
 static int l_example_nested_ExClass1_getNameArg(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getNameArg
     l_ExClass1_Type * SH_this = (l_ExClass1_Type *) luaL_checkudata(
         L, 1, "ExClass1.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getNameArg();
+    const std::string &SHCXX_rv = SH_this->self->getNameArg();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.ExClass1.method.getNameArg
@@ -258,7 +258,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
 // Function:  ExClass2
 // Statement: lua_ctor
 // ----------------------------------------
-// Argument:  const string * name +len_trim(trim_name)
+// Argument:  const string *name +len_trim(trim_name)
 // Statement: lua_in_string*
 /**
  * \brief constructor
@@ -300,14 +300,14 @@ static int l_example_nested_ExClass2_dtor(lua_State *L)
 
 // const string &getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // ----------------------------------------
-// Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Function:  const string &getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Statement: lua_function_string&
 static int l_example_nested_ExClass2_getName(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getName();
+    const std::string &SHCXX_rv = SH_this->self->getName();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.ExClass2.method.getName
@@ -315,14 +315,14 @@ static int l_example_nested_ExClass2_getName(lua_State *L)
 
 // const string &getName2(void)
 // ----------------------------------------
-// Function:  const string & getName2
+// Function:  const string &getName2
 // Statement: lua_function_string&
 static int l_example_nested_ExClass2_getName2(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName2
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    const std::string & SHCXX_rv = SH_this->self->getName2();
+    const std::string &SHCXX_rv = SH_this->self->getName2();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.ExClass2.method.getName2
@@ -330,14 +330,14 @@ static int l_example_nested_ExClass2_getName2(lua_State *L)
 
 // string &getName3(void) const
 // ----------------------------------------
-// Function:  string & getName3
+// Function:  string &getName3
 // Statement: lua_function_string&
 static int l_example_nested_ExClass2_getName3(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName3
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    std::string & SHCXX_rv = SH_this->self->getName3();
+    std::string &SHCXX_rv = SH_this->self->getName3();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.ExClass2.method.getName3
@@ -345,14 +345,14 @@ static int l_example_nested_ExClass2_getName3(lua_State *L)
 
 // string &getName4(void)
 // ----------------------------------------
-// Function:  string & getName4
+// Function:  string &getName4
 // Statement: lua_function_string&
 static int l_example_nested_ExClass2_getName4(lua_State *L)
 {
     // splicer begin class.ExClass2.method.getName4
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    std::string & SHCXX_rv = SH_this->self->getName4();
+    std::string &SHCXX_rv = SH_this->self->getName4();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end class.ExClass2.method.getName4
@@ -379,10 +379,10 @@ static int l_example_nested_ExClass2_GetNameLength(lua_State *L)
 
 // ExClass1 *get_class1(const ExClass1 *in)
 // ----------------------------------------
-// Function:  ExClass1 * get_class1
+// Function:  ExClass1 *get_class1
 // Statement: lua_function_shadow*
 // ----------------------------------------
-// Argument:  const ExClass1 * in
+// Argument:  const ExClass1 *in
 // Statement: lua_in_shadow*
 static int l_example_nested_ExClass2_get_class1(lua_State *L)
 {
@@ -392,8 +392,7 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
         luaL_checkudata(L, 1, "ExClass2.metatable")->addr);
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
         L, 1, "ExClass2.metatable");
-    example::nested::ExClass1 * SHCXX_rv =
-        SH_this->self->get_class1(in);
+    example::nested::ExClass1 *SHCXX_rv = SH_this->self->get_class1(in);
     PUSH;
     return 1;
     // splicer end class.ExClass2.method.get_class1
@@ -563,7 +562,7 @@ static int l_example_nested_local_function1(lua_State *)
 // Function:  bool isNameValid
 // Statement: lua_function_bool
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: lua_in_string&
 static int l_example_nested_isNameValid(lua_State *L)
 {
@@ -594,13 +593,13 @@ static int l_example_nested_isInitialized(lua_State *L)
 // Function:  void test_names
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: lua_in_string&
 // ----------------------------------------
 // Function:  void test_names
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: lua_in_string&
 // ----------------------------------------
 // Argument:  int flag
@@ -765,7 +764,7 @@ static int l_example_nested_testmpi(lua_State *L)
 // Function:  void FuncPtr1
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(void)
+// Argument:  void (*get)(void)
 // Statement: lua_mixin_unknown
 /**
  * \brief subroutine
@@ -784,7 +783,7 @@ static int l_example_nested_FuncPtr1(lua_State *)
 // Function:  void FuncPtr2
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  double * ( * get)(void)
+// Argument:  double *(*get)(void)
 // Statement: lua_mixin_unknown
 /**
  * \brief return a pointer
@@ -803,7 +802,7 @@ static int l_example_nested_FuncPtr2(lua_State *)
 // Function:  void FuncPtr3
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  double ( * get)(int i, int)
+// Argument:  double (*get)(int i, int)
 // Statement: lua_mixin_unknown
 /**
  * \brief abstract argument
@@ -822,7 +821,7 @@ static int l_example_nested_FuncPtr3(lua_State *)
 // Function:  void FuncPtr5
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
+// Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // Statement: lua_mixin_unknown
 static int l_example_nested_FuncPtr5(lua_State *)
 {
@@ -837,34 +836,34 @@ static int l_example_nested_FuncPtr5(lua_State *)
 // Function:  void verylongfunctionname1
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  int * verylongname1 +intent(inout)
+// Argument:  int *verylongname1 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname2 +intent(inout)
+// Argument:  int *verylongname2 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname3 +intent(inout)
+// Argument:  int *verylongname3 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname4 +intent(inout)
+// Argument:  int *verylongname4 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname5 +intent(inout)
+// Argument:  int *verylongname5 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname6 +intent(inout)
+// Argument:  int *verylongname6 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname7 +intent(inout)
+// Argument:  int *verylongname7 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname8 +intent(inout)
+// Argument:  int *verylongname8 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname9 +intent(inout)
+// Argument:  int *verylongname9 +intent(inout)
 // Statement: lua_inout_native*
 // ----------------------------------------
-// Argument:  int * verylongname10 +intent(inout)
+// Argument:  int *verylongname10 +intent(inout)
 // Statement: lua_inout_native*
 static int l_example_nested_verylongfunctionname1(lua_State *L)
 {
@@ -957,10 +956,10 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 // Function:  void cos_doubles
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(2)
+// Argument:  double *in +intent(in)+rank(2)
 // Statement: lua_in_native*
 // ----------------------------------------
-// Argument:  double * out +dimension(shape(in))+intent(out)
+// Argument:  double *out +dimension(shape(in))+intent(out)
 // Statement: lua_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))

@@ -141,7 +141,7 @@ module top_module
         ! Function:  void getName
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  char * name +len(worklen)+len_trim(worktrim)
+        ! Argument:  char *name +len(worklen)+len_trim(worktrim)
         ! Statement: c_inout_char*
         subroutine c_get_name(name) &
                 bind(C, name="TES_getName")
@@ -154,7 +154,7 @@ module top_module
         ! Function:  void getName
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  char * name +len(worklen)+len_trim(worktrim)
+        ! Argument:  char *name +len(worklen)+len_trim(worktrim)
         ! Statement: f_inout_char*_buf
         subroutine c_get_name_bufferify(name, SHT_name_len) &
                 bind(C, name="TES_getName_bufferify")
@@ -210,7 +210,7 @@ module top_module
         ! Function:  int function4
         ! Statement: c_function_native
         ! ----------------------------------------
-        ! Argument:  const std::string & rv
+        ! Argument:  const std::string &rv
         ! Statement: c_in_string&
         function YYY_TES_function4(rv) &
                 result(SHT_rv) &
@@ -225,7 +225,7 @@ module top_module
         ! Function:  int function4
         ! Statement: f_function_native
         ! ----------------------------------------
-        ! Argument:  const std::string & rv
+        ! Argument:  const std::string &rv
         ! Statement: f_in_string&_buf
         function YYY_TES_function4_bufferify(rv, SHT_rv_len) &
                 result(SHT_rv) &
@@ -249,10 +249,10 @@ module top_module
         ! Function:  void TestMultilineSplicer
         ! Statement: c_subroutine
         ! ----------------------------------------
-        ! Argument:  std::string & name
+        ! Argument:  std::string &name
         ! Statement: c_inout_string&
         ! ----------------------------------------
-        ! Argument:  int * value +intent(out)
+        ! Argument:  int *value +intent(out)
         ! Statement: c_out_native*
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_TestMultilineSplicer")
@@ -266,10 +266,10 @@ module top_module
         ! Function:  void TestMultilineSplicer
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  std::string & name
+        ! Argument:  std::string &name
         ! Statement: f_inout_string&_buf
         ! ----------------------------------------
-        ! Argument:  int * value +intent(out)
+        ! Argument:  int *value +intent(out)
         ! Statement: f_out_native*
         subroutine c_test_multiline_splicer_bufferify(name, &
                 SHT_name_len, value) &
@@ -333,7 +333,7 @@ module top_module
         ! Function:  int Cstruct_as_class_sum
         ! Statement: f_function_native
         ! ----------------------------------------
-        ! Argument:  const Cstruct_as_class * point +pass
+        ! Argument:  const Cstruct_as_class *point +pass
         ! Statement: f_in_shadow*
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
@@ -349,22 +349,22 @@ module top_module
         ! Function:  void external_funcs
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const char * rdbase
+        ! Argument:  const char *rdbase
         ! Statement: f_in_char*
         ! ----------------------------------------
-        ! Argument:  const char * pkg
+        ! Argument:  const char *pkg
         ! Statement: f_in_char*
         ! ----------------------------------------
-        ! Argument:  const char * name
+        ! Argument:  const char *name
         ! Statement: f_in_char*
         ! ----------------------------------------
-        ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
+        ! Argument:  void (*alloc)(double *arr +intent(inout), int *err +intent(out))
         ! Statement: f_in_procedure
         ! ----------------------------------------
-        ! Argument:  void ( * afree)(double * arr +intent(inout))
+        ! Argument:  void (*afree)(double *arr +intent(inout))
         ! Statement: f_in_procedure
         ! ----------------------------------------
-        ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
+        ! Argument:  void (*assoc)(double *arr +intent(in), int *err +intent(out))
         ! Statement: f_in_procedure
         subroutine c_external_funcs(rdbase, pkg, name, alloc, afree, &
                 assoc) &
@@ -544,7 +544,7 @@ contains
     ! Function:  void getName
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  char * name +len(worklen)+len_trim(worktrim)
+    ! Argument:  char *name +len(worklen)+len_trim(worktrim)
     ! Statement: f_inout_char*_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
@@ -606,7 +606,7 @@ contains
     ! Function:  int function4
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const std::string & rv
+    ! Argument:  const std::string &rv
     ! Statement: f_in_string&_buf
     function testnames_function4(rv) &
             result(SHT_rv)
@@ -633,10 +633,10 @@ contains
     ! Function:  void TestMultilineSplicer
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  std::string & name
+    ! Argument:  std::string &name
     ! Statement: f_inout_string&_buf
     ! ----------------------------------------
-    ! Argument:  int * value +intent(out)
+    ! Argument:  int *value +intent(out)
     ! Statement: f_out_native*
     !>
     !! Use std::string argument to get bufferified function.
@@ -718,7 +718,7 @@ contains
     ! Function:  int Cstruct_as_class_sum
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +pass
+    ! Argument:  const Cstruct_as_class *point +pass
     ! Statement: f_in_shadow*
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
@@ -734,13 +734,13 @@ contains
     ! Function:  void external_funcs
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * alloc)(double * arr +intent(inout), int * err +intent(out))
+    ! Argument:  void (*alloc)(double *arr +intent(inout), int *err +intent(out))
     ! Statement: f_in_procedure
     ! ----------------------------------------
-    ! Argument:  void ( * afree)(double * arr +intent(inout))
+    ! Argument:  void (*afree)(double *arr +intent(inout))
     ! Statement: f_in_procedure
     ! ----------------------------------------
-    ! Argument:  void ( * assoc)(double * arr +intent(in), int * err +intent(out))
+    ! Argument:  void (*assoc)(double *arr +intent(in), int *err +intent(out))
     ! Statement: f_in_procedure
     subroutine external_funcs(rdbase, pkg, name, alloc, afree, assoc)
         use iso_c_binding, only : C_NULL_CHAR

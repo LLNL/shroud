@@ -23,7 +23,7 @@
 
 double CLI_PassByValueMacro_bufferify(int arg2);
 
-void CLI_Function4a_bufferify(const char * arg1, const char * arg2,
+void CLI_Function4a_bufferify(const char *arg1, const char *arg2,
     char *SHC_rv, int SHT_rv_len);
 
 void CLI_passCharPtrInOut_bufferify(char *s, int SHT_s_len);
@@ -38,7 +38,7 @@ void CLI_ImpliedTextLen_bufferify(char *text, int SHT_text_len,
 
 void CLI_bindC2_bufferify(char *outbuf, int SHT_outbuf_len);
 
-int CLI_passAssumedTypeBuf_bufferify(void * arg, char *outbuf,
+int CLI_passAssumedTypeBuf_bufferify(void *arg, char *outbuf,
     int SHT_outbuf_len);
 
 #endif  // WRAPCLIBRARY_H

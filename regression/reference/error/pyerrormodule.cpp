@@ -59,7 +59,7 @@ PY_BadFstatements(
 // Function:  void AssumedRank
 // Statement: py_default
 // ----------------------------------------
-// Argument:  int * data
+// Argument:  int *data
 // Statement: py_inout_native*
 static char PY_AssumedRank__doc__[] =
 "documentation"

@@ -21,7 +21,7 @@ extern "C" {
 // splicer end class.Singleton.C_definitions
 
 // ----------------------------------------
-// Function:  static Singleton & getReference
+// Function:  static Singleton &getReference
 // Statement: c_function_shadow&_capptr
 // start CLA_Singleton_getReference
 CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)

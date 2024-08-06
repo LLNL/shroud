@@ -36,12 +36,12 @@ void STR_passCharForce(char status);
 
 void STR_returnChar(char *SHC_rv);
 
-void STR_passCharPtr(char * dest, const char * src);
+void STR_passCharPtr(char *dest, const char *src);
 
 void STR_passCharPtr_bufferify(char *dest, int SHT_dest_len,
-    const char * src);
+    const char *src);
 
-void STR_passCharPtrInOut(char * s);
+void STR_passCharPtrInOut(char *s);
 
 void STR_passCharPtrInOut_bufferify(char *s, int SHT_s_len);
 
@@ -132,42 +132,42 @@ void STR_getConstStringPtrPointer_bufferify(
     STR_SHROUD_array *SHT_rv_cdesc);
 #endif
 
-void STR_acceptStringConstReference(const char * arg1);
+void STR_acceptStringConstReference(const char *arg1);
 
 void STR_acceptStringConstReference_bufferify(char *arg1,
     int SHT_arg1_len);
 
-void STR_acceptStringReferenceOut(char * arg1);
+void STR_acceptStringReferenceOut(char *arg1);
 
 void STR_acceptStringReferenceOut_bufferify(char *arg1,
     int SHT_arg1_len);
 
-void STR_acceptStringReference(char * arg1);
+void STR_acceptStringReference(char *arg1);
 
 void STR_acceptStringReference_bufferify(char *arg1, int SHT_arg1_len);
 
-void STR_acceptStringPointerConst(const char * arg1);
+void STR_acceptStringPointerConst(const char *arg1);
 
 void STR_acceptStringPointerConst_bufferify(char *arg1,
     int SHT_arg1_len);
 
-void STR_acceptStringPointer(char * arg1);
+void STR_acceptStringPointer(char *arg1);
 
 void STR_acceptStringPointer_bufferify(char *arg1, int SHT_arg1_len);
 
-void STR_fetchStringPointer(char * arg1);
+void STR_fetchStringPointer(char *arg1);
 
 void STR_fetchStringPointer_bufferify(char *arg1, int SHT_arg1_len);
 
-void STR_acceptStringPointerLen(char * arg1, int * nlen);
+void STR_acceptStringPointerLen(char *arg1, int *nlen);
 
 void STR_acceptStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
-    int * nlen);
+    int *nlen);
 
-void STR_fetchStringPointerLen(char * arg1, int * nlen);
+void STR_fetchStringPointerLen(char *arg1, int *nlen);
 
 void STR_fetchStringPointerLen_bufferify(char *arg1, int SHT_arg1_len,
-    int * nlen);
+    int *nlen);
 
 int STR_acceptStringInstance(char *arg1);
 
@@ -184,9 +184,9 @@ void STR_fetchArrayStringAllocLen_bufferify(
     STR_SHROUD_array *SHT_strs_cdesc,
     STR_SHROUD_capsule_data *SHT_strs_capsule);
 
-void STR_explicit1(char * name);
+void STR_explicit1(char *name);
 
-void STR_explicit2(char * name);
+void STR_explicit2(char *name);
 
 void STR_explicit2_bufferify(char *name, int SHT_name_len);
 
@@ -195,23 +195,23 @@ void STR_CreturnChar(char *SHC_rv);
 void STR_CpassCharPtr_bufferify(char *dest, int SHT_dest_len, char *src,
     int SHT_src_len);
 
-void STR_CpassCharPtrBlank(char * dest, const char * src);
+void STR_CpassCharPtrBlank(char *dest, const char *src);
 
 void STR_CpassCharPtrBlank_bufferify(char *dest, int SHT_dest_len,
     char *src, int SHT_src_len);
 
-void STR_PostDeclare(int * count, char * name);
+void STR_PostDeclare(int *count, char *name);
 
-void STR_PostDeclare_bufferify(int * count, char *name,
+void STR_PostDeclare_bufferify(int *count, char *name,
     int SHT_name_len);
 
-int STR_CpassCharPtrNotrim(const char * src);
+int STR_CpassCharPtrNotrim(const char *src);
 
 int STR_CpassCharPtrNotrim_bufferify(char *src, int SHT_src_len);
 
-int STR_CpassCharPtrCAPI(void * addr, const char * src);
+int STR_CpassCharPtrCAPI(void *addr, const char *src);
 
-int STR_CpassCharPtrCAPI2(const char * in, const char * src);
+int STR_CpassCharPtrCAPI2(const char *in, const char *src);
 
 #ifdef __cplusplus
 }

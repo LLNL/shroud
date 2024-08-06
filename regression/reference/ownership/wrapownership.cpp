@@ -21,95 +21,95 @@ extern "C" {
 // splicer end C_definitions
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrRaw +deref(raw)
+// Function:  int *ReturnIntPtrRaw +deref(raw)
 // Statement: c_function_native*
 int * OWN_ReturnIntPtrRaw(void)
 {
     // splicer begin function.ReturnIntPtrRaw
-    int * SHC_rv = ReturnIntPtrRaw();
+    int *SHC_rv = ReturnIntPtrRaw();
     return SHC_rv;
     // splicer end function.ReturnIntPtrRaw
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Function:  int *ReturnIntPtrScalar +deref(scalar)
 // Statement: c_function_native*
 int * OWN_ReturnIntPtrScalar(void)
 {
     // splicer begin function.ReturnIntPtrScalar
-    int * SHC_rv = ReturnIntPtrScalar();
+    int *SHC_rv = ReturnIntPtrScalar();
     return SHC_rv;
     // splicer end function.ReturnIntPtrScalar
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Function:  int *ReturnIntPtrScalar +deref(scalar)
 // Statement: f_function_native*_scalar
 int OWN_ReturnIntPtrScalar_bufferify(void)
 {
     // splicer begin function.ReturnIntPtrScalar_bufferify
-    int * SHC_rv = ReturnIntPtrScalar();
+    int *SHC_rv = ReturnIntPtrScalar();
     return *SHC_rv;
     // splicer end function.ReturnIntPtrScalar_bufferify
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Function:  int *ReturnIntPtrPointer +deref(pointer)
 // Statement: c_function_native*
 int * OWN_ReturnIntPtrPointer(void)
 {
     // splicer begin function.ReturnIntPtrPointer
-    int * SHC_rv = ReturnIntPtrPointer();
+    int *SHC_rv = ReturnIntPtrPointer();
     return SHC_rv;
     // splicer end function.ReturnIntPtrPointer
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Function:  int *ReturnIntPtrPointer +deref(pointer)
 // Statement: f_function_native*_pointer
 int * OWN_ReturnIntPtrPointer_bufferify(void)
 {
     // splicer begin function.ReturnIntPtrPointer_bufferify
-    int * SHC_rv = ReturnIntPtrPointer();
+    int *SHC_rv = ReturnIntPtrPointer();
     return SHC_rv;
     // splicer end function.ReturnIntPtrPointer_bufferify
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimRaw +deref(raw)
+// Function:  int *ReturnIntPtrDimRaw +deref(raw)
 // Statement: c_function_native*
 // ----------------------------------------
-// Argument:  int * len +intent(out)
+// Argument:  int *len +intent(out)
 // Statement: c_out_native*
-int * OWN_ReturnIntPtrDimRaw(int * len)
+int * OWN_ReturnIntPtrDimRaw(int *len)
 {
     // splicer begin function.ReturnIntPtrDimRaw
-    int * SHC_rv = ReturnIntPtrDimRaw(len);
+    int *SHC_rv = ReturnIntPtrDimRaw(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimRaw
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+// Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
 // Statement: c_function_native*
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
 // start OWN_ReturnIntPtrDimPointer
-int * OWN_ReturnIntPtrDimPointer(int * len)
+int * OWN_ReturnIntPtrDimPointer(int *len)
 {
     // splicer begin function.ReturnIntPtrDimPointer
-    int * SHC_rv = ReturnIntPtrDimPointer(len);
+    int *SHC_rv = ReturnIntPtrDimPointer(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimPointer
 }
 // end OWN_ReturnIntPtrDimPointer
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+// Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
 // Statement: f_function_native*_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // start OWN_ReturnIntPtrDimPointer_bufferify
 void OWN_ReturnIntPtrDimPointer_bufferify(
@@ -117,7 +117,7 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 {
     // splicer begin function.ReturnIntPtrDimPointer_bufferify
     int len;
-    int * SHC_rv = ReturnIntPtrDimPointer(&len);
+    int *SHC_rv = ReturnIntPtrDimPointer(&len);
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -129,26 +129,26 @@ void OWN_ReturnIntPtrDimPointer_bufferify(
 // end OWN_ReturnIntPtrDimPointer_bufferify
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+// Function:  int *ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
 // Statement: c_function_native*
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
 // start OWN_ReturnIntPtrDimAlloc
-int * OWN_ReturnIntPtrDimAlloc(int * len)
+int * OWN_ReturnIntPtrDimAlloc(int *len)
 {
     // splicer begin function.ReturnIntPtrDimAlloc
-    int * SHC_rv = ReturnIntPtrDimAlloc(len);
+    int *SHC_rv = ReturnIntPtrDimAlloc(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimAlloc
 }
 // end OWN_ReturnIntPtrDimAlloc
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+// Function:  int *ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
 // Statement: f_function_native*_cdesc_allocatable
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // start OWN_ReturnIntPtrDimAlloc_bufferify
 void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
@@ -156,7 +156,7 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
 {
     // splicer begin function.ReturnIntPtrDimAlloc_bufferify
     int len;
-    int * SHC_rv = ReturnIntPtrDimAlloc(&len);
+    int *SHC_rv = ReturnIntPtrDimAlloc(&len);
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -170,31 +170,31 @@ void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
 // end OWN_ReturnIntPtrDimAlloc_bufferify
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefault +dimension(len)
+// Function:  int *ReturnIntPtrDimDefault +dimension(len)
 // Statement: c_function_native*
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
-int * OWN_ReturnIntPtrDimDefault(int * len)
+int * OWN_ReturnIntPtrDimDefault(int *len)
 {
     // splicer begin function.ReturnIntPtrDimDefault
-    int * SHC_rv = ReturnIntPtrDimDefault(len);
+    int *SHC_rv = ReturnIntPtrDimDefault(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimDefault
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefault +dimension(len)
+// Function:  int *ReturnIntPtrDimDefault +dimension(len)
 // Statement: f_function_native*_cdesc_pointer
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden
 void OWN_ReturnIntPtrDimDefault_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc)
 {
     // splicer begin function.ReturnIntPtrDimDefault_bufferify
     int len;
-    int * SHC_rv = ReturnIntPtrDimDefault(&len);
+    int *SHC_rv = ReturnIntPtrDimDefault(&len);
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -205,38 +205,38 @@ void OWN_ReturnIntPtrDimDefault_bufferify(
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
-int * OWN_ReturnIntPtrDimRawNew(int * len)
+int * OWN_ReturnIntPtrDimRawNew(int *len)
 {
     // splicer begin function.ReturnIntPtrDimRawNew
-    int * SHC_rv = ReturnIntPtrDimRawNew(len);
+    int *SHC_rv = ReturnIntPtrDimRawNew(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimRawNew
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
-int * OWN_ReturnIntPtrDimPointerNew(int * len)
+int * OWN_ReturnIntPtrDimPointerNew(int *len)
 {
     // splicer begin function.ReturnIntPtrDimPointerNew
-    int * SHC_rv = ReturnIntPtrDimPointerNew(len);
+    int *SHC_rv = ReturnIntPtrDimPointerNew(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimPointerNew
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
 // Statement: f_function_native*_cdesc_pointer_caller
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden
 void OWN_ReturnIntPtrDimPointerNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc,
@@ -244,7 +244,7 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 {
     // splicer begin function.ReturnIntPtrDimPointerNew_bufferify
     int len;
-    int * SHC_rv = ReturnIntPtrDimPointerNew(&len);
+    int *SHC_rv = ReturnIntPtrDimPointerNew(&len);
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -257,38 +257,38 @@ void OWN_ReturnIntPtrDimPointerNew_bufferify(
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
-int * OWN_ReturnIntPtrDimAllocNew(int * len)
+int * OWN_ReturnIntPtrDimAllocNew(int *len)
 {
     // splicer begin function.ReturnIntPtrDimAllocNew
-    int * SHC_rv = ReturnIntPtrDimAllocNew(len);
+    int *SHC_rv = ReturnIntPtrDimAllocNew(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimAllocNew
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Statement: c_function_native*_caller
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: c_out_native*
-int * OWN_ReturnIntPtrDimDefaultNew(int * len)
+int * OWN_ReturnIntPtrDimDefaultNew(int *len)
 {
     // splicer begin function.ReturnIntPtrDimDefaultNew
-    int * SHC_rv = ReturnIntPtrDimDefaultNew(len);
+    int *SHC_rv = ReturnIntPtrDimDefaultNew(len);
     return SHC_rv;
     // splicer end function.ReturnIntPtrDimDefaultNew
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+// Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
 // Statement: f_function_native*_cdesc_pointer_caller
 // ----------------------------------------
-// Argument:  int * len +hidden+intent(out)
+// Argument:  int *len +hidden+intent(out)
 // Statement: f_out_native*_hidden
 void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc,
@@ -296,7 +296,7 @@ void OWN_ReturnIntPtrDimDefaultNew_bufferify(
 {
     // splicer begin function.ReturnIntPtrDimDefaultNew_bufferify
     int len;
-    int * SHC_rv = ReturnIntPtrDimDefaultNew(&len);
+    int *SHC_rv = ReturnIntPtrDimDefaultNew(&len);
     SHT_rv_cdesc->base_addr = SHC_rv;
     SHT_rv_cdesc->type = SH_TYPE_INT;
     SHT_rv_cdesc->elem_len = sizeof(int);
@@ -322,7 +322,7 @@ void OWN_createClassStatic(int flag)
 }
 
 // ----------------------------------------
-// Function:  Class1 * getClassStatic +owner(library)
+// Function:  Class1 *getClassStatic +owner(library)
 // Statement: c_function_shadow*_capptr_library
 OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 {
@@ -339,7 +339,7 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
  *
  */
 // ----------------------------------------
-// Function:  Class1 * getClassNew +owner(caller)
+// Function:  Class1 *getClassNew +owner(caller)
 // Statement: c_function_shadow*_capptr_caller
 // ----------------------------------------
 // Argument:  int flag

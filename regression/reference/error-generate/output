@@ -19,52 +19,52 @@ charlen attribute can only be used on 'char *'
 --------------------
 Node: func3c
 line 38
-void func3c(char * arg1 +charlen)
+void func3c(char *arg1 +charlen)
 charlen attribute must have a value
 --------------------
 Node: func6
 line 44
-void func6(vector * arg1)
+void func6(vector *arg1)
 Type 'std::vector' requires template argument: vector *arg1
 --------------------
 Node: func6a
 line 45
-void func6a(vector<int,int> * arg1)
+void func6a(vector<int,int> *arg1)
 Type 'std::vector' may only have 1 template arguments: vector<int,int> *arg1
 --------------------
 Node: func6b
 line 46
-void func6b(none<int> * arg1)
+void func6b(none<int> *arg1)
 Type 'none' may not supply template argument: none<int> *arg1
 --------------------
 Node: func13
 line 70
-void func13(double * in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))
+void func13(double *in +intent(in)+rank(1), int sizein +implied(size(in,2,3)))
 Too many arguments to 'size': size(in,2,3)
 --------------------
 Node: func13b
 line 72
-void func13b(double * in +intent(in)+rank(1), int sizein +implied(size(none)))
+void func13b(double *in +intent(in)+rank(1), int sizein +implied(size(none)))
 Unknown argument 'none': size(none)
 --------------------
 Node: func13c
 line 74
-void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
+void func13c(const char *text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
 Too many arguments to 'len': len(text,2)
 --------------------
 Node: func13c
 line 74
-void func13c(const char * text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
+void func13c(const char *text, int ntext +implied(len(text,2)), int mtext +implied(len_trim(text,3)))
 Too many arguments to 'len_trim': len_trim(text,3)
 --------------------
 Node: func13d
 line 77
-void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
+void func13d(const char *text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
 Unknown argument 'text2': len(text2)
 --------------------
 Node: func13d
 line 77
-void func13d(const char * text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
+void func13d(const char *text, int ntext +implied(len(text2)), int mtext +implied(len_trim(text3)))
 Unknown argument 'text3': len_trim(text3)
 
 ----------------------------------------
@@ -72,7 +72,7 @@ Phase: generate functions
 ----------------------------------------
 Node: nested
 line 104
-struct nested * parent
+struct nested *parent
 process_class: class nested already exists in class_map
 Wrote error_types.yaml
 
@@ -100,7 +100,7 @@ Illegal attribute 'badfunc' for function 'func0'
 --------------------
 Node: func0e
 line 29
-int * func0e(void) +dimension
+int *func0e(void) +dimension
 dimension attribute must have a value.
 --------------------
 Node: func0f
@@ -120,7 +120,7 @@ argument 'arg1' must not have value=True because it has the assumedtype attribut
 --------------------
 Node: func7
 line 48
-void func7(int * arg1 +dimension(n+=2))
+void func7(int *arg1 +dimension(n+=2))
 Unable to parse dimension: n+=2
 --------------------
 Node: func8
@@ -145,12 +145,12 @@ rank attribute can only be used on pointer and references
 --------------------
 Node: func10c
 line 60
-void func10c(int * arg1 +rank(nrank))
+void func10c(int *arg1 +rank(nrank))
 rank attribute must have an integer value, not 'nrank'
 --------------------
 Node: func10c
 line 61
-void func10c(int * arg1 +rank(30))
+void func10c(int *arg1 +rank(30))
 'rank' attribute must be 0-7, not '30'
 --------------------
 Node: func11
@@ -200,17 +200,17 @@ dimension attribute can only be used on pointer and references
 --------------------
 Node: func12
 line 67
-void func12(int * * arg1 +intent(out)+owner(none))
+void func12(int **arg1 +intent(out)+owner(none))
 Illegal value 'none' for owner attribute. Must be 'caller' or 'library'.
 --------------------
 Node: callback_set_alloc
 line 81
-void callback_set_alloc(void ( * alloc)(int tc +intent(none)))
+void callback_set_alloc(void (*alloc)(int tc +intent(none)))
 Bad value for argument tc intent: none
 --------------------
 Node: AssignValues
 line 109
-void AssignValues(const int * from, int nfrom, int * to +rank(8), int nto)
+void AssignValues(const int *from, int nfrom, int *to +rank(8), int nto)
 'rank' attribute must be 0-7, not '8'
 --------------------
 Node: func0b
@@ -219,7 +219,7 @@ Unknown statement: c_function_native***
 --------------------
 Node: func0b
 line 26
-int * * * func0b(void) +deref(pointer)
+int ***func0b(void) +deref(pointer)
 Cannot have attribute 'deref' on function which returns multiple indirections
 --------------------
 Node: func0c
@@ -229,22 +229,22 @@ Cannot have attribute 'deref' on non-pointer function
 --------------------
 Node: func4
 line 40
-void func4(char * arg1 +blanknull)
+void func4(char *arg1 +blanknull)
 blanknull attribute can only be used on intent(in) 'char *'
 --------------------
 Node: func9
 line 53
-void func9(int * arg1 +deref(none))
+void func9(int *arg1 +deref(none))
 Illegal value 'none' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 --------------------
 Node: func9b
 line 54
-void func9b(int * arg1 +deref(pointer))
+void func9b(int *arg1 +deref(pointer))
 Can only have attribute 'deref' on arguments which return a pointer: 'arg1'
 --------------------
 Node: func9c
 line 55
-void func9c(int * * arg1 +deref(pointer)+intent(in))
+void func9c(int **arg1 +deref(pointer)+intent(in))
 Cannot have attribute 'deref' on intent(in) argument 'arg1'
 --------------------
 Node: func10
@@ -254,7 +254,7 @@ void func10(int arg1 +api(none))
 --------------------
 Node: AssignValues
 line 109
-void AssignValues(const int * from, int nfrom, int * to +deref(allocatable2), int nto)
+void AssignValues(const int *from, int nfrom, int *to +deref(allocatable2), int nto)
 Illegal value 'allocatable2' for deref attribute. Must be 'allocatable', 'pointer', 'raw', or 'scalar'.
 --------------------
 Node: struct1_get_arg2

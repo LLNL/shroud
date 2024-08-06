@@ -99,10 +99,10 @@ static void ShroudCharFree(char *src)
 // Function:  void intargs_in
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const int * arg
+// Argument:  const int *arg
 // Statement: c_in_native*
 // start POI_intargs_in
-void POI_intargs_in(const int * arg)
+void POI_intargs_in(const int *arg)
 {
     // splicer begin function.intargs_in
     intargs_in(arg);
@@ -117,10 +117,10 @@ void POI_intargs_in(const int * arg)
 // Function:  void intargs_inout
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * arg
+// Argument:  int *arg
 // Statement: c_inout_native*
 // start POI_intargs_inout
-void POI_intargs_inout(int * arg)
+void POI_intargs_inout(int *arg)
 {
     // splicer begin function.intargs_inout
     intargs_inout(arg);
@@ -132,10 +132,10 @@ void POI_intargs_inout(int * arg)
 // Function:  void intargs_out
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * arg +intent(out)
+// Argument:  int *arg +intent(out)
 // Statement: c_out_native*
 // start POI_intargs_out
-void POI_intargs_out(int * arg)
+void POI_intargs_out(int *arg)
 {
     // splicer begin function.intargs_out
     intargs_out(arg);
@@ -150,13 +150,13 @@ void POI_intargs_out(int * arg)
 // Argument:  const int argin +intent(in)
 // Statement: c_in_native
 // ----------------------------------------
-// Argument:  int * arginout +intent(inout)
+// Argument:  int *arginout +intent(inout)
 // Statement: c_inout_native*
 // ----------------------------------------
-// Argument:  int * argout +intent(out)
+// Argument:  int *argout +intent(out)
 // Statement: c_out_native*
 // start POI_intargs
-void POI_intargs(const int argin, int * arginout, int * argout)
+void POI_intargs(const int argin, int *arginout, int *argout)
 {
     // splicer begin function.intargs
     intargs(argin, arginout, argout);
@@ -173,16 +173,16 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Function:  void cos_doubles
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(1)
+// Argument:  double *in +intent(in)+rank(1)
 // Statement: c_in_native*
 // ----------------------------------------
-// Argument:  double * out +dimension(size(in))+intent(out)
+// Argument:  double *out +dimension(size(in))+intent(out)
 // Statement: c_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
 // Statement: c_in_native
 // start POI_cos_doubles
-void POI_cos_doubles(double * in, double * out, int sizein)
+void POI_cos_doubles(double *in, double *out, int sizein)
 {
     // splicer begin function.cos_doubles
     cos_doubles(in, out, sizein);
@@ -199,16 +199,16 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Function:  void cos_doubles
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(1)
+// Argument:  double *in +intent(in)+rank(1)
 // Statement: f_in_native*_cfi
 // ----------------------------------------
-// Argument:  double * out +dimension(size(in))+intent(out)
+// Argument:  double *out +dimension(size(in))+intent(out)
 // Statement: f_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
 // Statement: f_in_native
 // start POI_cos_doubles_CFI
-void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
+void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double *out,
     int sizein)
 {
     // splicer begin function.cos_doubles_CFI
@@ -228,16 +228,16 @@ void POI_cos_doubles_CFI(CFI_cdesc_t *SHT_in_cfi, double * out,
 // Function:  void truncate_to_int
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(1)
+// Argument:  double *in +intent(in)+rank(1)
 // Statement: c_in_native*
 // ----------------------------------------
-// Argument:  int * out +dimension(size(in))+intent(out)
+// Argument:  int *out +dimension(size(in))+intent(out)
 // Statement: c_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
 // Statement: c_in_native
 // start POI_truncate_to_int
-void POI_truncate_to_int(double * in, int * out, int sizein)
+void POI_truncate_to_int(double *in, int *out, int sizein)
 {
     // splicer begin function.truncate_to_int
     truncate_to_int(in, out, sizein);
@@ -255,16 +255,16 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Function:  void truncate_to_int
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  double * in +intent(in)+rank(1)
+// Argument:  double *in +intent(in)+rank(1)
 // Statement: f_in_native*_cfi
 // ----------------------------------------
-// Argument:  int * out +dimension(size(in))+intent(out)
+// Argument:  int *out +dimension(size(in))+intent(out)
 // Statement: f_out_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
 // Statement: f_in_native
 // start POI_truncate_to_int_CFI
-void POI_truncate_to_int_CFI(CFI_cdesc_t *SHT_in_cfi, int * out,
+void POI_truncate_to_int_CFI(CFI_cdesc_t *SHT_in_cfi, int *out,
     int sizein)
 {
     // splicer begin function.truncate_to_int_CFI
@@ -286,13 +286,13 @@ void POI_truncate_to_int_CFI(CFI_cdesc_t *SHT_in_cfi, int * out,
 // Function:  void get_values
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * nvalues +intent(OUT)
+// Argument:  int *nvalues +intent(OUT)
 // Statement: c_out_native*
 // ----------------------------------------
-// Argument:  int * values +dimension(3)+intent(out)
+// Argument:  int *values +dimension(3)+intent(out)
 // Statement: c_out_native*
 // start POI_get_values
-void POI_get_values(int * nvalues, int * values)
+void POI_get_values(int *nvalues, int *values)
 {
     // splicer begin function.get_values
     get_values(nvalues, values);
@@ -310,13 +310,13 @@ void POI_get_values(int * nvalues, int * values)
 // Function:  void get_values2
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * arg1 +dimension(3)+intent(out)
+// Argument:  int *arg1 +dimension(3)+intent(out)
 // Statement: c_out_native*
 // ----------------------------------------
-// Argument:  int * arg2 +dimension(3)+intent(out)
+// Argument:  int *arg2 +dimension(3)+intent(out)
 // Statement: c_out_native*
 // start POI_get_values2
-void POI_get_values2(int * arg1, int * arg2)
+void POI_get_values2(int *arg1, int *arg2)
 {
     // splicer begin function.get_values2
     get_values2(arg1, arg2);
@@ -331,10 +331,10 @@ void POI_get_values2(int * arg1, int * arg2)
 // Argument:  int nvar
 // Statement: c_in_native
 // ----------------------------------------
-// Argument:  int * values +dimension(nvar)+intent(out)
+// Argument:  int *values +dimension(nvar)+intent(out)
 // Statement: c_out_native*
 // start POI_iota_dimension
-void POI_iota_dimension(int nvar, int * values)
+void POI_iota_dimension(int nvar, int *values)
 {
     // splicer begin function.iota_dimension
     iota_dimension(nvar, values);
@@ -349,13 +349,13 @@ void POI_iota_dimension(int nvar, int * values)
 // Argument:  int len +implied(size(values))
 // Statement: c_in_native
 // ----------------------------------------
-// Argument:  const int * values +rank(1)
+// Argument:  const int *values +rank(1)
 // Statement: c_in_native*
 // ----------------------------------------
-// Argument:  int * result +intent(out)
+// Argument:  int *result +intent(out)
 // Statement: c_out_native*
 // start POI_Sum
-void POI_Sum(int len, const int * values, int * result)
+void POI_Sum(int len, const int *values, int *result)
 {
     // splicer begin function.Sum
     Sum(len, values, result);
@@ -370,13 +370,13 @@ void POI_Sum(int len, const int * values, int * result)
 // Argument:  int len +implied(size(values))
 // Statement: f_in_native
 // ----------------------------------------
-// Argument:  const int * values +rank(1)
+// Argument:  const int *values +rank(1)
 // Statement: f_in_native*_cfi
 // ----------------------------------------
-// Argument:  int * result +intent(out)
+// Argument:  int *result +intent(out)
 // Statement: f_out_native*
 // start POI_Sum_CFI
-void POI_Sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int * result)
+void POI_Sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int *result)
 {
     // splicer begin function.Sum_CFI
     int *SHC_values_cxx = static_cast<int *>(SHT_values_cfi->base_addr);
@@ -392,10 +392,10 @@ void POI_Sum_CFI(int len, CFI_cdesc_t *SHT_values_cfi, int * result)
 // Function:  void fillIntArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * out +dimension(3)+intent(out)
+// Argument:  int *out +dimension(3)+intent(out)
 // Statement: c_out_native*
 // start POI_fillIntArray
-void POI_fillIntArray(int * out)
+void POI_fillIntArray(int *out)
 {
     // splicer begin function.fillIntArray
     fillIntArray(out);
@@ -410,13 +410,13 @@ void POI_fillIntArray(int * out)
 // Function:  void incrementIntArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * array +intent(inout)+rank(1)
+// Argument:  int *array +intent(inout)+rank(1)
 // Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))
 // Statement: c_in_native
 // start POI_incrementIntArray
-void POI_incrementIntArray(int * array, int sizein)
+void POI_incrementIntArray(int *array, int sizein)
 {
     // splicer begin function.incrementIntArray
     incrementIntArray(array, sizein);
@@ -431,7 +431,7 @@ void POI_incrementIntArray(int * array, int sizein)
 // Function:  void incrementIntArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * array +intent(inout)+rank(1)
+// Argument:  int *array +intent(inout)+rank(1)
 // Statement: f_inout_native*_cfi
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))
@@ -450,13 +450,13 @@ void POI_incrementIntArray_CFI(CFI_cdesc_t *SHT_array_cfi, int sizein)
 // Function:  void fill_with_zeros
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  double * x +rank(1)
+// Argument:  double *x +rank(1)
 // Statement: c_inout_native*
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))
 // Statement: c_in_native
 // start POI_fill_with_zeros
-void POI_fill_with_zeros(double * x, int x_length)
+void POI_fill_with_zeros(double *x, int x_length)
 {
     // splicer begin function.fill_with_zeros
     fill_with_zeros(x, x_length);
@@ -468,7 +468,7 @@ void POI_fill_with_zeros(double * x, int x_length)
 // Function:  void fill_with_zeros
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  double * x +rank(1)
+// Argument:  double *x +rank(1)
 // Statement: f_inout_native*_cfi
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))
@@ -487,13 +487,13 @@ void POI_fill_with_zeros_CFI(CFI_cdesc_t *SHT_x_cfi, int x_length)
 // Function:  int accumulate
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  const int * arr +rank(1)
+// Argument:  const int *arr +rank(1)
 // Statement: c_in_native*
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))
 // Statement: c_in_native
 // start POI_accumulate
-int POI_accumulate(const int * arr, size_t len)
+int POI_accumulate(const int *arr, size_t len)
 {
     // splicer begin function.accumulate
     int SHC_rv = accumulate(arr, len);
@@ -506,7 +506,7 @@ int POI_accumulate(const int * arr, size_t len)
 // Function:  int accumulate
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  const int * arr +rank(1)
+// Argument:  const int *arr +rank(1)
 // Statement: f_in_native*_cfi
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))
@@ -529,7 +529,7 @@ int POI_accumulate_CFI(CFI_cdesc_t *SHT_arr_cfi, size_t len)
 // Function:  int acceptCharArrayIn
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  char * * names +intent(in)
+// Argument:  char **names +intent(in)
 // Statement: c_in_char**
 // start POI_acceptCharArrayIn
 int POI_acceptCharArrayIn(char **names)
@@ -548,7 +548,7 @@ int POI_acceptCharArrayIn(char **names)
 // Function:  int acceptCharArrayIn
 // Statement: f_function_native
 // ----------------------------------------
-// Argument:  char * * names +intent(in)
+// Argument:  char **names +intent(in)
 // Statement: f_in_char**_cfi
 // start POI_acceptCharArrayIn_CFI
 int POI_acceptCharArrayIn_CFI(CFI_cdesc_t *SHT_names_cfi)
@@ -601,10 +601,10 @@ int POI_sumFixedArray(void)
 // Function:  void getPtrToScalar
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * nitems +intent(out)
+// Argument:  int **nitems +intent(out)
 // Statement: c_out_native**
 // start POI_getPtrToScalar
-void POI_getPtrToScalar(int * * nitems)
+void POI_getPtrToScalar(int **nitems)
 {
     // splicer begin function.getPtrToScalar
     getPtrToScalar(nitems);
@@ -616,7 +616,7 @@ void POI_getPtrToScalar(int * * nitems)
 // Function:  void getPtrToScalar
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * nitems +intent(out)
+// Argument:  int **nitems +intent(out)
 // Statement: f_out_native**_cfi_pointer
 // start POI_getPtrToScalar_CFI
 void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
@@ -648,10 +648,10 @@ void POI_getPtrToScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 // Function:  void getPtrToFixedArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(10)+intent(out)
+// Argument:  int **count +dimension(10)+intent(out)
 // Statement: c_out_native**
 // start POI_getPtrToFixedArray
-void POI_getPtrToFixedArray(int * * count)
+void POI_getPtrToFixedArray(int **count)
 {
     // splicer begin function.getPtrToFixedArray
     getPtrToFixedArray(count);
@@ -666,7 +666,7 @@ void POI_getPtrToFixedArray(int * * count)
 // Function:  void getPtrToFixedArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(10)+intent(out)
+// Argument:  int **count +dimension(10)+intent(out)
 // Statement: f_out_native**_cfi_pointer
 // start POI_getPtrToFixedArray_CFI
 void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
@@ -702,13 +702,13 @@ void POI_getPtrToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // Function:  void getPtrToDynamicArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(ncount)+intent(out)
+// Argument:  int **count +dimension(ncount)+intent(out)
 // Statement: c_out_native**
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: c_out_native*
 // start POI_getPtrToDynamicArray
-void POI_getPtrToDynamicArray(int * * count, int * ncount)
+void POI_getPtrToDynamicArray(int **count, int *ncount)
 {
     // splicer begin function.getPtrToDynamicArray
     getPtrToDynamicArray(count, ncount);
@@ -724,10 +724,10 @@ void POI_getPtrToDynamicArray(int * * count, int * ncount)
 // Function:  void getPtrToDynamicArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(ncount)+intent(out)
+// Argument:  int **count +dimension(ncount)+intent(out)
 // Statement: f_out_native**_cfi_pointer
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // start POI_getPtrToDynamicArray_CFI
 void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
@@ -765,10 +765,10 @@ void POI_getPtrToDynamicArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // Function:  void getPtrToFuncArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(getLen())+intent(out)
+// Argument:  int **count +dimension(getLen())+intent(out)
 // Statement: c_out_native**
 // start POI_getPtrToFuncArray
-void POI_getPtrToFuncArray(int * * count)
+void POI_getPtrToFuncArray(int **count)
 {
     // splicer begin function.getPtrToFuncArray
     getPtrToFuncArray(count);
@@ -785,7 +785,7 @@ void POI_getPtrToFuncArray(int * * count)
 // Function:  void getPtrToFuncArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +dimension(getLen())+intent(out)
+// Argument:  int **count +dimension(getLen())+intent(out)
 // Statement: f_out_native**_cfi_pointer
 // start POI_getPtrToFuncArray_CFI
 void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
@@ -817,10 +817,10 @@ void POI_getPtrToFuncArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // Function:  void getPtrToConstScalar
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const int * * nitems +intent(out)
+// Argument:  const int **nitems +intent(out)
 // Statement: c_out_native**
 // start POI_getPtrToConstScalar
-void POI_getPtrToConstScalar(const int * * nitems)
+void POI_getPtrToConstScalar(const int **nitems)
 {
     // splicer begin function.getPtrToConstScalar
     getPtrToConstScalar(nitems);
@@ -832,7 +832,7 @@ void POI_getPtrToConstScalar(const int * * nitems)
 // Function:  void getPtrToConstScalar
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * * nitems +intent(out)
+// Argument:  const int **nitems +intent(out)
 // Statement: f_out_native**_cfi_pointer
 // start POI_getPtrToConstScalar_CFI
 void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
@@ -861,10 +861,10 @@ void POI_getPtrToConstScalar_CFI(CFI_cdesc_t *SHT_nitems_cfi)
 // Function:  void getPtrToFixedConstArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +dimension(10)+intent(out)
+// Argument:  const int **count +dimension(10)+intent(out)
 // Statement: c_out_native**
 // start POI_getPtrToFixedConstArray
-void POI_getPtrToFixedConstArray(const int * * count)
+void POI_getPtrToFixedConstArray(const int **count)
 {
     // splicer begin function.getPtrToFixedConstArray
     getPtrToFixedConstArray(count);
@@ -876,7 +876,7 @@ void POI_getPtrToFixedConstArray(const int * * count)
 // Function:  void getPtrToFixedConstArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +dimension(10)+intent(out)
+// Argument:  const int **count +dimension(10)+intent(out)
 // Statement: f_out_native**_cfi_pointer
 // start POI_getPtrToFixedConstArray_CFI
 void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
@@ -908,13 +908,13 @@ void POI_getPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // Function:  void getPtrToDynamicConstArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +dimension(ncount)+intent(out)
+// Argument:  const int **count +dimension(ncount)+intent(out)
 // Statement: c_out_native**
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: c_out_native*
 // start POI_getPtrToDynamicConstArray
-void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
+void POI_getPtrToDynamicConstArray(const int **count, int *ncount)
 {
     // splicer begin function.getPtrToDynamicConstArray
     getPtrToDynamicConstArray(count, ncount);
@@ -926,10 +926,10 @@ void POI_getPtrToDynamicConstArray(const int * * count, int * ncount)
 // Function:  void getPtrToDynamicConstArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  const int * * count +dimension(ncount)+intent(out)
+// Argument:  const int **count +dimension(ncount)+intent(out)
 // Statement: f_out_native**_cfi_pointer
 // ----------------------------------------
-// Argument:  int * ncount +hidden+intent(out)
+// Argument:  int *ncount +hidden+intent(out)
 // Statement: f_out_native*_hidden
 // start POI_getPtrToDynamicConstArray_CFI
 void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
@@ -965,10 +965,10 @@ void POI_getPtrToDynamicConstArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // Function:  void getRawPtrToScalar
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * nitems +deref(raw)+intent(out)
+// Argument:  int **nitems +deref(raw)+intent(out)
 // Statement: c_out_native**
 // start POI_getRawPtrToScalar
-void POI_getRawPtrToScalar(int * * nitems)
+void POI_getRawPtrToScalar(int **nitems)
 {
     // splicer begin function.getRawPtrToScalar
     getRawPtrToScalar(nitems);
@@ -983,10 +983,10 @@ void POI_getRawPtrToScalar(int * * nitems)
 // Function:  void getRawPtrToScalarForce
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * nitems +deref(raw)+intent(out)
+// Argument:  int **nitems +deref(raw)+intent(out)
 // Statement: c_out_native**
 // start POI_getRawPtrToScalarForce
-void POI_getRawPtrToScalarForce(int * * nitems)
+void POI_getRawPtrToScalarForce(int **nitems)
 {
     // splicer begin function.getRawPtrToScalarForce
     getRawPtrToScalarForce(nitems);
@@ -1003,10 +1003,10 @@ void POI_getRawPtrToScalarForce(int * * nitems)
 // Function:  void getRawPtrToFixedArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +deref(raw)+intent(out)
+// Argument:  int **count +deref(raw)+intent(out)
 // Statement: c_out_native**
 // start POI_getRawPtrToFixedArray
-void POI_getRawPtrToFixedArray(int * * count)
+void POI_getRawPtrToFixedArray(int **count)
 {
     // splicer begin function.getRawPtrToFixedArray
     getRawPtrToFixedArray(count);
@@ -1022,10 +1022,10 @@ void POI_getRawPtrToFixedArray(int * * count)
 // Function:  void getRawPtrToFixedArrayForce
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +deref(raw)+intent(out)
+// Argument:  int **count +deref(raw)+intent(out)
 // Statement: c_out_native**
 // start POI_getRawPtrToFixedArrayForce
-void POI_getRawPtrToFixedArrayForce(int * * count)
+void POI_getRawPtrToFixedArrayForce(int **count)
 {
     // splicer begin function.getRawPtrToFixedArrayForce
     getRawPtrToFixedArrayForce(count);
@@ -1040,10 +1040,10 @@ void POI_getRawPtrToFixedArrayForce(int * * count)
 // Function:  void getRawPtrToInt2d
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * * arg +intent(out)
+// Argument:  int ***arg +intent(out)
 // Statement: c_out_native***
 // start POI_getRawPtrToInt2d
-void POI_getRawPtrToInt2d(int * * * arg)
+void POI_getRawPtrToInt2d(int ***arg)
 {
     // splicer begin function.getRawPtrToInt2d
     getRawPtrToInt2d(arg);
@@ -1058,10 +1058,10 @@ void POI_getRawPtrToInt2d(int * * * arg)
 // Function:  int checkInt2d
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  int * * arg +intent(in)
+// Argument:  int **arg +intent(in)
 // Statement: c_in_native**
 // start POI_checkInt2d
-int POI_checkInt2d(int * * arg)
+int POI_checkInt2d(int **arg)
 {
     // splicer begin function.checkInt2d
     int SHC_rv = checkInt2d(arg);
@@ -1078,10 +1078,10 @@ int POI_checkInt2d(int * * arg)
 // Function:  void DimensionIn
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  const int * arg +dimension(10,20)
+// Argument:  const int *arg +dimension(10,20)
 // Statement: c_in_native*
 // start POI_DimensionIn
-void POI_DimensionIn(const int * arg)
+void POI_DimensionIn(const int *arg)
 {
     // splicer begin function.DimensionIn
     DimensionIn(arg);
@@ -1096,10 +1096,10 @@ void POI_DimensionIn(const int * arg)
 // Function:  void getAllocToFixedArray
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+// Argument:  int **count +deref(allocatable)+dimension(10)+intent(out)
 // Statement: c_out_native**
 // start POI_getAllocToFixedArray
-void POI_getAllocToFixedArray(int * * count)
+void POI_getAllocToFixedArray(int **count)
 {
     // splicer begin function.getAllocToFixedArray
     getAllocToFixedArray(count);
@@ -1114,7 +1114,7 @@ void POI_getAllocToFixedArray(int * * count)
 // Function:  void getAllocToFixedArray
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * * count +deref(allocatable)+dimension(10)+intent(out)
+// Argument:  int **count +deref(allocatable)+dimension(10)+intent(out)
 // Statement: f_out_native**_cfi_allocatable
 // start POI_getAllocToFixedArray_CFI
 void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
@@ -1138,7 +1138,7 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 // end POI_getAllocToFixedArray_CFI
 
 // ----------------------------------------
-// Function:  void * returnAddress1
+// Function:  void *returnAddress1
 // Statement: c_function_void*
 // ----------------------------------------
 // Argument:  int flag
@@ -1147,14 +1147,14 @@ void POI_getAllocToFixedArray_CFI(CFI_cdesc_t *SHT_count_cfi)
 void * POI_returnAddress1(int flag)
 {
     // splicer begin function.returnAddress1
-    void * SHC_rv = returnAddress1(flag);
+    void *SHC_rv = returnAddress1(flag);
     return SHC_rv;
     // splicer end function.returnAddress1
 }
 // end POI_returnAddress1
 
 // ----------------------------------------
-// Function:  void * returnAddress2
+// Function:  void *returnAddress2
 // Statement: c_function_void*
 // ----------------------------------------
 // Argument:  int flag
@@ -1163,7 +1163,7 @@ void * POI_returnAddress1(int flag)
 void * POI_returnAddress2(int flag)
 {
     // splicer begin function.returnAddress2
-    void * SHC_rv = returnAddress2(flag);
+    void *SHC_rv = returnAddress2(flag);
     return SHC_rv;
     // splicer end function.returnAddress2
 }
@@ -1173,7 +1173,7 @@ void * POI_returnAddress2(int flag)
 // Function:  void fetchVoidPtr
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void * * addr +intent(out)
+// Argument:  void **addr +intent(out)
 // Statement: c_out_void**
 // start POI_fetchVoidPtr
 void POI_fetchVoidPtr(void **addr)
@@ -1188,7 +1188,7 @@ void POI_fetchVoidPtr(void **addr)
 // Function:  void updateVoidPtr
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void * * addr +intent(inout)
+// Argument:  void **addr +intent(inout)
 // Statement: c_inout_void**
 // start POI_updateVoidPtr
 void POI_updateVoidPtr(void **addr)
@@ -1203,7 +1203,7 @@ void POI_updateVoidPtr(void **addr)
 // Function:  int VoidPtrArray
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  void * * addr +rank(1)
+// Argument:  void **addr +rank(1)
 // Statement: c_in_void**
 // start POI_VoidPtrArray
 int POI_VoidPtrArray(void **addr)
@@ -1216,20 +1216,20 @@ int POI_VoidPtrArray(void **addr)
 // end POI_VoidPtrArray
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int *returnIntPtrToScalar
 // Statement: c_function_native*
 // start POI_returnIntPtrToScalar
 int * POI_returnIntPtrToScalar(void)
 {
     // splicer begin function.returnIntPtrToScalar
-    int * SHC_rv = returnIntPtrToScalar();
+    int *SHC_rv = returnIntPtrToScalar();
     return SHC_rv;
     // splicer end function.returnIntPtrToScalar
 }
 // end POI_returnIntPtrToScalar
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar
+// Function:  int *returnIntPtrToScalar
 // Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToScalar_CFI
 void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
@@ -1252,20 +1252,20 @@ void POI_returnIntPtrToScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end POI_returnIntPtrToScalar_CFI
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int *returnIntPtrToFixedArray +dimension(10)
 // Statement: c_function_native*
 // start POI_returnIntPtrToFixedArray
 int * POI_returnIntPtrToFixedArray(void)
 {
     // splicer begin function.returnIntPtrToFixedArray
-    int * SHC_rv = returnIntPtrToFixedArray();
+    int *SHC_rv = returnIntPtrToFixedArray();
     return SHC_rv;
     // splicer end function.returnIntPtrToFixedArray
 }
 // end POI_returnIntPtrToFixedArray
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +dimension(10)
+// Function:  int *returnIntPtrToFixedArray +dimension(10)
 // Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToFixedArray_CFI
 void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
@@ -1292,20 +1292,20 @@ void POI_returnIntPtrToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end POI_returnIntPtrToFixedArray_CFI
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int *returnIntPtrToConstScalar
 // Statement: c_function_native*
 // start POI_returnIntPtrToConstScalar
 const int * POI_returnIntPtrToConstScalar(void)
 {
     // splicer begin function.returnIntPtrToConstScalar
-    const int * SHC_rv = returnIntPtrToConstScalar();
+    const int *SHC_rv = returnIntPtrToConstScalar();
     return SHC_rv;
     // splicer end function.returnIntPtrToConstScalar
 }
 // end POI_returnIntPtrToConstScalar
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar
+// Function:  const int *returnIntPtrToConstScalar
 // Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToConstScalar_CFI
 void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
@@ -1328,20 +1328,20 @@ void POI_returnIntPtrToConstScalar_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end POI_returnIntPtrToConstScalar_CFI
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
 // Statement: c_function_native*
 // start POI_returnIntPtrToFixedConstArray
 const int * POI_returnIntPtrToFixedConstArray(void)
 {
     // splicer begin function.returnIntPtrToFixedConstArray
-    const int * SHC_rv = returnIntPtrToFixedConstArray();
+    const int *SHC_rv = returnIntPtrToFixedConstArray();
     return SHC_rv;
     // splicer end function.returnIntPtrToFixedConstArray
 }
 // end POI_returnIntPtrToFixedConstArray
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
+// Function:  const int *returnIntPtrToFixedConstArray +dimension(10)
 // Statement: f_function_native*_cfi_pointer
 // start POI_returnIntPtrToFixedConstArray_CFI
 void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
@@ -1368,26 +1368,26 @@ void POI_returnIntPtrToFixedConstArray_CFI(CFI_cdesc_t *SHT_rv_cfi)
 // end POI_returnIntPtrToFixedConstArray_CFI
 
 // ----------------------------------------
-// Function:  int * returnIntScalar +deref(scalar)
+// Function:  int *returnIntScalar +deref(scalar)
 // Statement: c_function_native*
 // start POI_returnIntScalar
 int * POI_returnIntScalar(void)
 {
     // splicer begin function.returnIntScalar
-    int * SHC_rv = returnIntScalar();
+    int *SHC_rv = returnIntScalar();
     return SHC_rv;
     // splicer end function.returnIntScalar
 }
 // end POI_returnIntScalar
 
 // ----------------------------------------
-// Function:  int * returnIntScalar +deref(scalar)
+// Function:  int *returnIntScalar +deref(scalar)
 // Statement: f_function_native*_scalar
 // start POI_returnIntScalar_bufferify
 int POI_returnIntScalar_bufferify(void)
 {
     // splicer begin function.returnIntScalar_bufferify
-    int * SHC_rv = returnIntScalar();
+    int *SHC_rv = returnIntScalar();
     return *SHC_rv;
     // splicer end function.returnIntScalar_bufferify
 }
@@ -1397,13 +1397,13 @@ int POI_returnIntScalar_bufferify(void)
  * Call directly via interface.
  */
 // ----------------------------------------
-// Function:  int * returnIntRaw +deref(raw)
+// Function:  int *returnIntRaw +deref(raw)
 // Statement: c_function_native*
 // start POI_returnIntRaw
 int * POI_returnIntRaw(void)
 {
     // splicer begin function.returnIntRaw
-    int * SHC_rv = returnIntRaw();
+    int *SHC_rv = returnIntRaw();
     return SHC_rv;
     // splicer end function.returnIntRaw
 }
@@ -1414,16 +1414,16 @@ int * POI_returnIntRaw(void)
  * Uses fc_statements f_function_native_*_raw.
  */
 // ----------------------------------------
-// Function:  int * returnIntRawWithArgs +deref(raw)
+// Function:  int *returnIntRawWithArgs +deref(raw)
 // Statement: c_function_native*
 // ----------------------------------------
-// Argument:  const char * name
+// Argument:  const char *name
 // Statement: c_in_char*
 // start POI_returnIntRawWithArgs
-int * POI_returnIntRawWithArgs(const char * name)
+int * POI_returnIntRawWithArgs(const char *name)
 {
     // splicer begin function.returnIntRawWithArgs
-    int * SHC_rv = returnIntRawWithArgs(name);
+    int *SHC_rv = returnIntRawWithArgs(name);
     return SHC_rv;
     // splicer end function.returnIntRawWithArgs
 }
@@ -1434,10 +1434,10 @@ int * POI_returnIntRawWithArgs(const char * name)
  * Uses fc_statements f_function_native_*_raw.
  */
 // ----------------------------------------
-// Function:  int * returnIntRawWithArgs +deref(raw)
+// Function:  int *returnIntRawWithArgs +deref(raw)
 // Statement: f_function_native*_raw
 // ----------------------------------------
-// Argument:  const char * name
+// Argument:  const char *name
 // Statement: f_in_char*_cfi
 // start POI_returnIntRawWithArgs_CFI
 int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
@@ -1446,7 +1446,7 @@ int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
     char *name = static_cast<char *>(SHT_name_cfi->base_addr);
     char *SHC_name_cxx = ShroudCharAlloc(name, SHT_name_cfi->elem_len,
         0);
-    int * SHC_rv = returnIntRawWithArgs(SHC_name_cxx);
+    int *SHC_rv = returnIntRawWithArgs(SHC_name_cxx);
     ShroudCharFree(SHC_name_cxx);
     return SHC_rv;
     // splicer end function.returnIntRawWithArgs_CFI
@@ -1458,33 +1458,33 @@ int * POI_returnIntRawWithArgs_CFI(CFI_cdesc_t *SHT_name_cfi)
  * # getRawPtrToInt2d
  */
 // ----------------------------------------
-// Function:  int * * returnRawPtrToInt2d
+// Function:  int **returnRawPtrToInt2d
 // Statement: c_function_native**
 // start POI_returnRawPtrToInt2d
-int * * POI_returnRawPtrToInt2d(void)
+int ** POI_returnRawPtrToInt2d(void)
 {
     // splicer begin function.returnRawPtrToInt2d
-    int * * SHC_rv = returnRawPtrToInt2d();
+    int **SHC_rv = returnRawPtrToInt2d();
     return SHC_rv;
     // splicer end function.returnRawPtrToInt2d
 }
 // end POI_returnRawPtrToInt2d
 
 // ----------------------------------------
-// Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+// Function:  int *returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Statement: c_function_native*
 // start POI_returnIntAllocToFixedArray
 int * POI_returnIntAllocToFixedArray(void)
 {
     // splicer begin function.returnIntAllocToFixedArray
-    int * SHC_rv = returnIntAllocToFixedArray();
+    int *SHC_rv = returnIntAllocToFixedArray();
     return SHC_rv;
     // splicer end function.returnIntAllocToFixedArray
 }
 // end POI_returnIntAllocToFixedArray
 
 // ----------------------------------------
-// Function:  int * returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
+// Function:  int *returnIntAllocToFixedArray +deref(allocatable)+dimension(10)
 // Statement: f_function_native*_cfi_allocatable
 // start POI_returnIntAllocToFixedArray_CFI
 void POI_returnIntAllocToFixedArray_CFI(CFI_cdesc_t *SHT_rv_cfi)

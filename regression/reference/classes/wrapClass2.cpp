@@ -49,14 +49,14 @@ static void ShroudStringToCdesc(CLA_SHROUD_array *cdesc,
  *
  */
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: c_function_string&
 const char * CLA_Class2_getName(CLA_Class2 * self)
 {
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.getName
-    const std::string & SHCXX_rv = SH_this->getName();
+    const std::string &SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end class.Class2.method.getName
@@ -67,7 +67,7 @@ const char * CLA_Class2_getName(CLA_Class2 * self)
  *
  */
 // ----------------------------------------
-// Function:  const std::string & getName
+// Function:  const std::string &getName
 // Statement: f_function_string&_cdesc_allocatable
 void CLA_Class2_getName_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *SHT_rv_cdesc,
@@ -76,7 +76,7 @@ void CLA_Class2_getName_bufferify(CLA_Class2 * self,
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.getName_bufferify
-    const std::string & SHCXX_rv = SH_this->getName();
+    const std::string &SHCXX_rv = SH_this->getName();
     ShroudStringToCdesc(SHT_rv_cdesc, &SHCXX_rv);
     SHT_rv_capsule->addr  = const_cast<std::string *>(&SHCXX_rv);
     SHT_rv_capsule->idtor = 0;

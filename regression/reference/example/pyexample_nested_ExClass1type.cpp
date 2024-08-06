@@ -79,7 +79,7 @@ PP_ExClass1_tp_init_0(
 // Function:  ExClass1
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const string * name
+// Argument:  const string *name
 // Statement: py_in_string*
 /**
  * \brief constructor
@@ -155,7 +155,7 @@ PP_incrementCount(
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorCheck
+// Function:  const string &getNameErrorCheck
 // Statement: py_function_string&
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
@@ -170,7 +170,7 @@ PP_getNameErrorCheck(
 // splicer begin namespace.example::nested.class.ExClass1.method.getNameErrorCheck
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = self->obj->getNameErrorCheck();
+    const std::string &SHCXX_rv = self->obj->getNameErrorCheck();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),
@@ -181,7 +181,7 @@ PP_getNameErrorCheck(
 }
 
 // ----------------------------------------
-// Function:  const string & getNameArg
+// Function:  const string &getNameArg
 // Statement: py_function_string&
 static char PP_getNameArg__doc__[] =
 "documentation"
@@ -196,7 +196,7 @@ PP_getNameArg(
 // splicer begin namespace.example::nested.class.ExClass1.method.getNameArg
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = self->obj->getNameArg();
+    const std::string &SHCXX_rv = self->obj->getNameArg();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

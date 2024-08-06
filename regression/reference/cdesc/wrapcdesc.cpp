@@ -43,9 +43,9 @@ static int ShroudCharLenTrim(const char *src, int nsrc) {
 // Function:  void Rank2In
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
+// Argument:  int *arg +api(cdesc)+intent(in)+rank(2)
 // Statement: c_in_native*
-void CDE_Rank2In(int * arg)
+void CDE_Rank2In(int *arg)
 {
     // splicer begin function.Rank2In
     Rank2In(arg);
@@ -56,7 +56,7 @@ void CDE_Rank2In(int * arg)
 // Function:  void Rank2In
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  int * arg +api(cdesc)+intent(in)+rank(2)
+// Argument:  int *arg +api(cdesc)+intent(in)+rank(2)
 // Statement: f_in_native*_cdesc
 void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 {
@@ -83,12 +83,12 @@ void CDE_Rank2In_bufferify(CDE_SHROUD_array *SHT_arg_cdesc)
 // Function:  void GetScalar1
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: c_in_string&
 // ----------------------------------------
-// Argument:  void * value +api(cdesc)+intent(in)+rank(0)
+// Argument:  void *value +api(cdesc)+intent(in)+rank(0)
 // Statement: c_in_void*
-void CDE_GetScalar1(char * name, void * value)
+void CDE_GetScalar1(char *name, void *value)
 {
     // splicer begin function.GetScalar1
     std::string SHC_name_cxx(name);
@@ -113,10 +113,10 @@ void CDE_GetScalar1(char * name, void * value)
 // Function:  void GetScalar1
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
 // ----------------------------------------
-// Argument:  int * value +api(cdesc)+intent(out)+rank(0)
+// Argument:  int *value +api(cdesc)+intent(out)+rank(0)
 // Statement: f_out_native*_cdesc
 void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
@@ -161,10 +161,10 @@ void CDE_GetScalar1_0_bufferify(char *name, int SHT_name_len,
 // Function:  void GetScalar1
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
 // ----------------------------------------
-// Argument:  double * value +api(cdesc)+intent(out)+rank(0)
+// Argument:  double *value +api(cdesc)+intent(out)+rank(0)
 // Statement: f_out_native*_cdesc
 void CDE_GetScalar1_1_bufferify(char *name, int SHT_name_len,
     CDE_SHROUD_array *SHT_value_cdesc)
@@ -234,13 +234,13 @@ double CDE_getData_double(void)
 // Function:  void GetScalar2
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
 // ----------------------------------------
-// Argument:  int * value +intent(out)
+// Argument:  int *value +intent(out)
 // Statement: f_out_native*
 void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
-    int * value)
+    int *value)
 {
     // splicer begin function.GetScalar2_0_bufferify
     // This function does not need to exist.
@@ -259,13 +259,13 @@ void CDE_GetScalar2_0_bufferify(char *name, int SHT_name_len,
 // Function:  void GetScalar2
 // Statement: f_subroutine
 // ----------------------------------------
-// Argument:  std::string & name +intent(in)
+// Argument:  std::string &name +intent(in)
 // Statement: f_in_string&_buf
 // ----------------------------------------
-// Argument:  double * value +intent(out)
+// Argument:  double *value +intent(out)
 // Statement: f_out_native*
 void CDE_GetScalar2_1_bufferify(char *name, int SHT_name_len,
-    double * value)
+    double *value)
 {
     // splicer begin function.GetScalar2_1_bufferify
     // This function does not need to exist.

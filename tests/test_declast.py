@@ -104,22 +104,22 @@ class CheckParse(unittest.TestCase):
         self.assertIsNone(declarator.get_subprogram())
         self.assertEqual(1, declarator.is_pointer())
         s = gen_decl(r)
-        self.assertEqual("int * var1 +dimension(:)", s)
-        self.assertEqual("int * var1", gen_arg_as_c(r))
-        self.assertEqual("int * var1", gen_arg_as_cxx(r))
+        self.assertEqual("int *var1 +dimension(:)", s)
+        self.assertEqual("int *var1", gen_arg_as_c(r))
+        self.assertEqual("int *var1", gen_arg_as_cxx(r))
         self.assertEqual("integer(C_INT) :: var1(:)", wrapf.gen_arg_as_fortran(r))
         self.assertEqual("integer(C_INT) :: var1(*)", wrapf.bind_c(r, modules))
 
         r = declast.check_decl("const int * var1", symtab)
         s = gen_decl(r)
-        self.assertEqual("const int * var1", s)
-        self.assertEqual("const int * var1",
+        self.assertEqual("const int *var1", s)
+        self.assertEqual("const int *var1",
                          gen_arg_as_c(r))
-        self.assertEqual("const int * var1",
+        self.assertEqual("const int *var1",
                          gen_arg_as_cxx(r))
         self.assertEqual("int *", r.as_cast())
 
-        r = declast.check_decl("int * const var1", symtab)
+        r = declast.check_decl("int *const var1", symtab)
         declarator = r.declarator
         s = gen_decl(r)
         self.assertEqual("int * const var1", s)
@@ -139,7 +139,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("int **var1", symtab)
         declarator = r.declarator
         s = gen_decl(r)
-        self.assertEqual("int * * var1", s)
+        self.assertEqual("int **var1", s)
         self.assertEqual(
             {
                 'declarator': {
@@ -158,7 +158,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("int &*var1", symtab)
         declarator = r.declarator
         s = gen_decl(r)
-        self.assertEqual("int & * var1", s)
+        self.assertEqual("int &*var1", s)
         self.assertEqual(
             {
                 'declarator': {
@@ -310,19 +310,19 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("char *var1", symtab)
         self.assertEqual("char *", r.as_cast())
         s = gen_decl(r)
-        self.assertEqual("char * var1", s)
+        self.assertEqual("char *var1", s)
         s = wrapf.gen_arg_as_fortran(r)
         self.assertEqual("character(len=*) :: var1", s)
 
         r = declast.check_decl("char *var1 +len(30)", symtab)
         s = gen_decl(r)
-        self.assertEqual("char * var1 +len(30)", s)
+        self.assertEqual("char *var1 +len(30)", s)
         s = wrapf.gen_arg_as_fortran(r, local=True)
         self.assertEqual("character(len=30) :: var1", s)
 
         r = declast.check_decl("char *var1 +deref(allocatable)", symtab)
         s = gen_decl(r)
-        self.assertEqual("char * var1 +deref(allocatable)", s)
+        self.assertEqual("char *var1 +deref(allocatable)", s)
         s = wrapf.gen_arg_as_fortran(r)
         self.assertEqual("character(len=:), allocatable :: var1", s)
 
@@ -333,7 +333,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual('**', declarator.get_indirect_stmt())
         self.assertEqual("char **", r.as_cast())
         s = gen_decl(r)
-        self.assertEqual("char * * var1", s)
+        self.assertEqual("char **var1", s)
 
         r = declast.check_decl("std::string var1", symtab)
         s = gen_decl(r)
@@ -341,22 +341,22 @@ class CheckParse(unittest.TestCase):
 
         r = declast.check_decl("std::string *var1", symtab)
         s = gen_decl(r)
-        self.assertEqual("std::string * var1", s)
+        self.assertEqual("std::string *var1", s)
         s = gen_arg_as_cxx(r)
-        self.assertEqual("std::string * var1", s)
+        self.assertEqual("std::string *var1", s)
         s = gen_arg_as_c(r)
-        self.assertEqual("char * var1", s)
+        self.assertEqual("char *var1", s)
         self.assertEqual("char *", r.as_cast())
 
         r = declast.check_decl("std::string &var1", symtab)
         s = gen_decl(r)
-        self.assertEqual("std::string & var1", s)
+        self.assertEqual("std::string &var1", s)
         s = gen_arg_as_cxx(r)
-        self.assertEqual("std::string & var1", s)
+        self.assertEqual("std::string &var1", s)
         s = gen_arg_as_cxx(r, as_ptr=True)
-        self.assertEqual("std::string * var1", s)
+        self.assertEqual("std::string *var1", s)
         s = gen_arg_as_c(r)
-        self.assertEqual("char * var1", s)
+        self.assertEqual("char *var1", s)
 
     def test_type_char_array(self):
         # convert first dimension to Fortran CHARACTER(LEN=)
@@ -460,7 +460,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual('*[]', declarator.get_indirect_stmt())
         self.assertEqual("44", declarator.get_array_size())
         s = gen_decl(r)
-        self.assertEqual("char * var4[44]", s)
+        self.assertEqual("char *var4[44]", s)
         self.assertEqual(
             {
              'declarator': {
@@ -474,7 +474,7 @@ class CheckParse(unittest.TestCase):
             todict.to_dict(r)
         )
         self.assertEqual(
-            "char * var4[44]",
+            "char *var4[44]",
             gen_arg_as_c(r))
         self.assertEqual(  # XXX - fixme
             "character(kind=C_CHAR) :: var4(44)",
@@ -518,10 +518,10 @@ class CheckParse(unittest.TestCase):
         s = gen_arg_as_cxx(r)
         self.assertEqual("int var1", s)
         s = gen_arg_as_cxx(r, force_ptr=True)
-        self.assertEqual("int * var1", s)
+        self.assertEqual("int *var1", s)
 
         s = gen_arg_as_cxx(r, force_ptr=True, with_template_args=True)
-        self.assertEqual("std::vector<int> * var1", s)
+        self.assertEqual("std::vector<int> *var1", s)
 
         r = declast.check_decl("std::vector<long long> var1", symtab)
         s = gen_decl(r)
@@ -611,10 +611,10 @@ class CheckParse(unittest.TestCase):
         s = gen_arg_as_cxx(r)
         self.assertEqual("int var1", s)
         s = gen_arg_as_cxx(r, force_ptr=True)
-        self.assertEqual("int * var1", s)
+        self.assertEqual("int *var1", s)
 
         s = gen_arg_as_cxx(r, force_ptr=True, with_template_args=True)
-        self.assertEqual("std::vector<int *> * var1", s)
+        self.assertEqual("std::vector<int *> *var1", s)
 
     def test_template_argument_list(self):
         symtab = declast.SymbolTable()
@@ -710,7 +710,7 @@ class CheckParse(unittest.TestCase):
         declarator = r.declarator
 
         s = gen_decl(r)
-        self.assertEqual("int ( * func)(int)", s)
+        self.assertEqual("int (*func)(int)", s)
 
         self.assertEqual("int", r.typemap.name)
         self.assertEqual("func", declarator.name)
@@ -732,11 +732,11 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(pdecl.is_function_pointer())
 
         s = gen_decl(r)
-        self.assertEqual("int ( * func)(int)", s)
+        self.assertEqual("int (*func)(int)", s)
         s = gen_arg_as_c(r)
-        self.assertEqual("int ( * func)(\tint)", s)
+        self.assertEqual("int (*func)(\tint)", s)
         s = gen_arg_as_cxx(r)
-        self.assertEqual("int ( * func)(\tint)", s)
+        self.assertEqual("int (*func)(\tint)", s)
 
         self.assertEqual(
             {
@@ -773,7 +773,7 @@ class CheckParse(unittest.TestCase):
         declarator = r.declarator
 
         s = gen_decl(r)
-        self.assertEqual("int * ( * func)(int * arg)", s)
+        self.assertEqual("int *(*func)(int *arg)", s)
 
         self.assertEqual("int", r.typemap.name)
         self.assertEqual("func", declarator.name)
@@ -786,7 +786,7 @@ class CheckParse(unittest.TestCase):
 
         param0 = declarator.params[0]
         s = gen_decl(param0)
-        self.assertEqual("int * arg", s)
+        self.assertEqual("int *arg", s)
         self.assertEqual("int", param0.typemap.name)
         self.assertEqual("arg", param0.declarator.name)
         self.assertTrue(param0.declarator.is_pointer())
@@ -877,7 +877,7 @@ class CheckParse(unittest.TestCase):
         declarator = r.declarator
 
         s = gen_decl(r)
-        self.assertEqual("void * foo(void) const", s)
+        self.assertEqual("void *foo(void) const", s)
 
         self.assertEqual(
             {
@@ -985,7 +985,7 @@ class CheckParse(unittest.TestCase):
         declarator = r.declarator
 
         s = gen_decl(r)
-        self.assertEqual("const std::string & getName(void) const", s)
+        self.assertEqual("const std::string &getName(void) const", s)
         self.assertFalse(declarator.is_pointer())
         self.assertTrue(declarator.is_reference())
         self.assertEqual(1, declarator.is_indirect())
@@ -1094,7 +1094,7 @@ class CheckParse(unittest.TestCase):
         # must provide the name since the ctor has no name
         # cxx_type and c_type are not defined yet
         self.assertEqual("--NOTYPE-- ctor(\tvoid)", gen_arg_as_cxx(r))
-        self.assertEqual("--NOTYPE-- * ctor", gen_arg_as_c(r, add_params=False))
+        self.assertEqual("--NOTYPE-- *ctor", gen_arg_as_c(r, add_params=False))
 
     def test_decl09b(self):
         """Test constructor +name
@@ -1128,7 +1128,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(declarator.is_reference())
         self.assertEqual(0, declarator.is_indirect())
         self.assertEqual("--NOTYPE-- new", gen_arg_as_cxx(r, add_params=False))
-        self.assertEqual("--NOTYPE-- * new(\tvoid)", gen_arg_as_c(r))
+        self.assertEqual("--NOTYPE-- *new(\tvoid)", gen_arg_as_c(r))
 
     def test_decl09c(self):
         """Test destructor
@@ -1219,7 +1219,7 @@ class CheckParse(unittest.TestCase):
         declarator = r.declarator
 
         s = gen_decl(r)
-        self.assertEqual("Class1 * make(void)", s)
+        self.assertEqual("Class1 *make(void)", s)
 
         self.assertEqual(
             {
@@ -1479,7 +1479,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const std::string& getName() const", symtab)
 
         s = gen_decl(r)
-        self.assertEqual("const std::string & getName(void) const", s)
+        self.assertEqual("const std::string &getName(void) const", s)
 
     def test_copy01(self):
         """Test copy"""

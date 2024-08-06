@@ -39,7 +39,7 @@ PyObject *PY_error_obj;
 // Function:  int vector_sum
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  const std::vector<int> & arg
+// Argument:  const std::vector<int> &arg
 // Statement: py_in_vector<native>&_numpy
 static char PY_vector_sum__doc__[] =
 "documentation"
@@ -98,7 +98,7 @@ fail:
 // Function:  void vector_iota_out
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +intent(out)
+// Argument:  std::vector<int> &arg +intent(out)
 // Statement: py_out_vector<native>&_numpy
 static char PY_vector_iota_out__doc__[] =
 "documentation"
@@ -115,7 +115,7 @@ PY_vector_iota_out(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.vector_iota_out
-    std::vector<int> * SH_arg = nullptr;
+    std::vector<int> *SH_arg = nullptr;
     npy_intp SHD_arg[1];
     PyObject * SHPy_arg = nullptr;
     PyObject *SHC_arg = nullptr;
@@ -157,7 +157,7 @@ fail:
 // Function:  void vector_iota_out_d
 // Statement: py_default
 // ----------------------------------------
-// Argument:  std::vector<double> & arg +intent(out)
+// Argument:  std::vector<double> &arg +intent(out)
 // Statement: py_out_vector<native>&_numpy
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
@@ -174,7 +174,7 @@ PY_vector_iota_out_d(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.vector_iota_out_d
-    std::vector<double> * SH_arg = nullptr;
+    std::vector<double> *SH_arg = nullptr;
     npy_intp SHD_arg[1];
     PyObject * SHPy_arg = nullptr;
     PyObject *SHC_arg = nullptr;
@@ -238,7 +238,7 @@ PY_ReturnVectorAlloc(
     const char *SHT_kwlist[] = {
         "n",
         nullptr };
-    std::vector<int> * SHCXX_rv = nullptr;
+    std::vector<int> *SHCXX_rv = nullptr;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
     PyObject *SHC_SHCXX_rv = nullptr;
@@ -284,7 +284,7 @@ fail:
 // Function:  int returnDim2
 // Statement: py_function_native
 // ----------------------------------------
-// Argument:  int * arg +intent(in)+rank(2)
+// Argument:  int *arg +intent(in)+rank(2)
 // Statement: py_in_native*_numpy
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))
@@ -300,7 +300,7 @@ PY_returnDim2(
   PyObject *kwds)
 {
 // splicer begin function.returnDim2
-    int * arg;
+    int *arg;
     PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     int len;

@@ -18,7 +18,7 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
-bool TYP_passIndex(IndexType i1, IndexType * i2)
+bool TYP_passIndex(IndexType i1, IndexType *i2)
 {
     // splicer begin function.passIndex
     bool SHC_rv = passIndex(i1, i2);
@@ -26,7 +26,7 @@ bool TYP_passIndex(IndexType i1, IndexType * i2)
     // splicer end function.passIndex
 }
 
-bool TYP_passIndex_32_bufferify(int32_t i1, IndexType * i2)
+bool TYP_passIndex_32_bufferify(int32_t i1, IndexType *i2)
 {
     // splicer begin function.passIndex_32_bufferify
     bool SHC_rv = passIndex(i1, i2);
@@ -34,7 +34,7 @@ bool TYP_passIndex_32_bufferify(int32_t i1, IndexType * i2)
     // splicer end function.passIndex_32_bufferify
 }
 
-bool TYP_passIndex_64_bufferify(int64_t i1, IndexType * i2)
+bool TYP_passIndex_64_bufferify(int64_t i1, IndexType *i2)
 {
     // splicer begin function.passIndex_64_bufferify
     bool SHC_rv = passIndex(i1, i2);

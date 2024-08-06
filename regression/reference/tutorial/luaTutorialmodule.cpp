@@ -63,10 +63,10 @@ static int l_PassByValue(lua_State *L)
 // Function:  const std::string ConcatenateStrings
 // Statement: lua_function_string
 // ----------------------------------------
-// Argument:  const std::string & arg1
+// Argument:  const std::string &arg1
 // Statement: lua_in_string&
 // ----------------------------------------
-// Argument:  const std::string & arg2
+// Argument:  const std::string &arg2
 // Statement: lua_in_string&
 /**
  * Note that since a reference is returned, no intermediate string
@@ -156,7 +156,7 @@ static int l_UseDefaultArguments(lua_State *L)
 // Function:  void OverloadedFunction
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: lua_in_string&
 // ----------------------------------------
 // Function:  void OverloadedFunction
@@ -247,7 +247,7 @@ static int l_TemplateArgument(lua_State *L)
 // Function:  void FortranGenericOverloaded
 // Statement: lua_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name
+// Argument:  const std::string &name
 // Statement: lua_in_string&
 // ----------------------------------------
 // Argument:  double arg2
@@ -483,12 +483,12 @@ static int l_colorfunc(lua_State *L)
 
 // const std::string &LastFunctionCalled(void) +len(30)
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: lua_function_string&
 static int l_LastFunctionCalled(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = tutorial::LastFunctionCalled();
+    const std::string &SHCXX_rv = tutorial::LastFunctionCalled();
     lua_pushstring(L, SHCXX_rv.c_str());
     return 1;
     // splicer end function.LastFunctionCalled

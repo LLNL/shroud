@@ -67,7 +67,7 @@ PY_vector_double_tp_init(
 // Function:  void push_back
 // Statement: py_default
 // ----------------------------------------
-// Argument:  const double & value +intent(in)
+// Argument:  const double &value +intent(in)
 // Statement: py_in_native&
 static char PY_push_back__doc__[] =
 "documentation"
@@ -95,7 +95,7 @@ PY_push_back(
 }
 
 // ----------------------------------------
-// Function:  double & at
+// Function:  double &at
 // Statement: py_function_native&_numpy
 // ----------------------------------------
 // Argument:  size_type n
@@ -121,7 +121,7 @@ PY_at(
         const_cast<char **>(SHT_kwlist), &n))
         return nullptr;
 
-    double & SHCXX_rv = self->obj->at(n);
+    double &SHCXX_rv = self->obj->at(n);
 
     // post_call
     SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_DOUBLE,

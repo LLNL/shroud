@@ -78,7 +78,7 @@ module enum_mod
         ! Function:  void returnEnumOutArg
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  enum Color * out +intent(out)
+        ! Argument:  enum Color *out +intent(out)
         ! Statement: f_out_enum*
         subroutine return_enum_out_arg(out) &
                 bind(C, name="ENU_returnEnumOutArg_bufferify")
@@ -91,7 +91,7 @@ module enum_mod
         ! Function:  enum Color returnEnumInOutArg
         ! Statement: f_function_enum
         ! ----------------------------------------
-        ! Argument:  enum Color * inout +intent(inout)
+        ! Argument:  enum Color *inout +intent(inout)
         ! Statement: f_inout_enum*
         function return_enum_in_out_arg(inout) &
                 result(SHT_rv) &
@@ -152,7 +152,7 @@ contains
     ! Function:  void returnEnumOutArg
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  enum Color * out +intent(out)
+    ! Argument:  enum Color *out +intent(out)
     ! Statement: f_out_enum*
     subroutine return_enum_out_arg(out)
         use iso_c_binding, only : C_SHORT
@@ -169,7 +169,7 @@ contains
     ! Function:  enum Color returnEnumInOutArg
     ! Statement: f_function_enum
     ! ----------------------------------------
-    ! Argument:  enum Color * inout +intent(inout)
+    ! Argument:  enum Color *inout +intent(inout)
     ! Statement: f_inout_enum*
     function return_enum_in_out_arg(inout) &
             result(SHT_rv)

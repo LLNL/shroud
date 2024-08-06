@@ -39,12 +39,12 @@ void STR_passCharForce(char status);
 
 void STR_returnChar(char *SHC_rv);
 
-void STR_passCharPtr(char * dest, const char * src);
+void STR_passCharPtr(char *dest, const char *src);
 
 void STR_passCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
-void STR_passCharPtrInOut(char * s);
+void STR_passCharPtrInOut(char *s);
 
 void STR_passCharPtrInOut_CFI(CFI_cdesc_t *SHT_s_cfi);
 
@@ -122,39 +122,39 @@ const char * STR_getConstStringPtrPointer(void);
 void STR_getConstStringPtrPointer_CFI(CFI_cdesc_t *SHT_rv_cfi);
 #endif
 
-void STR_acceptStringConstReference(const char * arg1);
+void STR_acceptStringConstReference(const char *arg1);
 
 void STR_acceptStringConstReference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_acceptStringReferenceOut(char * arg1);
+void STR_acceptStringReferenceOut(char *arg1);
 
 void STR_acceptStringReferenceOut_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_acceptStringReference(char * arg1);
+void STR_acceptStringReference(char *arg1);
 
 void STR_acceptStringReference_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_acceptStringPointerConst(const char * arg1);
+void STR_acceptStringPointerConst(const char *arg1);
 
 void STR_acceptStringPointerConst_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_acceptStringPointer(char * arg1);
+void STR_acceptStringPointer(char *arg1);
 
 void STR_acceptStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_fetchStringPointer(char * arg1);
+void STR_fetchStringPointer(char *arg1);
 
 void STR_fetchStringPointer_CFI(CFI_cdesc_t *SHT_arg1_cfi);
 
-void STR_acceptStringPointerLen(char * arg1, int * nlen);
+void STR_acceptStringPointerLen(char *arg1, int *nlen);
 
 void STR_acceptStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
-    int * nlen);
+    int *nlen);
 
-void STR_fetchStringPointerLen(char * arg1, int * nlen);
+void STR_fetchStringPointerLen(char *arg1, int *nlen);
 
 void STR_fetchStringPointerLen_CFI(CFI_cdesc_t *SHT_arg1_cfi,
-    int * nlen);
+    int *nlen);
 
 int STR_acceptStringInstance(char *arg1);
 
@@ -166,11 +166,11 @@ void STR_fetchArrayStringAlloc_CFI(CFI_cdesc_t *SHT_strs_cfi);
 
 void STR_fetchArrayStringAllocLen_CFI(CFI_cdesc_t *SHT_strs_cfi);
 
-void STR_explicit1(char * name);
+void STR_explicit1(char *name);
 
 void STR_explicit1_CFI(CFI_cdesc_t *SHT_name_cfi);
 
-void STR_explicit2(char * name);
+void STR_explicit2(char *name);
 
 void STR_explicit2_CFI(CFI_cdesc_t *SHT_name_cfi);
 
@@ -179,26 +179,25 @@ void STR_CreturnChar(char *SHC_rv);
 void STR_CpassCharPtr_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
-void STR_CpassCharPtrBlank(char * dest, const char * src);
+void STR_CpassCharPtrBlank(char *dest, const char *src);
 
 void STR_CpassCharPtrBlank_CFI(CFI_cdesc_t *SHT_dest_cfi,
     CFI_cdesc_t *SHT_src_cfi);
 
-void STR_PostDeclare(int * count, char * name);
+void STR_PostDeclare(int *count, char *name);
 
 void STR_PostDeclare_CFI(CFI_cdesc_t *SHT_count_cfi,
     CFI_cdesc_t *SHT_name_cfi);
 
-int STR_CpassCharPtrNotrim(const char * src);
+int STR_CpassCharPtrNotrim(const char *src);
 
 int STR_CpassCharPtrNotrim_CFI(CFI_cdesc_t *SHT_src_cfi);
 
-int STR_CpassCharPtrCAPI(void * addr, const char * src);
+int STR_CpassCharPtrCAPI(void *addr, const char *src);
 
-int STR_CpassCharPtrCAPI2(const char * in, const char * src);
+int STR_CpassCharPtrCAPI2(const char *in, const char *src);
 
-int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi,
-    const char * src);
+int STR_CpassCharPtrCAPI2_CFI(CFI_cdesc_t *SHT_in_cfi, const char *src);
 
 #ifdef __cplusplus
 }

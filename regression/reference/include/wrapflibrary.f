@@ -62,7 +62,7 @@ module library_mod
         ! Function:  void method2
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  three::Class1 * c2
+        ! Argument:  three::Class1 *c2
         ! Statement: f_inout_shadow*
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
@@ -92,7 +92,7 @@ contains
     ! Function:  void method2
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  three::Class1 * c2
+    ! Argument:  three::Class1 *c2
     ! Statement: f_inout_shadow*
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1

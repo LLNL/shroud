@@ -33,7 +33,7 @@ module cxxlibrary_structns_mod
         ! Function:  int passStructByReference
         ! Statement: f_function_native
         ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg
+        ! Argument:  Cstruct1 &arg
         ! Statement: f_inout_struct&
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
@@ -49,7 +49,7 @@ module cxxlibrary_structns_mod
         ! Function:  int passStructByReferenceIn
         ! Statement: f_function_native
         ! ----------------------------------------
-        ! Argument:  const Cstruct1 & arg
+        ! Argument:  const Cstruct1 &arg
         ! Statement: f_in_struct&
         function pass_struct_by_reference_in(arg) &
                 result(SHT_rv) &
@@ -65,7 +65,7 @@ module cxxlibrary_structns_mod
         ! Function:  void passStructByReferenceInout
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(inout)
+        ! Argument:  Cstruct1 &arg +intent(inout)
         ! Statement: f_inout_struct&
         subroutine pass_struct_by_reference_inout(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceInout")
@@ -78,7 +78,7 @@ module cxxlibrary_structns_mod
         ! Function:  void passStructByReferenceOut
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(out)
+        ! Argument:  Cstruct1 &arg +intent(out)
         ! Statement: f_out_struct&
         subroutine pass_struct_by_reference_out(arg) &
                 bind(C, name="CXX_structns_passStructByReferenceOut")
@@ -99,7 +99,7 @@ contains
     ! Function:  int passStructByReference
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  Cstruct1 & arg
+    ! Argument:  Cstruct1 &arg
     ! Statement: f_inout_struct&
     !>
     !! Argument is modified by library, defaults to intent(inout).
@@ -121,7 +121,7 @@ contains
     ! Function:  int passStructByReferenceIn
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 & arg
+    ! Argument:  const Cstruct1 &arg
     ! Statement: f_in_struct&
     !>
     !! const defaults to intent(in)
@@ -143,7 +143,7 @@ contains
     ! Function:  void passStructByReferenceInout
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Cstruct1 & arg +intent(inout)
+    ! Argument:  Cstruct1 &arg +intent(inout)
     ! Statement: f_inout_struct&
     subroutine pass_struct_by_reference_inout(arg)
         type(cstruct1), intent(INOUT) :: arg
@@ -159,7 +159,7 @@ contains
     ! Function:  void passStructByReferenceOut
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Cstruct1 & arg +intent(out)
+    ! Argument:  Cstruct1 &arg +intent(out)
     ! Statement: f_out_struct&
     subroutine pass_struct_by_reference_out(arg)
         type(cstruct1), intent(OUT) :: arg

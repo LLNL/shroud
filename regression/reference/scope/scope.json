@@ -563,7 +563,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
+                "decl": "int *DataPointer_get_items(ns3::DataPointer *SH_this+intent(in))",
                 "declgen": "int *DataPointer_get_items(ns3::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                 "helpers": {
                     "c": [
@@ -633,7 +633,7 @@
                             "C_call_function": "DataPointer_get_items(\tSH_this)",
                             "C_call_list": "SH_this",
                             "C_name": "SCO_DataPointer_get_items",
-                            "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
+                            "C_prototype": "SCO_datapointer *SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                             "F_C_call": "c_data_pointer_get_items",
@@ -655,7 +655,7 @@
                             "cfi_type": "CFI_type_int",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_rv_decl": "int * SHC_rv",
+                            "cxx_rv_decl": "int *SHC_rv",
                             "cxx_type": "int",
                             "cxx_var": "SHC_rv",
                             "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
@@ -779,7 +779,7 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int * val)",
+                "decl": "void DataPointer_set_items(ns3::DataPointer *SH_this,int *val)",
                 "declgen": "void DataPointer_set_items(ns3::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                 "name": "DataPointer_set_items",
                 "options": {},
@@ -838,7 +838,7 @@
                             "C_call_function": "DataPointer_set_items(\tSH_this,\t val)",
                             "C_call_list": "SH_this,\t val",
                             "C_name": "SCO_DataPointer_set_items",
-                            "C_prototype": "SCO_datapointer * SH_this,\t int * val",
+                            "C_prototype": "SCO_datapointer *SH_this,\t int *val",
                             "C_return_type": "void",
                             "F_C_arguments": "SH_this,\t val",
                             "F_C_call": "c_data_pointer_set_items",
@@ -1155,7 +1155,7 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
+                        "decl": "int *DataPointer_get_items(ns1::DataPointer *SH_this+intent(in))",
                         "declgen": "int *DataPointer_get_items(ns1::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
@@ -1225,7 +1225,7 @@
                                     "C_call_function": "ns1::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
                                     "C_name": "SCO_ns1_DataPointer_get_items",
-                                    "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
+                                    "C_prototype": "SCO_datapointer *SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                                     "F_C_call": "c_data_pointer_get_items",
@@ -1247,7 +1247,7 @@
                                     "cfi_type": "CFI_type_int",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_rv_decl": "int * SHC_rv",
+                                    "cxx_rv_decl": "int *SHC_rv",
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
@@ -1371,7 +1371,7 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int * val)",
+                        "decl": "void DataPointer_set_items(ns1::DataPointer *SH_this,int *val)",
                         "declgen": "void DataPointer_set_items(ns1::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
@@ -1430,7 +1430,7 @@
                                     "C_call_function": "ns1::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
                                     "C_name": "SCO_ns1_DataPointer_set_items",
-                                    "C_prototype": "SCO_datapointer * SH_this,\t int * val",
+                                    "C_prototype": "SCO_datapointer *SH_this,\t int *val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t val",
                                     "F_C_call": "c_data_pointer_set_items",
@@ -1774,7 +1774,7 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "decl": "int * DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
+                        "decl": "int *DataPointer_get_items(ns2::DataPointer *SH_this+intent(in))",
                         "declgen": "int *DataPointer_get_items(ns2::DataPointer *SH_this +intent(in)) +dimension(nitems)+intent(getter)",
                         "helpers": {
                             "c": [
@@ -1844,7 +1844,7 @@
                                     "C_call_function": "ns2::DataPointer_get_items(\tSH_this)",
                                     "C_call_list": "SH_this",
                                     "C_name": "SCO_ns2_DataPointer_get_items",
-                                    "C_prototype": "SCO_datapointer * SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
+                                    "C_prototype": "SCO_datapointer *SH_this,\t SCO_SHROUD_array *SHT_rv_cdesc",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
                                     "F_C_call": "c_data_pointer_get_items",
@@ -1866,7 +1866,7 @@
                                     "cfi_type": "CFI_type_int",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
-                                    "cxx_rv_decl": "int * SHC_rv",
+                                    "cxx_rv_decl": "int *SHC_rv",
                                     "cxx_type": "int",
                                     "cxx_var": "SHC_rv",
                                     "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
@@ -1990,7 +1990,7 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int * val)",
+                        "decl": "void DataPointer_set_items(ns2::DataPointer *SH_this,int *val)",
                         "declgen": "void DataPointer_set_items(ns2::DataPointer *SH_this, int *val +intent(setter)+rank(1)) +intent(setter)",
                         "name": "DataPointer_set_items",
                         "options": {},
@@ -2049,7 +2049,7 @@
                                     "C_call_function": "ns2::DataPointer_set_items(\tSH_this,\t val)",
                                     "C_call_list": "SH_this,\t val",
                                     "C_name": "SCO_ns2_DataPointer_set_items",
-                                    "C_prototype": "SCO_datapointer * SH_this,\t int * val",
+                                    "C_prototype": "SCO_datapointer *SH_this,\t int *val",
                                     "C_return_type": "void",
                                     "F_C_arguments": "SH_this,\t val",
                                     "F_C_call": "c_data_pointer_set_items",

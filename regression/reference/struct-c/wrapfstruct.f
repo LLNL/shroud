@@ -376,7 +376,7 @@ module struct_mod
     ! Function:  int passStruct1
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * arg
+    ! Argument:  const Cstruct1 *arg
     ! Statement: f_in_struct*
     ! start pass_struct1
     interface
@@ -396,10 +396,10 @@ module struct_mod
     ! Function:  int passStruct2
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * s1
+    ! Argument:  const Cstruct1 *s1
     ! Statement: f_in_struct*
     ! ----------------------------------------
-    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Argument:  char *outbuf +charlen(LENOUTBUF)+intent(out)
     ! Statement: f_out_char*_buf
     interface
         function c_pass_struct2_bufferify(s1, outbuf, SHT_outbuf_len) &
@@ -419,7 +419,7 @@ module struct_mod
     ! Function:  int acceptStructInPtr
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(in)
+    ! Argument:  Cstruct1 *arg +intent(in)
     ! Statement: f_in_struct*
     interface
         function accept_struct_in_ptr(arg) &
@@ -437,7 +437,7 @@ module struct_mod
     ! Function:  void acceptStructOutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(out)
+    ! Argument:  Cstruct1 *arg +intent(out)
     ! Statement: f_out_struct*
     ! ----------------------------------------
     ! Argument:  int i
@@ -461,7 +461,7 @@ module struct_mod
     ! Function:  void acceptStructInOutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(inout)
+    ! Argument:  Cstruct1 *arg +intent(inout)
     ! Statement: f_inout_struct*
     interface
         subroutine accept_struct_in_out_ptr(arg) &
@@ -494,7 +494,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr1
+    ! Function:  Cstruct1 *returnStructPtr1
     ! Statement: f_function_struct*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  int i
@@ -515,7 +515,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr2
+    ! Function:  Cstruct1 *returnStructPtr2
     ! Statement: f_function_struct*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  int i
@@ -524,7 +524,7 @@ module struct_mod
     ! Argument:  double d
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Argument:  char *outbuf +charlen(LENOUTBUF)+intent(out)
     ! Statement: f_out_char*_buf
     interface
         subroutine c_return_struct_ptr2_bufferify(i, d, outbuf, &
@@ -542,7 +542,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+    ! Function:  Cstruct1 *returnStructPtrArray +dimension(2)
     ! Statement: f_function_struct*_cdesc_pointer
     interface
         subroutine c_return_struct_ptr_array_bufferify(SHT_rv_cdesc) &
@@ -554,7 +554,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct_list * get_global_struct_list
+    ! Function:  Cstruct_list *get_global_struct_list
     ! Statement: f_function_struct*_cdesc_pointer
     interface
         subroutine c_get_global_struct_list_bufferify(SHT_rv_cdesc) &
@@ -566,7 +566,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Function:  Cstruct_as_class *Create_Cstruct_as_class
     ! Statement: f_function_shadow*_capptr
     ! start c_create_cstruct_as_class_bufferify
     interface
@@ -583,7 +583,7 @@ module struct_mod
     ! end c_create_cstruct_as_class_bufferify
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
     ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  int x
@@ -606,7 +606,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Return_Cstruct_as_class
+    ! Function:  Cstruct_as_class *Return_Cstruct_as_class
     ! Statement: f_function_shadow*_capsule
     interface
         subroutine c_return_cstruct_as_class_bufferify(SHT_rv) &
@@ -618,7 +618,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Return_Cstruct_as_class_args
+    ! Function:  Cstruct_as_class *Return_Cstruct_as_class_args
     ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  int x
@@ -643,7 +643,7 @@ module struct_mod
     ! Function:  int Cstruct_as_class_sum
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +pass
+    ! Argument:  const Cstruct_as_class *point +pass
     ! Statement: f_in_shadow*
     interface
         function c_cstruct_as_class_sum_bufferify(point) &
@@ -658,7 +658,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
     ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  int x
@@ -686,7 +686,7 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_subclass * Return_Cstruct_as_subclass_args
+    ! Function:  Cstruct_as_subclass *Return_Cstruct_as_subclass_args
     ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  int x
@@ -713,10 +713,10 @@ module struct_mod
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  const double * Cstruct_ptr_get_const_dvalue +intent(getter)
+    ! Function:  const double *Cstruct_ptr_get_const_dvalue +intent(getter)
     ! Statement: f_getter_native*_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_ptr * SH_this +intent(in)
+    ! Argument:  Cstruct_ptr *SH_this +intent(in)
     ! Statement: f_in_struct*
     interface
         function cstruct_ptr_get_const_dvalue(SH_this) &
@@ -735,10 +735,10 @@ module struct_mod
     ! Function:  void Cstruct_ptr_set_const_dvalue +intent(setter)
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  Cstruct_ptr * SH_this
+    ! Argument:  Cstruct_ptr *SH_this
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  const double * val +intent(setter)
+    ! Argument:  const double *val +intent(setter)
     ! Statement: f_setter_native*
     interface
         subroutine cstruct_ptr_set_const_dvalue(SH_this, val) &
@@ -753,10 +753,10 @@ module struct_mod
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int * Cstruct_list_get_ivalue +dimension(nitems+nitems)+intent(getter)
+    ! Function:  int *Cstruct_list_get_ivalue +dimension(nitems+nitems)+intent(getter)
     ! Statement: f_getter_native*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this +intent(in)
+    ! Argument:  Cstruct_list *SH_this +intent(in)
     ! Statement: f_in_struct*
     interface
         subroutine c_cstruct_list_get_ivalue(SH_this, SHT_rv_cdesc) &
@@ -773,10 +773,10 @@ module struct_mod
     ! Function:  void Cstruct_list_set_ivalue +intent(setter)
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list *SH_this
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  int * val +intent(setter)+rank(1)
+    ! Argument:  int *val +intent(setter)+rank(1)
     ! Statement: f_setter_native*
     interface
         subroutine cstruct_list_set_ivalue(SH_this, val) &
@@ -791,10 +791,10 @@ module struct_mod
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  double * Cstruct_list_get_dvalue +dimension(nitems*TWO)+intent(getter)
+    ! Function:  double *Cstruct_list_get_dvalue +dimension(nitems*TWO)+intent(getter)
     ! Statement: f_getter_native*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this +intent(in)
+    ! Argument:  Cstruct_list *SH_this +intent(in)
     ! Statement: f_in_struct*
     interface
         subroutine c_cstruct_list_get_dvalue(SH_this, SHT_rv_cdesc) &
@@ -811,10 +811,10 @@ module struct_mod
     ! Function:  void Cstruct_list_set_dvalue +intent(setter)
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list *SH_this
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  double * val +intent(setter)+rank(1)
+    ! Argument:  double *val +intent(setter)+rank(1)
     ! Statement: f_setter_native*
     interface
         subroutine cstruct_list_set_dvalue(SH_this, val) &
@@ -1046,7 +1046,7 @@ contains
     ! Function:  int passStruct1
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * arg
+    ! Argument:  const Cstruct1 *arg
     ! Statement: f_in_struct*
     ! start pass_struct1
     function pass_struct1(arg) &
@@ -1065,10 +1065,10 @@ contains
     ! Function:  int passStruct2
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * s1
+    ! Argument:  const Cstruct1 *s1
     ! Statement: f_in_struct*
     ! ----------------------------------------
-    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Argument:  char *outbuf +charlen(LENOUTBUF)+intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! Pass name argument which will build a bufferify function.
@@ -1092,7 +1092,7 @@ contains
     ! Function:  int acceptStructInPtr
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(in)
+    ! Argument:  Cstruct1 *arg +intent(in)
     ! Statement: f_in_struct*
     function accept_struct_in_ptr(arg) &
             result(SHT_rv)
@@ -1111,7 +1111,7 @@ contains
     ! Function:  void acceptStructOutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(out)
+    ! Argument:  Cstruct1 *arg +intent(out)
     ! Statement: f_out_struct*
     ! ----------------------------------------
     ! Argument:  int i
@@ -1139,7 +1139,7 @@ contains
     ! Function:  void acceptStructInOutPtr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(inout)
+    ! Argument:  Cstruct1 *arg +intent(inout)
     ! Statement: f_inout_struct*
     subroutine accept_struct_in_out_ptr(arg)
         type(cstruct1), intent(INOUT) :: arg
@@ -1170,7 +1170,7 @@ contains
     end function return_struct_by_value
 
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr1
+    ! Function:  Cstruct1 *returnStructPtr1
     ! Statement: f_function_struct*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  int i
@@ -1197,7 +1197,7 @@ contains
     end function return_struct_ptr1
 
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr2
+    ! Function:  Cstruct1 *returnStructPtr2
     ! Statement: f_function_struct*_cdesc_pointer
     ! ----------------------------------------
     ! Argument:  int i
@@ -1206,7 +1206,7 @@ contains
     ! Argument:  double d
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Argument:  char *outbuf +charlen(LENOUTBUF)+intent(out)
     ! Statement: f_out_char*_buf
     !>
     !! \brief Return a pointer to a struct
@@ -1231,7 +1231,7 @@ contains
     end function return_struct_ptr2
 
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtrArray +dimension(2)
+    ! Function:  Cstruct1 *returnStructPtrArray +dimension(2)
     ! Statement: f_function_struct*_cdesc_pointer
     !>
     !! \brief Return a pointer to an array of structs
@@ -1250,7 +1250,7 @@ contains
     end function return_struct_ptr_array
 
     ! ----------------------------------------
-    ! Function:  Cstruct_list * get_global_struct_list
+    ! Function:  Cstruct_list *get_global_struct_list
     ! Statement: f_function_struct*_cdesc_pointer
     function get_global_struct_list() &
             result(SHT_rv)
@@ -1264,7 +1264,7 @@ contains
     end function get_global_struct_list
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Function:  Cstruct_as_class *Create_Cstruct_as_class
     ! Statement: f_function_shadow*_capptr
     ! start create_cstruct_as_class
     function create_cstruct_as_class() &
@@ -1279,7 +1279,7 @@ contains
     ! end create_cstruct_as_class
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
     ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  int x
@@ -1301,7 +1301,7 @@ contains
     end function create_cstruct_as_class_args
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Return_Cstruct_as_class
+    ! Function:  Cstruct_as_class *Return_Cstruct_as_class
     ! Statement: f_function_shadow*_capsule
     function return_cstruct_as_class() &
             result(SHT_rv)
@@ -1312,7 +1312,7 @@ contains
     end function return_cstruct_as_class
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_class * Return_Cstruct_as_class_args
+    ! Function:  Cstruct_as_class *Return_Cstruct_as_class_args
     ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  int x
@@ -1336,7 +1336,7 @@ contains
     ! Function:  int Cstruct_as_class_sum
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +pass
+    ! Argument:  const Cstruct_as_class *point +pass
     ! Statement: f_in_shadow*
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
@@ -1349,7 +1349,7 @@ contains
     end function cstruct_as_class_sum
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
     ! Statement: f_function_shadow*_capptr
     ! ----------------------------------------
     ! Argument:  int x
@@ -1375,7 +1375,7 @@ contains
     end function create_cstruct_as_subclass_args
 
     ! ----------------------------------------
-    ! Function:  Cstruct_as_subclass * Return_Cstruct_as_subclass_args
+    ! Function:  Cstruct_as_subclass *Return_Cstruct_as_subclass_args
     ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  int x
@@ -1403,10 +1403,10 @@ contains
     ! Only the interface is needed
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  const double * Cstruct_ptr_get_const_dvalue +intent(getter)
+    ! Function:  const double *Cstruct_ptr_get_const_dvalue +intent(getter)
     ! Statement: f_getter_native*_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_ptr * SH_this +intent(in)
+    ! Argument:  Cstruct_ptr *SH_this +intent(in)
     ! Statement: f_in_struct*
     function cstruct_ptr_get_const_dvalue(SH_this) &
             result(SHT_rv)
@@ -1426,10 +1426,10 @@ contains
     ! Function:  void Cstruct_ptr_set_const_dvalue +intent(setter)
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  Cstruct_ptr * SH_this
+    ! Argument:  Cstruct_ptr *SH_this
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  const double * val +intent(setter)
+    ! Argument:  const double *val +intent(setter)
     ! Statement: f_setter_native*
     subroutine cstruct_ptr_set_const_dvalue(SH_this, val)
         use iso_c_binding, only : C_DOUBLE
@@ -1443,10 +1443,10 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  int * Cstruct_list_get_ivalue +dimension(nitems+nitems)+intent(getter)
+    ! Function:  int *Cstruct_list_get_ivalue +dimension(nitems+nitems)+intent(getter)
     ! Statement: f_getter_native*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this +intent(in)
+    ! Argument:  Cstruct_list *SH_this +intent(in)
     ! Statement: f_in_struct*
     function cstruct_list_get_ivalue(SH_this) &
             result(SHT_rv)
@@ -1468,10 +1468,10 @@ contains
     ! Function:  void Cstruct_list_set_ivalue +intent(setter)
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list *SH_this
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  int * val +intent(setter)+rank(1)
+    ! Argument:  int *val +intent(setter)+rank(1)
     ! Statement: f_setter_native*
     subroutine cstruct_list_set_ivalue(SH_this, val)
         use iso_c_binding, only : C_INT
@@ -1485,10 +1485,10 @@ contains
 
     ! Generated by getter/setter
     ! ----------------------------------------
-    ! Function:  double * Cstruct_list_get_dvalue +dimension(nitems*TWO)+intent(getter)
+    ! Function:  double *Cstruct_list_get_dvalue +dimension(nitems*TWO)+intent(getter)
     ! Statement: f_getter_native*_cdesc_pointer
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this +intent(in)
+    ! Argument:  Cstruct_list *SH_this +intent(in)
     ! Statement: f_in_struct*
     function cstruct_list_get_dvalue(SH_this) &
             result(SHT_rv)
@@ -1510,10 +1510,10 @@ contains
     ! Function:  void Cstruct_list_set_dvalue +intent(setter)
     ! Statement: f_setter
     ! ----------------------------------------
-    ! Argument:  Cstruct_list * SH_this
+    ! Argument:  Cstruct_list *SH_this
     ! Statement: f_inout_struct*
     ! ----------------------------------------
-    ! Argument:  double * val +intent(setter)+rank(1)
+    ! Argument:  double *val +intent(setter)+rank(1)
     ! Statement: f_setter_native*
     subroutine cstruct_list_set_dvalue(SH_this, val)
         use iso_c_binding, only : C_DOUBLE

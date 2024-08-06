@@ -38,7 +38,7 @@ const char * STMT_getNameErrorPattern(void);
 
 void STMT_getNameErrorPattern_bufferify(char *SHC_rv, int SHT_rv_len);
 
-bool STMT_nameIsValid(const char * name);
+bool STMT_nameIsValid(const char *name);
 
 #ifdef __cplusplus
 }

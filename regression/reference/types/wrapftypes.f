@@ -371,7 +371,7 @@ module types_mod
         ! Function:  bool returnBoolAndOthers
         ! Statement: f_function_bool
         ! ----------------------------------------
-        ! Argument:  int * flag +intent(out)
+        ! Argument:  int *flag +intent(out)
         ! Statement: f_out_native*
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
@@ -828,7 +828,7 @@ contains
     ! Function:  bool returnBoolAndOthers
     ! Statement: f_function_bool
     ! ----------------------------------------
-    ! Argument:  int * flag +intent(out)
+    ! Argument:  int *flag +intent(out)
     ! Statement: f_out_native*
     !>
     !! \brief Function which returns bool with other intent(out) arguments

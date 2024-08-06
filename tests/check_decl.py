@@ -163,7 +163,7 @@ namespace ns {
 }
 --------------------
 # declstr language=c
-int fun1(int arg1, int *arg2, const int *arg3);
+int fun1(int arg1, int *arg2, const int **arg3);
 int callback1(int in, int (*incr)(int));
 --------------------
 # declstr language=c++ create_std

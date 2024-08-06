@@ -35,7 +35,7 @@ PyObject *PY_init_ns_nswork(void);
 // splicer end additional_functions
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled
+// Function:  const std::string &LastFunctionCalled
 // Statement: py_function_string&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
@@ -50,7 +50,7 @@ PY_LastFunctionCalled(
 // splicer begin function.LastFunctionCalled
     PyObject * SHTPy_rv = nullptr;
 
-    const std::string & SHCXX_rv = LastFunctionCalled();
+    const std::string &SHCXX_rv = LastFunctionCalled();
 
     // post_call
     SHTPy_rv = PyString_FromStringAndSize(SHCXX_rv.data(),

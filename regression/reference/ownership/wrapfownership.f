@@ -133,7 +133,7 @@ module ownership_mod
         end function c_class1_get_flag
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrRaw +deref(raw)
+        ! Function:  int *ReturnIntPtrRaw +deref(raw)
         ! Statement: c_function_native*
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
@@ -144,7 +144,7 @@ module ownership_mod
         end function c_return_int_ptr_raw
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrScalar +deref(scalar)
+        ! Function:  int *ReturnIntPtrScalar +deref(scalar)
         ! Statement: c_function_native*
         function c_return_int_ptr_scalar() &
                 result(SHT_rv) &
@@ -155,7 +155,7 @@ module ownership_mod
         end function c_return_int_ptr_scalar
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrScalar +deref(scalar)
+        ! Function:  int *ReturnIntPtrScalar +deref(scalar)
         ! Statement: f_function_native*_scalar
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
@@ -166,7 +166,7 @@ module ownership_mod
         end function return_int_ptr_scalar
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrPointer +deref(pointer)
+        ! Function:  int *ReturnIntPtrPointer +deref(pointer)
         ! Statement: c_function_native*
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
@@ -177,7 +177,7 @@ module ownership_mod
         end function c_return_int_ptr_pointer
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrPointer +deref(pointer)
+        ! Function:  int *ReturnIntPtrPointer +deref(pointer)
         ! Statement: f_function_native*_pointer
         function c_return_int_ptr_pointer_bufferify() &
                 result(SHT_rv) &
@@ -188,10 +188,10 @@ module ownership_mod
         end function c_return_int_ptr_pointer_bufferify
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
+        ! Function:  int *ReturnIntPtrDimRaw +deref(raw)
         ! Statement: c_function_native*
         ! ----------------------------------------
-        ! Argument:  int * len +intent(out)
+        ! Argument:  int *len +intent(out)
         ! Statement: c_out_native*
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
@@ -203,10 +203,10 @@ module ownership_mod
         end function c_return_int_ptr_dim_raw
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+        ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Statement: c_function_native*
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         ! start c_return_int_ptr_dim_pointer
         function c_return_int_ptr_dim_pointer(len) &
@@ -220,7 +220,7 @@ module ownership_mod
         ! end c_return_int_ptr_dim_pointer
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+        ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Statement: f_function_native*_cdesc_pointer
         ! start c_return_int_ptr_dim_pointer_bufferify
         subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv_cdesc) &
@@ -232,10 +232,10 @@ module ownership_mod
         ! end c_return_int_ptr_dim_pointer_bufferify
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+        ! Function:  int *ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Statement: c_function_native*
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         ! start c_return_int_ptr_dim_alloc
         function c_return_int_ptr_dim_alloc(len) &
@@ -249,7 +249,7 @@ module ownership_mod
         ! end c_return_int_ptr_dim_alloc
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+        ! Function:  int *ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Statement: f_function_native*_cdesc_allocatable
         ! start c_return_int_ptr_dim_alloc_bufferify
         subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv_cdesc, &
@@ -263,10 +263,10 @@ module ownership_mod
         ! end c_return_int_ptr_dim_alloc_bufferify
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
+        ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
         ! Statement: c_function_native*
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
@@ -278,7 +278,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_default
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
+        ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
         ! Statement: f_function_native*_cdesc_pointer
         subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv_cdesc) &
                 bind(C, name="OWN_ReturnIntPtrDimDefault_bufferify")
@@ -288,10 +288,10 @@ module ownership_mod
         end subroutine c_return_int_ptr_dim_default_bufferify
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimRawNew +dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
@@ -303,10 +303,10 @@ module ownership_mod
         end function c_return_int_ptr_dim_raw_new
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
@@ -318,7 +318,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_pointer_new
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
         ! Statement: f_function_native*_cdesc_pointer_caller
         subroutine c_return_int_ptr_dim_pointer_new_bufferify( &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -330,10 +330,10 @@ module ownership_mod
         end subroutine c_return_int_ptr_dim_pointer_new_bufferify
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
@@ -345,10 +345,10 @@ module ownership_mod
         end function c_return_int_ptr_dim_alloc_new
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Statement: c_function_native*_caller
         ! ----------------------------------------
-        ! Argument:  int * len +hidden+intent(out)
+        ! Argument:  int *len +hidden+intent(out)
         ! Statement: c_out_native*
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
@@ -360,7 +360,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_default_new
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+        ! Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
         ! Statement: f_function_native*_cdesc_pointer_caller
         subroutine c_return_int_ptr_dim_default_new_bufferify( &
                 SHT_rv_cdesc, SHT_rv_capsule) &
@@ -385,7 +385,7 @@ module ownership_mod
         end subroutine create_class_static
 
         ! ----------------------------------------
-        ! Function:  Class1 * getClassStatic +owner(library)
+        ! Function:  Class1 *getClassStatic +owner(library)
         ! Statement: f_function_shadow*_capptr_library
         function c_get_class_static(SHT_rv) &
                 result(SHT_prv) &
@@ -398,7 +398,7 @@ module ownership_mod
         end function c_get_class_static
 
         ! ----------------------------------------
-        ! Function:  Class1 * getClassNew +owner(caller)
+        ! Function:  Class1 *getClassNew +owner(caller)
         ! Statement: f_function_shadow*_capptr_caller
         ! ----------------------------------------
         ! Argument:  int flag
@@ -497,7 +497,7 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrScalar +deref(scalar)
+    ! Function:  int *ReturnIntPtrScalar +deref(scalar)
     ! Statement: f_function_native*_scalar
     function return_int_ptr_scalar() &
             result(SHT_rv)
@@ -510,7 +510,7 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrPointer +deref(pointer)
+    ! Function:  int *ReturnIntPtrPointer +deref(pointer)
     ! Statement: f_function_native*_pointer
     function return_int_ptr_pointer() &
             result(SHT_rv)
@@ -524,7 +524,7 @@ contains
     end function return_int_ptr_pointer
 
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+    ! Function:  int *ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
     ! Statement: f_function_native*_cdesc_pointer
     ! start return_int_ptr_dim_pointer
     function return_int_ptr_dim_pointer() &
@@ -541,7 +541,7 @@ contains
     ! end return_int_ptr_dim_pointer
 
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+    ! Function:  int *ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
     ! Statement: f_function_native*_cdesc_allocatable
     ! start return_int_ptr_dim_alloc
     function return_int_ptr_dim_alloc() &
@@ -562,7 +562,7 @@ contains
     ! end return_int_ptr_dim_alloc
 
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
+    ! Function:  int *ReturnIntPtrDimDefault +dimension(len)
     ! Statement: f_function_native*_cdesc_pointer
     function return_int_ptr_dim_default() &
             result(SHT_rv)
@@ -577,7 +577,7 @@ contains
     end function return_int_ptr_dim_default
 
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+    ! Function:  int *ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
     ! Statement: f_function_native*_cdesc_pointer_caller
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
@@ -594,7 +594,7 @@ contains
     end function return_int_ptr_dim_pointer_new
 
     ! ----------------------------------------
-    ! Function:  int * ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
+    ! Function:  int *ReturnIntPtrDimDefaultNew +dimension(len)+owner(caller)
     ! Statement: f_function_native*_cdesc_pointer_caller
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
@@ -628,7 +628,7 @@ contains
 #endif
 
     ! ----------------------------------------
-    ! Function:  Class1 * getClassStatic +owner(library)
+    ! Function:  Class1 *getClassStatic +owner(library)
     ! Statement: f_function_shadow*_capptr_library
     function get_class_static() &
             result(SHT_rv)
@@ -641,7 +641,7 @@ contains
     end function get_class_static
 
     ! ----------------------------------------
-    ! Function:  Class1 * getClassNew +owner(caller)
+    ! Function:  Class1 *getClassNew +owner(caller)
     ! Statement: f_function_shadow*_capptr_caller
     ! ----------------------------------------
     ! Argument:  int flag

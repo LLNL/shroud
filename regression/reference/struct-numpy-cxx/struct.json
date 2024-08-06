@@ -1872,7 +1872,7 @@
                             "capsule_order": "1",
                             "ctor_expr": "*SHCXX_rv",
                             "cxx_addr": "",
-                            "cxx_alloc_decl": "Cstruct1 * SHCXX_rv",
+                            "cxx_alloc_decl": "Cstruct1 *SHCXX_rv",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
                             "cxx_type": "Cstruct1",

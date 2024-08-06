@@ -273,6 +273,16 @@ do-test-replace :
 	$(PYTHON) regression/do-test.py -r $(do-test-args)
 
 ########################################################################
+# Run tests prior to a commit
+
+test-commit :
+	@$(MAKE) test-clean
+	@$(MAKE) test
+	@$(MAKE) test-decl
+	@$(MAKE) do-test
+#	@$(MAKE) test-all
+
+########################################################################
 
 print-debug:
 	@echo LUA=$(LUA)

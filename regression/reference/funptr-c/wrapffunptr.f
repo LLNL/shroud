@@ -86,7 +86,7 @@ module funptr_mod
         ! Function:  void callback1
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr1)(void)
+        ! Argument:  void (*incr1)(void)
         ! Statement: f_in_procedure
         subroutine callback1(incr1) &
                 bind(C, name="callback1")
@@ -99,7 +99,7 @@ module funptr_mod
         ! Function:  void callback1_wrap
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr1_wrap)(void)
+        ! Argument:  void (*incr1_wrap)(void)
         ! Statement: f_in_procedure
         subroutine c_callback1_wrap(incr1_wrap) &
                 bind(C, name="callback1_wrap")
@@ -112,7 +112,7 @@ module funptr_mod
         ! Function:  void callback1_external
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr1_external)(void) +external
+        ! Argument:  void (*incr1_external)(void) +external
         ! Statement: f_in_procedure_external
         subroutine c_callback1_external(incr1_external) &
                 bind(C, name="callback1_external")
@@ -125,7 +125,7 @@ module funptr_mod
         ! Function:  void callback1_funptr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void ( * incr1_funptr)(void) +funptr
+        ! Argument:  void (*incr1_funptr)(void) +funptr
         ! Statement: f_in_procedure_funptr
         ! start callback1_funptr
         subroutine callback1_funptr(incr1_funptr) &
@@ -140,7 +140,7 @@ module funptr_mod
         ! Function:  void callback2
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const char * name
+        ! Argument:  const char *name
         ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  int ival
@@ -162,7 +162,7 @@ module funptr_mod
         ! Function:  void callback2_external
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const char * name
+        ! Argument:  const char *name
         ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  int ival
@@ -184,7 +184,7 @@ module funptr_mod
         ! Function:  void callback2_funptr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  const char * name
+        ! Argument:  const char *name
         ! Statement: f_in_char*
         ! ----------------------------------------
         ! Argument:  int ival
@@ -208,10 +208,10 @@ module funptr_mod
         ! Argument:  int type
         ! Statement: f_in_native
         ! ----------------------------------------
-        ! Argument:  void * in +assumedtype+intent(in)
+        ! Argument:  void *in +assumedtype+intent(in)
         ! Statement: f_in_void*
         ! ----------------------------------------
-        ! Argument:  void ( * incr3)(void) +funptr
+        ! Argument:  void (*incr3)(void) +funptr
         ! Statement: f_in_procedure_funptr
         subroutine callback3(type, in, incr3) &
                 bind(C, name="callback3")
@@ -226,13 +226,13 @@ module funptr_mod
         ! Function:  int callback4
         ! Statement: f_function_native
         ! ----------------------------------------
-        ! Argument:  int * ilow +intent(in)+rank(1)
+        ! Argument:  int *ilow +intent(in)+rank(1)
         ! Statement: f_in_native*
         ! ----------------------------------------
         ! Argument:  int nargs +implied(size(ilow))
         ! Statement: f_in_native
         ! ----------------------------------------
-        ! Argument:  int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))
+        ! Argument:  int (*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in))
         ! Statement: f_in_procedure
         function c_callback4(ilow, nargs, actor) &
                 result(SHT_rv) &
@@ -250,7 +250,7 @@ module funptr_mod
         ! Function:  void callback_ptr
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  int * ( * get_ptr)(void)
+        ! Argument:  int *(*get_ptr)(void)
         ! Statement: f_in_procedure
         subroutine callback_ptr(get_ptr) &
                 bind(C, name="callback_ptr")
@@ -266,7 +266,7 @@ module funptr_mod
         ! Argument:  int input
         ! Statement: f_in_native
         ! ----------------------------------------
-        ! Argument:  int ( * get_abs)(double, int)
+        ! Argument:  int (*get_abs)(double, int)
         ! Statement: f_in_procedure
         function c_abstract1(input, get_abs) &
                 result(SHT_rv) &
@@ -291,7 +291,7 @@ contains
     ! Function:  void callback1
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * incr1)(void)
+    ! Argument:  void (*incr1)(void)
     ! Statement: f_in_procedure
     !>
     !! \brief Create abstract interface for function
@@ -309,7 +309,7 @@ contains
     ! Function:  void callback1_wrap
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * incr1_wrap)(void)
+    ! Argument:  void (*incr1_wrap)(void)
     ! Statement: f_in_procedure
     !>
     !! \brief Create abstract interface for function
@@ -327,7 +327,7 @@ contains
     ! Function:  void callback1_external
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * incr1_external)(void) +external
+    ! Argument:  void (*incr1_external)(void) +external
     ! Statement: f_in_procedure_external
     !>
     !! \brief Declare callback as external
@@ -346,7 +346,7 @@ contains
     ! Function:  void callback1_funptr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void ( * incr1_funptr)(void) +funptr
+    ! Argument:  void (*incr1_funptr)(void) +funptr
     ! Statement: f_in_procedure_funptr
     !>
     !! \brief Declare callback as c_funptr
@@ -444,7 +444,7 @@ contains
     ! Argument:  int type
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  void ( * incr3)(void) +funptr
+    ! Argument:  void (*incr3)(void) +funptr
     ! Statement: f_in_procedure_funptr
     !>
     !! \brief Test function pointer with assumedtype
@@ -465,10 +465,10 @@ contains
     ! Function:  int callback4
     ! Statement: f_function_native
     ! ----------------------------------------
-    ! Argument:  int * ilow +intent(in)+rank(1)
+    ! Argument:  int *ilow +intent(in)+rank(1)
     ! Statement: f_in_native*
     ! ----------------------------------------
-    ! Argument:  int ( * actor)(int * ilow +intent(in)+rank(1), int nargs +intent(in))
+    ! Argument:  int (*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in))
     ! Statement: f_in_procedure
     !>
     !! \brief Test attributes on callback arguments
@@ -493,7 +493,7 @@ contains
     ! Function:  void callback_ptr
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  int * ( * get_ptr)(void)
+    ! Argument:  int *(*get_ptr)(void)
     ! Statement: f_in_procedure
     !>
     !! \brief Return a C_PTR
@@ -516,7 +516,7 @@ contains
     ! Argument:  int input
     ! Statement: f_in_native
     ! ----------------------------------------
-    ! Argument:  int ( * get_abs)(double, int)
+    ! Argument:  int (*get_abs)(double, int)
     ! Statement: f_in_procedure
     !>
     !! \brief abstract argument

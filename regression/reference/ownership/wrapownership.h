@@ -38,34 +38,34 @@ int * OWN_ReturnIntPtrPointer(void);
 
 int * OWN_ReturnIntPtrPointer_bufferify(void);
 
-int * OWN_ReturnIntPtrDimRaw(int * len);
+int * OWN_ReturnIntPtrDimRaw(int *len);
 
-int * OWN_ReturnIntPtrDimPointer(int * len);
+int * OWN_ReturnIntPtrDimPointer(int *len);
 
 void OWN_ReturnIntPtrDimPointer_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
-int * OWN_ReturnIntPtrDimAlloc(int * len);
+int * OWN_ReturnIntPtrDimAlloc(int *len);
 
 void OWN_ReturnIntPtrDimAlloc_bufferify(OWN_SHROUD_array *SHT_rv_cdesc,
     OWN_SHROUD_capsule_data *SHT_rv_capsule);
 
-int * OWN_ReturnIntPtrDimDefault(int * len);
+int * OWN_ReturnIntPtrDimDefault(int *len);
 
 void OWN_ReturnIntPtrDimDefault_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc);
 
-int * OWN_ReturnIntPtrDimRawNew(int * len);
+int * OWN_ReturnIntPtrDimRawNew(int *len);
 
-int * OWN_ReturnIntPtrDimPointerNew(int * len);
+int * OWN_ReturnIntPtrDimPointerNew(int *len);
 
 void OWN_ReturnIntPtrDimPointerNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc,
     OWN_SHROUD_capsule_data *SHT_rv_capsule);
 
-int * OWN_ReturnIntPtrDimAllocNew(int * len);
+int * OWN_ReturnIntPtrDimAllocNew(int *len);
 
-int * OWN_ReturnIntPtrDimDefaultNew(int * len);
+int * OWN_ReturnIntPtrDimDefaultNew(int *len);
 
 void OWN_ReturnIntPtrDimDefaultNew_bufferify(
     OWN_SHROUD_array *SHT_rv_cdesc,

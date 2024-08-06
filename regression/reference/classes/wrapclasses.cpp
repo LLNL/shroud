@@ -101,7 +101,7 @@ void CLA_passClassByValue(CLA_Class1 arg)
 // Function:  int useclass
 // Statement: c_function_native
 // ----------------------------------------
-// Argument:  const Class1 * arg
+// Argument:  const Class1 *arg
 // Statement: c_in_shadow*
 int CLA_useclass(CLA_Class1 * arg)
 {
@@ -118,7 +118,7 @@ int CLA_useclass(CLA_Class1 * arg)
  *
  */
 // ----------------------------------------
-// Function:  const Class1 * getclass2
+// Function:  const Class1 *getclass2
 // Statement: c_function_shadow*_capptr
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 {
@@ -135,7 +135,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
  *
  */
 // ----------------------------------------
-// Function:  Class1 * getclass3
+// Function:  Class1 *getclass3
 // Statement: c_function_shadow*_capptr
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 {
@@ -152,12 +152,12 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
  *
  */
 // ----------------------------------------
-// Function:  const Class1 * getclass2_void
+// Function:  const Class1 *getclass2_void
 // Statement: c_function_shadow*_capsule
 void CLA_getclass2_void(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass2_void
-    const classes::Class1 * SHCXX_rv = classes::getclass2_void();
+    const classes::Class1 *SHCXX_rv = classes::getclass2_void();
     SHC_rv->addr = const_cast<classes::Class1 *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     // splicer end function.getclass2_void
@@ -168,19 +168,19 @@ void CLA_getclass2_void(CLA_Class1 * SHC_rv)
  *
  */
 // ----------------------------------------
-// Function:  Class1 * getclass3_void
+// Function:  Class1 *getclass3_void
 // Statement: c_function_shadow*_capsule
 void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass3_void
-    classes::Class1 * SHCXX_rv = classes::getclass3_void();
+    classes::Class1 *SHCXX_rv = classes::getclass3_void();
     SHC_rv->addr = SHCXX_rv;
     SHC_rv->idtor = 0;
     // splicer end function.getclass3_void
 }
 
 // ----------------------------------------
-// Function:  const Class1 & getConstClassReference
+// Function:  const Class1 &getConstClassReference
 // Statement: c_function_shadow&_capptr
 CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 {
@@ -194,7 +194,7 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 }
 
 // ----------------------------------------
-// Function:  Class1 & getClassReference
+// Function:  Class1 &getClassReference
 // Statement: c_function_shadow&_capptr
 CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
 {
@@ -252,24 +252,24 @@ int CLA_get_global_flag(void)
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: c_function_string&
 const char * CLA_LastFunctionCalled(void)
 {
     // splicer begin function.LastFunctionCalled
-    const std::string & SHCXX_rv = classes::LastFunctionCalled();
+    const std::string &SHCXX_rv = classes::LastFunctionCalled();
     const char * SHC_rv = SHCXX_rv.c_str();
     return SHC_rv;
     // splicer end function.LastFunctionCalled
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +len(30)
+// Function:  const std::string &LastFunctionCalled +len(30)
 // Statement: f_function_string&_buf_copy
 void CLA_LastFunctionCalled_bufferify(char *SHC_rv, int SHT_rv_len)
 {
     // splicer begin function.LastFunctionCalled_bufferify
-    const std::string & SHCXX_rv = classes::LastFunctionCalled();
+    const std::string &SHCXX_rv = classes::LastFunctionCalled();
     if (SHCXX_rv.empty()) {
         ShroudCharCopy(SHC_rv, SHT_rv_len, nullptr, 0);
     } else {
