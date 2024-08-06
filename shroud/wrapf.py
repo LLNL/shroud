@@ -1002,14 +1002,13 @@ rv = .false.
                 arg_c_decl = []
                 modules = {}  # indexed as [module][variable]
                 imports = {}  # indexed as [symbol]
-                fmtargs = fptr._fmtargs
                 fmt_result = fptr._bind["f"]["+result"].fmtdict
                 abstract_names = fmt_result.f_abstract_names
                 for i, param in enumerate(fptr.ast.declarator.params):
                     bind = get_arg_bind(fptr, param, "f")
                     meta = bind.meta
                     stmts = bind.stmt
-                    fmt_arg = fmtargs[abstract_names[i]]["fmtf"]
+                    fmt_arg = bind.fmtdict
                     # See also build_arg_list_interface
                     if stmts.i_arg_decl is not None:
                         # Use explicit declaration from CStmt, both must exist.
