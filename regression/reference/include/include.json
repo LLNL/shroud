@@ -53,6 +53,31 @@
                                     "stmt": "c_subroutine"
                                 },
                                 "comm": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "MPI_Fint",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "MPI_Fint",
+                                        "c_var": "comm",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "MPI_Comm",
+                                        "cxx_addr": "&",
+                                        "cxx_decl": "MPI_Comm SHCXX_comm",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_comm",
+                                        "cxx_type": "MPI_Comm",
+                                        "cxx_val": "MPI_Comm_f2c(comm)",
+                                        "cxx_var": "SHCXX_comm",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_value_attr": ", value",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "c_in_unknown",
+                                        "typemap_name": "MPI_Comm"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -68,6 +93,36 @@
                                     "stmt": "f_subroutine"
                                 },
                                 "comm": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "MPI_Fint",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "MPI_Fint",
+                                        "c_var": "comm",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "MPI_Comm",
+                                        "cxx_addr": "&",
+                                        "cxx_decl": "MPI_Comm SHCXX_comm",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHCXX_comm",
+                                        "cxx_type": "MPI_Comm",
+                                        "cxx_val": "MPI_Comm_f2c(comm)",
+                                        "cxx_var": "SHCXX_comm",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer",
+                                        "f_value_attr": ", value",
+                                        "f_var": "comm",
+                                        "fc_var": "comm",
+                                        "i_var": "comm",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_in_unknown",
+                                        "typemap_name": "MPI_Comm"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -235,6 +290,29 @@
                                     "stmt": "c_subroutine"
                                 },
                                 "c2": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "LIB_three_Class1 *",
+                                        "c_addr": "",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_local_cxx": "SHC_c2_cxx",
+                                        "c_member": "->",
+                                        "c_type": "LIB_three_Class1",
+                                        "c_var": "c2",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "three::Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHC_c2_cxx",
+                                        "cxx_type": "three::Class1",
+                                        "cxx_var": "SHC_c2_cxx",
+                                        "f_intent": "INOUT",
+                                        "f_intent_attr": ", intent(INOUT)",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "c_inout_shadow*",
+                                        "typemap_name": "three::Class1"
+                                    },
                                     "meta": {
                                         "intent": "inout"
                                     },
@@ -249,6 +327,36 @@
                                     "stmt": "f_subroutine"
                                 },
                                 "c2": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "LIB_three_Class1 *",
+                                        "c_addr": "",
+                                        "c_const": "",
+                                        "c_deref": "*",
+                                        "c_local_cxx": "SHC_c2_cxx",
+                                        "c_member": "->",
+                                        "c_type": "LIB_three_Class1",
+                                        "c_var": "c2",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "three::Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHC_c2_cxx",
+                                        "cxx_type": "three::Class1",
+                                        "cxx_var": "SHC_c2_cxx",
+                                        "f_capsule_data_type": "LIB_SHROUD_capsule_data",
+                                        "f_derived_type": "class1",
+                                        "f_intent": "INOUT",
+                                        "f_intent_attr": ", intent(INOUT)",
+                                        "f_type": "type(class1)",
+                                        "f_var": "c2",
+                                        "fc_var": "c2",
+                                        "i_local_cxx": "SHC_c2_cxx",
+                                        "i_var": "c2",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_inout_shadow*",
+                                        "typemap_name": "three::Class1"
+                                    },
                                     "meta": {
                                         "intent": "inout"
                                     },
@@ -608,6 +716,29 @@
                                             "stmt": "c_subroutine"
                                         },
                                         "arg1": {
+                                            "fmtdict": {
+                                                "c_abstract_decl": "LIB_CustomType",
+                                                "c_addr": "&",
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_type": "LIB_CustomType",
+                                                "c_var": "arg1",
+                                                "cfi_type": "CFI_type_int",
+                                                "cxx_abstract_decl": "CustomType",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&arg1",
+                                                "cxx_type": "CustomType",
+                                                "cxx_var": "arg1",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "f_value_attr": ", value",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "stmt_name": "c_in_native",
+                                                "typemap_name": "CustomType"
+                                            },
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
@@ -623,6 +754,34 @@
                                             "stmt": "f_subroutine"
                                         },
                                         "arg1": {
+                                            "fmtdict": {
+                                                "c_abstract_decl": "LIB_CustomType",
+                                                "c_addr": "&",
+                                                "c_const": "",
+                                                "c_deref": "",
+                                                "c_member": ".",
+                                                "c_type": "LIB_CustomType",
+                                                "c_var": "arg1",
+                                                "cfi_type": "CFI_type_int",
+                                                "cxx_abstract_decl": "CustomType",
+                                                "cxx_addr": "&",
+                                                "cxx_member": ".",
+                                                "cxx_nonconst_ptr": "&arg1",
+                                                "cxx_type": "CustomType",
+                                                "cxx_var": "arg1",
+                                                "f_intent": "IN",
+                                                "f_intent_attr": ", intent(IN)",
+                                                "f_kind": "custom_type",
+                                                "f_type": "integer(custom_type)",
+                                                "f_value_attr": ", value",
+                                                "f_var": "arg1",
+                                                "fc_var": "arg1",
+                                                "i_var": "arg1",
+                                                "idtor": "0",
+                                                "sh_type": "SH_TYPE_INT",
+                                                "stmt_name": "f_in_native",
+                                                "typemap_name": "CustomType"
+                                            },
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true

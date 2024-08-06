@@ -241,6 +241,29 @@
                             "stmt": "c_function_native"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg1",
+                                "cxx_type": "double",
+                                "cxx_var": "arg1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -248,6 +271,29 @@
                             "stmt": "c_in_native"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "int",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -263,6 +309,34 @@
                             "stmt": "f_function_native"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg1",
+                                "cxx_type": "double",
+                                "cxx_var": "arg1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg1",
+                                "fc_var": "arg1",
+                                "i_var": "arg1",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -270,6 +344,34 @@
                             "stmt": "f_in_native"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "int",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg2",
+                                "fc_var": "arg2",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -688,12 +790,68 @@
                             "stmt": "c_function_string"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_arg1_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg1)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_arg1_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "arg1",
+                                "i_local_cxx": "SHC_arg1_cxx",
+                                "i_var": "arg1",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_in_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
                             "stmt": "c_in_string&"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_arg2_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg2)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_arg2_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "arg2",
+                                "i_local_cxx": "SHC_arg2_cxx",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_in_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -710,6 +868,39 @@
                             "stmt": "f_function_string_cdesc_allocatable"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_arg1_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "arg1",
+                                "c_var_len": "SHT_arg1_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg1)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_arg1_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "arg1",
+                                "f_var_len": "SHT_arg1_len",
+                                "fc_var": "arg1",
+                                "i_local_cxx": "SHC_arg1_cxx",
+                                "i_var": "arg1",
+                                "i_var_len": "SHT_arg1_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "intent": "in"
@@ -717,6 +908,39 @@
                             "stmt": "f_in_string&_buf"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_arg2_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "arg2",
+                                "c_var_len": "SHT_arg2_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg2)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_arg2_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "arg2",
+                                "f_var_len": "SHT_arg2_len",
+                                "fc_var": "arg2",
+                                "i_local_cxx": "SHC_arg2_cxx",
+                                "i_var": "arg2",
+                                "i_var_len": "SHT_arg2_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "intent": "in"
@@ -1284,6 +1508,29 @@
                             "stmt": "c_function_native"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg1",
+                                "cxx_type": "double",
+                                "cxx_var": "arg1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1299,6 +1546,34 @@
                             "stmt": "f_function_native"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg1",
+                                "cxx_type": "double",
+                                "cxx_var": "arg1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg1",
+                                "fc_var": "arg1",
+                                "i_var": "arg1",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1520,6 +1795,29 @@
                             "stmt": "c_function_native"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg1",
+                                "cxx_type": "double",
+                                "cxx_var": "arg1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1527,6 +1825,29 @@
                             "stmt": "c_in_native"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "bool",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "bool",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_Bool",
+                                "cxx_abstract_decl": "bool",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "bool",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt_name": "c_in_bool",
+                                "typemap_name": "bool"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1542,6 +1863,34 @@
                             "stmt": "f_function_native"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg1",
+                                "cxx_type": "double",
+                                "cxx_var": "arg1",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg1",
+                                "fc_var": "arg1",
+                                "i_var": "arg1",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1549,6 +1898,35 @@
                             "stmt": "f_in_native"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "bool",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "bool",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_Bool",
+                                "cxx_abstract_decl": "bool",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "bool",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_BOOL",
+                                "f_type": "logical",
+                                "f_value_attr": ", value",
+                                "f_var": "arg2",
+                                "f_var_cxx": "SHT_arg2_cxx",
+                                "fc_var": "arg2",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt_name": "f_in_bool",
+                                "typemap_name": "bool"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1948,6 +2326,34 @@
                             "stmt": "c_subroutine"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_name_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_name_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "name",
+                                "i_local_cxx": "SHC_name_cxx",
+                                "i_var": "name",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_in_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -1962,6 +2368,39 @@
                             "stmt": "f_subroutine"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_name_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "c_var_len": "SHT_name_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_name_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "name",
+                                "f_var_len": "SHT_name_len",
+                                "fc_var": "name",
+                                "i_local_cxx": "SHC_name_cxx",
+                                "i_var": "name",
+                                "i_var_len": "SHT_name_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "intent": "in"
@@ -2198,6 +2637,29 @@
                             "stmt": "c_subroutine"
                         },
                         "indx": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "indx",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&indx",
+                                "cxx_type": "int",
+                                "cxx_var": "indx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2213,6 +2675,34 @@
                             "stmt": "f_subroutine"
                         },
                         "indx": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "indx",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&indx",
+                                "cxx_type": "int",
+                                "cxx_var": "indx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "indx",
+                                "fc_var": "indx",
+                                "i_var": "indx",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2551,6 +3041,29 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2566,6 +3079,34 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2827,6 +3368,29 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "double",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2842,6 +3406,34 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "double",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3648,6 +4240,33 @@
                             "stmt": "c_subroutine"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "double",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg2",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3655,6 +4274,34 @@
                             "stmt": "c_in_native"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_local_cxx": "SHC_name_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_name_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "name",
+                                "i_local_cxx": "SHC_name_cxx",
+                                "i_var": "name",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_in_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -3936,6 +4583,34 @@
                             "stmt": "f_subroutine"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "float",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "float",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_float",
+                                "cxx_abstract_decl": "float",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "float",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_FLOAT",
+                                "f_type": "real(C_FLOAT)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg2",
+                                "fc_var": "arg2",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_FLOAT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "float"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3943,6 +4618,39 @@
                             "stmt": "f_in_native"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_name_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "c_var_len": "SHT_name_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_name_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "name",
+                                "f_var_len": "SHT_name_len",
+                                "fc_var": "name",
+                                "i_local_cxx": "SHC_name_cxx",
+                                "i_var": "name",
+                                "i_var_len": "SHT_name_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "intent": "in"
@@ -4136,6 +4844,34 @@
                             "stmt": "f_subroutine"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg2",
+                                "cxx_type": "double",
+                                "cxx_var": "arg2",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg2",
+                                "fc_var": "arg2",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4143,6 +4879,39 @@
                             "stmt": "f_in_native"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_char_len_trim": "ShroudCharLenTrim",
+                                "c_local_cxx": "SHC_name_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "c_var_len": "SHT_name_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_name_cxx",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "name",
+                                "f_var_len": "SHT_name_len",
+                                "fc_var": "name",
+                                "i_local_cxx": "SHC_name_cxx",
+                                "i_var": "name",
+                                "i_var_len": "SHT_name_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_in_string&_buf",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "intent": "in"
@@ -4317,6 +5086,29 @@
                             "stmt": "c_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4332,6 +5124,34 @@
                             "stmt": "f_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "num",
+                                "fc_var": "num",
+                                "i_var": "num",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4544,6 +5364,29 @@
                             "stmt": "c_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4551,6 +5394,29 @@
                             "stmt": "c_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4566,6 +5432,34 @@
                             "stmt": "f_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "num",
+                                "fc_var": "num",
+                                "i_var": "num",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4573,6 +5467,34 @@
                             "stmt": "f_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "offset",
+                                "fc_var": "offset",
+                                "i_var": "offset",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4861,6 +5783,29 @@
                             "stmt": "c_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4868,6 +5813,29 @@
                             "stmt": "c_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4875,6 +5843,29 @@
                             "stmt": "c_in_native"
                         },
                         "stride": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "stride",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&stride",
+                                "cxx_type": "int",
+                                "cxx_var": "stride",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4890,6 +5881,34 @@
                             "stmt": "f_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "num",
+                                "fc_var": "num",
+                                "i_var": "num",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4897,6 +5916,34 @@
                             "stmt": "f_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "offset",
+                                "fc_var": "offset",
+                                "i_var": "offset",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4904,6 +5951,34 @@
                             "stmt": "f_in_native"
                         },
                         "stride": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "stride",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&stride",
+                                "cxx_type": "int",
+                                "cxx_var": "stride",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "stride",
+                                "fc_var": "stride",
+                                "i_var": "stride",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5401,6 +6476,29 @@
                             "stmt": "c_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5408,6 +6506,29 @@
                             "stmt": "c_in_native"
                         },
                         "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "type",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "double",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5423,6 +6544,34 @@
                             "stmt": "f_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "num",
+                                "fc_var": "num",
+                                "i_var": "num",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5430,6 +6579,34 @@
                             "stmt": "f_in_native"
                         },
                         "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "type",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "double",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "type",
+                                "fc_var": "type",
+                                "i_var": "type",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5706,6 +6883,29 @@
                             "stmt": "c_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5713,6 +6913,29 @@
                             "stmt": "c_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5720,6 +6943,29 @@
                             "stmt": "c_in_native"
                         },
                         "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "type",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "double",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5735,6 +6981,34 @@
                             "stmt": "f_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "num",
+                                "fc_var": "num",
+                                "i_var": "num",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5742,6 +7016,34 @@
                             "stmt": "f_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "offset",
+                                "fc_var": "offset",
+                                "i_var": "offset",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -5749,6 +7051,34 @@
                             "stmt": "f_in_native"
                         },
                         "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "type",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "double",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "type",
+                                "fc_var": "type",
+                                "i_var": "type",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6101,6 +7431,29 @@
                             "stmt": "c_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6108,6 +7461,29 @@
                             "stmt": "c_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6115,6 +7491,29 @@
                             "stmt": "c_in_native"
                         },
                         "stride": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "stride",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&stride",
+                                "cxx_type": "int",
+                                "cxx_var": "stride",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6122,6 +7521,29 @@
                             "stmt": "c_in_native"
                         },
                         "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "type",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "double",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6137,6 +7559,34 @@
                             "stmt": "f_function_native"
                         },
                         "num": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "num",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&num",
+                                "cxx_type": "int",
+                                "cxx_var": "num",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "num",
+                                "fc_var": "num",
+                                "i_var": "num",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6144,6 +7594,34 @@
                             "stmt": "f_in_native"
                         },
                         "offset": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "offset",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&offset",
+                                "cxx_type": "int",
+                                "cxx_var": "offset",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "offset",
+                                "fc_var": "offset",
+                                "i_var": "offset",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6151,6 +7629,34 @@
                             "stmt": "f_in_native"
                         },
                         "stride": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "stride",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&stride",
+                                "cxx_type": "int",
+                                "cxx_var": "stride",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "stride",
+                                "fc_var": "stride",
+                                "i_var": "stride",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6158,6 +7664,34 @@
                             "stmt": "f_in_native"
                         },
                         "type": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "type",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&type",
+                                "cxx_type": "double",
+                                "cxx_var": "type",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "type",
+                                "fc_var": "type",
+                                "i_var": "type",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6740,6 +8274,29 @@
                             "stmt": "c_function_native"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "TUT_TypeID",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "TUT_TypeID",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "tutorial::TypeID",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "tutorial::TypeID",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "tutorial::TypeID"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -6755,6 +8312,34 @@
                             "stmt": "f_function_native"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "TUT_TypeID",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "TUT_TypeID",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "tutorial::TypeID",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "tutorial::TypeID",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "type_id",
+                                "f_type": "integer(type_id)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "tutorial::TypeID"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7032,6 +8617,34 @@
                             "stmt": "c_function_enum"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum TUT_Color",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "enum TUT_Color",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "ci_type": "int",
+                                "cxx_abstract_decl": "tutorial::Color",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_arg",
+                                "cxx_type": "tutorial::Color",
+                                "cxx_var": "SHCXX_arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_enum",
+                                "typemap_name": "tutorial::Color"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7047,6 +8660,35 @@
                             "stmt": "f_function_enum"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "enum TUT_Color",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "ci_type": "int",
+                                "cxx_abstract_decl": "tutorial::Color",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_arg",
+                                "cxx_type": "tutorial::Color",
+                                "cxx_var": "SHCXX_arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_enum",
+                                "typemap_name": "tutorial::Color"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7383,12 +9025,56 @@
                             "stmt": "c_subroutine"
                         },
                         "max": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "max",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&max",
+                                "cxx_type": "int",
+                                "cxx_var": "max",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native&",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
                             "stmt": "c_out_native&"
                         },
                         "min": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "min",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&min",
+                                "cxx_type": "int",
+                                "cxx_var": "min",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native&",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -7403,12 +9089,66 @@
                             "stmt": "f_subroutine"
                         },
                         "max": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "max",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&max",
+                                "cxx_type": "int",
+                                "cxx_var": "max",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "max",
+                                "fc_var": "max",
+                                "i_var": "max",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native&",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
                             "stmt": "f_out_native&"
                         },
                         "min": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "min",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&min",
+                                "cxx_type": "int",
+                                "cxx_var": "min",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "min",
+                                "fc_var": "min",
+                                "i_var": "min",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native&",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -7725,6 +9465,29 @@
                             "stmt": "c_function_native"
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "in",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&in",
+                                "cxx_type": "int",
+                                "cxx_var": "in",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7732,6 +9495,29 @@
                             "stmt": "c_in_native"
                         },
                         "incr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "incr",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&incr",
+                                "cxx_type": "int",
+                                "cxx_var": "incr",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_procedure",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "fptr": {
                                     "<FUNCTION>": "incr  None ****************************************",
@@ -7772,6 +9558,17 @@
                                                 "stmt": "f_function_native"
                                             },
                                             "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
@@ -7835,6 +9632,34 @@
                             "stmt": "f_function_native"
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "in",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&in",
+                                "cxx_type": "int",
+                                "cxx_var": "in",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "in",
+                                "fc_var": "in",
+                                "i_var": "in",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7842,6 +9667,35 @@
                             "stmt": "f_in_native"
                         },
                         "incr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "incr",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&incr",
+                                "cxx_type": "int",
+                                "cxx_var": "incr",
+                                "f_abstract_interface": "callback1_incr",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "incr",
+                                "fc_var": "incr",
+                                "i_var": "incr",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_procedure",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "fptr": {
                                     "<FUNCTION>": "incr  None ****************************************",
@@ -7882,6 +9736,17 @@
                                                 "stmt": "f_function_native"
                                             },
                                             "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
@@ -7990,6 +9855,17 @@
                                                 "stmt": "f_function_native"
                                             },
                                             "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true

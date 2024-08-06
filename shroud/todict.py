@@ -580,6 +580,8 @@ class ToDict(visitor.Visitor):
             d["stmt"] = node.stmt.name
         if node.fstmts:
             d["fstmts"] = node.fstmts
+        if node.fmtdict:
+            d["fmtdict"] = self.visit(node.fmtdict)
         if node.meta is not None:
             metaattrs = {key: value
                          for (key, value) in node.meta.items()

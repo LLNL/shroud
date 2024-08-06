@@ -124,6 +124,7 @@ class FillFormat(object):
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
+            bind_arg.fmtdict = fmt_arg
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 
@@ -173,6 +174,7 @@ class FillFormat(object):
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
+            bind_arg.fmtdict = fmt_arg
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 

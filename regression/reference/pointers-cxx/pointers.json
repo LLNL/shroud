@@ -60,6 +60,28 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(arg)",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -74,6 +96,33 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(arg)",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -232,6 +281,28 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_inout_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "inout"
                             },
@@ -246,6 +317,33 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_inout_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "inout"
                             },
@@ -404,6 +502,28 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -418,6 +538,33 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -608,6 +755,29 @@
                             "stmt": "c_subroutine"
                         },
                         "argin": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int",
+                                "c_addr": "&",
+                                "c_const": "const ",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "argin",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(&argin)",
+                                "cxx_type": "int",
+                                "cxx_var": "argin",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -615,12 +785,56 @@
                             "stmt": "c_in_native"
                         },
                         "arginout": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arginout",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arginout",
+                                "cxx_type": "int",
+                                "cxx_var": "arginout",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_inout_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_native*"
                         },
                         "argout": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "argout",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "argout",
+                                "cxx_type": "int",
+                                "cxx_var": "argout",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -635,6 +849,34 @@
                             "stmt": "f_subroutine"
                         },
                         "argin": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int",
+                                "c_addr": "&",
+                                "c_const": "const ",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "argin",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(&argin)",
+                                "cxx_type": "int",
+                                "cxx_var": "argin",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "argin",
+                                "fc_var": "argin",
+                                "i_var": "argin",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -642,12 +884,66 @@
                             "stmt": "f_in_native"
                         },
                         "arginout": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arginout",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arginout",
+                                "cxx_type": "int",
+                                "cxx_var": "arginout",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arginout",
+                                "fc_var": "arginout",
+                                "i_var": "arginout",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_inout_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native*"
                         },
                         "argout": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "argout",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "argout",
+                                "cxx_type": "int",
+                                "cxx_var": "argout",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "argout",
+                                "fc_var": "argout",
+                                "i_var": "argout",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -958,6 +1254,28 @@
                             "stmt": "c_subroutine"
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "in",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "in",
+                                "cxx_type": "double",
+                                "cxx_var": "in",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -965,6 +1283,30 @@
                             "stmt": "c_in_native*"
                         },
                         "out": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_array_size2": "size(*in)",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "out",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "out",
+                                "cxx_type": "double",
+                                "cxx_var": "out",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -982,6 +1324,29 @@
                             "stmt": "c_out_native*"
                         },
                         "sizein": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "sizein",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&sizein",
+                                "cxx_type": "int",
+                                "cxx_var": "sizein",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -997,6 +1362,38 @@
                             "stmt": "f_subroutine"
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "in",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "in",
+                                "cxx_type": "double",
+                                "cxx_var": "in",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_var": "in",
+                                "fc_var": "in",
+                                "i_dimension": "(*)",
+                                "i_var": "in",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "size": "size(in)",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -1004,6 +1401,39 @@
                             "stmt": "f_in_native*"
                         },
                         "out": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_array_size2": "size(*in)",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "out",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "out",
+                                "cxx_type": "double",
+                                "cxx_var": "out",
+                                "f_array_allocate": "(size(in))",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_var": "out",
+                                "fc_var": "out",
+                                "i_dimension": "(*)",
+                                "i_var": "out",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -1021,6 +1451,35 @@
                             "stmt": "f_out_native*"
                         },
                         "sizein": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "sizein",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&sizein",
+                                "cxx_type": "int",
+                                "cxx_var": "sizein",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "sizein",
+                                "fc_var": "SH_sizein",
+                                "i_var": "sizein",
+                                "idtor": "0",
+                                "pre_call_intent": "size(in,kind=C_INT)",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1358,6 +1817,28 @@
                             "stmt": "c_subroutine"
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "in",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "in",
+                                "cxx_type": "double",
+                                "cxx_var": "in",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -1365,6 +1846,30 @@
                             "stmt": "c_in_native*"
                         },
                         "out": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "size(*in)",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "out",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "out",
+                                "cxx_type": "int",
+                                "cxx_var": "out",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -1382,6 +1887,29 @@
                             "stmt": "c_out_native*"
                         },
                         "sizein": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "sizein",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&sizein",
+                                "cxx_type": "int",
+                                "cxx_var": "sizein",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1397,6 +1925,38 @@
                             "stmt": "f_subroutine"
                         },
                         "in": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "in",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "in",
+                                "cxx_type": "double",
+                                "cxx_var": "in",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_var": "in",
+                                "fc_var": "in",
+                                "i_dimension": "(*)",
+                                "i_var": "in",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "size": "size(in)",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -1404,6 +1964,39 @@
                             "stmt": "f_in_native*"
                         },
                         "out": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "size(*in)",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "out",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "out",
+                                "cxx_type": "int",
+                                "cxx_var": "out",
+                                "f_array_allocate": "(size(in))",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "out",
+                                "fc_var": "out",
+                                "i_dimension": "(*)",
+                                "i_var": "out",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -1421,6 +2014,35 @@
                             "stmt": "f_out_native*"
                         },
                         "sizein": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "sizein",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&sizein",
+                                "cxx_type": "int",
+                                "cxx_var": "sizein",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "sizein",
+                                "fc_var": "SH_sizein",
+                                "i_var": "sizein",
+                                "idtor": "0",
+                                "pre_call_intent": "size(in,kind=C_INT)",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -1744,12 +2366,58 @@
                             "stmt": "c_subroutine"
                         },
                         "nvalues": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nvalues",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nvalues",
+                                "cxx_type": "int",
+                                "cxx_var": "nvalues",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
                         },
                         "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "values",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -1770,12 +2438,72 @@
                             "stmt": "f_subroutine"
                         },
                         "nvalues": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nvalues",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nvalues",
+                                "cxx_type": "int",
+                                "cxx_var": "nvalues",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nvalues",
+                                "fc_var": "nvalues",
+                                "i_var": "nvalues",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
                             "stmt": "f_out_native*"
                         },
                         "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "values",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_array_allocate": "(3)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(3)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "values",
+                                "fc_var": "values",
+                                "i_dimension": "(*)",
+                                "i_var": "values",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2034,6 +2762,30 @@
                             "stmt": "c_subroutine"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg1",
+                                "cxx_type": "int",
+                                "cxx_var": "arg1",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2046,6 +2798,30 @@
                             "stmt": "c_out_native*"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg2",
+                                "cxx_type": "int",
+                                "cxx_var": "arg2",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2066,6 +2842,39 @@
                             "stmt": "f_subroutine"
                         },
                         "arg1": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg1",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg1",
+                                "cxx_type": "int",
+                                "cxx_var": "arg1",
+                                "f_array_allocate": "(3)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(3)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg1",
+                                "fc_var": "arg1",
+                                "i_dimension": "(*)",
+                                "i_var": "arg1",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2078,6 +2887,39 @@
                             "stmt": "f_out_native*"
                         },
                         "arg2": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg2",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg2",
+                                "cxx_type": "int",
+                                "cxx_var": "arg2",
+                                "f_array_allocate": "(3)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(3)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg2",
+                                "fc_var": "arg2",
+                                "i_dimension": "(*)",
+                                "i_var": "arg2",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2337,6 +3179,29 @@
                             "stmt": "c_subroutine"
                         },
                         "nvar": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nvar",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nvar",
+                                "cxx_type": "int",
+                                "cxx_var": "nvar",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2344,6 +3209,30 @@
                             "stmt": "c_in_native"
                         },
                         "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "nvar",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "values",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2364,6 +3253,34 @@
                             "stmt": "f_subroutine"
                         },
                         "nvar": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "nvar",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&nvar",
+                                "cxx_type": "int",
+                                "cxx_var": "nvar",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "nvar",
+                                "fc_var": "nvar",
+                                "i_var": "nvar",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2371,6 +3288,39 @@
                             "stmt": "f_in_native"
                         },
                         "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "nvar",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "values",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_array_allocate": "(nvar)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(nvar)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "values",
+                                "fc_var": "values",
+                                "i_dimension": "(*)",
+                                "i_var": "values",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2642,6 +3592,29 @@
                             "stmt": "c_subroutine"
                         },
                         "len": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "len",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&len",
+                                "cxx_type": "int",
+                                "cxx_var": "len",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2649,12 +3622,56 @@
                             "stmt": "c_in_native"
                         },
                         "result": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "result",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "result",
+                                "cxx_type": "int",
+                                "cxx_var": "result",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
                         },
                         "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(values)",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -2670,6 +3687,35 @@
                             "stmt": "f_subroutine"
                         },
                         "len": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "len",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&len",
+                                "cxx_type": "int",
+                                "cxx_var": "len",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "len",
+                                "fc_var": "SH_len",
+                                "i_var": "len",
+                                "idtor": "0",
+                                "pre_call_intent": "size(values,kind=C_INT)",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -2677,12 +3723,71 @@
                             "stmt": "f_in_native"
                         },
                         "result": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "result",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "result",
+                                "cxx_type": "int",
+                                "cxx_var": "result",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "result",
+                                "fc_var": "result",
+                                "i_var": "result",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
                             "stmt": "f_out_native*"
                         },
                         "values": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "values",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(values)",
+                                "cxx_type": "int",
+                                "cxx_var": "values",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "values",
+                                "fc_var": "values",
+                                "i_dimension": "(*)",
+                                "i_var": "values",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "size": "size(values)",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -2968,6 +4073,30 @@
                             "stmt": "c_subroutine"
                         },
                         "out": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "out",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "out",
+                                "cxx_type": "int",
+                                "cxx_var": "out",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -2988,6 +4117,39 @@
                             "stmt": "f_subroutine"
                         },
                         "out": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_array_size2": "3",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "out",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "out",
+                                "cxx_type": "int",
+                                "cxx_var": "out",
+                                "f_array_allocate": "(3)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(3)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "out",
+                                "fc_var": "out",
+                                "i_dimension": "(*)",
+                                "i_var": "out",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -3183,6 +4345,28 @@
                             "stmt": "c_subroutine"
                         },
                         "array": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "array",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "array",
+                                "cxx_type": "int",
+                                "cxx_var": "array",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_inout_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "inout",
                                 "rank": 1
@@ -3190,6 +4374,29 @@
                             "stmt": "c_inout_native*"
                         },
                         "sizein": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "sizein",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&sizein",
+                                "cxx_type": "int",
+                                "cxx_var": "sizein",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3205,6 +4412,38 @@
                             "stmt": "f_subroutine"
                         },
                         "array": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "array",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "array",
+                                "cxx_type": "int",
+                                "cxx_var": "array",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "array",
+                                "fc_var": "array",
+                                "i_dimension": "(*)",
+                                "i_var": "array",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "size": "size(array)",
+                                "stmt_name": "f_inout_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "inout",
                                 "rank": 1
@@ -3212,6 +4451,35 @@
                             "stmt": "f_inout_native*"
                         },
                         "sizein": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "sizein",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&sizein",
+                                "cxx_type": "int",
+                                "cxx_var": "sizein",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "sizein",
+                                "fc_var": "SH_sizein",
+                                "i_var": "sizein",
+                                "idtor": "0",
+                                "pre_call_intent": "size(array,kind=C_INT)",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3450,6 +4718,28 @@
                             "stmt": "c_subroutine"
                         },
                         "x": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "x",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "x",
+                                "cxx_type": "double",
+                                "cxx_var": "x",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_inout_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "inout",
                                 "rank": 1
@@ -3457,6 +4747,29 @@
                             "stmt": "c_inout_native*"
                         },
                         "x_length": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "x_length",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&x_length",
+                                "cxx_type": "int",
+                                "cxx_var": "x_length",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3472,6 +4785,38 @@
                             "stmt": "f_subroutine"
                         },
                         "x": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "double",
+                                "c_var": "x",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "x",
+                                "cxx_type": "double",
+                                "cxx_var": "x",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_var": "x",
+                                "fc_var": "x",
+                                "i_dimension": "(*)",
+                                "i_var": "x",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "size": "size(x)",
+                                "stmt_name": "f_inout_native*",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "inout",
                                 "rank": 1
@@ -3479,6 +4824,35 @@
                             "stmt": "f_inout_native*"
                         },
                         "x_length": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "x_length",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&x_length",
+                                "cxx_type": "int",
+                                "cxx_var": "x_length",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "x_length",
+                                "fc_var": "SH_x_length",
+                                "i_var": "x_length",
+                                "idtor": "0",
+                                "pre_call_intent": "size(x,kind=C_INT)",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3718,6 +5092,28 @@
                             "stmt": "c_function_native"
                         },
                         "arr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arr",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(arr)",
+                                "cxx_type": "int",
+                                "cxx_var": "arr",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -3725,6 +5121,29 @@
                             "stmt": "c_in_native*"
                         },
                         "len": {
+                            "fmtdict": {
+                                "c_abstract_decl": "size_t",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "size_t",
+                                "c_var": "len",
+                                "cfi_type": "CFI_type_size_t",
+                                "cxx_abstract_decl": "size_t",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&len",
+                                "cxx_type": "size_t",
+                                "cxx_var": "len",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_SIZE_T",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "size_t"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -3740,6 +5159,38 @@
                             "stmt": "f_function_native"
                         },
                         "arr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arr",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(arr)",
+                                "cxx_type": "int",
+                                "cxx_var": "arr",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arr",
+                                "fc_var": "arr",
+                                "i_dimension": "(*)",
+                                "i_var": "arr",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "size": "size(arr)",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -3747,6 +5198,35 @@
                             "stmt": "f_in_native*"
                         },
                         "len": {
+                            "fmtdict": {
+                                "c_abstract_decl": "size_t",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "size_t",
+                                "c_var": "len",
+                                "cfi_type": "CFI_type_size_t",
+                                "cxx_abstract_decl": "size_t",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&len",
+                                "cxx_type": "size_t",
+                                "cxx_var": "len",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_SIZE_T",
+                                "f_type": "integer(C_SIZE_T)",
+                                "f_value_attr": ", value",
+                                "f_var": "len",
+                                "fc_var": "SH_len",
+                                "i_var": "len",
+                                "idtor": "0",
+                                "pre_call_intent": "size(arr,kind=C_SIZE_T)",
+                                "sh_type": "SH_TYPE_SIZE_T",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "size_t"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4019,6 +5499,37 @@
                             "stmt": "c_function_native"
                         },
                         "names": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "names",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "names",
+                                "cxx_type": "char",
+                                "cxx_var": "names",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "names",
+                                "i_dimension": "(*)",
+                                "i_var": "names",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "size": "size(names)",
+                                "stmt_name": "c_in_char**",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -4034,6 +5545,46 @@
                             "stmt": "f_function_native"
                         },
                         "names": {
+                            "fmtdict": {
+                                "c_abstract_decl": "char **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_char_array_alloc": "ShroudStrArrayAlloc",
+                                "c_helper_char_array_free": "ShroudStrArrayFree",
+                                "c_local_cxx": "SHC_names_cxx",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "names",
+                                "c_var_len": "SHT_names_len",
+                                "c_var_size": "SHT_names_size",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "char **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "names",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_names_cxx",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "names",
+                                "fc_var": "names",
+                                "i_dimension": "(*)",
+                                "i_local_cxx": "SHC_names_cxx",
+                                "i_var": "names",
+                                "i_var_len": "SHT_names_len",
+                                "i_var_size": "SHT_names_size",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "size": "size(names)",
+                                "stmt_name": "f_in_char**_buf",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "intent": "in",
@@ -4254,6 +5805,29 @@
                             "stmt": "c_subroutine"
                         },
                         "value": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "value",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&value",
+                                "cxx_type": "int",
+                                "cxx_var": "value",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4269,6 +5843,34 @@
                             "stmt": "f_subroutine"
                         },
                         "value": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "value",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&value",
+                                "cxx_type": "int",
+                                "cxx_var": "value",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "value",
+                                "fc_var": "value",
+                                "i_var": "value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -4564,6 +6166,32 @@
                             "stmt": "c_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nitems",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nitems",
+                                "i_var": "nitems",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -4578,6 +6206,38 @@
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "c_var_cdesc": "SHT_nitems_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nitems",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nitems",
+                                "f_var_cdesc": "SHT_nitems_cdesc",
+                                "fc_var": "nitems",
+                                "i_var": "nitems",
+                                "i_var_cdesc": "SHT_nitems_cdesc",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -4765,6 +6425,38 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_size2": "10",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(10)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(10)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -4785,6 +6477,48 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
+                                "c_array_size": "SHT_count_cdesc->shape[0]",
+                                "c_array_size2": "10",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "c_var_cdesc": "SHT_count_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
+                                "f_dimension": "(10)",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "f_var_cdesc": "SHT_count_cdesc",
+                                "fc_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "i_var_cdesc": "SHT_count_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -5019,6 +6753,38 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_size2": "ncount",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(ncount)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(ncount)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -5031,6 +6797,32 @@
                             "stmt": "c_out_native**"
                         },
                         "ncount": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "ncount",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "ncount",
+                                "cxx_type": "int",
+                                "cxx_var": "ncount",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "ncount",
+                                "i_var": "ncount",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -5045,6 +6837,48 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
+                                "c_array_size": "SHT_count_cdesc->shape[0]",
+                                "c_array_size2": "ncount",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "c_var_cdesc": "SHT_count_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
+                                "f_dimension": "(ncount)",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "f_var_cdesc": "SHT_count_cdesc",
+                                "fc_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "i_var_cdesc": "SHT_count_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -5059,6 +6893,32 @@
                             "stmt": "f_out_native**_cdesc_pointer"
                         },
                         "ncount": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "ncount",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "ncount",
+                                "cxx_type": "int",
+                                "cxx_var": "ncount",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "ncount",
+                                "i_var": "ncount",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*_hidden",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
@@ -5326,6 +7186,38 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_size2": "getLen()",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(getLen())",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -5347,6 +7239,48 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = getLen();",
+                                "c_array_size": "SHT_count_cdesc->shape[0]",
+                                "c_array_size2": "getLen()",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "c_var_cdesc": "SHT_count_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
+                                "f_dimension": "(:)",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "f_var_cdesc": "SHT_count_cdesc",
+                                "fc_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "i_var_cdesc": "SHT_count_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -5563,6 +7497,32 @@
                             "stmt": "c_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int **",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(nitems)",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nitems",
+                                "i_var": "nitems",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -5577,6 +7537,38 @@
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int **",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "c_var_cdesc": "SHT_nitems_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(nitems)",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nitems",
+                                "f_var_cdesc": "SHT_nitems_cdesc",
+                                "fc_var": "nitems",
+                                "i_var": "nitems",
+                                "i_var_cdesc": "SHT_nitems_cdesc",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -5762,6 +7754,38 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int **",
+                                "c_addr": "",
+                                "c_array_size2": "10",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(10)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(10)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -5782,6 +7806,48 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int **",
+                                "c_addr": "",
+                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
+                                "c_array_size": "SHT_count_cdesc->shape[0]",
+                                "c_array_size2": "10",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "c_var_cdesc": "SHT_count_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
+                                "f_dimension": "(10)",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "f_var_cdesc": "SHT_count_cdesc",
+                                "fc_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "i_var_cdesc": "SHT_count_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -6014,6 +8080,38 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int **",
+                                "c_addr": "",
+                                "c_array_size2": "ncount",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(ncount)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(ncount)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -6026,6 +8124,32 @@
                             "stmt": "c_out_native**"
                         },
                         "ncount": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "ncount",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "ncount",
+                                "cxx_type": "int",
+                                "cxx_var": "ncount",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "ncount",
+                                "i_var": "ncount",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -6040,6 +8164,48 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int **",
+                                "c_addr": "",
+                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = ncount;",
+                                "c_array_size": "SHT_count_cdesc->shape[0]",
+                                "c_array_size2": "ncount",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "c_var_cdesc": "SHT_count_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
+                                "f_dimension": "(ncount)",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "f_var_cdesc": "SHT_count_cdesc",
+                                "fc_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "i_var_cdesc": "SHT_count_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_pointer",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -6054,6 +8220,32 @@
                             "stmt": "f_out_native**_cdesc_pointer"
                         },
                         "ncount": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int *",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "ncount",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "ncount",
+                                "cxx_type": "int",
+                                "cxx_var": "ncount",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "ncount",
+                                "i_var": "ncount",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native*_hidden",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
@@ -6313,6 +8505,28 @@
                             "stmt": "c_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nitems",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -6327,6 +8541,33 @@
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nitems",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nitems",
+                                "fc_var": "nitems",
+                                "i_var": "nitems",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_raw",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "deref": "raw",
                                 "intent": "out"
@@ -6496,6 +8737,28 @@
                             "stmt": "c_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nitems",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -6510,6 +8773,33 @@
                             "stmt": "f_subroutine"
                         },
                         "nitems": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "nitems",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "nitems",
+                                "cxx_type": "int",
+                                "cxx_var": "nitems",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "nitems",
+                                "fc_var": "nitems",
+                                "i_var": "nitems",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_raw",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "deref": "raw",
                                 "intent": "out"
@@ -6676,6 +8966,28 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -6690,6 +9002,33 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "fc_var": "count",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_raw",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "deref": "raw",
                                 "intent": "out"
@@ -6859,6 +9198,28 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -6873,6 +9234,33 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "fc_var": "count",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_raw",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "deref": "raw",
                                 "intent": "out"
@@ -7043,6 +9431,28 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int ***",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int ***",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native***",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -7057,6 +9467,33 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int ***",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int ***",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native***",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -7223,6 +9660,28 @@
                             "stmt": "c_function_native"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -7237,6 +9696,33 @@
                             "stmt": "f_function_native"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "arg",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -7437,6 +9923,30 @@
                             "stmt": "c_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_array_size2": "10*\t20",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(arg)",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "rank": "2",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -7460,6 +9970,39 @@
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const int *",
+                                "c_addr": "",
+                                "c_array_size2": "10*\t20",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "const int *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<int *>\t(arg)",
+                                "cxx_type": "int",
+                                "cxx_var": "arg",
+                                "f_array_allocate": "(10,20)",
+                                "f_assumed_shape": "(:,:)",
+                                "f_dimension": "(10,20)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_dimension": "(*)",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "rank": "2",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native*",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -7665,6 +10208,38 @@
                             "stmt": "c_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_size2": "10",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(10)",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(10)",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_out_native**",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "dim_ast": [
                                     {
@@ -7685,6 +10260,55 @@
                             "stmt": "f_subroutine"
                         },
                         "count": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int **",
+                                "c_addr": "",
+                                "c_array_shape": "\nSHT_count_cdesc->shape[0] = 10;",
+                                "c_array_size": "SHT_count_cdesc->shape[0]",
+                                "c_array_size2": "10",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_helper_array_context": "POI_SHROUD_array",
+                                "c_helper_copy_array": "POI_ShroudCopyArray",
+                                "c_member": "->",
+                                "c_type": "int",
+                                "c_var": "count",
+                                "c_var_capsule": "SHT_count_capsule",
+                                "c_var_cdesc": "SHT_count_cdesc",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "count",
+                                "cxx_type": "int",
+                                "cxx_var": "count",
+                                "f_array_allocate": "(SHT_count_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_count_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_count_cdesc%shape(1:1) = shape(count)",
+                                "f_char_type": "character(len=SHT_count_cdesc%elem_len) ::\t ",
+                                "f_dimension": "(10)",
+                                "f_helper_array_context": "POI_SHROUD_array",
+                                "f_helper_capsule_dtor": "POI_SHROUD_capsule_dtor",
+                                "f_helper_copy_array": "POI_SHROUD_copy_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "count",
+                                "f_var_capsule": "SHT_count_capsule",
+                                "f_var_cdesc": "SHT_count_cdesc",
+                                "fc_var": "count",
+                                "i_dimension": "(*)",
+                                "i_var": "count",
+                                "i_var_capsule": "SHT_count_capsule",
+                                "i_var_cdesc": "SHT_count_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_out_native**_cdesc_allocatable",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "allocatable",
@@ -7889,6 +10513,29 @@
                             "stmt": "c_function_void*"
                         },
                         "flag": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "flag",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&flag",
+                                "cxx_type": "int",
+                                "cxx_var": "flag",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -7904,6 +10551,34 @@
                             "stmt": "f_function_void*"
                         },
                         "flag": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "flag",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&flag",
+                                "cxx_type": "int",
+                                "cxx_var": "flag",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "flag",
+                                "fc_var": "flag",
+                                "i_var": "flag",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -8099,6 +10774,29 @@
                             "stmt": "c_function_void*"
                         },
                         "flag": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "flag",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&flag",
+                                "cxx_type": "int",
+                                "cxx_var": "flag",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -8114,6 +10812,34 @@
                             "stmt": "f_function_void*"
                         },
                         "flag": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "int",
+                                "c_var": "flag",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&flag",
+                                "cxx_type": "int",
+                                "cxx_var": "flag",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_value_attr": ", value",
+                                "f_var": "flag",
+                                "fc_var": "flag",
+                                "i_var": "flag",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_in_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -8313,6 +11039,28 @@
                             "stmt": "c_subroutine"
                         },
                         "addr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "void",
+                                "c_var": "addr",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "addr",
+                                "cxx_type": "void",
+                                "cxx_var": "addr",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "c_out_void**",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -8327,6 +11075,32 @@
                             "stmt": "f_subroutine"
                         },
                         "addr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "void",
+                                "c_var": "addr",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "addr",
+                                "cxx_type": "void",
+                                "cxx_var": "addr",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_type": "type(C_PTR)",
+                                "f_var": "addr",
+                                "fc_var": "addr",
+                                "i_var": "addr",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "f_out_void**",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "out"
                             },
@@ -8490,6 +11264,28 @@
                             "stmt": "c_subroutine"
                         },
                         "addr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "void",
+                                "c_var": "addr",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "addr",
+                                "cxx_type": "void",
+                                "cxx_var": "addr",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "c_inout_void**",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "inout"
                             },
@@ -8504,6 +11300,32 @@
                             "stmt": "f_subroutine"
                         },
                         "addr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "void",
+                                "c_var": "addr",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "addr",
+                                "cxx_type": "void",
+                                "cxx_var": "addr",
+                                "f_intent": "INOUT",
+                                "f_intent_attr": ", intent(INOUT)",
+                                "f_type": "type(C_PTR)",
+                                "f_var": "addr",
+                                "fc_var": "addr",
+                                "i_var": "addr",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "f_inout_void**",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "inout"
                             },
@@ -8667,6 +11489,28 @@
                             "stmt": "c_function_native"
                         },
                         "addr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "void",
+                                "c_var": "addr",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "addr",
+                                "cxx_type": "void",
+                                "cxx_var": "addr",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "c_in_void**",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -8682,6 +11526,37 @@
                             "stmt": "f_function_native"
                         },
                         "addr": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void **",
+                                "c_addr": "",
+                                "c_const": "",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "void",
+                                "c_var": "addr",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void **",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "addr",
+                                "cxx_type": "void",
+                                "cxx_var": "addr",
+                                "f_assumed_shape": "(:)",
+                                "f_dimension": "(:)",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_type": "type(C_PTR)",
+                                "f_var": "addr",
+                                "fc_var": "addr",
+                                "i_dimension": "(*)",
+                                "i_var": "addr",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "size": "size(addr)",
+                                "stmt_name": "f_in_void**",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "rank": 1
@@ -9796,6 +12671,28 @@
                             "stmt": "c_function_native*"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const char *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(name)",
+                                "cxx_type": "char",
+                                "cxx_var": "name",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_in_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "in"
                             },
@@ -9811,6 +12708,33 @@
                             "stmt": "f_function_native*_raw"
                         },
                         "name": {
+                            "fmtdict": {
+                                "c_abstract_decl": "const char *",
+                                "c_addr": "",
+                                "c_const": "const ",
+                                "c_deref": "*",
+                                "c_member": "->",
+                                "c_type": "char",
+                                "c_var": "name",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const char *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(name)",
+                                "cxx_type": "char",
+                                "cxx_var": "name",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "name",
+                                "fc_var": "name",
+                                "i_var": "name",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_in_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "ftrim_char_in": true,
                                 "intent": "in"
