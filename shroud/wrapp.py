@@ -1023,7 +1023,7 @@ return 1;""",
         """
         implied = arg.declarator.attrs["implied"]
         if implied:
-            fmt = node._fmtargs[arg.declarator.user_name]["fmtpy"]
+            fmt = node._bind["py"][arg.declarator.user_name].fmtdict
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, "{cxx_var} = {pre_call_intent};", fmt)
 
@@ -3451,7 +3451,7 @@ class ToDimension(todict.PrintNode):
             # size(in)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.fcn._fmtargs[argname]["fmtpy"]
+            fmt = self.fcn._bind["py"][argname].fmtdict
             if self.fcn.options.PY_array_arg == "numpy":
                 return wformat("PyArray_SIZE({py_var})", fmt)
             else:
@@ -3515,7 +3515,7 @@ class ToImplied(todict.PrintNode):
             # size(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.func._fmtargs[argname]["fmtpy"]
+            fmt = self.func._bind["py"][argname].fmtdict
             if self.func.options.PY_array_arg == "numpy":
                 if len(node.args) > 1:
                     return "PyArray_DIM({}, ({})-1)".format(
@@ -3528,7 +3528,7 @@ class ToImplied(todict.PrintNode):
             # len(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.func._fmtargs[argname]["fmtpy"]
+            fmt = self.func._bind["py"][argname].fmtdict
 
             # find argname in function parameters
             bind = statements.fetch_name_bind(self.func._bind, "py", argname)
@@ -3545,7 +3545,7 @@ class ToImplied(todict.PrintNode):
             # len_trim(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.func._fmtargs[argname]["fmtpy"]
+            fmt = self.func._bind["py"][argname].fmtdict
             return wformat("strlen({cxx_var})", fmt)
             # XXX - need code for len_trim
             return wformat("ShroudLenTrim({cxx_var}, strlen({cxx_var}))", fmt)
