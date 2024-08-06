@@ -127,9 +127,6 @@
                                     "F_subprogram": "subroutine",
                                     "stmt_name": "f_dtor",
                                     "typemap_name": "void"
-                                },
-                                "fmtl": {
-                                    "stmt": "lua_dtor"
                                 }
                             }
                         },

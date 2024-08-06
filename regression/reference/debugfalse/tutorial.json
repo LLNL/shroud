@@ -195,9 +195,6 @@
                             "F_subprogram": "subroutine",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     }
                 },
@@ -673,15 +670,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "f_function_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "c_var": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv",
-                            "push_expr": "lua_pushnumber(L, SHCXX_rv)",
-                            "stmt": "lua_function_native"
                         }
                     },
                     "arg1": {
@@ -735,19 +723,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "f_in_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg1",
-                            "c_var_len": "Larg1",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "arg1",
-                            "lua_var": "SH_Lua_arg1",
-                            "pop_expr": "lua_tonumber(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "arg2": {
@@ -801,19 +776,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg2",
-                            "c_var_len": "Larg2",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "arg2",
-                            "lua_var": "SH_Lua_arg2",
-                            "pop_expr": "lua_tointeger(L, 2)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -1391,16 +1353,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_function_string_cdesc_allocatable",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "c_abstract_decl": "const char",
-                            "c_var": "SHCXX_rv.c_str()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv.c_str()",
-                            "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                            "stmt": "lua_function_string"
                         }
                     },
                     "arg1": {
@@ -1464,19 +1416,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_in_string&_buf",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg1",
-                            "c_var_len": "Larg1",
-                            "cxx_member": ".",
-                            "cxx_type": "std::string",
-                            "cxx_var": "arg1",
-                            "lua_var": "SH_Lua_arg1",
-                            "pop_expr": "lua_tostring(L, 1)",
-                            "stmt": "lua_in_string&"
                         }
                     },
                     "arg2": {
@@ -1540,19 +1479,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_in_string&_buf",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg2",
-                            "c_var_len": "Larg2",
-                            "cxx_member": ".",
-                            "cxx_type": "std::string",
-                            "cxx_var": "arg2",
-                            "lua_var": "SH_Lua_arg2",
-                            "pop_expr": "lua_tostring(L, 2)",
-                            "stmt": "lua_in_string&"
                         }
                     }
                 },
@@ -2570,15 +2496,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "f_function_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "c_var": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv",
-                            "push_expr": "lua_pushnumber(L, SHCXX_rv)",
-                            "stmt": "lua_function_native"
                         }
                     },
                     "arg1": {
@@ -2632,19 +2549,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "f_in_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg1",
-                            "c_var_len": "Larg1",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "arg1",
-                            "lua_var": "SH_Lua_arg1",
-                            "pop_expr": "lua_tonumber(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "arg2": {
@@ -2699,19 +2603,6 @@
                             "sh_type": "SH_TYPE_BOOL",
                             "stmt_name": "f_in_bool",
                             "typemap_name": "bool"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg2",
-                            "c_var_len": "Larg2",
-                            "cxx_member": ".",
-                            "cxx_type": "bool",
-                            "cxx_var": "arg2",
-                            "lua_var": "SH_Lua_arg2",
-                            "pop_expr": "lua_toboolean(L, 2)",
-                            "stmt": "lua_in_bool"
                         }
                     }
                 },
@@ -3001,9 +2892,6 @@
                             "f_c_suffix": "_bufferify",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     },
                     "name": {
@@ -3067,19 +2955,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_in_string&_buf",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "name",
-                            "c_var_len": "Lname",
-                            "cxx_member": ".",
-                            "cxx_type": "std::string",
-                            "cxx_var": "name",
-                            "lua_var": "SH_Lua_name",
-                            "pop_expr": "lua_tostring(L, 1)",
-                            "stmt": "lua_in_string&"
                         }
                     }
                 },
@@ -3344,9 +3219,6 @@
                             "F_subprogram": "subroutine",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     },
                     "indx": {
@@ -3400,19 +3272,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "indx",
-                            "c_var_len": "Lindx",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "indx",
-                            "lua_var": "SH_Lua_indx",
-                            "pop_expr": "lua_tointeger(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -3790,9 +3649,6 @@
                             "F_subprogram": "subroutine",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     },
                     "arg": {
@@ -3846,19 +3702,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg",
-                            "c_var_len": "Larg",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "lua_tointeger(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -4159,9 +4002,6 @@
                             "F_subprogram": "subroutine",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     },
                     "arg": {
@@ -4215,19 +4055,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "f_in_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg",
-                            "c_var_len": "Larg",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "lua_tonumber(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -4863,9 +4690,6 @@
                             "F_subprogram": "subroutine",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     }
                 },
@@ -5229,9 +5053,6 @@
                             "F_C_subprogram": "subroutine",
                             "stmt_name": "c_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     },
                     "arg2": {
@@ -5261,19 +5082,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "c_in_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg2",
-                            "c_var_len": "Larg2",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "arg2",
-                            "lua_var": "SH_Lua_arg2",
-                            "pop_expr": "lua_tonumber(L, 2)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "name": {
@@ -5304,19 +5112,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "c_in_string&",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "name",
-                            "c_var_len": "Lname",
-                            "cxx_member": ".",
-                            "cxx_type": "std::string",
-                            "cxx_var": "name",
-                            "lua_var": "SH_Lua_name",
-                            "pop_expr": "lua_tostring(L, 1)",
-                            "stmt": "lua_in_string&"
                         }
                     }
                 },
@@ -7275,15 +7070,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "c_var": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv",
-                            "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                            "stmt": "lua_function_native"
                         }
                     },
                     "num": {
@@ -7337,19 +7123,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "num",
-                            "c_var_len": "Lnum",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "num",
-                            "lua_var": "SH_Lua_num",
-                            "pop_expr": "lua_tointeger(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "offset": {
@@ -7403,19 +7176,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "offset",
-                            "c_var_len": "Loffset",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "offset",
-                            "lua_var": "SH_Lua_offset",
-                            "pop_expr": "lua_tointeger(L, 2)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "stride": {
@@ -7469,19 +7229,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 3,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "stride",
-                            "c_var_len": "Lstride",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "stride",
-                            "lua_var": "SH_Lua_stride",
-                            "pop_expr": "lua_tointeger(L, 3)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -9268,15 +9015,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "c_var": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv",
-                            "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                            "stmt": "lua_function_native"
                         }
                     },
                     "num": {
@@ -9330,19 +9068,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 2,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "num",
-                            "c_var_len": "Lnum",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "num",
-                            "lua_var": "SH_Lua_num",
-                            "pop_expr": "lua_tointeger(L, 2)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "offset": {
@@ -9396,19 +9121,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 3,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "offset",
-                            "c_var_len": "Loffset",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "offset",
-                            "lua_var": "SH_Lua_offset",
-                            "pop_expr": "lua_tointeger(L, 3)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "stride": {
@@ -9462,19 +9174,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 4,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "stride",
-                            "c_var_len": "Lstride",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "stride",
-                            "lua_var": "SH_Lua_stride",
-                            "pop_expr": "lua_tointeger(L, 4)",
-                            "stmt": "lua_in_native"
                         }
                     },
                     "type": {
@@ -9528,19 +9227,6 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt_name": "f_in_native",
                             "typemap_name": "double"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "type",
-                            "c_var_len": "Ltype",
-                            "cxx_member": ".",
-                            "cxx_type": "double",
-                            "cxx_var": "type",
-                            "lua_var": "SH_Lua_type",
-                            "pop_expr": "lua_tonumber(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -9891,15 +9577,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_native",
                             "typemap_name": "tutorial::TypeID"
-                        },
-                        "fmtl": {
-                            "c_var": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv",
-                            "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                            "stmt": "lua_function_native"
                         }
                     },
                     "arg": {
@@ -9953,19 +9630,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "tutorial::TypeID"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg",
-                            "c_var_len": "Larg",
-                            "cxx_member": ".",
-                            "cxx_type": "tutorial::TypeID",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "lua_tointeger(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -10361,16 +10025,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_enum",
                             "typemap_name": "tutorial::Color"
-                        },
-                        "fmtl": {
-                            "c_abstract_decl": "enum TUT_Color",
-                            "c_var": "static_cast<int>(SHCXX_rv)",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "static_cast<int>(SHCXX_rv)",
-                            "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                            "stmt": "lua_function_enum"
                         }
                     },
                     "arg": {
@@ -10430,20 +10084,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_enum",
                             "typemap_name": "tutorial::Color"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "lua_tointeger(L, 1)",
-                            "c_var_len": "Larg",
-                            "cxx_abstract_decl": "tutorial::Color",
-                            "cxx_member": ".",
-                            "cxx_type": "tutorial::Color",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "static_cast<tutorial::Color>(lua_tointeger(L, 1))",
-                            "stmt": "lua_in_enum"
                         }
                     }
                 },
@@ -11962,16 +11602,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_function_string&_buf_copy",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "c_abstract_decl": "const char *",
-                            "c_var": "SHCXX_rv.c_str()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv.c_str()",
-                            "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                            "stmt": "lua_function_string&"
                         }
                     }
                 },

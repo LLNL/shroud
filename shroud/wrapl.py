@@ -487,7 +487,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.log.write("Lua {0} {1.declgen}\n".format(cls_function, node))
 
         #        fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
         #        fmt = util.Scope(fmt_func)
         #        fmt.doc_string = 'documentation'
         #        node.eval_template('LUA_name')
@@ -519,11 +518,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
-        fmt_arg0 = fmtargs.setdefault("+result", {})
-        fmt_result = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
         bind = statements.get_func_bind(node, "lua")
-        bind.fmtdict = fmt_result
-        
+        if bind.fmtdict:
+            fmt_result = bind.fmtdict
+        else:
+            fmt_result = util.Scope(fmt_func)
+            bind.fmtdict = fmt_result
+            
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
             if is_ctor or declarator.is_pointer():
@@ -584,10 +585,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             arg = ast.declarator.params[iarg]
             a_declarator = arg.declarator
             arg_name = a_declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
             bind = statements.get_arg_bind(node, arg, "lua")
-            bind.fmtdict = fmt_arg
+            if bind.fmtdict:
+                fmt_arg = bind.fmtdict
+            else:
+                fmt_arg = util.Scope(fmt_func)
+                bind.fmtdict = fmt_arg
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name

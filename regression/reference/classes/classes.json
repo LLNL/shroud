@@ -329,14 +329,6 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt_name": "f_ctor_shadow_capptr",
                                     "typemap_name": "classes::Class1"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "CLA_Class1 *",
-                                    "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor"
                                 }
                             }
                         },
@@ -717,14 +709,6 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt_name": "f_ctor_shadow_capptr",
                                     "typemap_name": "classes::Class1"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "CLA_Class1 *",
-                                    "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor"
                                 }
                             },
                             "flag": {
@@ -778,19 +762,6 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "f_in_native",
                                     "typemap_name": "int"
-                                },
-                                "fmtl": {
-                                    "LUA_index": 1,
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_var": "flag",
-                                    "c_var_len": "Lflag",
-                                    "cxx_member": ".",
-                                    "cxx_type": "int",
-                                    "cxx_var": "flag",
-                                    "lua_var": "SH_Lua_flag",
-                                    "pop_expr": "lua_tointeger(L, 1)",
-                                    "stmt": "lua_in_native"
                                 }
                             }
                         },
@@ -928,9 +899,6 @@
                                     "F_subprogram": "subroutine",
                                     "stmt_name": "f_dtor",
                                     "typemap_name": "void"
-                                },
-                                "fmtl": {
-                                    "stmt": "lua_dtor"
                                 }
                             }
                         },
@@ -1159,15 +1127,6 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "f_function_native",
                                     "typemap_name": "int"
-                                },
-                                "fmtl": {
-                                    "c_var": "SHCXX_rv",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_var": "SHCXX_rv",
-                                    "push_arg": "SHCXX_rv",
-                                    "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                    "stmt": "lua_function_native"
                                 }
                             }
                         },
@@ -2867,16 +2826,6 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt_name": "f_function_string&_cdesc_allocatable",
                                     "typemap_name": "std::string"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "const char *",
-                                    "c_var": "SHCXX_rv.c_str()",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_var": "SHCXX_rv",
-                                    "push_arg": "SHCXX_rv.c_str()",
-                                    "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                    "stmt": "lua_function_string&"
                                 }
                             }
                         },
@@ -3276,16 +3225,6 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "f_function_enum",
                                     "typemap_name": "classes::Class1::DIRECTION"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "enum CLA_Class1_DIRECTION",
-                                    "c_var": "static_cast<int>(SHCXX_rv)",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_var": "SHCXX_rv",
-                                    "push_arg": "static_cast<int>(SHCXX_rv)",
-                                    "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                                    "stmt": "lua_function_enum"
                                 }
                             },
                             "arg": {
@@ -3345,20 +3284,6 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "f_in_enum",
                                     "typemap_name": "classes::Class1::DIRECTION"
-                                },
-                                "fmtl": {
-                                    "LUA_index": 1,
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_var": "lua_tointeger(L, 1)",
-                                    "c_var_len": "Larg",
-                                    "cxx_abstract_decl": "classes::Class1::DIRECTION",
-                                    "cxx_member": ".",
-                                    "cxx_type": "classes::Class1::DIRECTION",
-                                    "cxx_var": "arg",
-                                    "lua_var": "SH_Lua_arg",
-                                    "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                                    "stmt": "lua_in_enum"
                                 }
                             }
                         },
@@ -5013,16 +4938,6 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt_name": "f_function_string&_cdesc_allocatable",
                                     "typemap_name": "std::string"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "const char *",
-                                    "c_var": "SHCXX_rv.c_str()",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_var": "SHCXX_rv",
-                                    "push_arg": "SHCXX_rv.c_str()",
-                                    "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                                    "stmt": "lua_function_string&"
                                 }
                             }
                         },
@@ -5621,14 +5536,6 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt_name": "f_ctor_shadow_capptr",
                                     "typemap_name": "classes::Shape"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "CLA_Shape *",
-                                    "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor"
                                 }
                             }
                         },
@@ -5856,15 +5763,6 @@
                                     "sh_type": "SH_TYPE_INT",
                                     "stmt_name": "f_function_native",
                                     "typemap_name": "int"
-                                },
-                                "fmtl": {
-                                    "c_var": "SHCXX_rv",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_var": "SHCXX_rv",
-                                    "push_arg": "SHCXX_rv",
-                                    "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                                    "stmt": "lua_function_native"
                                 }
                             }
                         },
@@ -6171,14 +6069,6 @@
                                     "sh_type": "SH_TYPE_OTHER",
                                     "stmt_name": "f_ctor_shadow_capptr",
                                     "typemap_name": "classes::Circle"
-                                },
-                                "fmtl": {
-                                    "c_abstract_decl": "CLA_Circle *",
-                                    "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_var": "SHCXX_rv",
-                                    "stmt": "lua_ctor"
                                 }
                             }
                         },
@@ -8155,16 +8045,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_enum",
                             "typemap_name": "classes::Class1::DIRECTION"
-                        },
-                        "fmtl": {
-                            "c_abstract_decl": "enum CLA_Class1_DIRECTION",
-                            "c_var": "static_cast<int>(SHCXX_rv)",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "static_cast<int>(SHCXX_rv)",
-                            "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
-                            "stmt": "lua_function_enum"
                         }
                     },
                     "arg": {
@@ -8224,20 +8104,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_enum",
                             "typemap_name": "classes::Class1::DIRECTION"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "lua_tointeger(L, 1)",
-                            "c_var_len": "Larg",
-                            "cxx_abstract_decl": "classes::Class1::DIRECTION",
-                            "cxx_member": ".",
-                            "cxx_type": "classes::Class1::DIRECTION",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
-                            "stmt": "lua_in_enum"
                         }
                     }
                 },
@@ -10829,9 +10695,6 @@
                             "F_subprogram": "subroutine",
                             "stmt_name": "f_subroutine",
                             "typemap_name": "void"
-                        },
-                        "fmtl": {
-                            "stmt": "lua_subroutine"
                         }
                     },
                     "arg": {
@@ -10885,19 +10748,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "LUA_index": 1,
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "arg",
-                            "c_var_len": "Larg",
-                            "cxx_member": ".",
-                            "cxx_type": "int",
-                            "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg",
-                            "pop_expr": "lua_tointeger(L, 1)",
-                            "stmt": "lua_in_native"
                         }
                     }
                 },
@@ -11118,15 +10968,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_native",
                             "typemap_name": "int"
-                        },
-                        "fmtl": {
-                            "c_var": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv",
-                            "push_expr": "lua_pushinteger(L, SHCXX_rv)",
-                            "stmt": "lua_function_native"
                         }
                     }
                 },
@@ -11407,16 +11248,6 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt_name": "f_function_string&_buf_copy",
                             "typemap_name": "std::string"
-                        },
-                        "fmtl": {
-                            "c_abstract_decl": "const char *",
-                            "c_var": "SHCXX_rv.c_str()",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_var": "SHCXX_rv",
-                            "push_arg": "SHCXX_rv.c_str()",
-                            "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
-                            "stmt": "lua_function_string&"
                         }
                     }
                 },
