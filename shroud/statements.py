@@ -68,18 +68,22 @@ def fetch_var_bind(node, wlang):
 
 def fetch_func_bind(node, wlang):
     bind = node._bind.setdefault(wlang, {})
-    bindarg = bind.setdefault("+result", BindArg())
-    if bindarg.meta is None:
+    bindarg = bind.get("+result")
+    if bindarg is None:
+        bindarg = BindArg()
         bindarg.meta = collections.defaultdict(lambda: None)
+        bind["+result"] = bindarg
     return bindarg
 
 def fetch_arg_bind(node, arg, wlang):
     bind = node._bind.setdefault(wlang, {})
     # XXX - better to turn off wrapping when 'Argument must have name'
     name = arg.declarator.user_name or arg.declarator.arg_name
-    bindarg = bind.setdefault(name, BindArg())
-    if bindarg.meta is None:
+    bindarg = bind.get(name)
+    if bindarg is None:
+        bindarg = BindArg()
         bindarg.meta = collections.defaultdict(lambda: None)
+        bind[name] = bindarg
     return bindarg
 
 def fetch_typedef_bind(node, wlang):
@@ -88,9 +92,11 @@ def fetch_typedef_bind(node, wlang):
     arg = node.ast
     # XXX - better to turn off wrapping when 'Argument must have name'
     name = arg.declarator.user_name or arg.declarator.arg_name
-    bindarg = bind.setdefault(name, BindArg())
-    if bindarg.meta is None:
+    bindarg = bind.get(name)
+    if bindarg is None:
+        bindarg = BindArg()
         bindarg.meta = collections.defaultdict(lambda: None)
+        bind[name] = bindarg
     return bindarg
 
 def fetch_func_metaattrs(node, wlang):
