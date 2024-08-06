@@ -915,13 +915,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
-        fmtlang = "fmt" + wlang
-
         self.log.write("C {0} {1.declgen}\n".format(
             wlang, node))
 
         fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
 
         if node.C_force_wrapper:
             need_wrapper = True
@@ -963,7 +960,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             header_typedef_nodes[result_typemap.name] = result_typemap
 
         stmt_indexes = []
-        fmt_result= fmtargs["+result"][fmtlang]
+        fmt_result = r_bind.fmtdict
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
@@ -1055,9 +1052,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         for arg in ast.declarator.params:
             func_cursor.arg = arg
             declarator = arg.declarator
-            arg_name = declarator.user_name
-            fmt_arg = fmtargs[arg_name][fmtlang]
             arg_bind = get_arg_bind(node, arg, wlang)
+            fmt_arg = arg_bind.fmtdict
             c_attrs = declarator.attrs
             c_meta = arg_bind.meta
             if c_meta["api"] == 'cfi':

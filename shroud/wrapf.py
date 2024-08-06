@@ -1181,9 +1181,7 @@ rv = .false.
 
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
-        fmtlang = "fmt" + wlang
         options = node.options
-        fmtargs = node._fmtargs
 
         ast = node.ast
         declarator = ast.declarator
@@ -1199,7 +1197,7 @@ rv = .false.
         
         # find subprogram type
         # compute first to get order of arguments correct.
-        fmt_result= fmtargs["+result"][fmtlang]
+        fmt_result = r_bind.fmtdict
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         self.fill_interface_result(cls, node, r_bind, fmt_result)
@@ -1245,9 +1243,8 @@ rv = .false.
             # XXX look at const, ptr
             func_cursor.arg = arg
             declarator = arg.declarator
-            arg_name = declarator.user_name
-            fmt_arg = fmtargs[arg_name][fmtlang]
             arg_bind = get_arg_bind(node, arg, wlang)
+            fmt_arg = arg_bind.fmtdict
             arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
             self.fill_interface_arg(cls, node, arg, arg_bind, fmt_arg)
@@ -1491,7 +1488,6 @@ rv = .false.
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
         options = node.options
-        fmtargs = node._fmtargs
 
         # Assume that the C function can be called directly via an interface.
         # If the wrapper does any work, then set need_wraper to True
@@ -1510,7 +1506,7 @@ rv = .false.
         r_bind = get_func_bind(node, "f")
         r_meta = r_bind.meta
         sintent = r_meta["intent"]
-        fmt_result= fmtargs["+result"]["fmtf"]
+        fmt_result = r_bind.fmtdict
         if C_node is node:
             fmt_result.F_C_call = C_node._fmtargs["+result"]["fmtf"].F_C_name
         else:
@@ -1587,8 +1583,6 @@ rv = .false.
         c_index = -1  # index into c_args
         for f_arg in ast.declarator.params:
             func_cursor.arg = f_arg
-            arg_name = f_arg.declarator.user_name
-            fmt_arg = fmtargs[arg_name]["fmtf"]
 
             f_declarator = f_arg.declarator
             f_attrs = f_declarator.attrs
@@ -1598,6 +1592,7 @@ rv = .false.
             optattr = False
             
             arg_bind = get_arg_bind(node, f_arg, "f")
+            fmt_arg = arg_bind.fmtdict
             arg_stmt = arg_bind.stmt
             arg_meta = arg_bind.meta
             if arg_meta["hidden"]:
