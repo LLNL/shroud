@@ -370,28 +370,6 @@
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt_name": "f_inout_native*",
                             "typemap_name": "double_complex"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "ctor_expr": "creal(arg1), cimag(arg1)",
-                            "ctype_expr": "SHCPY_arg1.real + SHCPY_arg1.imag * I",
-                            "ctype_var": "SHCPY_arg1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_ctype": "Py_complex",
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_native*",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -596,27 +574,6 @@
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt_name": "f_out_native*",
                             "typemap_name": "double_complex"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "ctor_expr": "creal(arg1), cimag(arg1)",
-                            "ctype_var": "SHCPY_arg1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_ctype": "Py_complex",
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native*",
-                            "value_var": "SHValue_arg1"
                         }
                     }
                 },
@@ -765,53 +722,6 @@
                             "meta": {
                                 "intent": "out"
                             }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "arg1": {
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "ctor_expr": "creal(arg1), cimag(arg1)",
-                            "ctype_expr": "SHCPY_arg1.real + SHCPY_arg1.imag * I",
-                            "ctype_var": "SHCPY_arg1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_ctype": "Py_complex",
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_native*",
-                            "value_var": "SHValue_arg1"
-                        }
-                    },
-                    "flag": {
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "flag",
-                            "ctor_expr": "flag",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "flag",
-                            "cxx_type": "int",
-                            "cxx_var": "flag",
-                            "data_var": "SHData_flag",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_flag",
-                            "size_var": "SHSize_flag",
-                            "stmt": "py_out_native*",
-                            "value_var": "SHValue_flag"
                         }
                     }
                 },
@@ -1096,27 +1006,6 @@
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
                             "stmt_name": "f_out_native*",
                             "typemap_name": "double_complex"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "ctor_expr": "creal(arg1), cimag(arg1)",
-                            "ctype_var": "SHCPY_arg1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_ctype": "Py_complex",
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt": "py_out_native*",
-                            "value_var": "SHValue_arg1"
                         }
                     },
                     "flag": {
@@ -1146,25 +1035,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_out_native*",
                             "typemap_name": "int"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "flag",
-                            "ctor_expr": "flag",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "flag",
-                            "cxx_type": "int",
-                            "cxx_var": "flag",
-                            "data_var": "SHData_flag",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_flag",
-                            "size_var": "SHSize_flag",
-                            "stmt": "py_out_native*",
-                            "value_var": "SHValue_flag"
                         }
                     }
                 },

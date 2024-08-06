@@ -1178,7 +1178,6 @@ return 1;""",
         self.log.write("Python {0} {1.declgen}\n".format(cls_function, node))
 
         fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
         fmt = util.Scope(fmt_func)
         fmt.PY_doc_string = "documentation"
         fmt.PY_array_arg = options.PY_array_arg
@@ -1290,8 +1289,12 @@ return 1;""",
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))
+            bind = statements.get_arg_bind(node, arg, "py")
+            if bind.fmtdict:
+                fmt_arg = bind.fmtdict
+            else:
+                fmt_arg = util.Scope(fmt)
+                bind.fmtdict = fmt_arg
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = "SHPy_" + arg_name
@@ -1319,8 +1322,6 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
-            bind = statements.get_arg_bind(node, arg, "py")
-            bind.fmtdict = fmt_arg
             meta = bind.meta
 
             self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
@@ -2018,10 +2019,11 @@ return 1;""",
 
         result_blk = default_scope
 
-        fmtargs = node._fmtargs
-        fmt_arg0 = fmtargs.setdefault("+result", {})
-        fmt_result = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))  # fmt_func
-        bind.fmtdict = fmt_result
+        if bind.fmtdict:
+            fmt_result = bind.fmtdict
+        else:
+            fmt_result = util.Scope(fmt)  # fmt_func
+            bind.fmtdict = fmt_result
         CXX_result = node.ast
 
         # Mangle result variable name to avoid possible conflict with arguments.

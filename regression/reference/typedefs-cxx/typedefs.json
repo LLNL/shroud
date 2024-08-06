@@ -596,22 +596,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_native",
                             "typemap_name": "Alias"
-                        },
-                        "fmtpy": {
-                            "c_deref": "",
-                            "c_var": "SHCXX_rv",
-                            "ctor_expr": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "Alias",
-                            "cxx_var": "SHCXX_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHTPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_function_native",
-                            "value_var": "SHValue_rv"
                         }
                     },
                     "arg": {
@@ -665,24 +649,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_native",
                             "typemap_name": "Alias"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "TYP_Alias",
-                            "c_var": "arg",
-                            "ctor_expr": "arg",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "Alias",
-                            "cxx_var": "arg",
-                            "data_var": "SHData_arg",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_arg",
-                            "size_var": "SHSize_arg",
-                            "stmt": "py_in_native",
-                            "value_var": "SHValue_arg"
                         }
                     }
                 },
@@ -1361,22 +1327,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_enum",
                             "typemap_name": "iColor"
-                        },
-                        "fmtpy": {
-                            "c_deref": "",
-                            "c_var": "SHCXX_rv",
-                            "ctor_expr": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "iColor",
-                            "cxx_var": "SHCXX_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHTPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_function_enum",
-                            "value_var": "SHValue_rv"
                         }
                     },
                     "in": {
@@ -1436,28 +1386,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_enum",
                             "typemap_name": "iColor"
-                        },
-                        "fmtpy": {
-                            "c_abstract_decl": "TYP_iColor",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "TYP_iColor",
-                            "c_var": "in",
-                            "ctor_expr": "in",
-                            "cxx_abstract_decl": "iColor",
-                            "cxx_addr": "&",
-                            "cxx_decl": "iColor SH_in",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&in",
-                            "cxx_type": "iColor",
-                            "cxx_val": "static_cast<Color>(in)",
-                            "cxx_var": "SH_in",
-                            "data_var": "SHData_in",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_in",
-                            "size_var": "SHSize_in",
-                            "stmt": "py_in_enum",
-                            "value_var": "SHValue_in"
                         }
                     }
                 },
@@ -1812,22 +1740,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_function_enum",
                             "typemap_name": "TypeID"
-                        },
-                        "fmtpy": {
-                            "c_deref": "",
-                            "c_var": "SHCXX_rv",
-                            "ctor_expr": "SHCXX_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&SHCXX_rv",
-                            "cxx_type": "TypeID",
-                            "cxx_var": "SHCXX_rv",
-                            "data_var": "SHData_rv",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHTPy_rv",
-                            "size_var": "SHSize_rv",
-                            "stmt": "py_function_enum",
-                            "value_var": "SHValue_rv"
                         }
                     },
                     "in": {
@@ -1887,28 +1799,6 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt_name": "f_in_enum",
                             "typemap_name": "TypeID"
-                        },
-                        "fmtpy": {
-                            "c_abstract_decl": "TYP_TypeID",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "TYP_TypeID",
-                            "c_var": "in",
-                            "ctor_expr": "in",
-                            "cxx_abstract_decl": "TypeID",
-                            "cxx_addr": "&",
-                            "cxx_decl": "TypeID SH_in",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&in",
-                            "cxx_type": "TypeID",
-                            "cxx_val": "static_cast<DataTypeID>(in)",
-                            "cxx_var": "SH_in",
-                            "data_var": "SHData_in",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_in",
-                            "size_var": "SHSize_in",
-                            "stmt": "py_in_enum",
-                            "value_var": "SHValue_in"
                         }
                     }
                 },
@@ -2191,28 +2081,6 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt_name": "f_inout_struct*",
                             "typemap_name": "Struct1Rename"
-                        },
-                        "fmtpy": {
-                            "PYN_descr": "PY_s_Struct1_array_descr",
-                            "PY_build_format": "O",
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "TYP_Struct1Rename",
-                            "c_var": "arg1",
-                            "ctor_expr": "*arg1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "Struct1Rename",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": null,
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt": "py_inout_struct*_list",
-                            "value_var": "SHValue_arg1",
-                            "vargs": "arg1"
                         }
                     }
                 },
