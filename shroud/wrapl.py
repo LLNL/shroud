@@ -518,12 +518,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
-        bind = statements.get_func_bind(node, "lua")
-        if bind.fmtdict:
-            fmt_result = bind.fmtdict
+        bind_result = statements.get_func_bind(node, "lua")
+        if bind_result.fmtdict:
+            fmt_result = bind_result.fmtdict
         else:
             fmt_result = util.Scope(fmt_func)
-            bind.fmtdict = fmt_result
+            bind_result.fmtdict = fmt_result
             
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
@@ -585,12 +585,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             arg = ast.declarator.params[iarg]
             a_declarator = arg.declarator
             arg_name = a_declarator.user_name
-            bind = statements.get_arg_bind(node, arg, "lua")
-            if bind.fmtdict:
-                fmt_arg = bind.fmtdict
+            bind_arg = statements.get_arg_bind(node, arg, "lua")
+            if bind_arg.fmtdict:
+                fmt_arg = bind_arg.fmtdict
             else:
                 fmt_arg = util.Scope(fmt_func)
-                bind.fmtdict = fmt_arg
+                bind_arg.fmtdict = fmt_arg
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
@@ -605,7 +605,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
             attrs = a_declarator.attrs
-            meta = statements.fetch_arg_metaattrs(node, arg, "lua")
+            meta = bind_arg.meta
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
@@ -662,7 +662,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        call_code.extend(post_parse)
 
         abstract = None
-        meta = statements.fetch_func_metaattrs(node, "lua")
+        meta = bind_result.meta
         sintent = meta["intent"]
         if is_ctor:
             fmt_func.LUA_used_param_state = True

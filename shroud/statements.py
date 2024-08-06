@@ -99,12 +99,6 @@ def fetch_typedef_bind(node, wlang):
         bind[name] = bindarg
     return bindarg
 
-def fetch_func_metaattrs(node, wlang):
-    return fetch_func_bind(node, wlang).meta
-
-def fetch_arg_metaattrs(node, arg, wlang):
-    return fetch_arg_bind(node, arg, wlang).meta
-
 def fetch_name_bind(bind, wlang, name):
     bind = bind.setdefault(wlang, {})
     bindarg = bind.setdefault(name, BindArg())
