@@ -573,63 +573,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "arg": {
-                                "fmtc": {
-                                    "c_abstract_decl": "TUT_Class1 *",
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_local_cxx": "SHC_arg_cxx",
-                                    "c_member": "->",
-                                    "c_type": "TUT_Class1",
-                                    "c_var": "arg",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "tutorial::Class1 *",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_arg_cxx",
-                                    "cxx_type": "tutorial::Class1",
-                                    "cxx_var": "SHC_arg_cxx",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow*",
-                                    "typemap_name": "tutorial::Class1"
-                                },
-                                "fmtf": {
-                                    "c_abstract_decl": "TUT_Class1 *",
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_local_cxx": "SHC_arg_cxx",
-                                    "c_member": "->",
-                                    "c_type": "TUT_Class1",
-                                    "c_var": "arg",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "tutorial::Class1 *",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_arg_cxx",
-                                    "cxx_type": "tutorial::Class1",
-                                    "cxx_var": "SHC_arg_cxx",
-                                    "f_capsule_data_type": "SHROUD_class1_capsule",
-                                    "f_derived_type": "class1",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_type": "type(class1)",
-                                    "f_var": "arg",
-                                    "fc_var": "arg",
-                                    "i_local_cxx": "SHC_arg_cxx",
-                                    "i_var": "arg",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow*",
-                                    "typemap_name": "tutorial::Class1"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "func1",
                             "F_name_api": "func1",
@@ -871,63 +814,6 @@
                                     "meta": {
                                         "intent": "in"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "arg": {
-                                "fmtc": {
-                                    "c_abstract_decl": "FOR_Class3 *",
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_local_cxx": "SHC_arg_cxx",
-                                    "c_member": "->",
-                                    "c_type": "FOR_Class3",
-                                    "c_var": "arg",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "forward::Class3 *",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_arg_cxx",
-                                    "cxx_type": "forward::Class3",
-                                    "cxx_var": "SHC_arg_cxx",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "c_in_shadow*",
-                                    "typemap_name": "forward::Class3"
-                                },
-                                "fmtf": {
-                                    "c_abstract_decl": "FOR_Class3 *",
-                                    "c_addr": "",
-                                    "c_const": "",
-                                    "c_deref": "*",
-                                    "c_local_cxx": "SHC_arg_cxx",
-                                    "c_member": "->",
-                                    "c_type": "FOR_Class3",
-                                    "c_var": "arg",
-                                    "cfi_type": "CFI_type_other",
-                                    "cxx_abstract_decl": "forward::Class3 *",
-                                    "cxx_addr": "",
-                                    "cxx_member": "->",
-                                    "cxx_nonconst_ptr": "SHC_arg_cxx",
-                                    "cxx_type": "forward::Class3",
-                                    "cxx_var": "SHC_arg_cxx",
-                                    "f_capsule_data_type": "FOR_SHROUD_capsule_data",
-                                    "f_derived_type": "class3",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_type": "type(class3)",
-                                    "f_var": "arg",
-                                    "fc_var": "arg",
-                                    "i_local_cxx": "SHC_arg_cxx",
-                                    "i_var": "arg",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt_name": "f_in_shadow*",
-                                    "typemap_name": "forward::Class3"
                                 }
                             }
                         },
@@ -1198,60 +1084,6 @@
                             "meta": {
                                 "intent": "in"
                             }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_abstract_decl": "const Cstruct1 *",
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_abstract_decl": "const Cstruct1 *",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "f_intent": "IN",
-                            "f_intent_attr": ", intent(IN)",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "c_in_struct*",
-                            "typemap_name": "Cstruct1"
-                        },
-                        "fmtf": {
-                            "c_abstract_decl": "const Cstruct1 *",
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "Cstruct1",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_other",
-                            "cxx_abstract_decl": "const Cstruct1 *",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "arg",
-                            "f_derived_type": "cstruct1",
-                            "f_intent": "IN",
-                            "f_intent_attr": ", intent(IN)",
-                            "f_kind": "cstruct1",
-                            "f_type": "type(cstruct1)",
-                            "f_var": "arg",
-                            "fc_var": "arg",
-                            "i_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt_name": "f_in_struct*",
-                            "typemap_name": "Cstruct1"
                         }
                     }
                 },

@@ -98,7 +98,6 @@ class FillFormat(object):
         fmtlang = "fmt" + wlang
 
         fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
 
         bind_result = statements.fetch_func_bind(node, wlang)
         if bind_result.fmtdict:
@@ -123,10 +122,12 @@ class FillFormat(object):
             declarator = arg.declarator
             arg_name = declarator.user_name
 
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
-            bind_arg.fmtdict = fmt_arg
+            if bind_arg.fmtdict:
+                fmt_arg = bind_arg.fmtdict
+            else:
+                fmt_arg = util.Scope(fmt_func)
+                bind_arg.fmtdict = fmt_arg
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 

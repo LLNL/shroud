@@ -229,38 +229,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "val": {
-                                "fmtf": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "val",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&val",
-                                    "cxx_type": "int",
-                                    "cxx_var": "val",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_value_attr": ", value",
-                                    "f_var": "val",
-                                    "fc_var": "val",
-                                    "i_var": "val",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native",
-                                    "typemap_name": "int"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "set_x1",
                             "F_name_api": "set_x1",
@@ -497,38 +465,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "val": {
-                                "fmtf": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "val",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&val",
-                                    "cxx_type": "int",
-                                    "cxx_var": "val",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_value_attr": ", value",
-                                    "f_var": "val",
-                                    "fc_var": "val",
-                                    "i_var": "val",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native",
-                                    "typemap_name": "int"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "set_y1",
                             "F_name_api": "set_y1",
@@ -762,38 +698,6 @@
                                         "intent": "setter",
                                         "value": true
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "val": {
-                                "fmtf": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "val",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&val",
-                                    "cxx_type": "int",
-                                    "cxx_var": "val",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_value_attr": ", value",
-                                    "f_var": "val",
-                                    "fc_var": "val",
-                                    "i_var": "val",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_setter_native",
-                                    "typemap_name": "int"
                                 }
                             }
                         },
@@ -1289,36 +1193,6 @@
                         }
                     }
                 },
-                "zz_fmtargs": {
-                    "data": {
-                        "fmtc": {
-                            "c_abstract_decl": "int *",
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "data",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "int *",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "data",
-                            "cxx_type": "int",
-                            "cxx_var": "data",
-                            "f_intent": "INOUT",
-                            "f_intent_attr": ", intent(INOUT)",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "data",
-                            "i_var": "data",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt_name": "c_inout_native*",
-                            "typemap_name": "int"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "AssumedRank",
                     "F_name_api": "assumed_rank",
@@ -1447,39 +1321,6 @@
                                 "intent": "inout",
                                 "rank": 0
                             }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "data": {
-                        "fmtf": {
-                            "c_abstract_decl": "int *",
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "data",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "int *",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "data",
-                            "cxx_type": "int",
-                            "cxx_var": "data",
-                            "f_intent": "INOUT",
-                            "f_intent_attr": ", intent(INOUT)",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "data",
-                            "fc_var": "data",
-                            "i_var": "data",
-                            "idtor": "0",
-                            "rank": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "1",
-                            "stmt_name": "f_inout_native*",
-                            "typemap_name": "int"
                         }
                     }
                 },
@@ -1620,42 +1461,6 @@
                         }
                     }
                 },
-                "zz_fmtargs": {
-                    "data": {
-                        "fmtf": {
-                            "c_abstract_decl": "int *",
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "data",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "int *",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "data",
-                            "cxx_type": "int",
-                            "cxx_var": "data",
-                            "f_assumed_shape": "(:)",
-                            "f_dimension": "(:)",
-                            "f_intent": "INOUT",
-                            "f_intent_attr": ", intent(INOUT)",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "data",
-                            "fc_var": "data",
-                            "i_dimension": "(*)",
-                            "i_var": "data",
-                            "idtor": "0",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(data)",
-                            "stmt_name": "f_inout_native*",
-                            "typemap_name": "int"
-                        }
-                    }
-                },
                 "zz_fmtdict": {
                     "C_name_api": "AssumedRank",
                     "F_name_api": "assumed_rank",
@@ -1790,42 +1595,6 @@
                                 "intent": "inout",
                                 "rank": 2
                             }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "data": {
-                        "fmtf": {
-                            "c_abstract_decl": "int *",
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_type": "int",
-                            "c_var": "data",
-                            "cfi_type": "CFI_type_int",
-                            "cxx_abstract_decl": "int *",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "data",
-                            "cxx_type": "int",
-                            "cxx_var": "data",
-                            "f_assumed_shape": "(:,:)",
-                            "f_dimension": "(:,:)",
-                            "f_intent": "INOUT",
-                            "f_intent_attr": ", intent(INOUT)",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "data",
-                            "fc_var": "data",
-                            "i_dimension": "(*)",
-                            "i_var": "data",
-                            "idtor": "0",
-                            "rank": "2",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(data)",
-                            "stmt_name": "f_inout_native*",
-                            "typemap_name": "int"
                         }
                     }
                 },
