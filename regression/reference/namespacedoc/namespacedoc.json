@@ -35,6 +35,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "outer::inner3::worker3(\t)",
+                                "C_name": "WWW_inner3_worker3",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_name": "c_inner3_worker3",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -43,6 +52,20 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "outer::inner3::worker3(\t)",
+                                "C_name": "WWW_inner3_worker3",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_inner3_worker3",
+                                "F_C_name": "inner3_worker3",
+                                "F_C_subprogram": "subroutine",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -126,6 +149,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "outer::worker(\t)",
+                                "C_name": "WWW_worker",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_name": "c_worker",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -134,6 +166,20 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "outer::worker(\t)",
+                                "C_name": "WWW_worker",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_worker",
+                                "F_C_name": "worker",
+                                "F_C_subprogram": "subroutine",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -223,6 +269,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner1::worker(\t)",
+                                        "C_name": "WWW_inner1_worker",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_worker",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -231,6 +286,20 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner1::worker(\t)",
+                                        "C_name": "WWW_inner1_worker",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "",
+                                        "F_C_call": "c_worker",
+                                        "F_C_name": "worker",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arguments": "",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -350,6 +419,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner2::worker(\t)",
+                                        "C_name": "WWW_inner2_worker",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_worker",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -358,6 +436,20 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner2::worker(\t)",
+                                        "C_name": "WWW_inner2_worker",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "",
+                                        "F_C_call": "c_worker",
+                                        "F_C_name": "worker",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arguments": "",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -477,6 +569,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner4::worker4(\t)",
+                                        "C_name": "WWW_inner4_worker4",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_inner4_worker4",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -485,6 +586,20 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "outer::inner4::worker4(\t)",
+                                        "C_name": "WWW_inner4_worker4",
+                                        "C_prototype": "void",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "",
+                                        "F_C_call": "c_inner4_worker4",
+                                        "F_C_name": "inner4_worker4",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arguments": "",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },

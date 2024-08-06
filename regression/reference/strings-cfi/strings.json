@@ -41,6 +41,15 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "init_test(\t)",
+                                "C_name": "STR_init_test",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_name": "c_init_test",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -49,6 +58,20 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "init_test(\t)",
+                                "C_name": "STR_init_test",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_init_test",
+                                "F_C_name": "init_test",
+                                "F_C_subprogram": "subroutine",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -137,6 +160,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passChar(\tstatus)",
+                                "C_call_list": "status",
+                                "C_name": "STR_passChar",
+                                "C_prototype": "char status",
+                                "C_return_type": "void",
+                                "F_C_name": "c_pass_char",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -175,6 +208,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passChar(\tstatus)",
+                                "C_call_list": "status",
+                                "C_name": "STR_passChar",
+                                "C_prototype": "char status",
+                                "C_return_type": "void",
+                                "F_C_arguments": "status",
+                                "F_C_call": "c_pass_char",
+                                "F_C_name": "pass_char",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "status",
+                                "F_arguments": "status",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -363,6 +412,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passCharForce(\tstatus)",
+                                "C_call_list": "status",
+                                "C_name": "STR_passCharForce",
+                                "C_prototype": "char status",
+                                "C_return_type": "void",
+                                "F_C_name": "c_pass_char_force",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -401,6 +460,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passCharForce(\tstatus)",
+                                "C_call_list": "status",
+                                "C_name": "STR_passCharForce",
+                                "C_prototype": "char status",
+                                "C_return_type": "void",
+                                "F_C_arguments": "status",
+                                "F_C_call": "c_pass_char_force",
+                                "F_C_name": "c_pass_char_force",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "status",
+                                "F_arguments": "status",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -575,6 +650,27 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "returnChar(\t)",
+                                "C_name": "STR_returnChar",
+                                "C_prototype": "char *SHC_rv",
+                                "C_return_type": "void",
+                                "F_C_name": "c_return_char",
+                                "c_const": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "char SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -583,6 +679,42 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "returnChar(\t)",
+                                "C_name": "STR_returnChar",
+                                "C_prototype": "char *SHC_rv",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_return_char",
+                                "F_C_name": "c_return_char",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "char SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -741,6 +873,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passCharPtr(\tdest,\t src)",
+                                "C_call_list": "dest,\t src",
+                                "C_name": "STR_passCharPtr",
+                                "C_prototype": "char *dest,\t const char *src",
+                                "C_return_type": "void",
+                                "F_C_arguments": "dest,\t src",
+                                "F_C_name": "c_pass_char_ptr",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -813,6 +957,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passCharPtr(\tSHC_dest_cxx,\t SHC_src_cxx)",
+                                "C_call_list": "SHC_dest_cxx,\t SHC_src_cxx",
+                                "C_name": "STR_passCharPtr_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "dest,\t src",
+                                "F_C_call": "c_pass_char_ptr_CFI",
+                                "F_C_name": "pass_char_ptr",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "dest,\t src",
+                                "F_arguments": "dest,\t src",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1133,6 +1294,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passCharPtrInOut(\ts)",
+                                "C_call_list": "s",
+                                "C_name": "STR_passCharPtrInOut",
+                                "C_prototype": "char *s",
+                                "C_return_type": "void",
+                                "F_C_arguments": "s",
+                                "F_C_name": "c_pass_char_ptr_in_out",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1173,6 +1346,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "passCharPtrInOut(\tSHC_s_cxx)",
+                                "C_call_list": "SHC_s_cxx",
+                                "C_name": "STR_passCharPtrInOut_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_s_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "s",
+                                "F_C_call": "c_pass_char_ptr_in_out_CFI",
+                                "F_C_name": "pass_char_ptr_in_out",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "s",
+                                "F_arguments": "s",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1372,6 +1562,37 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr1(\t)",
+                                "C_name": "STR_getCharPtr1",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_char_ptr1",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1380,6 +1601,45 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr1(\t)",
+                                "C_name": "STR_getCharPtr1_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_char_ptr1_CFI",
+                                "F_C_name": "c_get_char_ptr1_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char*_cfi_allocatable",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -1522,6 +1782,39 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr2(\t)",
+                                "C_name": "STR_getCharPtr2",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_char_ptr2",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_char_len": "30",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1530,6 +1823,50 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr2(\t)",
+                                "C_name": "STR_getCharPtr2_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_char_ptr2_CFI",
+                                "F_C_name": "c_get_char_ptr2_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_char_len": "30",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv_cxx)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char*_cfi_copy",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
@@ -1679,6 +2016,37 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr3(\t)",
+                                "C_name": "STR_getCharPtr3",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_char_ptr3",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1687,6 +2055,46 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr3(\t)",
+                                "C_name": "STR_getCharPtr3_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "output",
+                                "F_C_call": "c_get_char_ptr3_CFI",
+                                "F_C_name": "c_get_char_ptr3_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "output",
+                                "F_arguments": "output",
+                                "F_subprogram": "subroutine",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "output",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv_cxx)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "output",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "output",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char*_cfi_arg",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "arg",
@@ -1826,6 +2234,28 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr4(\t)",
+                                "C_name": "STR_getCharPtr4",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_name": "c_get_char_ptr4",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1834,6 +2264,42 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr4(\t)",
+                                "C_name": "STR_getCharPtr4",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_get_char_ptr4",
+                                "F_C_name": "get_char_ptr4",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char*_raw",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "deref": "raw",
                                 "intent": "function"
@@ -1958,6 +2424,37 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr5(\t)",
+                                "C_name": "STR_getCharPtr5",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_char_ptr5",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char*",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1966,6 +2463,55 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getCharPtr5(\t)",
+                                "C_name": "STR_getCharPtr5_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_char_ptr5_CFI",
+                                "F_C_name": "c_get_char_ptr5_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "const ",
+                                "c_local_cdesc": "SHC_rv_cdesc",
+                                "c_local_cptr": "SHC_rv_cptr",
+                                "c_local_err": "SHC_rv_err",
+                                "c_local_fptr": "SHC_rv_fptr",
+                                "c_local_len": "SHC_rv_len",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
+                                "cxx_rv_decl": "const char *SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cdesc": "SHC_rv_cdesc",
+                                "i_local_cptr": "SHC_rv_cptr",
+                                "i_local_err": "SHC_rv_err",
+                                "i_local_fptr": "SHC_rv_fptr",
+                                "i_local_len": "SHC_rv_len",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char*_cfi_pointer",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "pointer",
@@ -2104,6 +2650,39 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringResult(\t)",
+                                "C_name": "STR_getConstStringResult",
+                                "C_prototype": "void",
+                                "C_return_type": "const char",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_result",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2112,6 +2691,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringResult(\t)",
+                                "C_name": "STR_getConstStringResult_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_result_CFI",
+                                "F_C_name": "c_get_const_string_result_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string_cfi_allocatable",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -2252,6 +2872,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringLen(\t)",
+                                "C_name": "STR_getConstStringLen",
+                                "C_prototype": "void",
+                                "C_return_type": "const char",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_len",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2260,6 +2915,52 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringLen(\t)",
+                                "C_name": "STR_getConstStringLen_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_len_CFI",
+                                "F_C_name": "c_get_const_string_len_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string_cfi_copy",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
@@ -2407,6 +3108,39 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringAsArg(\t)",
+                                "C_name": "STR_getConstStringAsArg",
+                                "C_prototype": "void",
+                                "C_return_type": "const char",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_as_arg",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2415,6 +3149,48 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringAsArg(\t)",
+                                "C_name": "STR_getConstStringAsArg_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "output",
+                                "F_C_call": "c_get_const_string_as_arg_CFI",
+                                "F_C_name": "c_get_const_string_as_arg_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "output",
+                                "F_arguments": "output",
+                                "F_subprogram": "subroutine",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "output",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "output",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "output",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string_cfi_arg",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "arg",
@@ -2545,6 +3321,39 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringAlloc(\t)",
+                                "C_name": "STR_getConstStringAlloc",
+                                "C_prototype": "void",
+                                "C_return_type": "const char",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_alloc",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_get_value": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2553,6 +3362,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringAlloc(\t)",
+                                "C_name": "STR_getConstStringAlloc_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_alloc_CFI",
+                                "F_C_name": "c_get_const_string_alloc_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string_cfi_allocatable",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -2691,6 +3541,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefPure(\t)",
+                                "C_name": "STR_getConstStringRefPure",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ref_pure",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2699,6 +3581,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefPure(\t)",
+                                "C_name": "STR_getConstStringRefPure_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ref_pure_CFI",
+                                "F_C_name": "c_get_const_string_ref_pure_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_cfi_allocatable",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -2844,6 +3767,40 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefLen(\t)",
+                                "C_name": "STR_getConstStringRefLen",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ref_len",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2852,6 +3809,52 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefLen(\t)",
+                                "C_name": "STR_getConstStringRefLen_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ref_len_CFI",
+                                "F_C_name": "c_get_const_string_ref_len_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_cfi_copy",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
@@ -3004,6 +4007,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefAsArg(\t)",
+                                "C_name": "STR_getConstStringRefAsArg",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ref_as_arg",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3012,6 +4047,48 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefAsArg(\t)",
+                                "C_name": "STR_getConstStringRefAsArg_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "output",
+                                "F_C_call": "c_get_const_string_ref_as_arg_CFI",
+                                "F_C_name": "c_get_const_string_ref_as_arg_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "output",
+                                "F_arguments": "output",
+                                "F_subprogram": "subroutine",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "output",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "output",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "output",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_cfi_arg",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "arg",
@@ -3158,6 +4235,40 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefLenEmpty(\t)",
+                                "C_name": "STR_getConstStringRefLenEmpty",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ref_len_empty",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3166,6 +4277,52 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefLenEmpty(\t)",
+                                "C_name": "STR_getConstStringRefLenEmpty_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ref_len_empty_CFI",
+                                "F_C_name": "c_get_const_string_ref_len_empty_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHC_rv_cxx)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_cfi_copy",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
@@ -3305,6 +4462,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefAlloc(\t)",
+                                "C_name": "STR_getConstStringRefAlloc",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ref_alloc",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3313,6 +4502,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringRefAlloc(\t)",
+                                "C_name": "STR_getConstStringRefAlloc_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ref_alloc_CFI",
+                                "F_C_name": "c_get_const_string_ref_alloc_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_cfi_allocatable",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -3464,6 +4694,40 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrLen(\t)",
+                                "C_name": "STR_getConstStringPtrLen",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ptr_len",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string*",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3472,6 +4736,52 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrLen(\t)",
+                                "C_name": "STR_getConstStringPtrLen_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ptr_len_CFI",
+                                "F_C_name": "c_get_const_string_ptr_len_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": 30,
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHC_rv_cxx)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_CFI",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string*_cfi_copy",
+                                "typemap_name": "std::string"
+                            },
                             "fstmts": "f",
                             "meta": {
                                 "api": "cfi",
@@ -3615,6 +4925,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrAlloc(\t)",
+                                "C_name": "STR_getConstStringPtrAlloc",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ptr_alloc",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string*_library",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function",
                                 "owner": "library"
@@ -3624,6 +4966,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrAlloc(\t)",
+                                "C_name": "STR_getConstStringPtrAlloc_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ptr_alloc_CFI",
+                                "F_C_name": "c_get_const_string_ptr_alloc_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string*_cfi_allocatable_library",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -3764,6 +5147,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
+                                "C_name": "STR_getConstStringPtrOwnsAlloc",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ptr_owns_alloc",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "1",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string*_caller",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function",
                                 "owner": "caller"
@@ -3773,6 +5188,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrOwnsAlloc(\t)",
+                                "C_name": "STR_getConstStringPtrOwnsAlloc_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ptr_owns_alloc_CFI",
+                                "F_C_name": "c_get_const_string_ptr_owns_alloc_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "1",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string*_cfi_allocatable_caller",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -3914,6 +5370,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
+                                "C_name": "STR_getConstStringPtrOwnsAllocPattern",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "2",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string*_caller",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "free_pattern": "C_string_free",
                                 "intent": "function",
@@ -3924,6 +5412,47 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrOwnsAllocPattern(\t)",
+                                "C_name": "STR_getConstStringPtrOwnsAllocPattern_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_CFI",
+                                "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "2",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string*_cfi_allocatable_caller",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "allocatable",
@@ -4066,6 +5595,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrPointer(\t)",
+                                "C_name": "STR_getConstStringPtrPointer",
+                                "C_prototype": "void",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_get_const_string_ptr_pointer",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string*_library",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function",
                                 "owner": "library"
@@ -4075,6 +5636,57 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getConstStringPtrPointer(\t)",
+                                "C_name": "STR_getConstStringPtrPointer_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_rv_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_get_const_string_ptr_pointer_CFI",
+                                "F_C_name": "c_get_const_string_ptr_pointer_CFI",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_const": "const ",
+                                "c_local_cdesc": "SHC_rv_cdesc",
+                                "c_local_cptr": "SHC_rv_cptr",
+                                "c_local_err": "SHC_rv_err",
+                                "c_local_fptr": "SHC_rv_fptr",
+                                "c_local_len": "SHC_rv_len",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_cfi": "SHT_rv_cfi",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string *SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cdesc": "SHC_rv_cdesc",
+                                "i_local_cptr": "SHC_rv_cptr",
+                                "i_local_err": "SHC_rv_err",
+                                "i_local_fptr": "SHC_rv_fptr",
+                                "i_local_len": "SHC_rv_len",
+                                "i_var": "SHT_rv",
+                                "i_var_cfi": "SHT_rv_cfi",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string*_cfi_pointer_library",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "cfi",
                                 "deref": "pointer",
@@ -4239,6 +5851,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringConstReference(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringConstReference",
+                                "C_prototype": "const char *arg1",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_accept_string_const_reference",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4281,6 +5905,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringConstReference(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringConstReference_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_accept_string_const_reference_CFI",
+                                "F_C_name": "accept_string_const_reference",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4499,6 +6140,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringReferenceOut(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringReferenceOut",
+                                "C_prototype": "char *arg1",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_accept_string_reference_out",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4541,6 +6194,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringReferenceOut(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringReferenceOut_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_accept_string_reference_out_CFI",
+                                "F_C_name": "accept_string_reference_out",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4755,6 +6425,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringReference(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringReference",
+                                "C_prototype": "char *arg1",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_accept_string_reference",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4797,6 +6479,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringReference(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringReference_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_accept_string_reference_CFI",
+                                "F_C_name": "accept_string_reference",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5014,6 +6713,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringPointerConst(\t&SHC_arg1_cxx)",
+                                "C_call_list": "&SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringPointerConst",
+                                "C_prototype": "const char *arg1",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_accept_string_pointer_const",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5056,6 +6767,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringPointerConst(\t&SHC_arg1_cxx)",
+                                "C_call_list": "&SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringPointerConst_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_accept_string_pointer_const_CFI",
+                                "F_C_name": "accept_string_pointer_const",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5271,6 +6999,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringPointer(\t&SHC_arg1_cxx)",
+                                "C_call_list": "&SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringPointer",
+                                "C_prototype": "char *arg1",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_accept_string_pointer",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5313,6 +7053,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringPointer(\t&SHC_arg1_cxx)",
+                                "C_call_list": "&SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringPointer_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_accept_string_pointer_CFI",
+                                "F_C_name": "accept_string_pointer",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5533,6 +7290,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchStringPointer(\t&SHC_arg1_cxx)",
+                                "C_call_list": "&SHC_arg1_cxx",
+                                "C_name": "STR_fetchStringPointer",
+                                "C_prototype": "char *arg1",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_fetch_string_pointer",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5575,6 +7344,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchStringPointer(\t&SHC_arg1_cxx)",
+                                "C_call_list": "&SHC_arg1_cxx",
+                                "C_name": "STR_fetchStringPointer_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_fetch_string_pointer_CFI",
+                                "F_C_name": "fetch_string_pointer",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5805,6 +7591,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringPointerLen(\t&SHC_arg1_cxx,\t nlen)",
+                                "C_call_list": "&SHC_arg1_cxx,\t nlen",
+                                "C_name": "STR_acceptStringPointerLen",
+                                "C_prototype": "char *arg1,\t int *nlen",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1,\t nlen",
+                                "F_C_name": "c_accept_string_pointer_len",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5879,6 +7677,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringPointerLen(\t&SHC_arg1_cxx,\t nlen)",
+                                "C_call_list": "&SHC_arg1_cxx,\t nlen",
+                                "C_name": "STR_acceptStringPointerLen_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int *nlen",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1,\t nlen",
+                                "F_C_call": "c_accept_string_pointer_len_CFI",
+                                "F_C_name": "accept_string_pointer_len",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1,\t nlen",
+                                "F_arguments": "arg1,\t nlen",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -6210,6 +8025,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchStringPointerLen(\t&SHC_arg1_cxx,\t nlen)",
+                                "C_call_list": "&SHC_arg1_cxx,\t nlen",
+                                "C_name": "STR_fetchStringPointerLen",
+                                "C_prototype": "char *arg1,\t int *nlen",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1,\t nlen",
+                                "F_C_name": "c_fetch_string_pointer_len",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -6284,6 +8111,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchStringPointerLen(\t&SHC_arg1_cxx,\t nlen)",
+                                "C_call_list": "&SHC_arg1_cxx,\t nlen",
+                                "C_name": "STR_fetchStringPointerLen_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi,\t int *nlen",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg1,\t nlen",
+                                "F_C_call": "c_fetch_string_pointer_len_CFI",
+                                "F_C_name": "fetch_string_pointer_len",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg1,\t nlen",
+                                "F_arguments": "arg1,\t nlen",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -6582,6 +8426,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringInstance(\targ1)",
+                                "C_call_list": "arg1",
+                                "C_name": "STR_acceptStringInstance",
+                                "C_prototype": "char *arg1",
+                                "C_return_type": "int",
+                                "F_C_arguments": "arg1",
+                                "F_C_name": "c_accept_string_instance",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -6624,6 +8500,45 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "acceptStringInstance(\tSHC_arg1_cxx)",
+                                "C_call_list": "SHC_arg1_cxx",
+                                "C_name": "STR_acceptStringInstance_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_arg1_cfi",
+                                "C_return_type": "int",
+                                "F_C_arguments": "arg1",
+                                "F_C_call": "c_accept_string_instance_CFI",
+                                "F_C_name": "accept_string_instance",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "arg1",
+                                "F_arguments": "arg1",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -6992,6 +8907,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchArrayStringArg(\tstrs,\t nstrs)",
+                                "C_call_list": "strs,\t nstrs",
+                                "C_name": "STR_fetchArrayStringArg",
+                                "C_prototype": "char **strs,\t int *nstrs",
+                                "C_return_type": "void",
+                                "F_C_arguments": "strs,\t nstrs",
+                                "F_C_name": "c_fetch_array_string_arg",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -7076,6 +9003,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchArrayStringArg(\t&SHT_strs_cxx,\t &nstrs)",
+                                "C_call_list": "&SHT_strs_cxx,\t &nstrs",
+                                "C_name": "STR_fetchArrayStringArg_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "strs",
+                                "F_C_call": "c_fetch_array_string_arg_CFI",
+                                "F_C_name": "fetch_array_string_arg",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "strs",
+                                "F_arguments": "strs",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -7429,6 +9373,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchArrayStringAlloc(\tstrs,\t nstrs)",
+                                "C_call_list": "strs,\t nstrs",
+                                "C_name": "STR_fetchArrayStringAlloc",
+                                "C_prototype": "char **strs,\t int *nstrs",
+                                "C_return_type": "void",
+                                "F_C_arguments": "strs,\t nstrs",
+                                "F_C_name": "c_fetch_array_string_alloc",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -7513,6 +9469,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchArrayStringAlloc(\t&SHT_strs_cxx,\t &nstrs)",
+                                "C_call_list": "&SHT_strs_cxx,\t &nstrs",
+                                "C_name": "STR_fetchArrayStringAlloc_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "strs",
+                                "F_C_call": "c_fetch_array_string_alloc_CFI",
+                                "F_C_name": "fetch_array_string_alloc",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "strs",
+                                "F_arguments": "strs",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -7867,6 +9840,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchArrayStringAllocLen(\tstrs,\t nstrs)",
+                                "C_call_list": "strs,\t nstrs",
+                                "C_name": "STR_fetchArrayStringAllocLen",
+                                "C_prototype": "char **strs,\t int *nstrs",
+                                "C_return_type": "void",
+                                "F_C_arguments": "strs,\t nstrs",
+                                "F_C_name": "c_fetch_array_string_alloc_len",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -7953,6 +9938,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "fetchArrayStringAllocLen(\t&SHT_strs_cxx,\t &nstrs)",
+                                "C_call_list": "&SHT_strs_cxx,\t &nstrs",
+                                "C_name": "STR_fetchArrayStringAllocLen_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_strs_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "strs",
+                                "F_C_call": "c_fetch_array_string_alloc_len_CFI",
+                                "F_C_name": "fetch_array_string_alloc_len",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "strs",
+                                "F_arguments": "strs",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -8357,6 +10359,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "explicit1(\tname)",
+                                "C_call_list": "name",
+                                "C_name": "STR_explicit1",
+                                "C_prototype": "char *name",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name",
+                                "F_C_name": "c_explicit1",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -8397,6 +10411,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "explicit1(\tSHC_name_cxx)",
+                                "C_call_list": "SHC_name_cxx",
+                                "C_name": "STR_explicit1_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name",
+                                "F_C_call": "c_explicit1_CFI",
+                                "F_C_name": "explicit1",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "name",
+                                "F_arguments": "name",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -8612,6 +10643,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "explicit2(\tname)",
+                                "C_call_list": "name",
+                                "C_name": "STR_explicit2",
+                                "C_prototype": "char *name",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name",
+                                "F_C_name": "c_explicit2",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -8654,6 +10697,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "explicit2(\tSHC_name_cxx)",
+                                "C_call_list": "SHC_name_cxx",
+                                "C_name": "STR_explicit2_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_name_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name",
+                                "F_C_call": "c_explicit2_CFI",
+                                "F_C_name": "explicit2",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "name",
+                                "F_arguments": "name",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -8860,6 +10920,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassChar(\tstatus)",
+                                "C_call_list": "status",
+                                "C_name": "CpassChar",
+                                "C_prototype": "char status",
+                                "C_return_type": "void",
+                                "F_C_name": "c_cpass_char",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -8898,6 +10968,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassChar(\tstatus)",
+                                "C_call_list": "status",
+                                "C_name": "CpassChar",
+                                "C_prototype": "char status",
+                                "C_return_type": "void",
+                                "F_C_arguments": "status",
+                                "F_C_call": "c_cpass_char",
+                                "F_C_name": "cpass_char",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "status",
+                                "F_arguments": "status",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -9074,6 +11160,27 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CreturnChar(\t)",
+                                "C_name": "STR_CreturnChar",
+                                "C_prototype": "char *SHC_rv",
+                                "C_return_type": "void",
+                                "F_C_name": "c_creturn_char",
+                                "c_const": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "char SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_char",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -9082,6 +11189,42 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CreturnChar(\t)",
+                                "C_name": "STR_CreturnChar",
+                                "C_prototype": "char *SHC_rv",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_creturn_char",
+                                "F_C_name": "c_creturn_char",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SHT_rv",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "char SHC_rv",
+                                "cxx_type": "char",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_char",
+                                "typemap_name": "char"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -9243,6 +11386,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtr(\tdest,\t src)",
+                                "C_call_list": "dest,\t src",
+                                "C_name": "CpassCharPtr",
+                                "C_prototype": "char *dest,\t const char *src",
+                                "C_return_type": "void",
+                                "F_C_arguments": "dest,\t src",
+                                "F_C_name": "c_cpass_char_ptr",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -9315,6 +11470,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtr(\tSHC_dest_cxx,\t SHC_src_cxx)",
+                                "C_call_list": "SHC_dest_cxx,\t SHC_src_cxx",
+                                "C_name": "STR_CpassCharPtr_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "dest,\t src",
+                                "F_C_call": "c_cpass_char_ptr_CFI",
+                                "F_C_name": "cpass_char_ptr",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "dest,\t src",
+                                "F_arguments": "dest,\t src",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -9657,6 +11829,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrBlank(\tdest,\t src)",
+                                "C_call_list": "dest,\t src",
+                                "C_name": "STR_CpassCharPtrBlank",
+                                "C_prototype": "char *dest,\t const char *src",
+                                "C_return_type": "void",
+                                "F_C_arguments": "dest,\t src",
+                                "F_C_name": "c_cpass_char_ptr_blank",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -9729,6 +11913,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrBlank(\tSHC_dest_cxx,\t SHC_src_cxx)",
+                                "C_call_list": "SHC_dest_cxx,\t SHC_src_cxx",
+                                "C_name": "STR_CpassCharPtrBlank_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_dest_cfi,\t CFI_cdesc_t *SHT_src_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "dest,\t src",
+                                "F_C_call": "c_cpass_char_ptr_blank_CFI",
+                                "F_C_name": "cpass_char_ptr_blank",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "dest,\t src",
+                                "F_arguments": "dest,\t src",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -10068,6 +12269,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "PostDeclare(\tcount,\t SHC_name_cxx)",
+                                "C_call_list": "count,\t SHC_name_cxx",
+                                "C_name": "STR_PostDeclare",
+                                "C_prototype": "int *count,\t char *name",
+                                "C_return_type": "void",
+                                "F_C_arguments": "count,\t name",
+                                "F_C_name": "c_post_declare",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -10148,6 +12361,23 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "PostDeclare(\tSHC_count_cxx,\t SHC_name_cxx)",
+                                "C_call_list": "SHC_count_cxx,\t SHC_name_cxx",
+                                "C_name": "STR_PostDeclare_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_count_cfi,\t CFI_cdesc_t *SHT_name_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "count,\t name",
+                                "F_C_call": "c_post_declare_CFI",
+                                "F_C_name": "post_declare",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "count,\t name",
+                                "F_arguments": "count,\t name",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -10488,6 +12718,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrNotrim(\tsrc)",
+                                "C_call_list": "src",
+                                "C_name": "STR_CpassCharPtrNotrim",
+                                "C_prototype": "const char *src",
+                                "C_return_type": "int",
+                                "F_C_arguments": "src",
+                                "F_C_name": "c_cpass_char_ptr_notrim",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -10528,6 +12790,45 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrNotrim(\tSHC_src_cxx)",
+                                "C_call_list": "SHC_src_cxx",
+                                "C_name": "STR_CpassCharPtrNotrim_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_src_cfi",
+                                "C_return_type": "int",
+                                "F_C_arguments": "src",
+                                "F_C_call": "c_cpass_char_ptr_notrim_CFI",
+                                "F_C_name": "cpass_char_ptr_notrim",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "src",
+                                "F_arguments": "src",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -10797,6 +13098,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
+                                "C_call_list": "addr,\t src",
+                                "C_name": "STR_CpassCharPtrCAPI",
+                                "C_prototype": "void *addr,\t const char *src",
+                                "C_return_type": "int",
+                                "F_C_name": "c_cpass_char_ptr_capi",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -10863,6 +13187,44 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrCAPI(\taddr,\t src)",
+                                "C_call_list": "addr,\t src",
+                                "C_name": "STR_CpassCharPtrCAPI",
+                                "C_prototype": "void *addr,\t const char *src",
+                                "C_return_type": "int",
+                                "F_C_arguments": "addr,\t src",
+                                "F_C_call": "c_cpass_char_ptr_capi",
+                                "F_C_name": "cpass_char_ptr_capi",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "addr,\t src",
+                                "F_arguments": "addr,\t src",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -11204,6 +13566,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrCAPI2(\tin,\t src)",
+                                "C_call_list": "in,\t src",
+                                "C_name": "STR_CpassCharPtrCAPI2",
+                                "C_prototype": "const char *in,\t const char *src",
+                                "C_return_type": "int",
+                                "F_C_arguments": "in,\t src",
+                                "F_C_name": "c_cpass_char_ptr_capi2",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -11276,6 +13670,45 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CpassCharPtrCAPI2(\tSHC_in_cxx,\t src)",
+                                "C_call_list": "SHC_in_cxx,\t src",
+                                "C_name": "STR_CpassCharPtrCAPI2_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_in_cfi,\t const char *src",
+                                "C_return_type": "int",
+                                "F_C_arguments": "in,\t src",
+                                "F_C_call": "c_cpass_char_ptr_capi2_CFI",
+                                "F_C_name": "cpass_char_ptr_capi2",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "in,\t src",
+                                "F_arguments": "in,\t src",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },

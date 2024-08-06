@@ -44,6 +44,41 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_x1(\t)",
+                                        "C_name": "ERR_Cstruct_as_subclass_get_x1",
+                                        "C_prototype": "ERR_Cstruct_as_subclass * self",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_cstruct_as_subclass_get_x1",
+                                        "F_C_name": "c_cstruct_as_subclass_get_x1",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_getter_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "getter"
                                     },
@@ -162,6 +197,22 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->set_x1(\tval)",
+                                        "C_call_list": "val",
+                                        "C_name": "ERR_Cstruct_as_subclass_set_x1",
+                                        "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t val",
+                                        "F_C_call": "c_cstruct_as_subclass_set_x1",
+                                        "F_C_name": "c_cstruct_as_subclass_set_x1",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem,\t val",
+                                        "F_arguments": "obj,\t val",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_setter",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "setter"
                                     },
@@ -318,6 +369,41 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_y1(\t)",
+                                        "C_name": "ERR_Cstruct_as_subclass_get_y1",
+                                        "C_prototype": "ERR_Cstruct_as_subclass * self",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_cstruct_as_subclass_get_y1",
+                                        "F_C_name": "c_cstruct_as_subclass_get_y1",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_getter_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "getter"
                                     },
@@ -436,6 +522,22 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->set_y1(\tval)",
+                                        "C_call_list": "val",
+                                        "C_name": "ERR_Cstruct_as_subclass_set_y1",
+                                        "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t val",
+                                        "F_C_call": "c_cstruct_as_subclass_set_y1",
+                                        "F_C_name": "c_cstruct_as_subclass_set_y1",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem,\t val",
+                                        "F_arguments": "obj,\t val",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_setter",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "setter"
                                     },
@@ -592,6 +694,41 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_z1(\t)",
+                                        "C_name": "ERR_Cstruct_as_subclass_get_z1",
+                                        "C_prototype": "ERR_Cstruct_as_subclass * self",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_cstruct_as_subclass_get_z1",
+                                        "F_C_name": "c_cstruct_as_subclass_get_z1",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_getter_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "getter"
                                     },
@@ -710,6 +847,22 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->set_z1(\tval)",
+                                        "C_call_list": "val",
+                                        "C_name": "ERR_Cstruct_as_subclass_set_z1",
+                                        "C_prototype": "ERR_Cstruct_as_subclass * self,\t int val",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t val",
+                                        "F_C_call": "c_cstruct_as_subclass_set_z1",
+                                        "F_C_name": "c_cstruct_as_subclass_set_z1",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem,\t val",
+                                        "F_arguments": "obj,\t val",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_setter",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "setter"
                                     },
@@ -1029,6 +1182,17 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "BadFstatements(\t)",
+                                "C_name": "ERR_BadFstatements",
+                                "C_prototype": "void",
+                                "C_return_type": "void",
+                                "F_C_arguments": "",
+                                "F_C_name": "c_bad_fstatements",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "fstmts": "c",
                             "meta": {
                                 "intent": "subroutine"
@@ -1038,6 +1202,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "BadFstatements(\t)",
+                                "C_name": "ERR_BadFstatements_bufferify",
+                                "C_prototype": "void",
+                                "C_return_type": "no-such-type",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_bad_fstatements_bufferify",
+                                "F_C_name": "c_bad_fstatements_bufferify",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arguments": "",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "fstmts": "f",
                             "meta": {
                                 "intent": "subroutine"
@@ -1217,6 +1397,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssumedRank(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "ERR_AssumedRank",
+                                "C_prototype": "int *data",
+                                "C_return_type": "void",
+                                "F_C_arguments": "data",
+                                "F_C_name": "c_assumed_rank",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1420,6 +1612,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssumedRank(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "ERR_AssumedRank_0d_bufferify",
+                                "C_prototype": "int *data",
+                                "C_return_type": "void",
+                                "F_C_arguments": "data",
+                                "F_C_call": "c_assumed_rank_0d_bufferify",
+                                "F_C_name": "c_assumed_rank_0d_bufferify",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "data",
+                                "F_arguments": "data",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1589,6 +1798,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssumedRank(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "ERR_AssumedRank_1d_bufferify",
+                                "C_prototype": "int *data",
+                                "C_return_type": "void",
+                                "F_C_arguments": "data",
+                                "F_C_call": "c_assumed_rank_1d_bufferify",
+                                "F_C_name": "c_assumed_rank_1d_bufferify",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "data",
+                                "F_arguments": "data",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1764,6 +1990,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssumedRank(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "ERR_AssumedRank_2d_bufferify",
+                                "C_prototype": "int *data",
+                                "C_return_type": "void",
+                                "F_C_arguments": "data",
+                                "F_C_call": "c_assumed_rank_2d_bufferify",
+                                "F_C_name": "c_assumed_rank_2d_bufferify",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "data",
+                                "F_arguments": "data",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },

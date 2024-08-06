@@ -617,6 +617,30 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->ctor(\t)",
+                                        "C_name": "CXX_Class1_ctor",
+                                        "C_prototype": "CXX_Class1 * SHC_rv",
+                                        "C_return_type": "CXX_Class1 *",
+                                        "F_C_name": "c_class1_ctor",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_rv_decl": "Class1 SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_local_ptr": "SHT_prv",
+                                        "idtor": "1",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "c_ctor_shadow_capptr",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "capptr",
                                         "intent": "ctor"
@@ -626,6 +650,47 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->ctor(\t)",
+                                        "C_name": "CXX_Class1_ctor",
+                                        "C_prototype": "CXX_Class1 * SHC_rv",
+                                        "C_return_type": "CXX_Class1 *",
+                                        "F_C_arguments": "SHT_rv",
+                                        "F_C_call": "c_class1_ctor",
+                                        "F_C_name": "c_class1_ctor",
+                                        "F_C_result_clause": "\fresult(SHT_prv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "SHT_rv%cxxmem",
+                                        "F_arguments": "",
+                                        "F_result": "SHT_prv",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_rv_decl": "Class1 SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                        "f_derived_type": "class1",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_local_ptr": "SHT_prv",
+                                        "f_type": "type(class1)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "1",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_ctor_shadow_capptr",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "capptr",
                                         "intent": "ctor"
@@ -752,6 +817,28 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->check_length(\t)",
+                                        "C_name": "CXX_Class1_check_length_0",
+                                        "C_prototype": "CXX_Class1 * self",
+                                        "C_return_type": "int",
+                                        "F_C_name": "c_class1_check_length_0",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -760,6 +847,43 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->check_length(\t)",
+                                        "C_name": "CXX_Class1_check_length_0",
+                                        "C_prototype": "CXX_Class1 * self",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_class1_check_length_0",
+                                        "F_C_name": "c_class1_check_length_0",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -934,6 +1058,38 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->check_length(\tlength)",
+                                        "C_call_list": "length",
+                                        "C_name": "CXX_Class1_check_length_1",
+                                        "C_prototype": "CXX_Class1 * self,\t int length",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "self,\t length",
+                                        "F_C_name": "c_class1_check_length_1",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -1117,6 +1273,40 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->check_length(\tlength)",
+                                        "C_call_list": "length",
+                                        "C_name": "check_length",
+                                        "C_prototype": "CXX_Class1 * self,\t int length",
+                                        "C_return_type": "int",
+                                        "F_C_call": "c_class1_check_length_1",
+                                        "F_C_name": "c_class1_check_length_1_int",
+                                        "F_arg_c_call": "obj%cxxmem,\t length",
+                                        "F_arguments": "obj,\t length",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -1305,6 +1495,40 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->check_length(\tlength)",
+                                        "C_call_list": "length",
+                                        "C_name": "check_length",
+                                        "C_prototype": "CXX_Class1 * self,\t long length",
+                                        "C_return_type": "int",
+                                        "F_C_call": "c_class1_check_length_1",
+                                        "F_C_name": "c_class1_check_length_1_long",
+                                        "F_arg_c_call": "obj%cxxmem,\t int(length, C_INT)",
+                                        "F_arguments": "obj,\t length",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -1487,6 +1711,30 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->declare(\tflag)",
+                                        "C_call_list": "flag",
+                                        "C_name": "CXX_Class1_declare_0",
+                                        "C_prototype": "CXX_Class1 * self,\t int flag",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_class1_declare_0",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_rv_decl": "Class1 *SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "c_function_shadow*_this",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "this",
                                         "intent": "function"
@@ -1526,6 +1774,44 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->declare(\tflag)",
+                                        "C_call_list": "flag",
+                                        "C_name": "CXX_Class1_declare_0",
+                                        "C_prototype": "CXX_Class1 * self,\t int flag",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t flag",
+                                        "F_C_call": "c_class1_declare_0",
+                                        "F_C_name": "c_class1_declare_0",
+                                        "F_C_result_clause": "",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem,\t flag",
+                                        "F_arguments": "obj,\t flag",
+                                        "F_subprogram": "subroutine",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_rv_decl": "Class1 *SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                        "f_derived_type": "class1",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_type": "type(class1)",
+                                        "f_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_function_shadow*_this",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "this",
                                         "intent": "function"
@@ -1831,6 +2117,40 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->declare(\tflag,\t length)",
+                                        "C_call_list": "flag,\t length",
+                                        "C_name": "CXX_Class1_declare_1",
+                                        "C_prototype": "CXX_Class1 * self,\t int flag,\t CXX_LengthType length",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t flag,\t length",
+                                        "F_C_name": "c_class1_declare_1",
+                                        "F_C_result_clause": "",
+                                        "F_C_subprogram": "subroutine",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_rv_decl": "Class1 *SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "f_capsule_data_type": "CXX_SHROUD_capsule_data",
+                                        "f_derived_type": "class1",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_type": "type(class1)",
+                                        "f_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "c_function_shadow*_this",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "this",
                                         "intent": "function"
@@ -2099,6 +2419,34 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->declare(\tflag,\t length)",
+                                        "C_call_list": "flag,\t length",
+                                        "C_name": "declare",
+                                        "C_prototype": "CXX_Class1 * self,\t int flag,\t int length",
+                                        "C_return_type": "void",
+                                        "F_C_call": "c_class1_declare_1",
+                                        "F_C_name": "c_class1_declare_1_int",
+                                        "F_arg_c_call": "obj%cxxmem,\t flag,\t int(length, length_type)",
+                                        "F_arguments": "obj,\t flag,\t length",
+                                        "F_subprogram": "subroutine",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_rv_decl": "Class1 *SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_function_shadow*_this",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "this",
                                         "intent": "function"
@@ -2364,6 +2712,34 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->declare(\tflag,\t length)",
+                                        "C_call_list": "flag,\t length",
+                                        "C_name": "declare",
+                                        "C_prototype": "CXX_Class1 * self,\t int flag,\t long length",
+                                        "C_return_type": "void",
+                                        "F_C_call": "c_class1_declare_1",
+                                        "F_C_name": "c_class1_declare_1_long",
+                                        "F_arg_c_call": "obj%cxxmem,\t flag,\t int(length, length_type)",
+                                        "F_arguments": "obj,\t flag,\t length",
+                                        "F_subprogram": "subroutine",
+                                        "c_abstract_decl": "CXX_Class1 *",
+                                        "c_const": "",
+                                        "c_type": "CXX_Class1",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_other",
+                                        "cxx_abstract_decl": "Class1 *",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_nonconst_ptr": "SHCXX_rv",
+                                        "cxx_rv_decl": "Class1 *SHCXX_rv",
+                                        "cxx_type": "Class1",
+                                        "cxx_var": "SHCXX_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt_name": "f_function_shadow*_this",
+                                        "typemap_name": "Class1"
+                                    },
                                     "meta": {
                                         "api": "this",
                                         "intent": "function"
@@ -2598,6 +2974,41 @@
                         "zz_bind": {
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->get_length(\t)",
+                                        "C_name": "CXX_Class1_get_length",
+                                        "C_prototype": "CXX_Class1 * self",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_class1_get_length",
+                                        "F_C_name": "c_class1_get_length",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_getter_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "getter"
                                     },
@@ -3336,6 +3747,28 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultPtrIsNULL(\t)",
+                                "C_name": "CXX_defaultPtrIsNULL_0",
+                                "C_prototype": "void",
+                                "C_return_type": "bool",
+                                "F_C_name": "c_default_ptr_is_null_0",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "bool",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_Bool",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "bool SHC_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt_name": "c_function_bool",
+                                "typemap_name": "bool"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3344,6 +3777,42 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultPtrIsNULL(\t)",
+                                "C_name": "CXX_defaultPtrIsNULL_0",
+                                "C_prototype": "void",
+                                "C_return_type": "bool",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_default_ptr_is_null_0",
+                                "F_C_name": "c_default_ptr_is_null_0",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "bool",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_Bool",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "bool SHC_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_BOOL",
+                                "f_type": "logical",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt_name": "f_function_bool",
+                                "typemap_name": "bool"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3485,6 +3954,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultPtrIsNULL(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "CXX_defaultPtrIsNULL_1",
+                                "C_prototype": "double *data",
+                                "C_return_type": "bool",
+                                "F_C_name": "c_default_ptr_is_null_1",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "bool",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_Bool",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "bool SHC_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt_name": "c_function_bool",
+                                "typemap_name": "bool"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3522,6 +4014,44 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultPtrIsNULL(\tdata)",
+                                "C_call_list": "data",
+                                "C_name": "CXX_defaultPtrIsNULL_1",
+                                "C_prototype": "double *data",
+                                "C_return_type": "bool",
+                                "F_C_arguments": "data",
+                                "F_C_call": "c_default_ptr_is_null_1",
+                                "F_C_name": "c_default_ptr_is_null_1",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "data",
+                                "F_arguments": "data",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "bool",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_Bool",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "bool SHC_rv",
+                                "cxx_type": "bool",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_BOOL",
+                                "f_type": "logical",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_BOOL",
+                                "stmt_name": "f_function_bool",
+                                "typemap_name": "bool"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -3878,6 +4408,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
+                                "C_call_list": "in1,\t out1,\t out2",
+                                "C_name": "CXX_defaultArgsInOut_0",
+                                "C_prototype": "int in1,\t int *out1,\t int *out2",
+                                "C_return_type": "void",
+                                "F_C_name": "c_default_args_in_out_0",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -3972,6 +4512,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2)",
+                                "C_call_list": "in1,\t out1,\t out2",
+                                "C_name": "CXX_defaultArgsInOut_0",
+                                "C_prototype": "int in1,\t int *out1,\t int *out2",
+                                "C_return_type": "void",
+                                "F_C_arguments": "in1,\t out1,\t out2",
+                                "F_C_call": "c_default_args_in_out_0",
+                                "F_C_name": "c_default_args_in_out_0",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "in1,\t out1,\t out2",
+                                "F_arguments": "in1,\t out1,\t out2",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4390,6 +4946,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
+                                "C_call_list": "in1,\t out1,\t out2,\t flag",
+                                "C_name": "CXX_defaultArgsInOut_1",
+                                "C_prototype": "int in1,\t int *out1,\t int *out2,\t bool flag",
+                                "C_return_type": "void",
+                                "F_C_name": "c_default_args_in_out_1",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4514,6 +5080,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "defaultArgsInOut(\tin1,\t out1,\t out2,\t flag)",
+                                "C_call_list": "in1,\t out1,\t out2,\t flag",
+                                "C_name": "CXX_defaultArgsInOut_1",
+                                "C_prototype": "int in1,\t int *out1,\t int *out2,\t bool flag",
+                                "C_return_type": "void",
+                                "F_C_arguments": "in1,\t out1,\t out2,\t flag",
+                                "F_C_call": "c_default_args_in_out_1",
+                                "F_C_name": "c_default_args_in_out_1",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "in1,\t out1,\t out2,\t SHT_flag_cxx",
+                                "F_arguments": "in1,\t out1,\t out2,\t flag",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5207,6 +5789,41 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getGroupName(\tidx)",
+                                "C_call_list": "idx",
+                                "C_name": "CXX_getGroupName",
+                                "C_prototype": "long idx",
+                                "C_return_type": "const char *",
+                                "F_C_arguments": "idx",
+                                "F_C_name": "c_get_group_name",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": "30",
+                                "c_const": "const ",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "c_function_string&",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -5396,6 +6013,52 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getGroupName(\tidx)",
+                                "C_call_list": "idx",
+                                "C_name": "CXX_getGroupName_int32_t_bufferify",
+                                "C_prototype": "int32_t idx,\t char *SHC_rv,\t int SHT_rv_len",
+                                "C_return_type": "void",
+                                "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_C_call": "c_get_group_name_int32_t_bufferify",
+                                "F_C_name": "c_get_group_name_int32_t_bufferify",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_arguments": "idx",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": "30",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_len": "SHT_rv_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_bufferify",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "f_var_len": "SHT_rv_len",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_len": "SHT_rv_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_buf_copy",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
@@ -5604,6 +6267,52 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "getGroupName(\tidx)",
+                                "C_call_list": "idx",
+                                "C_name": "CXX_getGroupName_int64_t_bufferify",
+                                "C_prototype": "int64_t idx,\t char *SHC_rv,\t int SHT_rv_len",
+                                "C_return_type": "void",
+                                "F_C_arguments": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_C_call": "c_get_group_name_int64_t_bufferify",
+                                "F_C_name": "c_get_group_name_int64_t_bufferify",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "idx,\t SHT_rv,\t SHT_rv_len",
+                                "F_arguments": "idx",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "const char *",
+                                "c_char_len": "30",
+                                "c_const": "const ",
+                                "c_helper_char_copy": "ShroudCharCopy",
+                                "c_type": "char",
+                                "c_var": "SHC_rv",
+                                "c_var_len": "SHT_rv_len",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "const std::string *",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_rv_decl": "const std::string &SHCXX_rv",
+                                "cxx_type": "std::string",
+                                "cxx_var": "SHCXX_rv",
+                                "f_c_suffix": "_bufferify",
+                                "f_char_len": "len=30",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_CHAR",
+                                "f_type": "character(*)",
+                                "f_var": "SHT_rv",
+                                "f_var_len": "SHT_rv_len",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_len": "SHT_rv_len",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_string&_buf_copy",
+                                "typemap_name": "std::string"
+                            },
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
@@ -5820,6 +6529,48 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "nested_get_parent(\tSH_this)",
+                                "C_call_list": "SH_this",
+                                "C_name": "CXX_nested_get_parent",
+                                "C_prototype": "CXX_nested *SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
+                                "F_C_call": "c_nested_get_parent",
+                                "F_C_name": "c_nested_get_parent",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                                "F_arguments": "SH_this",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_helper_array_context": "CXX_SHROUD_array",
+                                "c_type": "CXX_nested",
+                                "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
+                                "cfi_type": "CFI_type_struct",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_rv_decl": "nested *SHC_rv",
+                                "cxx_type": "nested",
+                                "cxx_var": "SHC_rv",
+                                "f_derived_type": "nested",
+                                "f_helper_array_context": "CXX_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "nested",
+                                "f_type": "type(nested)",
+                                "f_var": "SHT_rv",
+                                "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_STRUCT",
+                                "stmt_name": "f_getter_struct*_cdesc_pointer",
+                                "typemap_name": "nested"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -6032,6 +6783,22 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "nested_set_parent(\tSH_this,\t val)",
+                                "C_call_list": "SH_this,\t val",
+                                "C_name": "CXX_nested_set_parent",
+                                "C_prototype": "CXX_nested *SH_this,\t CXX_nested *val",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SH_this,\t val",
+                                "F_C_call": "c_nested_set_parent",
+                                "F_C_name": "nested_set_parent",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SH_this,\t val",
+                                "F_arguments": "SH_this,\t val",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_setter",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "setter"
                             },
@@ -6289,6 +7056,58 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "nested_get_child(\tSH_this)",
+                                "C_call_list": "SH_this",
+                                "C_name": "CXX_nested_get_child",
+                                "C_prototype": "CXX_nested *SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
+                                "F_C_call": "c_nested_get_child",
+                                "F_C_name": "c_nested_get_child",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                                "F_arguments": "SH_this",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->sublevels;",
+                                "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->sublevels",
+                                "c_const": "",
+                                "c_helper_array_context": "CXX_SHROUD_array",
+                                "c_type": "CXX_nested",
+                                "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
+                                "cfi_type": "CFI_type_struct",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_rv_decl": "nested **SHC_rv",
+                                "cxx_type": "nested",
+                                "cxx_var": "SHC_rv",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                "f_derived_type": "nested",
+                                "f_dimension": "(sublevels)",
+                                "f_helper_array_context": "CXX_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "nested",
+                                "f_type": "type(nested)",
+                                "f_var": "SHT_rv",
+                                "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_dimension": "(*)",
+                                "i_var": "SHT_rv",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_STRUCT",
+                                "stmt_name": "f_getter_struct**_cdesc_raw",
+                                "typemap_name": "nested"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "raw",
@@ -6527,6 +7346,22 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "nested_set_child(\tSH_this,\t val)",
+                                "C_call_list": "SH_this,\t val",
+                                "C_name": "CXX_nested_set_child",
+                                "C_prototype": "CXX_nested *SH_this,\t CXX_nested **val",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SH_this,\t val",
+                                "F_C_call": "c_nested_set_child",
+                                "F_C_name": "nested_set_child",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SH_this,\t val",
+                                "F_arguments": "SH_this,\t val",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_setter",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "setter"
                             },
@@ -6793,6 +7628,58 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "nested_get_array(\tSH_this)",
+                                "C_call_list": "SH_this",
+                                "C_name": "CXX_nested_get_array",
+                                "C_prototype": "CXX_nested *SH_this,\t CXX_SHROUD_array *SHT_rv_cdesc",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SH_this,\t SHT_rv_cdesc",
+                                "F_C_call": "c_nested_get_array",
+                                "F_C_name": "c_nested_get_array",
+                                "F_C_result_clause": "",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SH_this,\t SHT_rv_cdesc",
+                                "F_arguments": "SH_this",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_array_shape": "\nSHT_rv_cdesc->shape[0] = SH_this->sublevels;",
+                                "c_array_size": "SHT_rv_cdesc->shape[0]",
+                                "c_array_size2": "SH_this->sublevels",
+                                "c_const": "",
+                                "c_helper_array_context": "CXX_SHROUD_array",
+                                "c_type": "CXX_nested",
+                                "c_var": "SHC_rv",
+                                "c_var_cdesc": "SHT_rv_cdesc",
+                                "cfi_type": "CFI_type_struct",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_rv_decl": "nested *SHC_rv",
+                                "cxx_type": "nested",
+                                "cxx_var": "SHC_rv",
+                                "f_array_allocate": "(SHT_rv_cdesc%shape(1))",
+                                "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
+                                "f_assumed_shape": "(:)",
+                                "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
+                                "f_derived_type": "nested",
+                                "f_dimension": "(sublevels)",
+                                "f_helper_array_context": "CXX_SHROUD_array",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "nested",
+                                "f_type": "type(nested)",
+                                "f_var": "SHT_rv",
+                                "f_var_cdesc": "SHT_rv_cdesc",
+                                "fc_var": "SHT_rv",
+                                "i_dimension": "(*)",
+                                "i_var": "SHT_rv",
+                                "i_var_cdesc": "SHT_rv_cdesc",
+                                "idtor": "0",
+                                "rank": "1",
+                                "sh_type": "SH_TYPE_STRUCT",
+                                "stmt_name": "f_getter_struct*_cdesc_pointer",
+                                "typemap_name": "nested"
+                            },
                             "meta": {
                                 "api": "cdesc",
                                 "deref": "pointer",
@@ -7028,6 +7915,22 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "nested_set_array(\tSH_this,\t val)",
+                                "C_call_list": "SH_this,\t val",
+                                "C_name": "CXX_nested_set_array",
+                                "C_prototype": "CXX_nested *SH_this,\t CXX_nested *val",
+                                "C_return_type": "void",
+                                "F_C_arguments": "SH_this,\t val",
+                                "F_C_call": "c_nested_set_array",
+                                "F_C_name": "nested_set_array",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "SH_this,\t val",
+                                "F_arguments": "SH_this,\t val",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_setter",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "setter"
                             },
@@ -7378,6 +8281,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReference(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReference",
+                                        "C_prototype": "CXX_cstruct1 *arg",
+                                        "C_return_type": "int",
+                                        "F_C_name": "c_pass_struct_by_reference",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -7414,6 +8340,44 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReference(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReference",
+                                        "C_prototype": "CXX_cstruct1 *arg",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "arg",
+                                        "F_C_call": "c_pass_struct_by_reference",
+                                        "F_C_name": "pass_struct_by_reference",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "arg",
+                                        "F_arguments": "arg",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -7731,6 +8695,29 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReferenceIn",
+                                        "C_prototype": "const CXX_cstruct1 *arg",
+                                        "C_return_type": "int",
+                                        "F_C_name": "c_pass_struct_by_reference_in",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "c_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -7767,6 +8754,44 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReferenceIn(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReferenceIn",
+                                        "C_prototype": "const CXX_cstruct1 *arg",
+                                        "C_return_type": "int",
+                                        "F_C_arguments": "arg",
+                                        "F_C_call": "c_pass_struct_by_reference_in",
+                                        "F_C_name": "pass_struct_by_reference_in",
+                                        "F_C_result_clause": "\fresult(SHT_rv)",
+                                        "F_C_subprogram": "function",
+                                        "F_arg_c_call": "arg",
+                                        "F_arguments": "arg",
+                                        "F_result_clause": "\fresult(SHT_rv)",
+                                        "F_subprogram": "function",
+                                        "c_const": "",
+                                        "c_get_value": "",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_rv_decl": "int SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_var": "SHT_rv",
+                                        "fc_var": "SHT_rv",
+                                        "i_var": "SHT_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_function_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "function"
                                     },
@@ -8083,6 +9108,16 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReferenceInout",
+                                        "C_prototype": "CXX_cstruct1 *arg",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_pass_struct_by_reference_inout",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -8119,6 +9154,22 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReferenceInout(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReferenceInout",
+                                        "C_prototype": "CXX_cstruct1 *arg",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "arg",
+                                        "F_C_call": "c_pass_struct_by_reference_inout",
+                                        "F_C_name": "pass_struct_by_reference_inout",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "arg",
+                                        "F_arguments": "arg",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -8368,6 +9419,16 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReferenceOut",
+                                        "C_prototype": "CXX_cstruct1 *arg",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_pass_struct_by_reference_out",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -8404,6 +9465,22 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "structns::passStructByReferenceOut(\t*arg)",
+                                        "C_call_list": "*arg",
+                                        "C_name": "CXX_structns_passStructByReferenceOut",
+                                        "C_prototype": "CXX_cstruct1 *arg",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "arg",
+                                        "F_C_call": "c_pass_struct_by_reference_out",
+                                        "F_C_name": "pass_struct_by_reference_out",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "arg",
+                                        "F_arguments": "arg",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },

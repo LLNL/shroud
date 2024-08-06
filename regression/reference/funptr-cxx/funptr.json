@@ -61,6 +61,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1(\tincr1)",
+                                "C_call_list": "incr1",
+                                "C_name": "FUN_callback1",
+                                "C_prototype": "void (*incr1)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback1",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -149,6 +159,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1(\tincr1)",
+                                "C_call_list": "incr1",
+                                "C_name": "FUN_callback1",
+                                "C_prototype": "void (*incr1)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "incr1",
+                                "F_C_call": "c_callback1",
+                                "F_C_name": "callback1",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "incr1",
+                                "F_arguments": "incr1",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -447,6 +473,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1_wrap(\tincr1_wrap)",
+                                "C_call_list": "incr1_wrap",
+                                "C_name": "FUN_callback1_wrap",
+                                "C_prototype": "void (*incr1_wrap)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback1_wrap",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -535,6 +571,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1_wrap(\tincr1_wrap)",
+                                "C_call_list": "incr1_wrap",
+                                "C_name": "FUN_callback1_wrap",
+                                "C_prototype": "void (*incr1_wrap)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "incr1_wrap",
+                                "F_C_call": "c_callback1_wrap",
+                                "F_C_name": "c_callback1_wrap",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "incr1_wrap",
+                                "F_arguments": "incr1_wrap",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -833,6 +885,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1_external(\tincr1_external)",
+                                "C_call_list": "incr1_external",
+                                "C_name": "FUN_callback1_external",
+                                "C_prototype": "void (*incr1_external)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback1_external",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -925,6 +987,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1_external(\tincr1_external)",
+                                "C_call_list": "incr1_external",
+                                "C_name": "FUN_callback1_external",
+                                "C_prototype": "void (*incr1_external)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "incr1_external",
+                                "F_C_call": "c_callback1_external",
+                                "F_C_name": "c_callback1_external",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "incr1_external",
+                                "F_arguments": "incr1_external",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1233,6 +1311,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1_funptr(\tincr1_funptr)",
+                                "C_call_list": "incr1_funptr",
+                                "C_name": "FUN_callback1_funptr",
+                                "C_prototype": "void (*incr1_funptr)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback1_funptr",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1325,6 +1413,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback1_funptr(\tincr1_funptr)",
+                                "C_call_list": "incr1_funptr",
+                                "C_name": "FUN_callback1_funptr",
+                                "C_prototype": "void (*incr1_funptr)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "incr1_funptr",
+                                "F_C_call": "c_callback1_funptr",
+                                "F_C_name": "callback1_funptr",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "incr1_funptr",
+                                "F_arguments": "incr1_funptr",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1641,6 +1745,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback2(\tname,\t ival,\t incr)",
+                                "C_call_list": "name,\t ival,\t incr",
+                                "C_name": "FUN_callback2",
+                                "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback2",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1737,6 +1851,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback2(\tname,\t ival,\t incr)",
+                                "C_call_list": "name,\t ival,\t incr",
+                                "C_name": "FUN_callback2",
+                                "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name,\t ival,\t incr",
+                                "F_C_call": "c_callback2",
+                                "F_C_name": "c_callback2",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
+                                "F_arguments": "name,\t ival,\t incr",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -2137,6 +2267,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback2_external(\tname,\t ival,\t incr)",
+                                "C_call_list": "name,\t ival,\t incr",
+                                "C_name": "FUN_callback2_external",
+                                "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback2_external",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -2234,6 +2374,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback2_external(\tname,\t ival,\t incr)",
+                                "C_call_list": "name,\t ival,\t incr",
+                                "C_name": "FUN_callback2_external",
+                                "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name,\t ival,\t incr",
+                                "F_C_call": "c_callback2_external",
+                                "F_C_name": "c_callback2_external",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
+                                "F_arguments": "name,\t ival,\t incr",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -2636,6 +2792,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback2_funptr(\tname,\t ival,\t incr)",
+                                "C_call_list": "name,\t ival,\t incr",
+                                "C_name": "FUN_callback2_funptr",
+                                "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback2_funptr",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -2733,6 +2899,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback2_funptr(\tname,\t ival,\t incr)",
+                                "C_call_list": "name,\t ival,\t incr",
+                                "C_name": "FUN_callback2_funptr",
+                                "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
+                                "C_return_type": "void",
+                                "F_C_arguments": "name,\t ival,\t incr",
+                                "F_C_call": "c_callback2_funptr",
+                                "F_C_name": "c_callback2_funptr",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
+                                "F_arguments": "name,\t ival,\t incr",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -3147,6 +3329,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback3(\ttype,\t in,\t incr3)",
+                                "C_call_list": "type,\t in,\t incr3",
+                                "C_name": "FUN_callback3",
+                                "C_prototype": "int type,\t void *in,\t void (*incr3)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback3",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -3300,6 +3492,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback3(\ttype,\t in,\t incr3)",
+                                "C_call_list": "type,\t in,\t incr3",
+                                "C_name": "FUN_callback3",
+                                "C_prototype": "int type,\t void *in,\t void (*incr3)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "type,\t in,\t incr3",
+                                "F_C_call": "c_callback3",
+                                "F_C_name": "callback3",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "type,\t in,\t incr3",
+                                "F_arguments": "type,\t in,\t incr3",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -3853,6 +4061,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
+                                "C_call_list": "ilow,\t nargs,\t actor",
+                                "C_name": "FUN_callback4",
+                                "C_prototype": "int *ilow,\t int nargs,\t int (*actor)(\tint *ilow,\t int nargs)",
+                                "C_return_type": "int",
+                                "F_C_name": "c_callback4",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -4126,6 +4357,44 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback4(\tilow,\t nargs,\t actor)",
+                                "C_call_list": "ilow,\t nargs,\t actor",
+                                "C_name": "FUN_callback4",
+                                "C_prototype": "int *ilow,\t int nargs,\t int (*actor)(\tint *ilow,\t int nargs)",
+                                "C_return_type": "int",
+                                "F_C_arguments": "ilow,\t nargs,\t actor",
+                                "F_C_call": "c_callback4",
+                                "F_C_name": "c_callback4",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "ilow,\t SH_nargs,\t actor",
+                                "F_arguments": "ilow,\t actor",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -4913,6 +5182,16 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_ptr(\tget_ptr)",
+                                "C_call_list": "get_ptr",
+                                "C_name": "FUN_callback_ptr",
+                                "C_prototype": "int *(*get_ptr)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback_ptr",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5005,6 +5284,22 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_ptr(\tget_ptr)",
+                                "C_call_list": "get_ptr",
+                                "C_name": "FUN_callback_ptr",
+                                "C_prototype": "int *(*get_ptr)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "get_ptr",
+                                "F_C_call": "c_callback_ptr",
+                                "F_C_name": "callback_ptr",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "get_ptr",
+                                "F_arguments": "get_ptr",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -5342,6 +5637,29 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "abstract1(\tinput,\t get_abs)",
+                                "C_call_list": "input,\t get_abs",
+                                "C_name": "FUN_abstract1",
+                                "C_prototype": "int input,\t int (*get_abs)(\tdouble,\t int)",
+                                "C_return_type": "int",
+                                "F_C_name": "c_abstract1",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -5556,6 +5874,44 @@
                     },
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "abstract1(\tinput,\t get_abs)",
+                                "C_call_list": "input,\t get_abs",
+                                "C_name": "FUN_abstract1",
+                                "C_prototype": "int input,\t int (*get_abs)(\tdouble,\t int)",
+                                "C_return_type": "int",
+                                "F_C_arguments": "input,\t get_abs",
+                                "F_C_call": "c_abstract1",
+                                "F_C_name": "c_abstract1",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "input,\t get_abs",
+                                "F_arguments": "input,\t get_abs",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },

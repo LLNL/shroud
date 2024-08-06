@@ -93,6 +93,22 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "UpdateAsFloat(\targ)",
+                                "C_call_list": "arg",
+                                "C_name": "UpdateAsFloat",
+                                "C_prototype": "float arg",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg",
+                                "F_C_call": "c_update_as_float",
+                                "F_C_name": "c_update_as_float",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg",
+                                "F_arguments": "arg",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -246,6 +262,22 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "UpdateAsDouble(\targ)",
+                                "C_call_list": "arg",
+                                "C_name": "UpdateAsDouble",
+                                "C_prototype": "double arg",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg",
+                                "F_C_call": "c_update_as_double",
+                                "F_C_name": "c_update_as_double",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg",
+                                "F_arguments": "arg",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -383,6 +415,42 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GetGlobalDouble(\t)",
+                                "C_name": "GetGlobalDouble",
+                                "C_prototype": "void",
+                                "C_return_type": "double",
+                                "F_C_arguments": "",
+                                "F_C_call": "c_get_global_double",
+                                "F_C_name": "get_global_double",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arguments": "",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "double",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "double SHC_rv",
+                                "cxx_type": "double",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "double"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -520,6 +588,18 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GenericReal(\targ)",
+                                "C_call_list": "arg",
+                                "C_name": "GenericReal",
+                                "C_prototype": "double arg",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg",
+                                "F_C_name": "c_generic_real",
+                                "F_C_subprogram": "subroutine",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -671,6 +751,20 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GenericReal(\targ)",
+                                "C_call_list": "arg",
+                                "C_name": "GenericReal",
+                                "C_prototype": "float arg",
+                                "C_return_type": "void",
+                                "F_C_call": "c_generic_real",
+                                "F_C_name": "c_generic_real_float",
+                                "F_arg_c_call": "real(arg, C_DOUBLE)",
+                                "F_arguments": "arg",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -828,6 +922,20 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GenericReal(\targ)",
+                                "C_call_list": "arg",
+                                "C_name": "GenericReal",
+                                "C_prototype": "double arg",
+                                "C_return_type": "void",
+                                "F_C_call": "c_generic_real",
+                                "F_C_name": "c_generic_real_double",
+                                "F_arg_c_call": "arg",
+                                "F_arguments": "arg",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -1042,6 +1150,38 @@
                 "zz_bind": {
                     "c": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GenericReal2(\targ1,\t arg2)",
+                                "C_call_list": "arg1,\t arg2",
+                                "C_name": "GenericReal2",
+                                "C_prototype": "long arg1,\t long arg2",
+                                "C_return_type": "long",
+                                "F_C_arguments": "arg1,\t arg2",
+                                "F_C_name": "c_generic_real2",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "long SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_LONG",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_LONG",
+                                "stmt_name": "c_function_native",
+                                "typemap_name": "long"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1291,6 +1431,40 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GenericReal2(\targ1,\t arg2)",
+                                "C_call_list": "arg1,\t arg2",
+                                "C_name": "GenericReal2",
+                                "C_prototype": "int arg1,\t int arg2",
+                                "C_return_type": "long",
+                                "F_C_call": "c_generic_real2",
+                                "F_C_name": "c_generic_real2_all_int",
+                                "F_arg_c_call": "int(arg1, C_LONG),\t int(arg2, C_LONG)",
+                                "F_arguments": "arg1,\t arg2",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "long SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_LONG",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_LONG",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "long"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1546,6 +1720,40 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GenericReal2(\targ1,\t arg2)",
+                                "C_call_list": "arg1,\t arg2",
+                                "C_name": "GenericReal2",
+                                "C_prototype": "long arg1,\t long arg2",
+                                "C_return_type": "long",
+                                "F_C_call": "c_generic_real2",
+                                "F_C_name": "c_generic_real2_all_long",
+                                "F_arg_c_call": "arg1,\t arg2",
+                                "F_arguments": "arg1,\t arg2",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "long SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_LONG",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_LONG",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "long"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -1805,6 +2013,45 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "SumValues(\tSHC_values_cxx,\t nvalues)",
+                                "C_call_list": "SHC_values_cxx,\t nvalues",
+                                "C_name": "GEN_SumValues_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_values_cfi,\t int nvalues",
+                                "C_return_type": "int",
+                                "F_C_arguments": "values,\t nvalues",
+                                "F_C_call": "c_sum_values_CFI",
+                                "F_C_name": "sum_values",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "values,\t nvalues",
+                                "F_arguments": "values,\t nvalues",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "int SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_CFI",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "int"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -2413,6 +2660,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssignValues(\tfrom,\t nfrom,\t to,\t nto)",
+                                "C_call_list": "from,\t nfrom,\t to,\t nto",
+                                "C_name": "GEN_AssignValues_scalar_bufferify",
+                                "C_prototype": "const int *from,\t int nfrom,\t int *to,\t int nto",
+                                "C_return_type": "void",
+                                "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_C_call": "c_assign_values_scalar_bufferify",
+                                "F_C_name": "c_assign_values_scalar_bufferify",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                                "F_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -2823,6 +3087,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssignValues(\tfrom,\t nfrom,\t SHC_to_cxx,\t nto)",
+                                "C_call_list": "from,\t nfrom,\t SHC_to_cxx,\t nto",
+                                "C_name": "GEN_AssignValues_broadcast_CFI",
+                                "C_prototype": "const int *from,\t int nfrom,\t CFI_cdesc_t *SHT_to_cfi,\t int nto",
+                                "C_return_type": "void",
+                                "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_C_call": "c_assign_values_broadcast_CFI",
+                                "F_C_name": "c_assign_values_broadcast_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                                "F_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -3257,6 +3538,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "AssignValues(\tSHC_from_cxx,\t nfrom,\t SHC_to_cxx,\t nto)",
+                                "C_call_list": "SHC_from_cxx,\t nfrom,\t SHC_to_cxx,\t nto",
+                                "C_name": "GEN_AssignValues_copy_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_from_cfi,\t int nfrom,\t CFI_cdesc_t *SHT_to_cfi,\t int nto",
+                                "C_return_type": "void",
+                                "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_C_call": "c_assign_values_copy_CFI",
+                                "F_C_name": "c_assign_values_copy_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                                "F_arguments": "from,\t nfrom,\t to,\t nto",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -3892,6 +4190,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "SavePointer(\tSHC_addr_cxx,\t type,\t size)",
+                                "C_call_list": "SHC_addr_cxx,\t type,\t size",
+                                "C_name": "GEN_SavePointer_float1d_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr,\t type,\t size",
+                                "F_C_call": "c_save_pointer_float1d_CFI",
+                                "F_C_name": "c_save_pointer_float1d_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr,\t SH_type,\t SH_size",
+                                "F_arguments": "addr",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4248,6 +4563,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "SavePointer(\tSHC_addr_cxx,\t type,\t size)",
+                                "C_call_list": "SHC_addr_cxx,\t type,\t size",
+                                "C_name": "GEN_SavePointer_float2d_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr,\t type,\t size",
+                                "F_C_call": "c_save_pointer_float2d_CFI",
+                                "F_C_name": "c_save_pointer_float2d_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr,\t SH_type,\t SH_size",
+                                "F_arguments": "addr",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -4856,6 +5188,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "SavePointer2(\tSHC_addr_cxx,\t type,\t size)",
+                                "C_call_list": "SHC_addr_cxx,\t type,\t size",
+                                "C_name": "GEN_SavePointer2_float1d_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr,\t type,\t size",
+                                "F_C_call": "c_save_pointer2_float1d_CFI",
+                                "F_C_name": "c_save_pointer2_float1d_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr,\t SH_type,\t SH_size",
+                                "F_arguments": "addr",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "fstmts": "f",
                             "meta": {
                                 "intent": "subroutine"
@@ -5240,6 +5589,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "SavePointer2(\tSHC_addr_cxx,\t type,\t size)",
+                                "C_call_list": "SHC_addr_cxx,\t type,\t size",
+                                "C_name": "GEN_SavePointer2_float2d_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_addr_cfi,\t int type,\t size_t size",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr,\t type,\t size",
+                                "F_C_call": "c_save_pointer2_float2d_CFI",
+                                "F_C_name": "c_save_pointer2_float2d_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr,\t SH_type,\t SH_size",
+                                "F_arguments": "addr",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "fstmts": "f",
                             "meta": {
                                 "intent": "subroutine"
@@ -5601,6 +5967,22 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GetPointer(\taddr,\t type,\t size)",
+                                "C_call_list": "addr,\t type,\t size",
+                                "C_name": "GetPointer",
+                                "C_prototype": "void **addr,\t int *type,\t size_t *size",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr,\t type,\t size",
+                                "F_C_call": "c_get_pointer",
+                                "F_C_name": "get_pointer",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr,\t type,\t size",
+                                "F_arguments": "addr,\t type,\t size",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -6181,6 +6563,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GetPointerAsPointer(\t&SHC_addr_cxx,\t &type,\t &size)",
+                                "C_call_list": "&SHC_addr_cxx,\t &type,\t &size",
+                                "C_name": "GEN_GetPointerAsPointer_float1d_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_addr_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr",
+                                "F_C_call": "c_get_pointer_as_pointer_float1d_CFI",
+                                "F_C_name": "c_get_pointer_as_pointer_float1d_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr",
+                                "F_arguments": "addr",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -6564,6 +6963,23 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "GetPointerAsPointer(\t&SHC_addr_cxx,\t &type,\t &size)",
+                                "C_call_list": "&SHC_addr_cxx,\t &type,\t &size",
+                                "C_name": "GEN_GetPointerAsPointer_float2d_CFI",
+                                "C_prototype": "CFI_cdesc_t *SHT_addr_cfi",
+                                "C_return_type": "void",
+                                "F_C_arguments": "addr",
+                                "F_C_call": "c_get_pointer_as_pointer_float2d_CFI",
+                                "F_C_name": "c_get_pointer_as_pointer_float2d_CFI",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "addr",
+                                "F_arguments": "addr",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_CFI",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
@@ -6884,6 +7300,51 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "CreateStructAsClass(\t)",
+                                "C_name": "GEN_CreateStructAsClass_bufferify",
+                                "C_prototype": "GEN_StructAsClass * SHC_rv",
+                                "C_return_type": "GEN_StructAsClass *",
+                                "F_C_arguments": "SHT_rv",
+                                "F_C_call": "c_create_struct_as_class_bufferify",
+                                "F_C_name": "c_create_struct_as_class_bufferify",
+                                "F_C_result_clause": "\fresult(SHT_prv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "SHT_rv%cxxmem",
+                                "F_arguments": "",
+                                "F_name_generic": "struct_as_class",
+                                "F_result": "SHT_prv",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_abstract_decl": "GEN_StructAsClass *",
+                                "c_const": "",
+                                "c_local_cxx": "SHC_rv_cxx",
+                                "c_type": "GEN_StructAsClass",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_other",
+                                "cxx_abstract_decl": "StructAsClass *",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_nonconst_ptr": "SHC_rv_cxx",
+                                "cxx_rv_decl": "StructAsClass *SHCXX_rv",
+                                "cxx_type": "StructAsClass",
+                                "cxx_var": "SHC_rv_cxx",
+                                "f_c_suffix": "_bufferify",
+                                "f_capsule_data_type": "GEN_SHROUD_capsule_data",
+                                "f_derived_type": "struct_as_class",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_local_ptr": "SHT_prv",
+                                "f_type": "type(struct_as_class)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_local_cxx": "SHC_rv_cxx",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt_name": "f_function_shadow*_capptr",
+                                "typemap_name": "StructAsClass"
+                            },
                             "meta": {
                                 "api": "capptr",
                                 "intent": "function"
@@ -7149,6 +7610,45 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "UpdateStructAsClass(\tSHC_arg_cxx,\t inew)",
+                                "C_call_list": "SHC_arg_cxx,\t inew",
+                                "C_name": "GEN_UpdateStructAsClass_int_bufferify",
+                                "C_prototype": "GEN_StructAsClass * arg,\t int inew",
+                                "C_return_type": "long",
+                                "F_C_arguments": "arg,\t inew",
+                                "F_C_call": "c_update_struct_as_class_int_bufferify",
+                                "F_C_name": "c_update_struct_as_class_int_bufferify",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "arg%cxxmem,\t inew",
+                                "F_arguments": "arg,\t inew",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "long SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_bufferify",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_LONG",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_LONG",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "long"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
@@ -7417,6 +7917,45 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "UpdateStructAsClass(\tSHC_arg_cxx,\t inew)",
+                                "C_call_list": "SHC_arg_cxx,\t inew",
+                                "C_name": "GEN_UpdateStructAsClass_long_bufferify",
+                                "C_prototype": "GEN_StructAsClass * arg,\t long inew",
+                                "C_return_type": "long",
+                                "F_C_arguments": "arg,\t inew",
+                                "F_C_call": "c_update_struct_as_class_long_bufferify",
+                                "F_C_name": "c_update_struct_as_class_long_bufferify",
+                                "F_C_result_clause": "\fresult(SHT_rv)",
+                                "F_C_subprogram": "function",
+                                "F_arg_c_call": "arg%cxxmem,\t inew",
+                                "F_arguments": "arg,\t inew",
+                                "F_result_clause": "\fresult(SHT_rv)",
+                                "F_subprogram": "function",
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "long",
+                                "c_var": "SHC_rv",
+                                "cfi_type": "CFI_type_long",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_rv_decl": "long SHC_rv",
+                                "cxx_type": "long",
+                                "cxx_var": "SHC_rv",
+                                "f_c_suffix": "_bufferify",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_LONG",
+                                "f_type": "integer(C_LONG)",
+                                "f_var": "SHT_rv",
+                                "fc_var": "SHT_rv",
+                                "i_var": "SHT_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_LONG",
+                                "stmt_name": "f_function_native",
+                                "typemap_name": "long"
+                            },
                             "meta": {
                                 "intent": "function"
                             },
