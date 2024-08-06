@@ -4910,6 +4910,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "tc",
+                                                        "arr"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -4975,14 +4981,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "tc",
-                                                    "arr"
-                                                ]
-                                            }
-                                        },
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",
@@ -5157,6 +5155,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "tc",
+                                                        "arr"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5222,14 +5226,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "tc",
-                                                    "arr"
-                                                ]
-                                            }
-                                        },
                                         "arr": {
                                             "fmtf": {
                                                 "f_abstract_name": "arr",

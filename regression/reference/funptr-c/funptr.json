@@ -133,6 +133,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -144,13 +147,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -196,6 +192,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -207,13 +206,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -361,6 +353,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -372,13 +367,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -424,6 +412,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -435,13 +426,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -593,6 +577,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -604,13 +591,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -659,6 +639,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -670,13 +653,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -830,6 +806,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -841,13 +820,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -896,6 +868,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -907,13 +882,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -1809,6 +1777,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -1820,13 +1791,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -1917,6 +1881,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -1928,13 +1895,6 @@
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -2206,6 +2166,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "ilow",
+                                                        "nargs"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -2277,14 +2243,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "ilow",
-                                                    "nargs"
-                                                ]
-                                            }
-                                        },
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
@@ -2470,6 +2428,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "ilow",
+                                                        "nargs"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -2541,14 +2505,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "ilow",
-                                                    "nargs"
-                                                ]
-                                            }
-                                        },
                                         "ilow": {
                                             "fmtf": {
                                                 "f_abstract_name": "ilow",
@@ -2748,6 +2704,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "deref": "pointer",
                                                     "intent": "function"
@@ -2760,13 +2719,6 @@
                                                 "meta": {
                                                     "intent": "function"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -2816,6 +2768,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": []
+                                                },
                                                 "meta": {
                                                     "deref": "pointer",
                                                     "intent": "function"
@@ -2828,13 +2783,6 @@
                                                 "meta": {
                                                     "intent": "function"
                                                 }
-                                            }
-                                        }
-                                    },
-                                    "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": []
                                             }
                                         }
                                     },
@@ -3053,6 +3001,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "XX0arg",
+                                                        "XX1arg"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -3116,14 +3070,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "XX0arg",
-                                                    "XX1arg"
-                                                ]
-                                            }
-                                        },
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
@@ -3247,6 +3193,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "XX0arg",
+                                                        "XX1arg"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -3310,14 +3262,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "XX0arg",
-                                                    "XX1arg"
-                                                ]
-                                            }
-                                        },
                                         "XX0arg": {
                                             "fmtf": {
                                                 "f_abstract_name": "XX0arg",
@@ -3522,6 +3466,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "i",
+                                                        "j"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -3585,14 +3535,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "i",
-                                                    "j"
-                                                ]
-                                            }
-                                        },
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
@@ -3678,6 +3620,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "i",
+                                                        "j"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -3741,14 +3689,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "i",
-                                                    "j"
-                                                ]
-                                            }
-                                        },
                                         "i": {
                                             "fmtf": {
                                                 "f_abstract_name": "i",
@@ -3893,6 +3833,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "arg0",
+                                                        "arg1"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -3956,14 +3902,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "arg0",
-                                                    "arg1"
-                                                ]
-                                            }
-                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
@@ -4047,6 +3985,12 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "arg0",
+                                                        "arg1"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -4110,14 +4054,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "arg0",
-                                                    "arg1"
-                                                ]
-                                            }
-                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",

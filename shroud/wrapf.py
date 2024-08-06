@@ -1003,7 +1003,7 @@ rv = .false.
                 modules = {}  # indexed as [module][variable]
                 imports = {}  # indexed as [symbol]
                 fmtargs = fptr._fmtargs
-                fmt_result = fmtargs["+result"]["fmtf"]
+                fmt_result = fptr._bind["f"]["+result"].fmtdict
                 abstract_names = fmt_result.f_abstract_names
                 for i, param in enumerate(fptr.ast.declarator.params):
                     bind = get_arg_bind(fptr, param, "f")

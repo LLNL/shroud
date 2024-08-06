@@ -7663,6 +7663,11 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "arg0"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -7702,13 +7707,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "arg0"
-                                                ]
-                                            }
-                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
@@ -7879,6 +7877,11 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "arg0"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -7918,13 +7921,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "arg0"
-                                                ]
-                                            }
-                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",
@@ -7998,6 +7994,11 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
+                                                "fmtdict": {
+                                                    "f_abstract_names": [
+                                                        "arg0"
+                                                    ]
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -8037,13 +8038,6 @@
                                         }
                                     },
                                     "zz_fmtargs": {
-                                        "+result": {
-                                            "fmtf": {
-                                                "f_abstract_names": [
-                                                    "arg0"
-                                                ]
-                                            }
-                                        },
                                         "arg0": {
                                             "fmtf": {
                                                 "f_abstract_name": "arg0",

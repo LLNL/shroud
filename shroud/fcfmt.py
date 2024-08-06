@@ -37,15 +37,12 @@ class FillFormat(object):
     Used for Fortran and C wrappers.
 
     Creates the nested dictionary structure:
-    _fmtargs = {
-      '+result': {
-         'fmtc': Scope(_fmtfunc)
-      }
-      'arg1': {
-        'fmtc': Scope(_fmtfunc),
-        'fmtf': Scope(_fmtfunc)
-        'fmtl': Scope(_fmtfunc)
-        'fmtpy': Scope(_fmtfunc)
+    _bind = {
+      'lang': {
+        '+result': BindArg
+           .fmtdict = Scope(_fmtfunc)
+        'arg1': BindArg
+           .fmtdict = Scope(_fmtfunc)
       }
     }
     """
@@ -155,8 +152,12 @@ class FillFormat(object):
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
-        fmt_arg0 = fmtargs.setdefault("+result", {})
-        fmt_result = fmt_arg0.setdefault(fmtlang, util.Scope(fmt_func))
+        bind_result = statements.fetch_func_bind(node, wlang)
+        if bind_result.fmtdict:
+            fmt_result = bind_result.fmtdict
+        else:
+            fmt_result = util.Scope(fmt_func)
+            bind_result.fmtdict = fmt_result
         abstract_names = []
 
         # --- Loop over function parameters
