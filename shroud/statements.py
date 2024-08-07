@@ -116,6 +116,12 @@ def get_arg_bind(node, arg, wlang):
     name = arg.declarator.user_name or arg.declarator.arg_name
     return node._bind[wlang][name]
 
+def set_bind_fmtdict(bind, parent):
+    """Set the BindArg.fmtdict field."""
+    if not bind.fmtdict:
+        bind.fmtdict = util.Scope(parent)
+    return bind.fmtdict
+
 ######################################################################
 
 def collect_arg_typemaps(arg):

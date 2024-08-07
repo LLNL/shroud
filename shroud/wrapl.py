@@ -519,11 +519,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
         bind_result = statements.get_func_bind(node, "lua")
-        if bind_result.fmtdict:
-            fmt_result = bind_result.fmtdict
-        else:
-            fmt_result = util.Scope(fmt_func)
-            bind_result.fmtdict = fmt_result
+        fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
             
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
@@ -586,11 +582,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             a_declarator = arg.declarator
             arg_name = a_declarator.user_name
             bind_arg = statements.get_arg_bind(node, arg, "lua")
-            if bind_arg.fmtdict:
-                fmt_arg = bind_arg.fmtdict
-            else:
-                fmt_arg = util.Scope(fmt_func)
-                bind_arg.fmtdict = fmt_arg
+            fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt_func)
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name

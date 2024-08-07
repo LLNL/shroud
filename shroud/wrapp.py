@@ -1289,12 +1289,8 @@ return 1;""",
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
-            bind = statements.get_arg_bind(node, arg, "py")
-            if bind.fmtdict:
-                fmt_arg = bind.fmtdict
-            else:
-                fmt_arg = util.Scope(fmt)
-                bind.fmtdict = fmt_arg
+            bind_arg = statements.get_arg_bind(node, arg, "py")
+            fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt)
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = "SHPy_" + arg_name
@@ -1322,9 +1318,9 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
-            meta = bind.meta
+            meta = bind_arg.meta
 
-            self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, bind_arg, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
@@ -2014,16 +2010,13 @@ return 1;""",
         attrs = declarator.attrs
         is_ctor = declarator.is_ctor
         result_typemap = ast.typemap
-        bind = statements.get_func_bind(node, "py")
-        meta = bind.meta
+        bind_result = statements.get_func_bind(node, "py")
+        fmt_result = statements.set_bind_fmtdict(bind_result, fmt)  # fmt_func
+
+        meta = bind_result.meta
 
         result_blk = default_scope
 
-        if bind.fmtdict:
-            fmt_result = bind.fmtdict
-        else:
-            fmt_result = util.Scope(fmt)  # fmt_func
-            bind.fmtdict = fmt_result
         CXX_result = node.ast
 
         # Mangle result variable name to avoid possible conflict with arguments.
@@ -2054,7 +2047,7 @@ return 1;""",
         fmt_result.numpy_type = result_typemap.PYN_typenum
         update_fmt_from_typemap(fmt_result, result_typemap)
 
-        self.set_fmt_fields(cls, node, ast, bind, fmt_result, True)
+        self.set_fmt_fields(cls, node, ast, bind_result, fmt_result, True)
         self.set_cxx_nonconst_ptr(ast, fmt_result)
         sgroup = result_typemap.sgroup
         abstract = statements.find_abstract_declarator(ast)

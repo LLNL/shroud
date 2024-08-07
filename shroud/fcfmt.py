@@ -92,16 +92,10 @@ class FillFormat(object):
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
-        fmtlang = "fmt" + wlang
-
         fmt_func = node.fmtdict
 
         bind_result = statements.fetch_func_bind(node, wlang)
-        if bind_result.fmtdict:
-            fmt_result = bind_result.fmtdict
-        else:
-            fmt_result = util.Scope(fmt_func)
-            bind_result.fmtdict = fmt_result
+        fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
 
         if wlang == "f":
             node.eval_template("F_name_impl")
@@ -120,11 +114,7 @@ class FillFormat(object):
             arg_name = declarator.user_name
 
             bind_arg = statements.fetch_arg_bind(node, arg, wlang)
-            if bind_arg.fmtdict:
-                fmt_arg = bind_arg.fmtdict
-            else:
-                fmt_arg = util.Scope(fmt_func)
-                bind_arg.fmtdict = fmt_arg
+            fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt_func)
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 
@@ -148,15 +138,9 @@ class FillFormat(object):
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
-        fmtlang = "fmt" + wlang
-
         fmt_func = node.fmtdict
         bind_result = statements.fetch_func_bind(node, wlang)
-        if bind_result.fmtdict:
-            fmt_result = bind_result.fmtdict
-        else:
-            fmt_result = util.Scope(fmt_func)
-            bind_result.fmtdict = fmt_result
+        fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
         abstract_names = []
 
         # --- Loop over function parameters
@@ -175,11 +159,7 @@ class FillFormat(object):
             abstract_names.append(arg_name)
 
             bind_arg = statements.fetch_arg_bind(node, arg, wlang) #, arg_name)
-            if bind_arg.fmtdict:
-                fmt_arg = bind_arg.fmtdict
-            else:
-                fmt_arg = util.Scope(fmt_func)
-                bind_arg.fmtdict = fmt_arg
+            fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt_func)
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 
