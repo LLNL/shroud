@@ -35,6 +35,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method1(\t)",
+                                        "C_name": "PRE_User1_method1",
+                                        "C_prototype": "PRE_User1 * self",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_user1_method1",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -43,6 +52,21 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method1(\t)",
+                                        "C_name": "PRE_User1_method1",
+                                        "C_prototype": "PRE_User1 * self",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_user1_method1",
+                                        "F_C_name": "c_user1_method1",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -64,34 +88,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method1(\t)",
-                                    "C_name": "PRE_User1_method1",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method1(\t)",
-                                    "C_name": "PRE_User1_method1",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user1_method1",
-                                    "F_C_name": "c_user1_method1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "method1",
                             "F_name_api": "method1",
@@ -104,6 +100,17 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_used_param_self": true,
+                                "stmt": "py_default"
+                            }
                         }
                     },
                     {
@@ -131,6 +138,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method2(\t)",
+                                        "C_name": "PRE_User1_method2",
+                                        "C_prototype": "PRE_User1 * self",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_user1_method2",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -139,6 +155,21 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method2(\t)",
+                                        "C_name": "PRE_User1_method2",
+                                        "C_prototype": "PRE_User1 * self",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_user1_method2",
+                                        "F_C_name": "c_user1_method2",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -160,34 +191,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method2(\t)",
-                                    "C_name": "PRE_User1_method2",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method2",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method2(\t)",
-                                    "C_name": "PRE_User1_method2",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user1_method2",
-                                    "F_C_name": "c_user1_method2",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "method2",
                             "F_name_api": "method2",
@@ -200,6 +203,17 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_used_param_self": true,
+                                "stmt": "py_default"
+                            }
                         }
                     },
                     {
@@ -232,6 +246,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method3def(\t)",
+                                        "C_name": "PRE_User1_method3def_0",
+                                        "C_prototype": "PRE_User1 * self",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_user1_method3def_0",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -240,6 +263,21 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method3def(\t)",
+                                        "C_name": "PRE_User1_method3def_0",
+                                        "C_prototype": "PRE_User1 * self",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_user1_method3def_0",
+                                        "F_C_name": "c_user1_method3def_0",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -251,34 +289,6 @@
                                     "meta": {
                                         "intent": "subroutine"
                                     }
-                                }
-                            }
-                        },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method3def(\t)",
-                                    "C_name": "PRE_User1_method3def_0",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method3def_0",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method3def(\t)",
-                                    "C_name": "PRE_User1_method3def_0",
-                                    "C_prototype": "PRE_User1 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user1_method3def_0",
-                                    "F_C_name": "c_user1_method3def_0",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
                                 }
                             }
                         },
@@ -342,12 +352,45 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method3def(\ti)",
+                                        "C_call_list": "i",
+                                        "C_name": "PRE_User1_method3def_1",
+                                        "C_prototype": "PRE_User1 * self,\t int i",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_user1_method3def_1",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
                                 },
                                 "i": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "int",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "int",
+                                        "c_var": "i",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_abstract_decl": "int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&i",
+                                        "cxx_type": "int",
+                                        "cxx_var": "i",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_value_attr": ", value",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "c_in_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -357,12 +400,56 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->method3def(\ti)",
+                                        "C_call_list": "i",
+                                        "C_name": "PRE_User1_method3def_1",
+                                        "C_prototype": "PRE_User1 * self,\t int i",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t i",
+                                        "F_C_call": "c_user1_method3def_1",
+                                        "F_C_name": "c_user1_method3def_1",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem,\t i",
+                                        "F_arguments": "obj,\t i",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
                                 },
                                 "i": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "int",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "int",
+                                        "c_var": "i",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_abstract_decl": "int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&i",
+                                        "cxx_type": "int",
+                                        "cxx_var": "i",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_value_attr": ", value",
+                                        "f_var": "i",
+                                        "fc_var": "i",
+                                        "i_var": "i",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_in_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -377,6 +464,24 @@
                                     }
                                 },
                                 "i": {
+                                    "fmtdict": {
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_type": "int",
+                                        "c_var": "i",
+                                        "ctor_expr": "i",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&i",
+                                        "cxx_type": "int",
+                                        "cxx_var": "i",
+                                        "data_var": "SHData_i",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHPy_i",
+                                        "size_var": "SHSize_i",
+                                        "stmt": "py_in_native",
+                                        "value_var": "SHValue_i"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -397,107 +502,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->method3def(\ti)",
-                                    "C_call_list": "i",
-                                    "C_name": "PRE_User1_method3def_1",
-                                    "C_prototype": "PRE_User1 * self,\t int i",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user1_method3def_1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->method3def(\ti)",
-                                    "C_call_list": "i",
-                                    "C_name": "PRE_User1_method3def_1",
-                                    "C_prototype": "PRE_User1 * self,\t int i",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t i",
-                                    "F_C_call": "c_user1_method3def_1",
-                                    "F_C_name": "c_user1_method3def_1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t i",
-                                    "F_arguments": "obj,\t i",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
-                            "i": {
-                                "fmtc": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "i",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&i",
-                                    "cxx_type": "int",
-                                    "cxx_var": "i",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_value_attr": ", value",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native",
-                                    "typemap_name": "int"
-                                },
-                                "fmtf": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "i",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&i",
-                                    "cxx_type": "int",
-                                    "cxx_var": "i",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_value_attr": ", value",
-                                    "f_var": "i",
-                                    "fc_var": "i",
-                                    "i_var": "i",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native",
-                                    "typemap_name": "int"
-                                },
-                                "fmtpy": {
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_type": "int",
-                                    "c_var": "i",
-                                    "ctor_expr": "i",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&i",
-                                    "cxx_type": "int",
-                                    "cxx_var": "i",
-                                    "data_var": "SHData_i",
-                                    "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_i",
-                                    "size_var": "SHSize_i",
-                                    "stmt": "py_in_native",
-                                    "value_var": "SHValue_i"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "method3def",
                             "F_name_api": "method3def",
@@ -512,6 +516,21 @@
                             "c_var": "self",
                             "function_name": "method3def",
                             "function_suffix": "_1"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "i",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "|i:method3def",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&i",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],
@@ -583,6 +602,15 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->exfunc(\t)",
+                                        "C_name": "PRE_User2_exfunc_0",
+                                        "C_prototype": "PRE_User2 * self",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_user2_exfunc_0",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -591,6 +619,21 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->exfunc(\t)",
+                                        "C_name": "PRE_User2_exfunc_0",
+                                        "C_prototype": "PRE_User2 * self",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self",
+                                        "F_C_call": "c_user2_exfunc_0",
+                                        "F_C_name": "c_user2_exfunc_0",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem",
+                                        "F_arguments": "obj",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
@@ -612,34 +655,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->exfunc(\t)",
-                                    "C_name": "PRE_User2_exfunc_0",
-                                    "C_prototype": "PRE_User2 * self",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user2_exfunc_0",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->exfunc(\t)",
-                                    "C_name": "PRE_User2_exfunc_0",
-                                    "C_prototype": "PRE_User2 * self",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self",
-                                    "F_C_call": "c_user2_exfunc_0",
-                                    "F_C_name": "c_user2_exfunc_0",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem",
-                                    "F_arguments": "obj",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "exfunc",
                             "F_name_api": "exfunc",
@@ -653,6 +668,17 @@
                             "c_var": "self",
                             "function_name": "exfunc",
                             "function_suffix": "_0"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_NOARGS",
+                                "PY_used_param_self": true,
+                                "stmt": "py_default"
+                            }
                         }
                     },
                     {
@@ -692,12 +718,45 @@
                         "zz_bind": {
                             "c": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->exfunc(\tflag)",
+                                        "C_call_list": "flag",
+                                        "C_name": "PRE_User2_exfunc_1",
+                                        "C_prototype": "PRE_User2 * self,\t int flag",
+                                        "C_return_type": "void",
+                                        "F_C_name": "c_user2_exfunc_1",
+                                        "stmt_name": "c_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
                                 },
                                 "flag": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "int",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "int",
+                                        "c_var": "flag",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_abstract_decl": "int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&flag",
+                                        "cxx_type": "int",
+                                        "cxx_var": "flag",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_value_attr": ", value",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "c_in_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -707,12 +766,56 @@
                             },
                             "f": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "C_call_function": "SH_this->exfunc(\tflag)",
+                                        "C_call_list": "flag",
+                                        "C_name": "PRE_User2_exfunc_1",
+                                        "C_prototype": "PRE_User2 * self,\t int flag",
+                                        "C_return_type": "void",
+                                        "F_C_arguments": "self,\t flag",
+                                        "F_C_call": "c_user2_exfunc_1",
+                                        "F_C_name": "c_user2_exfunc_1",
+                                        "F_C_subprogram": "subroutine",
+                                        "F_arg_c_call": "obj%cxxmem,\t flag",
+                                        "F_arguments": "obj,\t flag",
+                                        "F_subprogram": "subroutine",
+                                        "stmt_name": "f_subroutine",
+                                        "typemap_name": "void"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
                                 },
                                 "flag": {
+                                    "fmtdict": {
+                                        "c_abstract_decl": "int",
+                                        "c_addr": "&",
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_member": ".",
+                                        "c_type": "int",
+                                        "c_var": "flag",
+                                        "cfi_type": "CFI_type_int",
+                                        "cxx_abstract_decl": "int",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&flag",
+                                        "cxx_type": "int",
+                                        "cxx_var": "flag",
+                                        "f_intent": "IN",
+                                        "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "C_INT",
+                                        "f_type": "integer(C_INT)",
+                                        "f_value_attr": ", value",
+                                        "f_var": "flag",
+                                        "fc_var": "flag",
+                                        "i_var": "flag",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "stmt_name": "f_in_native",
+                                        "typemap_name": "int"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -727,6 +830,24 @@
                                     }
                                 },
                                 "flag": {
+                                    "fmtdict": {
+                                        "c_const": "",
+                                        "c_deref": "",
+                                        "c_type": "int",
+                                        "c_var": "flag",
+                                        "ctor_expr": "flag",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&flag",
+                                        "cxx_type": "int",
+                                        "cxx_var": "flag",
+                                        "data_var": "SHData_flag",
+                                        "numpy_type": "NPY_INT",
+                                        "py_var": "SHPy_flag",
+                                        "size_var": "SHSize_flag",
+                                        "stmt": "py_in_native",
+                                        "value_var": "SHValue_flag"
+                                    },
                                     "meta": {
                                         "intent": "in",
                                         "value": true
@@ -747,107 +868,6 @@
                                 }
                             }
                         },
-                        "zz_fmtargs": {
-                            "+result": {
-                                "fmtc": {
-                                    "C_call_function": "SH_this->exfunc(\tflag)",
-                                    "C_call_list": "flag",
-                                    "C_name": "PRE_User2_exfunc_1",
-                                    "C_prototype": "PRE_User2 * self,\t int flag",
-                                    "C_return_type": "void",
-                                    "F_C_name": "c_user2_exfunc_1",
-                                    "stmt_name": "c_subroutine",
-                                    "typemap_name": "void"
-                                },
-                                "fmtf": {
-                                    "C_call_function": "SH_this->exfunc(\tflag)",
-                                    "C_call_list": "flag",
-                                    "C_name": "PRE_User2_exfunc_1",
-                                    "C_prototype": "PRE_User2 * self,\t int flag",
-                                    "C_return_type": "void",
-                                    "F_C_arguments": "self,\t flag",
-                                    "F_C_call": "c_user2_exfunc_1",
-                                    "F_C_name": "c_user2_exfunc_1",
-                                    "F_C_subprogram": "subroutine",
-                                    "F_arg_c_call": "obj%cxxmem,\t flag",
-                                    "F_arguments": "obj,\t flag",
-                                    "F_subprogram": "subroutine",
-                                    "stmt_name": "f_subroutine",
-                                    "typemap_name": "void"
-                                }
-                            },
-                            "flag": {
-                                "fmtc": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "flag",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&flag",
-                                    "cxx_type": "int",
-                                    "cxx_var": "flag",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_value_attr": ", value",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "c_in_native",
-                                    "typemap_name": "int"
-                                },
-                                "fmtf": {
-                                    "c_abstract_decl": "int",
-                                    "c_addr": "&",
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_member": ".",
-                                    "c_type": "int",
-                                    "c_var": "flag",
-                                    "cfi_type": "CFI_type_int",
-                                    "cxx_abstract_decl": "int",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&flag",
-                                    "cxx_type": "int",
-                                    "cxx_var": "flag",
-                                    "f_intent": "IN",
-                                    "f_intent_attr": ", intent(IN)",
-                                    "f_kind": "C_INT",
-                                    "f_type": "integer(C_INT)",
-                                    "f_value_attr": ", value",
-                                    "f_var": "flag",
-                                    "fc_var": "flag",
-                                    "i_var": "flag",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_INT",
-                                    "stmt_name": "f_in_native",
-                                    "typemap_name": "int"
-                                },
-                                "fmtpy": {
-                                    "c_const": "",
-                                    "c_deref": "",
-                                    "c_type": "int",
-                                    "c_var": "flag",
-                                    "ctor_expr": "flag",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "&flag",
-                                    "cxx_type": "int",
-                                    "cxx_var": "flag",
-                                    "data_var": "SHData_flag",
-                                    "numpy_type": "NPY_INT",
-                                    "py_var": "SHPy_flag",
-                                    "size_var": "SHSize_flag",
-                                    "stmt": "py_in_native",
-                                    "value_var": "SHValue_flag"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name_api": "exfunc",
                             "F_name_api": "exfunc",
@@ -861,6 +881,22 @@
                             "c_var": "self",
                             "function_name": "exfunc",
                             "function_suffix": "_1"
+                        },
+                        "zz_fmtlang": {
+                            "py": {
+                                "PY_array_arg": "numpy",
+                                "PY_call_list": "flag",
+                                "PY_doc_string": "documentation",
+                                "PY_error_return": "nullptr",
+                                "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
+                                "PY_used_param_args": true,
+                                "PY_used_param_kwds": true,
+                                "PY_used_param_self": true,
+                                "PyArg_format": "i:exfunc",
+                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
+                                "PyArg_vargs": "&flag",
+                                "stmt": "py_default"
+                            }
                         }
                     }
                 ],

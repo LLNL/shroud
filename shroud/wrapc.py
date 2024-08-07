@@ -915,13 +915,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         cursor = self.cursor
         func_cursor = cursor.push_node(node)
 
-        fmtlang = "fmt" + wlang
-
         self.log.write("C {0} {1.declgen}\n".format(
             wlang, node))
 
         fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
 
         if node.C_force_wrapper:
             need_wrapper = True
@@ -951,6 +948,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         r_attrs = declarator.attrs
         r_bind = get_func_bind(node, wlang)
         r_meta = r_bind.meta
+        fmt_result = r_bind.fmtdict
+        result_stmt = r_bind.stmt
         result_typemap = ast.typemap
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
@@ -963,8 +962,6 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             header_typedef_nodes[result_typemap.name] = result_typemap
 
         stmt_indexes = []
-        fmt_result= fmtargs["+result"][fmtlang]
-        result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         stmt_indexes.append(result_stmt.index)
         if r_bind.fstmts:
@@ -975,7 +972,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
 
         stmt_need_wrapper = result_stmt.c_need_wrapper
 
-        self.fill_c_result(wlang, cls, node, result_stmt, fmt_result, CXX_ast, r_meta)
+        self.fill_c_result(wlang, cls, node, CXX_ast, r_bind)
 
         self.c_helper.update(node.helpers.get("c", {}))
         
@@ -1055,11 +1052,10 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         for arg in ast.declarator.params:
             func_cursor.arg = arg
             declarator = arg.declarator
-            arg_name = declarator.user_name
-            fmt_arg = fmtargs[arg_name][fmtlang]
             arg_bind = get_arg_bind(node, arg, wlang)
-            c_attrs = declarator.attrs
+            fmt_arg = arg_bind.fmtdict
             c_meta = arg_bind.meta
+            c_attrs = declarator.attrs
             if c_meta["api"] == 'cfi':
                 any_cfi = True
 
@@ -1085,7 +1081,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 need_wrapper = True
                 stmt_indexes.append(wlang)
             
-            self.fill_c_arg(wlang, cls, node, arg, arg_stmt, fmt_arg, c_meta, pre_call)
+            self.fill_c_arg(wlang, cls, node, arg, arg_bind, pre_call)
             self.c_helper.update(node.helpers.get("c", {}))
 
             notimplemented = notimplemented or arg_stmt.notimplemented
@@ -1415,7 +1411,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             idtor = self.capsule_code[name][0]
         return idtor
 
-    def find_idtor(self, ast, ntypemap, fmt, intent_blk, meta):
+    def find_idtor(self, ast, ntypemap, bind):
         """Find the destructor name.
 
         Set fmt.idtor as index of destructor.
@@ -1432,9 +1428,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         Args:
             ast -
             ntypemap - typemap.Typemap
-            fmt -
-            intent_blk -
+            bind - statements.BindArg
         """
+        intent_blk = bind.stmt
+        meta = bind.meta
+        fmt = bind.fmtdict
 
         destructor_name = intent_blk.destructor_name
         if destructor_name:

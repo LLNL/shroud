@@ -1439,17 +1439,8 @@ class FunctionNode(AstNode):
 
 
     _fmtfunc = Scope()
-
-    _fmtargs = {
-      '+result': {
-         'fmtc': Scope(_fmtfunc)
-      }
-      'arg1': {
-        'fmtc': Scope(_fmtfunc),
-        'fmtf': Scope(_fmtfunc)
-        'fmtl': Scope(_fmtfunc)
-        'fmtpy': Scope(_fmtfunc)
-      }
+    _fmtlang = {
+       'f': Scope(_fmtfunc)
     }
 
     _bind = {
@@ -1460,7 +1451,10 @@ class FunctionNode(AstNode):
                 meta: collections.defaultdict(lambda: None)
                 fmtdict:  Scope(_fmtfunc)
               }
-        }
+        },
+        'c': {},
+        'lua': {},
+        'py': {},
     }
 
     statements = {
@@ -1527,7 +1521,7 @@ class FunctionNode(AstNode):
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
-        self._fmtargs = {}
+        self._fmtlang = {}
         self._function_index = None
         self._generated = False
         self._generated_path = []
@@ -1748,7 +1742,7 @@ class FunctionNode(AstNode):
 
         # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)
-        new._fmtargs = copy.deepcopy(self._fmtargs)
+        new._fmtlang = {}
         new._bind = {}
         new._generated_path = copy.deepcopy(self._generated_path)
         if new._orig_node is None:
@@ -1958,7 +1952,6 @@ class TypedefNode(AstNode):
         self.ast = ast
         self.user_fields = fields
         self._bind = {}                   # Access with get_arg_bind
-        self._fmtargs = {}                # Used with function pointer arguments
 
         # save info from original type used in generated declarations.
         ntypemap = ast.typemap

@@ -416,7 +416,7 @@ class ToDict(visitor.Visitor):
                 "_PTR_C_CXX_index",
                 "_PTR_F_C_index",
                 "_bind",
-                "_fmtargs",
+                "_fmtlang",
                 "user_fmt",
                 "fmtdict",
                 "options",
@@ -580,6 +580,8 @@ class ToDict(visitor.Visitor):
             d["stmt"] = node.stmt.name
         if node.fstmts:
             d["fstmts"] = node.fstmts
+        if node.fmtdict:
+            d["fmtdict"] = self.visit(node.fmtdict)
         if node.meta is not None:
             metaattrs = {key: value
                          for (key, value) in node.meta.items()
@@ -595,7 +597,7 @@ class ToDict(visitor.Visitor):
     # Rename some attributes so they sort to the bottom of the JSON dictionary.
     rename_fields = dict(
         _bind="zz_bind",
-        _fmtargs="zz_fmtargs",
+        _fmtlang="zz_fmtlang",
         fmtdict="zz_fmtdict",
     )
     def add_visit_fields(self, node, d, fields):
@@ -850,7 +852,7 @@ class PrintFmt(Helpers, visitor.Visitor):
             node,
             d,
             [
-                "_fmtargs",
+                "_fmtlang",
 #                "user_fmt",
                 "fmtdict",
             ],

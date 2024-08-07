@@ -68,18 +68,22 @@ def fetch_var_bind(node, wlang):
 
 def fetch_func_bind(node, wlang):
     bind = node._bind.setdefault(wlang, {})
-    bindarg = bind.setdefault("+result", BindArg())
-    if bindarg.meta is None:
+    bindarg = bind.get("+result")
+    if bindarg is None:
+        bindarg = BindArg()
         bindarg.meta = collections.defaultdict(lambda: None)
+        bind["+result"] = bindarg
     return bindarg
 
 def fetch_arg_bind(node, arg, wlang):
     bind = node._bind.setdefault(wlang, {})
     # XXX - better to turn off wrapping when 'Argument must have name'
     name = arg.declarator.user_name or arg.declarator.arg_name
-    bindarg = bind.setdefault(name, BindArg())
-    if bindarg.meta is None:
+    bindarg = bind.get(name)
+    if bindarg is None:
+        bindarg = BindArg()
         bindarg.meta = collections.defaultdict(lambda: None)
+        bind[name] = bindarg
     return bindarg
 
 def fetch_typedef_bind(node, wlang):
@@ -88,16 +92,12 @@ def fetch_typedef_bind(node, wlang):
     arg = node.ast
     # XXX - better to turn off wrapping when 'Argument must have name'
     name = arg.declarator.user_name or arg.declarator.arg_name
-    bindarg = bind.setdefault(name, BindArg())
-    if bindarg.meta is None:
+    bindarg = bind.get(name)
+    if bindarg is None:
+        bindarg = BindArg()
         bindarg.meta = collections.defaultdict(lambda: None)
+        bind[name] = bindarg
     return bindarg
-
-def fetch_func_metaattrs(node, wlang):
-    return fetch_func_bind(node, wlang).meta
-
-def fetch_arg_metaattrs(node, arg, wlang):
-    return fetch_arg_bind(node, arg, wlang).meta
 
 def fetch_name_bind(bind, wlang, name):
     bind = bind.setdefault(wlang, {})
@@ -105,13 +105,6 @@ def fetch_name_bind(bind, wlang, name):
     if bindarg.meta is None:
         bindarg.meta = collections.defaultdict(lambda: None)
     return bindarg
-
-def get_func_metaattrs(node, wlang):
-    return node._bind[wlang]["+result"].meta
-
-def get_arg_metaattrs(node, arg, wlang):
-    name = arg.declarator.user_name or arg.declarator.arg_name
-    return node._bind[wlang][name].meta
 
 def get_var_bind(node, wlang):
     return node._bind[wlang]
@@ -122,6 +115,12 @@ def get_func_bind(node, wlang):
 def get_arg_bind(node, arg, wlang):
     name = arg.declarator.user_name or arg.declarator.arg_name
     return node._bind[wlang][name]
+
+def set_bind_fmtdict(bind, parent):
+    """Set the BindArg.fmtdict field."""
+    if not bind.fmtdict:
+        bind.fmtdict = util.Scope(parent)
+    return bind.fmtdict
 
 ######################################################################
 
@@ -278,7 +277,7 @@ def lookup_local_stmts(path, parent, node):
     return parent
 
 
-def apply_fmtdict_from_stmts(stmts, fmt):
+def apply_fmtdict_from_stmts(bind):
     """Apply fmtdict field from statements.
     Should be done after other defaults are set to
     allow the user to override any value.
@@ -287,6 +286,25 @@ def apply_fmtdict_from_stmts(stmts, fmt):
        f_var: "{F_string_result_as_arg}"
        i_var: "{F_string_result_as_arg}"
        c_var: "{F_string_result_as_arg}"
+    """
+    stmts = bind.stmt
+    fmt = bind.fmtdict
+    
+    if stmts.fmtdict is not None:
+        for key, value in stmts.fmtdict.items():
+            setattr(fmt, key, wformat(value, fmt))
+    
+def apply_fmtdict_from_stmts_old(stmts, fmt):
+    """Apply fmtdict field from statements.
+    Should be done after other defaults are set to
+    allow the user to override any value.
+
+    fmtdict:
+       f_var: "{F_string_result_as_arg}"
+       i_var: "{F_string_result_as_arg}"
+       c_var: "{F_string_result_as_arg}"
+
+    XXX - Needed for Python wrappers for now.
     """
     if stmts.fmtdict is not None:
         for key, value in stmts.fmtdict.items():

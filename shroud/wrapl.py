@@ -280,7 +280,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         declarator = ast.declarator
         fmt_func = node.fmtdict
         fmt_func.LUA_name_api = node.apply_LUA_API_option(node.name)
-        fmt = util.Scope(fmt_func)
+        fmt = node._fmtlang.setdefault("lua", util.Scope(fmt_func))
         node.eval_template("LUA_name")
         node.eval_template("LUA_name_impl")
 
@@ -487,7 +487,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         self.log.write("Lua {0} {1.declgen}\n".format(cls_function, node))
 
         #        fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
         #        fmt = util.Scope(fmt_func)
         #        fmt.doc_string = 'documentation'
         #        node.eval_template('LUA_name')
@@ -519,8 +518,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
-        fmt_arg0 = fmtargs.setdefault("+result", {})
-        fmt_result = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
+        bind_result = statements.get_func_bind(node, "lua")
+        fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
+            
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
             if is_ctor or declarator.is_pointer():
@@ -581,8 +581,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             arg = ast.declarator.params[iarg]
             a_declarator = arg.declarator
             arg_name = a_declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
+            bind_arg = statements.get_arg_bind(node, arg, "lua")
+            fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt_func)
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
@@ -597,7 +597,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
             attrs = a_declarator.attrs
-            meta = statements.fetch_arg_metaattrs(node, arg, "lua")
+            meta = bind_arg.meta
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
@@ -654,7 +654,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        call_code.extend(post_parse)
 
         abstract = None
-        meta = statements.fetch_func_metaattrs(node, "lua")
+        meta = bind_result.meta
         sintent = meta["intent"]
         if is_ctor:
             fmt_func.LUA_used_param_state = True

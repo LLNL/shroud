@@ -903,7 +903,7 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, cls, fcn, ast, bind, fmt, is_result=False):
+    def set_fmt_fields(self, cls, fcn, ast, bind, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -915,6 +915,7 @@ return 1;""",
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
+        fmt = bind.fmtdict
         declarator = ast.declarator
         typemap = ast.typemap
         if typemap.PY_PyObject:
@@ -1023,7 +1024,7 @@ return 1;""",
         """
         implied = arg.declarator.attrs["implied"]
         if implied:
-            fmt = node._fmtargs[arg.declarator.user_name]["fmtpy"]
+            fmt = node._bind["py"][arg.declarator.user_name].fmtdict
             fmt.pre_call_intent = py_implied(implied, node)
             append_format(pre_call, "{cxx_var} = {pre_call_intent};", fmt)
 
@@ -1178,8 +1179,7 @@ return 1;""",
         self.log.write("Python {0} {1.declgen}\n".format(cls_function, node))
 
         fmt_func = node.fmtdict
-        fmtargs = node._fmtargs
-        fmt = util.Scope(fmt_func)
+        fmt = node._fmtlang.setdefault("py", util.Scope(fmt_func))
         fmt.PY_doc_string = "documentation"
         fmt.PY_array_arg = options.PY_array_arg
 
@@ -1237,7 +1237,7 @@ return 1;""",
                 "// Function:  " + gen_decl_noparams(ast))
             self.document_stmts(stmts_comments, ast, result_blk.name)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
-        statements.apply_fmtdict_from_stmts(result_blk, fmt_result)
+        statements.apply_fmtdict_from_stmts_old(result_blk, fmt_result)
 
         PY_code = []
 
@@ -1290,8 +1290,8 @@ return 1;""",
             func_cursor.arg = arg
             declarator = arg.declarator
             arg_name = declarator.user_name
-            fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))
+            bind_arg = statements.get_arg_bind(node, arg, "py")
+            fmt_arg = statements.set_bind_fmtdict(bind_arg, fmt)
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
             fmt_arg.py_var = "SHPy_" + arg_name
@@ -1319,10 +1319,9 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = declarator.attrs
-            bind = statements.get_arg_bind(node, arg, "py")
-            meta = bind.meta
+            meta = bind_arg.meta
 
-            self.set_fmt_fields(cls, node, arg, bind, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, bind_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
@@ -1434,7 +1433,7 @@ return 1;""",
                               "{cxx_decl} =\t {cxx_val};", fmt_arg)
                 pass_var = fmt_arg.cxx_var
 
-            statements.apply_fmtdict_from_stmts(intent_blk, fmt_arg)
+            statements.apply_fmtdict_from_stmts_old(intent_blk, fmt_arg)
 
             # Declare argument variable.
             if intent_blk.arg_declare is not None:
@@ -2012,14 +2011,13 @@ return 1;""",
         attrs = declarator.attrs
         is_ctor = declarator.is_ctor
         result_typemap = ast.typemap
-        bind = statements.get_func_bind(node, "py")
-        meta = bind.meta
+        bind_result = statements.get_func_bind(node, "py")
+        fmt_result = statements.set_bind_fmtdict(bind_result, fmt)  # fmt_func
+
+        meta = bind_result.meta
 
         result_blk = default_scope
 
-        fmtargs = node._fmtargs
-        fmt_arg0 = fmtargs.setdefault("+result", {})
-        fmt_result = fmt_arg0.setdefault("fmtpy", util.Scope(fmt))  # fmt_func
         CXX_result = node.ast
 
         # Mangle result variable name to avoid possible conflict with arguments.
@@ -2050,7 +2048,7 @@ return 1;""",
         fmt_result.numpy_type = result_typemap.PYN_typenum
         update_fmt_from_typemap(fmt_result, result_typemap)
 
-        self.set_fmt_fields(cls, node, ast, bind, fmt_result, True)
+        self.set_fmt_fields(cls, node, ast, bind_result, True)
         self.set_cxx_nonconst_ptr(ast, fmt_result)
         sgroup = result_typemap.sgroup
         abstract = statements.find_abstract_declarator(ast)
@@ -3449,7 +3447,7 @@ class ToDimension(todict.PrintNode):
             # size(in)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.fcn._fmtargs[argname]["fmtpy"]
+            fmt = self.fcn._bind["py"][argname].fmtdict
             if self.fcn.options.PY_array_arg == "numpy":
                 return wformat("PyArray_SIZE({py_var})", fmt)
             else:
@@ -3513,7 +3511,7 @@ class ToImplied(todict.PrintNode):
             # size(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.func._fmtargs[argname]["fmtpy"]
+            fmt = self.func._bind["py"][argname].fmtdict
             if self.func.options.PY_array_arg == "numpy":
                 if len(node.args) > 1:
                     return "PyArray_DIM({}, ({})-1)".format(
@@ -3526,7 +3524,7 @@ class ToImplied(todict.PrintNode):
             # len(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.func._fmtargs[argname]["fmtpy"]
+            fmt = self.func._bind["py"][argname].fmtdict
 
             # find argname in function parameters
             bind = statements.fetch_name_bind(self.func._bind, "py", argname)
@@ -3543,7 +3541,7 @@ class ToImplied(todict.PrintNode):
             # len_trim(arg)
             argname = node.args[0].name
             #            arg = self.func.ast.find_arg_by_name(argname)
-            fmt = self.func._fmtargs[argname]["fmtpy"]
+            fmt = self.func._bind["py"][argname].fmtdict
             return wformat("strlen({cxx_var})", fmt)
             # XXX - need code for len_trim
             return wformat("ShroudLenTrim({cxx_var}, strlen({cxx_var}))", fmt)

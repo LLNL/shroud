@@ -107,12 +107,69 @@
                 "zz_bind": {
                     "f": {
                         "+result": {
+                            "fmtdict": {
+                                "C_call_function": "process_twostruct(\targ)",
+                                "C_call_list": "arg",
+                                "C_name": "SGR_process_twostruct_bufferify",
+                                "C_prototype": "int arg",
+                                "C_return_type": "void",
+                                "F_C_arguments": "arg",
+                                "F_C_call": "c_process_twostruct_bufferify",
+                                "F_C_name": "process_twostruct",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "arg",
+                                "F_arguments": "arg",
+                                "F_subprogram": "subroutine",
+                                "f_c_suffix": "_bufferify",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
                             "meta": {
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
                         },
                         "arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "int",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "SGR_twostruct",
+                                "c_var": "arg",
+                                "cfi_type": "CFI_type_struct",
+                                "cxx_T": "int,long",
+                                "cxx_abstract_decl": "int",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&arg",
+                                "cxx_type": "twostruct",
+                                "cxx_var": "arg",
+                                "f_derived_type": "twostruct",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "twostruct",
+                                "f_type": "type(twostruct)",
+                                "f_value_attr": ", value",
+                                "f_var": "arg",
+                                "fc_var": "arg",
+                                "i_var": "arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_STRUCT",
+                                "stmt_name": "f_in_twostruct<native,native>",
+                                "targs": [
+                                    {
+                                        "cxx_T": "int",
+                                        "typemap_name": "int"
+                                    },
+                                    {
+                                        "cxx_T": "long",
+                                        "typemap_name": "long"
+                                    }
+                                ],
+                                "typemap_name": "twostruct"
+                            },
                             "meta": {
                                 "intent": "in",
                                 "value": true
@@ -131,69 +188,6 @@
                                 "intent": "in",
                                 "value": true
                             }
-                        }
-                    }
-                },
-                "zz_fmtargs": {
-                    "+result": {
-                        "fmtf": {
-                            "C_call_function": "process_twostruct(\targ)",
-                            "C_call_list": "arg",
-                            "C_name": "SGR_process_twostruct_bufferify",
-                            "C_prototype": "int arg",
-                            "C_return_type": "void",
-                            "F_C_arguments": "arg",
-                            "F_C_call": "c_process_twostruct_bufferify",
-                            "F_C_name": "process_twostruct",
-                            "F_C_subprogram": "subroutine",
-                            "F_arg_c_call": "arg",
-                            "F_arguments": "arg",
-                            "F_subprogram": "subroutine",
-                            "f_c_suffix": "_bufferify",
-                            "stmt_name": "f_subroutine",
-                            "typemap_name": "void"
-                        }
-                    },
-                    "arg": {
-                        "fmtf": {
-                            "c_abstract_decl": "int",
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_type": "SGR_twostruct",
-                            "c_var": "arg",
-                            "cfi_type": "CFI_type_struct",
-                            "cxx_T": "int,long",
-                            "cxx_abstract_decl": "int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&arg",
-                            "cxx_type": "twostruct",
-                            "cxx_var": "arg",
-                            "f_derived_type": "twostruct",
-                            "f_intent": "IN",
-                            "f_intent_attr": ", intent(IN)",
-                            "f_kind": "twostruct",
-                            "f_type": "type(twostruct)",
-                            "f_value_attr": ", value",
-                            "f_var": "arg",
-                            "fc_var": "arg",
-                            "i_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt_name": "f_in_twostruct<native,native>",
-                            "targs": [
-                                {
-                                    "cxx_T": "int",
-                                    "typemap_name": "int"
-                                },
-                                {
-                                    "cxx_T": "long",
-                                    "typemap_name": "long"
-                                }
-                            ],
-                            "typemap_name": "twostruct"
                         }
                     }
                 },

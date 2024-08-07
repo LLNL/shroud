@@ -608,7 +608,7 @@ class FillMeta(object):
 
         May already be set for getter/setter.
         """
-        share_meta = statements.get_func_metaattrs(node, "share")
+        share_meta = statements.get_func_bind(node, "share").meta
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
@@ -621,7 +621,7 @@ class FillMeta(object):
 
     def set_arg_share(self, node, arg, meta):
         """Use shared meta attribute unless already set."""
-        share_meta = statements.get_arg_metaattrs(node, arg, "share")
+        share_meta = statements.get_arg_bind(node, arg, "share").meta
 
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
@@ -658,7 +658,6 @@ class FillMetaShare(FillMeta):
             newarg = dereference_function_pointer(arg)
             fptr = FunctionNode(gen_decl(newarg), parent=node, ast=newarg)
             r_bind.meta["fptr"] = fptr
-            statements.fetch_func_bind(fptr, wlang)
             self.meta_function(None, fptr, is_fptr=True)
 
     def meta_variable(self, cls, node):
