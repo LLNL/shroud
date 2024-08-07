@@ -304,21 +304,6 @@
                             "c_var": "self",
                             "function_name": "method3def",
                             "function_suffix": "_0"
-                        },
-                        "zz_fmtlang": {
-                            "py": {
-                                "PY_array_arg": "numpy",
-                                "PY_call_list": "i",
-                                "PY_doc_string": "documentation",
-                                "PY_error_return": "nullptr",
-                                "PY_used_param_args": true,
-                                "PY_used_param_kwds": true,
-                                "PY_used_param_self": true,
-                                "PyArg_format": "|i:method3def",
-                                "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&i",
-                                "stmt": "py_default"
-                            }
                         }
                     },
                     {

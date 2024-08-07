@@ -299,12 +299,12 @@ PY_TemplateArgument_int(
 // Argument:  double arg
 // Statement: py_in_native
 static PyObject *
-PY_TemplateArgument_int(
+PY_TemplateArgument_double(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.TemplateArgument_int
+// splicer begin function.TemplateArgument_double
     double arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -314,9 +314,9 @@ PY_TemplateArgument_int(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    tutorial::TemplateArgument<int>(arg);
+    tutorial::TemplateArgument<double>(arg);
     Py_RETURN_NONE;
-// splicer end function.TemplateArgument_int
+// splicer end function.TemplateArgument_double
 }
 
 // ----------------------------------------

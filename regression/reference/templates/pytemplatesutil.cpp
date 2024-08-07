@@ -323,12 +323,21 @@ static void PY_SHROUD_capsule_destructor_1(void *ptr)
     delete cxx_ptr;
 }
 
+// 2 - cxx std::vector<double> *
+static void PY_SHROUD_capsule_destructor_2(void *ptr)
+{
+    std::vector<double> * cxx_ptr =
+        static_cast<std::vector<double> *>(ptr);
+    delete cxx_ptr;
+}
+
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
     {"cxx std::vector<int> *", PY_SHROUD_capsule_destructor_1},
+    {"cxx std::vector<double> *", PY_SHROUD_capsule_destructor_2},
     {nullptr, nullptr},
 };
 

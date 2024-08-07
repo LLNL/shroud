@@ -2160,21 +2160,6 @@
                     "C_name_api": "FunctionTU",
                     "F_name_api": "function_tu",
                     "function_name": "FunctionTU"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "arg1,\t arg2",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_used_param_args": true,
-                        "PY_used_param_kwds": true,
-                        "PyArg_format": "fd:FunctionTU",
-                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_default"
-                    }
                 }
             },
             {
@@ -2557,7 +2542,7 @@
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
-                        "PyArg_format": "fd:FunctionTU",
+                        "PyArg_format": "il:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1,\t &arg2",
                         "stmt": "py_default"
@@ -3008,18 +2993,6 @@
                     "C_name_api": "UseImplWorker",
                     "F_name_api": "use_impl_worker",
                     "function_name": "UseImplWorker"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "C_rv_decl": "int ARG_rv",
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int ARG_rv =\t ",
-                        "py_var": "SHTPy_rv"
-                    }
                 }
             },
             {

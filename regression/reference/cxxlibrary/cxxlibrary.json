@@ -2933,23 +2933,6 @@
                     "F_name_impl": "default_ptr_is_null_0",
                     "function_name": "defaultPtrIsNULL",
                     "function_suffix": "_0"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "C_rv_decl": "bool SHCXX_rv",
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "data",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
-                        "PY_used_param_args": true,
-                        "PY_used_param_kwds": true,
-                        "PyArg_format": "|O:defaultPtrIsNULL",
-                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&SHTPy_data",
-                        "py_var": "SHTPy_rv"
-                    }
                 }
             },
             {
@@ -3579,22 +3562,6 @@
                     "F_name_impl": "default_args_in_out_0",
                     "function_name": "defaultArgsInOut",
                     "function_suffix": "_0"
-                },
-                "zz_fmtlang": {
-                    "py": {
-                        "PY_array_arg": "numpy",
-                        "PY_call_list": "in1,\t &out1,\t &out2,\t flag",
-                        "PY_doc_string": "documentation",
-                        "PY_error_return": "nullptr",
-                        "PY_used_param_args": true,
-                        "PY_used_param_kwds": true,
-                        "PyArg_format": "i|O!:defaultArgsInOut",
-                        "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&in1,\t &PyBool_Type,\t &SHPy_flag",
-                        "PyBuild_format": "ii",
-                        "PyBuild_vargs": "out1,\t out2",
-                        "stmt": "py_default"
-                    }
                 }
             },
             {

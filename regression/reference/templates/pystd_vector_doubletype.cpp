@@ -47,18 +47,18 @@ PY_vector_double_tp_del (PY_vector_double *self)
 // Function:  vector
 // Statement: py_default
 static int
-PY_vector_int_tp_init(
-  PY_vector_int *self,
+PY_vector_double_tp_init(
+  PY_vector_double *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin namespace.std.class.vector.method.ctor
-    self->obj = new std::vector<int>();
+    self->obj = new std::vector<double>();
     if (self->obj == nullptr) {
         PyErr_NoMemory();
         return -1;
     }
-    self->idtor = 1;
+    self->idtor = 2;
     return 0;
 // splicer end namespace.std.class.vector.method.ctor
 }
@@ -75,7 +75,7 @@ static char PY_push_back__doc__[] =
 
 static PyObject *
 PY_push_back(
-  PY_vector_int *self,
+  PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
 {
@@ -106,7 +106,7 @@ static char PY_at__doc__[] =
 
 static PyObject *
 PY_at(
-  PY_vector_int *self,
+  PY_vector_double *self,
   PyObject *args,
   PyObject *kwds)
 {
@@ -115,7 +115,7 @@ PY_at(
     const char *SHT_kwlist[] = {
         "n",
         nullptr };
-    PyObject * SHPyResult = nullptr;
+    PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "n:at",
         const_cast<char **>(SHT_kwlist), &n))
@@ -124,14 +124,14 @@ PY_at(
     double &SHCXX_rv = self->obj->at(n);
 
     // post_call
-    SHPyResult = PyArray_SimpleNewFromData(0, nullptr, NPY_DOUBLE,
+    SHTPy_rv = PyArray_SimpleNewFromData(0, nullptr, NPY_DOUBLE,
         &SHCXX_rv);
-    if (SHPyResult == nullptr) goto fail;
+    if (SHTPy_rv == nullptr) goto fail;
 
-    return (PyObject *) SHPyResult;
+    return (PyObject *) SHTPy_rv;
 
 fail:
-    Py_XDECREF(SHPyResult);
+    Py_XDECREF(SHTPy_rv);
     return nullptr;
 // splicer end namespace.std.class.vector.method.at
 }

@@ -305,12 +305,12 @@ PY_name_instantiation1(
  *
  */
 static PyObject *
-PY_name_instantiation1(
+PY_FunctionTU_instantiation2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.FunctionTU_0
+// splicer begin function.FunctionTU_instantiation2
     float arg1;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -322,9 +322,9 @@ PY_name_instantiation1(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return nullptr;
 
-    FunctionTU<int, long>(arg1, arg2);
+    FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.FunctionTU_0
+// splicer end function.FunctionTU_instantiation2
 }
 
 // ----------------------------------------

@@ -87,12 +87,12 @@ PY_FunctionTU_0(
  *
  */
 static PyObject *
-PY_FunctionTU_0(
+PY_FunctionTU_1(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.FunctionTU_0
+// splicer begin function.FunctionTU_1
     float arg1;
     double arg2;
     const char *SHT_kwlist[] = {
@@ -104,9 +104,9 @@ PY_FunctionTU_0(
         const_cast<char **>(SHT_kwlist), &arg1, &arg2))
         return nullptr;
 
-    FunctionTU<int, long>(arg1, arg2);
+    FunctionTU<float, double>(arg1, arg2);
     Py_RETURN_NONE;
-// splicer end function.FunctionTU_0
+// splicer end function.FunctionTU_1
 }
 
 // ----------------------------------------
@@ -141,7 +141,7 @@ PY_UseImplWorker_internal_ImplWorker1(
 // ----------------------------------------
 // Function:  int UseImplWorker
 // Statement: py_function_native
-static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
+static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =
 "documentation"
 ;
 
@@ -150,21 +150,21 @@ static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
  *
  */
 static PyObject *
-PY_UseImplWorker_internal_ImplWorker1(
+PY_UseImplWorker_internal_ImplWorker2(
   PyObject *SHROUD_UNUSED(self),
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin function.UseImplWorker_internal_ImplWorker1
+// splicer begin function.UseImplWorker_internal_ImplWorker2
     PyObject * SHTPy_rv = nullptr;
 
-    int SHCXX_rv = UseImplWorker<internal::ImplWorker1>();
+    int SHCXX_rv = UseImplWorker<internal::ImplWorker2>();
 
     // post_call
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
-// splicer end function.UseImplWorker_internal_ImplWorker1
+// splicer end function.UseImplWorker_internal_ImplWorker2
 }
 
 static char PY_FunctionTU__doc__[] =
@@ -208,9 +208,9 @@ static PyMethodDef PY_methods[] = {
 {"UseImplWorker_internal_ImplWorker1",
     (PyCFunction)PY_UseImplWorker_internal_ImplWorker1, METH_NOARGS,
     PY_UseImplWorker_internal_ImplWorker1__doc__},
-{"UseImplWorker_internal_ImplWorker1",
-    (PyCFunction)PY_UseImplWorker_internal_ImplWorker1, METH_NOARGS,
-    PY_UseImplWorker_internal_ImplWorker1__doc__},
+{"UseImplWorker_internal_ImplWorker2",
+    (PyCFunction)PY_UseImplWorker_internal_ImplWorker2, METH_NOARGS,
+    PY_UseImplWorker_internal_ImplWorker2__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
     PY_FunctionTU__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
