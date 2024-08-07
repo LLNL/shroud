@@ -8165,11 +8165,7 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {
-                                                    "f_abstract_names": [
-                                                        "arg0"
-                                                    ]
-                                                },
+                                                "fmtdict": {},
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -8364,11 +8360,7 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {
-                                                    "f_abstract_names": [
-                                                        "arg0"
-                                                    ]
-                                                },
+                                                "fmtdict": {},
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -8466,11 +8458,7 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {
-                                                    "f_abstract_names": [
-                                                        "arg0"
-                                                    ]
-                                                },
+                                                "fmtdict": {},
                                                 "meta": {
                                                     "intent": "function"
                                                 },

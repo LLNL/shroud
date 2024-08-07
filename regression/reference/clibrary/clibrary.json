@@ -5129,12 +5129,7 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {
-                                                    "f_abstract_names": [
-                                                        "tc",
-                                                        "arr"
-                                                    ]
-                                                },
+                                                "fmtdict": {},
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5342,12 +5337,7 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {
-                                                    "f_abstract_names": [
-                                                        "tc",
-                                                        "arr"
-                                                    ]
-                                                },
+                                                "fmtdict": {},
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
