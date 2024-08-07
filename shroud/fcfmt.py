@@ -236,7 +236,7 @@ class FillFormat(object):
         self.apply_c_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
         self.find_idtor(node.ast, result_typemap, bind)
-        self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, fmt_result, meta, True)
+        self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, bind, True)
 
     def fill_c_arg(self, wlang, cls, node, arg, bind, pre_call):
         declarator = arg.declarator
@@ -251,7 +251,7 @@ class FillFormat(object):
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
         self.name_temp_vars(arg_name, bind, "c")
-        self.set_fmt_fields_c(wlang, cls, node, arg, arg_typemap, fmt_arg, meta, False)
+        self.set_fmt_fields_c(wlang, cls, node, arg, arg_typemap, bind, False)
         self.apply_c_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
 
@@ -410,7 +410,7 @@ class FillFormat(object):
                     # Enable cxx_nonconst_ptr to continue to work
                     fmt.cxx_var = fmt.c_local_cxx
 
-    def set_fmt_fields_c(self, wlang, cls, fcn, ast, ntypemap, fmt, meta, is_func):
+    def set_fmt_fields_c(self, wlang, cls, fcn, ast, ntypemap, bind, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -426,6 +426,8 @@ class FillFormat(object):
             is_func  - True if function.
         """
         declarator = ast.declarator
+        meta = bind.meta
+        fmt = bind.fmtdict
         if is_func:
             rootname = fmt.C_result
         else:
