@@ -181,11 +181,15 @@ class FillFormat(object):
             
         cursor.pop_node(node)
 
-    def fill_c_result(self, wlang, cls, node, result_stmt, fmt_result, CXX_ast, meta):
+    def fill_c_result(self, wlang, cls, node, CXX_ast, bind):
         ast = node.ast
         declarator = ast.declarator
         C_subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
+
+        result_stmt = bind.stmt
+        meta = bind.meta
+        fmt_result = bind.fmtdict
 
         if C_subprogram != "subroutine":
             fmt_result.idtor = "0"  # no destructor
@@ -234,11 +238,15 @@ class FillFormat(object):
         self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt, meta)
         self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, fmt_result, meta, True)
 
-    def fill_c_arg(self, wlang, cls, node, arg, arg_stmt, fmt_arg, meta, pre_call):
+    def fill_c_arg(self, wlang, cls, node, arg, bind, pre_call):
         declarator = arg.declarator
         arg_name = declarator.user_name
         arg_typemap = arg.typemap
-           
+
+        arg_stmt = bind.stmt
+        meta = bind.meta
+        fmt_arg = bind.fmtdict
+
         fmt_arg.c_var = arg_name
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
