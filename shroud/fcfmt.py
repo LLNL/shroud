@@ -188,7 +188,6 @@ class FillFormat(object):
         result_typemap = ast.typemap
 
         result_stmt = bind.stmt
-        meta = bind.meta
         fmt_result = bind.fmtdict
 
         if C_subprogram != "subroutine":
@@ -244,7 +243,6 @@ class FillFormat(object):
         arg_typemap = arg.typemap
 
         arg_stmt = bind.stmt
-        meta = bind.meta
         fmt_arg = bind.fmtdict
 
         fmt_arg.c_var = arg_name
@@ -328,7 +326,6 @@ class FillFormat(object):
     def fill_interface_arg(self, cls, node, arg, bind):
         declarator = arg.declarator
         arg_name = declarator.user_name
-        arg_stmt = bind.stmt
         fmt_arg = bind.fmtdict
         arg_typemap = arg.typemap
 
@@ -368,7 +365,6 @@ class FillFormat(object):
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name
-        arg_stmt = bind.stmt
         fmt_arg = bind.fmtdict
 
         fmt_arg.f_var = arg_name
@@ -421,8 +417,7 @@ class FillFormat(object):
             fcn      - ast.FunctionNode of calling function.
             ast      - declast.Declaration
             ntypemap - typemap.Typemap
-            fmt      - scope.Util
-            meta     -
+            bind     - statements.BindArg
             is_func  - True if function.
         """
         declarator = ast.declarator
@@ -521,7 +516,7 @@ class FillFormat(object):
         ----------
         fcn : ast.FunctionNode
         ast : declast.Declaration
-        fmt : util.Scope
+        bind : statements.BindArg
         rootname : str
         ntypemap : typemap.Typemap
             The typemap has already resolved template arguments.
