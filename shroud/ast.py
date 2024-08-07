@@ -1742,7 +1742,7 @@ class FunctionNode(AstNode):
 
         # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)
-        new._fmtlang = copy.deepcopy(self._fmtlang)
+        new._fmtlang = {}
         new._bind = {}
         new._generated_path = copy.deepcopy(self._generated_path)
         if new._orig_node is None:
