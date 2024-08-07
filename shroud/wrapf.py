@@ -1199,7 +1199,7 @@ rv = .false.
         fmt_result = r_bind.fmtdict
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
-        self.fill_interface_result(cls, node, r_bind, fmt_result)
+        self.fill_interface_result(cls, node, r_bind)
             
         stmts_comments = []
         if options.debug:
@@ -1246,7 +1246,7 @@ rv = .false.
             fmt_arg = arg_bind.fmtdict
             arg_stmt = arg_bind.stmt
             func_cursor.stmt = arg_stmt
-            self.fill_interface_arg(cls, node, arg, arg_bind, fmt_arg)
+            self.fill_interface_arg(cls, node, arg, arg_bind)
             
             attrs = declarator.attrs
             meta = arg_bind.meta
@@ -1514,7 +1514,7 @@ rv = .false.
             fmt_result.F_C_call = C_node._bind["c"]["+result"].fmtdict.F_C_name
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
-        self.fill_fortran_result(cls, node, r_bind, fmt_result)
+        self.fill_fortran_result(cls, node, r_bind)
 
         subprogram = fmt_result.F_subprogram
         C_subprogram = subprogram
@@ -1601,7 +1601,7 @@ rv = .false.
             
             func_cursor.stmt = arg_stmt
             arg_typemap = self.fill_fortran_arg(
-                cls, node, C_node, f_arg, c_arg, arg_bind, fmt_arg)
+                cls, node, C_node, f_arg, c_arg, arg_bind)
 
             fileinfo.apply_helpers_from_stmts(node)
             
