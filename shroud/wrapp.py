@@ -903,7 +903,7 @@ return 1;""",
         for cmd in getattr(stmts, name):
             output.append(wformat(cmd, fmt))
 
-    def set_fmt_fields(self, cls, fcn, ast, bind, fmt, is_result=False):
+    def set_fmt_fields(self, cls, fcn, ast, bind, is_result=False):
         """
         Set format fields for ast.
         Used with arguments and results.
@@ -915,6 +915,7 @@ return 1;""",
                   Abstract Syntax Tree of argument or result
             fmt - format dictionary
         """
+        fmt = bind.fmtdict
         declarator = ast.declarator
         typemap = ast.typemap
         if typemap.PY_PyObject:
@@ -1320,7 +1321,7 @@ return 1;""",
             attrs = declarator.attrs
             meta = bind_arg.meta
 
-            self.set_fmt_fields(cls, node, arg, bind_arg, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, bind_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
             pass_var = fmt_arg.c_var  # The variable to pass to the function
             as_object = False
@@ -2047,7 +2048,7 @@ return 1;""",
         fmt_result.numpy_type = result_typemap.PYN_typenum
         update_fmt_from_typemap(fmt_result, result_typemap)
 
-        self.set_fmt_fields(cls, node, ast, bind_result, fmt_result, True)
+        self.set_fmt_fields(cls, node, ast, bind_result, True)
         self.set_cxx_nonconst_ptr(ast, fmt_result)
         sgroup = result_typemap.sgroup
         abstract = statements.find_abstract_declarator(ast)
