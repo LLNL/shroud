@@ -27,10 +27,16 @@ class CheckImplied(unittest.TestCase):
             ")"
         )
 
-        node._fmtargs = dict(
-            array=dict(fmtpy=util.Scope(None, py_var="SHPy_array")),
-            scalar=dict(fmtpy=util.Scope(None, py_var="SHPy_scalar")),
-        )
+        params = node.ast.declarator.params
+
+        bind_arg = statements.fetch_arg_bind(node, params[0], "py")
+        fmt_arg = statements.set_bind_fmtdict(bind_arg, node.fmtdict)
+        fmt_arg.py_var = "SHPy_array"
+
+        bind_arg = statements.fetch_arg_bind(node, params[1], "py")
+        fmt_arg = statements.set_bind_fmtdict(bind_arg, node.fmtdict)
+        fmt_arg.py_var = "SHPy_scalar"
+        
         self.func1 = node
 
     def test_implied1(self):
