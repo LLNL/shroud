@@ -277,7 +277,7 @@ def lookup_local_stmts(path, parent, node):
     return parent
 
 
-def apply_fmtdict_from_stmts(stmts, fmt):
+def apply_fmtdict_from_stmts(bind):
     """Apply fmtdict field from statements.
     Should be done after other defaults are set to
     allow the user to override any value.
@@ -286,6 +286,25 @@ def apply_fmtdict_from_stmts(stmts, fmt):
        f_var: "{F_string_result_as_arg}"
        i_var: "{F_string_result_as_arg}"
        c_var: "{F_string_result_as_arg}"
+    """
+    stmts = bind.stmt
+    fmt = bind.fmtdict
+    
+    if stmts.fmtdict is not None:
+        for key, value in stmts.fmtdict.items():
+            setattr(fmt, key, wformat(value, fmt))
+    
+def apply_fmtdict_from_stmts_old(stmts, fmt):
+    """Apply fmtdict field from statements.
+    Should be done after other defaults are set to
+    allow the user to override any value.
+
+    fmtdict:
+       f_var: "{F_string_result_as_arg}"
+       i_var: "{F_string_result_as_arg}"
+       c_var: "{F_string_result_as_arg}"
+
+    XXX - Needed for Python wrappers for now.
     """
     if stmts.fmtdict is not None:
         for key, value in stmts.fmtdict.items():

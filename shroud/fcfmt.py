@@ -232,10 +232,10 @@ class FillFormat(object):
         else:
             fmt_result.C_return_type = gen_arg_as_c(
                 ast, name=False, add_params=False, lang=maplang[wlang])
-        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c")
-        self.apply_c_helpers_from_stmts(node, result_stmt, fmt_result)
-        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
-        self.find_idtor(node.ast, result_typemap, fmt_result, result_stmt, meta)
+        self.name_temp_vars(fmt_result.C_result, bind, "c")
+        self.apply_c_helpers_from_stmts(node, bind)
+        statements.apply_fmtdict_from_stmts(bind)
+        self.find_idtor(node.ast, result_typemap, bind)
         self.set_fmt_fields_c(wlang, cls, node, ast, result_typemap, fmt_result, meta, True)
 
     def fill_c_arg(self, wlang, cls, node, arg, bind, pre_call):
@@ -250,10 +250,10 @@ class FillFormat(object):
         fmt_arg.c_var = arg_name
         # XXX - order issue - c_var must be set before name_temp_vars,
         #       but set by set_fmt_fields
-        self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c")
+        self.name_temp_vars(arg_name, bind, "c")
         self.set_fmt_fields_c(wlang, cls, node, arg, arg_typemap, fmt_arg, meta, False)
-        self.apply_c_helpers_from_stmts(node, arg_stmt, fmt_arg)
-        statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+        self.apply_c_helpers_from_stmts(node, bind)
+        statements.apply_fmtdict_from_stmts(bind)
 
         # prototype:  vector<int> -> int *
         converter, lang = find_arg_converter(wlang, self.language, arg_typemap)
@@ -283,7 +283,7 @@ class FillFormat(object):
 
         compute_cxx_deref(arg, fmt_arg)
         self.set_cxx_nonconst_ptr(arg, fmt_arg)
-        self.find_idtor(arg, arg_typemap, fmt_arg, arg_stmt, meta)
+        self.find_idtor(arg, arg_typemap, bind)
 
     def fill_interface_result(self, cls, node, bind):
         ast = node.ast
@@ -322,8 +322,8 @@ class FillFormat(object):
             fmt_result.F_result = wformat(
                 result_stmt.i_result_var, fmt_result)
             fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "c", "i")
-        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+        self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
+        statements.apply_fmtdict_from_stmts(bind)
 
     def fill_interface_arg(self, cls, node, arg, bind):
         declarator = arg.declarator
@@ -336,8 +336,8 @@ class FillFormat(object):
         fmt_arg.f_var = arg_name
         self.set_fmt_fields_iface(node, arg, bind, arg_name, arg_typemap)
         self.set_fmt_fields_dimension(cls, node, arg, bind)
-        self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "c", "i")
-        statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+        self.name_temp_vars(arg_name, bind, "c", "i")
+        statements.apply_fmtdict_from_stmts(bind)
 
     def fill_fortran_result(self, cls, node, bind):
         ast = node.ast
@@ -359,12 +359,12 @@ class FillFormat(object):
             fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
         fmt_result.F_subprogram = subprogram
         
-        self.name_temp_vars(fmt_result.C_result, result_stmt, fmt_result, "f")
+        self.name_temp_vars(fmt_result.C_result, bind, "f")
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind,
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, bind)
-        self.apply_helpers_from_stmts(node, result_stmt, fmt_result)
-        statements.apply_fmtdict_from_stmts(result_stmt, fmt_result)
+        self.apply_helpers_from_stmts(node, bind)
+        statements.apply_fmtdict_from_stmts(bind)
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name
@@ -373,14 +373,14 @@ class FillFormat(object):
 
         fmt_arg.f_var = arg_name
         fmt_arg.fc_var = arg_name
-        self.name_temp_vars(arg_name, arg_stmt, fmt_arg, "f")
+        self.name_temp_vars(arg_name, bind, "f")
         arg_typemap = self.set_fmt_fields_f(cls, C_node, f_arg, c_arg, bind)
         self.set_fmt_fields_dimension(cls, C_node, f_arg, bind)
-        self.apply_helpers_from_stmts(node, arg_stmt, fmt_arg)
-        statements.apply_fmtdict_from_stmts(arg_stmt, fmt_arg)
+        self.apply_helpers_from_stmts(node, bind)
+        statements.apply_fmtdict_from_stmts(bind)
         return arg_typemap
     
-    def name_temp_vars(self, rootname, stmts, fmt, lang, prefix=None):
+    def name_temp_vars(self, rootname, bind, lang, prefix=None):
         """Compute names of temporary C variables.
 
         Create stmts.temps and stmts.local variables.
@@ -388,6 +388,9 @@ class FillFormat(object):
         lang - "c", "f"
         prefix - "c", "f", "i"
         """
+        stmts = bind.stmt
+        fmt = bind.fmtdict
+
         if prefix is None:
             prefix = lang
 
@@ -654,11 +657,15 @@ class FillFormat(object):
                 # Use elem_len from the C wrapper.
                 fmt.f_char_type = wformat("character(len={f_var_cdesc}%elem_len) ::\t ", fmt)
 
-    def apply_c_helpers_from_stmts(self, node, stmt, fmt):
+    def apply_c_helpers_from_stmts(self, node, bind):
+        stmt = bind.stmt
+        fmt = bind.fmtdict
         node_helpers = node.helpers.setdefault("c", {})
         add_c_helper(node_helpers, stmt.c_helper, fmt)
 
-    def apply_helpers_from_stmts(self, node, stmt, fmt):
+    def apply_helpers_from_stmts(self, node, bind):
+        stmt = bind.stmt
+        fmt = bind.fmtdict
         node_helpers = node.helpers.setdefault("c", {})
         add_c_helper(node_helpers, stmt.c_helper, fmt)
         node_helpers = node.helpers.setdefault("f", {})

@@ -1411,7 +1411,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             idtor = self.capsule_code[name][0]
         return idtor
 
-    def find_idtor(self, ast, ntypemap, fmt, intent_blk, meta):
+    def find_idtor(self, ast, ntypemap, bind):
         """Find the destructor name.
 
         Set fmt.idtor as index of destructor.
@@ -1428,9 +1428,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
         Args:
             ast -
             ntypemap - typemap.Typemap
-            fmt -
-            intent_blk -
+            bind - statements.BindArg
         """
+        intent_blk = bind.stmt
+        meta = bind.meta
+        fmt = bind.fmtdict
 
         destructor_name = intent_blk.destructor_name
         if destructor_name:
