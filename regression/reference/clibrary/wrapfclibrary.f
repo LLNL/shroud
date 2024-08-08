@@ -437,20 +437,20 @@ module clibrary_mod
     ! end pass_assumed_type
 
     ! ----------------------------------------
-    ! Function:  void passAssumedTypeDim
+    ! Function:  void passAssumedTypeRank
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void *arg +assumedtype+rank(1)
     ! Statement: f_in_void*
-    ! start pass_assumed_type_dim
+    ! start pass_assumed_type_rank
     interface
-        subroutine pass_assumed_type_dim(arg) &
-                bind(C, name="passAssumedTypeDim")
+        subroutine pass_assumed_type_rank(arg) &
+                bind(C, name="passAssumedTypeRank")
             implicit none
             type(*) :: arg(*)
-        end subroutine pass_assumed_type_dim
+        end subroutine pass_assumed_type_rank
     end interface
-    ! end pass_assumed_type_dim
+    ! end pass_assumed_type_rank
 
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
@@ -967,20 +967,20 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  void passAssumedTypeDim
+    ! Function:  void passAssumedTypeRank
     ! Statement: f_subroutine
     !>
     !! \brief Test assumed-type with rank(1)
     !!
     !<
-    ! start pass_assumed_type_dim
-    subroutine pass_assumed_type_dim(arg)
+    ! start pass_assumed_type_rank
+    subroutine pass_assumed_type_rank(arg)
         type(*) :: arg
-        ! splicer begin function.pass_assumed_type_dim
-        call c_pass_assumed_type_dim(arg)
-        ! splicer end function.pass_assumed_type_dim
-    end subroutine pass_assumed_type_dim
-    ! end pass_assumed_type_dim
+        ! splicer begin function.pass_assumed_type_rank
+        call c_pass_assumed_type_rank(arg)
+        ! splicer end function.pass_assumed_type_rank
+    end subroutine pass_assumed_type_rank
+    ! end pass_assumed_type_rank
 #endif
 
     ! ----------------------------------------

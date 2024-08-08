@@ -185,6 +185,13 @@ void passAssumedTypeDim(void *arg)
 }
 // end passAssumedTypeDim
 
+// start passAssumedTypeRank
+void passAssumedTypeRank(void *arg)
+{
+    strncpy(last_function_called, "passAssumedTypeRank", MAXLAST);
+}
+// end passAssumedTypeRank
+
 /* arg is assumed to be an int. */
 
 int passAssumedTypeBuf(void *arg, char *outbuf)
