@@ -1311,6 +1311,82 @@
         ]
     },
     {
+        "name": "c_function_native*_scalar",
+        "i_result_decl": [
+            "{f_type} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "{f_kind}"
+            ]
+        }
+    },
+    {
+        "name": "f_function_native*_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "f_mixin_native_cdesc_allocate",
+            "f_mixin_use_capsule"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_native&",
+            "f_function_native*_pointer",
+            "f_function_native*_pointer_caller",
+            "f_function_native&_pointer"
+        ],
+        "notes": [
+            "Pointer to scalar.",
+            "type(C_PTR) is returned instead of a cdesc argument."
+        ],
+        "mixin": [
+            "f_mixin_function_c-ptr"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_native*_cdesc_pointer",
+            "f_function_struct*_cdesc_pointer"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "f_mixin_native_cdesc_pointer"
+        ]
+    },
+    {
+        "name": "f_function_native*_cdesc_pointer_caller",
+        "notes": [
+            "+deref(pointer) +owner(caller)",
+            "The capsule contains information used to delete the memory."
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_pass_cdesc",
+            "f_mixin_arg_capsule",
+            "c_mixin_native_cdesc_fill-cdesc",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_native_cdesc_pointer"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_native*_raw",
+            "c_function_native*",
+            "c_function_native&",
+            "c_function_native*_caller",
+            "c_function_native**",
+            "f_function_native**"
+        ],
+        "mixin": [
+            "f_mixin_function_ptr"
+        ]
+    },
+    {
         "name":"#### unknown ##############################################"
     },
     {
@@ -1472,82 +1548,6 @@
         }
     },
     {
-        "name": "c_function_native*_scalar",
-        "i_result_decl": [
-            "{f_type} :: {i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "{f_kind}"
-            ]
-        }
-    },
-    {
-        "name": "f_function_native*_cdesc_allocatable",
-        "mixin": [
-            "f_mixin_function-to-subroutine",
-            "f_mixin_pass_cdesc",
-            "c_mixin_native_cdesc_fill-cdesc",
-            "f_mixin_native_cdesc_allocate",
-            "f_mixin_use_capsule"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_native&",
-            "f_function_native*_pointer",
-            "f_function_native*_pointer_caller",
-            "f_function_native&_pointer"
-        ],
-        "notes": [
-            "Pointer to scalar.",
-            "type(C_PTR) is returned instead of a cdesc argument."
-        ],
-        "mixin": [
-            "f_mixin_function_c-ptr"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_native*_cdesc_pointer",
-            "f_function_struct*_cdesc_pointer"
-        ],
-        "mixin": [
-            "f_mixin_function-to-subroutine",
-            "f_mixin_pass_cdesc",
-            "c_mixin_native_cdesc_fill-cdesc",
-            "f_mixin_native_cdesc_pointer"
-        ]
-    },
-    {
-        "name": "f_function_native*_cdesc_pointer_caller",
-        "notes": [
-            "+deref(pointer) +owner(caller)",
-            "The capsule contains information used to delete the memory."
-        ],
-        "mixin": [
-            "f_mixin_function-to-subroutine",
-            "f_mixin_pass_cdesc",
-            "f_mixin_arg_capsule",
-            "c_mixin_native_cdesc_fill-cdesc",
-            "c_mixin_native_capsule_fill",
-            "f_mixin_native_cdesc_pointer"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_native*_raw",
-            "c_function_native*",
-            "c_function_native&",
-            "c_function_native*_caller",
-            "c_function_native**",
-            "f_function_native**"
-        ],
-        "mixin": [
-            "f_mixin_function_ptr"
-        ]
-    },
-    {
         "name":"##### enum #################################################"
     },
     {
@@ -1640,7 +1640,7 @@
         ]
     },
     {
-        "name":"############################################################"
+        "name":"##### char #################################################"
     },
     {
         "alias": [
@@ -1966,6 +1966,40 @@
             "f_mixin_pass_cdesc",
             "c_mixin_function_char*_cdesc",
             "f_mixin_char_cdesc_pointer"
+        ]
+    },
+    {
+        "name":"##### string ###############################################"
+    },
+    {
+        "name": "f_mixin_str_array",
+        "comments": [
+            "Collect information about a string argument."
+        ],
+        "notes": [
+            "XXX - maybe use character(*) directly in f_arg_decl"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_LOC"
+            ]
+        },
+        "f_pre_call": [
+            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
+            "{f_var_cdesc}%type = SH_TYPE_CHAR",
+            "{f_var_cdesc}%elem_len = len({f_var})",
+            "{f_var_cdesc}%size = size({f_var})",
+            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
         ]
     },
     {
@@ -2489,6 +2523,104 @@
         ]
     },
     {
+        "alias": [
+            "f_out_string**_cdesc_copy",
+            "c_out_string**_cdesc_copy"
+        ],
+        "notes": [
+            "Pass a cdesc down to describe the memory and a capsule to hold the",
+            "C++ array. Copy into Fortran argument.",
+            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
+        ],
+        "mixin": [
+            "f_mixin_str_array",
+            "f_mixin_pass_cdesc"
+        ],
+        "f_helper": [
+            "type_defines",
+            "array_context"
+        ],
+        "c_helper": [
+            "array_string_out"
+        ],
+        "c_pre_call": [
+            "std::string *{cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ],
+        "c_post_call": [
+            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
+        ]
+    },
+    {
+        "alias": [
+            "f_out_string**_copy",
+            "c_out_string**"
+        ],
+        "notes": [
+            "std::string **arg+intent(out)+dimension(size)",
+            "Returning a pointer to a string*. However, this needs additional",
+            "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
+        ],
+        "mixin": [
+            "f_mixin_argument-as-cptr"
+        ],
+        "notimplemented": true
+    },
+    {
+        "name": "f_mixin_helper_array_string_allocatable",
+        "comments": [
+            "Allocate a vector<string> variable.",
+            "Assign to std::string pointer from C++ function.",
+            "Copy into Fortran allocated memory."
+        ],
+        "notes": [
+            "Pass a cdesc down to describe the memory and a capsule to hold the",
+            "C++ array. Allocate in fortran, fill from C.",
+            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
+        ],
+        "f_helper": [
+            "array_string_allocatable"
+        ],
+        "c_helper": [
+            "array_string_allocatable",
+            "array_string_out_len"
+        ],
+        "c_pre_call": [
+            "std::string *{cxx_var};"
+        ],
+        "c_arg_call": [
+            "&{cxx_var}"
+        ],
+        "c_post_call": [
+            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
+            "{c_var_cdesc}->size     = {c_array_size};",
+            "if ({c_char_len} > 0) {{+",
+            "{c_var_cdesc}->elem_len = {c_char_len};",
+            "-}} else {{+",
+            "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
+            "-}}"
+        ],
+        "f_post_call": [
+            "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
+        ]
+    },
+    {
+        "name": "f_out_string**_cdesc_allocatable",
+        "mixin": [
+            "f_mixin_pass_cdesc",
+            "f_mixin_pass_capsule",
+            "f_mixin_out_array_cdesc_allocatable",
+            "f_mixin_helper_array_string_allocatable",
+            "c_mixin_native_capsule_fill",
+            "f_mixin_capsule_dtor"
+        ]
+    },
+    {
+        "name":"##### vector native ########################################"
+    },
+    {
         "name": "c_function_vector<native>",
         "notimplemented": true,
         "comments": [
@@ -2872,6 +3004,37 @@
         ]
     },
     {
+        "name": "f_inout_vector<native>&_cdesc_allocatable",
+        "mixin": [
+            "c_mixin_inout_vector<native>_cdesc"
+        ],
+        "append": {
+            "f_module": {
+                "iso_c_binding": [
+                    "{targs[0].f_kind}",
+                    "C_LOC"
+                ]
+            }
+        },
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}"
+        ],
+        "f_post_call": [
+            "if (allocated({f_var})) deallocate({f_var})",
+            "allocate({f_var}({f_var_cdesc}%size))",
+            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
+        ],
+        "c_arg_call": [
+            "*{c_local_cxx}"
+        ]
+    },
+    {
+        "name":"##### vector string ########################################"
+    },
+    {
         "alias": [
             "f_in_vector<string>_buf",
             "c_in_vector<string>_buf",
@@ -3033,37 +3196,6 @@
         ],
         "f_temps": [
             "cdesc"
-        ]
-    },
-    {
-        "name": "f_mixin_str_array",
-        "comments": [
-            "Collect information about a string argument."
-        ],
-        "notes": [
-            "XXX - maybe use character(*) directly in f_arg_decl"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "{f_type}{f_intent_attr}, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_helper": [
-            "type_defines",
-            "array_context"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_LOC"
-            ]
-        },
-        "f_pre_call": [
-            "{f_var_cdesc}%base_addr = C_LOC({f_var})",
-            "{f_var_cdesc}%type = SH_TYPE_CHAR",
-            "{f_var_cdesc}%elem_len = len({f_var})",
-            "{f_var_cdesc}%size = size({f_var})",
-            "{f_var_cdesc}%rank = rank({f_var}){f_cdesc_shape}"
         ]
     },
     {
@@ -3236,32 +3368,7 @@
         ]
     },
     {
-        "name": "f_inout_vector<native>&_cdesc_allocatable",
-        "mixin": [
-            "c_mixin_inout_vector<native>_cdesc"
-        ],
-        "append": {
-            "f_module": {
-                "iso_c_binding": [
-                    "{targs[0].f_kind}",
-                    "C_LOC"
-                ]
-            }
-        },
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "{targs[0].f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}"
-        ],
-        "f_post_call": [
-            "if (allocated({f_var})) deallocate({f_var})",
-            "allocate({f_var}({f_var_cdesc}%size))",
-            "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
-        ],
-        "c_arg_call": [
-            "*{c_local_cxx}"
-        ]
+        "name":"##### shadow ###############################################"
     },
     {
         "name": "f_mixin_shadow-arg",
@@ -3527,6 +3634,9 @@
         ]
     },
     {
+        "name":"##### struct ###############################################"
+    },
+    {
         "alias": [
             "f_in_struct",
             "f_in_struct*",
@@ -3603,6 +3713,9 @@
         "mixin": [
             "f_mixin_function_c-ptr"
         ]
+    },
+    {
+        "name":"##### getter ###############################################"
     },
     {
         "name": "f_getter_struct*_fapi_pointer",
@@ -3823,6 +3936,9 @@
         "c_post_call": [
             "{CXX_this}->{field_name} = std::string({c_var},\t {c_var_len});"
         ]
+    },
+    {
+        "name":"##### cfi ##################################################"
     },
     {
         "name": "c_mixin_arg_cfi",
@@ -4510,101 +4626,6 @@
         ]
     },
     {
-        "alias": [
-            "f_out_string**_cdesc_copy",
-            "c_out_string**_cdesc_copy"
-        ],
-        "notes": [
-            "Pass a cdesc down to describe the memory and a capsule to hold the",
-            "C++ array. Copy into Fortran argument.",
-            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
-        ],
-        "mixin": [
-            "f_mixin_str_array",
-            "f_mixin_pass_cdesc"
-        ],
-        "f_helper": [
-            "type_defines",
-            "array_context"
-        ],
-        "c_helper": [
-            "array_string_out"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var};"
-        ],
-        "c_arg_call": [
-            "&{cxx_var}"
-        ],
-        "c_post_call": [
-            "{c_helper_array_string_out}(\t{c_var_cdesc},\t {cxx_var}, {c_array_size2});"
-        ]
-    },
-    {
-        "alias": [
-            "f_out_string**_copy",
-            "c_out_string**"
-        ],
-        "notes": [
-            "std::string **arg+intent(out)+dimension(size)",
-            "Returning a pointer to a string*. However, this needs additional",
-            "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
-        ],
-        "mixin": [
-            "f_mixin_argument-as-cptr"
-        ],
-        "notimplemented": true
-    },
-    {
-        "name": "f_mixin_helper_array_string_allocatable",
-        "comments": [
-            "Allocate a vector<string> variable.",
-            "Assign to std::string pointer from C++ function.",
-            "Copy into Fortran allocated memory."
-        ],
-        "notes": [
-            "Pass a cdesc down to describe the memory and a capsule to hold the",
-            "C++ array. Allocate in fortran, fill from C.",
-            "[see also f_out_vector_&_cdesc_allocatable_targ_string_scalar]"
-        ],
-        "f_helper": [
-            "array_string_allocatable"
-        ],
-        "c_helper": [
-            "array_string_allocatable",
-            "array_string_out_len"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var};"
-        ],
-        "c_arg_call": [
-            "&{cxx_var}"
-        ],
-        "c_post_call": [
-            "{c_var_cdesc}->rank = {rank};{c_array_shape}",
-            "{c_var_cdesc}->size     = {c_array_size};",
-            "if ({c_char_len} > 0) {{+",
-            "{c_var_cdesc}->elem_len = {c_char_len};",
-            "-}} else {{+",
-            "{c_var_cdesc}->elem_len = {c_helper_array_string_out_len}({cxx_var}, {c_var_cdesc}->size);",
-            "-}}"
-        ],
-        "f_post_call": [
-            "call {f_helper_array_string_allocatable}({f_var_cdesc}, {f_var_capsule})"
-        ]
-    },
-    {
-        "name": "f_out_string**_cdesc_allocatable",
-        "mixin": [
-            "f_mixin_pass_cdesc",
-            "f_mixin_pass_capsule",
-            "f_mixin_out_array_cdesc_allocatable",
-            "f_mixin_helper_array_string_allocatable",
-            "c_mixin_native_capsule_fill",
-            "f_mixin_capsule_dtor"
-        ]
-    },
-    {
         "name": "f_out_native*_cfi_allocatable"
     },
     {
@@ -4697,6 +4718,9 @@
         "c_call": [
             "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
         ]
+    },
+    {
+        "name":"##### procedure ############################################"
     },
     {
         "alias": [
