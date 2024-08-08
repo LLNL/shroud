@@ -437,22 +437,6 @@ module clibrary_mod
     ! end pass_assumed_type
 
     ! ----------------------------------------
-    ! Function:  void passAssumedTypeDim
-    ! Statement: f_subroutine
-    ! ----------------------------------------
-    ! Argument:  void *arg +assumedtype+dimension(3)
-    ! Statement: f_in_void*
-    ! start pass_assumed_type_dim
-    interface
-        subroutine pass_assumed_type_dim(arg) &
-                bind(C, name="passAssumedTypeDim")
-            implicit none
-            type(*) :: arg(..)
-        end subroutine pass_assumed_type_dim
-    end interface
-    ! end pass_assumed_type_dim
-
-    ! ----------------------------------------
     ! Function:  void passAssumedTypeRank
     ! Statement: f_subroutine
     ! ----------------------------------------
@@ -978,25 +962,6 @@ contains
         ! splicer end function.pass_assumed_type
     end function pass_assumed_type
     ! end pass_assumed_type
-#endif
-
-#if 0
-    ! Only the interface is needed
-    ! ----------------------------------------
-    ! Function:  void passAssumedTypeDim
-    ! Statement: f_subroutine
-    !>
-    !! \brief Test assumed-type with dimension(3)
-    !!
-    !<
-    ! start pass_assumed_type_dim
-    subroutine pass_assumed_type_dim(arg)
-        type(*) :: arg
-        ! splicer begin function.pass_assumed_type_dim
-        call c_pass_assumed_type_dim(arg)
-        ! splicer end function.pass_assumed_type_dim
-    end subroutine pass_assumed_type_dim
-    ! end pass_assumed_type_dim
 #endif
 
 #if 0

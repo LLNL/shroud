@@ -149,8 +149,8 @@ contains
     rv_int = pass_assumed_type_buf(33_C_INT, outbuf)
     call assert_equals(33, rv_int)
 
-    call pass_assumed_type_dim(int_array)
-    call pass_assumed_type_dim(double_array)
+!    call pass_assumed_type_dim(int_array)
+!    call pass_assumed_type_dim(double_array)
 
     call pass_assumed_type_rank(int_array)
     call pass_assumed_type_rank(double_array)

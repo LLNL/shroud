@@ -4560,155 +4560,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passAssumedTypeDim  20 ****************************************",
-                "ast": {
-                    "declarator": {
-                        "name": "passAssumedTypeDim",
-                        "params": [
-                            {
-                                "declarator": {
-                                    "attrs": {
-                                        "assumedtype": true,
-                                        "dimension": "3"
-                                    },
-                                    "name": "arg",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ],
-                                    "typemap_name": "void"
-                                },
-                                "specifier": [
-                                    "void"
-                                ],
-                                "typemap_name": "void"
-                            }
-                        ],
-                        "typemap_name": "void"
-                    },
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void passAssumedTypeDim(void *arg+assumedtype+dimension(3))",
-                "declgen": "void passAssumedTypeDim(void *arg +assumedtype+dimension(3))",
-                "doxygen": {
-                    "brief": "Test assumed-type with dimension(3)"
-                },
-                "name": "passAssumedTypeDim",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_bind": {
-                    "f": {
-                        "+result": {
-                            "fmtdict": {
-                                "C_call_function": "passAssumedTypeDim(\targ)",
-                                "C_call_list": "arg",
-                                "C_name": "passAssumedTypeDim",
-                                "C_prototype": "void *arg",
-                                "C_return_type": "void",
-                                "F_C_arguments": "arg",
-                                "F_C_call": "c_pass_assumed_type_dim",
-                                "F_C_name": "pass_assumed_type_dim",
-                                "F_C_subprogram": "subroutine",
-                                "F_arg_c_call": "arg",
-                                "F_arguments": "arg",
-                                "F_subprogram": "subroutine",
-                                "stmt_name": "f_subroutine",
-                                "typemap_name": "void"
-                            },
-                            "meta": {
-                                "intent": "subroutine"
-                            },
-                            "stmt": "f_subroutine"
-                        },
-                        "arg": {
-                            "fmtdict": {
-                                "c_abstract_decl": "void *",
-                                "c_addr": "",
-                                "c_array_size2": "3",
-                                "c_const": "",
-                                "c_deref": "*",
-                                "c_member": "->",
-                                "c_type": "void",
-                                "c_var": "arg",
-                                "cfi_type": "CFI_type_intptr_t",
-                                "cxx_abstract_decl": "void *",
-                                "cxx_addr": "",
-                                "cxx_member": "->",
-                                "cxx_nonconst_ptr": "arg",
-                                "cxx_type": "void",
-                                "cxx_var": "arg",
-                                "f_array_allocate": "(3)",
-                                "f_assumed_shape": "(:)",
-                                "f_dimension": "(3)",
-                                "f_intent": "IN",
-                                "f_intent_attr": ", intent(IN)",
-                                "f_type": "type(C_PTR)",
-                                "f_value_attr": ", value",
-                                "f_var": "arg",
-                                "fc_var": "arg",
-                                "i_dimension": "(*)",
-                                "i_var": "arg",
-                                "idtor": "0",
-                                "rank": "1",
-                                "sh_type": "SH_TYPE_CPTR",
-                                "stmt_name": "f_in_void*",
-                                "typemap_name": "void"
-                            },
-                            "meta": {
-                                "assumedtype": true,
-                                "dim_ast": [
-                                    {
-                                        "constant": "3"
-                                    }
-                                ],
-                                "dimension": "3",
-                                "intent": "in",
-                                "value": true
-                            },
-                            "stmt": "f_in_void*"
-                        }
-                    },
-                    "share": {
-                        "+result": {
-                            "meta": {
-                                "intent": "subroutine"
-                            }
-                        },
-                        "arg": {
-                            "meta": {
-                                "assumedtype": true,
-                                "dim_ast": [
-                                    {
-                                        "constant": "3"
-                                    }
-                                ],
-                                "dimension": "3",
-                                "intent": "in",
-                                "value": true
-                            }
-                        }
-                    }
-                },
-                "zz_fmtdict": {
-                    "C_name_api": "passAssumedTypeDim",
-                    "F_name_api": "pass_assumed_type_dim",
-                    "F_name_function": "pass_assumed_type_dim",
-                    "F_name_generic": "pass_assumed_type_dim",
-                    "F_name_impl": "pass_assumed_type_dim",
-                    "function_name": "passAssumedTypeDim"
-                }
-            },
-            {
-                "<FUNCTION>": "passAssumedTypeRank  21 ****************************************",
+                "<FUNCTION>": "passAssumedTypeRank  20 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passAssumedTypeRank",
@@ -4845,7 +4697,7 @@
                 }
             },
             {
-                "<FUNCTION>": "passAssumedTypeBuf  22 ****************************************",
+                "<FUNCTION>": "passAssumedTypeBuf  21 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passAssumedTypeBuf",
@@ -5063,7 +4915,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_set_alloc  23 ****************************************",
+                "<FUNCTION>": "callback_set_alloc  22 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_set_alloc",

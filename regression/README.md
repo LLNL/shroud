@@ -19,7 +19,7 @@ All other tests have debug set to True to aid development.
 
 ### clibrary
 
-Uses assumed type in a test.  Does not work with PGI.
+Uses assumed-type in a test.  Does not work with PGI.
 
 ### cxxlibrary
 
