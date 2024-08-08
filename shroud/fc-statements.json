@@ -4722,11 +4722,20 @@
         "mixin": [
             "c_mixin_argument2"
         ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
         "f_arg_decl": [
             "procedure({f_abstract_interface}) :: {f_var}"
         ],
-        "f_arg_name": [
-            "{f_var}"
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_import": [
+            "{f_abstract_interface}"
+        ],
+        "i_arg_decl": [
+            "procedure({f_abstract_interface}) :: {i_var}"
         ]
     },
     {
@@ -4737,6 +4746,9 @@
         "mixin": [
             "c_mixin_argument2"
         ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
         "f_module": {
             "iso_c_binding": [
                 "C_FUNPTR"
@@ -4745,11 +4757,19 @@
         "f_arg_decl": [
             "type(C_FUNPTR) :: {f_var}"
         ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
         "f_arg_call": [
             "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_FUNPTR"
+            ]
+        },
+        "i_arg_decl": [
+            "type(C_FUNPTR), value :: {i_var}"
         ]
     },
     {
@@ -4763,14 +4783,23 @@
         "mixin": [
             "c_mixin_argument2"
         ],
-        "f_arg_decl": [
-            "external :: {f_var}"
-        ],
         "f_arg_name": [
             "{f_var}"
         ],
+        "f_arg_decl": [
+            "external :: {f_var}"
+        ],
         "f_arg_call": [
             "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_import": [
+            "{f_abstract_interface}"
+        ],
+        "i_arg_decl": [
+            "procedure({f_abstract_interface}) :: {i_var}"
         ],
         "f_need_wrapper": true
     },

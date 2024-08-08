@@ -1844,6 +1844,12 @@ c_in_native*_cdesc:
 c_in_procedure:
   name: c_in_procedure
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'procedure({f_abstract_interface}) :: {i_var}'
+  i_import:
+  - '{f_abstract_interface}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1854,6 +1860,12 @@ c_in_procedure_external:
   notes:
   - EXTERNAL is not allowed in BIND(C), so force wrapper.
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'procedure({f_abstract_interface}) :: {i_var}'
+  i_import:
+  - '{f_abstract_interface}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1862,6 +1874,13 @@ c_in_procedure_external:
 c_in_procedure_funptr:
   name: c_in_procedure_funptr
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_FUNPTR), value :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_FUNPTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9279,6 +9298,12 @@ f_in_procedure:
   - '{f_var}'
   f_arg_decl:
   - 'procedure({f_abstract_interface}) :: {f_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'procedure({f_abstract_interface}) :: {i_var}'
+  i_import:
+  - '{f_abstract_interface}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9296,6 +9321,12 @@ f_in_procedure_external:
   f_arg_call:
   - '{f_var}'
   f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'procedure({f_abstract_interface}) :: {i_var}'
+  i_import:
+  - '{f_abstract_interface}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9311,6 +9342,13 @@ f_in_procedure_funptr:
   f_arg_call:
   - '{f_var}'
   f_module:
+    iso_c_binding:
+    - C_FUNPTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_FUNPTR), value :: {i_var}'
+  i_module:
     iso_c_binding:
     - C_FUNPTR
   c_arg_decl:

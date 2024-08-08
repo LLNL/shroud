@@ -1133,18 +1133,18 @@ rv = .false.
                         "procedure({}) :: {}".format(fmt.f_kind, name)
                     )
                     imports[fmt.f_kind] = True
-            elif declarator.is_function_pointer():
-                if "funptr" in attrs:
-                    arg_c_decl.append(
-                        "type(C_FUNPTR), value :: {}".format(name)
-                    )
-                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-                else:
-                    absiface = fmt.f_abstract_interface
-                    arg_c_decl.append(
-                        "procedure({}) :: {}".format(absiface, name)
-                    )
-                    imports[absiface] = True
+#            elif declarator.is_function_pointer():
+#                if "funptr" in attrs:
+#                    arg_c_decl.append(
+#                        "type(C_FUNPTR), value :: {}".format(name)
+#                    )
+#                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
+#                else:
+#                    absiface = fmt.f_abstract_interface
+#                    arg_c_decl.append(
+#                        "procedure({}) :: {}".format(absiface, name)
+#                    )
+#                    imports[absiface] = True
 #            elif declarator.is_array() > 1:
 #                # Treat too many pointers as a type(C_PTR)
 #                # and let the wrapper sort it out.
