@@ -4728,6 +4728,9 @@
         "f_arg_decl": [
             "procedure({f_abstract_interface}) :: {f_var}"
         ],
+        "f_arg_call": [
+            "{f_var}"
+        ],
         "i_arg_names": [
             "{i_var}"
         ],
@@ -4737,6 +4740,20 @@
         "i_arg_decl": [
             "procedure({f_abstract_interface}) :: {i_var}"
         ]
+    },
+    {
+        "alias": [
+            "f_in_procedure_external",
+            "c_in_procedure_external"
+        ],
+        "notes": [
+            "EXTERNAL is not allowed in BIND(C), so force wrapper."
+        ],
+        "base": "f_in_procedure",
+        "f_arg_decl": [
+            "external :: {f_var}"
+        ],
+        "f_need_wrapper": true
     },
     {
         "alias": [
@@ -4771,37 +4788,6 @@
         "i_arg_decl": [
             "type(C_FUNPTR), value :: {i_var}"
         ]
-    },
-    {
-        "alias": [
-            "f_in_procedure_external",
-            "c_in_procedure_external"
-        ],
-        "notes": [
-            "EXTERNAL is not allowed in BIND(C), so force wrapper."
-        ],
-        "mixin": [
-            "c_mixin_argument2"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "external :: {f_var}"
-        ],
-        "f_arg_call": [
-            "{f_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_import": [
-            "{f_abstract_interface}"
-        ],
-        "i_arg_decl": [
-            "procedure({f_abstract_interface}) :: {i_var}"
-        ],
-        "f_need_wrapper": true
     },
     {
         "name":"##### unknown ##############################################"

@@ -9298,6 +9298,8 @@ f_in_procedure:
   - '{f_var}'
   f_arg_decl:
   - 'procedure({f_abstract_interface}) :: {f_var}'
+  f_arg_call:
+  - '{f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
