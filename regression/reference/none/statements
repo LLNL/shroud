@@ -1528,7 +1528,7 @@ c_function_struct:
 c_function_struct*:
   name: c_function_struct*
   comments:
-  - C++ pointer -> void pointer -> C pointer
+  - C++ pointer -> void pointer -> C pointer.
   intent: function
   i_result_decl:
   - type(C_PTR) {i_var}
@@ -1934,8 +1934,8 @@ c_in_string:
   comments:
   - Pass a NULL terminated string to C wrapper
   notes:
-  - Pass directly as argument which will construct the std::string
-  - This would work for Fortran if it explicited added C_NULL_CHAR
+  - Pass directly as argument which will construct the std::string.
+  - This would work for Fortran if it explicited added C_NULL_CHAR.
   intent: in
   i_arg_names:
   - '{i_var}'
@@ -2123,7 +2123,7 @@ c_in_unknown:
 c_in_vector<native*>&:
   name: c_in_vector<native*>&
   comments:
-  - Need to know the length of the vector from C
+  - Need to know the length of the vector from C.
   intent: in
   c_arg_call:
   - '{cxx_var}'
@@ -2168,7 +2168,7 @@ c_in_vector<native*>&_buf:
 c_in_vector<native>&:
   name: c_in_vector<native>&
   comments:
-  - Need to know the length of the vector from C
+  - Need to know the length of the vector from C.
   intent: in
   c_arg_call:
   - '{cxx_var}'
@@ -2264,7 +2264,7 @@ c_in_vector<native>_buf:
 c_in_vector<string>&:
   name: c_in_vector<string>&
   comments:
-  - Need to know the length of the vector from C
+  - Need to know the length of the vector from C.
   intent: in
   c_arg_call:
   - '{cxx_var}'
@@ -3014,7 +3014,7 @@ c_inout_vector<native>_buf_malloc:
 c_inout_vector<scalar>&:
   name: c_inout_vector<scalar>&
   comments:
-  - Need to know the length of the vector from C
+  - Need to know the length of the vector from C.
   intent: inout
   c_arg_call:
   - '{cxx_var}'
@@ -3223,7 +3223,7 @@ c_mixin_function_vector_malloc:
   name: c_mixin_function_vector_malloc
   comments:
   - Return pointer to array type.
-  - Add an argument to return the length of the array
+  - Add an argument to return the length of the array.
   intent: mixin
   i_arg_names:
   - '{i_var_size}'
@@ -3438,7 +3438,7 @@ c_mixin_out_vector<native>_cdesc:
   comments:
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  - Create a std::vector on the stack and pass to C++
+  - Create a std::vector on the stack and pass to C++.
   intent: mixin
   c_arg_call:
   - '{c_local_cxx}'
@@ -3905,7 +3905,7 @@ c_out_struct*:
 c_out_vector<native>&:
   name: c_out_vector<native>&
   comments:
-  - Need to know the length of the vector from C
+  - Need to know the length of the vector from C.
   intent: out
   c_arg_call:
   - '{cxx_var}'
@@ -4218,7 +4218,7 @@ c_out_vector<native>_buf_malloc:
 c_out_vector<string>&:
   name: c_out_vector<string>&
   comments:
-  - Need to know the length of the vector from C
+  - Need to know the length of the vector from C.
   intent: out
   c_arg_call:
   - '{cxx_var}'
@@ -4246,7 +4246,7 @@ c_out_vector<string>&_cdesc:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
   notes:
-  - f_arg_decl replaces values from f_mixin_str_array
+  - f_arg_decl replaces values from f_mixin_str_array.
   - This one needs to use targs.
   intent: out
   i_arg_names:
@@ -4749,7 +4749,7 @@ f_function_char*_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Fill cdesc from char * in the C wrapper.
   intent: function
@@ -5048,7 +5048,7 @@ f_function_char_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Fill cdesc from char * in the C wrapper.
   intent: function
@@ -6372,7 +6372,7 @@ f_function_string&_cdesc_allocatable:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to capsule in C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
   intent: function
@@ -6433,7 +6433,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to capsule in C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
   intent: function
@@ -6494,7 +6494,7 @@ f_function_string&_cdesc_allocatable_library:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to capsule in C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
   intent: function
@@ -7119,7 +7119,7 @@ f_function_string*_cdesc_allocatable:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to capsule in C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
   intent: function
@@ -7180,7 +7180,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to capsule in C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
   intent: function
@@ -7241,7 +7241,7 @@ f_function_string*_cdesc_allocatable_library:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Assign to capsule in C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
   intent: function
@@ -7874,7 +7874,7 @@ f_function_string_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
   - Assign to capsule in C wrapper.
@@ -7947,7 +7947,7 @@ f_function_string_cdesc_allocatable_caller:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
   - Assign to capsule in C wrapper.
@@ -8020,7 +8020,7 @@ f_function_string_cdesc_allocatable_library:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
   - Assign to capsule in C wrapper.
@@ -8494,7 +8494,7 @@ f_function_struct*_cdesc_pointer:
 f_function_struct*_pointer:
   name: f_function_struct*_pointer
   comments:
-  - C++ pointer -> void pointer -> C pointer
+  - C++ pointer -> void pointer -> C pointer.
   intent: function
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}'
@@ -8734,7 +8734,6 @@ f_getter_struct**_cdesc_raw:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
   - Set Fortran pointer to pointers to arrays.
-  - '''double **'' function returns ''type(C_PTR), pointer :: array(:)'''
   - Save pointer struct members in a cdesc
   - along with shape information.
   intent: getter
@@ -11109,7 +11108,7 @@ f_mixin_capsule_dtor:
 f_mixin_char_cdesc_allocate:
   name: f_mixin_char_cdesc_allocate
   comments:
-  - Allocate Fortran CHARACTER scalar, then fill from cdesc.
+  - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   intent: mixin
   f_arg_decl:
@@ -11551,7 +11550,6 @@ f_mixin_native_cdesc_raw:
   name: f_mixin_native_cdesc_raw
   comments:
   - Set Fortran pointer to pointers to arrays.
-  - '''double **'' function returns ''type(C_PTR), pointer :: array(:)'''
   intent: mixin
   f_arg_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
@@ -12842,7 +12840,7 @@ f_out_vector<native>&_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  - Create a std::vector on the stack and pass to C++
+  - Create a std::vector on the stack and pass to C++.
   notes:
   - Copy into allocated array.
   intent: out
@@ -12961,7 +12959,7 @@ f_out_vector<native>*_cdesc_allocatable:
   - Pass cdesc as argument to C wrapper.
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
-  - Create a std::vector on the stack and pass to C++
+  - Create a std::vector on the stack and pass to C++.
   notes:
   - Copy into allocated array.
   intent: out
@@ -13022,7 +13020,7 @@ f_out_vector<string>&_cdesc:
   - Collect information about a string argument.
   - Pass cdesc as argument to C wrapper.
   notes:
-  - f_arg_decl replaces values from f_mixin_str_array
+  - f_arg_decl replaces values from f_mixin_str_array.
   - This one needs to use targs.
   intent: out
   f_arg_name:

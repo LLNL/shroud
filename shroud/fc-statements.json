@@ -393,7 +393,9 @@
     {
         "name": "f_mixin_native_cdesc_raw",
         "comments": [
-            "Set Fortran pointer to pointers to arrays.",
+            "Set Fortran pointer to pointers to arrays."
+        ],
+        "notes": [
             "'double **' function returns 'type(C_PTR), pointer :: array(:)'"
         ],
         "f_module": {
@@ -435,7 +437,7 @@
     {
         "name": "f_mixin_char_cdesc_allocate",
         "comments": [
-            "Allocate Fortran CHARACTER scalar, then fill from cdesc.",
+            "Allocate Fortran CHARACTER scalar, then fill from cdesc",
             "using helper copy_string."
         ],
         "c_helper": [
@@ -612,24 +614,6 @@
         ]
     },
     {
-        "name": "f_mixin_unknown",
-        "comments": [
-            "Default returned by lookup_fc_stmts when group is not found."
-        ],
-        "c_arg_decl": [
-            "===>{c_var}<==="
-        ]
-    },
-    {
-        "name": "c_mixin_unknown",
-        "comments": [
-            "Default returned by lookup_fc_stmts when group is not found."
-        ],
-        "c_arg_decl": [
-            "===>{c_var}<==="
-        ]
-    },
-    {
         "name": "f_mixin_in_vector_buf",
         "comments": [
             "Pass argument and size by value to C."
@@ -741,7 +725,7 @@
         "name": "c_mixin_function_vector_malloc",
         "comments": [
             "Return pointer to array type.",
-            "Add an argument to return the length of the array"
+            "Add an argument to return the length of the array."
         ],
         "c_return_type": "{targs[0].cxx_type} *",
         "c_arg_decl": [
@@ -2372,8 +2356,8 @@
             "Pass a NULL terminated string to C wrapper"
         ],
         "notes": [
-            "Pass directly as argument which will construct the std::string",
-            "This would work for Fortran if it explicited added C_NULL_CHAR"
+            "Pass directly as argument which will construct the std::string.",
+            "This would work for Fortran if it explicited added C_NULL_CHAR."
         ],
         "c_arg_decl": [
             "char *{c_var}"
@@ -2638,7 +2622,7 @@
         ],
         "notimplemented": true,
         "comments": [
-            "Need to know the length of the vector from C"
+            "Need to know the length of the vector from C."
         ]
     },
     {
@@ -2816,7 +2800,7 @@
             "c_mixin_vector_cdesc_fill-cdesc"
         ],
         "comments": [
-            "Create a std::vector on the stack and pass to C++"
+            "Create a std::vector on the stack and pass to C++."
         ],
         "c_local": [
             "cxx"
@@ -3185,7 +3169,7 @@
             "c_out_vector<string>&_cdesc"
         ],
         "notes": [
-            "f_arg_decl replaces values from f_mixin_str_array",
+            "f_arg_decl replaces values from f_mixin_str_array.",
             "This one needs to use targs."
         ],
         "mixin": [
@@ -3689,7 +3673,7 @@
             "c_function_struct*"
         ],
         "comments": [
-            "C++ pointer -> void pointer -> C pointer"
+            "C++ pointer -> void pointer -> C pointer."
         ],
         "mixin": [
             "f_mixin_function_c-ptr"
@@ -4762,5 +4746,26 @@
             "{f_var}"
         ],
         "f_need_wrapper": true
+    },
+    {
+        "name":"##### unknown ##############################################"
+    },
+    {
+        "name": "f_mixin_unknown",
+        "comments": [
+            "Default returned by lookup_fc_stmts when group is not found."
+        ],
+        "c_arg_decl": [
+            "===>{c_var}<==="
+        ]
+    },
+    {
+        "name": "c_mixin_unknown",
+        "comments": [
+            "Default returned by lookup_fc_stmts when group is not found."
+        ],
+        "c_arg_decl": [
+            "===>{c_var}<==="
+        ]
     }
 ]
