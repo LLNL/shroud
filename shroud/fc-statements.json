@@ -127,32 +127,6 @@
         "c_return_type": "void"
     },
     {
-        "name":"##### native ###############################################"
-    },
-    {
-        "alias": [
-            "f_function_native",
-            "c_function_native"
-        ],
-        "mixin": [
-            "f_mixin_function"
-        ]
-    },
-    {
-        "name": "f_function_native*_scalar",
-        "comments": [
-            "Return a scalar to avoid doing the deref in Fortran."
-        ],
-        "mixin": [
-            "f_mixin_function"
-        ],
-        "c_return_type": "{c_type}",
-        "c_return": [
-            "return *{cxx_var};"
-        ],
-        "c_need_wrapper": true
-    },
-    {
         "name": "f_mixin_function_ptr",
         "comments": [
             "Return a C pointer directly as type(C_PTR)."
@@ -1039,6 +1013,32 @@
         ]
     },
     {
+        "name":"#### native ################################################"
+    },
+    {
+        "alias": [
+            "f_function_native",
+            "c_function_native"
+        ],
+        "mixin": [
+            "f_mixin_function"
+        ]
+    },
+    {
+        "name": "f_function_native*_scalar",
+        "comments": [
+            "Return a scalar to avoid doing the deref in Fortran."
+        ],
+        "mixin": [
+            "f_mixin_function"
+        ],
+        "c_return_type": "{c_type}",
+        "c_return": [
+            "return *{cxx_var};"
+        ],
+        "c_need_wrapper": true
+    },
+    {
         "alias": [
             "f_in_native*",
             "c_in_native*",
@@ -1162,85 +1162,6 @@
                 "C_PTR"
             ]
         }
-    },
-    {
-        "alias": [
-            "f_in_unknown",
-            "c_in_unknown"
-        ],
-        "notes": [
-            "Used with MPI types"
-        ],
-        "mixin": [
-            "c_mixin_argument2"
-        ]
-    },
-    {
-        "name":"############################################################"
-    },
-    {
-        "name": "f_mixin_local-logical-var",
-        "f_temps": [
-            "cxx"
-        ],
-        "f_declare": [
-            "logical(C_BOOL) :: {f_var_cxx}"
-        ],
-        "f_arg_call": [
-            "{f_var_cxx}"
-        ]
-    },
-    {
-        "alias": [
-            "f_in_bool",
-            "c_in_bool"
-        ],
-        "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_local-logical-var"
-        ],
-        "f_pre_call": [
-            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
-        ]
-    },
-    {
-        "alias": [
-            "f_out_bool*",
-            "c_out_bool_*"
-        ],
-        "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_local-logical-var"
-        ],
-        "f_post_call": [
-            "{f_var} = {f_var_cxx}  ! coerce to logical"
-        ]
-    },
-    {
-        "alias": [
-            "f_inout_bool*",
-            "c_inout_bool_*"
-        ],
-        "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_local-logical-var"
-        ],
-        "f_pre_call": [
-            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
-        ],
-        "f_post_call": [
-            "{f_var} = {f_var_cxx}  ! coerce to logical"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_bool",
-            "c_function_bool"
-        ],
-        "mixin": [
-            "f_mixin_function"
-        ],
-        "f_need_wrapper": true
     },
     {
         "name": "c_mixin_out_native**",
@@ -1388,6 +1309,91 @@
         "c_arg_call": [
             "{cxx_var}"
         ]
+    },
+    {
+        "name":"#### unknown ##############################################"
+    },
+    {
+        "alias": [
+            "f_in_unknown",
+            "c_in_unknown"
+        ],
+        "notes": [
+            "Used with MPI types"
+        ],
+        "mixin": [
+            "c_mixin_argument2"
+        ]
+    },
+    {
+        "name":"#### bool ##################################################"
+    },
+    {
+        "name": "f_mixin_local-logical-var",
+        "f_temps": [
+            "cxx"
+        ],
+        "f_declare": [
+            "logical(C_BOOL) :: {f_var_cxx}"
+        ],
+        "f_arg_call": [
+            "{f_var_cxx}"
+        ]
+    },
+    {
+        "alias": [
+            "f_in_bool",
+            "c_in_bool"
+        ],
+        "mixin": [
+            "c_mixin_argument2",
+            "f_mixin_local-logical-var"
+        ],
+        "f_pre_call": [
+            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+        ]
+    },
+    {
+        "alias": [
+            "f_out_bool*",
+            "c_out_bool_*"
+        ],
+        "mixin": [
+            "c_mixin_argument2",
+            "f_mixin_local-logical-var"
+        ],
+        "f_post_call": [
+            "{f_var} = {f_var_cxx}  ! coerce to logical"
+        ]
+    },
+    {
+        "alias": [
+            "f_inout_bool*",
+            "c_inout_bool_*"
+        ],
+        "mixin": [
+            "c_mixin_argument2",
+            "f_mixin_local-logical-var"
+        ],
+        "f_pre_call": [
+            "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
+        ],
+        "f_post_call": [
+            "{f_var} = {f_var_cxx}  ! coerce to logical"
+        ]
+    },
+    {
+        "alias": [
+            "f_function_bool",
+            "c_function_bool"
+        ],
+        "mixin": [
+            "f_mixin_function"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "name":"#### void ##################################################"
     },
     {
         "alias": [
