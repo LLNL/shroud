@@ -498,6 +498,7 @@ root
       arg
         capsule -- f_mixin_arg_capsule
       argument-as-cptr -- f_mixin_argument-as-cptr
+      argument-as-cptr-value -- f_mixin_argument-as-cptr-value
       capsule
         dtor -- f_mixin_capsule_dtor
       char
@@ -3626,6 +3627,13 @@ c_out_native*:
 c_out_native*&:
   name: c_out_native*&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4349,6 +4357,13 @@ c_out_vector<string>_buf_copy:
 c_out_void*&:
   name: c_out_void*&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11084,12 +11099,23 @@ f_mixin_argument-as-cptr:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_mixin_argument-as-cptr-value:
+  name: f_mixin_argument-as-cptr-value
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
   - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_decl:
-  - '{gen.cdecl.c_var}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -13204,6 +13230,13 @@ f_out_vector_buf_targ_string_scalar:
 f_out_void*&:
   name: f_out_void*&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:

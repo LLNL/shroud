@@ -1145,13 +1145,13 @@ rv = .false.
                         "procedure({}) :: {}".format(absiface, name)
                     )
                     imports[absiface] = True
-            elif declarator.is_array() > 1:
-                # Treat too many pointers as a type(C_PTR)
-                # and let the wrapper sort it out.
-                # 'char **' uses c_in_char** as a special case.
-                append_format(arg_c_decl,
-                              "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
+#            elif declarator.is_array() > 1:
+#                # Treat too many pointers as a type(C_PTR)
+#                # and let the wrapper sort it out.
+#                # 'char **' uses c_in_char** as a special case.
+#                append_format(arg_c_decl,
+#                              "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
+#                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
                 arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
                 arg_typemap = ast.typemap

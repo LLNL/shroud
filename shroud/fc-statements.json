@@ -60,7 +60,7 @@
         }
     },
     {
-        "name": "f_mixin_argument-as-cptr",
+        "name": "f_mixin_argument-as-cptr-value",
         "notes": [
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran"
@@ -75,10 +75,25 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
-        },
-        "c_arg_decl": [
-            "{gen.cdecl.c_var}"
-        ]
+        }
+    },
+    {
+        "name": "f_mixin_argument-as-cptr",
+        "notes": [
+            "Pass the address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
     },
     {
         "alias": [
@@ -1057,10 +1072,7 @@
             "f_out_native&",
             "c_out_native&",
             "f_inout_native&",
-            "c_inout_native&",
-            "c_out_native*&",
-            "f_out_void*&",
-            "c_out_void*&"
+            "c_inout_native&"
         ],
         "mixin": [
             "c_mixin_argument2"            
@@ -1121,6 +1133,20 @@
                 "C_PTR"
             ]
         }
+    },
+    {
+        "alias": [
+            "f_out_void*&",
+            "c_out_void*&",
+            "c_out_native*&"
+        ],
+        "mixin": [
+            "c_mixin_argument2",
+            "f_mixin_argument-as-cptr"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
+        ]
     },
     {
         "alias": [
@@ -2548,7 +2574,8 @@
             "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
         ],
         "mixin": [
-            "f_mixin_argument-as-cptr"
+            "c_mixin_argument2",
+            "f_mixin_argument-as-cptr-value"
         ],
         "notimplemented": true
     },
