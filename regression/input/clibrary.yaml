@@ -201,6 +201,13 @@ declarations:
     wrap_python: false
     literalinclude: True
 
+- decl: void passAssumedTypeDim(void *arg+assumedtype+dimension(3))
+  doxygen:
+    brief: Test assumed-type with dimension(3)
+  options:
+    wrap_python: false
+    literalinclude: True
+
 - decl: void passAssumedTypeRank(void *arg+assumedtype+rank(1))
   doxygen:
     brief: Test assumed-type with rank(1)

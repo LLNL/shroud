@@ -1110,9 +1110,10 @@ rv = .false.
                         "type(*) :: {}(*)".format(name)
                     )
                 elif meta["dimension"]:
+                    # Dimension must be assumed shape or assumed rank
                     arg_c_decl.append(
-                        "type(*) :: {}({})".format(
-                            name, meta["dimension"])
+                        "type(*) :: {}(..)".format(
+                            name)#, meta["dimension"])
                     )
                 else:
                     arg_c_decl.append(
