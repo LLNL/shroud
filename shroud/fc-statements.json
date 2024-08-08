@@ -3180,25 +3180,6 @@
         ]
     },
     {
-        "name": "f_mixin_inout_char_array_cdesc",
-        "comments": [
-            "Pass argument and size to C.",
-            "Pass array_type to C which will fill it in."
-        ],
-        "f_helper": [
-            "array_context"
-        ],
-        "f_declare": [
-            "type({F_array_type}) :: {f_var_cdesc}"
-        ],
-        "f_arg_call": [
-            "{f_var_cdesc}"
-        ],
-        "f_temps": [
-            "cdesc"
-        ]
-    },
-    {
         "alias": [
             "f_out_vector<string>&_cdesc",
             "c_out_vector<string>&_cdesc"

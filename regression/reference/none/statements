@@ -537,9 +537,6 @@ root
       inout
         array
           cdesc -- f_mixin_inout_array_cdesc
-        char
-          array
-            cdesc -- f_mixin_inout_char_array_cdesc
       kind-argument -- f_mixin_kind-argument
       local-logical-var -- f_mixin_local-logical-var
       native
@@ -11484,23 +11481,6 @@ f_mixin_inout_array_cdesc:
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  f_temps:
-  - cdesc
-  f_helper:
-  - array_context
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
-f_mixin_inout_char_array_cdesc:
-  name: f_mixin_inout_char_array_cdesc
-  comments:
-  - Pass argument and size to C.
-  - Pass array_type to C which will fill it in.
-  intent: mixin
-  f_declare:
-  - 'type({F_array_type}) :: {f_var_cdesc}'
-  f_arg_call:
-  - '{f_var_cdesc}'
   f_temps:
   - cdesc
   f_helper:
