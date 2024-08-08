@@ -1105,20 +1105,8 @@ rv = .false.
             arg_c_names.append(name)
             # argument declarations
             if meta["assumedtype"]:
-                if meta["rank"]:
-                    arg_c_decl.append(
-                        "type(*) :: {}(*)".format(name)
-                    )
-                elif meta["dimension"]:
-                    # Dimension must be assumed shape or assumed rank
-                    arg_c_decl.append(
-                        "type(*) :: {}(..)".format(
-                            name)#, meta["dimension"])
-                    )
-                else:
-                    arg_c_decl.append(
-                        "type(*) :: {}".format(name)
-                    )
+                append_format(arg_c_decl, "type(*) :: {i_var}{i_dimension}", fmt)
+                # Dimension must be assumed shape or assumed rank
 #            elif "external" in attrs:
 #                # EXTERNAL is not compatible with BIND(C)
 #                arg_c_decl.append("external :: {}".format(name))
