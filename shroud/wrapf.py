@@ -1063,24 +1063,17 @@ rv = .false.
 
     def build_arg_list_interface(
         self,
-        node, fileinfo,
         fmt, meta,
-        ast,
         stmts_blk,
         modules,
         imports,
         arg_c_names,
         arg_c_decl,
     ):
-        """Build the Fortran interface for a c wrapper function.
+        """Build the Fortran interface for a C wrapper function.
 
         Args:
-            node -
-            fileinfo - ModuleInfo
             fmt -
-            ast - declast.Declaration
-               node.ast for subprograms
-               node.declarator.params[n] for parameters
             stmts_blk - typemap.CStmts or util.Scope
             modules - Build up USE statement.
             imports - Build up IMPORT statement.
@@ -1095,61 +1088,6 @@ rv = .false.
                 append_format(arg_c_decl, arg, fmt)
             if not meta["assumedtype"]:
                 self.add_i_module_from_stmts(stmts_blk, modules, imports, fmt)
-        elif stmts_blk.intent == "function":
-            # Functions do not pass arguments by default.
-            pass
-        else:
-            declarator = ast.declarator
-            name = declarator.user_name
-            attrs = declarator.attrs
-            ntypemap = declarator.typemap
-            arg_c_names.append(name)
-            # argument declarations
-#            if meta["assumedtype"]:
-#                append_format(arg_c_decl, "{f_type}{f_intent_attr} :: {i_var}{i_dimension}", fmt)
-                # Dimension must be assumed shape or assumed rank
-#            elif "external" in attrs:
-#                # EXTERNAL is not compatible with BIND(C)
-#                arg_c_decl.append("external :: {}".format(name))
-#            elif ntypemap.base == "procedure":
-#                if "funptr" in attrs:
-#                    arg_c_decl.append(
-#                        "type(C_FUNPTR), value :: {}".format(name)
-#                    )
-#                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-#                else:
-#                    # abstract interface already created via typedef
-#                    arg_c_decl.append(
-#                        "procedure({}) :: {}".format(fmt.f_kind, name)
-#                    )
-#                    imports[fmt.f_kind] = True
-#            elif declarator.is_function_pointer():
-#                if "funptr" in attrs:
-#                    arg_c_decl.append(
-#                        "type(C_FUNPTR), value :: {}".format(name)
-#                    )
-#                    self.set_f_module(modules, "iso_c_binding", "C_FUNPTR")
-#                else:
-#                    absiface = fmt.f_abstract_interface
-#                    arg_c_decl.append(
-#                        "procedure({}) :: {}".format(absiface, name)
-#                    )
-#                    imports[absiface] = True
-#            elif declarator.is_array() > 1:
-#                # Treat too many pointers as a type(C_PTR)
-#                # and let the wrapper sort it out.
-#                # 'char **' uses c_in_char** as a special case.
-#                append_format(arg_c_decl,
-#                              "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
-#                self.set_f_module(modules, "iso_c_binding", "C_PTR")
-#            else:
-#                arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
-#                arg_typemap = ast.typemap
-#                self.update_f_module(
-#                    modules,
-#                    arg_typemap.i_module or arg_typemap.f_module,
-#                    fmt
-#                )
 
     def wrap_function_interface(self, wlang, cls, node, fileinfo):
         """Write Fortran interface for C function.
@@ -1253,9 +1191,7 @@ rv = .false.
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(stmts_comments, arg, arg_stmt.name)
             self.build_arg_list_interface(
-                node, fileinfo,
                 fmt_arg, meta,
-                arg,
                 arg_stmt,
                 modules,
                 imports,
@@ -1267,9 +1203,7 @@ rv = .false.
         func_cursor.stmt = result_stmt
 
         self.build_arg_list_interface(
-            node, fileinfo,
             fmt_result, r_meta,
-            ast,
             result_stmt,
             modules,
             imports,
