@@ -27,6 +27,7 @@ Fortran:
    deref
    hidden
    owner    attrs
+   value
 
    fptr - FunctionNode for callback
       Converted from a function pointer into a function.
@@ -163,7 +164,10 @@ class FillMeta(object):
                 if arg.typemap.name == "void":
                     # This causes Fortran to dereference the C_PTR
                     # Otherwise a void * argument becomes void **
-                    if len(arg.declarator.pointer) == 1:
+                    if meta["assumedtype"]:
+                        # assumed-type interoperates with a C argument declared as “void *”
+                        pass
+                    elif len(arg.declarator.pointer) == 1:
                         meta["value"] = True  # void *
 #                    else:
 #                        meta["value"] = None # void **  XXX intent(out)?

@@ -2458,6 +2458,13 @@ c_in_void:
 c_in_void*:
   name: c_in_void*
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10132,8 +10139,15 @@ f_in_void*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'type(C_PTR), intent(IN) :: {f_var}'
+  - '{f_type}{f_intent_attr} :: {f_var}'
   f_module:
+    iso_c_binding:
+    - C_PTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
     iso_c_binding:
     - C_PTR
   c_arg_decl:

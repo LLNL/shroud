@@ -4518,7 +4518,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "type(*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg",
                                 "fc_var": "arg",
                                 "i_var": "arg",
@@ -4529,8 +4528,7 @@
                             },
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_void*"
                         }
@@ -4544,8 +4542,7 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         }
                     }
@@ -4650,7 +4647,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "type(*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg",
                                 "fc_var": "arg",
                                 "i_dimension": "(*)",
@@ -4665,8 +4661,7 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1,
-                                "value": true
+                                "rank": 1
                             },
                             "stmt": "f_in_void*"
                         }
@@ -4681,8 +4676,7 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1,
-                                "value": true
+                                "rank": 1
                             }
                         }
                     }
@@ -4830,7 +4824,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "type(*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg",
                                 "fc_var": "arg",
                                 "i_var": "arg",
@@ -4841,8 +4834,7 @@
                             },
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_void*"
                         },
@@ -4894,8 +4886,7 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         },
                         "outbuf": {

@@ -1093,7 +1093,8 @@ rv = .false.
                 append_format(arg_c_names, name, fmt)
             for arg in stmts_blk.i_arg_decl:
                 append_format(arg_c_decl, arg, fmt)
-            self.add_i_module_from_stmts(stmts_blk, modules, imports, fmt)
+            if not meta["assumedtype"]:
+                self.add_i_module_from_stmts(stmts_blk, modules, imports, fmt)
         elif stmts_blk.intent == "function":
             # Functions do not pass arguments by default.
             pass
@@ -1104,8 +1105,9 @@ rv = .false.
             ntypemap = declarator.typemap
             arg_c_names.append(name)
             # argument declarations
-            if meta["assumedtype"]:
-                append_format(arg_c_decl, "{f_type}{f_intent_attr} :: {i_var}{i_dimension}", fmt)
+            if True:
+#            if meta["assumedtype"]:
+#                append_format(arg_c_decl, "{f_type}{f_intent_attr} :: {i_var}{i_dimension}", fmt)
                 # Dimension must be assumed shape or assumed rank
 #            elif "external" in attrs:
 #                # EXTERNAL is not compatible with BIND(C)
@@ -1141,7 +1143,7 @@ rv = .false.
 #                append_format(arg_c_decl,
 #                              "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
 #                self.set_f_module(modules, "iso_c_binding", "C_PTR")
-            else:
+#            else:
                 arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
                 arg_typemap = ast.typemap
                 self.update_f_module(

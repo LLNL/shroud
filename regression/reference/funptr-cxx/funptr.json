@@ -2395,7 +2395,6 @@
                                 "cxx_var": "in",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_value_attr": ", value",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
                                 "stmt_name": "c_in_void*",
@@ -2403,8 +2402,7 @@
                             },
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "c_in_void*"
                         },
@@ -2559,7 +2557,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "type(*)",
-                                "f_value_attr": ", value",
                                 "f_var": "in",
                                 "fc_var": "in",
                                 "i_var": "in",
@@ -2570,8 +2567,7 @@
                             },
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_void*"
                         },
@@ -2702,8 +2698,7 @@
                         "in": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         },
                         "incr3": {
