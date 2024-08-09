@@ -1783,6 +1783,13 @@ c_in_native:
 c_in_native&:
   name: c_in_native&
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2114,6 +2121,13 @@ c_in_struct:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2122,6 +2136,13 @@ c_in_struct:
 c_in_struct&:
   name: c_in_struct&
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2133,6 +2154,13 @@ c_in_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2526,6 +2554,13 @@ c_in_void*_cdesc:
 c_inout_bool_*:
   name: c_inout_bool_*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2596,6 +2631,13 @@ c_inout_enum*:
 c_inout_native&:
   name: c_inout_native&
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2829,6 +2871,13 @@ c_inout_string*_buf:
 c_inout_struct&:
   name: c_inout_struct&
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2840,6 +2889,13 @@ c_inout_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3564,6 +3620,13 @@ c_mixin_vector_cdesc_fill-cdesc:
 c_out_bool_*:
   name: c_out_bool_*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3628,6 +3691,13 @@ c_out_enum*:
 c_out_native&:
   name: c_out_native&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3928,6 +3998,13 @@ c_out_string*_buf:
 c_out_struct&:
   name: c_out_struct&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3939,6 +4016,13 @@ c_out_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4457,6 +4541,13 @@ c_setter:
 c_setter_native:
   name: c_setter_native
   intent: setter
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4467,6 +4558,13 @@ c_setter_native:
 c_setter_native*:
   name: c_setter_native*
   intent: setter
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9194,6 +9292,13 @@ f_in_native:
 f_in_native&:
   name: f_in_native&
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9728,6 +9833,13 @@ f_in_struct:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9736,6 +9848,13 @@ f_in_struct:
 f_in_struct&:
   name: f_in_struct&
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9747,6 +9866,13 @@ f_in_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10278,6 +10404,13 @@ f_inout_bool*:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_temps:
   - cxx
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10408,6 +10541,13 @@ f_inout_enum*:
 f_inout_native&:
   name: f_inout_native&
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10814,6 +10954,13 @@ f_inout_string*_cfi:
 f_inout_struct&:
   name: f_inout_struct&
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10825,6 +10972,13 @@ f_inout_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11955,6 +12109,13 @@ f_out_bool*:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_temps:
   - cxx
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12074,6 +12235,13 @@ f_out_enum*:
 f_out_native&:
   name: f_out_native&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12868,6 +13036,13 @@ f_out_string*_cfi:
 f_out_struct&:
   name: f_out_struct&
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12879,6 +13054,13 @@ f_out_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13414,6 +13596,13 @@ f_setter_bool:
   - '{f_var_cxx}'
   f_temps:
   - cxx
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13428,6 +13617,13 @@ f_setter_native:
   - '{f_var}'
   f_arg_call:
   - '{fc_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13442,6 +13638,13 @@ f_setter_native*:
   - '{f_var}'
   f_arg_call:
   - '{fc_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:

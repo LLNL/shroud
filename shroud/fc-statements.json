@@ -1092,7 +1092,8 @@
             "c_inout_native&"
         ],
         "mixin": [
-            "c_mixin_argument2"            
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1464,6 +1465,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_post_call": [
@@ -1477,6 +1479,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -3673,7 +3676,8 @@
             "C pointer -> void pointer -> C++ pointer"
         ],
         "mixin": [
-            "c_mixin_argument2"            
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ]
     },
     {
@@ -3686,7 +3690,8 @@
             "c_inout_struct&"
         ],
         "mixin": [
-            "c_mixin_argument2"            
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -3813,6 +3818,7 @@
         "name": "f_setter_bool",
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -3864,7 +3870,8 @@
             "c_setter_native*"
         ],
         "mixin": [
-            "c_mixin_argument2"
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ],
         "f_arg_name": [
             "{f_var}"

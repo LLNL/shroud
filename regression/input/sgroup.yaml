@@ -40,4 +40,5 @@ statements:
     - name: f_in_twostruct<native,native>
       mixin:
       - c_mixin_argument2
+      - f_mixin_declare-interface-arg
     # Add meaningful fields here
