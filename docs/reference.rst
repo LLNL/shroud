@@ -1526,6 +1526,11 @@ f_value_attr
     ``{f_type}{f_value_attr} ::``.
     If *value* is *False*, the format field will be blank.
 
+i_type
+    The Fortran interface type of the argument.
+    Derived from the ``typemap.i_type``.
+    If the attribute *+assumedtype* is set, then it will be ``type(*)``.
+
 size_var
     Name of variable which holds the size of an array in the
     Python wrapper.
