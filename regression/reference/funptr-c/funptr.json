@@ -1689,7 +1689,7 @@
                                 "cxx_var": "in",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_type": "type(C_PTR)",
+                                "f_type": "type(*)",
                                 "f_value_attr": ", value",
                                 "f_var": "in",
                                 "fc_var": "in",

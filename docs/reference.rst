@@ -1513,6 +1513,11 @@ f_optional_attr
     ``{f_type}{f_optional_attr} ::``.
     If *optional* is *False*, the format field will be blank.
 
+f_type
+    The Fortran type of the argument.
+    Derived from the ``typemap.f_type``.
+    If the attribute *+assumedtype* is set, then it will be ``type(*)``.
+    
 f_value_attr
     The value of the *value* metaattribute
     converted into a Fortran attribute.

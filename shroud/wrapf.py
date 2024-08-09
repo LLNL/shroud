@@ -1105,7 +1105,7 @@ rv = .false.
             arg_c_names.append(name)
             # argument declarations
             if meta["assumedtype"]:
-                append_format(arg_c_decl, "type(*){f_intent_attr} :: {i_var}{i_dimension}", fmt)
+                append_format(arg_c_decl, "{f_type}{f_intent_attr} :: {i_var}{i_dimension}", fmt)
                 # Dimension must be assumed shape or assumed rank
 #            elif "external" in attrs:
 #                # EXTERNAL is not compatible with BIND(C)
