@@ -1105,7 +1105,6 @@ rv = .false.
             ntypemap = declarator.typemap
             arg_c_names.append(name)
             # argument declarations
-            if True:
 #            if meta["assumedtype"]:
 #                append_format(arg_c_decl, "{f_type}{f_intent_attr} :: {i_var}{i_dimension}", fmt)
                 # Dimension must be assumed shape or assumed rank
@@ -1144,13 +1143,13 @@ rv = .false.
 #                              "type(C_PTR), intent({f_intent}) :: {i_var}", fmt)
 #                self.set_f_module(modules, "iso_c_binding", "C_PTR")
 #            else:
-                arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
-                arg_typemap = ast.typemap
-                self.update_f_module(
-                    modules,
-                    arg_typemap.i_module or arg_typemap.f_module,
-                    fmt
-                )
+#                arg_c_decl.append(bind_c(ast, modules, meta["intent"]))
+#                arg_typemap = ast.typemap
+#                self.update_f_module(
+#                    modules,
+#                    arg_typemap.i_module or arg_typemap.f_module,
+#                    fmt
+#                )
 
     def wrap_function_interface(self, wlang, cls, node, fileinfo):
         """Write Fortran interface for C function.

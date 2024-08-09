@@ -1426,7 +1426,8 @@
             "Used with MPI types"
         ],
         "mixin": [
-            "c_mixin_argument2"
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ]
     },
     {
@@ -1629,6 +1630,9 @@
         "alias": [
             "f_out_enum*",
             "c_out_enum*"
+        ],
+        "mixin": [
+            "f_mixin_declare-interface-arg"
         ],
         "c_arg_decl": [
             "{gen.cidecl.c_var}"
@@ -4833,6 +4837,12 @@
         "comments": [
             "Default returned by lookup_fc_stmts when group is not found."
         ],
+        "i_arg_names": [
+            "===>i_arg_names<==="
+        ],
+        "i_arg_decl": [
+            "===>i_arg_decl<==="
+        ],
         "c_arg_decl": [
             "===>{c_var}<==="
         ]
@@ -4841,6 +4851,12 @@
         "name": "c_mixin_unknown",
         "comments": [
             "Default returned by lookup_fc_stmts when group is not found."
+        ],
+        "i_arg_names": [
+            "===>i_arg_names<==="
+        ],
+        "i_arg_decl": [
+            "===>i_arg_decl<==="
         ],
         "c_arg_decl": [
             "===>{c_var}<==="

@@ -2171,6 +2171,13 @@ c_in_unknown:
   notes:
   - Used with MPI types
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2617,6 +2624,13 @@ c_inout_char*_buf:
 c_inout_enum*:
   name: c_inout_enum*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -3594,6 +3608,10 @@ c_mixin_unknown:
   comments:
   - Default returned by lookup_fc_stmts when group is not found.
   intent: mixin
+  i_arg_names:
+  - ===>i_arg_names<===
+  i_arg_decl:
+  - ===>i_arg_decl<===
   c_arg_decl:
   - ===>{c_var}<===
   c_arg_call:
@@ -3677,6 +3695,13 @@ c_out_char_*_buf:
 c_out_enum*:
   name: c_out_enum*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -9883,6 +9908,13 @@ f_in_unknown:
   notes:
   - Used with MPI types
   intent: in
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10527,6 +10559,13 @@ f_inout_char*_cfi:
 f_inout_enum*:
   name: f_inout_enum*
   intent: inout
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -12037,6 +12076,10 @@ f_mixin_unknown:
   comments:
   - Default returned by lookup_fc_stmts when group is not found.
   intent: mixin
+  i_arg_names:
+  - ===>i_arg_names<===
+  i_arg_decl:
+  - ===>i_arg_decl<===
   c_arg_decl:
   - ===>{c_var}<===
   c_arg_call:
@@ -12221,6 +12264,13 @@ f_out_char*_cfi:
 f_out_enum*:
   name: f_out_enum*
   intent: out
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
