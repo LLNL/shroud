@@ -60,6 +60,23 @@
         }
     },
     {
+        "name": "f_mixin_declare-interface-arg",
+        "notes": [
+            "General declaration for Fortran interface."
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "i_arg_decl": [
+            "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+        ]
+    },
+    {
         "name": "f_mixin_argument-as-cptr-value",
         "notes": [
             "Pass the address of the argument directly to C.",
@@ -1433,6 +1450,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
