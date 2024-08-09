@@ -1502,6 +1502,8 @@ f_intent_attr
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
     If *intent* is *none*, the format field will be blank.
+    *f_intent_attr* can also be used with Fortran interface.
+    (There is no *i_intent_attr*)
 
 f_optional_attr
     The value of the *optional* metaattribute
@@ -1511,6 +1513,11 @@ f_optional_attr
     ``{f_type}{f_optional_attr} ::``.
     If *optional* is *False*, the format field will be blank.
 
+f_type
+    The Fortran type of the argument.
+    Derived from the ``typemap.f_type``.
+    If the attribute *+assumedtype* is set, then it will be ``type(*)``.
+    
 f_value_attr
     The value of the *value* metaattribute
     converted into a Fortran attribute.
@@ -1518,6 +1525,11 @@ f_value_attr
     Used with argument declarations:
     ``{f_type}{f_value_attr} ::``.
     If *value* is *False*, the format field will be blank.
+
+i_type
+    The Fortran interface type of the argument.
+    Derived from the ``typemap.i_type``.
+    If the attribute *+assumedtype* is set, then it will be ``type(*)``.
 
 size_var
     Name of variable which holds the size of an array in the

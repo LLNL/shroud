@@ -532,7 +532,12 @@ class FillFormat(object):
 #        else:
             # XXX - now set in fcfmt.set_f_arg_format
         
-        fmt.f_type = ntypemap.f_type
+        if meta["assumedtype"]:
+            fmt.f_type = "type(*)"
+            fmt.i_type = "type(*)"
+        else:
+            fmt.f_type = ntypemap.f_type
+            fmt.i_type = ntypemap.i_type or ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind

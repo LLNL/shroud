@@ -60,7 +60,24 @@
         }
     },
     {
-        "name": "f_mixin_argument-as-cptr",
+        "name": "f_mixin_declare-interface-arg",
+        "notes": [
+            "General declaration for Fortran interface."
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "i_arg_decl": [
+            "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+        ]
+    },
+    {
+        "name": "f_mixin_argument-as-cptr-value",
         "notes": [
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran"
@@ -75,10 +92,25 @@
             "iso_c_binding": [
                 "C_PTR"
             ]
-        },
-        "c_arg_decl": [
-            "{gen.cdecl.c_var}"
-        ]
+        }
+    },
+    {
+        "name": "f_mixin_argument-as-cptr",
+        "notes": [
+            "Pass the address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
     },
     {
         "alias": [
@@ -1057,13 +1089,11 @@
             "f_out_native&",
             "c_out_native&",
             "f_inout_native&",
-            "c_inout_native&",
-            "c_out_native*&",
-            "f_out_void*&",
-            "c_out_void*&"
+            "c_inout_native&"
         ],
         "mixin": [
-            "c_mixin_argument2"            
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1121,6 +1151,20 @@
                 "C_PTR"
             ]
         }
+    },
+    {
+        "alias": [
+            "f_out_void*&",
+            "c_out_void*&",
+            "c_out_native*&"
+        ],
+        "mixin": [
+            "c_mixin_argument2",
+            "f_mixin_argument-as-cptr"
+        ],
+        "c_arg_call": [
+            "*{cxx_var}"
+        ]
     },
     {
         "alias": [
@@ -1382,7 +1426,8 @@
             "Used with MPI types"
         ],
         "mixin": [
-            "c_mixin_argument2"
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ]
     },
     {
@@ -1407,6 +1452,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -1420,6 +1466,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_post_call": [
@@ -1433,6 +1480,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -1460,6 +1508,9 @@
             "f_in_void*",
             "c_in_void*"
         ],
+        "mixin": [
+            "c_mixin_argument2"
+        ],
         "f_module": {
             "iso_c_binding": [
                 "C_PTR"
@@ -1469,10 +1520,18 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "type(C_PTR), intent(IN) :: {f_var}"
+            "{f_type}{f_intent_attr} :: {f_var}"
         ],
-        "c_arg_decl": [
-            "{gen.cdecl.c_var}"
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ]
     },
     {
@@ -1571,6 +1630,9 @@
         "alias": [
             "f_out_enum*",
             "c_out_enum*"
+        ],
+        "mixin": [
+            "f_mixin_declare-interface-arg"
         ],
         "c_arg_decl": [
             "{gen.cidecl.c_var}"
@@ -2548,7 +2610,8 @@
             "mapping for the C interface.  Fortran calls the +api(cdesc) variant."
         ],
         "mixin": [
-            "f_mixin_argument-as-cptr"
+            "c_mixin_argument2",
+            "f_mixin_argument-as-cptr-value"
         ],
         "notimplemented": true
     },
@@ -3617,7 +3680,8 @@
             "C pointer -> void pointer -> C++ pointer"
         ],
         "mixin": [
-            "c_mixin_argument2"            
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ]
     },
     {
@@ -3630,7 +3694,8 @@
             "c_inout_struct&"
         ],
         "mixin": [
-            "c_mixin_argument2"            
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -3757,6 +3822,7 @@
         "name": "f_setter_bool",
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
         "f_pre_call": [
@@ -3808,7 +3874,8 @@
             "c_setter_native*"
         ],
         "mixin": [
-            "c_mixin_argument2"
+            "c_mixin_argument2",
+            "f_mixin_declare-interface-arg"
         ],
         "f_arg_name": [
             "{f_var}"
@@ -4695,34 +4762,23 @@
         "mixin": [
             "c_mixin_argument2"
         ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
         "f_arg_decl": [
             "procedure({f_abstract_interface}) :: {f_var}"
         ],
-        "f_arg_name": [
-            "{f_var}"
-        ]
-    },
-    {
-        "alias": [
-            "f_in_procedure_funptr",
-            "c_in_procedure_funptr"
-        ],
-        "mixin": [
-            "c_mixin_argument2"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_FUNPTR"
-            ]
-        },
-        "f_arg_decl": [
-            "type(C_FUNPTR) :: {f_var}"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
         "f_arg_call": [
             "{f_var}"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_import": [
+            "{f_abstract_interface}"
+        ],
+        "i_arg_decl": [
+            "procedure({f_abstract_interface}) :: {i_var}"
         ]
     },
     {
@@ -4733,19 +4789,45 @@
         "notes": [
             "EXTERNAL is not allowed in BIND(C), so force wrapper."
         ],
-        "mixin": [
-            "c_mixin_argument2"
-        ],
+        "base": "f_in_procedure",
         "f_arg_decl": [
             "external :: {f_var}"
+        ],
+        "f_need_wrapper": true
+    },
+    {
+        "alias": [
+            "f_in_procedure_funptr",
+            "c_in_procedure_funptr"
+        ],
+        "mixin": [
+            "c_mixin_argument2"
         ],
         "f_arg_name": [
             "{f_var}"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_FUNPTR"
+            ]
+        },
+        "f_arg_decl": [
+            "type(C_FUNPTR) :: {f_var}"
+        ],
         "f_arg_call": [
             "{f_var}"
         ],
-        "f_need_wrapper": true
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_FUNPTR"
+            ]
+        },
+        "i_arg_decl": [
+            "type(C_FUNPTR), value :: {i_var}"
+        ]
     },
     {
         "name":"##### unknown ##############################################"
@@ -4755,6 +4837,12 @@
         "comments": [
             "Default returned by lookup_fc_stmts when group is not found."
         ],
+        "i_arg_names": [
+            "===>i_arg_names<==="
+        ],
+        "i_arg_decl": [
+            "===>i_arg_decl<==="
+        ],
         "c_arg_decl": [
             "===>{c_var}<==="
         ]
@@ -4763,6 +4851,12 @@
         "name": "c_mixin_unknown",
         "comments": [
             "Default returned by lookup_fc_stmts when group is not found."
+        ],
+        "i_arg_names": [
+            "===>i_arg_names<==="
+        ],
+        "i_arg_decl": [
+            "===>i_arg_decl<==="
         ],
         "c_arg_decl": [
             "===>{c_var}<==="

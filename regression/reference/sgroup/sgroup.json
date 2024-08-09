@@ -154,6 +154,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg",
                                 "fc_var": "arg",
+                                "i_type": "type(twostruct)",
                                 "i_var": "arg",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_STRUCT",

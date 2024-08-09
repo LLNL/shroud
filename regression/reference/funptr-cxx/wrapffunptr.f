@@ -218,7 +218,7 @@ module funptr_mod
             use iso_c_binding, only : C_FUNPTR, C_INT
             implicit none
             integer(C_INT), value, intent(IN) :: type
-            type(*) :: in
+            type(*), intent(IN) :: in
             type(C_FUNPTR), value :: incr3
         end subroutine callback3
 

@@ -241,6 +241,7 @@
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "real(C_DOUBLE)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_DOUBLE",
@@ -275,6 +276,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
+                                "i_type": "real(C_DOUBLE)",
                                 "i_var": "arg1",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_DOUBLE",
@@ -310,6 +312,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg2",
                                 "fc_var": "arg2",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "arg2",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -547,6 +550,7 @@
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
+                                "i_type": "real(C_DOUBLE)",
                                 "i_var": "arg1",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_DOUBLE",
@@ -580,6 +584,7 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "arg2",
                                 "fc_var": "arg2",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "arg2",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -764,6 +769,7 @@
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "real(C_DOUBLE)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_DOUBLE",
@@ -798,6 +804,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg2",
                                 "fc_var": "arg2",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "arg2",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -1021,6 +1028,7 @@
                                 "f_var": "arg1",
                                 "f_var_cxx": "SHT_arg1_cxx",
                                 "fc_var": "arg1",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "arg1",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
@@ -1056,6 +1064,7 @@
                                 "f_var": "arg2",
                                 "f_var_cxx": "SHT_arg2_cxx",
                                 "fc_var": "arg2",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "arg2",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
@@ -1090,6 +1099,7 @@
                                 "f_var": "arg3",
                                 "f_var_cxx": "SHT_arg3_cxx",
                                 "fc_var": "arg3",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "arg3",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
@@ -1346,6 +1356,7 @@
                                 "f_var_len": "SHT_rv_len",
                                 "fc_var": "SHT_rv",
                                 "i_local_cxx": "SHC_rv_cxx",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
                                 "i_var_len": "SHT_rv_len",
                                 "idtor": "0",
@@ -1382,6 +1393,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg1",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -1416,6 +1428,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "arg2",
                                 "fc_var": "arg2",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "arg2",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -1632,6 +1645,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "name",
                                 "fc_var": "name",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -1818,6 +1832,7 @@
                                 "f_var": "s",
                                 "f_var_len": "SHT_s_len",
                                 "fc_var": "s",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "s",
                                 "i_var_len": "SHT_s_len",
                                 "i_var_str": "SHT_s_str",
@@ -2024,6 +2039,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "in",
                                 "fc_var": "in",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "in",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -2059,6 +2075,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "n",
                                 "fc_var": "n",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "n",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -2093,6 +2110,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "out",
                                 "fc_var": "out",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "out",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -2241,6 +2259,7 @@
                                 "f_var": "name1",
                                 "f_var_len": "SHT_name1_len",
                                 "fc_var": "name1",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name1",
                                 "i_var_len": "SHT_name1_len",
                                 "idtor": "0",
@@ -2440,6 +2459,7 @@
                                 "f_var": "name1",
                                 "f_var_len": "SHT_name1_len",
                                 "fc_var": "name1",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name1",
                                 "i_var_len": "SHT_name1_len",
                                 "idtor": "0",
@@ -2478,6 +2498,7 @@
                                 "f_var": "name2",
                                 "f_var_len": "SHT_name2_len",
                                 "fc_var": "name2",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name2",
                                 "i_var_len": "SHT_name2_len",
                                 "idtor": "0",
@@ -2701,6 +2722,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "ltext",
                                 "fc_var": "SH_ltext",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "ltext",
                                 "idtor": "0",
                                 "pre_call_intent": "len(text,kind=C_INT)",
@@ -2739,6 +2761,7 @@
                                 "f_var": "text",
                                 "f_var_len": "SHT_text_len",
                                 "fc_var": "text",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "text",
                                 "i_var_len": "SHT_text_len",
                                 "idtor": "0",
@@ -2955,6 +2978,7 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -2990,6 +3014,7 @@
                                 "f_var": "flag",
                                 "f_var_cxx": "SHT_flag_cxx",
                                 "fc_var": "SH_flag",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "flag",
                                 "idtor": "0",
                                 "pre_call_intent": ".FALSE._C_BOOL",
@@ -3026,6 +3051,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "ltext",
                                 "fc_var": "SH_ltext",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "ltext",
                                 "idtor": "0",
                                 "pre_call_intent": "len(text,kind=C_INT)",
@@ -3061,6 +3087,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "text",
                                 "fc_var": "text",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "text",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -3328,6 +3355,7 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -3363,6 +3391,7 @@
                                 "f_var": "flag",
                                 "f_var_cxx": "SHT_flag_cxx",
                                 "fc_var": "SH_flag",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "flag",
                                 "idtor": "0",
                                 "pre_call_intent": ".TRUE._C_BOOL",
@@ -3399,6 +3428,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "ltext",
                                 "fc_var": "SH_ltext",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "ltext",
                                 "idtor": "0",
                                 "pre_call_intent": "len_trim(text,kind=C_INT)",
@@ -3434,6 +3464,7 @@
                                 "f_type": "character(*)",
                                 "f_var": "text",
                                 "fc_var": "text",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "text",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -3668,6 +3699,7 @@
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
@@ -3703,6 +3735,7 @@
                                 "f_var": "flag",
                                 "f_var_cxx": "SHT_flag_cxx",
                                 "fc_var": "SH_flag",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "flag",
                                 "idtor": "0",
                                 "pre_call_intent": ".TRUE._C_BOOL",
@@ -3876,6 +3909,7 @@
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
@@ -3911,6 +3945,7 @@
                                 "f_var": "flag",
                                 "f_var_cxx": "SHT_flag_cxx",
                                 "fc_var": "SH_flag",
+                                "i_type": "logical(C_BOOL)",
                                 "i_var": "flag",
                                 "idtor": "0",
                                 "pre_call_intent": ".FALSE._C_BOOL",
@@ -4185,6 +4220,7 @@
                                 "f_var": "outbuf",
                                 "f_var_len": "SHT_outbuf_len",
                                 "fc_var": "outbuf",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outbuf",
                                 "i_var_len": "SHT_outbuf_len",
                                 "idtor": "0",
@@ -4334,6 +4370,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "in",
                                 "fc_var": "in",
+                                "i_type": "type(C_PTR)",
                                 "i_var": "in",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
@@ -4367,6 +4404,7 @@
                                 "f_type": "type(C_PTR)",
                                 "f_var": "out",
                                 "fc_var": "out",
+                                "i_type": "type(C_PTR)",
                                 "i_var": "out",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
@@ -4488,6 +4526,7 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -4517,10 +4556,10 @@
                                 "cxx_var": "arg",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_type": "type(C_PTR)",
-                                "f_value_attr": ", value",
+                                "f_type": "type(*)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
+                                "i_type": "type(*)",
                                 "i_var": "arg",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
@@ -4529,8 +4568,7 @@
                             },
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_void*"
                         }
@@ -4544,8 +4582,7 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         }
                     }
@@ -4560,10 +4597,10 @@
                 }
             },
             {
-                "<FUNCTION>": "passAssumedTypeDim  20 ****************************************",
+                "<FUNCTION>": "passAssumedTypeRank  20 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "passAssumedTypeDim",
+                        "name": "passAssumedTypeRank",
                         "params": [
                             {
                                 "declarator": {
@@ -4592,12 +4629,12 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void passAssumedTypeDim(void *arg+assumedtype+rank(1))",
-                "declgen": "void passAssumedTypeDim(void *arg +assumedtype+rank(1))",
+                "decl": "void passAssumedTypeRank(void *arg+assumedtype+rank(1))",
+                "declgen": "void passAssumedTypeRank(void *arg +assumedtype+rank(1))",
                 "doxygen": {
                     "brief": "Test assumed-type with rank(1)"
                 },
-                "name": "passAssumedTypeDim",
+                "name": "passAssumedTypeRank",
                 "options": {
                     "literalinclude": true,
                     "wrap_python": false
@@ -4609,14 +4646,14 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "passAssumedTypeDim(\targ)",
+                                "C_call_function": "passAssumedTypeRank(\targ)",
                                 "C_call_list": "arg",
-                                "C_name": "passAssumedTypeDim",
+                                "C_name": "passAssumedTypeRank",
                                 "C_prototype": "void *arg",
                                 "C_return_type": "void",
                                 "F_C_arguments": "arg",
-                                "F_C_call": "c_pass_assumed_type_dim",
-                                "F_C_name": "pass_assumed_type_dim",
+                                "F_C_call": "c_pass_assumed_type_rank",
+                                "F_C_name": "pass_assumed_type_rank",
                                 "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "arg",
                                 "F_arguments": "arg",
@@ -4649,11 +4686,11 @@
                                 "f_dimension": "(:)",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_type": "type(C_PTR)",
-                                "f_value_attr": ", value",
+                                "f_type": "type(*)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
                                 "i_dimension": "(*)",
+                                "i_type": "type(*)",
                                 "i_var": "arg",
                                 "idtor": "0",
                                 "rank": "1",
@@ -4665,8 +4702,7 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1,
-                                "value": true
+                                "rank": 1
                             },
                             "stmt": "f_in_void*"
                         }
@@ -4681,19 +4717,18 @@
                             "meta": {
                                 "assumedtype": true,
                                 "intent": "in",
-                                "rank": 1,
-                                "value": true
+                                "rank": 1
                             }
                         }
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "passAssumedTypeDim",
-                    "F_name_api": "pass_assumed_type_dim",
-                    "F_name_function": "pass_assumed_type_dim",
-                    "F_name_generic": "pass_assumed_type_dim",
-                    "F_name_impl": "pass_assumed_type_dim",
-                    "function_name": "passAssumedTypeDim"
+                    "C_name_api": "passAssumedTypeRank",
+                    "F_name_api": "pass_assumed_type_rank",
+                    "F_name_function": "pass_assumed_type_rank",
+                    "F_name_generic": "pass_assumed_type_rank",
+                    "F_name_impl": "pass_assumed_type_rank",
+                    "function_name": "passAssumedTypeRank"
                 }
             },
             {
@@ -4800,6 +4835,7 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -4829,10 +4865,10 @@
                                 "cxx_var": "arg",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_type": "type(C_PTR)",
-                                "f_value_attr": ", value",
+                                "f_type": "type(*)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
+                                "i_type": "type(*)",
                                 "i_var": "arg",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
@@ -4841,8 +4877,7 @@
                             },
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_void*"
                         },
@@ -4871,6 +4906,7 @@
                                 "f_var": "outbuf",
                                 "f_var_len": "SHT_outbuf_len",
                                 "fc_var": "outbuf",
+                                "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outbuf",
                                 "i_var_len": "SHT_outbuf_len",
                                 "idtor": "0",
@@ -4894,8 +4930,7 @@
                         "arg": {
                             "meta": {
                                 "assumedtype": true,
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         },
                         "outbuf": {
@@ -5068,6 +5103,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "alloc",
                                 "fc_var": "alloc",
+                                "i_type": "type(C_PTR)",
                                 "i_var": "alloc",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
@@ -5144,6 +5180,7 @@
                                                     "f_kind": "array_info",
                                                     "f_type": "type(array_info)",
                                                     "f_var": "arr",
+                                                    "i_type": "type(array_info)",
                                                     "i_var": "arr",
                                                     "sh_type": "SH_TYPE_STRUCT",
                                                     "stmt_name": "f_inout_struct*",
@@ -5163,6 +5200,7 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "tc",
+                                                    "i_type": "integer(C_INT)",
                                                     "i_var": "tc",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmt_name": "f_in_native",
@@ -5228,6 +5266,7 @@
                                 "f_type": "type(array_info)",
                                 "f_var": "arr",
                                 "fc_var": "arr",
+                                "i_type": "type(array_info)",
                                 "i_var": "arr",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_STRUCT",
@@ -5262,6 +5301,7 @@
                                 "f_value_attr": ", value",
                                 "f_var": "tc",
                                 "fc_var": "tc",
+                                "i_type": "integer(C_INT)",
                                 "i_var": "tc",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
@@ -5352,6 +5392,7 @@
                                                     "f_kind": "array_info",
                                                     "f_type": "type(array_info)",
                                                     "f_var": "arr",
+                                                    "i_type": "type(array_info)",
                                                     "i_var": "arr",
                                                     "sh_type": "SH_TYPE_STRUCT",
                                                     "stmt_name": "f_inout_struct*",
@@ -5371,6 +5412,7 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "tc",
+                                                    "i_type": "integer(C_INT)",
                                                     "i_var": "tc",
                                                     "sh_type": "SH_TYPE_INT",
                                                     "stmt_name": "f_in_native",

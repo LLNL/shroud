@@ -61,6 +61,7 @@ void passVoidStarStar(void *in, void **out);
 
 int passAssumedType(void *arg);
 void passAssumedTypeDim(void *arg);
+void passAssumedTypeRank(void *arg);
 int passAssumedTypeBuf(void *arg, char *outbuf);
 
 void callback_set_alloc(int tc, array_info *arr,

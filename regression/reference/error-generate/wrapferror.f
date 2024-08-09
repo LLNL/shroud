@@ -47,14 +47,14 @@ module error_mod
         ! ----------------------------------------
         ! Argument:  struct1 *SH_this +intent(in)
         ! Statement: f_in_struct*
-        function struct1_get_arg2(SH_this, struct1_get_arg2) &
+        function struct1_get_arg2(SH_this, ===>i_arg_names<===) &
                 result(SHT_rv) &
                 bind(C, name="ERR_struct1_get_arg2")
             use iso_c_binding, only : C_INT
             import :: struct1
             implicit none
             type(struct1), intent(IN) :: SH_this
-            integer(C_INT) :: struct1_get_arg2(*)
+            ===>i_arg_decl<===
             integer(C_INT) :: SHT_rv(*)
         end function struct1_get_arg2
 
