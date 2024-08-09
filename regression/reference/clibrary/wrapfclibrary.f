@@ -430,7 +430,7 @@ module clibrary_mod
                 bind(C, name="passAssumedType")
             use iso_c_binding, only : C_INT
             implicit none
-            type(*) :: arg
+            type(*), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_assumed_type
     end interface
@@ -447,7 +447,7 @@ module clibrary_mod
         subroutine pass_assumed_type_rank(arg) &
                 bind(C, name="passAssumedTypeRank")
             implicit none
-            type(*) :: arg(*)
+            type(*), intent(IN) :: arg(*)
         end subroutine pass_assumed_type_rank
     end interface
     ! end pass_assumed_type_rank
@@ -468,7 +468,7 @@ module clibrary_mod
                 bind(C, name="CLI_passAssumedTypeBuf_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            type(*) :: arg
+            type(*), intent(IN) :: arg
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
             integer(C_INT), value, intent(IN) :: SHT_outbuf_len
             integer(C_INT) :: SHT_rv

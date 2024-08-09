@@ -1502,6 +1502,8 @@ f_intent_attr
     Used with argument declarations:
     ``{f_type}{f_intent_attr} ::``.
     If *intent* is *none*, the format field will be blank.
+    *f_intent_attr* can also be used with Fortran interface.
+    (There is no *i_intent_attr*)
 
 f_optional_attr
     The value of the *optional* metaattribute
