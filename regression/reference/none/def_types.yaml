@@ -712,6 +712,7 @@ typemap:
       cxx_type: void
       c_type: void
       f_type: type(C_PTR)
+      f_kind: C_PTR
       f_module_name: iso_c_binding
       f_module:
         iso_c_binding:

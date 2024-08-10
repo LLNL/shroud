@@ -5029,6 +5029,7 @@
                                 "cxx_var": "addr",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_PTR",
                                 "f_type": "type(C_PTR)",
                                 "f_var": "addr",
                                 "fc_var": "addr",

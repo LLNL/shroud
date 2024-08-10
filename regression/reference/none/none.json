@@ -986,6 +986,7 @@
             "c_type": "void",
             "cfi_type": "CFI_type_intptr_t",
             "cxx_type": "void",
+            "f_kind": "C_PTR",
             "f_module": {
                 "iso_c_binding": [
                     "C_PTR"
