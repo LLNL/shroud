@@ -535,6 +535,9 @@ class FillFormat(object):
         if meta["assumedtype"]:
             fmt.f_type = "type(*)"
             fmt.i_type = "type(*)"
+        elif meta["len"]:
+            fmt.f_type = "character(len={})".format(meta["len"])
+            fmt.i_type = ntypemap.i_type
         else:
             fmt.f_type = ntypemap.f_type
             fmt.i_type = ntypemap.i_type or ntypemap.f_type
