@@ -60,6 +60,19 @@
         }
     },
     {
+        "name": "f_mixin_declare-fortran-arg-no-module",
+        "notes": [
+            "Fortran wrapper argument",
+            "Used with CHARACTER which does not use a module"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ]
+    },
+    {
         "name": "f_mixin_declare-fortran-arg",
         "notes": [
             "Fortran wrapper argument"
@@ -984,12 +997,13 @@
         ]
     },
     {
-        "name": "f_mixin_in_character_buf",
+        "name": "f_mixin_pass_character_buf",
         "comments": [
             "Pass CHARACTER and LEN to C wrapper."
         ],
         "notes": [
-            "Do not use arg_decl here since it does not understand +len(30) on functions."
+            "Do not define f_arg_name or f_arg_decl here",
+            "to allow it to be used with functions and arguments."
         ],
         "f_temps": [
             "len"
@@ -1844,7 +1858,7 @@
             "c_in_char*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_temps": [
@@ -1871,7 +1885,7 @@
             "c_out_char_*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -1887,7 +1901,7 @@
             "c_inout_char*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_temps": [
@@ -1922,7 +1936,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_local": [
@@ -2186,7 +2200,7 @@
             "c_inout_string*"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_character"
         ],
         "lang_cxx": {
@@ -2213,7 +2227,7 @@
             "c_inout_string&"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_character"
         ],
         "lang_cxx": {
@@ -2240,7 +2254,7 @@
             "c_in_string*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2262,7 +2276,8 @@
             "c_in_string&_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "#f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2284,7 +2299,7 @@
             "c_out_string*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2309,7 +2324,8 @@
             "c_out_string&_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "#f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2334,7 +2350,7 @@
             "c_inout_string*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2360,7 +2376,7 @@
             "c_inout_string&_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2428,7 +2444,7 @@
         "name": "#f_in_string_scalar",
         "f_need_wrapper": true,
         "mixin": [
-            "f_mixin_in_character_buf"
+            "f_mixin_pass_character_buf"
         ],
         "f_arg_decl": [
             "character(len=*), intent(IN) :: {f_var}"
@@ -2466,7 +2482,7 @@
             "c_in_string_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "f_arg_name": [
@@ -2523,8 +2539,11 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
+        ],
+        "f_arg_decl": [
+            "{f_type} :: {f_var}"
         ],
         "c_helper": [
             "char_copy"
@@ -3980,7 +3999,7 @@
             "Create std::string from Fortran meta data."
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "f_arg_name": [

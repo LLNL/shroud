@@ -506,6 +506,7 @@ root
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
       declare-fortran-arg -- f_mixin_declare-fortran-arg
+      declare-fortran-arg-no-module -- f_mixin_declare-fortran-arg-no-module
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
@@ -530,8 +531,6 @@ root
         2d
           vector
             buf -- f_mixin_in_2d_vector_buf
-        character
-          buf -- f_mixin_in_character_buf
         string
           array
             buf -- f_mixin_in_string_array_buf
@@ -563,6 +562,8 @@ root
       pass
         capsule -- f_mixin_pass_capsule
         cdesc -- f_mixin_pass_cdesc
+        character
+          buf -- f_mixin_pass_character_buf
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -6392,6 +6393,8 @@ f_function_string&_buf:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6496,6 +6499,8 @@ f_function_string&_buf_copy:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7197,6 +7202,8 @@ f_function_string*_buf:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7243,6 +7250,8 @@ f_function_string*_buf_copy:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7896,6 +7905,8 @@ f_function_string_buf:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8000,6 +8011,8 @@ f_function_string_buf_copy:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -11512,6 +11525,16 @@ f_mixin_declare-fortran-arg:
   c_arg_call:
   - '{cxx_var}'
   owner: library
+f_mixin_declare-fortran-arg-no-module:
+  name: f_mixin_declare-fortran-arg-no-module
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_mixin_declare-interface-arg:
   name: f_mixin_declare-interface-arg
   intent: mixin
@@ -11752,27 +11775,6 @@ f_mixin_in_2d_vector_buf:
   c_temps:
   - len
   - size
-  owner: library
-f_mixin_in_character_buf:
-  name: f_mixin_in_character_buf
-  comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  intent: mixin
-  f_declare:
-  - integer(C_INT) {f_var_len}
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_temps:
-  - len
-  f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_in_string_array_buf:
   name: f_mixin_in_string_array_buf
@@ -12115,6 +12117,27 @@ f_mixin_pass_cdesc:
   - cdesc
   c_helper:
   - array_context
+  owner: library
+f_mixin_pass_character_buf:
+  name: f_mixin_pass_character_buf
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  intent: mixin
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 f_mixin_shadow-arg:
   name: f_mixin_shadow-arg
