@@ -60,6 +60,23 @@
         }
     },
     {
+        "name": "f_mixin_declare-fortran-arg",
+        "notes": [
+            "Fortran wrapper argument"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ]
+    },
+    {
         "name": "f_mixin_declare-interface-arg",
         "notes": [
             "General declaration for Fortran interface."
@@ -1092,8 +1109,9 @@
             "c_inout_native&"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1159,8 +1177,9 @@
             "c_out_native*&"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_argument-as-cptr"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_argument-as-cptr",
+            "c_mixin_argument2"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1452,6 +1471,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
@@ -1602,6 +1622,9 @@
             "Use gen.cidecl to get the C interface type.",
             "enums use option.F_enum_type to control the C type."
         ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg"
+        ],
         "i_arg_decl": [
             "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
         ],
@@ -1632,6 +1655,7 @@
             "c_out_enum*"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg"
         ],
         "c_arg_decl": [
@@ -3680,8 +3704,9 @@
             "C pointer -> void pointer -> C++ pointer"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ]
     },
     {
@@ -3821,9 +3846,10 @@
     {
         "name": "f_setter_bool",
         "mixin": [
-            "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_local-logical-var",
+            "c_mixin_argument2"
         ],
         "f_pre_call": [
             "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
@@ -3874,11 +3900,9 @@
             "c_setter_native*"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
-        ],
-        "f_arg_name": [
-            "{f_var}"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ],
         "f_arg_call": [
             "{fc_var}"
@@ -4170,6 +4194,7 @@
             "f_inout_native*_cfi"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi"
         ],
         "c_pre_call": [
@@ -4685,6 +4710,7 @@
             "Set Fortran pointer to point to c_local_cxx."
         ],
         "mixin": [
+            "#f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer"
         ],
