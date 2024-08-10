@@ -732,7 +732,7 @@
             "cxx_type": "std::string",
             "f_kind": "C_CHAR",
             "f_module_name": "iso_c_binding",
-            "f_type": "character(*)",
+            "f_type": "character(len=*)",
             "flat_name": "std_string",
             "i_module": {
                 "iso_c_binding": [

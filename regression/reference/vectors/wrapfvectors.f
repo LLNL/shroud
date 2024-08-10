@@ -842,7 +842,7 @@ contains
     !<
     subroutine vector_string_fill(arg)
         use iso_c_binding, only : C_LOC
-        character(*), intent(OUT), target :: arg(:)
+        character(len=*), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_string_fill
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         SHT_arg_cdesc%base_addr = C_LOC(arg)

@@ -869,7 +869,7 @@ def default_typemap():
             cxx_to_c="{cxx_var}{cxx_member}c_str()",  # cxx_member is . or ->
             c_type="char",  # XXX - char *
             impl_header=["<string>"],
-            f_type="character(*)",
+            f_type="character(len=*)",
             f_kind="C_CHAR",
             f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
