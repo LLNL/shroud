@@ -495,7 +495,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "len": "worklen"
                             },
                             "stmt": "c_inout_char*"
                         }
@@ -564,7 +565,8 @@
                             },
                             "meta": {
                                 "api": "buf",
-                                "intent": "inout"
+                                "intent": "inout",
+                                "len": "worklen"
                             },
                             "stmt": "f_inout_char*_buf"
                         }
@@ -596,7 +598,8 @@
                                 "value_var": "SHValue_name"
                             },
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "len": "worklen"
                             }
                         }
                     },
@@ -608,7 +611,8 @@
                         },
                         "name": {
                             "meta": {
-                                "intent": "inout"
+                                "intent": "inout",
+                                "len": "worklen"
                             }
                         }
                     }

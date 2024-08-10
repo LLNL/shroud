@@ -4264,7 +4264,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "c_function_string&"
                         },
@@ -4307,7 +4308,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         },
                         "idx": {
@@ -4434,7 +4436,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_string&_buf_copy"
                         },
@@ -4478,7 +4481,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         },
                         "idx": {
@@ -4609,7 +4613,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_string&_buf_copy"
                         },
@@ -4653,7 +4658,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         },
                         "idx": {

@@ -2699,6 +2699,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
                         },
@@ -3697,6 +3698,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
                         }

@@ -813,6 +813,7 @@
                         },
                         "dest": {
                             "meta": {
+                                "charlen": "40",
                                 "intent": "out"
                             }
                         },
@@ -1239,7 +1240,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "c_function_char*"
                         }
@@ -1293,7 +1295,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_char*_cfi_copy"
                         }
@@ -1301,7 +1304,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     }
@@ -1951,7 +1955,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string"
                         }
@@ -2007,7 +2012,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string_cfi_copy"
                         }
@@ -2015,7 +2021,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -2526,7 +2533,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string&"
                         }
@@ -2582,7 +2590,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string&_cfi_copy"
                         }
@@ -2590,7 +2599,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -2832,7 +2842,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string&"
                         }
@@ -2888,7 +2899,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string&_cfi_copy"
                         }
@@ -2896,7 +2908,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -3130,7 +3143,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string*"
                         }
@@ -3187,7 +3201,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string*_cfi_copy"
                         }
@@ -3195,7 +3210,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -6603,7 +6619,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             },
                             "stmt": "c_out_string**"
                         }
@@ -6715,7 +6732,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             },
                             "stmt": "f_out_string**_cfi_allocatable"
                         }
@@ -6739,7 +6757,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             }
                         }
                     }
@@ -7107,7 +7126,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             },
                             "stmt": "c_out_char*"
                         }
@@ -7173,7 +7193,8 @@
                             },
                             "meta": {
                                 "api": "cfi",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             },
                             "stmt": "f_out_char*_cfi"
                         }
@@ -7186,7 +7207,8 @@
                         },
                         "name": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             }
                         }
                     }

@@ -1366,7 +1366,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_char*_buf_copy"
                         },
@@ -1459,7 +1460,8 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         },
                         "arg1": {
@@ -1514,7 +1516,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         },
                         "arg1": {
@@ -2306,6 +2309,7 @@
                         },
                         "name1": {
                             "meta": {
+                                "charlen": "MAXNAME",
                                 "intent": "out"
                             }
                         }
@@ -2568,11 +2572,13 @@
                         },
                         "name1": {
                             "meta": {
+                                "charlen": "MAXNAME",
                                 "intent": "out"
                             }
                         },
                         "name2": {
                             "meta": {
+                                "charlen": "MAXNAME",
                                 "intent": "out"
                             }
                         }
@@ -2835,6 +2841,7 @@
                         },
                         "text": {
                             "meta": {
+                                "charlen": "MAXNAME",
                                 "intent": "out"
                             }
                         }

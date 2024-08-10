@@ -8444,7 +8444,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "c_function_string&"
                         }
@@ -8499,7 +8500,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_string&_buf_copy"
                         }
@@ -8517,7 +8519,8 @@
                                 "stmt": "lua_function_string&"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     },
@@ -8541,14 +8544,16 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     }

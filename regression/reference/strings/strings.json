@@ -967,6 +967,7 @@
                         },
                         "dest": {
                             "meta": {
+                                "charlen": "40",
                                 "intent": "out"
                             }
                         },
@@ -1516,7 +1517,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "c_function_char*"
                         }
@@ -1571,7 +1573,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_char*_buf_copy"
                         }
@@ -1596,14 +1599,16 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     }
@@ -2372,7 +2377,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string"
                         }
@@ -2427,7 +2433,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string_buf_copy"
                         }
@@ -2451,14 +2458,16 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -3142,7 +3151,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string&"
                         }
@@ -3197,7 +3207,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string&_buf_copy"
                         }
@@ -3222,14 +3233,16 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -3522,7 +3535,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string&"
                         }
@@ -3577,7 +3591,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string&_buf_copy"
                         }
@@ -3602,14 +3617,16 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -3918,7 +3935,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string*"
                         }
@@ -3974,7 +3992,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string*_buf_copy"
                         }
@@ -3999,14 +4018,16 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     },
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -8230,7 +8251,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             },
                             "stmt": "c_out_string**"
                         }
@@ -8354,7 +8376,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             },
                             "stmt": "f_out_string**_cdesc_allocatable"
                         }
@@ -8378,7 +8401,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             }
                         }
                     }
@@ -8775,7 +8799,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             },
                             "stmt": "c_out_char*"
                         }
@@ -8840,7 +8865,8 @@
                             },
                             "meta": {
                                 "api": "buf",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             },
                             "stmt": "f_out_char*_buf"
                         }
@@ -8853,7 +8879,8 @@
                         },
                         "name": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             }
                         }
                     }

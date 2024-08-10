@@ -3236,7 +3236,8 @@
                                                         "typemap_name": "std::string"
                                                     },
                                                     "meta": {
-                                                        "intent": "function"
+                                                        "intent": "function",
+                                                        "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                                     },
                                                     "stmt": "c_function_string&"
                                                 }
@@ -3291,7 +3292,8 @@
                                                     "meta": {
                                                         "api": "buf",
                                                         "deref": "copy",
-                                                        "intent": "function"
+                                                        "intent": "function",
+                                                        "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                                     },
                                                     "stmt": "f_function_string&_buf_copy"
                                                 }
@@ -3309,7 +3311,8 @@
                                                         "stmt": "lua_function_string&"
                                                     },
                                                     "meta": {
-                                                        "intent": "function"
+                                                        "intent": "function",
+                                                        "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                                     }
                                                 }
                                             },
@@ -3333,14 +3336,16 @@
                                                         "value_var": "SHValue_rv"
                                                     },
                                                     "meta": {
-                                                        "intent": "function"
+                                                        "intent": "function",
+                                                        "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                                     }
                                                 }
                                             },
                                             "share": {
                                                 "+result": {
                                                     "meta": {
-                                                        "intent": "function"
+                                                        "intent": "function",
+                                                        "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                                     }
                                                 }
                                             }

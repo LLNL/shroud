@@ -3261,6 +3261,7 @@
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
+                                "len": "20",
                                 "rank": 1
                             },
                             "stmt": "c_out_vector<string>&_buf_copy"
@@ -3351,6 +3352,7 @@
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out",
+                                "len": "20",
                                 "rank": 1
                             },
                             "stmt": "f_out_vector<string>&_cdesc_allocatable"
@@ -3365,6 +3367,7 @@
                         "arg": {
                             "meta": {
                                 "intent": "out",
+                                "len": "20",
                                 "rank": 1
                             }
                         }

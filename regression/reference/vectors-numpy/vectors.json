@@ -1247,6 +1247,7 @@
                         "arg": {
                             "meta": {
                                 "intent": "out",
+                                "len": "20",
                                 "rank": 1
                             }
                         }
