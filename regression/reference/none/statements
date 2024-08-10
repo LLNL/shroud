@@ -9085,6 +9085,10 @@ f_in_char:
 f_in_char*:
   name: f_in_char*
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9208,6 +9212,10 @@ f_in_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9250,6 +9258,10 @@ f_in_char*_buf:
 f_in_char*_capi:
   name: f_in_char*_capi
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9662,6 +9674,10 @@ f_in_string&_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9752,6 +9768,10 @@ f_in_string*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10507,6 +10527,10 @@ f_inout_bool*:
 f_inout_char*:
   name: f_inout_char*
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10568,6 +10592,10 @@ f_inout_char*_buf:
 f_inout_char*_capi:
   name: f_inout_char*_capi
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10880,6 +10908,10 @@ f_inout_string&_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10995,6 +11027,10 @@ f_inout_string*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -12274,6 +12310,10 @@ f_out_bool*:
 f_out_char*:
   name: f_out_char*
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12329,6 +12369,10 @@ f_out_char*_buf:
 f_out_char*_capi:
   name: f_out_char*_capi
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12869,6 +12913,10 @@ f_out_string&_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -13136,6 +13184,10 @@ f_out_string*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
