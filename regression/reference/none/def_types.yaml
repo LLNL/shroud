@@ -86,7 +86,7 @@ typemap:
       idtor: 0
       cxx_type: char
       c_type: char
-      f_type: character(*)
+      f_type: character(len=*)
       f_kind: C_CHAR
       i_type: character(kind=C_CHAR)
       i_module:

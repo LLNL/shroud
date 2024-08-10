@@ -847,7 +847,7 @@ def default_typemap():
             "char",
             cxx_type="char",
             c_type="char",  # XXX - char *
-            f_type="character(*)",
+            f_type="character(len=*)",
             f_kind="C_CHAR",
             f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
