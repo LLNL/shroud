@@ -715,6 +715,7 @@ contains
     ! Argument:  void *&array +intent(out)
     ! Statement: f_out_void*&
     subroutine ArrayWrapper_fetchVoidRef(obj, array)
+        use iso_c_binding, only : C_PTR
         class(ArrayWrapper) :: obj
         type(C_PTR), intent(OUT) :: array
         ! splicer begin class.ArrayWrapper.method.fetchVoidRef

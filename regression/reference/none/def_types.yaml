@@ -712,10 +712,10 @@ typemap:
       cxx_type: void
       c_type: void
       f_type: type(C_PTR)
-      i_module:
+      f_module_name: iso_c_binding
+      f_module:
         iso_c_binding:
         - C_PTR
-      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       PY_format: O
       PY_ctor: PyCapsule_New({ctor_expr}, NULL, NULL)
