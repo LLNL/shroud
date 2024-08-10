@@ -87,12 +87,10 @@ typemap:
       cxx_type: char
       c_type: char
       f_type: character(len=*)
-      f_kind: C_CHAR
       i_type: character(kind=C_CHAR)
       i_module:
         iso_c_binding:
         - C_CHAR
-      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       PY_format: s
       PY_ctor: PyString_FromString({ctor_expr})
@@ -460,12 +458,10 @@ typemap:
       cxx_to_c: "{cxx_var}{cxx_member}c_str()"
       c_type: char
       f_type: character(len=*)
-      f_kind: C_CHAR
       i_type: character(kind=C_CHAR)
       i_module:
         iso_c_binding:
         - C_CHAR
-      f_module_name: iso_c_binding
       f_cast: "{f_var}"
       impl_header:
       - <string>

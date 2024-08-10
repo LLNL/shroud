@@ -848,8 +848,9 @@ def default_typemap():
             cxx_type="char",
             c_type="char",  # XXX - char *
             f_type="character(len=*)",
-            f_kind="C_CHAR",
-            f_module_name="iso_c_binding",
+# The Fortran wrapper does not use C_CHAR
+#            f_kind="C_CHAR",
+#            f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
@@ -870,8 +871,9 @@ def default_typemap():
             c_type="char",  # XXX - char *
             impl_header=["<string>"],
             f_type="character(len=*)",
-            f_kind="C_CHAR",
-            f_module_name="iso_c_binding",
+# The Fortran wrapper does not use C_CHAR
+#            f_kind="C_CHAR",
+#            f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",

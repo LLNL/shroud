@@ -333,8 +333,6 @@
             "base": "string",
             "c_type": "char",
             "cxx_type": "char",
-            "f_kind": "C_CHAR",
-            "f_module_name": "iso_c_binding",
             "f_type": "character(len=*)",
             "flat_name": "char",
             "i_module": {
@@ -730,8 +728,6 @@
             "c_type": "char",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
-            "f_kind": "C_CHAR",
-            "f_module_name": "iso_c_binding",
             "f_type": "character(len=*)",
             "flat_name": "std_string",
             "i_module": {
