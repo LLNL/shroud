@@ -755,6 +755,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_char_type="",      # allocate type - character(len=x) ::
             f_declare_shape_prefix="SHAPE_",
             f_declare_shape_array="",
+            f_deref_attr="",
             f_get_shape_array="",
             f_dimension="",
             f_intent="",

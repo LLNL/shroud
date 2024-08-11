@@ -1488,6 +1488,10 @@ cxx_var
 f_abstract_interface
     Name of abstract interface created for a function pointer.
 
+f_deref_attr
+    The Fortran attribute when the *deref* attribute is *alloctable* or *pointer*.
+    Possible values are ``, allocatable`` or ``, pointer``.
+
 f_intent
     The value of the intent metaattribute. Converted to uppercase.
     Used with argument declarations:

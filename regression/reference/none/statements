@@ -9041,7 +9041,7 @@ f_in_bool:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -9315,7 +9315,7 @@ f_in_enum:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -9362,7 +9362,7 @@ f_in_native&:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -9475,7 +9475,7 @@ f_in_native*_cfi:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -9925,7 +9925,7 @@ f_in_struct:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -9965,7 +9965,7 @@ f_in_struct*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -10652,7 +10652,7 @@ f_inout_enum*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -10680,7 +10680,7 @@ f_inout_native&:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -10781,7 +10781,7 @@ f_inout_native*_cfi:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -11133,7 +11133,7 @@ f_inout_struct*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -11560,7 +11560,7 @@ f_mixin_declare-fortran-arg:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -12428,7 +12428,7 @@ f_out_enum*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -12456,7 +12456,7 @@ f_out_native&:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -13290,7 +13290,7 @@ f_out_struct*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -13737,7 +13737,7 @@ f_out_void*&:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
@@ -13838,7 +13838,7 @@ f_setter_bool:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -13870,7 +13870,7 @@ f_setter_native:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{fc_var}'
   f_module:
@@ -13896,7 +13896,7 @@ f_setter_native*:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{fc_var}'
   f_module:

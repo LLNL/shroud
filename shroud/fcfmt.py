@@ -896,6 +896,10 @@ def set_f_arg_format(node, arg, fmt, bind, wlang):
         fmt.f_optional_attr = ", optional"
     if meta["value"]:
         fmt.f_value_attr = ", value"
+    if meta["deref"] == "allocatable":
+        fmt.f_deref_attr = ", allocatable"
+    elif meta["deref"] == "pointer":
+        fmt.f_deref_attr = ", pointer"
 
 
 def compute_c_deref(arg, fmt):
