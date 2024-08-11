@@ -1517,6 +1517,7 @@ f_type
     The Fortran type of the argument.
     Derived from the ``typemap.f_type``.
     If the attribute *+assumedtype* is set, then it will be ``type(*)``.
+    `char` and `string` types also factor attribute *len* and *deref* into the value.
     
 f_value_attr
     The value of the *value* metaattribute

@@ -1892,7 +1892,7 @@
             "c_out_char_*_buf"
         ],
         "mixin": [
-            "#f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_declare-fortran-arg-no-module",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
@@ -1909,7 +1909,7 @@
             "c_inout_char*_buf"
         ],
         "mixin": [
-            "#f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_declare-fortran-arg-no-module",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],

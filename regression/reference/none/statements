@@ -10550,6 +10550,10 @@ f_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -12333,6 +12337,10 @@ f_out_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:

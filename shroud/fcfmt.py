@@ -535,12 +535,23 @@ class FillFormat(object):
         if meta["assumedtype"]:
             fmt.f_type = "type(*)"
             fmt.i_type = "type(*)"
-        elif meta["len"]:
-            fmt.f_type = "character(len={})".format(meta["len"])
+        elif ntypemap.base == "string":
+            if meta["len"] and meta["intent"] == "function":
+                # Declare local variable for function result
+                fmt.f_type = "character(len={})".format(meta["len"])
+            elif meta["deref"] == "allocatable":
+                fmt.f_type = "character(len=:)"
+            else:
+                fmt.f_type = ntypemap.f_type
             fmt.i_type = ntypemap.i_type
         else:
-            fmt.f_type = ntypemap.f_type
-            fmt.i_type = ntypemap.i_type or ntypemap.f_type
+            # Some types such as vector will not have a default since it
+            # depends on the template arguments.
+            if ntypemap.f_type:
+                fmt.f_type = ntypemap.f_type
+            i_type = ntypemap.i_type or ntypemap.f_type
+            if i_type:
+                fmt.i_type = i_type
         fmt.sh_type = ntypemap.sh_type
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind
