@@ -2254,7 +2254,7 @@ def gen_arg_as_fortran(
         elif not local:
             t.append("character(len=*)")
         else:
-            t.append("character")
+            t.append("XXXcharacter")
     elif pass_obj:
         # Used with wrap_struct_as=class for passed-object dummy argument.
         t.append(ntypemap.f_class)

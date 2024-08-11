@@ -1760,6 +1760,9 @@
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
+        "f_arg_decl": [
+            "character :: {f_var}"
+        ],
         "f_arg_call": [
             "{f_var}"
         ],

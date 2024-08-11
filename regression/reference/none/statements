@@ -4699,6 +4699,8 @@ f_function_char:
   comments:
   - Call the C wrapper as a subroutine.
   intent: function
+  f_arg_decl:
+  - 'character :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:

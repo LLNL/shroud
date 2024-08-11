@@ -854,12 +854,13 @@ address:
   c_type: void
   cfi_type: CFI_type_intptr_t
   cxx_type: address
+  f_kind: C_PTR
+  f_module:
+    iso_c_binding:
+    - C_PTR
   f_module_name: iso_c_binding
   f_type: type(C_PTR)
   flat_name: void
-  i_module:
-    iso_c_binding:
-    - C_PTR
   sgroup: void
   sh_type: SH_TYPE_CPTR
   typedef: void
