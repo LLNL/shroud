@@ -69,7 +69,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ]
     },
     {
@@ -1459,8 +1459,9 @@
             "Used with MPI types"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ]
     },
     {
@@ -1499,9 +1500,10 @@
             "c_out_bool_*"
         ],
         "mixin": [
-            "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_local-logical-var",
+            "c_mixin_argument2"
         ],
         "f_post_call": [
             "{f_var} = {f_var_cxx}  ! coerce to logical"
@@ -1513,9 +1515,10 @@
             "c_inout_bool_*"
         ],
         "mixin": [
-            "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_local-logical-var",
+            "c_mixin_argument2"
         ],
         "f_pre_call": [
             "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
@@ -3751,8 +3754,9 @@
             "c_inout_struct&"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -3830,6 +3834,7 @@
             "f_setter_struct*"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_argument2"
         ],
         "i_arg_names": [
@@ -3845,6 +3850,7 @@
     {
         "name": "f_setter_struct**",
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_argument2"
         ],
         "i_arg_names": [
@@ -4236,6 +4242,7 @@
     {
         "name": "f_in_char*_cfi",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4253,6 +4260,7 @@
     {
         "name": "f_out_char*_cfi",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4265,6 +4273,7 @@
     {
         "name": "f_inout_char*_cfi",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4365,6 +4374,7 @@
             "f_in_string&_cfi"
         ],
         "mixin": [
+            "#f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4394,6 +4404,7 @@
             "f_out_string*_cfi"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4424,6 +4435,7 @@
             "f_inout_string*_cfi"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4685,6 +4697,7 @@
             "int *nstrs+intent(out)+hidden"
         ],
         "mixin": [
+            "#f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_cfi",
             "f_mixin_out_string**_cfi"
         ],
@@ -4701,6 +4714,7 @@
     {
         "name": "f_out_string**_cfi_copy",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_cfi",
             "f_mixin_out_string**_cfi"
         ],
@@ -4723,6 +4737,7 @@
             "Set Fortran pointer to point to cxx_var."
         ],
         "mixin": [
+            "#f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable"
         ],
@@ -4742,7 +4757,7 @@
             "Set Fortran pointer to point to c_local_cxx."
         ],
         "mixin": [
-            "#f_mixin_declare-fortran-arg",
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer"
         ],

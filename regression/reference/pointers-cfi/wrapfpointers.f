@@ -1668,7 +1668,7 @@ contains
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: nitems
+        integer(C_INT), intent(OUT), pointer :: nitems
         ! splicer begin function.get_ptr_to_scalar
         call c_get_ptr_to_scalar_CFI(nitems)
         ! splicer end function.get_ptr_to_scalar
@@ -1690,7 +1690,7 @@ contains
     ! start get_ptr_to_fixed_array
     subroutine get_ptr_to_fixed_array(count)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: count(10)
+        integer(C_INT), intent(OUT), pointer :: count(10)
         ! splicer begin function.get_ptr_to_fixed_array
         call c_get_ptr_to_fixed_array_CFI(count)
         ! splicer end function.get_ptr_to_fixed_array
@@ -1713,7 +1713,7 @@ contains
     ! start get_ptr_to_dynamic_array
     subroutine get_ptr_to_dynamic_array(count)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: count(ncount)
+        integer(C_INT), intent(OUT), pointer :: count(ncount)
         ! splicer begin function.get_ptr_to_dynamic_array
         call c_get_ptr_to_dynamic_array_CFI(count)
         ! splicer end function.get_ptr_to_dynamic_array
@@ -1737,7 +1737,7 @@ contains
     ! start get_ptr_to_func_array
     subroutine get_ptr_to_func_array(count)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: count(getLen())
+        integer(C_INT), intent(OUT), pointer :: count(:)
         ! splicer begin function.get_ptr_to_func_array
         call c_get_ptr_to_func_array_CFI(count)
         ! splicer end function.get_ptr_to_func_array
@@ -1756,7 +1756,7 @@ contains
     ! start get_ptr_to_const_scalar
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: nitems
+        integer(C_INT), intent(OUT), pointer :: nitems
         ! splicer begin function.get_ptr_to_const_scalar
         call c_get_ptr_to_const_scalar_CFI(nitems)
         ! splicer end function.get_ptr_to_const_scalar
@@ -1775,7 +1775,7 @@ contains
     ! start get_ptr_to_fixed_const_array
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: count(10)
+        integer(C_INT), intent(OUT), pointer :: count(10)
         ! splicer begin function.get_ptr_to_fixed_const_array
         call c_get_ptr_to_fixed_const_array_CFI(count)
         ! splicer end function.get_ptr_to_fixed_const_array
@@ -1794,7 +1794,7 @@ contains
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(OUT) :: count(ncount)
+        integer(C_INT), intent(OUT), pointer :: count(ncount)
         ! splicer begin function.get_ptr_to_dynamic_const_array
         call c_get_ptr_to_dynamic_const_array_CFI(count)
         ! splicer end function.get_ptr_to_dynamic_const_array
