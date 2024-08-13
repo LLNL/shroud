@@ -647,7 +647,9 @@ class FillFormat(object):
                 fmt.i_dimension = "(*)"
                 # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
-                if visitor.compute_shape:
+                if meta["deref"] == "allocatable":
+                    fmt.f_dimension = fmt.f_assumed_shape
+                elif visitor.compute_shape:
                     fmt.f_dimension = fmt.f_assumed_shape
                 else:
                     fmt.f_dimension = fmt.f_array_allocate

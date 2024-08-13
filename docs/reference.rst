@@ -1617,6 +1617,7 @@ f_dimension
     May be a literal shape, ``(10)``,
     assumed-shape, ``(:)``
     or assumed-rank, ``(..)``.
+    Assumed shape is used when the *deref(allocatable)* attribute is set.
 
 f_get_shape_array
 
