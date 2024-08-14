@@ -4377,6 +4377,12 @@
             "#f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*){f_intent_attr} :: {f_var}"
+        ],
         "c_helper": [
             "char_len_trim"
         ],

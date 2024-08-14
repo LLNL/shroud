@@ -9728,6 +9728,10 @@ f_in_string&_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9822,6 +9826,10 @@ f_in_string*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9898,6 +9906,10 @@ f_in_string_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
