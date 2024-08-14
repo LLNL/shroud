@@ -1551,12 +1551,6 @@ rv = .false.
                 self.add_stmt_declaration(
                     arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
                 self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
-            else:
-                # Generate declaration from argument.
-                intent = arg_bind.meta["intent"]
-                arg_f_decl.append(gen_arg_as_fortran(f_arg,
-                    intent=intent, pass_obj=pass_obj, optional=optattr))
-                arg_f_names.append(fmt_arg.f_var)
 
             if options.debug:
                 stmts_comments.append(
