@@ -944,6 +944,9 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedType
     ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  void *arg +assumedtype
+    ! Statement: f_in_void*
     !>
     !! \brief Test assumed-type
     !!
@@ -954,8 +957,8 @@ contains
     ! start pass_assumed_type
     function pass_assumed_type(arg) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        type(*) :: arg
+        use iso_c_binding, only : C_INT, C_PTR
+        type(*), intent(IN) :: arg
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_assumed_type
         SHT_rv = c_pass_assumed_type(arg)
@@ -969,13 +972,17 @@ contains
     ! ----------------------------------------
     ! Function:  void passAssumedTypeRank
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void *arg +assumedtype+rank(1)
+    ! Statement: f_in_void*
     !>
     !! \brief Test assumed-type with rank(1)
     !!
     !<
     ! start pass_assumed_type_rank
     subroutine pass_assumed_type_rank(arg)
-        type(*) :: arg
+        use iso_c_binding, only : C_PTR
+        type(*), intent(IN) :: arg
         ! splicer begin function.pass_assumed_type_rank
         call c_pass_assumed_type_rank(arg)
         ! splicer end function.pass_assumed_type_rank
@@ -986,6 +993,9 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  void *arg +assumedtype
+    ! Statement: f_in_void*
     ! ----------------------------------------
     ! Argument:  char *outbuf +intent(out)
     ! Statement: f_out_char*_buf
@@ -998,8 +1008,8 @@ contains
     !<
     function pass_assumed_type_buf(arg, outbuf) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
-        type(*) :: arg
+        use iso_c_binding, only : C_INT, C_PTR
+        type(*), intent(IN) :: arg
         character(len=*), intent(OUT) :: outbuf
         integer(C_INT) :: SHT_rv
         ! splicer begin function.pass_assumed_type_buf

@@ -1517,14 +1517,6 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
                 continue
-            elif arg_meta["assumedtype"]:
-                # Passed directly to C as a 'void *'
-                arg_f_decl.append(
-                    "type(*) :: {}".format(fmt_arg.f_var)
-                )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                continue
             elif implied:
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
