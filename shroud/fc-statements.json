@@ -60,6 +60,36 @@
         }
     },
     {
+        "name": "f_mixin_declare-fortran-arg-no-module",
+        "notes": [
+            "Fortran wrapper argument",
+            "Used with CHARACTER which does not use a module"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ]
+    },
+    {
+        "name": "f_mixin_declare-fortran-arg",
+        "notes": [
+            "Fortran wrapper argument"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ]
+    },
+    {
         "name": "f_mixin_declare-interface-arg",
         "notes": [
             "General declaration for Fortran interface."
@@ -369,7 +399,7 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}, allocatable, target :: {f_var}{f_assumed_shape}"
+            "{f_type}, allocatable, target :: {f_var}{f_dimension}"
         ],
         "f_post_call": [
             "allocate({f_var}{f_array_allocate})",
@@ -398,7 +428,7 @@
             "{f_var}"
         ],
         "f_arg_decl": [
-            "{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}"
+            "{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}"
         ],
         "f_post_call": [
             "allocate({f_var}{f_array_allocate})",
@@ -967,12 +997,13 @@
         ]
     },
     {
-        "name": "f_mixin_in_character_buf",
+        "name": "f_mixin_pass_character_buf",
         "comments": [
             "Pass CHARACTER and LEN to C wrapper."
         ],
         "notes": [
-            "Do not use arg_decl here since it does not understand +len(30) on functions."
+            "Do not define f_arg_name or f_arg_decl here",
+            "to allow it to be used with functions and arguments."
         ],
         "f_temps": [
             "len"
@@ -1092,8 +1123,9 @@
             "c_inout_native&"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1159,8 +1191,9 @@
             "c_out_native*&"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_argument-as-cptr"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_argument-as-cptr",
+            "c_mixin_argument2"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1426,8 +1459,9 @@
             "Used with MPI types"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ]
     },
     {
@@ -1452,6 +1486,7 @@
         ],
         "mixin": [
             "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
             "f_mixin_local-logical-var"
         ],
@@ -1465,9 +1500,10 @@
             "c_out_bool_*"
         ],
         "mixin": [
-            "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_local-logical-var",
+            "c_mixin_argument2"
         ],
         "f_post_call": [
             "{f_var} = {f_var_cxx}  ! coerce to logical"
@@ -1479,9 +1515,10 @@
             "c_inout_bool_*"
         ],
         "mixin": [
-            "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_local-logical-var",
+            "c_mixin_argument2"
         ],
         "f_pre_call": [
             "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
@@ -1602,6 +1639,9 @@
             "Use gen.cidecl to get the C interface type.",
             "enums use option.F_enum_type to control the C type."
         ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg"
+        ],
         "i_arg_decl": [
             "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
         ],
@@ -1632,6 +1672,7 @@
             "c_out_enum*"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg"
         ],
         "c_arg_decl": [
@@ -1722,6 +1763,9 @@
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
+        "f_arg_decl": [
+            "character :: {f_var}"
+        ],
         "f_arg_call": [
             "{f_var}"
         ],
@@ -1799,6 +1843,9 @@
             "f_out_char*_capi",
             "f_inout_char*_capi"
         ],
+        "mixin": [
+            "f_mixin_declare-fortran-arg-no-module"
+        ],
         "i_arg_names": [
             "{i_var}"
         ],
@@ -1820,7 +1867,8 @@
             "c_in_char*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_temps": [
@@ -1847,7 +1895,8 @@
             "c_out_char_*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -1863,7 +1912,8 @@
             "c_inout_char*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_temps": [
@@ -1898,7 +1948,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_local": [
@@ -2162,7 +2212,7 @@
             "c_inout_string*"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_character"
         ],
         "lang_cxx": {
@@ -2189,7 +2239,7 @@
             "c_inout_string&"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_character"
         ],
         "lang_cxx": {
@@ -2216,7 +2266,8 @@
             "c_in_string*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2238,7 +2289,8 @@
             "c_in_string&_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2260,7 +2312,8 @@
             "c_out_string*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2285,7 +2338,8 @@
             "c_out_string&_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2310,7 +2364,8 @@
             "c_inout_string*_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2336,7 +2391,8 @@
             "c_inout_string&_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_declare-fortran-arg-no-module",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "c_helper": [
@@ -2404,7 +2460,7 @@
         "name": "#f_in_string_scalar",
         "f_need_wrapper": true,
         "mixin": [
-            "f_mixin_in_character_buf"
+            "f_mixin_pass_character_buf"
         ],
         "f_arg_decl": [
             "character(len=*), intent(IN) :: {f_var}"
@@ -2442,7 +2498,7 @@
             "c_in_string_buf"
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "f_arg_name": [
@@ -2499,8 +2555,11 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
+        ],
+        "f_arg_decl": [
+            "{f_type} :: {f_var}"
         ],
         "c_helper": [
             "char_copy"
@@ -3680,8 +3739,9 @@
             "C pointer -> void pointer -> C++ pointer"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ]
     },
     {
@@ -3694,8 +3754,9 @@
             "c_inout_struct&"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -3773,6 +3834,7 @@
             "f_setter_struct*"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_argument2"
         ],
         "i_arg_names": [
@@ -3788,6 +3850,7 @@
     {
         "name": "f_setter_struct**",
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_argument2"
         ],
         "i_arg_names": [
@@ -3821,9 +3884,10 @@
     {
         "name": "f_setter_bool",
         "mixin": [
-            "c_mixin_argument2",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_declare-interface-arg",
-            "f_mixin_local-logical-var"
+            "f_mixin_local-logical-var",
+            "c_mixin_argument2"
         ],
         "f_pre_call": [
             "{f_var_cxx} = {f_var}  ! coerce to C_BOOL"
@@ -3874,11 +3938,9 @@
             "c_setter_native*"
         ],
         "mixin": [
-            "c_mixin_argument2",
-            "f_mixin_declare-interface-arg"
-        ],
-        "f_arg_name": [
-            "{f_var}"
+            "f_mixin_declare-fortran-arg",
+            "f_mixin_declare-interface-arg",
+            "c_mixin_argument2"
         ],
         "f_arg_call": [
             "{fc_var}"
@@ -3956,7 +4018,7 @@
             "Create std::string from Fortran meta data."
         ],
         "mixin": [
-            "f_mixin_in_character_buf",
+            "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
         "f_arg_name": [
@@ -4170,6 +4232,7 @@
             "f_inout_native*_cfi"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi"
         ],
         "c_pre_call": [
@@ -4179,6 +4242,7 @@
     {
         "name": "f_in_char*_cfi",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4196,6 +4260,7 @@
     {
         "name": "f_out_char*_cfi",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4208,6 +4273,7 @@
     {
         "name": "f_inout_char*_cfi",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4308,7 +4374,14 @@
             "f_in_string&_cfi"
         ],
         "mixin": [
+            "#f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "character(len=*){f_intent_attr} :: {f_var}"
         ],
         "c_helper": [
             "char_len_trim"
@@ -4337,6 +4410,7 @@
             "f_out_string*_cfi"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4367,6 +4441,7 @@
             "f_inout_string*_cfi"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_character_cfi"
         ],
         "c_helper": [
@@ -4628,6 +4703,7 @@
             "int *nstrs+intent(out)+hidden"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_cfi",
             "f_mixin_out_string**_cfi"
         ],
@@ -4644,6 +4720,7 @@
     {
         "name": "f_out_string**_cfi_copy",
         "mixin": [
+            "f_mixin_declare-fortran-arg-no-module",
             "c_mixin_arg_cfi",
             "f_mixin_out_string**_cfi"
         ],
@@ -4666,6 +4743,7 @@
             "Set Fortran pointer to point to cxx_var."
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable"
         ],
@@ -4685,6 +4763,7 @@
             "Set Fortran pointer to point to c_local_cxx."
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer"
         ],

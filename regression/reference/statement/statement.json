@@ -204,8 +204,7 @@
                                 "f_char_len": "len=get_name_length()",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=get_name_length())",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -215,7 +214,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "get_name_length()"
                             },
                             "stmt": "c_function_string&"
                         }
@@ -255,8 +255,7 @@
                                 "f_char_len": "len=get_name_length()",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=get_name_length())",
                                 "f_var": "SHT_rv",
                                 "f_var_len": "SHT_rv_len",
                                 "fc_var": "SHT_rv",
@@ -271,7 +270,8 @@
                             "meta": {
                                 "api": "buf",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "get_name_length()"
                             },
                             "stmt": "f_function_string&_buf_copy"
                         }
@@ -279,7 +279,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "get_name_length()"
                             }
                         }
                     }
@@ -406,8 +407,7 @@
                                 "cxx_var": "SHC_name_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "i_local_cxx": "SHC_name_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -452,8 +452,7 @@
                                 "c_helper_char_len_trim": "ShroudCharLenTrim",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "f_var_len": "SHT_name_len",
                                 "fc_var": "name",

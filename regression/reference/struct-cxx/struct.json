@@ -2726,8 +2726,7 @@
                                 "cxx_var": "outbuf",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "outbuf",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outbuf",
@@ -2843,8 +2842,7 @@
                                 "cxx_var": "outbuf",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "outbuf",
                                 "f_var_len": "SHT_outbuf_len",
                                 "fc_var": "outbuf",
@@ -2906,6 +2904,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
                         },
@@ -4450,8 +4449,7 @@
                                 "cxx_var": "outbuf",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "outbuf",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "outbuf",
@@ -4612,8 +4610,7 @@
                                 "cxx_var": "outbuf",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "outbuf",
                                 "f_var_len": "SHT_outbuf_len",
                                 "fc_var": "outbuf",
@@ -4652,6 +4649,7 @@
                         },
                         "outbuf": {
                             "meta": {
+                                "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
                         }
@@ -4797,7 +4795,7 @@
                                 "f_c_suffix": "_bufferify",
                                 "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
                                 "f_derived_type": "cstruct1",
-                                "f_dimension": "(2)",
+                                "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -7295,7 +7293,7 @@
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_dimension": "(nitems+nitems)",
+                                "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
@@ -7707,7 +7705,7 @@
                                 "f_array_shape": ",\t SHT_rv_cdesc%shape(1:1)",
                                 "f_assumed_shape": "(:)",
                                 "f_cdesc_shape": "\nSHT_rv_cdesc%shape(1:1) = shape(SHT_rv)",
-                                "f_dimension": "(nitems*TWO)",
+                                "f_dimension": "(:)",
                                 "f_helper_array_context": "STR_SHROUD_array",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",

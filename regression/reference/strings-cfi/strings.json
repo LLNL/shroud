@@ -220,8 +220,7 @@
                                 "cxx_var": "status",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_value_attr": ", value",
                                 "f_var": "status",
                                 "fc_var": "status",
@@ -390,8 +389,7 @@
                                 "cxx_var": "status",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_value_attr": ", value",
                                 "f_var": "status",
                                 "fc_var": "status",
@@ -514,8 +512,7 @@
                                 "cxx_var": "SHC_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -657,8 +654,7 @@
                                 "cxx_var": "dest",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "dest",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "dest",
@@ -690,8 +686,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "src",
@@ -751,8 +746,7 @@
                                 "cxx_var": "SHC_dest_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "dest",
                                 "fc_var": "dest",
                                 "i_local_cxx": "SHC_dest_cxx",
@@ -792,8 +786,7 @@
                                 "cxx_var": "SHC_src_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "fc_var": "src",
                                 "i_local_cxx": "SHC_src_cxx",
@@ -820,6 +813,7 @@
                         },
                         "dest": {
                             "meta": {
+                                "charlen": "40",
                                 "intent": "out"
                             }
                         },
@@ -928,8 +922,7 @@
                                 "cxx_var": "s",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "s",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "s",
@@ -991,8 +984,7 @@
                                 "cxx_var": "SHC_s_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "s",
                                 "fc_var": "s",
                                 "i_local_cxx": "SHC_s_cxx",
@@ -1090,8 +1082,7 @@
                                 "cxx_var": "SHC_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -1136,8 +1127,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1240,8 +1230,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -1251,7 +1240,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "c_function_char*"
                         }
@@ -1290,8 +1280,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cxx": "SHC_rv_cxx",
@@ -1306,7 +1295,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             },
                             "stmt": "f_function_char*_cfi_copy"
                         }
@@ -1314,7 +1304,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": "30"
                             }
                         }
                     }
@@ -1393,8 +1384,7 @@
                                 "cxx_var": "SHC_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -1440,8 +1430,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "output",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1572,8 +1561,7 @@
                                 "cxx_var": "SHC_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1667,8 +1655,7 @@
                                 "cxx_var": "SHC_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -1718,8 +1705,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cdesc": "SHC_rv_cdesc",
@@ -1813,8 +1799,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -1861,8 +1846,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -1961,8 +1945,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -1972,7 +1955,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string"
                         }
@@ -2013,8 +1997,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cxx": "SHC_rv_cxx",
@@ -2029,7 +2012,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string_cfi_copy"
                         }
@@ -2037,7 +2021,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -2112,8 +2097,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -2161,8 +2145,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "output",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -2248,8 +2231,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -2296,8 +2278,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -2391,8 +2372,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -2439,8 +2419,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -2544,8 +2523,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -2555,7 +2533,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string&"
                         }
@@ -2596,8 +2575,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cxx": "SHC_rv_cxx",
@@ -2612,7 +2590,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string&_cfi_copy"
                         }
@@ -2620,7 +2599,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -2700,8 +2680,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -2749,8 +2728,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "output",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -2854,8 +2832,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -2865,7 +2842,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string&"
                         }
@@ -2906,8 +2884,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cxx": "SHC_rv_cxx",
@@ -2922,7 +2899,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string&_cfi_copy"
                         }
@@ -2930,7 +2908,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -2997,8 +2976,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -3045,8 +3023,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -3156,8 +3133,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -3167,7 +3143,8 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "c_function_string*"
                         }
@@ -3208,8 +3185,7 @@
                                 "f_char_len": "len=30",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=30)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cxx": "SHC_rv_cxx",
@@ -3225,7 +3201,8 @@
                             "meta": {
                                 "api": "cfi",
                                 "deref": "copy",
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             },
                             "stmt": "f_function_string*_cfi_copy"
                         }
@@ -3233,7 +3210,8 @@
                     "share": {
                         "+result": {
                             "meta": {
-                                "intent": "function"
+                                "intent": "function",
+                                "len": 30
                             }
                         }
                     }
@@ -3303,8 +3281,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -3352,8 +3329,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -3450,8 +3426,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -3499,8 +3474,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -3598,8 +3572,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -3648,8 +3621,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -3748,8 +3720,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "SHT_rv",
@@ -3802,8 +3773,7 @@
                                 "f_c_suffix": "_CFI",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_local_cdesc": "SHC_rv_cdesc",
@@ -3932,8 +3902,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -3995,8 +3964,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -4126,8 +4094,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -4188,8 +4155,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -4318,8 +4284,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -4382,8 +4347,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -4510,8 +4474,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -4573,8 +4536,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -4701,8 +4663,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -4765,8 +4726,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -4896,8 +4856,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -4958,8 +4917,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -5104,8 +5062,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -5201,8 +5158,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -5389,8 +5345,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -5484,8 +5439,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_local_cxx": "SHC_arg1_cxx",
@@ -5664,8 +5618,7 @@
                                 "cxx_var": "arg1",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "i_type": "character(kind=C_CHAR)",
@@ -5751,8 +5704,7 @@
                                 "cxx_var": "SHC_arg1_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
@@ -6026,8 +5978,7 @@
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "strs",
                                 "i_dimension": "(*)",
                                 "i_type": "character(kind=C_CHAR)",
@@ -6132,8 +6083,7 @@
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "strs",
                                 "fc_var": "strs",
                                 "i_dimension": "(*)",
@@ -6338,8 +6288,7 @@
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "strs",
                                 "i_dimension": "(*)",
                                 "i_type": "character(kind=C_CHAR)",
@@ -6441,11 +6390,11 @@
                                 "cxx_var": "strs",
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
-                                "f_dimension": "(nstrs)",
+                                "f_deref_attr": ", allocatable",
+                                "f_dimension": "(:)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "strs",
                                 "fc_var": "strs",
                                 "i_dimension": "(*)",
@@ -6653,8 +6602,7 @@
                                 "f_dimension": "(nstrs)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "strs",
                                 "i_dimension": "(*)",
                                 "i_type": "character(kind=C_CHAR)",
@@ -6672,7 +6620,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             },
                             "stmt": "c_out_string**"
                         }
@@ -6758,11 +6707,11 @@
                                 "f_array_allocate": "(nstrs)",
                                 "f_assumed_shape": "(:)",
                                 "f_char_len": "len=20",
-                                "f_dimension": "(nstrs)",
+                                "f_deref_attr": ", allocatable",
+                                "f_dimension": "(:)",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=:)",
                                 "f_var": "strs",
                                 "fc_var": "strs",
                                 "i_dimension": "(*)",
@@ -6785,7 +6734,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             },
                             "stmt": "f_out_string**_cfi_allocatable"
                         }
@@ -6809,7 +6759,8 @@
                                     }
                                 ],
                                 "dimension": "nstrs",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "20"
                             }
                         }
                     }
@@ -6975,8 +6926,7 @@
                                 "cxx_var": "name",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
@@ -7037,8 +6987,7 @@
                                 "cxx_var": "SHC_name_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "fc_var": "name",
                                 "i_local_cxx": "SHC_name_cxx",
@@ -7169,8 +7118,7 @@
                                 "f_char_len": "len=AAtrim",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "name",
@@ -7180,7 +7128,8 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             },
                             "stmt": "c_out_char*"
                         }
@@ -7232,8 +7181,7 @@
                                 "f_char_len": "len=AAtrim",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "fc_var": "name",
                                 "i_local_cxx": "SHC_name_cxx",
@@ -7247,7 +7195,8 @@
                             },
                             "meta": {
                                 "api": "cfi",
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             },
                             "stmt": "f_out_char*_cfi"
                         }
@@ -7260,7 +7209,8 @@
                         },
                         "name": {
                             "meta": {
-                                "intent": "out"
+                                "intent": "out",
+                                "len": "AAtrim"
                             }
                         }
                     }
@@ -7401,8 +7351,7 @@
                                 "cxx_var": "status",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_value_attr": ", value",
                                 "f_var": "status",
                                 "fc_var": "status",
@@ -7527,8 +7476,7 @@
                                 "cxx_var": "SHC_rv",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
                                 "i_type": "character(kind=C_CHAR)",
@@ -7673,8 +7621,7 @@
                                 "cxx_var": "dest",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "dest",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "dest",
@@ -7706,8 +7653,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "src",
@@ -7767,8 +7713,7 @@
                                 "cxx_var": "SHC_dest_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "dest",
                                 "fc_var": "dest",
                                 "i_local_cxx": "SHC_dest_cxx",
@@ -7809,8 +7754,7 @@
                                 "cxx_var": "SHC_src_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "fc_var": "src",
                                 "i_local_cxx": "SHC_src_cxx",
@@ -7965,8 +7909,7 @@
                                 "cxx_var": "dest",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "dest",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "dest",
@@ -7998,8 +7941,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "src",
@@ -8059,8 +8001,7 @@
                                 "cxx_var": "SHC_dest_cxx",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "dest",
                                 "fc_var": "dest",
                                 "i_local_cxx": "SHC_dest_cxx",
@@ -8101,8 +8042,7 @@
                                 "cxx_var": "SHC_src_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "fc_var": "src",
                                 "i_local_cxx": "SHC_src_cxx",
@@ -8294,8 +8234,7 @@
                                 "cxx_var": "SHC_name_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "i_local_cxx": "SHC_name_cxx",
                                 "i_type": "character(kind=C_CHAR)",
@@ -8403,8 +8342,7 @@
                                 "cxx_var": "SHC_name_cxx",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "name",
                                 "fc_var": "name",
                                 "i_local_cxx": "SHC_name_cxx",
@@ -8561,8 +8499,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "src",
@@ -8646,8 +8583,7 @@
                                 "cxx_var": "SHC_src_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "fc_var": "src",
                                 "i_local_cxx": "SHC_src_cxx",
@@ -8904,6 +8840,7 @@
                                 "cxx_var": "addr",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_PTR",
                                 "f_type": "type(C_PTR)",
                                 "f_value_attr": ", value",
                                 "f_var": "addr",
@@ -8939,8 +8876,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "fc_var": "src",
                                 "i_type": "character(kind=C_CHAR)",
@@ -9112,8 +9048,7 @@
                                 "cxx_var": "in",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "in",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "in",
@@ -9145,8 +9080,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "i_type": "character(kind=C_CHAR)",
                                 "i_var": "src",
@@ -9230,8 +9164,7 @@
                                 "cxx_var": "SHC_in_cxx",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "in",
                                 "fc_var": "in",
                                 "i_local_cxx": "SHC_in_cxx",
@@ -9267,8 +9200,7 @@
                                 "cxx_var": "src",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_CHAR",
-                                "f_type": "character(*)",
+                                "f_type": "character(len=*)",
                                 "f_var": "src",
                                 "fc_var": "src",
                                 "i_type": "character(kind=C_CHAR)",

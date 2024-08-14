@@ -1517,14 +1517,6 @@ rv = .false.
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
                 continue
-            elif arg_meta["assumedtype"]:
-                # Passed directly to C as a 'void *'
-                arg_f_decl.append(
-                    "type(*) :: {}".format(fmt_arg.f_var)
-                )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append(fmt_arg.f_var)
-                continue
             elif implied:
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
@@ -1551,12 +1543,6 @@ rv = .false.
                 self.add_stmt_declaration(
                     arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
                 self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
-            else:
-                # Generate declaration from argument.
-                intent = arg_bind.meta["intent"]
-                arg_f_decl.append(gen_arg_as_fortran(f_arg,
-                    intent=intent, pass_obj=pass_obj, optional=optattr))
-                arg_f_names.append(fmt_arg.f_var)
 
             if options.debug:
                 stmts_comments.append(
@@ -2254,7 +2240,7 @@ def gen_arg_as_fortran(
         elif not local:
             t.append("character(len=*)")
         else:
-            t.append("character")
+            t.append("XXXcharacter")
     elif pass_obj:
         # Used with wrap_struct_as=class for passed-object dummy argument.
         t.append(ntypemap.f_class)

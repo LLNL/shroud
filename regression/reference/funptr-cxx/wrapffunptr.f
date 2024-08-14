@@ -444,6 +444,9 @@ contains
     ! Argument:  int type
     ! Statement: f_in_native
     ! ----------------------------------------
+    ! Argument:  void *in +assumedtype+intent(in)
+    ! Statement: f_in_void*
+    ! ----------------------------------------
     ! Argument:  void (*incr3)(void) +funptr
     ! Statement: f_in_procedure_funptr
     !>
@@ -451,9 +454,9 @@ contains
     !!
     !<
     subroutine callback3(type, in, incr3)
-        use iso_c_binding, only : C_FUNPTR, C_INT
+        use iso_c_binding, only : C_FUNPTR, C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: type
-        type(*) :: in
+        type(*), intent(IN) :: in
         type(C_FUNPTR) :: incr3
         ! splicer begin function.callback3
         call c_callback3(type, in, incr3)

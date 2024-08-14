@@ -330,8 +330,9 @@ def default_typemap():
             cxx_type="void",
             # fortran='subroutine',
             f_type="type(C_PTR)",
+            f_kind="C_PTR",
             f_module_name="iso_c_binding",
-            i_module=dict(iso_c_binding=["C_PTR"]),
+            f_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
             cfi_type="CFI_type_intptr_t",
@@ -846,9 +847,10 @@ def default_typemap():
             "char",
             cxx_type="char",
             c_type="char",  # XXX - char *
-            f_type="character(*)",
-            f_kind="C_CHAR",
-            f_module_name="iso_c_binding",
+            f_type="character(len=*)",
+# The Fortran wrapper does not use C_CHAR
+#            f_kind="C_CHAR",
+#            f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
@@ -868,9 +870,10 @@ def default_typemap():
             cxx_to_c="{cxx_var}{cxx_member}c_str()",  # cxx_member is . or ->
             c_type="char",  # XXX - char *
             impl_header=["<string>"],
-            f_type="character(*)",
-            f_kind="C_CHAR",
-            f_module_name="iso_c_binding",
+            f_type="character(len=*)",
+# The Fortran wrapper does not use C_CHAR
+#            f_kind="C_CHAR",
+#            f_module_name="iso_c_binding",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",

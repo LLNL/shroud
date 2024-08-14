@@ -39,6 +39,7 @@ statements:
     extend:
     - name: f_in_twostruct<native,native>
       mixin:
-      - c_mixin_argument2
+      - f_mixin_declare-fortran-arg
       - f_mixin_declare-interface-arg
+      - c_mixin_argument2
     # Add meaningful fields here

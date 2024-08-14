@@ -535,9 +535,23 @@ class FillFormat(object):
         if meta["assumedtype"]:
             fmt.f_type = "type(*)"
             fmt.i_type = "type(*)"
+        elif ntypemap.base == "string":
+            if meta["len"] and meta["intent"] == "function":
+                # Declare local variable for function result
+                fmt.f_type = "character(len={})".format(meta["len"])
+            elif meta["deref"] == "allocatable":
+                fmt.f_type = "character(len=:)"
+            else:
+                fmt.f_type = ntypemap.f_type
+            fmt.i_type = ntypemap.i_type
         else:
-            fmt.f_type = ntypemap.f_type
-            fmt.i_type = ntypemap.i_type or ntypemap.f_type
+            # Some types such as vector will not have a default since it
+            # depends on the template arguments.
+            if ntypemap.f_type:
+                fmt.f_type = ntypemap.f_type
+            i_type = ntypemap.i_type or ntypemap.f_type
+            if i_type:
+                fmt.i_type = i_type
         fmt.sh_type = ntypemap.sh_type
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind
@@ -633,7 +647,9 @@ class FillFormat(object):
                 fmt.i_dimension = "(*)"
                 # XXX use f_var_cdesc since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
-                if visitor.compute_shape:
+                if meta["deref"] in ["allocatable","pointer"]:
+                    fmt.f_dimension = fmt.f_assumed_shape
+                elif visitor.compute_shape:
                     fmt.f_dimension = fmt.f_assumed_shape
                 else:
                     fmt.f_dimension = fmt.f_array_allocate
@@ -882,6 +898,10 @@ def set_f_arg_format(node, arg, fmt, bind, wlang):
         fmt.f_optional_attr = ", optional"
     if meta["value"]:
         fmt.f_value_attr = ", value"
+    if meta["deref"] == "allocatable":
+        fmt.f_deref_attr = ", allocatable"
+    elif meta["deref"] == "pointer":
+        fmt.f_deref_attr = ", pointer"
 
 
 def compute_c_deref(arg, fmt):

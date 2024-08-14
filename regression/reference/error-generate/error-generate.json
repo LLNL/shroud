@@ -700,6 +700,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "charlen": true,
                                 "intent": "in",
                                 "value": true
                             }
@@ -753,6 +754,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "charlen": true,
                                 "intent": "in",
                                 "value": true
                             }
@@ -811,6 +813,7 @@
                         },
                         "arg1": {
                             "meta": {
+                                "charlen": true,
                                 "intent": "inout"
                             }
                         }

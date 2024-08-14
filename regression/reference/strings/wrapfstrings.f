@@ -2180,7 +2180,7 @@ contains
     !<
     subroutine fetch_array_string_arg(strs)
         use iso_c_binding, only : C_LOC
-        character(*), intent(OUT), target :: strs(:)
+        character(len=*), intent(OUT), target :: strs(:)
         ! splicer begin function.fetch_array_string_arg
         type(STR_SHROUD_array) :: SHT_strs_cdesc
         SHT_strs_cdesc%base_addr = C_LOC(strs)

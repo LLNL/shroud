@@ -21,16 +21,21 @@ functions that it generates.
 This file sets some meta attributes based on language specific
 wrappings.
 
+Shared:
+   charlen  attrs
+
 Fortran:
    intent
    api
    deref
    hidden
+   len      attrs
    owner    attrs
    value
 
    fptr - FunctionNode for callback
       Converted from a function pointer into a function.
+   ftrim_char_in - option.F_trim_char_in
 
 
 """
@@ -619,7 +624,7 @@ class FillMeta(object):
         for attr in [
                 "assumedtype",
                 "dimension", "dim_ast",
-                "free_pattern", "hidden", "owner", "rank",
+                "free_pattern", "hidden", "len", "owner", "rank",
         ]:
             meta[attr] = share_meta[attr]
 
@@ -632,8 +637,8 @@ class FillMeta(object):
         for attr in [
                 "assumedtype",
                 "dimension", "dim_ast",
-                "free_pattern", "hidden", "owner", "rank",
-                "fptr", "value", "optional",
+                "fptr", "free_pattern", "hidden", "len", "owner", "rank",
+                "value", "optional",
         ]:
             meta[attr] = share_meta[attr]
         
@@ -802,6 +807,10 @@ class FillMetaShare(FillMeta):
                 )
             meta["assumedtype"] = assumedtype
 
+        charlen = attrs.get("charlen", missing)
+        if charlen is not missing:
+            meta["charlen"] = charlen
+            
     def check_common_attrs(self, ast, meta):
         """Check attributes which are common to function and argument AST
         This includes: dimension, free_pattern, owner, rank
@@ -889,7 +898,11 @@ class FillMetaShare(FillMeta):
                     "Must be defined in patterns section.".format(free_pattern)
                 )
             meta["free_pattern"] = free_pattern
-        
+
+        lenattr = attrs.get("len", missing)
+        if lenattr is not missing:
+            meta["len"] = lenattr
+            
     def parse_dim_attrs(self, dim, meta):
         """Parse dimension attributes and save the AST.
         This tree will be traversed by the wrapping classes

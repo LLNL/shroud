@@ -83,6 +83,7 @@ contains
     ! Argument:  MPI_Comm comm
     ! Statement: f_in_unknown
     subroutine class2_method1(obj, comm)
+        use iso_c_binding, only : C_INT
         class(class2) :: obj
         integer, value, intent(IN) :: comm
         call c_class2_method1(obj%cxxmem, comm)

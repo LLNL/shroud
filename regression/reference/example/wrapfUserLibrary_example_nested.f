@@ -1706,6 +1706,7 @@ contains
     ! Argument:  MPI_Comm comm
     ! Statement: f_in_unknown
     subroutine testmpi_mpi(comm)
+        use iso_c_binding, only : C_INT
         integer, value, intent(IN) :: comm
         ! splicer begin namespace.example::nested.function.testmpi_mpi
         call c_testmpi_mpi(comm)

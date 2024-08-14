@@ -644,14 +644,14 @@ contains
     !>
     !! \brief Copy vector into Fortran input array
     !!
-    !! Convert subroutine in to a function and
+    !! Convert subroutine into a function and
     !! return the number of items copied into argument
     !! by setting fstatements for both C and Fortran.
     !<
     ! start vector_iota_out_with_num
     function vector_iota_out_with_num(arg) &
             result(num)
-        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
+        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_PTR, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
         integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num
@@ -672,14 +672,14 @@ contains
     !>
     !! \brief Copy vector into Fortran input array
     !!
-    !! Convert subroutine in to a function.
+    !! Convert subroutine into a function.
     !! Return the number of items copied into argument
     !! by setting fstatements for the Fortran wrapper only.
     !<
     ! start vector_iota_out_with_num2
     function vector_iota_out_with_num2(arg) &
             result(num)
-        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
+        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_PTR, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
         integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num2
@@ -842,7 +842,7 @@ contains
     !<
     subroutine vector_string_fill(arg)
         use iso_c_binding, only : C_LOC
-        character(*), intent(OUT), target :: arg(:)
+        character(len=*), intent(OUT), target :: arg(:)
         ! splicer begin function.vector_string_fill
         type(VEC_SHROUD_array) :: SHT_arg_cdesc
         SHT_arg_cdesc%base_addr = C_LOC(arg)

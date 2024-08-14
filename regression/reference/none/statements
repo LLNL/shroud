@@ -505,6 +505,8 @@ root
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
+      declare-fortran-arg -- f_mixin_declare-fortran-arg
+      declare-fortran-arg-no-module -- f_mixin_declare-fortran-arg-no-module
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
@@ -529,8 +531,6 @@ root
         2d
           vector
             buf -- f_mixin_in_2d_vector_buf
-        character
-          buf -- f_mixin_in_character_buf
         string
           array
             buf -- f_mixin_in_string_array_buf
@@ -562,6 +562,8 @@ root
       pass
         capsule -- f_mixin_pass_capsule
         cdesc -- f_mixin_pass_cdesc
+        character
+          buf -- f_mixin_pass_character_buf
       shadow-arg -- f_mixin_shadow-arg
       str
         array -- f_mixin_str_array
@@ -4697,6 +4699,8 @@ f_function_char:
   comments:
   - Call the C wrapper as a subroutine.
   intent: function
+  f_arg_decl:
+  - 'character :: {f_var}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -5498,7 +5502,7 @@ f_function_native*_cdesc_allocatable:
   - Release memory from capsule.
   intent: function
   f_arg_decl:
-  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}, allocatable, target :: {f_var}{f_dimension}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -6391,6 +6395,8 @@ f_function_string&_buf:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6495,6 +6501,8 @@ f_function_string&_buf_copy:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7196,6 +7204,8 @@ f_function_string*_buf:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7242,6 +7252,8 @@ f_function_string*_buf_copy:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7895,6 +7907,8 @@ f_function_string_buf:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7999,6 +8013,8 @@ f_function_string_buf_copy:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9022,12 +9038,19 @@ f_getter_struct*_fapi_pointer:
 f_in_bool:
   name: f_in_bool
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
   f_arg_call:
   - '{f_var_cxx}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -9064,6 +9087,10 @@ f_in_char:
 f_in_char*:
   name: f_in_char*
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9187,6 +9214,10 @@ f_in_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9229,6 +9260,10 @@ f_in_char*_buf:
 f_in_char*_capi:
   name: f_in_char*_capi
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9247,6 +9282,10 @@ f_in_char*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9277,6 +9316,13 @@ f_in_enum:
   - Use gen.cidecl to get the C interface type.
   - enums use option.F_enum_type to control the C type.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9317,6 +9363,13 @@ f_in_native:
 f_in_native&:
   name: f_in_native&
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9423,6 +9476,13 @@ f_in_native*_cfi:
   - Make the argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9620,6 +9680,10 @@ f_in_string&_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9664,6 +9728,10 @@ f_in_string&_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9710,6 +9778,10 @@ f_in_string*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -9754,6 +9826,10 @@ f_in_string*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9830,6 +9906,10 @@ f_in_string_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character(len=*){f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9858,6 +9938,13 @@ f_in_struct:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9873,6 +9960,13 @@ f_in_struct:
 f_in_struct&:
   name: f_in_struct&
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9891,6 +9985,13 @@ f_in_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9908,6 +10009,13 @@ f_in_unknown:
   notes:
   - Used with MPI types
   intent: in
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10426,6 +10534,10 @@ f_in_void*_cdesc:
 f_inout_bool*:
   name: f_inout_bool*
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
@@ -10434,6 +10546,9 @@ f_inout_bool*:
   - '{f_var_cxx}'
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -10451,6 +10566,10 @@ f_inout_bool*:
 f_inout_char*:
   name: f_inout_char*
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10468,6 +10587,10 @@ f_inout_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10512,6 +10635,10 @@ f_inout_char*_buf:
 f_inout_char*_capi:
   name: f_inout_char*_capi
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10530,6 +10657,10 @@ f_inout_char*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10559,6 +10690,13 @@ f_inout_char*_cfi:
 f_inout_enum*:
   name: f_inout_enum*
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10580,6 +10718,13 @@ f_inout_enum*:
 f_inout_native&:
   name: f_inout_native&
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10674,6 +10819,13 @@ f_inout_native*_cfi:
   - Make the argument a CFI_desc_t.
   - Native argument which use CFI_desc_t.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10803,6 +10955,10 @@ f_inout_string&_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10849,6 +11005,10 @@ f_inout_string&_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10918,6 +11078,10 @@ f_inout_string*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -10964,6 +11128,10 @@ f_inout_string*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10993,6 +11161,13 @@ f_inout_string*_cfi:
 f_inout_struct&:
   name: f_inout_struct&
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11011,6 +11186,13 @@ f_inout_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: inout
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11428,6 +11610,29 @@ f_mixin_char_cdesc_pointer:
   c_arg_call:
   - '{cxx_var}'
   owner: library
+f_mixin_declare-fortran-arg:
+  name: f_mixin_declare-fortran-arg
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_mixin_declare-fortran-arg-no-module:
+  name: f_mixin_declare-fortran-arg-no-module
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_mixin_declare-interface-arg:
   name: f_mixin_declare-interface-arg
   intent: mixin
@@ -11669,27 +11874,6 @@ f_mixin_in_2d_vector_buf:
   - len
   - size
   owner: library
-f_mixin_in_character_buf:
-  name: f_mixin_in_character_buf
-  comments:
-  - Pass CHARACTER and LEN to C wrapper.
-  intent: mixin
-  f_declare:
-  - integer(C_INT) {f_var_len}
-  f_pre_call:
-  - '{f_var_len} = len({f_var}, kind=C_INT)'
-  f_arg_call:
-  - '{f_var}'
-  - '{f_var_len}'
-  f_module:
-    iso_c_binding:
-    - C_INT
-  f_temps:
-  - len
-  f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
 f_mixin_in_string_array_buf:
   name: f_mixin_in_string_array_buf
   comments:
@@ -11816,7 +12000,7 @@ f_mixin_native_cdesc_allocate:
   - using helper copy_array.
   intent: mixin
   f_arg_decl:
-  - '{f_type}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}, allocatable, target :: {f_var}{f_dimension}'
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
@@ -11902,7 +12086,7 @@ f_mixin_out_native_cdesc_allocate:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}'
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
@@ -12032,6 +12216,27 @@ f_mixin_pass_cdesc:
   c_helper:
   - array_context
   owner: library
+f_mixin_pass_character_buf:
+  name: f_mixin_pass_character_buf
+  comments:
+  - Pass CHARACTER and LEN to C wrapper.
+  intent: mixin
+  f_declare:
+  - integer(C_INT) {f_var_len}
+  f_pre_call:
+  - '{f_var_len} = len({f_var}, kind=C_INT)'
+  f_arg_call:
+  - '{f_var}'
+  - '{f_var_len}'
+  f_module:
+    iso_c_binding:
+    - C_INT
+  f_temps:
+  - len
+  f_need_wrapper: true
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_mixin_shadow-arg:
   name: f_mixin_shadow-arg
   comments:
@@ -12144,12 +12349,19 @@ f_none_native:
 f_out_bool*:
   name: f_out_bool*
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
   - '{f_var_cxx}'
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -12167,6 +12379,10 @@ f_out_bool*:
 f_out_char*:
   name: f_out_char*
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12184,6 +12400,10 @@ f_out_char*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -12222,6 +12442,10 @@ f_out_char*_buf:
 f_out_char*_capi:
   name: f_out_char*_capi
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12240,6 +12464,10 @@ f_out_char*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12264,6 +12492,13 @@ f_out_char*_cfi:
 f_out_enum*:
   name: f_out_enum*
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12285,6 +12520,13 @@ f_out_enum*:
 f_out_native&:
   name: f_out_native&
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12466,7 +12708,7 @@ f_out_native**_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_assumed_shape}'
+  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -12582,6 +12824,13 @@ f_out_native**_cfi_allocatable:
   comments:
   - Set Fortran pointer to point to cxx_var.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12617,6 +12866,13 @@ f_out_native**_cfi_pointer:
   comments:
   - Set Fortran pointer to point to c_local_cxx.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12748,6 +13004,10 @@ f_out_string&_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -12793,6 +13053,10 @@ f_out_string&_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12949,6 +13213,10 @@ f_out_string**_cfi_allocatable:
   - std::string **strs +intent(out)+dimension(nstrs)+deref(allocatable),
   - int *nstrs+intent(out)+hidden
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12972,6 +13240,10 @@ f_out_string**_cfi_copy:
   comments:
   - Make the argument a CFI_desc_t.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13015,6 +13287,10 @@ f_out_string*_buf:
   comments:
   - Pass CHARACTER and LEN to C wrapper.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -13060,6 +13336,10 @@ f_out_string*_cfi:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13086,6 +13366,13 @@ f_out_string*_cfi:
 f_out_struct&:
   name: f_out_struct&
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13104,6 +13391,13 @@ f_out_struct*:
   - Used with in, out, inout.
   - C pointer -> void pointer -> C++ pointer
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13544,6 +13838,13 @@ f_out_vector_buf_targ_string_scalar:
 f_out_void*&:
   name: f_out_void*&
   intent: out
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13638,12 +13939,19 @@ f_setter:
 f_setter_bool:
   name: f_setter_bool
   intent: setter
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_pre_call:
   - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
   f_arg_call:
   - '{f_var_cxx}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -13665,8 +13973,13 @@ f_setter_native:
   intent: setter
   f_arg_name:
   - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{fc_var}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13686,8 +13999,13 @@ f_setter_native*:
   intent: setter
   f_arg_name:
   - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{fc_var}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13748,6 +14066,13 @@ f_setter_string_buf:
 f_setter_struct*:
   name: f_setter_struct*
   intent: setter
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13762,6 +14087,13 @@ f_setter_struct*:
 f_setter_struct**:
   name: f_setter_struct**
   intent: setter
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13779,6 +14111,13 @@ f_setter_struct**:
 f_setter_struct*_pointer:
   name: f_setter_struct*_pointer
   intent: setter
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:

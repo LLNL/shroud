@@ -241,6 +241,7 @@
             "f_char_type": "",
             "f_declare_shape_array": "",
             "f_declare_shape_prefix": "SHAPE_",
+            "f_deref_attr": "",
             "f_dimension": "",
             "f_get_shape_array": "",
             "f_intent": "",
@@ -333,9 +334,7 @@
             "base": "string",
             "c_type": "char",
             "cxx_type": "char",
-            "f_kind": "C_CHAR",
-            "f_module_name": "iso_c_binding",
-            "f_type": "character(*)",
+            "f_type": "character(len=*)",
             "flat_name": "char",
             "i_module": {
                 "iso_c_binding": [
@@ -730,9 +729,7 @@
             "c_type": "char",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
-            "f_kind": "C_CHAR",
-            "f_module_name": "iso_c_binding",
-            "f_type": "character(*)",
+            "f_type": "character(len=*)",
             "flat_name": "std_string",
             "i_module": {
                 "iso_c_binding": [
@@ -986,14 +983,15 @@
             "c_type": "void",
             "cfi_type": "CFI_type_intptr_t",
             "cxx_type": "void",
-            "f_module_name": "iso_c_binding",
-            "f_type": "type(C_PTR)",
-            "flat_name": "void",
-            "i_module": {
+            "f_kind": "C_PTR",
+            "f_module": {
                 "iso_c_binding": [
                     "C_PTR"
                 ]
             },
+            "f_module_name": "iso_c_binding",
+            "f_type": "type(C_PTR)",
+            "flat_name": "void",
             "sgroup": "void",
             "sh_type": "SH_TYPE_CPTR"
         }
