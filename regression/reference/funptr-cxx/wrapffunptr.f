@@ -471,6 +471,9 @@ contains
     ! Argument:  int *ilow +intent(in)+rank(1)
     ! Statement: f_in_native*
     ! ----------------------------------------
+    ! Argument:  int nargs +implied(size(ilow))
+    ! Statement: c_default
+    ! ----------------------------------------
     ! Argument:  int (*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in))
     ! Statement: f_in_procedure
     !>

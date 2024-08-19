@@ -1934,6 +1934,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double *out +dimension(shape(in))+intent(out)
     ! Statement: f_out_native*
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))
+    ! Statement: c_default
     !>
     !! \brief Test multidimensional arrays with allocatable
     !!

@@ -1288,7 +1288,7 @@ rv = .false.
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
             f_ast - Abstract Syntax Tree from parser, declast.Declaration
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
-            stmts_blk - typemap.FStmts, fc_statements block.
+            stmts_blk - util.Scope, fc_statements block.
             modules - Build up USE statement.
             arg_c_call - Arguments to C wrapper.
 
@@ -1521,28 +1521,29 @@ rv = .false.
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
                     implied, node, f_arg)
+                arg_stmt = util.Scope(statements.FStmts)
                 if intermediate:
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
-                    arg_f_decl.append(gen_arg_as_fortran(f_arg,
-                        name=fmt_arg.fc_var, local=True, bindc=True))
-                    append_format(pre_call, "{fc_var} = {pre_call_intent}", fmt_arg)
-                    arg_c_call.append(fmt_arg.fc_var)
+                    arg_stmt.f_arg_decl = ["{i_type} :: {fc_var}"]
+                    arg_stmt.f_pre_call = [
+                        "{fc_var} = {pre_call_intent}"
+                    ]
+                    arg_stmt.f_arg_call = ["{fc_var}"]
                 else:
-                    arg_c_call.append(fmt_arg.pre_call_intent)
+                    arg_stmt.f_arg_call = ["{pre_call_intent}"]
                 for helper in f_helper.split():
                     fileinfo.f_helper[helper] = True
                 self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
-                continue
 
             if arg_meta["optional"]:
                 fmt_arg.default_value = f_arg.declarator.init
                 optattr = True
-            if arg_stmt.f_arg_decl:
-                # Explicit declarations from fc_statements.
-                self.add_stmt_declaration(
-                    arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
-                self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
+
+            # Explicit declarations from fc_statements.
+            self.add_stmt_declaration(
+                arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
+            self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
 
             if options.debug:
                 stmts_comments.append(

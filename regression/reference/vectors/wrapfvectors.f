@@ -929,6 +929,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int *arg +intent(in)+rank(2)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  int len +implied(size(arg,2))
+    ! Statement: c_default
     function return_dim2(arg) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

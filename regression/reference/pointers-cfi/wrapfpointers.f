@@ -1362,6 +1362,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double *out +dimension(size(in))+intent(out)
     ! Statement: f_out_native*
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))
+    ! Statement: c_default
     !>
     !! \brief compute cos of IN and save in OUT
     !!
@@ -1389,6 +1392,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int *out +dimension(size(in))+intent(out)
     ! Statement: f_out_native*
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))
+    ! Statement: c_default
     !>
     !! \brief truncate IN argument and save in OUT
     !!
@@ -1495,6 +1501,9 @@ contains
     ! Function:  void Sum
     ! Statement: f_subroutine
     ! ----------------------------------------
+    ! Argument:  int len +implied(size(values))
+    ! Statement: c_default
+    ! ----------------------------------------
     ! Argument:  const int *values +rank(1)
     ! Statement: f_in_native*_cfi
     ! ----------------------------------------
@@ -1541,6 +1550,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int *array +intent(inout)+rank(1)
     ! Statement: f_inout_native*_cfi
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(array))
+    ! Statement: c_default
     !>
     !! Increment array in place using intent(INOUT).
     !<
@@ -1562,6 +1574,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double *x +rank(1)
     ! Statement: f_inout_native*_cfi
+    ! ----------------------------------------
+    ! Argument:  int x_length +implied(size(x))
+    ! Statement: c_default
     ! start fill_with_zeros
     subroutine fill_with_zeros(x)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1580,6 +1595,9 @@ contains
     ! ----------------------------------------
     ! Argument:  const int *arr +rank(1)
     ! Statement: f_in_native*_cfi
+    ! ----------------------------------------
+    ! Argument:  size_t len +implied(size(arr))
+    ! Statement: c_default
     ! start accumulate
     function accumulate(arr) &
             result(SHT_rv)
