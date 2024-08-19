@@ -96,7 +96,7 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         type(struct1), intent(IN) :: SH_this
-        integer(C_INT) :: SHT_rv(narg2)
+        ===>f_arg_decl<===
         ! splicer begin function.struct1_get_arg2
         SHT_rv = c_struct1_get_arg2(SH_this, SHT_rv)
         ! splicer end function.struct1_get_arg2
