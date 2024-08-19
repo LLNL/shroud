@@ -651,7 +651,7 @@ contains
     ! start vector_iota_out_with_num
     function vector_iota_out_with_num(arg) &
             result(num)
-        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_PTR, C_SIZE_T
+        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
         integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num
@@ -679,7 +679,7 @@ contains
     ! start vector_iota_out_with_num2
     function vector_iota_out_with_num2(arg) &
             result(num)
-        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_PTR, C_SIZE_T
+        use iso_c_binding, only : C_INT, C_LOC, C_LONG, C_SIZE_T
         integer(C_INT), intent(OUT), target :: arg(:)
         integer(C_LONG) :: num
         ! splicer begin function.vector_iota_out_with_num2

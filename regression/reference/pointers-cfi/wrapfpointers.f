@@ -2173,7 +2173,7 @@ contains
     ! start return_int_raw
     function return_int_raw() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw
         SHT_rv = c_return_int_raw()
@@ -2197,7 +2197,7 @@ contains
     ! start return_int_raw_with_args
     function return_int_raw_with_args(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         character(len=*), intent(IN) :: name
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw_with_args

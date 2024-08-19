@@ -5453,6 +5453,8 @@ f_function_native&:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5482,6 +5484,8 @@ f_function_native&_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5538,6 +5542,8 @@ f_function_native*_cdesc_allocatable:
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -5597,6 +5603,8 @@ f_function_native*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -5653,6 +5661,8 @@ f_function_native*_cdesc_pointer_caller:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -5705,6 +5715,9 @@ f_function_native*_cfi_allocatable:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5751,6 +5764,9 @@ f_function_native*_cfi_pointer:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5806,6 +5822,8 @@ f_function_native*_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5835,6 +5853,8 @@ f_function_native*_pointer_caller:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -8689,6 +8709,8 @@ f_function_struct*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -8730,6 +8752,8 @@ f_function_struct*_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -8884,6 +8908,8 @@ f_getter_native*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -9040,6 +9066,8 @@ f_getter_struct*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -11748,6 +11776,8 @@ f_mixin_function_c-ptr:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -12077,6 +12107,8 @@ f_mixin_native_cdesc_allocate:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
     \ kind=C_SIZE_T))"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -12097,6 +12129,8 @@ f_mixin_native_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   c_arg_call:

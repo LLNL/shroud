@@ -94,7 +94,6 @@ contains
     ! Statement: f_in_struct*
     function struct1_get_arg2(SH_this) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
         type(struct1), intent(IN) :: SH_this
         ===>f_arg_decl<===
         ! splicer begin function.struct1_get_arg2

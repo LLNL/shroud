@@ -247,6 +247,9 @@
         ],
         "c_need_wrapper": true,
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "C_PTR",
                 "c_f_pointer"
@@ -417,6 +420,9 @@
             "copy_array"
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "C_LOC",
                 "C_SIZE_T"
@@ -465,6 +471,9 @@
             "Set Fortran pointer to native array."
         ],
         "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ],
             "iso_c_binding": [
                 "c_f_pointer"
             ]
@@ -4823,6 +4832,11 @@
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_allocatable"
         ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
         "f_arg_decl": [
             "{f_type}, allocatable :: {f_var}{f_assumed_shape}"
         ],
@@ -4848,6 +4862,11 @@
             "c_mixin_arg_native_cfi",
             "c_mixin_native_cfi_pointer"
         ],
+        "f_module": {
+            "{typemap.f_module_name}": [
+                "{typemap.f_kind}"
+            ]
+        },
         "f_arg_decl": [
             "{f_type}, pointer :: {f_var}{f_assumed_shape}"
         ],

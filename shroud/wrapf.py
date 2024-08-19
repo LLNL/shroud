@@ -1611,21 +1611,12 @@ rv = .false.
             arg_c_call,
             need_wrapper,
         )
-        self.add_stmt_declaration(
-            result_stmt, arg_f_decl, arg_f_names, fmt_result)
-
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        if subprogram == "function":
-            # if func_is_const:
-            #     fmt_result.F_pure_clause = 'pure '
-
-            if ast.declarator.is_indirect() < 2:
-                # If more than one level of indirection, will return
-                # a type(C_PTR).  i.e. int ** same as void *.
-                # So do not add type's f_module.
-                self.update_f_module(modules, result_typemap.f_module, fmt_result)
+        self.add_stmt_declaration(
+            result_stmt, arg_f_decl, arg_f_names, fmt_result)
+        self.add_f_module_from_stmts(result_stmt, modules, fmt_result)
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).
