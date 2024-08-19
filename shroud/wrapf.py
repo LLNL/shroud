@@ -743,18 +743,13 @@ rv = .false.
 
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
         """Add declarations from fc_statements.
-
-        Return True if f_arg_decl found.
         """
-        found = False
         if stmts.f_arg_decl:
-            found = True
             for line in stmts.f_arg_decl:
                 append_format(arg_f_decl, line, fmt)
         if stmts.f_arg_name:
             for aname in stmts.f_arg_name:
                 append_format(arg_f_names, aname, fmt)
-        return found
 
     def add_stmt_var(self, group, lst, fmt):
         """Add a variable fc_statements to lst.
@@ -1616,23 +1611,15 @@ rv = .false.
             arg_c_call,
             need_wrapper,
         )
-        found_arg_decl_ret = self.add_stmt_declaration(
+        self.add_stmt_declaration(
             result_stmt, arg_f_decl, arg_f_names, fmt_result)
 
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        # Unless explicitly set by FStmts.f_arg_decl
         if subprogram == "function":
             # if func_is_const:
             #     fmt_result.F_pure_clause = 'pure '
-            if not found_arg_decl_ret:
-                # result_as_arg or None
-                # local=True will add any character len attributes
-                # e.g.  CHARACTER(LEN=30)
-                arg_f_decl.append(
-                    gen_arg_as_fortran(ast, name=fmt_result.F_result, local=True)
-                )
 
             if ast.declarator.is_indirect() < 2:
                 # If more than one level of indirection, will return
