@@ -54,9 +54,10 @@ module funptr_mod
             type(C_PTR) :: callback_ptr_get_ptr
         end function callback_ptr_get_ptr
 
-        subroutine callback_types_void_ptr_arg(===>i_arg_names<===) bind(C)
+        subroutine callback_types_void_ptr_arg(arg0) bind(C)
+            use iso_c_binding, only : C_PTR
             implicit none
-            ===>i_arg_decl<===
+            type(C_PTR), value :: arg0
         end subroutine callback_types_void_ptr_arg
 
         function custom_funptr(XX0arg, XX1arg) bind(C)

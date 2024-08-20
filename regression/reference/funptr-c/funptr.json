@@ -3344,14 +3344,14 @@
                                                     "i_type": "type(C_PTR)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_CPTR",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_void*",
                                                     "typemap_name": "void"
                                                 },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_void*"
                                             }
                                         },
                                         "share": {
@@ -3441,14 +3441,14 @@
                                                     "i_type": "type(C_PTR)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_CPTR",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_void*",
                                                     "typemap_name": "void"
                                                 },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_void*"
                                             }
                                         },
                                         "share": {

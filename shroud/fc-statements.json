@@ -1584,7 +1584,8 @@
     {
         "alias": [
             "f_in_void*",
-            "c_in_void*"
+            "c_in_void*",
+            "f_none_void*"
         ],
         "mixin": [
             "c_mixin_argument2"

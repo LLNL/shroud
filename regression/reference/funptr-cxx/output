@@ -1,10 +1,3 @@
-
-----------------------------------------
-Phase: FillMeta function
-----------------------------------------
-Node: callback_types
-line 113
-Unknown statement: f_none_void*
 Wrote wrapfunptr.h
 Wrote wrapfunptr.cpp
 Wrote wrapffunptr.f
