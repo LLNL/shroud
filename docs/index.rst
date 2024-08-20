@@ -48,6 +48,7 @@ Contents
    fortran
    python
    cookbook
+   expand
    typemaps
    statements
    cstatements

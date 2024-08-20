@@ -860,8 +860,8 @@ An example from strings.yaml:
           This is accomplished with C_finalize_buf which is possible
           because +len(30) so the contents are copied before returning.
       fstatements:
-        c_buf:
-          final:
+        f:
+          c_final:
           - delete {cxx_var};
 
 An example from vectors.yaml:
@@ -870,21 +870,23 @@ An example from vectors.yaml:
 
     - decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
       fstatements:
-        c_buf:
-          return_type: long
-          ret:
+        c:
+          c_return_type: long
+          c_return:
           - return Darg->size;
         f:
-          result: num
+          c_return_type: long
+          c_return:
+          - return SHT_arg_cdesc->size;
+          f_result: num
           f_module:
             iso_c_binding: ["C_LONG"]
-          declare:
+          f_arg_decl:
           -  "integer(C_LONG) :: {F_result}"
-          call:
+          f_call:
           -  "{F_result} = {F_C_call}({F_arg_c_call})"
-               
 
-          
+A complete description is in the :ref:`StatementsAnchor` chapter.
 
 Patterns
 --------

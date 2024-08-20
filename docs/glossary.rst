@@ -79,6 +79,11 @@ splicer
    preserved when regenerating wrappers.
 
 statements
+
+   A data structure used to describe how a function argument will be
+   wrapped. Described in :ref:`StatementsAnchor` chapter.
    
 typemap
 
+   A data structure used to describe how to wrap a C/C++ type.
+   Described in :ref:`TypemapsAnchor` chapter.
