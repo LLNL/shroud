@@ -54,8 +54,9 @@ module funptr_mod
             type(C_PTR) :: callback_ptr_get_ptr
         end function callback_ptr_get_ptr
 
-        subroutine callback_types_void_ptr_arg() bind(C)
+        subroutine callback_types_void_ptr_arg(===>i_arg_names<===) bind(C)
             implicit none
+            ===>i_arg_decl<===
         end subroutine callback_types_void_ptr_arg
 
         function custom_funptr(XX0arg, XX1arg) bind(C)
@@ -287,7 +288,7 @@ module funptr_mod
         ! Function:  void callback_types
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void (*void_ptr_arg)(void)
+        ! Argument:  void (*void_ptr_arg)(void *)
         ! Statement: f_in_procedure
         subroutine callback_types(void_ptr_arg) &
                 bind(C, name="FUN_callback_types")
@@ -571,7 +572,7 @@ contains
     ! Function:  void callback_types
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void (*void_ptr_arg)(void)
+    ! Argument:  void (*void_ptr_arg)(void *)
     ! Statement: f_in_procedure
     !>
     !! \brief Test callback argument types

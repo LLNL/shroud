@@ -3194,7 +3194,22 @@
                                         "typemap_name": "void"
                                     },
                                     "name": "void_ptr_arg",
-                                    "params": [],
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "specifier": [
+                                                "void"
+                                            ],
+                                            "typemap_name": "void"
+                                        }
+                                    ],
                                     "typemap_name": "void"
                                 },
                                 "specifier": [
@@ -3211,7 +3226,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_types(void (*void_ptr_arg)(void *));",
-                "declgen": "void callback_types(void (*void_ptr_arg)(void))",
+                "declgen": "void callback_types(void (*void_ptr_arg)(void *))",
                 "doxygen": {
                     "brief": "Test callback argument types"
                 },
@@ -3227,7 +3242,7 @@
                                 "C_call_function": "callback_types(\tvoid_ptr_arg)",
                                 "C_call_list": "void_ptr_arg",
                                 "C_name": "callback_types",
-                                "C_prototype": "void (*void_ptr_arg)(\tvoid)",
+                                "C_prototype": "void (*void_ptr_arg)(\tvoid *)",
                                 "C_return_type": "void",
                                 "F_C_arguments": "void_ptr_arg",
                                 "F_C_call": "c_callback_types",
@@ -3281,7 +3296,22 @@
                                     "ast": {
                                         "declarator": {
                                             "name": "void_ptr_arg",
-                                            "params": [],
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "void"
+                                                    },
+                                                    "specifier": [
+                                                        "void"
+                                                    ],
+                                                    "typemap_name": "void"
+                                                }
+                                            ],
                                             "typemap_name": "void"
                                         },
                                         "specifier": [
@@ -3289,7 +3319,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void void_ptr_arg(void)",
+                                    "decl": "void void_ptr_arg(void *)",
                                     "name": "void_ptr_arg",
                                     "options": {},
                                     "wrap": {
@@ -3303,12 +3333,37 @@
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_PTR",
+                                                    "f_type": "type(C_PTR)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "type(C_PTR)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_CPTR",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "void"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_mixin_unknown"
                                             }
                                         },
                                         "share": {
                                             "+result": {
                                                 "meta": {
                                                     "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
                                                 }
                                             }
                                         }
@@ -3338,7 +3393,22 @@
                                     "ast": {
                                         "declarator": {
                                             "name": "void_ptr_arg",
-                                            "params": [],
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "void"
+                                                    },
+                                                    "specifier": [
+                                                        "void"
+                                                    ],
+                                                    "typemap_name": "void"
+                                                }
+                                            ],
                                             "typemap_name": "void"
                                         },
                                         "specifier": [
@@ -3346,7 +3416,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void void_ptr_arg(void)",
+                                    "decl": "void void_ptr_arg(void *)",
                                     "name": "void_ptr_arg",
                                     "options": {},
                                     "wrap": {
@@ -3360,12 +3430,37 @@
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_PTR",
+                                                    "f_type": "type(C_PTR)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "type(C_PTR)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_CPTR",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "void"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_mixin_unknown"
                                             }
                                         },
                                         "share": {
                                             "+result": {
                                                 "meta": {
                                                     "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
                                                 }
                                             }
                                         }
@@ -4154,6 +4249,11 @@
             "sgroup": "procedure"
         },
         "void(*)(void)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "void(*)(void*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
