@@ -277,7 +277,7 @@ void FUN_callback_void_ptr(void (*void_ptr_arg)(void *))
 // Function:  void callback_all_types
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void (*all_types)(int, int *, char, char *)
+// Argument:  void (*all_types)(int, int * +rank(1), char, char *)
 // Statement: c_in_procedure
 void FUN_callback_all_types(void (*all_types)(int, int *, char, char *))
 {

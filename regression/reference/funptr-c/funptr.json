@@ -3516,6 +3516,9 @@
                                         },
                                         {
                                             "declarator": {
+                                                "attrs": {
+                                                    "rank": "1"
+                                                },
                                                 "pointer": [
                                                     {
                                                         "ptr": "*"
@@ -3567,8 +3570,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback_all_types(void (*all_types)(int, int *, char, char *));",
-                "declgen": "void callback_all_types(void (*all_types)(int, int *, char, char *))",
+                "decl": "void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *));",
+                "declgen": "void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *))",
                 "doxygen": {
                     "brief": "Test callback argument types"
                 },
@@ -3650,6 +3653,9 @@
                                                 },
                                                 {
                                                     "declarator": {
+                                                        "attrs": {
+                                                            "rank": "1"
+                                                        },
                                                         "pointer": [
                                                             {
                                                                 "ptr": "*"
@@ -3693,7 +3699,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int *, char, char *)",
+                                    "decl": "void all_types(int, int * +rank(1), char, char *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -3730,17 +3736,23 @@
                                             "arg2": {
                                                 "fmtdict": {
                                                     "f_abstract_name": "arg1",
+                                                    "f_assumed_shape": "(:)",
+                                                    "f_dimension": "(:)",
                                                     "f_kind": "C_INT",
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "arg1",
+                                                    "i_dimension": "(*)",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
+                                                    "rank": "1",
                                                     "sh_type": "SH_TYPE_INT",
+                                                    "size": "size(arg1)",
                                                     "stmt_name": "f_none_native*",
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
-                                                    "intent": "none"
+                                                    "intent": "none",
+                                                    "rank": 1
                                                 },
                                                 "stmt": "f_none_native*"
                                             },
@@ -3793,7 +3805,8 @@
                                             },
                                             "arg2": {
                                                 "meta": {
-                                                    "intent": "none"
+                                                    "intent": "none",
+                                                    "rank": 1
                                                 }
                                             },
                                             "arg3": {
@@ -3846,6 +3859,9 @@
                                                 },
                                                 {
                                                     "declarator": {
+                                                        "attrs": {
+                                                            "rank": "1"
+                                                        },
                                                         "pointer": [
                                                             {
                                                                 "ptr": "*"
@@ -3889,7 +3905,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int *, char, char *)",
+                                    "decl": "void all_types(int, int * +rank(1), char, char *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -3926,17 +3942,23 @@
                                             "arg2": {
                                                 "fmtdict": {
                                                     "f_abstract_name": "arg1",
+                                                    "f_assumed_shape": "(:)",
+                                                    "f_dimension": "(:)",
                                                     "f_kind": "C_INT",
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "arg1",
+                                                    "i_dimension": "(*)",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
+                                                    "rank": "1",
                                                     "sh_type": "SH_TYPE_INT",
+                                                    "size": "size(arg1)",
                                                     "stmt_name": "f_none_native*",
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
-                                                    "intent": "none"
+                                                    "intent": "none",
+                                                    "rank": 1
                                                 },
                                                 "stmt": "f_none_native*"
                                             },
@@ -3989,7 +4011,8 @@
                                             },
                                             "arg2": {
                                                 "meta": {
-                                                    "intent": "none"
+                                                    "intent": "none",
+                                                    "rank": 1
                                                 }
                                             },
                                             "arg3": {

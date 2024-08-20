@@ -53,7 +53,7 @@ module funptr_mod
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), value :: arg0
-            integer(C_INT) :: arg1
+            integer(C_INT) :: arg1(*)
             character(kind=C_CHAR), value :: arg2
             character(kind=C_CHAR) :: arg3(*)
         end subroutine callback_all_types_all_types
@@ -312,7 +312,7 @@ module funptr_mod
         ! Function:  void callback_all_types
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void (*all_types)(int, int *, char, char *)
+        ! Argument:  void (*all_types)(int, int * +rank(1), char, char *)
         ! Statement: f_in_procedure
         subroutine callback_all_types(all_types) &
                 bind(C, name="FUN_callback_all_types")
@@ -616,7 +616,7 @@ contains
     ! Function:  void callback_all_types
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void (*all_types)(int, int *, char, char *)
+    ! Argument:  void (*all_types)(int, int * +rank(1), char, char *)
     ! Statement: f_in_procedure
     !>
     !! \brief Test callback argument types

@@ -177,14 +177,14 @@ contains
     use iso_c_binding, only : C_CHAR, C_INT
     implicit none
     integer(C_INT), value :: arg0
-    integer(C_INT) :: arg1
+    integer(C_INT) :: arg1(*)
     character(kind=C_CHAR), value :: arg2
     character(kind=C_CHAR) :: arg3(*)
 
     integer i
 
     old_int = arg0
-!    old_int_array(:arg0) = arg1(:arg0)
+    old_int_array(:arg0) = arg1(:arg0)
     old_char = arg2
 
     ! Copy CHAR array to CHARACTER variable.
@@ -387,6 +387,7 @@ contains
 
     call callback_all_types(all_types)
     call assert_equals(3, old_int, "callback_all_types arg0")
+    call assert_true(all([1,2,3] .eq. old_int_array(1:3)), "callback_all_types arg0")
     call assert_equals("a", old_char, "callback_all_types arg2")
     call assert_equals("dog", old_string, "callback_all_types arg2")
     
