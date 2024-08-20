@@ -1491,16 +1491,10 @@ rv = .false.
 
             if arg_typemap.base == "procedure":
                 # typedef function pointer
-                do_use = False
                 fmt_arg.f_abstract_interface = arg_typemap.f_kind
             elif f_declarator.is_function_pointer():
-                do_use = False
                 if "funptr" not in f_attrs:
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo, fmt_arg)
-            elif arg_stmt.f_module:
-                do_use = False
-            else:
-                do_use = True
 
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
@@ -1547,11 +1541,6 @@ rv = .false.
                 c_decl = gen_decl(c_arg)
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
-
-            if do_use:
-                # XXX - function pointers confuse this code
-                # XXX - it adds a USE for the function pointers's return type.
-                self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic
