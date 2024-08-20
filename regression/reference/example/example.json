@@ -124,6 +124,7 @@
                                                         "f_derived_type": "ex_class1",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
+                                                        "f_kind": "ex_class1",
                                                         "f_local_ptr": "SHT_prv",
                                                         "f_type": "type(ex_class1)",
                                                         "f_var": "SHT_rv",
@@ -317,6 +318,7 @@
                                                         "f_derived_type": "ex_class1",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
+                                                        "f_kind": "ex_class1",
                                                         "f_local_ptr": "SHT_prv",
                                                         "f_type": "type(ex_class1)",
                                                         "f_var": "SHT_rv",
@@ -403,6 +405,7 @@
                                                         "f_derived_type": "ex_class1",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
+                                                        "f_kind": "ex_class1",
                                                         "f_local_ptr": "SHT_prv",
                                                         "f_type": "type(ex_class1)",
                                                         "f_var": "SHT_rv",
@@ -2749,6 +2752,7 @@
                                                         "f_derived_type": "ex_class2",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
+                                                        "f_kind": "ex_class2",
                                                         "f_local_ptr": "SHT_prv",
                                                         "f_type": "type(ex_class2)",
                                                         "f_var": "SHT_rv",
@@ -2835,6 +2839,7 @@
                                                         "f_derived_type": "ex_class2",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
+                                                        "f_kind": "ex_class2",
                                                         "f_local_ptr": "SHT_prv",
                                                         "f_type": "type(ex_class2)",
                                                         "f_var": "SHT_rv",
@@ -4421,6 +4426,7 @@
                                                         "f_derived_type": "ex_class1",
                                                         "f_intent": "OUT",
                                                         "f_intent_attr": ", intent(OUT)",
+                                                        "f_kind": "ex_class1",
                                                         "f_local_ptr": "SHT_prv",
                                                         "f_type": "type(ex_class1)",
                                                         "f_var": "SHT_rv",
@@ -4460,6 +4466,7 @@
                                                         "f_derived_type": "ex_class1",
                                                         "f_intent": "IN",
                                                         "f_intent_attr": ", intent(IN)",
+                                                        "f_kind": "ex_class1",
                                                         "f_type": "type(ex_class1)",
                                                         "f_var": "in",
                                                         "fc_var": "in",
@@ -17621,6 +17628,7 @@
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(ex_class1)",
             "f_derived_type": "ex_class1",
+            "f_kind": "ex_class1",
             "f_module": {
                 "userlibrary_example_nested_mod": [
                     "ex_class1"
@@ -17661,6 +17669,7 @@
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(ex_class2)",
             "f_derived_type": "ex_class2",
+            "f_kind": "ex_class2",
             "f_module": {
                 "userlibrary_example_nested_mod": [
                     "ex_class2"
@@ -17696,6 +17705,7 @@
             "f_capsule_data_type": "AA_SHROUD_capsule_data",
             "f_class": "class(ex_class2_nested)",
             "f_derived_type": "ex_class2_nested",
+            "f_kind": "ex_class2_nested",
             "f_module": {
                 "userlibrary_example_nested_mod": [
                     "ex_class2_nested"

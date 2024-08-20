@@ -195,6 +195,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class1",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(class1)",
                                         "f_var": "SHT_rv",
@@ -444,6 +445,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class1",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(class1)",
                                         "f_var": "SHT_rv",
@@ -1116,6 +1118,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "class1",
                                         "f_type": "type(class1)",
                                         "f_var": "obj2",
                                         "fc_var": "obj2",
@@ -1340,6 +1343,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class1",
                                         "f_type": "type(class1)",
                                         "f_var": "SHT_rv",
                                         "i_type": "type(CLA_SHROUD_capsule_data)",
@@ -1474,6 +1478,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class1",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(class1)",
                                         "f_var": "SHT_rv",
@@ -1597,6 +1602,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class1",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(class1)",
                                         "f_var": "SHT_rv",
@@ -1827,6 +1833,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class1",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(class1)",
                                         "f_var": "SHT_rv",
@@ -3919,6 +3926,7 @@
                                         "f_derived_type": "singleton",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "singleton",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(singleton)",
                                         "f_var": "SHT_rv",
@@ -4156,6 +4164,7 @@
                                         "f_derived_type": "shape",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "shape",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(shape)",
                                         "f_var": "SHT_rv",
@@ -4599,6 +4608,7 @@
                                         "f_derived_type": "circle",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "circle",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(circle)",
                                         "f_var": "SHT_rv",
@@ -5099,6 +5109,7 @@
                                         "f_derived_type": "data",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "data",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(data)",
                                         "f_var": "SHT_rv",
@@ -6356,6 +6367,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_kind": "class1",
                                 "f_type": "type(class1)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg",
@@ -6631,6 +6643,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
+                                "f_kind": "class1",
                                 "f_type": "type(class1)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
@@ -6853,6 +6866,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -6990,6 +7004,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -7173,6 +7188,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
@@ -7305,6 +7321,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
@@ -7438,6 +7455,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -7572,6 +7590,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -7794,6 +7813,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHC_rv_ptr",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -8560,6 +8580,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(circle)",
             "f_derived_type": "circle",
+            "f_kind": "circle",
             "f_module": {
                 "classes_mod": [
                     "circle"
@@ -8600,6 +8621,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
+            "f_kind": "class1",
             "f_module": {
                 "classes_mod": [
                     "class1"
@@ -8676,6 +8698,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class2)",
             "f_derived_type": "class2",
+            "f_kind": "class2",
             "f_module": {
                 "classes_mod": [
                     "class2"
@@ -8710,6 +8733,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(data)",
             "f_derived_type": "data",
+            "f_kind": "data",
             "f_module": {
                 "classes_mod": [
                     "data"
@@ -8750,6 +8774,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(shape)",
             "f_derived_type": "shape",
+            "f_kind": "shape",
             "f_module": {
                 "classes_mod": [
                     "shape"
@@ -8790,6 +8815,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(singleton)",
             "f_derived_type": "singleton",
+            "f_kind": "singleton",
             "f_module": {
                 "classes_mod": [
                     "singleton"

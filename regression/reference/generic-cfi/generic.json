@@ -5425,6 +5425,7 @@
                                 "f_derived_type": "struct_as_class",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "struct_as_class",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(struct_as_class)",
                                 "f_var": "SHT_rv",
@@ -5719,6 +5720,7 @@
                                 "f_derived_type": "struct_as_class",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "struct_as_class",
                                 "f_type": "type(struct_as_class)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
@@ -5924,6 +5926,7 @@
                                 "f_derived_type": "struct_as_class",
                                 "f_intent": "INOUT",
                                 "f_intent_attr": ", intent(INOUT)",
+                                "f_kind": "struct_as_class",
                                 "f_type": "type(struct_as_class)",
                                 "f_var": "arg",
                                 "fc_var": "arg",
@@ -6032,6 +6035,7 @@
             "f_capsule_data_type": "GEN_SHROUD_capsule_data",
             "f_class": "class(struct_as_class)",
             "f_derived_type": "struct_as_class",
+            "f_kind": "struct_as_class",
             "f_module": {
                 "generic_mod": [
                     "struct_as_class"

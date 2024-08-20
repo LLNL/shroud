@@ -103,6 +103,7 @@
                                         "f_derived_type": "ArrayWrapper",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "ArrayWrapper",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(ArrayWrapper)",
                                         "f_var": "SHT_rv",
@@ -4419,6 +4420,7 @@
             "f_capsule_data_type": "ARR_SHROUD_capsule_data",
             "f_class": "class(ArrayWrapper)",
             "f_derived_type": "ArrayWrapper",
+            "f_kind": "ArrayWrapper",
             "f_module": {
                 "arrayclass_mod": [
                     "ArrayWrapper"

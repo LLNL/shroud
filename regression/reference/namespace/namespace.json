@@ -945,6 +945,7 @@
             "f_capsule_data_type": "NS_SHROUD_capsule_data",
             "f_class": "class(class_work)",
             "f_derived_type": "class_work",
+            "f_kind": "class_work",
             "f_module": {
                 "ns_nswork_mod": [
                     "class_work"

@@ -1734,6 +1734,7 @@
             "f_capsule_data_type": "ERR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_subclass)",
             "f_derived_type": "cstruct_as_subclass",
+            "f_kind": "cstruct_as_subclass",
             "f_module": {
                 "error_mod": [
                     "cstruct_as_subclass"
