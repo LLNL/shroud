@@ -627,6 +627,12 @@ contains
     ! ----------------------------------------
     ! Function:  char *Function4a +len(30)
     ! Statement: f_function_char*_buf_copy
+    ! ----------------------------------------
+    ! Argument:  const char *arg1
+    ! Statement: f_in_char*
+    ! ----------------------------------------
+    ! Argument:  const char *arg2
+    ! Statement: f_in_char*
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -644,6 +650,9 @@ contains
     ! ----------------------------------------
     ! Function:  void acceptName
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
     ! start accept_name
     subroutine accept_name(name)
         use iso_c_binding, only : C_NULL_CHAR

@@ -368,6 +368,9 @@ contains
     ! Function:  void callback2
     ! Statement: f_subroutine
     ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
+    ! ----------------------------------------
     ! Argument:  int ival
     ! Statement: f_in_native
     ! ----------------------------------------
@@ -391,6 +394,9 @@ contains
     ! Function:  void callback2_external
     ! Statement: f_subroutine
     ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
+    ! ----------------------------------------
     ! Argument:  int ival
     ! Statement: f_in_native
     ! ----------------------------------------
@@ -413,6 +419,9 @@ contains
     ! ----------------------------------------
     ! Function:  void callback2_funptr
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
     ! ----------------------------------------
     ! Argument:  int ival
     ! Statement: f_in_native

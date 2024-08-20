@@ -2128,6 +2128,9 @@ contains
     ! ----------------------------------------
     ! Function:  int *returnIntRawWithArgs +deref(raw)
     ! Statement: f_function_native*_raw
+    ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
     !! Uses fc_statements f_function_native_*_raw.

@@ -1504,14 +1504,12 @@ rv = .false.
 
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
-                arg_f_decl.append(
-                    "character(len=*), intent(IN) :: {}".format(fmt_arg.f_var)
-                )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append("trim({})//C_NULL_CHAR".format(fmt_arg.f_var))
+                arg_stmt = util.Scope(arg_stmt)
+                arg_stmt.f_arg_call = [
+                    "trim({})//C_NULL_CHAR".format(fmt_arg.f_var)
+                ]
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
-                continue
             elif implied:
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(

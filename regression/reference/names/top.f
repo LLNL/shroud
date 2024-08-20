@@ -734,6 +734,15 @@ contains
     ! Function:  void external_funcs
     ! Statement: f_subroutine
     ! ----------------------------------------
+    ! Argument:  const char *rdbase
+    ! Statement: f_in_char*
+    ! ----------------------------------------
+    ! Argument:  const char *pkg
+    ! Statement: f_in_char*
+    ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
+    ! ----------------------------------------
     ! Argument:  void (*alloc)(double *arr +intent(inout), int *err +intent(out))
     ! Statement: f_in_procedure
     ! ----------------------------------------
