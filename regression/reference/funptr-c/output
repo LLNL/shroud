@@ -1,4 +1,15 @@
 Will not generate C wrappers for a language=c library
+
+----------------------------------------
+Phase: FillMeta function
+----------------------------------------
+Node: callback_all_types
+line 117
+Unknown statement: f_none_char
+--------------------
+Node: callback_all_types
+line 117
+Unknown statement: f_none_char*_buf
 Wrote wrapffunptr.f
 Wrote utilfunptr.c
 Wrote typesfunptr.h

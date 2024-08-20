@@ -114,7 +114,7 @@ declarations:
   doxygen:
     brief: Test void * argument
 
-- decl: void callback_all_types(void (*all_types)(int, int *));
+- decl: void callback_all_types(void (*all_types)(int, int *, char, char *));
   doxygen:
     brief: Test callback argument types
 

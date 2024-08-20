@@ -5095,6 +5095,29 @@
                                                 "int"
                                             ],
                                             "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "char"
+                                            },
+                                            "specifier": [
+                                                "char"
+                                            ],
+                                            "typemap_name": "char"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "char"
+                                            },
+                                            "specifier": [
+                                                "char"
+                                            ],
+                                            "typemap_name": "char"
                                         }
                                     ],
                                     "typemap_name": "void"
@@ -5112,8 +5135,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback_all_types(void (*all_types)(int, int *));",
-                "declgen": "void callback_all_types(void (*all_types)(int, int *))",
+                "decl": "void callback_all_types(void (*all_types)(int, int *, char, char *));",
+                "declgen": "void callback_all_types(void (*all_types)(int, int *, char, char *))",
                 "doxygen": {
                     "brief": "Test callback argument types"
                 },
@@ -5130,7 +5153,7 @@
                                 "C_call_function": "callback_all_types(\tall_types)",
                                 "C_call_list": "all_types",
                                 "C_name": "FUN_callback_all_types",
-                                "C_prototype": "void (*all_types)(\tint,\t int *)",
+                                "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *)",
                                 "C_return_type": "void",
                                 "F_C_name": "c_callback_all_types",
                                 "stmt_name": "c_subroutine",
@@ -5194,6 +5217,29 @@
                                                         "int"
                                                     ],
                                                     "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -5203,7 +5249,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int *)",
+                                    "decl": "void all_types(int, int *, char, char *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -5254,6 +5300,41 @@
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_native*"
+                                            },
+                                            "arg3": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg2",
+                                                    "f_type": "character(len=*)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg2",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg2",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_mixin_unknown"
+                                            },
+                                            "arg4": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg3",
+                                                    "f_type": "character(len=*)",
+                                                    "f_var": "arg3",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg3",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "api": "buf",
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_mixin_unknown"
                                             }
                                         },
                                         "share": {
@@ -5269,6 +5350,17 @@
                                                 }
                                             },
                                             "arg2": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg3": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg4": {
                                                 "meta": {
                                                     "intent": "none"
                                                 }
@@ -5293,7 +5385,7 @@
                                 "C_call_function": "callback_all_types(\tall_types)",
                                 "C_call_list": "all_types",
                                 "C_name": "FUN_callback_all_types",
-                                "C_prototype": "void (*all_types)(\tint,\t int *)",
+                                "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *)",
                                 "C_return_type": "void",
                                 "F_C_arguments": "all_types",
                                 "F_C_call": "c_callback_all_types",
@@ -5370,6 +5462,29 @@
                                                         "int"
                                                     ],
                                                     "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -5379,7 +5494,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int *)",
+                                    "decl": "void all_types(int, int *, char, char *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -5430,6 +5545,41 @@
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_native*"
+                                            },
+                                            "arg3": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg2",
+                                                    "f_type": "character(len=*)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg2",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg2",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_mixin_unknown"
+                                            },
+                                            "arg4": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg3",
+                                                    "f_type": "character(len=*)",
+                                                    "f_var": "arg3",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg3",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "api": "buf",
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_mixin_unknown"
                                             }
                                         },
                                         "share": {
@@ -5445,6 +5595,17 @@
                                                 }
                                             },
                                             "arg2": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg3": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg4": {
                                                 "meta": {
                                                     "intent": "none"
                                                 }
@@ -5499,6 +5660,29 @@
                                                         "int"
                                                     ],
                                                     "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -5508,7 +5692,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int *)",
+                                    "decl": "void all_types(int, int *, char, char *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -5559,6 +5743,41 @@
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_native*"
+                                            },
+                                            "arg3": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg2",
+                                                    "f_type": "character(len=*)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg2",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg2",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_mixin_unknown"
+                                            },
+                                            "arg4": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg3",
+                                                    "f_type": "character(len=*)",
+                                                    "f_var": "arg3",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg3",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_mixin_unknown",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "api": "buf",
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_mixin_unknown"
                                             }
                                         },
                                         "share": {
@@ -5574,6 +5793,17 @@
                                                 }
                                             },
                                             "arg2": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg3": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg4": {
                                                 "meta": {
                                                     "intent": "none"
                                                 }
@@ -6620,7 +6850,7 @@
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "void(*)(int,int*)": {
+        "void(*)(int,int*,char,char*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"

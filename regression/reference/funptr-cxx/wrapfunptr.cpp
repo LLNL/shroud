@@ -277,9 +277,9 @@ void FUN_callback_types(void (*void_ptr_arg)(void *))
 // Function:  void callback_all_types
 // Statement: c_subroutine
 // ----------------------------------------
-// Argument:  void (*all_types)(int, int *)
+// Argument:  void (*all_types)(int, int *, char, char *)
 // Statement: c_in_procedure
-void FUN_callback_all_types(void (*all_types)(int, int *))
+void FUN_callback_all_types(void (*all_types)(int, int *, char, char *))
 {
     // splicer begin function.callback_all_types
     callback_all_types(all_types);
