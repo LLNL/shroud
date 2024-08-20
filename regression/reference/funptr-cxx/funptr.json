@@ -5310,14 +5310,14 @@
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_char",
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_char"
                                             },
                                             "arg4": {
                                                 "fmtdict": {
@@ -5555,14 +5555,14 @@
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_char",
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_char"
                                             },
                                             "arg4": {
                                                 "fmtdict": {
@@ -5753,14 +5753,14 @@
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg2",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_char",
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
                                                     "intent": "none",
                                                     "value": true
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_char"
                                             },
                                             "arg4": {
                                                 "fmtdict": {

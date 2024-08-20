@@ -1776,19 +1776,20 @@
     {
         "alias": [
             "f_in_char",
-            "c_in_char"
+            "c_in_char",
+            "f_none_char"
         ],
         "f_arg_name": [
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character, value, intent(IN) :: {f_var}"
+            "character, value{f_intent_attr} :: {f_var}"
         ],
         "c_arg_decl": [
             "char {c_var}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR), value, intent(IN) :: {i_var}"
+            "character(kind=C_CHAR), value{f_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"

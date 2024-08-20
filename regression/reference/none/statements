@@ -573,6 +573,7 @@ root
       use
         capsule -- f_mixin_use_capsule
     none
+      char -- f_none_char
       native -- f_none_native
       native* -- f_none_native*
       void* -- f_none_void*
@@ -1637,7 +1638,7 @@ c_in_char:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -9153,11 +9154,11 @@ f_in_char:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character, value, intent(IN) :: {f_var}'
+  - 'character, value{f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -12466,6 +12467,25 @@ f_mixin_use_capsule:
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
   - capsule
+  owner: library
+f_none_char:
+  name: f_none_char
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character, value{f_intent_attr} :: {f_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - char {c_var}
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 f_none_native:
   name: f_none_native

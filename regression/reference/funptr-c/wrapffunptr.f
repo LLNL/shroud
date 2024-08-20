@@ -48,13 +48,13 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
-        subroutine callback_all_types_all_types(arg0, arg1, &
-            ===>i_arg_names<===, ===>i_arg_names<===) bind(C)
-            use iso_c_binding, only : C_INT
+        subroutine callback_all_types_all_types(arg0, arg1, arg2, &
+            ===>i_arg_names<===) bind(C)
+            use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), value :: arg0
             integer(C_INT) :: arg1
-            ===>i_arg_decl<===
+            character(kind=C_CHAR), value :: arg2
             ===>i_arg_decl<===
         end subroutine callback_all_types_all_types
 
