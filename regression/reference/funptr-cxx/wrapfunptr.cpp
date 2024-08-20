@@ -253,7 +253,7 @@ int FUN_abstract1(int input, int (*get_abs)(double, int))
 }
 
 /**
- * \brief Test callback argument types
+ * \brief Test void * argument
  *
  */
 // ----------------------------------------
@@ -267,6 +267,23 @@ void FUN_callback_types(void (*void_ptr_arg)(void *))
     // splicer begin function.callback_types
     callback_types(void_ptr_arg);
     // splicer end function.callback_types
+}
+
+/**
+ * \brief Test callback argument types
+ *
+ */
+// ----------------------------------------
+// Function:  void callback_all_types
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  void (*all_types)(int, int *)
+// Statement: c_in_procedure
+void FUN_callback_all_types(void (*all_types)(int, int *))
+{
+    // splicer begin function.callback_all_types
+    callback_all_types(all_types);
+    // splicer end function.callback_all_types
 }
 
 }  // extern "C"

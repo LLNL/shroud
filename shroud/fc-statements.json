@@ -1134,7 +1134,8 @@
             "f_inout_native*",
             "c_inout_native*",
             "f_in_void",
-            "c_in_void"
+            "c_in_void",
+            "f_none_native*"
         ],
         "mixin": [
             "c_mixin_argument"

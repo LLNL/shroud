@@ -48,6 +48,13 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
+        subroutine callback_all_types_all_types(arg0, arg1) bind(C)
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), value :: arg0
+            integer(C_INT) :: arg1
+        end subroutine callback_all_types_all_types
+
         function callback_ptr_get_ptr() bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
@@ -297,6 +304,19 @@ module funptr_mod
             implicit none
             procedure(callback_types_void_ptr_arg) :: void_ptr_arg
         end subroutine callback_types
+
+        ! ----------------------------------------
+        ! Function:  void callback_all_types
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  void (*all_types)(int, int *)
+        ! Statement: f_in_procedure
+        subroutine callback_all_types(all_types) &
+                bind(C, name="FUN_callback_all_types")
+            import :: callback_all_types_all_types
+            implicit none
+            procedure(callback_all_types_all_types) :: all_types
+        end subroutine callback_all_types
     end interface
 
     ! splicer begin additional_declarations
@@ -576,7 +596,7 @@ contains
     ! Argument:  void (*void_ptr_arg)(void *)
     ! Statement: f_in_procedure
     !>
-    !! \brief Test callback argument types
+    !! \brief Test void * argument
     !!
     !<
     subroutine callback_types(void_ptr_arg)
@@ -585,6 +605,26 @@ contains
         call c_callback_types(void_ptr_arg)
         ! splicer end function.callback_types
     end subroutine callback_types
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void callback_all_types
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void (*all_types)(int, int *)
+    ! Statement: f_in_procedure
+    !>
+    !! \brief Test callback argument types
+    !!
+    !<
+    subroutine callback_all_types(all_types)
+        procedure(callback_all_types_all_types) :: all_types
+        ! splicer begin function.callback_all_types
+        call c_callback_all_types(all_types)
+        ! splicer end function.callback_all_types
+    end subroutine callback_all_types
 #endif
 
     ! splicer begin additional_functions

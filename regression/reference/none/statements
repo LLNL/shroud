@@ -574,6 +574,7 @@ root
         capsule -- f_mixin_use_capsule
     none
       native -- f_none_native
+      native* -- f_none_native*
       void* -- f_none_void*
     out
       bool* -- f_out_bool*
@@ -12470,6 +12471,28 @@ f_none_native:
   name: f_none_native
   notes:
   - An intent of 'none' is used with function pointers
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_none_native*:
+  name: f_none_native*
   intent: none
   f_arg_name:
   - '{f_var}'

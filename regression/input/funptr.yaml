@@ -112,5 +112,9 @@ declarations:
 
 - decl: void callback_types(void (*void_ptr_arg)(void *));
   doxygen:
+    brief: Test void * argument
+
+- decl: void callback_all_types(void (*all_types)(int, int *));
+  doxygen:
     brief: Test callback argument types
 

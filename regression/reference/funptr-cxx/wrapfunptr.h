@@ -72,6 +72,8 @@ int FUN_abstract1(int input, int (*get_abs)(double, int));
 
 void FUN_callback_types(void (*void_ptr_arg)(void *));
 
+void FUN_callback_all_types(void (*all_types)(int, int *));
+
 #ifdef __cplusplus
 }
 #endif
