@@ -448,7 +448,7 @@ F_struct_getter_setter
 
 F_trim_char_in
   Controls code generation for ``const char *`` arguments.
-  If *True*, Fortran perform a ``TRIM`` and concatenates
+  If *True*, the Fortran wrapper calls ``TRIM`` on the argument and concatenates
   ``C_NULL_CHAR``.  If *False*, it will be done in C.  If the only
   need for the C wrapper is to null-terminate a string (wrapping a C
   library and no other argument requires a wrapper), then the C
@@ -457,6 +457,7 @@ F_trim_char_in
   Default is *True*.
 
 .. XXX how to decide length of pointer
+   This sets the meta-attribute *ftrim_char_in*
 
 literalinclude
 

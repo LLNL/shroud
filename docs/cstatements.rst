@@ -54,7 +54,7 @@ Format fields
   Built up from *c_arg_call*.
   Used with statement *c_call*.
   
-* F_C_clause =
+* F_C_clause
 * F_C_arguments     = i_arg_names
 * F_C_result_clause = i_result_var
 
@@ -114,7 +114,7 @@ module and it is used in the interface.
 
 .. code-block:: yaml
 
-        i_import=["{F_array_type}"],
+        i_import: ["{F_array_type}"]
                 
 
 i_module
@@ -241,7 +241,8 @@ A list of suffixes for temporary variable names.
 
 .. code-block:: yaml
 
-    c_temps=["len"]
+    c_temps:
+    - len
 
 Create variable names in the format dictionary using
 ``{fmt.c_temp}{rootname}_{name}``.
@@ -372,10 +373,9 @@ dictionaries. The version which corresponds to the YAML file
 
 .. code-block:: yaml
 
-        lang_c=dict(
-            impl_header=["<stddef.h>"],
-        ),
-        lang_cxx=dict(
-            impl_header=["<cstddef>"],
-        ),
-                
+        lang_c:
+          impl_header:
+          - "<stddef.h>"
+        lang_cxx:
+          impl_header:
+          - "<cstddef>"

@@ -1789,28 +1789,28 @@ As a reminder, ``23_C_INT`` creates an ``integer(C_INT)`` constant.
 
 .. _example_passAssumedTypeDim:
 
-passAssumedTypeDim
-^^^^^^^^^^^^^^^^^^
+passAssumedTypeRank
+^^^^^^^^^^^^^^^^^^^
 
 C library function in :file:`clibrary.c`:
 
 .. literalinclude:: ../regression/run/clibrary/clibrary.c
    :language: c
-   :start-after: start passAssumedTypeDim
-   :end-before: end passAssumedTypeDim
+   :start-after: start passAssumedTypeRank
+   :end-before: end passAssumedTypeRank
 
 :file:`clibrary.yaml`:
 
 .. code-block:: yaml
 
-    - decl: int passAssumedTypeDim(void *arg+assumedtype+rank(1))
+    - decl: int passAssumedTypeRank(void *arg+assumedtype+rank(1))
 
 Fortran calls C via the following interface:
 
 .. literalinclude:: ../regression/reference/clibrary/wrapfclibrary.f
    :language: fortran
-   :start-after: start pass_assumed_type_dim
-   :end-before: end pass_assumed_type_dim
+   :start-after: start pass_assumed_type_rank
+   :end-before: end pass_assumed_type_rank
    :dedent: 4
 
 Example usage:
@@ -1820,8 +1820,8 @@ Example usage:
     use iso_c_binding, only : C_INT, C_DOUBLE
     integer(C_INT) int_array(10)
     real(C_DOUBLE) double_array(2,5)
-    call pass_assumed_type_dim(int_array)
-    call pass_assumed_type_dim(double_array)
+    call pass_assumed_type_rank(int_array)
+    call pass_assumed_type_rank(double_array)
 
 .. note:: Assumed-type was introduced in Fortran 2018.
 

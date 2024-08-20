@@ -11,8 +11,7 @@ Fortran Statements
 
 .. note:: Work in progress.
 
-Typemaps are used to add code to the generated wrappers
-to replace the default code.
+Statements are used to add code to the generated wrappers.
 
 The statements work together to pass variables and metadata between
 Fortran and C.
@@ -20,16 +19,18 @@ Fortran and C.
 
 A Fortran wrapper is created out of several segments.
 
+``{}`` denotes a format field. ``[]`` is a statement field.
+
 .. code-block:: text
 
-      {F_subprogram} {F_name_impl}(f_arg_name)[result (f_result)]
-        f_module
-        f_arg_decl
+      {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
+        [f_module]
+        [f_arg_decl]
         ! splicer begin
-        f_declare
-        f_pre_call
-        f_call {}( {f_arg_call} )
-        f_post_call
+        [f_declare]
+        [f_pre_call]
+        [f_call]
+        [f_post_call]
         ! splicer end
       end {F_subprogram} {F_name_impl}
 
@@ -49,9 +50,10 @@ Format fields
 * F_name_impl
 * F_arguments
 * F_result_clause
+* F_C_call
+* F_arg_c_call
 
-
-statements
+Statements
 ----------
 
 name
@@ -79,12 +81,12 @@ Added before splicer since it is part of the API and must not be changed
 by the splicer.
 Additional declarations can be added within the splicer via *f_declare*.
 
-.. code-block:: text
+.. code-block:: yaml
 
-        f_arg_name=["{f_var}"],
-        f_arg_decl=[
-            "character, value, intent(IN) :: {f_var}",
-        ],
+        f_arg_name:
+        - "{f_var}"
+        f_arg_decl:
+        - character, value, intent(IN) :: {f_var}
 
 .. result declaration is added before arguments
    but default declaration are after declarations.
@@ -121,26 +123,24 @@ argument.
 When used with a **f_function** statement, the argument will be added
 to the end of the call list.
 
-.. code-block:: text
+.. code-block:: yaml
 
-        f_arg_call=[
-             "C_LOC({f_var})"
-        ],
+        f_arg_call:
+        -  "C_LOC({f_var})"
 
-.. code-block:: text
+.. code-block:: yaml
 
-        f_arg_call=[
-            "{f_var}",
-            "len({f_var}, kind=C_INT)",
-        ],
+        f_arg_call:
+        - "{f_var}"
+        -  "len({f_var}, kind=C_INT)"
 
 To specify no arguments, the list must be blank.
 Unless the function result has been changed into a C wrapper
 argument, it will pass no arguments.
 
-.. code-block:: text
+.. code-block:: yaml
 
-        f_arg_call=[ ],
+        f_arg_call: [ ]
 
 The value of *None* will pass the Fortran argument
 to the C wrapper.
@@ -153,15 +153,14 @@ Defaults to ``{F_result} = {F_C_call}({f_arg_call})``
 
 For example, to assign to an intermediate variable:
 
-.. code-block:: text
+.. code-block:: yaml
 
-        f_declare=[
-            "type(C_PTR) :: {c_local_ptr}",
-        ],
-        f_call=[
-            "{c_local_ptr} = {F_C_call}({f_arg_call})",
-        ],
-        f_local=["ptr"],
+        f_declare:
+        - "type(C_PTR) :: {c_local_ptr}"
+        f_call:
+        - "{c_local_ptr} = {F_C_call}({f_arg_call})"
+        f_local:
+        - ptr
 
 .. used with intent function, subroutine, (getter/setter)
    
@@ -225,7 +224,8 @@ A list of suffixes for temporary variable names.
 
 .. code-block:: yaml
 
-    f_temps=["len"]
+    f_temps:
+    - len
 
 Create variable names in the format dictionary using
 ``{fmt.c_temp}{rootname}_{name}``.
@@ -284,7 +284,7 @@ option is set.
 .. XXX tends to call bufferify version
 
 notimplemented
---------------
+^^^^^^^^^^^^^^
 
 If True the statement is not implemented.
 The generated function will have ``#if 0`` surrounding the

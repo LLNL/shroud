@@ -9,20 +9,45 @@
 Statements
 ==========
 
-Shroud can be thought of as a fancy macro processor.
-The statement data structure is used to define code snippets that should be
+The statement data structure is used to define code snippets that will be
 used to create the wrapper.
 Combinations of language, type and attributes are used to select
-a statement name based on the YAML input.
+a statement name based on a function's argument declaration in the YAML input.
 
 Details for :ref:`C <top_C_Statements>` and :ref:`Fortran <top_Fortran_Statements>`
 are provided in other sections.
 
+.. Python format fields....
 
-Python format fields....
+The command line option ``--write-statements`` can be used to create a
+file which will contain all of the statements that Shroud knows.
+
+The option *debug* in the YAML file will add additional comments into
+the wrapper to identify which statement names were used to wrap an
+argument.
+
+.. code-block:: yaml
+
+    options:
+      debug: True
 
 
-Statement names or alias which start with a ``#`` are ignored.
+Shared fields
+-------------
+
+All statement groups, independent of the wrapper language, share
+common fields. These fields are used to identify the group and
+to build up complete groups from shared features.
+
+name
+^^^^
+
+The name is a underscore delimited list of parts which are used to
+find the group.
+The first part is the language being wrapped and the second part
+is the intent of the group.
+
+Names which start with a ``#`` are ignored.
 This provides a way to add comments into the JSON file.
 (which does not support comments)
 
@@ -31,32 +56,106 @@ This provides a way to add comments into the JSON file.
     {
         "name":"##### enum #################################################"
     },
+    {
+        "name":"f_in_native"
+    },
                 
-.. name
+alias
+^^^^^
 
-.. comments
-   Comments are appended as part of the mixin process.
-   The final group's comment will be a collection of all of the mixin's comments.
-   Each mixin can contribute a step in the wrapping process.
+The most common way of reusing a group is to create additional names
+for the group via an alias.
+An alias field can be used with or without the name field.
 
-.. notes
-   Notes are used provide usage notes for a group.
-   Notes are not mixed into groups.
+If there are C and Fortran group, make the first alias a Fortran name.
+C is a subset of Fortran and the first alias determines the defaults.
+
+.. code-block:: yaml
+
+        alias:
+        - f_out_string**_cdesc_allocatable
+        - c_out_string**_cdesc_allocatable
+
+mixin
+^^^^^
+
+When the group has the intent *mixin* in its name it is can be used to
+add subsets of fields to other groups.  The fields will be "mixed in"
+to another group to avoid repeating fields.
+After the language and intent parts of the name, any words can be
+appended to the name to help identify the group.
+
+When multiple mixins are used, 
+scalar fields are assigned, replacing any existing value in the group
+being defined.  A field which is a list will be appended to the group
+being defined making it possible to build up a field from several
+mixins.  Dictionaries are recursively appended.
+
+.. dictionary example (f_module).
+
+After the mixins are used to initialize a group, if a field name is
+reused it will replace the value from the mixin group. This allows a group to use
+mixins yet still be customized as needed.
+
+A mixin group must not contain *alias*, *append* or *base*
+
+.. code-block:: yaml
+
+    - name: f_mixin_one
+      f_arg_decl:
+      - integer arg1
+      f_arg_call:
+      -  arg1
+      f_need_wrapper: True
+    - name: f_mixin_two
+      f_arg_decl:
+      - integer arg2
+      f_arg_call:
+      -  arg2
+      f_need_wrapper: False
+    - name: f_in_type
+      mixin:
+      -  f_mixin_one
+      -  f_mixin_two
+      f_arg_call:
+      -  arg1 + arg2
+
+The final group will be:
+
+.. code-block:: yaml
+
+    - name: f_in_type
+      f_arg_decl:
+      - integer arg1
+      - integer arg2
+      f_arg_call:
+      -  arg1 + arg2
+      f_need_wrapper: False
+
+While this example uses twice as many lines to create the *f_in_type*
+group, the real benefit is when each mixin group contains several
+declarations and is mixed into many other groups.
+
+
+comments
+^^^^^^^^
+
+Comments list the steps used by the wrapper.
+The final group's comment will be a collection of all of the mixin's comments.
+Each mixin can contribute a step in the wrapping process.
+Comments are appended as part of the mixin process.
+
+notes
+^^^^^
+
+Notes are used provide usage notes for a group.
+Notes are not mixed into groups.
 
 .. base - must be single name.
           Applied after all of the others mixins as parent of Scope.
           Cannot also have a *mixin* field.
           Useful to define a group that varies slightly
           such as pointer vs reference argument.
-
-.. mixin - list of names
-           List fields from the mixin group will be appended to the group
-           being defined.
-           Non-lists are assigned.
-           Dictionaries are recursively appended (f_module).
-
-           A mixin group is created when the intent in the name is 'mixin'.
-           Must not contain 'alias', 'append' or 'base'
 
 .. append - applied after mixins as a sort of one-off mixin to append to fields.
       f_post_call is defined by the mixins but need to add one more line.
@@ -79,13 +178,12 @@ This provides a way to add comments into the JSON file.
         fmtdict:
            copy_allocate: "call {f_helper_array_string_allocatable}({f_var_alloc}, {f_var_cdesc})"
 
-.. alias
-     An alias field can be used with or without the name field.
+fmtdict
+^^^^^^^
 
-     If there are C and Fortran group, make the first alias a Fortran name.
-     C is a subset of Fortran and the first alias determines the defaults.
+A dictionary to replace default values
 
-.. fmtdict - A dictionary to replace default values
+.. code-block:: yaml
 
         name: f_function_char_*_cfi_arg
         base: f_function_char_*_cfi_copy
@@ -93,6 +191,8 @@ This provides a way to add comments into the JSON file.
             f_var: "{F_string_result_as_arg}"
             c_var: "{F_string_result_as_arg}"
 
+Examples
+--------
 
 .. code-block:: yaml
 
@@ -134,45 +234,6 @@ and attributes into an underscore delimited string.
 * deref - from attribute
   ``allocatable``, ``pointer``, ``raw``, ``scalar``
 
-
-Common Statement Fields
------------------------
-
-name
-^^^^
-
-A name can contain variants separated by ``/``.
-
-.. code-block:: yaml
-
-    - name: c_in/out/inout_native_*_cfi
-
-This is equivelent to having three groups:
-    
-.. code-block:: yaml
-
-    - name: c_in_native_*_cfi
-    - name: c_out_native_*_cfi
-    - name: c_inout_native_*_cfi
-
-alias
-^^^^^
-
-List of other names which will be used for its contents.
-
-.. code-block:: yaml
-
-        name="fc_out_string_**_cdesc_allocatable",
-        alias=[
-            "f_out_string_**_cdesc_allocatable",
-            "c_out_string_**_cdesc_allocatable",
-        ],
-
-comments
-^^^^^^^^
-
-notes
-^^^^^
 
 Passing function result as an argument
 --------------------------------------

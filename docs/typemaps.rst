@@ -310,6 +310,7 @@ f_kind
 ^^^^^^
 
 Fortran kind of type. For example, ``C_INT`` or ``C_LONG``.
+It will be set the same as *f_derived_type* for derived types.
 Defaults to *None*.
 
 
