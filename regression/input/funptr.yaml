@@ -108,4 +108,9 @@ declarations:
     F_abstract_interface_subprogram_template: custom_funptr
     F_abstract_interface_argument_template: XX{index}arg
 
+#####
+
+- decl: void callback_types(void (*void_ptr_arg)(void *));
+  doxygen:
+    brief: Test callback argument types
 

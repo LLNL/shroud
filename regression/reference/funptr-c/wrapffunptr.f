@@ -54,6 +54,10 @@ module funptr_mod
             type(C_PTR) :: callback_ptr_get_ptr
         end function callback_ptr_get_ptr
 
+        subroutine callback_types_void_ptr_arg() bind(C)
+            implicit none
+        end subroutine callback_types_void_ptr_arg
+
         function custom_funptr(XX0arg, XX1arg) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -278,6 +282,19 @@ module funptr_mod
             procedure(custom_funptr) :: get_abs
             integer(C_INT) :: SHT_rv
         end function c_abstract1
+
+        ! ----------------------------------------
+        ! Function:  void callback_types
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  void (*void_ptr_arg)(void)
+        ! Statement: f_in_procedure
+        subroutine callback_types(void_ptr_arg) &
+                bind(C, name="callback_types")
+            import :: callback_types_void_ptr_arg
+            implicit none
+            procedure(callback_types_void_ptr_arg) :: void_ptr_arg
+        end subroutine callback_types
     end interface
 
     ! splicer begin additional_declarations
@@ -547,6 +564,26 @@ contains
         SHT_rv = c_abstract1(input, get_abs)
         ! splicer end function.abstract1
     end function abstract1
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void callback_types
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void (*void_ptr_arg)(void)
+    ! Statement: f_in_procedure
+    !>
+    !! \brief Test callback argument types
+    !!
+    !<
+    subroutine callback_types(void_ptr_arg)
+        procedure(callback_types_void_ptr_arg) :: void_ptr_arg
+        ! splicer begin function.callback_types
+        call c_callback_types(void_ptr_arg)
+        ! splicer end function.callback_types
+    end subroutine callback_types
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -4608,6 +4608,316 @@
                     "F_name_impl": "abstract1",
                     "function_name": "abstract1"
                 }
+            },
+            {
+                "<FUNCTION>": "callback_types  11 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_types",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "void_ptr_arg",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "name": "void_ptr_arg",
+                                    "params": [],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_types(void (*void_ptr_arg)(void *));",
+                "declgen": "void callback_types(void (*void_ptr_arg)(void))",
+                "doxygen": {
+                    "brief": "Test callback argument types"
+                },
+                "name": "callback_types",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_types(\tvoid_ptr_arg)",
+                                "C_call_list": "void_ptr_arg",
+                                "C_name": "FUN_callback_types",
+                                "C_prototype": "void (*void_ptr_arg)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback_types",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "void_ptr_arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "void",
+                                "c_var": "void_ptr_arg",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&void_ptr_arg",
+                                "cxx_type": "void",
+                                "cxx_var": "void_ptr_arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "c_in_procedure",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "void_ptr_arg  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "void_ptr_arg",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void void_ptr_arg(void)",
+                                    "name": "void_ptr_arg",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "void_ptr_arg",
+                                        "F_name_api": "void_ptr_arg",
+                                        "function_name": "void_ptr_arg"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_procedure"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_types(\tvoid_ptr_arg)",
+                                "C_call_list": "void_ptr_arg",
+                                "C_name": "FUN_callback_types",
+                                "C_prototype": "void (*void_ptr_arg)(\tvoid)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "void_ptr_arg",
+                                "F_C_call": "c_callback_types",
+                                "F_C_name": "callback_types",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "void_ptr_arg",
+                                "F_arguments": "void_ptr_arg",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "void_ptr_arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "void",
+                                "c_var": "void_ptr_arg",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&void_ptr_arg",
+                                "cxx_type": "void",
+                                "cxx_var": "void_ptr_arg",
+                                "f_abstract_interface": "callback_types_void_ptr_arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_PTR",
+                                "f_type": "type(C_PTR)",
+                                "f_value_attr": ", value",
+                                "f_var": "void_ptr_arg",
+                                "fc_var": "void_ptr_arg",
+                                "i_type": "type(C_PTR)",
+                                "i_var": "void_ptr_arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "f_in_procedure",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "void_ptr_arg  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "void_ptr_arg",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void void_ptr_arg(void)",
+                                    "name": "void_ptr_arg",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "void_ptr_arg",
+                                        "F_name_api": "void_ptr_arg",
+                                        "function_name": "void_ptr_arg"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_procedure"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "void_ptr_arg": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "void_ptr_arg  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "void_ptr_arg",
+                                            "params": [],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void void_ptr_arg(void)",
+                                    "name": "void_ptr_arg",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "void_ptr_arg",
+                                        "F_name_api": "void_ptr_arg",
+                                        "function_name": "void_ptr_arg"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_types",
+                    "F_name_api": "callback_types",
+                    "F_name_function": "callback_types",
+                    "F_name_generic": "callback_types",
+                    "F_name_impl": "callback_types",
+                    "function_name": "callback_types"
+                }
             }
         ],
         "language": "cxx",

@@ -21,6 +21,8 @@ C c void callback_ptr(int *(*get_ptr)(void))
 C f void callback_ptr(int *(*get_ptr)(void))
 C c int abstract1(int input, int (*get_abs)(double, int))
 C f int abstract1(int input, int (*get_abs)(double, int))
+C c void callback_types(void (*void_ptr_arg)(void))
+C f void callback_types(void (*void_ptr_arg)(void))
 Close wrapfunptr.h
 Close wrapfunptr.cpp
 typedef TypeID
@@ -37,6 +39,7 @@ Fortran void callback3(int type, void *in +assumedtype+intent(in), void (*incr3)
 Fortran int callback4(int *ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int (*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in)))
 Fortran void callback_ptr(int *(*get_ptr)(void))
 Fortran int abstract1(int input, int (*get_abs)(double, int))
+Fortran void callback_types(void (*void_ptr_arg)(void))
 C-interface f void callback1(void (*incr1)(void))
 C-interface f void callback1_wrap(void (*incr1_wrap)(void))
 C-interface f void callback1_external(void (*incr1_external)(void) +external)
@@ -48,6 +51,7 @@ C-interface f void callback3(int type, void *in +assumedtype+intent(in), void (*
 C-interface f int callback4(int *ilow +intent(in)+rank(1), int nargs +implied(size(ilow)), int (*actor)(int *ilow +intent(in)+rank(1), int nargs +intent(in)))
 C-interface f void callback_ptr(int *(*get_ptr)(void))
 C-interface f int abstract1(int input, int (*get_abs)(double, int))
+C-interface f void callback_types(void (*void_ptr_arg)(void))
 Close wrapffunptr.f
 Close utilfunptr.cpp
 Close typesfunptr.h

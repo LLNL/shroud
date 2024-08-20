@@ -70,6 +70,8 @@ void FUN_callback_ptr(int *(*get_ptr)(void));
 
 int FUN_abstract1(int input, int (*get_abs)(double, int));
 
+void FUN_callback_types(void (*void_ptr_arg)(void));
+
 #ifdef __cplusplus
 }
 #endif
