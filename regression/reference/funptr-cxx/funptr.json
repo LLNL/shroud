@@ -5327,14 +5327,13 @@
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg3",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_char*",
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
-                                                    "api": "buf",
                                                     "intent": "none"
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_char*"
                                             }
                                         },
                                         "share": {
@@ -5572,14 +5571,13 @@
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg3",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_char*",
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
-                                                    "api": "buf",
                                                     "intent": "none"
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_char*"
                                             }
                                         },
                                         "share": {
@@ -5770,14 +5768,13 @@
                                                     "i_type": "character(kind=C_CHAR)",
                                                     "i_var": "arg3",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt_name": "f_mixin_unknown",
+                                                    "stmt_name": "f_none_char*",
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
-                                                    "api": "buf",
                                                     "intent": "none"
                                                 },
-                                                "stmt": "f_mixin_unknown"
+                                                "stmt": "f_none_char*"
                                             }
                                         },
                                         "share": {

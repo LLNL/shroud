@@ -1886,7 +1886,8 @@
             "c_inout_char*",
             "f_in_char*_capi",
             "f_out_char*_capi",
-            "f_inout_char*_capi"
+            "f_inout_char*_capi",
+            "f_none_char*"
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg-no-module"

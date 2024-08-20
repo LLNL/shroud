@@ -49,13 +49,13 @@ module funptr_mod
         end function callback4_actor
 
         subroutine callback_all_types_all_types(arg0, arg1, arg2, &
-            ===>i_arg_names<===) bind(C)
+            arg3) bind(C)
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
             integer(C_INT), value :: arg0
             integer(C_INT) :: arg1
             character(kind=C_CHAR), value :: arg2
-            ===>i_arg_decl<===
+            character(kind=C_CHAR) :: arg3(*)
         end subroutine callback_all_types_all_types
 
         function callback_ptr_get_ptr() bind(C)
