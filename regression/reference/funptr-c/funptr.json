@@ -3177,10 +3177,10 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_types  11 ****************************************",
+                "<FUNCTION>": "callback_void_ptr  11 ****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "callback_types",
+                        "name": "callback_void_ptr",
                         "params": [
                             {
                                 "declarator": {
@@ -3225,12 +3225,12 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback_types(void (*void_ptr_arg)(void *));",
-                "declgen": "void callback_types(void (*void_ptr_arg)(void *))",
+                "decl": "void callback_void_ptr(void (*void_ptr_arg)(void *));",
+                "declgen": "void callback_void_ptr(void (*void_ptr_arg)(void *))",
                 "doxygen": {
                     "brief": "Test void * argument"
                 },
-                "name": "callback_types",
+                "name": "callback_void_ptr",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -3239,14 +3239,14 @@
                     "f": {
                         "+result": {
                             "fmtdict": {
-                                "C_call_function": "callback_types(\tvoid_ptr_arg)",
+                                "C_call_function": "callback_void_ptr(\tvoid_ptr_arg)",
                                 "C_call_list": "void_ptr_arg",
-                                "C_name": "callback_types",
+                                "C_name": "callback_void_ptr",
                                 "C_prototype": "void (*void_ptr_arg)(\tvoid *)",
                                 "C_return_type": "void",
                                 "F_C_arguments": "void_ptr_arg",
-                                "F_C_call": "c_callback_types",
-                                "F_C_name": "callback_types",
+                                "F_C_call": "c_callback_void_ptr",
+                                "F_C_name": "callback_void_ptr",
                                 "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "void_ptr_arg",
                                 "F_arguments": "void_ptr_arg",
@@ -3275,7 +3275,7 @@
                                 "cxx_nonconst_ptr": "&void_ptr_arg",
                                 "cxx_type": "void",
                                 "cxx_var": "void_ptr_arg",
-                                "f_abstract_interface": "callback_types_void_ptr_arg",
+                                "f_abstract_interface": "callback_void_ptr_void_ptr_arg",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "C_PTR",
@@ -3478,12 +3478,12 @@
                     }
                 },
                 "zz_fmtdict": {
-                    "C_name_api": "callback_types",
-                    "F_name_api": "callback_types",
-                    "F_name_function": "callback_types",
-                    "F_name_generic": "callback_types",
-                    "F_name_impl": "callback_types",
-                    "function_name": "callback_types"
+                    "C_name_api": "callback_void_ptr",
+                    "F_name_api": "callback_void_ptr",
+                    "F_name_function": "callback_void_ptr",
+                    "F_name_generic": "callback_void_ptr",
+                    "F_name_impl": "callback_void_ptr",
+                    "function_name": "callback_void_ptr"
                 }
             },
             {

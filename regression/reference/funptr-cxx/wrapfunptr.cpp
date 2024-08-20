@@ -257,16 +257,16 @@ int FUN_abstract1(int input, int (*get_abs)(double, int))
  *
  */
 // ----------------------------------------
-// Function:  void callback_types
+// Function:  void callback_void_ptr
 // Statement: c_subroutine
 // ----------------------------------------
 // Argument:  void (*void_ptr_arg)(void *)
 // Statement: c_in_procedure
-void FUN_callback_types(void (*void_ptr_arg)(void *))
+void FUN_callback_void_ptr(void (*void_ptr_arg)(void *))
 {
-    // splicer begin function.callback_types
-    callback_types(void_ptr_arg);
-    // splicer end function.callback_types
+    // splicer begin function.callback_void_ptr
+    callback_void_ptr(void_ptr_arg);
+    // splicer end function.callback_void_ptr
 }
 
 /**

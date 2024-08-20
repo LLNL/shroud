@@ -34,4 +34,8 @@ void callback_ptr(int *(*get)(void));
 
 int abstract1(int input, int (*get)(double, int));
 
+void callback_void_ptr(void (*void_ptr_arg)(void *));
+
+void callback_all_types(void (*all_types)(int, int *, char, char *));
+
 #endif // FUNPTR_H

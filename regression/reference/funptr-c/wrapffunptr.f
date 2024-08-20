@@ -64,11 +64,11 @@ module funptr_mod
             type(C_PTR) :: callback_ptr_get_ptr
         end function callback_ptr_get_ptr
 
-        subroutine callback_types_void_ptr_arg(arg0) bind(C)
+        subroutine callback_void_ptr_void_ptr_arg(arg0) bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value :: arg0
-        end subroutine callback_types_void_ptr_arg
+        end subroutine callback_void_ptr_void_ptr_arg
 
         function custom_funptr(XX0arg, XX1arg) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -296,17 +296,17 @@ module funptr_mod
         end function c_abstract1
 
         ! ----------------------------------------
-        ! Function:  void callback_types
+        ! Function:  void callback_void_ptr
         ! Statement: f_subroutine
         ! ----------------------------------------
         ! Argument:  void (*void_ptr_arg)(void *)
         ! Statement: f_in_procedure
-        subroutine callback_types(void_ptr_arg) &
-                bind(C, name="callback_types")
-            import :: callback_types_void_ptr_arg
+        subroutine callback_void_ptr(void_ptr_arg) &
+                bind(C, name="callback_void_ptr")
+            import :: callback_void_ptr_void_ptr_arg
             implicit none
-            procedure(callback_types_void_ptr_arg) :: void_ptr_arg
-        end subroutine callback_types
+            procedure(callback_void_ptr_void_ptr_arg) :: void_ptr_arg
+        end subroutine callback_void_ptr
 
         ! ----------------------------------------
         ! Function:  void callback_all_types
@@ -593,7 +593,7 @@ contains
 #if 0
     ! Only the interface is needed
     ! ----------------------------------------
-    ! Function:  void callback_types
+    ! Function:  void callback_void_ptr
     ! Statement: f_subroutine
     ! ----------------------------------------
     ! Argument:  void (*void_ptr_arg)(void *)
@@ -602,12 +602,12 @@ contains
     !! \brief Test void * argument
     !!
     !<
-    subroutine callback_types(void_ptr_arg)
-        procedure(callback_types_void_ptr_arg) :: void_ptr_arg
-        ! splicer begin function.callback_types
-        call c_callback_types(void_ptr_arg)
-        ! splicer end function.callback_types
-    end subroutine callback_types
+    subroutine callback_void_ptr(void_ptr_arg)
+        procedure(callback_void_ptr_void_ptr_arg) :: void_ptr_arg
+        ! splicer begin function.callback_void_ptr
+        call c_callback_void_ptr(void_ptr_arg)
+        ! splicer end function.callback_void_ptr
+    end subroutine callback_void_ptr
 #endif
 
 #if 0

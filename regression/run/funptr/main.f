@@ -33,7 +33,14 @@ end subroutine incr1_noiface
 !----------
 
 module callback_mod
+  use iso_c_binding
   implicit none
+
+  type(C_PTR) old_ptr
+  integer(C_INT) old_int, old_int_array(10)
+  character old_char
+  character(80) old_string
+  
 contains
   subroutine incr1() bind(C)
     ! A bind(C) is required for the intel/oneapi/ibm compiler since
@@ -156,6 +163,40 @@ contains
        abscallback = -1
     endif
   end function abscallback
+
+!----------
+  subroutine void_ptr_arg(arg0) bind(C)
+    use iso_c_binding, only : C_PTR
+    implicit none
+    type(C_PTR), value :: arg0
+    old_ptr = arg0
+  end subroutine void_ptr_arg
+  
+!----------
+  subroutine all_types(arg0, arg1, arg2, arg3) bind(C)
+    use iso_c_binding, only : C_CHAR, C_INT
+    implicit none
+    integer(C_INT), value :: arg0
+    integer(C_INT) :: arg1
+    character(kind=C_CHAR), value :: arg2
+    character(kind=C_CHAR) :: arg3(*)
+
+    integer i
+
+    old_int = arg0
+!    old_int_array(:arg0) = arg1(:arg0)
+    old_char = arg2
+
+    ! Copy CHAR array to CHARACTER variable.
+    old_string = " "
+    i = 1
+    do while (arg3(i) .ne. C_NULL_CHAR)
+       old_string(i:i) = arg3(i)
+       i = i + 1
+    enddo
+  end subroutine all_types
+
+!----------
   
 end module callback_mod
 
@@ -176,6 +217,7 @@ program tester
   call test_callback3
   call test_callback4
   call test_abstract_declarator
+  call test_callback_arguments
 
   call fruit_summary
   call fruit_finalize
@@ -332,5 +374,22 @@ contains
     call assert_equals(21, rv, "abstract2")
     
   end subroutine test_abstract_declarator
+
+  subroutine test_callback_arguments
+    ! The C function passes predefined values to the callback.
+    ! The values are saved in the callback and check here.
+    use callback_mod
+
+    call set_case_name("test_callback_arguments")
+    
+    call callback_void_ptr(void_ptr_arg)
+    call assert_false(c_associated(old_ptr), "callback_types")
+
+    call callback_all_types(all_types)
+    call assert_equals(3, old_int, "callback_all_types arg0")
+    call assert_equals("a", old_char, "callback_all_types arg2")
+    call assert_equals("dog", old_string, "callback_all_types arg2")
+    
+  end subroutine test_callback_arguments
   
 end program tester

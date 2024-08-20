@@ -122,3 +122,19 @@ int abstract1(int input, int (*get)(double, int))
 }
 
 //----------------------------------------------------------------------
+
+void callback_void_ptr(void (*void_ptr_arg)(void *))
+{
+    void_ptr_arg(NULL);
+}
+
+//----------------------------------------------------------------------
+
+void callback_all_types(void (*all_types)(int, int *, char, char *))
+{
+    int iarray[3] = {1,2,3};
+    char str[] = "dog";
+    all_types(3, iarray, 'a', str);
+}
+
+//----------------------------------------------------------------------
