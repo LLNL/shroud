@@ -157,6 +157,7 @@
                                         "f_derived_type": "class2",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "class2",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(class2)",
                                         "f_var": "SHT_rv",
@@ -517,6 +518,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "class1",
                                         "f_type": "type(class1)",
                                         "f_var": "arg",
                                         "fc_var": "arg",
@@ -782,6 +784,7 @@
                                         "f_derived_type": "class3",
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
+                                        "f_kind": "class3",
                                         "f_type": "type(class3)",
                                         "f_var": "arg",
                                         "fc_var": "arg",
@@ -1241,6 +1244,7 @@
             "f_capsule_data_type": "FOR_SHROUD_capsule_data",
             "f_class": "class(class2)",
             "f_derived_type": "class2",
+            "f_kind": "class2",
             "f_module": {
                 "forward_mod": [
                     "class2"
@@ -1281,6 +1285,7 @@
             "f_capsule_data_type": "FOR_SHROUD_capsule_data",
             "f_class": "class(class3)",
             "f_derived_type": "class3",
+            "f_kind": "class3",
             "f_module": {
                 "forward_mod": [
                     "class3"
@@ -1318,6 +1323,7 @@
             "f_capsule_data_type": "SHROUD_class1_capsule",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
+            "f_kind": "class1",
             "f_module": {
                 "tutorial_mod": [
                     "class1"
@@ -1349,6 +1355,7 @@
             "f_capsule_data_type": "CLA_SHROUD_capsule_data",
             "f_class": "class(class2)",
             "f_derived_type": "class2",
+            "f_kind": "class2",
             "f_module": {
                 "classes_mod": [
                     "class2"

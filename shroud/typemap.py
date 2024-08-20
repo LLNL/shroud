@@ -1126,7 +1126,7 @@ def create_class_typemap_from_fields(cxx_name, fields, library):
         base="shadow", sgroup="shadow",
         cxx_type=cxx_name,
         f_capsule_data_type="missing-f_capsule_data_type",
-        f_derived_type=cxx_name,
+        f_kind=fields["f_derived_type"],
 
         cxx_to_c="static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
         c_to_cxx="static_cast<{c_const}%s *>\t({c_var}->addr)" % cxx_name,
@@ -1190,6 +1190,7 @@ def fill_class_typemap(node, fields={}):
         c_type=c_name,
         f_module_name=fmt_class.F_module_name,
         f_derived_type=fmt_class.F_derived_name,
+        f_kind=fmt_class.F_derived_name,
         f_capsule_data_type=fmt_class.F_capsule_data_type,
         # #- f_to_c='{f_var}%%%s()' % fmt_class.F_name_instance_get, # XXX - develop test
         sh_type="SH_TYPE_OTHER",

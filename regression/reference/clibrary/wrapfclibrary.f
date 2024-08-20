@@ -627,6 +627,12 @@ contains
     ! ----------------------------------------
     ! Function:  char *Function4a +len(30)
     ! Statement: f_function_char*_buf_copy
+    ! ----------------------------------------
+    ! Argument:  const char *arg1
+    ! Statement: f_in_char*
+    ! ----------------------------------------
+    ! Argument:  const char *arg2
+    ! Statement: f_in_char*
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -644,6 +650,9 @@ contains
     ! ----------------------------------------
     ! Function:  void acceptName
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
     ! start accept_name
     subroutine accept_name(name)
         use iso_c_binding, only : C_NULL_CHAR
@@ -767,6 +776,9 @@ contains
     ! ----------------------------------------
     ! Argument:  char *text +charlen(MAXNAME)+intent(out)
     ! Statement: f_out_char*_buf
+    ! ----------------------------------------
+    ! Argument:  int ltext +implied(len(text))
+    ! Statement: c_default
     !>
     !! \brief Fill text, at most ltext characters.
     !!
@@ -791,6 +803,12 @@ contains
     ! ----------------------------------------
     ! Argument:  const char *text +api(capi)
     ! Statement: f_in_char*_capi
+    ! ----------------------------------------
+    ! Argument:  int ltext +implied(len(text))
+    ! Statement: c_default
+    ! ----------------------------------------
+    ! Argument:  bool flag +implied(false)
+    ! Statement: c_default
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -817,6 +835,12 @@ contains
     ! ----------------------------------------
     ! Argument:  const char *text +api(capi)
     ! Statement: f_in_char*_capi
+    ! ----------------------------------------
+    ! Argument:  int ltext +implied(len_trim(text))
+    ! Statement: c_default
+    ! ----------------------------------------
+    ! Argument:  bool flag +implied(true)
+    ! Statement: c_default
     !>
     !! \brief Return the implied argument - text length
     !!
@@ -840,6 +864,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
     ! Statement: f_function_bool
+    ! ----------------------------------------
+    ! Argument:  bool flag +implied(true)
+    ! Statement: c_default
     !>
     !! \brief Single, implied bool argument
     !!
@@ -858,6 +885,9 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
     ! Statement: f_function_bool
+    ! ----------------------------------------
+    ! Argument:  bool flag +implied(false)
+    ! Statement: c_default
     !>
     !! \brief Single, implied bool argument
     !!

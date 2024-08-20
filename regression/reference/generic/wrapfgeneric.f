@@ -964,6 +964,12 @@ contains
     ! ----------------------------------------
     ! Argument:  float *addr +intent(in)+rank(1)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  int type +implied(T_FLOAT)
+    ! Statement: c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))
+    ! Statement: c_default
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:)
@@ -985,6 +991,12 @@ contains
     ! ----------------------------------------
     ! Argument:  float *addr +intent(in)+rank(2)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  int type +implied(T_FLOAT)
+    ! Statement: c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))
+    ! Statement: c_default
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:,:)
@@ -1005,6 +1017,12 @@ contains
     ! ----------------------------------------
     ! Argument:  float *addr +intent(in)+rank(1)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  int type +implied(type(addr))
+    ! Statement: c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))
+    ! Statement: c_default
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:)
@@ -1024,6 +1042,12 @@ contains
     ! ----------------------------------------
     ! Argument:  float *addr +intent(in)+rank(2)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  int type +implied(type(addr))
+    ! Statement: c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))
+    ! Statement: c_default
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
         real(C_FLOAT), intent(IN) :: addr(:,:)

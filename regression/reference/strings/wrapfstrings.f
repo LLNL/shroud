@@ -1536,6 +1536,9 @@ contains
     ! ----------------------------------------
     ! Argument:  char *dest +charlen(40)+intent(out)
     ! Statement: f_out_char*_buf
+    ! ----------------------------------------
+    ! Argument:  const char *src
+    ! Statement: f_in_char*
     !>
     !! \brief strcpy like behavior
     !!
@@ -2255,6 +2258,9 @@ contains
     ! ----------------------------------------
     ! Function:  void explicit1
     ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  char *name +intent(in)+len_trim(AAlen)
+    ! Statement: f_in_char*
     subroutine explicit1(name)
         use iso_c_binding, only : C_NULL_CHAR
         character(len=*), intent(IN) :: name
@@ -2458,6 +2464,9 @@ contains
     ! ----------------------------------------
     ! Function:  int CpassCharPtrCAPI2
     ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  const char *in
+    ! Statement: f_in_char*
     ! ----------------------------------------
     ! Argument:  const char *src +api(capi)
     ! Statement: f_in_char*_capi

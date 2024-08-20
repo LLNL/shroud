@@ -743,18 +743,13 @@ rv = .false.
 
     def add_stmt_declaration(self, stmts, arg_f_decl, arg_f_names, fmt):
         """Add declarations from fc_statements.
-
-        Return True if f_arg_decl found.
         """
-        found = False
         if stmts.f_arg_decl:
-            found = True
             for line in stmts.f_arg_decl:
                 append_format(arg_f_decl, line, fmt)
         if stmts.f_arg_name:
             for aname in stmts.f_arg_name:
                 append_format(arg_f_names, aname, fmt)
-        return found
 
     def add_stmt_var(self, group, lst, fmt):
         """Add a variable fc_statements to lst.
@@ -1288,7 +1283,7 @@ rv = .false.
             c_ast - Abstract Syntax Tree from parser, declast.Declaration
             f_ast - Abstract Syntax Tree from parser, declast.Declaration
             arg_typemap - typemap of resolved argument  i.e. int from vector<int>
-            stmts_blk - typemap.FStmts, fc_statements block.
+            stmts_blk - util.Scope, fc_statements block.
             modules - Build up USE statement.
             arg_c_call - Arguments to C wrapper.
 
@@ -1496,53 +1491,46 @@ rv = .false.
 
             if arg_typemap.base == "procedure":
                 # typedef function pointer
-                do_use = False
                 fmt_arg.f_abstract_interface = arg_typemap.f_kind
             elif f_declarator.is_function_pointer():
-                do_use = False
                 if "funptr" not in f_attrs:
                     absiface = self.add_abstract_interface(node, f_arg, fileinfo, fmt_arg)
-            elif arg_stmt.f_module:
-                do_use = False
-            else:
-                do_use = True
 
             if arg_meta["ftrim_char_in"]:
                 # Pass NULL terminated string to C.
-                arg_f_decl.append(
-                    "character(len=*), intent(IN) :: {}".format(fmt_arg.f_var)
-                )
-                arg_f_names.append(fmt_arg.f_var)
-                arg_c_call.append("trim({})//C_NULL_CHAR".format(fmt_arg.f_var))
+                arg_stmt = util.Scope(arg_stmt)
+                arg_stmt.f_arg_call = [
+                    "trim({})//C_NULL_CHAR".format(fmt_arg.f_var)
+                ]
                 self.set_f_module(modules, "iso_c_binding", "C_NULL_CHAR")
                 need_wrapper = True
-                continue
             elif implied:
                 # implied is computed then passed to C++.
                 fmt_arg.pre_call_intent, intermediate, f_helper = ftn_implied(
                     implied, node, f_arg)
+                arg_stmt = util.Scope(statements.FStmts)
                 if intermediate:
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
-                    arg_f_decl.append(gen_arg_as_fortran(f_arg,
-                        name=fmt_arg.fc_var, local=True, bindc=True))
-                    append_format(pre_call, "{fc_var} = {pre_call_intent}", fmt_arg)
-                    arg_c_call.append(fmt_arg.fc_var)
+                    arg_stmt.f_arg_decl = ["{i_type} :: {fc_var}"]
+                    arg_stmt.f_pre_call = [
+                        "{fc_var} = {pre_call_intent}"
+                    ]
+                    arg_stmt.f_arg_call = ["{fc_var}"]
                 else:
-                    arg_c_call.append(fmt_arg.pre_call_intent)
+                    arg_stmt.f_arg_call = ["{pre_call_intent}"]
                 for helper in f_helper.split():
                     fileinfo.f_helper[helper] = True
                 self.update_f_module(modules, f_arg.typemap.f_module, fmt_arg)
                 need_wrapper = True
-                continue
 
             if arg_meta["optional"]:
                 fmt_arg.default_value = f_arg.declarator.init
                 optattr = True
-            if arg_stmt.f_arg_decl:
-                # Explicit declarations from fc_statements.
-                self.add_stmt_declaration(
-                    arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
-                self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
+
+            # Explicit declarations from fc_statements.
+            self.add_stmt_declaration(
+                arg_stmt, arg_f_decl, arg_f_names, fmt_arg)
+            self.add_f_module_from_stmts(arg_stmt, modules, fmt_arg)
 
             if options.debug:
                 stmts_comments.append(
@@ -1553,11 +1541,6 @@ rv = .false.
                 c_decl = gen_decl(c_arg)
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
-
-            if do_use:
-                # XXX - function pointers confuse this code
-                # XXX - it adds a USE for the function pointers's return type.
-                self.update_f_module(modules, arg_typemap.f_module, fmt_arg)
 
             # Now C function arguments
             # May have different types, like generic
@@ -1615,29 +1598,12 @@ rv = .false.
             arg_c_call,
             need_wrapper,
         )
-        found_arg_decl_ret = self.add_stmt_declaration(
-            result_stmt, arg_f_decl, arg_f_names, fmt_result)
-
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        # Unless explicitly set by FStmts.f_arg_decl
-        if subprogram == "function":
-            # if func_is_const:
-            #     fmt_result.F_pure_clause = 'pure '
-            if not found_arg_decl_ret:
-                # result_as_arg or None
-                # local=True will add any character len attributes
-                # e.g.  CHARACTER(LEN=30)
-                arg_f_decl.append(
-                    gen_arg_as_fortran(ast, name=fmt_result.F_result, local=True)
-                )
-
-            if ast.declarator.is_indirect() < 2:
-                # If more than one level of indirection, will return
-                # a type(C_PTR).  i.e. int ** same as void *.
-                # So do not add type's f_module.
-                self.update_f_module(modules, result_typemap.f_module, fmt_result)
+        self.add_stmt_declaration(
+            result_stmt, arg_f_decl, arg_f_names, fmt_result)
+        self.add_f_module_from_stmts(result_stmt, modules, fmt_result)
 
         if node.options.class_ctor:
             # Generic constructor for C "class" (wrap_struct_as=class).

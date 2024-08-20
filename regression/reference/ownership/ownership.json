@@ -4351,6 +4351,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -4587,6 +4588,7 @@
                                 "f_derived_type": "class1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "class1",
                                 "f_local_ptr": "SHT_prv",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -4784,6 +4786,7 @@
             "f_capsule_data_type": "OWN_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
+            "f_kind": "class1",
             "f_module": {
                 "ownership_mod": [
                     "class1"

@@ -4508,6 +4508,7 @@
             "f_capsule_data_type": "STR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_class)",
             "f_derived_type": "cstruct_as_class",
+            "f_kind": "cstruct_as_class",
             "f_module": {
                 "struct_mod": [
                     "cstruct_as_class"
@@ -4542,6 +4543,7 @@
             "f_capsule_data_type": "STR_SHROUD_capsule_data",
             "f_class": "class(cstruct_as_subclass)",
             "f_derived_type": "cstruct_as_subclass",
+            "f_kind": "cstruct_as_subclass",
             "f_module": {
                 "struct_mod": [
                     "cstruct_as_subclass"

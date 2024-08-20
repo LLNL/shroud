@@ -507,6 +507,8 @@ root
           pointer -- f_mixin_char_cdesc_pointer
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-arg-no-module -- f_mixin_declare-fortran-arg-no-module
+      declare-fortran-result -- f_mixin_declare-fortran-result
+      declare-fortran-result-no-module -- f_mixin_declare-fortran-result-no-module
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
@@ -4690,8 +4692,13 @@ f_function_bool:
   comments:
   - Call a function.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   owner: library
 f_function_char:
@@ -4880,6 +4887,8 @@ f_function_char*_buf_copy:
   - Copy result into caller's buffer.
   - XXX - maybe fmtdict to rename c_local_cxx as output
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -5099,6 +5108,8 @@ f_function_char*_cfi_copy:
   comments:
   - Copy result into caller's buffer.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -5402,8 +5413,13 @@ f_function_enum:
   comments:
   - Return as the Fortran bind(C) type.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5412,8 +5428,13 @@ f_function_native:
   comments:
   - Call a function.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   owner: library
 f_function_native&:
   name: f_function_native&
@@ -5432,6 +5453,8 @@ f_function_native&:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5461,6 +5484,8 @@ f_function_native&_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5517,6 +5542,8 @@ f_function_native*_cdesc_allocatable:
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -5576,6 +5603,8 @@ f_function_native*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -5632,6 +5661,8 @@ f_function_native*_cdesc_pointer_caller:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -5684,6 +5715,9 @@ f_function_native*_cfi_allocatable:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5730,6 +5764,9 @@ f_function_native*_cfi_pointer:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5785,6 +5822,8 @@ f_function_native*_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5814,6 +5853,8 @@ f_function_native*_pointer_caller:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5847,8 +5888,13 @@ f_function_native*_scalar:
   comments:
   - Return a scalar to avoid doing the deref in Fortran.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_return:
   - return *{cxx_var};
   c_return_type: '{c_type}'
@@ -7015,6 +7061,8 @@ f_function_string&_cfi_copy:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -7718,6 +7766,8 @@ f_function_string*_cfi_copy:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8428,6 +8478,8 @@ f_function_string_cfi_copy:
   - Make the argument a CFI_desc_t.
   - Local character argument passed as CFI_desc_t.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
@@ -8616,10 +8668,15 @@ f_function_struct:
   comments:
   - Call the C wrapper as a subroutine.
   intent: function
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_arg_call:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8652,6 +8709,8 @@ f_function_struct*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -8693,6 +8752,8 @@ f_function_struct*_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -8802,6 +8863,11 @@ f_function_void*:
 f_getter_bool:
   name: f_getter_bool
   intent: getter
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8810,6 +8876,11 @@ f_getter_bool:
 f_getter_native:
   name: f_getter_native
   intent: getter
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8837,6 +8908,8 @@ f_getter_native*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -8869,6 +8942,11 @@ f_getter_native*_cdesc_pointer:
 f_getter_native*_pointer:
   name: f_getter_native*_pointer
   intent: getter
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8988,6 +9066,8 @@ f_getter_struct*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -9348,6 +9428,9 @@ f_in_native:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9389,6 +9472,9 @@ f_in_native*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9411,6 +9497,9 @@ f_in_native**:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9581,6 +9670,9 @@ f_in_shadow:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -9609,6 +9701,9 @@ f_in_shadow&:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -9637,6 +9732,9 @@ f_in_shadow*:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -10402,6 +10500,9 @@ f_in_void:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10754,6 +10855,9 @@ f_inout_native*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10867,6 +10971,9 @@ f_inout_shadow&:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -10895,6 +11002,9 @@ f_inout_shadow*:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -11633,6 +11743,25 @@ f_mixin_declare-fortran-arg-no-module:
   c_arg_call:
   - '{cxx_var}'
   owner: library
+f_mixin_declare-fortran-result:
+  name: f_mixin_declare-fortran-result
+  intent: mixin
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_mixin_declare-fortran-result-no-module:
+  name: f_mixin_declare-fortran-result-no-module
+  intent: mixin
+  f_arg_decl:
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_mixin_declare-interface-arg:
   name: f_mixin_declare-interface-arg
   intent: mixin
@@ -11677,6 +11806,8 @@ f_mixin_function_c-ptr:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -12006,6 +12137,8 @@ f_mixin_native_cdesc_allocate:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
     \ kind=C_SIZE_T))"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -12026,6 +12159,8 @@ f_mixin_native_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
     iso_c_binding:
     - c_f_pointer
   c_arg_call:
@@ -12248,6 +12383,9 @@ f_mixin_shadow-arg:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   f_need_wrapper: true
   c_arg_call:
   - '{cxx_var}'
@@ -12281,6 +12419,8 @@ f_mixin_unknown:
   comments:
   - Default returned by lookup_fc_stmts when group is not found.
   intent: mixin
+  f_arg_decl:
+  - ===>f_arg_decl<===
   i_arg_names:
   - ===>i_arg_names<===
   i_arg_decl:
@@ -12334,6 +12474,9 @@ f_none_native:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12556,6 +12699,9 @@ f_out_native*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:

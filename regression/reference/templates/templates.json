@@ -651,6 +651,7 @@
                                         "f_derived_type": "struct_as_class_int",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "struct_as_class_int",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(struct_as_class_int)",
                                         "f_var": "SHT_rv",
@@ -1527,6 +1528,7 @@
                                         "f_derived_type": "struct_as_class_double",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "struct_as_class_double",
                                         "f_local_ptr": "SHT_prv",
                                         "f_type": "type(struct_as_class_double)",
                                         "f_var": "SHT_rv",
@@ -2428,6 +2430,7 @@
                                 "f_derived_type": "user_int",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "user_int",
                                 "f_local_ptr": "SHC_rv_ptr",
                                 "f_type": "type(user_int)",
                                 "f_var": "SHT_rv",
@@ -3905,6 +3908,7 @@
                                                 "f_derived_type": "vector_int",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "vector_int",
                                                 "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(vector_int)",
                                                 "f_var": "SHT_rv",
@@ -4923,6 +4927,7 @@
                                                 "f_derived_type": "vector_double",
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
+                                                "f_kind": "vector_double",
                                                 "f_local_ptr": "SHT_prv",
                                                 "f_type": "type(vector_double)",
                                                 "f_var": "SHT_rv",
@@ -6031,6 +6036,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(worker)",
             "f_derived_type": "worker",
+            "f_kind": "worker",
             "f_module": {
                 "templates_mod": [
                     "worker"
@@ -6070,6 +6076,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(impl_worker1)",
             "f_derived_type": "impl_worker1",
+            "f_kind": "impl_worker1",
             "f_module": {
                 "templates_internal_mod": [
                     "impl_worker1"
@@ -6109,6 +6116,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(impl_worker2)",
             "f_derived_type": "impl_worker2",
+            "f_kind": "impl_worker2",
             "f_module": {
                 "templates_internal_mod": [
                     "impl_worker2"
@@ -6147,6 +6155,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(vector)",
             "f_derived_type": "vector",
+            "f_kind": "vector",
             "f_module": {
                 "templates_std_mod": [
                     "vector"
@@ -6300,6 +6309,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(vector_double)",
             "f_derived_type": "vector_double",
+            "f_kind": "vector_double",
             "f_module": {
                 "templates_std_mod": [
                     "vector_double"
@@ -6340,6 +6350,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(vector_int)",
             "f_derived_type": "vector_int",
+            "f_kind": "vector_int",
             "f_module": {
                 "templates_std_mod": [
                     "vector_int"
@@ -6379,6 +6390,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(struct_as_class)",
             "f_derived_type": "struct_as_class",
+            "f_kind": "struct_as_class",
             "f_module": {
                 "templates_mod": [
                     "struct_as_class"
@@ -6414,6 +6426,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(struct_as_class_double)",
             "f_derived_type": "struct_as_class_double",
+            "f_kind": "struct_as_class_double",
             "f_module": {
                 "templates_mod": [
                     "struct_as_class_double"
@@ -6449,6 +6462,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(struct_as_class_int)",
             "f_derived_type": "struct_as_class_int",
+            "f_kind": "struct_as_class_int",
             "f_module": {
                 "templates_mod": [
                     "struct_as_class_int"
@@ -6487,6 +6501,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(user)",
             "f_derived_type": "user",
+            "f_kind": "user",
             "f_module": {
                 "templates_mod": [
                     "user"
@@ -6526,6 +6541,7 @@
             "f_capsule_data_type": "TEM_SHROUD_capsule_data",
             "f_class": "class(user_int)",
             "f_derived_type": "user_int",
+            "f_kind": "user_int",
             "f_module": {
                 "templates_mod": [
                     "user_int"

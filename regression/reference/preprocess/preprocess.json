@@ -981,6 +981,7 @@
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user1)",
             "f_derived_type": "user1",
+            "f_kind": "user1",
             "f_module": {
                 "preprocess_mod": [
                     "user1"
@@ -1020,6 +1021,7 @@
             "f_capsule_data_type": "PRE_SHROUD_capsule_data",
             "f_class": "class(user2)",
             "f_derived_type": "user2",
+            "f_kind": "user2",
             "f_module": {
                 "preprocess_mod": [
                     "user2"

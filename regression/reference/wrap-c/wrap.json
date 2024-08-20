@@ -162,6 +162,7 @@
             "f_capsule_data_type": "WRA_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
+            "f_kind": "class1",
             "f_module": {
                 "wrap_mod": [
                     "class1"

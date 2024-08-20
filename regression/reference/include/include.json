@@ -313,6 +313,7 @@
                                         "f_derived_type": "class1",
                                         "f_intent": "INOUT",
                                         "f_intent_attr": ", intent(INOUT)",
+                                        "f_kind": "class1",
                                         "f_type": "type(class1)",
                                         "f_var": "c2",
                                         "fc_var": "c2",
@@ -1324,6 +1325,7 @@
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class2)",
             "f_derived_type": "class2",
+            "f_kind": "class2",
             "f_module": {
                 "library_mod": [
                     "class2"
@@ -1399,6 +1401,7 @@
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class0)",
             "f_derived_type": "class0",
+            "f_kind": "class0",
             "f_module": {
                 "library_outer1_mod": [
                     "class0"
@@ -1433,6 +1436,7 @@
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class0)",
             "f_derived_type": "class0",
+            "f_kind": "class0",
             "f_module": {
                 "library_outer2_mod": [
                     "class0"
@@ -1468,6 +1472,7 @@
             "f_capsule_data_type": "LIB_SHROUD_capsule_data",
             "f_class": "class(class1)",
             "f_derived_type": "class1",
+            "f_kind": "class1",
             "f_module": {
                 "library_three_mod": [
                     "class1"

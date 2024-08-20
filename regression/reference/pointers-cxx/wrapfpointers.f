@@ -1299,6 +1299,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double *out +dimension(size(in))+intent(out)
     ! Statement: f_out_native*
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))
+    ! Statement: c_default
     !>
     !! \brief compute cos of IN and save in OUT
     !!
@@ -1326,6 +1329,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int *out +dimension(size(in))+intent(out)
     ! Statement: f_out_native*
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(in))
+    ! Statement: c_default
     !>
     !! \brief truncate IN argument and save in OUT
     !!
@@ -1432,6 +1438,9 @@ contains
     ! Function:  void Sum
     ! Statement: f_subroutine
     ! ----------------------------------------
+    ! Argument:  int len +implied(size(values))
+    ! Statement: c_default
+    ! ----------------------------------------
     ! Argument:  const int *values +rank(1)
     ! Statement: f_in_native*
     ! ----------------------------------------
@@ -1478,6 +1487,9 @@ contains
     ! ----------------------------------------
     ! Argument:  int *array +intent(inout)+rank(1)
     ! Statement: f_inout_native*
+    ! ----------------------------------------
+    ! Argument:  int sizein +implied(size(array))
+    ! Statement: c_default
     !>
     !! Increment array in place using intent(INOUT).
     !<
@@ -1499,6 +1511,9 @@ contains
     ! ----------------------------------------
     ! Argument:  double *x +rank(1)
     ! Statement: f_inout_native*
+    ! ----------------------------------------
+    ! Argument:  int x_length +implied(size(x))
+    ! Statement: c_default
     ! start fill_with_zeros
     subroutine fill_with_zeros(x)
         use iso_c_binding, only : C_DOUBLE, C_INT
@@ -1517,6 +1532,9 @@ contains
     ! ----------------------------------------
     ! Argument:  const int *arr +rank(1)
     ! Statement: f_in_native*
+    ! ----------------------------------------
+    ! Argument:  size_t len +implied(size(arr))
+    ! Statement: c_default
     ! start accumulate
     function accumulate(arr) &
             result(SHT_rv)
@@ -2098,7 +2116,7 @@ contains
     ! start return_int_raw
     function return_int_raw() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw
         SHT_rv = c_return_int_raw()
@@ -2110,6 +2128,9 @@ contains
     ! ----------------------------------------
     ! Function:  int *returnIntRawWithArgs +deref(raw)
     ! Statement: f_function_native*_raw
+    ! ----------------------------------------
+    ! Argument:  const char *name
+    ! Statement: f_in_char*
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
     !! Uses fc_statements f_function_native_*_raw.
@@ -2117,7 +2138,7 @@ contains
     ! start return_int_raw_with_args
     function return_int_raw_with_args(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR, C_PTR
+        use iso_c_binding, only : C_NULL_CHAR, C_PTR
         character(len=*), intent(IN) :: name
         type(C_PTR) :: SHT_rv
         ! splicer begin function.return_int_raw_with_args
