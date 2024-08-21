@@ -573,6 +573,8 @@ root
       use
         capsule -- f_mixin_use_capsule
     none
+      bool -- f_none_bool
+      bool* -- f_none_bool*
       char -- f_none_char
       char* -- f_none_char*
       native -- f_none_native
@@ -12468,6 +12470,66 @@ f_mixin_use_capsule:
   - '{c_var_capsule}->idtor = {idtor};'
   c_temps:
   - capsule
+  owner: library
+f_none_bool:
+  name: f_none_bool
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - 'logical(C_BOOL) :: {f_var_cxx}'
+  f_pre_call:
+  - '{f_var_cxx} = {f_var}  ! coerce to C_BOOL'
+  f_arg_call:
+  - '{f_var_cxx}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  f_temps:
+  - cxx
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_none_bool*:
+  name: f_none_bool*
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_declare:
+  - 'logical(C_BOOL) :: {f_var_cxx}'
+  f_arg_call:
+  - '{f_var_cxx}'
+  f_post_call:
+  - '{f_var} = {f_var_cxx}  ! coerce to logical'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  f_temps:
+  - cxx
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 f_none_char:
   name: f_none_char
