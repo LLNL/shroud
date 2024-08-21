@@ -665,7 +665,8 @@ class Parser(ExprParser):
             # Look for (void), set to no parameters.
             if len(params) == 1:
                 chk = params[0]
-                if (chk.declarator.name is None and
+                if (chk.declarator.name is None and  # abstract declarator
+                    len(chk.declarator.pointer) == 0 and
                     chk.specifier == ["void"] and
                     chk.declarator.func is None    # Function pointers
                 ):

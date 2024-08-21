@@ -533,9 +533,11 @@ class FillMeta(object):
         if ntypemap.sgroup == "vector":
             meta["api"] = "buf"
         
-    def set_arg_api_fortran(self, node, arg, meta):
+    def set_arg_api_fortran(self, node, arg, meta, fptr_arg):
         """
         Based on other meta attrs: deref
+
+        fptr_arg : True if processing function pointer arguments.
         """
         declarator = arg.declarator
         ntypemap = arg.typemap
@@ -579,7 +581,10 @@ class FillMeta(object):
             else:
                 has_buf_arg = "buf"
         elif ntypemap.sgroup == "char":
-            if meta["ftrim_char_in"]:
+            if fptr_arg:
+                # Pass raw pointer for function pointer arguments.
+                pass
+            elif meta["ftrim_char_in"]:
                 pass
             elif declarator.is_indirect():
                 if meta["deref"] in ["allocatable", "pointer"]:
@@ -999,7 +1004,7 @@ class FillMetaFortran(FillMeta):
         wlang = self.wlang
         node_cursor = self.cursor.current
         
-    def meta_function(self, cls, node):
+    def meta_function(self, cls, node, fptr_arg=False):
         if not node.wrap.fortran:
             return
         wlang = self.wlang
@@ -1015,7 +1020,7 @@ class FillMetaFortran(FillMeta):
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
         
-        self.meta_function_params(node)
+        self.meta_function_params(node, fptr_arg)
 
         # Lookup statements if there are no meta attribute errors
         if node.wrap.fortran:
@@ -1029,7 +1034,7 @@ class FillMetaFortran(FillMeta):
                 a_bind = statements.get_arg_bind(node, arg, wlang)
                 a_bind.stmt = arg_stmt
 
-    def meta_function_params(self, node):
+    def meta_function_params(self, node, fptr_arg=False):
         wlang = self.wlang
         func_cursor = self.cursor.current
         for arg in node.ast.declarator.params:
@@ -1041,12 +1046,12 @@ class FillMetaFortran(FillMeta):
             self.set_arg_share(node, arg, meta)
             self.set_arg_fortran(node, arg, meta)
             self.set_arg_deref_fortran(arg, meta)
-            self.set_arg_api_fortran(node, arg, meta)
+            self.set_arg_api_fortran(node, arg, meta, fptr_arg)
             self.set_arg_hidden(arg, meta)
 
             if arg.declarator.is_function_pointer():
                 fptr = meta["fptr"]
-                self.meta_function(None, fptr)
+                self.meta_function(None, fptr, fptr_arg=True)
         func_cursor.arg = None
         
     def set_arg_fortran(self, node, arg, meta):

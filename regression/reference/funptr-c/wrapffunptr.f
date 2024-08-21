@@ -48,11 +48,29 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
+        subroutine callback_all_types_all_types(arg0, arg1, arg2, arg3, &
+            arg4, arg5) bind(C)
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
+            implicit none
+            integer(C_INT), value :: arg0
+            integer(C_INT) :: arg1(*)
+            character(kind=C_CHAR), value :: arg2
+            character(kind=C_CHAR) :: arg3(*)
+            logical(C_BOOL), value :: arg4
+            logical(C_BOOL) :: arg5
+        end subroutine callback_all_types_all_types
+
         function callback_ptr_get_ptr() bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: callback_ptr_get_ptr
         end function callback_ptr_get_ptr
+
+        subroutine callback_void_ptr_void_ptr_arg(arg0) bind(C)
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value :: arg0
+        end subroutine callback_void_ptr_void_ptr_arg
 
         function custom_funptr(XX0arg, XX1arg) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -278,6 +296,32 @@ module funptr_mod
             procedure(custom_funptr) :: get_abs
             integer(C_INT) :: SHT_rv
         end function c_abstract1
+
+        ! ----------------------------------------
+        ! Function:  void callback_void_ptr
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  void (*void_ptr_arg)(void *)
+        ! Statement: f_in_procedure
+        subroutine callback_void_ptr(void_ptr_arg) &
+                bind(C, name="callback_void_ptr")
+            import :: callback_void_ptr_void_ptr_arg
+            implicit none
+            procedure(callback_void_ptr_void_ptr_arg) :: void_ptr_arg
+        end subroutine callback_void_ptr
+
+        ! ----------------------------------------
+        ! Function:  void callback_all_types
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  void (*all_types)(int, int * +rank(1), char, char *, bool, bool *)
+        ! Statement: f_in_procedure
+        subroutine callback_all_types(all_types) &
+                bind(C, name="callback_all_types")
+            import :: callback_all_types_all_types
+            implicit none
+            procedure(callback_all_types_all_types) :: all_types
+        end subroutine callback_all_types
     end interface
 
     ! splicer begin additional_declarations
@@ -547,6 +591,46 @@ contains
         SHT_rv = c_abstract1(input, get_abs)
         ! splicer end function.abstract1
     end function abstract1
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void callback_void_ptr
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void (*void_ptr_arg)(void *)
+    ! Statement: f_in_procedure
+    !>
+    !! \brief Test void * argument
+    !!
+    !<
+    subroutine callback_void_ptr(void_ptr_arg)
+        procedure(callback_void_ptr_void_ptr_arg) :: void_ptr_arg
+        ! splicer begin function.callback_void_ptr
+        call c_callback_void_ptr(void_ptr_arg)
+        ! splicer end function.callback_void_ptr
+    end subroutine callback_void_ptr
+#endif
+
+#if 0
+    ! Only the interface is needed
+    ! ----------------------------------------
+    ! Function:  void callback_all_types
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  void (*all_types)(int, int * +rank(1), char, char *, bool, bool *)
+    ! Statement: f_in_procedure
+    !>
+    !! \brief Test callback argument types
+    !!
+    !<
+    subroutine callback_all_types(all_types)
+        procedure(callback_all_types_all_types) :: all_types
+        ! splicer begin function.callback_all_types
+        call c_callback_all_types(all_types)
+        ! splicer end function.callback_all_types
+    end subroutine callback_all_types
+#endif
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

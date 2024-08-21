@@ -4608,6 +4608,1491 @@
                     "F_name_impl": "abstract1",
                     "function_name": "abstract1"
                 }
+            },
+            {
+                "<FUNCTION>": "callback_void_ptr  11 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_void_ptr",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "void_ptr_arg",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "name": "void_ptr_arg",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "void"
+                                            },
+                                            "specifier": [
+                                                "void"
+                                            ],
+                                            "typemap_name": "void"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_void_ptr(void (*void_ptr_arg)(void *));",
+                "declgen": "void callback_void_ptr(void (*void_ptr_arg)(void *))",
+                "doxygen": {
+                    "brief": "Test void * argument"
+                },
+                "name": "callback_void_ptr",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_void_ptr(\tvoid_ptr_arg)",
+                                "C_call_list": "void_ptr_arg",
+                                "C_name": "FUN_callback_void_ptr",
+                                "C_prototype": "void (*void_ptr_arg)(\tvoid *)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback_void_ptr",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "void_ptr_arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "void",
+                                "c_var": "void_ptr_arg",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&void_ptr_arg",
+                                "cxx_type": "void",
+                                "cxx_var": "void_ptr_arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "c_in_procedure",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "void_ptr_arg  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "void_ptr_arg",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "void"
+                                                    },
+                                                    "specifier": [
+                                                        "void"
+                                                    ],
+                                                    "typemap_name": "void"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void void_ptr_arg(void *)",
+                                    "name": "void_ptr_arg",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_PTR",
+                                                    "f_type": "type(C_PTR)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "type(C_PTR)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_CPTR",
+                                                    "stmt_name": "f_none_void*",
+                                                    "typemap_name": "void"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_void*"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "void_ptr_arg",
+                                        "F_name_api": "void_ptr_arg",
+                                        "function_name": "void_ptr_arg"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_procedure"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_void_ptr(\tvoid_ptr_arg)",
+                                "C_call_list": "void_ptr_arg",
+                                "C_name": "FUN_callback_void_ptr",
+                                "C_prototype": "void (*void_ptr_arg)(\tvoid *)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "void_ptr_arg",
+                                "F_C_call": "c_callback_void_ptr",
+                                "F_C_name": "callback_void_ptr",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "void_ptr_arg",
+                                "F_arguments": "void_ptr_arg",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "void_ptr_arg": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "void",
+                                "c_var": "void_ptr_arg",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&void_ptr_arg",
+                                "cxx_type": "void",
+                                "cxx_var": "void_ptr_arg",
+                                "f_abstract_interface": "callback_void_ptr_void_ptr_arg",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_PTR",
+                                "f_type": "type(C_PTR)",
+                                "f_value_attr": ", value",
+                                "f_var": "void_ptr_arg",
+                                "fc_var": "void_ptr_arg",
+                                "i_type": "type(C_PTR)",
+                                "i_var": "void_ptr_arg",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "f_in_procedure",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "void_ptr_arg  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "void_ptr_arg",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "void"
+                                                    },
+                                                    "specifier": [
+                                                        "void"
+                                                    ],
+                                                    "typemap_name": "void"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void void_ptr_arg(void *)",
+                                    "name": "void_ptr_arg",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_PTR",
+                                                    "f_type": "type(C_PTR)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "type(C_PTR)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_CPTR",
+                                                    "stmt_name": "f_none_void*",
+                                                    "typemap_name": "void"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_void*"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "void_ptr_arg",
+                                        "F_name_api": "void_ptr_arg",
+                                        "function_name": "void_ptr_arg"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_procedure"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "void_ptr_arg": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "void_ptr_arg  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "void_ptr_arg",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "void"
+                                                    },
+                                                    "specifier": [
+                                                        "void"
+                                                    ],
+                                                    "typemap_name": "void"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void void_ptr_arg(void *)",
+                                    "name": "void_ptr_arg",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_PTR",
+                                                    "f_type": "type(C_PTR)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "type(C_PTR)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_CPTR",
+                                                    "stmt_name": "f_none_void*",
+                                                    "typemap_name": "void"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_void*"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "void_ptr_arg",
+                                        "F_name_api": "void_ptr_arg",
+                                        "function_name": "void_ptr_arg"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_void_ptr",
+                    "F_name_api": "callback_void_ptr",
+                    "F_name_function": "callback_void_ptr",
+                    "F_name_generic": "callback_void_ptr",
+                    "F_name_impl": "callback_void_ptr",
+                    "function_name": "callback_void_ptr"
+                }
+            },
+            {
+                "<FUNCTION>": "callback_all_types  12 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_all_types",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "all_types",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "name": "all_types",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "attrs": {
+                                                    "rank": "1"
+                                                },
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "char"
+                                            },
+                                            "specifier": [
+                                                "char"
+                                            ],
+                                            "typemap_name": "char"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "char"
+                                            },
+                                            "specifier": [
+                                                "char"
+                                            ],
+                                            "typemap_name": "char"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "bool"
+                                            },
+                                            "specifier": [
+                                                "bool"
+                                            ],
+                                            "typemap_name": "bool"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "bool"
+                                            },
+                                            "specifier": [
+                                                "bool"
+                                            ],
+                                            "typemap_name": "bool"
+                                        }
+                                    ],
+                                    "typemap_name": "void"
+                                },
+                                "specifier": [
+                                    "void"
+                                ],
+                                "typemap_name": "void"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *, bool, bool *));",
+                "declgen": "void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))",
+                "doxygen": {
+                    "brief": "Test callback argument types"
+                },
+                "name": "callback_all_types",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_all_types(\tall_types)",
+                                "C_call_list": "all_types",
+                                "C_name": "FUN_callback_all_types",
+                                "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *,\t bool,\t bool *)",
+                                "C_return_type": "void",
+                                "F_C_name": "c_callback_all_types",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "all_types": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "void",
+                                "c_var": "all_types",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&all_types",
+                                "cxx_type": "void",
+                                "cxx_var": "all_types",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "c_in_procedure",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "all_types  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "all_types",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "rank": "1"
+                                                        },
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void all_types(int, int * +rank(1), char, char *, bool, bool *)",
+                                    "name": "all_types",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_assumed_shape": "(:)",
+                                                    "f_dimension": "(:)",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "arg1",
+                                                    "i_dimension": "(*)",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "rank": "1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "size": "size(arg1)",
+                                                    "stmt_name": "f_none_native*",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "rank": 1
+                                                },
+                                                "stmt": "f_none_native*"
+                                            },
+                                            "arg3": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg2",
+                                                    "f_type": "character(len=*)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg2",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg2",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_none_char",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_char"
+                                            },
+                                            "arg4": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg3",
+                                                    "f_type": "character(len=*)",
+                                                    "f_var": "arg3",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg3",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_none_char*",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_char*"
+                                            },
+                                            "arg5": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg4",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg4",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg4",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_bool"
+                                            },
+                                            "arg6": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg5",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_var": "arg5",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg5",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool*",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_bool*"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "arg3": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg4": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg5": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg6": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "all_types",
+                                        "F_name_api": "all_types",
+                                        "function_name": "all_types"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_procedure"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_all_types(\tall_types)",
+                                "C_call_list": "all_types",
+                                "C_name": "FUN_callback_all_types",
+                                "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *,\t bool,\t bool *)",
+                                "C_return_type": "void",
+                                "F_C_arguments": "all_types",
+                                "F_C_call": "c_callback_all_types",
+                                "F_C_name": "callback_all_types",
+                                "F_C_subprogram": "subroutine",
+                                "F_arg_c_call": "all_types",
+                                "F_arguments": "all_types",
+                                "F_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "all_types": {
+                            "fmtdict": {
+                                "c_abstract_decl": "void (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "void",
+                                "c_var": "all_types",
+                                "cfi_type": "CFI_type_intptr_t",
+                                "cxx_abstract_decl": "void (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&all_types",
+                                "cxx_type": "void",
+                                "cxx_var": "all_types",
+                                "f_abstract_interface": "callback_all_types_all_types",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_PTR",
+                                "f_type": "type(C_PTR)",
+                                "f_value_attr": ", value",
+                                "f_var": "all_types",
+                                "fc_var": "all_types",
+                                "i_type": "type(C_PTR)",
+                                "i_var": "all_types",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_CPTR",
+                                "stmt_name": "f_in_procedure",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "all_types  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "all_types",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "rank": "1"
+                                                        },
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void all_types(int, int * +rank(1), char, char *, bool, bool *)",
+                                    "name": "all_types",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_assumed_shape": "(:)",
+                                                    "f_dimension": "(:)",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "arg1",
+                                                    "i_dimension": "(*)",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "rank": "1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "size": "size(arg1)",
+                                                    "stmt_name": "f_none_native*",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "rank": 1
+                                                },
+                                                "stmt": "f_none_native*"
+                                            },
+                                            "arg3": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg2",
+                                                    "f_type": "character(len=*)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg2",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg2",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_none_char",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_char"
+                                            },
+                                            "arg4": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg3",
+                                                    "f_type": "character(len=*)",
+                                                    "f_var": "arg3",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg3",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_none_char*",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_char*"
+                                            },
+                                            "arg5": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg4",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg4",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg4",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_bool"
+                                            },
+                                            "arg6": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg5",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_var": "arg5",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg5",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool*",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_bool*"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "arg3": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg4": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg5": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg6": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "all_types",
+                                        "F_name_api": "all_types",
+                                        "function_name": "all_types"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_procedure"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "all_types": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "all_types  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "all_types",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "attrs": {
+                                                            "rank": "1"
+                                                        },
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "char"
+                                                    },
+                                                    "specifier": [
+                                                        "char"
+                                                    ],
+                                                    "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                }
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "specifier": [
+                                            "void"
+                                        ],
+                                        "typemap_name": "void"
+                                    },
+                                    "decl": "void all_types(int, int * +rank(1), char, char *, bool, bool *)",
+                                    "name": "all_types",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {},
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                },
+                                                "stmt": "f_subroutine"
+                                            },
+                                            "arg1": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg0",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg0",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_assumed_shape": "(:)",
+                                                    "f_dimension": "(:)",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "arg1",
+                                                    "i_dimension": "(*)",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "rank": "1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "size": "size(arg1)",
+                                                    "stmt_name": "f_none_native*",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "rank": 1
+                                                },
+                                                "stmt": "f_none_native*"
+                                            },
+                                            "arg3": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg2",
+                                                    "f_type": "character(len=*)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg2",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg2",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_none_char",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_char"
+                                            },
+                                            "arg4": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg3",
+                                                    "f_type": "character(len=*)",
+                                                    "f_var": "arg3",
+                                                    "i_type": "character(kind=C_CHAR)",
+                                                    "i_var": "arg3",
+                                                    "sh_type": "SH_TYPE_OTHER",
+                                                    "stmt_name": "f_none_char*",
+                                                    "typemap_name": "char"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_char*"
+                                            },
+                                            "arg5": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg4",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg4",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg4",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_bool"
+                                            },
+                                            "arg6": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg5",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_var": "arg5",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg5",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool*",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_bool*"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "subroutine"
+                                                }
+                                            },
+                                            "arg1": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "rank": 1
+                                                }
+                                            },
+                                            "arg3": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg4": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg5": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg6": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "all_types",
+                                        "F_name_api": "all_types",
+                                        "function_name": "all_types"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_all_types",
+                    "F_name_api": "callback_all_types",
+                    "F_name_function": "callback_all_types",
+                    "F_name_generic": "callback_all_types",
+                    "F_name_impl": "callback_all_types",
+                    "function_name": "callback_all_types"
+                }
             }
         ],
         "language": "cxx",
@@ -5628,7 +7113,17 @@
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
+        "void(*)(int,int*,char,char*,bool,bool*)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
         "void(*)(void)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
+        },
+        "void(*)(void*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"

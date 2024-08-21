@@ -573,7 +573,11 @@ root
       use
         capsule -- f_mixin_use_capsule
     none
+      char -- f_none_char
+      char* -- f_none_char*
       native -- f_none_native
+      native* -- f_none_native*
+      void* -- f_none_void*
     out
       bool* -- f_out_bool*
       char* -- f_out_char*
@@ -1635,7 +1639,7 @@ c_in_char:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -9151,11 +9155,11 @@ f_in_char:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - 'character, value, intent(IN) :: {f_var}'
+  - 'character, value{f_intent_attr} :: {f_var}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), value, intent(IN) :: {i_var}'
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_CHAR
@@ -12465,6 +12469,44 @@ f_mixin_use_capsule:
   c_temps:
   - capsule
   owner: library
+f_none_char:
+  name: f_none_char
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'character, value{f_intent_attr} :: {f_var}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR), value{f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - char {c_var}
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_none_char*:
+  name: f_none_char*
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
 f_none_native:
   name: f_none_native
   notes:
@@ -12484,6 +12526,50 @@ f_none_native:
   i_module:
     '{typemap.f_module_name}':
     - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_none_native*:
+  name: f_none_native*
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{typemap.f_module_name}':
+    - '{typemap.f_kind}'
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
+  owner: library
+f_none_void*:
+  name: f_none_void*
+  intent: none
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - '{f_type}{f_intent_attr} :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:

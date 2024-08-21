@@ -6,8 +6,11 @@
  * SPDX-License-Identifier: (BSD-3-Clause)
  * #######################################################################
  *
- * Test C API generated from clibrary.yaml.
+ * Test C API generated from funptr.yaml.
  */
+
+// XXX - Using funptr.h here to get stdbool.h.
+#include "funptr.h"
 
 #include "wrapfunptr.h"
 

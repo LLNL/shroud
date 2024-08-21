@@ -108,4 +108,13 @@ declarations:
     F_abstract_interface_subprogram_template: custom_funptr
     F_abstract_interface_argument_template: XX{index}arg
 
+#####
 
+- decl: void callback_void_ptr(void (*void_ptr_arg)(void *));
+  doxygen:
+    brief: Test void * argument
+
+- decl: void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *, bool, bool *));
+  doxygen:
+    brief: Test callback argument types
+# XXX - array of bool is not supported

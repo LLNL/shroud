@@ -1134,7 +1134,8 @@
             "f_inout_native*",
             "c_inout_native*",
             "f_in_void",
-            "c_in_void"
+            "c_in_void",
+            "f_none_native*"
         ],
         "mixin": [
             "c_mixin_argument"
@@ -1522,7 +1523,8 @@
     {
         "alias": [
             "f_in_bool",
-            "c_in_bool"
+            "c_in_bool",
+            "f_none_bool"
         ],
         "mixin": [
             "c_mixin_argument2",
@@ -1537,7 +1539,8 @@
     {
         "alias": [
             "f_out_bool*",
-            "c_out_bool_*"
+            "c_out_bool_*",
+            "f_none_bool*"
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",
@@ -1584,7 +1587,8 @@
     {
         "alias": [
             "f_in_void*",
-            "c_in_void*"
+            "c_in_void*",
+            "f_none_void*"
         ],
         "mixin": [
             "c_mixin_argument2"
@@ -1774,19 +1778,20 @@
     {
         "alias": [
             "f_in_char",
-            "c_in_char"
+            "c_in_char",
+            "f_none_char"
         ],
         "f_arg_name": [
             "{f_var}"
         ],
         "f_arg_decl": [
-            "character, value, intent(IN) :: {f_var}"
+            "character, value{f_intent_attr} :: {f_var}"
         ],
         "c_arg_decl": [
             "char {c_var}"
         ],
         "i_arg_decl": [
-            "character(kind=C_CHAR), value, intent(IN) :: {i_var}"
+            "character(kind=C_CHAR), value{f_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -1883,7 +1888,8 @@
             "c_inout_char*",
             "f_in_char*_capi",
             "f_out_char*_capi",
-            "f_inout_char*_capi"
+            "f_inout_char*_capi",
+            "f_none_char*"
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg-no-module"

@@ -33,7 +33,15 @@ end subroutine incr1_noiface
 !----------
 
 module callback_mod
+  use iso_c_binding
   implicit none
+
+  type(C_PTR) old_ptr
+  integer(C_INT) old_int, old_int_array(10)
+  character old_char
+  character(80) old_string
+  logical old_bool, old_bool_array
+  
 contains
   subroutine incr1() bind(C)
     ! A bind(C) is required for the intel/oneapi/ibm compiler since
@@ -156,6 +164,45 @@ contains
        abscallback = -1
     endif
   end function abscallback
+
+!----------
+  subroutine void_ptr_arg(arg0) bind(C)
+    use iso_c_binding, only : C_PTR
+    implicit none
+    type(C_PTR), value :: arg0
+    old_ptr = arg0
+  end subroutine void_ptr_arg
+  
+!----------
+  subroutine all_types(arg0, arg1, arg2, arg3, arg4, arg5) bind(C)
+    use iso_c_binding, only : C_CHAR, C_INT
+    implicit none
+    integer(C_INT), value :: arg0
+    integer(C_INT) :: arg1(*)
+    character(kind=C_CHAR), value :: arg2
+    character(kind=C_CHAR) :: arg3(*)
+    logical(C_BOOL), value :: arg4
+    logical(C_BOOL) :: arg5
+
+    integer i
+
+    old_int = arg0
+    old_int_array(:arg0) = arg1(:arg0)
+    old_char = arg2
+
+    ! Copy CHAR array to CHARACTER variable.
+    old_string = " "
+    i = 1
+    do while (arg3(i) .ne. C_NULL_CHAR)
+       old_string(i:i) = arg3(i)
+       i = i + 1
+    enddo
+
+    old_bool = arg4
+    old_bool_array = arg5
+  end subroutine all_types
+
+!----------
   
 end module callback_mod
 
@@ -176,6 +223,7 @@ program tester
   call test_callback3
   call test_callback4
   call test_abstract_declarator
+  call test_callback_arguments
 
   call fruit_summary
   call fruit_finalize
@@ -332,5 +380,31 @@ contains
     call assert_equals(21, rv, "abstract2")
     
   end subroutine test_abstract_declarator
+
+  subroutine test_callback_arguments
+    ! The C function passes predefined values to the callback.
+    ! The values are saved in the callback and check here.
+    use callback_mod
+
+    call set_case_name("test_callback_arguments")
+    
+    call callback_void_ptr(void_ptr_arg)
+    call assert_false(c_associated(old_ptr), "callback_types")
+
+    old_int = 0
+    old_int_array = 0
+    old_char = " "
+    old_string = " "
+    old_bool = .false.
+    old_bool_array = .false.
+    call callback_all_types(all_types)
+    call assert_equals(3, old_int, "callback_all_types arg0")
+    call assert_true(all([1,2,3] .eq. old_int_array(1:3)), "callback_all_types arg1")
+    call assert_equals("a", old_char, "callback_all_types arg2")
+    call assert_equals("dog", old_string, "callback_all_types arg3")
+    call assert_true(old_bool, "callback_all_types arg4")
+    call assert_true(old_bool_array, "callback_all_types arg5")
+    
+  end subroutine test_callback_arguments
   
 end program tester
