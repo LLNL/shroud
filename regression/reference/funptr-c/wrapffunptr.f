@@ -48,14 +48,16 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
-        subroutine callback_all_types_all_types(arg0, arg1, arg2, &
-            arg3) bind(C)
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine callback_all_types_all_types(arg0, arg1, arg2, arg3, &
+            arg4, arg5) bind(C)
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             implicit none
             integer(C_INT), value :: arg0
             integer(C_INT) :: arg1(*)
             character(kind=C_CHAR), value :: arg2
             character(kind=C_CHAR) :: arg3(*)
+            logical(C_BOOL), value :: arg4
+            logical(C_BOOL) :: arg5
         end subroutine callback_all_types_all_types
 
         function callback_ptr_get_ptr() bind(C)
@@ -312,7 +314,7 @@ module funptr_mod
         ! Function:  void callback_all_types
         ! Statement: f_subroutine
         ! ----------------------------------------
-        ! Argument:  void (*all_types)(int, int * +rank(1), char, char *)
+        ! Argument:  void (*all_types)(int, int * +rank(1), char, char *, bool, bool *)
         ! Statement: f_in_procedure
         subroutine callback_all_types(all_types) &
                 bind(C, name="callback_all_types")
@@ -616,7 +618,7 @@ contains
     ! Function:  void callback_all_types
     ! Statement: f_subroutine
     ! ----------------------------------------
-    ! Argument:  void (*all_types)(int, int * +rank(1), char, char *)
+    ! Argument:  void (*all_types)(int, int * +rank(1), char, char *, bool, bool *)
     ! Statement: f_in_procedure
     !>
     !! \brief Test callback argument types

@@ -3553,6 +3553,29 @@
                                                 "char"
                                             ],
                                             "typemap_name": "char"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "bool"
+                                            },
+                                            "specifier": [
+                                                "bool"
+                                            ],
+                                            "typemap_name": "bool"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ],
+                                                "typemap_name": "bool"
+                                            },
+                                            "specifier": [
+                                                "bool"
+                                            ],
+                                            "typemap_name": "bool"
                                         }
                                     ],
                                     "typemap_name": "void"
@@ -3570,8 +3593,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *));",
-                "declgen": "void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *))",
+                "decl": "void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *, bool, bool *));",
+                "declgen": "void callback_all_types(void (*all_types)(int, int * +rank(1), char, char *, bool, bool *))",
                 "doxygen": {
                     "brief": "Test callback argument types"
                 },
@@ -3587,7 +3610,7 @@
                                 "C_call_function": "callback_all_types(\tall_types)",
                                 "C_call_list": "all_types",
                                 "C_name": "callback_all_types",
-                                "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *)",
+                                "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *,\t bool,\t bool *)",
                                 "C_return_type": "void",
                                 "F_C_arguments": "all_types",
                                 "F_C_call": "c_callback_all_types",
@@ -3690,6 +3713,29 @@
                                                         "char"
                                                     ],
                                                     "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -3699,7 +3745,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int * +rank(1), char, char *)",
+                                    "decl": "void all_types(int, int * +rank(1), char, char *, bool, bool *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -3789,6 +3835,42 @@
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_char*"
+                                            },
+                                            "arg5": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg4",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg4",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg4",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_bool"
+                                            },
+                                            "arg6": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg5",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_var": "arg5",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg5",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool*",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_bool*"
                                             }
                                         },
                                         "share": {
@@ -3816,6 +3898,17 @@
                                                 }
                                             },
                                             "arg4": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg5": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg6": {
                                                 "meta": {
                                                     "intent": "none"
                                                 }
@@ -3896,6 +3989,29 @@
                                                         "char"
                                                     ],
                                                     "typemap_name": "char"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "pointer": [
+                                                            {
+                                                                "ptr": "*"
+                                                            }
+                                                        ],
+                                                        "typemap_name": "bool"
+                                                    },
+                                                    "specifier": [
+                                                        "bool"
+                                                    ],
+                                                    "typemap_name": "bool"
                                                 }
                                             ],
                                             "typemap_name": "void"
@@ -3905,7 +4021,7 @@
                                         ],
                                         "typemap_name": "void"
                                     },
-                                    "decl": "void all_types(int, int * +rank(1), char, char *)",
+                                    "decl": "void all_types(int, int * +rank(1), char, char *, bool, bool *)",
                                     "name": "all_types",
                                     "options": {},
                                     "wrap": {
@@ -3995,6 +4111,42 @@
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_char*"
+                                            },
+                                            "arg5": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg4",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg4",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg4",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_bool"
+                                            },
+                                            "arg6": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg5",
+                                                    "f_kind": "C_BOOL",
+                                                    "f_type": "logical",
+                                                    "f_var": "arg5",
+                                                    "i_type": "logical(C_BOOL)",
+                                                    "i_var": "arg5",
+                                                    "sh_type": "SH_TYPE_BOOL",
+                                                    "stmt_name": "f_none_bool*",
+                                                    "typemap_name": "bool"
+                                                },
+                                                "meta": {
+                                                    "intent": "none"
+                                                },
+                                                "stmt": "f_none_bool*"
                                             }
                                         },
                                         "share": {
@@ -4022,6 +4174,17 @@
                                                 }
                                             },
                                             "arg4": {
+                                                "meta": {
+                                                    "intent": "none"
+                                                }
+                                            },
+                                            "arg5": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "arg6": {
                                                 "meta": {
                                                     "intent": "none"
                                                 }
@@ -4811,7 +4974,7 @@
             "f_type": "f-function-pointer",
             "sgroup": "procedure"
         },
-        "void(*)(int,int*,char,char*)": {
+        "void(*)(int,int*,char,char*,bool,bool*)": {
             "base": "procedure",
             "f_type": "f-function-pointer",
             "sgroup": "procedure"

@@ -114,7 +114,7 @@ declarations:
   doxygen:
     brief: Test void * argument
 
-- decl: void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *));
+- decl: void callback_all_types(void (*all_types)(int, int *+rank(1), char, char *, bool, bool *));
   doxygen:
     brief: Test callback argument types
-
+# XXX - array of bool is not supported

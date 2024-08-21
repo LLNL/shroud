@@ -130,11 +130,12 @@ void callback_void_ptr(void (*void_ptr_arg)(void *))
 
 //----------------------------------------------------------------------
 
-void callback_all_types(void (*all_types)(int, int *, char, char *))
+void callback_all_types(void (*all_types)(int, int *, char, char *, bool, bool *))
 {
     int iarray[3] = {1,2,3};
     char str[] = "dog";
-    all_types(3, iarray, 'a', str);
+    bool logical = true;
+    all_types(3, iarray, 'a', str, true, &logical);
 }
 
 //----------------------------------------------------------------------

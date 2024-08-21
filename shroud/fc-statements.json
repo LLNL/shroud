@@ -1523,7 +1523,8 @@
     {
         "alias": [
             "f_in_bool",
-            "c_in_bool"
+            "c_in_bool",
+            "f_none_bool"
         ],
         "mixin": [
             "c_mixin_argument2",
@@ -1538,7 +1539,8 @@
     {
         "alias": [
             "f_out_bool*",
-            "c_out_bool_*"
+            "c_out_bool_*",
+            "f_none_bool*"
         ],
         "mixin": [
             "f_mixin_declare-fortran-arg",

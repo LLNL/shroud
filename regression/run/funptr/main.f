@@ -40,6 +40,7 @@ module callback_mod
   integer(C_INT) old_int, old_int_array(10)
   character old_char
   character(80) old_string
+  logical old_bool, old_bool_array
   
 contains
   subroutine incr1() bind(C)
@@ -173,13 +174,15 @@ contains
   end subroutine void_ptr_arg
   
 !----------
-  subroutine all_types(arg0, arg1, arg2, arg3) bind(C)
+  subroutine all_types(arg0, arg1, arg2, arg3, arg4, arg5) bind(C)
     use iso_c_binding, only : C_CHAR, C_INT
     implicit none
     integer(C_INT), value :: arg0
     integer(C_INT) :: arg1(*)
     character(kind=C_CHAR), value :: arg2
     character(kind=C_CHAR) :: arg3(*)
+    logical(C_BOOL), value :: arg4
+    logical(C_BOOL) :: arg5
 
     integer i
 
@@ -194,6 +197,9 @@ contains
        old_string(i:i) = arg3(i)
        i = i + 1
     enddo
+
+    old_bool = arg4
+    old_bool_array = arg5
   end subroutine all_types
 
 !----------
@@ -385,11 +391,19 @@ contains
     call callback_void_ptr(void_ptr_arg)
     call assert_false(c_associated(old_ptr), "callback_types")
 
+    old_int = 0
+    old_int_array = 0
+    old_char = " "
+    old_string = " "
+    old_bool = .false.
+    old_bool_array = .false.
     call callback_all_types(all_types)
     call assert_equals(3, old_int, "callback_all_types arg0")
-    call assert_true(all([1,2,3] .eq. old_int_array(1:3)), "callback_all_types arg0")
+    call assert_true(all([1,2,3] .eq. old_int_array(1:3)), "callback_all_types arg1")
     call assert_equals("a", old_char, "callback_all_types arg2")
-    call assert_equals("dog", old_string, "callback_all_types arg2")
+    call assert_equals("dog", old_string, "callback_all_types arg3")
+    call assert_true(old_bool, "callback_all_types arg4")
+    call assert_true(old_bool_array, "callback_all_types arg5")
     
   end subroutine test_callback_arguments
   

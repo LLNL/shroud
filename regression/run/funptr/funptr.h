@@ -11,6 +11,10 @@
 #ifndef FUNPTR_H
 #define FUNPTR_H
 
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
+
 void callback1(void (*incr)(void));
 void callback1_wrap(void (*incr)(void));
 void callback1_external(void (*incr)(void));
@@ -36,6 +40,6 @@ int abstract1(int input, int (*get)(double, int));
 
 void callback_void_ptr(void (*void_ptr_arg)(void *));
 
-void callback_all_types(void (*all_types)(int, int *, char, char *));
+void callback_all_types(void (*all_types)(int, int *, char, char *, bool, bool *));
 
 #endif // FUNPTR_H
