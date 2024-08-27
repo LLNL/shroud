@@ -1510,6 +1510,16 @@ f_intent_attr
     *f_intent_attr* can also be used with Fortran interface.
     (There is no *i_intent_attr*)
 
+f_kind
+    The name of a parameter from *f_module_name* required to
+    define *f_type*. Defaults to blank.
+    
+f_module_name
+    The name of the module required by *f_type*. Contains *f_kind*.
+    Set from *typemap.f_module_name*. It defaults to
+    ``-f_module_name-`, which is an illegal Fortran module name.
+    Often used in statement field *f_module*.
+    
 f_optional_attr
     The value of the *optional* metaattribute
     converted into a Fortran attribute.

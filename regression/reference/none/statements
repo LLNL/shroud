@@ -506,9 +506,7 @@ root
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
       declare-fortran-arg -- f_mixin_declare-fortran-arg
-      declare-fortran-arg-no-module -- f_mixin_declare-fortran-arg-no-module
       declare-fortran-result -- f_mixin_declare-fortran-result
-      declare-fortran-result-no-module -- f_mixin_declare-fortran-result-no-module
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
@@ -541,7 +539,6 @@ root
       inout
         array
           cdesc -- f_mixin_inout_array_cdesc
-      kind-argument -- f_mixin_kind-argument
       local-logical-var -- f_mixin_local-logical-var
       native
         cdesc
@@ -666,8 +663,8 @@ c_ctor_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -933,8 +930,8 @@ c_function_shadow&_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -967,8 +964,8 @@ c_function_shadow&_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1001,8 +998,8 @@ c_function_shadow&_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1035,8 +1032,8 @@ c_function_shadow*_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1069,8 +1066,8 @@ c_function_shadow*_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1103,8 +1100,8 @@ c_function_shadow*_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1132,8 +1129,8 @@ c_function_shadow*_capsule:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -1172,8 +1169,8 @@ c_function_shadow<native>_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1212,8 +1209,8 @@ c_function_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1529,8 +1526,8 @@ c_function_struct:
   i_arg_decl:
   - '{f_type}, intent(OUT) :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{c_type} *{c_var}'
   c_call:
@@ -1628,8 +1625,8 @@ c_in_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1760,10 +1757,10 @@ c_in_enum:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  - '{f_type}, value{f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -1781,10 +1778,10 @@ c_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1798,8 +1795,8 @@ c_in_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1811,10 +1808,10 @@ c_in_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1921,8 +1918,8 @@ c_in_shadow:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr}, value :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} {c_var}'
   c_arg_call:
@@ -1942,8 +1939,8 @@ c_in_shadow&:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -1963,8 +1960,8 @@ c_in_shadow*:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -2136,8 +2133,8 @@ c_in_struct:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2151,8 +2148,8 @@ c_in_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2169,8 +2166,8 @@ c_in_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2186,8 +2183,8 @@ c_in_unknown:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2499,10 +2496,10 @@ c_in_void:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2576,8 +2573,8 @@ c_inout_bool_*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2639,8 +2636,8 @@ c_inout_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -2660,8 +2657,8 @@ c_inout_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2683,10 +2680,10 @@ c_inout_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2740,8 +2737,8 @@ c_inout_shadow&:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -2761,8 +2758,8 @@ c_inout_shadow*:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -2900,8 +2897,8 @@ c_inout_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2918,8 +2915,8 @@ c_inout_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3247,10 +3244,10 @@ c_mixin_argument:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3606,8 +3603,8 @@ c_mixin_shadow:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -3653,8 +3650,8 @@ c_out_bool_*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3710,8 +3707,8 @@ c_out_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -3731,8 +3728,8 @@ c_out_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3754,10 +3751,10 @@ c_out_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4038,8 +4035,8 @@ c_out_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4056,8 +4053,8 @@ c_out_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4581,8 +4578,8 @@ c_setter_native:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4598,8 +4595,8 @@ c_setter_native*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4666,8 +4663,8 @@ f_ctor_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -4703,8 +4700,8 @@ f_function_bool:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   owner: library
 f_function_char:
@@ -4785,6 +4782,8 @@ f_function_char*_arg:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -4846,6 +4845,8 @@ f_function_char*_buf_arg:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -4905,6 +4906,8 @@ f_function_char*_buf_copy:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -5081,6 +5084,9 @@ f_function_char*_cfi_arg:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5120,6 +5126,9 @@ f_function_char*_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5424,8 +5433,8 @@ f_function_enum:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5439,8 +5448,8 @@ f_function_native:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 f_function_native&:
   name: f_function_native&
@@ -5459,8 +5468,8 @@ f_function_native&:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5490,8 +5499,8 @@ f_function_native&_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5548,8 +5557,8 @@ f_function_native*_cdesc_allocatable:
     \ kind=C_SIZE_T))"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -5609,8 +5618,8 @@ f_function_native*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -5667,8 +5676,8 @@ f_function_native*_cdesc_pointer_caller:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -5722,8 +5731,8 @@ f_function_native*_cfi_allocatable:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5771,8 +5780,8 @@ f_function_native*_cfi_pointer:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -5828,8 +5837,8 @@ f_function_native*_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5859,8 +5868,8 @@ f_function_native*_pointer_caller:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -5899,8 +5908,8 @@ f_function_native*_scalar:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_return:
   - return *{cxx_var};
   c_return_type: '{c_type}'
@@ -5934,8 +5943,8 @@ f_function_shadow&_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -5981,8 +5990,8 @@ f_function_shadow&_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6028,8 +6037,8 @@ f_function_shadow&_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6075,8 +6084,8 @@ f_function_shadow*_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6122,8 +6131,8 @@ f_function_shadow*_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6169,8 +6178,8 @@ f_function_shadow*_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6205,8 +6214,8 @@ f_function_shadow*_capsule:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
@@ -6261,8 +6270,8 @@ f_function_shadow<native>_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6314,8 +6323,8 @@ f_function_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6367,8 +6376,8 @@ f_function_shadow_capptr_caller:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -6420,8 +6429,8 @@ f_function_shadow_capptr_library:
   i_module:
     iso_c_binding:
     - C_PTR
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -7027,6 +7036,9 @@ f_function_string&_cfi_arg:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7073,6 +7085,9 @@ f_function_string&_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7778,6 +7793,9 @@ f_function_string*_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8444,6 +8462,9 @@ f_function_string_cfi_arg:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8490,6 +8511,9 @@ f_function_string_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8681,15 +8705,15 @@ f_function_struct:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{f_type}, intent(OUT) :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{c_type} *{c_var}'
   c_call:
@@ -8715,8 +8739,8 @@ f_function_struct*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -8758,8 +8782,8 @@ f_function_struct*_pointer:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -8872,8 +8896,8 @@ f_getter_bool:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8885,8 +8909,8 @@ f_getter_native:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8914,8 +8938,8 @@ f_getter_native*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -8951,8 +8975,8 @@ f_getter_native*_pointer:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -9072,8 +9096,8 @@ f_getter_struct*_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -9135,8 +9159,8 @@ f_in_bool:
   f_arg_call:
   - '{f_var_cxx}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -9144,8 +9168,8 @@ f_in_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9177,6 +9201,9 @@ f_in_char*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9312,6 +9339,8 @@ f_in_char*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -9350,6 +9379,9 @@ f_in_char*_capi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9372,6 +9404,9 @@ f_in_char*_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9407,15 +9442,15 @@ f_in_enum:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}, value{f_intent_attr} :: {i_var}'
+  - '{f_type}, value{f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -9435,15 +9470,15 @@ f_in_native:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9457,15 +9492,15 @@ f_in_native&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9479,15 +9514,15 @@ f_in_native*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9504,8 +9539,8 @@ f_in_native**:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9538,8 +9573,8 @@ f_in_native*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -9576,8 +9611,8 @@ f_in_native*_cfi:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -9677,16 +9712,16 @@ f_in_shadow:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr}, value :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} {c_var}'
   c_arg_call:
@@ -9708,16 +9743,16 @@ f_in_shadow&:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -9739,16 +9774,16 @@ f_in_shadow*:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -9796,6 +9831,8 @@ f_in_string&_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -9894,6 +9931,8 @@ f_in_string*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -10047,15 +10086,15 @@ f_in_struct:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10069,15 +10108,15 @@ f_in_struct&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10094,15 +10133,15 @@ f_in_struct*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10118,15 +10157,15 @@ f_in_unknown:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10507,15 +10546,15 @@ f_in_void:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10611,8 +10650,8 @@ f_in_void*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -10654,8 +10693,8 @@ f_inout_bool*:
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -10663,8 +10702,8 @@ f_inout_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10677,6 +10716,9 @@ f_inout_char*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10706,6 +10748,8 @@ f_inout_char*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -10746,6 +10790,9 @@ f_inout_char*_capi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10768,6 +10815,9 @@ f_inout_char*_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10802,15 +10852,15 @@ f_inout_enum*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -10830,15 +10880,15 @@ f_inout_native&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10862,15 +10912,15 @@ f_inout_native*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10896,8 +10946,8 @@ f_inout_native*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -10934,8 +10984,8 @@ f_inout_native*_cfi:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -10978,16 +11028,16 @@ f_inout_shadow&:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -11009,16 +11059,16 @@ f_inout_shadow*:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_capsule_data_type}'
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_arg_call:
@@ -11083,6 +11133,8 @@ f_inout_string&_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -11125,6 +11177,9 @@ f_inout_string&_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11206,6 +11261,8 @@ f_inout_string*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -11248,6 +11305,9 @@ f_inout_string*_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -11282,15 +11342,15 @@ f_inout_struct&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11307,15 +11367,15 @@ f_inout_struct*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11593,8 +11653,8 @@ f_inout_void*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -11734,18 +11794,8 @@ f_mixin_declare-fortran-arg:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
-f_mixin_declare-fortran-arg-no-module:
-  name: f_mixin_declare-fortran-arg-no-module
-  intent: mixin
-  f_arg_name:
-  - '{f_var}'
-  f_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11755,16 +11805,8 @@ f_mixin_declare-fortran-result:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
-f_mixin_declare-fortran-result-no-module:
-  name: f_mixin_declare-fortran-result-no-module
-  intent: mixin
-  f_arg_decl:
-  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11776,8 +11818,8 @@ f_mixin_declare-interface-arg:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_call:
   - '{cxx_var}'
   owner: library
@@ -11812,8 +11854,8 @@ f_mixin_function_c-ptr:
   f_post_call:
   - call c_f_pointer({f_local_ptr}, {F_result})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
     - c_f_pointer
@@ -12109,15 +12151,6 @@ f_mixin_inout_array_cdesc:
   c_arg_call:
   - '{cxx_var}'
   owner: library
-f_mixin_kind-argument:
-  name: f_mixin_kind-argument
-  intent: mixin
-  f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
 f_mixin_local-logical-var:
   name: f_mixin_local-logical-var
   intent: mixin
@@ -12143,8 +12176,8 @@ f_mixin_native_cdesc_allocate:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
     \ kind=C_SIZE_T))"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
     - C_SIZE_T
@@ -12165,8 +12198,8 @@ f_mixin_native_cdesc_pointer:
   f_post_call:
   - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   c_arg_call:
@@ -12224,23 +12257,20 @@ f_mixin_out_native_cdesc_allocate:
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
   intent: mixin
-  f_arg_name:
-  - '{f_var}'
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}'
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
   f_module:
     iso_c_binding:
     - C_LOC
-    - C_SIZE_T
   f_helper:
   - copy_array
   c_arg_call:
   - '{cxx_var}'
   c_helper:
   - copy_array
+  fmtdict:
+    f_deref_attr: ', allocatable, target'
   owner: library
 f_mixin_out_native_cdesc_pointer:
   name: f_mixin_out_native_cdesc_pointer
@@ -12254,8 +12284,8 @@ f_mixin_out_native_cdesc_pointer:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   c_arg_call:
@@ -12390,8 +12420,8 @@ f_mixin_shadow-arg:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   c_arg_call:
   - '{cxx_var}'
@@ -12485,8 +12515,8 @@ f_none_bool:
   f_arg_call:
   - '{f_var_cxx}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -12494,8 +12524,8 @@ f_none_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12515,8 +12545,8 @@ f_none_bool*:
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -12524,8 +12554,8 @@ f_none_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12557,6 +12587,9 @@ f_none_char*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12579,15 +12612,15 @@ f_none_native:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12601,15 +12634,15 @@ f_none_native*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12651,8 +12684,8 @@ f_out_bool*:
   f_post_call:
   - '{f_var} = {f_var_cxx}  ! coerce to logical'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -12660,8 +12693,8 @@ f_out_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12674,6 +12707,9 @@ f_out_char*:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12703,6 +12739,8 @@ f_out_char*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -12737,6 +12775,9 @@ f_out_char*_capi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12759,6 +12800,9 @@ f_out_char*_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -12788,15 +12832,15 @@ f_out_enum*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -12816,15 +12860,15 @@ f_out_native&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12848,15 +12892,15 @@ f_out_native*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12880,8 +12924,8 @@ f_out_native*&_cdesc:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -12930,8 +12974,8 @@ f_out_native*&_cdesc_pointer:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -13002,7 +13046,7 @@ f_out_native**_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -13014,11 +13058,10 @@ f_out_native**_cdesc_allocatable:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
-    - C_SIZE_T
   f_temps:
   - cdesc
   - capsule
@@ -13058,6 +13101,8 @@ f_out_native**_cdesc_allocatable:
   c_helper:
   - array_context
   - copy_array
+  fmtdict:
+    f_deref_attr: ', allocatable, target'
   owner: library
 f_out_native**_cdesc_pointer:
   name: f_out_native**_cdesc_pointer
@@ -13081,8 +13126,8 @@ f_out_native**_cdesc_pointer:
   f_post_call:
   - call c_f_pointer({f_var_cdesc}%base_addr, {f_var}{f_array_shape})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
   f_temps:
@@ -13123,8 +13168,8 @@ f_out_native**_cfi_allocatable:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13165,8 +13210,8 @@ f_out_native**_cfi_pointer:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13214,8 +13259,8 @@ f_out_native**_raw:
   f_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {f_var}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_PTR
   i_arg_names:
@@ -13250,8 +13295,8 @@ f_out_native*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -13310,6 +13355,8 @@ f_out_string&_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -13351,6 +13398,9 @@ f_out_string&_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13511,6 +13561,9 @@ f_out_string**_cfi_allocatable:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13538,6 +13591,9 @@ f_out_string**_cfi_copy:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13593,6 +13649,8 @@ f_out_string*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -13634,6 +13692,9 @@ f_out_string*_cfi:
   - '{f_var}'
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -13665,15 +13726,15 @@ f_out_struct&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13690,15 +13751,15 @@ f_out_struct*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14137,8 +14198,8 @@ f_out_void*&:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -14195,8 +14256,8 @@ f_out_void*_cdesc:
   f_arg_call:
   - '{f_var_cdesc}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
   f_temps:
@@ -14244,8 +14305,8 @@ f_setter_bool:
   f_arg_call:
   - '{f_var_cxx}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_temps:
   - cxx
   i_arg_names:
@@ -14253,8 +14314,8 @@ f_setter_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14272,15 +14333,15 @@ f_setter_native:
   f_arg_call:
   - '{fc_var}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14298,15 +14359,15 @@ f_setter_native*:
   f_arg_call:
   - '{fc_var}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14365,8 +14426,8 @@ f_setter_struct*:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -14386,8 +14447,8 @@ f_setter_struct**:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -14410,8 +14471,8 @@ f_setter_struct*_pointer:
   f_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:

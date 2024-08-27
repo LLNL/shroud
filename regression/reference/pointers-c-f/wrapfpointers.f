@@ -1662,7 +1662,7 @@ contains
     !<
     ! start get_alloc_to_fixed_array
     subroutine get_alloc_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_LOC, C_SIZE_T
+        use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(OUT), allocatable, target :: count(:)
         ! splicer begin function.get_alloc_to_fixed_array
         type(POI_SHROUD_array) :: SHT_count_cdesc

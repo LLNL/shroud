@@ -150,6 +150,7 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_kind": "twostruct",
+                                "f_module_name": "sgroup_mod",
                                 "f_type": "type(twostruct)",
                                 "f_value_attr": ", value",
                                 "f_var": "arg",
