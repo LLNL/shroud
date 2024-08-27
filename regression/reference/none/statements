@@ -507,7 +507,6 @@ root
           pointer -- f_mixin_char_cdesc_pointer
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-result -- f_mixin_declare-fortran-result
-      declare-fortran-result-no-module -- f_mixin_declare-fortran-result-no-module
       declare-interface-arg -- f_mixin_declare-interface-arg
       function -- f_mixin_function
         c-ptr -- f_mixin_function_c-ptr
@@ -4702,8 +4701,8 @@ f_function_bool:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   owner: library
 f_function_char:
@@ -4784,6 +4783,8 @@ f_function_char*_arg:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -4845,6 +4846,8 @@ f_function_char*_buf_arg:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -4904,6 +4907,8 @@ f_function_char*_buf_copy:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -5080,6 +5085,9 @@ f_function_char*_cfi_arg:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5119,6 +5127,9 @@ f_function_char*_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5423,8 +5434,8 @@ f_function_enum:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5438,8 +5449,8 @@ f_function_native:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 f_function_native&:
   name: f_function_native&
@@ -5898,8 +5909,8 @@ f_function_native*_scalar:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_return:
   - return *{cxx_var};
   c_return_type: '{c_type}'
@@ -7026,6 +7037,9 @@ f_function_string&_cfi_arg:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7072,6 +7086,9 @@ f_function_string&_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7777,6 +7794,9 @@ f_function_string*_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8443,6 +8463,9 @@ f_function_string_cfi_arg:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_result: subroutine
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8489,6 +8512,9 @@ f_function_string_cfi_copy:
   - '{f_var}'
   f_call:
   - call {F_C_call}({F_arg_c_call})
+  f_module:
+    '{f_module_name}':
+    - '{f_kind}'
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8680,8 +8706,8 @@ f_function_struct:
   f_call:
   - call {F_C_call}({F_arg_c_call})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -8871,8 +8897,8 @@ f_getter_bool:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8884,8 +8910,8 @@ f_getter_native:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8950,8 +8976,8 @@ f_getter_native*_pointer:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -11780,16 +11806,8 @@ f_mixin_declare-fortran-result:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
-f_mixin_declare-fortran-result-no-module:
-  name: f_mixin_declare-fortran-result-no-module
-  intent: mixin
-  f_arg_decl:
-  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
+    '{f_module_name}':
+    - '{f_kind}'
   c_arg_call:
   - '{cxx_var}'
   owner: library

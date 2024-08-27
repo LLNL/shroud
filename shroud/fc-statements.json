@@ -186,20 +186,10 @@
             "Fortran function result."
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
-        "f_arg_decl": [
-            "{f_type}{f_deref_attr} :: {f_var}{f_dimension}"
-        ]
-    },
-    {
-        "name": "f_mixin_declare-fortran-result-no-module",
-        "notes": [
-            "Fortran function result.",
-            "Used with CHARACTER which does not use a module"
-        ],
         "f_arg_decl": [
             "{f_type}{f_deref_attr} :: {f_var}{f_dimension}"
         ]
@@ -1983,7 +1973,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result-no-module",
+            "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
         ],
@@ -4341,7 +4331,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result-no-module",
+            "f_mixin_declare-fortran-result",
             "c_mixin_arg_character_cfi"
         ],
         "f_arg_call": [
@@ -4524,7 +4514,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
-            "f_mixin_declare-fortran-result-no-module",
+            "f_mixin_declare-fortran-result",
             "c_mixin_arg_character_cfi"
         ],
         "f_need_wrapper": true,
