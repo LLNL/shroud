@@ -539,7 +539,6 @@ root
       inout
         array
           cdesc -- f_mixin_inout_array_cdesc
-      kind-argument -- f_mixin_kind-argument
       local-logical-var -- f_mixin_local-logical-var
       native
         cdesc
@@ -12152,15 +12151,6 @@ f_mixin_inout_array_cdesc:
   c_arg_call:
   - '{cxx_var}'
   owner: library
-f_mixin_kind-argument:
-  name: f_mixin_kind-argument
-  intent: mixin
-  f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
 f_mixin_local-logical-var:
   name: f_mixin_local-logical-var
   intent: mixin
@@ -12267,23 +12257,20 @@ f_mixin_out_native_cdesc_allocate:
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
   intent: mixin
-  f_arg_name:
-  - '{f_var}'
-  f_arg_decl:
-  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}'
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
   f_module:
     iso_c_binding:
     - C_LOC
-    - C_SIZE_T
   f_helper:
   - copy_array
   c_arg_call:
   - '{cxx_var}'
   c_helper:
   - copy_array
+  fmtdict:
+    f_deref_attr: ', allocatable, target'
   owner: library
 f_mixin_out_native_cdesc_pointer:
   name: f_mixin_out_native_cdesc_pointer
@@ -13059,7 +13046,7 @@ f_out_native**_cdesc_allocatable:
   f_arg_name:
   - '{f_var}'
   f_arg_decl:
-  - '{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}'
+  - '{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}'
   f_declare:
   - 'type({F_array_type}) :: {f_var_cdesc}'
   - 'type({F_capsule_data_type}) :: {f_var_capsule}'
@@ -13071,11 +13058,10 @@ f_out_native**_cdesc_allocatable:
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_module:
-    '{typemap.f_module_name}':
-    - '{typemap.f_kind}'
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_LOC
-    - C_SIZE_T
   f_temps:
   - cdesc
   - capsule
@@ -13115,6 +13101,8 @@ f_out_native**_cdesc_allocatable:
   c_helper:
   - array_context
   - copy_array
+  fmtdict:
+    f_deref_attr: ', allocatable, target'
   owner: library
 f_out_native**_cdesc_pointer:
   name: f_out_native**_cdesc_pointer

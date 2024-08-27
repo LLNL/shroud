@@ -53,18 +53,6 @@
         ]
     },
     {
-        "name": "f_mixin_kind-argument",
-        "notes": [
-            "XXX - work in progress",
-            "Fortran fields for a native type"
-        ],
-        "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
-            ]
-        }
-    },
-    {
         "name": "f_mixin_declare-fortran-arg",
         "notes": [
             "Fortran wrapper argument"
@@ -424,6 +412,9 @@
             "Allocate Fortran native array for argument",
             "then fill from cdesc using helper copy_array."
         ],
+        "notes": [
+            "f_var must have the TARGET attribute for C_LOC."
+        ],
         "c_helper": [
             "copy_array"
         ],
@@ -432,20 +423,16 @@
         ],
         "f_module": {
             "iso_c_binding": [
-                "C_LOC",
-                "C_SIZE_T"
+                "C_LOC"
             ]
         },
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "{f_type}{f_intent_attr}, allocatable, target :: {f_var}{f_dimension}"
-        ],
         "f_post_call": [
             "allocate({f_var}{f_array_allocate})",
             "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t {f_var_cdesc}%size)"
-        ]
+        ],
+        "fmtdict": {
+            "f_deref_attr": ", allocatable, target"
+        }
     },
     {
         "name": "f_mixin_native_cdesc_pointer",
@@ -1279,7 +1266,7 @@
             "with a Fortran pointer."
         ],
         "mixin": [
-            "f_mixin_kind-argument",
+            "f_mixin_declare-fortran-arg",
             "f_mixin_pass_cdesc",
             "c_mixin_native_cdesc_fill-cdesc",
             "c_mixin_out_native**",
