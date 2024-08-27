@@ -1050,6 +1050,9 @@
             "char *{c_var}",
             "int {c_var_len}"
         ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
         "i_arg_names": [
             "{i_var}",
             "{i_var_len}"
@@ -1342,6 +1345,9 @@
             "! {f_var_cdesc}%elem_len = C_SIZEOF()",
             "{f_var_cdesc}%size = {size}",
             "{f_var_cdesc}%rank = {rank}{f_cdesc_shape}"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
         ],
         "lang_c": {
             "c_pre_call": [
@@ -1636,6 +1642,9 @@
         "c_arg_decl": [
             "void **{c_var}"
         ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
         "i_arg_decl": [
             "type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}"
         ],
@@ -1766,6 +1775,9 @@
         "c_arg_decl": [
             "char {c_var}"
         ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
         "i_arg_decl": [
             "character(kind=C_CHAR), value{f_intent_attr} :: {i_var}"
         ],
@@ -1881,7 +1893,7 @@
             "iso_c_binding": [
                 "C_CHAR"
             ]
-        },
+        }
     },
     {
         "alias": [
@@ -2025,6 +2037,9 @@
         ],
         "c_arg_decl": [
             "char **{c_var}"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
         ],
         "i_arg_decl": [
             "type(C_PTR), intent(IN) :: {i_var}(*)"
@@ -2502,6 +2517,9 @@
         ],
         "c_arg_decl": [
             "char *{c_var}"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
         ],
         "i_arg_decl": [
             "character(kind=C_CHAR), intent(IN) :: {i_var}(*)"

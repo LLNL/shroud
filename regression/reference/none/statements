@@ -751,6 +751,8 @@ c_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -792,6 +794,8 @@ c_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -834,6 +838,8 @@ c_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1276,6 +1282,8 @@ c_function_string&_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1314,6 +1322,8 @@ c_function_string&_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1381,6 +1391,8 @@ c_function_string*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1466,6 +1478,8 @@ c_function_string_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1504,6 +1518,8 @@ c_function_string_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -4802,6 +4818,8 @@ f_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -4865,6 +4883,8 @@ f_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -4926,6 +4946,8 @@ f_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -6486,6 +6508,8 @@ f_function_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -6537,6 +6561,8 @@ f_function_string&_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -6592,6 +6618,8 @@ f_function_string&_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -7303,6 +7331,8 @@ f_function_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -7351,6 +7381,8 @@ f_function_string*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8011,6 +8043,8 @@ f_function_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8062,6 +8096,8 @@ f_function_string_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8117,6 +8153,8 @@ f_function_string_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
