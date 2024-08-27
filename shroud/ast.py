@@ -817,7 +817,6 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_len="XXXc_var_len",
                 c_var_trim="XXXc_var_trim",
                 i_dimension="XXXi_dimension",
-                i_module_line="XXXi_module_line:XXXnone",
                 i_type="XXXi_type",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",

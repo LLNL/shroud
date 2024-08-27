@@ -141,7 +141,7 @@ is now:
 Old Name          New Name
 ===============   =============
 f_c_module        i_module
-f_c_module_line   i_module_line
+f_c_module_line   i_module
 f_c_type          i_type
 ===============   =============
 

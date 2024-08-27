@@ -667,8 +667,6 @@ c_ctor_shadow_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
@@ -751,6 +749,8 @@ c_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -792,6 +792,8 @@ c_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -834,6 +836,8 @@ c_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -912,8 +916,6 @@ c_function_native*_scalar:
   i_module:
     iso_c_binding:
     - '{f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_function_shadow&_capptr:
   name: c_function_shadow&_capptr
@@ -934,8 +936,6 @@ c_function_shadow&_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -968,8 +968,6 @@ c_function_shadow&_capptr_caller:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1002,8 +1000,6 @@ c_function_shadow&_capptr_library:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1036,8 +1032,6 @@ c_function_shadow*_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1070,8 +1064,6 @@ c_function_shadow*_capptr_caller:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1104,8 +1096,6 @@ c_function_shadow*_capptr_library:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -1173,8 +1163,6 @@ c_function_shadow<native>_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_call:
@@ -1213,8 +1201,6 @@ c_function_shadow_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_call:
@@ -1276,6 +1262,8 @@ c_function_string&_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1314,6 +1302,8 @@ c_function_string&_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1381,6 +1371,8 @@ c_function_string*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1466,6 +1458,8 @@ c_function_string_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1504,6 +1498,8 @@ c_function_string_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -1551,8 +1547,6 @@ c_function_vector<native>:
   comments:
   - Cannot return a std::vector<native> by value.
   intent: function
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_function_vector<native>_malloc:
@@ -1574,8 +1568,6 @@ c_function_vector<native>_malloc:
     - C_SIZE_T
   c_arg_decl:
   - size_t *{c_var_size}
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - "{c_const}std::vector<{cxx_T}>\t {c_local_cxx};"
   c_call:
@@ -2195,8 +2187,6 @@ c_in_vector<native*>&:
   comments:
   - Need to know the length of the vector from C.
   intent: in
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_in_vector<native*>&_buf:
@@ -2240,8 +2230,6 @@ c_in_vector<native>&:
   comments:
   - Need to know the length of the vector from C.
   intent: in
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_in_vector<native>&_buf:
@@ -2336,8 +2324,6 @@ c_in_vector<string>&:
   comments:
   - Need to know the length of the vector from C.
   intent: in
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_in_vector<string>&_buf:
@@ -3128,8 +3114,6 @@ c_inout_vector<scalar>&:
   comments:
   - Need to know the length of the vector from C.
   intent: inout
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_inout_void**:
@@ -3184,8 +3168,6 @@ c_mixin_arg_cfi:
   intent: mixin
   c_arg_decl:
   - CFI_cdesc_t *{c_var_cfi}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - cfi
   iface_header:
@@ -3273,14 +3255,10 @@ c_mixin_character:
     - C_CHAR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_mixin_destructor_new-string:
   name: c_mixin_destructor_new-string
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   destructor_name: new_string
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
@@ -3289,8 +3267,6 @@ c_mixin_destructor_new-string:
 c_mixin_destructor_new-vector:
   name: c_mixin_destructor_new-vector
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   destructor_name: std_vector_{cxx_T}
   destructor:
   - "std::vector<{cxx_T}> *cxx_ptr = \treinterpret_cast<std::vector<{cxx_T}> *>(ptr);"
@@ -3307,8 +3283,6 @@ c_mixin_function_char*_cdesc:
   comments:
   - Fill cdesc from char * in the C wrapper.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{c_var_cdesc}->base_addr =\t const_cast<char *>(\t{cxx_var});"
   - '{c_var_cdesc}->type = {sh_type};'
@@ -3324,8 +3298,6 @@ c_mixin_function_string_cdesc:
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - "{c_helper_string_to_cdesc}(\t{c_var_cdesc},\t {cxx_addr}{cxx_var});"
   c_helper:
@@ -3349,8 +3321,6 @@ c_mixin_function_vector_malloc:
     - C_SIZE_T
   c_arg_decl:
   - size_t *{c_var_size}
-  c_arg_call:
-  - '{cxx_var}'
   c_return_type: '{targs[0].cxx_type} *'
   c_temps:
   - size
@@ -3454,8 +3424,6 @@ c_mixin_inout_vector_cdesc:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
   - '{C_array_type} *{c_var_cdesc}'
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - size
   - cdesc
@@ -3467,8 +3435,6 @@ c_mixin_native_capsule_fill:
   comments:
   - Assign to capsule in C wrapper.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
@@ -3478,8 +3444,6 @@ c_mixin_native_cdesc_fill-cdesc:
   comments:
   - Fill cdesc from native in the C wrapper.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {cxx_nonconst_ptr};'
   - '{c_var_cdesc}->type = {sh_type};'
@@ -3492,8 +3456,6 @@ c_mixin_native_cfi_allocatable:
   comments:
   - Allocate copy of C pointer (requires +dimension).
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
   - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
@@ -3511,8 +3473,6 @@ c_mixin_native_cfi_pointer:
   comments:
   - Convert C pointer to Fortran pointer.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
@@ -3590,8 +3550,6 @@ c_mixin_out_vector_buf_malloc:
   c_arg_decl:
   - '{targs[0].cxx_type} **{c_var}'
   - size_t *{c_var_size}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - size
   owner: library
@@ -3607,8 +3565,6 @@ c_mixin_shadow:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_mixin_unknown:
   name: c_mixin_unknown
@@ -3621,8 +3577,6 @@ c_mixin_unknown:
   - ===>i_arg_decl<===
   c_arg_decl:
   - ===>{c_var}<===
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 c_mixin_vector_cdesc_fill-cdesc:
   name: c_mixin_vector_cdesc_fill-cdesc
@@ -3630,8 +3584,6 @@ c_mixin_vector_cdesc_fill-cdesc:
   - Fill cdesc with vector information,
   - ' Return address and size of vector data.'
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_var_cdesc}->base_addr = {c_local_cxx}->empty() ? {nullptr} : &{c_local_cxx}->front();'
   - '{c_var_cdesc}->type = {targs[0].sh_type};'
@@ -4065,8 +4017,6 @@ c_out_vector<native>&:
   comments:
   - Need to know the length of the vector from C.
   intent: out
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_out_vector<native>&_buf_copy:
@@ -4378,8 +4328,6 @@ c_out_vector<string>&:
   comments:
   - Need to know the length of the vector from C.
   intent: out
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
   notimplemented: true
 c_out_vector<string>&_buf_copy:
@@ -4667,8 +4615,6 @@ f_ctor_shadow_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
@@ -4802,6 +4748,8 @@ f_function_char*_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -4865,6 +4813,8 @@ f_function_char*_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -4926,6 +4876,8 @@ f_function_char*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_call:
   - '{c_const}char *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -5947,8 +5899,6 @@ f_function_shadow&_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -5994,8 +5944,6 @@ f_function_shadow&_capptr_caller:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -6041,8 +5989,6 @@ f_function_shadow&_capptr_library:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -6088,8 +6034,6 @@ f_function_shadow*_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -6135,8 +6079,6 @@ f_function_shadow*_capptr_caller:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -6182,8 +6124,6 @@ f_function_shadow*_capptr_library:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -6274,8 +6214,6 @@ f_function_shadow<native>_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_call:
@@ -6327,8 +6265,6 @@ f_function_shadow_capptr:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_call:
@@ -6380,8 +6316,6 @@ f_function_shadow_capptr_caller:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_call:
@@ -6433,8 +6367,6 @@ f_function_shadow_capptr_library:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_arg_call:
-  - '{cxx_var}'
   c_pre_call:
   - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
   c_call:
@@ -6486,6 +6418,8 @@ f_function_string&_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -6537,6 +6471,8 @@ f_function_string&_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -6592,6 +6528,8 @@ f_function_string&_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -7303,6 +7241,8 @@ f_function_string*_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -7351,6 +7291,8 @@ f_function_string*_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8011,6 +7953,8 @@ f_function_string_buf:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8062,6 +8006,8 @@ f_function_string_buf_arg:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8117,6 +8063,8 @@ f_function_string_buf_copy:
   c_arg_decl:
   - char *{c_var}
   - int {c_var_len}
+  c_arg_call:
+  - '{cxx_var}'
   c_post_call:
   - if ({cxx_var}{cxx_member}empty()) {{+
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {nullptr},\t 0);"
@@ -8874,8 +8822,6 @@ f_function_vector_scalar_cdesc:
     - C_SIZE_T
   f_helper:
   - copy_array
-  c_arg_call:
-  - '{cxx_var}'
   c_helper:
   - copy_array
   owner: library
@@ -9142,8 +9088,6 @@ f_getter_struct*_fapi_pointer:
     iso_c_binding:
     - c_f_pointer
   f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_in_bool:
   name: f_in_bool
@@ -10535,8 +10479,6 @@ f_in_vector<string>_buf:
 f_in_vector_&_cdesc_targ_native_scalar:
   name: f_in_vector_&_cdesc_targ_native_scalar
   intent: in
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_in_void:
   name: f_in_void
@@ -11706,8 +11648,6 @@ f_mixin_arg_capsule:
   - '{F_capsule_data_type}'
   c_arg_decl:
   - '{C_capsule_data_type} *{c_var_capsule}'
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - capsule
   fmtdict:
@@ -11723,8 +11663,6 @@ f_mixin_argument-as-cptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_argument-as-cptr-value:
   name: f_mixin_argument-as-cptr-value
@@ -11736,8 +11674,6 @@ f_mixin_argument-as-cptr-value:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_capsule_dtor:
   name: f_mixin_capsule_dtor
@@ -11748,8 +11684,6 @@ f_mixin_capsule_dtor:
   - call {f_helper_capsule_dtor}({f_var_capsule})
   f_helper:
   - capsule_dtor
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_char_cdesc_allocate:
   name: f_mixin_char_cdesc_allocate
@@ -11764,8 +11698,6 @@ f_mixin_char_cdesc_allocate:
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
   f_helper:
   - copy_string
-  c_arg_call:
-  - '{cxx_var}'
   c_helper:
   - copy_string
   owner: library
@@ -11783,8 +11715,6 @@ f_mixin_char_cdesc_pointer:
     - c_f_pointer
   f_helper:
   - pointer_string
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_declare-fortran-arg:
   name: f_mixin_declare-fortran-arg
@@ -11796,8 +11726,6 @@ f_mixin_declare-fortran-arg:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_declare-fortran-result:
   name: f_mixin_declare-fortran-result
@@ -11807,8 +11735,6 @@ f_mixin_declare-fortran-result:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_declare-interface-arg:
   name: f_mixin_declare-interface-arg
@@ -11820,8 +11746,6 @@ f_mixin_declare-interface-arg:
   i_module:
     '{f_module_name}':
     - '{f_kind}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_function:
   name: f_mixin_function
@@ -11909,8 +11833,6 @@ f_mixin_function_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  c_arg_call:
-  - '{cxx_var}'
   fmtdict:
     f_local_ptr: '{F_result_ptr}'
   owner: library
@@ -11924,8 +11846,6 @@ f_mixin_function_shadow_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_function_string_cfi_allocatable:
   name: f_mixin_function_string_cfi_allocatable
@@ -11935,8 +11855,6 @@ f_mixin_function_string_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_getter_cdesc:
   name: f_mixin_getter_cdesc
@@ -11944,8 +11862,6 @@ f_mixin_getter_cdesc:
   - Save pointer struct members in a cdesc
   - along with shape information.
   intent: mixin
-  c_arg_call:
-  - '{cxx_var}'
   c_call:
   - '{c_var_cdesc}->base_addr = {CXX_this}->{field_name};'
   - '{c_var_cdesc}->type = {sh_type};'
@@ -12047,8 +11963,6 @@ f_mixin_in_2d_vector_buf:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_len}
   - size_t {c_var_size}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - len
   - size
@@ -12088,8 +12002,6 @@ f_mixin_in_string_array_buf:
   - const char *{c_var}
   - size_t {c_var_size}
   - int {c_var_len}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - size
   - len
@@ -12124,8 +12036,6 @@ f_mixin_in_vector_buf:
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t {c_var_size}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - size
   owner: library
@@ -12148,8 +12058,6 @@ f_mixin_inout_array_cdesc:
   - cdesc
   f_helper:
   - array_context
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_local-logical-var:
   name: f_mixin_local-logical-var
@@ -12160,8 +12068,6 @@ f_mixin_local-logical-var:
   - '{f_var_cxx}'
   f_temps:
   - cxx
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_native_cdesc_allocate:
   name: f_mixin_native_cdesc_allocate
@@ -12183,8 +12089,6 @@ f_mixin_native_cdesc_allocate:
     - C_SIZE_T
   f_helper:
   - copy_array
-  c_arg_call:
-  - '{cxx_var}'
   c_helper:
   - copy_array
   owner: library
@@ -12202,8 +12106,6 @@ f_mixin_native_cdesc_pointer:
     - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_native_cdesc_raw:
   name: f_mixin_native_cdesc_raw
@@ -12218,8 +12120,6 @@ f_mixin_native_cdesc_raw:
     iso_c_binding:
     - C_PTR
     - c_f_pointer
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_native_default:
   name: f_mixin_native_default
@@ -12230,8 +12130,6 @@ f_mixin_native_default:
   - '{f_type}{f_intent_attr} :: {f_var}'
   f_arg_call:
   - '{f_var}'
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_out_array_cdesc_allocatable:
   name: f_mixin_out_array_cdesc_allocatable
@@ -12248,8 +12146,6 @@ f_mixin_out_array_cdesc_allocatable:
   f_module:
     iso_c_binding:
     - C_LOC
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_out_native_cdesc_allocate:
   name: f_mixin_out_native_cdesc_allocate
@@ -12265,8 +12161,6 @@ f_mixin_out_native_cdesc_allocate:
     - C_LOC
   f_helper:
   - copy_array
-  c_arg_call:
-  - '{cxx_var}'
   c_helper:
   - copy_array
   fmtdict:
@@ -12288,8 +12182,6 @@ f_mixin_out_native_cdesc_pointer:
     - '{f_kind}'
     iso_c_binding:
     - c_f_pointer
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_out_string**_cfi:
   name: f_mixin_out_string**_cfi
@@ -12326,8 +12218,6 @@ f_mixin_out_vector_buf:
   c_arg_decl:
   - '{targs[0].cxx_type} *{c_var}'
   - size_t *{c_var_size}
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - size
   owner: library
@@ -12353,8 +12243,6 @@ f_mixin_pass_capsule:
   - '{F_capsule_data_type}'
   c_arg_decl:
   - '{C_capsule_data_type} *{c_var_capsule}'
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - capsule
   owner: library
@@ -12380,8 +12268,6 @@ f_mixin_pass_cdesc:
   - '{F_array_type}'
   c_arg_decl:
   - '{C_array_type} *{c_var_cdesc}'
-  c_arg_call:
-  - '{cxx_var}'
   c_temps:
   - cdesc
   c_helper:
@@ -12405,8 +12291,6 @@ f_mixin_pass_character_buf:
   f_temps:
   - len
   f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_shadow-arg:
   name: f_mixin_shadow-arg
@@ -12423,8 +12307,6 @@ f_mixin_shadow-arg:
     '{f_module_name}':
     - '{f_kind}'
   f_need_wrapper: true
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_str_array:
   name: f_mixin_str_array
@@ -12447,8 +12329,6 @@ f_mixin_str_array:
   f_helper:
   - type_defines
   - array_context
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_unknown:
   name: f_mixin_unknown
@@ -12463,8 +12343,6 @@ f_mixin_unknown:
   - ===>i_arg_decl<===
   c_arg_decl:
   - ===>{c_var}<===
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_mixin_use_capsule:
   name: f_mixin_use_capsule
@@ -12493,8 +12371,6 @@ f_mixin_use_capsule:
   - '{F_capsule_data_type}'
   c_arg_decl:
   - '{C_capsule_data_type} *{c_var_capsule}'
-  c_arg_call:
-  - '{cxx_var}'
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
   - '{c_var_capsule}->idtor = {idtor};'
@@ -13325,8 +13201,6 @@ f_out_native*_cdesc:
 f_out_native*_cfi_allocatable:
   name: f_out_native*_cfi_allocatable
   intent: out
-  c_arg_call:
-  - '{cxx_var}'
   owner: library
 f_out_native*_hidden:
   name: f_out_native*_hidden
