@@ -33,19 +33,19 @@
             "{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "i_arg_names": [
             "{i_var}"
         ],
         "i_arg_decl": [
-            "{typemap.f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+            "{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "c_arg_decl": [
@@ -90,8 +90,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "i_arg_decl": [
@@ -229,8 +229,8 @@
         ],
         "c_need_wrapper": true,
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ],
             "iso_c_binding": [
                 "C_PTR",
@@ -402,8 +402,8 @@
             "copy_array"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ],
             "iso_c_binding": [
                 "C_LOC",
@@ -453,8 +453,8 @@
             "Set Fortran pointer to native array."
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ],
             "iso_c_binding": [
                 "c_f_pointer"
@@ -494,8 +494,8 @@
             "Set Fortran pointer to native array."
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ],
             "iso_c_binding": [
                 "c_f_pointer"
@@ -1186,8 +1186,8 @@
             "type(C_PTR){f_intent_attr} :: {f_var}"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ],
             "iso_c_binding": [
                 "C_PTR"
@@ -1330,8 +1330,8 @@
             "array_context"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ],
             "iso_c_binding": [
                 "C_LOC"
@@ -1665,14 +1665,14 @@
             "f_mixin_declare-fortran-arg"
         ],
         "i_arg_decl": [
-            "{typemap.f_type}, value{f_intent_attr} :: {i_var}"
+            "{f_type}, value{f_intent_attr} :: {i_var}"
         ],
         "i_arg_names": [
             "{i_var}"
         ],
         "i_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "c_arg_decl": [
@@ -3498,8 +3498,8 @@
             "{f_var}%{F_derived_member}"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "f_need_wrapper": true
@@ -3516,8 +3516,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_capsule_data_type}"
+            "{f_module_name}": [
+                "{f_capsule_data_type}"
             ]
         }
     },
@@ -3816,8 +3816,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "c_call": [
@@ -4826,8 +4826,8 @@
             "c_mixin_native_cfi_allocatable"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "f_arg_decl": [
@@ -4856,8 +4856,8 @@
             "c_mixin_native_cfi_pointer"
         ],
         "f_module": {
-            "{typemap.f_module_name}": [
-                "{typemap.f_kind}"
+            "{f_module_name}": [
+                "{f_kind}"
             ]
         },
         "f_arg_decl": [
