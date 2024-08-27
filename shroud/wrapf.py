@@ -815,6 +815,9 @@ rv = .false.
                 mname = wformat(mname, fmt)
                 if mname == "__line__":
                     continue
+                if mname == "-f_module_name-":
+                    # This is the default format field, assume unset.
+                    continue
                 module = modules.setdefault(mname, {})
                 if only:  # Empty list means no ONLY clause
                     for oname in only:

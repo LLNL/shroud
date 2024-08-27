@@ -127,9 +127,11 @@ Fortran modules used in the Fortran interface:
         i_module:
           iso_c_binding:
           - C_PTR
+          "{f_module_name}":
+          - "{f_kind}"
 
 Fields will be expanded using the format dictionary before being used.
-If unset, then *f_module* will be used when creating the interface.
+If *i_module* is not set, *f_module* will be used when creating the interface.
 Shroud will insert ``IMPORT`` statements instead of ``USE`` as needed.
 
 c_arg_decl

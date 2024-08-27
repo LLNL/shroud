@@ -208,13 +208,18 @@ f_module
 ^^^^^^^^
 
 ``USE`` statements to add to Fortran wrapper.
-A dictionary of list of ``ONLY`` names:
+A dictionary of list of ``ONLY`` names.
+The names will be expanded before being uses for format values can be used.
+If the name is `-f_module_name-`, the values will not be added.
+This is used by types such as ``CHARACTER`` which does not use a kind in the declaration.
 
 .. code-block:: yaml
 
         f_module:
           iso_c_binding:
           - C_SIZE_T
+          "{f_module_name}":
+          - "{f_kind}"
 
             
 f_temps
