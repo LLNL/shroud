@@ -381,3 +381,13 @@ dictionaries. The version which corresponds to the YAML file
         lang_cxx:
           impl_header:
           - "<cstddef>"
+
+C Mixins
+--------
+
+Shroud provides several mixins that provide some common functionality.
+
+.. literalinclude:: ../shroud/fc-statements.json
+   :language: json
+   :start-after: "sphinx-start-after": "c_mixin_argument"
+   :end-before: "sphinx-end-before": "c_mixin_argument"

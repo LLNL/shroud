@@ -300,3 +300,19 @@ the notimplemented wrapper is not needed. For example, the C wrapper
 for a C++ function when only the C bufferify wrapper is needed for
 Fortran.  The statements should eventually be completed to wrap the
 function properly.
+
+Fortran Mixins
+--------------
+
+Shroud provides several mixins that provide some common functionality.
+
+.. literalinclude:: ../shroud/fc-statements.json
+   :language: json
+   :start-after: "sphinx-start-after": "f_mixin_declare-fortran-arg"
+   :end-before: "sphinx-end-before": "f_mixin_declare-fortran-arg"
+
+.. literalinclude:: ../shroud/fc-statements.json
+   :language: json
+   :start-after: "sphinx-start-after": "f_mixin_declare-interface-arg"
+   :end-before: "sphinx-end-before": "f_mixin_declare-interface-arg"
+

@@ -13,13 +13,15 @@
         "c_arg_call": []
     },
     {
+        "sphinx-start-after": "c_mixin_argument",
         "name": "c_mixin_argument2",
         "notes": [
             "XXX - work in progress"
         ],
         "c_arg_decl": [
             "{gen.cdecl.c_var}"
-        ]
+        ],
+        "sphinx-end-before": "c_mixin_argument"
     },
     {
         "name": "c_mixin_argument",
@@ -53,6 +55,7 @@
         ]
     },
     {
+        "sphinx-start-after": "f_mixin_declare-fortran-arg",
         "name": "f_mixin_declare-fortran-arg",
         "notes": [
             "Fortran wrapper argument"
@@ -67,12 +70,14 @@
         },
         "f_arg_decl": [
             "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
-        ]
+        ],
+        "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "sphinx-start-after": "f_mixin_declare-interface-arg",
         "name": "f_mixin_declare-interface-arg",
         "notes": [
-            "General declaration for Fortran interface."
+            "Declarations for Fortran interface."
         ],
         "i_arg_names": [
             "{i_var}"
@@ -84,7 +89,8 @@
         },
         "i_arg_decl": [
             "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
-        ]
+        ],
+        "sphinx-end-before": "f_mixin_declare-interface-arg"
     },
     {
         "name": "f_mixin_argument-as-cptr-value",
