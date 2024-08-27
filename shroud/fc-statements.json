@@ -21,6 +21,9 @@
         "c_arg_decl": [
             "{gen.cdecl.c_var}"
         ],
+        "c_arg_call": [
+            "{cxx_var}"
+        ],
         "sphinx-end-before": "c_mixin_argument"
     },
     {
@@ -52,6 +55,9 @@
         },
         "c_arg_decl": [
             "{gen.cdecl.c_var}"
+        ],
+        "c_arg_call": [
+            "{cxx_var}"
         ]
     },
     {
@@ -1862,7 +1868,8 @@
             "f_none_char*"
         ],
         "mixin": [
-            "f_mixin_declare-fortran-arg"
+            "f_mixin_declare-fortran-arg",
+            "c_mixin_argument2"
         ],
         "i_arg_names": [
             "{i_var}"
@@ -1875,9 +1882,6 @@
                 "C_CHAR"
             ]
         },
-        "c_arg_decl": [
-            "{gen.cdecl.c_var}"
-        ]
     },
     {
         "alias": [
