@@ -37,6 +37,15 @@ module clibrary_mod
         integer(C_INT) :: tc
     end type array_info
 
+    ! ----------------------------------------
+    ! Function:  void alloc
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  int tc +intent(in)
+    ! Statement: f_in_native
+    ! ----------------------------------------
+    ! Argument:  array_info *arr +intent(inout)
+    ! Statement: f_inout_struct*
     abstract interface
         subroutine callback_set_alloc_alloc(tc, arr) bind(C)
             use iso_c_binding, only : C_INT

@@ -92,6 +92,12 @@ module tutorial_mod
     integer, parameter :: type_id = C_INT
     ! splicer end typedef.TypeID
 
+    ! ----------------------------------------
+    ! Function:  int incr
+    ! Statement: f_function_native
+    ! ----------------------------------------
+    ! Argument:  int
+    ! Statement: f_none_native
     ! start abstract callback1_incr
     abstract interface
         function callback1_incr(arg0) bind(C)
