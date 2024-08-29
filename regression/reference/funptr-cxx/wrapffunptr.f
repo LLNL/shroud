@@ -28,18 +28,36 @@ module funptr_mod
 
     abstract interface
 
+        ! ----------------------------------------
+        ! Function:  void incr1_external +external
+        ! Statement: f_subroutine
         subroutine callback1_external_incr1_external() bind(C)
             implicit none
         end subroutine callback1_external_incr1_external
 
+        ! ----------------------------------------
+        ! Function:  void incr1
+        ! Statement: f_subroutine
         subroutine callback1_incr1() bind(C)
             implicit none
         end subroutine callback1_incr1
 
+        ! ----------------------------------------
+        ! Function:  void incr1_wrap
+        ! Statement: f_subroutine
         subroutine callback1_wrap_incr1_wrap() bind(C)
             implicit none
         end subroutine callback1_wrap_incr1_wrap
 
+        ! ----------------------------------------
+        ! Function:  int actor
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  int *ilow +intent(in)+rank(1)
+        ! Statement: f_in_native*
+        ! ----------------------------------------
+        ! Argument:  int nargs +intent(in)
+        ! Statement: f_in_native
         function callback4_actor(ilow, nargs) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
@@ -48,6 +66,27 @@ module funptr_mod
             integer(C_INT) :: callback4_actor
         end function callback4_actor
 
+        ! ----------------------------------------
+        ! Function:  void all_types
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int * +rank(1)
+        ! Statement: f_none_native*
+        ! ----------------------------------------
+        ! Argument:  char
+        ! Statement: f_none_char
+        ! ----------------------------------------
+        ! Argument:  char *
+        ! Statement: f_none_char*
+        ! ----------------------------------------
+        ! Argument:  bool
+        ! Statement: f_none_bool
+        ! ----------------------------------------
+        ! Argument:  bool *
+        ! Statement: f_none_bool*
         subroutine callback_all_types_all_types(arg0, arg1, arg2, arg3, &
             arg4, arg5) bind(C)
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
@@ -60,18 +99,36 @@ module funptr_mod
             logical(C_BOOL) :: arg5
         end subroutine callback_all_types_all_types
 
+        ! ----------------------------------------
+        ! Function:  int *get_ptr
+        ! Statement: f_function_native*_pointer
         function callback_ptr_get_ptr() bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: callback_ptr_get_ptr
         end function callback_ptr_get_ptr
 
+        ! ----------------------------------------
+        ! Function:  void void_ptr_arg
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  void *
+        ! Statement: f_none_void*
         subroutine callback_void_ptr_void_ptr_arg(arg0) bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), value :: arg0
         end subroutine callback_void_ptr_void_ptr_arg
 
+        ! ----------------------------------------
+        ! Function:  int get_abs
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  double
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
         function custom_funptr(XX0arg, XX1arg) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -80,6 +137,15 @@ module funptr_mod
             integer(C_INT) :: custom_funptr
         end function custom_funptr
 
+        ! ----------------------------------------
+        ! Function:  typedef int get_int
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  double
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
         function get_int(arg0, arg1) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -88,6 +154,15 @@ module funptr_mod
             integer(C_INT) :: get_int
         end function get_int
 
+        ! ----------------------------------------
+        ! Function:  typedef void incrtype
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  int i
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  TypeID j
+        ! Statement: f_none_native
         subroutine incrtype(i, j) bind(C)
             use iso_c_binding, only : C_INT
             import :: type_id

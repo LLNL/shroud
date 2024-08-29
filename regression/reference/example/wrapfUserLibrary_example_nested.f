@@ -138,6 +138,15 @@ module userlibrary_example_nested_mod
 
     abstract interface
 
+        ! ----------------------------------------
+        ! Function:  double get
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  double
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
         function custom_funptr(XX0arg, XX1arg) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -146,16 +155,31 @@ module userlibrary_example_nested_mod
             real(C_DOUBLE) :: custom_funptr
         end function custom_funptr
 
+        ! ----------------------------------------
+        ! Function:  void get
+        ! Statement: f_subroutine
         subroutine func_ptr1_get() bind(C)
             implicit none
         end subroutine func_ptr1_get
 
+        ! ----------------------------------------
+        ! Function:  double *get
+        ! Statement: f_function_native*_pointer
         function func_ptr2_get() bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR) :: func_ptr2_get
         end function func_ptr2_get
 
+        ! ----------------------------------------
+        ! Function:  double get
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  int i
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
         function func_ptr3_get(i, arg1) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
@@ -164,6 +188,39 @@ module userlibrary_example_nested_mod
             real(C_DOUBLE) :: func_ptr3_get
         end function func_ptr3_get
 
+        ! ----------------------------------------
+        ! Function:  void get
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  int verylongname1
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname2
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname3
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname4
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname5
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname6
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname7
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname8
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname9
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int verylongname10
+        ! Statement: f_none_native
         subroutine func_ptr5_get(verylongname1, verylongname2, &
             verylongname3, verylongname4, verylongname5, verylongname6, &
             verylongname7, verylongname8, verylongname9, &

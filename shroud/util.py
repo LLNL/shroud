@@ -503,6 +503,18 @@ class WrapperMixin(object):
         
         output.append(self.comment + " Statement: " + stmt0)
 
+    def document_function(self, output, node, stmt, decl):
+        output.append("! ----------------------------------------")
+        if node.options.debug_index:
+            output.append("! Index:     {}".format(node._function_index))
+        output.append("! Function:  " + decl)
+        self.document_stmts(output, node.ast, stmt.name)
+
+    def document_argument(self, output, arg, stmt, decl):
+        output.append("! ----------------------------------------")
+        output.append("! Argument:  " + decl)
+        self.document_stmts(output, arg, stmt.name)
+
 
 class Header(object):
     """Manage header files for a wrapper file.

@@ -113,12 +113,27 @@ module top_module
 
     abstract interface
 
+        ! ----------------------------------------
+        ! Function:  void afree
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  double *arr +intent(inout)
+        ! Statement: f_inout_native*
         subroutine external_funcs_afree(arr) bind(C)
             use iso_c_binding, only : C_DOUBLE
             implicit none
             real(C_DOUBLE), intent(INOUT) :: arr
         end subroutine external_funcs_afree
 
+        ! ----------------------------------------
+        ! Function:  void alloc
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  double *arr +intent(inout)
+        ! Statement: f_inout_native*
+        ! ----------------------------------------
+        ! Argument:  int *err +intent(out)
+        ! Statement: f_out_native*
         subroutine external_funcs_alloc(arr, err) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
@@ -126,6 +141,15 @@ module top_module
             integer(C_INT), intent(OUT) :: err
         end subroutine external_funcs_alloc
 
+        ! ----------------------------------------
+        ! Function:  void assoc
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  double *arr +intent(in)
+        ! Statement: f_in_native*
+        ! ----------------------------------------
+        ! Argument:  int *err +intent(out)
+        ! Statement: f_out_native*
         subroutine external_funcs_assoc(arr, err) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
