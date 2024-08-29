@@ -195,6 +195,21 @@
         ]
     },
     {
+        "name": "c_mixin_declare-fortran-result",
+        "notes": [
+            "Fortran function result.",
+            "XXX - Not intended for CHAR, only native"
+        ],
+        "i_module": {
+            "{f_module_name}": [
+                "{f_kind}"
+            ]
+        },
+        "i_result_decl": [
+            "{i_type} :: {i_var}"
+        ]
+    },
+    {
         "name": "f_mixin_function_ptr",
         "comments": [
             "Return a C pointer directly as type(C_PTR)."
@@ -1086,7 +1101,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ]
     },
     {
@@ -1096,7 +1112,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "c_return_type": "{c_type}",
         "c_return": [
@@ -1559,7 +1576,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "f_need_wrapper": true
     },
@@ -1603,6 +1621,9 @@
             "f_function_void*",
             "c_function_void*"
         ],
+        "notes": [
+            "XXX - f entries are the same as the i entries, share?"
+        ],
         "mixin": [
             "c_mixin_function"
         ],
@@ -1612,6 +1633,14 @@
             ]
         },
         "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_result_decl": [
             "type(C_PTR) :: {f_var}"
         ]
     },
@@ -1740,7 +1769,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "c_post_call": [
             "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
@@ -1752,6 +1782,9 @@
         ],
         "mixin": [
             "c_mixin_function"
+        ],
+        "i_result_decl": [
+            "{i_type} :: {i_var}"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
@@ -2489,6 +2522,14 @@
         ],
         "mixin": [
             "c_mixin_function"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "i_result_decl": [
+            "character(kind=C_CHAR) :: {i_var}(*)"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
@@ -3919,7 +3960,8 @@
         "name": "f_getter_bool",
         "mixin": [
             "c_mixin_noargs",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "f_arg_call": [],
         "c_call": [
@@ -3953,7 +3995,8 @@
         ],
         "mixin": [
             "c_mixin_noargs",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "f_arg_call": [],
         "c_call": [
@@ -4985,6 +5028,9 @@
         ],
         "i_arg_decl": [
             "===>i_arg_decl<==="
+        ],
+        "i_result_decl": [
+            "===>i_result_decl<==="
         ],
         "c_arg_decl": [
             "===>{c_var}<==="

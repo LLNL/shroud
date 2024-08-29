@@ -149,6 +149,7 @@ root
       argument -- c_mixin_argument
       argument2 -- c_mixin_argument2
       character -- c_mixin_character
+      declare-fortran-result -- c_mixin_declare-fortran-result
       destructor
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
@@ -697,6 +698,11 @@ c_function_bool:
   comments:
   - Call a function.
   intent: function
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 c_function_char:
   name: c_function_char
@@ -855,6 +861,8 @@ c_function_enum:
   comments:
   - Call a function.
   intent: function
+  i_result_decl:
+  - '{i_type} :: {i_var}'
   c_post_call:
   - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -863,6 +871,11 @@ c_function_native:
   comments:
   - Call a function.
   intent: function
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 c_function_native&:
   name: c_function_native&
@@ -1221,6 +1234,11 @@ c_function_string:
   comments:
   - Cannot return a char array by value.
   intent: function
+  i_result_decl:
+  - 'character(kind=C_CHAR) :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   owner: library
@@ -1591,11 +1609,23 @@ c_function_void*:
   name: c_function_void*
   comments:
   - Call a function.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
   intent: function
+  i_result_decl:
+  - 'type(C_PTR) :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   owner: library
 c_getter_native:
   name: c_getter_native
   intent: getter
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -1604,6 +1634,11 @@ c_getter_native:
 c_getter_native*:
   name: c_getter_native*
   intent: getter
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -3256,6 +3291,15 @@ c_mixin_character:
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   owner: library
+c_mixin_declare-fortran-result:
+  name: c_mixin_declare-fortran-result
+  intent: mixin
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  owner: library
 c_mixin_destructor_new-string:
   name: c_mixin_destructor_new-string
   intent: mixin
@@ -4649,6 +4693,11 @@ f_function_bool:
     '{f_module_name}':
     - '{f_kind}'
   f_need_wrapper: true
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
   owner: library
 f_function_char:
   name: f_function_char
@@ -5387,6 +5436,11 @@ f_function_enum:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_kind}'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5400,6 +5454,11 @@ f_function_native:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
     '{f_module_name}':
     - '{f_kind}'
   owner: library
@@ -5860,6 +5919,11 @@ f_function_native*_scalar:
   f_call:
   - '{F_result} = {F_C_call}({F_arg_c_call})'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
     '{f_module_name}':
     - '{f_kind}'
   c_return:
@@ -8829,10 +8893,17 @@ f_function_void*:
   name: f_function_void*
   comments:
   - Call a function.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - 'type(C_PTR) :: {f_var}'
+  i_module:
     iso_c_binding:
     - C_PTR
   owner: library
@@ -8842,6 +8913,11 @@ f_getter_bool:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
     '{f_module_name}':
     - '{f_kind}'
   c_call:
@@ -8855,6 +8931,11 @@ f_getter_native:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
     '{f_module_name}':
     - '{f_kind}'
   c_call:
@@ -8921,6 +9002,11 @@ f_getter_native*_pointer:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
     '{f_module_name}':
     - '{f_kind}'
   c_call:
@@ -12341,6 +12427,8 @@ f_mixin_unknown:
   - ===>i_arg_names<===
   i_arg_decl:
   - ===>i_arg_decl<===
+  i_result_decl:
+  - ===>i_result_decl<===
   c_arg_decl:
   - ===>{c_var}<===
   owner: library

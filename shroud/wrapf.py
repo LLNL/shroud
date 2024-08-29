@@ -1200,13 +1200,6 @@ rv = .false.
                 else:
                     arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
-            else:
-                arg_c_decl.append(bind_c(ast, modules, is_result=True, name=fmt_result.F_result))
-                self.update_f_module(
-                    modules,
-                    result_typemap.i_module or result_typemap.f_module,
-                    fmt_result
-                )
 
         arg_f_use = self.sort_module_info(
             modules, fmt_result.F_module_name, imports
