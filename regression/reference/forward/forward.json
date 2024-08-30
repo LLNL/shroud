@@ -317,7 +317,6 @@
                                         "f_call_function": "c_class2_dtor",
                                         "i_arguments": "self",
                                         "i_name_function": "c_class2_dtor",
-                                        "i_result_clause": "",
                                         "i_subprogram": "subroutine",
                                         "stmt_name": "f_dtor",
                                         "typemap_name": "void"

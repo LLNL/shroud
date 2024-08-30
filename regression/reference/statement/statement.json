@@ -257,7 +257,6 @@
                                 "fc_var": "SHT_rv",
                                 "i_arguments": "SHT_rv,\t SHT_rv_len",
                                 "i_name_function": "c_get_name_error_pattern_bufferify",
-                                "i_result_clause": "",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "character(kind=C_CHAR)",

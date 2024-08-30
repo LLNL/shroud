@@ -140,7 +140,6 @@
                                 "fc_var": "SHT_rv",
                                 "i_arguments": "SHT_rv_cdesc,\t SHT_rv_capsule",
                                 "i_name_function": "c_last_function_called_bufferify",
-                                "i_result_clause": "",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "character(kind=C_CHAR)",

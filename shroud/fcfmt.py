@@ -285,13 +285,9 @@ class FillFormat(object):
         result_stmt = bind.stmt
         fmt_result = bind.fmtdict
 
+        self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
+
         subprogram = declarator.get_subprogram()
-        if result_stmt.i_result_var == "as-subroutine":
-            subprogram = "subroutine"
-        elif result_stmt.i_result_var is not None:
-            subprogram = "function"
-        
-        fmt_result.i_subprogram = subprogram
         if subprogram == "function":
             fmt_result.i_var = fmt_result.F_result
             fmt_result.f_var = fmt_result.F_result
@@ -300,19 +296,23 @@ class FillFormat(object):
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, bind)
 
-        if result_stmt.c_return_type == "void":
+        if result_stmt.i_result_var == "as-subroutine":
+            subprogram = "subroutine"
+        elif result_stmt.i_result_var is not None:
+            subprogram = "function"
+        elif result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
-            fmt_result.i_subprogram = "subroutine"
-            fmt_result.i_result_clause = ""
+            subprogram = "subroutine"
         elif result_stmt.c_return_type:
             # Change a subroutine into function
             # or change the return type.
-            fmt_result.i_subprogram = "function"
-        self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
+            subprogram = "function"
+        fmt_result.i_subprogram = subprogram
+
         statements.apply_fmtdict_from_stmts(bind)
 
         # Compute after stmt.fmtdict is evaluated.
-        if fmt_result.i_subprogram == "function":
+        if subprogram == "function":
             if result_stmt.i_result_var:
                 fmt_result.i_result_var = wformat(
                     result_stmt.i_result_var, fmt_result)
@@ -339,25 +339,33 @@ class FillFormat(object):
         fmt_result = bind.fmtdict
         C_node = node.C_node  # C wrapper to call.
 
+        self.name_temp_vars(fmt_result.C_result, bind, "f")
+
         subprogram = declarator.get_subprogram()
+        if subprogram == "function":
+            fmt_result.f_var = fmt_result.F_result
+            fmt_result.fc_var = fmt_result.F_result
+        
         if result_stmt.f_result_var == "as-subroutine":
             subprogram = "subroutine"
         elif result_stmt.f_result_var is not None:
             subprogram = "function"
-            fmt_result.F_result = result_stmt.f_result_var
-
         fmt_result.F_subprogram = subprogram
-        if subprogram == "function":
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.fc_var = fmt_result.F_result
-            fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
-        
-        self.name_temp_vars(fmt_result.C_result, bind, "f")
+
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind,
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, bind)
         self.apply_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
+
+        # Compute after stmt.fmtdict is evaluated.
+        if subprogram == "function":
+            if result_stmt.f_result_var:
+                fmt_result.F_result = wformat(
+                    result_stmt.f_result_var, fmt_result)
+            fmt_result.f_var = fmt_result.F_result
+            fmt_result.fc_var = fmt_result.F_result
+            fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name

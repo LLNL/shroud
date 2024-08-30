@@ -1362,7 +1362,6 @@
                                 "i_arguments": "arg1,\t arg2,\t SHT_rv,\t SHT_rv_len",
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_name_function": "c_function4a_bufferify",
-                                "i_result_clause": "",
                                 "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "character(kind=C_CHAR)",

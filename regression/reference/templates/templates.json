@@ -4057,7 +4057,6 @@
                                                 "f_call_function": "c_vector_int_dtor",
                                                 "i_arguments": "self",
                                                 "i_name_function": "c_vector_int_dtor",
-                                                "i_result_clause": "",
                                                 "i_subprogram": "subroutine",
                                                 "stmt_name": "f_dtor",
                                                 "typemap_name": "void"
@@ -5080,7 +5079,6 @@
                                                 "f_call_function": "c_vector_double_dtor",
                                                 "i_arguments": "self",
                                                 "i_name_function": "c_vector_double_dtor",
-                                                "i_result_clause": "",
                                                 "i_subprogram": "subroutine",
                                                 "stmt_name": "f_dtor",
                                                 "typemap_name": "void"

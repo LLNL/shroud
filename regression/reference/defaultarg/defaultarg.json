@@ -1000,7 +1000,6 @@
                                         "f_call_function": "c_class1_delete",
                                         "i_arguments": "self",
                                         "i_name_function": "c_class1_delete",
-                                        "i_result_clause": "",
                                         "i_subprogram": "subroutine",
                                         "stmt_name": "f_dtor",
                                         "typemap_name": "void"
