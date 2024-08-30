@@ -567,7 +567,7 @@
                                 "C_LONG"
                             ]
                         },
-                        "f_result": "num"
+                        "f_result_var": "num"
                     }
                 },
                 "helpers": {
@@ -839,7 +839,7 @@
                         "f_post_call": [
                             "num = SHT_arg_cdesc%size"
                         ],
-                        "f_result": "num"
+                        "f_result_var": "num"
                     }
                 },
                 "helpers": {

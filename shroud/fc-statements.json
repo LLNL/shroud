@@ -2046,7 +2046,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -2668,7 +2668,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -3649,7 +3649,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "c_call": [
             "{C_call_function};"
         ]
@@ -4414,7 +4414,7 @@
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -4621,7 +4621,7 @@
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],

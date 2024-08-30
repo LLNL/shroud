@@ -369,7 +369,7 @@
                                 "C_LONG"
                             ]
                         },
-                        "f_result": "num"
+                        "f_result_var": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num",
@@ -462,7 +462,7 @@
                         "f_post_call": [
                             "num = SHT_arg_cdesc%size"
                         ],
-                        "f_result": "num"
+                        "f_result_var": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num2",

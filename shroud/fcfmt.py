@@ -340,11 +340,11 @@ class FillFormat(object):
         C_node = node.C_node  # C wrapper to call.
 
         subprogram = declarator.get_subprogram()
-        if result_stmt.f_result == "subroutine":
+        if result_stmt.f_result_var == "as-subroutine":
             subprogram = "subroutine"
-        elif result_stmt.f_result is not None:
+        elif result_stmt.f_result_var is not None:
             subprogram = "function"
-            fmt_result.F_result = result_stmt.f_result
+            fmt_result.F_result = result_stmt.f_result_var
         if subprogram == "function":
             fmt_result.f_var = fmt_result.F_result
             fmt_result.fc_var = fmt_result.F_result

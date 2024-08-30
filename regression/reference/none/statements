@@ -4757,7 +4757,7 @@ f_function_char*_arg:
   - '{f_var_len}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -4822,7 +4822,7 @@ f_function_char*_buf_arg:
   - '{f_var_len}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5066,7 +5066,7 @@ f_function_char*_cfi_arg:
   - '{f_var}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -6195,7 +6195,7 @@ f_function_shadow*_this:
   intent: function
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   c_call:
   - '{C_call_function};'
   c_return_type: void
@@ -6465,7 +6465,7 @@ f_function_string&_buf_arg:
   - '{f_var_len}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     iso_c_binding:
     - C_INT
@@ -6987,7 +6987,7 @@ f_function_string&_cfi_arg:
   - '{f_var}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8000,7 +8000,7 @@ f_function_string_buf_arg:
   - '{f_var_len}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     iso_c_binding:
     - C_INT
@@ -8423,7 +8423,7 @@ f_function_string_cfi_arg:
   - '{f_var}'
   f_call:
   - call {f_call_function}({F_arg_c_call})
-  f_result: subroutine
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'

@@ -87,7 +87,7 @@ declare         f_declare
 pre_call        f_pre_call
 call            f_call
 post_call       f_post_call
-result          f_result
+result          f_result_var
 temps           f_temps
 local           f_local
 =============   =============
