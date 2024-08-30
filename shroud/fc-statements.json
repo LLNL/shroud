@@ -226,7 +226,7 @@
             "type(C_PTR) :: {f_var}"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -268,7 +268,7 @@
             "ptr"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1865,7 +1865,7 @@
             "type(C_PTR) :: {f_var}"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -2497,7 +2497,7 @@
             "return {c_var};"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [

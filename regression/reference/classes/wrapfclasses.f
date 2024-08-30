@@ -387,7 +387,7 @@ module classes_mod
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_class1_get_name
     end interface
     ! end c_class1_get_name
@@ -593,7 +593,7 @@ module classes_mod
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_class2_get_name
     end interface
 
@@ -1019,7 +1019,7 @@ module classes_mod
                 bind(C, name="CLA_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_last_function_called
     end interface
 

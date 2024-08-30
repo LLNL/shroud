@@ -332,7 +332,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class1_get_name_error_check
 
         ! ----------------------------------------
@@ -358,7 +358,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class1_get_name_arg
 
         ! ----------------------------------------
@@ -490,7 +490,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name
 
         ! ----------------------------------------
@@ -517,7 +517,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name2
 
         ! ----------------------------------------
@@ -543,7 +543,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name3
 
         ! ----------------------------------------
@@ -569,7 +569,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name4
 
         ! ----------------------------------------

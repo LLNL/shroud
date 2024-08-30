@@ -679,7 +679,7 @@ module tutorial_mod
                 bind(C, name="TUT_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_last_function_called
     end interface
 

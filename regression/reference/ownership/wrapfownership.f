@@ -140,7 +140,7 @@ module ownership_mod
                 bind(C, name="OWN_ReturnIntPtrRaw")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_raw
 
         ! ----------------------------------------
@@ -151,7 +151,7 @@ module ownership_mod
                 bind(C, name="OWN_ReturnIntPtrScalar")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_scalar
 
         ! ----------------------------------------
@@ -173,7 +173,7 @@ module ownership_mod
                 bind(C, name="OWN_ReturnIntPtrPointer")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_pointer
 
         ! ----------------------------------------
@@ -184,7 +184,7 @@ module ownership_mod
                 bind(C, name="OWN_ReturnIntPtrPointer_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_pointer_bufferify
 
         ! ----------------------------------------
@@ -199,7 +199,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_raw
 
         ! ----------------------------------------
@@ -215,7 +215,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_pointer
         ! end c_return_int_ptr_dim_pointer
 
@@ -244,7 +244,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_alloc
         ! end c_return_int_ptr_dim_alloc
 
@@ -274,7 +274,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_default
 
         ! ----------------------------------------
@@ -299,7 +299,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_raw_new
 
         ! ----------------------------------------
@@ -314,7 +314,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_pointer_new
 
         ! ----------------------------------------
@@ -341,7 +341,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_alloc_new
 
         ! ----------------------------------------
@@ -356,7 +356,7 @@ module ownership_mod
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_dim_default_new
 
         ! ----------------------------------------

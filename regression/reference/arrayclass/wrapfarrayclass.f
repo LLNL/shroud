@@ -189,7 +189,7 @@ module arrayclass_mod
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ArrayWrapper_getArray
 
         ! ----------------------------------------
@@ -213,7 +213,7 @@ module arrayclass_mod
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ArrayWrapper_getArrayConst
 
         ! ----------------------------------------
@@ -238,7 +238,7 @@ module arrayclass_mod
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ArrayWrapper_getArrayC
 
         ! ----------------------------------------
@@ -263,7 +263,7 @@ module arrayclass_mod
             import :: ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ArrayWrapper_getArrayConstC
 
         ! ----------------------------------------
