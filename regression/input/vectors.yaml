@@ -62,9 +62,9 @@ declarations:
       f_module:
         iso_c_binding: ["C_LONG"]
       f_arg_decl:
-      -  "integer(C_LONG) :: {F_result}"
+      -  "integer(C_LONG) :: {f_result_var}"
       f_call:
-      -  "{F_result} = {f_call_function}({F_arg_c_call})"
+      -  "{f_result_var} = {f_call_function}({F_arg_c_call})"
 
 - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
   doxygen:

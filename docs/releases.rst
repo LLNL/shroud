@@ -123,17 +123,19 @@ is now:
         c_return_type: long
         c_return:
         - return SHT_arg_cdesc->size;
+        i_result_var: num
       f:
         c_return_type: long
         c_return:
         - return SHT_arg_cdesc->size;
-        f_result: num
+        i_result_var: num
+        f_result_var: num
         f_module:
           iso_c_binding: ["C_LONG"]
         f_arg_decl:
-        -  "integer(C_LONG) :: {F_result}"
+        -  "integer(C_LONG) :: {f_result_var}"
         f_call:
-        -  "{F_result} = {F_C_call}({F_arg_c_call})"              
+        -  "{f_result_var} = {f_call_function}({F_arg_c_call})"              
 
 * Likewise, some fields were renamed for Typemaps.
 
@@ -155,6 +157,10 @@ Old Name                      New Name
 ===========================   ===========================
                               f_intent_attr
 f_type_module                 typemap.f_module_name
+F_pure_clause                 f_pure_clause
+F_result_clause               f_result_clause
+F_result                      f_result_var
+F_result_ptr                  f_result_ptr
 F_C_arguments                 i_arguments
 F_C_call                      f_call_function
 F_C_name                      i_name_function

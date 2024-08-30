@@ -360,10 +360,10 @@
                         ],
                         "c_return_type": "long",
                         "f_arg_decl": [
-                            "integer(C_LONG) :: {F_result}"
+                            "integer(C_LONG) :: {f_result_var}"
                         ],
                         "f_call": [
-                            "{F_result} = {f_call_function}({F_arg_c_call})"
+                            "{f_result_var} = {f_call_function}({F_arg_c_call})"
                         ],
                         "f_module": {
                             "iso_c_binding": [

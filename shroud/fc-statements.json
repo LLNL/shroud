@@ -164,7 +164,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "{F_result} = {f_call_function}({F_arg_c_call})"
+            "{f_result_var} = {f_call_function}({F_arg_c_call})"
         ]
     },
     {
@@ -262,7 +262,7 @@
             "{f_local_ptr} = {f_call_function}({F_arg_c_call})"
         ],
         "f_post_call": [
-            "call c_f_pointer({f_local_ptr}, {F_result})"
+            "call c_f_pointer({f_local_ptr}, {f_result_var})"
         ],
         "f_local": [
             "ptr"
@@ -478,7 +478,7 @@
             "{f_type}, pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
         ]
     },
     {
@@ -499,7 +499,7 @@
             "type(C_PTR), pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
         ]
     },
     {
@@ -658,7 +658,7 @@
         ],
         "f_arg_decl": [
             "{f_type} :: {f_var}",
-            "type(C_PTR) :: {F_result_ptr}"
+            "type(C_PTR) :: {f_result_ptr}"
         ],
         "f_arg_call": [
             "{f_var}%{F_derived_member}"
@@ -669,7 +669,7 @@
             ]
         },
         "f_call": [
-            "{F_result_ptr} = {f_call_function}({F_arg_c_call})"
+            "{f_result_ptr} = {f_call_function}({F_arg_c_call})"
         ],
         "f_need_wrapper": true,
         "i_result_var": "{i_result_ptr}",
@@ -3903,10 +3903,10 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}, pointer :: {F_result}"
+            "{f_type}, pointer :: {f_result_var}"
         ],
         "f_call": [
-            "call c_f_pointer({CXX_this}%{field_name}, {F_result})"
+            "call c_f_pointer({CXX_this}%{field_name}, {f_result_var})"
         ],
         "f_need_wrapper": true
     },

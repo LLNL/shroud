@@ -69,8 +69,8 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
     def wrap_library(self):
         fmt_library = self.newlibrary.fmtdict
-        fmt_library.F_result_clause = ""
-        fmt_library.F_pure_clause = ""
+        fmt_library.f_result_clause = ""
+        fmt_library.f_pure_clause = ""
         fmt_library.i_result_clause = ""
         fmt_library.i_pure_clause = ""
 
@@ -1658,7 +1658,7 @@ rv = .false.
         elif result_stmt.f_call:
             call_list = result_stmt.f_call
         elif C_subprogram == "function":
-            call_list = ["{F_result} = {f_call_function}({F_arg_c_call})"]
+            call_list = ["{f_result_var} = {f_call_function}({F_arg_c_call})"]
         else:
             # XXX - statements should set this explicitly
             call_list = ["call {f_call_function}({F_arg_c_call})"]
@@ -1711,7 +1711,7 @@ rv = .false.
             append_format(
                 impl,
                 "\r{F_subprogram} {F_name_impl}(\t"
-                "{F_arguments}){F_result_clause}",
+                "{F_arguments}){f_result_clause}",
                 fmt_result,
             )
             impl.append(1)

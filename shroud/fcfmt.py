@@ -289,10 +289,10 @@ class FillFormat(object):
 
         subprogram = declarator.get_subprogram()
         if subprogram == "function":
-            fmt_result.i_var = fmt_result.F_result
-            fmt_result.f_var = fmt_result.F_result
+            fmt_result.i_var = fmt_result.i_result_var
+            fmt_result.f_var = fmt_result.i_result_var
             self.set_fmt_fields_iface(node, ast, bind,
-                                      fmt_result.F_result, result_typemap,
+                                      fmt_result.i_result_var, result_typemap,
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, bind)
 
@@ -343,8 +343,8 @@ class FillFormat(object):
 
         subprogram = declarator.get_subprogram()
         if subprogram == "function":
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.fc_var = fmt_result.F_result
+            fmt_result.f_var = fmt_result.f_result_var
+            fmt_result.fc_var = fmt_result.f_result_var
         
         if result_stmt.f_result_var == "as-subroutine":
             subprogram = "subroutine"
@@ -361,11 +361,11 @@ class FillFormat(object):
         # Compute after stmt.fmtdict is evaluated.
         if subprogram == "function":
             if result_stmt.f_result_var:
-                fmt_result.F_result = wformat(
+                fmt_result.f_result_var = wformat(
                     result_stmt.f_result_var, fmt_result)
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.fc_var = fmt_result.F_result
-            fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
+            fmt_result.f_var = fmt_result.f_result_var
+            fmt_result.fc_var = fmt_result.f_result_var
+            fmt_result.f_result_clause = "\fresult(%s)" % fmt_result.f_result_var
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name
