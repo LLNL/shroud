@@ -9344,7 +9344,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -9452,7 +9454,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -9528,7 +9532,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -9604,7 +9610,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -9663,7 +9671,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -9846,7 +9856,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "deref": "pointer",
                                                                     "intent": "function"
@@ -9958,7 +9980,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "deref": "pointer",
                                                                     "intent": "function"
@@ -10039,7 +10073,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "deref": "pointer",
                                                                     "intent": "function"
@@ -10121,7 +10167,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "deref": "pointer",
                                                                     "intent": "function"
@@ -10185,7 +10243,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "deref": "pointer",
                                                                     "intent": "function"
@@ -10401,7 +10471,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -10581,7 +10663,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -10729,7 +10823,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -10877,7 +10983,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -11008,7 +11126,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -11274,7 +11404,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -11451,7 +11593,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -11580,7 +11734,19 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "f_intent": "OUT",
+                                                                    "f_intent_attr": ", intent(OUT)",
+                                                                    "f_kind": "C_DOUBLE",
+                                                                    "f_module_name": "iso_c_binding",
+                                                                    "f_type": "real(C_DOUBLE)",
+                                                                    "f_var": "SHT_rv",
+                                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                                    "i_subprogram": "function",
+                                                                    "i_type": "real(C_DOUBLE)",
+                                                                    "i_var": "SHT_rv",
+                                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "function"
                                                                 },
@@ -11982,7 +12148,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -12451,7 +12619,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -12888,7 +13058,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -13325,7 +13497,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },
@@ -13745,7 +13919,9 @@
                                                     "zz_bind": {
                                                         "f": {
                                                             "+result": {
-                                                                "fmtdict": {},
+                                                                "fmtdict": {
+                                                                    "i_subprogram": "subroutine"
+                                                                },
                                                                 "meta": {
                                                                     "intent": "subroutine"
                                                                 },

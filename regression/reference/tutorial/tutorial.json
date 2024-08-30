@@ -8055,7 +8055,19 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -8258,7 +8270,19 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -8358,7 +8382,19 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },

@@ -1012,9 +1012,12 @@ rv = .false.
                                                gen_decl(param))
                     self.build_arg_list_interface(bind, modules, imports,
                                                   arg_f_names, arg_c_decl)
+                r_bind = get_func_bind(fptr, "f")
+                result_stmt = r_bind.stmt
+                fmt_result = r_bind.fmtdict
                 if subprogram == "function":
                     arg_c_decl.append(bind_c(fptr.ast,
-                        modules, name=key, is_result=True, is_callback=True,
+                        modules, name=fmt_result.i_result_var, is_result=True, is_callback=True,
                         params=None))
                 arguments = ",\t ".join(arg_f_names)
                 iface.extend(stmts_comments)
@@ -1023,7 +1026,7 @@ rv = .false.
                 if self.newlibrary.options.literalinclude2:
                     iface.append("abstract interface+")
                 iface.append(
-                    "{} {}({}) bind(C)".format(subprogram, key, arguments)
+                    "{} {}({}){} \tbind(C)".format(subprogram, key, arguments, fmt_result.i_result_clause)
                 )
                 iface.append(1)
                 arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)

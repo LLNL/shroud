@@ -140,6 +140,8 @@ class FillFormat(object):
         bind_result = statements.fetch_func_bind(node, wlang)
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
 
+        self.fill_interface_result(None, node, bind_result)
+
         # --- Loop over function parameters
         fmt_name = util.Scope(fmt_func)
         for i, arg in enumerate(node.ast.declarator.params):

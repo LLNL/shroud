@@ -5192,7 +5192,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5408,7 +5410,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
