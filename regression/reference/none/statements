@@ -672,8 +672,6 @@ c_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: caller
 c_dtor:
   name: c_dtor
@@ -959,8 +957,6 @@ c_function_shadow&_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow&_capptr_caller:
   name: c_function_shadow&_capptr_caller
@@ -991,8 +987,6 @@ c_function_shadow&_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow&_capptr_library:
   name: c_function_shadow&_capptr_library
@@ -1023,8 +1017,6 @@ c_function_shadow&_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capptr:
   name: c_function_shadow*_capptr
@@ -1055,8 +1047,6 @@ c_function_shadow*_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capptr_caller:
   name: c_function_shadow*_capptr_caller
@@ -1087,8 +1077,6 @@ c_function_shadow*_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capptr_library:
   name: c_function_shadow*_capptr_library
@@ -1119,8 +1107,6 @@ c_function_shadow*_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capsule:
   name: c_function_shadow*_capsule
@@ -4634,16 +4620,14 @@ f_ctor_shadow_capptr:
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -4663,8 +4647,6 @@ f_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: caller
 f_dtor:
   name: f_dtor
@@ -5938,16 +5920,14 @@ f_function_shadow&_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5973,8 +5953,6 @@ f_function_shadow&_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow&_capptr_caller:
   name: f_function_shadow&_capptr_caller
@@ -5983,16 +5961,14 @@ f_function_shadow&_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6018,8 +5994,6 @@ f_function_shadow&_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow&_capptr_library:
   name: f_function_shadow&_capptr_library
@@ -6028,16 +6002,14 @@ f_function_shadow&_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6063,8 +6035,6 @@ f_function_shadow&_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capptr:
   name: f_function_shadow*_capptr
@@ -6073,16 +6043,14 @@ f_function_shadow*_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6108,8 +6076,6 @@ f_function_shadow*_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capptr_caller:
   name: f_function_shadow*_capptr_caller
@@ -6118,16 +6084,14 @@ f_function_shadow*_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6153,8 +6117,6 @@ f_function_shadow*_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capptr_library:
   name: f_function_shadow*_capptr_library
@@ -6163,16 +6125,14 @@ f_function_shadow*_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6198,8 +6158,6 @@ f_function_shadow*_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capsule:
   name: f_function_shadow*_capsule
@@ -6253,16 +6211,14 @@ f_function_shadow<native>_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6304,16 +6260,14 @@ f_function_shadow_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6355,16 +6309,14 @@ f_function_shadow_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6406,16 +6358,14 @@ f_function_shadow_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -11902,16 +11852,14 @@ f_mixin_function_shadow_capptr:
   intent: mixin
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {F_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{F_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_result_decl:
   - 'type(C_PTR) :: {F_result_ptr}'
@@ -11919,8 +11867,6 @@ f_mixin_function_shadow_capptr:
   i_module:
     iso_c_binding:
     - C_PTR
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_mixin_function_shadow_capsule:
   name: f_mixin_function_shadow_capsule

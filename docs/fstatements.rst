@@ -49,8 +49,12 @@ Format fields
 * F_subprogram
 * F_name_impl
 * F_arguments
-* F_result_clause
 * f_call_function
+* F_result_clause
+
+  For functions, ``result({F_result})``.
+  Evalued after *stmt.fmtdict* is applied.
+  
 * F_arg_c_call
 
 Statements

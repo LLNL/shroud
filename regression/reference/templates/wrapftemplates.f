@@ -627,9 +627,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(user_int) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
+        type(C_PTR) :: SHT_prv
         ! splicer begin function.return_user_type
-        SHC_rv_ptr = c_return_user_type(SHT_rv%cxxmem)
+        SHT_prv = c_return_user_type(SHT_rv%cxxmem)
         ! splicer end function.return_user_type
     end function return_user_type
 
