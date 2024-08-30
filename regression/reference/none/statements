@@ -659,8 +659,8 @@ c_ctor_shadow_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -938,8 +938,8 @@ c_function_shadow&_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -968,8 +968,8 @@ c_function_shadow&_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -998,8 +998,8 @@ c_function_shadow&_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1028,8 +1028,8 @@ c_function_shadow*_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1058,8 +1058,8 @@ c_function_shadow*_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1088,8 +1088,8 @@ c_function_shadow*_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1153,8 +1153,8 @@ c_function_shadow<native>_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1191,8 +1191,8 @@ c_function_shadow_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4634,8 +4634,8 @@ f_ctor_shadow_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5934,8 +5934,8 @@ f_function_shadow&_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5975,8 +5975,8 @@ f_function_shadow&_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6016,8 +6016,8 @@ f_function_shadow&_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6057,8 +6057,8 @@ f_function_shadow*_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6098,8 +6098,8 @@ f_function_shadow*_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6139,8 +6139,8 @@ f_function_shadow*_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6225,8 +6225,8 @@ f_function_shadow<native>_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6274,8 +6274,8 @@ f_function_shadow_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6323,8 +6323,8 @@ f_function_shadow_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6372,8 +6372,8 @@ f_function_shadow_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -11862,8 +11862,8 @@ f_mixin_function_shadow_capptr:
     - C_PTR
   f_need_wrapper: true
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR

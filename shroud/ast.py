@@ -716,8 +716,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             class_scope="",
             file_scope = "_".join(self.scope_file),
             F_arg_c_call="",
-            i_prefix="c_",
-            i_name_function="-i_name_function-",
+
             F_derived_member="cxxmem",
             F_derived_member_base="",
             F_name_assign="assign",
@@ -770,8 +769,12 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             # Fortran interface
             i_dimension="",
+            i_name_function="-i_name_function-",
+            i_prefix="c_",
+            i_result_var = "SHT_rv",
+            i_result_ptr = "SHT_prv",
             i_suffix="",
-            
+
             rank="0",            # scalar
             
             LUA_result="rv",
