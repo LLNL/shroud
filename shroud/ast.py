@@ -567,7 +567,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_enum_type_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{C_name_api}",
             C_name_template=(
-                "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
+                "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}{template_suffix}"
             ),
             C_name_typedef_template="{C_prefix}{C_name_scope}{typedef_name}",
             C_memory_dtor_function_template=(
@@ -582,8 +582,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             CXX_standard=2011,
             # Fortran's names for C functions
             F_API_case="underscore",
-            F_C_name_template=(
-                "{F_C_prefix}{F_name_scope}{F_name_api}{function_suffix}{f_c_suffix}{template_suffix}"
+            i_name_function_template=(
+                "{i_prefix}{F_name_scope}{F_name_api}{function_suffix}{i_suffix}{template_suffix}"
             ),
             F_enum_member_template="{F_name_scope}{F_name_api}",
             F_name_impl_template=(
@@ -716,8 +716,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             class_scope="",
             file_scope = "_".join(self.scope_file),
             F_arg_c_call="",
-            F_C_prefix="c_",
-            F_C_name="-F_C_name-",
+            i_prefix="c_",
+            i_name_function="-i_name_function-",
             F_derived_member="cxxmem",
             F_derived_member_base="",
             F_name_assign="assign",
@@ -770,6 +770,7 @@ class LibraryNode(AstNode, NamespaceMixin):
 
             # Fortran interface
             i_dimension="",
+            i_suffix="",
             
             rank="0",            # scalar
             
@@ -799,7 +800,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_pre_call="",
             C_post_call="",
             function_suffix="",  # assume no suffix
-            f_c_suffix="",
             template_suffix="",  # assume no suffix
             namespace_scope="",
         )

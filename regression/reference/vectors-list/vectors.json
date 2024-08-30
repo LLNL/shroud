@@ -362,7 +362,7 @@
                             "integer(C_LONG) :: {F_result}"
                         ],
                         "f_call": [
-                            "{F_result} = {F_C_call}({F_arg_c_call})"
+                            "{F_result} = {f_call_function}({F_arg_c_call})"
                         ],
                         "f_module": {
                             "iso_c_binding": [

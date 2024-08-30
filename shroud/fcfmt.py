@@ -287,10 +287,10 @@ class FillFormat(object):
         fmt_result = bind.fmtdict
 
         if subprogram == "subroutine":
-            fmt_result.F_C_subprogram = "subroutine"
+            fmt_result.i_subprogram = "subroutine"
         else:
-            fmt_result.F_C_subprogram = "function"
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+            fmt_result.i_subprogram = "function"
+            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.F_result
             fmt_result.i_var = fmt_result.F_result
             fmt_result.f_var = fmt_result.F_result
             fmt_result.f_intent = "OUT"
@@ -304,17 +304,17 @@ class FillFormat(object):
 
         if result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
-            fmt_result.F_C_subprogram = "subroutine"
-            fmt_result.F_C_result_clause = ""
+            fmt_result.i_subprogram = "subroutine"
+            fmt_result.i_result_clause = ""
         elif result_stmt.c_return_type:
             # Change a subroutine into function
             # or change the return type.
-            fmt_result.F_C_subprogram = "function"
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+            fmt_result.i_subprogram = "function"
+            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.F_result
         if result_stmt.i_result_var:
             fmt_result.F_result = wformat(
                 result_stmt.i_result_var, fmt_result)
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
+            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.F_result
         self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
         statements.apply_fmtdict_from_stmts(bind)
 

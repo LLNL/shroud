@@ -60,12 +60,12 @@ be controlled directly by the input YAML file:
       end interface
 
       interface
-        {F_C_pure_clause} {F_C_subprogram} {F_C_name}
-             {F_C_result_clause} bind(C, name="{C_name}")
+        {i_pure_clause} {i_subprogram} {i_name}
+             {i_result_clause} bind(C, name="{C_name}")
           ! arg_f_use
           implicit none
           ! arg_c_decl
-        end {F_C_subprogram} {F_C_name}
+        end {i_subprogram} {i_name}
       end interface
 
       interface {F_name_generic}
@@ -80,7 +80,7 @@ be controlled directly by the input YAML file:
         ! splicer begin
         declare      ! local variables
         pre_call
-        call  {arg_c_call}
+        call {arg_c_call}
         post_call
         ! splicer end
       end {F_subprogram} {F_name_impl}

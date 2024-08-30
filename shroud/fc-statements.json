@@ -143,7 +143,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
+            "call {f_call_function}({F_arg_c_call})"
         ]
     },
     {
@@ -164,7 +164,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "{F_result} = {F_C_call}({F_arg_c_call})"
+            "{F_result} = {f_call_function}({F_arg_c_call})"
         ]
     },
     {
@@ -176,7 +176,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
+            "call {f_call_function}({F_arg_c_call})"
         ],
         "c_return_type": "void"
     },
@@ -259,7 +259,7 @@
             "type(C_PTR) :: {f_local_ptr}"
         ],
         "f_call": [
-            "{f_local_ptr} = {F_C_call}({F_arg_c_call})"
+            "{f_local_ptr} = {f_call_function}({F_arg_c_call})"
         ],
         "f_post_call": [
             "call c_f_pointer({f_local_ptr}, {F_result})"
@@ -669,7 +669,7 @@
             ]
         },
         "f_call": [
-            "{f_local_ptr} = {F_C_call}({F_arg_c_call})"
+            "{f_local_ptr} = {f_call_function}({F_arg_c_call})"
         ],
         "f_local": [
             "ptr"
@@ -4016,7 +4016,7 @@
         ],
         "f_arg_call": [],
         "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
+            "call {f_call_function}({F_arg_c_call})"
         ],
         "c_call": [
             "// skip call c_setter"

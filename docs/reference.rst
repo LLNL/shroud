@@ -1517,7 +1517,7 @@ f_kind
 f_module_name
     The name of the module required by *f_type*. Contains *f_kind*.
     Set from *typemap.f_module_name*. It defaults to
-    ``-f_module_name-`, which is an illegal Fortran module name.
+    ``-f_module_name-``, which is an illegal Fortran module name.
     Often used in statement field *f_module*.
     
 f_optional_attr

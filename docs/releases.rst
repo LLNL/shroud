@@ -137,30 +137,48 @@ is now:
 
 * Likewise, some fields were renamed for Typemaps.
 
-===============   =============
-Old Name          New Name
-===============   =============
-f_c_module        i_module
-f_c_module_line   i_module
-f_c_type          i_type
-===============   =============
+The ``f_c_`` prefix was changed to ``i_``. First, to have a consistent
+single character prefix. Next, to avoid finding ``f_c_`` when searching for ``c_``.
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+f_c_module                    i_module
+f_c_module_line               i_module
+f_c_type                      i_type
+===========================   ===========================
 
 * Renamed format fields
 
-===============   =======================
-Old Name          New Name
-===============   =======================
-                  f_intent_attr
-f_type_module     typemap.f_module_name
-===============   =======================
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+                              f_intent_attr
+f_type_module                 typemap.f_module_name
+F_C_arguments                 i_arguments
+F_C_call                      f_call_function
+F_C_name                      i_name_function
+F_C_subprogram                i_subprogram
+F_C_pure_clause               i_pure_clause
+F_C_result_clause             i_result_clause
+                              i_suffix
+===========================   ===========================
   
-* Added format field *f_c_suffix*. Used in format fields
-  *C_name_template* and *F_C_name_template* to allow Fortran wrapper
+* Renamed option fields
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+F_C_name_template             i_name_function_template
+===========================   ===========================
+  
+* Added format field *i_suffix*. Used in format fields
+  *C_name_template* and *i_name_file_template* to allow Fortran wrapper
   *to call a C function with additional mangling such as
   *C_cfi_suffix* and *C_bufferify_suffix*.  Previously this was
   *appended directly to format field *function_suffix*. If
-  *C_name_template* or F_C_name_template* are explicitly set in the
-  *YAML file then *f_c_suffix* should be included in the value.
+  *C_name_template* or *i_name_function_template* are explicitly set in the
+  *YAML file then *i_suffix* should be included in the value.
 
 .. See names.yaml
 

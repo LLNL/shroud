@@ -164,7 +164,7 @@ declarations:
     # Used with interface since there is no implementation.
     F_name_impl: Fortran_bindC1a
     # Unused.
-    F_C_name: Fortran_bindC1b
+    i_name_function: Fortran_bindC1b
   options:
     wrap_python: false
 
@@ -177,7 +177,7 @@ declarations:
     # Used with implemention.
     F_name_impl: Fortran_bindC2a
     # XXX - Used with both interfaces, regular and bufferify
-#    F_C_name: Fortran_bindC2b
+#    i_name_function: Fortran_bindC2b
   options:
     wrap_python: false
 

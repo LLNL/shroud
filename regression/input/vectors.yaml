@@ -62,7 +62,7 @@ declarations:
       f_arg_decl:
       -  "integer(C_LONG) :: {F_result}"
       f_call:
-      -  "{F_result} = {F_C_call}({F_arg_c_call})"
+      -  "{F_result} = {f_call_function}({F_arg_c_call})"
 
 - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
   doxygen:
