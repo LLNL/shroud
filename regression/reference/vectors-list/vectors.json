@@ -351,7 +351,8 @@
                         "c_return": [
                             "return SHC_arg_size;"
                         ],
-                        "c_return_type": "long"
+                        "c_return_type": "long",
+                        "i_result_var": "num"
                     },
                     "f": {
                         "c_return": [

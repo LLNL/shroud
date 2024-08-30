@@ -549,7 +549,8 @@
                         "c_return": [
                             "return SHC_arg_size;"
                         ],
-                        "c_return_type": "long"
+                        "c_return_type": "long",
+                        "i_result_var": "num"
                     },
                     "f": {
                         "c_return": [
@@ -599,10 +600,20 @@
                                 "C_name": "VEC_vector_iota_out_with_num",
                                 "C_prototype": "int *arg,\t size_t *SHT_arg_size",
                                 "C_return_type": "long",
+                                "f_intent": "OUT",
+                                "f_intent_attr": ", intent(OUT)",
+                                "f_kind": "C_PTR",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "type(C_PTR)",
+                                "f_var": "SHT_rv",
                                 "i_arguments": "arg,\t SHT_arg_size",
                                 "i_name_function": "c_vector_iota_out_with_num",
-                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_result_clause": "\fresult(num)",
+                                "i_result_var": "num",
                                 "i_subprogram": "function",
+                                "i_type": "type(C_PTR)",
+                                "i_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_CPTR",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
