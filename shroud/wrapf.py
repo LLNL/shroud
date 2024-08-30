@@ -1198,7 +1198,7 @@ rv = .false.
                 if ntypemap is None:
                     cursor.warning("Unknown type in c_return_type: {}".format(c_return_type))
                 else:
-                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
+                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.i_result_var))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
 
         arg_f_use = self.sort_module_info(
