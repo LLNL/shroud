@@ -370,7 +370,8 @@
                                 "C_LONG"
                             ]
                         },
-                        "f_result_var": "num"
+                        "f_result_var": "num",
+                        "i_result_var": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num",

@@ -281,16 +281,18 @@ class FillFormat(object):
     def fill_interface_result(self, cls, node, bind):
         ast = node.ast
         declarator = ast.declarator
-        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
         result_stmt = bind.stmt
         fmt_result = bind.fmtdict
 
-        if subprogram == "subroutine":
-            fmt_result.i_subprogram = "subroutine"
-        else:
-            fmt_result.i_subprogram = "function"
-            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.F_result
+        subprogram = declarator.get_subprogram()
+        if result_stmt.i_result_var == "as-subroutine":
+            subprogram = "subroutine"
+        elif result_stmt.i_result_var is not None:
+            subprogram = "function"
+        
+        fmt_result.i_subprogram = subprogram
+        if subprogram == "function":
             fmt_result.i_var = fmt_result.F_result
             fmt_result.f_var = fmt_result.F_result
             fmt_result.f_intent = "OUT"
@@ -310,14 +312,16 @@ class FillFormat(object):
             # Change a subroutine into function
             # or change the return type.
             fmt_result.i_subprogram = "function"
-            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.F_result
-        if result_stmt.i_result_var:
-            fmt_result.F_result = wformat(
-                result_stmt.i_result_var, fmt_result)
-            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.F_result
         self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
         statements.apply_fmtdict_from_stmts(bind)
 
+        # Compute after stmt.fmtdict is evaluated.
+        if fmt_result.i_subprogram == "function":
+            if result_stmt.i_result_var:
+                fmt_result.i_result_var = wformat(
+                    result_stmt.i_result_var, fmt_result)
+            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.i_result_var
+        
     def fill_interface_arg(self, cls, node, arg, bind):
         declarator = arg.declarator
         arg_name = declarator.user_name
@@ -345,11 +349,12 @@ class FillFormat(object):
         elif result_stmt.f_result_var is not None:
             subprogram = "function"
             fmt_result.F_result = result_stmt.f_result_var
+
+        fmt_result.F_subprogram = subprogram
         if subprogram == "function":
             fmt_result.f_var = fmt_result.F_result
             fmt_result.fc_var = fmt_result.F_result
             fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
-        fmt_result.F_subprogram = subprogram
         
         self.name_temp_vars(fmt_result.C_result, bind, "f")
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind,

@@ -13,6 +13,13 @@ The statement data structure is used to define code snippets that will be
 used to create the wrapper.
 Combinations of language, type and attributes are used to select
 a statement name based on a function's argument declaration in the YAML input.
+Shroud provides defaults for most standard wrappings.
+Statements provides a way for users to have more control over wrapping.
+Each aspect of the wrapping, argument names, argument declarations, and passing
+to the next layer, must be supplied by the statements in a consistent manner.
+
+.. While information may be redundent across layers, it provides complete control.
+   For example, defining both f_result_var and i_result_var in vectors.yaml.
 
 Details for :ref:`C <top_C_Statements>` and :ref:`Fortran <top_Fortran_Statements>`
 are provided in other sections.
