@@ -6903,7 +6903,7 @@
                                                     "f_var": "SHT_rv",
                                                     "i_result_clause": "\fresult(SHT_rv)",
                                                     "i_subprogram": "function",
-                                                    "i_type": "procedure(get_int)",
+                                                    "i_type": "integer(C_INT)",
                                                     "i_var": "SHT_rv",
                                                     "sh_type": "SH_TYPE_OTHER"
                                                 },
@@ -7039,7 +7039,7 @@
                                                     "f_var": "SHT_rv",
                                                     "i_result_clause": "\fresult(SHT_rv)",
                                                     "i_subprogram": "function",
-                                                    "i_type": "procedure(get_int)",
+                                                    "i_type": "integer(C_INT)",
                                                     "i_var": "SHT_rv",
                                                     "sh_type": "SH_TYPE_OTHER"
                                                 },
@@ -7175,7 +7175,7 @@
                                                     "f_var": "SHT_rv",
                                                     "i_result_clause": "\fresult(SHT_rv)",
                                                     "i_subprogram": "function",
-                                                    "i_type": "procedure(get_int)",
+                                                    "i_type": "integer(C_INT)",
                                                     "i_var": "SHT_rv",
                                                     "sh_type": "SH_TYPE_OTHER"
                                                 },

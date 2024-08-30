@@ -80,6 +80,16 @@ class FillFormat(object):
                 meta = statements.fetch_typedef_bind(node, "f").meta
                 fptr = meta["fptr"]
                 self.fmt_function_pointer("f", fptr)
+
+                # Get the function's type. Not the typedef's type
+                # which will be "procedure(name)".
+                # i_type will be used in an abstract interface.
+                declarator = fptr.ast.declarator
+                subprogram = declarator.get_subprogram()
+                if subprogram == "function":
+                    r_bind = statements.get_func_bind(fptr, "f")
+                    ntypemap = declarator.typemap
+                    r_bind.fmtdict.i_type = ntypemap.i_type or ntypemap.f_type
             
     def fmt_functions(self, cls, functions):
         for node in functions:
