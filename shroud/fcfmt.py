@@ -466,8 +466,6 @@ class FillFormat(object):
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         
-        attrs = declarator.attrs
-        
         if meta["dim_ast"]:
             if cls is not None:
                 parent = cls
@@ -522,8 +520,8 @@ class FillFormat(object):
                     fmt.c_temp_extents_use = fmt.c_var_extents
                     fmt.c_temp_lower_use = fmt.c_var_lower
 
-        if "len" in attrs:
-            fmt.c_char_len = attrs["len"];
+        if meta["len"]:
+            fmt.c_char_len = meta["len"]
                 
     def set_fmt_fields_iface(self, fcn, ast, bind, rootname,
                              ntypemap, subprogram=None):
