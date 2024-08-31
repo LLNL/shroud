@@ -97,20 +97,20 @@ class Typemap(object):
         # None implies {c_var}  i.e. no conversion
         ("ci_type", None),   # C interface type
 
+        ("i_type", None),  # Type for C interface    -- integer(C_INT)
         ("i_kind", None),  # Fortran kind            -- C_INT
-        ("i_type", None),  # Type for C interface    -- int
-        ("i_module", None), # Fortran modules needed for interface  (dictionary)
         ("i_module_name", None), # Name of module which contains i_type
+        ("i_module", None), # Fortran modules needed for interface  (dictionary)
         
-        ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
-        ("f_to_c", None),  # Expression to convert from Fortran to C
         ("f_module_name", None), # Name of module which contains f_type
                                  # and f_derived_type and f_capsule_data_type
+        ("f_module", None),  # Fortran modules needed for type  (dictionary)
+        ("f_class", None),  # Used with type-bound procedures
+        ("f_to_c", None),  # Expression to convert from Fortran to C
         ("f_derived_type", None),  # Fortran derived type name
         ("f_capsule_data_type", None),  # Fortran derived type to match C struct
-        ("f_module", None),  # Fortran modules needed for type  (dictionary)
         ("f_cast", "{f_var}"),  # Expression to convert to type
                                 # e.g. intrinsics such as INT and REAL.
         ("impl_header", []), # implementation header
@@ -828,10 +828,10 @@ def default_typemap():
             f_kind="",
             f_module_name="",
 
-            i_kind="C_BOOL",
-            i_module=dict(iso_c_binding=["C_BOOL"]),
-            i_module_name="iso_c_binding",
             i_type="logical(C_BOOL)",
+            i_kind="C_BOOL",
+            i_module_name="iso_c_binding",
+            i_module=dict(iso_c_binding=["C_BOOL"]),
             
             # XXX PY_format='p',  # Python 3.3 or greater
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
@@ -858,10 +858,10 @@ def default_typemap():
             f_kind="",
             f_module_name="",
 
-            i_kind="C_CHAR",
             i_type="character(kind=C_CHAR)",
-            i_module=dict(iso_c_binding=["C_CHAR"]),
+            i_kind="C_CHAR",
             i_module_name="iso_c_binding",
+            i_module=dict(iso_c_binding=["C_CHAR"]),
 
             PY_format="s",
             PY_ctor="PyString_FromString({ctor_expr})",
@@ -884,10 +884,10 @@ def default_typemap():
             f_kind="",
             f_module_name="",
 
-            i_kind="C_CHAR",
             i_type="character(kind=C_CHAR)",
-            i_module=dict(iso_c_binding=["C_CHAR"]),
+            i_kind="C_CHAR",
             i_module_name="iso_c_binding",
+            i_module=dict(iso_c_binding=["C_CHAR"]),
             
             PY_format="s",
             PY_ctor="PyString_FromStringAndSize({ctor_expr})",

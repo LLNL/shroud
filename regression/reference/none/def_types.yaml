@@ -61,12 +61,12 @@ typemap:
       c_type: bool
       c_header:
       - <stdbool.h>
-      i_kind: C_BOOL
       i_type: logical(C_BOOL)
+      i_kind: C_BOOL
+      i_module_name: iso_c_binding
       i_module:
         iso_c_binding:
         - C_BOOL
-      i_module_name: iso_c_binding
       f_type: logical
       f_cast: "{f_var}"
       PY_format: O
@@ -86,12 +86,12 @@ typemap:
       idtor: 0
       cxx_type: char
       c_type: char
-      i_kind: C_CHAR
       i_type: character(kind=C_CHAR)
+      i_kind: C_CHAR
+      i_module_name: iso_c_binding
       i_module:
         iso_c_binding:
         - C_CHAR
-      i_module_name: iso_c_binding
       f_type: character(len=*)
       f_cast: "{f_var}"
       PY_format: s
@@ -459,12 +459,12 @@ typemap:
       cxx_type: std::string
       cxx_to_c: "{cxx_var}{cxx_member}c_str()"
       c_type: char
-      i_kind: C_CHAR
       i_type: character(kind=C_CHAR)
+      i_kind: C_CHAR
+      i_module_name: iso_c_binding
       i_module:
         iso_c_binding:
         - C_CHAR
-      i_module_name: iso_c_binding
       f_type: character(len=*)
       f_cast: "{f_var}"
       impl_header:

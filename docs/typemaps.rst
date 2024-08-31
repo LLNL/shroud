@@ -223,28 +223,11 @@ A C ``int`` is represented as:
 Fortran
 -------
 
-
-f_cast
+f_type
 ^^^^^^
 
-Expression to convert Fortran type to C type.
-This is used when creating a Fortran generic functions which
-accept several type but call a single C function which expects
-a specific type.
-For example, type ``int`` is defined as ``int({f_var}, C_INT)``.
-This expression converts *f_var* to a ``integer(C_INT)``.
-Defaults to *{f_var}*  i.e. no conversion.
-
-..  See tutorial function9 for example.  f_cast is only used if the types are different.
-
-
-f_derived_type
-^^^^^^^^^^^^^^
-
-Fortran derived type name.
-Defaults to *None* which will use the C++ class name
-for the Fortran derived type name.
-
+Name of type in Fortran.
+For example, ``integer(C_INT)``.
 
 f_kind
 ^^^^^^
@@ -268,11 +251,25 @@ Defaults to *None*.:
        iso_c_binding:
        - C_INT
 
-f_type
+f_derived_type
+^^^^^^^^^^^^^^
+
+Fortran derived type name.
+Defaults to *None* which will use the C++ class name
+for the Fortran derived type name.
+
+f_cast
 ^^^^^^
 
-Name of type in Fortran.  ( ``integer(C_INT)`` )
-Defaults to *None*.
+Expression to convert Fortran type to C type.
+This is used when creating a Fortran generic functions which
+accept several type but call a single C function which expects
+a specific type.
+For example, type ``int`` is defined as ``int({f_var}, C_INT)``.
+This expression converts *f_var* to a ``integer(C_INT)``.
+Defaults to *{f_var}*  i.e. no conversion.
+
+..  See tutorial function9 for example.  f_cast is only used if the types are different.
 
 f_to_c
 ^^^^^^
@@ -343,6 +340,28 @@ If unset, then *cxx_to_c* is used.
 Interface
 ---------
 
+i_type
+^^^^^^
+
+Type declaration for ``bind(C)`` interface.
+For example, ``integer(C_INT)``.
+
+.. Defaults to *None* which will then use *f_type*.
+
+
+i_module_name
+^^^^^^^^^^^^^
+
+Name of module required for interface type.
+For example, ``iso_c_binding``.
+
+
+i_kind
+^^^^^^
+
+Kind parameter required for interface type.
+For example, ``C_INT``.
+
 i_module
 ^^^^^^^^
 
@@ -351,27 +370,23 @@ A dictionary keyed on the module name with the value being a list of symbols.
 Similar to **f_module**.
 Defaults to *None*.
 
-In this example, the symbol indextype is created by a typedef which
-creates a symbol in Fortran. This symbol, ``indextype``, must be
-imported into the interface.
+Examples
+--------
 
-.. code-block:: c
-
-   typedef int indextype;
+Fortran native types are used for ``LOGICAL`` and ``CHARACTER``.
+So *f_kind* and *f_module_name* are not defined.
+But for the interface, *i_kind* and *i_module_name* are defined.
 
 .. code-block:: yaml
 
-    indextype:
-       --import--:
-       - indextype
+    bool:
+       f_type: logical
+       f_kind: ""
+       f_module_name: ""
 
-
-i_type
-^^^^^^
-
-Type declaration for ``bind(C)`` interface.
-Defaults to *None* which will then use *f_type*.
-
+       i_type: logical(C_BOOL)
+       i_kind: C_BOOL
+       i_module_name: iso_c_binding
 
 
 Statements
