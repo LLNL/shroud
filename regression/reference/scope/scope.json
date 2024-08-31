@@ -37,6 +37,9 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {}
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
@@ -75,6 +78,9 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {}
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -963,6 +969,9 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {}
+                                    },
                                     "share": {}
                                 },
                                 "zz_fmtdict": {
@@ -1001,6 +1010,9 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {}
+                                    },
                                     "share": {
                                         "meta": {
                                             "dim_ast": [
@@ -1583,6 +1595,9 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {}
+                                    },
                                     "share": {}
                                 },
                                 "zz_fmtdict": {
@@ -1621,6 +1636,9 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {}
+                                    },
                                     "share": {
                                         "meta": {
                                             "dim_ast": [

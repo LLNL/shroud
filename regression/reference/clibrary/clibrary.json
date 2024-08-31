@@ -35,6 +35,9 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {}
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {

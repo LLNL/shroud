@@ -63,6 +63,11 @@ class FillFormat(object):
         cursor.pop_phase("FillFormat typedef")
 
         for cls in node.classes:
+            if cls.wrap_as == "struct":
+                cursor.push_phase("FillFormat class struct")
+                self.wrap_struct(cls)
+                cursor.pop_phase("FillFormat class struct")
+                
             cursor.push_phase("FillFormat class function")
             self.fmt_functions(cls, cls.functions)
             cursor.pop_phase("FillFormat class function")
@@ -73,6 +78,13 @@ class FillFormat(object):
 
         for ns in node.namespaces:
             self.fmt_namespace(ns)
+
+    def wrap_struct(self, node):
+        if not node.wrap.fortran:
+            return
+        for var in node.variables:
+            bind = statements.fetch_var_bind(var, "f")
+            fmt = statements.set_bind_fmtdict(bind, node.fmtdict)
 
     def fmt_typedefs(self, node):
         if node.wrap.fortran:
@@ -94,6 +106,7 @@ class FillFormat(object):
                     # XXX - To be changed to i_module, i_kind
                     fmt.i_module_name = ntypemap.f_module_name
                     fmt.i_kind = ntypemap.f_kind
+
     def fmt_functions(self, cls, functions):
         for node in functions:
             if node.wrap.c:

@@ -100,6 +100,9 @@ def fetch_typedef_bind(node, wlang):
     return bindarg
 
 def fetch_name_bind(bind, wlang, name):
+    """
+    bind - dictionary index by wlang
+    """
     bind = bind.setdefault(wlang, {})
     bindarg = bind.setdefault(name, BindArg())
     if bindarg.meta is None:
