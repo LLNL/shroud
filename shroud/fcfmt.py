@@ -89,8 +89,11 @@ class FillFormat(object):
                 if subprogram == "function":
                     r_bind = statements.get_func_bind(fptr, "f")
                     ntypemap = declarator.typemap
-                    r_bind.fmtdict.i_type = ntypemap.i_type or ntypemap.f_type
-            
+                    fmt = r_bind.fmtdict
+                    fmt.i_type = ntypemap.i_type or ntypemap.f_type
+                    # XXX - To be changed to i_module, i_kind
+                    fmt.i_module_name = ntypemap.f_module_name
+                    fmt.i_kind = ntypemap.f_kind
     def fmt_functions(self, cls, functions):
         for node in functions:
             if node.wrap.c:
