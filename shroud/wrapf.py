@@ -1506,6 +1506,7 @@ rv = .false.
                     implied, node, f_arg)
                 arg_stmt = util.Scope(statements.FStmts)
                 if intermediate:
+                    # Create a local variable of the interface type.
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
                     arg_stmt.f_module = {"{i_module_name}": ["{i_kind}"]}
                     arg_stmt.f_arg_decl = ["{i_type} :: {fc_var}"]

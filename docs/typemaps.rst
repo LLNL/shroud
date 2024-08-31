@@ -156,18 +156,6 @@ additional specialization of c_statements may be required::
                - code to copy CHARACTER to vector<string>
 
 
-
-c_return_code
-^^^^^^^^^^^^^
-
-None
-
-c_union
-^^^^^^^
-
-None
-# Union of C++ and C type (used with structs and complex)
-
 cxx_type
 ^^^^^^^^
 
@@ -235,54 +223,6 @@ A C ``int`` is represented as:
 Fortran
 -------
 
-ci_type
-^^^^^^^
-
-The type of the argument in the C bufferify wrapper.
-Usually this is the same as *c_type*.
-
-One case where it is different is with enumerations.  In Fortran, the
-option *F_enum_type" determines the type of ``enum`` values in
-Fortran. This defaults to an ``int`` which is then cast to the correct
-type using *c_to_cxx*.
-
-.. ci_to_cxx does not exist since it would always be the samea as c_to_cxx.
-
-cxx_to_ci
-^^^^^^^^^
-
-Convert the C++ type into a Fortran interface type.
-Used to convert function return values.
-If unset, then *cxx_to_c* is used.
-
-i_module
-^^^^^^^^
-
-Fortran modules needed for type in the interface.
-A dictionary keyed on the module name with the value being a list of symbols.
-Similar to **f_module**.
-Defaults to *None*.
-
-In this example, the symbol indextype is created by a typedef which
-creates a symbol in Fortran. This symbol, ``indextype``, must be
-imported into the interface.
-
-.. code-block:: c
-
-   typedef int indextype;
-
-.. code-block:: yaml
-
-    indextype:
-       --import--:
-       - indextype
-
-
-i_type
-^^^^^^
-
-Type declaration for ``bind(C)`` interface.
-Defaults to *None* which will then use *f_type*.
 
 f_cast
 ^^^^^^
@@ -379,6 +319,60 @@ A ``struct`` defined in another YAML file.
 .. XXX - explain about generated type file.
    
 Also used to extract the *F_derived_member* before passing to C.
+
+ci_type
+^^^^^^^
+
+The type of the argument in the C bufferify wrapper.
+Usually this is the same as *c_type*.
+
+One case where it is different is with enumerations.  In Fortran, the
+option *F_enum_type" determines the type of ``enum`` values in
+Fortran. This defaults to an ``int`` which is then cast to the correct
+type using *c_to_cxx*.
+
+.. ci_to_cxx does not exist since it would always be the samea as c_to_cxx.
+
+cxx_to_ci
+^^^^^^^^^
+
+Convert the C++ type into a Fortran interface type.
+Used to convert function return values.
+If unset, then *cxx_to_c* is used.
+
+Interface
+---------
+
+i_module
+^^^^^^^^
+
+Fortran modules needed for type in the interface.
+A dictionary keyed on the module name with the value being a list of symbols.
+Similar to **f_module**.
+Defaults to *None*.
+
+In this example, the symbol indextype is created by a typedef which
+creates a symbol in Fortran. This symbol, ``indextype``, must be
+imported into the interface.
+
+.. code-block:: c
+
+   typedef int indextype;
+
+.. code-block:: yaml
+
+    indextype:
+       --import--:
+       - indextype
+
+
+i_type
+^^^^^^
+
+Type declaration for ``bind(C)`` interface.
+Defaults to *None* which will then use *f_type*.
+
+
 
 Statements
 ----------

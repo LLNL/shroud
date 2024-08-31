@@ -96,7 +96,6 @@ class Typemap(object):
         ("c_to_cxx", None),  # Expression to convert from C to C++
         # None implies {c_var}  i.e. no conversion
         ("ci_type", None),   # C interface type
-        ("c_return_code", None),
 
         ("i_kind", None),  # Fortran kind            -- C_INT
         ("i_type", None),  # Type for C interface    -- int
