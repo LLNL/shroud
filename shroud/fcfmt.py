@@ -697,6 +697,9 @@ class FillFormat(object):
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
+        elif f_ast.typemap.sgroup in ["char", "string"]:
+            # A string becomes an array of CHARACTER.
+            fmt.i_dimension = "(*)"
 
         if "len" in f_attrs:
             fmt.f_char_len = "len=%s" % f_attrs["len"];

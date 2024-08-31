@@ -2562,7 +2562,7 @@
             "{cxx_var}"
         ],
         "i_arg_decl": [
-            "{i_type}{f_intent_attr} :: {i_var}(*)"
+            "{i_type}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_arg_names": [
             "{i_var}"

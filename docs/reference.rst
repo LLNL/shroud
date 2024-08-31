@@ -1542,6 +1542,12 @@ f_value_attr
     ``{f_type}{f_value_attr} ::``.
     If *value* is *False*, the format field will be blank.
 
+i_dimension
+   Dimension of interface argument.
+
+   ``char *`` and ``std::string`` become an array of ``CHAR`` with a
+   dimension of ``(*)``.
+
 i_kind
 
 i_module_name
