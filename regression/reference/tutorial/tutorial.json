@@ -1764,8 +1764,6 @@
                                 "cxx_var": "arg2",
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
-                                "f_kind": "C_BOOL",
-                                "f_module_name": "iso_c_binding",
                                 "f_type": "logical",
                                 "f_value_attr": ", value",
                                 "f_var": "arg2",

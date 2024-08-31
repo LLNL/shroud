@@ -1164,7 +1164,6 @@ contains
     ! start class1_equivalent
     function class1_equivalent(obj, obj2) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
         class(class1) :: obj
         type(class1), intent(IN) :: obj2
         logical :: SHT_rv
@@ -1344,7 +1343,6 @@ contains
     ! start class1_get_m_bool
     function class1_get_m_bool(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
         class(class1) :: obj
         logical :: SHT_rv
         ! splicer begin class.Class1.method.get_m_bool

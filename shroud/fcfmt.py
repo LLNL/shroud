@@ -577,12 +577,19 @@ class FillFormat(object):
             if i_type:
                 fmt.i_type = i_type
         fmt.sh_type = ntypemap.sh_type
+        if ntypemap.i_module_name:
+            fmt.i_module_name = ntypemap.i_module_name
+            if ntypemap.i_kind:
+                fmt.i_kind = ntypemap.i_kind
+        elif ntypemap.f_module_name is not None:
+            fmt.i_module_name = ntypemap.f_module_name
+            if ntypemap.f_kind:
+                fmt.i_kind = ntypemap.f_kind
+
         if ntypemap.f_module_name:
             fmt.f_module_name = ntypemap.f_module_name
-            fmt.i_module_name = ntypemap.f_module_name
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind
-            fmt.i_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         if ntypemap.f_derived_type:

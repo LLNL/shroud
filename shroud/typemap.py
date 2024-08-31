@@ -826,9 +826,8 @@ def default_typemap():
             cxx_type="bool",
             c_header="<stdbool.h>",
             f_type="logical",
-            f_kind="C_BOOL",
-            f_module_name="iso_c_binding",
-            f_module=dict(iso_c_binding=["C_BOOL"]),
+            f_kind="",
+            f_module_name="",
 
             i_kind="C_BOOL",
             i_module=dict(iso_c_binding=["C_BOOL"]),

@@ -1507,6 +1507,7 @@ rv = .false.
                 arg_stmt = util.Scope(statements.FStmts)
                 if intermediate:
                     fmt_arg.fc_var = "SH_" + fmt_arg.f_var
+                    arg_stmt.f_module = {"{i_module_name}": ["{i_kind}"]}
                     arg_stmt.f_arg_decl = ["{i_type} :: {fc_var}"]
                     arg_stmt.f_pre_call = [
                         "{fc_var} = {pre_call_intent}"

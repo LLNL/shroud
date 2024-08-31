@@ -731,7 +731,7 @@ contains
     ! Statement: f_in_void*
     function ArrayWrapper_checkPtr(obj, array) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_PTR
+        use iso_c_binding, only : C_PTR
         class(ArrayWrapper) :: obj
         type(C_PTR), intent(IN) :: array
         logical :: SHT_rv

@@ -1644,7 +1644,7 @@ contains
     ! Statement: f_in_string&_buf
     function is_name_valid(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.function.is_name_valid
@@ -1657,7 +1657,6 @@ contains
     ! Statement: f_function_bool
     function is_initialized() &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
         logical :: SHT_rv
         ! splicer begin namespace.example::nested.function.is_initialized
         SHT_rv = c_is_initialized()

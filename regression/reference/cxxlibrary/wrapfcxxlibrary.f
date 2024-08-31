@@ -656,7 +656,6 @@ contains
     ! Statement: f_function_bool
     function default_ptr_is_null_0() &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL
         logical :: SHT_rv
         ! splicer begin function.default_ptr_is_null_0
         SHT_rv = c_default_ptr_is_null_0()
@@ -671,7 +670,7 @@ contains
     ! Statement: f_in_native*
     function default_ptr_is_null_1(data) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_DOUBLE
+        use iso_c_binding, only : C_DOUBLE
         real(C_DOUBLE), intent(IN) :: data(:)
         logical :: SHT_rv
         ! splicer begin function.default_ptr_is_null_1

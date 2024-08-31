@@ -68,11 +68,6 @@ typemap:
         - C_BOOL
       i_module_name: iso_c_binding
       f_type: logical
-      f_kind: C_BOOL
-      f_module_name: iso_c_binding
-      f_module:
-        iso_c_binding:
-        - C_BOOL
       f_cast: "{f_var}"
       PY_format: O
       PY_PyTypeObject: PyBool_Type
