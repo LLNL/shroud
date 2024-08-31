@@ -194,7 +194,7 @@ class FillFormat(object):
                 fmt_arg.i_var = arg_name
 
                 # XXX - fill_interface_arg
-                self.set_fmt_fields_iface(node, arg, bind_arg, arg_name, arg.typemap)
+                self.set_fmt_fields_iface(arg, bind_arg, arg.typemap)
                 self.set_fmt_fields_dimension(None, node, arg, bind_arg)
 
                 
@@ -319,9 +319,7 @@ class FillFormat(object):
         if subprogram == "function":
             fmt_result.i_var = fmt_result.i_result_var
             fmt_result.f_var = fmt_result.i_result_var
-            self.set_fmt_fields_iface(node, ast, bind,
-                                      fmt_result.i_result_var, result_typemap,
-                                      "function")
+            self.set_fmt_fields_iface(ast, bind, result_typemap, "function")
             self.set_fmt_fields_dimension(cls, node, ast, bind)
 
         if result_stmt.i_result_var == "as-subroutine":
@@ -354,7 +352,7 @@ class FillFormat(object):
 
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
-        self.set_fmt_fields_iface(node, arg, bind, arg_name, arg_typemap)
+        self.set_fmt_fields_iface(arg, bind, arg_typemap)
         self.set_fmt_fields_dimension(cls, node, arg, bind)
         self.name_temp_vars(arg_name, bind, "c", "i")
         statements.apply_fmtdict_from_stmts(bind)
@@ -536,18 +534,15 @@ class FillFormat(object):
         if meta["len"]:
             fmt.c_char_len = meta["len"]
                 
-    def set_fmt_fields_iface(self, fcn, ast, bind, rootname,
-                             ntypemap, subprogram=None):
+    def set_fmt_fields_iface(self, ast, bind, ntypemap, subprogram=None):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
 
         Parameters
         ----------
-        fcn : ast.FunctionNode
         ast : declast.Declaration
         bind : statements.BindArg
-        rootname : str
         ntypemap : typemap.Typemap
             The typemap has already resolved template arguments.
             For example, std::vector<int>.  ntypemap will be 'int'.
@@ -641,8 +636,7 @@ class FillFormat(object):
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
             statements.set_template_fields(c_ast, fmt)
         if subprogram != "subroutine":
-            self.set_fmt_fields_iface(fcn, c_ast, bind, rootname,
-                                      ntypemap, subprogram)
+            self.set_fmt_fields_iface(c_ast, bind, ntypemap, subprogram)
             if "pass" in c_attrs:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
                 fmt.f_type = ntypemap.f_class
