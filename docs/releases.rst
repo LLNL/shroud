@@ -148,6 +148,8 @@ Old Name                      New Name
 f_c_module                    i_module
 f_c_module_line               i_module
 f_c_type                      i_type
+none                          i_kind
+none                          i_module_name
 ===========================   ===========================
 
 * Renamed format fields

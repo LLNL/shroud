@@ -37,12 +37,12 @@ typemap:
       c_header:
       - mpi.h
       c_to_cxx: MPI_Comm_f2c({c_var})
-      f_type: integer
-      f_kind: C_INT
       i_type: integer(C_INT)
       i_module:
         iso_c_binding:
         - C_INT
+      f_type: integer
+      f_kind: C_INT
       f_module_name: iso_c_binding
       f_cast: "{f_var}"
       PY_format: O
@@ -61,9 +61,9 @@ typemap:
       c_type: bool
       c_header:
       - <stdbool.h>
+      i_type: logical(C_BOOL)
       f_type: logical
       f_kind: C_BOOL
-      i_type: logical(C_BOOL)
       f_module_name: iso_c_binding
       f_module:
         iso_c_binding:
@@ -86,11 +86,11 @@ typemap:
       idtor: 0
       cxx_type: char
       c_type: char
-      f_type: character(len=*)
       i_type: character(kind=C_CHAR)
       i_module:
         iso_c_binding:
         - C_CHAR
+      f_type: character(len=*)
       f_cast: "{f_var}"
       PY_format: s
       PY_ctor: PyString_FromString({ctor_expr})
@@ -457,11 +457,11 @@ typemap:
       cxx_type: std::string
       cxx_to_c: "{cxx_var}{cxx_member}c_str()"
       c_type: char
-      f_type: character(len=*)
       i_type: character(kind=C_CHAR)
       i_module:
         iso_c_binding:
         - C_CHAR
+      f_type: character(len=*)
       f_cast: "{f_var}"
       impl_header:
       - <string>

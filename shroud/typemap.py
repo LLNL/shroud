@@ -97,12 +97,16 @@ class Typemap(object):
         # None implies {c_var}  i.e. no conversion
         ("ci_type", None),   # C interface type
         ("c_return_code", None),
+
+        ("i_kind", None),  # Fortran kind            -- C_INT
+        ("i_type", None),  # Type for C interface    -- int
+        ("i_module", None), # Fortran modules needed for interface  (dictionary)
+        ("i_module_name", None), # Name of module which contains i_type
+        
         ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_to_c", None),  # Expression to convert from Fortran to C
-        ("i_type", None),  # Type for C interface    -- int
-        ("i_module", None), # Fortran modules needed for interface  (dictionary)
         ("f_module_name", None), # Name of module which contains f_type
                                  # and f_derived_type and f_capsule_data_type
         ("f_derived_type", None),  # Fortran derived type name
