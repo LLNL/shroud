@@ -842,7 +842,7 @@ contains
     !<
     function return_bool_and_others(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_INT
         integer(C_INT), intent(OUT) :: flag
         logical :: SHT_rv
         ! splicer begin function.return_bool_and_others

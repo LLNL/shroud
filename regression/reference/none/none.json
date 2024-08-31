@@ -314,15 +314,17 @@
             "c_type": "bool",
             "cfi_type": "CFI_type_Bool",
             "cxx_type": "bool",
-            "f_kind": "C_BOOL",
-            "f_module": {
+            "f_kind": "",
+            "f_module_name": "",
+            "f_type": "logical",
+            "flat_name": "bool",
+            "i_kind": "C_BOOL",
+            "i_module": {
                 "iso_c_binding": [
                     "C_BOOL"
                 ]
             },
-            "f_module_name": "iso_c_binding",
-            "f_type": "logical",
-            "flat_name": "bool",
+            "i_module_name": "iso_c_binding",
             "i_type": "logical(C_BOOL)",
             "sgroup": "bool",
             "sh_type": "SH_TYPE_BOOL"
@@ -337,13 +339,17 @@
             "base": "string",
             "c_type": "char",
             "cxx_type": "char",
+            "f_kind": "",
+            "f_module_name": "",
             "f_type": "character(len=*)",
             "flat_name": "char",
+            "i_kind": "C_CHAR",
             "i_module": {
                 "iso_c_binding": [
                     "C_CHAR"
                 ]
             },
+            "i_module_name": "iso_c_binding",
             "i_type": "character(kind=C_CHAR)",
             "sgroup": "char"
         },
@@ -732,13 +738,17 @@
             "c_type": "char",
             "cxx_to_c": "{cxx_var}{cxx_member}c_str()",
             "cxx_type": "std::string",
+            "f_kind": "",
+            "f_module_name": "",
             "f_type": "character(len=*)",
             "flat_name": "std_string",
+            "i_kind": "C_CHAR",
             "i_module": {
                 "iso_c_binding": [
                     "C_CHAR"
                 ]
             },
+            "i_module_name": "iso_c_binding",
             "i_type": "character(kind=C_CHAR)",
             "impl_header": [
                 "<string>"

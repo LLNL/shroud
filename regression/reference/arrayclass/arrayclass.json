@@ -4113,8 +4113,6 @@
                                         "f_call_function": "c_ArrayWrapper_checkPtr",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
-                                        "f_kind": "C_BOOL",
-                                        "f_module_name": "iso_c_binding",
                                         "f_result_clause": "\fresult(SHT_rv)",
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",

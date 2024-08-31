@@ -1995,10 +1995,10 @@ c_in_string:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR), intent(IN) :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - char *{c_var}
   c_arg_call:
@@ -9141,6 +9141,8 @@ f_in_bool:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   i_arg_names:
@@ -10673,6 +10675,8 @@ f_inout_bool*:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   i_arg_names:
@@ -12098,6 +12102,9 @@ f_mixin_local-logical-var:
   - 'logical(C_BOOL) :: {f_var_cxx}'
   f_arg_call:
   - '{f_var_cxx}'
+  f_module:
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   owner: library
@@ -12427,6 +12434,8 @@ f_none_bool:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   i_arg_names:
@@ -12457,6 +12466,8 @@ f_none_bool*:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   i_arg_names:
@@ -12596,6 +12607,8 @@ f_out_bool*:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   i_arg_names:
@@ -14215,6 +14228,8 @@ f_setter_bool:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+    iso_c_binding:
+    - C_BOOL
   f_temps:
   - cxx
   i_arg_names:

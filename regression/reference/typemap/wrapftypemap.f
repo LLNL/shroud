@@ -104,7 +104,7 @@ contains
 
     function pass_index_32(i1, i2) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT32_T
+        use iso_c_binding, only : C_INT32_T
         integer(C_INT32_T), value, intent(IN) :: i1
         integer(INDEXTYPE), intent(OUT) :: i2
         logical :: SHT_rv
@@ -115,7 +115,7 @@ contains
 
     function pass_index_64(i1, i2) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT64_T
+        use iso_c_binding, only : C_INT64_T
         integer(C_INT64_T), value, intent(IN) :: i1
         integer(INDEXTYPE), intent(OUT) :: i2
         logical :: SHT_rv

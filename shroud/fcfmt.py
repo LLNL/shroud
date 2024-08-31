@@ -466,8 +466,6 @@ class FillFormat(object):
                 # Argument to helper ShroudStrAlloc via attr[blanknull].
                 fmt.c_blanknull = "1"
         
-        attrs = declarator.attrs
-        
         if meta["dim_ast"]:
             if cls is not None:
                 parent = cls
@@ -522,8 +520,8 @@ class FillFormat(object):
                     fmt.c_temp_extents_use = fmt.c_var_extents
                     fmt.c_temp_lower_use = fmt.c_var_lower
 
-        if "len" in attrs:
-            fmt.c_char_len = attrs["len"];
+        if meta["len"]:
+            fmt.c_char_len = meta["len"]
                 
     def set_fmt_fields_iface(self, fcn, ast, bind, rootname,
                              ntypemap, subprogram=None):
@@ -577,12 +575,19 @@ class FillFormat(object):
             if i_type:
                 fmt.i_type = i_type
         fmt.sh_type = ntypemap.sh_type
+        if ntypemap.i_module_name:
+            fmt.i_module_name = ntypemap.i_module_name
+            if ntypemap.i_kind:
+                fmt.i_kind = ntypemap.i_kind
+        elif ntypemap.f_module_name is not None:
+            fmt.i_module_name = ntypemap.f_module_name
+            if ntypemap.f_kind:
+                fmt.i_kind = ntypemap.f_kind
+
         if ntypemap.f_module_name:
             fmt.f_module_name = ntypemap.f_module_name
-            fmt.i_module_name = ntypemap.f_module_name
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind
-            fmt.i_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         if ntypemap.f_derived_type:
@@ -690,6 +695,9 @@ class FillFormat(object):
                          for r in range(1, rank+1)]) + ")"
                     fmt.f_array_shape = wformat(
                         ",\t {f_var_cdesc}%shape(1:{rank})", fmt)
+        elif f_ast.typemap.sgroup in ["char", "string"]:
+            # A string becomes an array of CHARACTER.
+            fmt.i_dimension = "(*)"
 
         if "len" in f_attrs:
             fmt.f_char_len = "len=%s" % f_attrs["len"];

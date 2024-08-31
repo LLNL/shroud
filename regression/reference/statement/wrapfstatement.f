@@ -118,7 +118,7 @@ contains
     ! Statement: f_in_string&_buf
     function name_is_valid(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT
+        use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         logical :: SHT_rv
         ! splicer begin function.name_is_valid

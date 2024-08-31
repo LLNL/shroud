@@ -1506,6 +1506,11 @@
         "f_temps": [
             "cxx"
         ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_BOOL"
+            ]
+        },
         "f_declare": [
             "logical(C_BOOL) :: {f_var_cxx}"
         ],
@@ -2550,23 +2555,15 @@
             "Pass directly as argument which will construct the std::string.",
             "This would work for Fortran if it explicited added C_NULL_CHAR."
         ],
+        "mixin": [
+            "f_mixin_declare-interface-arg"
+        ],
         "c_arg_decl": [
             "char *{c_var}"
         ],
         "c_arg_call": [
             "{cxx_var}"
-        ],
-        "i_arg_decl": [
-            "character(kind=C_CHAR), intent(IN) :: {i_var}(*)"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_CHAR"
-            ]
-        }
+        ]
     },
     {
         "alias": [
