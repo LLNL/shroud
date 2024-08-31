@@ -856,11 +856,14 @@ def default_typemap():
             cxx_type="char",
             c_type="char",  # XXX - char *
             f_type="character(len=*)",
-# The Fortran wrapper does not use C_CHAR
-#            f_kind="C_CHAR",
-#            f_module_name="iso_c_binding",
+            f_kind="",
+            f_module_name="",
+
+            i_kind="C_CHAR",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
+            i_module_name="iso_c_binding",
+
             PY_format="s",
             PY_ctor="PyString_FromString({ctor_expr})",
 #            PY_get="PyString_AsString({py_var})",
@@ -879,11 +882,14 @@ def default_typemap():
             c_type="char",  # XXX - char *
             impl_header=["<string>"],
             f_type="character(len=*)",
-# The Fortran wrapper does not use C_CHAR
-#            f_kind="C_CHAR",
-#            f_module_name="iso_c_binding",
+            f_kind="",
+            f_module_name="",
+
+            i_kind="C_CHAR",
             i_type="character(kind=C_CHAR)",
             i_module=dict(iso_c_binding=["C_CHAR"]),
+            i_module_name="iso_c_binding",
+            
             PY_format="s",
             PY_ctor="PyString_FromStringAndSize({ctor_expr})",
             PY_build_format="s#",
