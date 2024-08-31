@@ -151,6 +151,16 @@ contains
     type(C_PTR) :: set_ptr1
     set_ptr1 = C_LOC(counter)
   end function set_ptr1
+
+  ! Return C_PTR to counter
+  function set_double1(i1, i2) result(rvd) bind(C)
+    use iso_c_binding
+    use state
+    integer(C_INT), value :: i1, i2
+    real(C_DOUBLE) :: rvd
+    rvd = i1 + i2
+    dval = rvd
+  end function set_double1
 !----------
 
   function abscallback(darg, iarg) bind(C)
@@ -367,6 +377,10 @@ contains
     counter = 0
     call callback_ptr(set_ptr1)
     call assert_equals(100, counter, "callback_ptr")
+
+    dval = 0.0
+    call callback_double(set_double1)
+    call assert_equals(5.0d0, dval, "callback_double state")
     
   end subroutine test_callback4
 

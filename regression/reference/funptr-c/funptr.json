@@ -2868,7 +2868,428 @@
                 }
             },
             {
-                "<FUNCTION>": "abstract1  10 ****************************************",
+                "<FUNCTION>": "callback_double  10 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_double",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "get",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "name": "get",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "name": "i",
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_double(double (*get)(int i, int));",
+                "declgen": "void callback_double(double (*get)(int i, int))",
+                "doxygen": {
+                    "brief": "Return a scalar in the callback.",
+                    "description": "Make the function result a different type than the\naruguments to ensure the USE is created fully.\n"
+                },
+                "name": "callback_double",
+                "options": {
+                    "F_force_wrapper": true
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_double(\tget)",
+                                "C_call_list": "get",
+                                "C_name": "callback_double",
+                                "C_prototype": "double (*get)(\tint i,\t int)",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "get",
+                                "F_arguments": "get",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback_double",
+                                "i_arguments": "get",
+                                "i_name_function": "c_callback_double",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "get": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "get",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&get",
+                                "cxx_type": "double",
+                                "cxx_var": "get",
+                                "f_abstract_interface": "callback_double_get",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "get",
+                                "fc_var": "get",
+                                "i_kind": "C_DOUBLE",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "real(C_DOUBLE)",
+                                "i_var": "get",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_procedure",
+                                "typemap_name": "double"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "name": "i",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "decl": "double get(int i, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_DOUBLE",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "real(C_DOUBLE)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "real(C_DOUBLE)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                },
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "i": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "i",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "i",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "i": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_procedure"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "name": "i",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "decl": "double get(int i, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_DOUBLE",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "real(C_DOUBLE)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "real(C_DOUBLE)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                },
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "i": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "i",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "i",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "i": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_double",
+                    "F_name_api": "callback_double",
+                    "F_name_function": "callback_double",
+                    "F_name_generic": "callback_double",
+                    "F_name_impl": "callback_double",
+                    "function_name": "callback_double"
+                }
+            },
+            {
+                "<FUNCTION>": "abstract1  11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "abstract1",
@@ -3368,7 +3789,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_void_ptr  11 ****************************************",
+                "<FUNCTION>": "callback_void_ptr  12 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_void_ptr",
@@ -3691,7 +4112,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_all_types  12 ****************************************",
+                "<FUNCTION>": "callback_all_types  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_all_types",
@@ -5203,6 +5624,11 @@
             "wrap_header": [
                 "wrapfunptr.h"
             ]
+        },
+        "double(*)(int,int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
         },
         "get_int": {
             "base": "procedure",

@@ -1542,12 +1542,15 @@ f_value_attr
     ``{f_type}{f_value_attr} ::``.
     If *value* is *False*, the format field will be blank.
 
+i_kind
+
+i_module_name
+
 i_result_clause
     Added at the end of a function declaration to
     define the result variable.
 
 i_result_ptr
-
 
 i_result_var
     Use in the *i_result_clause* for functions as

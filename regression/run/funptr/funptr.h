@@ -35,6 +35,7 @@ int callback4(int *ilow, int nargs,
               int (*actor)(int *ilow, int nargs));
 
 void callback_ptr(int *(*get)(void));
+void callback_double(double (*get)(int i, int));
 
 int abstract1(int input, int (*get)(double, int));
 

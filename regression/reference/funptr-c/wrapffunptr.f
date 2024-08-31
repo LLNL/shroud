@@ -101,6 +101,24 @@ module funptr_mod
         end subroutine callback_all_types_all_types
 
         ! ----------------------------------------
+        ! Function:  double get
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  int i
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
+        function callback_double_get(i, arg1) &
+            result(SHT_rv) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            integer(C_INT), value :: i
+            integer(C_INT), value :: arg1
+            real(C_DOUBLE) :: SHT_rv
+        end function callback_double_get
+
+        ! ----------------------------------------
         ! Function:  int *get_ptr
         ! Statement: f_function_native*_pointer
         function callback_ptr_get_ptr() &
@@ -355,6 +373,19 @@ module funptr_mod
             implicit none
             procedure(callback_ptr_get_ptr) :: get_ptr
         end subroutine callback_ptr
+
+        ! ----------------------------------------
+        ! Function:  void callback_double
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  double (*get)(int i, int)
+        ! Statement: f_in_procedure
+        subroutine c_callback_double(get) &
+                bind(C, name="callback_double")
+            import :: callback_double_get
+            implicit none
+            procedure(callback_double_get) :: get
+        end subroutine c_callback_double
 
         ! ----------------------------------------
         ! Function:  int abstract1
@@ -646,6 +677,25 @@ contains
         ! splicer end function.callback_ptr
     end subroutine callback_ptr
 #endif
+
+    ! ----------------------------------------
+    ! Function:  void callback_double
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  double (*get)(int i, int)
+    ! Statement: f_in_procedure
+    !>
+    !! \brief Return a scalar in the callback.
+    !!
+    !! Make the function result a different type than the
+    !! aruguments to ensure the USE is created fully.
+    !<
+    subroutine callback_double(get)
+        procedure(callback_double_get) :: get
+        ! splicer begin function.callback_double
+        call c_callback_double(get)
+        ! splicer end function.callback_double
+    end subroutine callback_double
 
     ! ----------------------------------------
     ! Function:  int abstract1

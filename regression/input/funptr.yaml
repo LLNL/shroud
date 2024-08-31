@@ -94,6 +94,15 @@ declarations:
       No other arguments to test that a function result
       uses iso_c_binding C_PTR.
 
+- decl: void callback_double(double (*get)(int i, int));
+  doxygen:
+    brief: Return a scalar in the callback.
+    description: |
+      Make the function result a different type than the
+      aruguments to ensure the USE is created fully.
+  options:
+    F_force_wrapper: True
+
 #####
 
 - decl: typedef int (*get_int)(double, int);
