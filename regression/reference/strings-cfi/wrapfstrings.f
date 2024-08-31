@@ -153,7 +153,7 @@ module strings_mod
                 bind(C, name="STR_getCharPtr1")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_char_ptr1
     end interface
     ! end c_get_char_ptr1
@@ -181,7 +181,7 @@ module strings_mod
                 bind(C, name="STR_getCharPtr2")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_char_ptr2
     end interface
     ! end c_get_char_ptr2
@@ -209,7 +209,7 @@ module strings_mod
                 bind(C, name="STR_getCharPtr3")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_char_ptr3
     end interface
     ! end c_get_char_ptr3
@@ -236,7 +236,7 @@ module strings_mod
                 bind(C, name="STR_getCharPtr4")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function get_char_ptr4
     end interface
 
@@ -250,7 +250,7 @@ module strings_mod
                 bind(C, name="STR_getCharPtr5")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_char_ptr5
     end interface
 #endif
@@ -386,7 +386,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringRefPure")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_pure
     end interface
     ! end c_get_const_string_ref_pure
@@ -413,7 +413,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringRefLen")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_len
     end interface
 
@@ -437,7 +437,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringRefAsArg")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_as_arg
     end interface
 
@@ -461,7 +461,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringRefLenEmpty")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_len_empty
     end interface
 
@@ -485,7 +485,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringRefAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ref_alloc
     end interface
 
@@ -509,7 +509,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringPtrLen")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ptr_len
     end interface
 
@@ -533,7 +533,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringPtrAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ptr_alloc
     end interface
 
@@ -557,7 +557,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringPtrOwnsAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ptr_owns_alloc
     end interface
 
@@ -581,7 +581,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringPtrOwnsAllocPattern")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ptr_owns_alloc_pattern
     end interface
 
@@ -606,7 +606,7 @@ module strings_mod
                 bind(C, name="STR_getConstStringPtrPointer")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ptr_pointer
     end interface
 #endif

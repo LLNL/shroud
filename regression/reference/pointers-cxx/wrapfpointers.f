@@ -954,7 +954,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntPtrToScalar")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_to_scalar
     end interface
     ! end c_return_int_ptr_to_scalar
@@ -969,7 +969,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntPtrToScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_to_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_scalar_bufferify
@@ -984,7 +984,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntPtrToFixedArray")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_to_fixed_array
     end interface
     ! end c_return_int_ptr_to_fixed_array
@@ -1014,7 +1014,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntPtrToConstScalar")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_to_const_scalar
     end interface
     ! end c_return_int_ptr_to_const_scalar
@@ -1029,7 +1029,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntPtrToConstScalar_bufferify")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_to_const_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_const_scalar_bufferify
@@ -1044,7 +1044,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntPtrToFixedConstArray")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_ptr_to_fixed_const_array
     end interface
     ! end c_return_int_ptr_to_fixed_const_array
@@ -1074,7 +1074,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntScalar")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_scalar
     end interface
     ! end c_return_int_scalar
@@ -1104,7 +1104,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntRaw")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function return_int_raw
     end interface
     ! end return_int_raw
@@ -1123,7 +1123,7 @@ module pointers_mod
             use iso_c_binding, only : C_CHAR, C_PTR
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_raw_with_args
     end interface
     ! end c_return_int_raw_with_args
@@ -1138,7 +1138,7 @@ module pointers_mod
                 bind(C, name="POI_returnRawPtrToInt2d")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_raw_ptr_to_int2d
     end interface
     ! end c_return_raw_ptr_to_int2d
@@ -1153,7 +1153,7 @@ module pointers_mod
                 bind(C, name="POI_returnIntAllocToFixedArray")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_int_alloc_to_fixed_array
     end interface
     ! end c_return_int_alloc_to_fixed_array

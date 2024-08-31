@@ -114,6 +114,11 @@ void callback_ptr(int *(*get)(void))
     *addr = 100;
 }
 
+void callback_double(double (*get)(int i, int))
+{
+    get(2, 3);
+}
+
 //----------------------------------------------------------------------
 
 int abstract1(int input, int (*get)(double, int))

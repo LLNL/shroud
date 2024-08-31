@@ -147,12 +147,13 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  int
         ! Statement: f_none_native
-        function custom_funptr(XX0arg, XX1arg) bind(C)
+        function custom_funptr(XX0arg, XX1arg) &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value :: XX0arg
             integer(C_INT), value :: XX1arg
-            real(C_DOUBLE) :: custom_funptr
+            real(C_DOUBLE) :: SHT_rv
         end function custom_funptr
 
         ! ----------------------------------------
@@ -165,10 +166,11 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  double *get
         ! Statement: f_function_native*_pointer
-        function func_ptr2_get() bind(C)
+        function func_ptr2_get() &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) :: func_ptr2_get
+            type(C_PTR) :: SHT_rv
         end function func_ptr2_get
 
         ! ----------------------------------------
@@ -180,12 +182,13 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  int
         ! Statement: f_none_native
-        function func_ptr3_get(i, arg1) bind(C)
-            use iso_c_binding, only : C_INT
+        function func_ptr3_get(i, arg1) &
+            result(SHT_rv) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             integer(C_INT), value :: i
             integer(C_INT), value :: arg1
-            real(C_DOUBLE) :: func_ptr3_get
+            real(C_DOUBLE) :: SHT_rv
         end function func_ptr3_get
 
         ! ----------------------------------------
@@ -329,7 +332,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class1_get_name_error_check
 
         ! ----------------------------------------
@@ -355,7 +358,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class1_get_name_arg
 
         ! ----------------------------------------
@@ -487,7 +490,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name
 
         ! ----------------------------------------
@@ -514,7 +517,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name2
 
         ! ----------------------------------------
@@ -540,7 +543,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name3
 
         ! ----------------------------------------
@@ -566,7 +569,7 @@ module userlibrary_example_nested_mod
             import :: AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_ex_class2_get_name4
 
         ! ----------------------------------------

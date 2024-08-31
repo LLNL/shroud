@@ -56,41 +56,41 @@ Changes to YAML input
 
 c statements
 
-=============   =============
-Old Name        New Name
-=============   =============
-arg_call        c_arg_call
-pre_call        c_pre_call
-call            c_call
-post_call       c_post_call
-final           c_final
-ret             c_return
-temps           c_temps
-local           c_local
-f_arg_decl      i_arg_decl
-f_result_decl   i_result_decl
-f_result_var    i_result_var
-f_module        i_module
-f_import        i_import
-=============   =============
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+arg_call                      c_arg_call
+pre_call                      c_pre_call
+call                          c_call
+post_call                     c_post_call
+final                         c_final
+ret                           c_return
+temps                         c_temps
+local                         c_local
+f_arg_decl                    i_arg_decl
+f_result_decl                 i_result_decl
+f_result_var                  i_result_var
+f_module                      i_module
+f_import                      i_import
+===========================   ===========================
 
 f statements
 
-=============   =============
-Old Name        New Name
-=============   =============
-need_wrapper    f_need_wrapper
-arg_name        f_arg_name
-arg_decl        f_arg_decl
-arg_c_call      f_arg_call
-declare         f_declare
-pre_call        f_pre_call
-call            f_call
-post_call       f_post_call
-result          f_result
-temps           f_temps
-local           f_local
-=============   =============
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+need_wrapper                  f_need_wrapper
+arg_name                      f_arg_name
+arg_decl                      f_arg_decl
+arg_c_call                    f_arg_call
+declare                       f_declare
+pre_call                      f_pre_call
+call                          f_call
+post_call                     f_post_call
+result                        f_result_var
+temps                         f_temps
+local                         f_local
+===========================   ===========================
 
 .. from vectors.yaml
 
@@ -123,44 +123,72 @@ is now:
         c_return_type: long
         c_return:
         - return SHT_arg_cdesc->size;
+        i_result_var: num
       f:
         c_return_type: long
         c_return:
         - return SHT_arg_cdesc->size;
-        f_result: num
+        i_result_var: num
+        f_result_var: num
         f_module:
           iso_c_binding: ["C_LONG"]
         f_arg_decl:
-        -  "integer(C_LONG) :: {F_result}"
+        -  "integer(C_LONG) :: {f_result_var}"
         f_call:
-        -  "{F_result} = {F_C_call}({F_arg_c_call})"              
+        -  "{f_result_var} = {f_call_function}({F_arg_c_call})"              
 
 * Likewise, some fields were renamed for Typemaps.
 
-===============   =============
-Old Name          New Name
-===============   =============
-f_c_module        i_module
-f_c_module_line   i_module
-f_c_type          i_type
-===============   =============
+The ``f_c_`` prefix was changed to ``i_``. First, to have a consistent
+single character prefix. Next, to avoid finding ``f_c_`` when searching for ``c_``.
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+f_c_module                    i_module
+f_c_module_line               i_module
+f_c_type                      i_type
+none                          i_kind
+none                          i_module_name
+===========================   ===========================
 
 * Renamed format fields
 
-===============   =======================
-Old Name          New Name
-===============   =======================
-                  f_intent_attr
-f_type_module     typemap.f_module_name
-===============   =======================
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+                              f_intent_attr
+f_type_module                 typemap.f_module_name
+F_pure_clause                 f_pure_clause
+F_result_clause               f_result_clause
+F_result                      f_result_var
+F_result_ptr                  f_result_ptr
+F_C_arguments                 i_arguments
+F_C_call                      f_call_function
+F_C_name                      i_name_function
+F_C_subprogram                i_subprogram
+F_C_pure_clause               i_pure_clause
+F_C_result_clause             i_result_clause
+none                          i_kind
+none                          i_module_name
+none                          i_suffix
+===========================   ===========================
   
-* Added format field *f_c_suffix*. Used in format fields
-  *C_name_template* and *F_C_name_template* to allow Fortran wrapper
+* Renamed option fields
+
+===========================   ===========================
+Old Name                      New Name
+===========================   ===========================
+F_C_name_template             i_name_function_template
+===========================   ===========================
+  
+* Added format field *i_suffix*. Used in format fields
+  *C_name_template* and *i_name_file_template* to allow Fortran wrapper
   *to call a C function with additional mangling such as
   *C_cfi_suffix* and *C_bufferify_suffix*.  Previously this was
   *appended directly to format field *function_suffix*. If
-  *C_name_template* or F_C_name_template* are explicitly set in the
-  *YAML file then *f_c_suffix* should be included in the value.
+  *C_name_template* or *i_name_function_template* are explicitly set in the
+  *YAML file then *i_suffix* should be included in the value.
 
 .. See names.yaml
 

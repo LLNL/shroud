@@ -49,8 +49,8 @@
             "{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "c_arg_decl": [
@@ -89,8 +89,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "i_arg_decl": [
@@ -143,7 +143,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
+            "call {f_call_function}({F_arg_c_call})"
         ]
     },
     {
@@ -164,7 +164,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "{F_result} = {F_C_call}({F_arg_c_call})"
+            "{f_result_var} = {f_call_function}({F_arg_c_call})"
         ]
     },
     {
@@ -176,7 +176,7 @@
             "c_mixin_noargs"
         ],
         "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
+            "call {f_call_function}({F_arg_c_call})"
         ],
         "c_return_type": "void"
     },
@@ -192,6 +192,21 @@
         },
         "f_arg_decl": [
             "{f_type}{f_deref_attr} :: {f_var}{f_dimension}"
+        ]
+    },
+    {
+        "name": "c_mixin_declare-fortran-result",
+        "notes": [
+            "Fortran function result.",
+            "XXX - Not intended for CHAR, only native"
+        ],
+        "i_module": {
+            "{i_module_name}": [
+                "{i_kind}"
+            ]
+        },
+        "i_result_decl": [
+            "{i_type} :: {i_var}"
         ]
     },
     {
@@ -211,7 +226,7 @@
             "type(C_PTR) :: {f_var}"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -244,16 +259,16 @@
             "type(C_PTR) :: {f_local_ptr}"
         ],
         "f_call": [
-            "{f_local_ptr} = {F_C_call}({F_arg_c_call})"
+            "{f_local_ptr} = {f_call_function}({F_arg_c_call})"
         ],
         "f_post_call": [
-            "call c_f_pointer({f_local_ptr}, {F_result})"
+            "call c_f_pointer({f_local_ptr}, {f_result_var})"
         ],
         "f_local": [
             "ptr"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -463,7 +478,7 @@
             "{f_type}, pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
         ]
     },
     {
@@ -484,7 +499,7 @@
             "type(C_PTR), pointer :: {f_var}{f_assumed_shape}"
         ],
         "f_post_call": [
-            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+            "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
         ]
     },
     {
@@ -643,7 +658,7 @@
         ],
         "f_arg_decl": [
             "{f_type} :: {f_var}",
-            "type(C_PTR) :: {f_local_ptr}"
+            "type(C_PTR) :: {f_result_ptr}"
         ],
         "f_arg_call": [
             "{f_var}%{F_derived_member}"
@@ -654,18 +669,12 @@
             ]
         },
         "f_call": [
-            "{f_local_ptr} = {F_C_call}({F_arg_c_call})"
-        ],
-        "f_local": [
-            "ptr"
+            "{f_result_ptr} = {f_call_function}({F_arg_c_call})"
         ],
         "f_need_wrapper": true,
-        "fmtdict": {
-            "f_local_ptr": "{F_result_ptr}"
-        },
-        "i_result_var": "{F_result_ptr}",
+        "i_result_var": "{i_result_ptr}",
         "i_result_decl": [
-            "type(C_PTR) :: {F_result_ptr}"
+            "type(C_PTR) :: {i_result_ptr}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1086,7 +1095,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ]
     },
     {
@@ -1096,7 +1106,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "c_return_type": "{c_type}",
         "c_return": [
@@ -1400,8 +1411,8 @@
             "{f_type} :: {i_var}"
         ],
         "i_module": {
-            "iso_c_binding": [
-                "{f_kind}"
+            "{f_module_name}": [
+                "{i_kind}"
             ]
         }
     },
@@ -1559,7 +1570,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "f_need_wrapper": true
     },
@@ -1603,6 +1615,9 @@
             "f_function_void*",
             "c_function_void*"
         ],
+        "notes": [
+            "XXX - f entries are the same as the i entries, share?"
+        ],
         "mixin": [
             "c_mixin_function"
         ],
@@ -1612,6 +1627,14 @@
             ]
         },
         "f_arg_decl": [
+            "type(C_PTR) :: {f_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        },
+        "i_result_decl": [
             "type(C_PTR) :: {f_var}"
         ]
     },
@@ -1679,8 +1702,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "c_arg_decl": [
@@ -1740,7 +1763,8 @@
         ],
         "mixin": [
             "f_mixin_function",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "c_post_call": [
             "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
@@ -1752,6 +1776,9 @@
         ],
         "mixin": [
             "c_mixin_function"
+        ],
+        "i_result_decl": [
+            "{i_type} :: {i_var}"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
@@ -1838,7 +1865,7 @@
             "type(C_PTR) :: {f_var}"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -2019,7 +2046,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -2470,7 +2497,7 @@
             "return {c_var};"
         ],
         "i_result_decl": [
-            "type(C_PTR) {i_var}"
+            "type(C_PTR) :: {i_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -2489,6 +2516,14 @@
         ],
         "mixin": [
             "c_mixin_function"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "i_result_decl": [
+            "character(kind=C_CHAR) :: {i_var}(*)"
         ],
         "c_post_call": [
             "{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();"
@@ -2633,7 +2668,7 @@
             "i_var_len": "n{F_string_result_as_arg}",
             "c_var_len": "n{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -3614,7 +3649,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine"
         ],
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "c_call": [
             "{C_call_function};"
         ]
@@ -3868,10 +3903,10 @@
             ]
         },
         "f_arg_decl": [
-            "{f_type}, pointer :: {F_result}"
+            "{f_type}, pointer :: {f_result_var}"
         ],
         "f_call": [
-            "call c_f_pointer({CXX_this}%{field_name}, {F_result})"
+            "call c_f_pointer({CXX_this}%{field_name}, {f_result_var})"
         ],
         "f_need_wrapper": true
     },
@@ -3919,7 +3954,8 @@
         "name": "f_getter_bool",
         "mixin": [
             "c_mixin_noargs",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "f_arg_call": [],
         "c_call": [
@@ -3953,7 +3989,8 @@
         ],
         "mixin": [
             "c_mixin_noargs",
-            "f_mixin_declare-fortran-result"
+            "f_mixin_declare-fortran-result",
+            "c_mixin_declare-fortran-result"
         ],
         "f_arg_call": [],
         "c_call": [
@@ -3973,7 +4010,7 @@
         ],
         "f_arg_call": [],
         "f_call": [
-            "call {F_C_call}({F_arg_c_call})"
+            "call {f_call_function}({F_arg_c_call})"
         ],
         "c_call": [
             "// skip call c_setter"
@@ -4377,7 +4414,7 @@
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -4584,7 +4621,7 @@
             "i_var": "{F_string_result_as_arg}",
             "c_var": "{F_string_result_as_arg}"
         },
-        "f_result": "subroutine",
+        "f_result_var": "as-subroutine",
         "f_arg_name": [
             "{f_var}"
         ],
@@ -4985,6 +5022,9 @@
         ],
         "i_arg_decl": [
             "===>i_arg_decl<==="
+        ],
+        "i_result_decl": [
+            "===>i_result_decl<==="
         ],
         "c_arg_decl": [
             "===>{c_var}<==="

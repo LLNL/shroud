@@ -1517,7 +1517,7 @@ f_kind
 f_module_name
     The name of the module required by *f_type*. Contains *f_kind*.
     Set from *typemap.f_module_name*. It defaults to
-    ``-f_module_name-`, which is an illegal Fortran module name.
+    ``-f_module_name-``, which is an illegal Fortran module name.
     Often used in statement field *f_module*.
     
 f_optional_attr
@@ -1541,6 +1541,20 @@ f_value_attr
     Used with argument declarations:
     ``{f_type}{f_value_attr} ::``.
     If *value* is *False*, the format field will be blank.
+
+i_kind
+
+i_module_name
+
+i_result_clause
+    Added at the end of a function declaration to
+    define the result variable.
+
+i_result_ptr
+
+i_result_var
+    Use in the *i_result_clause* for functions as
+    ``result({i_result_var})``
 
 i_type
     The Fortran interface type of the argument.

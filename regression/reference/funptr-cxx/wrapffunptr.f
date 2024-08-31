@@ -58,12 +58,13 @@ module funptr_mod
         ! ----------------------------------------
         ! Argument:  int nargs +intent(in)
         ! Statement: f_in_native
-        function callback4_actor(ilow, nargs) bind(C)
+        function callback4_actor(ilow, nargs) &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: ilow(*)
             integer(C_INT), value, intent(IN) :: nargs
-            integer(C_INT) :: callback4_actor
+            integer(C_INT) :: SHT_rv
         end function callback4_actor
 
         ! ----------------------------------------
@@ -100,12 +101,31 @@ module funptr_mod
         end subroutine callback_all_types_all_types
 
         ! ----------------------------------------
+        ! Function:  double get
+        ! Statement: f_function_native
+        ! ----------------------------------------
+        ! Argument:  int i
+        ! Statement: f_none_native
+        ! ----------------------------------------
+        ! Argument:  int
+        ! Statement: f_none_native
+        function callback_double_get(i, arg1) &
+            result(SHT_rv) bind(C)
+            use iso_c_binding, only : C_DOUBLE, C_INT
+            implicit none
+            integer(C_INT), value :: i
+            integer(C_INT), value :: arg1
+            real(C_DOUBLE) :: SHT_rv
+        end function callback_double_get
+
+        ! ----------------------------------------
         ! Function:  int *get_ptr
         ! Statement: f_function_native*_pointer
-        function callback_ptr_get_ptr() bind(C)
+        function callback_ptr_get_ptr() &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) :: callback_ptr_get_ptr
+            type(C_PTR) :: SHT_rv
         end function callback_ptr_get_ptr
 
         ! ----------------------------------------
@@ -129,12 +149,13 @@ module funptr_mod
         ! ----------------------------------------
         ! Argument:  int
         ! Statement: f_none_native
-        function custom_funptr(XX0arg, XX1arg) bind(C)
+        function custom_funptr(XX0arg, XX1arg) &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value :: XX0arg
             integer(C_INT), value :: XX1arg
-            integer(C_INT) :: custom_funptr
+            integer(C_INT) :: SHT_rv
         end function custom_funptr
 
         ! ----------------------------------------
@@ -146,12 +167,13 @@ module funptr_mod
         ! ----------------------------------------
         ! Argument:  int
         ! Statement: f_none_native
-        function get_int(arg0, arg1) bind(C)
+        function get_int(arg0, arg1) &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             real(C_DOUBLE), value :: arg0
             integer(C_INT), value :: arg1
-            integer(C_INT) :: get_int
+            integer(C_INT) :: SHT_rv
         end function get_int
 
         ! ----------------------------------------
@@ -351,6 +373,19 @@ module funptr_mod
             implicit none
             procedure(callback_ptr_get_ptr) :: get_ptr
         end subroutine callback_ptr
+
+        ! ----------------------------------------
+        ! Function:  void callback_double
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  double (*get)(int i, int)
+        ! Statement: f_in_procedure
+        subroutine c_callback_double(get) &
+                bind(C, name="FUN_callback_double")
+            import :: callback_double_get
+            implicit none
+            procedure(callback_double_get) :: get
+        end subroutine c_callback_double
 
         ! ----------------------------------------
         ! Function:  int abstract1
@@ -642,6 +677,25 @@ contains
         ! splicer end function.callback_ptr
     end subroutine callback_ptr
 #endif
+
+    ! ----------------------------------------
+    ! Function:  void callback_double
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  double (*get)(int i, int)
+    ! Statement: f_in_procedure
+    !>
+    !! \brief Return a scalar in the callback.
+    !!
+    !! Make the function result a different type than the
+    !! aruguments to ensure the USE is created fully.
+    !<
+    subroutine callback_double(get)
+        procedure(callback_double_get) :: get
+        ! splicer begin function.callback_double
+        call c_callback_double(get)
+        ! splicer end function.callback_double
+    end subroutine callback_double
 
     ! ----------------------------------------
     ! Function:  int abstract1

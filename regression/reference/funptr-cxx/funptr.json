@@ -67,7 +67,7 @@
                                 "C_name": "FUN_callback1",
                                 "C_prototype": "void (*incr1)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback1",
+                                "i_name_function": "c_callback1",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -124,7 +124,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -159,13 +161,13 @@
                                 "C_name": "FUN_callback1",
                                 "C_prototype": "void (*incr1)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "incr1",
-                                "F_C_call": "c_callback1",
-                                "F_C_name": "callback1",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "incr1",
                                 "F_arguments": "incr1",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback1",
+                                "i_arguments": "incr1",
+                                "i_name_function": "callback1",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -199,6 +201,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr1",
                                 "fc_var": "incr1",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "incr1",
                                 "idtor": "0",
@@ -230,7 +234,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -288,7 +294,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -381,7 +389,7 @@
                                 "C_name": "FUN_callback1_wrap",
                                 "C_prototype": "void (*incr1_wrap)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback1_wrap",
+                                "i_name_function": "c_callback1_wrap",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -438,7 +446,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -473,13 +483,13 @@
                                 "C_name": "FUN_callback1_wrap",
                                 "C_prototype": "void (*incr1_wrap)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "incr1_wrap",
-                                "F_C_call": "c_callback1_wrap",
-                                "F_C_name": "c_callback1_wrap",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "incr1_wrap",
                                 "F_arguments": "incr1_wrap",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback1_wrap",
+                                "i_arguments": "incr1_wrap",
+                                "i_name_function": "c_callback1_wrap",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -513,6 +523,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr1_wrap",
                                 "fc_var": "incr1_wrap",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "incr1_wrap",
                                 "idtor": "0",
@@ -544,7 +556,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -602,7 +616,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -695,7 +711,7 @@
                                 "C_name": "FUN_callback1_external",
                                 "C_prototype": "void (*incr1_external)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback1_external",
+                                "i_name_function": "c_callback1_external",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -756,7 +772,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -791,13 +809,13 @@
                                 "C_name": "FUN_callback1_external",
                                 "C_prototype": "void (*incr1_external)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "incr1_external",
-                                "F_C_call": "c_callback1_external",
-                                "F_C_name": "c_callback1_external",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "incr1_external",
                                 "F_arguments": "incr1_external",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback1_external",
+                                "i_arguments": "incr1_external",
+                                "i_name_function": "c_callback1_external",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -831,6 +849,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr1_external",
                                 "fc_var": "incr1_external",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "incr1_external",
                                 "idtor": "0",
@@ -866,7 +886,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -927,7 +949,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -1023,7 +1047,7 @@
                                 "C_name": "FUN_callback1_funptr",
                                 "C_prototype": "void (*incr1_funptr)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback1_funptr",
+                                "i_name_function": "c_callback1_funptr",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1084,7 +1108,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -1119,13 +1145,13 @@
                                 "C_name": "FUN_callback1_funptr",
                                 "C_prototype": "void (*incr1_funptr)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "incr1_funptr",
-                                "F_C_call": "c_callback1_funptr",
-                                "F_C_name": "callback1_funptr",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "incr1_funptr",
                                 "F_arguments": "incr1_funptr",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback1_funptr",
+                                "i_arguments": "incr1_funptr",
+                                "i_name_function": "callback1_funptr",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1158,6 +1184,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr1_funptr",
                                 "fc_var": "incr1_funptr",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "incr1_funptr",
                                 "idtor": "0",
@@ -1193,7 +1221,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -1254,7 +1284,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -1360,7 +1392,7 @@
                                 "C_name": "FUN_callback2",
                                 "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback2",
+                                "i_name_function": "c_callback2",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1466,13 +1498,13 @@
                                 "C_name": "FUN_callback2",
                                 "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
                                 "C_return_type": "void",
-                                "F_C_arguments": "name,\t ival,\t incr",
-                                "F_C_call": "c_callback2",
-                                "F_C_name": "c_callback2",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                                 "F_arguments": "name,\t ival,\t incr",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback2",
+                                "i_arguments": "name,\t ival,\t incr",
+                                "i_name_function": "c_callback2",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1506,6 +1538,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr",
                                 "fc_var": "incr",
+                                "i_kind": "incrtype",
+                                "i_module_name": "funptr_mod",
                                 "i_type": "procedure(incrtype)",
                                 "i_var": "incr",
                                 "idtor": "0",
@@ -1543,6 +1577,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "ival",
                                 "fc_var": "ival",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "ival",
                                 "idtor": "0",
@@ -1698,7 +1734,7 @@
                                 "C_name": "FUN_callback2_external",
                                 "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback2_external",
+                                "i_name_function": "c_callback2_external",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1805,13 +1841,13 @@
                                 "C_name": "FUN_callback2_external",
                                 "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
                                 "C_return_type": "void",
-                                "F_C_arguments": "name,\t ival,\t incr",
-                                "F_C_call": "c_callback2_external",
-                                "F_C_name": "c_callback2_external",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                                 "F_arguments": "name,\t ival,\t incr",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback2_external",
+                                "i_arguments": "name,\t ival,\t incr",
+                                "i_name_function": "c_callback2_external",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -1845,6 +1881,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr",
                                 "fc_var": "incr",
+                                "i_kind": "incrtype",
+                                "i_module_name": "funptr_mod",
                                 "i_type": "procedure(incrtype)",
                                 "i_var": "incr",
                                 "idtor": "0",
@@ -1883,6 +1921,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "ival",
                                 "fc_var": "ival",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "ival",
                                 "idtor": "0",
@@ -2039,7 +2079,7 @@
                                 "C_name": "FUN_callback2_funptr",
                                 "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback2_funptr",
+                                "i_name_function": "c_callback2_funptr",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -2146,13 +2186,13 @@
                                 "C_name": "FUN_callback2_funptr",
                                 "C_prototype": "const char *name,\t int ival,\t FUN_incrtype incr",
                                 "C_return_type": "void",
-                                "F_C_arguments": "name,\t ival,\t incr",
-                                "F_C_call": "c_callback2_funptr",
-                                "F_C_name": "c_callback2_funptr",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "trim(name)//C_NULL_CHAR,\t ival,\t incr",
                                 "F_arguments": "name,\t ival,\t incr",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback2_funptr",
+                                "i_arguments": "name,\t ival,\t incr",
+                                "i_name_function": "c_callback2_funptr",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -2186,6 +2226,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr",
                                 "fc_var": "incr",
+                                "i_kind": "incrtype",
+                                "i_module_name": "funptr_mod",
                                 "i_type": "procedure(incrtype)",
                                 "i_var": "incr",
                                 "idtor": "0",
@@ -2224,6 +2266,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "ival",
                                 "fc_var": "ival",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "ival",
                                 "idtor": "0",
@@ -2392,7 +2436,7 @@
                                 "C_name": "FUN_callback3",
                                 "C_prototype": "int type,\t void *in,\t void (*incr3)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback3",
+                                "i_name_function": "c_callback3",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -2482,7 +2526,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -2547,13 +2593,13 @@
                                 "C_name": "FUN_callback3",
                                 "C_prototype": "int type,\t void *in,\t void (*incr3)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "type,\t in,\t incr3",
-                                "F_C_call": "c_callback3",
-                                "F_C_name": "callback3",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "type,\t in,\t incr3",
                                 "F_arguments": "type,\t in,\t incr3",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback3",
+                                "i_arguments": "type,\t in,\t incr3",
+                                "i_name_function": "callback3",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -2585,6 +2631,8 @@
                                 "f_type": "type(*)",
                                 "f_var": "in",
                                 "fc_var": "in",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(*)",
                                 "i_var": "in",
                                 "idtor": "0",
@@ -2622,6 +2670,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "incr3",
                                 "fc_var": "incr3",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "incr3",
                                 "idtor": "0",
@@ -2657,7 +2707,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -2707,6 +2759,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "type",
                                 "fc_var": "type",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "type",
                                 "idtor": "0",
@@ -2761,7 +2815,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -2922,7 +2978,6 @@
                                 "C_name": "FUN_callback4",
                                 "C_prototype": "int *ilow,\t int nargs,\t int (*actor)(\tint *ilow,\t int nargs)",
                                 "C_return_type": "int",
-                                "F_C_name": "c_callback4",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -2934,6 +2989,7 @@
                                 "cxx_rv_decl": "int SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
+                                "i_name_function": "c_callback4",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "c_function_native",
@@ -3025,7 +3081,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -3043,6 +3113,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "ilow",
                                                     "i_dimension": "(*)",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "ilow",
                                                     "rank": "1",
@@ -3067,6 +3139,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "nargs",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "nargs",
                                                     "sh_type": "SH_TYPE_INT",
@@ -3179,14 +3253,8 @@
                                 "C_name": "FUN_callback4",
                                 "C_prototype": "int *ilow,\t int nargs,\t int (*actor)(\tint *ilow,\t int nargs)",
                                 "C_return_type": "int",
-                                "F_C_arguments": "ilow,\t nargs,\t actor",
-                                "F_C_call": "c_callback4",
-                                "F_C_name": "c_callback4",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
                                 "F_arg_c_call": "ilow,\t SH_nargs,\t actor",
                                 "F_arguments": "ilow,\t actor",
-                                "F_result_clause": "\fresult(SHT_rv)",
                                 "F_subprogram": "function",
                                 "c_const": "",
                                 "c_get_value": "",
@@ -3199,13 +3267,21 @@
                                 "cxx_rv_decl": "int SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
+                                "f_call_function": "c_callback4",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_arguments": "ilow,\t nargs,\t actor",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_callback4",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
@@ -3243,6 +3319,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "actor",
                                 "fc_var": "actor",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "actor",
                                 "idtor": "0",
@@ -3307,7 +3385,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -3325,6 +3417,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "ilow",
                                                     "i_dimension": "(*)",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "ilow",
                                                     "rank": "1",
@@ -3349,6 +3443,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "nargs",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "nargs",
                                                     "sh_type": "SH_TYPE_INT",
@@ -3419,6 +3515,8 @@
                                 "f_var": "ilow",
                                 "fc_var": "ilow",
                                 "i_dimension": "(*)",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "ilow",
                                 "idtor": "0",
@@ -3458,6 +3556,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "nargs",
                                 "fc_var": "SH_nargs",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "nargs",
                                 "idtor": "0",
@@ -3537,7 +3637,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -3555,6 +3669,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "ilow",
                                                     "i_dimension": "(*)",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "ilow",
                                                     "rank": "1",
@@ -3579,6 +3695,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "nargs",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "nargs",
                                                     "sh_type": "SH_TYPE_INT",
@@ -3705,7 +3823,7 @@
                                 "C_name": "FUN_callback_ptr",
                                 "C_prototype": "int *(*get_ptr)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback_ptr",
+                                "i_name_function": "c_callback_ptr",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -3766,7 +3884,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "deref": "pointer",
                                                     "intent": "function"
@@ -3801,13 +3933,13 @@
                                 "C_name": "FUN_callback_ptr",
                                 "C_prototype": "int *(*get_ptr)(\tvoid)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "get_ptr",
-                                "F_C_call": "c_callback_ptr",
-                                "F_C_name": "callback_ptr",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "get_ptr",
                                 "F_arguments": "get_ptr",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback_ptr",
+                                "i_arguments": "get_ptr",
+                                "i_name_function": "callback_ptr",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -3840,6 +3972,8 @@
                                 "f_type": "integer(C_INT)",
                                 "f_var": "get_ptr",
                                 "fc_var": "get_ptr",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "get_ptr",
                                 "idtor": "0",
@@ -3876,7 +4010,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "deref": "pointer",
                                                     "intent": "function"
@@ -3939,7 +4087,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "deref": "pointer",
                                                     "intent": "function"
@@ -3976,7 +4138,613 @@
                 }
             },
             {
-                "<FUNCTION>": "abstract1  10 ****************************************",
+                "<FUNCTION>": "callback_double  10 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "callback_double",
+                        "params": [
+                            {
+                                "declarator": {
+                                    "func": {
+                                        "name": "get",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "name": "get",
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "name": "i",
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "typemap_name": "int"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        }
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "typemap_name": "void"
+                    },
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback_double(double (*get)(int i, int));",
+                "declgen": "void callback_double(double (*get)(int i, int))",
+                "doxygen": {
+                    "brief": "Return a scalar in the callback.",
+                    "description": "Make the function result a different type than the\naruguments to ensure the USE is created fully.\n"
+                },
+                "name": "callback_double",
+                "options": {
+                    "F_force_wrapper": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_bind": {
+                    "c": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_double(\tget)",
+                                "C_call_list": "get",
+                                "C_name": "FUN_callback_double",
+                                "C_prototype": "double (*get)(\tint i,\t int)",
+                                "C_return_type": "void",
+                                "i_name_function": "c_callback_double",
+                                "stmt_name": "c_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "c_subroutine"
+                        },
+                        "get": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "get",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&get",
+                                "cxx_type": "double",
+                                "cxx_var": "get",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_value_attr": ", value",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "c_in_procedure",
+                                "typemap_name": "double"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "name": "i",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "decl": "double get(int i, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_DOUBLE",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "real(C_DOUBLE)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "real(C_DOUBLE)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                },
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "i": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "i",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "i",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "i": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "c_in_procedure"
+                        }
+                    },
+                    "f": {
+                        "+result": {
+                            "fmtdict": {
+                                "C_call_function": "callback_double(\tget)",
+                                "C_call_list": "get",
+                                "C_name": "FUN_callback_double",
+                                "C_prototype": "double (*get)(\tint i,\t int)",
+                                "C_return_type": "void",
+                                "F_arg_c_call": "get",
+                                "F_arguments": "get",
+                                "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback_double",
+                                "i_arguments": "get",
+                                "i_name_function": "c_callback_double",
+                                "i_subprogram": "subroutine",
+                                "stmt_name": "f_subroutine",
+                                "typemap_name": "void"
+                            },
+                            "meta": {
+                                "intent": "subroutine"
+                            },
+                            "stmt": "f_subroutine"
+                        },
+                        "get": {
+                            "fmtdict": {
+                                "c_abstract_decl": "double (*)",
+                                "c_addr": "&",
+                                "c_const": "",
+                                "c_deref": "",
+                                "c_member": ".",
+                                "c_type": "double",
+                                "c_var": "get",
+                                "cfi_type": "CFI_type_double",
+                                "cxx_abstract_decl": "double (*)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&get",
+                                "cxx_type": "double",
+                                "cxx_var": "get",
+                                "f_abstract_interface": "callback_double_get",
+                                "f_intent": "IN",
+                                "f_intent_attr": ", intent(IN)",
+                                "f_kind": "C_DOUBLE",
+                                "f_module_name": "iso_c_binding",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_value_attr": ", value",
+                                "f_var": "get",
+                                "fc_var": "get",
+                                "i_kind": "C_DOUBLE",
+                                "i_module_name": "iso_c_binding",
+                                "i_type": "real(C_DOUBLE)",
+                                "i_var": "get",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt_name": "f_in_procedure",
+                                "typemap_name": "double"
+                            },
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "name": "i",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "decl": "double get(int i, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_DOUBLE",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "real(C_DOUBLE)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "real(C_DOUBLE)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                },
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "i": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "i",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "i",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "i": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            },
+                            "stmt": "f_in_procedure"
+                        }
+                    },
+                    "share": {
+                        "+result": {
+                            "meta": {
+                                "intent": "subroutine"
+                            }
+                        },
+                        "get": {
+                            "meta": {
+                                "fptr": {
+                                    "<FUNCTION>": "get  None ****************************************",
+                                    "ast": {
+                                        "declarator": {
+                                            "name": "get",
+                                            "params": [
+                                                {
+                                                    "declarator": {
+                                                        "name": "i",
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                },
+                                                {
+                                                    "declarator": {
+                                                        "typemap_name": "int"
+                                                    },
+                                                    "specifier": [
+                                                        "int"
+                                                    ],
+                                                    "typemap_name": "int"
+                                                }
+                                            ],
+                                            "typemap_name": "double"
+                                        },
+                                        "specifier": [
+                                            "double"
+                                        ],
+                                        "typemap_name": "double"
+                                    },
+                                    "decl": "double get(int i, int)",
+                                    "name": "get",
+                                    "options": {},
+                                    "wrap": {
+                                        "c": true,
+                                        "fortran": true
+                                    },
+                                    "zz_bind": {
+                                        "f": {
+                                            "+result": {
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_DOUBLE",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "real(C_DOUBLE)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "real(C_DOUBLE)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_DOUBLE"
+                                                },
+                                                "meta": {
+                                                    "intent": "function"
+                                                },
+                                                "stmt": "f_function_native"
+                                            },
+                                            "arg2": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "arg1",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "arg1",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            },
+                                            "i": {
+                                                "fmtdict": {
+                                                    "f_abstract_name": "i",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_value_attr": ", value",
+                                                    "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "i",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt_name": "f_none_native",
+                                                    "typemap_name": "int"
+                                                },
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                },
+                                                "stmt": "f_none_native"
+                                            }
+                                        },
+                                        "share": {
+                                            "+result": {
+                                                "meta": {
+                                                    "intent": "function"
+                                                }
+                                            },
+                                            "arg2": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            },
+                                            "i": {
+                                                "meta": {
+                                                    "intent": "none",
+                                                    "value": true
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "zz_fmtdict": {
+                                        "C_name_api": "get",
+                                        "F_name_api": "get",
+                                        "function_name": "get"
+                                    }
+                                },
+                                "intent": "in",
+                                "value": true
+                            }
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_name_api": "callback_double",
+                    "F_name_api": "callback_double",
+                    "F_name_function": "callback_double",
+                    "F_name_generic": "callback_double",
+                    "F_name_impl": "callback_double",
+                    "function_name": "callback_double"
+                }
+            },
+            {
+                "<FUNCTION>": "abstract1  11 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "abstract1",
@@ -4062,7 +4830,6 @@
                                 "C_name": "FUN_abstract1",
                                 "C_prototype": "int input,\t int (*get_abs)(\tdouble,\t int)",
                                 "C_return_type": "int",
-                                "F_C_name": "c_abstract1",
                                 "c_const": "",
                                 "c_get_value": "",
                                 "c_type": "int",
@@ -4074,6 +4841,7 @@
                                 "cxx_rv_decl": "int SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
+                                "i_name_function": "c_abstract1",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
                                 "stmt_name": "c_function_native",
@@ -4151,7 +4919,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -4165,6 +4947,8 @@
                                                     "f_type": "real(C_DOUBLE)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "XX0arg",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "real(C_DOUBLE)",
                                                     "i_var": "XX0arg",
                                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -4185,6 +4969,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "XX1arg",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "XX1arg",
                                                     "sh_type": "SH_TYPE_INT",
@@ -4268,14 +5054,8 @@
                                 "C_name": "FUN_abstract1",
                                 "C_prototype": "int input,\t int (*get_abs)(\tdouble,\t int)",
                                 "C_return_type": "int",
-                                "F_C_arguments": "input,\t get_abs",
-                                "F_C_call": "c_abstract1",
-                                "F_C_name": "c_abstract1",
-                                "F_C_result_clause": "\fresult(SHT_rv)",
-                                "F_C_subprogram": "function",
                                 "F_arg_c_call": "input,\t get_abs",
                                 "F_arguments": "input,\t get_abs",
-                                "F_result_clause": "\fresult(SHT_rv)",
                                 "F_subprogram": "function",
                                 "c_const": "",
                                 "c_get_value": "",
@@ -4288,13 +5068,21 @@
                                 "cxx_rv_decl": "int SHC_rv",
                                 "cxx_type": "int",
                                 "cxx_var": "SHC_rv",
+                                "f_call_function": "c_abstract1",
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "C_INT",
                                 "f_module_name": "iso_c_binding",
+                                "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
                                 "fc_var": "SHT_rv",
+                                "i_arguments": "input,\t get_abs",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
+                                "i_name_function": "c_abstract1",
+                                "i_result_clause": "\fresult(SHT_rv)",
+                                "i_subprogram": "function",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
@@ -4332,6 +5120,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "get_abs",
                                 "fc_var": "get_abs",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "get_abs",
                                 "idtor": "0",
@@ -4382,7 +5172,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -4396,6 +5200,8 @@
                                                     "f_type": "real(C_DOUBLE)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "XX0arg",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "real(C_DOUBLE)",
                                                     "i_var": "XX0arg",
                                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -4416,6 +5222,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "XX1arg",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "XX1arg",
                                                     "sh_type": "SH_TYPE_INT",
@@ -4484,6 +5292,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "input",
                                 "fc_var": "input",
+                                "i_kind": "C_INT",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "integer(C_INT)",
                                 "i_var": "input",
                                 "idtor": "0",
@@ -4548,7 +5358,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "C_INT",
+                                                    "f_module_name": "iso_c_binding",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_INT"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -4562,6 +5386,8 @@
                                                     "f_type": "real(C_DOUBLE)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "XX0arg",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "real(C_DOUBLE)",
                                                     "i_var": "XX0arg",
                                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -4582,6 +5408,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "XX1arg",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "XX1arg",
                                                     "sh_type": "SH_TYPE_INT",
@@ -4643,7 +5471,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_void_ptr  11 ****************************************",
+                "<FUNCTION>": "callback_void_ptr  12 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_void_ptr",
@@ -4711,7 +5539,7 @@
                                 "C_name": "FUN_callback_void_ptr",
                                 "C_prototype": "void (*void_ptr_arg)(\tvoid *)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback_void_ptr",
+                                "i_name_function": "c_callback_void_ptr",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -4783,7 +5611,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -4797,6 +5627,8 @@
                                                     "f_type": "type(C_PTR)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_PTR",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "type(C_PTR)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_CPTR",
@@ -4844,13 +5676,13 @@
                                 "C_name": "FUN_callback_void_ptr",
                                 "C_prototype": "void (*void_ptr_arg)(\tvoid *)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "void_ptr_arg",
-                                "F_C_call": "c_callback_void_ptr",
-                                "F_C_name": "callback_void_ptr",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "void_ptr_arg",
                                 "F_arguments": "void_ptr_arg",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback_void_ptr",
+                                "i_arguments": "void_ptr_arg",
+                                "i_name_function": "callback_void_ptr",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -4884,6 +5716,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "void_ptr_arg",
                                 "fc_var": "void_ptr_arg",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "void_ptr_arg",
                                 "idtor": "0",
@@ -4930,7 +5764,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -4944,6 +5780,8 @@
                                                     "f_type": "type(C_PTR)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_PTR",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "type(C_PTR)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_CPTR",
@@ -5029,7 +5867,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5043,6 +5883,8 @@
                                                     "f_type": "type(C_PTR)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_PTR",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "type(C_PTR)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_CPTR",
@@ -5092,7 +5934,7 @@
                 }
             },
             {
-                "<FUNCTION>": "callback_all_types  12 ****************************************",
+                "<FUNCTION>": "callback_all_types  13 ****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_all_types",
@@ -5218,7 +6060,7 @@
                                 "C_name": "FUN_callback_all_types",
                                 "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *,\t bool,\t bool *)",
                                 "C_return_type": "void",
-                                "F_C_name": "c_callback_all_types",
+                                "i_name_function": "c_callback_all_types",
                                 "stmt_name": "c_subroutine",
                                 "typemap_name": "void"
                             },
@@ -5348,7 +6190,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5362,6 +6206,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_INT",
@@ -5384,6 +6230,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "arg1",
                                                     "i_dimension": "(*)",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
                                                     "rank": "1",
@@ -5440,6 +6288,8 @@
                                                     "f_type": "logical",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg4",
+                                                    "i_kind": "C_BOOL",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "logical(C_BOOL)",
                                                     "i_var": "arg4",
                                                     "sh_type": "SH_TYPE_BOOL",
@@ -5459,6 +6309,8 @@
                                                     "f_module_name": "iso_c_binding",
                                                     "f_type": "logical",
                                                     "f_var": "arg5",
+                                                    "i_kind": "C_BOOL",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "logical(C_BOOL)",
                                                     "i_var": "arg5",
                                                     "sh_type": "SH_TYPE_BOOL",
@@ -5533,13 +6385,13 @@
                                 "C_name": "FUN_callback_all_types",
                                 "C_prototype": "void (*all_types)(\tint,\t int *,\t char,\t char *,\t bool,\t bool *)",
                                 "C_return_type": "void",
-                                "F_C_arguments": "all_types",
-                                "F_C_call": "c_callback_all_types",
-                                "F_C_name": "callback_all_types",
-                                "F_C_subprogram": "subroutine",
                                 "F_arg_c_call": "all_types",
                                 "F_arguments": "all_types",
                                 "F_subprogram": "subroutine",
+                                "f_call_function": "c_callback_all_types",
+                                "i_arguments": "all_types",
+                                "i_name_function": "callback_all_types",
+                                "i_subprogram": "subroutine",
                                 "stmt_name": "f_subroutine",
                                 "typemap_name": "void"
                             },
@@ -5573,6 +6425,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "all_types",
                                 "fc_var": "all_types",
+                                "i_kind": "C_PTR",
+                                "i_module_name": "iso_c_binding",
                                 "i_type": "type(C_PTR)",
                                 "i_var": "all_types",
                                 "idtor": "0",
@@ -5677,7 +6531,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5691,6 +6547,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_INT",
@@ -5713,6 +6571,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "arg1",
                                                     "i_dimension": "(*)",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
                                                     "rank": "1",
@@ -5769,6 +6629,8 @@
                                                     "f_type": "logical",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg4",
+                                                    "i_kind": "C_BOOL",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "logical(C_BOOL)",
                                                     "i_var": "arg4",
                                                     "sh_type": "SH_TYPE_BOOL",
@@ -5788,6 +6650,8 @@
                                                     "f_module_name": "iso_c_binding",
                                                     "f_type": "logical",
                                                     "f_var": "arg5",
+                                                    "i_kind": "C_BOOL",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "logical(C_BOOL)",
                                                     "i_var": "arg5",
                                                     "sh_type": "SH_TYPE_BOOL",
@@ -5958,7 +6822,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -5972,6 +6838,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_INT",
@@ -5994,6 +6862,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_var": "arg1",
                                                     "i_dimension": "(*)",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
                                                     "rank": "1",
@@ -6050,6 +6920,8 @@
                                                     "f_type": "logical",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg4",
+                                                    "i_kind": "C_BOOL",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "logical(C_BOOL)",
                                                     "i_var": "arg4",
                                                     "sh_type": "SH_TYPE_BOOL",
@@ -6069,6 +6941,8 @@
                                                     "f_module_name": "iso_c_binding",
                                                     "f_type": "logical",
                                                     "f_var": "arg5",
+                                                    "i_kind": "C_BOOL",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "logical(C_BOOL)",
                                                     "i_var": "arg5",
                                                     "sh_type": "SH_TYPE_BOOL",
@@ -6300,7 +7174,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -6314,6 +7190,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "i",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6334,6 +7212,8 @@
                                                     "f_type": "integer(type_id)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "j",
+                                                    "i_kind": "type_id",
+                                                    "i_module_name": "funptr_mod",
                                                     "i_type": "integer(type_id)",
                                                     "i_var": "j",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6426,7 +7306,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -6440,6 +7322,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "i",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6460,6 +7344,8 @@
                                                     "f_type": "integer(type_id)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "j",
+                                                    "i_kind": "type_id",
+                                                    "i_module_name": "funptr_mod",
                                                     "i_type": "integer(type_id)",
                                                     "i_var": "j",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6552,7 +7438,9 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "i_subprogram": "subroutine"
+                                                },
                                                 "meta": {
                                                     "intent": "subroutine"
                                                 },
@@ -6566,6 +7454,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "i",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "i",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6586,6 +7476,8 @@
                                                     "f_type": "integer(type_id)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "j",
+                                                    "i_kind": "type_id",
+                                                    "i_module_name": "funptr_mod",
                                                     "i_type": "integer(type_id)",
                                                     "i_var": "j",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6738,7 +7630,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "get_int",
+                                                    "f_module_name": "funptr_mod",
+                                                    "f_type": "procedure(get_int)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_OTHER"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -6752,6 +7658,8 @@
                                                     "f_type": "real(C_DOUBLE)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "real(C_DOUBLE)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -6772,6 +7680,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6862,7 +7772,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "get_int",
+                                                    "f_module_name": "funptr_mod",
+                                                    "f_type": "procedure(get_int)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_OTHER"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -6876,6 +7800,8 @@
                                                     "f_type": "real(C_DOUBLE)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "real(C_DOUBLE)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -6896,6 +7822,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
                                                     "sh_type": "SH_TYPE_INT",
@@ -6986,7 +7914,21 @@
                                     "zz_bind": {
                                         "f": {
                                             "+result": {
-                                                "fmtdict": {},
+                                                "fmtdict": {
+                                                    "f_intent": "OUT",
+                                                    "f_intent_attr": ", intent(OUT)",
+                                                    "f_kind": "get_int",
+                                                    "f_module_name": "funptr_mod",
+                                                    "f_type": "procedure(get_int)",
+                                                    "f_var": "SHT_rv",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
+                                                    "i_result_clause": "\fresult(SHT_rv)",
+                                                    "i_subprogram": "function",
+                                                    "i_type": "integer(C_INT)",
+                                                    "i_var": "SHT_rv",
+                                                    "sh_type": "SH_TYPE_OTHER"
+                                                },
                                                 "meta": {
                                                     "intent": "function"
                                                 },
@@ -7000,6 +7942,8 @@
                                                     "f_type": "real(C_DOUBLE)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg0",
+                                                    "i_kind": "C_DOUBLE",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "real(C_DOUBLE)",
                                                     "i_var": "arg0",
                                                     "sh_type": "SH_TYPE_DOUBLE",
@@ -7020,6 +7964,8 @@
                                                     "f_type": "integer(C_INT)",
                                                     "f_value_attr": ", value",
                                                     "f_var": "arg1",
+                                                    "i_kind": "C_INT",
+                                                    "i_module_name": "iso_c_binding",
                                                     "i_type": "integer(C_INT)",
                                                     "i_var": "arg1",
                                                     "sh_type": "SH_TYPE_INT",
@@ -7113,6 +8059,11 @@
             "wrap_header": [
                 "wrapfunptr.h"
             ]
+        },
+        "double(*)(int,int)": {
+            "base": "procedure",
+            "f_type": "f-function-pointer",
+            "sgroup": "procedure"
         },
         "get_int": {
             "base": "procedure",

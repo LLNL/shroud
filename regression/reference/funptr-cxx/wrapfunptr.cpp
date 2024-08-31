@@ -232,6 +232,25 @@ void FUN_callback_ptr(int *(*get_ptr)(void))
 }
 
 /**
+ * \brief Return a scalar in the callback.
+ *
+ * Make the function result a different type than the
+ * aruguments to ensure the USE is created fully.
+ */
+// ----------------------------------------
+// Function:  void callback_double
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  double (*get)(int i, int)
+// Statement: c_in_procedure
+void FUN_callback_double(double (*get)(int i, int))
+{
+    // splicer begin function.callback_double
+    callback_double(get);
+    // splicer end function.callback_double
+}
+
+/**
  * \brief abstract argument
  *
  */

@@ -80,7 +80,20 @@ class FillFormat(object):
                 meta = statements.fetch_typedef_bind(node, "f").meta
                 fptr = meta["fptr"]
                 self.fmt_function_pointer("f", fptr)
-            
+
+                # Get the function's type. Not the typedef's type
+                # which will be "procedure(name)".
+                # i_type will be used in an abstract interface.
+                declarator = fptr.ast.declarator
+                subprogram = declarator.get_subprogram()
+                if subprogram == "function":
+                    r_bind = statements.get_func_bind(fptr, "f")
+                    ntypemap = declarator.typemap
+                    fmt = r_bind.fmtdict
+                    fmt.i_type = ntypemap.i_type or ntypemap.f_type
+                    # XXX - To be changed to i_module, i_kind
+                    fmt.i_module_name = ntypemap.f_module_name
+                    fmt.i_kind = ntypemap.f_kind
     def fmt_functions(self, cls, functions):
         for node in functions:
             if node.wrap.c:
@@ -139,6 +152,8 @@ class FillFormat(object):
         fmt_func = node.fmtdict
         bind_result = statements.fetch_func_bind(node, wlang)
         fmt_result = statements.set_bind_fmtdict(bind_result, fmt_func)
+
+        self.fill_interface_result(None, node, bind_result)
 
         # --- Loop over function parameters
         fmt_name = util.Scope(fmt_func)
@@ -281,43 +296,43 @@ class FillFormat(object):
     def fill_interface_result(self, cls, node, bind):
         ast = node.ast
         declarator = ast.declarator
-        subprogram = declarator.get_subprogram()
         result_typemap = ast.typemap
         result_stmt = bind.stmt
         fmt_result = bind.fmtdict
 
-        if subprogram == "subroutine":
-            fmt_result.F_C_subprogram = "subroutine"
-        else:
-            fmt_result.F_C_subprogram = "function"
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-            fmt_result.i_var = fmt_result.F_result
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.f_intent = "OUT"
-            fmt_result.f_intent_attr = ", intent(OUT)"
-            fmt_result.c_type = result_typemap.c_type  # c_return_type
-            fmt_result.f_type = result_typemap.f_type
+        self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
+
+        subprogram = declarator.get_subprogram()
+        if subprogram == "function":
+            fmt_result.i_var = fmt_result.i_result_var
+            fmt_result.f_var = fmt_result.i_result_var
             self.set_fmt_fields_iface(node, ast, bind,
-                                      fmt_result.F_result, result_typemap,
+                                      fmt_result.i_result_var, result_typemap,
                                       "function")
             self.set_fmt_fields_dimension(cls, node, ast, bind)
 
-        if result_stmt.c_return_type == "void":
+        if result_stmt.i_result_var == "as-subroutine":
+            subprogram = "subroutine"
+        elif result_stmt.i_result_var is not None:
+            subprogram = "function"
+        elif result_stmt.c_return_type == "void":
             # Change a function into a subroutine.
-            fmt_result.F_C_subprogram = "subroutine"
-            fmt_result.F_C_result_clause = ""
+            subprogram = "subroutine"
         elif result_stmt.c_return_type:
             # Change a subroutine into function
             # or change the return type.
-            fmt_result.F_C_subprogram = "function"
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-        if result_stmt.i_result_var:
-            fmt_result.F_result = wformat(
-                result_stmt.i_result_var, fmt_result)
-            fmt_result.F_C_result_clause = "\fresult(%s)" % fmt_result.F_result
-        self.name_temp_vars(fmt_result.C_result, bind, "c", "i")
+            subprogram = "function"
+        fmt_result.i_subprogram = subprogram
+
         statements.apply_fmtdict_from_stmts(bind)
 
+        # Compute after stmt.fmtdict is evaluated.
+        if subprogram == "function":
+            if result_stmt.i_result_var:
+                fmt_result.i_result_var = wformat(
+                    result_stmt.i_result_var, fmt_result)
+            fmt_result.i_result_clause = "\fresult(%s)" % fmt_result.i_result_var
+        
     def fill_interface_arg(self, cls, node, arg, bind):
         declarator = arg.declarator
         arg_name = declarator.user_name
@@ -339,24 +354,33 @@ class FillFormat(object):
         fmt_result = bind.fmtdict
         C_node = node.C_node  # C wrapper to call.
 
-        subprogram = declarator.get_subprogram()
-        if result_stmt.f_result == "subroutine":
-            subprogram = "subroutine"
-        elif result_stmt.f_result is not None:
-            subprogram = "function"
-            fmt_result.F_result = result_stmt.f_result
-        if subprogram == "function":
-            fmt_result.f_var = fmt_result.F_result
-            fmt_result.fc_var = fmt_result.F_result
-            fmt_result.F_result_clause = "\fresult(%s)" % fmt_result.F_result
-        fmt_result.F_subprogram = subprogram
-        
         self.name_temp_vars(fmt_result.C_result, bind, "f")
+
+        subprogram = declarator.get_subprogram()
+        if subprogram == "function":
+            fmt_result.f_var = fmt_result.f_result_var
+            fmt_result.fc_var = fmt_result.f_result_var
+        
+        if result_stmt.f_result_var == "as-subroutine":
+            subprogram = "subroutine"
+        elif result_stmt.f_result_var is not None:
+            subprogram = "function"
+        fmt_result.F_subprogram = subprogram
+
         self.set_fmt_fields_f(cls, C_node, ast, C_node.ast, bind,
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, bind)
         self.apply_helpers_from_stmts(node, bind)
         statements.apply_fmtdict_from_stmts(bind)
+
+        # Compute after stmt.fmtdict is evaluated.
+        if subprogram == "function":
+            if result_stmt.f_result_var:
+                fmt_result.f_result_var = wformat(
+                    result_stmt.f_result_var, fmt_result)
+            fmt_result.f_var = fmt_result.f_result_var
+            fmt_result.fc_var = fmt_result.f_result_var
+            fmt_result.f_result_clause = "\fresult(%s)" % fmt_result.f_result_var
 
     def fill_fortran_arg(self, cls, node, C_node, f_arg, c_arg, bind):
         arg_name = f_arg.declarator.user_name
@@ -555,8 +579,10 @@ class FillFormat(object):
         fmt.sh_type = ntypemap.sh_type
         if ntypemap.f_module_name:
             fmt.f_module_name = ntypemap.f_module_name
+            fmt.i_module_name = ntypemap.f_module_name
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind
+            fmt.i_kind = ntypemap.f_kind
         if ntypemap.f_capsule_data_type:
             fmt.f_capsule_data_type = ntypemap.f_capsule_data_type
         if ntypemap.f_derived_type:

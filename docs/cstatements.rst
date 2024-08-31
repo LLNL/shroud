@@ -30,14 +30,14 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     
 .. code-block:: text
 
-    {F_C_subprogram} {F_C_name}({i_arg_names}) &
-        result({i_result_var}) &
+    {i_subprogram} {i_name}({i_arg_names}) &
+        {i_pure_clause} {i_result_clause} &
         bind(C, name="{C_name}")
         [i_module]
         [i_import]
         [i_arg_decl]
         [i_result_decl]
-    end {F_C_subprogram} {F_C_name}
+    end {i_subprogram} {i_name}
 
 .. Typically have different groups for pointer vs reference
    f_out_string* vs f_out_string&
@@ -54,9 +54,9 @@ Format fields
   Built up from *c_arg_call*.
   Used with statement *c_call*.
   
-* F_C_clause
-* F_C_arguments     = i_arg_names
-* F_C_result_clause = i_result_var
+* i_pure_clause
+* i_arguments     = join i_arg_names
+* i_result_clause = i_result_var
 
     
 Statements

@@ -143,13 +143,13 @@ module vectors_mod
     ! start c_vector_iota_out_with_num
     interface
         function c_vector_iota_out_with_num(arg, SHT_arg_size) &
-                result(SHT_rv) &
+                result(num) &
                 bind(C, name="VEC_vector_iota_out_with_num")
             use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
             implicit none
             integer(C_INT), intent(OUT) :: arg(*)
             integer(C_SIZE_T), intent(OUT) :: SHT_arg_size
-            integer(C_LONG) :: SHT_rv
+            integer(C_LONG) :: num
         end function c_vector_iota_out_with_num
     end interface
     ! end c_vector_iota_out_with_num

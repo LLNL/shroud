@@ -68,6 +68,8 @@ int FUN_callback4(int *ilow, int nargs, int (*actor)(int *ilow,
 
 void FUN_callback_ptr(int *(*get_ptr)(void));
 
+void FUN_callback_double(double (*get)(int i, int));
+
 int FUN_abstract1(int input, int (*get_abs)(double, int));
 
 void FUN_callback_void_ptr(void (*void_ptr_arg)(void *));

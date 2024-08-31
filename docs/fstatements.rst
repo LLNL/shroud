@@ -49,8 +49,12 @@ Format fields
 * F_subprogram
 * F_name_impl
 * F_arguments
+* f_call_function
 * F_result_clause
-* F_C_call
+
+  For functions, ``result({F_result})``.
+  Evalued after *stmt.fmtdict* is applied.
+  
 * F_arg_c_call
 
 Statements
@@ -91,7 +95,7 @@ Additional declarations can be added within the splicer via *f_declare*.
 .. result declaration is added before arguments
    but default declaration are after declarations.
 
-It is also used to declare a result defined with *f_result* when
+It is also used to declare a result defined with *f_result_var* when
 converting a subroutine into a function.
 
 f_declare
@@ -171,12 +175,13 @@ Statement to execute after call.
 Can be use to cleanup after *f_pre_call* or to coerce the return value.
 Implies *f_need_wrapper*.
    
-f_result
-^^^^^^^^
+f_result_var
+^^^^^^^^^^^^
 
 Name of result variable.
 Added as the ``RESULT`` clause of the subprogram statement.
-Can be used to change a subroutine into a function.
+Can be used to change a subroutine into a function by setting the
+value to ``as-subroutine`` (which is an illegal identifier).
 
 In this example, the subroutine is converted into a function
 which will return the number of items copied into the result argument.
@@ -189,7 +194,7 @@ which will return the number of items copied into the result argument.
     - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
       fstatements:
         f:
-          f_result: num
+          f_result_var: num
           f_module:
             iso_c_binding: ["C_LONG"]
           f_arg_decl:

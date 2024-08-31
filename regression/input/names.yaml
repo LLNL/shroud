@@ -65,8 +65,8 @@ declarations:
   - decl: class Names
     options:
       none: foo
-      C_name_template: XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{f_c_suffix}
-      F_C_name_template: XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}{f_c_suffix}
+      C_name_template: XXX_{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}
+      i_name_function_template: XXX_{C_prefix}{F_name_scope}{C_name_api}{function_suffix}{i_suffix}
     format:
       C_header_filename: foo.h
       C_impl_filename: foo.cpp
@@ -89,15 +89,15 @@ declarations:
 
 - block: True
   options:
-    C_name_template: YYY_{C_prefix}{C_name_api}{function_suffix}{f_c_suffix}
-    F_C_name_template: YYY_{C_prefix}{F_name_api}{function_suffix}{f_c_suffix}
+    C_name_template: YYY_{C_prefix}{C_name_api}{function_suffix}{i_suffix}
+    i_name_function_template: YYY_{C_prefix}{F_name_api}{function_suffix}{i_suffix}
     F_name_impl_template: "{library}_{F_name_scope}{F_name_api}{function_suffix}"
   declarations:
   - decl: void function1()
   - decl: void function2()
     format:
       C_name: c_name_special
-      F_C_name: f_c_name_special
+      i_name_function: f_c_name_special
       F_name_impl: f_name_special
 
   # test generic/overloaded functions
@@ -172,7 +172,7 @@ declarations:
   - instantiation: <int, long>
     format:
       C_name: c_name_instantiation1
-      F_C_name: f_c_name_instantiation1
+      i_name_function: f_c_name_instantiation1
       F_name_impl: f_name_instantiation1
       PY_name_impl: PY_name_instantiation1
   - instantiation: <float, double>

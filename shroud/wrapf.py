@@ -69,10 +69,10 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
 
     def wrap_library(self):
         fmt_library = self.newlibrary.fmtdict
-        fmt_library.F_result_clause = ""
-        fmt_library.F_pure_clause = ""
-        fmt_library.F_C_result_clause = ""
-        fmt_library.F_C_pure_clause = ""
+        fmt_library.f_result_clause = ""
+        fmt_library.f_pure_clause = ""
+        fmt_library.i_result_clause = ""
+        fmt_library.i_pure_clause = ""
 
         node = self.newlibrary.wrap_namespace
         fileinfo = ModuleInfo(node)
@@ -1012,10 +1012,15 @@ rv = .false.
                                                gen_decl(param))
                     self.build_arg_list_interface(bind, modules, imports,
                                                   arg_f_names, arg_c_decl)
-                if subprogram == "function":
-                    arg_c_decl.append(bind_c(fptr.ast,
-                        modules, name=key, is_result=True, is_callback=True,
-                        params=None))
+                r_bind = get_func_bind(fptr, "f")
+                result_stmt = r_bind.stmt
+                fmt_result = r_bind.fmtdict
+                self.build_arg_list_interface(r_bind, modules, imports,
+                                              arg_f_names, arg_c_decl)
+                if result_stmt.i_result_decl is not None:
+                    for arg in result_stmt.i_result_decl:
+                        append_format(arg_c_decl, arg, fmt_result)
+                    self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
                 arguments = ",\t ".join(arg_f_names)
                 iface.extend(stmts_comments)
                 if options.literalinclude:
@@ -1023,7 +1028,7 @@ rv = .false.
                 if self.newlibrary.options.literalinclude2:
                     iface.append("abstract interface+")
                 iface.append(
-                    "{} {}({}) bind(C)".format(subprogram, key, arguments)
+                    "{} {}({}){} \tbind(C)".format(subprogram, key, arguments, fmt_result.i_result_clause)
                 )
                 iface.append(1)
                 arg_f_use = self.sort_module_info(modules, fmt.F_module_name, imports)
@@ -1177,16 +1182,16 @@ rv = .false.
             # Functions which return shadow classes are not pure
             # since the result argument will be assigned to.
             pass
-        elif fmt_result.F_C_subprogram == "function" and (
+        elif fmt_result.i_subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
-            fmt_result.F_C_pure_clause = "pure "
+            fmt_result.i_pure_clause = "pure "
 
-        fmt_result.F_C_arguments = options.get(
-            "F_C_arguments", ",\t ".join(arg_c_names)
+        fmt_result.i_arguments = options.get(
+            "i_arguments", ",\t ".join(arg_c_names)
         )
 
-        if fmt_result.F_C_subprogram == "function":
+        if fmt_result.i_subprogram == "function":
             if result_stmt.i_result_decl is not None:
                 for arg in result_stmt.i_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
@@ -1198,15 +1203,8 @@ rv = .false.
                 if ntypemap is None:
                     cursor.warning("Unknown type in c_return_type: {}".format(c_return_type))
                 else:
-                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.F_result))
+                    arg_c_decl.append("{} :: {}".format(ntypemap.f_type, fmt_result.i_result_var))
                     self.update_f_module(modules, ntypemap.f_module, fmt_result)
-            else:
-                arg_c_decl.append(bind_c(ast, modules, is_result=True, name=fmt_result.F_result))
-                self.update_f_module(
-                    modules,
-                    result_typemap.i_module or result_typemap.f_module,
-                    fmt_result
-                )
 
         arg_f_use = self.sort_module_info(
             modules, fmt_result.F_module_name, imports
@@ -1217,13 +1215,13 @@ rv = .false.
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
         if options.literalinclude:
-            append_format(c_interface, "! start {F_C_name}", fmt_result)
+            append_format(c_interface, "! start {i_name_function}", fmt_result)
         if self.newlibrary.options.literalinclude2:
             c_interface.append("interface+")
         c_interface.append(
             wformat(
-                "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
-                "(\t{F_C_arguments}){F_C_result_clause}"
+                "\r{i_pure_clause}{i_subprogram} {i_name_function}"
+                "(\t{i_arguments}){i_result_clause}"
                 '\fbind(C, name="{C_name}")',
                 fmt_result,
             )
@@ -1235,11 +1233,11 @@ rv = .false.
         c_interface.append("implicit none")
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
-        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt_result))
+        c_interface.append(wformat("end {i_subprogram} {i_name_function}", fmt_result))
         if self.newlibrary.options.literalinclude2:
             c_interface.append("-end interface")
         if options.literalinclude:
-            append_format(c_interface, "! end {F_C_name}", fmt_result)
+            append_format(c_interface, "! end {i_name_function}", fmt_result)
         if node.cpp_if:
             c_interface.append("#endif")
 
@@ -1391,11 +1389,11 @@ rv = .false.
         sintent = r_meta["intent"]
         fmt_result = r_bind.fmtdict
         if C_node is node:
-            fmt_result.F_C_call = C_node._bind["f"]["+result"].fmtdict.F_C_name
+            fmt_result.f_call_function = C_node._bind["f"]["+result"].fmtdict.i_name_function
         else:
             # node is generated, ex fortran_generic
             # while C_node is the real function
-            fmt_result.F_C_call = C_node._bind["c"]["+result"].fmtdict.F_C_name
+            fmt_result.f_call_function = C_node._bind["c"]["+result"].fmtdict.i_name_function
         result_stmt = r_bind.stmt
         func_cursor.stmt = result_stmt
         self.fill_fortran_result(cls, node, r_bind)
@@ -1665,10 +1663,10 @@ rv = .false.
         elif result_stmt.f_call:
             call_list = result_stmt.f_call
         elif C_subprogram == "function":
-            call_list = ["{F_result} = {F_C_call}({F_arg_c_call})"]
+            call_list = ["{f_result_var} = {f_call_function}({F_arg_c_call})"]
         else:
             # XXX - statements should set this explicitly
-            call_list = ["call {F_C_call}({F_arg_c_call})"]
+            call_list = ["call {f_call_function}({F_arg_c_call})"]
 
         for line in call_list:
             append_format(call, line, fmt_result)
@@ -1718,7 +1716,7 @@ rv = .false.
             append_format(
                 impl,
                 "\r{F_subprogram} {F_name_impl}(\t"
-                "{F_arguments}){F_result_clause}",
+                "{F_arguments}){f_result_clause}",
                 fmt_result,
             )
             impl.append(1)
@@ -1739,8 +1737,8 @@ rv = .false.
             fileinfo.impl.extend(impl)
         else:            
             # Call the C function directly via bind(C)
-            # by changing the name of the F_C_name function.
-            C_node._bind["f"]["+result"].fmtdict.F_C_name = fmt_result.F_name_impl
+            # by changing the i_name_function.
+            C_node._bind["f"]["+result"].fmtdict.i_name_function = fmt_result.F_name_impl
             if options.debug:
                 # Include wrapper which would of been generated.
                 fileinfo.impl.append("")
@@ -2074,70 +2072,6 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
-
-######################################################################
-
-def bind_c(declaration, modules, intent=None, is_result=False,
-           is_callback=False, **kwargs):
-    """Generate an argument used with the bind(C) interface from Fortran.
-
-    Args:
-        intent - Explicit intent 'in', 'inout', 'out'.
-                 Defaults to None to use intent from attrs.
-        is_callback - Abstract interface for callbacks.
-                 A function which returns a pointer must
-                 use type(C_PTR).
-
-        name   - Set name explicitly, else self.name.
-    """
-    # XXX - callers should not need to set modules directly,
-    #       this routine should set modules.
-    t = []
-    declarator = declaration.declarator
-    attrs = declarator.attrs
-    if is_result and "typedef" in declaration.storage:
-        ntypemap = declarator.typemap
-    else:
-        ntypemap = declaration.typemap
-    basedef = ntypemap
-
-    typ = ntypemap.i_type or ntypemap.f_type
-    if typ is None:
-        error.cursor.warning("Type {} has no value for f_type or i_type".format(ntypemap.name))
-        return "===> {} <===".format(ntypemap.name)
-    if is_callback and declarator.is_indirect():
-        typ = "type(C_PTR)"
-        modules.setdefault("iso_c_binding", {})["C_PTR"] = True
-    t.append(typ)
-    if basedef.base == "procedure":
-        # dummy procedure can not have intent or value.
-        pass
-    else:
-        append_fortran_value(declaration, t, is_result)
-        if intent in ["in", "out", "inout"]:
-            t.append("intent(%s)" % intent.upper())
-        elif intent == "setter":
-            # Argument to setter function.
-            t.append("intent(IN)")
-
-    decl = []
-    decl.append(", ".join(t))
-    decl.append(" :: ")
-
-    if kwargs.get("name", None):
-        decl.append(kwargs["name"])
-    else:
-        decl.append(declarator.user_name)
-
-    if ntypemap.base == "string":
-        decl.append("(*)")
-    elif "dimension" in attrs:
-        # Any dimension is changed to assumed-size.
-        decl.append("(*)")
-    elif int(attrs.get("rank",0)) > 0:
-        # Any dimension is changed to assumed-size.
-        decl.append("(*)")
-    return "".join(decl)
 
 ######################################################################
 

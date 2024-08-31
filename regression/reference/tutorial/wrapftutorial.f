@@ -100,11 +100,12 @@ module tutorial_mod
     ! Statement: f_none_native
     ! start abstract callback1_incr
     abstract interface
-        function callback1_incr(arg0) bind(C)
+        function callback1_incr(arg0) &
+            result(SHT_rv) bind(C)
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), value :: arg0
-            integer(C_INT) :: callback1_incr
+            integer(C_INT) :: SHT_rv
         end function callback1_incr
     end interface
     ! end abstract callback1_incr
@@ -678,7 +679,7 @@ module tutorial_mod
                 bind(C, name="TUT_LastFunctionCalled")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_last_function_called
     end interface
 

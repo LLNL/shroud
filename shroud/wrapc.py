@@ -1234,11 +1234,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                     mmm = get_func_bind(node, "f").meta
                     if mmm["intent"] not in ["getter", "setter"]:
                         if any_cfi:
-                            fmt_result.f_c_suffix = fmt_func.C_cfi_suffix
+                            fmt_result.i_suffix = fmt_func.C_cfi_suffix
                         else:
-                            fmt_result.f_c_suffix = fmt_func.C_bufferify_suffix
+                            fmt_result.i_suffix = fmt_func.C_bufferify_suffix
             node.eval_template("C_name", fmt=fmt_result)
-            node.eval_template("F_C_name", fmt=fmt_result)
+            node.eval_template("i_name_function", fmt=fmt_result)
             if "C_name" in node.user_fmt:
                 # XXX - this needs to distinguish between wlang
                 fmt_result.C_name = node.user_fmt["C_name"]
@@ -1250,7 +1250,7 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             )
             impl.append("{+")
             impl.extend(setup_this)
-            sname = wformat("{function_name}{function_suffix}{f_c_suffix}{template_suffix}",
+            sname = wformat("{function_name}{function_suffix}{i_suffix}{template_suffix}",
                             fmt_result)
             self._create_splicer(sname, impl, C_code, C_force)
             impl.append("-}")
@@ -1290,11 +1290,11 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
             # There is no C wrapper, have Fortran call the function directly.
             fmt_result.C_name = node.ast.declarator.name
             # Needed to create interface for C only wrappers.
-            node.eval_template("F_C_name", fmt=fmt_result)
+            node.eval_template("i_name_function", fmt=fmt_result)
 
         if wlang == "f":
-            if "F_C_name" in node.user_fmt:
-                fmt_result.F_C_name = node.user_fmt["F_C_name"]
+            if "i_name_function" in node.user_fmt:
+                fmt_result.i_name_function = node.user_fmt["i_name_function"]
             
         cursor.pop_node(node)
 

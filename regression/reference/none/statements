@@ -149,6 +149,7 @@ root
       argument -- c_mixin_argument
       argument2 -- c_mixin_argument2
       character -- c_mixin_character
+      declare-fortran-result -- c_mixin_declare-fortran-result
       destructor
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
@@ -658,8 +659,8 @@ c_ctor_shadow_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -671,8 +672,6 @@ c_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: caller
 c_dtor:
   name: c_dtor
@@ -697,6 +696,11 @@ c_function_bool:
   comments:
   - Call a function.
   intent: function
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 c_function_char:
   name: c_function_char
@@ -722,7 +726,7 @@ c_function_char*:
   - Call a function.
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -855,6 +859,8 @@ c_function_enum:
   comments:
   - Call a function.
   intent: function
+  i_result_decl:
+  - '{i_type} :: {i_var}'
   c_post_call:
   - "{c_abstract_decl} {c_var} =\t {cast_static}{c_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -863,6 +869,11 @@ c_function_native:
   comments:
   - Call a function.
   intent: function
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 c_function_native&:
   name: c_function_native&
@@ -870,7 +881,7 @@ c_function_native&:
   - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -881,7 +892,7 @@ c_function_native*:
   - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -892,7 +903,7 @@ c_function_native**:
   - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -903,7 +914,7 @@ c_function_native*_caller:
   - Return a C pointer directly as type(C_PTR).
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -914,8 +925,8 @@ c_function_native*_scalar:
   i_result_decl:
   - '{f_type} :: {i_var}'
   i_module:
-    iso_c_binding:
-    - '{f_kind}'
+    '{f_module_name}':
+    - '{i_kind}'
   owner: library
 c_function_shadow&_capptr:
   name: c_function_shadow&_capptr
@@ -927,8 +938,8 @@ c_function_shadow&_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -946,8 +957,6 @@ c_function_shadow&_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow&_capptr_caller:
   name: c_function_shadow&_capptr_caller
@@ -959,8 +968,8 @@ c_function_shadow&_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -978,8 +987,6 @@ c_function_shadow&_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow&_capptr_library:
   name: c_function_shadow&_capptr_library
@@ -991,8 +998,8 @@ c_function_shadow&_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1010,8 +1017,6 @@ c_function_shadow&_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capptr:
   name: c_function_shadow*_capptr
@@ -1023,8 +1028,8 @@ c_function_shadow*_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1042,8 +1047,6 @@ c_function_shadow*_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capptr_caller:
   name: c_function_shadow*_capptr_caller
@@ -1055,8 +1058,8 @@ c_function_shadow*_capptr_caller:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1074,8 +1077,6 @@ c_function_shadow*_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capptr_library:
   name: c_function_shadow*_capptr_library
@@ -1087,8 +1088,8 @@ c_function_shadow*_capptr_library:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1106,8 +1107,6 @@ c_function_shadow*_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 c_function_shadow*_capsule:
   name: c_function_shadow*_capsule
@@ -1154,8 +1153,8 @@ c_function_shadow<native>_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1192,8 +1191,8 @@ c_function_shadow_capptr:
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1221,6 +1220,11 @@ c_function_string:
   comments:
   - Cannot return a char array by value.
   intent: function
+  i_result_decl:
+  - 'character(kind=C_CHAR) :: {i_var}(*)'
+  i_module:
+    iso_c_binding:
+    - C_CHAR
   c_post_call:
   - '{c_abstract_decl} {c_var} = {cxx_var}{cxx_member}c_str();'
   owner: library
@@ -1234,7 +1238,7 @@ c_function_string&:
   - any api argument - is this useful?
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1325,7 +1329,7 @@ c_function_string&_copy:
   - any api argument - is this useful?
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1343,7 +1347,7 @@ c_function_string*:
   - any api argument - is this useful?
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1394,7 +1398,7 @@ c_function_string*_caller:
   - any api argument - is this useful?
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1412,7 +1416,7 @@ c_function_string*_copy:
   - any api argument - is this useful?
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1430,7 +1434,7 @@ c_function_string*_library:
   - any api argument - is this useful?
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1536,7 +1540,7 @@ c_function_struct*:
   - C++ pointer -> void pointer -> C pointer.
   intent: function
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -1591,11 +1595,23 @@ c_function_void*:
   name: c_function_void*
   comments:
   - Call a function.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
   intent: function
+  i_result_decl:
+  - 'type(C_PTR) :: {f_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   owner: library
 c_getter_native:
   name: c_getter_native
   intent: getter
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -1604,6 +1620,11 @@ c_getter_native:
 c_getter_native*:
   name: c_getter_native*
   intent: getter
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -1617,8 +1638,8 @@ c_in_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1751,8 +1772,8 @@ c_in_enum:
   i_arg_decl:
   - '{f_type}, value{f_intent_attr} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -1772,8 +1793,8 @@ c_in_native:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1787,8 +1808,8 @@ c_in_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1802,8 +1823,8 @@ c_in_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2125,8 +2146,8 @@ c_in_struct:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2140,8 +2161,8 @@ c_in_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2158,8 +2179,8 @@ c_in_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2175,8 +2196,8 @@ c_in_unknown:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2484,8 +2505,8 @@ c_in_void:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2559,8 +2580,8 @@ c_inout_bool_*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2622,8 +2643,8 @@ c_inout_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -2643,8 +2664,8 @@ c_inout_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2668,8 +2689,8 @@ c_inout_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2883,8 +2904,8 @@ c_inout_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2901,8 +2922,8 @@ c_inout_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3228,8 +3249,8 @@ c_mixin_argument:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3255,6 +3276,15 @@ c_mixin_character:
     - C_CHAR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
+  owner: library
+c_mixin_declare-fortran-result:
+  name: c_mixin_declare-fortran-result
+  intent: mixin
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 c_mixin_destructor_new-string:
   name: c_mixin_destructor_new-string
@@ -3602,8 +3632,8 @@ c_out_bool_*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3659,8 +3689,8 @@ c_out_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -3680,8 +3710,8 @@ c_out_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3705,8 +3735,8 @@ c_out_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3987,8 +4017,8 @@ c_out_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4005,8 +4035,8 @@ c_out_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4526,8 +4556,8 @@ c_setter_native:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4543,8 +4573,8 @@ c_setter_native*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4590,24 +4620,22 @@ f_ctor_shadow_capptr:
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4619,8 +4647,6 @@ f_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: caller
 f_dtor:
   name: f_dtor
@@ -4628,7 +4654,7 @@ f_dtor:
   - Call the C wrapper as a subroutine.
   intent: dtor
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   c_call:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
@@ -4644,11 +4670,16 @@ f_function_bool:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
   f_need_wrapper: true
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 f_function_char:
   name: f_function_char
@@ -4660,7 +4691,7 @@ f_function_char:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
@@ -4682,9 +4713,9 @@ f_function_char*:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4697,9 +4728,9 @@ f_function_char*_allocatable:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -4725,8 +4756,8 @@ f_function_char*_arg:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -4790,8 +4821,8 @@ f_function_char*_buf_arg:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -4854,7 +4885,7 @@ f_function_char*_buf_copy:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -4906,7 +4937,7 @@ f_function_char*_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -4953,7 +4984,7 @@ f_function_char*_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -4999,7 +5030,7 @@ f_function_char*_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5034,8 +5065,8 @@ f_function_char*_cfi_arg:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5077,7 +5108,7 @@ f_function_char*_cfi_copy:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5116,7 +5147,7 @@ f_function_char*_cfi_pointer:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5160,9 +5191,9 @@ f_function_char*_copy:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5175,9 +5206,9 @@ f_function_char*_pointer:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5190,9 +5221,9 @@ f_function_char*_raw:
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5213,7 +5244,7 @@ f_function_char_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -5260,7 +5291,7 @@ f_function_char_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -5306,7 +5337,7 @@ f_function_char_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5339,7 +5370,7 @@ f_function_char_cfi_pointer:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -5383,10 +5414,15 @@ f_function_enum:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5398,10 +5434,15 @@ f_function_native:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 f_function_native&:
   name: f_function_native&
@@ -5416,9 +5457,9 @@ f_function_native&:
   f_declare:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_post_call:
-  - call c_f_pointer({f_local_ptr}, {F_result})
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5428,7 +5469,7 @@ f_function_native&:
   f_local:
   - ptr
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5447,9 +5488,9 @@ f_function_native&_pointer:
   f_declare:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_post_call:
-  - call c_f_pointer({f_local_ptr}, {F_result})
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5459,7 +5500,7 @@ f_function_native&_pointer:
   f_local:
   - ptr
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5476,7 +5517,7 @@ f_function_native**:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5502,7 +5543,7 @@ f_function_native*_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - allocate({f_var}{f_array_allocate})
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},\t\
@@ -5566,9 +5607,9 @@ f_function_native*_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5624,9 +5665,9 @@ f_function_native*_cdesc_pointer_caller:
   - '{f_var_cdesc}'
   - '{f_var_capsule}%mem'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5681,7 +5722,7 @@ f_function_native*_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5730,7 +5771,7 @@ f_function_native*_cfi_pointer:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5785,9 +5826,9 @@ f_function_native*_pointer:
   f_declare:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_post_call:
-  - call c_f_pointer({f_local_ptr}, {F_result})
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5797,7 +5838,7 @@ f_function_native*_pointer:
   f_local:
   - ptr
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5816,9 +5857,9 @@ f_function_native*_pointer_caller:
   f_declare:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_post_call:
-  - call c_f_pointer({f_local_ptr}, {F_result})
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -5828,7 +5869,7 @@ f_function_native*_pointer_caller:
   f_local:
   - ptr
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5845,7 +5886,7 @@ f_function_native*_raw:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5858,10 +5899,15 @@ f_function_native*_scalar:
   f_arg_decl:
   - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_return:
   - return *{cxx_var};
   c_return_type: '{c_type}'
@@ -5874,24 +5920,22 @@ f_function_shadow&_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5909,8 +5953,6 @@ f_function_shadow&_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow&_capptr_caller:
   name: f_function_shadow&_capptr_caller
@@ -5919,24 +5961,22 @@ f_function_shadow&_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5954,8 +5994,6 @@ f_function_shadow&_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow&_capptr_library:
   name: f_function_shadow&_capptr_library
@@ -5964,24 +6002,22 @@ f_function_shadow&_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -5999,8 +6035,6 @@ f_function_shadow&_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capptr:
   name: f_function_shadow*_capptr
@@ -6009,24 +6043,22 @@ f_function_shadow*_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6044,8 +6076,6 @@ f_function_shadow*_capptr:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capptr_caller:
   name: f_function_shadow*_capptr_caller
@@ -6054,24 +6084,22 @@ f_function_shadow*_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6089,8 +6117,6 @@ f_function_shadow*_capptr_caller:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capptr_library:
   name: f_function_shadow*_capptr_library
@@ -6099,24 +6125,22 @@ f_function_shadow*_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6134,8 +6158,6 @@ f_function_shadow*_capptr_library:
   c_return_type: '{c_type} *'
   c_local:
   - cxx
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_function_shadow*_capsule:
   name: f_function_shadow*_capsule
@@ -6147,7 +6169,7 @@ f_function_shadow*_capsule:
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6172,8 +6194,8 @@ f_function_shadow*_this:
   - Do not return anything.
   intent: function
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   c_call:
   - '{C_call_function};'
   c_return_type: void
@@ -6189,24 +6211,22 @@ f_function_shadow<native>_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6240,24 +6260,22 @@ f_function_shadow_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6291,24 +6309,22 @@ f_function_shadow_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6342,24 +6358,22 @@ f_function_shadow_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -6398,7 +6412,7 @@ f_function_string&_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     iso_c_binding:
     - C_INT
@@ -6450,8 +6464,8 @@ f_function_string&_buf_arg:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     iso_c_binding:
     - C_INT
@@ -6508,7 +6522,7 @@ f_function_string&_buf_copy:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     iso_c_binding:
     - C_INT
@@ -6564,7 +6578,7 @@ f_function_string&_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -6625,7 +6639,7 @@ f_function_string&_cdesc_allocatable_caller:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -6686,7 +6700,7 @@ f_function_string&_cdesc_allocatable_library:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -6741,7 +6755,7 @@ f_function_string&_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -6786,7 +6800,7 @@ f_function_string&_cdesc_pointer_caller:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -6831,7 +6845,7 @@ f_function_string&_cdesc_pointer_library:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -6871,7 +6885,7 @@ f_function_string&_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6904,7 +6918,7 @@ f_function_string&_cfi_allocatable_caller:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6937,7 +6951,7 @@ f_function_string&_cfi_allocatable_library:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6972,8 +6986,8 @@ f_function_string&_cfi_arg:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -7022,7 +7036,7 @@ f_function_string&_cfi_copy:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -7069,7 +7083,7 @@ f_function_string&_cfi_pointer:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7119,7 +7133,7 @@ f_function_string&_cfi_pointer_caller:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7169,7 +7183,7 @@ f_function_string&_cfi_pointer_library:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7221,7 +7235,7 @@ f_function_string*_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     iso_c_binding:
     - C_INT
@@ -7271,7 +7285,7 @@ f_function_string*_buf_copy:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     iso_c_binding:
     - C_INT
@@ -7327,7 +7341,7 @@ f_function_string*_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -7388,7 +7402,7 @@ f_function_string*_cdesc_allocatable_caller:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -7449,7 +7463,7 @@ f_function_string*_cdesc_allocatable_library:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -7504,7 +7518,7 @@ f_function_string*_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -7549,7 +7563,7 @@ f_function_string*_cdesc_pointer_caller:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -7594,7 +7608,7 @@ f_function_string*_cdesc_pointer_library:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - "call {f_helper_pointer_string}(\t{f_var_cdesc},\t {f_var})"
   f_module:
@@ -7634,7 +7648,7 @@ f_function_string*_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7667,7 +7681,7 @@ f_function_string*_cfi_allocatable_caller:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7700,7 +7714,7 @@ f_function_string*_cfi_allocatable_library:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7734,7 +7748,7 @@ f_function_string*_cfi_copy:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -7781,7 +7795,7 @@ f_function_string*_cfi_pointer:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7831,7 +7845,7 @@ f_function_string*_cfi_pointer_caller:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7881,7 +7895,7 @@ f_function_string*_cfi_pointer_library:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -7933,7 +7947,7 @@ f_function_string_buf:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     iso_c_binding:
     - C_INT
@@ -7985,8 +7999,8 @@ f_function_string_buf_arg:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     iso_c_binding:
     - C_INT
@@ -8043,7 +8057,7 @@ f_function_string_buf_copy:
   - '{f_var}'
   - '{f_var_len}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     iso_c_binding:
     - C_INT
@@ -8099,7 +8113,7 @@ f_function_string_cdesc_allocatable:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -8172,7 +8186,7 @@ f_function_string_cdesc_allocatable_caller:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -8245,7 +8259,7 @@ f_function_string_cdesc_allocatable_library:
   - '{f_var_cdesc}'
   - '{f_var_capsule}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -8309,7 +8323,7 @@ f_function_string_cfi_allocatable:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8340,7 +8354,7 @@ f_function_string_cfi_allocatable_caller:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8373,7 +8387,7 @@ f_function_string_cfi_allocatable_library:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8408,8 +8422,8 @@ f_function_string_cfi_arg:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
-  f_result: subroutine
+  - call {f_call_function}({F_arg_c_call})
+  f_result_var: as-subroutine
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8458,7 +8472,7 @@ f_function_string_cfi_copy:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8505,7 +8519,7 @@ f_function_string_cfi_pointer:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8555,7 +8569,7 @@ f_function_string_cfi_pointer_caller:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8605,7 +8619,7 @@ f_function_string_cfi_pointer_library:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -8651,7 +8665,7 @@ f_function_struct:
   f_arg_call:
   - '{f_var}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8683,9 +8697,9 @@ f_function_struct*_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8726,9 +8740,9 @@ f_function_struct*_pointer:
   f_declare:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_post_call:
-  - call c_f_pointer({f_local_ptr}, {F_result})
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8738,7 +8752,7 @@ f_function_struct*_pointer:
   f_local:
   - ptr
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -8763,7 +8777,7 @@ f_function_vector<native>_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - allocate({f_var}({f_var_cdesc}%size))
   - "call {f_helper_copy_array}(\t{f_var_cdesc},\t C_LOC({f_var}),\t size({f_var},kind=C_SIZE_T))"
@@ -8829,10 +8843,17 @@ f_function_void*:
   name: f_function_void*
   comments:
   - Call a function.
+  notes:
+  - XXX - f entries are the same as the i entries, share?
   intent: function
   f_arg_decl:
   - 'type(C_PTR) :: {f_var}'
   f_module:
+    iso_c_binding:
+    - C_PTR
+  i_result_decl:
+  - 'type(C_PTR) :: {f_var}'
+  i_module:
     iso_c_binding:
     - C_PTR
   owner: library
@@ -8844,6 +8865,11 @@ f_getter_bool:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8857,6 +8883,11 @@ f_getter_native:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8880,9 +8911,9 @@ f_getter_native*_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -8923,6 +8954,11 @@ f_getter_native*_pointer:
   f_module:
     '{f_module_name}':
     - '{f_kind}'
+  i_result_decl:
+  - '{i_type} :: {i_var}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8940,7 +8976,7 @@ f_getter_string_cdesc_allocatable:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
   - 'allocate(character(len={f_var_cdesc}%elem_len):: {f_var})'
   - "call {f_helper_copy_string}(\t{f_var_cdesc},\t {f_var},\t {f_var_cdesc}%elem_len)"
@@ -8986,9 +9022,9 @@ f_getter_struct**_cdesc_raw:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     iso_c_binding:
     - C_PTR
@@ -9038,9 +9074,9 @@ f_getter_struct*_cdesc_pointer:
   f_arg_call:
   - '{f_var_cdesc}'
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -9081,9 +9117,9 @@ f_getter_struct*_fapi_pointer:
   - Return value a function result.
   intent: getter
   f_arg_decl:
-  - '{f_type}, pointer :: {F_result}'
+  - '{f_type}, pointer :: {f_result_var}'
   f_call:
-  - call c_f_pointer({CXX_this}%{field_name}, {F_result})
+  - call c_f_pointer({CXX_this}%{field_name}, {f_result_var})
   f_module:
     iso_c_binding:
     - c_f_pointer
@@ -9112,8 +9148,8 @@ f_in_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9393,8 +9429,8 @@ f_in_enum:
   i_arg_decl:
   - '{f_type}, value{f_intent_attr} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -9421,8 +9457,8 @@ f_in_native:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9443,8 +9479,8 @@ f_in_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9465,8 +9501,8 @@ f_in_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10037,8 +10073,8 @@ f_in_struct:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10059,8 +10095,8 @@ f_in_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10084,8 +10120,8 @@ f_in_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10108,8 +10144,8 @@ f_in_unknown:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10495,8 +10531,8 @@ f_in_void:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10644,8 +10680,8 @@ f_inout_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10801,8 +10837,8 @@ f_inout_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -10829,8 +10865,8 @@ f_inout_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10861,8 +10897,8 @@ f_inout_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11291,8 +11327,8 @@ f_inout_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11316,8 +11352,8 @@ f_inout_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11744,8 +11780,8 @@ f_mixin_declare-interface-arg:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 f_mixin_function:
   name: f_mixin_function
@@ -11753,7 +11789,7 @@ f_mixin_function:
   - Call a function.
   intent: mixin
   f_call:
-  - '{F_result} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_var} = {f_call_function}({F_arg_c_call})'
   owner: library
 f_mixin_function-to-subroutine:
   name: f_mixin_function-to-subroutine
@@ -11761,7 +11797,7 @@ f_mixin_function-to-subroutine:
   - Call the C wrapper as a subroutine.
   intent: mixin
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   c_return_type: void
   owner: library
 f_mixin_function_c-ptr:
@@ -11774,9 +11810,9 @@ f_mixin_function_c-ptr:
   f_declare:
   - 'type(C_PTR) :: {f_local_ptr}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_post_call:
-  - call c_f_pointer({f_local_ptr}, {F_result})
+  - call c_f_pointer({f_local_ptr}, {f_result_var})
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -11786,7 +11822,7 @@ f_mixin_function_c-ptr:
   f_local:
   - ptr
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -11803,7 +11839,7 @@ f_mixin_function_ptr:
     iso_c_binding:
     - C_PTR
   i_result_decl:
-  - type(C_PTR) {i_var}
+  - 'type(C_PTR) :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -11816,25 +11852,21 @@ f_mixin_function_shadow_capptr:
   intent: mixin
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
+  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_local_ptr} = {F_C_call}({F_arg_c_call})'
+  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_result_decl:
-  - 'type(C_PTR) :: {F_result_ptr}'
-  i_result_var: '{F_result_ptr}'
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
   i_module:
     iso_c_binding:
     - C_PTR
-  fmtdict:
-    f_local_ptr: '{F_result_ptr}'
   owner: library
 f_mixin_function_shadow_capsule:
   name: f_mixin_function_shadow_capsule
@@ -12100,7 +12132,7 @@ f_mixin_native_cdesc_pointer:
   f_arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     '{f_module_name}':
     - '{f_kind}'
@@ -12115,7 +12147,7 @@ f_mixin_native_cdesc_raw:
   f_arg_decl:
   - 'type(C_PTR), pointer :: {f_var}{f_assumed_shape}'
   f_post_call:
-  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {F_result}{f_array_shape})"
+  - "call c_f_pointer(\t{f_var_cdesc}%base_addr,\t {f_result_var}{f_array_shape})"
   f_module:
     iso_c_binding:
     - C_PTR
@@ -12341,6 +12373,8 @@ f_mixin_unknown:
   - ===>i_arg_names<===
   i_arg_decl:
   - ===>i_arg_decl<===
+  i_result_decl:
+  - ===>i_result_decl<===
   c_arg_decl:
   - ===>{c_var}<===
   owner: library
@@ -12400,8 +12434,8 @@ f_none_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12430,8 +12464,8 @@ f_none_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12495,8 +12529,8 @@ f_none_native:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12517,8 +12551,8 @@ f_none_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12569,8 +12603,8 @@ f_out_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12715,8 +12749,8 @@ f_out_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -12743,8 +12777,8 @@ f_out_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12775,8 +12809,8 @@ f_out_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13607,8 +13641,8 @@ f_out_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13632,8 +13666,8 @@ f_out_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14161,7 +14195,7 @@ f_setter:
   name: f_setter
   intent: setter
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   c_call:
   - // skip call c_setter
   owner: library
@@ -14188,8 +14222,8 @@ f_setter_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14214,8 +14248,8 @@ f_setter_native:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14240,8 +14274,8 @@ f_setter_native*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14362,7 +14396,7 @@ f_subroutine:
   name: f_subroutine
   intent: subroutine
   f_call:
-  - call {F_C_call}({F_arg_c_call})
+  - call {f_call_function}({F_arg_c_call})
   owner: library
 ***** Python
 root

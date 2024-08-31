@@ -493,7 +493,7 @@ module struct_mod
             implicit none
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_struct_ptr1
 
         ! ----------------------------------------
@@ -535,7 +535,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: i
             real(C_DOUBLE), value, intent(IN) :: d
             character(kind=C_CHAR), intent(OUT) :: outbuf(*)
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_struct_ptr2
 
         ! ----------------------------------------
@@ -571,7 +571,7 @@ module struct_mod
                 bind(C, name="STR_returnStructPtrArray")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_return_struct_ptr_array
 
         ! ----------------------------------------
@@ -592,7 +592,7 @@ module struct_mod
                 bind(C, name="STR_get_global_struct_list")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_global_struct_list
 
         ! ----------------------------------------

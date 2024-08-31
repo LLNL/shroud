@@ -89,7 +89,7 @@ module memdoc_mod
                 bind(C, name="STR_getConstStringPtrAlloc")
             use iso_c_binding, only : C_PTR
             implicit none
-            type(C_PTR) SHT_rv
+            type(C_PTR) :: SHT_rv
         end function c_get_const_string_ptr_alloc
     end interface
     ! end c_get_const_string_ptr_alloc

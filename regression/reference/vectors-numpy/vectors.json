@@ -352,7 +352,8 @@
                         "c_return": [
                             "return SHC_arg_size;"
                         ],
-                        "c_return_type": "long"
+                        "c_return_type": "long",
+                        "i_result_var": "num"
                     },
                     "f": {
                         "c_return": [
@@ -360,17 +361,18 @@
                         ],
                         "c_return_type": "long",
                         "f_arg_decl": [
-                            "integer(C_LONG) :: {F_result}"
+                            "integer(C_LONG) :: {f_result_var}"
                         ],
                         "f_call": [
-                            "{F_result} = {F_C_call}({F_arg_c_call})"
+                            "{f_result_var} = {f_call_function}({F_arg_c_call})"
                         ],
                         "f_module": {
                             "iso_c_binding": [
                                 "C_LONG"
                             ]
                         },
-                        "f_result": "num"
+                        "f_result_var": "num",
+                        "i_result_var": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num",
@@ -463,7 +465,7 @@
                         "f_post_call": [
                             "num = SHT_arg_cdesc%size"
                         ],
-                        "f_result": "num"
+                        "f_result_var": "num"
                     }
                 },
                 "name": "vector_iota_out_with_num2",
