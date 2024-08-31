@@ -3352,7 +3352,6 @@
                                         "f_intent": "IN",
                                         "f_intent_attr": ", intent(IN)",
                                         "f_type": "character(len=*)",
-                                        "f_value_attr": ", value",
                                         "f_var": "val",
                                         "f_var_len": "SHT_val_len",
                                         "fc_var": "val",
@@ -3369,8 +3368,7 @@
                                     },
                                     "meta": {
                                         "api": "buf",
-                                        "intent": "setter",
-                                        "value": true
+                                        "intent": "setter"
                                     },
                                     "stmt": "f_setter_string_buf"
                                 }
@@ -3383,8 +3381,7 @@
                                 },
                                 "val": {
                                     "meta": {
-                                        "intent": "setter",
-                                        "value": true
+                                        "intent": "setter"
                                     }
                                 }
                             }

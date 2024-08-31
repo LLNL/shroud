@@ -2555,23 +2555,15 @@
             "Pass directly as argument which will construct the std::string.",
             "This would work for Fortran if it explicited added C_NULL_CHAR."
         ],
+        "mixin": [
+            "f_mixin_declare-interface-arg"
+        ],
         "c_arg_decl": [
             "char *{c_var}"
         ],
         "c_arg_call": [
             "{cxx_var}"
-        ],
-        "i_arg_decl": [
-            "{i_type}{f_intent_attr} :: {i_var}{i_dimension}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "{i_module_name}": [
-                "{i_kind}"
-            ]
-        }
+        ]
     },
     {
         "alias": [

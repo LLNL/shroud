@@ -7249,7 +7249,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "character(len=*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
@@ -7262,8 +7261,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "c_in_string"
                         }
@@ -7341,7 +7339,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "character(len=*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "f_var_len": "SHT_arg1_len",
                                 "fc_var": "arg1",
@@ -7360,8 +7357,7 @@
                             },
                             "meta": {
                                 "api": "buf",
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_string_buf"
                         }
@@ -7408,8 +7404,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         }
                     },
@@ -7421,8 +7416,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         }
                     }

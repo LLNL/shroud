@@ -5804,7 +5804,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "character(len=*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "i_dimension": "(*)",
                                 "i_kind": "C_CHAR",
@@ -5817,8 +5816,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "c_in_string"
                         }
@@ -5896,7 +5894,6 @@
                                 "f_intent": "IN",
                                 "f_intent_attr": ", intent(IN)",
                                 "f_type": "character(len=*)",
-                                "f_value_attr": ", value",
                                 "f_var": "arg1",
                                 "fc_var": "arg1",
                                 "i_dimension": "(*)",
@@ -5914,8 +5911,7 @@
                             },
                             "meta": {
                                 "api": "cfi",
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             },
                             "stmt": "f_in_string_cfi"
                         }
@@ -5928,8 +5924,7 @@
                         },
                         "arg1": {
                             "meta": {
-                                "intent": "in",
-                                "value": true
+                                "intent": "in"
                             }
                         }
                     }

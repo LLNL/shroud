@@ -176,6 +176,9 @@ class FillMeta(object):
                         meta["value"] = True  # void *
 #                    else:
 #                        meta["value"] = None # void **  XXX intent(out)?
+            elif arg.typemap.sgroup == "string":
+                # Strings pass a char *.
+                pass
             else:
                 meta["value"] = True
         else:
