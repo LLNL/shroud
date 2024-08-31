@@ -184,7 +184,7 @@ module userlibrary_example_nested_mod
         ! Statement: f_none_native
         function func_ptr3_get(i, arg1) &
             result(SHT_rv) bind(C)
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_DOUBLE, C_INT
             implicit none
             integer(C_INT), value :: i
             integer(C_INT), value :: arg1

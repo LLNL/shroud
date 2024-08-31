@@ -1015,10 +1015,12 @@ rv = .false.
                 r_bind = get_func_bind(fptr, "f")
                 result_stmt = r_bind.stmt
                 fmt_result = r_bind.fmtdict
-                if subprogram == "function":
-                    arg_c_decl.append(bind_c(fptr.ast,
-                        modules, name=fmt_result.i_result_var, is_result=True, is_callback=True,
-                        params=None))
+                self.build_arg_list_interface(r_bind, modules, imports,
+                                              arg_f_names, arg_c_decl)
+                if result_stmt.i_result_decl is not None:
+                    for arg in result_stmt.i_result_decl:
+                        append_format(arg_c_decl, arg, fmt_result)
+                    self.add_i_module_from_stmts(result_stmt, modules, imports, fmt_result)
                 arguments = ",\t ".join(arg_f_names)
                 iface.extend(stmts_comments)
                 if options.literalinclude:
@@ -2070,70 +2072,6 @@ def locate_c_function(library, node):
         assert C_node._PTR_F_C_index != C_node._function_index
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
-
-######################################################################
-
-def bind_c(declaration, modules, intent=None, is_result=False,
-           is_callback=False, **kwargs):
-    """Generate an argument used with the bind(C) interface from Fortran.
-
-    Args:
-        intent - Explicit intent 'in', 'inout', 'out'.
-                 Defaults to None to use intent from attrs.
-        is_callback - Abstract interface for callbacks.
-                 A function which returns a pointer must
-                 use type(C_PTR).
-
-        name   - Set name explicitly, else self.name.
-    """
-    # XXX - callers should not need to set modules directly,
-    #       this routine should set modules.
-    t = []
-    declarator = declaration.declarator
-    attrs = declarator.attrs
-    if is_result and "typedef" in declaration.storage:
-        ntypemap = declarator.typemap
-    else:
-        ntypemap = declaration.typemap
-    basedef = ntypemap
-
-    typ = ntypemap.i_type or ntypemap.f_type
-    if typ is None:
-        error.cursor.warning("Type {} has no value for f_type or i_type".format(ntypemap.name))
-        return "===> {} <===".format(ntypemap.name)
-    if is_callback and declarator.is_indirect():
-        typ = "type(C_PTR)"
-        modules.setdefault("iso_c_binding", {})["C_PTR"] = True
-    t.append(typ)
-    if basedef.base == "procedure":
-        # dummy procedure can not have intent or value.
-        pass
-    else:
-        append_fortran_value(declaration, t, is_result)
-        if intent in ["in", "out", "inout"]:
-            t.append("intent(%s)" % intent.upper())
-        elif intent == "setter":
-            # Argument to setter function.
-            t.append("intent(IN)")
-
-    decl = []
-    decl.append(", ".join(t))
-    decl.append(" :: ")
-
-    if kwargs.get("name", None):
-        decl.append(kwargs["name"])
-    else:
-        decl.append(declarator.user_name)
-
-    if ntypemap.base == "string":
-        decl.append("(*)")
-    elif "dimension" in attrs:
-        # Any dimension is changed to assumed-size.
-        decl.append("(*)")
-    elif int(attrs.get("rank",0)) > 0:
-        # Any dimension is changed to assumed-size.
-        decl.append("(*)")
-    return "".join(decl)
 
 ######################################################################
 

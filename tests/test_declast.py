@@ -56,10 +56,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, declarator.is_pointer())
         s = gen_decl(r)
         self.assertEqual("int var1", s)
-        s = wrapf.bind_c(r, modules)
-        self.assertEqual("integer(C_INT), value :: var1", s)
-        s = wrapf.bind_c(r, modules, intent="out", is_result=True)
-        self.assertEqual("integer(C_INT), intent(OUT) :: var1", s)
         s = wrapf.gen_arg_as_fortran(r, local=True)
         self.assertEqual("integer(C_INT) :: var1", s)
 
@@ -108,7 +104,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int *var1", gen_arg_as_c(r))
         self.assertEqual("int *var1", gen_arg_as_cxx(r))
         self.assertEqual("integer(C_INT) :: var1(:)", wrapf.gen_arg_as_fortran(r))
-        self.assertEqual("integer(C_INT) :: var1(*)", wrapf.bind_c(r, modules))
 
         r = declast.check_decl("const int * var1", symtab)
         s = gen_decl(r)
