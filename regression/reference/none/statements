@@ -699,8 +699,8 @@ c_function_bool:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 c_function_char:
   name: c_function_char
@@ -872,8 +872,8 @@ c_function_native:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 c_function_native&:
   name: c_function_native&
@@ -925,8 +925,8 @@ c_function_native*_scalar:
   i_result_decl:
   - '{f_type} :: {i_var}'
   i_module:
-    iso_c_binding:
-    - '{f_kind}'
+    '{f_module_name}':
+    - '{i_kind}'
   owner: library
 c_function_shadow&_capptr:
   name: c_function_shadow&_capptr
@@ -1610,8 +1610,8 @@ c_getter_native:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -1623,8 +1623,8 @@ c_getter_native*:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -1638,8 +1638,8 @@ c_in_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1772,8 +1772,8 @@ c_in_enum:
   i_arg_decl:
   - '{f_type}, value{f_intent_attr} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -1793,8 +1793,8 @@ c_in_native:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1808,8 +1808,8 @@ c_in_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -1823,8 +1823,8 @@ c_in_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2146,8 +2146,8 @@ c_in_struct:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2161,8 +2161,8 @@ c_in_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2179,8 +2179,8 @@ c_in_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2196,8 +2196,8 @@ c_in_unknown:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2505,8 +2505,8 @@ c_in_void:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2580,8 +2580,8 @@ c_inout_bool_*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2643,8 +2643,8 @@ c_inout_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -2664,8 +2664,8 @@ c_inout_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2689,8 +2689,8 @@ c_inout_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2904,8 +2904,8 @@ c_inout_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2922,8 +2922,8 @@ c_inout_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3249,8 +3249,8 @@ c_mixin_argument:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3283,8 +3283,8 @@ c_mixin_declare-fortran-result:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 c_mixin_destructor_new-string:
   name: c_mixin_destructor_new-string
@@ -3632,8 +3632,8 @@ c_out_bool_*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3689,8 +3689,8 @@ c_out_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -3710,8 +3710,8 @@ c_out_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3735,8 +3735,8 @@ c_out_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4017,8 +4017,8 @@ c_out_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4035,8 +4035,8 @@ c_out_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4556,8 +4556,8 @@ c_setter_native:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4573,8 +4573,8 @@ c_setter_native*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -4678,8 +4678,8 @@ f_function_bool:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 f_function_char:
   name: f_function_char
@@ -5421,8 +5421,8 @@ f_function_enum:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_post_call:
   - "{ci_type} {c_var} =\t {cast_static}{ci_type}{cast1}{cxx_var}{cast2};"
   owner: library
@@ -5441,8 +5441,8 @@ f_function_native:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 f_function_native&:
   name: f_function_native&
@@ -5906,8 +5906,8 @@ f_function_native*_scalar:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_return:
   - return *{cxx_var};
   c_return_type: '{c_type}'
@@ -8868,8 +8868,8 @@ f_getter_bool:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8886,8 +8886,8 @@ f_getter_native:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -8957,8 +8957,8 @@ f_getter_native*_pointer:
   i_result_decl:
   - '{i_type} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_call:
   - // skip call c_getter
   c_return:
@@ -9148,8 +9148,8 @@ f_in_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9429,8 +9429,8 @@ f_in_enum:
   i_arg_decl:
   - '{f_type}, value{f_intent_attr} :: {i_var}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -9457,8 +9457,8 @@ f_in_native:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9479,8 +9479,8 @@ f_in_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9501,8 +9501,8 @@ f_in_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10073,8 +10073,8 @@ f_in_struct:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10095,8 +10095,8 @@ f_in_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10120,8 +10120,8 @@ f_in_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10144,8 +10144,8 @@ f_in_unknown:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10531,8 +10531,8 @@ f_in_void:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10680,8 +10680,8 @@ f_inout_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10837,8 +10837,8 @@ f_inout_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -10865,8 +10865,8 @@ f_inout_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10897,8 +10897,8 @@ f_inout_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11327,8 +11327,8 @@ f_inout_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11352,8 +11352,8 @@ f_inout_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -11780,8 +11780,8 @@ f_mixin_declare-interface-arg:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   owner: library
 f_mixin_function:
   name: f_mixin_function
@@ -12434,8 +12434,8 @@ f_none_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12464,8 +12464,8 @@ f_none_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12529,8 +12529,8 @@ f_none_native:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12551,8 +12551,8 @@ f_none_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12603,8 +12603,8 @@ f_out_bool*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12749,8 +12749,8 @@ f_out_enum*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cidecl.c_var}'
   c_arg_call:
@@ -12777,8 +12777,8 @@ f_out_native&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12809,8 +12809,8 @@ f_out_native*:
   i_arg_decl:
   - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13641,8 +13641,8 @@ f_out_struct&:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -13666,8 +13666,8 @@ f_out_struct*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14222,8 +14222,8 @@ f_setter_bool:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14248,8 +14248,8 @@ f_setter_native:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14274,8 +14274,8 @@ f_setter_native*:
   i_arg_decl:
   - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:

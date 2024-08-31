@@ -167,7 +167,9 @@ F_C_name                      i_name_function
 F_C_subprogram                i_subprogram
 F_C_pure_clause               i_pure_clause
 F_C_result_clause             i_result_clause
-                              i_suffix
+none                          i_kind
+none                          i_module_name
+none                          i_suffix
 ===========================   ===========================
   
 * Renamed option fields

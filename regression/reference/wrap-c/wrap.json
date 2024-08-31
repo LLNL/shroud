@@ -63,6 +63,8 @@
                                         "f_var": "SHT_rv",
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "self",
+                                        "i_kind": "C_INT",
+                                        "i_module_name": "iso_c_binding",
                                         "i_name_function": "c_class1_func_in_class_bufferify",
                                         "i_result_clause": "\fresult(SHT_rv)",
                                         "i_subprogram": "function",

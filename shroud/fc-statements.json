@@ -49,8 +49,8 @@
             "{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "c_arg_decl": [
@@ -89,8 +89,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "i_arg_decl": [
@@ -201,8 +201,8 @@
             "XXX - Not intended for CHAR, only native"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "i_result_decl": [
@@ -1411,8 +1411,8 @@
             "{f_type} :: {i_var}"
         ],
         "i_module": {
-            "iso_c_binding": [
-                "{f_kind}"
+            "{f_module_name}": [
+                "{i_kind}"
             ]
         }
     },
@@ -1702,8 +1702,8 @@
             "{i_var}"
         ],
         "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
+            "{i_module_name}": [
+                "{i_kind}"
             ]
         },
         "c_arg_decl": [

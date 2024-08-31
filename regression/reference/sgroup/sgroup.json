@@ -155,6 +155,8 @@
                                 "f_value_attr": ", value",
                                 "f_var": "arg",
                                 "fc_var": "arg",
+                                "i_kind": "twostruct",
+                                "i_module_name": "sgroup_mod",
                                 "i_type": "type(twostruct)",
                                 "i_var": "arg",
                                 "idtor": "0",
