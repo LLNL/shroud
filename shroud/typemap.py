@@ -827,9 +827,14 @@ def default_typemap():
             c_header="<stdbool.h>",
             f_type="logical",
             f_kind="C_BOOL",
-            i_type="logical(C_BOOL)",
             f_module_name="iso_c_binding",
             f_module=dict(iso_c_binding=["C_BOOL"]),
+
+            i_kind="C_BOOL",
+            i_module=dict(iso_c_binding=["C_BOOL"]),
+            i_module_name="iso_c_binding",
+            i_type="logical(C_BOOL)",
+            
             # XXX PY_format='p',  # Python 3.3 or greater
             # Use py_statements.x.ctor instead of PY_ctor. This code will always be
             # added.  Older version of Python can not create a bool directly from

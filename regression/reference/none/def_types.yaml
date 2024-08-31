@@ -61,7 +61,12 @@ typemap:
       c_type: bool
       c_header:
       - <stdbool.h>
+      i_kind: C_BOOL
       i_type: logical(C_BOOL)
+      i_module:
+        iso_c_binding:
+        - C_BOOL
+      i_module_name: iso_c_binding
       f_type: logical
       f_kind: C_BOOL
       f_module_name: iso_c_binding

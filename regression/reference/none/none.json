@@ -323,6 +323,13 @@
             "f_module_name": "iso_c_binding",
             "f_type": "logical",
             "flat_name": "bool",
+            "i_kind": "C_BOOL",
+            "i_module": {
+                "iso_c_binding": [
+                    "C_BOOL"
+                ]
+            },
+            "i_module_name": "iso_c_binding",
             "i_type": "logical(C_BOOL)",
             "sgroup": "bool",
             "sh_type": "SH_TYPE_BOOL"
