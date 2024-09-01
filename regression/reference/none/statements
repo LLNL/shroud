@@ -146,9 +146,8 @@ root
           cfi -- c_mixin_arg_character_cfi
         native
           cfi -- c_mixin_arg_native_cfi
-      argument -- c_mixin_argument
-      argument2 -- c_mixin_argument2
       character -- c_mixin_character
+      declare-arg -- c_mixin_declare-arg
       declare-fortran-result -- c_mixin_declare-fortran-result
       destructor
         new-string -- c_mixin_destructor_new-string
@@ -3241,22 +3240,6 @@ c_mixin_arg_native_cfi:
   iface_header:
   - ISO_Fortran_binding.h
   owner: library
-c_mixin_argument:
-  name: c_mixin_argument
-  intent: mixin
-  c_arg_decl:
-  - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
-c_mixin_argument2:
-  name: c_mixin_argument2
-  intent: mixin
-  c_arg_decl:
-  - '{gen.cdecl.c_var}'
-  c_arg_call:
-  - '{cxx_var}'
-  owner: library
 c_mixin_character:
   name: c_mixin_character
   intent: mixin
@@ -3269,6 +3252,14 @@ c_mixin_character:
     - C_CHAR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
+  owner: library
+c_mixin_declare-arg:
+  name: c_mixin_declare-arg
+  intent: mixin
+  c_arg_decl:
+  - '{gen.cdecl.c_var}'
+  c_arg_call:
+  - '{cxx_var}'
   owner: library
 c_mixin_declare-fortran-result:
   name: c_mixin_declare-fortran-result

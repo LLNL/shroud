@@ -389,5 +389,5 @@ Shroud provides several mixins that provide some common functionality.
 
 .. literalinclude:: ../shroud/fc-statements.json
    :language: json
-   :start-after: "sphinx-start-after": "c_mixin_argument"
-   :end-before: "sphinx-end-before": "c_mixin_argument"
+   :start-after: "sphinx-start-after": "c_mixin_declare-arg"
+   :end-before: "sphinx-end-before": "c_mixin_declare-arg"
