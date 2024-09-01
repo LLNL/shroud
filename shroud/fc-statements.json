@@ -1859,19 +1859,9 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
+            "f_mixin_declare-interface-arg",
             "f_mixin_declare-fortran-arg"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_CHAR"
-            ]
-        }
+        ]
     },
     {
         "alias": [
