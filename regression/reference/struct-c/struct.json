@@ -686,6 +686,7 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
+                                    "i_dimension": "(20)",
                                     "i_kind": "C_CHAR",
                                     "i_module_name": "iso_c_binding",
                                     "i_type": "character(kind=C_CHAR)"
@@ -727,6 +728,7 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
+                                    "i_dimension": "(10)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
                                     "i_type": "integer(C_INT)"

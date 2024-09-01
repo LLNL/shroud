@@ -999,6 +999,18 @@ def set_f_var_format(var, bind):
             if ntypemap.f_kind:
                 fmt.i_kind = ntypemap.f_kind
 
+        if meta["len"]:
+            fmt.i_type = "character(len={})".format(meta["len"])
+
+        if declarator.array:
+            decl = ["("]
+            # Convert to column-major order.
+            for dim in reversed(declarator.array):
+                decl.append(todict.print_node(dim))
+                decl.append(",")
+            decl[-1] = ")"
+            fmt.i_dimension = "".join(decl)
+
 def compute_c_deref(arg, fmt):
     """Compute format fields to dereference C argument."""
     if arg.declarator.is_indirect(): #pointer():
