@@ -28,7 +28,7 @@ module error_mod
 
 
     type, bind(C) :: struct1
-        integer(C_INT) :: arg1(10)
+        integer(C_INT) :: arg1
         integer(C_INT) :: narg2
         type(C_PTR) :: arg2
     end type struct1

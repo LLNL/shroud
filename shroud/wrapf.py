@@ -197,20 +197,11 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                           fmt_class.F_derived_name)
         append_format(output, "type, bind(C) :: {F_derived_name}+", fmt_class)
         for var in node.variables:
-            ast = var.ast
-            declarator = ast.declarator
-            ntypemap = ast.typemap
-            if declarator.is_indirect():
-                append_format(output, "type(C_PTR) :: {variable_name}", var.fmtdict)
-                self.set_f_module(fileinfo.module_use,
-                                  "iso_c_binding", "C_PTR")
-            else:
-                output.append(gen_arg_as_fortran(ast, local=True))
-                self.update_f_module(
-                    fileinfo.module_use,
-                    ntypemap.i_module or ntypemap.f_module,
-                    var.fmtdict
-                )  # XXX - self.module_imports?
+            bind = statements.fetch_var_bind(var, "f")
+            fmt = bind.fmtdict
+            append_format(output, "{i_type} :: {i_var}{i_dimension}", fmt)
+            self.set_f_module(fileinfo.module_use,
+                              fmt.i_module_name, fmt.i_kind)
         append_format(output, "-end type {F_derived_name}", fmt_class)
         if options.literalinclude:
             output.append("! end derived-type " +
@@ -2075,125 +2066,4 @@ def locate_c_function(library, node):
         C_node = library.function_index[C_node._PTR_F_C_index]
     node.C_node = C_node
 
-######################################################################
-
-def append_fortran_value(declaration, t, is_result=False):
-    declarator = declaration.declarator
-    attrs = declarator.attrs
-    if is_result:
-        pass
-    elif attrs.get("value", False):
-        t.append("value")
-    else:
-        is_ptr = declarator.is_indirect()
-        if is_ptr:
-            if declaration.typemap.name == "void":
-                # This causes Fortran to dereference the C_PTR
-                # Otherwise a void * argument becomes void **
-                if len(declarator.pointer) == 1:
-                    t.append("value")     # void *
-        else:
-            if declaration.typemap.sgroup in["char", "string"]:
-                pass
-            else:
-                t.append("value")
-
-def gen_arg_as_fortran(
-    declaration,
-    intent=None,
-    bindc=False,
-    local=False,
-    pass_obj=False,
-    optional=False,
-    **kwargs
-):
-    """Geneate declaration for Fortran variable.
-
-    bindc - Use C interoperable type. Used with hidden and implied arguments.
-    If local==True, this is a local variable, skip attributes
-      OPTIONAL, VALUE, and INTENT
-    """
-    t = []
-    declarator = declaration.declarator
-    attrs = declarator.attrs
-    ntypemap = declaration.typemap
-
-    is_allocatable = False
-    is_pointer = False
-    deref = attrs.get("deref", None)
-    if deref == "allocatable":
-        is_allocatable = True
-    elif deref == "pointer":
-        is_pointer = True
-
-    if ntypemap.base == "string":
-        if "len" in attrs and local:
-            # Also used with function result declaration.
-            t.append("character(len={})".format(attrs["len"]))
-        elif is_allocatable:
-            t.append("character(len=:)")
-        elif declarator.array:
-            t.append("character(kind=C_CHAR)")
-        elif not local:
-            t.append("character(len=*)")
-        else:
-            t.append("XXXcharacter")
-    elif pass_obj:
-        # Used with wrap_struct_as=class for passed-object dummy argument.
-        t.append(ntypemap.f_class)
-    elif bindc:
-        t.append(ntypemap.i_type or ntypemap.f_type)
-    else:
-        t.append(ntypemap.f_type)
-
-    if not local:  # must be dummy argument
-        append_fortran_value(declaration, t)
-        if intent in ["in", "out", "inout"]:
-            t.append("intent(%s)" % intent.upper())
-        elif intent == "setter":
-            # Argument to setter function.
-            t.append("intent(IN)")
-
-    if is_allocatable:
-        t.append("allocatable")
-    if is_pointer:
-        t.append("pointer")
-    if optional:
-        t.append("optional")
-
-    decl = []
-    decl.append(", ".join(t))
-    decl.append(" :: ")
-
-    if "name" in kwargs:
-        decl.append(kwargs["name"])
-    else:
-        decl.append(declaration.declarator.user_name)
-
-    dimension = attrs.get("dimension")
-    rank = attrs.get("rank")
-    if rank is not None:
-        rank = int(rank)
-        decl.append(fcfmt.fortran_ranks[rank])
-    elif dimension:
-        if is_allocatable:
-            # Assume 1-d.
-            decl.append("(:)")
-        elif is_pointer:
-            decl.append("(:)")  # XXX - 1d only
-        else:
-            decl.append("(" + dimension + ")")
-    elif is_allocatable:
-        # Assume 1-d.
-        if ntypemap.base != "string":
-            decl.append("(:)")
-    elif declarator.array:
-        decl.append("(")
-        # Convert to column-major order.
-        for dim in reversed(declarator.array):
-            decl.append(todict.print_node(dim))
-            decl.append(",")
-        decl[-1] = ")"
-
-    return "".join(decl)
 
