@@ -8907,9 +8907,7 @@
                     "c_type": "int",
                     "cxx_type": "int",
                     "field_name": "global_flag",
-                    "variable_lower": "global_flag",
-                    "variable_name": "global_flag",
-                    "variable_upper": "GLOBAL_FLAG"
+                    "variable_name": "global_flag"
                 }
             },
             {
@@ -8939,9 +8937,7 @@
                     "c_type": "int",
                     "cxx_type": "int",
                     "field_name": "tutorial_flag",
-                    "variable_lower": "tutorial_flag",
-                    "variable_name": "tutorial_flag",
-                    "variable_upper": "TUTORIAL_FLAG"
+                    "variable_name": "tutorial_flag"
                 }
             }
         ],

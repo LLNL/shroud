@@ -41,15 +41,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "ifield"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ifield",
-                            "variable_lower": "ifield",
-                            "variable_name": "ifield",
-                            "variable_upper": "IFIELD"
+                            "variable_name": "ifield"
                         }
                     },
                     {
@@ -70,15 +76,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_DOUBLE",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "real(C_DOUBLE)",
+                                    "i_var": "dfield"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dfield",
-                            "variable_lower": "dfield",
-                            "variable_name": "dfield",
-                            "variable_upper": "DFIELD"
+                            "variable_name": "dfield"
                         }
                     }
                 ],
@@ -135,15 +147,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "cfield"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "cfield",
-                            "variable_lower": "cfield",
-                            "variable_name": "cfield",
-                            "variable_upper": "CFIELD"
+                            "variable_name": "cfield"
                         }
                     },
                     {
@@ -170,15 +188,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "const_dvalue"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "const_dvalue",
-                            "variable_lower": "const_dvalue",
-                            "variable_name": "const_dvalue",
-                            "variable_upper": "CONST_DVALUE"
+                            "variable_name": "const_dvalue"
                         }
                     }
                 ],
@@ -232,15 +256,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "nitems"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -269,6 +299,14 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "ivalue"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -290,9 +328,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ivalue",
-                            "variable_lower": "ivalue",
-                            "variable_name": "ivalue",
-                            "variable_upper": "IVALUE"
+                            "variable_name": "ivalue"
                         }
                     },
                     {
@@ -321,6 +357,14 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "dvalue"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -342,9 +386,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dvalue",
-                            "variable_lower": "dvalue",
-                            "variable_name": "dvalue",
-                            "variable_upper": "DVALUE"
+                            "variable_name": "dvalue"
                         }
                     },
                     {
@@ -376,6 +418,14 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "svalue"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -391,9 +441,7 @@
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "svalue",
-                            "variable_lower": "svalue",
-                            "variable_name": "svalue",
-                            "variable_upper": "SVALUE"
+                            "variable_name": "svalue"
                         }
                     }
                 ],
@@ -448,15 +496,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "nitems"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -485,6 +539,14 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "ivalue"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -500,9 +562,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ivalue",
-                            "variable_lower": "ivalue",
-                            "variable_name": "ivalue",
-                            "variable_upper": "IVALUE"
+                            "variable_name": "ivalue"
                         }
                     },
                     {
@@ -531,6 +591,14 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "dvalue"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -546,9 +614,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dvalue",
-                            "variable_lower": "dvalue",
-                            "variable_name": "dvalue",
-                            "variable_upper": "DVALUE"
+                            "variable_name": "dvalue"
                         }
                     }
                 ],
@@ -607,15 +673,22 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_dimension": "(20)",
+                                    "i_kind": "C_CHAR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "character(kind=C_CHAR)",
+                                    "i_var": "name"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "name",
-                            "variable_lower": "name",
-                            "variable_name": "name",
-                            "variable_upper": "NAME"
+                            "variable_name": "name"
                         }
                     },
                     {
@@ -641,15 +714,22 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_dimension": "(10)",
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "count"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "count",
-                            "variable_lower": "count",
-                            "variable_name": "count",
-                            "variable_upper": "COUNT"
+                            "variable_name": "count"
                         }
                     }
                 ],
@@ -1201,9 +1281,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
-                            "variable_lower": "x1",
-                            "variable_name": "x1",
-                            "variable_upper": "X1"
+                            "variable_name": "x1"
                         }
                     },
                     {
@@ -1230,9 +1308,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
-                            "variable_lower": "y1",
-                            "variable_name": "y1",
-                            "variable_upper": "Y1"
+                            "variable_name": "y1"
                         }
                     }
                 ],
@@ -2033,9 +2109,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
-                            "variable_lower": "x1",
-                            "variable_name": "x1",
-                            "variable_upper": "X1"
+                            "variable_name": "x1"
                         }
                     },
                     {
@@ -2062,9 +2136,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
-                            "variable_lower": "y1",
-                            "variable_name": "y1",
-                            "variable_upper": "Y1"
+                            "variable_name": "y1"
                         }
                     },
                     {
@@ -2091,9 +2163,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "z1",
-                            "variable_lower": "z1",
-                            "variable_name": "z1",
-                            "variable_upper": "Z1"
+                            "variable_name": "z1"
                         }
                     }
                 ],
@@ -2152,15 +2222,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "sublevels"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "sublevels",
-                            "variable_lower": "sublevels",
-                            "variable_name": "sublevels",
-                            "variable_upper": "SUBLEVELS"
+                            "variable_name": "sublevels"
                         }
                     }
                 ],

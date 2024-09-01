@@ -2088,8 +2088,6 @@ class VariableNode(AstNode):
         #        fmt_struct.class_scope = self.name + '::'
         fmt_var.field_name = ast.declarator.name
         fmt_var.variable_name = self.name
-        fmt_var.variable_lower = fmt_var.variable_name.lower()
-        fmt_var.variable_upper = fmt_var.variable_name.upper()
 
         ntypemap = ast.typemap
         fmt_var.c_type = ntypemap.c_type

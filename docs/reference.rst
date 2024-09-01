@@ -1549,8 +1549,16 @@ i_dimension
    dimension of ``(*)``.
 
 i_kind
+  The bind(C) interface of the argument.
+  Derived from the ``typemap.i_type`` for the argument.
+  If it is not set, then use ``typemap.f_type``.
 
 i_module_name
+  The bind(C) interface of the argument.
+  Derived from the ``typemap.i_module_name`` for the argument.
+  If it is not set, then use ``typemap.f_type`` if it is set.
+  This makes it possible to define ``f_module_name`` as ``iso_c_binding``
+  and have it used with the interface as well.
 
 i_result_clause
     Added at the end of a function declaration to

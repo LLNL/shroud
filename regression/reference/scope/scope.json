@@ -37,15 +37,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "nitems"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -75,6 +81,14 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "items"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -90,9 +104,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "items",
-                            "variable_lower": "items",
-                            "variable_name": "items",
-                            "variable_upper": "ITEMS"
+                            "variable_name": "items"
                         }
                     }
                 ],
@@ -963,15 +975,21 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_INT",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "integer(C_INT)",
+                                            "i_var": "nitems"
+                                        }
+                                    },
                                     "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "nitems",
-                                    "variable_lower": "nitems",
-                                    "variable_name": "nitems",
-                                    "variable_upper": "NITEMS"
+                                    "variable_name": "nitems"
                                 }
                             },
                             {
@@ -1001,6 +1019,14 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_PTR",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "type(C_PTR)",
+                                            "i_var": "items"
+                                        }
+                                    },
                                     "share": {
                                         "meta": {
                                             "dim_ast": [
@@ -1016,9 +1042,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "items",
-                                    "variable_lower": "items",
-                                    "variable_name": "items",
-                                    "variable_upper": "ITEMS"
+                                    "variable_name": "items"
                                 }
                             }
                         ],
@@ -1583,15 +1607,21 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_INT",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "integer(C_INT)",
+                                            "i_var": "nitems"
+                                        }
+                                    },
                                     "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "nitems",
-                                    "variable_lower": "nitems",
-                                    "variable_name": "nitems",
-                                    "variable_upper": "NITEMS"
+                                    "variable_name": "nitems"
                                 }
                             },
                             {
@@ -1621,6 +1651,14 @@
                                     "fortran": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_PTR",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "type(C_PTR)",
+                                            "i_var": "items"
+                                        }
+                                    },
                                     "share": {
                                         "meta": {
                                             "dim_ast": [
@@ -1636,9 +1674,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "items",
-                                    "variable_lower": "items",
-                                    "variable_name": "items",
-                                    "variable_upper": "ITEMS"
+                                    "variable_name": "items"
                                 }
                             }
                         ],

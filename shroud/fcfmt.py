@@ -63,6 +63,11 @@ class FillFormat(object):
         cursor.pop_phase("FillFormat typedef")
 
         for cls in node.classes:
+            if cls.wrap_as == "struct":
+                cursor.push_phase("FillFormat class struct")
+                self.wrap_struct(cls)
+                cursor.pop_phase("FillFormat class struct")
+                
             cursor.push_phase("FillFormat class function")
             self.fmt_functions(cls, cls.functions)
             cursor.pop_phase("FillFormat class function")
@@ -73,6 +78,14 @@ class FillFormat(object):
 
         for ns in node.namespaces:
             self.fmt_namespace(ns)
+
+    def wrap_struct(self, node):
+        if not node.wrap.fortran:
+            return
+        for var in node.variables:
+            bind = statements.fetch_var_bind(var, "f")
+            fmt = statements.set_bind_fmtdict(bind, node.fmtdict)
+            set_f_var_format(var, bind)
 
     def fmt_typedefs(self, node):
         if node.wrap.fortran:
@@ -94,6 +107,7 @@ class FillFormat(object):
                     # XXX - To be changed to i_module, i_kind
                     fmt.i_module_name = ntypemap.f_module_name
                     fmt.i_kind = ntypemap.f_kind
+
     def fmt_functions(self, cls, functions):
         for node in functions:
             if node.wrap.c:
@@ -181,7 +195,7 @@ class FillFormat(object):
                 fmt_arg.i_var = arg_name
 
                 # XXX - fill_interface_arg
-                self.set_fmt_fields_iface(node, arg, bind_arg, arg_name, arg.typemap)
+                self.set_fmt_fields_iface(arg, bind_arg, arg.typemap)
                 self.set_fmt_fields_dimension(None, node, arg, bind_arg)
 
                 
@@ -306,10 +320,9 @@ class FillFormat(object):
         if subprogram == "function":
             fmt_result.i_var = fmt_result.i_result_var
             fmt_result.f_var = fmt_result.i_result_var
-            self.set_fmt_fields_iface(node, ast, bind,
-                                      fmt_result.i_result_var, result_typemap,
-                                      "function")
+            self.set_fmt_fields_iface(ast, bind, result_typemap)
             self.set_fmt_fields_dimension(cls, node, ast, bind)
+            set_f_function_format(node, bind, subprogram)
 
         if result_stmt.i_result_var == "as-subroutine":
             subprogram = "subroutine"
@@ -341,7 +354,7 @@ class FillFormat(object):
 
         fmt_arg.i_var = arg_name
         fmt_arg.f_var = arg_name
-        self.set_fmt_fields_iface(node, arg, bind, arg_name, arg_typemap)
+        self.set_fmt_fields_iface(arg, bind, arg_typemap)
         self.set_fmt_fields_dimension(cls, node, arg, bind)
         self.name_temp_vars(arg_name, bind, "c", "i")
         statements.apply_fmtdict_from_stmts(bind)
@@ -371,6 +384,7 @@ class FillFormat(object):
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, bind)
         self.apply_helpers_from_stmts(node, bind)
+        set_f_function_format(node, bind, subprogram)
         statements.apply_fmtdict_from_stmts(bind)
 
         # Compute after stmt.fmtdict is evaluated.
@@ -523,37 +537,22 @@ class FillFormat(object):
         if meta["len"]:
             fmt.c_char_len = meta["len"]
                 
-    def set_fmt_fields_iface(self, fcn, ast, bind, rootname,
-                             ntypemap, subprogram=None):
+    def set_fmt_fields_iface(self, ast, bind, ntypemap):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
 
         Parameters
         ----------
-        fcn : ast.FunctionNode
         ast : declast.Declaration
         bind : statements.BindArg
-        rootname : str
         ntypemap : typemap.Typemap
             The typemap has already resolved template arguments.
             For example, std::vector<int>.  ntypemap will be 'int'.
-        subprogram : str
-            "function" or "subroutine" or None
         """
-        attrs = ast.declarator.attrs
         meta = bind.meta
         fmt = bind.fmtdict
 
-        if subprogram == "subroutine":
-            pass
-        elif subprogram == "function":
-            # XXX this also gets set for subroutines
-            fmt.f_intent = "OUT"
-            fmt.f_intent_attr = ", intent(OUT)"
-#        else:
-            # XXX - now set in fcfmt.set_f_arg_format
-        
         if meta["assumedtype"]:
             fmt.f_type = "type(*)"
             fmt.i_type = "type(*)"
@@ -618,18 +617,16 @@ class FillFormat(object):
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
-            rootname = fmt.C_result
+            pass
         elif subprogram == "function":
             # XXX this also gets set for subroutines
-            rootname = fmt.C_result
+            pass
         else:
             ntypemap = f_ast.typemap
-            rootname = c_ast.declarator.user_name
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
             statements.set_template_fields(c_ast, fmt)
         if subprogram != "subroutine":
-            self.set_fmt_fields_iface(fcn, c_ast, bind, rootname,
-                                      ntypemap, subprogram)
+            self.set_fmt_fields_iface(c_ast, bind, ntypemap)
             if "pass" in c_attrs:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
                 fmt.f_type = ntypemap.f_class
@@ -643,7 +640,7 @@ class FillFormat(object):
         Parameters
         ----------
         cls : ast.ClassNode or None of enclosing class.
-        fcn : ast.FunctionNode of calling function.
+        fcn : ast.ClassNode for struct or ast.FunctionNode of calling function.
         f_ast : declast.Declaration
         bind: statements.BindArg
         """
@@ -916,6 +913,35 @@ def set_share_function_format(node, fmt, bind, wlang):
     fmt.typemap = node.ast.typemap
     fmt.gen = FormatGen(node, node.ast, fmt, wlang)
     
+def set_f_function_format(node, bind, subprogram):
+    if subprogram == "function":
+        fmt = bind.fmtdict
+        fmt.f_intent = "OUT"
+        fmt.f_intent_attr = ", intent(OUT)"
+    return
+
+    # XXX - need something like this.
+    # XXX - it sets intent properly on some routines which are missing it now.
+    meta = bind.meta
+    fmt = bind.fmtdict
+
+    intent = meta["intent"].upper()
+    if intent == "FUNCTION":
+        intent = "OUT"
+    elif intent == "SUBROUTINE":
+        intent = "OUT"
+    elif intent == "SETTER":
+        intent = "NONE"
+    elif intent == "GETTER":
+        intent = "OUT"
+    elif intent == "CTOR":
+        intent = "OUT"
+    elif intent == "DTOR":
+        intent = "INOUT"
+    if intent != "NONE":
+        fmt.f_intent = intent
+        fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
+    
 def set_f_arg_format(node, arg, fmt, bind, wlang):
     meta = bind.meta
 
@@ -939,6 +965,51 @@ def set_f_arg_format(node, arg, fmt, bind, wlang):
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
 
+def set_f_var_format(var, bind):
+    """Set format fields for variable (in a struct).
+
+    Transfer info from Typemap to fmt for use by statements.
+
+    Parameters
+    ----------
+    var  : ast.VariableNode
+    bind : statements.BindArg
+    """
+    meta = bind.meta
+    fmt = bind.fmtdict
+    declarator = var.ast.declarator
+    ntypemap = declarator.typemap
+
+    fmt.i_var = declarator.name
+
+    if declarator.is_indirect():
+        fmt.i_type = "type(C_PTR)"
+        fmt.i_module_name = "iso_c_binding"
+        fmt.i_kind = "C_PTR"
+    else:
+        i_type = ntypemap.i_type or ntypemap.f_type
+        if i_type:
+            fmt.i_type = i_type
+        if ntypemap.i_module_name:
+            fmt.i_module_name = ntypemap.i_module_name
+            if ntypemap.i_kind:
+                fmt.i_kind = ntypemap.i_kind
+        elif ntypemap.f_module_name is not None:
+            fmt.i_module_name = ntypemap.f_module_name
+            if ntypemap.f_kind:
+                fmt.i_kind = ntypemap.f_kind
+
+        if meta["len"]:
+            fmt.i_type = "character(len={})".format(meta["len"])
+
+        if declarator.array:
+            decl = ["("]
+            # Convert to column-major order.
+            for dim in reversed(declarator.array):
+                decl.append(todict.print_node(dim))
+                decl.append(",")
+            decl[-1] = ")"
+            fmt.i_dimension = "".join(decl)
 
 def compute_c_deref(arg, fmt):
     """Compute format fields to dereference C argument."""

@@ -35,15 +35,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "tc"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "tc",
-                            "variable_lower": "tc",
-                            "variable_name": "tc",
-                            "variable_upper": "TC"
+                            "variable_name": "tc"
                         }
                     }
                 ],

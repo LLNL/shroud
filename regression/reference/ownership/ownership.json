@@ -275,9 +275,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_flag",
-                            "variable_lower": "flag",
-                            "variable_name": "flag",
-                            "variable_upper": "FLAG"
+                            "variable_name": "flag"
                         }
                     }
                 ],

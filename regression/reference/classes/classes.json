@@ -3444,9 +3444,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_flag",
-                            "variable_lower": "m_flag",
-                            "variable_name": "m_flag",
-                            "variable_upper": "M_FLAG"
+                            "variable_name": "m_flag"
                         }
                     },
                     {
@@ -3482,9 +3480,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_test",
-                            "variable_lower": "test",
-                            "variable_name": "test",
-                            "variable_upper": "TEST"
+                            "variable_name": "test"
                         }
                     },
                     {
@@ -3517,9 +3513,7 @@
                             "c_type": "bool",
                             "cxx_type": "bool",
                             "field_name": "m_bool",
-                            "variable_lower": "m_bool",
-                            "variable_name": "m_bool",
-                            "variable_upper": "M_BOOL"
+                            "variable_name": "m_bool"
                         }
                     },
                     {
@@ -3550,9 +3544,7 @@
                             "c_type": "char",
                             "cxx_type": "std::string",
                             "field_name": "m_name",
-                            "variable_lower": "m_name",
-                            "variable_name": "m_name",
-                            "variable_upper": "M_NAME"
+                            "variable_name": "m_name"
                         }
                     }
                 ],
@@ -5884,9 +5876,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -5931,9 +5921,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "items",
-                            "variable_lower": "items",
-                            "variable_name": "items",
-                            "variable_upper": "ITEMS"
+                            "variable_name": "items"
                         }
                     }
                 ],

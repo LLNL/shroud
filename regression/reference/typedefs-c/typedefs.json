@@ -33,15 +33,21 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "i"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "i",
-                            "variable_lower": "i",
-                            "variable_name": "i",
-                            "variable_upper": "I"
+                            "variable_name": "i"
                         }
                     },
                     {
@@ -63,15 +69,21 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_DOUBLE",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "real(C_DOUBLE)",
+                                    "i_var": "d"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "d",
-                            "variable_lower": "d",
-                            "variable_name": "d",
-                            "variable_upper": "D"
+                            "variable_name": "d"
                         }
                     }
                 ],

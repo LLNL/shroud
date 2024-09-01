@@ -35,6 +35,14 @@
                         "options": {},
                         "wrap": {},
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "arg1"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -50,9 +58,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "arg1",
-                            "variable_lower": "arg1",
-                            "variable_name": "arg1",
-                            "variable_upper": "ARG1"
+                            "variable_name": "arg1"
                         }
                     },
                     {
@@ -75,15 +81,21 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "narg2"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "narg2",
-                            "variable_lower": "narg2",
-                            "variable_name": "narg2",
-                            "variable_upper": "NARG2"
+                            "variable_name": "narg2"
                         }
                     },
                     {
@@ -115,6 +127,14 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "arg2"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -130,9 +150,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "arg2",
-                            "variable_lower": "arg2",
-                            "variable_name": "arg2",
-                            "variable_upper": "ARG2"
+                            "variable_name": "arg2"
                         }
                     }
                 ],
@@ -223,15 +241,21 @@
                             "fortran": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "sublevels"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "sublevels",
-                            "variable_lower": "sublevels",
-                            "variable_name": "sublevels",
-                            "variable_upper": "SUBLEVELS"
+                            "variable_name": "sublevels"
                         }
                     }
                 ],

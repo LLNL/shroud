@@ -230,9 +230,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ifield",
-                            "variable_lower": "ifield",
-                            "variable_name": "ifield",
-                            "variable_upper": "IFIELD"
+                            "variable_name": "ifield"
                         }
                     },
                     {
@@ -262,9 +260,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dfield",
-                            "variable_lower": "dfield",
-                            "variable_name": "dfield",
-                            "variable_upper": "DFIELD"
+                            "variable_name": "dfield"
                         }
                     }
                 ],
@@ -326,15 +322,21 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "index"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "index",
-                            "variable_lower": "index",
-                            "variable_name": "index",
-                            "variable_upper": "INDEX"
+                            "variable_name": "index"
                         }
                     },
                     {
@@ -357,15 +359,21 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "sublevels"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "sublevels",
-                            "variable_lower": "sublevels",
-                            "variable_name": "sublevels",
-                            "variable_upper": "SUBLEVELS"
+                            "variable_name": "sublevels"
                         }
                     },
                     {
@@ -393,15 +401,21 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "parent"
+                                }
+                            },
                             "share": {}
                         },
                         "zz_fmtdict": {
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
                             "field_name": "parent",
-                            "variable_lower": "parent",
-                            "variable_name": "parent",
-                            "variable_upper": "PARENT"
+                            "variable_name": "parent"
                         }
                     },
                     {
@@ -435,6 +449,14 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "child"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -450,9 +472,7 @@
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
                             "field_name": "child",
-                            "variable_lower": "child",
-                            "variable_name": "child",
-                            "variable_upper": "CHILD"
+                            "variable_name": "child"
                         }
                     },
                     {
@@ -483,6 +503,14 @@
                             "python": true
                         },
                         "zz_bind": {
+                            "f": {
+                                "fmtdict": {
+                                    "i_kind": "C_PTR",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "array"
+                                }
+                            },
                             "share": {
                                 "meta": {
                                     "dim_ast": [
@@ -498,9 +526,7 @@
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
                             "field_name": "array",
-                            "variable_lower": "array",
-                            "variable_name": "array",
-                            "variable_upper": "ARRAY"
+                            "variable_name": "array"
                         }
                     }
                 ],
@@ -2375,9 +2401,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_length",
-                            "variable_lower": "length",
-                            "variable_name": "length",
-                            "variable_upper": "LENGTH"
+                            "variable_name": "length"
                         }
                     }
                 ],
@@ -6029,15 +6053,21 @@
                                     "python": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_INT",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "integer(C_INT)",
+                                            "i_var": "ifield"
+                                        }
+                                    },
                                     "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "ifield",
-                                    "variable_lower": "ifield",
-                                    "variable_name": "ifield",
-                                    "variable_upper": "IFIELD"
+                                    "variable_name": "ifield"
                                 }
                             },
                             {
@@ -6060,15 +6090,21 @@
                                     "python": true
                                 },
                                 "zz_bind": {
+                                    "f": {
+                                        "fmtdict": {
+                                            "i_kind": "C_DOUBLE",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "real(C_DOUBLE)",
+                                            "i_var": "dfield"
+                                        }
+                                    },
                                     "share": {}
                                 },
                                 "zz_fmtdict": {
                                     "c_type": "double",
                                     "cxx_type": "double",
                                     "field_name": "dfield",
-                                    "variable_lower": "dfield",
-                                    "variable_name": "dfield",
-                                    "variable_upper": "DFIELD"
+                                    "variable_name": "dfield"
                                 }
                             }
                         ],
