@@ -85,8 +85,8 @@ class FillFormat(object):
         for var in node.variables:
             bind = statements.fetch_var_bind(var, "f")
             fmt = statements.set_bind_fmtdict(bind, node.fmtdict)
-            self.set_fmt_fields_iface(var, bind, var.ast.typemap)
-#            self.set_fmt_fields_dimension(None, node, arg, bind_arg)
+            set_f_var_format(var, bind)
+#            self.set_fmt_fields_dimension(None, node, var.ast, bind)
 
     def fmt_typedefs(self, node):
         if node.wrap.fortran:
@@ -641,7 +641,7 @@ class FillFormat(object):
         Parameters
         ----------
         cls : ast.ClassNode or None of enclosing class.
-        fcn : ast.FunctionNode of calling function.
+        fcn : ast.ClassNode for struct or ast.FunctionNode of calling function.
         f_ast : declast.Declaration
         bind: statements.BindArg
         """
@@ -967,6 +967,37 @@ def set_f_arg_format(node, arg, fmt, bind, wlang):
     elif meta["deref"] == "pointer":
         fmt.f_deref_attr = ", pointer"
 
+def set_f_var_format(var, bind):
+    """Set format fields for variable (in a struct).
+
+    Transfer info from Typemap to fmt for use by statements.
+
+    Parameters
+    ----------
+    var  : ast.VariableNode
+    bind : statements.BindArg
+    """
+    meta = bind.meta
+    fmt = bind.fmtdict
+    declarator = var.ast.declarator
+    ntypemap = declarator.typemap
+
+    if declarator.is_indirect():
+        fmt.i_type = "type(C_PTR)"
+        fmt.i_module_name = "iso_c_binding"
+        fmt.i_kind = "C_PTR"
+    else:
+        i_type = ntypemap.i_type or ntypemap.f_type
+        if i_type:
+            fmt.i_type = i_type
+        if ntypemap.i_module_name:
+            fmt.i_module_name = ntypemap.i_module_name
+            if ntypemap.i_kind:
+                fmt.i_kind = ntypemap.i_kind
+        elif ntypemap.f_module_name is not None:
+            fmt.i_module_name = ntypemap.f_module_name
+            if ntypemap.f_kind:
+                fmt.i_kind = ntypemap.f_kind
 
 def compute_c_deref(arg, fmt):
     """Compute format fields to dereference C argument."""

@@ -44,13 +44,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "integer(C_INT)"
                                 }
                             },
                             "share": {}
@@ -85,13 +81,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_DOUBLE",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "real(C_DOUBLE)",
                                     "i_kind": "C_DOUBLE",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "real(C_DOUBLE)",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "i_type": "real(C_DOUBLE)"
                                 }
                             },
                             "share": {}
@@ -163,11 +155,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_type": "character(len=*)",
-                                    "i_kind": "C_CHAR",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "character(kind=C_CHAR)",
-                                    "sh_type": "SH_TYPE_OTHER"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {}
@@ -208,13 +198,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_DOUBLE",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "i_kind": "C_DOUBLE",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "real(C_DOUBLE)",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {}
@@ -283,13 +269,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "integer(C_INT)"
                                 }
                             },
                             "share": {}
@@ -332,13 +314,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
-                                    "i_kind": "C_INT",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {
@@ -396,13 +374,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_DOUBLE",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "i_kind": "C_DOUBLE",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "real(C_DOUBLE)",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {
@@ -463,11 +437,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_type": "character(len=*)",
-                                    "i_kind": "C_CHAR",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "character(kind=C_CHAR)",
-                                    "sh_type": "SH_TYPE_OTHER"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {
@@ -546,13 +518,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "integer(C_INT)"
                                 }
                             },
                             "share": {}
@@ -595,13 +563,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
-                                    "i_kind": "C_INT",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {
@@ -653,13 +617,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_DOUBLE",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "real(C_DOUBLE)",
-                                    "i_kind": "C_DOUBLE",
+                                    "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "real(C_DOUBLE)",
-                                    "sh_type": "SH_TYPE_DOUBLE"
+                                    "i_type": "type(C_PTR)"
                                 }
                             },
                             "share": {
@@ -742,11 +702,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_type": "character(len=*)",
                                     "i_kind": "C_CHAR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "character(kind=C_CHAR)",
-                                    "sh_type": "SH_TYPE_OTHER"
+                                    "i_type": "character(kind=C_CHAR)"
                                 }
                             },
                             "share": {}
@@ -786,13 +744,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "integer(C_INT)"
                                 }
                             },
                             "share": {}
@@ -2317,13 +2271,9 @@
                         "zz_bind": {
                             "f": {
                                 "fmtdict": {
-                                    "f_kind": "C_INT",
-                                    "f_module_name": "iso_c_binding",
-                                    "f_type": "integer(C_INT)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)",
-                                    "sh_type": "SH_TYPE_INT"
+                                    "i_type": "integer(C_INT)"
                                 }
                             },
                             "share": {}
