@@ -47,9 +47,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "i",
-                            "variable_lower": "i",
-                            "variable_name": "i",
-                            "variable_upper": "I"
+                            "variable_name": "i"
                         }
                     },
                     {
@@ -85,9 +83,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "d",
-                            "variable_lower": "d",
-                            "variable_name": "d",
-                            "variable_upper": "D"
+                            "variable_name": "d"
                         }
                     }
                 ],

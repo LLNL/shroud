@@ -49,9 +49,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "tc",
-                            "variable_lower": "tc",
-                            "variable_name": "tc",
-                            "variable_upper": "TC"
+                            "variable_name": "tc"
                         }
                     }
                 ],

@@ -252,9 +252,7 @@
                             "cxx_type": "char",
                             "field_name": "name",
                             "py_var": "SHPy_name",
-                            "variable_lower": "name",
-                            "variable_name": "name",
-                            "variable_upper": "NAME"
+                            "variable_name": "name"
                         }
                     },
                     {
@@ -292,9 +290,7 @@
                             "cxx_type": "int",
                             "field_name": "count",
                             "py_var": "SHPy_count",
-                            "variable_lower": "count",
-                            "variable_name": "count",
-                            "variable_upper": "COUNT"
+                            "variable_name": "count"
                         }
                     }
                 ],

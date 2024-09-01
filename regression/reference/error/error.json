@@ -777,9 +777,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
-                            "variable_lower": "x1",
-                            "variable_name": "x1",
-                            "variable_upper": "X1"
+                            "variable_name": "x1"
                         }
                     },
                     {
@@ -808,9 +806,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
-                            "variable_lower": "y1",
-                            "variable_name": "y1",
-                            "variable_upper": "Y1"
+                            "variable_name": "y1"
                         }
                     },
                     {
@@ -839,9 +835,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "z1",
-                            "variable_lower": "z1",
-                            "variable_name": "z1",
-                            "variable_upper": "Z1"
+                            "variable_name": "z1"
                         }
                     }
                 ],

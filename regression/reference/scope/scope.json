@@ -51,9 +51,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -106,9 +104,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "items",
-                            "variable_lower": "items",
-                            "variable_name": "items",
-                            "variable_upper": "ITEMS"
+                            "variable_name": "items"
                         }
                     }
                 ],
@@ -993,9 +989,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "nitems",
-                                    "variable_lower": "nitems",
-                                    "variable_name": "nitems",
-                                    "variable_upper": "NITEMS"
+                                    "variable_name": "nitems"
                                 }
                             },
                             {
@@ -1048,9 +1042,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "items",
-                                    "variable_lower": "items",
-                                    "variable_name": "items",
-                                    "variable_upper": "ITEMS"
+                                    "variable_name": "items"
                                 }
                             }
                         ],
@@ -1629,9 +1621,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "nitems",
-                                    "variable_lower": "nitems",
-                                    "variable_name": "nitems",
-                                    "variable_upper": "NITEMS"
+                                    "variable_name": "nitems"
                                 }
                             },
                             {
@@ -1684,9 +1674,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "items",
-                                    "variable_lower": "items",
-                                    "variable_name": "items",
-                                    "variable_upper": "ITEMS"
+                                    "variable_name": "items"
                                 }
                             }
                         ],

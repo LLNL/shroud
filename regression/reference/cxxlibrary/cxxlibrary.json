@@ -230,9 +230,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ifield",
-                            "variable_lower": "ifield",
-                            "variable_name": "ifield",
-                            "variable_upper": "IFIELD"
+                            "variable_name": "ifield"
                         }
                     },
                     {
@@ -262,9 +260,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dfield",
-                            "variable_lower": "dfield",
-                            "variable_name": "dfield",
-                            "variable_upper": "DFIELD"
+                            "variable_name": "dfield"
                         }
                     }
                 ],
@@ -340,9 +336,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "index",
-                            "variable_lower": "index",
-                            "variable_name": "index",
-                            "variable_upper": "INDEX"
+                            "variable_name": "index"
                         }
                     },
                     {
@@ -379,9 +373,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "sublevels",
-                            "variable_lower": "sublevels",
-                            "variable_name": "sublevels",
-                            "variable_upper": "SUBLEVELS"
+                            "variable_name": "sublevels"
                         }
                     },
                     {
@@ -423,9 +415,7 @@
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
                             "field_name": "parent",
-                            "variable_lower": "parent",
-                            "variable_name": "parent",
-                            "variable_upper": "PARENT"
+                            "variable_name": "parent"
                         }
                     },
                     {
@@ -482,9 +472,7 @@
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
                             "field_name": "child",
-                            "variable_lower": "child",
-                            "variable_name": "child",
-                            "variable_upper": "CHILD"
+                            "variable_name": "child"
                         }
                     },
                     {
@@ -538,9 +526,7 @@
                             "c_type": "CXX_nested",
                             "cxx_type": "nested",
                             "field_name": "array",
-                            "variable_lower": "array",
-                            "variable_name": "array",
-                            "variable_upper": "ARRAY"
+                            "variable_name": "array"
                         }
                     }
                 ],
@@ -2415,9 +2401,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_length",
-                            "variable_lower": "length",
-                            "variable_name": "length",
-                            "variable_upper": "LENGTH"
+                            "variable_name": "length"
                         }
                     }
                 ],
@@ -6083,9 +6067,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "ifield",
-                                    "variable_lower": "ifield",
-                                    "variable_name": "ifield",
-                                    "variable_upper": "IFIELD"
+                                    "variable_name": "ifield"
                                 }
                             },
                             {
@@ -6122,9 +6104,7 @@
                                     "c_type": "double",
                                     "cxx_type": "double",
                                     "field_name": "dfield",
-                                    "variable_lower": "dfield",
-                                    "variable_name": "dfield",
-                                    "variable_upper": "DFIELD"
+                                    "variable_name": "dfield"
                                 }
                             }
                         ],

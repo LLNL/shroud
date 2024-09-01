@@ -637,9 +637,7 @@
                                     "c_type": "int",
                                     "cxx_type": "int",
                                     "field_name": "ifield",
-                                    "variable_lower": "ifield",
-                                    "variable_name": "ifield",
-                                    "variable_upper": "IFIELD"
+                                    "variable_name": "ifield"
                                 }
                             },
                             {
@@ -679,9 +677,7 @@
                                     "c_type": "double",
                                     "cxx_type": "double",
                                     "field_name": "dfield",
-                                    "variable_lower": "dfield",
-                                    "variable_name": "dfield",
-                                    "variable_upper": "DFIELD"
+                                    "variable_name": "dfield"
                                 }
                             }
                         ],

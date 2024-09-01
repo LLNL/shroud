@@ -56,8 +56,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, declarator.is_pointer())
         s = gen_decl(r)
         self.assertEqual("int var1", s)
-        s = wrapf.gen_arg_as_fortran(r, local=True)
-        self.assertEqual("integer(C_INT) :: var1", s)
 
         r = declast.check_decl("const int var1", symtab)
         declarator = r.declarator
@@ -103,7 +101,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int *var1 +dimension(:)", s)
         self.assertEqual("int *var1", gen_arg_as_c(r))
         self.assertEqual("int *var1", gen_arg_as_cxx(r))
-        self.assertEqual("integer(C_INT) :: var1(:)", wrapf.gen_arg_as_fortran(r))
 
         r = declast.check_decl("const int * var1", symtab)
         s = gen_decl(r)
@@ -234,9 +231,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "int var1[20]",
             gen_arg_as_c(r))
-        self.assertEqual(
-            "integer(C_INT), value :: var1(20)",
-            wrapf.gen_arg_as_fortran(r))
         
         r = declast.check_decl("int var2[20][10]", symtab)
         self.assertEqual("int", str(r))
@@ -260,9 +254,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "int var2[20][10]",
             gen_arg_as_c(r))
-        self.assertEqual(
-            "integer(C_INT) :: var2(10,20)",
-            wrapf.gen_arg_as_fortran(r, local=True))
         
         r = declast.check_decl("int var3[DEFINE + 3]", symtab)
         self.assertEqual("var3[DEFINE+3]", str(r.declarator))
@@ -286,9 +277,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "int var3[DEFINE+3]",
             gen_arg_as_c(r))
-        self.assertEqual(
-            "integer(C_INT) :: var3(DEFINE+3)",
-            wrapf.gen_arg_as_fortran(r, local=True))
        
     def test_type_string(self):
         """Test string declarations
@@ -306,20 +294,14 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("char *", r.as_cast())
         s = gen_decl(r)
         self.assertEqual("char *var1", s)
-        s = wrapf.gen_arg_as_fortran(r)
-        self.assertEqual("character(len=*) :: var1", s)
 
         r = declast.check_decl("char *var1 +len(30)", symtab)
         s = gen_decl(r)
         self.assertEqual("char *var1 +len(30)", s)
-        s = wrapf.gen_arg_as_fortran(r, local=True)
-        self.assertEqual("character(len=30) :: var1", s)
 
         r = declast.check_decl("char *var1 +deref(allocatable)", symtab)
         s = gen_decl(r)
         self.assertEqual("char *var1 +deref(allocatable)", s)
-        s = wrapf.gen_arg_as_fortran(r)
-        self.assertEqual("character(len=:), allocatable :: var1", s)
 
         r = declast.check_decl("char **var1", symtab)
         declarator = r.declarator
@@ -380,9 +362,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "char var1[20]",
             gen_arg_as_c(r))
-        self.assertEqual(
-            "character(kind=C_CHAR) :: var1(20)",
-            wrapf.gen_arg_as_fortran(r))
         
         r = declast.check_decl("char var2[20][10][5]", symtab)
         declarator = r.declarator
@@ -411,9 +390,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "char var2[20][10][5]",
             gen_arg_as_c(r))
-        self.assertEqual(
-            "character(kind=C_CHAR) :: var2(5,10,20)",
-            wrapf.gen_arg_as_fortran(r))
         
         r = declast.check_decl("char var3[DEFINE + 3]", symtab)
         declarator = r.declarator
@@ -442,9 +418,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "char var3[DEFINE+3]",
             gen_arg_as_c(r))
-        self.assertEqual(
-            "character(kind=C_CHAR) :: var3(DEFINE+3)",
-            wrapf.gen_arg_as_fortran(r))
     
         r = declast.check_decl("char *var4[44]", symtab)
         declarator = r.declarator
@@ -471,9 +444,6 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "char *var4[44]",
             gen_arg_as_c(r))
-        self.assertEqual(  # XXX - fixme
-            "character(kind=C_CHAR) :: var4(44)",
-            wrapf.gen_arg_as_fortran(r))
     
     def test_type_vector(self):
         """Test vector declarations

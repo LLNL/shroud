@@ -2202,9 +2202,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_field1",
-                            "variable_lower": "field1",
-                            "variable_name": "field1",
-                            "variable_upper": "FIELD1"
+                            "variable_name": "field1"
                         }
                     },
                     {
@@ -2236,9 +2234,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_field2",
-                            "variable_lower": "field2",
-                            "variable_name": "field2",
-                            "variable_upper": "FIELD2"
+                            "variable_name": "field2"
                         }
                     },
                     {
@@ -2270,9 +2266,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "m_field3",
-                            "variable_lower": "field3",
-                            "variable_name": "field3",
-                            "variable_upper": "FIELD3"
+                            "variable_name": "field3"
                         }
                     }
                 ],

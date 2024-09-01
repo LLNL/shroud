@@ -56,9 +56,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ifield",
-                            "variable_lower": "ifield",
-                            "variable_name": "ifield",
-                            "variable_upper": "IFIELD"
+                            "variable_name": "ifield"
                         }
                     },
                     {
@@ -94,9 +92,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dfield",
-                            "variable_lower": "dfield",
-                            "variable_name": "dfield",
-                            "variable_upper": "DFIELD"
+                            "variable_name": "dfield"
                         }
                     }
                 ],
@@ -169,9 +165,7 @@
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "cfield",
-                            "variable_lower": "cfield",
-                            "variable_name": "cfield",
-                            "variable_upper": "CFIELD"
+                            "variable_name": "cfield"
                         }
                     },
                     {
@@ -213,9 +207,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "const_dvalue",
-                            "variable_lower": "const_dvalue",
-                            "variable_name": "const_dvalue",
-                            "variable_upper": "CONST_DVALUE"
+                            "variable_name": "const_dvalue"
                         }
                     }
                 ],
@@ -285,9 +277,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -346,9 +336,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ivalue",
-                            "variable_lower": "ivalue",
-                            "variable_name": "ivalue",
-                            "variable_upper": "IVALUE"
+                            "variable_name": "ivalue"
                         }
                     },
                     {
@@ -407,9 +395,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dvalue",
-                            "variable_lower": "dvalue",
-                            "variable_name": "dvalue",
-                            "variable_upper": "DVALUE"
+                            "variable_name": "dvalue"
                         }
                     },
                     {
@@ -465,9 +451,7 @@
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "svalue",
-                            "variable_lower": "svalue",
-                            "variable_name": "svalue",
-                            "variable_upper": "SVALUE"
+                            "variable_name": "svalue"
                         }
                     }
                 ],
@@ -538,9 +522,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "nitems",
-                            "variable_lower": "nitems",
-                            "variable_name": "nitems",
-                            "variable_upper": "NITEMS"
+                            "variable_name": "nitems"
                         }
                     },
                     {
@@ -593,9 +575,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "ivalue",
-                            "variable_lower": "ivalue",
-                            "variable_name": "ivalue",
-                            "variable_upper": "IVALUE"
+                            "variable_name": "ivalue"
                         }
                     },
                     {
@@ -648,9 +628,7 @@
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dvalue",
-                            "variable_lower": "dvalue",
-                            "variable_name": "dvalue",
-                            "variable_upper": "DVALUE"
+                            "variable_name": "dvalue"
                         }
                     }
                 ],
@@ -726,9 +704,7 @@
                             "c_type": "char",
                             "cxx_type": "char",
                             "field_name": "name",
-                            "variable_lower": "name",
-                            "variable_name": "name",
-                            "variable_upper": "NAME"
+                            "variable_name": "name"
                         }
                     },
                     {
@@ -770,9 +746,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "count",
-                            "variable_lower": "count",
-                            "variable_name": "count",
-                            "variable_upper": "COUNT"
+                            "variable_name": "count"
                         }
                     }
                 ],
@@ -1326,9 +1300,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
-                            "variable_lower": "x1",
-                            "variable_name": "x1",
-                            "variable_upper": "X1"
+                            "variable_name": "x1"
                         }
                     },
                     {
@@ -1356,9 +1328,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
-                            "variable_lower": "y1",
-                            "variable_name": "y1",
-                            "variable_upper": "Y1"
+                            "variable_name": "y1"
                         }
                     }
                 ],
@@ -2161,9 +2131,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "x1",
-                            "variable_lower": "x1",
-                            "variable_name": "x1",
-                            "variable_upper": "X1"
+                            "variable_name": "x1"
                         }
                     },
                     {
@@ -2191,9 +2159,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "y1",
-                            "variable_lower": "y1",
-                            "variable_name": "y1",
-                            "variable_upper": "Y1"
+                            "variable_name": "y1"
                         }
                     },
                     {
@@ -2221,9 +2187,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "z1",
-                            "variable_lower": "z1",
-                            "variable_name": "z1",
-                            "variable_upper": "Z1"
+                            "variable_name": "z1"
                         }
                     }
                 ],
@@ -2298,9 +2262,7 @@
                             "c_type": "int",
                             "cxx_type": "int",
                             "field_name": "sublevels",
-                            "variable_lower": "sublevels",
-                            "variable_name": "sublevels",
-                            "variable_upper": "SUBLEVELS"
+                            "variable_name": "sublevels"
                         }
                     }
                 ],
