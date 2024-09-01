@@ -13175,8 +13175,6 @@ f_out_native**_raw:
   f_arg_decl:
   - 'type(C_PTR){f_intent_attr} :: {f_var}'
   f_module:
-    '{f_module_name}':
-    - '{f_kind}'
     iso_c_binding:
     - C_PTR
   i_arg_names:
