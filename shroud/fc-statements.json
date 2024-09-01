@@ -31,17 +31,6 @@
         "notes": [
             "Use typemap.cxx_to_c to create an argument"
         ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_optional_attr} :: {f_var}{f_dimension}"
-        ],
-        "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ]
-        },
         "c_arg_decl": [
             "{gen.cdecl.c_var}"
         ],
@@ -1118,7 +1107,8 @@
         ],
         "mixin": [
             "c_mixin_argument",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-interface-arg",
+            "f_mixin_declare-fortran-arg"
         ]
     },
     {
@@ -1132,7 +1122,8 @@
         ],
         "mixin": [
             "c_mixin_argument",
-            "f_mixin_declare-interface-arg"
+            "f_mixin_declare-interface-arg",
+            "f_mixin_declare-fortran-arg"
         ]
     },
     {
@@ -1164,7 +1155,8 @@
         ],
         "mixin": [
             "c_mixin_argument",
-            "f_mixin_argument-as-cptr-value"
+            "f_mixin_argument-as-cptr-value",
+            "f_mixin_declare-fortran-arg"
         ]
     },
     {
@@ -1178,7 +1170,8 @@
         ],
         "mixin": [
             "c_mixin_argument",
-            "f_mixin_argument-as-cptr"
+            "f_mixin_argument-as-cptr",
+            "f_mixin_declare-fortran-arg"
         ],
         "f_arg_decl": [
             "type(C_PTR){f_intent_attr} :: {f_var}"
@@ -1214,7 +1207,8 @@
         ],
         "mixin": [
             "c_mixin_argument",
-            "f_mixin_argument-as-cptr"
+            "f_mixin_argument-as-cptr",
+            "f_mixin_declare-fortran-arg"
         ],
         "f_arg_decl": [
             "type(C_PTR){f_intent_attr} :: {f_var}"
