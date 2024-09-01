@@ -319,8 +319,9 @@ class FillFormat(object):
         if subprogram == "function":
             fmt_result.i_var = fmt_result.i_result_var
             fmt_result.f_var = fmt_result.i_result_var
-            self.set_fmt_fields_iface(ast, bind, result_typemap, "function")
+            self.set_fmt_fields_iface(ast, bind, result_typemap)
             self.set_fmt_fields_dimension(cls, node, ast, bind)
+            set_f_function_format(node, bind, subprogram)
 
         if result_stmt.i_result_var == "as-subroutine":
             subprogram = "subroutine"
@@ -382,6 +383,7 @@ class FillFormat(object):
                               subprogram, result_typemap)
         self.set_fmt_fields_dimension(cls, C_node, ast, bind)
         self.apply_helpers_from_stmts(node, bind)
+        set_f_function_format(node, bind, subprogram)
         statements.apply_fmtdict_from_stmts(bind)
 
         # Compute after stmt.fmtdict is evaluated.
@@ -534,7 +536,7 @@ class FillFormat(object):
         if meta["len"]:
             fmt.c_char_len = meta["len"]
                 
-    def set_fmt_fields_iface(self, ast, bind, ntypemap, subprogram=None):
+    def set_fmt_fields_iface(self, ast, bind, ntypemap):
         """Set format fields for interface.
 
         Transfer info from Typemap to fmt for use by statements.
@@ -546,22 +548,10 @@ class FillFormat(object):
         ntypemap : typemap.Typemap
             The typemap has already resolved template arguments.
             For example, std::vector<int>.  ntypemap will be 'int'.
-        subprogram : str
-            "function" or "subroutine" or None
         """
-        attrs = ast.declarator.attrs
         meta = bind.meta
         fmt = bind.fmtdict
 
-        if subprogram == "subroutine":
-            pass
-        elif subprogram == "function":
-            # XXX this also gets set for subroutines
-            fmt.f_intent = "OUT"
-            fmt.f_intent_attr = ", intent(OUT)"
-#        else:
-            # XXX - now set in fcfmt.set_f_arg_format
-        
         if meta["assumedtype"]:
             fmt.f_type = "type(*)"
             fmt.i_type = "type(*)"
@@ -626,17 +616,16 @@ class FillFormat(object):
 
         if subprogram == "subroutine":
             # XXX - no need to set f_type and sh_type
-            rootname = fmt.C_result
+            pass
         elif subprogram == "function":
             # XXX this also gets set for subroutines
-            rootname = fmt.C_result
+            pass
         else:
             ntypemap = f_ast.typemap
-            rootname = c_ast.declarator.user_name
         if ntypemap.sgroup != "shadow" and c_ast.template_arguments:
             statements.set_template_fields(c_ast, fmt)
         if subprogram != "subroutine":
-            self.set_fmt_fields_iface(c_ast, bind, ntypemap, subprogram)
+            self.set_fmt_fields_iface(c_ast, bind, ntypemap)
             if "pass" in c_attrs:
                 # Used with wrap_struct_as=class for passed-object dummy argument.
                 fmt.f_type = ntypemap.f_class
@@ -922,6 +911,36 @@ def set_share_function_format(node, fmt, bind, wlang):
     fmt.stmt_name = bind.stmt.name
     fmt.typemap = node.ast.typemap
     fmt.gen = FormatGen(node, node.ast, fmt, wlang)
+    
+def set_f_function_format(node, bind, subprogram):
+#    subprogram = node.ast.declarator.get_subprogram()
+    if subprogram == "function":
+        fmt = bind.fmtdict
+        fmt.f_intent = "OUT"
+        fmt.f_intent_attr = ", intent(OUT)"
+    return
+
+    # XXX - need something like this.
+    # XXX - it sets intent properly on some routines which are missing it now.
+    meta = bind.meta
+    fmt = bind.fmtdict
+
+    intent = meta["intent"].upper()
+    if intent == "FUNCTION":
+        intent = "OUT"
+    elif intent == "SUBROUTINE":
+        intent = "OUT"
+    elif intent == "SETTER":
+        intent = "NONE"
+    elif intent == "GETTER":
+        intent = "OUT"
+    elif intent == "CTOR":
+        intent = "OUT"
+    elif intent == "DTOR":
+        intent = "INOUT"
+    if intent != "NONE":
+        fmt.f_intent = intent
+        fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
     
 def set_f_arg_format(node, arg, fmt, bind, wlang):
     meta = bind.meta
