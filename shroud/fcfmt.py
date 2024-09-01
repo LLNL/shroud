@@ -85,6 +85,8 @@ class FillFormat(object):
         for var in node.variables:
             bind = statements.fetch_var_bind(var, "f")
             fmt = statements.set_bind_fmtdict(bind, node.fmtdict)
+            self.set_fmt_fields_iface(var, bind, var.ast.typemap)
+#            self.set_fmt_fields_dimension(None, node, arg, bind_arg)
 
     def fmt_typedefs(self, node):
         if node.wrap.fortran:

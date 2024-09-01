@@ -36,7 +36,15 @@
                         },
                         "zz_bind": {
                             "f": {
-                                "fmtdict": {}
+                                "fmtdict": {
+                                    "f_kind": "C_INT",
+                                    "f_module_name": "iso_c_binding",
+                                    "f_type": "integer(C_INT)",
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "sh_type": "SH_TYPE_INT"
+                                }
                             },
                             "share": {}
                         },

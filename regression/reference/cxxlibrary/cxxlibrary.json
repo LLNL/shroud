@@ -327,7 +327,15 @@
                         },
                         "zz_bind": {
                             "f": {
-                                "fmtdict": {}
+                                "fmtdict": {
+                                    "f_kind": "C_INT",
+                                    "f_module_name": "iso_c_binding",
+                                    "f_type": "integer(C_INT)",
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "sh_type": "SH_TYPE_INT"
+                                }
                             },
                             "share": {}
                         },
@@ -361,7 +369,15 @@
                         },
                         "zz_bind": {
                             "f": {
-                                "fmtdict": {}
+                                "fmtdict": {
+                                    "f_kind": "C_INT",
+                                    "f_module_name": "iso_c_binding",
+                                    "f_type": "integer(C_INT)",
+                                    "i_kind": "C_INT",
+                                    "i_module_name": "iso_c_binding",
+                                    "i_type": "integer(C_INT)",
+                                    "sh_type": "SH_TYPE_INT"
+                                }
                             },
                             "share": {}
                         },
@@ -400,7 +416,16 @@
                         },
                         "zz_bind": {
                             "f": {
-                                "fmtdict": {}
+                                "fmtdict": {
+                                    "f_derived_type": "nested",
+                                    "f_kind": "nested",
+                                    "f_module_name": "cxxlibrary_mod",
+                                    "f_type": "type(nested)",
+                                    "i_kind": "nested",
+                                    "i_module_name": "cxxlibrary_mod",
+                                    "i_type": "type(nested)",
+                                    "sh_type": "SH_TYPE_STRUCT"
+                                }
                             },
                             "share": {}
                         },
@@ -445,7 +470,16 @@
                         },
                         "zz_bind": {
                             "f": {
-                                "fmtdict": {}
+                                "fmtdict": {
+                                    "f_derived_type": "nested",
+                                    "f_kind": "nested",
+                                    "f_module_name": "cxxlibrary_mod",
+                                    "f_type": "type(nested)",
+                                    "i_kind": "nested",
+                                    "i_module_name": "cxxlibrary_mod",
+                                    "i_type": "type(nested)",
+                                    "sh_type": "SH_TYPE_STRUCT"
+                                }
                             },
                             "share": {
                                 "meta": {
@@ -496,7 +530,16 @@
                         },
                         "zz_bind": {
                             "f": {
-                                "fmtdict": {}
+                                "fmtdict": {
+                                    "f_derived_type": "nested",
+                                    "f_kind": "nested",
+                                    "f_module_name": "cxxlibrary_mod",
+                                    "f_type": "type(nested)",
+                                    "i_kind": "nested",
+                                    "i_module_name": "cxxlibrary_mod",
+                                    "i_type": "type(nested)",
+                                    "sh_type": "SH_TYPE_STRUCT"
+                                }
                             },
                             "share": {
                                 "meta": {
@@ -6045,7 +6088,15 @@
                                 },
                                 "zz_bind": {
                                     "f": {
-                                        "fmtdict": {}
+                                        "fmtdict": {
+                                            "f_kind": "C_INT",
+                                            "f_module_name": "iso_c_binding",
+                                            "f_type": "integer(C_INT)",
+                                            "i_kind": "C_INT",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "integer(C_INT)",
+                                            "sh_type": "SH_TYPE_INT"
+                                        }
                                     },
                                     "share": {}
                                 },
@@ -6079,7 +6130,15 @@
                                 },
                                 "zz_bind": {
                                     "f": {
-                                        "fmtdict": {}
+                                        "fmtdict": {
+                                            "f_kind": "C_DOUBLE",
+                                            "f_module_name": "iso_c_binding",
+                                            "f_type": "real(C_DOUBLE)",
+                                            "i_kind": "C_DOUBLE",
+                                            "i_module_name": "iso_c_binding",
+                                            "i_type": "real(C_DOUBLE)",
+                                            "sh_type": "SH_TYPE_DOUBLE"
+                                        }
                                     },
                                     "share": {}
                                 },
