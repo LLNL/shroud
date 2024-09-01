@@ -1791,7 +1791,7 @@ c_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -1821,7 +1821,7 @@ c_in_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -1839,7 +1839,7 @@ c_in_native**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR), intent(IN), value :: {i_var}'
+  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -2503,7 +2503,7 @@ c_in_void:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -2687,7 +2687,7 @@ c_inout_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -3244,13 +3244,6 @@ c_mixin_arg_native_cfi:
 c_mixin_argument:
   name: c_mixin_argument
   intent: mixin
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
-  i_module:
-    '{i_module_name}':
-    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3733,7 +3726,7 @@ c_out_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -3765,7 +3758,7 @@ c_out_native**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -3780,7 +3773,7 @@ c_out_native***:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -3797,7 +3790,7 @@ c_out_native**_raw:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -9457,7 +9450,7 @@ f_in_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -9501,7 +9494,7 @@ f_in_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -9526,7 +9519,7 @@ f_in_native**:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR), intent(IN), value :: {i_var}'
+  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -10531,7 +10524,7 @@ f_in_void:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -10899,7 +10892,7 @@ f_inout_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -12538,7 +12531,7 @@ f_none_native:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -12560,7 +12553,7 @@ f_none_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -12820,7 +12813,7 @@ f_out_native*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
     '{i_module_name}':
     - '{i_kind}'
@@ -12942,7 +12935,7 @@ f_out_native***:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
@@ -13189,7 +13182,7 @@ f_out_native**_raw:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
   i_module:
     iso_c_binding:
     - C_PTR
