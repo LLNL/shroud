@@ -45,7 +45,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)"
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "ifield"
                                 }
                             },
                             "share": {}
@@ -81,7 +82,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_DOUBLE",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "real(C_DOUBLE)"
+                                    "i_type": "real(C_DOUBLE)",
+                                    "i_var": "dfield"
                                 }
                             },
                             "share": {}
@@ -153,7 +155,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "cfield"
                                 }
                             },
                             "share": {}
@@ -195,7 +198,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "const_dvalue"
                                 }
                             },
                             "share": {}
@@ -264,7 +268,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)"
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "nitems"
                                 }
                             },
                             "share": {}
@@ -308,7 +313,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "ivalue"
                                 }
                             },
                             "share": {
@@ -367,7 +373,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "dvalue"
                                 }
                             },
                             "share": {
@@ -429,7 +436,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "svalue"
                                 }
                             },
                             "share": {
@@ -508,7 +516,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)"
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "nitems"
                                 }
                             },
                             "share": {}
@@ -552,7 +561,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "ivalue"
                                 }
                             },
                             "share": {
@@ -605,7 +615,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_PTR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "type(C_PTR)"
+                                    "i_type": "type(C_PTR)",
+                                    "i_var": "dvalue"
                                 }
                             },
                             "share": {
@@ -689,7 +700,8 @@
                                     "i_dimension": "(20)",
                                     "i_kind": "C_CHAR",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "character(kind=C_CHAR)"
+                                    "i_type": "character(kind=C_CHAR)",
+                                    "i_var": "name"
                                 }
                             },
                             "share": {}
@@ -731,7 +743,8 @@
                                     "i_dimension": "(10)",
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)"
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "count"
                                 }
                             },
                             "share": {}
@@ -2249,7 +2262,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)"
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "sublevels"
                                 }
                             },
                             "share": {}

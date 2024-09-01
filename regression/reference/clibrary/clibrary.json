@@ -39,7 +39,8 @@
                                 "fmtdict": {
                                     "i_kind": "C_INT",
                                     "i_module_name": "iso_c_binding",
-                                    "i_type": "integer(C_INT)"
+                                    "i_type": "integer(C_INT)",
+                                    "i_var": "tc"
                                 }
                             },
                             "share": {}

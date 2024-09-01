@@ -982,6 +982,8 @@ def set_f_var_format(var, bind):
     declarator = var.ast.declarator
     ntypemap = declarator.typemap
 
+    fmt.i_var = declarator.name
+
     if declarator.is_indirect():
         fmt.i_type = "type(C_PTR)"
         fmt.i_module_name = "iso_c_binding"
