@@ -86,7 +86,6 @@ class FillFormat(object):
             bind = statements.fetch_var_bind(var, "f")
             fmt = statements.set_bind_fmtdict(bind, node.fmtdict)
             set_f_var_format(var, bind)
-#            self.set_fmt_fields_dimension(None, node, var.ast, bind)
 
     def fmt_typedefs(self, node):
         if node.wrap.fortran:
@@ -915,7 +914,6 @@ def set_share_function_format(node, fmt, bind, wlang):
     fmt.gen = FormatGen(node, node.ast, fmt, wlang)
     
 def set_f_function_format(node, bind, subprogram):
-#    subprogram = node.ast.declarator.get_subprogram()
     if subprogram == "function":
         fmt = bind.fmtdict
         fmt.f_intent = "OUT"
