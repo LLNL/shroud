@@ -62,7 +62,7 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
-        "name": "f_mixin_argument-as-cptr-value",
+        "name": "f_mixin_interface-as-cptr-value",
         "notes": [
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran"
@@ -80,7 +80,7 @@
         }
     },
     {
-        "name": "f_mixin_argument-as-cptr",
+        "name": "f_mixin_interface-as-cptr",
         "notes": [
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran"
@@ -1140,7 +1140,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_argument-as-cptr-value",
+            "f_mixin_interface-as-cptr-value",
             "f_mixin_declare-fortran-arg"
         ]
     },
@@ -1155,7 +1155,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_argument-as-cptr"
+            "f_mixin_interface-as-cptr"
         ],
         "f_arg_name": [
             "{f_var}"
@@ -1177,8 +1177,8 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_declare-fortran-arg",
-            "f_mixin_argument-as-cptr"
+            "f_mixin_interface-as-cptr",
+            "f_mixin_declare-fortran-arg"
         ],
         "c_arg_call": [
             "*{cxx_var}"
@@ -1191,7 +1191,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_argument-as-cptr",
+            "f_mixin_interface-as-cptr",
             "f_mixin_declare-fortran-arg"
         ],
         "f_arg_decl": [
@@ -2692,7 +2692,7 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_argument-as-cptr-value"
+            "f_mixin_interface-as-cptr-value"
         ],
         "notimplemented": true
     },

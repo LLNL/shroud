@@ -497,8 +497,6 @@ root
     mixin
       arg
         capsule -- f_mixin_arg_capsule
-      argument-as-cptr -- f_mixin_argument-as-cptr
-      argument-as-cptr-value -- f_mixin_argument-as-cptr-value
       capsule
         dtor -- f_mixin_capsule_dtor
       char
@@ -539,6 +537,8 @@ root
       inout
         array
           cdesc -- f_mixin_inout_array_cdesc
+      interface-as-cptr -- f_mixin_interface-as-cptr
+      interface-as-cptr-value -- f_mixin_interface-as-cptr-value
       local-logical-var -- f_mixin_local-logical-var
       native
         cdesc
@@ -11687,28 +11687,6 @@ f_mixin_arg_capsule:
   fmtdict:
     f_var_capsule: Crv
   owner: library
-f_mixin_argument-as-cptr:
-  name: f_mixin_argument-as-cptr
-  intent: mixin
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type(C_PTR){f_intent_attr} :: {i_var}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  owner: library
-f_mixin_argument-as-cptr-value:
-  name: f_mixin_argument-as-cptr-value
-  intent: mixin
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  owner: library
 f_mixin_capsule_dtor:
   name: f_mixin_capsule_dtor
   comments:
@@ -12088,6 +12066,28 @@ f_mixin_inout_array_cdesc:
   - cdesc
   f_helper:
   - array_context
+  owner: library
+f_mixin_interface-as-cptr:
+  name: f_mixin_interface-as-cptr
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+  owner: library
+f_mixin_interface-as-cptr-value:
+  name: f_mixin_interface-as-cptr-value
+  intent: mixin
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type(C_PTR){f_intent_attr}, value :: {i_var}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   owner: library
 f_mixin_local-logical-var:
   name: f_mixin_local-logical-var
