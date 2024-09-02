@@ -2584,11 +2584,9 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
+            "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
-        ],
-        "f_arg_decl": [
-            "{f_type} :: {f_var}"
         ],
         "c_helper": [
             "char_copy"

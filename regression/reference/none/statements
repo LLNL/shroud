@@ -6393,7 +6393,7 @@ f_function_string&_buf:
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6404,6 +6404,8 @@ f_function_string&_buf:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -6457,6 +6459,8 @@ f_function_string&_buf_arg:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -6503,7 +6507,7 @@ f_function_string&_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -6514,6 +6518,8 @@ f_function_string&_buf_copy:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -7216,7 +7222,7 @@ f_function_string*_buf:
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7227,6 +7233,8 @@ f_function_string*_buf:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -7266,7 +7274,7 @@ f_function_string*_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7277,6 +7285,8 @@ f_function_string*_buf_copy:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -7928,7 +7938,7 @@ f_function_string_buf:
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -7939,6 +7949,8 @@ f_function_string_buf:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -7992,6 +8004,8 @@ f_function_string_buf_arg:
   - call {f_call_function}({F_arg_c_call})
   f_result_var: as-subroutine
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
@@ -8038,7 +8052,7 @@ f_function_string_buf_copy:
   - Pass CHARACTER and LEN to C wrapper.
   intent: function
   f_arg_decl:
-  - '{f_type} :: {f_var}'
+  - '{f_type}{f_deref_attr} :: {f_var}{f_dimension}'
   f_declare:
   - integer(C_INT) {f_var_len}
   f_pre_call:
@@ -8049,6 +8063,8 @@ f_function_string_buf_copy:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   f_module:
+    '{f_module_name}':
+    - '{f_kind}'
     iso_c_binding:
     - C_INT
   f_temps:
