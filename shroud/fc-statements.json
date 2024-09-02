@@ -2224,6 +2224,10 @@
             "f_inout_string*",
             "c_inout_string*"
         ],
+        "notes": [
+            "XXX - the fortran wrapper is incorrect since it is passing buf",
+            "  but only accepting one argument. Confused with f_inout_string*_buf"
+        ],
         "mixin": [
             "f_mixin_pass_character_buf",
             "c_mixin_character"
