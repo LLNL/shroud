@@ -1513,7 +1513,7 @@ contains
     !<
     ! start get_raw_ptr_to_scalar
     subroutine get_raw_ptr_to_scalar(nitems)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar
         call c_get_raw_ptr_to_scalar_bufferify(nitems)
@@ -1533,7 +1533,7 @@ contains
     !<
     ! start get_raw_ptr_to_scalar_force
     subroutine get_raw_ptr_to_scalar_force(nitems)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar_force
         call c_get_raw_ptr_to_scalar_force_bufferify(nitems)
@@ -1556,7 +1556,7 @@ contains
     !<
     ! start get_raw_ptr_to_fixed_array
     subroutine get_raw_ptr_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array
         call c_get_raw_ptr_to_fixed_array_bufferify(count)
@@ -1577,7 +1577,7 @@ contains
     !<
     ! start get_raw_ptr_to_fixed_array_force
     subroutine get_raw_ptr_to_fixed_array_force(count)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array_force
         call c_get_raw_ptr_to_fixed_array_force_bufferify(count)
