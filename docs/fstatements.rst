@@ -215,8 +215,12 @@ f_module
 ``USE`` statements to add to Fortran wrapper.
 A dictionary of list of ``ONLY`` names.
 The names will be expanded before being uses for format values can be used.
-If the name is `-f_module_name-`, the values will not be added.
-This is used by types such as ``CHARACTER`` which does not use a kind in the declaration.
+
+If ``typemap.f_module_name` is None, then the default
+``format.f_module_name`` value will be used. No module will be used in
+the wrapper in this case.  For example, ``CHARACTER`` which does not
+use a kind in the declaration since it uses the Fortran native
+character kind.
 
 .. code-block:: yaml
 
