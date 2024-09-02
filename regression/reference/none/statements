@@ -503,6 +503,7 @@ root
         cdesc
           allocate -- f_mixin_char_cdesc_allocate
           pointer -- f_mixin_char_cdesc_pointer
+      declare-as-cptr -- f_mixin_declare-as-cptr
       declare-fortran-arg -- f_mixin_declare-fortran-arg
       declare-fortran-result -- f_mixin_declare-fortran-result
       declare-interface-arg -- f_mixin_declare-interface-arg
@@ -1523,10 +1524,10 @@ c_function_struct:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}, intent(OUT) :: {i_var}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{c_type} *{c_var}'
   c_call:
@@ -8661,10 +8662,10 @@ f_function_struct:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}, intent(OUT) :: {i_var}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    '{f_module_name}':
-    - '{f_kind}'
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{c_type} *{c_var}'
   c_call:
@@ -11728,6 +11729,17 @@ f_mixin_char_cdesc_pointer:
   f_helper:
   - pointer_string
   owner: library
+f_mixin_declare-as-cptr:
+  name: f_mixin_declare-as-cptr
+  intent: mixin
+  f_arg_name:
+  - '{f_var}'
+  f_arg_decl:
+  - 'type(C_PTR){f_intent_attr} :: {f_var}'
+  f_module:
+    iso_c_binding:
+    - C_PTR
+  owner: library
 f_mixin_declare-fortran-arg:
   name: f_mixin_declare-fortran-arg
   intent: mixin
@@ -14346,7 +14358,10 @@ f_setter_struct*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -14391,7 +14406,10 @@ f_setter_struct*_pointer:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - '{f_type}, intent(IN) :: {i_var}{i_dimension}'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
+  i_module:
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:

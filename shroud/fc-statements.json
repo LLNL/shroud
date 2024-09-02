@@ -98,6 +98,23 @@
         }
     },
     {
+        "name": "f_mixin_declare-as-cptr",
+        "notes": [
+            "Used when there is no direct mapping to Fortran"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ],
+        "f_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
         "alias": [
             "f_subroutine",
             "c_subroutine"
@@ -1155,18 +1172,8 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_interface-as-cptr"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        },
-        "f_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {f_var}"
+            "f_mixin_interface-as-cptr",
+            "f_mixin_declare-as-cptr"
         ]
     },
     {
@@ -3797,6 +3804,7 @@
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
+            "f_mixin_declare-interface-arg",
             "f_mixin_declare-fortran-result"
         ],
         "f_arg_call": [
@@ -3805,17 +3813,6 @@
         "c_arg_decl": [
             "{c_type} *{c_var}"
         ],
-        "i_arg_decl": [
-            "{f_type}, intent(OUT) :: {i_var}"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ]
-        },
         "c_call": [
             "*{c_var} = {C_call_function};"
         ],
@@ -3863,13 +3860,8 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
+            "f_mixin_declare-interface-arg",
             "f_mixin_declare-fortran-arg"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "{f_type}, intent(IN) :: {i_var}{i_dimension}"
         ],
         "c_post_call": [
             "{CXX_this}->{field_name} = val;"
