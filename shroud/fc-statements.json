@@ -2125,8 +2125,12 @@
             "f_in_string*",
             "c_in_string*"
         ],
+        "comments": [
+            "Create local std::string from the argument."
+        ],
         "mixin": [
-            "c_mixin_character"
+            "c_mixin_declare-arg",
+            "f_mixin_declare-interface-arg"
         ],
         "c_local": [
             "cxx"
@@ -2147,7 +2151,8 @@
             "Similar to f_in_string*, but c_arg_call is pass by value"
         ],
         "mixin": [
-            "c_mixin_character"
+            "c_mixin_declare-arg",
+            "f_mixin_declare-interface-arg"
         ],
         "c_local": [
             "cxx"
@@ -2164,7 +2169,8 @@
             "c_out_string*"
         ],
         "mixin": [
-            "c_mixin_character"
+            "c_mixin_declare-arg",
+            "f_mixin_declare-interface-arg"
         ],
         "lang_cxx": {
             "impl_header": [
@@ -2192,7 +2198,8 @@
             "Similar to f_out_string*"
         ],
         "mixin": [
-            "c_mixin_character"
+            "c_mixin_declare-arg",
+            "f_mixin_declare-interface-arg"
         ],
         "lang_cxx": {
             "impl_header": [

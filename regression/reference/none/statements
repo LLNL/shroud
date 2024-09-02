@@ -1665,10 +1665,10 @@ c_in_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2011,10 +2011,10 @@ c_in_string&:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2056,14 +2056,16 @@ c_in_string&_buf:
   owner: library
 c_in_string*:
   name: c_in_string*
+  comments:
+  - Create local std::string from the argument.
   intent: in
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -2592,10 +2594,10 @@ c_inout_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3629,10 +3631,10 @@ c_out_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3836,10 +3838,10 @@ c_out_string&:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -3893,10 +3895,10 @@ c_out_string*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9173,10 +9175,10 @@ f_in_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9351,10 +9353,10 @@ f_in_char*_capi:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9767,10 +9769,10 @@ f_in_string&:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -9863,14 +9865,16 @@ f_in_string&_cfi:
   owner: library
 f_in_string*:
   name: f_in_string*
+  comments:
+  - Create local std::string from the argument.
   intent: in
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10688,10 +10692,10 @@ f_inout_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -10762,10 +10766,10 @@ f_inout_char*_capi:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12498,10 +12502,10 @@ f_none_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12620,10 +12624,10 @@ f_out_char*:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
@@ -12688,10 +12692,10 @@ f_out_char*_capi:
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
-  - 'character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)'
+  - '{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}'
   i_module:
-    iso_c_binding:
-    - C_CHAR
+    '{i_module_name}':
+    - '{i_kind}'
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   c_arg_call:
