@@ -62,6 +62,24 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "name": "f_mixin_interface-as-cptr",
+        "notes": [
+            "Pass the address of the argument directly to C.",
+            "Used when there is no direct mapping to Fortran"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {i_var}"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_PTR"
+            ]
+        }
+    },
+    {
         "name": "f_mixin_interface-as-cptr-value",
         "notes": [
             "Pass the address of the argument directly to C.",
@@ -80,7 +98,7 @@
         }
     },
     {
-        "name": "f_mixin_interface-as-cptr",
+        "name": "#f_mixin_interface-as-cptr-dimension",
         "notes": [
             "Pass the address of the argument directly to C.",
             "Used when there is no direct mapping to Fortran"
@@ -89,7 +107,7 @@
             "{i_var}"
         ],
         "i_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {i_var}"
+            "type(C_PTR){f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1545,29 +1563,15 @@
             "f_none_void*"
         ],
         "mixin": [
-            "c_mixin_declare-arg"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        },
-        "f_arg_name": [
-            "{f_var}"
+            "c_mixin_declare-arg",
+            "f_mixin_interface-as-cptr",
+            "f_mixin_declare-fortran-arg"
         ],
         "f_arg_decl": [
             "{f_type}{f_intent_attr} :: {f_var}"
         ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        },
-        "i_arg_names": [
-            "{i_var}"
-        ],
         "i_arg_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
+            "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ]
     },
     {
@@ -1579,15 +1583,8 @@
             "XXX - f entries are the same as the i entries, share?"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-result",
             "c_mixin_function"
-        ],
-        "f_module": {
-            "iso_c_binding": [
-                "C_PTR"
-            ]
-        },
-        "f_arg_decl": [
-            "type(C_PTR) :: {f_var}"
         ],
         "i_module": {
             "iso_c_binding": [
@@ -1748,6 +1745,26 @@
         "name":"##### char #################################################"
     },
     {
+        "name": "c_mixin_character",
+        "notes": [
+            "Create a character argument"
+        ],
+        "i_arg_names": [
+            "{i_var}"
+        ],
+        "i_arg_decl": [
+            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
+        ],
+        "i_module": {
+            "iso_c_binding": [
+                "C_CHAR"
+            ]
+        },
+        "c_arg_decl": [
+            "{gen.cdecl.c_var}"
+        ]
+    },
+    {
         "alias": [
             "f_in_char",
             "c_in_char",
@@ -1832,26 +1849,6 @@
                 "C_PTR"
             ]
         }
-    },
-    {
-        "name": "c_mixin_character",
-        "notes": [
-            "Create a character argument"
-        ],
-        "i_arg_names": [
-            "{i_var}"
-        ],
-        "i_arg_decl": [
-            "character(kind=C_CHAR){f_intent_attr} :: {i_var}(*)"
-        ],
-        "i_module": {
-            "iso_c_binding": [
-                "C_CHAR"
-            ]
-        },
-        "c_arg_decl": [
-            "{gen.cdecl.c_var}"
-        ]
     },
     {
         "alias": [
@@ -2527,14 +2524,9 @@
             "c_in_string_buf"
         ],
         "mixin": [
+            "f_mixin_declare-fortran-arg",
             "f_mixin_pass_character_buf",
             "c_mixin_in_character_buf"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_arg_decl": [
-            "character(len=*){f_intent_attr} :: {f_var}"
         ],
         "c_helper": [
             "char_len_trim"
