@@ -2841,6 +2841,9 @@ c_inout_string*:
   name: c_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  notes:
+  - XXX - the fortran wrapper is incorrect since it is passing buf
+  - '  but only accepting one argument. Confused with f_inout_string*_buf'
   intent: inout
   i_arg_names:
   - '{i_var}'
@@ -11180,6 +11183,9 @@ f_inout_string*:
   name: f_inout_string*
   comments:
   - Pass CHARACTER and LEN to C wrapper.
+  notes:
+  - XXX - the fortran wrapper is incorrect since it is passing buf
+  - '  but only accepting one argument. Confused with f_inout_string*_buf'
   intent: inout
   f_declare:
   - integer(C_INT) {f_var_len}

@@ -24,25 +24,6 @@
         "sphinx-end-before": "c_mixin_declare-arg"
     },
     {
-        "sphinx-start-after": "f_mixin_declare-fortran-arg",
-        "name": "f_mixin_declare-fortran-arg",
-        "notes": [
-            "Fortran wrapper argument"
-        ],
-        "f_arg_name": [
-            "{f_var}"
-        ],
-        "f_module": {
-            "{f_module_name}": [
-                "{f_kind}"
-            ]
-        },
-        "f_arg_decl": [
-            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
-        ],
-        "sphinx-end-before": "f_mixin_declare-fortran-arg"
-    },
-    {
         "sphinx-start-after": "f_mixin_declare-interface-arg",
         "name": "f_mixin_declare-interface-arg",
         "notes": [
@@ -60,6 +41,25 @@
             "{i_type}{f_value_attr}{f_intent_attr} :: {i_var}{i_dimension}"
         ],
         "sphinx-end-before": "f_mixin_declare-interface-arg"
+    },
+    {
+        "sphinx-start-after": "f_mixin_declare-fortran-arg",
+        "name": "f_mixin_declare-fortran-arg",
+        "notes": [
+            "Fortran wrapper argument"
+        ],
+        "f_arg_name": [
+            "{f_var}"
+        ],
+        "f_module": {
+            "{f_module_name}": [
+                "{f_kind}"
+            ]
+        },
+        "f_arg_decl": [
+            "{f_type}{f_value_attr}{f_intent_attr}{f_deref_attr}{f_optional_attr} :: {f_var}{f_dimension}"
+        ],
+        "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
         "name": "f_mixin_argument-as-cptr-value",
@@ -1155,17 +1155,19 @@
         ],
         "mixin": [
             "c_mixin_declare-arg",
-            "f_mixin_argument-as-cptr",
-            "f_mixin_declare-fortran-arg"
+            "f_mixin_argument-as-cptr"
         ],
-        "f_arg_decl": [
-            "type(C_PTR){f_intent_attr} :: {f_var}"
+        "f_arg_name": [
+            "{f_var}"
         ],
         "f_module": {
             "iso_c_binding": [
                 "C_PTR"
             ]
-        }
+        },
+        "f_arg_decl": [
+            "type(C_PTR){f_intent_attr} :: {f_var}"
+        ]
     },
     {
         "alias": [
