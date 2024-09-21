@@ -58,7 +58,7 @@ PY_passStructByValue(
 {
 // splicer begin function.passStructByValue
     Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",
@@ -118,7 +118,7 @@ PY_passStruct1(
 {
 // splicer begin function.passStruct1
     Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",
@@ -184,7 +184,7 @@ PY_passStruct2(
 {
 // splicer begin function.passStruct2
     Cstruct1 *s1;
-    PyObject * SHTPy_s1 = nullptr;
+    PyObject * SHTPy_s1;
     PyArrayObject * SHPy_s1 = nullptr;
     char outbuf[LENOUTBUF];  // intent(out)
     const char *SHT_kwlist[] = {
@@ -245,7 +245,7 @@ PY_acceptStructInPtr(
 {
 // splicer begin function.acceptStructInPtr
     Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",
@@ -368,7 +368,7 @@ PY_acceptStructInOutPtr(
 {
 // splicer begin function.acceptStructInOutPtr
     Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",

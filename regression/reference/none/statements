@@ -14571,6 +14571,7 @@ root
       array-NewFromDescr -- py_mixin_array-NewFromDescr
       array-SimpleNew -- py_mixin_array-SimpleNew
       array-get-data -- py_mixin_array-get-data
+      array-parse -- py_mixin_array-parse
       capsule -- py_mixin_capsule
       malloc
         error -- py_mixin_malloc_error
@@ -15634,7 +15635,7 @@ py_in_struct&_numpy:
   parse_args:
   - '&{pytmp_var}'
   declare:
-  - PyObject * {pytmp_var} = {nullptr};
+  - PyObject * {pytmp_var};
   - PyArrayObject * {py_var} = {nullptr};
   post_parse:
   - Py_INCREF({PYN_descr});
@@ -15680,7 +15681,7 @@ py_in_struct*_numpy:
   parse_args:
   - '&{pytmp_var}'
   declare:
-  - PyObject * {pytmp_var} = {nullptr};
+  - PyObject * {pytmp_var};
   - PyArrayObject * {py_var} = {nullptr};
   post_parse:
   - Py_INCREF({PYN_descr});
@@ -15728,7 +15729,7 @@ py_in_struct_numpy:
   parse_args:
   - '&{pytmp_var}'
   declare:
-  - PyObject * {pytmp_var} = {nullptr};
+  - PyObject * {pytmp_var};
   - PyArrayObject * {py_var} = {nullptr};
   post_parse:
   - Py_INCREF({PYN_descr});
@@ -15989,7 +15990,7 @@ py_inout_struct&_numpy:
   parse_args:
   - '&{pytmp_var}'
   declare:
-  - PyObject * {pytmp_var} = {nullptr};
+  - PyObject * {pytmp_var};
   - PyArrayObject * {py_var} = {nullptr};
   post_parse:
   - Py_INCREF({PYN_descr});
@@ -16035,7 +16036,7 @@ py_inout_struct*_numpy:
   parse_args:
   - '&{pytmp_var}'
   declare:
-  - PyObject * {pytmp_var} = {nullptr};
+  - PyObject * {pytmp_var};
   - PyArrayObject * {py_var} = {nullptr};
   post_parse:
   - Py_INCREF({PYN_descr});
@@ -16109,6 +16110,18 @@ py_mixin_array-get-data:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_mixin_array-parse:
+  name: py_mixin_array-parse
+  intent: mixin
+  need_numpy: true
+  parse_format: O
+  parse_args:
+  - '&{pytmp_var}'
+  declare:
+  - PyObject * {pytmp_var};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
 py_mixin_array_error:
   name: py_mixin_array_error
   intent: mixin

@@ -3705,6 +3705,23 @@ py_statements = [
             "Default returned by lookup_fc_stmts when group is not found.",
         ],
     ),
+
+    dict(name="py_mixin_array-parse",
+         comments=[
+             "Parse a Python Object to be used as PyArrayObject.",
+         ],
+         need_numpy=True,
+         declare=[
+             "PyObject * {pytmp_var};",    # Object set by ParseTupleAndKeywords.
+             "PyArrayObject * {py_var} = {nullptr};",
+         ],
+         parse_format="O",
+         parse_args=["&{pytmp_var}"],
+         fail=[
+             "Py_XDECREF({py_var});",
+         ],
+    ),
+        
     dict(
         name="py_mixin_array-ContiguousFromObject",
         notes=[
@@ -4011,45 +4028,27 @@ py_statements = [
     dict(
         name="py_in_native*_numpy",
         mixin=[
+            "py_mixin_array-parse",
             "py_mixin_array-ContiguousFromObject",
             "py_mixin_array_error",
             "py_mixin_array-get-data",
         ],
-        need_numpy=True,
-        declare=[
-            "PyObject * {pytmp_var};",
-            "PyArrayObject * {py_var} = {nullptr};",
-        ],
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
         arg_call=["{c_var}"],
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
-        ],
-        fail=[
-            "Py_XDECREF({py_var});",
         ],
     ),
 
     dict(
         name="py_inout_native*_numpy",
         mixin=[
+            "py_mixin_array-parse",
             "py_mixin_array-FROM-OTF",
             "py_mixin_array_error",
             "py_mixin_array-get-data",
         ],
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
-        declare=[
-            "PyObject * {pytmp_var};",
-            "PyArrayObject * {py_var} = {nullptr};",
-        ],
         arg_call=["{c_var}"],
         object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
     ),
 
     dict(
@@ -4487,51 +4486,31 @@ py_statements = [
     dict(
         name="py_in_struct*_numpy",
         mixin=[
+            "py_mixin_array-parse",
             "py_mixin_array-FromAny",
             "py_mixin_array_error",
             "py_mixin_array-get-data",
         ],
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
         cxx_local_var="pointer",
         arg_declare=[ # Must be a pointer of cxx_type.
             "{cxx_type} *{cxx_var};",
         ],
-        declare=[
-            "PyObject * {pytmp_var} = {nullptr};",
-            "PyArrayObject * {py_var} = {nullptr};",
-#            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
-        ],
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
-        ],
-        fail=[
-            "Py_XDECREF({py_var});",
         ],
     ),
     dict(
         name="py_inout_struct*_numpy",
         mixin=[
+            "py_mixin_array-parse",
             "py_mixin_array-FromAny",
             "py_mixin_array_error",
             "py_mixin_array-get-data",
         ],
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
         arg_declare=[ # Must be a pointer.
             "{cxx_type} *{cxx_var};",
         ],
-        declare=[
-            "PyObject * {pytmp_var} = {nullptr};",
-            "PyArrayObject * {py_var} = {nullptr};",
-#            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
-        ],
         object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
     ),
     dict(
         name="py_out_struct*_numpy",
@@ -4877,18 +4856,12 @@ py_statements = [
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
         mixin=[
+            "py_mixin_array-parse",
             "py_mixin_array-FROM-OFT-in",
             "py_mixin_template_array_error",
         ],
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
         cxx_local_var="scalar",
         arg_declare=[],
-        declare=[
-            "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
-            "PyArrayObject * {py_var} = {nullptr};",
-        ],
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{cxx_T} * {data_var};",
@@ -4896,9 +4869,6 @@ py_statements = [
         pre_call=[
             "{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
             "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));",
-        ],
-        fail=[
-            "Py_XDECREF({py_var});",
         ],
     ),
     dict(
