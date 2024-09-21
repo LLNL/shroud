@@ -3696,25 +3696,6 @@ malloc_error = [
     "-}}",
 ]
 
-declare_capsule=[
-    "PyObject *{py_capsule} = {nullptr};",
-]
-post_call_capsule=[
-    "{py_capsule} = "
-    'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
-    "\t{PY_capsule_destructor_function});",
-    "if ({py_capsule} == {nullptr}) goto fail;",
-    "PyCapsule_SetContext({py_capsule},"
-    "\t {PY_fetch_context_function}({capsule_order}));",
-    "if (PyArray_SetBaseObject(\t"
-    "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
-    "\t {py_capsule}) < 0)\t goto fail;",
-]
-fail_capsule=[
-    "Py_XDECREF({py_capsule});",
-]
-
-
 # language   "py"
 # intent     "in", "out", "inout", "function", "subroutine", "descr", "ctor", "dtor"
 # sgroup     "native", "string", "char"
@@ -4077,6 +4058,9 @@ py_statements = [
             "py_function_native*_numpy",
             "py_function_native&_numpy",
         ],
+        mixin=[
+            "py_mixin_capsule",
+        ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -4094,9 +4078,6 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
 
     dict(
@@ -4585,6 +4566,9 @@ py_statements = [
             "py_function_struct_numpy",
             "py_function_struct*_numpy",
         ],
+        mixin=[
+            "py_mixin_capsule",
+        ],
         # XXX - expand to array of struct
         need_numpy=True,
         allocate_local_var=True,
@@ -4605,9 +4589,6 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
 
     dict(
@@ -4931,6 +4912,9 @@ py_statements = [
         name="py_out_vector<native>&_numpy",
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
+        mixin=[
+            "py_mixin_capsule",
+        ],
         need_numpy=True,
         cxx_local_var="pointer",
         allocate_local_var=True,
@@ -4953,14 +4937,14 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
     dict(
         alias=[
             "py_function_vector_numpy",
             "py_function_vector<native>_numpy",
+        ],
+        mixin=[
+            "py_mixin_capsule",
         ],
         need_numpy=True,
         allocate_local_var=True,
@@ -4981,9 +4965,6 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
 
 
