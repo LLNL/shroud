@@ -14570,6 +14570,7 @@ root
       array-FromAny -- py_mixin_array-FromAny
       array-NewFromDescr -- py_mixin_array-NewFromDescr
       array-SimpleNew -- py_mixin_array-SimpleNew
+      array-get-data -- py_mixin_array-get-data
       capsule -- py_mixin_capsule
       malloc
         error -- py_mixin_malloc_error
@@ -16097,6 +16098,17 @@ py_mixin_array-SimpleNew:
   post_parse:
   - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
     {npy_dims_var}, {numpy_type}){cast2};'
+py_mixin_array-get-data:
+  name: py_mixin_array-get-data
+  intent: mixin
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+  lang_c:
+    pre_call:
+    - '{c_var} = PyArray_DATA({py_var});'
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
 py_mixin_array_error:
   name: py_mixin_array_error
   intent: mixin

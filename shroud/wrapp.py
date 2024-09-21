@@ -3797,6 +3797,20 @@ py_statements = [
         ],
     ),
     dict(
+        name="py_mixin_array-get-data",
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
+    ),
+    
+    dict(
         name="py_mixin_malloc_error",
         pre_call=[
             "if ({cxx_var} == {nullptr}) {{+",
@@ -3997,6 +4011,7 @@ py_statements = [
         mixin=[
             "py_mixin_array-ContiguousFromObject",
             "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
         need_numpy=True,
         declare=[
@@ -4005,16 +4020,6 @@ py_statements = [
         ],
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         arg_call=["{c_var}"],
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
@@ -4030,6 +4035,7 @@ py_statements = [
         mixin=[
             "py_mixin_array-FROM-OTF",
             "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
         need_numpy=True,
         parse_format="O",
@@ -4038,16 +4044,6 @@ py_statements = [
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         arg_call=["{c_var}"],
         object_created=True,
         fail=[
@@ -4061,22 +4057,13 @@ py_statements = [
         mixin=[
             "py_mixin_array-SimpleNew",
             "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         arg_call=["{c_var}"],
         object_created=True,
         fail=[
@@ -4503,6 +4490,7 @@ py_statements = [
         mixin=[
             "py_mixin_array-FromAny",
             "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
         need_numpy=True,
         parse_format="O",
@@ -4516,16 +4504,6 @@ py_statements = [
             "PyArrayObject * {py_var} = {nullptr};",
 #            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
         ],
@@ -4539,6 +4517,7 @@ py_statements = [
         mixin=[
             "py_mixin_array-FromAny",
             "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
         need_numpy=True,
         parse_format="O",
@@ -4551,16 +4530,6 @@ py_statements = [
             "PyArrayObject * {py_var} = {nullptr};",
 #            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
@@ -4572,6 +4541,7 @@ py_statements = [
         mixin=[
             "py_mixin_array-NewFromDescr",
             "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
         # XXX - expand to array of struct
         need_numpy=True,
@@ -4583,16 +4553,6 @@ py_statements = [
 #            "{npy_intp_decl}"
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
