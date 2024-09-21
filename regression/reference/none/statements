@@ -14564,6 +14564,12 @@ root
     mixin
       array
         error -- py_mixin_array_error
+      array-ContiguousFromObject -- py_mixin_array-ContiguousFromObject
+      array-FROM-OFT-in -- py_mixin_array-FROM-OFT-in
+      array-FROM-OTF -- py_mixin_array-FROM-OTF
+      array-FromAny -- py_mixin_array-FromAny
+      array-NewFromDescr -- py_mixin_array-NewFromDescr
+      array-SimpleNew -- py_mixin_array-SimpleNew
       capsule -- py_mixin_capsule
       malloc
         error -- py_mixin_malloc_error
@@ -16053,6 +16059,44 @@ py_inout_struct*_numpy:
 py_inout_struct_list:
   name: py_inout_struct_list
   intent: inout
+py_mixin_array-ContiguousFromObject:
+  name: py_mixin_array-ContiguousFromObject
+  intent: mixin
+  post_parse:
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject(\t\
+    {pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};"
+py_mixin_array-FROM-OFT-in:
+  name: py_mixin_array-FROM-OFT-in
+  intent: mixin
+  post_parse:
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
+    \ {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};"
+py_mixin_array-FROM-OTF:
+  name: py_mixin_array-FROM-OTF
+  intent: mixin
+  post_parse:
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
+    \ {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};"
+py_mixin_array-FromAny:
+  name: py_mixin_array-FromAny
+  intent: mixin
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
+    \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
+py_mixin_array-NewFromDescr:
+  name: py_mixin_array-NewFromDescr
+  intent: mixin
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewFromDescr(\t&PyArray_Type,\t\
+    \ {PYN_descr},\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};"
+py_mixin_array-SimpleNew:
+  name: py_mixin_array-SimpleNew
+  intent: mixin
+  post_parse:
+  - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
+    {npy_dims_var}, {numpy_type}){cast2};'
 py_mixin_array_error:
   name: py_mixin_array_error
   intent: mixin

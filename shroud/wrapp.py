@@ -3672,23 +3672,6 @@ default_stmts = dict(
     py=PyStmts,
 )
 
-# put into list to avoid duplicating text below
-array_error = [
-    "if ({py_var} == {nullptr}) {{+",
-    "PyErr_SetString(PyExc_ValueError,"
-    '\t "{c_var} must be a {rank}-D array of {c_type}");',
-    "goto fail;",
-    "-}}",
-]
-# Use cxx_T instead of c_type for vector.
-template_array_error = [
-    "if ({py_var} == {nullptr}) {{+",
-    "PyErr_SetString(PyExc_ValueError,"
-    '\t "{c_var} must be a 1-D array of {cxx_T}");',
-    "goto fail;",
-    "-}}",
-]
-
 malloc_error = [
     "if ({cxx_var} == {nullptr}) {{+",
     "PyErr_NoMemory();",
@@ -3723,6 +3706,74 @@ py_statements = [
         ],
     ),
     dict(
+        name="py_mixin_array-ContiguousFromObject",
+        notes=[
+            "intent(IN)",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject("
+            "\t{pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};",
+            # NPY_ARRAY_DEFAULT | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_CARRAY | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_BEHAVED | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ALIGNED | NPY_ARRAY_WRITEABLE | NPY_ARRAY_ENSUREARRAY
+        ],
+    ),
+    dict(
+        name="py_mixin_array-FROM-OTF",
+        notes=[
+            "intent(INOUT)",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-FROM-OFT-in",
+        notes=[
+            "intent(INOUT)",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-SimpleNew",
+        notes=[
+            "intent(OUT)",
+        ],
+        post_parse=[
+            "{npy_intp_asgn}"  # Must contain a newline if non-blank.
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
+            "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-FromAny",
+        notes=[
+            "PyArray_FromAny steals a reference from PYN_descr",
+            "and will decref it if an error occurs.",
+        ],
+        post_parse=[
+            "Py_INCREF({PYN_descr});",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
+            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-NewFromDescr",
+        post_parse=[
+#            "{npy_intp_asgn}"
+            "Py_INCREF({PYN_descr});",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
+            "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
+        ],
+    ),
+    dict(
         name="py_mixin_array_error",
         post_parse=[
             "if ({py_var} == {nullptr}) {{+",
@@ -3734,6 +3785,9 @@ py_statements = [
     ),
     dict(
         name="py_mixin_template_array_error",
+        notes=[
+            "Use cxx_T instead of c_type for vector.",
+        ],
         post_parse=[
             "if ({py_var} == {nullptr}) {{+",
             "PyErr_SetString(PyExc_ValueError,"
@@ -3940,6 +3994,10 @@ py_statements = [
 ## numpy
     dict(
         name="py_in_native*_numpy",
+        mixin=[
+            "py_mixin_array-ContiguousFromObject",
+            "py_mixin_array_error",
+        ],
         need_numpy=True,
         declare=[
             "PyObject * {pytmp_var};",
@@ -3947,14 +4005,6 @@ py_statements = [
         ],
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject("
-            "\t{pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};",
-            # NPY_ARRAY_DEFAULT | NPY_ARRAY_ENSUREARRAY
-            # NPY_ARRAY_CARRAY | NPY_ARRAY_ENSUREARRAY
-            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_BEHAVED | NPY_ARRAY_ENSUREARRAY
-            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ALIGNED | NPY_ARRAY_WRITEABLE | NPY_ARRAY_ENSUREARRAY
-        ] + array_error,
         lang_c=dict(
             pre_call=[
                 "{c_var} = PyArray_DATA({py_var});",
@@ -3977,6 +4027,10 @@ py_statements = [
 
     dict(
         name="py_inout_native*_numpy",
+        mixin=[
+            "py_mixin_array-FROM-OTF",
+            "py_mixin_array_error",
+        ],
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -3984,10 +4038,6 @@ py_statements = [
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
-        ] + array_error,
         lang_c=dict(
             pre_call=[
                 "{c_var} = PyArray_DATA({py_var});",
@@ -4008,16 +4058,15 @@ py_statements = [
 
     dict(
         name="py_out_native*_numpy",
+        mixin=[
+            "py_mixin_array-SimpleNew",
+            "py_mixin_array_error",
+        ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        post_parse=[
-            "{npy_intp_asgn}"  # Must contain a newline if non-blank.
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
-            "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
-        ] + array_error,
         lang_c=dict(
             pre_call=[
                 "{c_var} = PyArray_DATA({py_var});",
@@ -4451,6 +4500,10 @@ py_statements = [
 
     dict(
         name="py_in_struct*_numpy",
+        mixin=[
+            "py_mixin_array-FromAny",
+            "py_mixin_array_error",
+        ],
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4463,14 +4516,6 @@ py_statements = [
             "PyArrayObject * {py_var} = {nullptr};",
 #            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
         ],
-        post_parse=[
-            # PyArray_FromAny steals a reference from PYN_descr
-            # and will decref it if an error occurs.
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
-            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
-        ] + array_error,
         lang_c=dict(
             pre_call=[
                 "{c_var} = PyArray_DATA({py_var});",
@@ -4491,6 +4536,10 @@ py_statements = [
     ),
     dict(
         name="py_inout_struct*_numpy",
+        mixin=[
+            "py_mixin_array-FromAny",
+            "py_mixin_array_error",
+        ],
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4502,14 +4551,6 @@ py_statements = [
             "PyArrayObject * {py_var} = {nullptr};",
 #            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
         ],
-        post_parse=[
-            # PyArray_FromAny steals a reference from PYN_descr
-            # and will decref it if an error occurs.
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
-            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
-        ] + array_error,
         lang_c=dict(
             pre_call=[
                 "{c_var} = PyArray_DATA({py_var});",
@@ -4528,6 +4569,10 @@ py_statements = [
     ),
     dict(
         name="py_out_struct*_numpy",
+        mixin=[
+            "py_mixin_array-NewFromDescr",
+            "py_mixin_array_error",
+        ],
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -4538,13 +4583,6 @@ py_statements = [
 #            "{npy_intp_decl}"
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        post_parse=[
-#            "{npy_intp_asgn}"
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
-            "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
-        ] + array_error,
         lang_c=dict(
             pre_call=[
                 "{c_var} = PyArray_DATA({py_var});",
@@ -4882,6 +4920,10 @@ py_statements = [
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
+        mixin=[
+            "py_mixin_array-FROM-OFT-in",
+            "py_mixin_template_array_error",
+        ],
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4895,10 +4937,6 @@ py_statements = [
             "std::vector<{cxx_T}> {cxx_var};",
             "{cxx_T} * {data_var};",
         ],
-        post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
-        ] + template_array_error,
         pre_call=[
             "{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
             "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));",
