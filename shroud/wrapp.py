@@ -3782,6 +3782,7 @@ py_statements = [
             "goto fail;",
             "-}}",
         ],
+        goto_fail=True,
     ),
     dict(
         name="py_mixin_template_array_error",
@@ -3795,6 +3796,7 @@ py_statements = [
             "goto fail;",
             "-}}",
         ],
+        goto_fail=True,
     ),
     dict(
         name="py_mixin_array-get-data",
@@ -4027,7 +4029,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
 
     dict(
@@ -4049,7 +4050,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
 
     dict(
@@ -4069,7 +4069,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
 
     dict(
@@ -4510,7 +4509,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
     dict(
         name="py_inout_struct*_numpy",
@@ -4534,7 +4532,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
     dict(
         name="py_out_struct*_numpy",
@@ -4557,7 +4554,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
     dict(
         alias=[
@@ -4904,7 +4900,6 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
     dict(
         name="py_out_vector<native>&_numpy",
