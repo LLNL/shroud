@@ -3742,6 +3742,55 @@ py_statements = [
         ],
     ),
     dict(
+        name="py_mixin_array_error",
+        post_parse=[
+            "if ({py_var} == {nullptr}) {{+",
+            "PyErr_SetString(PyExc_ValueError,"
+            '\t "{c_var} must be a {rank}-D array of {c_type}");',
+            "goto fail;",
+            "-}}",
+        ],
+    ),
+    dict(
+        name="py_mixin_template_array_error",
+        post_parse=[
+            "if ({py_var} == {nullptr}) {{+",
+            "PyErr_SetString(PyExc_ValueError,"
+            '\t "{c_var} must be a 1-D array of {cxx_T}");',
+            "goto fail;",
+            "-}}",
+        ],
+    ),
+    dict(
+        name="py_mixin_malloc_error",
+        pre_call=[
+            "if ({cxx_var} == {nullptr}) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
+        ],
+    ),
+    dict(
+        name="py_mixin_capsule",
+        declare_capsule=[
+            "PyObject *{py_capsule} = {nullptr};",
+        ],
+        post_call_capsule=[
+            "{py_capsule} = "
+            'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
+            "\t{PY_capsule_destructor_function});",
+            "if ({py_capsule} == {nullptr}) goto fail;",
+            "PyCapsule_SetContext({py_capsule},"
+            "\t {PY_fetch_context_function}({capsule_order}));",
+            "if (PyArray_SetBaseObject(\t"
+            "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
+            "\t {py_capsule}) < 0)\t goto fail;",
+        ],
+        fail_capsule=[
+            "Py_XDECREF({py_capsule});",
+        ],
+    ),
+    dict(
         alias=[
             "py_function_native",
             "py_in_native",

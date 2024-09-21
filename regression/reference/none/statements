@@ -14562,6 +14562,14 @@ root
         list -- py_inout_struct*_list
         numpy -- py_inout_struct*_numpy
     mixin
+      array
+        error -- py_mixin_array_error
+      capsule -- py_mixin_capsule
+      malloc
+        error -- py_mixin_malloc_error
+      template
+        array
+          error -- py_mixin_template_array_error
       unknown -- py_mixin_unknown
     out
       bool -- py_out_bool
@@ -16045,6 +16053,46 @@ py_inout_struct*_numpy:
 py_inout_struct_list:
   name: py_inout_struct_list
   intent: inout
+py_mixin_array_error:
+  name: py_mixin_array_error
+  intent: mixin
+  post_parse:
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+py_mixin_capsule:
+  name: py_mixin_capsule
+  intent: mixin
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+py_mixin_malloc_error:
+  name: py_mixin_malloc_error
+  intent: mixin
+  pre_call:
+  - if ({cxx_var} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+py_mixin_template_array_error:
+  name: py_mixin_template_array_error
+  intent: mixin
+  post_parse:
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {cxx_T}\"\
+    );"
+  - goto fail;
+  - -}}
 py_mixin_unknown:
   name: py_mixin_unknown
   intent: mixin
