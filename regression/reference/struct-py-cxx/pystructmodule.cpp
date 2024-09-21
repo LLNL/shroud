@@ -58,7 +58,7 @@ PY_acceptBothStructs(
 // splicer begin function.acceptBothStructs
     PY_Cstruct_as_class * SHPy_s1;
     Cstruct_as_numpy *s2;
-    PyObject * SHTPy_s2 = nullptr;
+    PyObject * SHTPy_s2;
     PyArrayObject * SHPy_s2 = nullptr;
     const char *SHT_kwlist[] = {
         "s1",

@@ -57,7 +57,7 @@ PY_passStructByReference(
 {
 // splicer begin namespace.structns.function.passStructByReference
     structns::Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",
@@ -118,7 +118,7 @@ PY_passStructByReferenceIn(
 {
 // splicer begin namespace.structns.function.passStructByReferenceIn
     structns::Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",
@@ -179,7 +179,7 @@ PY_passStructByReferenceInout(
 {
 // splicer begin namespace.structns.function.passStructByReferenceInout
     structns::Cstruct1 *arg;
-    PyObject * SHTPy_arg = nullptr;
+    PyObject * SHTPy_arg;
     PyArrayObject * SHPy_arg = nullptr;
     const char *SHT_kwlist[] = {
         "arg",

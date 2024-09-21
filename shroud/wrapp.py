@@ -3672,49 +3672,6 @@ default_stmts = dict(
     py=PyStmts,
 )
 
-# put into list to avoid duplicating text below
-array_error = [
-    "if ({py_var} == {nullptr}) {{+",
-    "PyErr_SetString(PyExc_ValueError,"
-    '\t "{c_var} must be a {rank}-D array of {c_type}");',
-    "goto fail;",
-    "-}}",
-]
-# Use cxx_T instead of c_type for vector.
-template_array_error = [
-    "if ({py_var} == {nullptr}) {{+",
-    "PyErr_SetString(PyExc_ValueError,"
-    '\t "{c_var} must be a 1-D array of {cxx_T}");',
-    "goto fail;",
-    "-}}",
-]
-
-malloc_error = [
-    "if ({cxx_var} == {nullptr}) {{+",
-    "PyErr_NoMemory();",
-    "goto fail;",
-    "-}}",
-]
-
-declare_capsule=[
-    "PyObject *{py_capsule} = {nullptr};",
-]
-post_call_capsule=[
-    "{py_capsule} = "
-    'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
-    "\t{PY_capsule_destructor_function});",
-    "if ({py_capsule} == {nullptr}) goto fail;",
-    "PyCapsule_SetContext({py_capsule},"
-    "\t {PY_fetch_context_function}({capsule_order}));",
-    "if (PyArray_SetBaseObject(\t"
-    "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
-    "\t {py_capsule}) < 0)\t goto fail;",
-]
-fail_capsule=[
-    "Py_XDECREF({py_capsule});",
-]
-
-
 # language   "py"
 # intent     "in", "out", "inout", "function", "subroutine", "descr", "ctor", "dtor"
 # sgroup     "native", "string", "char"
@@ -3741,6 +3698,184 @@ py_statements = [
             "Default returned by lookup_fc_stmts when group is not found.",
         ],
     ),
+
+    dict(name="py_mixin_array-parse",
+         comments=[
+             "Parse a Python Object to be used as PyArrayObject.",
+         ],
+         need_numpy=True,
+         declare=[
+             "PyObject * {pytmp_var};",    # Object set by ParseTupleAndKeywords.
+             "PyArrayObject * {py_var} = {nullptr};",
+         ],
+         parse_format="O",
+         parse_args=["&{pytmp_var}"],
+         fail=[
+             "Py_XDECREF({py_var});",
+         ],
+    ),
+        
+    dict(
+        name="py_mixin_array-ContiguousFromObject",
+        notes=[
+            "intent(IN)",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject("
+            "\t{pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};",
+            # NPY_ARRAY_DEFAULT | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_CARRAY | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_BEHAVED | NPY_ARRAY_ENSUREARRAY
+            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ALIGNED | NPY_ARRAY_WRITEABLE | NPY_ARRAY_ENSUREARRAY
+        ],
+    ),
+    dict(
+        name="py_mixin_array-FROM-OTF",
+        notes=[
+            "intent(INOUT)",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-FROM-OFT-in",
+        notes=[
+            "intent(INOUT)",
+        ],
+        post_parse=[
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
+            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-SimpleNew",
+        notes=[
+            "intent(OUT)",
+        ],
+        post_parse=[
+            "{npy_intp_asgn}"  # Must contain a newline if non-blank.
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
+            "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-FromAny",
+        notes=[
+            "PyArray_FromAny steals a reference from PYN_descr",
+            "and will decref it if an error occurs.",
+        ],
+        post_parse=[
+            "Py_INCREF({PYN_descr});",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
+            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array-NewFromDescr",
+        post_parse=[
+#            "{npy_intp_asgn}"
+            "Py_INCREF({PYN_descr});",
+            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
+            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
+            "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
+        ],
+    ),
+    dict(
+        name="py_mixin_array_error",
+        post_parse=[
+            "if ({py_var} == {nullptr}) {{+",
+            "PyErr_SetString(PyExc_ValueError,"
+            '\t "{c_var} must be a {rank}-D array of {c_type}");',
+            "goto fail;",
+            "-}}",
+        ],
+        goto_fail=True,
+    ),
+    dict(
+        name="py_mixin_template_array_error",
+        notes=[
+            "Use cxx_T instead of c_type for vector.",
+        ],
+        post_parse=[
+            "if ({py_var} == {nullptr}) {{+",
+            "PyErr_SetString(PyExc_ValueError,"
+            '\t "{c_var} must be a 1-D array of {cxx_T}");',
+            "goto fail;",
+            "-}}",
+        ],
+        goto_fail=True,
+    ),
+    dict(
+        name="py_mixin_array-get-data",
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = PyArray_DATA({py_var});",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            ],
+        ),
+    ),
+    
+    dict(
+        name="py_mixin_malloc_error",
+        pre_call=[
+            "if ({cxx_var} == {nullptr}) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
+        ],
+    ),
+    dict(
+        name="py_mixin_capsule",
+        declare_capsule=[
+            "PyObject *{py_capsule} = {nullptr};",
+        ],
+        post_call_capsule=[
+            "{py_capsule} = "
+            'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
+            "\t{PY_capsule_destructor_function});",
+            "if ({py_capsule} == {nullptr}) goto fail;",
+            "PyCapsule_SetContext({py_capsule},"
+            "\t {PY_fetch_context_function}({capsule_order}));",
+            "if (PyArray_SetBaseObject(\t"
+            "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
+            "\t {py_capsule}) < 0)\t goto fail;",
+        ],
+        fail_capsule=[
+            "Py_XDECREF({py_capsule});",
+        ],
+    ),
+
+    dict(
+        name="py_mixin_malloc",
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
+                "if ({c_var} == {nullptr}) {{+",
+                "PyErr_NoMemory();",
+                "goto fail;",
+                "-}}",
+            ]
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
+                "if ({cxx_var} == {nullptr}) {{+",
+                "PyErr_NoMemory();",
+                "goto fail;",
+                "-}}",
+            ]
+        ),
+        goto_fail=True,
+    ),
+
+########################################
     dict(
         alias=[
             "py_function_native",
@@ -3910,100 +4045,47 @@ py_statements = [
 ## numpy
     dict(
         name="py_in_native*_numpy",
-        need_numpy=True,
-        declare=[
-            "PyObject * {pytmp_var};",
-            "PyArrayObject * {py_var} = {nullptr};",
+        mixin=[
+            "py_mixin_array-parse",
+            "py_mixin_array-ContiguousFromObject",
+            "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
-        post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_ContiguousFromObject("
-            "\t{pytmp_var},\t {numpy_type},\t {rank},\t {rank}){cast2};",
-            # NPY_ARRAY_DEFAULT | NPY_ARRAY_ENSUREARRAY
-            # NPY_ARRAY_CARRAY | NPY_ARRAY_ENSUREARRAY
-            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_BEHAVED | NPY_ARRAY_ENSUREARRAY
-            # NPY_ARRAY_C_CONTIGUOUS | NPY_ARRAY_ALIGNED | NPY_ARRAY_WRITEABLE | NPY_ARRAY_ENSUREARRAY
-        ] + array_error,
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         arg_call=["{c_var}"],
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
         ],
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
 
     dict(
         name="py_inout_native*_numpy",
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
-        declare=[
-            "PyObject * {pytmp_var};",
-            "PyArrayObject * {py_var} = {nullptr};",
+        mixin=[
+            "py_mixin_array-parse",
+            "py_mixin_array-FROM-OTF",
+            "py_mixin_array_error",
+            "py_mixin_array-get-data",
         ],
-        post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
-        ] + array_error,
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         arg_call=["{c_var}"],
         object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
 
     dict(
         name="py_out_native*_numpy",
+        mixin=[
+            "py_mixin_array-SimpleNew",
+            "py_mixin_array_error",
+            "py_mixin_array-get-data",
+        ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        post_parse=[
-            "{npy_intp_asgn}"  # Must contain a newline if non-blank.
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew("
-            "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
-        ] + array_error,
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         arg_call=["{c_var}"],
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
 
     dict(
@@ -4028,6 +4110,9 @@ py_statements = [
             "py_function_native*_numpy",
             "py_function_native&_numpy",
         ],
+        mixin=[
+            "py_mixin_capsule",
+        ],
         need_numpy=True,
         declare=[
             "{npy_intp_decl}"
@@ -4045,9 +4130,6 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
 
     dict(
@@ -4141,6 +4223,9 @@ py_statements = [
 
     dict(
         name="py_out_native*_list",
+        mixin=[
+            "py_mixin_malloc",
+        ],
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -4150,16 +4235,6 @@ py_statements = [
         declare=[
             "PyObject *{py_var} = {nullptr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
-            ] + malloc_error,
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
-            ] + malloc_error,
-        ),
         arg_call=["{c_var}"],
         post_call=[
             "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
@@ -4421,83 +4496,40 @@ py_statements = [
 
     dict(
         name="py_in_struct*_numpy",
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
+        mixin=[
+            "py_mixin_array-parse",
+            "py_mixin_array-FromAny",
+            "py_mixin_array_error",
+            "py_mixin_array-get-data",
+        ],
         cxx_local_var="pointer",
         arg_declare=[ # Must be a pointer of cxx_type.
             "{cxx_type} *{cxx_var};",
         ],
-        declare=[
-            "PyObject * {pytmp_var} = {nullptr};",
-            "PyArrayObject * {py_var} = {nullptr};",
-#            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
-        ],
-        post_parse=[
-            # PyArray_FromAny steals a reference from PYN_descr
-            # and will decref it if an error occurs.
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
-            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
-        ] + array_error,
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         cleanup=[
             "{PY_cleanup_decref}({py_var});",
         ],
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
     dict(
         name="py_inout_struct*_numpy",
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
+        mixin=[
+            "py_mixin_array-parse",
+            "py_mixin_array-FromAny",
+            "py_mixin_array_error",
+            "py_mixin_array-get-data",
+        ],
         arg_declare=[ # Must be a pointer.
             "{cxx_type} *{cxx_var};",
         ],
-        declare=[
-            "PyObject * {pytmp_var} = {nullptr};",
-            "PyArrayObject * {py_var} = {nullptr};",
-#            "PyArray_Descr * {pydescr_var} = {PYN_descr};",
-        ],
-        post_parse=[
-            # PyArray_FromAny steals a reference from PYN_descr
-            # and will decref it if an error occurs.
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-            "PyArray_FromAny(\t{pytmp_var},\t {PYN_descr},"
-            "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
-        ] + array_error,
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
     dict(
         name="py_out_struct*_numpy",
+        mixin=[
+            "py_mixin_array-NewFromDescr",
+            "py_mixin_array_error",
+            "py_mixin_array-get-data",
+        ],
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -4508,33 +4540,18 @@ py_statements = [
 #            "{npy_intp_decl}"
             "PyArrayObject * {py_var} = {nullptr};",
         ],
-        post_parse=[
-#            "{npy_intp_asgn}"
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}"
-            "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
-            "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
-        ] + array_error,
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = PyArray_DATA({py_var});",
-            ],
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
-            ],
-        ),
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
         ],
-        goto_fail=True,
     ),
     dict(
         alias=[
             "py_function_struct_numpy",
             "py_function_struct*_numpy",
+        ],
+        mixin=[
+            "py_mixin_capsule",
         ],
         # XXX - expand to array of struct
         need_numpy=True,
@@ -4556,9 +4573,6 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
 
     dict(
@@ -4852,36 +4866,29 @@ py_statements = [
         # Convert input argument into a NumPy array to make sure it is contiguous,
         # create a local std::vector which will copy the values.
         # Pass to C++ function.
-        need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
+        mixin=[
+            "py_mixin_array-parse",
+            "py_mixin_array-FROM-OFT-in",
+            "py_mixin_template_array_error",
+        ],
         cxx_local_var="scalar",
         arg_declare=[],
-        declare=[
-            "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
-            "PyArrayObject * {py_var} = {nullptr};",
-        ],
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
             "{cxx_T} * {data_var};",
         ],
-        post_parse=[
-            "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
-            "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
-        ] + template_array_error,
         pre_call=[
             "{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
             "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));",
         ],
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
     dict(
         name="py_out_vector<native>&_numpy",
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
+        mixin=[
+            "py_mixin_capsule",
+        ],
         need_numpy=True,
         cxx_local_var="pointer",
         allocate_local_var=True,
@@ -4904,14 +4911,14 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
     dict(
         alias=[
             "py_function_vector_numpy",
             "py_function_vector<native>_numpy",
+        ],
+        mixin=[
+            "py_mixin_capsule",
         ],
         need_numpy=True,
         allocate_local_var=True,
@@ -4932,9 +4939,6 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
-        declare_capsule=declare_capsule,
-        post_call_capsule=post_call_capsule,
-        fail_capsule=fail_capsule,
     ),
 
 
