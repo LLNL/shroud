@@ -3672,13 +3672,6 @@ default_stmts = dict(
     py=PyStmts,
 )
 
-malloc_error = [
-    "if ({cxx_var} == {nullptr}) {{+",
-    "PyErr_NoMemory();",
-    "goto fail;",
-    "-}}",
-]
-
 # language   "py"
 # intent     "in", "out", "inout", "function", "subroutine", "descr", "ctor", "dtor"
 # sgroup     "native", "string", "char"
@@ -3858,6 +3851,31 @@ py_statements = [
             "Py_XDECREF({py_capsule});",
         ],
     ),
+
+    dict(
+        name="py_mixin_malloc",
+        lang_c=dict(
+            pre_call=[
+                "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
+                "if ({c_var} == {nullptr}) {{+",
+                "PyErr_NoMemory();",
+                "goto fail;",
+                "-}}",
+            ]
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
+                "if ({cxx_var} == {nullptr}) {{+",
+                "PyErr_NoMemory();",
+                "goto fail;",
+                "-}}",
+            ]
+        ),
+        goto_fail=True,
+    ),
+
+########################################
     dict(
         alias=[
             "py_function_native",
@@ -4205,6 +4223,9 @@ py_statements = [
 
     dict(
         name="py_out_native*_list",
+        mixin=[
+            "py_mixin_malloc",
+        ],
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
@@ -4214,16 +4235,6 @@ py_statements = [
         declare=[
             "PyObject *{py_var} = {nullptr};",
         ],
-        lang_c=dict(
-            pre_call=[
-                "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
-            ] + malloc_error,
-        ),
-        lang_cxx=dict(
-            pre_call=[
-                "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
-            ] + malloc_error,
-        ),
         arg_call=["{c_var}"],
         post_call=[
             "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",

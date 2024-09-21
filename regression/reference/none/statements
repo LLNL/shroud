@@ -14573,7 +14573,7 @@ root
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
       capsule -- py_mixin_capsule
-      malloc
+      malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
       template
         array
@@ -16146,6 +16146,31 @@ py_mixin_capsule:
     \ {py_capsule}) < 0)\t goto fail;"
   fail_capsule:
   - Py_XDECREF({py_capsule});
+py_mixin_malloc:
+  name: py_mixin_malloc
+  intent: mixin
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));"
+  - if ({cxx_var} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  goto_fail: true
+  lang_c:
+    pre_call:
+    - "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));"
+    - if ({c_var} == {nullptr}) {{+
+    - PyErr_NoMemory();
+    - goto fail;
+    - -}}
+  lang_cxx:
+    pre_call:
+    - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) *\
+      \ ({array_size})));"
+    - if ({cxx_var} == {nullptr}) {{+
+    - PyErr_NoMemory();
+    - goto fail;
+    - -}}
 py_mixin_malloc_error:
   name: py_mixin_malloc_error
   intent: mixin
@@ -16351,7 +16376,7 @@ py_out_native*_list:
   lang_c:
     pre_call:
     - "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));"
-    - if ({cxx_var} == {nullptr}) {{+
+    - if ({c_var} == {nullptr}) {{+
     - PyErr_NoMemory();
     - goto fail;
     - -}}
