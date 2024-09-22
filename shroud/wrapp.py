@@ -3760,6 +3760,56 @@ py_statements = [
             "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
         ],
     ),
+
+    dict(
+        name="py_mixin_array-SimpleNewFromData",
+        notes=[
+            "function result, intent(OUT)",
+        ],
+        need_numpy=True,
+        allocate_local_var=True,
+        declare=[
+            "{npy_intp_decl}"
+            "PyObject * {py_var} = {nullptr};",
+        ],
+        post_call=[
+#            "{npy_intp_asgn}"
+            "{npy_dims_var}[0] = {cxx_var}->size();",
+            "{py_var} = "
+            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},"
+            "\t {numpy_type},\t {cxx_var}->data());",
+            "if ({py_var} == {nullptr}) goto fail;",
+        ],
+        object_created=True,
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    dict(
+        name="py_mixin_array-SimpleNewFromData2",
+        notes=[
+            "function result, intent(OUT)",
+        ],
+        need_numpy=True,
+        declare=[
+            "{npy_intp_decl}"
+            "PyObject * {py_var} = {nullptr};",
+        ],
+        post_call=[
+            "{npy_intp_asgn}"
+            "{py_var} = "
+            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},"
+            "\t {numpy_type},\t {cxx_nonconst_ptr});",
+            "if ({py_var} == {nullptr}) goto fail;",
+        ],
+        object_created=True,
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
+    ),
+    
     dict(
         name="py_mixin_array-FromAny",
         notes=[
@@ -3782,6 +3832,28 @@ py_statements = [
             "PyArray_NewFromDescr(\t&PyArray_Type,\t {PYN_descr},"
             "\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};",
         ],
+    ),
+    dict(
+        name="py_mixin_array-NewFromDescr2",
+        need_numpy=True,
+        allocate_local_var=True,
+        declare=[
+            "{npy_intp_decl}"
+            "PyObject * {py_var} = {nullptr};",
+        ],
+        post_call=[
+            "{npy_intp_asgn}"
+            "Py_INCREF({PYN_descr});",
+            "{py_var} = "
+            "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
+            " {npy_rank}, {npy_dims_var}, \t{nullptr}, {cxx_var}, 0, {nullptr});",
+            "if ({py_var} == {nullptr}) goto fail;",
+        ],
+        object_created=True,
+        fail=[
+            "Py_XDECREF({py_var});",
+        ],
+        goto_fail=True,
     ),
     dict(
         name="py_mixin_array_error",
@@ -3821,16 +3893,6 @@ py_statements = [
             ],
         ),
     ),
-    
-    dict(
-        name="py_mixin_malloc_error",
-        pre_call=[
-            "if ({cxx_var} == {nullptr}) {{+",
-            "PyErr_NoMemory();",
-            "goto fail;",
-            "-}}",
-        ],
-    ),
     dict(
         name="py_mixin_array-capsule",
         notes=[
@@ -3857,6 +3919,15 @@ py_statements = [
         ],
     ),
 
+    dict(
+        name="py_mixin_malloc_error",
+        pre_call=[
+            "if ({cxx_var} == {nullptr}) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
+        ],
+    ),
     dict(
         name="py_mixin_malloc",
         lang_c=dict(
@@ -4116,25 +4187,9 @@ py_statements = [
             "py_function_native&_numpy",
         ],
         mixin=[
+            "py_mixin_array-SimpleNewFromData2",
             "py_mixin_array-capsule",
         ],
-        need_numpy=True,
-        declare=[
-            "{npy_intp_decl}"
-            "PyObject * {py_var} = {nullptr};",
-        ],
-        post_call=[
-            "{npy_intp_asgn}"
-            "{py_var} = "
-            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},"
-            "\t {numpy_type},\t {cxx_nonconst_ptr});",
-            "if ({py_var} == {nullptr}) goto fail;",
-        ],
-        object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
 
     dict(
@@ -4556,28 +4611,10 @@ py_statements = [
             "py_function_struct*_numpy",
         ],
         mixin=[
+            "py_mixin_array-NewFromDescr2",
             "py_mixin_array-capsule",
         ],
         # XXX - expand to array of struct
-        need_numpy=True,
-        allocate_local_var=True,
-        declare=[
-            "{npy_intp_decl}"
-            "PyObject * {py_var} = {nullptr};",
-        ],
-        post_call=[
-            "{npy_intp_asgn}"
-            "Py_INCREF({PYN_descr});",
-            "{py_var} = "
-            "PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t"
-            " {npy_rank}, {npy_dims_var}, \t{nullptr}, {cxx_var}, 0, {nullptr});",
-            "if ({py_var} == {nullptr}) goto fail;",
-        ],
-        object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
 
     dict(
@@ -4892,30 +4929,12 @@ py_statements = [
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         mixin=[
+            "py_mixin_array-SimpleNewFromData",
             "py_mixin_array-capsule",
         ],
-        need_numpy=True,
         cxx_local_var="pointer",
-        allocate_local_var=True,
         arg_declare=[],
-        declare=[
-            "{npy_intp_decl}"
-            "PyObject * {py_var} = {nullptr};",
-        ],
         arg_call=["*{cxx_var}"],
-        post_call=[
-#            "{npy_intp_asgn}"
-            "{npy_dims_var}[0] = {cxx_var}->size();",
-            "{py_var} = "
-            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},"
-            "\t {numpy_type},\t {cxx_var}->data());",
-            "if ({py_var} == {nullptr}) goto fail;",
-        ],
-        object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
     dict(
         alias=[
@@ -4923,27 +4942,9 @@ py_statements = [
             "py_function_vector<native>_numpy",
         ],
         mixin=[
+            "py_mixin_array-SimpleNewFromData",
             "py_mixin_array-capsule",
         ],
-        need_numpy=True,
-        allocate_local_var=True,
-        declare=[
-            "{npy_intp_decl}"
-            "PyObject * {py_var} = {nullptr};",
-        ],
-        post_call=[
-#            "{npy_intp_asgn}"
-            "{npy_dims_var}[0] = {cxx_var}->size();",
-            "{py_var} = "
-            "PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},"
-            "\t {numpy_type},\t {cxx_var}->data());",
-            "if ({py_var} == {nullptr}) goto fail;",
-        ],
-        object_created=True,
-        fail=[
-            "Py_XDECREF({py_var});",
-        ],
-        goto_fail=True,
     ),
 
 
