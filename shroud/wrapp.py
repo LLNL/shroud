@@ -3832,7 +3832,12 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_mixin_capsule",
+        name="py_mixin_array-capsule",
+        notes=[
+            "Create a PyCapsule and associate with a PyArray.",
+            "This capsule contains a pointer to data and a destructor",
+            "which will be used when the PyArray's reference count drops to zeo."
+        ],
         declare_capsule=[
             "PyObject *{py_capsule} = {nullptr};",
         ],
@@ -4111,7 +4116,7 @@ py_statements = [
             "py_function_native&_numpy",
         ],
         mixin=[
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         need_numpy=True,
         declare=[
@@ -4551,7 +4556,7 @@ py_statements = [
             "py_function_struct*_numpy",
         ],
         mixin=[
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         # XXX - expand to array of struct
         need_numpy=True,
@@ -4887,7 +4892,7 @@ py_statements = [
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         mixin=[
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         need_numpy=True,
         cxx_local_var="pointer",
@@ -4918,7 +4923,7 @@ py_statements = [
             "py_function_vector<native>_numpy",
         ],
         mixin=[
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         need_numpy=True,
         allocate_local_var=True,

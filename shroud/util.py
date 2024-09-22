@@ -63,7 +63,7 @@ def append_format_lst(lstout, lstin, fmt):
 
 
 def append_format_cmds(lstout, stmts, name, fmt):
-    """Format entries in dictin[name] and append to lstout.
+    """Format entries in stmts[name] and append to lstout.
     Return True if found.
     Used with c_statements and py_statements.
 

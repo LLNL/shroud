@@ -14570,9 +14570,9 @@ root
       array-FromAny -- py_mixin_array-FromAny
       array-NewFromDescr -- py_mixin_array-NewFromDescr
       array-SimpleNew -- py_mixin_array-SimpleNew
+      array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
-      capsule -- py_mixin_capsule
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
       template
@@ -16099,6 +16099,20 @@ py_mixin_array-SimpleNew:
   post_parse:
   - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
     {npy_dims_var}, {numpy_type}){cast2};'
+py_mixin_array-capsule:
+  name: py_mixin_array-capsule
+  intent: mixin
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
 py_mixin_array-get-data:
   name: py_mixin_array-get-data
   intent: mixin
@@ -16132,20 +16146,6 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
-py_mixin_capsule:
-  name: py_mixin_capsule
-  intent: mixin
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
 py_mixin_malloc:
   name: py_mixin_malloc
   intent: mixin
