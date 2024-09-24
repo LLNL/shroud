@@ -90,7 +90,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 },
                                 "x1": {
                                     "fmtdict": {
@@ -116,7 +117,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_ctor_native_numpy"
                                 },
                                 "y1": {
                                     "fmtdict": {
@@ -142,7 +144,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_ctor_native_numpy"
                                 }
                             },
                             "share": {
@@ -474,7 +477,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "s1": {
                             "fmtdict": {
@@ -503,7 +507,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_struct*_class"
                         },
                         "s2": {
                             "fmtdict": {
@@ -532,7 +537,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_struct*_numpy"
                         }
                     },
                     "share": {

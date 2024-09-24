@@ -446,7 +446,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -470,7 +471,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -814,7 +816,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "in": {
                             "fmtdict": {
@@ -842,7 +845,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -1033,7 +1037,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "in": {
                             "fmtdict": {
@@ -1061,7 +1066,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -1236,7 +1242,8 @@
                             },
                             "meta": {
                                 "intent": "inout"
-                            }
+                            },
+                            "stmt": "py_inout_struct*_list"
                         }
                     },
                     "share": {

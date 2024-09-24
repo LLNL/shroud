@@ -1209,7 +1209,8 @@
                             },
                             "meta": {
                                 "intent": "inout"
-                            }
+                            },
+                            "stmt": "py_inout_native*"
                         }
                     },
                     "share": {

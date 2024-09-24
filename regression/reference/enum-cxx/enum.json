@@ -446,7 +446,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "in": {
                             "fmtdict": {
@@ -474,7 +475,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -752,7 +754,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "in": {
                             "fmtdict": {
@@ -780,7 +783,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {

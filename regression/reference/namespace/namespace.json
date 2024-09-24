@@ -186,7 +186,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_string&"
                         }
                     },
                     "share": {
@@ -491,7 +492,8 @@
                                             },
                                             "meta": {
                                                 "intent": "ctor"
-                                            }
+                                            },
+                                            "stmt": "py_default"
                                         },
                                         "dfield": {
                                             "fmtdict": {
@@ -517,7 +519,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_ctor_native_numpy"
                                         },
                                         "ifield": {
                                             "fmtdict": {
@@ -543,7 +546,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_ctor_native_numpy"
                                         }
                                     },
                                     "share": {

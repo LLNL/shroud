@@ -217,7 +217,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -598,7 +599,8 @@
                                     },
                                     "meta": {
                                         "intent": "in"
-                                    }
+                                    },
+                                    "stmt": "py_in_shadow*"
                                 }
                             },
                             "share": {
@@ -869,7 +871,8 @@
                                     },
                                     "meta": {
                                         "intent": "in"
-                                    }
+                                    },
+                                    "stmt": "py_in_shadow*"
                                 }
                             },
                             "share": {

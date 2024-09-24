@@ -255,7 +255,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -564,7 +565,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 },
                                 "flag": {
                                     "fmtdict": {
@@ -588,7 +590,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_in_native"
                                 }
                             },
                             "share": {
@@ -902,7 +905,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_native"
                                 }
                             },
                             "share": {
@@ -1180,7 +1184,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_bool"
                                 },
                                 "obj2": {
                                     "fmtdict": {
@@ -1208,7 +1213,8 @@
                                     },
                                     "meta": {
                                         "intent": "in"
-                                    }
+                                    },
+                                    "stmt": "py_in_shadow&"
                                 }
                             },
                             "share": {
@@ -1911,7 +1917,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_shadow*"
                                 }
                             },
                             "share": {
@@ -2140,7 +2147,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_string&"
                                 }
                             },
                             "share": {
@@ -2461,7 +2469,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_enum"
                                 },
                                 "arg": {
                                     "fmtdict": {
@@ -2489,7 +2498,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_in_enum"
                                 }
                             },
                             "share": {
@@ -3782,7 +3792,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_string&"
                                 }
                             },
                             "share": {
@@ -4032,7 +4043,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_shadow&"
                                 }
                             },
                             "share": {
@@ -4279,7 +4291,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -4466,7 +4479,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_native"
                                 }
                             },
                             "share": {
@@ -4727,7 +4741,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -6235,7 +6250,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "arg": {
                             "fmtdict": {
@@ -6263,7 +6279,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -6517,7 +6534,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_shadow"
                         }
                     },
                     "share": {
@@ -6784,7 +6802,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -6812,7 +6831,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_shadow*"
                         }
                     },
                     "share": {
@@ -7148,7 +7168,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_shadow*"
                         }
                     },
                     "share": {
@@ -7740,7 +7761,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_shadow&"
                         }
                     },
                     "share": {
@@ -8199,7 +8221,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -8387,7 +8410,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         }
                     },
                     "share": {
@@ -8612,7 +8636,8 @@
                             "meta": {
                                 "intent": "function",
                                 "len": "30"
-                            }
+                            },
+                            "stmt": "py_function_string&"
                         }
                     },
                     "share": {

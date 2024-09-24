@@ -576,7 +576,8 @@
                             "meta": {
                                 "deref": "scalar",
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native*_scalar"
                         }
                     },
                     "share": {
@@ -764,7 +765,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         }
                     },
                     "share": {
@@ -1263,7 +1265,8 @@
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         },
                         "len": {
                             "fmtdict": {
@@ -1288,7 +1291,8 @@
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -1657,7 +1661,8 @@
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         },
                         "len": {
                             "fmtdict": {
@@ -1682,7 +1687,8 @@
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -2039,7 +2045,8 @@
                                 ],
                                 "dimension": "len",
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         },
                         "len": {
                             "fmtdict": {
@@ -2064,7 +2071,8 @@
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -2604,7 +2612,8 @@
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         },
                         "len": {
                             "fmtdict": {
@@ -2629,7 +2638,8 @@
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -2875,7 +2885,8 @@
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         },
                         "len": {
                             "fmtdict": {
@@ -2900,7 +2911,8 @@
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -3264,7 +3276,8 @@
                                 "dimension": "len",
                                 "intent": "function",
                                 "owner": "caller"
-                            }
+                            },
+                            "stmt": "py_function_native*_numpy"
                         },
                         "len": {
                             "fmtdict": {
@@ -3289,7 +3302,8 @@
                             "meta": {
                                 "hidden": true,
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -4298,7 +4312,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -4497,7 +4512,8 @@
                             "meta": {
                                 "intent": "function",
                                 "owner": "library"
-                            }
+                            },
+                            "stmt": "py_function_shadow*"
                         }
                     },
                     "share": {
@@ -4780,7 +4796,8 @@
                             "meta": {
                                 "intent": "function",
                                 "owner": "caller"
-                            }
+                            },
+                            "stmt": "py_function_shadow*"
                         },
                         "flag": {
                             "fmtdict": {
@@ -4804,7 +4821,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {

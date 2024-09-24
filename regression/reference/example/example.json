@@ -184,7 +184,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "ctor"
-                                                    }
+                                                    },
+                                                    "stmt": "py_default"
                                                 }
                                             },
                                             "share": {
@@ -533,7 +534,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "ctor"
-                                                    }
+                                                    },
+                                                    "stmt": "py_default"
                                                 },
                                                 "name": {
                                                     "fmtdict": {
@@ -557,7 +559,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "in"
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_string*"
                                                 }
                                             },
                                             "share": {
@@ -972,7 +975,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_native"
                                                 },
                                                 "incr": {
                                                     "fmtdict": {
@@ -996,7 +1000,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -1245,7 +1250,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_string&"
                                                 }
                                             },
                                             "share": {
@@ -1469,7 +1475,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_string&"
                                                 }
                                             },
                                             "share": {
@@ -1763,7 +1770,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_native"
                                                 },
                                                 "value": {
                                                     "fmtdict": {
@@ -1787,7 +1795,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -2092,7 +2101,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_native"
                                                 },
                                                 "value": {
                                                     "fmtdict": {
@@ -2116,7 +2126,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -2404,7 +2415,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_bool"
                                                 },
                                                 "in": {
                                                     "fmtdict": {
@@ -2430,7 +2442,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_bool"
                                                 }
                                             },
                                             "share": {
@@ -3007,7 +3020,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "ctor"
-                                                    }
+                                                    },
+                                                    "stmt": "py_default"
                                                 },
                                                 "name": {
                                                     "fmtdict": {
@@ -3031,7 +3045,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "in"
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_string*"
                                                 }
                                             },
                                             "share": {
@@ -3398,7 +3413,8 @@
                                                     "meta": {
                                                         "intent": "function",
                                                         "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_string&"
                                                 }
                                             },
                                             "share": {
@@ -3635,7 +3651,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_string&"
                                                 }
                                             },
                                             "share": {
@@ -3872,7 +3889,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_string&"
                                                 }
                                             },
                                             "share": {
@@ -4107,7 +4125,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_string&"
                                                 }
                                             },
                                             "share": {
@@ -4305,7 +4324,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_native"
                                                 }
                                             },
                                             "share": {
@@ -4621,7 +4641,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_shadow*"
                                                 },
                                                 "in": {
                                                     "fmtdict": {
@@ -4649,7 +4670,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "in"
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_shadow*"
                                                 }
                                             },
                                             "share": {
@@ -5201,7 +5223,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -5522,7 +5545,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -5831,7 +5855,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -6146,7 +6171,8 @@
                                                     "meta": {
                                                         "intent": "in",
                                                         "value": true
-                                                    }
+                                                    },
+                                                    "stmt": "py_in_native"
                                                 }
                                             },
                                             "share": {
@@ -6439,7 +6465,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_native"
                                                 }
                                             },
                                             "share": {
@@ -6670,7 +6697,8 @@
                                                     },
                                                     "meta": {
                                                         "intent": "function"
-                                                    }
+                                                    },
+                                                    "stmt": "py_function_native"
                                                 }
                                             },
                                             "share": {
@@ -7176,7 +7204,8 @@
                                             },
                                             "meta": {
                                                 "intent": "function"
-                                            }
+                                            },
+                                            "stmt": "py_function_bool"
                                         },
                                         "name": {
                                             "fmtdict": {
@@ -7200,7 +7229,8 @@
                                             },
                                             "meta": {
                                                 "intent": "in"
-                                            }
+                                            },
+                                            "stmt": "py_in_string&"
                                         }
                                     },
                                     "share": {
@@ -7391,7 +7421,8 @@
                                             },
                                             "meta": {
                                                 "intent": "function"
-                                            }
+                                            },
+                                            "stmt": "py_function_bool"
                                         }
                                     },
                                     "share": {
@@ -7666,7 +7697,8 @@
                                             },
                                             "meta": {
                                                 "intent": "in"
-                                            }
+                                            },
+                                            "stmt": "py_in_string&"
                                         }
                                     },
                                     "share": {
@@ -8056,7 +8088,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "name": {
                                             "fmtdict": {
@@ -8080,7 +8113,8 @@
                                             },
                                             "meta": {
                                                 "intent": "in"
-                                            }
+                                            },
+                                            "stmt": "py_in_string&"
                                         }
                                     },
                                     "share": {
@@ -8701,7 +8735,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "j": {
                                             "fmtdict": {
@@ -8725,7 +8760,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         }
                                     },
                                     "share": {
@@ -8923,7 +8959,8 @@
                                             },
                                             "meta": {
                                                 "intent": "function"
-                                            }
+                                            },
+                                            "stmt": "py_function_native"
                                         }
                                     },
                                     "share": {
@@ -9182,7 +9219,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_unknown"
                                         }
                                     },
                                     "share": {
@@ -9757,7 +9795,8 @@
                                                 },
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_default"
                                         }
                                     },
                                     "share": {
@@ -10334,7 +10373,8 @@
                                                     }
                                                 },
                                                 "intent": "in"
-                                            }
+                                            },
+                                            "stmt": "py_default"
                                         }
                                     },
                                     "share": {
@@ -11230,7 +11270,8 @@
                                                 },
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_default"
                                         }
                                     },
                                     "share": {
@@ -14050,7 +14091,8 @@
                                                 },
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_default"
                                         }
                                     },
                                     "share": {
@@ -15645,7 +15687,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname10": {
                                             "fmtdict": {
@@ -15669,7 +15712,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname2": {
                                             "fmtdict": {
@@ -15693,7 +15737,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname3": {
                                             "fmtdict": {
@@ -15717,7 +15762,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname4": {
                                             "fmtdict": {
@@ -15741,7 +15787,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname5": {
                                             "fmtdict": {
@@ -15765,7 +15812,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname6": {
                                             "fmtdict": {
@@ -15789,7 +15837,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname7": {
                                             "fmtdict": {
@@ -15813,7 +15862,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname8": {
                                             "fmtdict": {
@@ -15837,7 +15887,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         },
                                         "verylongname9": {
                                             "fmtdict": {
@@ -15861,7 +15912,8 @@
                                             },
                                             "meta": {
                                                 "intent": "inout"
-                                            }
+                                            },
+                                            "stmt": "py_inout_native*"
                                         }
                                     },
                                     "share": {
@@ -17083,7 +17135,8 @@
                                             },
                                             "meta": {
                                                 "intent": "function"
-                                            }
+                                            },
+                                            "stmt": "py_function_native"
                                         },
                                         "verylongname1": {
                                             "fmtdict": {
@@ -17107,7 +17160,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname10": {
                                             "fmtdict": {
@@ -17131,7 +17185,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname2": {
                                             "fmtdict": {
@@ -17155,7 +17210,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname3": {
                                             "fmtdict": {
@@ -17179,7 +17235,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname4": {
                                             "fmtdict": {
@@ -17203,7 +17260,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname5": {
                                             "fmtdict": {
@@ -17227,7 +17285,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname6": {
                                             "fmtdict": {
@@ -17251,7 +17310,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname7": {
                                             "fmtdict": {
@@ -17275,7 +17335,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname8": {
                                             "fmtdict": {
@@ -17299,7 +17360,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         },
                                         "verylongname9": {
                                             "fmtdict": {
@@ -17323,7 +17385,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_in_native"
                                         }
                                     },
                                     "share": {
@@ -17897,7 +17960,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "rank": 2
-                                            }
+                                            },
+                                            "stmt": "py_in_native*_numpy"
                                         },
                                         "out": {
                                             "fmtdict": {
@@ -17937,7 +18001,8 @@
                                                 ],
                                                 "dimension": "shape(in)",
                                                 "intent": "out"
-                                            }
+                                            },
+                                            "stmt": "py_out_native*_numpy"
                                         },
                                         "sizein": {
                                             "fmtdict": {
@@ -17961,7 +18026,8 @@
                                             "meta": {
                                                 "intent": "in",
                                                 "value": true
-                                            }
+                                            },
+                                            "stmt": "py_default"
                                         }
                                     },
                                     "share": {

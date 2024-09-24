@@ -24,6 +24,7 @@ SHDPy_  PyArray_Descr object  {pydescr_var}
 SHD_    npy_intp array for shape, {npy_dims_var}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
+SHC_    From statements.local  fmt.C_local
 SHSize_ Size of dimension argument {fmt.size_var}
 SHValue PY_typedef_converter variable {fmt.value_var}
 SHPyResult Return Python object.
@@ -1396,7 +1397,9 @@ return 1;""",
                 stmts_comments.append(
                     self.comment + " Exact:     " + intent_blk.name)
 
-            func_cursor.stmt = result_blk
+            func_cursor.stmt = intent_blk
+            bind_arg.stmt = intent_blk
+            self.name_temp_vars(arg_name, bind_arg)
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             converter, lang = fcfmt.find_arg_converter("f", self.language, arg_typemap)
@@ -1964,6 +1967,21 @@ return 1;""",
     #            fmt.expose = expose
     #            fileinfo.MethodDef.append( wformat('{{"{expose}", (PyCFunction){PY_name_impl}, {PY_ml_flags}, {PY_name_impl}__doc__}},', fmt))
 
+    def name_temp_vars(self, rootname, bind):
+        """Compute names of temporary wrapper variables.
+
+        Create stmts.temps and stmts.local variables.
+        """
+        stmts = bind.stmt
+        fmt = bind.fmtdict
+
+        names = stmts.get("local", None)
+        if names is not None:
+            for name in names:
+                setattr(fmt,
+                        "py_local_{}".format(name),
+                        "{}{}_{}".format(fmt.C_local, rootname, name))
+        
     def create_ctor_function(self, cls, node, code, fmt):
         """
         Wrap a function which is a constructor.
@@ -2075,6 +2093,9 @@ return 1;""",
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
             fmt_result.stmt = result_blk.name
+
+        bind_result.stmt = result_blk
+        self.name_temp_vars(CXX_result, bind_result)
                 
         return fmt_result, result_blk
 
@@ -3666,6 +3687,7 @@ PyStmts = util.Scope(
     goto_fail=False,
     getter=[], getter_helper=[],
     setter=[], setter_helper=[],
+    local=None,
 )
 
 default_stmts = dict(

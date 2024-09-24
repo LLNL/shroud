@@ -479,6 +479,22 @@ returned.  This can be done by ``Py_BuildValue`` with the ``O`` format
 field. But when there is only one return value, ``Py_INCREF`` will be
 called explicitly.
 
+local
+^^^^^
+
+A list of suffixes for local variable names.
+
+.. code-block:: yaml
+
+    local:
+    - len
+
+Create variable names in the format dictionary using
+``{C_local}{rootname}_{name}``.
+For example, argument *foo* creates *SHC_foo_len*.
+
+The format field is named *py_local_{name}*.
+
 object_created
 ^^^^^^^^^^^^^^
 

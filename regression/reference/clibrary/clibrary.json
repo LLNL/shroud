@@ -361,7 +361,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -385,7 +386,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -409,7 +411,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -646,7 +649,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_native*"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -670,7 +674,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native*"
                         }
                     },
                     "share": {
@@ -865,7 +870,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -889,7 +895,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1172,7 +1179,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_bool"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -1197,7 +1205,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_bool*"
                         },
                         "arg3": {
                             "fmtdict": {
@@ -1223,7 +1232,8 @@
                             },
                             "meta": {
                                 "intent": "inout"
-                            }
+                            },
+                            "stmt": "py_inout_bool*"
                         }
                     },
                     "share": {
@@ -1500,7 +1510,8 @@
                             "meta": {
                                 "intent": "function",
                                 "len": "30"
-                            }
+                            },
+                            "stmt": "py_function_char*"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -1524,7 +1535,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_char*"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -1548,7 +1560,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_char*"
                         }
                     },
                     "share": {
@@ -1727,7 +1740,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_char*"
                         }
                     },
                     "share": {
@@ -1918,7 +1932,8 @@
                             },
                             "meta": {
                                 "intent": "inout"
-                            }
+                            },
+                            "stmt": "py_inout_char*"
                         }
                     },
                     "share": {
@@ -2354,7 +2369,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_char*_charlen"
                         }
                     },
                     "share": {
@@ -2598,7 +2614,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_char*_charlen"
                         },
                         "name2": {
                             "fmtdict": {
@@ -2623,7 +2640,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_char*_charlen"
                         }
                     },
                     "share": {
@@ -2867,7 +2885,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         },
                         "text": {
                             "fmtdict": {
@@ -2892,7 +2911,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_char*_charlen"
                         }
                     },
                     "share": {
@@ -3194,7 +3214,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "flag": {
                             "fmtdict": {
@@ -3219,7 +3240,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         },
                         "ltext": {
                             "fmtdict": {
@@ -3243,7 +3265,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         },
                         "text": {
                             "fmtdict": {
@@ -3267,7 +3290,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_char*"
                         }
                     },
                     "share": {
@@ -3580,7 +3604,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "flag": {
                             "fmtdict": {
@@ -3605,7 +3630,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         },
                         "ltext": {
                             "fmtdict": {
@@ -3629,7 +3655,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         },
                         "text": {
                             "fmtdict": {
@@ -3653,7 +3680,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_char*"
                         }
                     },
                     "share": {
@@ -3855,7 +3883,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_bool"
                         },
                         "flag": {
                             "fmtdict": {
@@ -3880,7 +3909,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         }
                     },
                     "share": {
@@ -4067,7 +4097,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_bool"
                         },
                         "flag": {
                             "fmtdict": {
@@ -4092,7 +4123,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_default"
                         }
                     },
                     "share": {
