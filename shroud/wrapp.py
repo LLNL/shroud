@@ -3739,6 +3739,16 @@ py_statements = [
              "Py_XDECREF({py_var});",
          ],
     ),
+
+    dict(
+        name="py_mixin_string-fmtdict",
+        notes=[
+            "ctor_expr is arguments to PyString_FromStringAndSize."
+        ],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
+    ),
         
     dict(
         name="py_mixin_array-ContiguousFromObject",
@@ -4483,56 +4493,56 @@ py_statements = [
             "py_in_string",
             "py_in_string&",
         ],
+        mixin=[
+            "py_mixin_string-fmtdict",
+        ],
         cxx_local_var="scalar",
         arg_declare=[
             # std::string defaults to making this scalar. Make sure it is pointer.
             "char * {c_var};",
         ],
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
-        fmtdict=dict(
-            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-        ),
     ),
     dict(
         alias=[
             "py_inout_string",
             "py_inout_string&",
         ],
+        mixin=[
+            "py_mixin_string-fmtdict",
+        ],
         cxx_local_var="scalar",
         arg_declare=[
             "char *{c_var};",
         ],
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
-        fmtdict=dict(
-            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-        ),
     ),
     dict(
         alias=[
             "py_out_string",
             "py_out_string&",
         ],
+        mixin=[
+            "py_mixin_string-fmtdict",
+        ],
         arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
-        fmtdict=dict(
-            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-        ),
     ),
     dict(
         name="py_function_string",
-        fmtdict=dict(
-            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-        ),
+        mixin=[
+            "py_mixin_string-fmtdict",
+        ],
     ),
     dict(
         alias=[
             "py_function_string*",
             "py_function_string&",
         ],
-        fmtdict=dict(
-            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
-        ),
+        mixin=[
+            "py_mixin_string-fmtdict",
+        ],
     ),
     dict(
         name="py_in_string*",

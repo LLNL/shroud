@@ -14580,6 +14580,7 @@ root
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
+      string-fmtdict -- py_mixin_string-fmtdict
       template
         array
           error -- py_mixin_template_array_error
@@ -16245,6 +16246,11 @@ py_mixin_malloc_error2:
   - PyErr_NoMemory();
   - goto fail;
   - -}}
+py_mixin_string-fmtdict:
+  name: py_mixin_string-fmtdict
+  intent: mixin
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
 py_mixin_template_array_error:
   name: py_mixin_template_array_error
   intent: mixin
