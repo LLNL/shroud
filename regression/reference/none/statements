@@ -15805,7 +15805,8 @@ py_in_vector<native>&_numpy:
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
   - '{cxx_T} * {data_var};'
-  cxx_local_var: scalar
+  arg_call:
+  - '{cxx_var}'
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15827,6 +15828,8 @@ py_in_vector<native>&_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
 py_in_void*:
   name: py_in_void*
   intent: in

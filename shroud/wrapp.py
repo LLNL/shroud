@@ -5039,7 +5039,10 @@ py_statements = [
             "py_mixin_array-FROM-OFT-in",
             "py_mixin_template_array_error",
         ],
-        cxx_local_var="scalar",
+#        cxx_local_var="scalar",
+        local=[
+            "cxx",
+        ],
         arg_declare=[],
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
@@ -5048,6 +5051,9 @@ py_statements = [
         pre_call=[
             "{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
             "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));",
+        ],
+        arg_call=[
+            "{cxx_var}",
         ],
     ),
     dict(

@@ -107,6 +107,7 @@
                                 "npy_intp_decl": "npy_intp SHD_arg[1];\n",
                                 "npy_rank": "1",
                                 "numpy_type": "NPY_INT",
+                                "py_local_cxx": "SH_arg",
                                 "py_var": "SHPy_arg",
                                 "pytmp_var": "SHTPy_arg",
                                 "rank": "1",
