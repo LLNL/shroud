@@ -16117,6 +16117,10 @@ py_mixin_alloc-cxx-type:
   - '{cxx_type} *{py_local_cxx} = nullptr; // mixin'
   pre_call:
   - '{py_local_cxx} = new {cxx_type}; // mixin'
+  fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   local:
   - cxx
 py_mixin_array-ContiguousFromObject:
@@ -16289,6 +16293,7 @@ py_mixin_malloc_error2:
   - PyErr_NoMemory();
   - goto fail;
   - -}}
+  goto_fail: true
 py_mixin_string-fmtdict:
   name: py_mixin_string-fmtdict
   intent: mixin

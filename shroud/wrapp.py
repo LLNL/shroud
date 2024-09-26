@@ -3987,6 +3987,11 @@ py_statements = [
         pre_call=[
             "{py_local_cxx} = new {cxx_type}; // mixin",
         ],
+        fail=[
+            "if ({cxx_var} != {nullptr}) {{+",
+            "{PY_release_memory_function}({capsule_order}, {cxx_var});",
+            "-}}",
+        ],
     ),
     dict(
         name="py_mixin_malloc_error2",
@@ -3997,6 +4002,7 @@ py_statements = [
             "goto fail;",
             "-}}",
         ],
+        goto_fail=True,
     ),
 
     dict(
