@@ -1418,6 +1418,9 @@ return 1;""",
                     fmt_arg.cxx_member = "."
                 elif cxx_local_var == "pointer":
                     fmt_arg.cxx_member = "->"
+            elif intent_blk.post_declare:
+                # Any c to cxx conversion is explicit in statements.
+                pass
             elif intent != "out" and converter:
                 # Make intermediate C++ variable
                 # Needed to pass address of variable.
@@ -4035,9 +4038,6 @@ py_statements = [
             "py_in_native",
             "py_function_native*_scalar",
 
-            "py_function_enum",
-            "py_in_enum",
-
             "py_in_unknown",
             "py_function_struct_list",
             "py_function_struct*_list",
@@ -4600,6 +4600,22 @@ py_statements = [
 
 ########################################
 # enum
+
+    dict(
+        name="py_function_enum",
+    ),
+    dict(
+        name="py_in_enum",
+        local=[
+            "cxx",
+        ],
+        post_declare=[
+            "{cxx_type} {cxx_var} =\t {cast_static}{cxx_type}{cast1}{c_var}{cast2};",
+        ],
+        arg_call=[
+            "{cxx_var}",
+        ],
+    ),
 
     dict(
         name="py_out_enum*",

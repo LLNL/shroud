@@ -15494,6 +15494,12 @@ py_in_char**:
 py_in_enum:
   name: py_in_enum
   intent: in
+  post_declare:
+  - "{cxx_type} {cxx_var} =\t {cast_static}{cxx_type}{cast1}{c_var}{cast2};"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_in_native:
   name: py_in_native
   intent: in
