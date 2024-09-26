@@ -4970,10 +4970,10 @@ py_statements = [
             ",\t \"{c_var}\",\t {cxx_var}) == -1)",
             "+goto fail;-",
         ],
+        goto_fail=True,
         arg_call=[
             "{cxx_var}",
         ],
-        goto_fail=True,
     ),
     dict(
         name="py_out_vector<native>&_list",
@@ -4985,9 +4985,15 @@ py_statements = [
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
-        cxx_local_var="scalar",
+#        cxx_local_var="scalar",
+        local=[
+            "cxx",
+        ],
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
+        ],
+        arg_call=[
+            "{cxx_var}",
         ],
         post_call=[
             "{py_var} = {hnamefunc0}\t({cxx_var});",

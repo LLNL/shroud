@@ -16703,8 +16703,9 @@ py_out_vector<native>&_list:
   intent: out
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
+  arg_call:
+  - '{cxx_var}'
   c_helper: to_PyList_vector_{cxx_T}
-  cxx_local_var: scalar
   object_created: true
   declare:
   - PyObject * {py_var} = {nullptr};
@@ -16714,6 +16715,8 @@ py_out_vector<native>&_list:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
 py_out_vector<native>&_numpy:
   name: py_out_vector<native>&_numpy
   intent: out
