@@ -4845,7 +4845,7 @@ py_statements = [
             "py_function_struct_class",
             "py_function_struct*_class",
         ],
-        cxx_local_var="pointer", # XXX - untested
+#        cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[
             "PyObject *{py_var} = {nullptr};  // struct_class",

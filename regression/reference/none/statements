@@ -15279,7 +15279,6 @@ py_function_struct*_class:
   name: py_function_struct*_class
   intent: function
   allocate_local_var: true
-  cxx_local_var: pointer
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
@@ -15323,7 +15322,6 @@ py_function_struct_class:
   name: py_function_struct_class
   intent: function
   allocate_local_var: true
-  cxx_local_var: pointer
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
