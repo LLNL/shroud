@@ -5067,7 +5067,10 @@ py_statements = [
             "py_mixin_array-capsule",
         ],
         allocate_local_var=True,
-        cxx_local_var="pointer",
+#        cxx_local_var="pointer",
+        local=[
+            "cxx",
+        ],
         arg_declare=[],
         arg_call=["*{cxx_var}"],
     ),

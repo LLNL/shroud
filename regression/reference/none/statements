@@ -16726,7 +16726,6 @@ py_out_vector<native>&_numpy:
   allocate_local_var: true
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   need_numpy: true
   object_created: true
   declare:
@@ -16750,6 +16749,8 @@ py_out_vector<native>&_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
 py_out_void*&:
   name: py_out_void*&
   intent: out
