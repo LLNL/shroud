@@ -4603,7 +4603,7 @@ py_statements = [
 
     dict(
         name="py_out_enum*",
-        cxx_local_var="scalar",
+        cxx_local_var="scalar",  # XXX - untested
         declare=[
             "{cxx_type} {py_var};",
         ],
@@ -4663,7 +4663,10 @@ py_statements = [
             "py_mixin_array_error",
             "py_mixin_array-get-data",
         ],
-        cxx_local_var="pointer",
+#        cxx_local_var="pointer",
+        fmtdict=dict(
+            cxx_member="->",
+        ),
         arg_declare=[ # Must be a pointer of cxx_type.
             "{cxx_type} *{cxx_var};",
         ],

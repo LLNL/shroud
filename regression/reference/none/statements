@@ -15644,9 +15644,10 @@ py_in_struct&_numpy:
   intent: in
   arg_declare:
   - '{cxx_type} *{cxx_var};'
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15692,7 +15693,8 @@ py_in_struct*_numpy:
   intent: in
   arg_declare:
   - '{cxx_type} *{cxx_var};'
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15738,9 +15740,10 @@ py_in_struct_numpy:
   intent: in
   arg_declare:
   - '{cxx_type} *{cxx_var};'
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   need_numpy: true
   parse_format: O
   parse_args:
