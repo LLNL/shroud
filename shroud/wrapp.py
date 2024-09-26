@@ -4558,11 +4558,19 @@ py_statements = [
             "py_out_string&",
         ],
         mixin=[
-            "py_mixin_string-fmtdict",
+            "py_mixin_string-fmtdict-scalar",
+        ],
+        local=[
+            "cxx",
         ],
         arg_declare=[],
-        cxx_local_var="scalar",
-        post_declare=["{c_const}std::string {cxx_var};"],
+#        cxx_local_var="scalar",
+        post_declare=[
+            "{c_const}std::string {cxx_var};"
+        ],
+        arg_call=[
+            "{cxx_var}",
+        ],
     ),
     dict(
         name="py_function_string",

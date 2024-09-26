@@ -16534,26 +16534,36 @@ py_out_string:
   post_declare:
   - '{c_const}std::string {cxx_var};'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_out_string&:
   name: py_out_string&
   intent: out
   post_declare:
   - '{c_const}std::string {cxx_var};'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_out_string*:
   name: py_out_string*
   intent: out
   post_declare:
   - '{c_const}std::string {cxx_var};'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
+  local:
+  - cxx
 py_out_struct&_class:
   name: py_out_struct&_class
   intent: out
