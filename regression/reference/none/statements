@@ -16005,9 +16005,10 @@ py_inout_struct&_class:
   intent: inout
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   object_created: true
   incref_on_return: true
 py_inout_struct&_numpy:
@@ -16050,7 +16051,8 @@ py_inout_struct*_class:
   intent: inout
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   object_created: true
   incref_on_return: true
 py_inout_struct*_list:
