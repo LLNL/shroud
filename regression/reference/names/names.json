@@ -1553,6 +1553,7 @@
                                 "cxx_var": "SH_rv",
                                 "data_var": "SHData_rv",
                                 "numpy_type": null,
+                                "py_local_cxx": "SH_rv",
                                 "py_var": "SHPy_rv",
                                 "size_var": "SHSize_rv",
                                 "stmt": "py_in_string&",

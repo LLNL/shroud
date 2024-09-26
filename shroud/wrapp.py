@@ -1983,6 +1983,8 @@ return 1;""",
                         "{}{}_{}".format(fmt.PY_local, rootname, name))
                 if name == "cxx":
                     # Enable older code to continue to work
+                    # using the old name
+                    fmt.py_local_cxx = "SH_" + rootname
                     fmt.cxx_var = fmt.py_local_cxx
         
     def create_ctor_function(self, cls, node, code, fmt):
@@ -3749,6 +3751,16 @@ py_statements = [
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
+    dict(
+        # WIP - replace cxx_local_var="scalar" cxx_member = .
+        name="py_mixin_string-fmtdict-scalar",
+        notes=[
+            "ctor_expr is arguments to PyString_FromStringAndSize."
+        ],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}.data(),\t {cxx_var}.size()",
+        ),
+    ),
         
     dict(
         name="py_mixin_array-ContiguousFromObject",
@@ -3961,7 +3973,7 @@ py_statements = [
             "Use with py_mixin_alloc_error2",
             "Initialize the variable to allow it be released in fail",
         ],
-        local = [
+        local=[
             "cxx",
         ],
         arg_declare=[
@@ -4494,9 +4506,12 @@ py_statements = [
             "py_in_string&",
         ],
         mixin=[
-            "py_mixin_string-fmtdict",
+            "py_mixin_string-fmtdict-scalar",
         ],
-        cxx_local_var="scalar",
+#        cxx_local_var="scalar",
+        local=[
+            "cxx",
+        ],
         arg_declare=[
             # std::string defaults to making this scalar. Make sure it is pointer.
             "char *{c_var};",
@@ -4504,6 +4519,14 @@ py_statements = [
         post_declare=[
             "{c_const}std::string {cxx_var}({c_var});"
         ],
+        arg_call=[
+            "{cxx_var}",
+        ],
+    ),
+    dict(
+        name="py_in_string*",
+        base="py_in_string",
+        arg_call=["&{cxx_var}"],
     ),
     dict(
         alias=[
@@ -4545,11 +4568,6 @@ py_statements = [
         mixin=[
             "py_mixin_string-fmtdict",
         ],
-    ),
-    dict(
-        name="py_in_string*",
-        base="py_in_string",
-        arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_inout_string*",

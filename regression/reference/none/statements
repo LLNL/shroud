@@ -14581,6 +14581,7 @@ root
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
       string-fmtdict -- py_mixin_string-fmtdict
+      string-fmtdict-scalar -- py_mixin_string-fmtdict-scalar
       template
         array
           error -- py_mixin_template_array_error
@@ -15596,8 +15597,11 @@ py_in_string:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_in_string&:
   name: py_in_string&
   intent: in
@@ -15606,8 +15610,11 @@ py_in_string&:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_in_string*:
   name: py_in_string*
   intent: in
@@ -15616,10 +15623,11 @@ py_in_string*:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
+  local:
+  - cxx
 py_in_struct&_class:
   name: py_in_struct&_class
   intent: in
@@ -16251,6 +16259,11 @@ py_mixin_string-fmtdict:
   intent: mixin
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+py_mixin_string-fmtdict-scalar:
+  name: py_mixin_string-fmtdict-scalar
+  intent: mixin
+  fmtdict:
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
 py_mixin_template_array_error:
   name: py_mixin_template_array_error
   intent: mixin
