@@ -4499,9 +4499,11 @@ py_statements = [
         cxx_local_var="scalar",
         arg_declare=[
             # std::string defaults to making this scalar. Make sure it is pointer.
-            "char * {c_var};",
+            "char *{c_var};",
         ],
-        post_declare=["{c_const}std::string {cxx_var}({c_var});"],
+        post_declare=[
+            "{c_const}std::string {cxx_var}({c_var});"
+        ],
     ),
     dict(
         alias=[

@@ -96,7 +96,7 @@ PP_ExClass1_tp_init_1(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };

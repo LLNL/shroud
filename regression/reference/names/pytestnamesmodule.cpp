@@ -186,7 +186,7 @@ PY_function4(
   PyObject *kwds)
 {
 // splicer begin function.function4
-    char * rv;
+    char *rv;
     const char *SHT_kwlist[] = {
         "rv",
         nullptr };

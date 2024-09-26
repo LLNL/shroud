@@ -15592,7 +15592,7 @@ py_in_string:
   name: py_in_string
   intent: in
   arg_declare:
-  - char * {c_var};
+  - char *{c_var};
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
@@ -15602,7 +15602,7 @@ py_in_string&:
   name: py_in_string&
   intent: in
   arg_declare:
-  - char * {c_var};
+  - char *{c_var};
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
@@ -15612,7 +15612,7 @@ py_in_string*:
   name: py_in_string*
   intent: in
   arg_declare:
-  - char * {c_var};
+  - char *{c_var};
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:

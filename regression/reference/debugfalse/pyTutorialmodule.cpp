@@ -91,8 +91,8 @@ PY_ConcatenateStrings(
   PyObject *kwds)
 {
 // splicer begin function.ConcatenateStrings
-    char * arg1;
-    char * arg2;
+    char *arg1;
+    char *arg2;
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
@@ -170,7 +170,7 @@ PY_OverloadedFunction_from_name(
   PyObject *kwds)
 {
 // splicer begin function.OverloadedFunction_from_name
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -263,7 +263,7 @@ PY_FortranGenericOverloaded_1(
   PyObject *kwds)
 {
 // splicer begin function.FortranGenericOverloaded_1
-    char * name;
+    char *name;
     double arg2;
     const char *SHT_kwlist[] = {
         "name",
