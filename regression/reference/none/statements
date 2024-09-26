@@ -15785,8 +15785,9 @@ py_in_vector<native>&_list:
   intent: in
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
+  arg_call:
+  - '{cxx_var}'
   c_helper: create_from_PyObject_vector_{cxx_T}
-  cxx_local_var: scalar
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -15796,6 +15797,8 @@ py_in_vector<native>&_list:
   - "if ({hnamefunc0}\t({pytmp_var},\t \"{c_var}\",\t {cxx_var}) == -1)"
   - +goto fail;-
   goto_fail: true
+  local:
+  - cxx
 py_in_vector<native>&_numpy:
   name: py_in_vector<native>&_numpy
   intent: in

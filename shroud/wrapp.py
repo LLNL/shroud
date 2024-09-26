@@ -4823,7 +4823,7 @@ py_statements = [
             "py_function_struct_class",
             "py_function_struct*_class",
         ],
-        cxx_local_var="pointer",
+        cxx_local_var="pointer", # XXX - untested
         allocate_local_var=True,
         declare=[
             "PyObject *{py_var} = {nullptr};  // struct_class",
@@ -4958,7 +4958,10 @@ py_statements = [
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
-        cxx_local_var="scalar",
+#        cxx_local_var="scalar",
+        local=[
+            "cxx",
+        ],
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
         ],
@@ -4966,6 +4969,9 @@ py_statements = [
             "if ({hnamefunc0}\t({pytmp_var}"
             ",\t \"{c_var}\",\t {cxx_var}) == -1)",
             "+goto fail;-",
+        ],
+        arg_call=[
+            "{cxx_var}",
         ],
         goto_fail=True,
     ),
