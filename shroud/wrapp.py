@@ -4619,7 +4619,13 @@ py_statements = [
 
     dict(
         name="py_out_enum*",
-        cxx_local_var="scalar",  # XXX - untested
+#        cxx_local_var="scalar",  # XXX - enum.yaml returnEnumOutArg
+        local=[
+            "cxx"
+        ],
+        fmtdict=dict(
+            cxx_member=".",
+        ),
         declare=[
             "{cxx_type} {py_var};",
         ],
