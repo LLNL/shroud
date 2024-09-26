@@ -2009,6 +2009,7 @@
                                 "cxx_var": "SH_name",
                                 "data_var": "SHData_name",
                                 "numpy_type": null,
+                                "py_local_cxx": "SH_name",
                                 "py_var": "SHPy_name",
                                 "size_var": "SHSize_name",
                                 "stmt": "py_inout_string&",

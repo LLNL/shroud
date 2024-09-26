@@ -3753,11 +3753,13 @@ py_statements = [
     ),
     dict(
         # WIP - replace cxx_local_var="scalar" cxx_member = .
+        # cxx_member used type typemap.PY_build_arg
         name="py_mixin_string-fmtdict-scalar",
         notes=[
             "ctor_expr is arguments to PyString_FromStringAndSize."
         ],
         fmtdict=dict(
+            cxx_member=".",
             ctor_expr="{cxx_var}.data(),\t {cxx_var}.size()",
         ),
     ),
@@ -4534,13 +4536,21 @@ py_statements = [
             "py_inout_string&",
         ],
         mixin=[
-            "py_mixin_string-fmtdict",
+            "py_mixin_string-fmtdict-scalar",
         ],
-        cxx_local_var="scalar",
+#        cxx_local_var="scalar",
+        local=[
+            "cxx",
+        ],
         arg_declare=[
             "char *{c_var};",
         ],
-        post_declare=["{c_const}std::string {cxx_var}({c_var});"],
+        post_declare=[
+            "{c_const}std::string {cxx_var}({c_var});"
+        ],
+        arg_call=[
+            "{cxx_var}",
+        ],
     ),
     dict(
         alias=[

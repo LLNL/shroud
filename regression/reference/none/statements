@@ -15597,6 +15597,7 @@ py_in_string:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
+    cxx_member: .
     ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '{cxx_var}'
@@ -15610,6 +15611,7 @@ py_in_string&:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
+    cxx_member: .
     ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '{cxx_var}'
@@ -15623,6 +15625,7 @@ py_in_string*:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
+    cxx_member: .
     ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
@@ -15957,8 +15960,12 @@ py_inout_string:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_inout_string&:
   name: py_inout_string&
   intent: inout
@@ -15967,8 +15974,12 @@ py_inout_string&:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_inout_string*:
   name: py_inout_string*
   intent: inout
@@ -15977,10 +15988,12 @@ py_inout_string*:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
+  local:
+  - cxx
 py_inout_struct&_class:
   name: py_inout_struct&_class
   intent: inout
@@ -16263,6 +16276,7 @@ py_mixin_string-fmtdict-scalar:
   name: py_mixin_string-fmtdict-scalar
   intent: mixin
   fmtdict:
+    cxx_member: .
     ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
 py_mixin_template_array_error:
   name: py_mixin_template_array_error
