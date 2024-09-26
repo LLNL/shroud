@@ -4752,7 +4752,10 @@ py_statements = [
     dict(
         name="py_in_struct*_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
-        cxx_local_var="pointer",
+#        cxx_local_var="pointer",
+        fmtdict=dict(
+            cxx_member="->",
+        ),
         post_declare=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
