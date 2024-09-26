@@ -4773,7 +4773,7 @@ py_statements = [
             cxx_member="->",
         ),
         post_declare=[
-            "{c_const}{cxx_type} * {cxx_var} ="
+            "{c_const}{cxx_type} *{cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
     ),
@@ -4785,7 +4785,7 @@ py_statements = [
             cxx_member="->",
         ),
         post_declare=[
-            "{c_const}{cxx_type} * {cxx_var} ="
+            "{c_const}{cxx_type} *{cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
         object_created=True,
@@ -4895,16 +4895,16 @@ py_statements = [
             cxx_member="->",
         ),
         post_declare=[
-            "{c_const}{cxx_type} * {cxx_var} ="
+            "{c_const}{cxx_type} *{cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
         ],
     ),
     dict(
         name="py_inout_shadow_*",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
-        cxx_local_var="pointer",
+        cxx_local_var="pointer",  # XXX - untested
         post_declare=[
-            "{c_const}{cxx_type} * {cxx_var} ="
+            "{c_const}{cxx_type} *{cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
         ],
     ),

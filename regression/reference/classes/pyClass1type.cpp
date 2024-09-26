@@ -152,7 +152,7 @@ PY_equivalent(
         return nullptr;
 
     // post_declare
-    const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : nullptr;
+    const classes::Class1 *obj2 = SHPy_obj2 ? SHPy_obj2->obj : nullptr;
 
     bool SHCXX_rv = self->obj->equivalent(*obj2);
 

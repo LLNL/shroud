@@ -86,7 +86,7 @@ PY_func1(
         return nullptr;
 
     // post_declare
-    tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    tutorial::Class1 *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->func1(arg);
     Py_RETURN_NONE;
@@ -120,7 +120,7 @@ PY_acceptClass3(
         return nullptr;
 
     // post_declare
-    forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    forward::Class3 *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->acceptClass3(arg);
     Py_RETURN_NONE;

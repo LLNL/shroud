@@ -350,7 +350,7 @@ PP_get_class1(
         return nullptr;
 
     // post_declare
-    const example::nested::ExClass1 * in =
+    const example::nested::ExClass1 *in =
         SHPy_in ? SHPy_in->obj : nullptr;
 
     example::nested::ExClass1 *SHCXX_rv = self->obj->get_class1(in);

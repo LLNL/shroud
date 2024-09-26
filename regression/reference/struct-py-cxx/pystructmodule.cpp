@@ -73,7 +73,7 @@ PY_acceptBothStructs(
         return nullptr;
 
     // post_declare
-    Cstruct_as_class * s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
+    Cstruct_as_class *s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
 
     // post_parse
     Py_INCREF(PY_Cstruct_as_numpy_array_descr);

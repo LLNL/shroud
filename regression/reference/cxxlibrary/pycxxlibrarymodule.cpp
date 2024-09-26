@@ -66,7 +66,7 @@ PY_passStructByReferenceCls(
         return nullptr;
 
     // post_declare
-    Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    Cstruct1_cls *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = passStructByReferenceCls(*arg);
 
@@ -110,7 +110,7 @@ PY_passStructByReferenceInCls(
         return nullptr;
 
     // post_declare
-    const Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    const Cstruct1_cls *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = passStructByReferenceInCls(*arg);
 
@@ -150,7 +150,7 @@ PY_passStructByReferenceInoutCls(
         return nullptr;
 
     // post_declare
-    Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    Cstruct1_cls *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     passStructByReferenceInoutCls(*arg);
 

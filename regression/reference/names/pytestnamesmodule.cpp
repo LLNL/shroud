@@ -385,7 +385,7 @@ PY_Cstruct_as_class_sum(
         return nullptr;
 
     // post_declare
-    const Cstruct_as_class * point =
+    const Cstruct_as_class *point =
         SHPy_point ? SHPy_point->myobj : nullptr;
 
     int ARG_rv = Cstruct_as_class_sum(point);
