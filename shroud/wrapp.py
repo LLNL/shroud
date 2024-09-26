@@ -4781,7 +4781,10 @@ py_statements = [
             "py_function_shadow",
         ],
 #        allocate_local_var=True,  # needed to release memory
-        cxx_local_var="pointer",
+#        cxx_local_var="pointer",
+        fmtdict=dict(
+            cxx_member="->",
+        ),
         arg_declare=[
             "{cxx_type} *{cxx_var} = {nullptr};", 
         ],

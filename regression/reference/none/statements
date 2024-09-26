@@ -15227,7 +15227,8 @@ py_function_shadow:
   intent: function
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -16577,9 +16578,10 @@ py_out_struct&_class:
   intent: out
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -16633,7 +16635,8 @@ py_out_struct*_class:
   intent: out
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
