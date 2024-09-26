@@ -13,6 +13,7 @@ One Extension module per class
 
 Variables prefixes used by generated code:
 SH_     C or C++ version of argument
+SH_     From statements.local  fmt.PY_local
 SHPy_   Python object which corresponds to the argument {py_var}
 SHCPy_  Python API variable which corresponds to the argument's py_ctype {ctype_var}
         Used with Py_complex.
@@ -24,7 +25,6 @@ SHDPy_  PyArray_Descr object  {pydescr_var}
 SHD_    npy_intp array for shape, {npy_dims_var}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
-SHC_    From statements.local  fmt.C_local
 SHSize_ Size of dimension argument {fmt.size_var}
 SHValue PY_typedef_converter variable {fmt.value_var}
 SHPyResult Return Python object.
@@ -1980,7 +1980,7 @@ return 1;""",
             for name in names:
                 setattr(fmt,
                         "py_local_{}".format(name),
-                        "{}{}_{}".format(fmt.C_local, rootname, name))
+                        "{}{}_{}".format(fmt.PY_local, rootname, name))
                 if name == "cxx":
                     # Enable older code to continue to work
                     fmt.cxx_var = fmt.py_local_cxx

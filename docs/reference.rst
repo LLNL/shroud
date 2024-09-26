@@ -1077,6 +1077,10 @@ PY_impl_filename_suffix
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
 
+PY_local
+   Variable prefix used with statement field *local*.
+   Defaults to ``SH_``.
+
 PY_module_init
     Name of module and submodule initialization routine.
     library and namespaces delimited by ``_``.

@@ -195,6 +195,7 @@
             "PY_fetch_context_function": "PY_SHROUD_fetch_context",
             "PY_helper_prefix": "SHROUD_",
             "PY_helper_static": "static ",
+            "PY_local": "SH_",
             "PY_module_init": "library",
             "PY_module_name": "library",
             "PY_module_scope": "library",
