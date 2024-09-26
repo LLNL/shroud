@@ -14562,6 +14562,7 @@ root
         list -- py_inout_struct*_list
         numpy -- py_inout_struct*_numpy
     mixin
+      alloc-cxx-type -- py_mixin_alloc-cxx-type
       array
         error -- py_mixin_array_error
       array-ContiguousFromObject -- py_mixin_array-ContiguousFromObject
@@ -14578,6 +14579,7 @@ root
       array-parse -- py_mixin_array-parse
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
+        error2 -- py_mixin_malloc_error2
       template
         array
           error -- py_mixin_template_array_error
@@ -16064,6 +16066,15 @@ py_inout_struct*_numpy:
 py_inout_struct_list:
   name: py_inout_struct_list
   intent: inout
+py_mixin_alloc-cxx-type:
+  name: py_mixin_alloc-cxx-type
+  intent: mixin
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = nullptr; // mixin'
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type}; // mixin'
+  local:
+  - cxx
 py_mixin_array-ContiguousFromObject:
   name: py_mixin_array-ContiguousFromObject
   intent: mixin
@@ -16099,7 +16110,6 @@ py_mixin_array-NewFromDescr:
 py_mixin_array-NewFromDescr2:
   name: py_mixin_array-NewFromDescr2
   intent: mixin
-  allocate_local_var: true
   need_numpy: true
   object_created: true
   declare:
@@ -16121,7 +16131,6 @@ py_mixin_array-SimpleNew:
 py_mixin_array-SimpleNewFromData:
   name: py_mixin_array-SimpleNewFromData
   intent: mixin
-  allocate_local_var: true
   need_numpy: true
   object_created: true
   declare:
@@ -16225,6 +16234,14 @@ py_mixin_malloc_error:
   intent: mixin
   pre_call:
   - if ({cxx_var} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+py_mixin_malloc_error2:
+  name: py_mixin_malloc_error2
+  intent: mixin
+  pre_call:
+  - if ({py_local_cxx} == {nullptr}) {{+
   - PyErr_NoMemory();
   - goto fail;
   - -}}

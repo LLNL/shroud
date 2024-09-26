@@ -1981,6 +1981,9 @@ return 1;""",
                 setattr(fmt,
                         "py_local_{}".format(name),
                         "{}{}_{}".format(fmt.C_local, rootname, name))
+                if name == "cxx":
+                    # Enable older code to continue to work
+                    fmt.cxx_var = fmt.py_local_cxx
         
     def create_ctor_function(self, cls, node, code, fmt):
         """
@@ -2095,7 +2098,7 @@ return 1;""",
             fmt_result.stmt = result_blk.name
 
         bind_result.stmt = result_blk
-        self.name_temp_vars(CXX_result, bind_result)
+        self.name_temp_vars(fmt.C_result, bind_result)
                 
         return fmt_result, result_blk
 
@@ -3789,7 +3792,6 @@ py_statements = [
             "function result, intent(OUT)",
         ],
         need_numpy=True,
-        allocate_local_var=True,
         declare=[
             "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
@@ -3858,7 +3860,6 @@ py_statements = [
     dict(
         name="py_mixin_array-NewFromDescr2",
         need_numpy=True,
-        allocate_local_var=True,
         declare=[
             "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
@@ -3938,6 +3939,36 @@ py_statements = [
         ],
         fail_capsule=[
             "Py_XDECREF({py_capsule});",
+        ],
+    ),
+
+    dict(
+        name="py_mixin_alloc-cxx-type",
+        notes=[
+            "Allocate memory",
+            "Used with C++ objects, structs",
+            "intent(out)",
+            "Use with py_mixin_alloc_error2",
+            "Initialize the variable to allow it be released in fail",
+        ],
+        local = [
+            "cxx",
+        ],
+        arg_declare=[
+            "{cxx_type} *{py_local_cxx} = nullptr; // mixin"
+        ],
+        pre_call=[
+            "{py_local_cxx} = new {cxx_type}; // mixin",
+        ],
+    ),
+    dict(
+        name="py_mixin_malloc_error2",
+        # Uses py_local_cxx instead of cxx_var
+        pre_call=[
+            "if ({py_local_cxx} == {nullptr}) {{+",
+            "PyErr_NoMemory();",
+            "goto fail;",
+            "-}}",
         ],
     ),
 
@@ -4637,6 +4668,7 @@ py_statements = [
             "py_mixin_array-capsule",
         ],
         # XXX - expand to array of struct
+        allocate_local_var=True,
     ),
 
     dict(
@@ -4951,9 +4983,12 @@ py_statements = [
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         mixin=[
+#            "py_mixin_alloc-cxx-type",
+#            "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
             "py_mixin_array-capsule",
         ],
+        allocate_local_var=True,
         cxx_local_var="pointer",
         arg_declare=[],
         arg_call=["*{cxx_var}"],
@@ -4964,9 +4999,12 @@ py_statements = [
             "py_function_vector<native>_numpy",
         ],
         mixin=[
+#            "py_mixin_alloc-cxx-type",
+#            "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
             "py_mixin_array-capsule",
         ],
+        allocate_local_var=True,
     ),
 
 
