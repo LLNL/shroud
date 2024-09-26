@@ -15579,23 +15579,26 @@ py_in_shadow:
   intent: in
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
 py_in_shadow&:
   name: py_in_shadow&
   intent: in
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
 py_in_shadow*:
   name: py_in_shadow*
   intent: in
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
 py_in_string:
   name: py_in_string
   intent: in
