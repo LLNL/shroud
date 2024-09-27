@@ -479,6 +479,33 @@ returned.  This can be done by ``Py_BuildValue`` with the ``O`` format
 field. But when there is only one return value, ``Py_INCREF`` will be
 called explicitly.
 
+destructor_name
+^^^^^^^^^^^^^^^
+
+A name for the destructor code in *destructor*.
+Must be unique.  May include format strings:
+
+.. code-block:: yaml
+
+    destructor_name: std_vector_{cxx_T}
+
+destructor
+^^^^^^^^^^
+
+A list of lines of code used to delete memory. Usually allocated by a *pre_call*
+statement.
+
+.. The code is inserted into *C_memory_dtor_function* which will provide
+   the address of the memory to destroy in the variable ``void *ptr``.
+
+For example:
+
+.. code-block:: yaml
+
+    destructor:
+    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
+    -  delete cxx_ptr;
+
 local
 ^^^^^
 

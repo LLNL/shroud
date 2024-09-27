@@ -1545,6 +1545,7 @@ return 1;""",
                     )
 
             # Code to convert parsed values (C or Python) to C++.
+            self.add_stmt_capsule2(intent_blk, fmt_arg)
             allocate_local_blk = self.add_stmt_capsule(arg, intent_blk, fmt_arg)
             if allocate_local_blk:
                 update_code_blocks(locals(), allocate_local_blk, fmt_arg)
@@ -1984,11 +1985,14 @@ return 1;""",
                 setattr(fmt,
                         "py_local_{}".format(name),
                         "{}{}_{}".format(fmt.PY_local, rootname, name))
+                # Enable older code to continue to work
+                # using the old name
                 if name == "cxx":
-                    # Enable older code to continue to work
-                    # using the old name
                     fmt.py_local_cxx = "SH_" + rootname
                     fmt.cxx_var = fmt.py_local_cxx
+                elif name == "capsule":
+                    fmt.py_local_capsule = "SHC_" + rootname
+                    fmt.py_capsule = fmt.py_local_capsule
         
     def create_ctor_function(self, cls, node, code, fmt):
         """
@@ -2135,6 +2139,33 @@ return 1;""",
                 self.language + " " + capsule_type, del_lines)
             fmt.capsule_order = capsule_order
             fmt.py_capsule = "SHC_" + fmt.c_var
+
+    def add_stmt_capsule2(self, stmts, fmt):
+        """Create code to release memory.
+        Processes "destructor_name" and "destructor".
+
+        For example, std::vector intent(out) must eventually release
+        the vector via a capsule owned by the NumPy array.
+
+        XXX - Remove ability to set capsule_type in statements.
+        XXX - Move update_code_blocks here....
+        """
+        # Create capsule destructor
+        destructor_name = stmts["destructor_name"]
+        if destructor_name:
+            destructor_name = wformat(destructor_name, fmt)
+
+            destructor = stmts["destructor"]
+            if destructor:
+                # Expand things like {cxx_T}
+                del_work = []
+                for line in destructor:
+                    append_format(del_work, line, fmt)
+                destructor = del_work
+            
+            capsule_order = self.add_capsule_code(
+                self.language + " " + destructor_name, destructor)
+            fmt.capsule_order = capsule_order
                 
     def add_stmt_capsule(self, ast, stmts, fmt):
         """Create code to allocate/release memory.
@@ -3689,6 +3720,8 @@ PyStmts = util.Scope(
     parse_format=None, parse_args=[],
     declare=[], post_parse=[], pre_call=[],
     post_call=[],
+    destructor_name=None,
+    destructor=[],
     declare_capsule=[], post_call_capsule=[], fail_capsule=[],
     declare_keep=[], post_call_keep=[], fail_keep=[],
     cleanup=[], fail=[],
@@ -3944,7 +3977,36 @@ py_statements = [
         ),
     ),
     dict(
+        name="py_mixin_capsule",
+        notes=[
+            "Create a PyCapsule and associate with a PyArray.",
+            "This capsule contains a pointer to data and a destructor",
+            "which will be used when the PyArray's reference count drops to zeo."
+        ],
+        local=[
+            "capsule",
+        ],
+        declare=[
+            "PyObject *{py_capsule} = {nullptr};",
+        ],
+        post_call=[
+            "{py_capsule} = "
+            'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
+            "\t{PY_capsule_destructor_function});",
+            "if ({py_capsule} == {nullptr}) goto fail;",
+            "PyCapsule_SetContext({py_capsule},"
+            "\t {PY_fetch_context_function}({capsule_order}));",
+            "if (PyArray_SetBaseObject(\t"
+            "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
+            "\t {py_capsule}) < 0)\t goto fail;",
+        ],
+        fail=[
+            "Py_XDECREF({py_capsule});",
+        ],
+    ),
+    dict(
         name="py_mixin_array-capsule",
+        # XXX - This is deprecated, replaced by py_mixin_capsule
         notes=[
             "Create a PyCapsule and associate with a PyArray.",
             "This capsule contains a pointer to data and a destructor",
@@ -3982,16 +4044,21 @@ py_statements = [
             "cxx",
         ],
         arg_declare=[
-            "{cxx_type} *{py_local_cxx} = nullptr; // mixin"
+            "{cxx_type} *{py_local_cxx} = nullptr;"
         ],
         pre_call=[
-            "{py_local_cxx} = new {cxx_type}; // mixin",
+            "{py_local_cxx} = new {cxx_type};",
         ],
         fail=[
             "if ({cxx_var} != {nullptr}) {{+",
             "{PY_release_memory_function}({capsule_order}, {cxx_var});",
             "-}}",
         ],
+        destructor=[
+            "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);",
+            "delete cxx_ptr;",
+        ],
+        destructor_name="{cxx_type} *",
     ),
     dict(
         name="py_mixin_malloc_error2",
@@ -5092,17 +5159,14 @@ py_statements = [
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         mixin=[
-#            "py_mixin_alloc-cxx-type",
-#            "py_mixin_malloc_error2",
+            "py_mixin_alloc-cxx-type",
+            "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
-            "py_mixin_array-capsule",
+            "py_mixin_capsule",
         ],
-        allocate_local_var=True,
+#        allocate_local_var=True,
+#        arg_declare=[],
 #        cxx_local_var="pointer",
-        local=[
-            "cxx",
-        ],
-        arg_declare=[],
         arg_call=["*{cxx_var}"],
     ),
     dict(

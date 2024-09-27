@@ -14577,6 +14577,7 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
+      capsule -- py_mixin_capsule
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
@@ -16114,9 +16115,13 @@ py_mixin_alloc-cxx-type:
   name: py_mixin_alloc-cxx-type
   intent: mixin
   arg_declare:
-  - '{cxx_type} *{py_local_cxx} = nullptr; // mixin'
+  - '{cxx_type} *{py_local_cxx} = nullptr;'
   pre_call:
-  - '{py_local_cxx} = new {cxx_type}; // mixin'
+  - '{py_local_cxx} = new {cxx_type};'
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
   - if ({cxx_var} != {nullptr}) {{+
   - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
@@ -16252,6 +16257,22 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_capsule:
+  name: py_mixin_capsule
+  intent: mixin
+  declare:
+  - PyObject *{py_capsule} = {nullptr};
+  post_call:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+  fail:
+  - Py_XDECREF({py_capsule});
+  local:
+  - capsule
 py_mixin_malloc:
   name: py_mixin_malloc
   intent: mixin
@@ -16738,34 +16759,46 @@ py_out_vector<native>&_list:
 py_out_vector<native>&_numpy:
   name: py_out_vector<native>&_numpy
   intent: out
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = nullptr;'
   arg_call:
   - '*{cxx_var}'
   need_numpy: true
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  - PyObject *{py_capsule} = {nullptr};
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
   post_call:
   - '{npy_dims_var}[0] = {cxx_var}->size();'
   - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
     \ {cxx_var}->data());"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
   - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
     {PY_capsule_destructor_function});"
   - if ({py_capsule} == {nullptr}) goto fail;
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
+  - Py_XDECREF({py_capsule});
   goto_fail: true
   local:
   - cxx
+  - capsule
 py_out_void*&:
   name: py_out_void*&
   intent: out
