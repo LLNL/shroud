@@ -4055,21 +4055,31 @@ py_statements = [
             "cxx",
         ],
         arg_declare=[
-            "{cxx_type} *{py_local_cxx} = nullptr;"
-        ],
-        pre_call=[
-            "{py_local_cxx} = new {cxx_type};",
+            "{cxx_type} *{py_local_cxx} = {nullptr};"
         ],
         fail=[
             "if ({cxx_var} != {nullptr}) {{+",
             "{PY_release_memory_function}({capsule_order}, {cxx_var});",
             "-}}",
         ],
-        destructor=[
-            "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);",
-            "delete cxx_ptr;",
-        ],
         destructor_name="{cxx_type} *",
+        lang_c=dict(
+            pre_call=[
+                "{py_local_cxx} = malloc(sizeof({cxx_type}));",
+            ],
+            destructor=[
+                "free(ptr);",
+            ],
+        ),
+        lang_cxx=dict(
+            pre_call=[
+                "{py_local_cxx} = new {cxx_type};",
+            ],
+            destructor=[
+                "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);",
+                "delete cxx_ptr;",
+            ],
+        ),
     ),
     dict(
         name="py_mixin_malloc_error2",
@@ -4820,11 +4830,17 @@ py_statements = [
             "py_function_struct_numpy",
         ],
         mixin=[
+            "py_mixin_alloc-cxx-type",
+            "py_mixin_malloc_error2",
             "py_mixin_array-NewFromDescr2",
-            "py_mixin_array-capsule",
+            "py_mixin_capsule",
         ],
         # XXX - expand to array of struct
-        allocate_local_var=True,
+#        allocate_local_var=True,
+        call=[
+            "*{cxx_var} = {PY_this_call}{function_name}"
+            "{CXX_template}({PY_call_list});",
+        ],
     ),
     dict(
         alias=[

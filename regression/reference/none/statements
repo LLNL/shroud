@@ -15337,30 +15337,57 @@ py_function_struct_list:
 py_function_struct_numpy:
   name: py_function_struct_numpy
   intent: function
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   need_numpy: true
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  - PyObject *{py_capsule} = {nullptr};
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  call:
+  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
   post_call:
   - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
     \ \t{nullptr}, {cxx_var}, 0, {nullptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
   - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
     {PY_capsule_destructor_function});"
   - if ({py_capsule} == {nullptr}) goto fail;
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
+  - Py_XDECREF({py_capsule});
   goto_fail: true
+  local:
+  - cxx
+  - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_vector<native>_list:
   name: py_function_vector<native>_list
   intent: function
@@ -15377,7 +15404,7 @@ py_function_vector<native>_numpy:
   name: py_function_vector<native>_numpy
   intent: function
   arg_declare:
-  - '{cxx_type} *{py_local_cxx} = nullptr;'
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   need_numpy: true
   object_created: true
   declare:
@@ -15416,6 +15443,17 @@ py_function_vector<native>_numpy:
   local:
   - cxx
   - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_vector_list:
   name: py_function_vector_list
   intent: function
@@ -15432,7 +15470,7 @@ py_function_vector_numpy:
   name: py_function_vector_numpy
   intent: function
   arg_declare:
-  - '{cxx_type} *{py_local_cxx} = nullptr;'
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   need_numpy: true
   object_created: true
   declare:
@@ -15471,6 +15509,17 @@ py_function_vector_numpy:
   local:
   - cxx
   - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_void*:
   name: py_function_void*
   intent: function
@@ -16146,7 +16195,7 @@ py_mixin_alloc-cxx-type:
   name: py_mixin_alloc-cxx-type
   intent: mixin
   arg_declare:
-  - '{cxx_type} *{py_local_cxx} = nullptr;'
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   pre_call:
   - '{py_local_cxx} = new {cxx_type};'
   destructor_name: '{cxx_type} *'
@@ -16159,6 +16208,17 @@ py_mixin_alloc-cxx-type:
   - -}}
   local:
   - cxx
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_mixin_array-ContiguousFromObject:
   name: py_mixin_array-ContiguousFromObject
   intent: mixin
@@ -16803,7 +16863,7 @@ py_out_vector<native>&_numpy:
   name: py_out_vector<native>&_numpy
   intent: out
   arg_declare:
-  - '{cxx_type} *{py_local_cxx} = nullptr;'
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   arg_call:
   - '*{cxx_var}'
   need_numpy: true
@@ -16842,6 +16902,17 @@ py_out_vector<native>&_numpy:
   local:
   - cxx
   - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_out_void*&:
   name: py_out_void*&
   intent: out

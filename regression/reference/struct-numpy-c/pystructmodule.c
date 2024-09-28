@@ -414,13 +414,13 @@ PY_returnStructByValue(
   PyObject *kwds)
 {
 // splicer begin function.returnStructByValue
+    Cstruct1 *SHCXX_rv = NULL;
     int i;
     double d;
     char *SHT_kwlist[] = {
         "i",
         "d",
         NULL };
-    Cstruct1 *SHCXX_rv = NULL;
     PyObject * SHTPy_rv = NULL;
     PyObject *SHC_SHCXX_rv = NULL;
 
