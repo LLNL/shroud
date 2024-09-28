@@ -4818,7 +4818,6 @@ py_statements = [
     dict(
         alias=[
             "py_function_struct_numpy",
-            "py_function_struct*_numpy",
         ],
         mixin=[
             "py_mixin_array-NewFromDescr2",
@@ -4826,6 +4825,15 @@ py_statements = [
         ],
         # XXX - expand to array of struct
         allocate_local_var=True,
+    ),
+    dict(
+        alias=[
+            "py_function_struct*_numpy",
+        ],
+        mixin=[
+            "py_mixin_array-NewFromDescr2",
+            "py_mixin_array-capsule",
+        ],
     ),
 
     dict(
@@ -4925,12 +4933,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        alias=[
-            "py_function_struct_class",
-            "py_function_struct*_class",
-        ],
-#        cxx_local_var="pointer",
-        allocate_local_var=True,
+        name="py_mixin_function-struct-class",
         declare=[
             "PyObject *{py_var} = {nullptr};  // struct_class",
         ],
@@ -4944,7 +4947,23 @@ py_statements = [
         ],
         goto_fail=True,
     ),
-
+    dict(
+        alias=[
+            "py_function_struct_class",
+        ],
+        mixin=[
+            "py_mixin_function-struct-class",
+        ],
+        allocate_local_var=True,
+    ),
+    dict(
+        alias=[
+            "py_function_struct*_class",
+        ],
+        mixin=[
+            "py_mixin_function-struct-class",
+        ],
+    ),
 
     dict(
         name="py_in_struct_class",

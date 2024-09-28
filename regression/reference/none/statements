@@ -14578,6 +14578,7 @@ root
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
       capsule -- py_mixin_capsule
+      function-struct-class -- py_mixin_function-struct-class
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
@@ -15279,7 +15280,6 @@ py_function_string*:
 py_function_struct*_class:
   name: py_function_struct*_class
   intent: function
-  allocate_local_var: true
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
@@ -15295,7 +15295,6 @@ py_function_struct*_list:
 py_function_struct*_numpy:
   name: py_function_struct*_numpy
   intent: function
-  allocate_local_var: true
   need_numpy: true
   object_created: true
   declare:
@@ -16305,6 +16304,18 @@ py_mixin_capsule:
   - Py_XDECREF({py_capsule});
   local:
   - capsule
+py_mixin_function-struct-class:
+  name: py_mixin_function-struct-class
+  intent: mixin
+  object_created: true
+  declare:
+  - PyObject *{py_var} = {nullptr};  // struct_class
+  post_call:
+  - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
+  - if ({py_var} == {nullptr}) goto fail;
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
 py_mixin_malloc:
   name: py_mixin_malloc
   intent: mixin
