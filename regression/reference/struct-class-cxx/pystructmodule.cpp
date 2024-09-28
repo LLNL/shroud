@@ -314,13 +314,13 @@ PY_returnStructByValue(
   PyObject *kwds)
 {
 // splicer begin function.returnStructByValue
+    Cstruct1 *SHCXX_rv = nullptr;
     int i;
     double d;
     const char *SHT_kwlist[] = {
         "i",
         "d",
         nullptr };
-    Cstruct1 *SHCXX_rv = nullptr;
     PyObject *SHTPy_rv = nullptr;  // struct_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,

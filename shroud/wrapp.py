@@ -4968,9 +4968,19 @@ py_statements = [
             "py_function_struct_class",
         ],
         mixin=[
+            "py_mixin_alloc-cxx-type",
+            "py_mixin_malloc_error2",
             "py_mixin_function-struct-class",
         ],
-        allocate_local_var=True,
+#        allocate_local_var=True,
+        call=[
+            "*{cxx_var} = {PY_this_call}{function_name}"
+            "{CXX_template}({PY_call_list});",
+        ],
+        fmtdict=dict(
+            # Used with py_mixin_function-struct-class
+            cxx_addr="",
+        ),
     ),
     dict(
         alias=[

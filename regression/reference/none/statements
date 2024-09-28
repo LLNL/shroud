@@ -15321,16 +15321,47 @@ py_function_struct*_numpy:
 py_function_struct_class:
   name: py_function_struct_class
   intent: function
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
+  fmtdict:
+    cxx_addr: ''
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  call:
+  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_struct_list:
   name: py_function_struct_list
   intent: function
