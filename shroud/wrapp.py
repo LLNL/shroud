@@ -1622,6 +1622,7 @@ return 1;""",
         need_blank0 = True
         pre_call_deref = ""
         if CXX_subprogram == "function":
+            self.add_stmt_capsule2(result_blk, fmt_result)
             allocate_result_blk = self.add_stmt_capsule(ast, result_blk, fmt_result)
             # Result pre_call is added once before all default argument cases.
             if allocate_result_blk and allocate_result_blk.pre_call:
@@ -1700,7 +1701,10 @@ return 1;""",
                 PY_code.append("")
 
             capsule_order = None
-            if is_ctor:
+            if result_blk.call:
+                for line in result_blk.call:
+                    append_format(PY_code, line, fmt_result)
+            elif is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
             elif CXX_subprogram == "subroutine":
                 append_format(
@@ -1988,10 +1992,16 @@ return 1;""",
                 # Enable older code to continue to work
                 # using the old name
                 if name == "cxx":
-                    fmt.py_local_cxx = "SH_" + rootname
+                    if bind.stmt["intent"] == "function":
+                        fmt.py_local_cxx = fmt.CXX_local + rootname
+                    else:
+                        fmt.py_local_cxx = "SH_" + rootname
                     fmt.cxx_var = fmt.py_local_cxx
                 elif name == "capsule":
-                    fmt.py_local_capsule = "SHC_" + rootname
+                    if bind.stmt["intent"] == "function":
+                        fmt.py_local_capsule = "SHC_" + fmt.CXX_local + rootname
+                    else:
+                        fmt.py_local_capsule = "SHC_" + rootname
                     fmt.py_capsule = fmt.py_local_capsule
         
     def create_ctor_function(self, cls, node, code, fmt):
@@ -3719,6 +3729,7 @@ PyStmts = util.Scope(
     incref_on_return=False,
     parse_format=None, parse_args=[],
     declare=[], post_parse=[], pre_call=[],
+    call=[],
     post_call=[],
     destructor_name=None,
     destructor=[],
@@ -5175,12 +5186,16 @@ py_statements = [
             "py_function_vector<native>_numpy",
         ],
         mixin=[
-#            "py_mixin_alloc-cxx-type",
-#            "py_mixin_malloc_error2",
+            "py_mixin_alloc-cxx-type",
+            "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
-            "py_mixin_array-capsule",
+            "py_mixin_capsule",
         ],
-        allocate_local_var=True,
+        call=[
+            "*{cxx_var} = {PY_this_call}{function_name}"
+            "{CXX_template}({PY_call_list});",
+        ],
+#        allocate_local_var=True,
     ),
 
 

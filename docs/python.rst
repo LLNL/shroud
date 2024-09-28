@@ -440,6 +440,12 @@ arg_call
 
 List of arguments to pass to function.
 
+call
+^^^^
+
+Used to call  the function.
+Used to assign function result to a variable.
+
 post_call
 ^^^^^^^^^
 
