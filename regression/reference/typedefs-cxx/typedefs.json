@@ -513,7 +513,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -537,7 +538,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1029,26 +1031,24 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "in": {
                             "fmtdict": {
-                                "c_abstract_decl": "TYP_iColor",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_type": "TYP_iColor",
                                 "c_var": "in",
                                 "ctor_expr": "in",
-                                "cxx_abstract_decl": "iColor",
                                 "cxx_addr": "&",
-                                "cxx_decl": "iColor SH_in",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&in",
                                 "cxx_type": "iColor",
-                                "cxx_val": "static_cast<Color>(in)",
                                 "cxx_var": "SH_in",
                                 "data_var": "SHData_in",
                                 "numpy_type": "NPY_INT",
+                                "py_local_cxx": "SH_in",
                                 "py_var": "SHPy_in",
                                 "size_var": "SHSize_in",
                                 "stmt": "py_in_enum",
@@ -1057,7 +1057,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -1335,26 +1336,24 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "in": {
                             "fmtdict": {
-                                "c_abstract_decl": "TYP_TypeID",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_type": "TYP_TypeID",
                                 "c_var": "in",
                                 "ctor_expr": "in",
-                                "cxx_abstract_decl": "TypeID",
                                 "cxx_addr": "&",
-                                "cxx_decl": "TypeID SH_in",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&in",
                                 "cxx_type": "TypeID",
-                                "cxx_val": "static_cast<DataTypeID>(in)",
                                 "cxx_var": "SH_in",
                                 "data_var": "SHData_in",
                                 "numpy_type": "NPY_INT",
+                                "py_local_cxx": "SH_in",
                                 "py_var": "SHPy_in",
                                 "size_var": "SHSize_in",
                                 "stmt": "py_in_enum",
@@ -1363,7 +1362,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -1585,7 +1585,8 @@
                             },
                             "meta": {
                                 "intent": "inout"
-                            }
+                            },
+                            "stmt": "py_inout_struct*_list"
                         }
                     },
                     "share": {

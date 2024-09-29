@@ -255,7 +255,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -564,7 +565,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 },
                                 "flag": {
                                     "fmtdict": {
@@ -588,7 +590,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_in_native"
                                 }
                             },
                             "share": {
@@ -902,7 +905,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_native"
                                 }
                             },
                             "share": {
@@ -1180,7 +1184,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_bool"
                                 },
                                 "obj2": {
                                     "fmtdict": {
@@ -1208,7 +1213,8 @@
                                     },
                                     "meta": {
                                         "intent": "in"
-                                    }
+                                    },
+                                    "stmt": "py_in_shadow&"
                                 }
                             },
                             "share": {
@@ -1911,7 +1917,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_shadow*"
                                 }
                             },
                             "share": {
@@ -2140,7 +2147,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_string&"
                                 }
                             },
                             "share": {
@@ -2461,26 +2469,24 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_enum"
                                 },
                                 "arg": {
                                     "fmtdict": {
-                                        "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                         "c_const": "",
                                         "c_deref": "",
                                         "c_type": "enum CLA_Class1_DIRECTION",
                                         "c_var": "arg",
                                         "ctor_expr": "arg",
-                                        "cxx_abstract_decl": "classes::Class1::DIRECTION",
                                         "cxx_addr": "&",
-                                        "cxx_decl": "classes::Class1::DIRECTION SH_arg",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&arg",
                                         "cxx_type": "classes::Class1::DIRECTION",
-                                        "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                         "cxx_var": "SH_arg",
                                         "data_var": "SHData_arg",
                                         "numpy_type": "NPY_INT",
+                                        "py_local_cxx": "SH_arg",
                                         "py_var": "SHPy_arg",
                                         "size_var": "SHSize_arg",
                                         "stmt": "py_in_enum",
@@ -2489,7 +2495,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_in_enum"
                                 }
                             },
                             "share": {
@@ -3782,7 +3789,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_string&"
                                 }
                             },
                             "share": {
@@ -4032,7 +4040,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_shadow&"
                                 }
                             },
                             "share": {
@@ -4279,7 +4288,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -4466,7 +4476,8 @@
                                     },
                                     "meta": {
                                         "intent": "function"
-                                    }
+                                    },
+                                    "stmt": "py_function_native"
                                 }
                             },
                             "share": {
@@ -4727,7 +4738,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 }
                             },
                             "share": {
@@ -6235,26 +6247,24 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "arg": {
                             "fmtdict": {
-                                "c_abstract_decl": "enum CLA_Class1_DIRECTION",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_type": "enum CLA_Class1_DIRECTION",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
-                                "cxx_abstract_decl": "classes::Class1::DIRECTION",
                                 "cxx_addr": "&",
-                                "cxx_decl": "classes::Class1::DIRECTION SH_arg",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&arg",
                                 "cxx_type": "classes::Class1::DIRECTION",
-                                "cxx_val": "static_cast<classes::Class1::DIRECTION>(arg)",
                                 "cxx_var": "SH_arg",
                                 "data_var": "SHData_arg",
                                 "numpy_type": "NPY_INT",
+                                "py_local_cxx": "SH_arg",
                                 "py_var": "SHPy_arg",
                                 "size_var": "SHSize_arg",
                                 "stmt": "py_in_enum",
@@ -6263,7 +6273,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -6517,7 +6528,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_shadow"
                         }
                     },
                     "share": {
@@ -6784,7 +6796,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -6812,7 +6825,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_shadow*"
                         }
                     },
                     "share": {
@@ -7148,7 +7162,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_shadow*"
                         }
                     },
                     "share": {
@@ -7740,7 +7755,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_shadow&"
                         }
                     },
                     "share": {
@@ -8199,7 +8215,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -8387,7 +8404,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         }
                     },
                     "share": {
@@ -8612,7 +8630,8 @@
                             "meta": {
                                 "intent": "function",
                                 "len": "30"
-                            }
+                            },
+                            "stmt": "py_function_string&"
                         }
                     },
                     "share": {

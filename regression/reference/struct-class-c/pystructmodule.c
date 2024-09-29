@@ -63,7 +63,7 @@ PY_passStructByValue(
         return NULL;
 
     // post_declare
-    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    Cstruct1 *arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHCXX_rv = passStructByValue(*arg);
 
@@ -102,7 +102,7 @@ PY_passStruct1(
         return NULL;
 
     // post_declare
-    const Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    const Cstruct1 *arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHCXX_rv = passStruct1(arg);
 
@@ -148,7 +148,7 @@ PY_passStruct2(
         return NULL;
 
     // post_declare
-    const Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
+    const Cstruct1 *s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
 
     int SHCXX_rv = passStruct2(s1, outbuf);
 
@@ -187,7 +187,7 @@ PY_acceptStructInPtr(
         return NULL;
 
     // post_declare
-    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    Cstruct1 *arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHCXX_rv = acceptStructInPtr(arg);
 
@@ -282,7 +282,7 @@ PY_acceptStructInOutPtr(
         return NULL;
 
     // post_declare
-    Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
+    Cstruct1 *arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     acceptStructInOutPtr(arg);
 
@@ -313,13 +313,13 @@ PY_returnStructByValue(
   PyObject *kwds)
 {
 // splicer begin function.returnStructByValue
+    Cstruct1 *SHCXX_rv = NULL;
     int i;
     double d;
     char *SHT_kwlist[] = {
         "i",
         "d",
         NULL };
-    Cstruct1 *SHCXX_rv = NULL;
     PyObject *SHTPy_rv = NULL;  // struct_class
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,

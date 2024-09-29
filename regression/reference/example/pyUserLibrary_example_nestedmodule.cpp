@@ -71,7 +71,7 @@ PP_isNameValid(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.isNameValid
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -141,7 +141,7 @@ PP_test_names(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.test_names
-    char * name;
+    char *name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -174,7 +174,7 @@ PP_test_names_flag(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.test_names_flag
-    char * name;
+    char *name;
     int flag;
     const char *SHT_kwlist[] = {
         "name",

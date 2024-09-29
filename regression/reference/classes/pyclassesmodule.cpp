@@ -104,7 +104,7 @@ PY_passClassByValue(
         return nullptr;
 
     // post_declare
-    classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    classes::Class1 *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     classes::passClassByValue(*arg);
     Py_RETURN_NONE;
@@ -139,7 +139,7 @@ PY_useclass(
         return nullptr;
 
     // post_declare
-    const classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    const classes::Class1 *arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = classes::useclass(arg);
 

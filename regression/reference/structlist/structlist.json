@@ -99,7 +99,8 @@
                                     },
                                     "meta": {
                                         "intent": "ctor"
-                                    }
+                                    },
+                                    "stmt": "py_default"
                                 },
                                 "count": {
                                     "fmtdict": {
@@ -128,7 +129,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_ctor_native[]_list"
                                 },
                                 "name": {
                                     "fmtdict": {
@@ -157,7 +159,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_ctor_char[]_list"
                                 }
                             },
                             "share": {

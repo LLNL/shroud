@@ -234,11 +234,11 @@ PY_ReturnVectorAlloc(
   PyObject *kwds)
 {
 // splicer begin function.ReturnVectorAlloc
+    std::vector<int> *SHCXX_rv = nullptr;
     int n;
     const char *SHT_kwlist[] = {
         "n",
         nullptr };
-    std::vector<int> *SHCXX_rv = nullptr;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
     PyObject *SHC_SHCXX_rv = nullptr;

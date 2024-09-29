@@ -785,6 +785,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_ARRAY_UNIQUE_SYMBOL="SHROUD_{}_ARRAY_API".format(
                 self.library.upper()),
             PY_helper_prefix="SHROUD_",
+            PY_local="SH_",
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
             PY_result="SHTPy_rv",  # Create PyObject for result
@@ -2483,8 +2484,6 @@ def add_declarations(parent, node, symtab):
                     "pre_call", "call", "post_call", "final", "ret",
                     "declare",
                     "post_parse",
-                    "declare_capsule", "post_call_capsule", "fail_capsule",
-                    "declare_keep", "post_call_keep", "fail_keep",
                     "cleanup", "fail",
                 ])
             if "splicer" in dct:

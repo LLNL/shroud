@@ -755,7 +755,7 @@ PY_acceptStringConstReference(
   PyObject *kwds)
 {
 // splicer begin function.acceptStringConstReference
-    char * arg1;
+    char *arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };
@@ -881,7 +881,7 @@ PY_acceptStringPointerConst(
   PyObject *kwds)
 {
 // splicer begin function.acceptStringPointerConst
-    char * arg1;
+    char *arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };
@@ -1096,7 +1096,7 @@ PY_acceptStringInstance(
   PyObject *kwds)
 {
 // splicer begin function.acceptStringInstance
-    char * arg1;
+    char *arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };

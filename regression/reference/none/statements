@@ -14562,6 +14562,7 @@ root
         list -- py_inout_struct*_list
         numpy -- py_inout_struct*_numpy
     mixin
+      alloc-cxx-type -- py_mixin_alloc-cxx-type
       array
         error -- py_mixin_array_error
       array-ContiguousFromObject -- py_mixin_array-ContiguousFromObject
@@ -14569,12 +14570,19 @@ root
       array-FROM-OTF -- py_mixin_array-FROM-OTF
       array-FromAny -- py_mixin_array-FromAny
       array-NewFromDescr -- py_mixin_array-NewFromDescr
+      array-NewFromDescr2 -- py_mixin_array-NewFromDescr2
       array-SimpleNew -- py_mixin_array-SimpleNew
+      array-SimpleNewFromData -- py_mixin_array-SimpleNewFromData
+      array-SimpleNewFromData2 -- py_mixin_array-SimpleNewFromData2
+      array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
-      capsule -- py_mixin_capsule
+      function-struct-class -- py_mixin_function-struct-class
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
+        error2 -- py_mixin_malloc_error2
+      string-fmtdict -- py_mixin_string-fmtdict
+      string-fmtdict-scalar -- py_mixin_string-fmtdict-scalar
       template
         array
           error -- py_mixin_template_array_error
@@ -15160,17 +15168,6 @@ py_function_native&_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -15198,17 +15195,6 @@ py_function_native*_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -15220,7 +15206,8 @@ py_function_shadow:
   intent: function
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -15270,8 +15257,6 @@ py_function_string*:
 py_function_struct*_class:
   name: py_function_struct*_class
   intent: function
-  allocate_local_var: true
-  cxx_local_var: pointer
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
@@ -15287,7 +15272,6 @@ py_function_struct*_list:
 py_function_struct*_numpy:
   name: py_function_struct*_numpy
   intent: function
-  allocate_local_var: true
   need_numpy: true
   object_created: true
   declare:
@@ -15297,64 +15281,110 @@ py_function_struct*_numpy:
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
     \ \t{nullptr}, {cxx_var}, 0, {nullptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
 py_function_struct_class:
   name: py_function_struct_class
   intent: function
-  allocate_local_var: true
-  cxx_local_var: pointer
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
+  fmtdict:
+    cxx_addr: ''
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  call:
+  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_struct_list:
   name: py_function_struct_list
   intent: function
 py_function_struct_numpy:
   name: py_function_struct_numpy
   intent: function
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   need_numpy: true
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  - PyObject *{py_capsule} = {nullptr};
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  call:
+  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
   post_call:
   - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
     \ \t{nullptr}, {cxx_var}, 0, {nullptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
   - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
     {PY_capsule_destructor_function});"
   - if ({py_capsule} == {nullptr}) goto fail;
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
+  - Py_XDECREF({py_capsule});
   goto_fail: true
+  local:
+  - cxx
+  - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_vector<native>_list:
   name: py_function_vector<native>_list
   intent: function
@@ -15370,30 +15400,57 @@ py_function_vector<native>_list:
 py_function_vector<native>_numpy:
   name: py_function_vector<native>_numpy
   intent: function
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   need_numpy: true
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  - PyObject *{py_capsule} = {nullptr};
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  call:
+  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
   post_call:
   - '{npy_dims_var}[0] = {cxx_var}->size();'
   - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
     \ {cxx_var}->data());"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
   - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
     {PY_capsule_destructor_function});"
   - if ({py_capsule} == {nullptr}) goto fail;
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
+  - Py_XDECREF({py_capsule});
   goto_fail: true
+  local:
+  - cxx
+  - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_vector_list:
   name: py_function_vector_list
   intent: function
@@ -15409,30 +15466,57 @@ py_function_vector_list:
 py_function_vector_numpy:
   name: py_function_vector_numpy
   intent: function
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   need_numpy: true
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  - PyObject *{py_capsule} = {nullptr};
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  call:
+  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
   post_call:
   - '{npy_dims_var}[0] = {cxx_var}->size();'
   - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
     \ {cxx_var}->data());"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
   - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
     {PY_capsule_destructor_function});"
   - if ({py_capsule} == {nullptr}) goto fail;
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
+  - Py_XDECREF({py_capsule});
   goto_fail: true
+  local:
+  - cxx
+  - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_function_void*:
   name: py_function_void*
   intent: function
@@ -15486,6 +15570,12 @@ py_in_char**:
 py_in_enum:
   name: py_in_enum
   intent: in
+  post_declare:
+  - "{cxx_type} {cxx_var} =\t {cast_static}{cxx_type}{cast1}{c_var}{cast2};"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_in_native:
   name: py_in_native
   intent: in
@@ -15564,72 +15654,87 @@ py_in_shadow:
   name: py_in_shadow
   intent: in
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
 py_in_shadow&:
   name: py_in_shadow&
   intent: in
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
 py_in_shadow*:
   name: py_in_shadow*
   intent: in
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
 py_in_string:
   name: py_in_string
   intent: in
   arg_declare:
-  - char * {c_var};
+  - char *{c_var};
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_in_string&:
   name: py_in_string&
   intent: in
   arg_declare:
-  - char * {c_var};
+  - char *{c_var};
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_in_string*:
   name: py_in_string*
   intent: in
   arg_declare:
-  - char * {c_var};
+  - char *{c_var};
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
+  local:
+  - cxx
 py_in_struct&_class:
   name: py_in_struct&_class
   intent: in
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
 py_in_struct&_numpy:
   name: py_in_struct&_numpy
   intent: in
   arg_declare:
   - '{cxx_type} *{cxx_var};'
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15663,8 +15768,9 @@ py_in_struct*_class:
   name: py_in_struct*_class
   intent: in
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
 py_in_struct*_list:
   name: py_in_struct*_list
   intent: in
@@ -15675,7 +15781,8 @@ py_in_struct*_numpy:
   intent: in
   arg_declare:
   - '{cxx_type} *{cxx_var};'
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15709,10 +15816,11 @@ py_in_struct_class:
   name: py_in_struct_class
   intent: in
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
 py_in_struct_list:
   name: py_in_struct_list
   intent: in
@@ -15721,9 +15829,10 @@ py_in_struct_numpy:
   intent: in
   arg_declare:
   - '{cxx_type} *{cxx_var};'
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15761,8 +15870,9 @@ py_in_vector<native>&_list:
   intent: in
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
+  arg_call:
+  - '{cxx_var}'
   c_helper: create_from_PyObject_vector_{cxx_T}
-  cxx_local_var: scalar
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -15772,13 +15882,16 @@ py_in_vector<native>&_list:
   - "if ({hnamefunc0}\t({pytmp_var},\t \"{c_var}\",\t {cxx_var}) == -1)"
   - +goto fail;-
   goto_fail: true
+  local:
+  - cxx
 py_in_vector<native>&_numpy:
   name: py_in_vector<native>&_numpy
   intent: in
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
   - '{cxx_T} * {data_var};'
-  cxx_local_var: scalar
+  arg_call:
+  - '{cxx_var}'
   need_numpy: true
   parse_format: O
   parse_args:
@@ -15800,6 +15913,8 @@ py_in_vector<native>&_numpy:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
 py_in_void*:
   name: py_in_void*
   intent: in
@@ -15933,8 +16048,7 @@ py_inout_shadow_*:
   name: py_inout_shadow_*
   intent: inout
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
 py_inout_string:
   name: py_inout_string
   intent: inout
@@ -15943,8 +16057,12 @@ py_inout_string:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_inout_string&:
   name: py_inout_string&
   intent: inout
@@ -15953,8 +16071,12 @@ py_inout_string&:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_inout_string*:
   name: py_inout_string*
   intent: inout
@@ -15963,18 +16085,21 @@ py_inout_string*:
   post_declare:
   - '{c_const}std::string {cxx_var}({c_var});'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
+  local:
+  - cxx
 py_inout_struct&_class:
   name: py_inout_struct&_class
   intent: inout
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   object_created: true
   incref_on_return: true
 py_inout_struct&_numpy:
@@ -16016,8 +16141,9 @@ py_inout_struct*_class:
   name: py_inout_struct*_class
   intent: inout
   post_declare:
-  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
+  - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+  fmtdict:
+    cxx_member: ->
   object_created: true
   incref_on_return: true
 py_inout_struct*_list:
@@ -16061,6 +16187,34 @@ py_inout_struct*_numpy:
 py_inout_struct_list:
   name: py_inout_struct_list
   intent: inout
+py_mixin_alloc-cxx-type:
+  name: py_mixin_alloc-cxx-type
+  intent: mixin
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
+  fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
+  local:
+  - cxx
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_mixin_array-ContiguousFromObject:
   name: py_mixin_array-ContiguousFromObject
   intent: mixin
@@ -16093,12 +16247,73 @@ py_mixin_array-NewFromDescr:
   - Py_INCREF({PYN_descr});
   - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewFromDescr(\t&PyArray_Type,\t\
     \ {PYN_descr},\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};"
+py_mixin_array-NewFromDescr2:
+  name: py_mixin_array-NewFromDescr2
+  intent: mixin
+  need_numpy: true
+  object_created: true
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  post_call:
+  - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
+  - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
+    \ \t{nullptr}, {cxx_var}, 0, {nullptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
 py_mixin_array-SimpleNew:
   name: py_mixin_array-SimpleNew
   intent: mixin
   post_parse:
   - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
     {npy_dims_var}, {numpy_type}){cast2};'
+py_mixin_array-SimpleNewFromData:
+  name: py_mixin_array-SimpleNewFromData
+  intent: mixin
+  need_numpy: true
+  object_created: true
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  post_call:
+  - '{npy_dims_var}[0] = {cxx_var}->size();'
+  - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
+    \ {cxx_var}->data());"
+  - if ({py_var} == {nullptr}) goto fail;
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+py_mixin_array-SimpleNewFromData2:
+  name: py_mixin_array-SimpleNewFromData2
+  intent: mixin
+  need_numpy: true
+  object_created: true
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  post_call:
+  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
+    \ {numpy_type},\t {cxx_nonconst_ptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+py_mixin_array-capsule:
+  name: py_mixin_array-capsule
+  intent: mixin
+  declare:
+  - PyObject *{py_capsule} = {nullptr};
+  post_call:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+  fail:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  local:
+  - capsule
 py_mixin_array-get-data:
   name: py_mixin_array-get-data
   intent: mixin
@@ -16132,20 +16347,18 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
-py_mixin_capsule:
-  name: py_mixin_capsule
+py_mixin_function-struct-class:
+  name: py_mixin_function-struct-class
   intent: mixin
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  object_created: true
+  declare:
+  - PyObject *{py_var} = {nullptr};  // struct_class
+  post_call:
+  - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
+  - if ({py_var} == {nullptr}) goto fail;
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
 py_mixin_malloc:
   name: py_mixin_malloc
   intent: mixin
@@ -16179,6 +16392,26 @@ py_mixin_malloc_error:
   - PyErr_NoMemory();
   - goto fail;
   - -}}
+py_mixin_malloc_error2:
+  name: py_mixin_malloc_error2
+  intent: mixin
+  pre_call:
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+  goto_fail: true
+py_mixin_string-fmtdict:
+  name: py_mixin_string-fmtdict
+  intent: mixin
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+py_mixin_string-fmtdict-scalar:
+  name: py_mixin_string-fmtdict-scalar
+  intent: mixin
+  fmtdict:
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
 py_mixin_template_array_error:
   name: py_mixin_template_array_error
   intent: mixin
@@ -16234,13 +16467,16 @@ py_out_char*_charlen:
 py_out_enum*:
   name: py_out_enum*
   intent: out
+  fmtdict:
+    cxx_member: .
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
   declare:
   - '{cxx_type} {py_var};'
   post_call:
   - '*{c_var} = ({cxx_type}) {py_var};'
+  local:
+  - cxx
 py_out_native&:
   name: py_out_native&
   intent: out
@@ -16270,17 +16506,6 @@ py_out_native*&_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -16316,17 +16541,6 @@ py_out_native**_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -16435,34 +16649,45 @@ py_out_string:
   post_declare:
   - '{c_const}std::string {cxx_var};'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_out_string&:
   name: py_out_string&
   intent: out
   post_declare:
   - '{c_const}std::string {cxx_var};'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
-  cxx_local_var: scalar
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
+  arg_call:
+  - '{cxx_var}'
+  local:
+  - cxx
 py_out_string*:
   name: py_out_string*
   intent: out
   post_declare:
   - '{c_const}std::string {cxx_var};'
   fmtdict:
-    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+    cxx_member: .
+    ctor_expr: "{cxx_var}.data(),\t {cxx_var}.size()"
   arg_call:
   - '&{cxx_var}'
-  cxx_local_var: scalar
+  local:
+  - cxx
 py_out_struct&_class:
   name: py_out_struct&_class
   intent: out
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
+  fmtdict:
+    cxx_member: ->
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -16516,7 +16741,8 @@ py_out_struct*_class:
   intent: out
   arg_declare:
   - '{cxx_type} *{cxx_var} = {nullptr};'
-  cxx_local_var: pointer
+  fmtdict:
+    cxx_member: ->
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -16580,8 +16806,9 @@ py_out_vector<native>&_list:
   intent: out
   post_declare:
   - std::vector<{cxx_T}> {cxx_var};
+  arg_call:
+  - '{cxx_var}'
   c_helper: to_PyList_vector_{cxx_T}
-  cxx_local_var: scalar
   object_created: true
   declare:
   - PyObject * {py_var} = {nullptr};
@@ -16591,36 +16818,62 @@ py_out_vector<native>&_list:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+  local:
+  - cxx
 py_out_vector<native>&_numpy:
   name: py_out_vector<native>&_numpy
   intent: out
-  allocate_local_var: true
+  arg_declare:
+  - '{cxx_type} *{py_local_cxx} = {nullptr};'
   arg_call:
   - '*{cxx_var}'
-  cxx_local_var: pointer
   need_numpy: true
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  - PyObject *{py_capsule} = {nullptr};
+  pre_call:
+  - '{py_local_cxx} = new {cxx_type};'
+  - if ({py_local_cxx} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
   post_call:
   - '{npy_dims_var}[0] = {cxx_var}->size();'
   - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
     \ {cxx_var}->data());"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
   - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
     {PY_capsule_destructor_function});"
   - if ({py_capsule} == {nullptr}) goto fail;
   - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
   - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
     \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
+  destructor_name: '{cxx_type} *'
+  destructor:
+  - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+  - delete cxx_ptr;
   fail:
+  - if ({cxx_var} != {nullptr}) {{+
+  - '{PY_release_memory_function}({capsule_order}, {cxx_var});'
+  - -}}
   - Py_XDECREF({py_var});
+  - Py_XDECREF({py_capsule});
   goto_fail: true
+  local:
+  - cxx
+  - capsule
+  lang_c:
+    pre_call:
+    - '{py_local_cxx} = malloc(sizeof({cxx_type}));'
+    destructor:
+    - free(ptr);
+  lang_cxx:
+    pre_call:
+    - '{py_local_cxx} = new {cxx_type};'
+    destructor:
+    - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
+    - delete cxx_ptr;
 py_out_void*&:
   name: py_out_void*&
   intent: out

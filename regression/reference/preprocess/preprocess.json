@@ -489,7 +489,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_in_native"
                                 }
                             },
                             "share": {
@@ -859,7 +860,8 @@
                                     "meta": {
                                         "intent": "in",
                                         "value": true
-                                    }
+                                    },
+                                    "stmt": "py_in_native"
                                 }
                             },
                             "share": {

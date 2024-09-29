@@ -446,26 +446,24 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "in": {
                             "fmtdict": {
-                                "c_abstract_decl": "enum ENU_Color",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_type": "enum ENU_Color",
                                 "c_var": "in",
                                 "ctor_expr": "in",
-                                "cxx_abstract_decl": "Color",
                                 "cxx_addr": "&",
-                                "cxx_decl": "Color SH_in",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&in",
                                 "cxx_type": "Color",
-                                "cxx_val": "static_cast<Color>(in)",
                                 "cxx_var": "SH_in",
                                 "data_var": "SHData_in",
                                 "numpy_type": "NPY_SHORT",
+                                "py_local_cxx": "SH_in",
                                 "py_var": "SHPy_in",
                                 "size_var": "SHSize_in",
                                 "stmt": "py_in_enum",
@@ -474,7 +472,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -752,26 +751,24 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "in": {
                             "fmtdict": {
-                                "c_abstract_decl": "enum ENU_Color",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_type": "enum ENU_Color",
                                 "c_var": "in",
                                 "ctor_expr": "in",
-                                "cxx_abstract_decl": "Color",
                                 "cxx_addr": "&",
-                                "cxx_decl": "Color SH_in",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&in",
                                 "cxx_type": "Color",
-                                "cxx_val": "static_cast<Color>(in)",
                                 "cxx_var": "SH_in",
                                 "data_var": "SHData_in",
                                 "numpy_type": "NPY_SHORT",
+                                "py_local_cxx": "SH_in",
                                 "py_var": "SHPy_in",
                                 "size_var": "SHSize_in",
                                 "stmt": "py_in_enum",
@@ -780,7 +777,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {

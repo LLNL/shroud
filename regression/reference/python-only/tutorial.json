@@ -195,7 +195,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -219,7 +220,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -243,7 +245,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -368,7 +371,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_string"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -385,6 +389,7 @@
                                 "cxx_var": "SH_arg1",
                                 "data_var": "SHData_arg1",
                                 "numpy_type": null,
+                                "py_local_cxx": "SH_arg1",
                                 "py_var": "SHPy_arg1",
                                 "size_var": "SHSize_arg1",
                                 "stmt": "py_in_string&",
@@ -392,7 +397,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_string&"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -409,6 +415,7 @@
                                 "cxx_var": "SH_arg2",
                                 "data_var": "SHData_arg2",
                                 "numpy_type": null,
+                                "py_local_cxx": "SH_arg2",
                                 "py_var": "SHPy_arg2",
                                 "size_var": "SHSize_arg2",
                                 "stmt": "py_in_string&",
@@ -416,7 +423,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_string&"
                         }
                     },
                     "share": {
@@ -533,7 +541,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -557,7 +566,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "arg2": {
                             "fmtdict": {
@@ -583,7 +593,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_bool"
                         }
                     },
                     "share": {
@@ -693,6 +704,7 @@
                                 "cxx_var": "SH_name",
                                 "data_var": "SHData_name",
                                 "numpy_type": null,
+                                "py_local_cxx": "SH_name",
                                 "py_var": "SHPy_name",
                                 "size_var": "SHSize_name",
                                 "stmt": "py_in_string&",
@@ -700,7 +712,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_string&"
                         }
                     },
                     "share": {
@@ -803,7 +816,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1023,7 +1037,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1163,7 +1178,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1627,7 +1643,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "name": {
                             "fmtdict": {
@@ -1644,6 +1661,7 @@
                                 "cxx_var": "SH_name",
                                 "data_var": "SHData_name",
                                 "numpy_type": null,
+                                "py_local_cxx": "SH_name",
                                 "py_var": "SHPy_name",
                                 "size_var": "SHSize_name",
                                 "stmt": "py_in_string&",
@@ -1651,7 +1669,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_string&"
                         }
                     },
                     "share": {
@@ -1777,7 +1796,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "num": {
                             "fmtdict": {
@@ -1801,7 +1821,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "offset": {
                             "fmtdict": {
@@ -1825,7 +1846,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "stride": {
                             "fmtdict": {
@@ -1849,7 +1871,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1990,7 +2013,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "num": {
                             "fmtdict": {
@@ -2014,7 +2038,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "offset": {
                             "fmtdict": {
@@ -2038,7 +2063,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "stride": {
                             "fmtdict": {
@@ -2062,7 +2088,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "type": {
                             "fmtdict": {
@@ -2086,7 +2113,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -2199,7 +2227,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -2223,7 +2252,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -2316,26 +2346,24 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_enum"
                         },
                         "arg": {
                             "fmtdict": {
-                                "c_abstract_decl": "enum TUT_Color",
                                 "c_const": "",
                                 "c_deref": "",
                                 "c_type": "enum TUT_Color",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
-                                "cxx_abstract_decl": "tutorial::Color",
                                 "cxx_addr": "&",
-                                "cxx_decl": "tutorial::Color SH_arg",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&arg",
                                 "cxx_type": "tutorial::Color",
-                                "cxx_val": "static_cast<tutorial::Color>(arg)",
                                 "cxx_var": "SH_arg",
                                 "data_var": "SHData_arg",
                                 "numpy_type": "NPY_INT",
+                                "py_local_cxx": "SH_arg",
                                 "py_var": "SHPy_arg",
                                 "size_var": "SHSize_arg",
                                 "stmt": "py_in_enum",
@@ -2344,7 +2372,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_enum"
                         }
                     },
                     "share": {
@@ -2477,7 +2506,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native&"
                         },
                         "min": {
                             "fmtdict": {
@@ -2501,7 +2531,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_native&"
                         }
                     },
                     "share": {
@@ -2734,7 +2765,8 @@
                             "meta": {
                                 "intent": "function",
                                 "len": "30"
-                            }
+                            },
+                            "stmt": "py_function_string&"
                         }
                     },
                     "share": {

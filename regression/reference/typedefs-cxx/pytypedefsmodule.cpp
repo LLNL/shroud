@@ -100,7 +100,7 @@ PY_returnEnum(
         return nullptr;
 
     // post_declare
-    iColor SH_in = static_cast<Color>(in);
+    iColor SH_in = static_cast<iColor>(in);
 
     iColor SHCXX_rv = returnEnum(SH_in);
 
@@ -139,7 +139,7 @@ PY_returnTypeID(
         return nullptr;
 
     // post_declare
-    TypeID SH_in = static_cast<DataTypeID>(in);
+    TypeID SH_in = static_cast<TypeID>(in);
 
     TypeID SHCXX_rv = returnTypeID(SH_in);
 

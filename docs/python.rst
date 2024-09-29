@@ -251,14 +251,6 @@ C variables are created before the call to ``Py_ParseArgs``.
 C++ variables are then created in *post_parse* and *pre_call*.
 For example, creating a ``std::string`` from a ``char *``.
 
-allocate_local_var
-^^^^^^^^^^^^^^^^^^
-
-Functions which return a struct/class instance (such as std::vector)
-need to allocate a local variable which will be used to store the result.
-The Python object will maintain a pointer to the instance until it is
-deleted.
-
 c_header
 ^^^^^^^^
 
@@ -336,15 +328,6 @@ Often used to define variables of type ``PyObject *``.
 .. When defined, *typemap.PY_format* is append to the
    format string for ``PyArg_ParseTupleAndKeywords`` and
    *c_var* is used to hold the parsed.
-
-cxx_local_var
-^^^^^^^^^^^^^
-
-Set when a C++ variable is created by post_parse.
-Set to *scalar* or *pointer* depending on the declaration in *post_declare*
-*post_parse* or *pre_call*.
-
-Used to set format fields *cxx_member*
 
 parse_format
 ^^^^^^^^^^^^
@@ -440,6 +423,12 @@ arg_call
 
 List of arguments to pass to function.
 
+call
+^^^^
+
+Used to call  the function.
+Used to assign function result to a variable.
+
 post_call
 ^^^^^^^^^
 
@@ -478,6 +467,49 @@ by the function. The reference count must be incremented before it is
 returned.  This can be done by ``Py_BuildValue`` with the ``O`` format
 field. But when there is only one return value, ``Py_INCREF`` will be
 called explicitly.
+
+destructor_name
+^^^^^^^^^^^^^^^
+
+A name for the destructor code in *destructor*.
+Must be unique.  May include format strings:
+
+.. code-block:: yaml
+
+    destructor_name: std_vector_{cxx_T}
+
+destructor
+^^^^^^^^^^
+
+A list of lines of code used to delete memory. Usually allocated by a *pre_call*
+statement.
+
+.. The code is inserted into *C_memory_dtor_function* which will provide
+   the address of the memory to destroy in the variable ``void *ptr``.
+
+For example:
+
+.. code-block:: yaml
+
+    destructor:
+    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
+    -  delete cxx_ptr;
+
+local
+^^^^^
+
+A list of suffixes for local variable names.
+
+.. code-block:: yaml
+
+    local:
+    - len
+
+Create variable names in the format dictionary using
+``{C_local}{rootname}_{name}``.
+For example, argument *foo* creates *SHC_foo_len*.
+
+The format field is named *py_local_{name}*.
 
 object_created
 ^^^^^^^^^^^^^^

@@ -990,7 +990,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -1019,7 +1020,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_struct_numpy"
                         }
                     },
                     "share": {
@@ -1120,7 +1122,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -1149,7 +1152,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_struct*_numpy"
                         }
                     },
                     "share": {
@@ -1269,7 +1273,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "outbuf": {
                             "fmtdict": {
@@ -1294,7 +1299,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_char*_charlen"
                         },
                         "s1": {
                             "fmtdict": {
@@ -1323,7 +1329,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_struct*_numpy"
                         }
                     },
                     "share": {
@@ -1430,7 +1437,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_native"
                         },
                         "arg": {
                             "fmtdict": {
@@ -1459,7 +1467,8 @@
                             },
                             "meta": {
                                 "intent": "in"
-                            }
+                            },
+                            "stmt": "py_in_struct*_numpy"
                         }
                     },
                     "share": {
@@ -1594,7 +1603,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_struct*_numpy"
                         },
                         "d": {
                             "fmtdict": {
@@ -1618,7 +1628,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "i": {
                             "fmtdict": {
@@ -1642,7 +1653,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1766,7 +1778,8 @@
                             },
                             "meta": {
                                 "intent": "inout"
-                            }
+                            },
+                            "stmt": "py_inout_struct*_numpy"
                         }
                     },
                     "share": {
@@ -1854,19 +1867,20 @@
                                 "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
-                                "c_deref": "*",
+                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "capsule_order": "1",
-                                "ctor_expr": "*SHCXX_rv",
-                                "cxx_addr": "",
-                                "cxx_alloc_decl": "Cstruct1 *SHCXX_rv",
-                                "cxx_member": "->",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
                                 "cxx_type": "Cstruct1",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
                                 "numpy_type": null,
                                 "py_capsule": "SHC_SHCXX_rv",
+                                "py_local_capsule": "SHC_SHCXX_rv",
+                                "py_local_cxx": "SHCXX_rv",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
                                 "stmt": "py_function_struct_numpy",
@@ -1874,7 +1888,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_struct_numpy"
                         },
                         "d": {
                             "fmtdict": {
@@ -1898,7 +1913,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "i": {
                             "fmtdict": {
@@ -1922,7 +1938,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -1960,7 +1977,7 @@
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "*SHCXX_rv =\t ",
+                        "PY_rv_asgn": "Cstruct1 SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructByValue",
@@ -2046,7 +2063,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_struct*_numpy"
                         },
                         "d": {
                             "fmtdict": {
@@ -2070,7 +2088,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "i": {
                             "fmtdict": {
@@ -2094,7 +2113,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         }
                     },
                     "share": {
@@ -2237,7 +2257,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_struct*_numpy"
                         },
                         "d": {
                             "fmtdict": {
@@ -2261,7 +2282,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "i": {
                             "fmtdict": {
@@ -2285,7 +2307,8 @@
                             "meta": {
                                 "intent": "in",
                                 "value": true
-                            }
+                            },
+                            "stmt": "py_in_native"
                         },
                         "outbuf": {
                             "fmtdict": {
@@ -2310,7 +2333,8 @@
                             },
                             "meta": {
                                 "intent": "out"
-                            }
+                            },
+                            "stmt": "py_out_char*_charlen"
                         }
                     },
                     "share": {
@@ -2433,7 +2457,8 @@
                                 ],
                                 "dimension": "2",
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_struct*_numpy"
                         }
                     },
                     "share": {
@@ -2521,7 +2546,8 @@
                             },
                             "meta": {
                                 "intent": "function"
-                            }
+                            },
+                            "stmt": "py_function_struct*_numpy"
                         }
                     },
                     "share": {
