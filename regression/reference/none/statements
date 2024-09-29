@@ -14574,9 +14574,9 @@ root
       array-SimpleNew -- py_mixin_array-SimpleNew
       array-SimpleNewFromData -- py_mixin_array-SimpleNewFromData
       array-SimpleNewFromData2 -- py_mixin_array-SimpleNewFromData2
+      array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
-      capsule -- py_mixin_capsule
       function-struct-class -- py_mixin_function-struct-class
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
@@ -16297,6 +16297,22 @@ py_mixin_array-SimpleNewFromData2:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+py_mixin_array-capsule:
+  name: py_mixin_array-capsule
+  intent: mixin
+  declare:
+  - PyObject *{py_capsule} = {nullptr};
+  post_call:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+  fail:
+  - Py_XDECREF({py_capsule});
+  local:
+  - capsule
 py_mixin_array-get-data:
   name: py_mixin_array-get-data
   intent: mixin
@@ -16330,22 +16346,6 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
-py_mixin_capsule:
-  name: py_mixin_capsule
-  intent: mixin
-  declare:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail:
-  - Py_XDECREF({py_capsule});
-  local:
-  - capsule
 py_mixin_function-struct-class:
   name: py_mixin_function-struct-class
   intent: mixin

@@ -1529,7 +1529,7 @@ return 1;""",
                     )
 
             # Code to convert parsed values (C or Python) to C++.
-            self.add_stmt_capsule2(intent_blk, fmt_arg)
+            self.add_stmt_capsule(intent_blk, fmt_arg)
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             update_code_blocks(locals(), intent_blk, fmt_arg)
@@ -1602,7 +1602,7 @@ return 1;""",
         # Add function pre_call code.
         need_blank0 = True
         if CXX_subprogram == "function":
-            self.add_stmt_capsule2(result_blk, fmt_result)
+            self.add_stmt_capsule(result_blk, fmt_result)
         # Result pre_call is added once before all default argument cases.
         if result_blk.pre_call:
             if need_blank0:
@@ -2091,15 +2091,12 @@ return 1;""",
                 
         return fmt_result, result_blk
 
-    def add_stmt_capsule2(self, stmts, fmt):
-        """Create code to release memory.
+    def add_stmt_capsule(self, stmts, fmt):
+        """Use code to release memory.
         Processes "destructor_name" and "destructor".
 
         For example, std::vector intent(out) must eventually release
         the vector via a capsule owned by the NumPy array.
-
-        XXX - Remove ability to set capsule_type in statements.
-        XXX - Move update_code_blocks here....
         """
         # Create capsule destructor
         destructor_name = stmts["destructor_name"]
@@ -3862,7 +3859,7 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_mixin_capsule",
+        name="py_mixin_array-capsule",
         notes=[
             "Create a PyCapsule and associate with a PyArray.",
             "This capsule contains a pointer to data and a destructor",
@@ -4677,7 +4674,7 @@ py_statements = [
             "py_mixin_alloc-cxx-type",
             "py_mixin_malloc_error2",
             "py_mixin_array-NewFromDescr2",
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         # XXX - expand to array of struct
         call=[
@@ -5052,7 +5049,7 @@ py_statements = [
             "py_mixin_alloc-cxx-type",
             "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         arg_call=["*{cxx_var}"],
     ),
@@ -5065,7 +5062,7 @@ py_statements = [
             "py_mixin_alloc-cxx-type",
             "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
-            "py_mixin_capsule",
+            "py_mixin_array-capsule",
         ],
         call=[
             "*{cxx_var} = {PY_this_call}{function_name}"
