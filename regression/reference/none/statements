@@ -14574,7 +14574,6 @@ root
       array-SimpleNew -- py_mixin_array-SimpleNew
       array-SimpleNewFromData -- py_mixin_array-SimpleNewFromData
       array-SimpleNewFromData2 -- py_mixin_array-SimpleNewFromData2
-      array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
       capsule -- py_mixin_capsule
@@ -15169,17 +15168,6 @@ py_function_native&_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -15207,17 +15195,6 @@ py_function_native*_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -15304,17 +15281,6 @@ py_function_struct*_numpy:
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
     \ \t{nullptr}, {cxx_var}, 0, {nullptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -16083,7 +16049,6 @@ py_inout_shadow_*:
   intent: inout
   post_declare:
   - "{c_const}{cxx_type} *{cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
-  cxx_local_var: pointer
 py_inout_string:
   name: py_inout_string
   intent: inout
@@ -16332,20 +16297,6 @@ py_mixin_array-SimpleNewFromData2:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
-py_mixin_array-capsule:
-  name: py_mixin_array-capsule
-  intent: mixin
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
 py_mixin_array-get-data:
   name: py_mixin_array-get-data
   intent: mixin
@@ -16554,17 +16505,6 @@ py_out_native*&_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
@@ -16600,17 +16540,6 @@ py_out_native**_numpy:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
-  declare_capsule:
-  - PyObject *{py_capsule} = {nullptr};
-  post_call_capsule:
-  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
-    {PY_capsule_destructor_function});"
-  - if ({py_capsule} == {nullptr}) goto fail;
-  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
-  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
-    \ {py_capsule}) < 0)\t goto fail;"
-  fail_capsule:
-  - Py_XDECREF({py_capsule});
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true

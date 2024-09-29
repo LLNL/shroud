@@ -2484,8 +2484,6 @@ def add_declarations(parent, node, symtab):
                     "pre_call", "call", "post_call", "final", "ret",
                     "declare",
                     "post_parse",
-                    "declare_capsule", "post_call_capsule", "fail_capsule",
-                    "declare_keep", "post_call_keep", "fail_keep",
                     "cleanup", "fail",
                 ])
             if "splicer" in dct:

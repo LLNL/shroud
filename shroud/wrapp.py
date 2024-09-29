@@ -1145,8 +1145,6 @@ return 1;""",
 
         fmt.PY_error_return - 'NULL' for all wrappers except constructors
                               which are called via tp_init and require -1.
-
-        A cxx local variable exists when cxx_local_var is defined.
         """
 
         # need_rv_decl - need Return Value declaration.
@@ -1403,25 +1401,11 @@ return 1;""",
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             converter, lang = fcfmt.find_arg_converter("f", self.language, arg_typemap)
-            cxx_local_var = intent_blk.cxx_local_var
-            if cxx_local_var:
-                # cxx_local_var is used when explicitly converting
-                # to a C++ var in post_declare code.
-                # For example, char * to std::string or
-                # extracting a class/struct pointer out of a PyObject.
-                # With PY_PyTypeObject, there is no c_var, only cxx_var
-                if not arg_typemap.PY_PyTypeObject:
-                    fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-                pass_var = fmt_arg.cxx_var
-                # cxx_member used with typemap fields like PY_ctor.
-                if cxx_local_var == "scalar":
-                    fmt_arg.cxx_member = "."
-                elif cxx_local_var == "pointer":
-                    fmt_arg.cxx_member = "->"
-            elif intent_blk.post_declare:
+            if intent_blk.post_declare:
                 # Any c to cxx conversion is explicit in statements.
                 pass
             elif intent != "out" and converter:
+                # ZZZ used?
                 # Make intermediate C++ variable
                 # Needed to pass address of variable.
                 # Convert type like with enums or MPI_Comm.
@@ -1546,9 +1530,6 @@ return 1;""",
 
             # Code to convert parsed values (C or Python) to C++.
             self.add_stmt_capsule2(intent_blk, fmt_arg)
-            allocate_local_blk = self.add_stmt_capsule(arg, intent_blk, fmt_arg)
-            if allocate_local_blk:
-                update_code_blocks(locals(), allocate_local_blk, fmt_arg)
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             update_code_blocks(locals(), intent_blk, fmt_arg)
@@ -1620,16 +1601,9 @@ return 1;""",
 
         # Add function pre_call code.
         need_blank0 = True
-        pre_call_deref = ""
         if CXX_subprogram == "function":
             self.add_stmt_capsule2(result_blk, fmt_result)
-            allocate_result_blk = self.add_stmt_capsule(ast, result_blk, fmt_result)
-            # Result pre_call is added once before all default argument cases.
-            if allocate_result_blk and allocate_result_blk.pre_call:
-                PY_code.extend(["", "// result pre_call"])
-                util.append_format_cmds(PY_code, allocate_result_blk, "pre_call", fmt_result)
-                need_blank0 = False
-                pre_call_deref = "*"
+        # Result pre_call is added once before all default argument cases.
         if result_blk.pre_call:
             if need_blank0:
                 PY_code.extend(["", "// result pre_call"])
@@ -1642,10 +1616,8 @@ return 1;""",
             if is_ctor:
                 pass
             elif found_default or goto_fail:
-                fmt.PY_rv_asgn = pre_call_deref + fmt_result.cxx_var + " =\t "
+                fmt.PY_rv_asgn = fmt_result.cxx_var + " =\t "
                 need_rv_decl = True
-            elif allocate_result_blk:
-                fmt.PY_rv_asgn = "*" + fmt_result.cxx_var + " =\t "
             else:
                 fmt.PY_rv_asgn = fmt.C_rv_decl + " =\t "
             if result_typemap.sgroup == "struct":
@@ -1762,8 +1734,6 @@ return 1;""",
                 # If an object has already been created,
                 # use another variable for the result.
                 fmt.PY_result = "SHPyResult"
-            if allocate_result_blk:
-                update_code_blocks(locals(), allocate_result_blk, fmt_result)
             update_code_blocks(locals(), result_blk, fmt_result)
             goto_fail = goto_fail or result_blk.goto_fail
             self.need_numpy = self.need_numpy or result_blk.need_numpy
@@ -2121,35 +2091,6 @@ return 1;""",
                 
         return fmt_result, result_blk
 
-    def XXXadd_stmt_capsule(self, stmts, fmt):
-        """Create code to release memory.
-        Processes "capsule_type" and "del_lines".
-
-        For example, std::vector intent(out) must eventually release
-        the vector via a capsule owned by the NumPy array.
-
-        XXX - Remove ability to set capsule_type in statements.
-        XXX - Move update_code_blocks here....
-        """
-        # Create capsule destructor
-        capsule_type = stmts.get("capsule_type", None)
-        if capsule_type:
-            capsule_type = wformat(capsule_type, fmt)
-            fmt.capsule_type = capsule_type
-
-            del_lines = stmts.get("del_lines", [])
-            if del_lines:
-                # Expand things like {cxx_T}
-                del_work = []
-                for line in del_lines:
-                    append_format(del_work, line, fmt)
-                del_lines = del_work
-            
-            capsule_order = self.add_capsule_code(
-                self.language + " " + capsule_type, del_lines)
-            fmt.capsule_order = capsule_order
-            fmt.py_capsule = "SHC_" + fmt.c_var
-
     def add_stmt_capsule2(self, stmts, fmt):
         """Create code to release memory.
         Processes "destructor_name" and "destructor".
@@ -2177,58 +2118,6 @@ return 1;""",
                 self.language + " " + destructor_name, destructor)
             fmt.capsule_order = capsule_order
                 
-    def add_stmt_capsule(self, ast, stmts, fmt):
-        """Create code to allocate/release memory.
-
-        For example, std::vector intent(out) must allocate a vector
-        instance and eventually release it via a capsule owned by the
-        NumPy array.
-
-        XXX - Move update_code_blocks here....
-
-        The results will be processed by format so literal curly must be protected.
-
-        """
-        declarator = ast.declarator
-        if declarator.is_pointer():
-            return None
-        allocate_local_var = stmts.allocate_local_var
-        if allocate_local_var:
-            # We're creating a pointer to a struct which will later then be assigned to.
-            # Have to discard constness or the assignment will produce a compile error.
-            #  *result = returnConstStructByValue()
-            fmt.cxx_alloc_decl = gen_arg_as_cxx(ast,
-                name=fmt.cxx_var, force_ptr=True, add_params=False,
-                remove_const=True,
-                with_template_args=True,
-            )
-            capsule_type = gen_arg_as_cxx(ast,
-                name=False, force_ptr=True, add_params=False,
-                with_template_args=True,
-            )
-            fmt.py_capsule = "SHC_" + fmt.c_var
-            # A pointer is always created by allocate_result_blk.
-            fmt.c_deref = "*"
-            fmt.cxx_addr = ""
-            fmt.cxx_member = "->"
-            fmt.ctor_expr = "*" + fmt.c_var
-            typemap = ast.typemap
-#            result_typeflag = ast.typemap.base
-#        result_typemap = ast.typemap
-            
-            return util.Scope(PyStmts,
-                declare=["{cxx_alloc_decl} = {nullptr};"],
-                pre_call=self.allocate_memory(
-                    fmt.cxx_var, capsule_type, fmt,
-                    "goto fail", ast.typemap.base),
-                fail=[
-                    "if ({cxx_var} != {nullptr}) {{+\n"
-                    "{PY_release_memory_function}({capsule_order}, {cxx_var});\n"
-                    "-}}"],
-                goto_fail=True,
-            )
-        return None
-        
     def allocate_memory(self, var, capsule_type, fmt,
                         error, as_type):
         """Return code to allocate an item.
@@ -3648,18 +3537,6 @@ def update_code_blocks(symtab, stmts, fmt):
         for cmd in getattr(stmts, clause):
             lstout.append(wformat(cmd, fmt))
 
-    # If capsule_order is defined, then add some additional code to 
-    # do reference counting.
-    if fmt.inlocal("capsule_order"):
-        suffix = "_capsule"
-    else:
-        suffix = "_keep"
-    for clause in ["declare", "post_call", "fail"]:
-        name = clause + suffix
-        if stmts.post_call_capsule:
-            util.append_format_cmds(symtab[clause + "_code"], stmts, name, fmt)
-
-
 def XXXdo_cast(lang, kind, typ, var):
     """Do cast based on language.
 
@@ -3720,10 +3597,9 @@ PyStmts = util.Scope(
     post_declare=[],
     fmtdict=None,
             
-    allocate_local_var=False,
     arg_call=None,
     c_header=[], c_helper=[],
-    cxx_header=[], cxx_local_var=None,
+    cxx_header=[],
     need_numpy=False,
     object_created=False,
     incref_on_return=False,
@@ -3733,8 +3609,6 @@ PyStmts = util.Scope(
     post_call=[],
     destructor_name=None,
     destructor=[],
-    declare_capsule=[], post_call_capsule=[], fail_capsule=[],
-    declare_keep=[], post_call_keep=[], fail_keep=[],
     cleanup=[], fail=[],
     goto_fail=False,
     getter=[], getter_helper=[],
@@ -4012,32 +3886,6 @@ py_statements = [
             "\t {py_capsule}) < 0)\t goto fail;",
         ],
         fail=[
-            "Py_XDECREF({py_capsule});",
-        ],
-    ),
-    dict(
-        name="py_mixin_array-capsule",
-        # XXX - This is deprecated, replaced by py_mixin_capsule
-        notes=[
-            "Create a PyCapsule and associate with a PyArray.",
-            "This capsule contains a pointer to data and a destructor",
-            "which will be used when the PyArray's reference count drops to zeo."
-        ],
-        declare_capsule=[
-            "PyObject *{py_capsule} = {nullptr};",
-        ],
-        post_call_capsule=[
-            "{py_capsule} = "
-            'PyCapsule_New({cxx_var}, "{PY_numpy_array_capsule_name}", '
-            "\t{PY_capsule_destructor_function});",
-            "if ({py_capsule} == {nullptr}) goto fail;",
-            "PyCapsule_SetContext({py_capsule},"
-            "\t {PY_fetch_context_function}({capsule_order}));",
-            "if (PyArray_SetBaseObject(\t"
-            "{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},"
-            "\t {py_capsule}) < 0)\t goto fail;",
-        ],
-        fail_capsule=[
             "Py_XDECREF({py_capsule});",
         ],
     ),
@@ -4357,9 +4205,9 @@ py_statements = [
             "py_function_native*_numpy",
             "py_function_native&_numpy",
         ],
+        # XXX - need capsule if owner=caller
         mixin=[
             "py_mixin_array-SimpleNewFromData2",
-            "py_mixin_array-capsule",
         ],
     ),
 
@@ -4604,7 +4452,6 @@ py_statements = [
         mixin=[
             "py_mixin_string-fmtdict-scalar",
         ],
-#        cxx_local_var="scalar",
         local=[
             "cxx",
         ],
@@ -4632,7 +4479,6 @@ py_statements = [
         mixin=[
             "py_mixin_string-fmtdict-scalar",
         ],
-#        cxx_local_var="scalar",
         local=[
             "cxx",
         ],
@@ -4658,7 +4504,6 @@ py_statements = [
             "cxx",
         ],
         arg_declare=[],
-#        cxx_local_var="scalar",
         post_declare=[
             "{c_const}std::string {cxx_var};"
         ],
@@ -4779,7 +4624,6 @@ py_statements = [
             "py_mixin_array_error",
             "py_mixin_array-get-data",
         ],
-#        cxx_local_var="pointer",
         fmtdict=dict(
             cxx_member="->",
         ),
@@ -4836,7 +4680,6 @@ py_statements = [
             "py_mixin_capsule",
         ],
         # XXX - expand to array of struct
-#        allocate_local_var=True,
         call=[
             "*{cxx_var} = {PY_this_call}{function_name}"
             "{CXX_template}({PY_call_list});",
@@ -4848,7 +4691,6 @@ py_statements = [
         ],
         mixin=[
             "py_mixin_array-NewFromDescr2",
-            "py_mixin_array-capsule",
         ],
     ),
 
@@ -4882,7 +4724,6 @@ py_statements = [
     dict(
         name="py_in_struct*_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
-#        cxx_local_var="pointer",
         fmtdict=dict(
             cxx_member="->",
         ),
@@ -4894,7 +4735,6 @@ py_statements = [
     dict(
         name="py_inout_struct*_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
-#        cxx_local_var="pointer",
         fmtdict=dict(
             cxx_member="->",
         ),
@@ -4911,7 +4751,6 @@ py_statements = [
             "py_function_shadow",
         ],
 #        allocate_local_var=True,  # needed to release memory
-#        cxx_local_var="pointer",
         fmtdict=dict(
             cxx_member="->",
         ),
@@ -4972,7 +4811,6 @@ py_statements = [
             "py_mixin_malloc_error2",
             "py_mixin_function-struct-class",
         ],
-#        allocate_local_var=True,
         call=[
             "*{cxx_var} = {PY_this_call}{function_name}"
             "{CXX_template}({PY_call_list});",
@@ -5025,7 +4863,6 @@ py_statements = [
     dict(
         name="py_in_shadow*",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
-#        cxx_local_var="pointer",
         fmtdict=dict(
             cxx_member="->",
         ),
@@ -5036,8 +4873,8 @@ py_statements = [
     ),
     dict(
         name="py_inout_shadow_*",
+        # XXX - is this tested?
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
-        cxx_local_var="pointer",  # XXX - untested
         post_declare=[
             "{c_const}{cxx_type} *{cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
@@ -5112,7 +4949,6 @@ py_statements = [
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
-#        cxx_local_var="scalar",
         local=[
             "cxx",
         ],
@@ -5139,7 +4975,6 @@ py_statements = [
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
-#        cxx_local_var="scalar",
         local=[
             "cxx",
         ],
@@ -5193,7 +5028,6 @@ py_statements = [
             "py_mixin_array-FROM-OFT-in",
             "py_mixin_template_array_error",
         ],
-#        cxx_local_var="scalar",
         local=[
             "cxx",
         ],
@@ -5220,9 +5054,6 @@ py_statements = [
             "py_mixin_array-SimpleNewFromData",
             "py_mixin_capsule",
         ],
-#        allocate_local_var=True,
-#        arg_declare=[],
-#        cxx_local_var="pointer",
         arg_call=["*{cxx_var}"],
     ),
     dict(
@@ -5240,7 +5071,6 @@ py_statements = [
             "*{cxx_var} = {PY_this_call}{function_name}"
             "{CXX_template}({PY_call_list});",
         ],
-#        allocate_local_var=True,
     ),
 
 

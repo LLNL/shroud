@@ -251,14 +251,6 @@ C variables are created before the call to ``Py_ParseArgs``.
 C++ variables are then created in *post_parse* and *pre_call*.
 For example, creating a ``std::string`` from a ``char *``.
 
-allocate_local_var
-^^^^^^^^^^^^^^^^^^
-
-Functions which return a struct/class instance (such as std::vector)
-need to allocate a local variable which will be used to store the result.
-The Python object will maintain a pointer to the instance until it is
-deleted.
-
 c_header
 ^^^^^^^^
 
@@ -336,15 +328,6 @@ Often used to define variables of type ``PyObject *``.
 .. When defined, *typemap.PY_format* is append to the
    format string for ``PyArg_ParseTupleAndKeywords`` and
    *c_var* is used to hold the parsed.
-
-cxx_local_var
-^^^^^^^^^^^^^
-
-Set when a C++ variable is created by post_parse.
-Set to *scalar* or *pointer* depending on the declaration in *post_declare*
-*post_parse* or *pre_call*.
-
-Used to set format fields *cxx_member*
 
 parse_format
 ^^^^^^^^^^^^
