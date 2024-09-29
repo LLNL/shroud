@@ -1428,8 +1428,7 @@ return 1;""",
             # Declare argument variable.
             if intent_blk.arg_declare is not None:
                 # Explicit declarations from py_statements.
-                for line in intent_blk.arg_declare:
-                    append_format(declare_code, line, fmt_arg)
+                append_format_lst(declare_code, intent_blk.arg_declare, fmt_arg)
             elif hasattr(arg_typemap, "is_typedef"):
                 # XXX - this helps typedefs to define PyArg type instead C wrapper type
                 declare_code.append("{} {};".format(
@@ -1483,8 +1482,7 @@ return 1;""",
                     # Must also define parse_args.
                     fmt_arg.pytmp_var = "SHTPy_" + fmt_arg.c_var
                     parse_format.append(intent_blk.parse_format)
-                    for varg in intent_blk.parse_args:
-                        append_format(parse_vargs, varg, fmt_arg)
+                    append_format_lst(parse_vargs, intent_blk.parse_args, fmt_arg)
                 elif arg_typemap.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
@@ -1537,8 +1535,7 @@ return 1;""",
 
             # Pass correct value to wrapped function.
             if intent_blk.arg_call:
-                for arg in intent_blk.arg_call:
-                    append_format(cxx_call_list, arg, fmt_arg)
+                append_format_lst(cxx_call_list, intent_blk.arg_call, fmt_arg)
             else:
                 cxx_call_list.append(pass_var)
         # end for arg in args:
@@ -1674,8 +1671,7 @@ return 1;""",
 
             capsule_order = None
             if result_blk.call:
-                for line in result_blk.call:
-                    append_format(PY_code, line, fmt_result)
+                append_format_lst(PY_code, result_blk.call, fmt_result)
             elif is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
             elif CXX_subprogram == "subroutine":
@@ -2107,8 +2103,7 @@ return 1;""",
             if destructor:
                 # Expand things like {cxx_T}
                 del_work = []
-                for line in destructor:
-                    append_format(del_work, line, fmt)
+                append_format_lst(del_work, destructor, fmt)
                 destructor = del_work
             
             capsule_order = self.add_capsule_code(
@@ -2216,8 +2211,7 @@ return 1;""",
 
             # format and indent default bodies
             fmted = [1]
-            for line in default:
-                append_format(fmted, line, fmt_func)
+            append_format_lst(fmted, default, fmt_func)
             fmted.append(-1)
 
             self._create_splicer(typename, output, fmted)
