@@ -1405,7 +1405,7 @@ return 1;""",
                 # Any c to cxx conversion is explicit in statements.
                 pass
             elif intent != "out" and converter:
-                # ZZZ used?
+                # XXX - Used by MPI and c_to_cxx
                 # Make intermediate C++ variable
                 # Needed to pass address of variable.
                 # Convert type like with enums or MPI_Comm.
@@ -3885,6 +3885,7 @@ py_statements = [
         fail=[
             "Py_XDECREF({py_capsule});",
         ],
+        goto_fail=True,
     ),
 
     dict(

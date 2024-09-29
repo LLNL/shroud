@@ -16311,6 +16311,7 @@ py_mixin_array-capsule:
     \ {py_capsule}) < 0)\t goto fail;"
   fail:
   - Py_XDECREF({py_capsule});
+  goto_fail: true
   local:
   - capsule
 py_mixin_array-get-data:
