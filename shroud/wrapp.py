@@ -3632,6 +3632,24 @@ py_statements = [
             "Default returned by lookup_fc_stmts when group is not found.",
         ],
     ),
+    dict(
+        name="py_mixin_function-void",
+        comments=[
+            "Call void function."
+        ],
+        call=[
+            "{C_call_function};",
+        ],
+    ),
+    dict(
+        name="py_mixin_function-assign-pointee",
+        comments=[
+            "Call function and assign to pointee."
+        ],
+        call=[
+            "*{cxx_var} = {C_call_function};",
+        ],
+    ),
 
     dict(name="py_mixin_array-parse",
          comments=[
@@ -4665,11 +4683,9 @@ py_statements = [
             "py_mixin_malloc_error2",
             "py_mixin_array-NewFromDescr2",
             "py_mixin_array-capsule",
+            "py_mixin_function-assign-pointee",
         ],
         # XXX - expand to array of struct
-        call=[
-            "*{cxx_var} = {C_call_function};",
-        ],
     ),
     dict(
         alias=[
@@ -4796,9 +4812,7 @@ py_statements = [
             "py_mixin_alloc-cxx-type",
             "py_mixin_malloc_error2",
             "py_mixin_function-struct-class",
-        ],
-        call=[
-            "*{cxx_var} = {C_call_function};",
+            "py_mixin_function-assign-pointee",
         ],
         fmtdict=dict(
             # Used with py_mixin_function-struct-class
@@ -5051,9 +5065,7 @@ py_statements = [
             "py_mixin_malloc_error2",
             "py_mixin_array-SimpleNewFromData",
             "py_mixin_array-capsule",
-        ],
-        call=[
-            "*{cxx_var} = {C_call_function};",
+            "py_mixin_function-assign-pointee",
         ],
     ),
 

@@ -14577,7 +14577,9 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
+      function-assign-pointee -- py_mixin_function-assign-pointee
       function-struct-class -- py_mixin_function-struct-class
+      function-void -- py_mixin_function-void
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
@@ -16347,6 +16349,11 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_function-assign-pointee:
+  name: py_mixin_function-assign-pointee
+  intent: mixin
+  call:
+  - '*{cxx_var} = {C_call_function};'
 py_mixin_function-struct-class:
   name: py_mixin_function-struct-class
   intent: mixin
@@ -16359,6 +16366,11 @@ py_mixin_function-struct-class:
   fail:
   - Py_XDECREF({py_var});
   goto_fail: true
+py_mixin_function-void:
+  name: py_mixin_function-void
+  intent: mixin
+  call:
+  - '{C_call_function};'
 py_mixin_malloc:
   name: py_mixin_malloc
   intent: mixin
