@@ -15301,7 +15301,7 @@ py_function_struct_class:
   - goto fail;
   - -}}
   call:
-  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
+  - '*{cxx_var} = {C_call_function};'
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
@@ -15348,7 +15348,7 @@ py_function_struct_numpy:
   - goto fail;
   - -}}
   call:
-  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
+  - '*{cxx_var} = {C_call_function};'
   post_call:
   - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
@@ -15414,7 +15414,7 @@ py_function_vector<native>_numpy:
   - goto fail;
   - -}}
   call:
-  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
+  - '*{cxx_var} = {C_call_function};'
   post_call:
   - '{npy_dims_var}[0] = {cxx_var}->size();'
   - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
@@ -15480,7 +15480,7 @@ py_function_vector_numpy:
   - goto fail;
   - -}}
   call:
-  - '*{cxx_var} = {PY_this_call}{function_name}{CXX_template}({PY_call_list});'
+  - '*{cxx_var} = {C_call_function};'
   post_call:
   - '{npy_dims_var}[0] = {cxx_var}->size();'
   - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\

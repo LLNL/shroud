@@ -1679,19 +1679,9 @@ return 1;""",
             elif is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
             elif CXX_subprogram == "subroutine":
-                append_format(
-                    PY_code,
-                    "{PY_this_call}{function_name}"
-                    "{CXX_template}({PY_call_list});",
-                    fmt,
-                )
+                append_format(PY_code, "{C_call_function};", fmt)
             else:
-                append_format(
-                    PY_code,
-                    "{PY_rv_asgn}{PY_this_call}{function_name}"
-                    "{CXX_template}({PY_call_list});",
-                    fmt,
-                )
+                append_format(PY_code, "{PY_rv_asgn}{C_call_function};", fmt)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)
@@ -4678,8 +4668,7 @@ py_statements = [
         ],
         # XXX - expand to array of struct
         call=[
-            "*{cxx_var} = {PY_this_call}{function_name}"
-            "{CXX_template}({PY_call_list});",
+            "*{cxx_var} = {C_call_function};",
         ],
     ),
     dict(
@@ -4809,8 +4798,7 @@ py_statements = [
             "py_mixin_function-struct-class",
         ],
         call=[
-            "*{cxx_var} = {PY_this_call}{function_name}"
-            "{CXX_template}({PY_call_list});",
+            "*{cxx_var} = {C_call_function};",
         ],
         fmtdict=dict(
             # Used with py_mixin_function-struct-class
@@ -5065,8 +5053,7 @@ py_statements = [
             "py_mixin_array-capsule",
         ],
         call=[
-            "*{cxx_var} = {PY_this_call}{function_name}"
-            "{CXX_template}({PY_call_list});",
+            "*{cxx_var} = {C_call_function};",
         ],
     ),
 
