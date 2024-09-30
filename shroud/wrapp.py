@@ -1297,6 +1297,7 @@ return 1;""",
             fmt_arg.data_var = "SHData_" + arg_name
             fmt_arg.size_var = "SHSize_" + arg_name
             fmt_arg.value_var = "SHValue_" + arg_name
+            fmt_arg.gen = fcfmt.FormatGen(node, arg, fmt_arg, self.language)
 
             arg_typemap = arg.typemap
             fmt_arg.numpy_type = arg_typemap.PYN_typenum
@@ -2052,6 +2053,7 @@ return 1;""",
         fmt_result.size_var = "SHSize_" + fmt_result.C_result
         fmt_result.value_var = "SHValue_" + fmt_result.C_result
         fmt_result.numpy_type = result_typemap.PYN_typenum
+        fmt_result.gen = fcfmt.FormatGen(node, node.ast, fmt_result, self.language)
         update_fmt_from_typemap(fmt_result, result_typemap)
 
         self.set_fmt_fields(cls, node, ast, bind_result, True)
