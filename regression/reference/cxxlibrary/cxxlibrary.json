@@ -180,6 +180,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->Cstruct1_cls_ctor(ifield,\t dfield)",
                                 "C_rv_decl": "Cstruct1_cls SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "ifield,\t dfield",
@@ -2555,6 +2556,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStructByReferenceCls(*arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
@@ -2688,6 +2690,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStructByReferenceInCls(*arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
@@ -2802,6 +2805,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStructByReferenceInoutCls(*arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
                         "PY_doc_string": "documentation",
@@ -2914,6 +2918,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStructByReferenceOutCls(*arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
                         "PY_doc_string": "documentation",
@@ -3329,6 +3334,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "defaultPtrIsNULL(data)",
                         "C_rv_decl": "bool SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "data",
@@ -4246,6 +4252,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "defaultArgsInOut(in1,\t &out1,\t &out2,\t flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "in1,\t &out1,\t &out2,\t flag",
                         "PY_doc_string": "documentation",
@@ -6420,6 +6427,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "structns::passStructByReference(*arg)",
                                 "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "*arg",
@@ -6705,6 +6713,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "structns::passStructByReferenceIn(*arg)",
                                 "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "*arg",
@@ -6932,6 +6941,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "structns::passStructByReferenceInout(*arg)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "*arg",
                                 "PY_doc_string": "documentation",
@@ -7157,6 +7167,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "structns::passStructByReferenceOut(*arg)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "*arg",
                                 "PY_doc_string": "documentation",

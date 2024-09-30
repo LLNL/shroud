@@ -501,6 +501,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "convert_to_int(SH_in)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
@@ -806,6 +807,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnEnum(SH_in)",
                         "C_rv_decl": "Color SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",

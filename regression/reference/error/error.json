@@ -1002,6 +1002,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "BadFstatements()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -1234,6 +1235,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "AssumedRank(&data)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&data",
                         "PY_doc_string": "documentation",
@@ -1718,6 +1720,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "PYGoodFunction()",
                         "PY_array_arg": "none",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",

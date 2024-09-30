@@ -500,6 +500,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "typefunc(arg)",
                         "C_rv_decl": "Alias SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
@@ -871,6 +872,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnEnum(SH_in)",
                         "C_rv_decl": "iColor SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
@@ -1089,6 +1091,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnTypeID(SH_in)",
                         "C_rv_decl": "TypeID SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
@@ -1264,6 +1267,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "typestruct(&arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1",
                         "PY_doc_string": "documentation",

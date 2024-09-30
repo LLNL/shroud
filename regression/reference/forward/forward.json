@@ -252,6 +252,7 @@
                                 "rv_decl": "forward::Class2 SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->ctor()",
                                 "C_rv_decl": "forward::Class2 SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -640,6 +641,7 @@
                                 "nresults": 0
                             },
                             "py": {
+                                "C_call_function": "self->obj->func1(arg)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "arg",
                                 "PY_doc_string": "documentation",
@@ -912,6 +914,7 @@
                                 "nresults": 0
                             },
                             "py": {
+                                "C_call_function": "self->obj->acceptClass3(arg)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "arg",
                                 "PY_doc_string": "documentation",

@@ -193,6 +193,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->Arrays1_ctor(name,\t count)",
                                 "C_rv_decl": "Arrays1 SHCXX_rv",
                                 "PY_array_arg": "list",
                                 "PY_call_list": "name,\t count",

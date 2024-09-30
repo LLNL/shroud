@@ -295,6 +295,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexInoutPtr(&arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1",
                         "PY_doc_string": "documentation",
@@ -471,6 +472,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexOutPtr(&arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1",
                         "PY_doc_string": "documentation",
@@ -629,6 +631,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexInoutPtrFlag(&arg1,\t &flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1,\t &flag",
                         "PY_doc_string": "documentation",
@@ -894,6 +897,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexOutPtrFlag(&arg1,\t &flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1,\t &flag",
                         "PY_doc_string": "documentation",

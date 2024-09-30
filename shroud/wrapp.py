@@ -1671,6 +1671,9 @@ return 1;""",
                 PY_code.append("")
 
             capsule_order = None
+            fmt.C_call_function = wformat(
+                "{PY_this_call}{function_name}"
+                "{CXX_template}({PY_call_list})", fmt)
             if result_blk.call:
                 append_format_lst(PY_code, result_blk.call, fmt_result)
             elif is_ctor:

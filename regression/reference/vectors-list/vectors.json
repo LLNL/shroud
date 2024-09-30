@@ -151,6 +151,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "vector_sum(SH_arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "SH_arg",
@@ -292,6 +293,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "vector_iota_out(SH_arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
@@ -861,6 +863,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "vector_iota_out_d(SH_arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
@@ -1480,6 +1483,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnVectorAlloc(n)",
                         "C_rv_decl": "std::vector<int> SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "n",
@@ -1656,6 +1660,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnDim2(arg,\t len)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "arg,\t len",

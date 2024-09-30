@@ -599,6 +599,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrScalar()",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -788,6 +789,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrPointer()",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -1325,6 +1327,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrDimPointer(&len)",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&len",
@@ -1721,6 +1724,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrDimAlloc(&len)",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&len",
@@ -2105,6 +2109,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrDimDefault(&len)",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&len",
@@ -2673,6 +2678,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrDimPointerNew(&len)",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&len",
@@ -2943,6 +2949,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrDimAllocNew(&len)",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&len",
@@ -3337,6 +3344,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ReturnIntPtrDimDefaultNew(&len)",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&len",
@@ -4341,6 +4349,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "createClassStatic(flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
@@ -4536,6 +4545,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getClassStatic()",
                         "C_rv_decl": "Class1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -4851,6 +4861,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getClassNew(flag)",
                         "C_rv_decl": "Class1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",

@@ -1046,6 +1046,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStructByValue(*arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
@@ -1177,6 +1178,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStruct1(arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
@@ -1360,6 +1362,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passStruct2(s1,\t outbuf)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "s1,\t outbuf",
@@ -1492,6 +1495,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptStructInPtr(arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
@@ -1690,6 +1694,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptStructOutPtr(arg,\t i,\t d)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg,\t i,\t d",
                         "PY_doc_string": "documentation",
@@ -1803,6 +1808,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptStructInOutPtr(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
@@ -1970,6 +1976,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnStructByValue(i,\t d)",
                         "C_rv_decl": "Cstruct1 SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d",
@@ -2145,6 +2152,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnStructPtr1(i,\t d)",
                         "C_rv_decl": "Cstruct1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d",
@@ -2371,6 +2379,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnStructPtr2(i,\t d,\t outbuf)",
                         "C_rv_decl": "Cstruct1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d,\t outbuf",
@@ -2483,6 +2492,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnStructPtrArray()",
                         "C_rv_decl": "Cstruct1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -2566,6 +2576,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "get_global_struct_list()",
                         "C_rv_decl": "Cstruct_list *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",

@@ -491,6 +491,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->nested<double>(arg1,\t arg2)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "arg1,\t arg2",
                                 "PY_doc_string": "documentation",
@@ -2992,6 +2993,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "FunctionTU<int, long>(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -3378,6 +3380,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "FunctionTU<float, double>(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -3650,6 +3653,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "UseImplWorker<internal::ImplWorker1>()",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -3850,6 +3854,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "UseImplWorker<internal::ImplWorker2>()",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -4038,6 +4043,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->ctor()",
                                         "C_rv_decl": "std::vector<int> SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
@@ -4428,6 +4434,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->push_back(value)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "value",
                                         "PY_doc_string": "documentation",
@@ -4801,6 +4808,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->at(n)",
                                         "C_rv_decl": "int &SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "n",
@@ -5076,6 +5084,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->ctor()",
                                         "C_rv_decl": "std::vector<double> SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
@@ -5466,6 +5475,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->push_back(value)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "value",
                                         "PY_doc_string": "documentation",
@@ -5839,6 +5849,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->at(n)",
                                         "C_rv_decl": "double &SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "n",

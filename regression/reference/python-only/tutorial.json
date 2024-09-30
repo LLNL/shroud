@@ -124,6 +124,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::NoReturnNoArguments()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -277,6 +278,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::PassByValue(arg1,\t arg2)",
                         "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
@@ -453,6 +455,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::ConcatenateStrings(SH_arg1,\t SH_arg2)",
                         "C_rv_decl": "const std::string SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_arg1,\t SH_arg2",
@@ -626,6 +629,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::UseDefaultArguments(arg1,\t arg2)",
                         "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
@@ -738,6 +742,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::OverloadedFunction(SH_name)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_name",
                         "PY_doc_string": "documentation",
@@ -843,6 +848,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::OverloadedFunction(indx)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "indx",
                         "PY_doc_string": "documentation",
@@ -1065,6 +1071,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::TemplateArgument<int>(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
@@ -1206,6 +1213,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::TemplateArgument<double>(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
@@ -1489,6 +1497,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::FortranGenericOverloaded()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -1701,6 +1710,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::FortranGenericOverloaded(SH_name,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_name,\t arg2",
                         "PY_doc_string": "documentation",
@@ -1911,6 +1921,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::UseDefaultOverload(num,\t offset,\t stride)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "num,\t offset,\t stride",
@@ -2159,6 +2170,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::UseDefaultOverload(type,\t num,\t offset,\t stride)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "type,\t num,\t offset,\t stride",
@@ -2278,6 +2290,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::typefunc(arg)",
                         "C_rv_decl": "tutorial::TypeID SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
@@ -2398,6 +2411,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::colorfunc(SH_arg)",
                         "C_rv_decl": "tutorial::Color SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_arg",
@@ -2561,6 +2575,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::getMinMax(min,\t max)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "min,\t max",
                         "PY_doc_string": "documentation",
@@ -2786,6 +2801,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "tutorial::LastFunctionCalled()",
                         "C_rv_decl": "const std::string &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",

@@ -104,6 +104,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs_in(&arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
@@ -211,6 +212,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs_inout(&arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
@@ -319,6 +321,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs_out(&arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
@@ -515,6 +518,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs(argin,\t &arginout,\t &argout)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "argin,\t &arginout,\t &argout",
                         "PY_doc_string": "documentation",
@@ -752,6 +756,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "cos_doubles(in,\t out,\t sizein)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "in,\t out,\t sizein",
                         "PY_doc_string": "documentation",
@@ -988,6 +993,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "truncate_to_int(in,\t out,\t sizein)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "in,\t out,\t sizein",
                         "PY_doc_string": "documentation",
@@ -1166,6 +1172,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "get_values(&nvalues,\t values)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&nvalues,\t values",
                         "PY_doc_string": "documentation",
@@ -1358,6 +1365,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "get_values2(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -1521,6 +1529,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "iota_dimension(nvar,\t values)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "nvar,\t values",
                         "PY_doc_string": "documentation",
@@ -1727,6 +1736,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "Sum(len,\t values,\t &result)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "len,\t values,\t &result",
                         "PY_doc_string": "documentation",
@@ -1856,6 +1866,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fillIntArray(out)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "out",
                         "PY_doc_string": "documentation",
@@ -2010,6 +2021,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "incrementIntArray(array,\t sizein)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "array,\t sizein",
                         "PY_doc_string": "documentation",
@@ -2165,6 +2177,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fill_with_zeros(x,\t x_length)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "x,\t x_length",
                         "PY_doc_string": "documentation",
@@ -2338,6 +2351,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "accumulate(arr,\t len)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arr,\t len",
@@ -2474,6 +2488,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptCharArrayIn(names)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "names",
@@ -2576,6 +2591,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "setGlobalInt(value)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "value",
                         "PY_doc_string": "documentation",
@@ -2654,6 +2670,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "sumFixedArray()",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -2844,6 +2861,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToFixedArray(&count)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
@@ -3021,6 +3039,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToDynamicArray(&count,\t &ncount)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&count,\t &ncount",
                         "PY_doc_string": "documentation",
@@ -3150,6 +3169,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToFuncArray(&count)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
@@ -3338,6 +3358,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToFixedConstArray(&count)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
@@ -3513,6 +3534,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToDynamicConstArray(&count,\t &ncount)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&count,\t &ncount",
                         "PY_doc_string": "documentation",
@@ -3624,6 +3646,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getRawPtrToScalar(&nitems)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&nitems",
                         "PY_doc_string": "documentation",
@@ -3802,6 +3825,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getRawPtrToFixedArray(&count)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
@@ -4267,6 +4291,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnAddress1(flag)",
                         "C_rv_decl": "void *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",
@@ -4395,6 +4420,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnAddress2(flag)",
                         "C_rv_decl": "void *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",
@@ -4508,6 +4534,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fetchVoidPtr(&addr)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&addr",
                         "PY_doc_string": "documentation",
@@ -4712,6 +4739,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnIntPtrToScalar()",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -4811,6 +4839,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnIntPtrToFixedArray()",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -4891,6 +4920,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnIntPtrToConstScalar()",
                         "C_rv_decl": "const int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -4991,6 +5021,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnIntPtrToFixedConstArray()",
                         "C_rv_decl": "const int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -5074,6 +5105,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnIntScalar()",
                         "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",

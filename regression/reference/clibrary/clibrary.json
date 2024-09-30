@@ -159,6 +159,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "NoReturnNoArguments()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -446,6 +447,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "PassByValue(arg1,\t arg2)",
                         "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
@@ -707,6 +709,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "PassByReference(&arg1,\t &arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1,\t &arg2",
                         "PY_doc_string": "documentation",
@@ -924,6 +927,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "PassByValueMacro(arg2)",
                         "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg2",
@@ -1271,6 +1275,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "checkBool(arg1,\t &arg2,\t &arg3)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t &arg2,\t &arg3",
                         "PY_doc_string": "documentation",
@@ -1594,6 +1599,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "Function4a(arg1,\t arg2)",
                         "C_rv_decl": "char *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
@@ -1768,6 +1774,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptName(name)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "name",
                         "PY_doc_string": "documentation",
@@ -1960,6 +1967,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "passCharPtrInOut(s)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "s",
                         "PY_doc_string": "documentation",
@@ -2398,6 +2406,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnOneName(name1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "name1",
                         "PY_doc_string": "documentation",
@@ -2675,6 +2684,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "returnTwoNames(name1,\t name2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "name1,\t name2",
                         "PY_doc_string": "documentation",
@@ -2946,6 +2956,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ImpliedTextLen(text,\t ltext)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "text,\t ltext",
                         "PY_doc_string": "documentation",
@@ -3330,6 +3341,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ImpliedLen(text,\t ltext,\t flag)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "text,\t ltext,\t flag",
@@ -3720,6 +3732,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ImpliedLenTrim(text,\t ltext,\t flag)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "text,\t ltext,\t flag",
@@ -3938,6 +3951,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ImpliedBoolTrue(flag)",
                         "C_rv_decl": "bool SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",
@@ -4152,6 +4166,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "ImpliedBoolFalse(flag)",
                         "C_rv_decl": "bool SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",

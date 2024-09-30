@@ -294,6 +294,7 @@
                                 "rv_decl": "classes::Class1 SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->ctor()",
                                 "C_rv_decl": "classes::Class1 SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -622,6 +623,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->ctor(flag)",
                                 "C_rv_decl": "classes::Class1 SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "flag",
@@ -943,6 +945,7 @@
                                 "rv_decl": "int SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->Method1()",
                                 "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -1245,6 +1248,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->equivalent(*obj2)",
                                 "C_rv_decl": "bool SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "*obj2",
@@ -1944,6 +1948,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->getclass3()",
                                 "C_rv_decl": "classes::Class1 *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -2185,6 +2190,7 @@
                                 "rv_decl": "const std::string &SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->getName()",
                                 "C_rv_decl": "const std::string &SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -2539,6 +2545,7 @@
                                 "rv_decl": "classes::Class1::DIRECTION SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->directionFunc(SH_arg)",
                                 "C_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "SH_arg",
@@ -3827,6 +3834,7 @@
                                 "rv_decl": "const std::string &SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->getName()",
                                 "C_rv_decl": "const std::string &SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -4069,6 +4077,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "classes::Singleton::getReference()",
                                 "C_rv_decl": "classes::Singleton &SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -4323,6 +4332,7 @@
                                 "rv_decl": "classes::Shape SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->ctor()",
                                 "C_rv_decl": "classes::Shape SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -4514,6 +4524,7 @@
                                 "rv_decl": "int SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->get_ivar()",
                                 "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -4773,6 +4784,7 @@
                                 "rv_decl": "classes::Circle SHCXX_rv"
                             },
                             "py": {
+                                "C_call_function": "self->obj->ctor()",
                                 "C_rv_decl": "classes::Circle SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -6312,6 +6324,7 @@
                         "rv_decl": "classes::Class1::DIRECTION SHCXX_rv"
                     },
                     "py": {
+                        "C_call_function": "classes::directionFunc(SH_arg)",
                         "C_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_arg",
@@ -6557,6 +6570,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "classes::passClassByValue(*arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
                         "PY_doc_string": "documentation",
@@ -6853,6 +6867,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "classes::useclass(arg)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
@@ -7185,6 +7200,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "classes::getclass3()",
                         "C_rv_decl": "classes::Class1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -7778,6 +7794,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "classes::getClassReference()",
                         "C_rv_decl": "classes::Class1 &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -8252,6 +8269,7 @@
                         "nresults": 0
                     },
                     "py": {
+                        "C_call_function": "classes::set_global_flag(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
@@ -8437,6 +8455,7 @@
                         "rv_decl": "int SHCXX_rv"
                     },
                     "py": {
+                        "C_call_function": "classes::get_global_flag()",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -8664,6 +8683,7 @@
                         "rv_decl": "const std::string &SHCXX_rv"
                     },
                     "py": {
+                        "C_call_function": "classes::LastFunctionCalled()",
                         "C_rv_decl": "const std::string &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",

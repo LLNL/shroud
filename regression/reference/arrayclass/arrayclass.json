@@ -173,6 +173,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->ctor()",
                                 "C_rv_decl": "ArrayWrapper SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -391,6 +392,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->setSize(size)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "size",
                                 "PY_doc_string": "documentation",
@@ -557,6 +559,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->getSize()",
                                 "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -778,6 +781,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fillSize(size)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "size",
                                 "PY_doc_string": "documentation",
@@ -882,6 +886,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->allocate()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -1126,6 +1131,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->getArray()",
                                 "C_rv_decl": "double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -1375,6 +1381,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->getArrayConst()",
                                 "C_rv_decl": "double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -1623,6 +1630,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->getArrayC()",
                                 "C_rv_decl": "const double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -1873,6 +1881,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->getArrayConstC()",
                                 "C_rv_decl": "const double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
@@ -2293,6 +2302,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fetchArrayPtr(&array,\t &isize)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "&array,\t &isize",
                                 "PY_doc_string": "documentation",
@@ -2711,6 +2721,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fetchArrayRef(array,\t isize)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "array,\t isize",
                                 "PY_doc_string": "documentation",
@@ -3130,6 +3141,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fetchArrayPtrConst(&array,\t &isize)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "&array,\t &isize",
                                 "PY_doc_string": "documentation",
@@ -3549,6 +3561,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fetchArrayRefConst(array,\t isize)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "array,\t isize",
                                 "PY_doc_string": "documentation",
@@ -3772,6 +3785,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fetchVoidPtr(&array)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "&array",
                                 "PY_doc_string": "documentation",
@@ -3995,6 +4009,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->fetchVoidRef(array)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "array",
                                 "PY_doc_string": "documentation",
@@ -4274,6 +4289,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->checkPtr(array)",
                                 "C_rv_decl": "bool SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "array",
@@ -4441,6 +4457,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->sumArray()",
                                 "C_rv_decl": "double SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",

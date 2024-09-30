@@ -635,6 +635,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getName(name)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "name",
                         "PY_doc_string": "documentation",
@@ -738,6 +739,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function1()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -842,6 +844,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function2()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -1059,6 +1062,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function3a(i)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i",
                         "PY_doc_string": "documentation",
@@ -1281,6 +1285,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function3a(i)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i",
                         "PY_doc_string": "documentation",
@@ -1589,6 +1594,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function4(SH_rv)",
                         "C_rv_decl": "int ARG_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_rv",
@@ -1696,6 +1702,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fiveplus()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -2075,6 +2082,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "TestMultilineSplicer(SH_name,\t &value)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_name,\t &value",
                         "PY_doc_string": "documentation",
@@ -2600,6 +2608,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "FunctionTU<int, long>(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -2998,6 +3007,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "FunctionTU<float, double>(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -3244,6 +3254,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "UseImplWorker<internal::ImplWorker1>()",
                         "C_rv_decl": "int ARG_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -3528,6 +3539,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "Cstruct_as_class_sum(point)",
                         "C_rv_decl": "int ARG_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "point",
@@ -5721,6 +5733,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->myobj->defaultctor()",
                                         "C_rv_decl": "ns0::Names ARG_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
@@ -5829,6 +5842,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->myobj->method1()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
@@ -5940,6 +5954,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->myobj->method2()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
@@ -6225,6 +6240,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "ns1::init_ns1()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",

@@ -178,6 +178,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->Cstruct_as_class_ctor(x1,\t y1)",
                                 "C_rv_decl": "Cstruct_as_class SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "x1,\t y1",
@@ -567,6 +568,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptBothStructs(s1,\t s2)",
                         "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "s1,\t s2",

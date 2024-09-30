@@ -223,6 +223,7 @@
                                                 "rv_decl": "example::nested::ExClass1 SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->ctor()",
                                                 "C_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -591,6 +592,7 @@
                                         },
                                         "zz_fmtlang": {
                                             "py": {
+                                                "C_call_function": "self->obj->ctor(&SH_name)",
                                                 "C_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "&SH_name",
@@ -1045,6 +1047,7 @@
                                                 "rv_decl": "int SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->incrementCount(incr)",
                                                 "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "incr",
@@ -1289,6 +1292,7 @@
                                                 "rv_decl": "const std::string &SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getNameErrorCheck()",
                                                 "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -1515,6 +1519,7 @@
                                                 "rv_decl": "const std::string &SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getNameArg()",
                                                 "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -1844,6 +1849,7 @@
                                                 "rv_decl": "long SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getValue(value)",
                                                 "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
@@ -2161,6 +2167,7 @@
                                         },
                                         "zz_fmtlang": {
                                             "py": {
+                                                "C_call_function": "self->obj->getValue(value)",
                                                 "C_rv_decl": "long SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
@@ -2487,6 +2494,7 @@
                                                 "rv_decl": "bool SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->hasAddr(in)",
                                                 "C_rv_decl": "bool SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "in",
@@ -2618,6 +2626,7 @@
                                                 "nresults": 0
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->SplicerSpecial()",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
@@ -3087,6 +3096,7 @@
                                                 "rv_decl": "example::nested::ExClass2 SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->ctor(&SH_name)",
                                                 "C_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "&SH_name",
@@ -3454,6 +3464,7 @@
                                                 "rv_decl": "const std::string &SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getName()",
                                                 "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -3691,6 +3702,7 @@
                                                 "rv_decl": "const std::string &SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getName2()",
                                                 "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -3929,6 +3941,7 @@
                                                 "rv_decl": "std::string &SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getName3()",
                                                 "C_rv_decl": "std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -4165,6 +4178,7 @@
                                                 "rv_decl": "std::string &SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getName4()",
                                                 "C_rv_decl": "std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -4364,6 +4378,7 @@
                                                 "rv_decl": "int SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->GetNameLength()",
                                                 "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -4715,6 +4730,7 @@
                                                 "rv_decl": "example::nested::ExClass1 *SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->get_class1(in)",
                                                 "C_rv_decl": "example::nested::ExClass1 *SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "in",
@@ -4846,6 +4862,7 @@
                                                 "nresults": 0
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->destroyall()",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
@@ -5272,6 +5289,7 @@
                                                 "nresults": 0
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->setValue<int>(value)",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
                                                 "PY_doc_string": "documentation",
@@ -5582,6 +5600,7 @@
                                         },
                                         "zz_fmtlang": {
                                             "py": {
+                                                "C_call_function": "self->obj->setValue<long>(value)",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
                                                 "PY_doc_string": "documentation",
@@ -5892,6 +5911,7 @@
                                         },
                                         "zz_fmtlang": {
                                             "py": {
+                                                "C_call_function": "self->obj->setValue<float>(value)",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
                                                 "PY_doc_string": "documentation",
@@ -6208,6 +6228,7 @@
                                         },
                                         "zz_fmtlang": {
                                             "py": {
+                                                "C_call_function": "self->obj->setValue<double>(value)",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
                                                 "PY_doc_string": "documentation",
@@ -6507,6 +6528,7 @@
                                                 "rv_decl": "double SHCXX_rv"
                                             },
                                             "py": {
+                                                "C_call_function": "self->obj->getValue<int>()",
                                                 "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -6728,6 +6750,7 @@
                                         },
                                         "zz_fmtlang": {
                                             "py": {
+                                                "C_call_function": "self->obj->getValue<double>()",
                                                 "C_rv_decl": "double SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
@@ -6914,6 +6937,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::local_function1()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
@@ -7270,6 +7294,7 @@
                                         "rv_decl": "bool SHCXX_rv"
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::isNameValid(SH_name)",
                                         "C_rv_decl": "bool SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "SH_name",
@@ -7457,6 +7482,7 @@
                                         "rv_decl": "bool SHCXX_rv"
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::isInitialized()",
                                         "C_rv_decl": "bool SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
@@ -7741,6 +7767,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::test_names(SH_name)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "SH_name",
                                         "PY_doc_string": "documentation",
@@ -8153,6 +8180,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "example::nested::test_names(SH_name,\t flag)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "SH_name,\t flag",
                                         "PY_doc_string": "documentation",
@@ -8813,6 +8841,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::testoptional(i,\t j)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "i,\t j",
                                         "PY_doc_string": "documentation",
@@ -8997,6 +9026,7 @@
                                         "rv_decl": "size_t SHCXX_rv"
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::test_size_t()",
                                         "C_rv_decl": "size_t SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
@@ -9265,6 +9295,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::testmpi(SH_comm)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "SH_comm",
                                         "PY_doc_string": "documentation",
@@ -9383,6 +9414,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "example::nested::testmpi()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
@@ -9884,6 +9916,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::FuncPtr1(get)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "get",
                                         "PY_doc_string": "documentation",
@@ -10479,6 +10512,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::FuncPtr2(get)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "get",
                                         "PY_doc_string": "documentation",
@@ -11447,6 +11481,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::FuncPtr3(get)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "get",
                                         "PY_doc_string": "documentation",
@@ -14561,6 +14596,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::FuncPtr5(get)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "get",
                                         "PY_doc_string": "documentation",
@@ -15998,6 +16034,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::verylongfunctionname1(&verylongname1,\t &verylongname2,\t &verylongname3,\t &verylongname4,\t &verylongname5,\t &verylongname6,\t &verylongname7,\t &verylongname8,\t &verylongname9,\t &verylongname10)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "&verylongname1,\t &verylongname2,\t &verylongname3,\t &verylongname4,\t &verylongname5,\t &verylongname6,\t &verylongname7,\t &verylongname8,\t &verylongname9,\t &verylongname10",
                                         "PY_doc_string": "documentation",
@@ -17483,6 +17520,7 @@
                                         "rv_decl": "int SHCXX_rv"
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::verylongfunctionname2(verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
                                         "C_rv_decl": "int SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
@@ -18090,6 +18128,7 @@
                                         "nresults": 0
                                     },
                                     "py": {
+                                        "C_call_function": "example::nested::cos_doubles(in,\t out,\t sizein)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "in,\t out,\t sizein",
                                         "PY_doc_string": "documentation",

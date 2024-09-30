@@ -209,6 +209,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "LastFunctionCalled()",
                         "C_rv_decl": "const std::string &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
@@ -308,6 +309,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "One()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
@@ -580,6 +582,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->obj->Cstruct1_ctor(ifield,\t dfield)",
                                         "C_rv_decl": "outer::Cstruct1 SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "ifield,\t dfield",
@@ -806,6 +809,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "outer::One()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",

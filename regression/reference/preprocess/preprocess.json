@@ -103,6 +103,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->method1()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -206,6 +207,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->method2()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -524,6 +526,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->method3def(i)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "i",
                                 "PY_doc_string": "documentation",
@@ -676,6 +679,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->exfunc()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -894,6 +898,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "self->obj->exfunc(flag)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "flag",
                                 "PY_doc_string": "documentation",
