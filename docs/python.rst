@@ -205,7 +205,7 @@ The template for a function is:
         {               create scope before fail
           {pre_call}    pre_call declares variables for arguments
 
-          call  {arg_call}
+          {call}
           {post_call}
 
           per argument
@@ -314,7 +314,7 @@ The argument will be non-const to allow it to be assigned later.
 
 .. code-block:: python
 
-        name="py_char_*_out_charlen",
+        name="py_out_char*_charlen",
         arg_declare=[
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
@@ -452,7 +452,22 @@ goto_fail
 If *True*, one of the other blocks such as *post_parse*, *pre_call*,
 and *post_call* contain a call to ``fail``.
 If any statements block sets *goto_fail*, then the *fail* block will
-be inserted into the code/
+be inserted into the code.
+
+declare_fail
+^^^^^^^^^^^^
+
+When *goto_fail* is *true*, it can be necessary to declare variables
+before any `goto fail` is added to the wrapper. This will avoid
+compile errors about ``jump to label fail crosses initialization of
+'variable'``.
+
+call_fail
+^^^^^^^^^
+
+Used in combination of *declare_fail* which will assign to the
+variable from *declare_fail* instead of declaring the variable
+which may be done in the *call* clause.
 
 .. object conversion
 

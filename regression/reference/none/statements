@@ -14577,7 +14577,9 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
+      function-assign -- py_mixin_function-assign
       function-assign-pointee -- py_mixin_function-assign-pointee
+      function-declare -- py_mixin_function-declare
       function-struct-class -- py_mixin_function-struct-class
       function-void -- py_mixin_function-void
       malloc -- py_mixin_malloc
@@ -15135,11 +15137,17 @@ py_function_bool:
   object_created: true
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - '{py_var} = PyBool_FromLong({c_var});'
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_char:
   name: py_function_char
@@ -15157,6 +15165,12 @@ py_function_char*:
 py_function_enum:
   name: py_function_enum
   intent: function
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_native:
   name: py_function_native
   intent: function
@@ -15232,16 +15246,28 @@ py_function_shadow&:
   name: py_function_shadow&
   intent: function
   object_created: true
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_shadow*:
   name: py_function_shadow*
   intent: function
   object_created: true
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
   - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_string:
   name: py_function_string
   intent: function
@@ -15252,26 +15278,50 @@ py_function_string&:
   intent: function
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_string*:
   name: py_function_string*
   intent: function
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_struct*_class:
   name: py_function_struct*_class
   intent: function
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};  // struct_class
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_struct*_list:
   name: py_function_struct*_list
   intent: function
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_struct*_numpy:
   name: py_function_struct*_numpy
   intent: function
@@ -15279,6 +15329,8 @@ py_function_struct*_numpy:
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
   - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
@@ -15286,6 +15338,10 @@ py_function_struct*_numpy:
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_struct_class:
   name: py_function_struct_class
@@ -15334,6 +15390,12 @@ py_function_struct_class:
 py_function_struct_list:
   name: py_function_struct_list
   intent: function
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_struct_numpy:
   name: py_function_struct_numpy
   intent: function
@@ -16350,11 +16412,25 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_function-assign:
+  name: py_mixin_function-assign
+  intent: mixin
+  call:
+  - '{cxx_var} = {C_call_function};'
 py_mixin_function-assign-pointee:
   name: py_mixin_function-assign-pointee
   intent: mixin
   call:
   - '*{cxx_var} = {C_call_function};'
+py_mixin_function-declare:
+  name: py_mixin_function-declare
+  intent: mixin
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_mixin_function-struct-class:
   name: py_mixin_function-struct-class
   intent: mixin

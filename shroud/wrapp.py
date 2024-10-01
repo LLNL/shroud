@@ -1626,7 +1626,9 @@ return 1;""",
         if found_default:
             PY_code.append("switch (SH_nargs) {")
 
-        # build up code for a function
+        # Build up code for a function.
+        # Call once for each default argument.
+        added_fail_declare = False
         for npyargs, post_declare_len, post_parse_len, pre_call_len, call_list in default_calls:
             if found_default:
                 PY_code.append("case %d:" % npyargs)
@@ -1675,8 +1677,15 @@ return 1;""",
             fmt.C_call_function = wformat(
                 "{PY_this_call}{function_name}"
                 "{CXX_template}({PY_call_list})", fmt)
-            if result_blk.call:
+            if (found_default or goto_fail) and result_blk.fail_call:
+                if not added_fail_declare:
+                    added_fail_declare = True
+                    append_format_lst(declare_code, result_blk.fail_declare, fmt_result)
+                append_format_lst(PY_code, result_blk.fail_call, fmt_result)
+                need_rv_decl = False # The call block needs to declare the variable.
+            elif result_blk.call:
                 append_format_lst(PY_code, result_blk.call, fmt_result)
+                need_rv_decl = False # The call block needs to declare the variable.
             elif is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
             else:
@@ -3595,6 +3604,7 @@ PyStmts = util.Scope(
     destructor_name=None,
     destructor=[],
     cleanup=[], fail=[],
+    fail_declare=[], fail_call=[],
     goto_fail=False,
     getter=[], getter_helper=[],
     setter=[], setter_helper=[],
@@ -3638,6 +3648,35 @@ py_statements = [
         ],
         call=[
             "{C_call_function};",
+        ],
+    ),
+    dict(
+        name="py_mixin_function-declare",
+        comments=[
+            "Declare variable and assign function result."
+        ],
+        notes=[
+            "The default call will declare the variable as part of the call.",
+            "If goto_fail is True or default parameters are defined,then split"
+            "the statement to avoid declaring the variable after the goto."
+        ],
+        call=[
+            "{gen.cxxdecl.cxx_var} =\t {C_call_function};",
+        ],
+        fail_declare=[
+            "{gen.cxxdecl.cxx_var};",
+        ],
+        fail_call=[
+            "{cxx_var} =\t {C_call_function};",
+        ],
+    ),
+    dict(
+        name="py_mixin_function-assign",
+        comments=[
+            "Call function and assign to variable."
+        ],
+        call=[
+            "{cxx_var} = {C_call_function};",
         ],
     ),
     dict(
@@ -3687,7 +3726,7 @@ py_statements = [
             ctor_expr="{cxx_var}.data(),\t {cxx_var}.size()",
         ),
     ),
-        
+
     dict(
         name="py_mixin_array-ContiguousFromObject",
         notes=[
@@ -3980,13 +4019,10 @@ py_statements = [
 ########################################
     dict(
         alias=[
-            "py_function_native",
             "py_in_native",
             "py_function_native*_scalar",
-
+            
             "py_in_unknown",
-            "py_function_struct_list",
-            "py_function_struct*_list",
         ],
     ),
 
@@ -4091,6 +4127,9 @@ py_statements = [
     ),
     dict(
         name="py_function_bool",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -4116,6 +4155,14 @@ py_statements = [
     ),
     
 ####################
+    dict(
+        alias=[
+            "py_function_native",
+        ],
+        notes=[
+            "Call a function which returns a native scalar.",
+        ],
+    ),
     dict(
         name="py_in_native*",
         arg_declare=["{c_type} {c_var};"],
@@ -4538,6 +4585,7 @@ py_statements = [
         ],
         mixin=[
             "py_mixin_string-fmtdict",
+            "py_mixin_function-declare",
         ],
     ),
     dict(
@@ -4556,6 +4604,9 @@ py_statements = [
 
     dict(
         name="py_function_enum",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
     ),
     dict(
         name="py_in_enum",
@@ -4595,6 +4646,16 @@ py_statements = [
 # numpy
 # Note that Typemap.c_type is a C wrapper over a C++ struct
 # created in wrapc.py. Do not use here.
+    
+    dict(
+        alias=[
+            "py_function_struct_list",
+            "py_function_struct*_list",
+        ],
+        mixin=[
+            "py_mixin_function-declare",
+        ],
+    ),
     
 # and does not apply in Python.
     dict(
@@ -4702,6 +4763,7 @@ py_statements = [
         ],
         mixin=[
             "py_mixin_array-NewFromDescr2",
+            "py_mixin_function-declare",
         ],
     ),
 
@@ -4834,6 +4896,7 @@ py_statements = [
         ],
         mixin=[
             "py_mixin_function-struct-class",
+            "py_mixin_function-declare",
         ],
     ),
 
@@ -4912,6 +4975,9 @@ py_statements = [
         alias=[
             "py_function_shadow*",
             "py_function_shadow&",
+        ],
+        mixin=[
+            "py_mixin_function-declare",
         ],
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"
@@ -5087,7 +5153,7 @@ py_statements = [
         declare=[
             "{PY_typedef_converter} {value_var} = {PY_value_init};",
             "{value_var}.name = \"{field_name}\";",
-            ],
+        ],
         parse_format="O&",
         parse_args=["{hnamefunc0}", "&{value_var}"],
         post_call=[

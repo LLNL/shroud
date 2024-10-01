@@ -1158,6 +1158,7 @@ class FormatCXXdecl(object):
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
         decl = gen_arg_as_cxx(self.state.ast,
                               with_template_args=True,
+                              add_params=False,  # Required for function results
                               name=varname)
         return decl
 
