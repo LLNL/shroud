@@ -1679,8 +1679,6 @@ return 1;""",
                 append_format_lst(PY_code, result_blk.call, fmt_result)
             elif is_ctor:
                 self.create_ctor_function(cls, node, PY_code, fmt)
-            elif CXX_subprogram == "subroutine":
-                append_format(PY_code, "{C_call_function};", fmt)
             else:
                 append_format(PY_code, "{PY_rv_asgn}{C_call_function};", fmt)
 
