@@ -14454,6 +14454,8 @@ root
       native[] -- py_ctor_native[]
         list -- py_ctor_native[]_list
         numpy -- py_ctor_native[]_numpy
+      shadow -- py_ctor_shadow
+      struct -- py_ctor_struct
     descr
       bool
         scalar -- py_descr_bool_scalar
@@ -14877,6 +14879,12 @@ py_ctor_native_numpy:
   - '{c_type} {c_var} = 0;'
   post_call:
   - SH_obj->{field_name} = {field_name};
+py_ctor_shadow:
+  name: py_ctor_shadow
+  intent: ctor
+py_ctor_struct:
+  name: py_ctor_struct
+  intent: ctor
 py_descr_bool_scalar:
   name: py_descr_bool_scalar
   intent: descr

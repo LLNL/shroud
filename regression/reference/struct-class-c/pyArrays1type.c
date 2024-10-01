@@ -51,7 +51,7 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 
 // ----------------------------------------
 // Function:  Arrays1 +name(Arrays1_ctor)
-// Statement: py_default
+// Statement: py_ctor_struct
 // ----------------------------------------
 // Argument:  char name[20]
 // Statement: py_ctor_char[]_numpy

@@ -153,7 +153,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 
 // ----------------------------------------
 // Function:  ExClass2
-// Statement: py_default
+// Statement: py_ctor_shadow
 // ----------------------------------------
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: py_in_string*

@@ -178,14 +178,14 @@
                                                         "numpy_type": null,
                                                         "py_var": "SHTPy_rv",
                                                         "size_var": "SHSize_rv",
-                                                        "stmt": "py_default",
+                                                        "stmt": "py_ctor_shadow",
                                                         "value_var": "SHValue_rv",
                                                         "vargs": "SHCXX_rv"
                                                     },
                                                     "meta": {
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "py_default"
+                                                    "stmt": "py_ctor_shadow"
                                                 }
                                             },
                                             "share": {
@@ -529,14 +529,14 @@
                                                         "numpy_type": null,
                                                         "py_var": "SHTPy_rv",
                                                         "size_var": "SHSize_rv",
-                                                        "stmt": "py_default",
+                                                        "stmt": "py_ctor_shadow",
                                                         "value_var": "SHValue_rv",
                                                         "vargs": "SHCXX_rv"
                                                     },
                                                     "meta": {
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "py_default"
+                                                    "stmt": "py_ctor_shadow"
                                                 },
                                                 "name": {
                                                     "fmtdict": {
@@ -3024,14 +3024,14 @@
                                                         "numpy_type": null,
                                                         "py_var": "SHTPy_rv",
                                                         "size_var": "SHSize_rv",
-                                                        "stmt": "py_default",
+                                                        "stmt": "py_ctor_shadow",
                                                         "value_var": "SHValue_rv",
                                                         "vargs": "SHCXX_rv"
                                                     },
                                                     "meta": {
                                                         "intent": "ctor"
                                                     },
-                                                    "stmt": "py_default"
+                                                    "stmt": "py_ctor_shadow"
                                                 },
                                                 "name": {
                                                     "fmtdict": {

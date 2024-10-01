@@ -41,7 +41,7 @@ PY_Circle_tp_del (PY_Circle *self)
 
 // ----------------------------------------
 // Function:  Circle
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_Circle_tp_init(
   PY_Circle *self,

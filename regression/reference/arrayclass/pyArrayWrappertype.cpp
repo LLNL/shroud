@@ -45,7 +45,7 @@ PY_ArrayWrapper_tp_del (PY_ArrayWrapper *self)
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_ArrayWrapper_tp_init(
   PY_ArrayWrapper *self,

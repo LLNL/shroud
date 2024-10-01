@@ -45,7 +45,7 @@ PY_vector_double_tp_del (PY_vector_double *self)
 
 // ----------------------------------------
 // Function:  vector
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_vector_double_tp_init(
   PY_vector_double *self,

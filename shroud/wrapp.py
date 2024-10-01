@@ -2064,8 +2064,7 @@ return 1;""",
         stmts = None
         if is_ctor:
             # Code added by create_ctor_function.
-            result_blk = default_scope
-            fmt_result.stmt = result_blk.name
+            stmts = ["py", meta["intent"], abstract]
         elif result_typemap.base == "struct":
             stmts = ["py", "function", abstract, options.PY_struct_arg]
         elif result_typemap.base == "vector":
@@ -4669,6 +4668,9 @@ py_statements = [
 # created in wrapc.py. Do not use here.
     
     dict(
+        name="py_ctor_struct",
+    ),
+    dict(
         alias=[
             "py_function_struct_list",
             "py_function_struct*_list",
@@ -4952,6 +4954,9 @@ py_statements = [
 
 ########################################
 # shadow a.k.a class
+    dict(
+        name="py_ctor_shadow",
+    ),
     dict(
         name="py_in_shadow*",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.

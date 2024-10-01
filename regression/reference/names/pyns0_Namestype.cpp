@@ -41,7 +41,7 @@ PY_Names_tp_del (PY_Names *self)
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_Names_tp_init(
   PY_Names *self,

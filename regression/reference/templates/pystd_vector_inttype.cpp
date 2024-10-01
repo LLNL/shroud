@@ -45,7 +45,7 @@ PY_vector_int_tp_del (PY_vector_int *self)
 
 // ----------------------------------------
 // Function:  vector
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_vector_int_tp_init(
   PY_vector_int *self,

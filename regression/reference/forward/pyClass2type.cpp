@@ -41,7 +41,7 @@ PY_Class2_tp_del (PY_Class2 *self)
 
 // ----------------------------------------
 // Function:  Class2
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_Class2_tp_init(
   PY_Class2 *self,
