@@ -15155,13 +15155,25 @@ py_function_char:
   object_created: true
   declare:
   - '{PyObject} * {py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_char*:
   name: py_function_char*
   intent: function
   fmtdict:
     ctor_expr: '{c_var}'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_enum:
   name: py_function_enum
   intent: function
@@ -15174,6 +15186,12 @@ py_function_enum:
 py_function_native:
   name: py_function_native
   intent: function
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_native&_numpy:
   name: py_function_native&_numpy
   intent: function
@@ -15181,12 +15199,18 @@ py_function_native&_numpy:
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_native*_list:
   name: py_function_native*_list
@@ -15195,11 +15219,17 @@ py_function_native*_list:
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_native*_numpy:
   name: py_function_native*_numpy
@@ -15208,16 +15238,28 @@ py_function_native*_numpy:
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_native*_scalar:
   name: py_function_native*_scalar
   intent: function
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_shadow:
   name: py_function_shadow
   intent: function
@@ -15273,6 +15315,12 @@ py_function_string:
   intent: function
   fmtdict:
     ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_function_string&:
   name: py_function_string&
   intent: function
@@ -15456,11 +15504,17 @@ py_function_vector<native>_list:
   object_created: true
   declare:
   - PyObject * {py_var} = {nullptr};
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_vector<native>_numpy:
   name: py_function_vector<native>_numpy
@@ -15522,11 +15576,17 @@ py_function_vector_list:
   object_created: true
   declare:
   - PyObject * {py_var} = {nullptr};
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_function_vector_numpy:
   name: py_function_vector_numpy
@@ -15587,6 +15647,12 @@ py_function_void*:
   intent: function
   fmtdict:
     ctor_expr: '{cxx_var}'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
 py_in_bool:
   name: py_in_bool
   intent: in
@@ -16591,12 +16657,18 @@ py_out_native*&_numpy:
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_out_native**_list:
   name: py_out_native**_list
@@ -16609,11 +16681,17 @@ py_out_native**_list:
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_out_native**_numpy:
   name: py_out_native**_numpy
@@ -16626,12 +16704,18 @@ py_out_native**_numpy:
   object_created: true
   declare:
   - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
+  call:
+  - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
   - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
     \ {numpy_type},\t {cxx_nonconst_ptr});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
+  fail_declare:
+  - '{gen.cxxdecl.cxx_var};'
+  fail_call:
+  - "{cxx_var} =\t {C_call_function};"
   goto_fail: true
 py_out_native**_raw:
   name: py_out_native**_raw

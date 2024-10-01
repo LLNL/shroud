@@ -4020,8 +4020,6 @@ py_statements = [
     dict(
         alias=[
             "py_in_native",
-            "py_function_native*_scalar",
-            
             "py_in_unknown",
         ],
     ),
@@ -4079,6 +4077,9 @@ py_statements = [
     ),
     dict(
         name="py_function_void*",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
         fmtdict=dict(
             ctor_expr="{cxx_var}",
         ),
@@ -4161,6 +4162,9 @@ py_statements = [
         ],
         notes=[
             "Call a function which returns a native scalar.",
+        ],
+        mixin=[
+            "py_mixin_function-declare",
         ],
     ),
     dict(
@@ -4245,7 +4249,16 @@ py_statements = [
     ),
 
     dict(
+        name="py_function_native*_scalar",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
+    ),
+    dict(
         name="py_function_native*_list",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
         c_helper="to_PyList_{cxx_type}",
         declare=[
             "PyObject *{py_var} = {nullptr};",
@@ -4268,6 +4281,7 @@ py_statements = [
         ],
         # XXX - need capsule if owner=caller
         mixin=[
+            "py_mixin_function-declare",
             "py_mixin_array-SimpleNewFromData2",
         ],
     ),
@@ -4437,6 +4451,9 @@ py_statements = [
     ),
     dict(
         name="py_function_char",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -4447,6 +4464,9 @@ py_statements = [
     ),
     dict(
         name="py_function_char*",
+        mixin=[
+            "py_mixin_function-declare",
+        ],
         fmtdict=dict(
             ctor_expr="{c_var}",
         ),
@@ -4575,6 +4595,7 @@ py_statements = [
     dict(
         name="py_function_string",
         mixin=[
+            "py_mixin_function-declare",
             "py_mixin_string-fmtdict",
         ],
     ),
@@ -5073,6 +5094,9 @@ py_statements = [
         alias=[
             "py_function_vector_list",
             "py_function_vector<native>_list",
+        ],
+        mixin=[
+            "py_mixin_function-declare",
         ],
         declare=[
             "PyObject * {py_var} = {nullptr};",
