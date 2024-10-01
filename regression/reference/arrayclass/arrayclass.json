@@ -404,7 +404,7 @@
                                 "PyArg_format": "i:setSize",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                 "PyArg_vargs": "&size",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -789,7 +789,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_size",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -893,7 +893,7 @@
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -2310,7 +2310,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_array",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -2729,7 +2729,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_array",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -3149,7 +3149,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_array",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -3569,7 +3569,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_array",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -3793,7 +3793,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_array",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -4017,7 +4017,7 @@
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
                                 "py_var": "SHPy_array",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },

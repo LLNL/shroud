@@ -14624,6 +14624,7 @@ root
         numpy -- py_out_vector<native>&_numpy
       void*& -- py_out_void*&
       void** -- py_out_void**
+    subroutine -- py_subroutine
 py_base_ctor_array:
   name: py_base_ctor_array
   intent: base
@@ -16904,6 +16905,11 @@ py_out_void**:
     ctor_expr: '{cxx_var}'
   arg_call:
   - '&{c_var}'
+py_subroutine:
+  name: py_subroutine
+  intent: subroutine
+  call:
+  - '{C_call_function};'
 ***** Lua
 root
   lua

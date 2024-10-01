@@ -33,7 +33,7 @@
 
 // ----------------------------------------
 // Function:  void One
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_One__doc__[] =
 "documentation"
 ;

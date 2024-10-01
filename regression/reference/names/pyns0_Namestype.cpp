@@ -61,7 +61,7 @@ PY_Names_tp_init(
 
 // ----------------------------------------
 // Function:  void method1
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_method1__doc__[] =
 "documentation"
 ;
@@ -80,7 +80,7 @@ PY_method1(
 
 // ----------------------------------------
 // Function:  void method2
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_method2__doc__[] =
 "documentation"
 ;

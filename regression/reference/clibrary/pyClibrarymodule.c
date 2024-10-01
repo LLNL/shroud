@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
@@ -94,7 +94,7 @@ PY_PassByValue(
 
 // ----------------------------------------
 // Function:  void PassByReference
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *arg1 +intent(in)
 // Statement: py_in_native*
@@ -174,7 +174,7 @@ PY_PassByValueMacro(
 
 // ----------------------------------------
 // Function:  void checkBool
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const bool arg1
 // Statement: py_in_bool
@@ -280,7 +280,7 @@ PY_Function4a(
 
 // ----------------------------------------
 // Function:  void acceptName
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const char *name
 // Statement: py_in_char*
@@ -311,7 +311,7 @@ PY_acceptName(
 
 // ----------------------------------------
 // Function:  void passCharPtrInOut
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *s +intent(inout)
 // Statement: py_inout_char*
@@ -353,7 +353,7 @@ PY_passCharPtrInOut(
 
 // ----------------------------------------
 // Function:  void returnOneName
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *name1 +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen
@@ -389,7 +389,7 @@ PY_returnOneName(
 
 // ----------------------------------------
 // Function:  void returnTwoNames
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *name1 +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen
@@ -429,7 +429,7 @@ PY_returnTwoNames(
 
 // ----------------------------------------
 // Function:  void ImpliedTextLen
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *text +charlen(MAXNAME)+intent(out)
 // Statement: py_out_char*_charlen

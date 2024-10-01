@@ -6581,7 +6581,7 @@
                         "PyArg_format": "O!:passClassByValue",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -8280,7 +8280,7 @@
                         "PyArg_format": "i:set_global_flag",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

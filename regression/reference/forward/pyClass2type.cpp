@@ -61,7 +61,7 @@ PY_Class2_tp_init(
 
 // ----------------------------------------
 // Function:  void func1
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 *arg +intent(in)
 // Statement: py_in_shadow*
@@ -95,7 +95,7 @@ PY_func1(
 
 // ----------------------------------------
 // Function:  void acceptClass3
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Class3 *arg +intent(in)
 // Statement: py_in_shadow*

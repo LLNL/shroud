@@ -33,7 +33,7 @@
 
 // ----------------------------------------
 // Function:  void worker4
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_worker4__doc__[] =
 "documentation"
 ;

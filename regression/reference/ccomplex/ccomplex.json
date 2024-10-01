@@ -307,7 +307,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHCPY_arg1",
                         "py_var": "SHPy_arg1",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -479,7 +479,7 @@
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg1",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -644,7 +644,7 @@
                         "PyArg_vargs": "&SHCPY_arg1",
                         "PyBuild_format": "Di",
                         "PyBuild_vargs": "&SHCPY_arg1,\t flag",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -905,7 +905,7 @@
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "Di",
                         "PyBuild_vargs": "&SHCPY_arg1,\t flag",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             }

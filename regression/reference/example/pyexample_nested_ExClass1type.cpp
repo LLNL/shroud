@@ -317,7 +317,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void SplicerSpecial
-// Statement: py_default
+// Statement: py_subroutine
 static char PP_SplicerSpecial__doc__[] =
 "documentation"
 ;

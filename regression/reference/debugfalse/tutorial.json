@@ -195,7 +195,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2289,7 +2289,7 @@
                         "PyArg_format": "s:OverloadedFunction",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&name",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2541,7 +2541,7 @@
                         "PyArg_format": "i:OverloadedFunction",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&indx",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2921,7 +2921,7 @@
                         "PyArg_format": "i:TemplateArgument",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3209,7 +3209,7 @@
                         "PyArg_format": "d:TemplateArgument",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3722,7 +3722,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -4089,7 +4089,7 @@
                         "PyArg_format": "sd:FortranGenericOverloaded",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&name,\t &arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -8032,7 +8032,7 @@
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "ii",
                         "PyBuild_vargs": "min,\t max",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

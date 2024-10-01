@@ -308,7 +308,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void createClassStatic
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int flag
 // Statement: py_in_native

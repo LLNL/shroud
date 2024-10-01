@@ -271,7 +271,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void intargs_in
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const int *arg
 // Statement: py_in_native*
@@ -302,7 +302,7 @@ PY_intargs_in(
 
 // ----------------------------------------
 // Function:  void intargs_inout
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *arg
 // Statement: py_inout_native*
@@ -341,7 +341,7 @@ PY_intargs_inout(
 
 // ----------------------------------------
 // Function:  void intargs_out
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *arg +intent(out)
 // Statement: py_out_native*
@@ -370,7 +370,7 @@ PY_intargs_out(
 
 // ----------------------------------------
 // Function:  void intargs
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const int argin +intent(in)
 // Statement: py_in_native
@@ -415,7 +415,7 @@ PY_intargs(
 
 // ----------------------------------------
 // Function:  void cos_doubles
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *in +intent(in)+rank(1)
 // Statement: py_in_native*_list
@@ -495,7 +495,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void truncate_to_int
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *in +intent(in)+rank(1)
 // Statement: py_in_native*_list
@@ -575,7 +575,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void get_values
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *nvalues +intent(OUT)
 // Statement: py_out_native*
@@ -635,7 +635,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void get_values2
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *arg1 +dimension(3)+intent(out)
 // Statement: py_out_native*_list
@@ -705,7 +705,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void iota_dimension
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int nvar
 // Statement: py_in_native
@@ -762,7 +762,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void Sum
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int len +implied(size(values))
 // Exact:     py_default
@@ -827,7 +827,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fillIntArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *out +dimension(3)+intent(out)
 // Statement: py_out_native*_list
@@ -876,7 +876,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void incrementIntArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *array +intent(inout)+rank(1)
 // Statement: py_inout_native*_list
@@ -941,7 +941,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fill_with_zeros
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *x +rank(1)
 // Statement: py_inout_native*_list
@@ -1118,7 +1118,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void setGlobalInt
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int value
 // Statement: py_in_native
@@ -1177,7 +1177,7 @@ PY_sumFixedArray(
 
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(10)+intent(out)
 // Statement: py_out_native**_list
@@ -1214,7 +1214,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(ncount)+intent(out)
 // Statement: py_out_native**_list
@@ -1256,7 +1256,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int **count +dimension(getLen())+intent(out)
 // Statement: py_out_native**_list
@@ -1295,7 +1295,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(10)+intent(out)
 // Statement: py_out_native**_list
@@ -1329,7 +1329,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const int **count +dimension(ncount)+intent(out)
 // Statement: py_out_native**_list
@@ -1367,7 +1367,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int **nitems +deref(raw)+intent(out)
 // Statement: py_out_native**_raw
@@ -1399,7 +1399,7 @@ PY_getRawPtrToScalar(
 
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArray
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int **count +deref(raw)+intent(out)
 // Statement: py_out_native**_raw
@@ -1505,7 +1505,7 @@ PY_returnAddress2(
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void **addr +intent(out)
 // Statement: py_out_void**

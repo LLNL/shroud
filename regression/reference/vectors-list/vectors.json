@@ -300,7 +300,7 @@
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -870,7 +870,7 @@
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

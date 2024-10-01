@@ -2633,7 +2633,7 @@
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
                                                 "PY_used_param_self": true,
-                                                "stmt": "py_default"
+                                                "stmt": "py_subroutine"
                                             }
                                         }
                                     }
@@ -4869,7 +4869,7 @@
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
                                                 "PY_used_param_self": true,
-                                                "stmt": "py_default"
+                                                "stmt": "py_subroutine"
                                             }
                                         }
                                     },
@@ -5301,7 +5301,7 @@
                                                 "PyArg_format": "i:setValue",
                                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                                 "PyArg_vargs": "&value",
-                                                "stmt": "py_default"
+                                                "stmt": "py_subroutine"
                                             }
                                         }
                                     },
@@ -5612,7 +5612,7 @@
                                                 "PyArg_format": "l:setValue",
                                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                                 "PyArg_vargs": "&value",
-                                                "stmt": "py_default"
+                                                "stmt": "py_subroutine"
                                             }
                                         }
                                     },
@@ -5923,7 +5923,7 @@
                                                 "PyArg_format": "f:setValue",
                                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                                 "PyArg_vargs": "&value",
-                                                "stmt": "py_default"
+                                                "stmt": "py_subroutine"
                                             }
                                         }
                                     },
@@ -6240,7 +6240,7 @@
                                                 "PyArg_format": "d:setValue",
                                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                                 "PyArg_vargs": "&value",
-                                                "stmt": "py_default"
+                                                "stmt": "py_subroutine"
                                             }
                                         }
                                     },
@@ -6943,7 +6943,7 @@
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_NOARGS",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -7778,7 +7778,7 @@
                                         "PyArg_format": "s:test_names",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&name",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -8191,7 +8191,7 @@
                                         "PyArg_format": "si:test_names",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&name,\t &flag",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -8851,7 +8851,7 @@
                                         "PyArg_format": "|il:testoptional",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&i,\t &j",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -9306,7 +9306,7 @@
                                         "PyArg_format": "O:testmpi",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&comm",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -9420,7 +9420,7 @@
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_NOARGS",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -9927,7 +9927,7 @@
                                         "PyArg_format": "O:FuncPtr1",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&get",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -10523,7 +10523,7 @@
                                         "PyArg_format": "d:FuncPtr2",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&get",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -11492,7 +11492,7 @@
                                         "PyArg_format": "d:FuncPtr3",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&get",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -14607,7 +14607,7 @@
                                         "PyArg_format": "O:FuncPtr5",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&get",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -16047,7 +16047,7 @@
                                         "PyArg_vargs": "&verylongname1,\t &verylongname2,\t &verylongname3,\t &verylongname4,\t &verylongname5,\t &verylongname6,\t &verylongname7,\t &verylongname8,\t &verylongname9,\t &verylongname10",
                                         "PyBuild_format": "iiiiiiiiii",
                                         "PyBuild_vargs": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -18140,7 +18140,7 @@
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&SHTPy_in",
                                         "py_var": "SHPy_out",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             }

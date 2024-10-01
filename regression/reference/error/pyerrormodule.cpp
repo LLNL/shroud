@@ -38,7 +38,7 @@ PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 
 // ----------------------------------------
 // Function:  void BadFstatements
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_BadFstatements__doc__[] =
 "documentation"
 ;
@@ -57,7 +57,7 @@ PY_BadFstatements(
 
 // ----------------------------------------
 // Function:  void AssumedRank
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *data
 // Statement: py_inout_native*
@@ -93,7 +93,7 @@ PY_AssumedRank(
 
 // ----------------------------------------
 // Function:  void PYGoodFunction
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_PYGoodFunction__doc__[] =
 "documentation"
 ;

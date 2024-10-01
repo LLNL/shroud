@@ -503,7 +503,7 @@
                                 "PyArg_format": "id:nested",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                 "PyArg_vargs": "&arg1,\t &arg2",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }
@@ -3004,7 +3004,7 @@
                         "PyArg_format": "il:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3391,7 +3391,7 @@
                         "PyArg_format": "fd:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -4446,7 +4446,7 @@
                                         "PyArg_format": "i:push_back",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&value",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -5487,7 +5487,7 @@
                                         "PyArg_format": "d:push_back",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                         "PyArg_vargs": "&value",
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },

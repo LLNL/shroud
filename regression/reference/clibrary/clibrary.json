@@ -165,7 +165,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -721,7 +721,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&arg1",
                         "py_var": "SHPy_arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1288,7 +1288,7 @@
                         "PyArg_vargs": "&PyBool_Type,\t &SHPy_arg1,\t &PyBool_Type,\t &SHPy_arg3",
                         "PyBuild_format": "NN",
                         "PyBuild_vargs": "SHPy_arg2,\t SHPy_arg3",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1785,7 +1785,7 @@
                         "PyArg_format": "s:acceptName",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&name",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1979,7 +1979,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&s",
                         "py_var": "SHPy_s",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2413,7 +2413,7 @@
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_name1",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2692,7 +2692,7 @@
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "ss",
                         "PyBuild_vargs": "name1,\t name2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2963,7 +2963,7 @@
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_text",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

@@ -3056,7 +3056,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&i,\t &d",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3170,7 +3170,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&PY_Cstruct1_Type,\t &SHPy_arg",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

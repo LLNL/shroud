@@ -1225,7 +1225,8 @@ return 1;""",
             fmt_result, result_blk = self.process_function_result(cls, node, fmt)
         else:
             fmt_result = fmt
-            result_blk = default_scope
+            stmts = ["py", "subroutine"]
+            result_blk = lookup_stmts(stmts)
             fmt_result.stmt = result_blk.name
         func_cursor.stmt = result_blk
         stmts_comments = []
@@ -2075,7 +2076,7 @@ return 1;""",
             stmts = ["py", "function", abstract]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
-            fmt_result.stmt = result_blk.name
+        fmt_result.stmt = result_blk.name
 
         bind_result.stmt = result_blk
         self.name_temp_vars(fmt.C_result, bind_result)
@@ -3988,6 +3989,16 @@ py_statements = [
             "py_in_unknown",
             "py_function_struct_list",
             "py_function_struct*_list",
+        ],
+    ),
+
+########################################
+# subroutine
+
+    dict(
+        name="py_subroutine",
+        mixin=[
+            "py_mixin_function-void",
         ],
     ),
 

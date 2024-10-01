@@ -123,7 +123,7 @@ PY_passStructByReferenceInCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInoutCls
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1_cls &arg +intent(inout)
 // Statement: py_inout_struct&_class
@@ -163,7 +163,7 @@ PY_passStructByReferenceInoutCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOutCls
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1_cls &arg +intent(out)
 // Statement: py_out_struct&_class
@@ -275,7 +275,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void defaultArgsInOut
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int in1
 // Statement: py_in_native

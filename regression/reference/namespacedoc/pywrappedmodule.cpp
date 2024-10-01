@@ -37,7 +37,7 @@ PyObject *PY_init_wrapped_inner4(void);
 
 // ----------------------------------------
 // Function:  void worker3
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_worker3__doc__[] =
 "documentation"
 ;
@@ -56,7 +56,7 @@ PY_worker3(
 
 // ----------------------------------------
 // Function:  void worker
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_worker__doc__[] =
 "documentation"
 ;

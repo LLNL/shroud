@@ -65,7 +65,7 @@ PY_ArrayWrapper_tp_init(
 
 // ----------------------------------------
 // Function:  void setSize
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int size
 // Statement: py_in_native
@@ -121,7 +121,7 @@ PY_getSize(
 
 // ----------------------------------------
 // Function:  void fillSize
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int &size +intent(out)
 // Statement: py_out_native&
@@ -150,7 +150,7 @@ PY_fillSize(
 
 // ----------------------------------------
 // Function:  void allocate
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_allocate__doc__[] =
 "documentation"
 ;
@@ -301,7 +301,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayPtr
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double **array +dimension(isize)+intent(out)
 // Statement: py_out_native**_numpy
@@ -342,7 +342,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayRef
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *&array +dimension(isize)+intent(out)
 // Statement: py_out_native*&_numpy
@@ -383,7 +383,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const double **array +dimension(isize)+intent(out)
 // Statement: py_out_native**_numpy
@@ -424,7 +424,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const double *&array +dimension(isize)+intent(out)
 // Statement: py_out_native*&_numpy
@@ -465,7 +465,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void **array +intent(out)
 // Statement: py_out_void**
@@ -494,7 +494,7 @@ PY_fetchVoidPtr(
 
 // ----------------------------------------
 // Function:  void fetchVoidRef
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void *&array +intent(out)
 // Statement: py_out_void*&

@@ -45,7 +45,7 @@ PY_user_int_tp_del (PY_user_int *self)
 
 // ----------------------------------------
 // Function:  void nested
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int arg1
 // Statement: py_in_native

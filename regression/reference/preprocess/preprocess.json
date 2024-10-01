@@ -110,7 +110,7 @@
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -214,7 +214,7 @@
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -537,7 +537,7 @@
                                 "PyArg_format": "|i:method3def",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                 "PyArg_vargs": "&i",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }
@@ -686,7 +686,7 @@
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_used_param_self": true,
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -910,7 +910,7 @@
                                 "PyArg_format": "i:exfunc",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                 "PyArg_vargs": "&flag",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }

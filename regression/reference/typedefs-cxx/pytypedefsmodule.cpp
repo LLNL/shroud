@@ -152,7 +152,7 @@ PY_returnTypeID(
 
 // ----------------------------------------
 // Function:  void typestruct
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Struct1Rename *arg1
 // Statement: py_inout_struct*_list

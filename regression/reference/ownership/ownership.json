@@ -4360,7 +4360,7 @@
                         "PyArg_format": "i:createClassStatic",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&flag",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

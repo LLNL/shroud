@@ -44,7 +44,7 @@ PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 
 // ----------------------------------------
 // Function:  void getName
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *name +len(worklen)+len_trim(worktrim)
 // Statement: py_inout_char*
@@ -80,7 +80,7 @@ PY_getName(
 
 // ----------------------------------------
 // Function:  void function1
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_function1__doc__[] =
 "documentation"
 ;
@@ -98,7 +98,7 @@ PY_function1(
 
 // ----------------------------------------
 // Function:  void function2
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_function2__doc__[] =
 "documentation"
 ;
@@ -117,7 +117,7 @@ PY_function2(
 
 // ----------------------------------------
 // Function:  void function3a
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int i
 // Statement: py_in_native
@@ -144,7 +144,7 @@ PY_function3a_0(
 
 // ----------------------------------------
 // Function:  void function3a
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  long i
 // Statement: py_in_native
@@ -210,7 +210,7 @@ PY_function4(
 
 // ----------------------------------------
 // Function:  void function5 +name(fiveplus)
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_fiveplus__doc__[] =
 "documentation"
 ;
@@ -229,7 +229,7 @@ PY_fiveplus(
 
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string &name
 // Statement: py_inout_string&
@@ -257,7 +257,7 @@ PY_TestMultilineSplicer(
 
 // ----------------------------------------
 // Function:  void FunctionTU
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int arg1
 // Statement: py_in_native
@@ -293,7 +293,7 @@ PY_name_instantiation1(
 
 // ----------------------------------------
 // Function:  void FunctionTU
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  float arg1
 // Statement: py_in_native

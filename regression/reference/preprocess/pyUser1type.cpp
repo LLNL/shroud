@@ -41,7 +41,7 @@ PY_User1_tp_del (PY_User1 *self)
 
 // ----------------------------------------
 // Function:  void method1
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_method1__doc__[] =
 "documentation"
 ;
@@ -60,7 +60,7 @@ PY_method1(
 
 // ----------------------------------------
 // Function:  void method2
-// Statement: py_default
+// Statement: py_subroutine
 #if defined(USE_TWO)
 static char PY_method2__doc__[] =
 "documentation"
@@ -81,7 +81,7 @@ PY_method2(
 
 // ----------------------------------------
 // Function:  void method3def
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int i=0
 // Statement: py_in_native
