@@ -493,6 +493,9 @@ Must be unique.  May include format strings:
 
     destructor_name: std_vector_{cxx_T}
 
+Sets the format field *capsule_order* which is the index to the
+destructor for the capsule's contents.
+    
 destructor
 ^^^^^^^^^^
 

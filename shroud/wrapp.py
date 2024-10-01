@@ -4956,6 +4956,19 @@ py_statements = [
 # shadow a.k.a class
     dict(
         name="py_ctor_shadow",
+        call=[
+            "self->{PY_type_obj} = new {cxx_type}({PY_call_list});",
+            "if (self->{PY_type_obj} == {nullptr}) {{+",
+            "PyErr_NoMemory();",
+            "return -1;",
+            "-}}",
+            "self->{PY_type_dtor} = {capsule_order};",
+        ],
+        destructor_name="{cxx_type} *",
+        destructor=[
+            "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);",
+            "delete cxx_ptr;",
+        ],
     ),
     dict(
         name="py_in_shadow*",

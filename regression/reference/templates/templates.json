@@ -4002,6 +4002,7 @@
                                                 "PyTypeObject": "PY_vector_int_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "capsule_order": "1",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -4051,8 +4052,7 @@
                                         "PY_error_return": "-1",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_result": "SHPyResult",
-                                        "PY_used_param_self": true,
-                                        "capsule_order": "1"
+                                        "PY_used_param_self": true
                                     }
                                 }
                             },
@@ -5043,6 +5043,7 @@
                                                 "PyTypeObject": "PY_vector_double_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "capsule_order": "2",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -5092,8 +5093,7 @@
                                         "PY_error_return": "-1",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_result": "SHPyResult",
-                                        "PY_used_param_self": true,
-                                        "capsule_order": "2"
+                                        "PY_used_param_self": true
                                     }
                                 }
                             },

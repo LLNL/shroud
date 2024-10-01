@@ -5692,6 +5692,7 @@
                                                 "PyTypeObject": "PY_Names_Type",
                                                 "c_deref": "",
                                                 "c_var": "ARG_rv",
+                                                "capsule_order": "1",
                                                 "ctor_expr": "ARG_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -5741,8 +5742,7 @@
                                         "PY_error_return": "-1",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_result": "SHPyResult",
-                                        "PY_used_param_self": true,
-                                        "capsule_order": "1"
+                                        "PY_used_param_self": true
                                     }
                                 }
                             },
