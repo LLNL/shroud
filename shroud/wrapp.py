@@ -4669,6 +4669,34 @@ py_statements = [
     
     dict(
         name="py_ctor_struct",
+        lang_c=dict(
+            call=[
+                "self->{PY_type_obj} = malloc(sizeof({cxx_type}));",
+                "if (self->{PY_type_obj} == {nullptr}) {{+",
+                "PyErr_NoMemory();",
+                "return -1;",
+                "-}}",
+                "self->{PY_type_dtor} = {capsule_order};",
+            ],
+            destructor=[
+                "free(ptr);",
+            ],
+        ),
+        lang_cxx=dict(
+            call=[
+                "self->{PY_type_obj} = new {cxx_type};",
+                "if (self->{PY_type_obj} == {nullptr}) {{+",
+                "PyErr_NoMemory();",
+                "return -1;",
+                "-}}",
+                "self->{PY_type_dtor} = {capsule_order};",
+            ],
+            destructor=[
+                "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);",
+                "delete cxx_ptr;",
+            ],
+        ),
+        destructor_name="{cxx_type} *",
     ),
     dict(
         alias=[

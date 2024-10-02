@@ -83,6 +83,7 @@
                                         "PyTypeObject": "PY_Arrays1_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -206,8 +207,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "|OO:Arrays1_ctor",
                                 "PyArg_kwlist": "SHT_kwlist",
-                                "PyArg_vargs": "&SHPy_name,\t &SHPy_count",
-                                "capsule_order": "1"
+                                "PyArg_vargs": "&SHPy_name,\t &SHPy_count"
                             }
                         }
                     }
