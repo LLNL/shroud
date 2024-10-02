@@ -345,7 +345,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -368,7 +367,6 @@
                         "arg1": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "arg1",
                                 "ctor_expr": "arg1",
@@ -393,7 +391,6 @@
                         "arg2": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "arg2",
                                 "ctor_expr": "arg2",
@@ -631,7 +628,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "double",
                                 "c_var": "arg1",
                                 "ctor_expr": "*arg1",
@@ -656,7 +652,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "arg2",
                                 "ctor_expr": "arg2",
@@ -854,7 +849,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -877,7 +871,6 @@
                         "arg2": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "arg2",
                                 "ctor_expr": "arg2",
@@ -1159,7 +1152,6 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "const ",
-                                "c_deref": "",
                                 "c_type": "bool",
                                 "c_var": "arg1",
                                 "ctor_expr": "arg1",
@@ -1187,7 +1179,6 @@
                                 "PyTypeObject": "PyBool_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "bool",
                                 "c_var": "arg2",
                                 "ctor_expr": "*arg2",
@@ -1213,7 +1204,6 @@
                                 "PyTypeObject": "PyBool_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "bool",
                                 "c_var": "arg3",
                                 "ctor_expr": "*arg3",
@@ -1493,7 +1483,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "",
@@ -1518,7 +1507,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "arg1",
                                 "ctor_expr": "*arg1",
@@ -1543,7 +1531,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "arg2",
                                 "ctor_expr": "*arg2",
@@ -1722,7 +1709,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "name",
                                 "ctor_expr": "*name",
@@ -1915,7 +1901,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "s",
                                 "ctor_expr": "s",
@@ -2352,7 +2337,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "name1",
                                 "charlen": "MAXNAME",
@@ -2598,7 +2582,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "name1",
                                 "charlen": "MAXNAME",
@@ -2624,7 +2607,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "name2",
                                 "charlen": "MAXNAME",
@@ -2870,7 +2852,6 @@
                         "ltext": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "ltext",
                                 "ctor_expr": "ltext",
@@ -2896,7 +2877,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "text",
                                 "charlen": "MAXNAME",
@@ -3202,7 +3182,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -3226,7 +3205,6 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -3251,7 +3229,6 @@
                         "ltext": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "ltext",
                                 "ctor_expr": "ltext",
@@ -3277,7 +3254,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "text",
                                 "ctor_expr": "*text",
@@ -3591,7 +3567,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -3615,7 +3590,6 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -3640,7 +3614,6 @@
                         "ltext": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "ltext",
                                 "ctor_expr": "ltext",
@@ -3666,7 +3639,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "text",
                                 "ctor_expr": "*text",
@@ -3869,7 +3841,6 @@
                         "+result": {
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -3893,7 +3864,6 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -4082,7 +4052,6 @@
                         "+result": {
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -4106,7 +4075,6 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",

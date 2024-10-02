@@ -973,7 +973,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1000,7 +999,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "STR_cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -1104,7 +1102,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1132,7 +1129,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "STR_cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -1254,7 +1250,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1278,7 +1273,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "outbuf",
                                 "charlen": "LENOUTBUF",
@@ -1308,7 +1302,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "STR_cstruct1",
                                 "c_var": "s1",
                                 "ctor_expr": "*s1",
@@ -1417,7 +1410,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1445,7 +1437,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "STR_cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -1581,7 +1572,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "STR_cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -1605,7 +1595,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -1630,7 +1619,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -1756,7 +1744,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "STR_cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -1865,7 +1852,6 @@
                                 "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "capsule_order": "1",
                                 "ctor_expr": "SHCXX_rv",
@@ -1892,7 +1878,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -1917,7 +1902,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -2043,7 +2027,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -2066,7 +2049,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -2091,7 +2073,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -2236,7 +2217,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -2259,7 +2239,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -2284,7 +2263,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -2310,7 +2288,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "outbuf",
                                 "charlen": "LENOUTBUF",
@@ -2424,7 +2401,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "2",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -2523,7 +2499,6 @@
                                 "PyObject": "PY_Cstruct_list",
                                 "PyTypeObject": "PY_Cstruct_list_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",

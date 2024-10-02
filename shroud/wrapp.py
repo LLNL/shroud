@@ -780,7 +780,6 @@ return 1;""",
         fmt.c_var_data = wformat("{PY_param_self}->{PY_member_data}", fmt)
         fmt.cxx_var_obj = fmt.c_var_obj
         fmt.cxx_var_data = fmt.c_var_data
-        fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
         fmt.PY_array_arg = options.PY_array_arg
         fmt.c_type = arg_typemap.c_type
@@ -1309,12 +1308,10 @@ return 1;""",
             else:
                 fmt_arg.c_const = ""
             if declarator.is_pointer():
-                fmt_arg.c_deref = "*"
                 fmt_arg.cxx_addr = ""
                 fmt_arg.cxx_member = "->"
                 fmt_arg.ctor_expr = "*" + fmt_arg.c_var
             else:
-                fmt_arg.c_deref = ""
                 fmt_arg.cxx_addr = "&"
                 fmt_arg.cxx_member = "."
                 fmt_arg.ctor_expr = fmt_arg.c_var
@@ -1980,12 +1977,10 @@ return 1;""",
         )
 
         if CXX_result.declarator.is_pointer():
-            fmt_result.c_deref = "*"
             fmt_result.cxx_addr = ""
             fmt_result.cxx_member = "->"
             fmt_result.ctor_expr = "*" + fmt_result.cxx_var
         else:
-            fmt_result.c_deref = ""
             fmt_result.cxx_addr = "&"
             fmt_result.cxx_member = "."
             fmt_result.ctor_expr = fmt_result.cxx_var

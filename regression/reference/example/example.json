@@ -166,7 +166,6 @@
                                                         "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                         "PyObject": "PP_ExClass1",
                                                         "PyTypeObject": "PP_ExClass1_Type",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "capsule_order": "1",
                                                         "ctor_expr": "SHCXX_rv",
@@ -516,7 +515,6 @@
                                                         "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
                                                         "PyObject": "PP_ExClass1",
                                                         "PyTypeObject": "PP_ExClass1_Type",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "capsule_order": "1",
                                                         "ctor_expr": "SHCXX_rv",
@@ -542,7 +540,6 @@
                                                     "fmtdict": {
                                                         "array_size": "1",
                                                         "c_const": "const ",
-                                                        "c_deref": "*",
                                                         "c_type": "char",
                                                         "c_var": "name",
                                                         "ctor_expr": "SH_name.data(),\t SH_name.size()",
@@ -959,7 +956,6 @@
                                             "py": {
                                                 "+result": {
                                                     "fmtdict": {
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -982,7 +978,6 @@
                                                 "incr": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "int",
                                                         "c_var": "incr",
                                                         "ctor_expr": "incr",
@@ -1233,7 +1228,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "array_size": "1",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                         "cxx_addr": "&",
@@ -1457,7 +1451,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "array_size": "1",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                         "cxx_addr": "&",
@@ -1751,7 +1744,6 @@
                                             "py": {
                                                 "+result": {
                                                     "fmtdict": {
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -1774,7 +1766,6 @@
                                                 "value": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "int",
                                                         "c_var": "value",
                                                         "ctor_expr": "value",
@@ -2081,7 +2072,6 @@
                                             "py": {
                                                 "+result": {
                                                     "fmtdict": {
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -2104,7 +2094,6 @@
                                                 "value": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "long",
                                                         "c_var": "value",
                                                         "ctor_expr": "value",
@@ -2394,7 +2383,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "PyTypeObject": "PyBool_Type",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -2418,7 +2406,6 @@
                                                     "fmtdict": {
                                                         "PyTypeObject": "PyBool_Type",
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "bool",
                                                         "c_var": "in",
                                                         "ctor_expr": "in",
@@ -2998,7 +2985,6 @@
                                                         "PY_to_object_idtor_func": "PP_ExClass2_to_Object_idtor",
                                                         "PyObject": "PP_ExClass2",
                                                         "PyTypeObject": "PP_ExClass2_Type",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "capsule_order": "2",
                                                         "ctor_expr": "SHCXX_rv",
@@ -3024,7 +3010,6 @@
                                                     "fmtdict": {
                                                         "array_size": "1",
                                                         "c_const": "const ",
-                                                        "c_deref": "*",
                                                         "c_type": "char",
                                                         "c_var": "name",
                                                         "ctor_expr": "SH_name.data(),\t SH_name.size()",
@@ -3392,7 +3377,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "array_size": "1",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                         "cxx_addr": "&",
@@ -3630,7 +3614,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "array_size": "1",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                         "cxx_addr": "&",
@@ -3867,7 +3850,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "array_size": "1",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                         "cxx_addr": "&",
@@ -4102,7 +4084,6 @@
                                                 "+result": {
                                                     "fmtdict": {
                                                         "array_size": "1",
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                         "cxx_addr": "&",
@@ -4300,7 +4281,6 @@
                                             "py": {
                                                 "+result": {
                                                     "fmtdict": {
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -4616,7 +4596,6 @@
                                                         "PyObject": "PP_ExClass1",
                                                         "PyTypeObject": "PP_ExClass1_Type",
                                                         "array_size": "1",
-                                                        "c_deref": "*",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "*SHCXX_rv",
                                                         "cxx_addr": "",
@@ -4643,7 +4622,6 @@
                                                         "PyTypeObject": "PP_ExClass1_Type",
                                                         "array_size": "1",
                                                         "c_const": "const ",
-                                                        "c_deref": "*",
                                                         "c_type": "AA_example_nested_ExClass1",
                                                         "c_var": "in",
                                                         "ctor_expr": "*in",
@@ -5196,7 +5174,6 @@
                                                 "value": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "int",
                                                         "c_var": "value",
                                                         "ctor_expr": "value",
@@ -5519,7 +5496,6 @@
                                                 "value": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "long",
                                                         "c_var": "value",
                                                         "ctor_expr": "value",
@@ -5830,7 +5806,6 @@
                                                 "value": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "float",
                                                         "c_var": "value",
                                                         "ctor_expr": "value",
@@ -6147,7 +6122,6 @@
                                                 "value": {
                                                     "fmtdict": {
                                                         "c_const": "",
-                                                        "c_deref": "",
                                                         "c_type": "double",
                                                         "c_var": "value",
                                                         "ctor_expr": "value",
@@ -6444,7 +6418,6 @@
                                             "py": {
                                                 "+result": {
                                                     "fmtdict": {
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -6675,7 +6648,6 @@
                                             "py": {
                                                 "+result": {
                                                     "fmtdict": {
-                                                        "c_deref": "",
                                                         "c_var": "SHCXX_rv",
                                                         "ctor_expr": "SHCXX_rv",
                                                         "cxx_addr": "&",
@@ -7182,7 +7154,6 @@
                                         "+result": {
                                             "fmtdict": {
                                                 "PyTypeObject": "PyBool_Type",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -7206,7 +7177,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "const ",
-                                                "c_deref": "",
                                                 "c_type": "char",
                                                 "c_var": "name",
                                                 "ctor_expr": "SH_name.data(),\t SH_name.size()",
@@ -7399,7 +7369,6 @@
                                         "+result": {
                                             "fmtdict": {
                                                 "PyTypeObject": "PyBool_Type",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -7673,7 +7642,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "const ",
-                                                "c_deref": "",
                                                 "c_type": "char",
                                                 "c_var": "name",
                                                 "ctor_expr": "SH_name.data(),\t SH_name.size()",
@@ -8065,7 +8033,6 @@
                                         "flag": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "flag",
                                                 "ctor_expr": "flag",
@@ -8091,7 +8058,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "const ",
-                                                "c_deref": "",
                                                 "c_type": "char",
                                                 "c_var": "name",
                                                 "ctor_expr": "SH_name.data(),\t SH_name.size()",
@@ -8714,7 +8680,6 @@
                                         "i": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "i",
                                                 "ctor_expr": "i",
@@ -8739,7 +8704,6 @@
                                         "j": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "long",
                                                 "c_var": "j",
                                                 "ctor_expr": "j",
@@ -8941,7 +8905,6 @@
                                     "py": {
                                         "+result": {
                                             "fmtdict": {
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -9195,7 +9158,6 @@
                                             "fmtdict": {
                                                 "c_abstract_decl": "MPI_Fint",
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "MPI_Fint",
                                                 "c_var": "comm",
                                                 "ctor_expr": "comm",
@@ -9729,7 +9691,6 @@
                                         "get": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "void",
                                                 "c_var": "get",
                                                 "ctor_expr": "get",
@@ -10291,7 +10252,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "double",
                                                 "c_var": "get",
                                                 "ctor_expr": "*get",
@@ -11118,7 +11078,6 @@
                                         "get": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "double",
                                                 "c_var": "get",
                                                 "ctor_expr": "get",
@@ -13647,7 +13606,6 @@
                                         "get": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "void",
                                                 "c_var": "get",
                                                 "ctor_expr": "get",
@@ -15673,7 +15631,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname1",
                                                 "ctor_expr": "verylongname1",
@@ -15698,7 +15655,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname10",
                                                 "ctor_expr": "verylongname10",
@@ -15723,7 +15679,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname2",
                                                 "ctor_expr": "verylongname2",
@@ -15748,7 +15703,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname3",
                                                 "ctor_expr": "verylongname3",
@@ -15773,7 +15727,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname4",
                                                 "ctor_expr": "verylongname4",
@@ -15798,7 +15751,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname5",
                                                 "ctor_expr": "verylongname5",
@@ -15823,7 +15775,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname6",
                                                 "ctor_expr": "verylongname6",
@@ -15848,7 +15799,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname7",
                                                 "ctor_expr": "verylongname7",
@@ -15873,7 +15823,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname8",
                                                 "ctor_expr": "verylongname8",
@@ -15898,7 +15847,6 @@
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "int",
                                                 "c_var": "verylongname9",
                                                 "ctor_expr": "verylongname9",
@@ -17123,7 +17071,6 @@
                                     "py": {
                                         "+result": {
                                             "fmtdict": {
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -17146,7 +17093,6 @@
                                         "verylongname1": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname1",
                                                 "ctor_expr": "verylongname1",
@@ -17171,7 +17117,6 @@
                                         "verylongname10": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname10",
                                                 "ctor_expr": "verylongname10",
@@ -17196,7 +17141,6 @@
                                         "verylongname2": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname2",
                                                 "ctor_expr": "verylongname2",
@@ -17221,7 +17165,6 @@
                                         "verylongname3": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname3",
                                                 "ctor_expr": "verylongname3",
@@ -17246,7 +17189,6 @@
                                         "verylongname4": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname4",
                                                 "ctor_expr": "verylongname4",
@@ -17271,7 +17213,6 @@
                                         "verylongname5": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname5",
                                                 "ctor_expr": "verylongname5",
@@ -17296,7 +17237,6 @@
                                         "verylongname6": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname6",
                                                 "ctor_expr": "verylongname6",
@@ -17321,7 +17261,6 @@
                                         "verylongname7": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname7",
                                                 "ctor_expr": "verylongname7",
@@ -17346,7 +17285,6 @@
                                         "verylongname8": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname8",
                                                 "ctor_expr": "verylongname8",
@@ -17371,7 +17309,6 @@
                                         "verylongname9": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "verylongname9",
                                                 "ctor_expr": "verylongname9",
@@ -17943,7 +17880,6 @@
                                         "in": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "double",
                                                 "c_var": "in",
                                                 "ctor_expr": "*in",
@@ -17971,7 +17907,6 @@
                                             "fmtdict": {
                                                 "array_size": "shape(in)",
                                                 "c_const": "",
-                                                "c_deref": "*",
                                                 "c_type": "double",
                                                 "c_var": "out",
                                                 "ctor_expr": "*out",
@@ -18011,7 +17946,6 @@
                                         "sizein": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "sizein",
                                                 "ctor_expr": "sizein",

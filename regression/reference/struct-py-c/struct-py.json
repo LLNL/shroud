@@ -72,7 +72,6 @@
                                         "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
                                         "PyObject": "PY_Cstruct_as_class",
                                         "PyTypeObject": "PY_Cstruct_as_class_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
@@ -98,7 +97,6 @@
                                     "fmtdict": {
                                         "PY_member_object": "XXXPY_member_object",
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "x1",
                                         "ctor_expr": "x1",
@@ -125,7 +123,6 @@
                                     "fmtdict": {
                                         "PY_member_object": "XXXPY_member_object",
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "y1",
                                         "ctor_expr": "y1",
@@ -460,7 +457,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -488,7 +484,6 @@
                                 "PyTypeObject": "PY_Cstruct_as_class_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "Cstruct_as_class",
                                 "c_var": "s1",
                                 "ctor_expr": "*s1",
@@ -518,7 +513,6 @@
                                 "PyTypeObject": "PY_Cstruct_as_numpy_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "Cstruct_as_numpy",
                                 "c_var": "s2",
                                 "ctor_expr": "*s2",

@@ -496,7 +496,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -519,7 +518,6 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "TYP_Alias",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -1013,7 +1011,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1036,7 +1033,6 @@
                         "in": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "TYP_iColor",
                                 "c_var": "in",
                                 "ctor_expr": "in",
@@ -1317,7 +1313,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -1340,7 +1335,6 @@
                         "in": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "TYP_TypeID",
                                 "c_var": "in",
                                 "ctor_expr": "in",
@@ -1563,7 +1557,6 @@
                                 "PY_build_format": "O",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "TYP_Struct1Rename",
                                 "c_var": "arg1",
                                 "ctor_expr": "*arg1",

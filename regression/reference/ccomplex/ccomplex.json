@@ -246,7 +246,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "double complex",
                                 "c_var": "arg1",
                                 "ctor_expr": "creal(arg1), cimag(arg1)",
@@ -424,7 +423,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "double complex",
                                 "c_var": "arg1",
                                 "ctor_expr": "creal(arg1), cimag(arg1)",
@@ -555,7 +553,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "double complex",
                                 "c_var": "arg1",
                                 "ctor_expr": "creal(arg1), cimag(arg1)",
@@ -583,7 +580,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -819,7 +815,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "double complex",
                                 "c_var": "arg1",
                                 "ctor_expr": "creal(arg1), cimag(arg1)",
@@ -846,7 +841,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",

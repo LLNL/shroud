@@ -472,7 +472,6 @@
                                 "i": {
                                     "fmtdict": {
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "i",
                                         "ctor_expr": "i",
@@ -845,7 +844,6 @@
                                 "flag": {
                                     "fmtdict": {
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "flag",
                                         "ctor_expr": "flag",
