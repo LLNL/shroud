@@ -3570,15 +3570,6 @@ py_statements = [
         ],
     ),
     dict(
-        name="#py_mixin_function-assign",
-        comments=[
-            "Call function and assign to variable."
-        ],
-        call=[
-            "{cxx_var} = {C_call_function};",
-        ],
-    ),
-    dict(
         name="py_mixin_function-assign-pointee",
         comments=[
             "Call function and assign to pointee."
