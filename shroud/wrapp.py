@@ -1686,10 +1686,6 @@ return 1;""",
             elif result_blk.call:
                 append_format_lst(PY_code, result_blk.call, fmt_result)
                 need_rv_decl = False # The call block needs to declare the variable.
-            elif is_ctor:
-                self.create_ctor_function(cls, node, PY_code, fmt)
-            else:
-                append_format(PY_code, "{PY_rv_asgn}{C_call_function};", fmt)
 
             if node.PY_error_pattern:
                 lfmt = util.Scope(fmt)
@@ -1972,39 +1968,6 @@ return 1;""",
                         fmt.py_local_capsule = "SHC_" + rootname
                     fmt.py_capsule = fmt.py_local_capsule
         
-    def create_ctor_function(self, cls, node, code, fmt):
-        """
-        Wrap a function which is a constructor.
-        Typical c++ constructors are created.
-        But also used for structs which are treated as constructors.
-        Explicitly assign to fields since C does not have constructors.
-
-        Allocate an instance.
-        XXX - do memory reference stuff
-
-        Args:
-            cls  - ast.ClassNode
-            node - ast.FunctionNode
-            code - list of generated wrapper code.
-            fmt  -
-        """
-        assert cls is not None
-        capsule_type = fmt.namespace_scope + fmt.cxx_type + " *"
-        var = "self->" + fmt.PY_type_obj
-        if cls.parse_keyword == "struct":
-            typeflag = "struct"
-        else:
-            typeflag = None
-        util.append_format_lst(
-            code,
-            self.allocate_memory(
-                var, capsule_type, fmt, "return -1", typeflag),
-            fmt
-        )
-        append_format(code,
-                      "self->{PY_type_dtor} = {capsule_order};",
-                      fmt)
-
     def process_function_result(self, cls, node, fmt):
         """Work on formatting for function result values.
 
@@ -2063,7 +2026,6 @@ return 1;""",
         abstract = statements.find_abstract_declarator(ast)
         stmts = None
         if is_ctor:
-            # Code added by create_ctor_function.
             stmts = ["py", meta["intent"], abstract]
         elif result_typemap.base == "struct":
             stmts = ["py", "function", abstract, options.PY_struct_arg]
@@ -2112,47 +2074,6 @@ return 1;""",
                 self.language + " " + destructor_name, destructor)
             fmt.capsule_order = capsule_order
                 
-    def allocate_memory(self, var, capsule_type, fmt,
-                        error, as_type):
-        """Return code to allocate an item.
-        Call PyErr_NoMemory if necessary.
-        Set fmt.capsule_order which is used to release it.
-
-        When called from create_ctor_function var and error
-        will be different than when called for arguments.
-
-        Args:
-            var    - Name of variable for assignment.
-            capsule_type
-            fmt
-            error   - error code ex. "goto fail" or "return -1"
-            as_type - "struct", "vector", None
-        """
-        lines = []
-        if self.language == "c":
-            alloc = var + " = malloc(sizeof({cxx_type}));"
-            del_lines = ["free(ptr);"]
-        else:
-            if as_type == "vector":
-                alloc = var + " = new {cxx_type};"
-            elif as_type == "struct":
-                alloc = var + " = new {namespace_scope}{cxx_type};"
-            else:
-                alloc = var + " = new {namespace_scope}{cxx_type}({PY_call_list});"
-            del_lines = [
-                "{} cxx_ptr =\t static_cast<{}>(ptr);".format(
-                    capsule_type, capsule_type
-                ),
-                "delete cxx_ptr;",
-            ]
-        lines.append(alloc)
-        # This line is formatted later, thus {{{{ for a single {.
-        lines.append("if ({} == {{nullptr}}) {{{{+\n"
-                     "PyErr_NoMemory();\n{};\n-}}}}".format(var, error))
-        capsule_order = self.add_capsule_code(self.language + " " + capsule_type, del_lines)
-        fmt.capsule_order = capsule_order
-        return lines
-
     def write_tp_func(self, node, fmt_type, output):
         """Create functions for tp_init et.al.
 
