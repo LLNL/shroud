@@ -14888,6 +14888,8 @@ py_ctor_shadow:
   - return -1;
   - -}}
   - self->{PY_type_dtor} = {capsule_order};
+  c_return:
+  - return 0;
   destructor_name: '{cxx_type} *'
   destructor:
   - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
@@ -14902,6 +14904,8 @@ py_ctor_struct:
   - return -1;
   - -}}
   - self->{PY_type_dtor} = {capsule_order};
+  c_return:
+  - return 0;
   destructor_name: '{cxx_type} *'
   destructor:
   - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"

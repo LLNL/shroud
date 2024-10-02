@@ -215,7 +215,7 @@ The template for a function is:
             {PyObject} *  {py_var} Py_BuildValue("{Py_format}", {vargs});
             {cleanup}
          }
-         return;
+         {c_return};
 
        fail:
           {fail}
@@ -470,6 +470,14 @@ variable from *declare_fail* instead of declaring the variable
 which may be done in the *call* clause.
 
 .. object conversion
+
+c_return
+^^^^^^^^
+
+Code to return a value from the wrapper.
+By default an ``PyObject`` is returned and this entry is not needed.
+But some others, such as constructors, return a value since it is
+called via ``tp_init``.
 
 incref_on_return
 ^^^^^^^^^^^^^^^^

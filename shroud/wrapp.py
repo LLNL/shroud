@@ -1716,10 +1716,11 @@ return 1;""",
 
         # If only one return value, return the ctor
         # else create a tuple with Py_BuildValue.
-        if is_ctor:
-            return_code = "return 0;"
+        return_code = []
+        if result_blk.c_return:
+            append_format_lst(return_code, result_blk.c_return, fmt_result)
         elif not build_tuples:
-            return_code = "Py_RETURN_NONE;"
+            return_code.append("Py_RETURN_NONE;")
         elif len(build_tuples) == 1:
             # Return a single object already created in build_tuples
             blk0 = build_tuples[0].blk0
@@ -1731,7 +1732,7 @@ return 1;""",
             elif incref:
                 post_call_code.append(incref)
             fmt.py_var = build_tuples[0].ctorvar
-            return_code = wformat("return (PyObject *) {py_var};", fmt)
+            append_format(return_code, "return (PyObject *) {py_var};", fmt)
         else:
             # fmt=format for function. Do not use fmt_result here.
             # There may be no return value, only intent(OUT) arguments.
@@ -1753,7 +1754,7 @@ return 1;""",
                 # fail=["Py_XDECREF(SHPyResult);"],
             )
             update_code_blocks(locals(), rv_blk, fmt)
-            return_code = wformat("return {PY_result};", fmt)
+            append_format(return_code, "return {PY_result};", fmt)
 
         need_blank = False  # put return right after call
         if node._generated == "struct_as_class_ctor":
@@ -1785,7 +1786,7 @@ return 1;""",
 
         if options.debug and need_blank:
             PY_code.append("")
-        PY_code.append(return_code)
+        PY_code.extend(return_code)
 
         if goto_fail:
             PY_code.extend(["", "^fail:"])
@@ -3498,6 +3499,7 @@ PyStmts = util.Scope(
     declare=[], post_parse=[], pre_call=[],
     call=[],
     post_call=[],
+    c_return=[],
     destructor_name=None,
     destructor=[],
     cleanup=[], fail=[],
@@ -4567,6 +4569,9 @@ py_statements = [
     
     dict(
         name="py_ctor_struct",
+        notes=[
+            "Called via tp_init.",
+        ],
         lang_c=dict(
             call=[
                 "self->{PY_type_obj} = malloc(sizeof({cxx_type}));",
@@ -4595,6 +4600,9 @@ py_statements = [
             ],
         ),
         destructor_name="{cxx_type} *",
+        c_return=[
+            "return 0;",
+        ],
     ),
     dict(
         alias=[
@@ -4882,6 +4890,9 @@ py_statements = [
 # shadow a.k.a class
     dict(
         name="py_ctor_shadow",
+        notes=[
+            "Called via tp_init.",
+        ],
         call=[
             "self->{PY_type_obj} = new {cxx_type}({PY_call_list});",
             "if (self->{PY_type_obj} == {nullptr}) {{+",
@@ -4894,6 +4905,9 @@ py_statements = [
         destructor=[
             "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);",
             "delete cxx_ptr;",
+        ],
+        c_return=[
+            "return 0;",
         ],
     ),
     dict(
