@@ -567,13 +567,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "Alias SHCXX_rv",
+                        "C_call_function": "typefunc(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "Alias SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:typefunc",
@@ -1086,13 +1085,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "iColor SHCXX_rv",
+                        "C_call_function": "returnEnum(SH_in)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "iColor SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:returnEnum",
@@ -1391,13 +1389,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "TypeID SHCXX_rv",
+                        "C_call_function": "returnTypeID(SH_in)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "TypeID SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:returnTypeID",
@@ -1613,6 +1610,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "typestruct(&arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1",
                         "PY_doc_string": "documentation",
@@ -1624,7 +1622,7 @@
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1",
                         "py_var": "SHPy_arg1",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },

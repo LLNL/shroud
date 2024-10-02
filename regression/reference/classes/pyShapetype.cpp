@@ -41,7 +41,7 @@ PY_Shape_tp_del (PY_Shape *self)
 
 // ----------------------------------------
 // Function:  Shape
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_Shape_tp_init(
   PY_Shape *self,

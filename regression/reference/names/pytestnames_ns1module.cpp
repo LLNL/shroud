@@ -33,7 +33,7 @@
 
 // ----------------------------------------
 // Function:  void init_ns1
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_init_ns1__doc__[] =
 "documentation"
 ;

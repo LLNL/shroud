@@ -96,7 +96,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void vector_iota_out
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> &arg +intent(out)
 // Statement: py_out_vector<native>&_numpy
@@ -155,7 +155,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void vector_iota_out_d
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> &arg +intent(out)
 // Statement: py_out_vector<native>&_numpy

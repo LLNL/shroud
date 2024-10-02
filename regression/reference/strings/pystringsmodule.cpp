@@ -85,7 +85,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void init_test
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_init_test__doc__[] =
 "documentation"
 ;
@@ -104,7 +104,7 @@ PY_init_test(
 
 // ----------------------------------------
 // Function:  void passChar
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char status
 // Statement: py_in_char
@@ -168,7 +168,7 @@ PY_returnChar(
 
 // ----------------------------------------
 // Function:  void passCharPtr
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *dest +charlen(40)+intent(out)
 // Statement: py_out_char*_charlen
@@ -215,7 +215,7 @@ PY_passCharPtr(
 
 // ----------------------------------------
 // Function:  void passCharPtrInOut
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *s +intent(inout)
 // Statement: py_inout_char*
@@ -733,7 +733,7 @@ PY_getConstStringPtrOwnsAllocPattern(
 
 // ----------------------------------------
 // Function:  void acceptStringConstReference
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const std::string &arg1
 // Statement: py_in_string&
@@ -775,7 +775,7 @@ PY_acceptStringConstReference(
 
 // ----------------------------------------
 // Function:  void acceptStringReferenceOut
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string &arg1 +intent(out)
 // Statement: py_out_string&
@@ -814,7 +814,7 @@ PY_acceptStringReferenceOut(
 
 // ----------------------------------------
 // Function:  void acceptStringReference
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string &arg1
 // Statement: py_inout_string&
@@ -862,7 +862,7 @@ PY_acceptStringReference(
 
 // ----------------------------------------
 // Function:  void acceptStringPointerConst
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const std::string *arg1
 // Statement: py_in_string*
@@ -901,7 +901,7 @@ PY_acceptStringPointerConst(
 
 // ----------------------------------------
 // Function:  void acceptStringPointer
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string *arg1
 // Statement: py_inout_string*
@@ -946,7 +946,7 @@ PY_acceptStringPointer(
 
 // ----------------------------------------
 // Function:  void fetchStringPointer
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string *arg1 +intent(out)
 // Statement: py_out_string*
@@ -983,7 +983,7 @@ PY_fetchStringPointer(
 
 // ----------------------------------------
 // Function:  void acceptStringPointerLen
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string *arg1
 // Statement: py_inout_string*
@@ -1034,7 +1034,7 @@ PY_acceptStringPointerLen(
 
 // ----------------------------------------
 // Function:  void fetchStringPointerLen
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string *arg1 +intent(out)
 // Statement: py_out_string*
@@ -1121,7 +1121,7 @@ PY_acceptStringInstance(
 
 // ----------------------------------------
 // Function:  void returnStrings
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  std::string &arg1 +intent(out)
 // Statement: py_out_string&
@@ -1161,7 +1161,7 @@ PY_returnStrings(
 
 // ----------------------------------------
 // Function:  void explicit1
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char *name +intent(in)+len_trim(AAlen)
 // Statement: py_in_char*
@@ -1192,7 +1192,7 @@ PY_explicit1(
 
 // ----------------------------------------
 // Function:  void CpassChar
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  char status
 // Statement: py_in_char
@@ -1256,7 +1256,7 @@ PY_CreturnChar(
 
 // ----------------------------------------
 // Function:  void PostDeclare
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *count +intent(in)+rank(1)
 // Statement: py_in_native*_list

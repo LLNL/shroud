@@ -34,7 +34,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
-// Statement: py_default
+// Statement: py_subroutine
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
 ;
@@ -210,7 +210,7 @@ PY_UseDefaultArguments(
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const std::string &name
 // Statement: py_in_string&
@@ -240,7 +240,7 @@ PY_OverloadedFunction_from_name(
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int indx
 // Statement: py_in_native
@@ -267,7 +267,7 @@ PY_OverloadedFunction_from_index(
 
 // ----------------------------------------
 // Function:  void TemplateArgument
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int arg
 // Statement: py_in_native
@@ -294,7 +294,7 @@ PY_TemplateArgument_int(
 
 // ----------------------------------------
 // Function:  void TemplateArgument
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double arg
 // Statement: py_in_native
@@ -321,7 +321,7 @@ PY_TemplateArgument_double(
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
-// Statement: py_default
+// Statement: py_subroutine
 static PyObject *
 PY_FortranGenericOverloaded_0(
   PyObject *SHROUD_UNUSED(self),
@@ -336,7 +336,7 @@ PY_FortranGenericOverloaded_0(
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const std::string &name
 // Statement: py_in_string&
@@ -571,7 +571,7 @@ PY_colorfunc(
 
 // ----------------------------------------
 // Function:  void getMinMax
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int &min +intent(out)
 // Statement: py_out_native&

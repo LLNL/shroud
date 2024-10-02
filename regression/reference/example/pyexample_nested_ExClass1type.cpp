@@ -57,7 +57,7 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PP_ExClass1_tp_init_0(
   PP_ExClass1 *self,
@@ -77,7 +77,7 @@ PP_ExClass1_tp_init_0(
 
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: py_default
+// Statement: py_ctor_shadow
 // ----------------------------------------
 // Argument:  const string *name
 // Statement: py_in_string*
@@ -317,7 +317,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void SplicerSpecial
-// Statement: py_default
+// Statement: py_subroutine
 static char PP_SplicerSpecial__doc__[] =
 "documentation"
 ;

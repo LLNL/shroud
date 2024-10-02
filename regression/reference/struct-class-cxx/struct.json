@@ -80,6 +80,7 @@
                                         "PyTypeObject": "PY_Cstruct1_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -90,14 +91,14 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt": "py_default",
+                                        "stmt": "py_ctor_struct",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
                                         "intent": "ctor"
                                     },
-                                    "stmt": "py_default"
+                                    "stmt": "py_ctor_struct"
                                 },
                                 "dfield": {
                                     "fmtdict": {
@@ -184,7 +185,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
-                                "C_rv_decl": "Cstruct1 SHCXX_rv",
+                                "C_call_function": "self->obj->Cstruct1_ctor(ifield,\t dfield)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "ifield,\t dfield",
                                 "PY_doc_string": "documentation",
@@ -196,8 +197,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "|id:Cstruct1_ctor",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&ifield,\t &dfield",
-                                "capsule_order": "1"
+                                "PyArg_vargs": "&ifield,\t &dfield"
                             }
                         }
                     }
@@ -385,6 +385,7 @@
                                         "PyTypeObject": "PY_Cstruct_ptr_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "2",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -395,14 +396,14 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt": "py_default",
+                                        "stmt": "py_ctor_struct",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
                                         "intent": "ctor"
                                     },
-                                    "stmt": "py_default"
+                                    "stmt": "py_ctor_struct"
                                 },
                                 "cfield": {
                                     "fmtdict": {
@@ -491,7 +492,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
-                                "C_rv_decl": "Cstruct_ptr SHCXX_rv",
+                                "C_call_function": "self->obj->Cstruct_ptr_ctor(cfield,\t const_dvalue)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "cfield,\t const_dvalue",
                                 "PY_doc_string": "documentation",
@@ -503,8 +504,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "|O&O&:Cstruct_ptr_ctor",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "STR_SHROUD_get_from_object_char,\t &SHValue_cfield,\t STR_SHROUD_get_from_object_double_numpy,\t &SHValue_const_dvalue",
-                                "capsule_order": "2"
+                                "PyArg_vargs": "STR_SHROUD_get_from_object_char,\t &SHValue_cfield,\t STR_SHROUD_get_from_object_double_numpy,\t &SHValue_const_dvalue"
                             }
                         }
                     }
@@ -742,6 +742,7 @@
                                         "PyTypeObject": "PY_Cstruct_list_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "3",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -752,14 +753,14 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt": "py_default",
+                                        "stmt": "py_ctor_struct",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
                                         "intent": "ctor"
                                     },
-                                    "stmt": "py_default"
+                                    "stmt": "py_ctor_struct"
                                 },
                                 "dvalue": {
                                     "fmtdict": {
@@ -990,7 +991,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
-                                "C_rv_decl": "Cstruct_list SHCXX_rv",
+                                "C_call_function": "self->obj->Cstruct_list_ctor(nitems,\t ivalue,\t dvalue,\t svalue)",
                                 "PY_array_arg": "list",
                                 "PY_call_list": "nitems,\t ivalue,\t dvalue,\t svalue",
                                 "PY_doc_string": "documentation",
@@ -1002,8 +1003,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "|iO&O&O&:Cstruct_list_ctor",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&nitems,\t STR_SHROUD_get_from_object_int_list,\t &SHValue_ivalue,\t STR_SHROUD_get_from_object_double_list,\t &SHValue_dvalue,\t STR_SHROUD_get_from_object_charptr,\t &SHValue_svalue",
-                                "capsule_order": "3"
+                                "PyArg_vargs": "&nitems,\t STR_SHROUD_get_from_object_int_list,\t &SHValue_ivalue,\t STR_SHROUD_get_from_object_double_list,\t &SHValue_dvalue,\t STR_SHROUD_get_from_object_charptr,\t &SHValue_svalue"
                             }
                         }
                     }
@@ -1338,6 +1338,7 @@
                                         "PyTypeObject": "PY_Cstruct_numpy_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "4",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -1348,14 +1349,14 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt": "py_default",
+                                        "stmt": "py_ctor_struct",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
                                         "intent": "ctor"
                                     },
-                                    "stmt": "py_default"
+                                    "stmt": "py_ctor_struct"
                                 },
                                 "dvalue": {
                                     "fmtdict": {
@@ -1511,7 +1512,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
-                                "C_rv_decl": "Cstruct_numpy SHCXX_rv",
+                                "C_call_function": "self->obj->Cstruct_numpy_ctor(nitems,\t ivalue,\t dvalue)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "nitems,\t ivalue,\t dvalue",
                                 "PY_doc_string": "documentation",
@@ -1523,8 +1524,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "|iO&O&:Cstruct_numpy_ctor",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&nitems,\t STR_SHROUD_get_from_object_int_numpy,\t &SHValue_ivalue,\t STR_SHROUD_get_from_object_double_numpy,\t &SHValue_dvalue",
-                                "capsule_order": "4"
+                                "PyArg_vargs": "&nitems,\t STR_SHROUD_get_from_object_int_numpy,\t &SHValue_ivalue,\t STR_SHROUD_get_from_object_double_numpy,\t &SHValue_dvalue"
                             }
                         }
                     }
@@ -1776,6 +1776,7 @@
                                         "PyTypeObject": "PY_Arrays1_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "5",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -1786,14 +1787,14 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt": "py_default",
+                                        "stmt": "py_ctor_struct",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
                                         "intent": "ctor"
                                     },
-                                    "stmt": "py_default"
+                                    "stmt": "py_ctor_struct"
                                 },
                                 "count": {
                                     "fmtdict": {
@@ -1886,7 +1887,7 @@
                         },
                         "zz_fmtlang": {
                             "py": {
-                                "C_rv_decl": "Arrays1 SHCXX_rv",
+                                "C_call_function": "self->obj->Arrays1_ctor(name,\t count)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "name,\t count",
                                 "PY_doc_string": "documentation",
@@ -1898,8 +1899,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "|OO:Arrays1_ctor",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&SHPy_name,\t &SHPy_count",
-                                "capsule_order": "5"
+                                "PyArg_vargs": "&SHPy_name,\t &SHPy_count"
                             }
                         }
                     }
@@ -2391,13 +2391,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "passStructByValue(*arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "*arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passStructByValue",
@@ -2522,13 +2521,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "passStruct1(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passStruct1",
@@ -2705,13 +2703,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "passStruct2(s1,\t outbuf)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "s1,\t outbuf",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passStruct2",
@@ -2837,13 +2834,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "acceptStructInPtr(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:acceptStructInPtr",
@@ -3035,6 +3031,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptStructOutPtr(arg,\t i,\t d)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg,\t i,\t d",
                         "PY_doc_string": "documentation",
@@ -3046,7 +3043,7 @@
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&i,\t &d",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3148,6 +3145,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptStructInOutPtr(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
@@ -3159,7 +3157,7 @@
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&PY_Cstruct1_Type,\t &SHPy_arg",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3313,14 +3311,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "Cstruct1 SHCXX_rv",
+                        "C_call_function": "returnStructByValue(i,\t d)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructByValue",
@@ -3488,14 +3485,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "Cstruct1 *SHCXX_rv",
+                        "C_call_function": "returnStructPtr1(i,\t d)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructPtr1",
@@ -3714,14 +3710,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "Cstruct1 *SHCXX_rv",
+                        "C_call_function": "returnStructPtr2(i,\t d,\t outbuf)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d,\t outbuf",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructPtr2",
@@ -3826,14 +3821,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "Cstruct1 *SHCXX_rv",
+                        "C_call_function": "returnStructPtrArray()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -3909,14 +3903,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "Cstruct_list *SHCXX_rv",
+                        "C_call_function": "get_global_struct_list()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct_list *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

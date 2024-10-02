@@ -37,7 +37,7 @@
 
 // ----------------------------------------
 // Function:  void local_function1
-// Statement: py_default
+// Statement: py_subroutine
 static char PP_local_function1__doc__[] =
 "documentation"
 ;
@@ -130,7 +130,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void test_names
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const std::string &name
 // Statement: py_in_string&
@@ -160,7 +160,7 @@ PP_test_names(
 
 // ----------------------------------------
 // Function:  void test_names
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  const std::string &name
 // Statement: py_in_string&
@@ -195,7 +195,7 @@ PP_test_names_flag(
 
 // ----------------------------------------
 // Function:  void testoptional
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int i=1
 // Statement: py_in_native
@@ -271,7 +271,7 @@ PP_test_size_t(
 
 // ----------------------------------------
 // Function:  void testmpi
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm
 // Statement: py_in_unknown
@@ -303,7 +303,7 @@ PP_testmpi_mpi(
 
 // ----------------------------------------
 // Function:  void testmpi
-// Statement: py_default
+// Statement: py_subroutine
 #ifndef HAVE_MPI
 static PyObject *
 PP_testmpi_serial(
@@ -320,7 +320,7 @@ PP_testmpi_serial(
 
 // ----------------------------------------
 // Function:  void FuncPtr1
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void (*get)(void)
 // Exact:     py_default
@@ -355,7 +355,7 @@ PP_FuncPtr1(
 
 // ----------------------------------------
 // Function:  void FuncPtr2
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *(*get)(void)
 // Exact:     py_default
@@ -390,7 +390,7 @@ PP_FuncPtr2(
 
 // ----------------------------------------
 // Function:  void FuncPtr3
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double (*get)(int i, int)
 // Exact:     py_default
@@ -425,7 +425,7 @@ PP_FuncPtr3(
 
 // ----------------------------------------
 // Function:  void FuncPtr5
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
 // Exact:     py_default
@@ -459,7 +459,7 @@ PP_FuncPtr5(
 
 // ----------------------------------------
 // Function:  void verylongfunctionname1
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int *verylongname1 +intent(inout)
 // Statement: py_inout_native*
@@ -637,7 +637,7 @@ PP_verylongfunctionname2(
 
 // ----------------------------------------
 // Function:  void cos_doubles
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *in +intent(in)+rank(2)
 // Statement: py_in_native*_numpy

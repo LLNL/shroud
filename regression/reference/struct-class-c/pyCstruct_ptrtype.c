@@ -51,7 +51,7 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 
 // ----------------------------------------
 // Function:  Cstruct_ptr +name(Cstruct_ptr_ctor)
-// Statement: py_default
+// Statement: py_ctor_struct
 // ----------------------------------------
 // Argument:  char *cfield +intent(in)
 // Statement: py_ctor_char*_numpy

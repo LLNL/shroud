@@ -98,12 +98,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "outer::inner3::worker3()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -195,12 +196,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "outer::worker()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             }
@@ -298,12 +300,13 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "outer::inner1::worker()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }
@@ -431,12 +434,13 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "outer::inner2::worker()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }
@@ -564,12 +568,13 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "outer::inner4::worker4()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }

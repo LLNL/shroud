@@ -163,7 +163,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInout
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 &arg +intent(inout)
 // Statement: py_inout_struct&_numpy
@@ -215,7 +215,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOut
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 &arg +intent(out)
 // Statement: py_out_struct&_numpy

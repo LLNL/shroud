@@ -271,13 +271,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "short SHCXX_rv",
+                        "C_call_function": "short_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "short SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "h:short_func",
@@ -545,13 +544,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "int_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:int_func",
@@ -819,13 +817,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "long SHCXX_rv",
+                        "C_call_function": "long_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "l:long_func",
@@ -1097,13 +1094,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "long long SHCXX_rv",
+                        "C_call_function": "long_long_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "long long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "L:long_long_func",
@@ -1373,13 +1369,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "short SHCXX_rv",
+                        "C_call_function": "short_int_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "short SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "h:short_int_func",
@@ -1649,13 +1644,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "long SHCXX_rv",
+                        "C_call_function": "long_int_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "l:long_int_func",
@@ -1929,13 +1923,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "long long SHCXX_rv",
+                        "C_call_function": "long_long_int_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "long long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "L:long_long_int_func",
@@ -2203,13 +2196,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "unsigned int SHCXX_rv",
+                        "C_call_function": "unsigned_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "unsigned int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "I:unsigned_func",
@@ -2479,13 +2471,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "unsigned short SHCXX_rv",
+                        "C_call_function": "ushort_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "unsigned short SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "H:ushort_func",
@@ -2755,13 +2746,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "unsigned int SHCXX_rv",
+                        "C_call_function": "uint_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "unsigned int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "I:uint_func",
@@ -3031,13 +3021,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "unsigned long SHCXX_rv",
+                        "C_call_function": "ulong_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "unsigned long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "k:ulong_func",
@@ -3311,13 +3300,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "unsigned long long SHCXX_rv",
+                        "C_call_function": "ulong_long_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "unsigned long long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "K:ulong_long_func",
@@ -3589,13 +3577,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "unsigned long SHCXX_rv",
+                        "C_call_function": "ulong_int_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "unsigned long SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "k:ulong_int_func",
@@ -3863,13 +3850,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int8_t SHCXX_rv",
+                        "C_call_function": "int8_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int8_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:int8_func",
@@ -4137,13 +4123,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int16_t SHCXX_rv",
+                        "C_call_function": "int16_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int16_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:int16_func",
@@ -4411,13 +4396,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int32_t SHCXX_rv",
+                        "C_call_function": "int32_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int32_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:int32_func",
@@ -4685,13 +4669,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int64_t SHCXX_rv",
+                        "C_call_function": "int64_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int64_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "L:int64_func",
@@ -4959,13 +4942,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "uint8_t SHCXX_rv",
+                        "C_call_function": "uint8_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "uint8_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:uint8_func",
@@ -5233,13 +5215,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "uint16_t SHCXX_rv",
+                        "C_call_function": "uint16_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "uint16_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:uint16_func",
@@ -5507,13 +5488,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "uint32_t SHCXX_rv",
+                        "C_call_function": "uint32_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "uint32_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:uint32_func",
@@ -5781,13 +5761,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "uint64_t SHCXX_rv",
+                        "C_call_function": "uint64_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "uint64_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "L:uint64_func",
@@ -6055,13 +6034,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "size_t SHCXX_rv",
+                        "C_call_function": "size_func(arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "size_t SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "n:size_func",
@@ -6329,14 +6307,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "bool SHCXX_rv",
+                        "C_call_function": "bool_func(arg)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "bool SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:bool_func",
@@ -6610,14 +6587,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "bool SHCXX_rv",
+                        "C_call_function": "returnBoolAndOthers(&flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "bool SHCXX_rv =\t ",
                         "PyBuild_format": "Ni",
                         "PyBuild_vargs": "SHTPy_rv,\t flag"
                     }

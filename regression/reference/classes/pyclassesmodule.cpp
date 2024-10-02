@@ -75,7 +75,7 @@ PY_directionFunc(
 
 // ----------------------------------------
 // Function:  void passClassByValue
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  Class1 arg
 // Statement: py_in_shadow
@@ -204,7 +204,7 @@ PY_getClassReference(
 
 // ----------------------------------------
 // Function:  void set_global_flag
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int arg
 // Statement: py_in_native

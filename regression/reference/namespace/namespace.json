@@ -209,13 +209,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "const std::string &SHCXX_rv",
+                        "C_call_function": "LastFunctionCalled()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -308,12 +307,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "One()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             }
@@ -476,6 +476,7 @@
                                                 "PyTypeObject": "PY_Cstruct1_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "capsule_order": "1",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -486,14 +487,14 @@
                                                 "numpy_type": null,
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
-                                                "stmt": "py_default",
+                                                "stmt": "py_ctor_struct",
                                                 "value_var": "SHValue_rv",
                                                 "vargs": "SHCXX_rv"
                                             },
                                             "meta": {
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_ctor_struct"
                                         },
                                         "dfield": {
                                             "fmtdict": {
@@ -580,7 +581,7 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
-                                        "C_rv_decl": "outer::Cstruct1 SHCXX_rv",
+                                        "C_call_function": "self->obj->Cstruct1_ctor(ifield,\t dfield)",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "ifield,\t dfield",
                                         "PY_doc_string": "documentation",
@@ -592,8 +593,7 @@
                                         "PY_used_param_self": true,
                                         "PyArg_format": "|id:Cstruct1_ctor",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                        "PyArg_vargs": "&ifield,\t &dfield",
-                                        "capsule_order": "1"
+                                        "PyArg_vargs": "&ifield,\t &dfield"
                                     }
                                 }
                             }
@@ -806,12 +806,13 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "outer::One()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }

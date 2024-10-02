@@ -151,13 +151,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "vector_sum(SH_arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O:vector_sum",
@@ -292,13 +291,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "vector_iota_out(SH_arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -861,13 +861,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "vector_iota_out_d(SH_arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1480,14 +1481,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "std::vector<int> SHCXX_rv",
+                        "C_call_function": "ReturnVectorAlloc(n)",
                         "PY_array_arg": "list",
                         "PY_call_list": "n",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "std::vector<int> SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:ReturnVectorAlloc",
@@ -1656,13 +1656,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "returnDim2(arg,\t len)",
                         "PY_array_arg": "list",
                         "PY_call_list": "arg,\t len",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O:returnDim2",

@@ -104,6 +104,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs_in(&arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
@@ -114,7 +115,7 @@
                         "PyArg_format": "i:intargs_in",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -211,6 +212,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs_inout(&arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
@@ -222,7 +224,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&arg",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -319,13 +321,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs_out(&arg)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -515,6 +518,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "intargs(argin,\t &arginout,\t &argout)",
                         "PY_array_arg": "list",
                         "PY_call_list": "argin,\t &arginout,\t &argout",
                         "PY_doc_string": "documentation",
@@ -527,7 +531,7 @@
                         "PyArg_vargs": "&argin,\t &arginout",
                         "PyBuild_format": "ii",
                         "PyBuild_vargs": "arginout,\t argout",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -754,6 +758,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "cos_doubles(in,\t out,\t sizein)",
                         "PY_array_arg": "list",
                         "PY_call_list": "in,\t out,\t sizein",
                         "PY_doc_string": "documentation",
@@ -765,7 +770,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_in",
                         "py_var": "SHPy_out",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -992,6 +997,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "truncate_to_int(in,\t out,\t sizein)",
                         "PY_array_arg": "list",
                         "PY_call_list": "in,\t out,\t sizein",
                         "PY_doc_string": "documentation",
@@ -1003,7 +1009,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_in",
                         "py_var": "SHPy_out",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1171,6 +1177,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "get_values(&nvalues,\t values)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&nvalues,\t values",
                         "PY_doc_string": "documentation",
@@ -1178,7 +1185,7 @@
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "iN",
                         "PyBuild_vargs": "nvalues,\t SHPy_values",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1365,6 +1372,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "get_values2(arg1,\t arg2)",
                         "PY_array_arg": "list",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -1372,7 +1380,7 @@
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "NN",
                         "PyBuild_vargs": "SHPy_arg1,\t SHPy_arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1529,6 +1537,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "iota_dimension(nvar,\t values)",
                         "PY_array_arg": "list",
                         "PY_call_list": "nvar,\t values",
                         "PY_doc_string": "documentation",
@@ -1540,7 +1549,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&nvar",
                         "py_var": "SHPy_values",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1736,6 +1745,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "Sum(len,\t values,\t &result)",
                         "PY_array_arg": "list",
                         "PY_call_list": "len,\t values,\t &result",
                         "PY_doc_string": "documentation",
@@ -1747,7 +1757,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_values",
                         "py_var": "SHPy_result",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1866,13 +1876,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fillIntArray(out)",
                         "PY_array_arg": "list",
                         "PY_call_list": "out",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_out",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2022,6 +2033,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "incrementIntArray(array,\t sizein)",
                         "PY_array_arg": "list",
                         "PY_call_list": "array,\t sizein",
                         "PY_doc_string": "documentation",
@@ -2033,7 +2045,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_array",
                         "py_var": "SHPy_array",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2179,6 +2191,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fill_with_zeros(x,\t x_length)",
                         "PY_array_arg": "list",
                         "PY_call_list": "x,\t x_length",
                         "PY_doc_string": "documentation",
@@ -2190,7 +2203,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_x",
                         "py_var": "SHPy_x",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2353,13 +2366,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "accumulate(arr,\t len)",
                         "PY_array_arg": "list",
                         "PY_call_list": "arr,\t len",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O:accumulate",
@@ -2489,13 +2501,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "acceptCharArrayIn(names)",
                         "PY_array_arg": "list",
                         "PY_call_list": "names",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O:acceptCharArrayIn",
@@ -2591,6 +2602,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "setGlobalInt(value)",
                         "PY_array_arg": "list",
                         "PY_call_list": "value",
                         "PY_doc_string": "documentation",
@@ -2601,7 +2613,7 @@
                         "PyArg_format": "i:setGlobalInt",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&value",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2669,13 +2681,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "sumFixedArray()",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -2860,13 +2871,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToFixedArray(&count)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_count",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3038,13 +3050,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToDynamicArray(&count,\t &ncount)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&count,\t &ncount",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_count",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3168,13 +3181,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToFuncArray(&count)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_count",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3357,13 +3371,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToFixedConstArray(&count)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_count",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3533,13 +3548,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getPtrToDynamicConstArray(&count,\t &ncount)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&count,\t &ncount",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_count",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3644,13 +3660,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getRawPtrToScalar(&nitems)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&nitems",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_nitems",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3822,13 +3839,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getRawPtrToFixedArray(&count)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&count",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_count",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -4287,14 +4305,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "void *SHCXX_rv",
+                        "C_call_function": "returnAddress1(flag)",
                         "PY_array_arg": "list",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "void *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:returnAddress1",
@@ -4415,14 +4432,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "void *SHCXX_rv",
+                        "C_call_function": "returnAddress2(flag)",
                         "PY_array_arg": "list",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "void *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:returnAddress2",
@@ -4528,13 +4544,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fetchVoidPtr(&addr)",
                         "PY_array_arg": "list",
                         "PY_call_list": "&addr",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_addr",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -4733,14 +4750,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int *SHCXX_rv",
+                        "C_call_function": "returnIntPtrToScalar()",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -4833,14 +4849,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int *SHCXX_rv",
+                        "C_call_function": "returnIntPtrToFixedArray()",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -4914,14 +4929,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "const int *SHCXX_rv",
+                        "C_call_function": "returnIntPtrToConstScalar()",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "const int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -5015,14 +5029,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "const int *SHCXX_rv",
+                        "C_call_function": "returnIntPtrToFixedConstArray()",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "const int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -5098,13 +5111,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int *SHCXX_rv",
+                        "C_call_function": "returnIntScalar()",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

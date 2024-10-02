@@ -415,13 +415,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int SHCXX_rv",
+                        "C_call_function": "convert_to_int(SH_in)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "h:convert_to_int",
@@ -633,13 +632,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "enum Color SHCXX_rv",
+                        "C_call_function": "returnEnum(SH_in)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_in",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "enum Color SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "h:returnEnum",

@@ -153,7 +153,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 
 // ----------------------------------------
 // Function:  ExClass2
-// Statement: py_default
+// Statement: py_ctor_shadow
 // ----------------------------------------
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: py_in_string*
@@ -366,7 +366,7 @@ PP_get_class1(
 
 // ----------------------------------------
 // Function:  void destroyall
-// Statement: py_default
+// Statement: py_subroutine
 static char PP_destroyall__doc__[] =
 "documentation"
 ;
@@ -385,7 +385,7 @@ PP_destroyall(
 
 // ----------------------------------------
 // Function:  void setValue
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int value
 // Statement: py_in_native
@@ -412,7 +412,7 @@ PP_setValue_int(
 
 // ----------------------------------------
 // Function:  void setValue
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  long value
 // Statement: py_in_native
@@ -439,7 +439,7 @@ PP_setValue_long(
 
 // ----------------------------------------
 // Function:  void setValue
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  float value
 // Statement: py_in_native
@@ -466,7 +466,7 @@ PP_setValue_float(
 
 // ----------------------------------------
 // Function:  void setValue
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double value
 // Statement: py_in_native

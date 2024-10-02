@@ -41,7 +41,7 @@ PY_Cstruct1_tp_del (PY_Cstruct1 *self)
 
 // ----------------------------------------
 // Function:  Cstruct1 +name(Cstruct1_ctor)
-// Statement: py_default
+// Statement: py_ctor_struct
 // ----------------------------------------
 // Argument:  int ifield
 // Statement: py_ctor_native_numpy

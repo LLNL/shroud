@@ -39,7 +39,7 @@ PyObject *PY_init_templates_internal(void);
 
 // ----------------------------------------
 // Function:  void FunctionTU
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int arg1
 // Statement: py_in_native
@@ -75,7 +75,7 @@ PY_FunctionTU_0(
 
 // ----------------------------------------
 // Function:  void FunctionTU
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  float arg1
 // Statement: py_in_native

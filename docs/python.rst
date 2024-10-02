@@ -205,7 +205,7 @@ The template for a function is:
         {               create scope before fail
           {pre_call}    pre_call declares variables for arguments
 
-          call  {arg_call}
+          {call}
           {post_call}
 
           per argument
@@ -215,7 +215,7 @@ The template for a function is:
             {PyObject} *  {py_var} Py_BuildValue("{Py_format}", {vargs});
             {cleanup}
          }
-         return;
+         {c_return};
 
        fail:
           {fail}
@@ -314,7 +314,7 @@ The argument will be non-const to allow it to be assigned later.
 
 .. code-block:: python
 
-        name="py_char_*_out_charlen",
+        name="py_out_char*_charlen",
         arg_declare=[
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
@@ -452,9 +452,32 @@ goto_fail
 If *True*, one of the other blocks such as *post_parse*, *pre_call*,
 and *post_call* contain a call to ``fail``.
 If any statements block sets *goto_fail*, then the *fail* block will
-be inserted into the code/
+be inserted into the code.
+
+declare_fail
+^^^^^^^^^^^^
+
+When *goto_fail* is *true*, it can be necessary to declare variables
+before any `goto fail` is added to the wrapper. This will avoid
+compile errors about ``jump to label fail crosses initialization of
+'variable'``.
+
+call_fail
+^^^^^^^^^
+
+Used in combination of *declare_fail* which will assign to the
+variable from *declare_fail* instead of declaring the variable
+which may be done in the *call* clause.
 
 .. object conversion
+
+c_return
+^^^^^^^^
+
+Code to return a value from the wrapper.
+By default an ``PyObject`` is returned and this entry is not needed.
+But some others, such as constructors, return a value since it is
+called via ``tp_init``.
 
 incref_on_return
 ^^^^^^^^^^^^^^^^
@@ -478,6 +501,9 @@ Must be unique.  May include format strings:
 
     destructor_name: std_vector_{cxx_T}
 
+Sets the format field *capsule_order* which is the index to the
+destructor for the capsule's contents.
+    
 destructor
 ^^^^^^^^^^
 

@@ -41,7 +41,7 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 
 // ----------------------------------------
 // Function:  Cstruct_as_class +name(Cstruct_as_class_ctor)
-// Statement: py_default
+// Statement: py_ctor_struct
 // ----------------------------------------
 // Argument:  int x1
 // Statement: py_ctor_native_numpy

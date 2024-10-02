@@ -295,6 +295,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexInoutPtr(&arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1",
                         "PY_doc_string": "documentation",
@@ -306,7 +307,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHCPY_arg1",
                         "py_var": "SHPy_arg1",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -471,13 +472,14 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexOutPtr(&arg1)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "py_var": "SHPy_arg1",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -629,6 +631,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexInoutPtrFlag(&arg1,\t &flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1,\t &flag",
                         "PY_doc_string": "documentation",
@@ -641,7 +644,7 @@
                         "PyArg_vargs": "&SHCPY_arg1",
                         "PyBuild_format": "Di",
                         "PyBuild_vargs": "&SHCPY_arg1,\t flag",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -894,6 +897,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "acceptDoubleComplexOutPtrFlag(&arg1,\t &flag)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg1,\t &flag",
                         "PY_doc_string": "documentation",
@@ -901,7 +905,7 @@
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "Di",
                         "PyBuild_vargs": "&SHCPY_arg1,\t flag",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             }

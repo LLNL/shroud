@@ -635,6 +635,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "getName(name)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "name",
                         "PY_doc_string": "documentation",
@@ -646,7 +647,7 @@
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&name",
                         "py_var": "SHPy_name",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -738,12 +739,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function1()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -842,12 +844,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function2()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1059,6 +1062,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function3a(i)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i",
                         "PY_doc_string": "documentation",
@@ -1069,7 +1073,7 @@
                         "PyArg_format": "i:function3a",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&i",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1281,6 +1285,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "function3a(i)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i",
                         "PY_doc_string": "documentation",
@@ -1291,7 +1296,7 @@
                         "PyArg_format": "l:function3a",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&i",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -1589,13 +1594,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int ARG_rv",
+                        "C_call_function": "function4(SH_rv)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_rv",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int ARG_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "s:function4",
@@ -1696,12 +1700,13 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "fiveplus()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2075,6 +2080,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "TestMultilineSplicer(SH_name,\t &value)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_name,\t &value",
                         "PY_doc_string": "documentation",
@@ -2087,7 +2093,7 @@
                         "PyArg_vargs": "&name",
                         "PyBuild_format": "s#i",
                         "PyBuild_vargs": "SH_name.data(),\t SH_name.size(),\t value",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2600,6 +2606,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "FunctionTU<int, long>(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -2610,7 +2617,7 @@
                         "PyArg_format": "il:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -2998,6 +3005,7 @@
                 },
                 "zz_fmtlang": {
                     "py": {
+                        "C_call_function": "FunctionTU<float, double>(arg1,\t arg2)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
@@ -3008,7 +3016,7 @@
                         "PyArg_format": "fd:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_default"
+                        "stmt": "py_subroutine"
                     }
                 }
             },
@@ -3244,13 +3252,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int ARG_rv",
+                        "C_call_function": "UseImplWorker<internal::ImplWorker1>()",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int ARG_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -3528,13 +3535,12 @@
                 },
                 "zz_fmtlang": {
                     "py": {
-                        "C_rv_decl": "int ARG_rv",
+                        "C_call_function": "Cstruct_as_class_sum(point)",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "point",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int ARG_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:Cstruct_as_class_sum",
@@ -5680,6 +5686,7 @@
                                                 "PyTypeObject": "PY_Names_Type",
                                                 "c_deref": "",
                                                 "c_var": "ARG_rv",
+                                                "capsule_order": "1",
                                                 "ctor_expr": "ARG_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
@@ -5690,14 +5697,14 @@
                                                 "numpy_type": null,
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
-                                                "stmt": "py_default",
+                                                "stmt": "py_ctor_shadow",
                                                 "value_var": "SHValue_rv",
                                                 "vargs": "ARG_rv"
                                             },
                                             "meta": {
                                                 "intent": "ctor"
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_ctor_shadow"
                                         }
                                     },
                                     "share": {
@@ -5721,15 +5728,14 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
-                                        "C_rv_decl": "ns0::Names ARG_rv",
+                                        "C_call_function": "self->myobj->defaultctor()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "-1",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_result": "SHPyResult",
-                                        "PY_used_param_self": true,
-                                        "capsule_order": "1"
+                                        "PY_used_param_self": true
                                     }
                                 }
                             },
@@ -5829,13 +5835,14 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->myobj->method1()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_used_param_self": true,
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             },
@@ -5940,13 +5947,14 @@
                                 },
                                 "zz_fmtlang": {
                                     "py": {
+                                        "C_call_function": "self->myobj->method2()",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_used_param_self": true,
-                                        "stmt": "py_default"
+                                        "stmt": "py_subroutine"
                                     }
                                 }
                             }
@@ -6225,12 +6233,13 @@
                         },
                         "zz_fmtlang": {
                             "py": {
+                                "C_call_function": "ns1::init_ns1()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }

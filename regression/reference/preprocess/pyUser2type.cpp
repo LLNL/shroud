@@ -42,7 +42,7 @@ PY_User2_tp_del (PY_User2 *self)
 
 // ----------------------------------------
 // Function:  void exfunc
-// Statement: py_default
+// Statement: py_subroutine
 #ifdef USE_CLASS3_A
 static PyObject *
 PY_exfunc_0(
@@ -59,7 +59,7 @@ PY_exfunc_0(
 
 // ----------------------------------------
 // Function:  void exfunc
-// Statement: py_default
+// Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int flag
 // Statement: py_in_native

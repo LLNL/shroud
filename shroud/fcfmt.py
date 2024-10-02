@@ -131,7 +131,7 @@ class FillFormat(object):
 
         result_stmt = bind_result.stmt
         func_cursor.stmt = result_stmt
-        set_share_function_format(node, fmt_result, bind_result, wlang)
+        set_share_function_format(node, bind_result, wlang)
         func_cursor.stmt = None
 
         # --- Loop over function parameters
@@ -145,7 +145,7 @@ class FillFormat(object):
             arg_stmt = bind_arg.stmt
             func_cursor.stmt = arg_stmt
 
-            set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
+            set_f_arg_format(node, arg, bind_arg, wlang)
             if wlang == "f":
                 if arg.declarator.is_function_pointer():
                     fptr = bind_arg.meta["fptr"]
@@ -189,7 +189,7 @@ class FillFormat(object):
             func_cursor.stmt = arg_stmt
 
             if wlang == "f":
-                set_f_arg_format(node, arg, fmt_arg, bind_arg, wlang)
+                set_f_arg_format(node, arg, bind_arg, wlang)
                 fmt_arg.f_abstract_name = arg_name
                 fmt_arg.f_var = arg_name
                 fmt_arg.i_var = arg_name
@@ -906,7 +906,13 @@ class ToDimension(todict.PrintNode):
                 
 ######################################################################
 
-def set_share_function_format(node, fmt, bind, wlang):
+def set_share_function_format(node, bind, wlang):
+    """
+    node  - ast.FunctionNode
+    bind  - statements.BindArg
+    wlang - str
+    """
+    fmt = bind.fmtdict
     meta = bind.meta
 
     fmt.stmt_name = bind.stmt.name
@@ -942,7 +948,14 @@ def set_f_function_format(node, bind, subprogram):
         fmt.f_intent = intent
         fmt.f_intent_attr = ", intent({})".format(fmt.f_intent)
     
-def set_f_arg_format(node, arg, fmt, bind, wlang):
+def set_f_arg_format(node, arg, bind, wlang):
+    """
+    node  - ast.FunctionNode
+    arg   - declast.Declaration
+    bind  - statements.BindArg
+    wlang - str
+    """
+    fmt = bind.fmtdict
     meta = bind.meta
 
     fmt.stmt_name = bind.stmt.name
@@ -1145,6 +1158,7 @@ class FormatCXXdecl(object):
         varname = self.state.fmtdict.get(name) or "===>{}<===".format(name)
         decl = gen_arg_as_cxx(self.state.ast,
                               with_template_args=True,
+                              add_params=False,  # Required for function results
                               name=varname)
         return decl
 

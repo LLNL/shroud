@@ -201,6 +201,7 @@
                                         "PyTypeObject": "PY_Class2_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
@@ -211,14 +212,14 @@
                                         "numpy_type": null,
                                         "py_var": "SHTPy_rv",
                                         "size_var": "SHSize_rv",
-                                        "stmt": "py_default",
+                                        "stmt": "py_ctor_shadow",
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
                                         "intent": "ctor"
                                     },
-                                    "stmt": "py_default"
+                                    "stmt": "py_ctor_shadow"
                                 }
                             },
                             "share": {
@@ -252,15 +253,14 @@
                                 "rv_decl": "forward::Class2 SHCXX_rv"
                             },
                             "py": {
-                                "C_rv_decl": "forward::Class2 SHCXX_rv",
+                                "C_call_function": "self->obj->ctor()",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "-1",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_used_param_self": true,
-                                "capsule_order": "1"
+                                "PY_used_param_self": true
                             }
                         }
                     },
@@ -640,6 +640,7 @@
                                 "nresults": 0
                             },
                             "py": {
+                                "C_call_function": "self->obj->func1(arg)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "arg",
                                 "PY_doc_string": "documentation",
@@ -651,7 +652,7 @@
                                 "PyArg_format": "O!:func1",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                 "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     },
@@ -912,6 +913,7 @@
                                 "nresults": 0
                             },
                             "py": {
+                                "C_call_function": "self->obj->acceptClass3(arg)",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "arg",
                                 "PY_doc_string": "documentation",
@@ -923,7 +925,7 @@
                                 "PyArg_format": "O!:acceptClass3",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                                 "PyArg_vargs": "&PY_Class3_Type,\t &SHPy_arg",
-                                "stmt": "py_default"
+                                "stmt": "py_subroutine"
                             }
                         }
                     }

@@ -41,7 +41,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: py_default
+// Statement: py_ctor_shadow
 static int
 PY_Class1_tp_init_default(
   PY_Class1 *self,
@@ -61,7 +61,7 @@ PY_Class1_tp_init_default(
 
 // ----------------------------------------
 // Function:  Class1
-// Statement: py_default
+// Statement: py_ctor_shadow
 // ----------------------------------------
 // Argument:  int flag
 // Statement: py_in_native
