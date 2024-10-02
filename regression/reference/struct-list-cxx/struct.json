@@ -1047,13 +1047,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "passStructByValue(arg)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passStructByValue",
@@ -1179,13 +1177,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "passStruct1(&arg)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passStruct1",
@@ -1363,13 +1359,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "passStruct2(&s1,\t outbuf)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&s1,\t outbuf",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passStruct2",
@@ -1496,13 +1490,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "acceptStructInPtr(&arg)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "&arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:acceptStructInPtr",
@@ -1979,14 +1971,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnStructByValue(i,\t d)",
-                        "C_rv_decl": "Cstruct1 SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructByValue",
@@ -2157,14 +2147,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnStructPtr1(i,\t d)",
-                        "C_rv_decl": "Cstruct1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructPtr1",
@@ -2386,14 +2374,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnStructPtr2(i,\t d,\t outbuf)",
-                        "C_rv_decl": "Cstruct1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "i,\t d,\t outbuf",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "id:returnStructPtr2",
@@ -2501,14 +2487,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnStructPtrArray()",
-                        "C_rv_decl": "Cstruct1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct1 *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -2587,14 +2571,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "get_global_struct_list()",
-                        "C_rv_decl": "Cstruct_list *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "Cstruct_list *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

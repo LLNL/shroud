@@ -2367,13 +2367,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "accumulate(arr,\t len)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "arr,\t len",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O:accumulate",
@@ -2504,13 +2502,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "acceptCharArrayIn(names)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "names",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O:acceptCharArrayIn",
@@ -2686,13 +2682,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "sumFixedArray()",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -4312,14 +4306,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnAddress1(flag)",
-                        "C_rv_decl": "void *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "void *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:returnAddress1",
@@ -4441,14 +4433,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnAddress2(flag)",
-                        "C_rv_decl": "void *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "void *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:returnAddress2",
@@ -4761,14 +4751,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnIntPtrToScalar()",
-                        "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -4862,14 +4850,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnIntPtrToFixedArray()",
-                        "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -4944,14 +4930,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnIntPtrToConstScalar()",
-                        "C_rv_decl": "const int *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "const int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -5046,14 +5030,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnIntPtrToFixedConstArray()",
-                        "C_rv_decl": "const int *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "const int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -5130,13 +5112,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "returnIntScalar()",
-                        "C_rv_decl": "int *SHCXX_rv",
                         "PY_array_arg": "list",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

@@ -279,13 +279,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::PassByValue(arg1,\t arg2)",
-                        "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "double SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "di:PassByValue",
@@ -456,13 +454,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::ConcatenateStrings(SH_arg1,\t SH_arg2)",
-                        "C_rv_decl": "const std::string SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_arg1,\t SH_arg2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "const std::string SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "ss:ConcatenateStrings",
@@ -630,12 +626,10 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::UseDefaultArguments(arg1,\t arg2)",
-                        "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "|dO!:UseDefaultArguments",
@@ -1922,13 +1916,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::UseDefaultOverload(num,\t offset,\t stride)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "num,\t offset,\t stride",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i|ii:UseDefaultOverload",
@@ -2171,13 +2163,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::UseDefaultOverload(type,\t num,\t offset,\t stride)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "type,\t num,\t offset,\t stride",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "di|ii:UseDefaultOverload",
@@ -2291,13 +2281,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::typefunc(arg)",
-                        "C_rv_decl": "tutorial::TypeID SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "tutorial::TypeID SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:typefunc",
@@ -2412,13 +2400,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::colorfunc(SH_arg)",
-                        "C_rv_decl": "tutorial::Color SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "tutorial::Color SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:colorfunc",
@@ -2802,13 +2788,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "tutorial::LastFunctionCalled()",
-                        "C_rv_decl": "const std::string &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

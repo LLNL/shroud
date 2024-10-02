@@ -1608,21 +1608,6 @@ return 1;""",
                 PY_code.extend(["", "// result pre_call"])
             append_format_lst(PY_code, result_blk.pre_call, fmt_result)
 
-        # If multiple calls (because of default argument values),
-        # declare return value once; else delare on call line.
-        need_rv_decl = False
-        if CXX_subprogram == "function":
-            if is_ctor:
-                pass
-            elif found_default or goto_fail:
-                fmt.PY_rv_asgn = fmt_result.cxx_var + " =\t "
-                need_rv_decl = True
-            else:
-                fmt.PY_rv_asgn = fmt.C_rv_decl + " =\t "
-            if result_typemap.sgroup == "struct":
-                # Avoid unused variable.
-                # XXX - major kludge.  struct only access declaration via self->obj.
-                need_rv_decl = False
         if found_default:
             PY_code.append("switch (SH_nargs) {")
 
@@ -1715,9 +1700,6 @@ return 1;""",
                 fmt)
 # XXX - need to add a extra scope to deal with goto in C++
 #            goto_fail = True;
-
-        if need_rv_decl:
-            declare_code.append(fmt.C_rv_decl + ";")
 
         # Compute return value
         if CXX_subprogram == "function":
@@ -1994,11 +1976,6 @@ return 1;""",
         # Mangle result variable name to avoid possible conflict with arguments.
         fmt_result.cxx_var = wformat(
             "{CXX_local}{C_result}", fmt_result
-        )
-
-        fmt.C_rv_decl = gen_arg_as_cxx(CXX_result,
-            name=fmt_result.cxx_var, add_params=False,
-            with_template_args=True
         )
 
         if CXX_result.declarator.is_pointer():

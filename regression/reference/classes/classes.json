@@ -296,7 +296,6 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->ctor()",
-                                "C_rv_decl": "classes::Class1 SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -625,7 +624,6 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->ctor(flag)",
-                                "C_rv_decl": "classes::Class1 SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "flag",
                                 "PY_doc_string": "documentation",
@@ -946,13 +944,11 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->Method1()",
-                                "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -1249,14 +1245,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->equivalent(*obj2)",
-                                "C_rv_decl": "bool SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "*obj2",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "bool SHCXX_rv =\t ",
                                 "PY_used_param_args": true,
                                 "PY_used_param_kwds": true,
                                 "PY_used_param_self": true,
@@ -1949,14 +1943,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->getclass3()",
-                                "C_rv_decl": "classes::Class1 *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "classes::Class1 *SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -2191,13 +2183,11 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->getName()",
-                                "C_rv_decl": "const std::string &SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -2546,13 +2536,11 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->directionFunc(SH_arg)",
-                                "C_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "SH_arg",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                                "PY_rv_asgn": "classes::Class1::DIRECTION SHCXX_rv =\t ",
                                 "PY_used_param_args": true,
                                 "PY_used_param_kwds": true,
                                 "PY_used_param_self": true,
@@ -3835,13 +3823,11 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->getName()",
-                                "C_rv_decl": "const std::string &SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -4078,14 +4064,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "classes::Singleton::getReference()",
-                                "C_rv_decl": "classes::Singleton &SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_STATIC|METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "classes::Singleton &SHCXX_rv =\t ",
                                 "py_var": "SHTPy_rv"
                             }
                         }
@@ -4334,7 +4318,6 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->ctor()",
-                                "C_rv_decl": "classes::Shape SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -4525,13 +4508,11 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->get_ivar()",
-                                "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -4786,7 +4767,6 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->ctor()",
-                                "C_rv_decl": "classes::Circle SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -6325,13 +6305,11 @@
                     },
                     "py": {
                         "C_call_function": "classes::directionFunc(SH_arg)",
-                        "C_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "SH_arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "classes::Class1::DIRECTION SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:directionFunc",
@@ -6868,13 +6846,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "classes::useclass(arg)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:useclass",
@@ -7201,14 +7177,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "classes::getclass3()",
-                        "C_rv_decl": "classes::Class1 *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "classes::Class1 *SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -7795,14 +7769,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "classes::getClassReference()",
-                        "C_rv_decl": "classes::Class1 &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "classes::Class1 &SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -8456,13 +8428,11 @@
                     },
                     "py": {
                         "C_call_function": "classes::get_global_flag()",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -8684,13 +8654,11 @@
                     },
                     "py": {
                         "C_call_function": "classes::LastFunctionCalled()",
-                        "C_rv_decl": "const std::string &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

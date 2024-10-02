@@ -180,7 +180,6 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->Cstruct_as_class_ctor(x1,\t y1)",
-                                "C_rv_decl": "Cstruct_as_class SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "x1,\t y1",
                                 "PY_doc_string": "documentation",
@@ -569,13 +568,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "acceptBothStructs(s1,\t s2)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "s1,\t s2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!O:acceptBothStructs",

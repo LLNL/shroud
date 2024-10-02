@@ -254,7 +254,6 @@
                             },
                             "py": {
                                 "C_call_function": "self->obj->ctor()",
-                                "C_rv_decl": "forward::Class2 SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",

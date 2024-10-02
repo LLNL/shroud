@@ -225,7 +225,6 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->ctor()",
-                                                "C_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
@@ -594,7 +593,6 @@
                                         "zz_fmtlang": {
                                             "py": {
                                                 "C_call_function": "self->obj->ctor(&SH_name)",
-                                                "C_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "&SH_name",
                                                 "PY_doc_string": "documentation",
@@ -1048,13 +1046,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->incrementCount(incr)",
-                                                "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "incr",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                                 "PY_used_param_args": true,
                                                 "PY_used_param_kwds": true,
                                                 "PY_used_param_self": true,
@@ -1293,13 +1289,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getNameErrorCheck()",
-                                                "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -1520,13 +1514,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getNameArg()",
-                                                "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -1850,13 +1842,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getValue(value)",
-                                                "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                                 "PY_used_param_args": true,
                                                 "PY_used_param_kwds": true,
                                                 "PY_used_param_self": true,
@@ -2168,13 +2158,11 @@
                                         "zz_fmtlang": {
                                             "py": {
                                                 "C_call_function": "self->obj->getValue(value)",
-                                                "C_rv_decl": "long SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "value",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                                                "PY_rv_asgn": "long SHCXX_rv =\t ",
                                                 "PY_used_param_args": true,
                                                 "PY_used_param_kwds": true,
                                                 "PY_used_param_self": true,
@@ -2495,14 +2483,12 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->hasAddr(in)",
-                                                "C_rv_decl": "bool SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "in",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                                                 "PY_result": "SHPyResult",
-                                                "PY_rv_asgn": "bool SHCXX_rv =\t ",
                                                 "PY_used_param_args": true,
                                                 "PY_used_param_kwds": true,
                                                 "PY_used_param_self": true,
@@ -3098,7 +3084,6 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->ctor(&SH_name)",
-                                                "C_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "&SH_name",
                                                 "PY_doc_string": "documentation",
@@ -3465,13 +3450,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getName()",
-                                                "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -3703,13 +3686,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getName2()",
-                                                "C_rv_decl": "const std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -3942,13 +3923,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getName3()",
-                                                "C_rv_decl": "std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "std::string &SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -4179,13 +4158,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getName4()",
-                                                "C_rv_decl": "std::string &SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "std::string &SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -4379,13 +4356,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->GetNameLength()",
-                                                "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -4731,14 +4706,12 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->get_class1(in)",
-                                                "C_rv_decl": "example::nested::ExClass1 *SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "in",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                                                 "PY_result": "SHPyResult",
-                                                "PY_rv_asgn": "example::nested::ExClass1 *SHCXX_rv =\t ",
                                                 "PY_used_param_args": true,
                                                 "PY_used_param_kwds": true,
                                                 "PY_used_param_self": true,
@@ -6529,13 +6502,11 @@
                                             },
                                             "py": {
                                                 "C_call_function": "self->obj->getValue<int>()",
-                                                "C_rv_decl": "int SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -6751,13 +6722,11 @@
                                         "zz_fmtlang": {
                                             "py": {
                                                 "C_call_function": "self->obj->getValue<double>()",
-                                                "C_rv_decl": "double SHCXX_rv",
                                                 "PY_array_arg": "numpy",
                                                 "PY_call_list": "",
                                                 "PY_doc_string": "documentation",
                                                 "PY_error_return": "nullptr",
                                                 "PY_ml_flags": "METH_NOARGS",
-                                                "PY_rv_asgn": "double SHCXX_rv =\t ",
                                                 "PY_used_param_self": true,
                                                 "py_var": "SHTPy_rv"
                                             }
@@ -7295,14 +7264,12 @@
                                     },
                                     "py": {
                                         "C_call_function": "example::nested::isNameValid(SH_name)",
-                                        "C_rv_decl": "bool SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "SH_name",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                                         "PY_result": "SHPyResult",
-                                        "PY_rv_asgn": "bool SHCXX_rv =\t ",
                                         "PY_used_param_args": true,
                                         "PY_used_param_kwds": true,
                                         "PyArg_format": "s:isNameValid",
@@ -7483,14 +7450,12 @@
                                     },
                                     "py": {
                                         "C_call_function": "example::nested::isInitialized()",
-                                        "C_rv_decl": "bool SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_NOARGS",
                                         "PY_result": "SHPyResult",
-                                        "PY_rv_asgn": "bool SHCXX_rv =\t ",
                                         "py_var": "SHTPy_rv"
                                     }
                                 }
@@ -9027,13 +8992,11 @@
                                     },
                                     "py": {
                                         "C_call_function": "example::nested::test_size_t()",
-                                        "C_rv_decl": "size_t SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_NOARGS",
-                                        "PY_rv_asgn": "size_t SHCXX_rv =\t ",
                                         "py_var": "SHTPy_rv"
                                     }
                                 }
@@ -17521,13 +17484,11 @@
                                     },
                                     "py": {
                                         "C_call_function": "example::nested::verylongfunctionname2(verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10)",
-                                        "C_rv_decl": "int SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                         "PY_doc_string": "documentation",
                                         "PY_error_return": "nullptr",
                                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                                         "PY_used_param_args": true,
                                         "PY_used_param_kwds": true,
                                         "PyArg_format": "iiiiiiiiii:verylongfunctionname2",

@@ -175,7 +175,6 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->ctor()",
-                                "C_rv_decl": "ArrayWrapper SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
@@ -560,13 +559,11 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->getSize()",
-                                "C_rv_decl": "int SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "PY_rv_asgn": "int SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -1132,14 +1129,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->getArray()",
-                                "C_rv_decl": "double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "double *SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -1382,14 +1377,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->getArrayConst()",
-                                "C_rv_decl": "double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "double *SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -1631,14 +1624,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->getArrayC()",
-                                "C_rv_decl": "const double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "const double *SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -1882,14 +1873,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->getArrayConstC()",
-                                "C_rv_decl": "const double *SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "const double *SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }
@@ -4290,14 +4279,12 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->checkPtr(array)",
-                                "C_rv_decl": "bool SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "array",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
                                 "PY_result": "SHPyResult",
-                                "PY_rv_asgn": "SHCXX_rv =\t ",
                                 "PY_used_param_args": true,
                                 "PY_used_param_kwds": true,
                                 "PY_used_param_self": true,
@@ -4458,13 +4445,11 @@
                         "zz_fmtlang": {
                             "py": {
                                 "C_call_function": "self->obj->sumArray()",
-                                "C_rv_decl": "double SHCXX_rv",
                                 "PY_array_arg": "numpy",
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
                                 "PY_ml_flags": "METH_NOARGS",
-                                "PY_rv_asgn": "double SHCXX_rv =\t ",
                                 "PY_used_param_self": true,
                                 "py_var": "SHTPy_rv"
                             }

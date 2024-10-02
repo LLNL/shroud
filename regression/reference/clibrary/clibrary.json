@@ -448,13 +448,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "PassByValue(arg1,\t arg2)",
-                        "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "double SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "di:PassByValue",
@@ -928,13 +926,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "PassByValueMacro(arg2)",
-                        "C_rv_decl": "double SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "double SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:PassByValueMacro",
@@ -1600,13 +1596,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "Function4a(arg1,\t arg2)",
-                        "C_rv_decl": "char *SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "arg1,\t arg2",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "char *SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "ss:Function4a",
@@ -3342,13 +3336,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "ImpliedLen(text,\t ltext,\t flag)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "text,\t ltext,\t flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "s:ImpliedLen",
@@ -3733,13 +3725,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "ImpliedLenTrim(text,\t ltext,\t flag)",
-                        "C_rv_decl": "int SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "text,\t ltext,\t flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_VARARGS|METH_KEYWORDS",
-                        "PY_rv_asgn": "int SHCXX_rv =\t ",
                         "PY_used_param_args": true,
                         "PY_used_param_kwds": true,
                         "PyArg_format": "s:ImpliedLenTrim",
@@ -3952,14 +3942,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "ImpliedBoolTrue(flag)",
-                        "C_rv_decl": "bool SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "bool SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -4167,14 +4155,12 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "ImpliedBoolFalse(flag)",
-                        "C_rv_decl": "bool SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "flag",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PY_result": "SHPyResult",
-                        "PY_rv_asgn": "bool SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }

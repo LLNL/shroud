@@ -210,13 +210,11 @@
                 "zz_fmtlang": {
                     "py": {
                         "C_call_function": "LastFunctionCalled()",
-                        "C_rv_decl": "const std::string &SHCXX_rv",
                         "PY_array_arg": "numpy",
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
                         "PY_ml_flags": "METH_NOARGS",
-                        "PY_rv_asgn": "const std::string &SHCXX_rv =\t ",
                         "py_var": "SHTPy_rv"
                     }
                 }
@@ -584,7 +582,6 @@
                                 "zz_fmtlang": {
                                     "py": {
                                         "C_call_function": "self->obj->Cstruct1_ctor(ifield,\t dfield)",
-                                        "C_rv_decl": "outer::Cstruct1 SHCXX_rv",
                                         "PY_array_arg": "numpy",
                                         "PY_call_list": "ifield,\t dfield",
                                         "PY_doc_string": "documentation",
