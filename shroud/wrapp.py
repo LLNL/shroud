@@ -3568,7 +3568,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_mixin_function-assign",
+        name="#py_mixin_function-assign",
         comments=[
             "Call function and assign to variable."
         ],
@@ -4502,8 +4502,8 @@ py_statements = [
             "py_function_string&",
         ],
         mixin=[
-            "py_mixin_string-fmtdict",
             "py_mixin_function-declare",
+            "py_mixin_string-fmtdict",
         ],
     ),
     dict(

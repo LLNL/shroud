@@ -14579,7 +14579,6 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
-      function-assign -- py_mixin_function-assign
       function-assign-pointee -- py_mixin_function-assign-pointee
       function-declare -- py_mixin_function-declare
       function-struct-class -- py_mixin_function-struct-class
@@ -16529,11 +16528,6 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
-py_mixin_function-assign:
-  name: py_mixin_function-assign
-  intent: mixin
-  call:
-  - '{cxx_var} = {C_call_function};'
 py_mixin_function-assign-pointee:
   name: py_mixin_function-assign-pointee
   intent: mixin
