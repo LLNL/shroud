@@ -5434,13 +5434,15 @@ py_statements = [
         # XXX - PyString_FromStringAndSize({c_var}, sizeof({c_var});
         # c_var_obj is not cached since if the struct changes the
         # object should be remade.
-        getter=["""if ({c_var_obj} != {nullptr}) {{+
-Py_INCREF({c_var_obj});
-return {c_var_obj};
--}}
-PyObject * rv = PyString_FromString({c_var});
-// XXX assumes is null terminated
-return rv;"""],
+        getter=[
+            "if ({c_var_obj} != {nullptr}) {{+",
+            "Py_INCREF({c_var_obj});",
+            "return {c_var_obj};",
+            "-}}",
+            "PyObject * rv = PyString_FromString({c_var});",
+            "// XXX assumes is null terminated",
+            "return rv;",
+        ],
     ),
     
 ]

@@ -15004,19 +15004,13 @@ py_descr_char_[]:
   name: py_descr_char_[]
   intent: descr
   getter:
-  - 'if ({c_var_obj} != {nullptr}) {{+
-
-    Py_INCREF({c_var_obj});
-
-    return {c_var_obj};
-
-    -}}
-
-    PyObject * rv = PyString_FromString({c_var});
-
-    // XXX assumes is null terminated
-
-    return rv;'
+  - if ({c_var_obj} != {nullptr}) {{+
+  - Py_INCREF({c_var_obj});
+  - return {c_var_obj};
+  - -}}
+  - PyObject * rv = PyString_FromString({c_var});
+  - // XXX assumes is null terminated
+  - return rv;
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
@@ -15029,19 +15023,13 @@ py_descr_char_[]_list:
   name: py_descr_char_[]_list
   intent: descr
   getter:
-  - 'if ({c_var_obj} != {nullptr}) {{+
-
-    Py_INCREF({c_var_obj});
-
-    return {c_var_obj};
-
-    -}}
-
-    PyObject * rv = PyString_FromString({c_var});
-
-    // XXX assumes is null terminated
-
-    return rv;'
+  - if ({c_var_obj} != {nullptr}) {{+
+  - Py_INCREF({c_var_obj});
+  - return {c_var_obj};
+  - -}}
+  - PyObject * rv = PyString_FromString({c_var});
+  - // XXX assumes is null terminated
+  - return rv;
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
@@ -15054,19 +15042,13 @@ py_descr_char_[]_numpy:
   name: py_descr_char_[]_numpy
   intent: descr
   getter:
-  - 'if ({c_var_obj} != {nullptr}) {{+
-
-    Py_INCREF({c_var_obj});
-
-    return {c_var_obj};
-
-    -}}
-
-    PyObject * rv = PyString_FromString({c_var});
-
-    // XXX assumes is null terminated
-
-    return rv;'
+  - if ({c_var_obj} != {nullptr}) {{+
+  - Py_INCREF({c_var_obj});
+  - return {c_var_obj};
+  - -}}
+  - PyObject * rv = PyString_FromString({c_var});
+  - // XXX assumes is null terminated
+  - return rv;
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
