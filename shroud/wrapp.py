@@ -1353,7 +1353,7 @@ return 1;""",
             if intent_blk is not None:
                 pass
             elif declarator.is_function_pointer():
-                intent_blk = default_scope
+                stmts = ["py", intent, "procedure"]
             elif implied:
                 stmts = ["py", "implied", abstract]
                 meta["implied"] = implied
@@ -5460,6 +5460,12 @@ py_statements = [
             "PyObject * rv = PyString_FromString({c_var});",
             "// XXX assumes is null terminated",
             "return rv;",
+        ],
+    ),
+
+    dict(
+        alias=[
+            "py_in_procedure",
         ],
     ),
     

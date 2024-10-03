@@ -9626,7 +9626,7 @@
                                                 "cxx_var": "get",
                                                 "lua_var": "SH_Lua_get",
                                                 "pop_expr": "POP",
-                                                "stmt": "lua_mixin_unknown"
+                                                "stmt": "lua_in_procedure"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -9703,6 +9703,7 @@
                                                 "numpy_type": null,
                                                 "py_var": "SHPy_get",
                                                 "size_var": "SHSize_get",
+                                                "stmt": "py_in_procedure",
                                                 "value_var": "SHValue_get"
                                             },
                                             "meta": {
@@ -9757,7 +9758,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_in_procedure"
                                         }
                                     },
                                     "share": {
@@ -10169,7 +10170,7 @@
                                                 "cxx_var": "get",
                                                 "lua_var": "SH_Lua_get",
                                                 "pop_expr": "lua_tonumber(L, 1)",
-                                                "stmt": "lua_mixin_unknown"
+                                                "stmt": "lua_in_procedure"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -10264,6 +10265,7 @@
                                                 "numpy_type": "NPY_DOUBLE",
                                                 "py_var": "SHPy_get",
                                                 "size_var": "SHSize_get",
+                                                "stmt": "py_in_procedure",
                                                 "value_var": "SHValue_get"
                                             },
                                             "meta": {
@@ -10335,7 +10337,7 @@
                                                 },
                                                 "intent": "in"
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_in_procedure"
                                         }
                                     },
                                     "share": {
@@ -10925,7 +10927,7 @@
                                                 "cxx_var": "get",
                                                 "lua_var": "SH_Lua_get",
                                                 "pop_expr": "lua_tonumber(L, 1)",
-                                                "stmt": "lua_mixin_unknown"
+                                                "stmt": "lua_in_procedure"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -11090,6 +11092,7 @@
                                                 "numpy_type": "NPY_DOUBLE",
                                                 "py_var": "SHPy_get",
                                                 "size_var": "SHSize_get",
+                                                "stmt": "py_in_procedure",
                                                 "value_var": "SHValue_get"
                                             },
                                             "meta": {
@@ -11232,7 +11235,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_in_procedure"
                                         }
                                     },
                                     "share": {
@@ -13160,7 +13163,7 @@
                                                 "cxx_var": "get",
                                                 "lua_var": "SH_Lua_get",
                                                 "pop_expr": "POP",
-                                                "stmt": "lua_mixin_unknown"
+                                                "stmt": "lua_in_procedure"
                                             },
                                             "meta": {
                                                 "fptr": {
@@ -13618,6 +13621,7 @@
                                                 "numpy_type": null,
                                                 "py_var": "SHPy_get",
                                                 "size_var": "SHSize_get",
+                                                "stmt": "py_in_procedure",
                                                 "value_var": "SHValue_get"
                                             },
                                             "meta": {
@@ -14053,7 +14057,7 @@
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_in_procedure"
                                         }
                                     },
                                     "share": {

@@ -1174,4 +1174,9 @@ lua_statements = [
             "lua_mixin_push",
         ],
     ),
+    dict(
+        alias=[
+            "lua_in_procedure",
+        ],
+    ),
 ]

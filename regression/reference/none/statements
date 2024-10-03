@@ -14522,6 +14522,7 @@ root
       native* -- py_in_native*
         list -- py_in_native*_list
         numpy -- py_in_native*_numpy
+      procedure -- py_in_procedure
       shadow -- py_in_shadow
       shadow& -- py_in_shadow&
       shadow* -- py_in_shadow*
@@ -15838,6 +15839,9 @@ py_in_native*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_in_procedure:
+  name: py_in_procedure
+  intent: in
 py_in_shadow:
   name: py_in_shadow
   intent: in
@@ -17140,6 +17144,7 @@ root
       enum -- lua_in_enum
       native -- lua_in_native
       native* -- lua_in_native*
+      procedure -- lua_in_procedure
       shadow* -- lua_in_shadow*
       string& -- lua_in_string&
       string* -- lua_in_string*
@@ -17235,6 +17240,9 @@ lua_in_native:
   - "{cxx_type} {cxx_var} =\t {pop_expr};"
 lua_in_native*:
   name: lua_in_native*
+  intent: in
+lua_in_procedure:
+  name: lua_in_procedure
   intent: in
 lua_in_shadow*:
   name: lua_in_shadow*
