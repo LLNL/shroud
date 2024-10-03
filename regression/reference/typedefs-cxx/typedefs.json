@@ -1547,9 +1547,13 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -1614,8 +1618,7 @@
                         "PyArg_format": "O:typestruct",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&arg1",
-                        "py_var": "SHPy_arg1",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg1"
                     }
                 }
             },

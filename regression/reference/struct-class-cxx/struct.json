@@ -2887,9 +2887,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -3012,8 +3016,7 @@
                         "PyArg_format": "id:acceptStructOutPtr",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&i,\t &d",
-                        "py_var": "SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg"
                     }
                 }
             },
@@ -3059,9 +3062,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -3125,8 +3132,7 @@
                         "PyArg_format": "O!:acceptStructInOutPtr",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
                         "PyArg_vargs": "&PY_Cstruct1_Type,\t &SHPy_arg",
-                        "py_var": "SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg"
                     }
                 }
             },

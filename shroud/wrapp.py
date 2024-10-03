@@ -1219,13 +1219,9 @@ return 1;""",
         #            is_const = False
         #        else:
         #            is_const = None
-        if CXX_subprogram == "function":
-            fmt_result, result_blk = self.process_function_result(cls, node, fmt)
-        else:
-            fmt_result = fmt
-            stmts = ["py", "subroutine"]
-            result_blk = lookup_stmts(stmts)
-            fmt_result.stmt = result_blk.name
+        bind_result = self.process_function_result(cls, node, fmt)
+        fmt_result = bind_result.fmtdict
+        result_blk = bind_result.stmt
         func_cursor.stmt = result_blk
         stmts_comments = []
         if options.debug:
@@ -1967,6 +1963,14 @@ return 1;""",
 
         meta = bind_result.meta
 
+        CXX_subprogram = declarator.get_subprogram()
+        if CXX_subprogram != "function":
+            stmts = ["py", "subroutine"]
+            result_blk = lookup_stmts(stmts)
+            bind_result.stmt = result_blk
+            fmt_result.stmt = result_blk.name
+            return bind_result
+
         result_blk = default_scope
 
         CXX_result = node.ast
@@ -2017,12 +2021,12 @@ return 1;""",
             stmts = ["py", "function", abstract]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
-        fmt_result.stmt = result_blk.name
 
+        fmt_result.stmt = result_blk.name
         bind_result.stmt = result_blk
         self.name_temp_vars(fmt.C_result, bind_result)
                 
-        return fmt_result, result_blk
+        return bind_result
 
     def add_stmt_capsule(self, stmts, fmt):
         """Use code to release memory.

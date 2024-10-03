@@ -570,9 +570,13 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 },
                                 "arg": {
                                     "fmtdict": {
@@ -649,8 +653,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "O!:func1",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
-                                "stmt": "py_subroutine"
+                                "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg"
                             }
                         }
                     },
@@ -840,9 +843,13 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 },
                                 "arg": {
                                     "fmtdict": {
@@ -921,8 +928,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "O!:acceptClass3",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&PY_Class3_Type,\t &SHPy_arg",
-                                "stmt": "py_subroutine"
+                                "PyArg_vargs": "&PY_Class3_Type,\t &SHPy_arg"
                             }
                         }
                     }

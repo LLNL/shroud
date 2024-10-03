@@ -53,9 +53,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -113,8 +117,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:intargs_in",
                         "PyArg_kwlist": "SHT_kwlist",
-                        "PyArg_vargs": "&arg",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&arg"
                     }
                 }
             },
@@ -160,9 +163,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -221,8 +228,7 @@
                         "PyArg_format": "i:intargs_inout",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&arg",
-                        "py_var": "SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg"
                     }
                 }
             },
@@ -268,9 +274,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -324,8 +334,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg"
                     }
                 }
             },
@@ -403,9 +412,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "argin": {
                             "fmtdict": {
@@ -524,8 +537,7 @@
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&argin,\t &arginout",
                         "PyBuild_format": "ii",
-                        "PyBuild_vargs": "arginout,\t argout",
-                        "stmt": "py_subroutine"
+                        "PyBuild_vargs": "arginout,\t argout"
                     }
                 }
             },
@@ -608,9 +620,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "in": {
                             "fmtdict": {
@@ -760,8 +776,7 @@
                         "PyArg_format": "O:cos_doubles",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_in",
-                        "py_var": "SHPy_out",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_out"
                     }
                 }
             },
@@ -844,9 +859,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "in": {
                             "fmtdict": {
@@ -996,8 +1015,7 @@
                         "PyArg_format": "O:truncate_to_int",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_in",
-                        "py_var": "SHPy_out",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_out"
                     }
                 }
             },
@@ -1066,9 +1084,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "nvalues": {
                             "fmtdict": {
@@ -1169,8 +1191,7 @@
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "iN",
-                        "PyBuild_vargs": "nvalues,\t SHPy_values",
-                        "stmt": "py_subroutine"
+                        "PyBuild_vargs": "nvalues,\t SHPy_values"
                     }
                 }
             },
@@ -1240,9 +1261,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg1": {
                             "fmtdict": {
@@ -1360,8 +1385,7 @@
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
                         "PyBuild_format": "NN",
-                        "PyBuild_vargs": "SHPy_arg1,\t SHPy_arg2",
-                        "stmt": "py_subroutine"
+                        "PyBuild_vargs": "SHPy_arg1,\t SHPy_arg2"
                     }
                 }
             },
@@ -1418,9 +1442,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "nvar": {
                             "fmtdict": {
@@ -1526,8 +1554,7 @@
                         "PyArg_format": "i:iota_dimension",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&nvar",
-                        "py_var": "SHPy_values",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_values"
                     }
                 }
             },
@@ -1607,9 +1634,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "len": {
                             "fmtdict": {
@@ -1732,8 +1763,7 @@
                         "PyArg_format": "O:Sum",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_values",
-                        "py_var": "SHPy_result",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_result"
                     }
                 }
             },
@@ -1783,9 +1813,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "out": {
                             "fmtdict": {
@@ -1856,8 +1890,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_out",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_out"
                     }
                 }
             },
@@ -1920,9 +1953,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "array": {
                             "fmtdict": {
@@ -2016,8 +2053,7 @@
                         "PyArg_format": "O:incrementIntArray",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_array",
-                        "py_var": "SHPy_array",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_array"
                     }
                 }
             },
@@ -2076,9 +2112,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "x": {
                             "fmtdict": {
@@ -2172,8 +2212,7 @@
                         "PyArg_format": "O:fill_with_zeros",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&SHTPy_x",
-                        "py_var": "SHPy_x",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_x"
                     }
                 }
             },
@@ -2516,9 +2555,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "value": {
                             "fmtdict": {
@@ -2577,8 +2620,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:setGlobalInt",
                         "PyArg_kwlist": "SHT_kwlist",
-                        "PyArg_vargs": "&value",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&value"
                     }
                 }
             },
@@ -2766,9 +2808,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "count": {
                             "fmtdict": {
@@ -2839,8 +2885,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_count",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_count"
                     }
                 }
             },
@@ -2912,9 +2957,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "count": {
                             "fmtdict": {
@@ -3015,8 +3064,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_count",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_count"
                     }
                 }
             },
@@ -3069,9 +3117,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "count": {
                             "fmtdict": {
@@ -3144,8 +3196,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_count",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_count"
                     }
                 }
             },
@@ -3259,9 +3310,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "count": {
                             "fmtdict": {
@@ -3332,8 +3387,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_count",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_count"
                     }
                 }
             },
@@ -3403,9 +3457,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "count": {
                             "fmtdict": {
@@ -3506,8 +3564,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_count",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_count"
                     }
                 }
             },
@@ -3560,9 +3617,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "nitems": {
                             "fmtdict": {
@@ -3617,8 +3678,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_nitems",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_nitems"
                     }
                 }
             },
@@ -3738,9 +3798,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "count": {
                             "fmtdict": {
@@ -3795,8 +3859,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_count",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_count"
                     }
                 }
             },
@@ -4439,9 +4502,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "addr": {
                             "fmtdict": {
@@ -4495,8 +4562,7 @@
                         "PY_doc_string": "documentation",
                         "PY_error_return": "NULL",
                         "PY_ml_flags": "METH_NOARGS",
-                        "py_var": "SHPy_addr",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_addr"
                     }
                 }
             },

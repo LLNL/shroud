@@ -4264,9 +4264,13 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "flag": {
                             "fmtdict": {
@@ -4328,8 +4332,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:createClassStatic",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&flag",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&flag"
                     }
                 }
             },

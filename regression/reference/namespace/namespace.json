@@ -282,9 +282,13 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         }
                     },
                     "share": {
@@ -311,8 +315,7 @@
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_subroutine"
+                        "PY_ml_flags": "METH_NOARGS"
                     }
                 }
             }
@@ -778,9 +781,13 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 }
                             },
                             "share": {
@@ -807,8 +814,7 @@
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
-                                "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_subroutine"
+                                "PY_ml_flags": "METH_NOARGS"
                             }
                         }
                     }
