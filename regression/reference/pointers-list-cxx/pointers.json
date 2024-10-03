@@ -683,6 +683,7 @@
                         "sizein": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "SHSize_in",
                                 "c_type": "int",
                                 "c_var": "sizein",
                                 "ctor_expr": "sizein",
@@ -693,16 +694,17 @@
                                 "cxx_var": "sizein",
                                 "data_var": "SHData_sizein",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "SHSize_in",
                                 "py_var": "SHPy_sizein",
                                 "size_var": "SHSize_sizein",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_sizein"
                             },
                             "meta": {
+                                "implied": "size(in)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         }
                     },
                     "share": {
@@ -919,6 +921,7 @@
                         "sizein": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "SHSize_in",
                                 "c_type": "int",
                                 "c_var": "sizein",
                                 "ctor_expr": "sizein",
@@ -929,16 +932,17 @@
                                 "cxx_var": "sizein",
                                 "data_var": "SHData_sizein",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "SHSize_in",
                                 "py_var": "SHPy_sizein",
                                 "size_var": "SHSize_sizein",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_sizein"
                             },
                             "meta": {
+                                "implied": "size(in)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         }
                     },
                     "share": {
@@ -1618,6 +1622,7 @@
                         "len": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "SHSize_values",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -1628,16 +1633,17 @@
                                 "cxx_var": "len",
                                 "data_var": "SHData_len",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "SHSize_values",
                                 "py_var": "SHPy_len",
                                 "size_var": "SHSize_len",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_len"
                             },
                             "meta": {
+                                "implied": "size(values)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         },
                         "result": {
                             "fmtdict": {
@@ -1959,6 +1965,7 @@
                         "sizein": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "SHSize_array",
                                 "c_type": "int",
                                 "c_var": "sizein",
                                 "ctor_expr": "sizein",
@@ -1969,16 +1976,17 @@
                                 "cxx_var": "sizein",
                                 "data_var": "SHData_sizein",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "SHSize_array",
                                 "py_var": "SHPy_sizein",
                                 "size_var": "SHSize_sizein",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_sizein"
                             },
                             "meta": {
+                                "implied": "size(array)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         }
                     },
                     "share": {
@@ -2115,6 +2123,7 @@
                         "x_length": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "SHSize_x",
                                 "c_type": "int",
                                 "c_var": "x_length",
                                 "ctor_expr": "x_length",
@@ -2125,16 +2134,17 @@
                                 "cxx_var": "x_length",
                                 "data_var": "SHData_x_length",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "SHSize_x",
                                 "py_var": "SHPy_x_length",
                                 "size_var": "SHSize_x_length",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_x_length"
                             },
                             "meta": {
+                                "implied": "size(x)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         }
                     },
                     "share": {
@@ -2287,6 +2297,7 @@
                         "len": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "SHSize_arr",
                                 "c_type": "size_t",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -2297,16 +2308,17 @@
                                 "cxx_var": "len",
                                 "data_var": "SHData_len",
                                 "numpy_type": null,
-                                "pre_call_intent": "SHSize_arr",
                                 "py_var": "SHPy_len",
                                 "size_var": "SHSize_len",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_len"
                             },
                             "meta": {
+                                "implied": "size(arr)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         }
                     },
                     "share": {

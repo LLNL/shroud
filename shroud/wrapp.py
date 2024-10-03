@@ -1008,8 +1008,8 @@ return 1;""",
                 setattr(fmt, "hnamefunc" + str(i),
                     self.add_helper(helper))
 
-    def implied_blk(self, node, arg, pre_call):
-        """Add the implied attribute to the pre_call block.
+    def implied_blk(self, node, bind, pre_call):
+        """Add the implied attribute to the call block.
 
         Called after all input arguments have their fmtpy dictionary
         updated.
@@ -1019,14 +1019,13 @@ return 1;""",
 
         Args:
             node -
-            arg -
-            pre_call -
+            bind - statements.BindArg
+            pre_call - list of strings
         """
-        implied = arg.declarator.attrs["implied"]
-        if implied:
-            fmt = node._bind["py"][arg.declarator.user_name].fmtdict
-            fmt.pre_call_intent = py_implied(implied, node)
-            append_format(pre_call, "{cxx_var} = {pre_call_intent};", fmt)
+        implied = bind.meta["implied"]
+        fmt = bind.fmtdict
+        fmt.c_implied = py_implied(implied, node)
+        append_format_lst(pre_call, bind.stmt.call, fmt)
 
     def intent_out(self, typemap, intent_blk, fmt):
         """Add code for post-call.
@@ -1356,8 +1355,9 @@ return 1;""",
             elif declarator.is_function_pointer():
                 intent_blk = default_scope
             elif implied:
-                arg_implied.append(arg)
-                intent_blk = default_scope
+                stmts = ["py", "implied", abstract]
+                meta["implied"] = implied
+                arg_implied.append(bind_arg)
             elif sgroup == "char":
                 stmts = ["py", intent, abstract]
                 charlen = attrs.get("charlen")
@@ -1542,8 +1542,8 @@ return 1;""",
         func_cursor.stmt = result_blk
 
         # Add implied argument initialization to pre_call_code
-        for arg in arg_implied:
-            intent_blk = self.implied_blk(node, arg, pre_call_code)
+        for bind_arg in arg_implied:
+            intent_blk = self.implied_blk(node, bind_arg, pre_call_code)
 
         need_blank = False  # needed before next debug header
         if not arg_names:
@@ -4085,7 +4085,25 @@ py_statements = [
         name="py_out_native&",
         arg_declare=["{c_const}{c_type} {c_var};"],
     ),
-
+    dict(
+        alias=[
+            "py_implied_native",
+            "py_implied_bool",
+        ],
+        notes=[
+            "Adding the argument's code to the call entry will cause the code",
+            "to be inserted after non-implied arguments pre_call has been",
+            "done. This allows c_implied to use other argument's values."
+        ],
+        arg_declare=[
+            "{cxx_type} {c_var};",
+        ],
+        call=[
+            "{c_var} = {c_implied};",
+        ],
+        arg_call=["{c_var}"],
+    ),
+    
 ####################
 ## numpy
     dict(

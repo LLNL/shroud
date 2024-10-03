@@ -674,6 +674,10 @@ Python wrappers: ``size``, ``len`` and ``len_trim``.
 * len_trim(string)
   Returns the length of a character string, ignoring any trailing blanks.
 
+.. For Python, implied are added in the wrapper after non-implied
+   arguments pre_call.  This allows implied to use the other, possibly
+   computed, values.
+
 intent
 ^^^^^^
 

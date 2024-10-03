@@ -646,7 +646,7 @@ PP_verylongfunctionname2(
 // Statement: py_out_native*_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PP_cos_doubles__doc__[] =
 "documentation"
 ;

@@ -17946,6 +17946,7 @@
                                         "sizein": {
                                             "fmtdict": {
                                                 "c_const": "",
+                                                "c_implied": "PyArray_SIZE(SHPy_in)",
                                                 "c_type": "int",
                                                 "c_var": "sizein",
                                                 "ctor_expr": "sizein",
@@ -17956,16 +17957,17 @@
                                                 "cxx_var": "sizein",
                                                 "data_var": "SHData_sizein",
                                                 "numpy_type": "NPY_INT",
-                                                "pre_call_intent": "PyArray_SIZE(SHPy_in)",
                                                 "py_var": "SHPy_sizein",
                                                 "size_var": "SHSize_sizein",
+                                                "stmt": "py_implied_native",
                                                 "value_var": "SHValue_sizein"
                                             },
                                             "meta": {
+                                                "implied": "size(in)",
                                                 "intent": "in",
                                                 "value": true
                                             },
-                                            "stmt": "py_default"
+                                            "stmt": "py_implied_native"
                                         }
                                     },
                                     "share": {

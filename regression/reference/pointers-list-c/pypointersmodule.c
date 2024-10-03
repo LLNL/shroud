@@ -421,7 +421,7 @@ PY_intargs(
 // Statement: py_out_native*_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -500,7 +500,7 @@ fail:
 // Statement: py_out_native*_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -761,7 +761,7 @@ fail:
 // Statement: py_subroutine
 // ----------------------------------------
 // Argument:  int len +implied(size(values))
-// Exact:     py_default
+// Statement: py_implied_native
 // ----------------------------------------
 // Argument:  const int *values +rank(1)
 // Statement: py_in_native*_list
@@ -878,7 +878,7 @@ fail:
 // Statement: py_inout_native*_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_incrementIntArray__doc__[] =
 "documentation"
 ;
@@ -943,7 +943,7 @@ fail:
 // Statement: py_inout_native*_list
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_fill_with_zeros__doc__[] =
 "documentation"
 ;
@@ -1004,7 +1004,7 @@ fail:
 // Statement: py_in_native*_list
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_accumulate__doc__[] =
 "documentation"
 ;

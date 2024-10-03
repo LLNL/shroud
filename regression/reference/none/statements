@@ -14508,6 +14508,9 @@ root
         list -- py_function_vector<native>_list
         numpy -- py_function_vector<native>_numpy
       void* -- py_function_void*
+    implied
+      bool -- py_implied_bool
+      native -- py_implied_native
     in
       bool -- py_in_bool
       char -- py_in_char
@@ -15689,6 +15692,24 @@ py_function_void*:
   - '{gen.cxxdecl.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
+py_implied_bool:
+  name: py_implied_bool
+  intent: implied
+  arg_declare:
+  - '{cxx_type} {c_var};'
+  arg_call:
+  - '{c_var}'
+  call:
+  - '{c_var} = {c_implied};'
+py_implied_native:
+  name: py_implied_native
+  intent: implied
+  arg_declare:
+  - '{cxx_type} {c_var};'
+  arg_call:
+  - '{c_var}'
+  call:
+  - '{c_var} = {c_implied};'
 py_in_bool:
   name: py_in_bool
   intent: in

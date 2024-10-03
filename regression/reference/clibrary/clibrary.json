@@ -2852,6 +2852,7 @@
                         "ltext": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "MAXNAME",
                                 "c_type": "int",
                                 "c_var": "ltext",
                                 "ctor_expr": "ltext",
@@ -2862,16 +2863,17 @@
                                 "cxx_var": "ltext",
                                 "data_var": "SHData_ltext",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "MAXNAME",
                                 "py_var": "SHPy_ltext",
                                 "size_var": "SHSize_ltext",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_ltext"
                             },
                             "meta": {
+                                "implied": "len(text)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         },
                         "text": {
                             "fmtdict": {
@@ -3205,6 +3207,7 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
+                                "c_implied": "false",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -3215,20 +3218,22 @@
                                 "cxx_var": "flag",
                                 "data_var": "SHData_flag",
                                 "numpy_type": "NPY_BOOL",
-                                "pre_call_intent": "false",
                                 "py_var": "SHPy_flag",
                                 "size_var": "SHSize_flag",
+                                "stmt": "py_implied_bool",
                                 "value_var": "SHValue_flag"
                             },
                             "meta": {
+                                "implied": "false",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_bool"
                         },
                         "ltext": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "strlen(text)",
                                 "c_type": "int",
                                 "c_var": "ltext",
                                 "ctor_expr": "ltext",
@@ -3239,16 +3244,17 @@
                                 "cxx_var": "ltext",
                                 "data_var": "SHData_ltext",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "strlen(text)",
                                 "py_var": "SHPy_ltext",
                                 "size_var": "SHSize_ltext",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_ltext"
                             },
                             "meta": {
+                                "implied": "len(text)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         },
                         "text": {
                             "fmtdict": {
@@ -3590,6 +3596,7 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
+                                "c_implied": "true",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -3600,20 +3607,22 @@
                                 "cxx_var": "flag",
                                 "data_var": "SHData_flag",
                                 "numpy_type": "NPY_BOOL",
-                                "pre_call_intent": "true",
                                 "py_var": "SHPy_flag",
                                 "size_var": "SHSize_flag",
+                                "stmt": "py_implied_bool",
                                 "value_var": "SHValue_flag"
                             },
                             "meta": {
+                                "implied": "true",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_bool"
                         },
                         "ltext": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "strlen(text)",
                                 "c_type": "int",
                                 "c_var": "ltext",
                                 "ctor_expr": "ltext",
@@ -3624,16 +3633,17 @@
                                 "cxx_var": "ltext",
                                 "data_var": "SHData_ltext",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "strlen(text)",
                                 "py_var": "SHPy_ltext",
                                 "size_var": "SHSize_ltext",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_ltext"
                             },
                             "meta": {
+                                "implied": "len_trim(text)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         },
                         "text": {
                             "fmtdict": {
@@ -3864,6 +3874,7 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
+                                "c_implied": "true",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -3874,16 +3885,17 @@
                                 "cxx_var": "flag",
                                 "data_var": "SHData_flag",
                                 "numpy_type": "NPY_BOOL",
-                                "pre_call_intent": "true",
                                 "py_var": "SHPy_flag",
                                 "size_var": "SHSize_flag",
+                                "stmt": "py_implied_bool",
                                 "value_var": "SHValue_flag"
                             },
                             "meta": {
+                                "implied": "true",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_bool"
                         }
                     },
                     "share": {
@@ -4075,6 +4087,7 @@
                             "fmtdict": {
                                 "PyTypeObject": "PyBool_Type",
                                 "c_const": "",
+                                "c_implied": "false",
                                 "c_type": "bool",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -4085,16 +4098,17 @@
                                 "cxx_var": "flag",
                                 "data_var": "SHData_flag",
                                 "numpy_type": "NPY_BOOL",
-                                "pre_call_intent": "false",
                                 "py_var": "SHPy_flag",
                                 "size_var": "SHSize_flag",
+                                "stmt": "py_implied_bool",
                                 "value_var": "SHValue_flag"
                             },
                             "meta": {
+                                "implied": "false",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_bool"
                         }
                     },
                     "share": {

@@ -1603,6 +1603,7 @@
                         "len": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_implied": "PyArray_DIM(SHPy_arg, (2)-1)",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -1613,16 +1614,17 @@
                                 "cxx_var": "len",
                                 "data_var": "SHData_len",
                                 "numpy_type": "NPY_INT",
-                                "pre_call_intent": "PyArray_DIM(SHPy_arg, (2)-1)",
                                 "py_var": "SHPy_len",
                                 "size_var": "SHSize_len",
+                                "stmt": "py_implied_native",
                                 "value_var": "SHValue_len"
                             },
                             "meta": {
+                                "implied": "size(arg,2)",
                                 "intent": "in",
                                 "value": true
                             },
-                            "stmt": "py_default"
+                            "stmt": "py_implied_native"
                         }
                     },
                     "share": {
