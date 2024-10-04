@@ -343,7 +343,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -366,7 +365,6 @@
                         "in": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "enum Color",
                                 "c_var": "in",
                                 "ctor_expr": "in",
@@ -560,7 +558,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -583,7 +580,6 @@
                         "in": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "enum Color",
                                 "c_var": "in",
                                 "ctor_expr": "in",

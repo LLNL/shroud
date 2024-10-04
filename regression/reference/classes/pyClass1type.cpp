@@ -303,7 +303,7 @@ PY_Class1_tp_init(
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -311,7 +311,7 @@ static PyObject *PY_Class1_m_flag_getter(PY_Class1 *self,
     return rv;
 }
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -319,7 +319,7 @@ static PyObject *PY_Class1_test_getter(PY_Class1 *self,
     return rv;
 }
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -331,14 +331,14 @@ static int PY_Class1_test_setter(PY_Class1 *self, PyObject *value,
     return 0;
 }
 
-// Statement: py_descr_bool_scalar
+// Statement: py_descr_bool
 static PyObject *PY_Class1_m_bool_getter(PY_Class1 *self,
     void *SHROUD_UNUSED(closure))
 {
     return PyBool_FromLong(self->obj->m_bool);
 }
 
-// Statement: py_descr_bool_scalar
+// Statement: py_descr_bool
 static int PY_Class1_m_bool_setter(PY_Class1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

@@ -169,7 +169,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                 "cxx_addr": "&",
@@ -283,9 +282,13 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         }
                     },
                     "share": {
@@ -312,8 +315,7 @@
                         "PY_call_list": "",
                         "PY_doc_string": "documentation",
                         "PY_error_return": "nullptr",
-                        "PY_ml_flags": "METH_NOARGS",
-                        "stmt": "py_subroutine"
+                        "PY_ml_flags": "METH_NOARGS"
                     }
                 }
             }
@@ -474,7 +476,6 @@
                                                 "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                                                 "PyObject": "PY_Cstruct1",
                                                 "PyTypeObject": "PY_Cstruct1_Type",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "capsule_order": "1",
                                                 "ctor_expr": "SHCXX_rv",
@@ -500,7 +501,6 @@
                                             "fmtdict": {
                                                 "PY_member_object": "XXXPY_member_object",
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "double",
                                                 "c_var": "dfield",
                                                 "ctor_expr": "dfield",
@@ -527,7 +527,6 @@
                                             "fmtdict": {
                                                 "PY_member_object": "XXXPY_member_object",
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "ifield",
                                                 "ctor_expr": "ifield",
@@ -782,9 +781,13 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 }
                             },
                             "share": {
@@ -811,8 +814,7 @@
                                 "PY_call_list": "",
                                 "PY_doc_string": "documentation",
                                 "PY_error_return": "nullptr",
-                                "PY_ml_flags": "METH_NOARGS",
-                                "stmt": "py_subroutine"
+                                "PY_ml_flags": "METH_NOARGS"
                             }
                         }
                     }

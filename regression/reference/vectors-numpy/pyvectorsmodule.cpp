@@ -288,7 +288,7 @@ fail:
 // Statement: py_in_native*_numpy
 // ----------------------------------------
 // Argument:  int len +implied(size(arg,2))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_returnDim2__doc__[] =
 "documentation"
 ;

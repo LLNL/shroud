@@ -323,7 +323,7 @@ PP_testmpi_serial(
 // Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void (*get)(void)
-// Exact:     py_default
+// Statement: py_in_procedure
 static char PP_FuncPtr1__doc__[] =
 "documentation"
 ;
@@ -358,7 +358,7 @@ PP_FuncPtr1(
 // Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double *(*get)(void)
-// Exact:     py_default
+// Statement: py_in_procedure
 static char PP_FuncPtr2__doc__[] =
 "documentation"
 ;
@@ -393,7 +393,7 @@ PP_FuncPtr2(
 // Statement: py_subroutine
 // ----------------------------------------
 // Argument:  double (*get)(int i, int)
-// Exact:     py_default
+// Statement: py_in_procedure
 static char PP_FuncPtr3__doc__[] =
 "documentation"
 ;
@@ -428,7 +428,7 @@ PP_FuncPtr3(
 // Statement: py_subroutine
 // ----------------------------------------
 // Argument:  void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)
-// Exact:     py_default
+// Statement: py_in_procedure
 static char PP_FuncPtr5__doc__[] =
 "documentation"
 ;
@@ -646,7 +646,7 @@ PP_verylongfunctionname2(
 // Statement: py_out_native*_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PP_cos_doubles__doc__[] =
 "documentation"
 ;

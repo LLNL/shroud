@@ -399,14 +399,17 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 },
                                 "arg1": {
                                     "fmtdict": {
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "arg1",
                                         "ctor_expr": "arg1",
@@ -431,7 +434,6 @@
                                 "arg2": {
                                     "fmtdict": {
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "double",
                                         "c_var": "arg2",
                                         "ctor_expr": "arg2",
@@ -502,8 +504,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "id:nested",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&arg1,\t &arg2",
-                                "stmt": "py_subroutine"
+                                "PyArg_vargs": "&arg1,\t &arg2"
                             }
                         }
                     }
@@ -2905,14 +2906,17 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg1": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "arg1",
                                 "ctor_expr": "arg1",
@@ -2937,7 +2941,6 @@
                         "arg2": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "long",
                                 "c_var": "arg2",
                                 "ctor_expr": "arg2",
@@ -3003,8 +3006,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "il:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&arg1,\t &arg2"
                     }
                 }
             },
@@ -3292,14 +3294,17 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg1": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "float",
                                 "c_var": "arg1",
                                 "ctor_expr": "arg1",
@@ -3324,7 +3329,6 @@
                         "arg2": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "arg2",
                                 "ctor_expr": "arg2",
@@ -3390,8 +3394,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "fd:FunctionTU",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&arg1,\t &arg2",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&arg1,\t &arg2"
                     }
                 }
             },
@@ -3611,7 +3614,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -3810,7 +3812,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -3996,7 +3997,6 @@
                                                 "PY_to_object_idtor_func": "PP_vector_int_to_Object_idtor",
                                                 "PyObject": "PY_vector_int",
                                                 "PyTypeObject": "PY_vector_int_Type",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "capsule_order": "1",
                                                 "ctor_expr": "SHCXX_rv",
@@ -4371,15 +4371,18 @@
                                     },
                                     "py": {
                                         "+result": {
+                                            "fmtdict": {
+                                                "stmt": "py_subroutine"
+                                            },
                                             "meta": {
                                                 "intent": "subroutine"
-                                            }
+                                            },
+                                            "stmt": "py_subroutine"
                                         },
                                         "value": {
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "const ",
-                                                "c_deref": "",
                                                 "c_type": "int",
                                                 "c_var": "value",
                                                 "ctor_expr": "value",
@@ -4440,8 +4443,7 @@
                                         "PY_used_param_self": true,
                                         "PyArg_format": "i:push_back",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                        "PyArg_vargs": "&value",
-                                        "stmt": "py_subroutine"
+                                        "PyArg_vargs": "&value"
                                     }
                                 }
                             },
@@ -4728,7 +4730,6 @@
                                         "+result": {
                                             "fmtdict": {
                                                 "array_size": "1",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -4751,7 +4752,6 @@
                                         "n": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "TEM_vector_int_size_type",
                                                 "c_var": "n",
                                                 "ctor_expr": "n",
@@ -5034,7 +5034,6 @@
                                                 "PY_to_object_idtor_func": "PP_vector_double_to_Object_idtor",
                                                 "PyObject": "PY_vector_double",
                                                 "PyTypeObject": "PY_vector_double_Type",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "capsule_order": "2",
                                                 "ctor_expr": "SHCXX_rv",
@@ -5409,15 +5408,18 @@
                                     },
                                     "py": {
                                         "+result": {
+                                            "fmtdict": {
+                                                "stmt": "py_subroutine"
+                                            },
                                             "meta": {
                                                 "intent": "subroutine"
-                                            }
+                                            },
+                                            "stmt": "py_subroutine"
                                         },
                                         "value": {
                                             "fmtdict": {
                                                 "array_size": "1",
                                                 "c_const": "const ",
-                                                "c_deref": "",
                                                 "c_type": "double",
                                                 "c_var": "value",
                                                 "ctor_expr": "value",
@@ -5478,8 +5480,7 @@
                                         "PY_used_param_self": true,
                                         "PyArg_format": "d:push_back",
                                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                        "PyArg_vargs": "&value",
-                                        "stmt": "py_subroutine"
+                                        "PyArg_vargs": "&value"
                                     }
                                 }
                             },
@@ -5766,7 +5767,6 @@
                                         "+result": {
                                             "fmtdict": {
                                                 "array_size": "1",
-                                                "c_deref": "",
                                                 "c_var": "SHCXX_rv",
                                                 "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
@@ -5789,7 +5789,6 @@
                                         "n": {
                                             "fmtdict": {
                                                 "c_const": "",
-                                                "c_deref": "",
                                                 "c_type": "TEM_vector_double_size_type",
                                                 "c_var": "n",
                                                 "ctor_expr": "n",

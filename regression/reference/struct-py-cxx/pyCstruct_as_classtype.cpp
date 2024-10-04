@@ -85,7 +85,7 @@ PY_Cstruct_as_class_tp_init(
 // splicer begin class.Cstruct_as_class.impl.after_methods
 // splicer end class.Cstruct_as_class.impl.after_methods
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static PyObject *PY_Cstruct_as_class_x1_getter(PY_Cstruct_as_class *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -93,7 +93,7 @@ static PyObject *PY_Cstruct_as_class_x1_getter(PY_Cstruct_as_class *self,
     return rv;
 }
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static int PY_Cstruct_as_class_x1_setter(PY_Cstruct_as_class *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -105,7 +105,7 @@ static int PY_Cstruct_as_class_x1_setter(PY_Cstruct_as_class *self, PyObject *va
     return 0;
 }
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static PyObject *PY_Cstruct_as_class_y1_getter(PY_Cstruct_as_class *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -113,7 +113,7 @@ static PyObject *PY_Cstruct_as_class_y1_getter(PY_Cstruct_as_class *self,
     return rv;
 }
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static int PY_Cstruct_as_class_y1_setter(PY_Cstruct_as_class *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

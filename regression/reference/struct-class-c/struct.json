@@ -78,7 +78,6 @@
                                         "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                                         "PyObject": "PY_Cstruct1",
                                         "PyTypeObject": "PY_Cstruct1_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
@@ -104,7 +103,6 @@
                                     "fmtdict": {
                                         "PY_member_object": "XXXPY_member_object",
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "double",
                                         "c_var": "dfield",
                                         "ctor_expr": "dfield",
@@ -131,7 +129,6 @@
                                     "fmtdict": {
                                         "PY_member_object": "XXXPY_member_object",
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "ifield",
                                         "ctor_expr": "ifield",
@@ -383,7 +380,6 @@
                                         "PY_to_object_idtor_func": "PP_Cstruct_ptr_to_Object_idtor",
                                         "PyObject": "PY_Cstruct_ptr",
                                         "PyTypeObject": "PY_Cstruct_ptr_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "2",
                                         "ctor_expr": "SHCXX_rv",
@@ -410,7 +406,7 @@
                                         "PY_member_object": "cfield_obj",
                                         "array_size": "1",
                                         "c_const": "",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_char",
                                         "c_type": "char",
                                         "c_var": "cfield",
                                         "ctor_expr": "*cfield",
@@ -421,7 +417,6 @@
                                         "cxx_var": "cfield",
                                         "data_var": "SHData_cfield",
                                         "field_name": "cfield",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_char",
                                         "numpy_type": "NPY_INTP",
                                         "py_var": "SHPy_cfield",
                                         "pytmp_var": "SHTPy_cfield",
@@ -439,7 +434,7 @@
                                         "PY_member_object": "const_dvalue_obj",
                                         "array_size": "1",
                                         "c_const": "const ",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_double_numpy",
                                         "c_type": "double",
                                         "c_var": "const_dvalue",
                                         "ctor_expr": "*const_dvalue",
@@ -450,7 +445,6 @@
                                         "cxx_var": "const_dvalue",
                                         "data_var": "SHData_const_dvalue",
                                         "field_name": "const_dvalue",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_double_numpy",
                                         "numpy_type": "NPY_DOUBLE",
                                         "py_var": "SHPy_const_dvalue",
                                         "pytmp_var": "SHTPy_const_dvalue",
@@ -740,7 +734,6 @@
                                         "PY_to_object_idtor_func": "PP_Cstruct_list_to_Object_idtor",
                                         "PyObject": "PY_Cstruct_list",
                                         "PyTypeObject": "PY_Cstruct_list_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "3",
                                         "ctor_expr": "SHCXX_rv",
@@ -767,7 +760,7 @@
                                         "PY_member_object": "dvalue_obj",
                                         "array_size": "self->obj->nitems*TWO",
                                         "c_const": "",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_double_list",
                                         "c_type": "double",
                                         "c_var": "dvalue",
                                         "ctor_expr": "*dvalue",
@@ -778,7 +771,6 @@
                                         "cxx_var": "dvalue",
                                         "data_var": "SHData_dvalue",
                                         "field_name": "dvalue",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_double_list",
                                         "npy_dims_var": "SHD_dvalue",
                                         "npy_intp_asgn": "SHD_dvalue[0] = self->obj->nitems*TWO;\n",
                                         "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
@@ -813,7 +805,7 @@
                                         "PY_member_object": "ivalue_obj",
                                         "array_size": "self->obj->nitems+self->obj->nitems",
                                         "c_const": "",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_int_list",
                                         "c_type": "int",
                                         "c_var": "ivalue",
                                         "ctor_expr": "*ivalue",
@@ -824,7 +816,6 @@
                                         "cxx_var": "ivalue",
                                         "data_var": "SHData_ivalue",
                                         "field_name": "ivalue",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_int_list",
                                         "npy_dims_var": "SHD_ivalue",
                                         "npy_intp_asgn": "SHD_ivalue[0] = self->obj->nitems+self->obj->nitems;\n",
                                         "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
@@ -858,7 +849,6 @@
                                     "fmtdict": {
                                         "PY_member_object": "XXXPY_member_object",
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "nitems",
                                         "ctor_expr": "nitems",
@@ -886,7 +876,7 @@
                                         "PY_member_object": "svalue_obj",
                                         "array_size": "self->obj->nitems",
                                         "c_const": "",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_charptr",
                                         "c_type": "char",
                                         "c_var": "svalue",
                                         "ctor_expr": "*svalue",
@@ -897,7 +887,6 @@
                                         "cxx_var": "svalue",
                                         "data_var": "SHData_svalue",
                                         "field_name": "svalue",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_charptr",
                                         "npy_dims_var": "SHD_svalue",
                                         "npy_intp_asgn": "SHD_svalue[0] = self->obj->nitems;\n",
                                         "npy_intp_decl": "npy_intp SHD_svalue[1];\n",
@@ -1336,7 +1325,6 @@
                                         "PY_to_object_idtor_func": "PP_Cstruct_numpy_to_Object_idtor",
                                         "PyObject": "PY_Cstruct_numpy",
                                         "PyTypeObject": "PY_Cstruct_numpy_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "4",
                                         "ctor_expr": "SHCXX_rv",
@@ -1363,7 +1351,7 @@
                                         "PY_member_object": "dvalue_obj",
                                         "array_size": "self->obj->nitems",
                                         "c_const": "",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_double_numpy",
                                         "c_type": "double",
                                         "c_var": "dvalue",
                                         "ctor_expr": "*dvalue",
@@ -1374,7 +1362,6 @@
                                         "cxx_var": "dvalue",
                                         "data_var": "SHData_dvalue",
                                         "field_name": "dvalue",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_double_numpy",
                                         "npy_dims_var": "SHD_dvalue",
                                         "npy_intp_asgn": "SHD_dvalue[0] = self->obj->nitems;\n",
                                         "npy_intp_decl": "npy_intp SHD_dvalue[1];\n",
@@ -1403,7 +1390,7 @@
                                         "PY_member_object": "ivalue_obj",
                                         "array_size": "self->obj->nitems",
                                         "c_const": "",
-                                        "c_deref": "*",
+                                        "c_helper_get_from_object": "STR_SHROUD_get_from_object_int_numpy",
                                         "c_type": "int",
                                         "c_var": "ivalue",
                                         "ctor_expr": "*ivalue",
@@ -1414,7 +1401,6 @@
                                         "cxx_var": "ivalue",
                                         "data_var": "SHData_ivalue",
                                         "field_name": "ivalue",
-                                        "hnamefunc0": "STR_SHROUD_get_from_object_int_numpy",
                                         "npy_dims_var": "SHD_ivalue",
                                         "npy_intp_asgn": "SHD_ivalue[0] = self->obj->nitems;\n",
                                         "npy_intp_decl": "npy_intp SHD_ivalue[1];\n",
@@ -1442,7 +1428,6 @@
                                     "fmtdict": {
                                         "PY_member_object": "XXXPY_member_object",
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "nitems",
                                         "ctor_expr": "nitems",
@@ -1774,7 +1759,6 @@
                                         "PY_to_object_idtor_func": "PP_Arrays1_to_Object_idtor",
                                         "PyObject": "PY_Arrays1",
                                         "PyTypeObject": "PY_Arrays1_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "5",
                                         "ctor_expr": "SHCXX_rv",
@@ -1800,7 +1784,7 @@
                                     "fmtdict": {
                                         "PY_member_object": "count_obj",
                                         "c_const": "",
-                                        "c_deref": "",
+                                        "c_helper_fill_from_PyObject": "STR_SHROUD_fill_from_PyObject_int_numpy",
                                         "c_type": "int",
                                         "c_var": "count",
                                         "ctor_expr": "count",
@@ -1812,7 +1796,6 @@
                                         "data_var": "SHData_count",
                                         "field_name": "count",
                                         "field_size": "10",
-                                        "hnamefunc0": "STR_SHROUD_fill_from_PyObject_int_numpy",
                                         "numpy_type": "NPY_INT",
                                         "py_var": "SHPy_count",
                                         "pytmp_var": "SHTPy_count",
@@ -1830,7 +1813,7 @@
                                     "fmtdict": {
                                         "PY_member_object": "name_obj",
                                         "c_const": "",
-                                        "c_deref": "",
+                                        "c_helper_fill_from_PyObject": "STR_SHROUD_fill_from_PyObject_char",
                                         "c_type": "char",
                                         "c_var": "name",
                                         "ctor_expr": "name",
@@ -1842,7 +1825,6 @@
                                         "data_var": "SHData_name",
                                         "field_name": "name",
                                         "field_size": "20",
-                                        "hnamefunc0": "STR_SHROUD_fill_from_PyObject_char",
                                         "numpy_type": "NPY_INTP",
                                         "py_var": "SHPy_name",
                                         "pytmp_var": "SHTPy_name",
@@ -2318,7 +2300,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -2345,7 +2326,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "Cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -2449,7 +2429,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -2477,7 +2456,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "Cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -2599,7 +2577,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -2623,7 +2600,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "outbuf",
                                 "charlen": "LENOUTBUF",
@@ -2653,7 +2629,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "Cstruct1",
                                 "c_var": "s1",
                                 "ctor_expr": "*s1",
@@ -2762,7 +2737,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -2790,7 +2764,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "Cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -2914,9 +2887,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -2926,7 +2903,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "Cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -2950,7 +2926,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -2975,7 +2950,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -3042,8 +3016,7 @@
                         "PyArg_format": "id:acceptStructOutPtr",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&i,\t &d",
-                        "py_var": "SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg"
                     }
                 }
             },
@@ -3089,9 +3062,13 @@
                 "zz_bind": {
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -3101,7 +3078,6 @@
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "Cstruct1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -3156,8 +3132,7 @@
                         "PyArg_format": "O!:acceptStructInOutPtr",
                         "PyArg_kwlist": "SHT_kwlist",
                         "PyArg_vargs": "&PY_Cstruct1_Type,\t &SHPy_arg",
-                        "py_var": "SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "py_var": "SHPy_arg"
                     }
                 }
             },
@@ -3210,7 +3185,6 @@
                                 "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "capsule_order": "1",
                                 "ctor_expr": "SHCXX_rv",
@@ -3235,7 +3209,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -3260,7 +3233,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -3386,7 +3358,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -3409,7 +3380,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -3434,7 +3404,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -3579,7 +3548,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -3602,7 +3570,6 @@
                         "d": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "double",
                                 "c_var": "d",
                                 "ctor_expr": "d",
@@ -3627,7 +3594,6 @@
                         "i": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "i",
                                 "ctor_expr": "i",
@@ -3653,7 +3619,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "char",
                                 "c_var": "outbuf",
                                 "charlen": "LENOUTBUF",
@@ -3767,7 +3732,6 @@
                                 "PyObject": "PY_Cstruct1",
                                 "PyTypeObject": "PY_Cstruct1_Type",
                                 "array_size": "2",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -3866,7 +3830,6 @@
                                 "PyObject": "PY_Cstruct_list",
                                 "PyTypeObject": "PY_Cstruct_list_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",

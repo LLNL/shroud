@@ -435,7 +435,7 @@ PY_returnTwoNames(
 // Statement: py_out_char*_charlen
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
-// Exact:     py_default
+// Statement: py_implied_native
 static char PY_ImpliedTextLen__doc__[] =
 "documentation"
 ;
@@ -475,10 +475,10 @@ PY_ImpliedTextLen(
 // Statement: py_in_char*
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))
-// Exact:     py_default
+// Statement: py_implied_native
 // ----------------------------------------
 // Argument:  bool flag +implied(false)
-// Exact:     py_default
+// Statement: py_implied_bool
 static char PY_ImpliedLen__doc__[] =
 "documentation"
 ;
@@ -529,10 +529,10 @@ PY_ImpliedLen(
 // Statement: py_in_char*
 // ----------------------------------------
 // Argument:  int ltext +implied(len_trim(text))
-// Exact:     py_default
+// Statement: py_implied_native
 // ----------------------------------------
 // Argument:  bool flag +implied(true)
-// Exact:     py_default
+// Statement: py_implied_bool
 static char PY_ImpliedLenTrim__doc__[] =
 "documentation"
 ;
@@ -580,7 +580,7 @@ PY_ImpliedLenTrim(
 // Statement: py_function_bool
 // ----------------------------------------
 // Argument:  bool flag +implied(true)
-// Exact:     py_default
+// Statement: py_implied_bool
 static char PY_ImpliedBoolTrue__doc__[] =
 "documentation"
 ;
@@ -621,7 +621,7 @@ fail:
 // Statement: py_function_bool
 // ----------------------------------------
 // Argument:  bool flag +implied(false)
-// Exact:     py_default
+// Statement: py_implied_bool
 static char PY_ImpliedBoolFalse__doc__[] =
 "documentation"
 ;

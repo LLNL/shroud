@@ -14433,10 +14433,6 @@ f_subroutine:
 ***** Python
 root
   py
-    base
-      ctor
-        array -- py_base_ctor_array
-          fill -- py_base_ctor_array_fill
     ctor
       char* -- py_ctor_char*
         numpy -- py_ctor_char*_numpy
@@ -14457,24 +14453,21 @@ root
       shadow -- py_ctor_shadow
       struct -- py_ctor_struct
     descr
-      bool
-        scalar -- py_descr_bool_scalar
-      char
-        * -- py_descr_char_*
-          numpy -- py_descr_char_*_numpy
-        **
-          list -- py_descr_char_**_list
-        [] -- py_descr_char_[]
-          list -- py_descr_char_[]_list
-          numpy -- py_descr_char_[]_numpy
-      native
-        *
-          list -- py_descr_native_*_list
-          numpy -- py_descr_native_*_numpy
-        []
-          list -- py_descr_native_[]_list
-          numpy -- py_descr_native_[]_numpy
-        scalar -- py_descr_native_scalar
+      bool -- py_descr_bool
+      char* -- py_descr_char*
+        numpy -- py_descr_char*_numpy
+      char**
+        list -- py_descr_char**_list
+      char[] -- py_descr_char[]
+        list -- py_descr_char[]_list
+        numpy -- py_descr_char[]_numpy
+      native -- py_descr_native
+      native*
+        list -- py_descr_native*_list
+        numpy -- py_descr_native*_numpy
+      native[]
+        list -- py_descr_native[]_list
+        numpy -- py_descr_native[]_numpy
     function
       bool -- py_function_bool
       char -- py_function_char
@@ -14508,6 +14501,9 @@ root
         list -- py_function_vector<native>_list
         numpy -- py_function_vector<native>_numpy
       void* -- py_function_void*
+    implied
+      bool -- py_implied_bool
+      native -- py_implied_native
     in
       bool -- py_in_bool
       char -- py_in_char
@@ -14519,6 +14515,7 @@ root
       native* -- py_in_native*
         list -- py_in_native*_list
         numpy -- py_in_native*_numpy
+      procedure -- py_in_procedure
       shadow -- py_in_shadow
       shadow& -- py_in_shadow&
       shadow* -- py_in_shadow*
@@ -14579,6 +14576,11 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
+      ctor
+        array -- py_mixin_ctor_array
+          fill -- py_mixin_ctor_array_fill
+      cxx-as-pointer -- py_mixin_cxx-as-pointer
+      cxx-as-scalar -- py_mixin_cxx-as-scalar
       function-assign-pointee -- py_mixin_function-assign-pointee
       function-declare -- py_mixin_function-declare
       function-struct-class -- py_mixin_function-struct-class
@@ -14586,6 +14588,7 @@ root
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
+      shadow-create-object -- py_mixin_shadow-create-object
       string-fmtdict -- py_mixin_string-fmtdict
       string-fmtdict-scalar -- py_mixin_string-fmtdict-scalar
       template
@@ -14628,42 +14631,14 @@ root
       void*& -- py_out_void*&
       void** -- py_out_void**
     subroutine -- py_subroutine
-py_base_ctor_array:
-  name: py_base_ctor_array
-  intent: base
-  parse_format: O&
-  parse_args:
-  - '{hnamefunc0}'
-  - '&{value_var}'
-  declare:
-  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
-  - '{value_var}.name = "{field_name}";'
-  post_call:
-  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
-  - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_base_ctor_array_fill:
-  name: py_base_ctor_array_fill
-  intent: base
-  parse_format: O
-  parse_args:
-  - '&{py_var}'
-  declare:
-  - PyObject *{py_var} = {nullptr};
-  post_call:
-  - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
-  - +goto fail;-
-  - self->{PY_member_object} = {nullptr};
-  - -}}
-  goto_fail: true
 py_ctor_char*:
   name: py_ctor_char*
   intent: ctor
-  c_helper: get_from_object_char
+  c_helper:
+  - get_from_object_char:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14674,10 +14649,11 @@ py_ctor_char*:
 py_ctor_char**:
   name: py_ctor_char**
   intent: ctor
-  c_helper: get_from_object_charptr
+  c_helper:
+  - get_from_object_charptr:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14688,10 +14664,11 @@ py_ctor_char**:
 py_ctor_char**_list:
   name: py_ctor_char**_list
   intent: ctor
-  c_helper: get_from_object_charptr
+  c_helper:
+  - get_from_object_charptr:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14702,10 +14679,11 @@ py_ctor_char**_list:
 py_ctor_char*_numpy:
   name: py_ctor_char*_numpy
   intent: ctor
-  c_helper: get_from_object_char
+  c_helper:
+  - get_from_object_char:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14716,7 +14694,8 @@ py_ctor_char*_numpy:
 py_ctor_char[]:
   name: py_ctor_char[]
   intent: ctor
-  c_helper: fill_from_PyObject_char
+  c_helper:
+  - fill_from_PyObject_char:fill_from_PyObject
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14724,8 +14703,8 @@ py_ctor_char[]:
   - PyObject *{py_var} = {nullptr};
   post_call:
   - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
@@ -14733,7 +14712,8 @@ py_ctor_char[]:
 py_ctor_char[]_list:
   name: py_ctor_char[]_list
   intent: ctor
-  c_helper: fill_from_PyObject_char
+  c_helper:
+  - fill_from_PyObject_char:fill_from_PyObject
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14741,8 +14721,8 @@ py_ctor_char[]_list:
   - PyObject *{py_var} = {nullptr};
   post_call:
   - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
@@ -14750,7 +14730,8 @@ py_ctor_char[]_list:
 py_ctor_char[]_numpy:
   name: py_ctor_char[]_numpy
   intent: ctor
-  c_helper: fill_from_PyObject_char
+  c_helper:
+  - fill_from_PyObject_char:fill_from_PyObject
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14758,8 +14739,8 @@ py_ctor_char[]_numpy:
   - PyObject *{py_var} = {nullptr};
   post_call:
   - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
@@ -14774,10 +14755,11 @@ py_ctor_native:
 py_ctor_native*:
   name: py_ctor_native*
   intent: ctor
-  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  c_helper:
+  - get_from_object_{c_type}_{PY_array_arg}:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14788,10 +14770,11 @@ py_ctor_native*:
 py_ctor_native*_list:
   name: py_ctor_native*_list
   intent: ctor
-  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  c_helper:
+  - get_from_object_{c_type}_{PY_array_arg}:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14802,10 +14785,11 @@ py_ctor_native*_list:
 py_ctor_native*_numpy:
   name: py_ctor_native*_numpy
   intent: ctor
-  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  c_helper:
+  - get_from_object_{c_type}_{PY_array_arg}:get_from_object
   parse_format: O&
   parse_args:
-  - '{hnamefunc0}'
+  - '{c_helper_get_from_object}'
   - '&{value_var}'
   declare:
   - '{PY_typedef_converter} {value_var} = {PY_value_init};'
@@ -14816,7 +14800,8 @@ py_ctor_native*_numpy:
 py_ctor_native[]:
   name: py_ctor_native[]
   intent: ctor
-  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  c_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14824,8 +14809,8 @@ py_ctor_native[]:
   - PyObject *{py_var} = {nullptr};
   post_call:
   - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
@@ -14833,7 +14818,8 @@ py_ctor_native[]:
 py_ctor_native[]_list:
   name: py_ctor_native[]_list
   intent: ctor
-  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  c_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14841,8 +14827,8 @@ py_ctor_native[]_list:
   - PyObject *{py_var} = {nullptr};
   post_call:
   - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
@@ -14850,7 +14836,8 @@ py_ctor_native[]_list:
 py_ctor_native[]_numpy:
   name: py_ctor_native[]_numpy
   intent: ctor
-  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  c_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14858,8 +14845,8 @@ py_ctor_native[]_numpy:
   - PyObject *{py_var} = {nullptr};
   post_call:
   - if ({py_var} != {nullptr}) {{+
-  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
-    \ == -1)"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
   - +goto fail;-
   - self->{PY_member_object} = {nullptr};
   - -}}
@@ -14931,8 +14918,8 @@ py_ctor_struct:
     destructor:
     - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
     - delete cxx_ptr;
-py_descr_bool_scalar:
-  name: py_descr_bool_scalar
+py_descr_bool:
+  name: py_descr_bool
   intent: descr
   getter:
   - return PyBool_FromLong({c_var});
@@ -14942,8 +14929,8 @@ py_descr_bool_scalar:
   - return -1;
   - -}}
   - '{c_var} = rv;'
-py_descr_char_*:
-  name: py_descr_char_*
+py_descr_char*:
+  name: py_descr_char*
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -14954,28 +14941,30 @@ py_descr_char_*:
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_data});
-  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - if ({c_helper_get_from_object}({py_var}, &cvalue) == 0) {{+
   - '{c_var} = {nullptr};'
   - '{c_var_data} = {nullptr};'
   - return -1;
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_list
-py_descr_char_**_list:
-  name: py_descr_char_**_list
+  setter_helper:
+  - get_from_object_{c_type}_list:get_from_object
+py_descr_char**_list:
+  name: py_descr_char**_list
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
   - Py_RETURN_NONE;
   - -}}
-  - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
+  - PyObject *rv = {c_helper_to_PyList}({c_var}, {npy_intp_size});
   - return rv;
-  getter_helper: to_PyList_char
+  getter_helper:
+  - to_PyList_char:to_PyList
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_data});
-  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - if ({c_helper_get_from_object}({py_var}, &cvalue) == 0) {{+
   - '{c_var} = {nullptr};'
   - '{c_var_data} = {nullptr};'
   - // XXXX set error
@@ -14983,9 +14972,10 @@ py_descr_char_**_list:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
-  setter_helper: get_from_object_charptr
-py_descr_char_*_numpy:
-  name: py_descr_char_*_numpy
+  setter_helper:
+  - get_from_object_charptr:get_from_object
+py_descr_char*_numpy:
+  name: py_descr_char*_numpy
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -14996,16 +14986,17 @@ py_descr_char_*_numpy:
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_data});
-  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - if ({c_helper_get_from_object}({py_var}, &cvalue) == 0) {{+
   - '{c_var} = {nullptr};'
   - '{c_var_data} = {nullptr};'
   - return -1;
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_list
-py_descr_char_[]:
-  name: py_descr_char_[]
+  setter_helper:
+  - get_from_object_{c_type}_list:get_from_object
+py_descr_char[]:
+  name: py_descr_char[]
   intent: descr
   getter:
   - if ({c_var_obj} != {nullptr}) {{+
@@ -15018,13 +15009,14 @@ py_descr_char_[]:
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
-  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
-    \ == -1) {{+"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{field_name}\",\t {c_var},\t\
+    \ {npy_intp_size}) == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_char
-py_descr_char_[]_list:
-  name: py_descr_char_[]_list
+  setter_helper:
+  - fill_from_PyObject_char:fill_from_PyObject
+py_descr_char[]_list:
+  name: py_descr_char[]_list
   intent: descr
   getter:
   - if ({c_var_obj} != {nullptr}) {{+
@@ -15037,13 +15029,14 @@ py_descr_char_[]_list:
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
-  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
-    \ == -1) {{+"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{field_name}\",\t {c_var},\t\
+    \ {npy_intp_size}) == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_char
-py_descr_char_[]_numpy:
-  name: py_descr_char_[]_numpy
+  setter_helper:
+  - fill_from_PyObject_char:fill_from_PyObject
+py_descr_char[]_numpy:
+  name: py_descr_char[]_numpy
   intent: descr
   getter:
   - if ({c_var_obj} != {nullptr}) {{+
@@ -15056,13 +15049,26 @@ py_descr_char_[]_numpy:
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
-  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
-    \ == -1) {{+"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{field_name}\",\t {c_var},\t\
+    \ {npy_intp_size}) == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_char
-py_descr_native_*_list:
-  name: py_descr_native_*_list
+  setter_helper:
+  - fill_from_PyObject_char:fill_from_PyObject
+py_descr_native:
+  name: py_descr_native
+  intent: descr
+  getter:
+  - PyObject * rv = {ctor};
+  - return rv;
+  setter:
+  - '{cxx_decl} = {PY_get};'
+  - if (PyErr_Occurred()) {{+
+  - return -1;
+  - -}}
+  - '{c_var} = rv;'
+py_descr_native*_list:
+  name: py_descr_native*_list
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -15072,22 +15078,24 @@ py_descr_native_*_list:
   - Py_INCREF({c_var_obj});
   - return {c_var_obj};
   - -}}
-  - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
+  - PyObject *rv = {c_helper_to_PyList}({c_var}, {npy_intp_size});
   - return rv;
-  getter_helper: to_PyList_{c_type}
+  getter_helper:
+  - to_PyList_{c_type}:to_PyList
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_obj});
-  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - if ({c_helper_get_from_object}({py_var}, &cvalue) == 0) {{+
   - '{c_var} = {nullptr};'
   - '{c_var_obj} = {nullptr};'
   - return -1;
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_obj} = cvalue.obj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_list
-py_descr_native_*_numpy:
-  name: py_descr_native_*_numpy
+  setter_helper:
+  - get_from_object_{c_type}_list:get_from_object
+py_descr_native*_numpy:
+  name: py_descr_native*_numpy
   intent: descr
   need_numpy: true
   getter:
@@ -15109,7 +15117,7 @@ py_descr_native_*_numpy:
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_obj});
-  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - if ({c_helper_get_from_object}({py_var}, &cvalue) == 0) {{+
   - '{c_var} = {nullptr};'
   - '{c_var_obj} = {nullptr};'
   - // XXXX set error
@@ -15117,25 +15125,28 @@ py_descr_native_*_numpy:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_obj} = cvalue.obj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_numpy
-py_descr_native_[]_list:
-  name: py_descr_native_[]_list
+  setter_helper:
+  - get_from_object_{c_type}_numpy:get_from_object
+py_descr_native[]_list:
+  name: py_descr_native[]_list
   intent: descr
   need_numpy: true
   getter:
-  - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
+  - PyObject *rv = {c_helper_to_PyList}({c_var}, {npy_intp_size});
   - return rv;
-  getter_helper: to_PyList_{c_type}
+  getter_helper:
+  - to_PyList_{c_type}:to_PyList
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
-  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
-    \ == -1) {{+"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{field_name}\",\t {c_var},\t\
+    \ {npy_intp_size}) == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
-py_descr_native_[]_numpy:
-  name: py_descr_native_[]_numpy
+  setter_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
+py_descr_native[]_numpy:
+  name: py_descr_native[]_numpy
   intent: descr
   need_numpy: true
   getter:
@@ -15150,23 +15161,12 @@ py_descr_native_[]_numpy:
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
-  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
-    \ == -1) {{+"
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{field_name}\",\t {c_var},\t\
+    \ {npy_intp_size}) == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
-py_descr_native_scalar:
-  name: py_descr_native_scalar
-  intent: descr
-  getter:
-  - PyObject * rv = {ctor};
-  - return rv;
-  setter:
-  - '{cxx_decl} = {PY_get};'
-  - if (PyErr_Occurred()) {{+
-  - return -1;
-  - -}}
-  - '{c_var} = rv;'
+  setter_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
 py_function_bool:
   name: py_function_bool
   intent: function
@@ -15251,14 +15251,15 @@ py_function_native&_numpy:
 py_function_native*_list:
   name: py_function_native*_list
   intent: function
-  c_helper: to_PyList_{cxx_type}
+  c_helper:
+  - to_PyList_{cxx_type}:to_PyList
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
   call:
   - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
-  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
@@ -15689,6 +15690,24 @@ py_function_void*:
   - '{gen.cxxdecl.cxx_var};'
   fail_call:
   - "{cxx_var} =\t {C_call_function};"
+py_implied_bool:
+  name: py_implied_bool
+  intent: implied
+  arg_declare:
+  - '{cxx_type} {c_var};'
+  arg_call:
+  - '{c_var}'
+  call:
+  - '{c_var} = {c_implied};'
+py_implied_native:
+  name: py_implied_native
+  intent: implied
+  arg_declare:
+  - '{cxx_type} {c_var};'
+  arg_call:
+  - '{c_var}'
+  call:
+  - '{c_var} = {c_implied};'
 py_in_bool:
   name: py_in_bool
   intent: in
@@ -15716,7 +15735,8 @@ py_in_char**:
   - '{c_const}char ** {cxx_var} = {nullptr};'
   arg_call:
   - '{cxx_var}'
-  c_helper: get_from_object_charptr
+  c_helper:
+  - get_from_object_charptr
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -15726,7 +15746,7 @@ py_in_char**:
   - '{value_var}.name = "{c_var}";'
   - Py_ssize_t {size_var};
   pre_call:
-  - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
+  - "if ({c_helper_get_from_object_charptr}\t({pytmp_var}, &{value_var}) == 0)"
   - +goto fail;-
   - '{cxx_var} = {cast_static}char **{cast1}{value_var}.data{cast2};'
   post_call:
@@ -15765,7 +15785,8 @@ py_in_native*_list:
   - '{cxx_type} * {cxx_var} = {nullptr};'
   arg_call:
   - '{cxx_var}'
-  c_helper: get_from_object_{cxx_type}_list
+  c_helper:
+  - get_from_object_{cxx_type}_list:get_from_object
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -15775,7 +15796,7 @@ py_in_native*_list:
   - '{value_var}.name = "{c_var}";'
   - Py_ssize_t {size_var};
   post_parse:
-  - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
+  - "if ({c_helper_get_from_object}\t({pytmp_var}, &{value_var}) == 0)"
   - +goto fail;-
   - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
   - '{size_var} = {value_var}.size;'
@@ -15817,6 +15838,9 @@ py_in_native*_numpy:
   lang_cxx:
     pre_call:
     - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_in_procedure:
+  name: py_in_procedure
+  intent: in
 py_in_shadow:
   name: py_in_shadow
   intent: in
@@ -16039,14 +16063,16 @@ py_in_vector<native>&_list:
   - std::vector<{cxx_T}> {cxx_var};
   arg_call:
   - '{cxx_var}'
-  c_helper: create_from_PyObject_vector_{cxx_T}
+  c_helper:
+  - create_from_PyObject_vector_{cxx_T}:create_from_PyObject
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
   declare:
   - PyObject * {pytmp_var};
   pre_call:
-  - "if ({hnamefunc0}\t({pytmp_var},\t \"{c_var}\",\t {cxx_var}) == -1)"
+  - "if ({c_helper_create_from_PyObject}\t({pytmp_var},\t \"{c_var}\",\t {cxx_var})\
+    \ == -1)"
   - +goto fail;-
   goto_fail: true
   local:
@@ -16155,7 +16181,9 @@ py_inout_native*_list:
   - '{cxx_type} * {cxx_var} = {nullptr};'
   arg_call:
   - '{cxx_var}'
-  c_helper: get_from_object_{cxx_type}_list to_PyList_{cxx_type}
+  c_helper:
+  - get_from_object_{cxx_type}_list:get_from_object
+  - to_PyList_{cxx_type}:to_PyList
   object_created: true
   parse_format: O
   parse_args:
@@ -16167,12 +16195,12 @@ py_inout_native*_list:
   - '{value_var}.name = "{c_var}";'
   - Py_ssize_t {size_var};
   post_parse:
-  - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
+  - "if ({c_helper_get_from_object}\t({pytmp_var}, &{value_var}) == 0)"
   - +goto fail;-
   - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
   - '{size_var} = {value_var}.size;'
   post_call:
-  - "{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});"
+  - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {size_var});"
   - if ({py_var} == {nullptr}) goto fail;
   cleanup:
   - Py_XDECREF({value_var}.dataobj);
@@ -16514,6 +16542,49 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_ctor_array:
+  name: py_mixin_ctor_array
+  intent: mixin
+  parse_format: O&
+  parse_args:
+  - '{c_helper_get_from_object}'
+  - '&{value_var}'
+  declare:
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{field_name}";'
+  post_call:
+  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
+  - self->{PY_member_object} = {value_var}.obj;  // steal reference
+py_mixin_ctor_array_fill:
+  name: py_mixin_ctor_array_fill
+  intent: mixin
+  parse_format: O
+  parse_args:
+  - '&{py_var}'
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  post_call:
+  - if ({py_var} != {nullptr}) {{+
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
+  - +goto fail;-
+  - self->{PY_member_object} = {nullptr};
+  - -}}
+  goto_fail: true
+py_mixin_cxx-as-pointer:
+  name: py_mixin_cxx-as-pointer
+  intent: mixin
+  fmtdict:
+    cxx_addr: ''
+    cxx_member: ->
+    cxx_deref: '*'
+py_mixin_cxx-as-scalar:
+  name: py_mixin_cxx-as-scalar
+  intent: mixin
+  fmtdict:
+    cxx_addr: '&'
+    cxx_member: .
+    cxx_deref: ''
 py_mixin_function-assign-pointee:
   name: py_mixin_function-assign-pointee
   intent: mixin
@@ -16587,6 +16658,13 @@ py_mixin_malloc_error2:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_shadow-create-object:
+  name: py_mixin_shadow-create-object
+  intent: mixin
+  object_created: true
+  post_call:
+  - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
+  - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
 py_mixin_string-fmtdict:
   name: py_mixin_string-fmtdict
   intent: mixin
@@ -16708,14 +16786,15 @@ py_out_native**_list:
   - '{c_const}{c_type} *{c_var};'
   arg_call:
   - '&{cxx_var}'
-  c_helper: to_PyList_{cxx_type}
+  c_helper:
+  - to_PyList_{cxx_type}:to_PyList
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
   call:
   - "{gen.cxxdecl.cxx_var} =\t {C_call_function};"
   post_call:
-  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
@@ -16769,7 +16848,8 @@ py_out_native*_list:
   - '{c_var}'
   c_header:
   - <stdlib.h>
-  c_helper: to_PyList_{cxx_type}
+  c_helper:
+  - to_PyList_{cxx_type}:to_PyList
   cxx_header:
   - <cstdlib>
   object_created: true
@@ -16782,7 +16862,7 @@ py_out_native*_list:
   - goto fail;
   - -}}
   post_call:
-  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});"
   - if ({py_var} == {nullptr}) goto fail;
   cleanup:
   - '{stdlib}free({cxx_var});'
@@ -17012,12 +17092,13 @@ py_out_vector<native>&_list:
   - std::vector<{cxx_T}> {cxx_var};
   arg_call:
   - '{cxx_var}'
-  c_helper: to_PyList_vector_{cxx_T}
+  c_helper:
+  - to_PyList_vector_{cxx_T}:to_PyList
   object_created: true
   declare:
   - PyObject * {py_var} = {nullptr};
   post_call:
-  - "{py_var} = {hnamefunc0}\t({cxx_var});"
+  - "{py_var} = {c_helper_to_PyList}\t({cxx_var});"
   - if ({py_var} == {nullptr}) goto fail;
   fail:
   - Py_XDECREF({py_var});
@@ -17119,6 +17200,7 @@ root
       enum -- lua_in_enum
       native -- lua_in_native
       native* -- lua_in_native*
+      procedure -- lua_in_procedure
       shadow* -- lua_in_shadow*
       string& -- lua_in_string&
       string* -- lua_in_string*
@@ -17214,6 +17296,9 @@ lua_in_native:
   - "{cxx_type} {cxx_var} =\t {pop_expr};"
 lua_in_native*:
   name: lua_in_native*
+  intent: in
+lua_in_procedure:
+  name: lua_in_procedure
   intent: in
 lua_in_shadow*:
   name: lua_in_shadow*

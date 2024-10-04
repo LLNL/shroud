@@ -558,7 +558,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -747,7 +746,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -1235,7 +1233,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "len",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -1270,7 +1267,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -1630,7 +1626,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "len",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -1665,7 +1660,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -2013,7 +2007,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "len",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -2048,7 +2041,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -2578,7 +2570,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "len",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -2614,7 +2605,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -2850,7 +2840,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "len",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -2886,7 +2875,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -3240,7 +3228,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "len",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -3276,7 +3263,6 @@
                             "fmtdict": {
                                 "array_size": "1",
                                 "c_const": "",
-                                "c_deref": "*",
                                 "c_type": "int",
                                 "c_var": "len",
                                 "ctor_expr": "len",
@@ -4278,14 +4264,17 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "flag": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",
@@ -4343,8 +4332,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:createClassStatic",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&flag",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&flag"
                     }
                 }
             },
@@ -4487,7 +4475,6 @@
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -4770,7 +4757,6 @@
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -4794,7 +4780,6 @@
                         "flag": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "flag",
                                 "ctor_expr": "flag",

@@ -237,7 +237,6 @@
                                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                         "PyObject": "PY_Class1",
                                         "PyTypeObject": "PY_Class1_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
@@ -547,7 +546,6 @@
                                         "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
                                         "PyObject": "PY_Class1",
                                         "PyTypeObject": "PY_Class1_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
@@ -572,7 +570,6 @@
                                 "flag": {
                                     "fmtdict": {
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "int",
                                         "c_var": "flag",
                                         "ctor_expr": "flag",
@@ -888,7 +885,6 @@
                             "py": {
                                 "+result": {
                                     "fmtdict": {
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
@@ -1166,7 +1162,6 @@
                                 "+result": {
                                     "fmtdict": {
                                         "PyTypeObject": "PyBool_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
@@ -1193,7 +1188,6 @@
                                         "PyTypeObject": "PY_Class1_Type",
                                         "array_size": "1",
                                         "c_const": "const ",
-                                        "c_deref": "",
                                         "c_type": "CLA_Class1",
                                         "c_var": "obj2",
                                         "ctor_expr": "obj2",
@@ -1898,7 +1892,6 @@
                                         "PyObject": "PY_Class1",
                                         "PyTypeObject": "PY_Class1_Type",
                                         "array_size": "1",
-                                        "c_deref": "*",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "*SHCXX_rv",
                                         "cxx_addr": "",
@@ -2127,7 +2120,6 @@
                                 "+result": {
                                     "fmtdict": {
                                         "array_size": "1",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                         "cxx_addr": "&",
@@ -2448,7 +2440,6 @@
                             "py": {
                                 "+result": {
                                     "fmtdict": {
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
@@ -2471,7 +2462,6 @@
                                 "arg": {
                                     "fmtdict": {
                                         "c_const": "",
-                                        "c_deref": "",
                                         "c_type": "enum CLA_Class1_DIRECTION",
                                         "c_var": "arg",
                                         "ctor_expr": "arg",
@@ -3767,7 +3757,6 @@
                                 "+result": {
                                     "fmtdict": {
                                         "array_size": "1",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                         "cxx_addr": "&",
@@ -4017,7 +4006,6 @@
                                         "PyObject": "PY_Singleton",
                                         "PyTypeObject": "PY_Singleton_Type",
                                         "array_size": "1",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
@@ -4263,7 +4251,6 @@
                                         "PY_to_object_idtor_func": "PP_Shape_to_Object_idtor",
                                         "PyObject": "PY_Shape",
                                         "PyTypeObject": "PY_Shape_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "2",
                                         "ctor_expr": "SHCXX_rv",
@@ -4452,7 +4439,6 @@
                             "py": {
                                 "+result": {
                                     "fmtdict": {
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
@@ -4712,7 +4698,6 @@
                                         "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
                                         "PyObject": "PY_Circle",
                                         "PyTypeObject": "PY_Circle_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "3",
                                         "ctor_expr": "SHCXX_rv",
@@ -6222,7 +6207,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -6245,7 +6229,6 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "enum CLA_Class1_DIRECTION",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -6489,9 +6472,13 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
@@ -6499,7 +6486,6 @@
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "CLA_Class1",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -6558,8 +6544,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "O!:passClassByValue",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg"
                     }
                 }
             },
@@ -6771,7 +6756,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -6798,7 +6782,6 @@
                                 "PyTypeObject": "PY_Class1_Type",
                                 "array_size": "1",
                                 "c_const": "const ",
-                                "c_deref": "*",
                                 "c_type": "CLA_Class1",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -7136,7 +7119,6 @@
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "array_size": "1",
-                                "c_deref": "*",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -7728,7 +7710,6 @@
                                 "PyObject": "PY_Class1",
                                 "PyTypeObject": "PY_Class1_Type",
                                 "array_size": "1",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -8178,14 +8159,17 @@
                     },
                     "py": {
                         "+result": {
+                            "fmtdict": {
+                                "stmt": "py_subroutine"
+                            },
                             "meta": {
                                 "intent": "subroutine"
-                            }
+                            },
+                            "stmt": "py_subroutine"
                         },
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
-                                "c_deref": "",
                                 "c_type": "int",
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -8251,8 +8235,7 @@
                         "PY_used_param_kwds": true,
                         "PyArg_format": "i:set_global_flag",
                         "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                        "PyArg_vargs": "&arg",
-                        "stmt": "py_subroutine"
+                        "PyArg_vargs": "&arg"
                     }
                 }
             },
@@ -8377,7 +8360,6 @@
                     "py": {
                         "+result": {
                             "fmtdict": {
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
@@ -8601,7 +8583,6 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
-                                "c_deref": "",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                 "cxx_addr": "&",

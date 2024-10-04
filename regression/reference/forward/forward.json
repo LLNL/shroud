@@ -199,7 +199,6 @@
                                         "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
                                         "PyObject": "PY_Class2",
                                         "PyTypeObject": "PY_Class2_Type",
-                                        "c_deref": "",
                                         "c_var": "SHCXX_rv",
                                         "capsule_order": "1",
                                         "ctor_expr": "SHCXX_rv",
@@ -571,16 +570,19 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 },
                                 "arg": {
                                     "fmtdict": {
                                         "PyTypeObject": "PY_Class1_Type",
                                         "array_size": "1",
                                         "c_const": "",
-                                        "c_deref": "*",
                                         "c_type": "TUT_Class1",
                                         "c_var": "arg",
                                         "ctor_expr": "*arg",
@@ -651,8 +653,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "O!:func1",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg",
-                                "stmt": "py_subroutine"
+                                "PyArg_vargs": "&PY_Class1_Type,\t &SHPy_arg"
                             }
                         }
                     },
@@ -842,9 +843,13 @@
                             },
                             "py": {
                                 "+result": {
+                                    "fmtdict": {
+                                        "stmt": "py_subroutine"
+                                    },
                                     "meta": {
                                         "intent": "subroutine"
-                                    }
+                                    },
+                                    "stmt": "py_subroutine"
                                 },
                                 "arg": {
                                     "fmtdict": {
@@ -853,7 +858,6 @@
                                         "PyTypeObject": "PY_Class3_Type",
                                         "array_size": "1",
                                         "c_const": "",
-                                        "c_deref": "*",
                                         "c_type": "FOR_Class3",
                                         "c_var": "arg",
                                         "ctor_expr": "*arg",
@@ -924,8 +928,7 @@
                                 "PY_used_param_self": true,
                                 "PyArg_format": "O!:acceptClass3",
                                 "PyArg_kwlist": "const_cast<char **>(SHT_kwlist)",
-                                "PyArg_vargs": "&PY_Class3_Type,\t &SHPy_arg",
-                                "stmt": "py_subroutine"
+                                "PyArg_vargs": "&PY_Class3_Type,\t &SHPy_arg"
                             }
                         }
                     }

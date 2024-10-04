@@ -107,7 +107,7 @@ fail:
 // splicer begin class.Arrays1.impl.after_methods
 // splicer end class.Arrays1.impl.after_methods
 
-// Statement: py_descr_char_[]_list
+// Statement: py_descr_char[]_list
 static PyObject *PY_Arrays1_name_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -120,7 +120,7 @@ static PyObject *PY_Arrays1_name_getter(PY_Arrays1 *self,
     return rv;
 }
 
-// Statement: py_descr_char_[]_list
+// Statement: py_descr_char[]_list
 static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -133,7 +133,7 @@ static int PY_Arrays1_name_setter(PY_Arrays1 *self, PyObject *value,
     return 0;
 }
 
-// Statement: py_descr_native_[]_list
+// Statement: py_descr_native[]_list
 static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -141,7 +141,7 @@ static PyObject *PY_Arrays1_count_getter(PY_Arrays1 *self,
     return rv;
 }
 
-// Statement: py_descr_native_[]_list
+// Statement: py_descr_native[]_list
 static int PY_Arrays1_count_setter(PY_Arrays1 *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
