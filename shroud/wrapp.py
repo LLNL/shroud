@@ -1230,8 +1230,6 @@ return 1;""",
             stmts_comments.append(
                 "// Function:  " + gen_decl_noparams(ast))
             self.document_stmts(stmts_comments, ast, result_blk.name)
-        self.set_fmt_hnamefunc(result_blk, fmt_result)
-        statements.apply_fmtdict_from_stmts(bind_result)
 
         PY_code = []
 
@@ -2019,6 +2017,8 @@ return 1;""",
         fmt_result.stmt = result_blk.name
         bind_result.stmt = result_blk
         self.name_temp_vars(fmt.C_result, bind_result)
+        self.set_fmt_hnamefunc(result_blk, fmt_result)
+        statements.apply_fmtdict_from_stmts(bind_result)
                 
         return bind_result
 
