@@ -884,6 +884,7 @@ return 1;""",
 
     def update_descr_code_blocks(self, name, stmts, fmt, output):
         """Format descr code.
+        Process stmt.getter_helper and stmt.setter_helper.
 
         Args:
             name   - "getter" "setter"
@@ -895,13 +896,13 @@ return 1;""",
             self.need_numpy = True
         helpers = getattr(stmts, name + "_helper", None)
         if helpers:
-            helpers = wformat(helpers, fmt)
-            for i, helper in enumerate(helpers.split()):
-                setattr(fmt, "hnamefunc" + str(i),
-                        self.add_helper(helper))
+            for i, helper in enumerate(helpers):
+                c_helper = wformat(helper, fmt)
+                hname = self.add_helper(c_helper)
+                setattr(fmt, "hnamefunc" + str(i), hname)
+                # set_fmt_hnamefunc
         # update_code_blocks
-        for cmd in getattr(stmts, name):
-            output.append(wformat(cmd, fmt))
+        append_format_lst(output, getattr(stmts, name), fmt)
 
     def set_fmt_fields(self, cls, fcn, ast, bind, is_result=False):
         """
@@ -5299,7 +5300,7 @@ py_statements = [
 
     dict(
         name="py_descr_native_*_list",
-        setter_helper="get_from_object_{c_type}_list",
+        setter_helper=["get_from_object_{c_type}_list"],
         setter=[
             "{PY_typedef_converter} cvalue;",
             "Py_XDECREF({c_var_obj});",
@@ -5312,7 +5313,7 @@ py_statements = [
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
             "{c_var_obj} = cvalue.obj;  // steal reference",
         ],
-        getter_helper="to_PyList_{c_type}",
+        getter_helper=["to_PyList_{c_type}"],
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
@@ -5330,7 +5331,7 @@ py_statements = [
             "py_descr_char_*",
             "py_descr_char_*_numpy",
         ],
-        setter_helper="get_from_object_{c_type}_list",
+        setter_helper=["get_from_object_{c_type}_list"],
         setter=[
             "{PY_typedef_converter} cvalue;",
             "Py_XDECREF({c_var_data});",
@@ -5343,7 +5344,7 @@ py_statements = [
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
             "{c_var_data} = cvalue.dataobj;  // steal reference",
         ],
-#        getter_helper="to_PyList_{c_type}",
+#        getter_helper=["to_PyList_{c_type}"],
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
@@ -5360,7 +5361,7 @@ py_statements = [
     # XXX - only helper is different from py_descr_native_*_list
     dict(
         name="py_descr_char_**_list",
-        setter_helper="get_from_object_charptr",
+        setter_helper=["get_from_object_charptr"],
         setter=[
             "{PY_typedef_converter} cvalue;",
             "Py_XDECREF({c_var_data});",
@@ -5373,7 +5374,7 @@ py_statements = [
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
             "{c_var_data} = cvalue.dataobj;  // steal reference",
         ],
-        getter_helper="to_PyList_char",
+        getter_helper=["to_PyList_char"],
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
@@ -5391,7 +5392,7 @@ py_statements = [
     dict(
         name="py_descr_native_[]_list",
         need_numpy = True,
-        setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
+        setter_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}"],
         setter=[
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
@@ -5400,7 +5401,7 @@ py_statements = [
             "return -1;",
             "-}}",
         ],
-        getter_helper="to_PyList_{c_type}",
+        getter_helper=["to_PyList_{c_type}"],
         getter=[
             "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
@@ -5409,7 +5410,7 @@ py_statements = [
     dict(
         name="py_descr_native_[]_numpy",
         need_numpy = True,
-        setter_helper="fill_from_PyObject_{c_type}_{PY_array_arg}",
+        setter_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}"],
         setter=[
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",
@@ -5432,7 +5433,7 @@ py_statements = [
     dict(
         name="py_descr_native_*_numpy",
         need_numpy = True,
-        setter_helper="get_from_object_{c_type}_numpy",
+        setter_helper=["get_from_object_{c_type}_numpy"],
         setter=[
             "{PY_typedef_converter} cvalue;",
             "Py_XDECREF({c_var_obj});",
@@ -5470,7 +5471,7 @@ py_statements = [
             "py_descr_char_[]_list",
             "py_descr_char_[]_numpy",
         ],
-        setter_helper="fill_from_PyObject_char", #_{PY_array_arg}",
+        setter_helper=["fill_from_PyObject_char"], #_{PY_array_arg}",
         setter=[
             "Py_XDECREF({c_var_obj});",
             "{c_var_obj} = {nullptr};",

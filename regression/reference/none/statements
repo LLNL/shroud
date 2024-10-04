@@ -14981,7 +14981,8 @@ py_descr_char_*:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_list
+  setter_helper:
+  - get_from_object_{c_type}_list
 py_descr_char_**_list:
   name: py_descr_char_**_list
   intent: descr
@@ -14991,7 +14992,8 @@ py_descr_char_**_list:
   - -}}
   - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
   - return rv;
-  getter_helper: to_PyList_char
+  getter_helper:
+  - to_PyList_char
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_data});
@@ -15003,7 +15005,8 @@ py_descr_char_**_list:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
-  setter_helper: get_from_object_charptr
+  setter_helper:
+  - get_from_object_charptr
 py_descr_char_*_numpy:
   name: py_descr_char_*_numpy
   intent: descr
@@ -15023,7 +15026,8 @@ py_descr_char_*_numpy:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_list
+  setter_helper:
+  - get_from_object_{c_type}_list
 py_descr_char_[]:
   name: py_descr_char_[]
   intent: descr
@@ -15042,7 +15046,8 @@ py_descr_char_[]:
     \ == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_char
+  setter_helper:
+  - fill_from_PyObject_char
 py_descr_char_[]_list:
   name: py_descr_char_[]_list
   intent: descr
@@ -15061,7 +15066,8 @@ py_descr_char_[]_list:
     \ == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_char
+  setter_helper:
+  - fill_from_PyObject_char
 py_descr_char_[]_numpy:
   name: py_descr_char_[]_numpy
   intent: descr
@@ -15080,7 +15086,8 @@ py_descr_char_[]_numpy:
     \ == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_char
+  setter_helper:
+  - fill_from_PyObject_char
 py_descr_native_*_list:
   name: py_descr_native_*_list
   intent: descr
@@ -15094,7 +15101,8 @@ py_descr_native_*_list:
   - -}}
   - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
   - return rv;
-  getter_helper: to_PyList_{c_type}
+  getter_helper:
+  - to_PyList_{c_type}
   setter:
   - '{PY_typedef_converter} cvalue;'
   - Py_XDECREF({c_var_obj});
@@ -15105,7 +15113,8 @@ py_descr_native_*_list:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_obj} = cvalue.obj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_list
+  setter_helper:
+  - get_from_object_{c_type}_list
 py_descr_native_*_numpy:
   name: py_descr_native_*_numpy
   intent: descr
@@ -15137,7 +15146,8 @@ py_descr_native_*_numpy:
   - -}}
   - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
   - '{c_var_obj} = cvalue.obj;  // steal reference'
-  setter_helper: get_from_object_{c_type}_numpy
+  setter_helper:
+  - get_from_object_{c_type}_numpy
 py_descr_native_[]_list:
   name: py_descr_native_[]_list
   intent: descr
@@ -15145,7 +15155,8 @@ py_descr_native_[]_list:
   getter:
   - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
   - return rv;
-  getter_helper: to_PyList_{c_type}
+  getter_helper:
+  - to_PyList_{c_type}
   setter:
   - Py_XDECREF({c_var_obj});
   - '{c_var_obj} = {nullptr};'
@@ -15153,7 +15164,8 @@ py_descr_native_[]_list:
     \ == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  setter_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}
 py_descr_native_[]_numpy:
   name: py_descr_native_[]_numpy
   intent: descr
@@ -15174,7 +15186,8 @@ py_descr_native_[]_numpy:
     \ == -1) {{+"
   - return -1;
   - -}}
-  setter_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  setter_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}
 py_descr_native_scalar:
   name: py_descr_native_scalar
   intent: descr
