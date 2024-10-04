@@ -14667,7 +14667,8 @@ py_base_ctor_array_fill:
 py_ctor_char*:
   name: py_ctor_char*
   intent: ctor
-  c_helper: get_from_object_char
+  c_helper:
+  - get_from_object_char
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14681,7 +14682,8 @@ py_ctor_char*:
 py_ctor_char**:
   name: py_ctor_char**
   intent: ctor
-  c_helper: get_from_object_charptr
+  c_helper:
+  - get_from_object_charptr
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14695,7 +14697,8 @@ py_ctor_char**:
 py_ctor_char**_list:
   name: py_ctor_char**_list
   intent: ctor
-  c_helper: get_from_object_charptr
+  c_helper:
+  - get_from_object_charptr
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14709,7 +14712,8 @@ py_ctor_char**_list:
 py_ctor_char*_numpy:
   name: py_ctor_char*_numpy
   intent: ctor
-  c_helper: get_from_object_char
+  c_helper:
+  - get_from_object_char
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14723,7 +14727,8 @@ py_ctor_char*_numpy:
 py_ctor_char[]:
   name: py_ctor_char[]
   intent: ctor
-  c_helper: fill_from_PyObject_char
+  c_helper:
+  - fill_from_PyObject_char
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14740,7 +14745,8 @@ py_ctor_char[]:
 py_ctor_char[]_list:
   name: py_ctor_char[]_list
   intent: ctor
-  c_helper: fill_from_PyObject_char
+  c_helper:
+  - fill_from_PyObject_char
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14757,7 +14763,8 @@ py_ctor_char[]_list:
 py_ctor_char[]_numpy:
   name: py_ctor_char[]_numpy
   intent: ctor
-  c_helper: fill_from_PyObject_char
+  c_helper:
+  - fill_from_PyObject_char
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14781,7 +14788,8 @@ py_ctor_native:
 py_ctor_native*:
   name: py_ctor_native*
   intent: ctor
-  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  c_helper:
+  - get_from_object_{c_type}_{PY_array_arg}
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14795,7 +14803,8 @@ py_ctor_native*:
 py_ctor_native*_list:
   name: py_ctor_native*_list
   intent: ctor
-  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  c_helper:
+  - get_from_object_{c_type}_{PY_array_arg}
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14809,7 +14818,8 @@ py_ctor_native*_list:
 py_ctor_native*_numpy:
   name: py_ctor_native*_numpy
   intent: ctor
-  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  c_helper:
+  - get_from_object_{c_type}_{PY_array_arg}
   parse_format: O&
   parse_args:
   - '{hnamefunc0}'
@@ -14823,7 +14833,8 @@ py_ctor_native*_numpy:
 py_ctor_native[]:
   name: py_ctor_native[]
   intent: ctor
-  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  c_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14840,7 +14851,8 @@ py_ctor_native[]:
 py_ctor_native[]_list:
   name: py_ctor_native[]_list
   intent: ctor
-  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  c_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -14857,7 +14869,8 @@ py_ctor_native[]_list:
 py_ctor_native[]_numpy:
   name: py_ctor_native[]_numpy
   intent: ctor
-  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  c_helper:
+  - fill_from_PyObject_{c_type}_{PY_array_arg}
   parse_format: O
   parse_args:
   - '&{py_var}'
@@ -15258,7 +15271,8 @@ py_function_native&_numpy:
 py_function_native*_list:
   name: py_function_native*_list
   intent: function
-  c_helper: to_PyList_{cxx_type}
+  c_helper:
+  - to_PyList_{cxx_type}
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -15741,7 +15755,8 @@ py_in_char**:
   - '{c_const}char ** {cxx_var} = {nullptr};'
   arg_call:
   - '{cxx_var}'
-  c_helper: get_from_object_charptr
+  c_helper:
+  - get_from_object_charptr
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -15790,7 +15805,8 @@ py_in_native*_list:
   - '{cxx_type} * {cxx_var} = {nullptr};'
   arg_call:
   - '{cxx_var}'
-  c_helper: get_from_object_{cxx_type}_list
+  c_helper:
+  - get_from_object_{cxx_type}_list
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -16067,7 +16083,8 @@ py_in_vector<native>&_list:
   - std::vector<{cxx_T}> {cxx_var};
   arg_call:
   - '{cxx_var}'
-  c_helper: create_from_PyObject_vector_{cxx_T}
+  c_helper:
+  - create_from_PyObject_vector_{cxx_T}
   parse_format: O
   parse_args:
   - '&{pytmp_var}'
@@ -16183,7 +16200,9 @@ py_inout_native*_list:
   - '{cxx_type} * {cxx_var} = {nullptr};'
   arg_call:
   - '{cxx_var}'
-  c_helper: get_from_object_{cxx_type}_list to_PyList_{cxx_type}
+  c_helper:
+  - get_from_object_{cxx_type}_list
+  - to_PyList_{cxx_type}
   object_created: true
   parse_format: O
   parse_args:
@@ -16757,7 +16776,8 @@ py_out_native**_list:
   - '{c_const}{c_type} *{c_var};'
   arg_call:
   - '&{cxx_var}'
-  c_helper: to_PyList_{cxx_type}
+  c_helper:
+  - to_PyList_{cxx_type}
   object_created: true
   declare:
   - PyObject *{py_var} = {nullptr};
@@ -16818,7 +16838,8 @@ py_out_native*_list:
   - '{c_var}'
   c_header:
   - <stdlib.h>
-  c_helper: to_PyList_{cxx_type}
+  c_helper:
+  - to_PyList_{cxx_type}
   cxx_header:
   - <cstdlib>
   object_created: true
@@ -17061,7 +17082,8 @@ py_out_vector<native>&_list:
   - std::vector<{cxx_T}> {cxx_var};
   arg_call:
   - '{cxx_var}'
-  c_helper: to_PyList_vector_{cxx_T}
+  c_helper:
+  - to_PyList_vector_{cxx_T}
   object_created: true
   declare:
   - PyObject * {py_var} = {nullptr};
