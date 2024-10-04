@@ -260,11 +260,18 @@ cxx_header
 c_helper
 ^^^^^^^^
 
-Blank delimited list of helper functions required for the wrapper.
+List of helper names required for the wrapper.
 The name may contain format strings and will be expand before it is
 used.  ex. ``to_PyList_{cxx_type}``.
-The function associated with the helper will be named *hnamefunc0*,
-*hnamefunc1*, ... for each helper listed.
+The format field associated with the helper will be named *c_helper_{name}*.
+
+It will be necessary to add an alias when the helper name contains a
+format string.  The alias is delimited by a
+colon. ex. ``to_PyList_{cxx_type}:to_PyList``.  In this case the
+format field will be the alias name, *c_helper_{alias}.
+
+.. Included {cxx_type} in the helper name makes it more general requiring
+   the alias to create a standard name.
 
 need_numpy
 ^^^^^^^^^^

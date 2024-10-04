@@ -2459,6 +2459,7 @@
                         "names": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object_charptr": "SHROUD_get_from_object_charptr",
                                 "c_type": "char",
                                 "c_var": "names",
                                 "ctor_expr": "*names",
@@ -2468,7 +2469,6 @@
                                 "cxx_type": "char",
                                 "cxx_var": "names",
                                 "data_var": "SHData_names",
-                                "hnamefunc0": "SHROUD_get_from_object_charptr",
                                 "numpy_type": "NPY_INTP",
                                 "py_var": "SHPy_names",
                                 "pytmp_var": "SHTPy_names",

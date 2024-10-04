@@ -631,6 +631,7 @@
                         "in": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_double_list",
                                 "c_type": "double",
                                 "c_var": "in",
                                 "ctor_expr": "*in",
@@ -640,7 +641,6 @@
                                 "cxx_type": "double",
                                 "cxx_var": "in",
                                 "data_var": "SHData_in",
-                                "hnamefunc0": "SHROUD_get_from_object_double_list",
                                 "numpy_type": "NPY_DOUBLE",
                                 "py_var": "SHPy_in",
                                 "pytmp_var": "SHTPy_in",
@@ -659,6 +659,7 @@
                             "fmtdict": {
                                 "array_size": "SHSize_in",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_double",
                                 "c_type": "double",
                                 "c_var": "out",
                                 "ctor_expr": "*out",
@@ -668,7 +669,6 @@
                                 "cxx_type": "double",
                                 "cxx_var": "out",
                                 "data_var": "SHData_out",
-                                "hnamefunc0": "SHROUD_to_PyList_double",
                                 "npy_dims_var": "SHD_out",
                                 "npy_intp_asgn": "SHD_out[0] = SHSize_in;\n",
                                 "npy_intp_decl": "npy_intp SHD_out[1];\n",
@@ -872,6 +872,7 @@
                         "in": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_double_list",
                                 "c_type": "double",
                                 "c_var": "in",
                                 "ctor_expr": "*in",
@@ -881,7 +882,6 @@
                                 "cxx_type": "double",
                                 "cxx_var": "in",
                                 "data_var": "SHData_in",
-                                "hnamefunc0": "SHROUD_get_from_object_double_list",
                                 "numpy_type": "NPY_DOUBLE",
                                 "py_var": "SHPy_in",
                                 "pytmp_var": "SHTPy_in",
@@ -900,6 +900,7 @@
                             "fmtdict": {
                                 "array_size": "SHSize_in",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "out",
                                 "ctor_expr": "*out",
@@ -909,7 +910,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "out",
                                 "data_var": "SHData_out",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_out",
                                 "npy_intp_asgn": "SHD_out[0] = SHSize_in;\n",
                                 "npy_intp_decl": "npy_intp SHD_out[1];\n",
@@ -1124,6 +1124,7 @@
                             "fmtdict": {
                                 "array_size": "3",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "values",
                                 "ctor_expr": "*values",
@@ -1133,7 +1134,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "values",
                                 "data_var": "SHData_values",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_values",
                                 "npy_intp_asgn": "SHD_values[0] = 3;\n",
                                 "npy_intp_decl": "npy_intp SHD_values[1];\n",
@@ -1278,6 +1278,7 @@
                             "fmtdict": {
                                 "array_size": "3",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "arg1",
                                 "ctor_expr": "*arg1",
@@ -1287,7 +1288,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "arg1",
                                 "data_var": "SHData_arg1",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_arg1",
                                 "npy_intp_asgn": "SHD_arg1[0] = 3;\n",
                                 "npy_intp_decl": "npy_intp SHD_arg1[1];\n",
@@ -1314,6 +1314,7 @@
                             "fmtdict": {
                                 "array_size": "3",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "arg2",
                                 "ctor_expr": "*arg2",
@@ -1323,7 +1324,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "arg2",
                                 "data_var": "SHData_arg2",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_arg2",
                                 "npy_intp_asgn": "SHD_arg2[0] = 3;\n",
                                 "npy_intp_decl": "npy_intp SHD_arg2[1];\n",
@@ -1485,6 +1485,7 @@
                             "fmtdict": {
                                 "array_size": "nvar",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "values",
                                 "ctor_expr": "*values",
@@ -1494,7 +1495,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "values",
                                 "data_var": "SHData_values",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_values",
                                 "npy_intp_asgn": "SHD_values[0] = nvar;\n",
                                 "npy_intp_decl": "npy_intp SHD_values[1];\n",
@@ -1703,6 +1703,7 @@
                         "values": {
                             "fmtdict": {
                                 "c_const": "const ",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_int_list",
                                 "c_type": "int",
                                 "c_var": "values",
                                 "ctor_expr": "*values",
@@ -1712,7 +1713,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "values",
                                 "data_var": "SHData_values",
-                                "hnamefunc0": "SHROUD_get_from_object_int_list",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHPy_values",
                                 "pytmp_var": "SHTPy_values",
@@ -1834,6 +1834,7 @@
                             "fmtdict": {
                                 "array_size": "3",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "out",
                                 "ctor_expr": "*out",
@@ -1843,7 +1844,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "out",
                                 "data_var": "SHData_out",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_out",
                                 "npy_intp_asgn": "SHD_out[0] = 3;\n",
                                 "npy_intp_decl": "npy_intp SHD_out[1];\n",
@@ -1974,6 +1974,8 @@
                         "array": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_int_list",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "array",
                                 "ctor_expr": "*array",
@@ -1983,8 +1985,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "array",
                                 "data_var": "SHData_array",
-                                "hnamefunc0": "SHROUD_get_from_object_int_list",
-                                "hnamefunc1": "SHROUD_to_PyList_int",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHPy_array",
                                 "pytmp_var": "SHTPy_array",
@@ -2135,6 +2135,8 @@
                         "x": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_double_list",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_double",
                                 "c_type": "double",
                                 "c_var": "x",
                                 "ctor_expr": "*x",
@@ -2144,8 +2146,6 @@
                                 "cxx_type": "double",
                                 "cxx_var": "x",
                                 "data_var": "SHData_x",
-                                "hnamefunc0": "SHROUD_get_from_object_double_list",
-                                "hnamefunc1": "SHROUD_to_PyList_double",
                                 "numpy_type": "NPY_DOUBLE",
                                 "py_var": "SHPy_x",
                                 "pytmp_var": "SHTPy_x",
@@ -2309,6 +2309,7 @@
                         "arr": {
                             "fmtdict": {
                                 "c_const": "const ",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_int_list",
                                 "c_type": "int",
                                 "c_var": "arr",
                                 "ctor_expr": "*arr",
@@ -2318,7 +2319,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "arr",
                                 "data_var": "SHData_arr",
-                                "hnamefunc0": "SHROUD_get_from_object_int_list",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHPy_arr",
                                 "pytmp_var": "SHTPy_arr",
@@ -2474,6 +2474,7 @@
                         "names": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object_charptr": "SHROUD_get_from_object_charptr",
                                 "c_type": "char",
                                 "c_var": "names",
                                 "ctor_expr": "*names",
@@ -2483,7 +2484,6 @@
                                 "cxx_type": "char",
                                 "cxx_var": "names",
                                 "data_var": "SHData_names",
-                                "hnamefunc0": "SHROUD_get_from_object_charptr",
                                 "numpy_type": "NPY_INTP",
                                 "py_var": "SHPy_names",
                                 "pytmp_var": "SHTPy_names",
@@ -2835,6 +2835,7 @@
                             "fmtdict": {
                                 "array_size": "10",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "ctor_expr": "*count",
@@ -2844,7 +2845,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "count",
                                 "data_var": "SHData_count",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_count",
                                 "npy_intp_asgn": "SHD_count[0] = 10;\n",
                                 "npy_intp_decl": "npy_intp SHD_count[1];\n",
@@ -2985,6 +2985,7 @@
                             "fmtdict": {
                                 "array_size": "ncount",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "ctor_expr": "*count",
@@ -2994,7 +2995,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "count",
                                 "data_var": "SHData_count",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_count",
                                 "npy_intp_asgn": "SHD_count[0] = ncount;\n",
                                 "npy_intp_decl": "npy_intp SHD_count[1];\n",
@@ -3146,6 +3146,7 @@
                             "fmtdict": {
                                 "array_size": "getLen()",
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "ctor_expr": "*count",
@@ -3155,7 +3156,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "count",
                                 "data_var": "SHData_count",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_count",
                                 "npy_intp_asgn": "SHD_count[0] = getLen();\n",
                                 "npy_intp_decl": "npy_intp SHD_count[1];\n",
@@ -3340,6 +3340,7 @@
                             "fmtdict": {
                                 "array_size": "10",
                                 "c_const": "const ",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "ctor_expr": "*count",
@@ -3349,7 +3350,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "count",
                                 "data_var": "SHData_count",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_count",
                                 "npy_intp_asgn": "SHD_count[0] = 10;\n",
                                 "npy_intp_decl": "npy_intp SHD_count[1];\n",
@@ -3488,6 +3488,7 @@
                             "fmtdict": {
                                 "array_size": "ncount",
                                 "c_const": "const ",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "ctor_expr": "*count",
@@ -3497,7 +3498,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "count",
                                 "data_var": "SHData_count",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_count",
                                 "npy_intp_asgn": "SHD_count[0] = ncount;\n",
                                 "npy_intp_decl": "npy_intp SHD_count[1];\n",
@@ -4743,6 +4743,7 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -4751,7 +4752,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
@@ -4824,6 +4824,7 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "10",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -4832,7 +4833,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_rv",
                                 "npy_intp_asgn": "SHD_rv[0] = 10;\n",
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",
@@ -4920,6 +4920,7 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "1",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -4928,7 +4929,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
@@ -5002,6 +5002,7 @@
                         "+result": {
                             "fmtdict": {
                                 "array_size": "10",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_int",
                                 "c_var": "SHCXX_rv",
                                 "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
@@ -5010,7 +5011,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "SHCXX_rv",
                                 "data_var": "SHData_rv",
-                                "hnamefunc0": "SHROUD_to_PyList_int",
                                 "npy_dims_var": "SHD_rv",
                                 "npy_intp_asgn": "SHD_rv[0] = 10;\n",
                                 "npy_intp_decl": "npy_intp SHD_rv[1];\n",

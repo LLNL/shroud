@@ -90,6 +90,7 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "const ",
+                                "c_helper_create_from_PyObject": "SHROUD_create_from_PyObject_vector_int",
                                 "c_type": null,
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -100,7 +101,6 @@
                                 "cxx_type": "std::vector<int>",
                                 "cxx_var": "SH_arg",
                                 "data_var": "SHData_arg",
-                                "hnamefunc0": "SHROUD_create_from_PyObject_vector_int",
                                 "npy_dims_var": "SHD_arg",
                                 "npy_intp_asgn": "SHD_arg[0] = arg->size();\n",
                                 "npy_intp_decl": "npy_intp SHD_arg[1];\n",
@@ -234,6 +234,7 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_vector_int",
                                 "c_type": null,
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -244,7 +245,6 @@
                                 "cxx_type": "std::vector<int>",
                                 "cxx_var": "SH_arg",
                                 "data_var": "SHData_arg",
-                                "hnamefunc0": "SHROUD_to_PyList_vector_int",
                                 "npy_dims_var": "SHD_arg",
                                 "npy_intp_asgn": "SHD_arg[0] = arg->size();\n",
                                 "npy_intp_decl": "npy_intp SHD_arg[1];\n",
@@ -806,6 +806,7 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_to_PyList": "SHROUD_to_PyList_vector_double",
                                 "c_type": null,
                                 "c_var": "arg",
                                 "ctor_expr": "arg",
@@ -816,7 +817,6 @@
                                 "cxx_type": "std::vector<double>",
                                 "cxx_var": "SH_arg",
                                 "data_var": "SHData_arg",
-                                "hnamefunc0": "SHROUD_to_PyList_vector_double",
                                 "npy_dims_var": "SHD_arg",
                                 "npy_intp_asgn": "SHD_arg[0] = arg->size();\n",
                                 "npy_intp_decl": "npy_intp SHD_arg[1];\n",
@@ -1576,6 +1576,7 @@
                         "arg": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_int_list",
                                 "c_type": "int",
                                 "c_var": "arg",
                                 "ctor_expr": "*arg",
@@ -1585,7 +1586,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "arg",
                                 "data_var": "SHData_arg",
-                                "hnamefunc0": "SHROUD_get_from_object_int_list",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHPy_arg",
                                 "pytmp_var": "SHTPy_arg",

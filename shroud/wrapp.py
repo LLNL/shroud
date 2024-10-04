@@ -1000,20 +1000,22 @@ return 1;""",
         else:
             fmt.cxx_nonconst_ptr = wformat("{cxx_addr}{cxx_var}", fmt)
 
-    def XXXset_fmt_hnamefunc(self, blk, fmt):
-        """process helper functions from py_statements.c_helper"""
-        if blk.c_helper:
-            c_helper = wformat(blk.c_helper, fmt)
-            for i, helper in enumerate(c_helper.split()):
-                setattr(fmt, "hnamefunc" + str(i),
-                    self.add_helper(helper))
-
     def set_fmt_hnamefunc(self, stmt, fmt):
-        """process helper functions from py_statements.c_helper"""
+        """process helper functions from py_statements.c_helper
+
+        helper is of the form:  helper_name:alias
+
+        Alias is needed when the helper_name is expanded,
+        ex contains {cxx_type}
+        """
         for i, helper in enumerate(stmt.c_helper):
             c_helper = wformat(helper, fmt)
-            name = self.add_helper(c_helper)
-            setattr(fmt, "hnamefunc" + str(i), name)
+            parts = c_helper.split(":")
+            name = self.add_helper(parts[0])
+            if len(parts) == 1:
+                setattr(fmt, "c_helper_" + parts[0], name)
+            else:
+                setattr(fmt, "c_helper_" + parts[1], name)
 
     def implied_blk(self, node, bind, pre_call):
         """Add the implied attribute to the call block.
@@ -4183,12 +4185,12 @@ py_statements = [
         mixin=[
             "py_mixin_function-declare",
         ],
-        c_helper=["to_PyList_{cxx_type}"],
+        c_helper=["to_PyList_{cxx_type}:to_PyList"],
         declare=[
             "PyObject *{py_var} = {nullptr};",
         ],
         post_call=[
-            "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
+            "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -4233,7 +4235,7 @@ py_statements = [
 ## list
     dict(
         name="py_in_native*_list",
-        c_helper=["get_from_object_{cxx_type}_list"],
+        c_helper=["get_from_object_{cxx_type}_list:get_from_object"],
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[ # initialize
@@ -4246,7 +4248,7 @@ py_statements = [
             "Py_ssize_t {size_var};",
         ],
         post_parse=[
-            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
+            "if ({c_helper_get_from_object}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
             "{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};",
             "{size_var} = {value_var}.size;",
@@ -4264,7 +4266,10 @@ py_statements = [
     dict(
         name="py_inout_native*_list",
 #        c_helper=["update_PyList_{cxx_type}"],
-        c_helper=["get_from_object_{cxx_type}_list", "to_PyList_{cxx_type}"],
+        c_helper=[
+            "get_from_object_{cxx_type}_list:get_from_object",
+            "to_PyList_{cxx_type}:to_PyList"
+        ],
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[
@@ -4278,7 +4283,7 @@ py_statements = [
             "Py_ssize_t {size_var};",
         ],
         post_parse=[
-            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
+            "if ({c_helper_get_from_object}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
             "{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};",
             "{size_var} = {value_var}.size;",
@@ -4286,7 +4291,7 @@ py_statements = [
         arg_call=["{cxx_var}"],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
-            "{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
+            "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -4304,7 +4309,7 @@ py_statements = [
         mixin=[
             "py_mixin_malloc",
         ],
-        c_helper=["to_PyList_{cxx_type}"],
+        c_helper=["to_PyList_{cxx_type}:to_PyList"],
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
         arg_declare=[
@@ -4315,7 +4320,7 @@ py_statements = [
         ],
         arg_call=["{c_var}"],
         post_call=[
-            "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
+            "{py_var} = {c_helper_to_PyList}\t({cxx_var},\t {array_size});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -4432,7 +4437,7 @@ py_statements = [
             "Py_ssize_t {size_var};",
         ],
         pre_call=[
-            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
+            "if ({c_helper_get_from_object_charptr}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
             "{cxx_var} = {cast_static}char **{cast1}{value_var}.data{cast2};",
         ],
@@ -5024,7 +5029,7 @@ py_statements = [
         # Convert input list argument into a C++ std::vector.
         # Pass to C++ function.
         # cxx_var is released by the compiler.
-        c_helper=["create_from_PyObject_vector_{cxx_T}"],
+        c_helper=["create_from_PyObject_vector_{cxx_T}:create_from_PyObject"],
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[],
@@ -5038,7 +5043,7 @@ py_statements = [
             "std::vector<{cxx_T}> {cxx_var};",
         ],
         pre_call=[
-            "if ({hnamefunc0}\t({pytmp_var}"
+            "if ({c_helper_create_from_PyObject}\t({pytmp_var}"
             ",\t \"{c_var}\",\t {cxx_var}) == -1)",
             "+goto fail;-",
         ],
@@ -5052,7 +5057,7 @@ py_statements = [
         # Create a pointer a std::vector and pass to C++ function.
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
-        c_helper=["to_PyList_vector_{cxx_T}"],
+        c_helper=["to_PyList_vector_{cxx_T}:to_PyList"],
         arg_declare=[],
         declare=[
             "PyObject * {py_var} = {nullptr};",
@@ -5067,7 +5072,7 @@ py_statements = [
             "{cxx_var}",
         ],
         post_call=[
-            "{py_var} = {hnamefunc0}\t({cxx_var});",
+            "{py_var} = {c_helper_to_PyList}\t({cxx_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -5166,7 +5171,7 @@ py_statements = [
             "{value_var}.name = \"{field_name}\";",
         ],
         parse_format="O&",
-        parse_args=["{hnamefunc0}", "&{value_var}"],
+        parse_args=["{c_helper_get_from_object}", "&{value_var}"],
         post_call=[
             "SH_obj->{field_name} = "
             "{cast_static}{c_type} *{cast1}{value_var}.data{cast2};",
@@ -5187,7 +5192,7 @@ py_statements = [
         parse_args=["&{py_var}"],
         post_call=[
             "if ({py_var} != {nullptr}) {{+",
-            "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\","
+            "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\","
             "\t SH_obj->{field_name},\t {field_size}) == -1)",
             "+goto fail;-",
             "self->{PY_member_object} = {nullptr};",
@@ -5217,7 +5222,7 @@ py_statements = [
             "py_ctor_native[]_numpy",
         ],
         base="py_base_ctor_array_fill",
-        c_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}"],
+        c_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject"],
     ),
     dict(
         alias=[
@@ -5226,7 +5231,7 @@ py_statements = [
             "py_ctor_native*_numpy",
         ],
         base="py_base_ctor_array",
-        c_helper=["get_from_object_{c_type}_{PY_array_arg}"],
+        c_helper=["get_from_object_{c_type}_{PY_array_arg}:get_from_object"],
     ),
     
     dict(
@@ -5236,7 +5241,7 @@ py_statements = [
             "py_ctor_char[]_numpy",
         ],
         base="py_base_ctor_array_fill",
-        c_helper=["fill_from_PyObject_char"],
+        c_helper=["fill_from_PyObject_char:fill_from_PyObject"],
     ),
     dict(
         alias=[
@@ -5244,7 +5249,7 @@ py_statements = [
             "py_ctor_char*_numpy",
         ],
         base="py_base_ctor_array",
-        c_helper=["get_from_object_char"],
+        c_helper=["get_from_object_char:get_from_object"],
     ),
     dict(
         alias=[
@@ -5252,7 +5257,7 @@ py_statements = [
             "py_ctor_char**_list",
         ],
         base="py_base_ctor_array",
-        c_helper=["get_from_object_charptr"],
+        c_helper=["get_from_object_charptr:get_from_object"],
         # Need explicit post_call to change cast to char **.
         post_call=[
             "SH_obj->{field_name} = "

@@ -10449,6 +10449,7 @@
                         "count": {
                             "fmtdict": {
                                 "c_const": "",
+                                "c_helper_get_from_object": "SHROUD_get_from_object_int_list",
                                 "c_type": "int",
                                 "c_var": "count",
                                 "ctor_expr": "*count",
@@ -10458,7 +10459,6 @@
                                 "cxx_type": "int",
                                 "cxx_var": "count",
                                 "data_var": "SHData_count",
-                                "hnamefunc0": "SHROUD_get_from_object_int_list",
                                 "numpy_type": "NPY_INT",
                                 "py_var": "SHPy_count",
                                 "pytmp_var": "SHTPy_count",
