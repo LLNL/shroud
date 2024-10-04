@@ -14583,6 +14583,8 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
+      cxx-as-pointer -- py_mixin_cxx-as-pointer
+      cxx-as-scalar -- py_mixin_cxx-as-scalar
       function-assign-pointee -- py_mixin_function-assign-pointee
       function-declare -- py_mixin_function-declare
       function-struct-class -- py_mixin_function-struct-class
@@ -14590,6 +14592,7 @@ root
       malloc -- py_mixin_malloc
         error -- py_mixin_malloc_error
         error2 -- py_mixin_malloc_error2
+      shadow-create-object -- py_mixin_shadow-create-object
       string-fmtdict -- py_mixin_string-fmtdict
       string-fmtdict-scalar -- py_mixin_string-fmtdict-scalar
       template
@@ -16539,6 +16542,20 @@ py_mixin_array_error:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_cxx-as-pointer:
+  name: py_mixin_cxx-as-pointer
+  intent: mixin
+  fmtdict:
+    cxx_addr: ''
+    cxx_member: ->
+    cxx_deref: '*'
+py_mixin_cxx-as-scalar:
+  name: py_mixin_cxx-as-scalar
+  intent: mixin
+  fmtdict:
+    cxx_addr: '&'
+    cxx_member: .
+    cxx_deref: ''
 py_mixin_function-assign-pointee:
   name: py_mixin_function-assign-pointee
   intent: mixin
@@ -16612,6 +16629,13 @@ py_mixin_malloc_error2:
   - goto fail;
   - -}}
   goto_fail: true
+py_mixin_shadow-create-object:
+  name: py_mixin_shadow-create-object
+  intent: mixin
+  object_created: true
+  post_call:
+  - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
+  - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
 py_mixin_string-fmtdict:
   name: py_mixin_string-fmtdict
   intent: mixin

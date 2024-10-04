@@ -3534,6 +3534,22 @@ py_statements = [
         ],
     ),
     dict(
+        name="py_mixin_cxx-as-scalar",
+        fmtdict=dict(
+            cxx_addr="&",
+            cxx_member=".",
+            cxx_deref="",
+        ),
+    ),
+    dict(
+        name="py_mixin_cxx-as-pointer",
+        fmtdict=dict(
+            cxx_addr="",
+            cxx_member="->",
+            cxx_deref="*",
+        ),
+    ),
+    dict(
         name="py_mixin_function-void",
         comments=[
             "Call void function."
@@ -4953,13 +4969,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        alias=[
-            "py_function_shadow*",
-            "py_function_shadow&",
-        ],
-        mixin=[
-            "py_mixin_function-declare",
-        ],
+        name="py_mixin_shadow-create-object",
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"
 #            ],
@@ -4977,6 +4987,16 @@ py_statements = [
 #                "Py_XDECREF({py_var});",
 #            ],
 #            goto_fail=True,
+    ),
+    dict(
+        alias=[
+            "py_function_shadow*",
+            "py_function_shadow&",
+        ],
+        mixin=[
+            "py_mixin_function-declare",
+            "py_mixin_shadow-create-object",
+        ],
     ),
     dict(
         name="py_in_shadow",
