@@ -14433,10 +14433,6 @@ f_subroutine:
 ***** Python
 root
   py
-    base
-      ctor
-        array -- py_base_ctor_array
-          fill -- py_base_ctor_array_fill
     ctor
       char* -- py_ctor_char*
         numpy -- py_ctor_char*_numpy
@@ -14583,6 +14579,9 @@ root
       array-capsule -- py_mixin_array-capsule
       array-get-data -- py_mixin_array-get-data
       array-parse -- py_mixin_array-parse
+      ctor
+        array -- py_mixin_ctor_array
+          fill -- py_mixin_ctor_array_fill
       cxx-as-pointer -- py_mixin_cxx-as-pointer
       cxx-as-scalar -- py_mixin_cxx-as-scalar
       function-assign-pointee -- py_mixin_function-assign-pointee
@@ -14635,35 +14634,6 @@ root
       void*& -- py_out_void*&
       void** -- py_out_void**
     subroutine -- py_subroutine
-py_base_ctor_array:
-  name: py_base_ctor_array
-  intent: base
-  parse_format: O&
-  parse_args:
-  - '{c_helper_get_from_object}'
-  - '&{value_var}'
-  declare:
-  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
-  - '{value_var}.name = "{field_name}";'
-  post_call:
-  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
-  - self->{PY_member_object} = {value_var}.obj;  // steal reference
-py_base_ctor_array_fill:
-  name: py_base_ctor_array_fill
-  intent: base
-  parse_format: O
-  parse_args:
-  - '&{py_var}'
-  declare:
-  - PyObject *{py_var} = {nullptr};
-  post_call:
-  - if ({py_var} != {nullptr}) {{+
-  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
-    \ {field_size}) == -1)"
-  - +goto fail;-
-  - self->{PY_member_object} = {nullptr};
-  - -}}
-  goto_fail: true
 py_ctor_char*:
   name: py_ctor_char*
   intent: ctor
@@ -16573,6 +16543,35 @@ py_mixin_array_error:
   - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a {rank}-D array of {c_type}\"\
     );"
   - goto fail;
+  - -}}
+  goto_fail: true
+py_mixin_ctor_array:
+  name: py_mixin_ctor_array
+  intent: mixin
+  parse_format: O&
+  parse_args:
+  - '{c_helper_get_from_object}'
+  - '&{value_var}'
+  declare:
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{field_name}";'
+  post_call:
+  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
+  - self->{PY_member_object} = {value_var}.obj;  // steal reference
+py_mixin_ctor_array_fill:
+  name: py_mixin_ctor_array_fill
+  intent: mixin
+  parse_format: O
+  parse_args:
+  - '&{py_var}'
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  post_call:
+  - if ({py_var} != {nullptr}) {{+
+  - "if ({c_helper_fill_from_PyObject}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t\
+    \ {field_size}) == -1)"
+  - +goto fail;-
+  - self->{PY_member_object} = {nullptr};
   - -}}
   goto_fail: true
 py_mixin_cxx-as-pointer:

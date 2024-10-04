@@ -5163,7 +5163,7 @@ py_statements = [
     ########################################
     # ctor
     dict(
-        name="py_base_ctor_array",
+        name="py_mixin_ctor_array",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             "{PY_typedef_converter} {value_var} = {PY_value_init};",
@@ -5181,7 +5181,7 @@ py_statements = [
     dict(
         # Fill an array struct member.
         # helper is set by groups which use this as base.
-        name="py_base_ctor_array_fill",
+        name="py_mixin_ctor_array_fill",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             # Initialize to NULL since it is optional.
@@ -5220,7 +5220,9 @@ py_statements = [
             "py_ctor_native[]_list",
             "py_ctor_native[]_numpy",
         ],
-        base="py_base_ctor_array_fill",
+        mixin=[
+            "py_mixin_ctor_array_fill",
+        ],
         c_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject"],
     ),
     dict(
@@ -5229,7 +5231,9 @@ py_statements = [
             "py_ctor_native*_list",
             "py_ctor_native*_numpy",
         ],
-        base="py_base_ctor_array",
+        mixin=[
+            "py_mixin_ctor_array",
+        ],
         c_helper=["get_from_object_{c_type}_{PY_array_arg}:get_from_object"],
     ),
     
@@ -5239,7 +5243,9 @@ py_statements = [
             "py_ctor_char[]_list",
             "py_ctor_char[]_numpy",
         ],
-        base="py_base_ctor_array_fill",
+        mixin=[
+            "py_mixin_ctor_array_fill",
+        ],
         c_helper=["fill_from_PyObject_char:fill_from_PyObject"],
     ),
     dict(
@@ -5247,7 +5253,9 @@ py_statements = [
             "py_ctor_char*",
             "py_ctor_char*_numpy",
         ],
-        base="py_base_ctor_array",
+        mixin=[
+            "py_mixin_ctor_array",
+        ],
         c_helper=["get_from_object_char:get_from_object"],
     ),
     dict(
@@ -5255,7 +5263,9 @@ py_statements = [
             "py_ctor_char**",
             "py_ctor_char**_list",
         ],
-        base="py_base_ctor_array",
+        mixin=[
+            "py_mixin_ctor_array",
+        ],
         c_helper=["get_from_object_charptr:get_from_object"],
         # Need explicit post_call to change cast to char **.
         post_call=[
@@ -5495,6 +5505,9 @@ py_statements = [
     dict(
         alias=[
             "py_in_procedure",
+        ],
+        notes=[
+            "Function pointers are not supported by the wrapper."
         ],
     ),
     

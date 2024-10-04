@@ -430,7 +430,7 @@ valid_intents = [
     "function", "subroutine",
     "getter", "setter",
     "ctor", "dtor",
-    "base", "descr",
+    "descr",
 ]
 
 def process_mixin(stmts, defaults, stmtdict):
