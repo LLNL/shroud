@@ -1964,45 +1964,40 @@ return 1;""",
         meta = bind_result.meta
 
         CXX_subprogram = declarator.get_subprogram()
-        if CXX_subprogram != "function":
-            stmts = ["py", "subroutine"]
-            result_blk = lookup_stmts(stmts)
-            bind_result.stmt = result_blk
-            fmt_result.stmt = result_blk.name
-            return bind_result
+        if CXX_subprogram != "subroutine":
+            CXX_result = node.ast
 
-        result_blk = default_scope
+            # Mangle result variable name to avoid possible conflict with arguments.
+            fmt_result.cxx_var = wformat(
+                "{CXX_local}{C_result}", fmt_result
+            )
 
-        CXX_result = node.ast
+            if CXX_result.declarator.is_pointer():
+                fmt_result.cxx_addr = ""
+                fmt_result.cxx_member = "->"
+                fmt_result.ctor_expr = "*" + fmt_result.cxx_var
+            else:
+                fmt_result.cxx_addr = "&"
+                fmt_result.cxx_member = "."
+                fmt_result.ctor_expr = fmt_result.cxx_var
+            fmt_result.c_var = fmt_result.cxx_var
+            fmt_result.py_var = fmt.PY_result
+            fmt_result.data_var = "SHData_" + fmt_result.C_result
+            fmt_result.size_var = "SHSize_" + fmt_result.C_result
+            fmt_result.value_var = "SHValue_" + fmt_result.C_result
+            fmt_result.numpy_type = result_typemap.PYN_typenum
+            fmt_result.gen = fcfmt.FormatGen(node, node.ast, fmt_result, self.language)
+            update_fmt_from_typemap(fmt_result, result_typemap)
 
-        # Mangle result variable name to avoid possible conflict with arguments.
-        fmt_result.cxx_var = wformat(
-            "{CXX_local}{C_result}", fmt_result
-        )
-
-        if CXX_result.declarator.is_pointer():
-            fmt_result.cxx_addr = ""
-            fmt_result.cxx_member = "->"
-            fmt_result.ctor_expr = "*" + fmt_result.cxx_var
-        else:
-            fmt_result.cxx_addr = "&"
-            fmt_result.cxx_member = "."
-            fmt_result.ctor_expr = fmt_result.cxx_var
-        fmt_result.c_var = fmt_result.cxx_var
-        fmt_result.py_var = fmt.PY_result
-        fmt_result.data_var = "SHData_" + fmt_result.C_result
-        fmt_result.size_var = "SHSize_" + fmt_result.C_result
-        fmt_result.value_var = "SHValue_" + fmt_result.C_result
-        fmt_result.numpy_type = result_typemap.PYN_typenum
-        fmt_result.gen = fcfmt.FormatGen(node, node.ast, fmt_result, self.language)
-        update_fmt_from_typemap(fmt_result, result_typemap)
-
-        self.set_fmt_fields(cls, node, ast, bind_result, True)
-        self.set_cxx_nonconst_ptr(ast, fmt_result)
+            self.set_fmt_fields(cls, node, ast, bind_result, True)
+            self.set_cxx_nonconst_ptr(ast, fmt_result)
+        
         sgroup = result_typemap.sgroup
         abstract = statements.find_abstract_declarator(ast)
         stmts = None
-        if is_ctor:
+        if CXX_subprogram == "subroutine":
+            stmts = ["py", "subroutine"]
+        elif is_ctor:
             stmts = ["py", meta["intent"], abstract]
         elif result_typemap.base == "struct":
             stmts = ["py", "function", abstract, options.PY_struct_arg]
@@ -2019,8 +2014,7 @@ return 1;""",
                     stmts.append(options.PY_array_arg)
         else:
             stmts = ["py", "function", abstract]
-        if stmts is not None:
-            result_blk = lookup_stmts(stmts)
+        result_blk = lookup_stmts(stmts)
 
         fmt_result.stmt = result_blk.name
         bind_result.stmt = result_blk

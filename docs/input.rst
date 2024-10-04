@@ -702,6 +702,8 @@ input arguments to the function but are returned as values.
 Internally, Shroud also assigns the values of *function*,
 *ctor* and *dtor*.
 
+.. and 'implied' from +implied attribute.
+
 len
 ^^^
 
