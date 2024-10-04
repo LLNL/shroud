@@ -100,7 +100,7 @@ PY_Cstruct_ptr_tp_init(
 // splicer begin class.Cstruct_ptr.impl.after_methods
 // splicer end class.Cstruct_ptr.impl.after_methods
 
-// Statement: py_descr_char_*_numpy
+// Statement: py_descr_char*_numpy
 static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -111,7 +111,7 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     return rv;
 }
 
-// Statement: py_descr_char_*_numpy
+// Statement: py_descr_char*_numpy
 static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -127,7 +127,7 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     return 0;
 }
 
-// Statement: py_descr_native_*_numpy
+// Statement: py_descr_native*_numpy
 static PyObject *PY_Cstruct_ptr_const_dvalue_getter(PY_Cstruct_ptr *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -148,7 +148,7 @@ static PyObject *PY_Cstruct_ptr_const_dvalue_getter(PY_Cstruct_ptr *self,
     return rv;
 }
 
-// Statement: py_descr_native_*_numpy
+// Statement: py_descr_native*_numpy
 static int PY_Cstruct_ptr_const_dvalue_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

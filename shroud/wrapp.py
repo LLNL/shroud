@@ -787,6 +787,7 @@ return 1;""",
 
         py_struct_dimension(parent, node, fmt)
         indirect_stmt = declarator.get_indirect_stmt()
+        abstract = statements.find_abstract_declarator(ast)
 
         if arg_typemap.PY_get:
             fmt.PY_get = wformat(arg_typemap.PY_get, fmt)
@@ -797,10 +798,7 @@ return 1;""",
         else:
             fmt.PYN_typenum = arg_typemap.PYN_typenum
 
-        stmts = ['py', 'descr',
-                 arg_typemap.sgroup,
-                 indirect_stmt,
-        ]
+        stmts = ['py', 'descr', abstract]
         if indirect_stmt != "scalar":
             # Pointers and static arrays.
             stmts.append(options.PY_array_arg)
@@ -5279,7 +5277,7 @@ py_statements = [
     ########################################
     # descriptors
     dict(
-        name="py_descr_bool_scalar",
+        name="py_descr_bool",
         setter=[
             "int rv = {PY_get};",
             "if (PyErr_Occurred()) {{+",
@@ -5292,7 +5290,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_descr_native_scalar",
+        name="py_descr_native",
         setter=[
             "{cxx_decl} = {PY_get};",
             "if (PyErr_Occurred()) {{+",
@@ -5307,7 +5305,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_descr_native_*_list",
+        name="py_descr_native*_list",
         setter_helper=["get_from_object_{c_type}_list:get_from_object"],
         setter=[
             "{PY_typedef_converter} cvalue;",
@@ -5336,8 +5334,8 @@ py_statements = [
     ),
     dict(
         alias=[
-            "py_descr_char_*",
-            "py_descr_char_*_numpy",
+            "py_descr_char*",
+            "py_descr_char*_numpy",
         ],
         setter_helper=["get_from_object_{c_type}_list:get_from_object"],
         setter=[
@@ -5368,7 +5366,7 @@ py_statements = [
     ),
     # XXX - only helper is different from py_descr_native_*_list
     dict(
-        name="py_descr_char_**_list",
+        name="py_descr_char**_list",
         setter_helper=["get_from_object_charptr:get_from_object"],
         setter=[
             "{PY_typedef_converter} cvalue;",
@@ -5398,7 +5396,7 @@ py_statements = [
     ),
 
     dict(
-        name="py_descr_native_[]_list",
+        name="py_descr_native[]_list",
         need_numpy = True,
         setter_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject"],
         setter=[
@@ -5416,7 +5414,7 @@ py_statements = [
         ]
     ),
     dict(
-        name="py_descr_native_[]_numpy",
+        name="py_descr_native[]_numpy",
         need_numpy = True,
         setter_helper=["fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject"],
         setter=[
@@ -5439,7 +5437,7 @@ py_statements = [
         ]
     ),
     dict(
-        name="py_descr_native_*_numpy",
+        name="py_descr_native*_numpy",
         need_numpy = True,
         setter_helper=["get_from_object_{c_type}_numpy:get_from_object"],
         setter=[
@@ -5475,9 +5473,9 @@ py_statements = [
 
     dict(
         alias=[
-            "py_descr_char_[]",
-            "py_descr_char_[]_list",
-            "py_descr_char_[]_numpy",
+            "py_descr_char[]",
+            "py_descr_char[]_list",
+            "py_descr_char[]_numpy",
         ],
         setter_helper=["fill_from_PyObject_char:fill_from_PyObject"], #_{PY_array_arg}",
         setter=[

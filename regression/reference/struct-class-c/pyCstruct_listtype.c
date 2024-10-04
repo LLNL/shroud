@@ -117,7 +117,7 @@ PY_Cstruct_list_tp_init(
 // splicer begin class.Cstruct_list.impl.after_methods
 // splicer end class.Cstruct_list.impl.after_methods
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static PyObject *PY_Cstruct_list_nitems_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -125,7 +125,7 @@ static PyObject *PY_Cstruct_list_nitems_getter(PY_Cstruct_list *self,
     return rv;
 }
 
-// Statement: py_descr_native_scalar
+// Statement: py_descr_native
 static int PY_Cstruct_list_nitems_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -137,7 +137,7 @@ static int PY_Cstruct_list_nitems_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
-// Statement: py_descr_native_*_list
+// Statement: py_descr_native*_list
 static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -152,7 +152,7 @@ static PyObject *PY_Cstruct_list_ivalue_getter(PY_Cstruct_list *self,
     return rv;
 }
 
-// Statement: py_descr_native_*_list
+// Statement: py_descr_native*_list
 static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -168,7 +168,7 @@ static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
-// Statement: py_descr_native_*_list
+// Statement: py_descr_native*_list
 static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -183,7 +183,7 @@ static PyObject *PY_Cstruct_list_dvalue_getter(PY_Cstruct_list *self,
     return rv;
 }
 
-// Statement: py_descr_native_*_list
+// Statement: py_descr_native*_list
 static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
@@ -199,7 +199,7 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     return 0;
 }
 
-// Statement: py_descr_char_**_list
+// Statement: py_descr_char**_list
 static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
     void *SHROUD_UNUSED(closure))
 {
@@ -210,7 +210,7 @@ static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
     return rv;
 }
 
-// Statement: py_descr_char_**_list
+// Statement: py_descr_char**_list
 static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {

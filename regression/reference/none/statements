@@ -14453,24 +14453,21 @@ root
       shadow -- py_ctor_shadow
       struct -- py_ctor_struct
     descr
-      bool
-        scalar -- py_descr_bool_scalar
-      char
-        * -- py_descr_char_*
-          numpy -- py_descr_char_*_numpy
-        **
-          list -- py_descr_char_**_list
-        [] -- py_descr_char_[]
-          list -- py_descr_char_[]_list
-          numpy -- py_descr_char_[]_numpy
-      native
-        *
-          list -- py_descr_native_*_list
-          numpy -- py_descr_native_*_numpy
-        []
-          list -- py_descr_native_[]_list
-          numpy -- py_descr_native_[]_numpy
-        scalar -- py_descr_native_scalar
+      bool -- py_descr_bool
+      char* -- py_descr_char*
+        numpy -- py_descr_char*_numpy
+      char**
+        list -- py_descr_char**_list
+      char[] -- py_descr_char[]
+        list -- py_descr_char[]_list
+        numpy -- py_descr_char[]_numpy
+      native -- py_descr_native
+      native*
+        list -- py_descr_native*_list
+        numpy -- py_descr_native*_numpy
+      native[]
+        list -- py_descr_native[]_list
+        numpy -- py_descr_native[]_numpy
     function
       bool -- py_function_bool
       char -- py_function_char
@@ -14921,8 +14918,8 @@ py_ctor_struct:
     destructor:
     - "{cxx_type} * cxx_ptr =\t static_cast<{cxx_type} *>(ptr);"
     - delete cxx_ptr;
-py_descr_bool_scalar:
-  name: py_descr_bool_scalar
+py_descr_bool:
+  name: py_descr_bool
   intent: descr
   getter:
   - return PyBool_FromLong({c_var});
@@ -14932,8 +14929,8 @@ py_descr_bool_scalar:
   - return -1;
   - -}}
   - '{c_var} = rv;'
-py_descr_char_*:
-  name: py_descr_char_*
+py_descr_char*:
+  name: py_descr_char*
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -14953,8 +14950,8 @@ py_descr_char_*:
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
   setter_helper:
   - get_from_object_{c_type}_list:get_from_object
-py_descr_char_**_list:
-  name: py_descr_char_**_list
+py_descr_char**_list:
+  name: py_descr_char**_list
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -14977,8 +14974,8 @@ py_descr_char_**_list:
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
   setter_helper:
   - get_from_object_charptr:get_from_object
-py_descr_char_*_numpy:
-  name: py_descr_char_*_numpy
+py_descr_char*_numpy:
+  name: py_descr_char*_numpy
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -14998,8 +14995,8 @@ py_descr_char_*_numpy:
   - '{c_var_data} = cvalue.dataobj;  // steal reference'
   setter_helper:
   - get_from_object_{c_type}_list:get_from_object
-py_descr_char_[]:
-  name: py_descr_char_[]
+py_descr_char[]:
+  name: py_descr_char[]
   intent: descr
   getter:
   - if ({c_var_obj} != {nullptr}) {{+
@@ -15018,8 +15015,8 @@ py_descr_char_[]:
   - -}}
   setter_helper:
   - fill_from_PyObject_char:fill_from_PyObject
-py_descr_char_[]_list:
-  name: py_descr_char_[]_list
+py_descr_char[]_list:
+  name: py_descr_char[]_list
   intent: descr
   getter:
   - if ({c_var_obj} != {nullptr}) {{+
@@ -15038,8 +15035,8 @@ py_descr_char_[]_list:
   - -}}
   setter_helper:
   - fill_from_PyObject_char:fill_from_PyObject
-py_descr_char_[]_numpy:
-  name: py_descr_char_[]_numpy
+py_descr_char[]_numpy:
+  name: py_descr_char[]_numpy
   intent: descr
   getter:
   - if ({c_var_obj} != {nullptr}) {{+
@@ -15058,8 +15055,20 @@ py_descr_char_[]_numpy:
   - -}}
   setter_helper:
   - fill_from_PyObject_char:fill_from_PyObject
-py_descr_native_*_list:
-  name: py_descr_native_*_list
+py_descr_native:
+  name: py_descr_native
+  intent: descr
+  getter:
+  - PyObject * rv = {ctor};
+  - return rv;
+  setter:
+  - '{cxx_decl} = {PY_get};'
+  - if (PyErr_Occurred()) {{+
+  - return -1;
+  - -}}
+  - '{c_var} = rv;'
+py_descr_native*_list:
+  name: py_descr_native*_list
   intent: descr
   getter:
   - if ({c_var} == {nullptr}) {{+
@@ -15085,8 +15094,8 @@ py_descr_native_*_list:
   - '{c_var_obj} = cvalue.obj;  // steal reference'
   setter_helper:
   - get_from_object_{c_type}_list:get_from_object
-py_descr_native_*_numpy:
-  name: py_descr_native_*_numpy
+py_descr_native*_numpy:
+  name: py_descr_native*_numpy
   intent: descr
   need_numpy: true
   getter:
@@ -15118,8 +15127,8 @@ py_descr_native_*_numpy:
   - '{c_var_obj} = cvalue.obj;  // steal reference'
   setter_helper:
   - get_from_object_{c_type}_numpy:get_from_object
-py_descr_native_[]_list:
-  name: py_descr_native_[]_list
+py_descr_native[]_list:
+  name: py_descr_native[]_list
   intent: descr
   need_numpy: true
   getter:
@@ -15136,8 +15145,8 @@ py_descr_native_[]_list:
   - -}}
   setter_helper:
   - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
-py_descr_native_[]_numpy:
-  name: py_descr_native_[]_numpy
+py_descr_native[]_numpy:
+  name: py_descr_native[]_numpy
   intent: descr
   need_numpy: true
   getter:
@@ -15158,18 +15167,6 @@ py_descr_native_[]_numpy:
   - -}}
   setter_helper:
   - fill_from_PyObject_{c_type}_{PY_array_arg}:fill_from_PyObject
-py_descr_native_scalar:
-  name: py_descr_native_scalar
-  intent: descr
-  getter:
-  - PyObject * rv = {ctor};
-  - return rv;
-  setter:
-  - '{cxx_decl} = {PY_get};'
-  - if (PyErr_Occurred()) {{+
-  - return -1;
-  - -}}
-  - '{c_var} = rv;'
 py_function_bool:
   name: py_function_bool
   intent: function
