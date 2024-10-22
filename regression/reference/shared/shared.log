@@ -1,0 +1,17 @@
+Read yaml shared.yaml
+Close shared_types.yaml
+class Object
+C c Object(void)
+C f Object(void)
+C c ~Object(void)
+C f ~Object(void)
+Close wrapObject.h
+Close wrapObject.cpp
+class Object
+Fortran Object(void)
+Fortran ~Object(void)
+C-interface f Object(void)
+C-interface f ~Object(void)
+Close wrapfshared.f
+Close utilShared.cpp
+Close typesShared.h
