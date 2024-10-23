@@ -38,7 +38,8 @@ clean :
 	rm -f $(OBJS) *.mod shared
 
 #shared.o : shared.cpp shared.hpp
-wrapShared.o : wrapShared.cpp wrapShared.h shared.hpp
+utilShared.o : utilShared.cpp shared.hpp typesShared.h
+wrapObject.o : wrapObject.cpp shared.hpp wrapObject.h
 main.o : fruit.o wrapfshared.o
 
 # useful to isolate load error with just C++ code

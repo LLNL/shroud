@@ -15,8 +15,8 @@ C++ or Fortran compilers.
 
 One C++ file will be created for the library and one file for each C++ class.
 In addition a utility file will be created with routines which are
-implemented in C but called from Fortran.  This includes some memory
-management routines.
+implemented in C but called from Fortran.  This includes memory
+management routines and helper functions.
 
 Fortran creates a file for the library and one per additional namespace.
 Since Fortran does not support forward referencing of derived types,
@@ -74,9 +74,13 @@ It's also possible to change just the suffix of files:
         F_impl_filename_library_template: wrapf{library_lower}.{F_filename_suffix}
         F_impl_filename_namespace_template: wrapf{file_scope}.{F_filename_suffix}
 
-A file with helper functions may also be created.
-For C the file is named by the format field *C_impl_utility*.
-It contains files which are implemented in C but are called from Fortran
+        # memory management and helper functions
+        C_header_utility_template: types{library}.{C_header_filename_suffix}
+        C_impl_utility_template: util{library}.{C_impl_filename_suffix}
+
+A utility file may also be created.
+The file is named by the option field *C_impl_utility_template*.
+It contains functions which are implemented in C but are called from Fortran
 via ``BIND(C)``.
 
 How names are created

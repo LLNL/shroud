@@ -11,6 +11,7 @@
 #include "shared.hpp"
 // shroud
 #include "typesShared.h"
+#include <memory>
 
 
 #ifdef __cplusplus

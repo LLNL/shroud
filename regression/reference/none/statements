@@ -706,6 +706,8 @@ c_ctor_shadow_capptr_shared:
   - shared
   impl_header:
   - <memory>
+  destructor_header:
+  - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
   - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
@@ -3319,6 +3321,8 @@ c_mixin_declare-fortran-result:
 c_mixin_destructor_new-shadow-shared:
   name: c_mixin_destructor_new-shadow-shared
   intent: mixin
+  destructor_header:
+  - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
   - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
@@ -4729,6 +4733,8 @@ f_ctor_shadow_capptr_shared:
   c_local:
   - shared
   impl_header:
+  - <memory>
+  destructor_header:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:

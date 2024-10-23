@@ -1449,6 +1449,8 @@ typedef struct s_{C_type_name} {C_type_name};{cpp_endif}""",
                 fmt.idtor = self.add_capsule_code(
                     destructor_name, ntypemap, del_lines
                 )
+                for header in intent_blk.destructor_header:
+                    self.capsule_include[header] = True
             else:
                 fmt.idtor = self.capsule_code[destructor_name][0]
             return

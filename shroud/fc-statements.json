@@ -688,6 +688,9 @@
             "The count is reduced and the shared_ptr instance is deleted."
         ],
         "destructor_name": "shadow-{cxx_type}",
+        "destructor_header": [
+            "<memory>"
+        ],
         "destructor": [
             "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}> *>(ptr);",
             "shared->reset();",

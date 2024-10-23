@@ -809,6 +809,7 @@ CStmts = util.Scope(
 
     iface_header=[],
     impl_header=[],
+    destructor_header=[],
     destructor_name=None,
     destructor=[],
     owner="library",
