@@ -523,6 +523,30 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
+    def set_func_post_c(self, node, meta):
+        """Final check on metaattributes for C.
+        Check defaults from typemap.
+        """
+        ast = node.ast
+        ntypemap = ast.typemap
+
+        if ntypemap.sgroup == "shared_ptr":
+            # XXX - special case for now, need to copy from ntypemap
+            meta["owner"] = "shared"
+            meta["api"] = "capptr"
+
+    def set_func_post_fortran(self, node, meta):
+        """Final check on metaattributes for C.
+        Check defaults from typemap.
+        """
+        ast = node.ast
+        ntypemap = ast.typemap
+
+        if ntypemap.sgroup == "shared_ptr":
+            meta["owner"] = "shared"
+            meta["api"] = "capptr"
+            meta["deref"] = None
+            
     def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator
         ntypemap = arg.typemap
@@ -961,6 +985,7 @@ class FillMetaC(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
         self.set_func_api_c(node, r_meta)
+        self.set_func_post_c(node, r_meta)
 
         # --- Loop over function parameters
         for arg in declarator.params:
@@ -1023,6 +1048,7 @@ class FillMetaFortran(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
+        self.set_func_post_fortran(node, r_meta)
         
         self.meta_function_params(node, fptr_arg)
 

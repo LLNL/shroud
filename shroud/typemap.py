@@ -920,6 +920,15 @@ def default_typemap():
             base="vector",
             sgroup="vector",
         ),
+        shared_ptr=Typemap(
+            "std::shared_ptr",
+            ntemplate_args=1,
+            cxx_type="std::shared_ptr<{cxx_T}>",
+            cxx_header="<memory>",
+            impl_header=["<memory>"],
+            base="shared_ptr",
+            sgroup="shared_ptr",
+        ),
         MPI_Comm=Typemap(
             "MPI_Comm",
             cxx_type="MPI_Comm",
@@ -943,6 +952,8 @@ def default_typemap():
     del def_types["string"]
     def_types["std::vector"] = def_types["vector"]
     del def_types["vector"]
+    def_types["std::shared_ptr"] = def_types["shared_ptr"]
+    del def_types["shared_ptr"]
 
     # One typemap for all template parameters.
     type_name = "--template-parameter--"

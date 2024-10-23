@@ -152,8 +152,14 @@ def find_abstract_declarator(arg):
     Funtion pointers from a typedef already have the correct typemap.
 
     Args:
-        arg -
+        arg - declast.Declaration
     """
+    if arg.typemap.sgroup == "shared_ptr":
+        arg = arg.template_arguments[0]
+        suffix = ["*"]
+    else:
+        suffix = []
+        
     declarator = arg.declarator
     if declarator.is_function_pointer():
         decl = ["procedure"]
@@ -170,6 +176,7 @@ def find_abstract_declarator(arg):
             decl.append(",")
         decl[-1] = ">"
     decl.append(abstract)
+    decl.extend(suffix)
     return "".join(decl)
 
 def lookup_fc_stmts(path):

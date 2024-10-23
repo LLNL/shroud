@@ -32,6 +32,9 @@ symbols:
   std:
     cls: Namespace
     symbols:
+      shared_ptr:
+        cls: Typedef
+        typemap: std::shared_ptr
       string:
         cls: Typedef
         typemap: std::string
@@ -1482,6 +1485,9 @@ symbols:
   std:
     cls: Namespace
     symbols:
+      shared_ptr:
+        cls: Typedef
+        typemap: std::shared_ptr
       string:
         cls: Typedef
         typemap: std::string

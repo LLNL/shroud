@@ -515,7 +515,7 @@ class Parser(ExprParser):
         return
 
     def parse_template_arguments(self, node):
-        """Parse vector parameters.
+        """Parse template parameters.
         vector<T>
         map<Key,T>
         vector<const double *>
@@ -2034,9 +2034,11 @@ class SymbolTable(object):
         tname = self.scopename + name
         ntypemap = self.lookup_typemap(tname)
         if ntypemap is None:
-            raise RuntimeError("Unknown type {}".format(tname))
-        node = Typedef(name, None, ntypemap)
-        self.current.add_child(node.name, node)
+            cursor = error.get_cursor().warning(
+                "add_typedef_by_name: Unknown type {}".format(tname))
+        else:
+            node = Typedef(name, None, ntypemap)
+            self.current.add_child(node.name, node)
 
     def add_typedef(self, name, ntypemap):
         """
@@ -2066,6 +2068,7 @@ class SymbolTable(object):
         # create_typedef_typemap  - GGG must be in typemap
         self.add_typedef_by_name("string")
         self.add_typedef_by_name("vector")
+        self.add_typedef_by_name("shared_ptr")
         self.restore_depth(depth)
 
     def find_ntemplate_args(self):

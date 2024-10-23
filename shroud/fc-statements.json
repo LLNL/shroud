@@ -3650,6 +3650,16 @@
     },
     {
         "alias": [
+            "f_function_shadow*_capptr_shared",
+            "c_function_shadow*_capptr_shared"
+        ],
+        "notes": [
+            "std::shared_ptr with a shadow class."
+        ],
+        "base": "f_function_shadow*_capptr"
+    },
+    {
+        "alias": [
             "f_function_shadow&_capptr",
             "f_function_shadow&_capptr_caller",
             "f_function_shadow&_capptr_library",

@@ -728,6 +728,19 @@
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T"
         },
+        "std::shared_ptr": {
+            "base": "shared_ptr",
+            "cxx_header": [
+                "<memory>"
+            ],
+            "cxx_type": "std::shared_ptr<{cxx_T}>",
+            "flat_name": "std_shared_ptr_{cxx_T}",
+            "impl_header": [
+                "<memory>"
+            ],
+            "ntemplate_args": 1,
+            "sgroup": "shared_ptr"
+        },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushstring({LUA_state_var}, {push_arg})",

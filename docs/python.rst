@@ -268,7 +268,7 @@ The format field associated with the helper will be named *c_helper_{name}*.
 It will be necessary to add an alias when the helper name contains a
 format string.  The alias is delimited by a
 colon. ex. ``to_PyList_{cxx_type}:to_PyList``.  In this case the
-format field will be the alias name, *c_helper_{alias}.
+format field will be the alias name, *c_helper_{alias}*.
 
 .. Included {cxx_type} in the helper name makes it more general requiring
    the alias to create a standard name.
