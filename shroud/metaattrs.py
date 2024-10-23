@@ -891,7 +891,8 @@ class FillMetaShare(FillMeta):
 
         owner = attrs.get("owner", missing)
         if owner is not missing:
-            if owner not in ["caller", "library"]:
+            if owner not in ["caller", "library", "shared"]:
+                # XXX - shared is only valued with language=c++
                 self.cursor.generate(
                     "Illegal value '{}' for owner attribute. "
                     "Must be 'caller' or 'library'.".format(owner)

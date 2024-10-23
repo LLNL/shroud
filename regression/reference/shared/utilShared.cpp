@@ -33,6 +33,14 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
+    case 2:   // shadow-Object
+    {
+        std::shared_ptr<Object> *shared =
+            reinterpret_cast<std::shared_ptr<Object> *>(ptr);
+        shared->reset();
+        delete shared;
+        break;
+    }
     default:
     {
         // Unexpected case in destructor

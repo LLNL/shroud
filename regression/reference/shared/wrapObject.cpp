@@ -10,6 +10,7 @@
 // cxx_header
 #include "shared.hpp"
 // shroud
+#include <memory>
 #include <cstddef>
 #include "wrapObject.h"
 
@@ -22,14 +23,16 @@ extern "C" {
 // splicer end class.Object.C_definitions
 
 // ----------------------------------------
-// Function:  Object
-// Statement: c_ctor_shadow_capptr
+// Function:  Object +owner(shared)
+// Statement: c_ctor_shadow_capptr_shared
 SHA_Object * SHA_Object_ctor(SHA_Object * SHC_rv)
 {
     // splicer begin class.Object.method.ctor
-    Object *SHCXX_rv = new Object();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 1;
+    std::shared_ptr<Object> *SHC_rv_shared =
+        new std::shared_ptr<Object>;
+    *SHC_rv_shared =  std::make_shared<Object>();
+    SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
+    SHC_rv->idtor = 2;
     return SHC_rv;
     // splicer end class.Object.method.ctor
 }

@@ -682,6 +682,19 @@
         ]
     },
     {
+        "name": "c_mixin_destructor_new-shadow-shared",
+        "notes": [
+            "ptr points to a std::shared_ptr which points to the shadow instance.",
+            "The count is reduced and the shared_ptr instance is deleted."
+        ],
+        "destructor_name": "shadow-{cxx_type}",
+        "destructor": [
+            "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}> *>(ptr);",
+            "shared->reset();",
+            "delete shared;"
+        ]
+    },
+    {
         "name": "f_mixin_in_vector_buf",
         "comments": [
             "Pass argument and size by value to C."
@@ -3704,6 +3717,33 @@
             "{c_var}->idtor = {idtor};"
         ],
         "owner": "caller"
+    },
+    {
+        "alias": [
+            "f_ctor_shadow_capptr_shared",
+            "c_ctor_shadow_capptr_shared"
+        ],
+        "notes": [
+            "Create a std::shared_pointer on the heap to hold the pointer to the instance."
+        ],
+        "mixin": [
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared"
+        ],
+        "c_call": [
+            "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;",
+            "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
+            "{c_var}->idtor = {idtor};"
+        ],
+        "impl_header": [
+            "<memory>"
+        ],
+        "c_local": [
+            "shared"
+        ],
+        "owner": "shared"
     },
     {
         "alias": [

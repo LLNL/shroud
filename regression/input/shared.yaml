@@ -17,7 +17,9 @@ options:
 
 declarations:
 - decl: class Object
+  options:
+    C_shared_ptr: true
   declarations:
-  - decl: Object()
+  - decl: Object() +owner(shared)
   - decl: ~Object()
 

@@ -262,6 +262,12 @@ C_shadow_result
   Fortran wrapper implementation since the function result is not used
   since it is identical to the result argument.
 
+C_shared_ptr
+  This will create a ``final`` function for the Fortran derived type
+  which wraps a C++ class.
+  If the constructor has the *+shared* attribute, this will cause
+  the destructor to be called when the object goes out of scope.
+
 class_baseclass
   Used to define a baseclass for a struct for *wrap_struct_as=class*".
   The baseclase must already be defined earlier in the YAML file.

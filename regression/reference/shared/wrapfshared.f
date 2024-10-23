@@ -36,6 +36,7 @@ module shared_mod
         procedure :: get_instance => object_get_instance
         procedure :: set_instance => object_set_instance
         procedure :: associated => object_associated
+        final :: object_final
         ! splicer begin class.Object.type_bound_procedure_part
         ! splicer end class.Object.type_bound_procedure_part
     end type object
@@ -51,8 +52,8 @@ module shared_mod
     interface
 
         ! ----------------------------------------
-        ! Function:  Object
-        ! Statement: f_ctor_shadow_capptr
+        ! Function:  Object +owner(shared)
+        ! Statement: f_ctor_shadow_capptr_shared
         function c_object_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_ctor")
@@ -84,8 +85,8 @@ module shared_mod
 contains
 
     ! ----------------------------------------
-    ! Function:  Object
-    ! Statement: f_ctor_shadow_capptr
+    ! Function:  Object +owner(shared)
+    ! Statement: f_ctor_shadow_capptr_shared
     function object_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -128,6 +129,22 @@ contains
         logical rv
         rv = c_associated(obj%cxxmem%addr)
     end function object_associated
+
+    subroutine object_final(obj)
+        use iso_c_binding, only : c_associated
+        type(object), intent(INOUT) :: obj
+        interface
+            subroutine array_destructor(capsule) &
+                bind(C, name="SHA_SHROUD_memory_destructor")
+                import SHA_SHROUD_capsule_data
+                implicit none
+                type(SHA_SHROUD_capsule_data), intent(INOUT) :: capsule
+            end subroutine array_destructor
+        end interface
+        if (c_associated(obj%cxxmem%addr)) then
+            call array_destructor(obj%cxxmem)
+        endif
+    end subroutine object_final
 
     ! splicer begin class.Object.additional_functions
     ! splicer end class.Object.additional_functions

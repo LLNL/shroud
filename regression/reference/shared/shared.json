@@ -14,6 +14,9 @@
                         "_overloaded": true,
                         "ast": {
                             "declarator": {
+                                "attrs": {
+                                    "owner": "shared"
+                                },
                                 "default_name": "ctor",
                                 "is_ctor": true,
                                 "params": [],
@@ -25,8 +28,8 @@
                             ],
                             "typemap_name": "Object"
                         },
-                        "decl": "Object()",
-                        "declgen": "Object(void)",
+                        "decl": "Object() +owner(shared)",
+                        "declgen": "Object(void) +owner(shared)",
                         "name": "ctor",
                         "options": {
                             "F_create_generic": true
@@ -46,6 +49,7 @@
                                         "c_abstract_decl": "SHA_Object *",
                                         "c_const": "",
                                         "c_get_value": "",
+                                        "c_local_shared": "SHC_rv_shared",
                                         "c_type": "SHA_Object",
                                         "c_var": "SHC_rv",
                                         "cfi_type": "CFI_type_other",
@@ -56,16 +60,17 @@
                                         "cxx_type": "Object",
                                         "cxx_var": "SHCXX_rv",
                                         "i_name_function": "c_object_ctor",
-                                        "idtor": "1",
+                                        "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_ctor_shadow_capptr",
+                                        "stmt_name": "c_ctor_shadow_capptr_shared",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
                                         "api": "capptr",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "shared"
                                     },
-                                    "stmt": "c_ctor_shadow_capptr"
+                                    "stmt": "c_ctor_shadow_capptr_shared"
                                 }
                             },
                             "f": {
@@ -81,6 +86,7 @@
                                         "c_abstract_decl": "SHA_Object *",
                                         "c_const": "",
                                         "c_get_value": "",
+                                        "c_local_shared": "SHC_rv_shared",
                                         "c_type": "SHA_Object",
                                         "c_var": "SHC_rv",
                                         "cfi_type": "CFI_type_other",
@@ -103,6 +109,7 @@
                                         "fc_var": "SHT_rv",
                                         "i_arguments": "SHT_rv",
                                         "i_kind": "object",
+                                        "i_local_shared": "SHC_rv_shared",
                                         "i_module_name": "shared_mod",
                                         "i_name_function": "c_object_ctor",
                                         "i_result_clause": "\fresult(SHT_prv)",
@@ -110,22 +117,24 @@
                                         "i_subprogram": "function",
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
-                                        "idtor": "1",
+                                        "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_ctor_shadow_capptr",
+                                        "stmt_name": "f_ctor_shadow_capptr_shared",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
                                         "api": "capptr",
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "shared"
                                     },
-                                    "stmt": "f_ctor_shadow_capptr"
+                                    "stmt": "f_ctor_shadow_capptr_shared"
                                 }
                             },
                             "share": {
                                 "+result": {
                                     "meta": {
-                                        "intent": "ctor"
+                                        "intent": "ctor",
+                                        "owner": "shared"
                                     }
                                 }
                             }
@@ -226,7 +235,9 @@
                     }
                 ],
                 "name": "Object",
-                "options": {},
+                "options": {
+                    "C_shared_ptr": true
+                },
                 "parse_keyword": "class",
                 "scope": "Object::",
                 "typemap_name": "Object",

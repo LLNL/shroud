@@ -29,6 +29,7 @@
             "C_name_template": "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}{template_suffix}",
             "C_name_typedef_template": "{C_prefix}{C_name_scope}{typedef_name}",
             "C_shadow_result": true,
+            "C_shared_ptr": false,
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "F_API_case": "underscore",

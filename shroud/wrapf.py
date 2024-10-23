@@ -577,7 +577,7 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
             )
 
         if options.F_auto_reference_count:
-            # assign
+            fmt.F_name_api = fmt_class.F_name_assign
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -595,19 +595,19 @@ use iso_c_binding, only : c_associated, c_f_pointer
 class({F_derived_name}), intent(INOUT) :: lhs
 class({F_derived_name}), intent(IN) :: rhs
 
-lhs%{F_derived_ptr} = rhs%{F_derived_ptr}
-if (c_associated(lhs%{F_derived_ptr})) then+
+lhs%{F_derived_member} = rhs%{F_derived_member}
+if (c_associated(lhs%{F_derived_member}%addr)) then+
 call c_f_pointer(lhs%{F_derived_ptr}, lhs%{F_derived_member})
 lhs%{F_derived_member}%refcount = lhs%{F_derived_member}%refcount + 1
 -else+
-nullify(lhs%{F_derived_member})
+nullify(lhs%{F_derived_member}%addr)
 -endif
 -end subroutine {F_name_impl}""",
                 fmt,
             )
 
-        if options.F_auto_reference_count:
-            # final
+        if options.F_auto_reference_count or options.C_shared_ptr:
+            fmt.F_name_api = fmt_class.F_name_final
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
@@ -617,20 +617,17 @@ nullify(lhs%{F_derived_member})
                 impl,
                 """
 subroutine {F_name_impl}({F_this})+
-use iso_c_binding, only : c_associated, C_BOOL, C_NULL_PTR
+use iso_c_binding, only : c_associated
 type({F_derived_name}), intent(INOUT) :: {F_this}
 interface+
-subroutine array_destructor(ptr, gc)\t bind(C, name="{C_memory_dtor_function}")+
-use iso_c_binding, only : C_BOOL, C_INT, C_PTR
+subroutine array_destructor(capsule)\t bind(C, name="{C_memory_dtor_function}")+
+import {f_capsule_data_type}
 implicit none
-type(C_PTR), value, intent(IN) :: ptr
-logical(C_BOOL), value, intent(IN) :: gc
+type({f_capsule_data_type}), intent(INOUT) :: capsule
 -end subroutine array_destructor
 -end interface
-if (c_associated({F_this}%{F_derived_ptr})) then+
-call array_destructor({F_this}%{F_derived_ptr}, .true._C_BOOL)
-{F_this}%{F_derived_ptr} = C_NULL_PTR
-nullify({F_this}%{F_derived_member})
+if (c_associated({F_this}%{F_derived_member}%addr)) then+
+call array_destructor({F_this}%{F_derived_member})
 -endif
 -end subroutine {F_name_impl}""",
                 fmt,
