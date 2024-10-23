@@ -33,6 +33,7 @@ module shared_mod
         ! splicer end class.Object.component_part
     contains
         procedure :: dtor => object_dtor
+        procedure :: create_child_a => object_create_child_a
         procedure :: get_instance => object_get_instance
         procedure :: set_instance => object_set_instance
         procedure :: associated => object_associated
@@ -73,6 +74,20 @@ module shared_mod
             implicit none
             type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_object_dtor
+
+        ! ----------------------------------------
+        ! Function:  Object *createChildA
+        ! Statement: f_function_shadow*_capptr
+        function c_object_create_child_a(self, SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="SHA_Object_createChildA")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_prv
+        end function c_object_create_child_a
     end interface
 
     interface object
@@ -106,6 +121,20 @@ contains
         call c_object_dtor(obj%cxxmem)
         ! splicer end class.Object.method.dtor
     end subroutine object_dtor
+
+    ! ----------------------------------------
+    ! Function:  Object *createChildA
+    ! Statement: f_function_shadow*_capptr
+    function object_create_child_a(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        class(object) :: obj
+        type(object) :: SHT_rv
+        type(C_PTR) :: SHT_prv
+        ! splicer begin class.Object.method.create_child_a
+        SHT_prv = c_object_create_child_a(obj%cxxmem, SHT_rv%cxxmem)
+        ! splicer end class.Object.method.create_child_a
+    end function object_create_child_a
 
     ! Return pointer to C++ memory.
     function object_get_instance(obj) result (cxxptr)

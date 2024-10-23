@@ -49,4 +49,19 @@ void SHA_Object_dtor(SHA_Object * self)
     // splicer end class.Object.method.dtor
 }
 
+// ----------------------------------------
+// Function:  Object *createChildA
+// Statement: c_function_shadow*_capptr
+SHA_Object * SHA_Object_createChildA(SHA_Object * self,
+    SHA_Object * SHC_rv)
+{
+    Object *SH_this = static_cast<Object *>(self->addr);
+    // splicer begin class.Object.method.createChildA
+    Object *SHC_rv_cxx = SH_this->createChildA();
+    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+    // splicer end class.Object.method.createChildA
+}
+
 }  // extern "C"
