@@ -83,6 +83,10 @@ C is a subset of Fortran and the first alias determines the defaults.
         - f_out_string**_cdesc_allocatable
         - c_out_string**_cdesc_allocatable
 
+Names which start with a ``#`` are ignored.
+This provides a way to add comments into the JSON file.
+(which does not support comments)
+
 mixin
 ^^^^^
 
@@ -143,6 +147,9 @@ While this example uses twice as many lines to create the *f_in_type*
 group, the real benefit is when each mixin group contains several
 declarations and is mixed into many other groups.
 
+Names which start with a ``#`` are ignored.
+This provides a way to add comments into the JSON file.
+(which does not support comments)
 
 comments
 ^^^^^^^^

@@ -475,7 +475,7 @@ def process_mixin(stmts, defaults, stmtdict):
         intent = None
         if "alias" in stmt:
             # name is not allowed"
-            aliases = stmt["alias"]
+            aliases = [ alias for alias in stmt["alias"] if alias[0] != "#"]
             # XXX - first alias used for lang
             tmp_name = aliases[0]
         if "name" in stmt:
@@ -564,8 +564,6 @@ def process_mixin(stmts, defaults, stmtdict):
         if aliases:
             # Install with alias name.
             for alias in aliases:
-                if alias[0] == "#":
-                    continue
                 apart = alias.split("_", 2)
                 intent = apart[1]
                 anode = util.Scope(node)
