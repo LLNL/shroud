@@ -451,6 +451,9 @@ class FillMeta(object):
         api = attrs.get("api", missing)
 
         if api is not missing:
+            if api == "capptr":
+                # capptr is not used with Fortran wrappers.
+                api = "capsule"
             meta["api"] = api
         elif ntypemap.sgroup == "shadow":
             if node.return_this:

@@ -23,5 +23,5 @@ declarations:
   - decl: Object() +owner(shared)
   - decl: ~Object()
 
-  - decl: Object* createChildA(void)
+#  - decl: Object* createChildA(void)
 #  - decl: std::shared_ptr<Object>* createChildA(void)

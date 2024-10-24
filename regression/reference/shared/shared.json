@@ -59,7 +59,24 @@
                                         "cxx_rv_decl": "Object SHCXX_rv",
                                         "cxx_type": "Object",
                                         "cxx_var": "SHCXX_rv",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_derived_type": "object",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "object",
+                                        "f_module_name": "shared_mod",
+                                        "f_type": "type(object)",
+                                        "f_var": "SHT_rv",
+                                        "i_arguments": "SHT_rv",
+                                        "i_kind": "object",
+                                        "i_local_shared": "SHC_rv_shared",
+                                        "i_module_name": "shared_mod",
                                         "i_name_function": "c_object_ctor",
+                                        "i_result_clause": "\fresult(SHT_prv)",
+                                        "i_result_var": "SHT_prv",
+                                        "i_subprogram": "function",
+                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_var": "SHT_rv",
                                         "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_ctor_shadow_capptr_shared",
@@ -77,15 +94,14 @@
                                 "+result": {
                                     "fmtdict": {
                                         "C_call_function": "SH_this->ctor(\t)",
-                                        "C_name": "SHA_Object_ctor",
+                                        "C_name": "SHA_Object_ctor_bufferify",
                                         "C_prototype": "SHA_Object * SHC_rv",
-                                        "C_return_type": "SHA_Object *",
+                                        "C_return_type": "void",
                                         "F_arg_c_call": "SHT_rv%cxxmem",
                                         "F_arguments": "",
                                         "F_subprogram": "function",
                                         "c_abstract_decl": "SHA_Object *",
                                         "c_const": "",
-                                        "c_get_value": "",
                                         "c_local_shared": "SHC_rv_shared",
                                         "c_type": "SHA_Object",
                                         "c_var": "SHC_rv",
@@ -96,13 +112,12 @@
                                         "cxx_rv_decl": "Object SHCXX_rv",
                                         "cxx_type": "Object",
                                         "cxx_var": "SHCXX_rv",
-                                        "f_call_function": "c_object_ctor",
+                                        "f_call_function": "c_object_ctor_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object",
-                                        "f_local_ptr": "SHC_rv_ptr",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
                                         "f_type": "type(object)",
@@ -112,10 +127,9 @@
                                         "i_kind": "object",
                                         "i_local_shared": "SHC_rv_shared",
                                         "i_module_name": "shared_mod",
-                                        "i_name_function": "c_object_ctor",
-                                        "i_result_clause": "\fresult(SHT_prv)",
-                                        "i_result_var": "SHT_prv",
-                                        "i_subprogram": "function",
+                                        "i_name_function": "c_object_ctor_bufferify",
+                                        "i_subprogram": "subroutine",
+                                        "i_suffix": "_bufferify",
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "2",
@@ -232,159 +246,6 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor"
-                        }
-                    },
-                    {
-                        "<FUNCTION>": "createChildA  2 ****************************************",
-                        "ast": {
-                            "declarator": {
-                                "name": "createChildA",
-                                "params": [],
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ],
-                                "typemap_name": "Object"
-                            },
-                            "specifier": [
-                                "Object"
-                            ],
-                            "typemap_name": "Object"
-                        },
-                        "decl": "Object* createChildA(void)",
-                        "declgen": "Object *createChildA(void)",
-                        "name": "createChildA",
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true
-                        },
-                        "zz_bind": {
-                            "c": {
-                                "+result": {
-                                    "fmtdict": {
-                                        "C_call_function": "SH_this->createChildA(\t)",
-                                        "C_name": "SHA_Object_createChildA",
-                                        "C_prototype": "SHA_Object * self,\t SHA_Object * SHC_rv",
-                                        "C_return_type": "SHA_Object *",
-                                        "c_abstract_decl": "SHA_Object *",
-                                        "c_const": "",
-                                        "c_local_cxx": "SHC_rv_cxx",
-                                        "c_type": "SHA_Object",
-                                        "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
-                                        "cxx_abstract_decl": "Object *",
-                                        "cxx_addr": "",
-                                        "cxx_member": "->",
-                                        "cxx_nonconst_ptr": "SHC_rv_cxx",
-                                        "cxx_rv_decl": "Object *SHCXX_rv",
-                                        "cxx_type": "Object",
-                                        "cxx_var": "SHC_rv_cxx",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                                        "f_derived_type": "object",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
-                                        "f_kind": "object",
-                                        "f_module_name": "shared_mod",
-                                        "f_type": "type(object)",
-                                        "f_var": "SHT_rv",
-                                        "i_arguments": "self,\t SHT_rv",
-                                        "i_kind": "object",
-                                        "i_local_cxx": "SHC_rv_cxx",
-                                        "i_module_name": "shared_mod",
-                                        "i_name_function": "c_object_create_child_a",
-                                        "i_result_clause": "\fresult(SHT_prv)",
-                                        "i_result_var": "SHT_prv",
-                                        "i_subprogram": "function",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
-                                        "i_var": "SHT_rv",
-                                        "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "c_function_shadow*_capptr",
-                                        "typemap_name": "Object"
-                                    },
-                                    "meta": {
-                                        "api": "capptr",
-                                        "intent": "function"
-                                    },
-                                    "stmt": "c_function_shadow*_capptr"
-                                }
-                            },
-                            "f": {
-                                "+result": {
-                                    "fmtdict": {
-                                        "C_call_function": "SH_this->createChildA(\t)",
-                                        "C_name": "SHA_Object_createChildA_bufferify",
-                                        "C_prototype": "SHA_Object * self,\t SHA_Object * SHC_rv",
-                                        "C_return_type": "void",
-                                        "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem",
-                                        "F_arguments": "obj",
-                                        "F_subprogram": "function",
-                                        "c_abstract_decl": "SHA_Object *",
-                                        "c_const": "",
-                                        "c_local_cxx": "SHC_rv_cxx",
-                                        "c_type": "SHA_Object",
-                                        "c_var": "SHC_rv",
-                                        "cfi_type": "CFI_type_other",
-                                        "cxx_abstract_decl": "Object *",
-                                        "cxx_addr": "",
-                                        "cxx_member": "->",
-                                        "cxx_nonconst_ptr": "SHC_rv_cxx",
-                                        "cxx_rv_decl": "Object *SHCXX_rv",
-                                        "cxx_type": "Object",
-                                        "cxx_var": "SHC_rv_cxx",
-                                        "f_call_function": "c_object_create_child_a_bufferify",
-                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
-                                        "f_derived_type": "object",
-                                        "f_intent": "OUT",
-                                        "f_intent_attr": ", intent(OUT)",
-                                        "f_kind": "object",
-                                        "f_module_name": "shared_mod",
-                                        "f_result_clause": "\fresult(SHT_rv)",
-                                        "f_type": "type(object)",
-                                        "f_var": "SHT_rv",
-                                        "fc_var": "SHT_rv",
-                                        "i_arguments": "self,\t SHT_rv",
-                                        "i_kind": "object",
-                                        "i_local_cxx": "SHC_rv_cxx",
-                                        "i_module_name": "shared_mod",
-                                        "i_name_function": "c_object_create_child_a_bufferify",
-                                        "i_subprogram": "subroutine",
-                                        "i_suffix": "_bufferify",
-                                        "i_type": "type(SHA_SHROUD_capsule_data)",
-                                        "i_var": "SHT_rv",
-                                        "idtor": "0",
-                                        "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_function_shadow*_capsule",
-                                        "typemap_name": "Object"
-                                    },
-                                    "meta": {
-                                        "api": "capsule",
-                                        "intent": "function"
-                                    },
-                                    "stmt": "f_function_shadow*_capsule"
-                                }
-                            },
-                            "share": {
-                                "+result": {
-                                    "meta": {
-                                        "intent": "function"
-                                    }
-                                }
-                            }
-                        },
-                        "zz_fmtdict": {
-                            "C_name_api": "createChildA",
-                            "F_name_api": "create_child_a",
-                            "F_name_function": "create_child_a",
-                            "F_name_generic": "create_child_a",
-                            "F_name_impl": "object_create_child_a",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "function_name": "createChildA"
                         }
                     }
                 ],

@@ -5,18 +5,14 @@ C c Object(void) +owner(shared)
 C f Object(void) +owner(shared)
 C c ~Object(void)
 C f ~Object(void)
-C c Object *createChildA(void)
-C f Object *createChildA(void)
 Close wrapObject.h
 Close wrapObject.cpp
 class Object
 Fortran Object(void) +owner(shared)
 Fortran ~Object(void)
-Fortran Object *createChildA(void)
+C-interface c Object(void) +owner(shared)
 C-interface f Object(void) +owner(shared)
 C-interface f ~Object(void)
-C-interface c Object *createChildA(void)
-C-interface f Object *createChildA(void)
 Close wrapfshared.f
 Close utilShared.cpp
 Close typesShared.h

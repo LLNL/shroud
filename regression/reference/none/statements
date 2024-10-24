@@ -4925,34 +4925,20 @@ f_ctor_shadow_capsule:
 f_ctor_shadow_capsule_shared:
   name: f_ctor_shadow_capsule_shared
   comments:
-  - Pass function result as a capsule field of shadow class
-  - from Fortran to C.
+  - Pass function result as a capsule argument from Fortran to C.
   notes:
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_local:
-  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -4962,6 +4948,7 @@ f_ctor_shadow_capsule_shared:
   - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
+  c_return_type: void
   c_local:
   - shared
   impl_header:
