@@ -3700,7 +3700,7 @@
         "mixin": [
             "#f_mixin_function-to-subroutine",
             "#f_mixin_function_shadow_capsule",
-            "f_mixin_function_shadow_capptr",
+            "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
             "c_mixin_cvar-capsule-fill"
         ],
@@ -3708,6 +3708,9 @@
             "cxx_addr": ""
         },
         "owner": "caller",
+        "f_call": [
+            "call {f_call_function}({F_arg_c_call})"
+        ],
         "c_local": [
             "cxx"
         ],
@@ -3717,10 +3720,7 @@
         "c_call": [
             "*{c_local_cxx} = {C_call_function};"
         ],
-        "c_return_type": "{c_type} *",
-        "c_return": [
-            "return {c_var};"
-        ]
+        "c_return_type": "void"
     },
     {
         "alias": [
