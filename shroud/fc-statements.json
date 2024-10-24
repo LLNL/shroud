@@ -3768,7 +3768,7 @@
             "c_ctor_shadow_capsule"
         ],
         "mixin": [
-            "f_mixin_function_shadow_capptr",
+            "f_mixin_function_shadow_capsule",
             "c_mixin_shadow"
         ],
         "c_call": [
@@ -3776,6 +3776,7 @@
             "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
             "{c_var}->idtor = {idtor};"
         ],
+        "c_return_type": "void",
         "owner": "caller"
     },
     {
