@@ -3619,6 +3619,9 @@
     },
     {
         "alias": [
+            "f_function_shadow*_capsule_caller",
+            "f_function_shadow*_capsule_library",
+            
             "f_function_shadow*_capptr",
             "f_function_shadow*_capptr_caller",
             "f_function_shadow*_capptr_library",
@@ -3660,6 +3663,13 @@
     },
     {
         "alias": [
+            "f_function_shadow&_capsule",
+            "f_function_shadow&_capsule_caller",
+            "f_function_shadow&_capsule_library",
+            "c_function_shadow&_capsule",
+            "c_function_shadow&_capsule_caller",
+            "c_function_shadow&_capsule_library",
+
             "f_function_shadow&_capptr",
             "f_function_shadow&_capptr_caller",
             "f_function_shadow&_capptr_library",
@@ -3674,6 +3684,9 @@
     },
     {
         "alias": [
+            "f_function_shadow_capsule",
+            "f_function_shadow<native>_capsule",
+
             "f_function_shadow_capptr",
             "c_function_shadow_capptr",
             "f_function_shadow<native>_capptr",
@@ -3717,6 +3730,8 @@
     },
     {
         "alias": [
+            "f_ctor_shadow_capsule",
+            "c_ctor_shadow_capsule",
             "f_ctor_shadow_capptr",
             "c_ctor_shadow_capptr"
         ],
@@ -3733,6 +3748,7 @@
     },
     {
         "alias": [
+            "f_ctor_shadow_capsule_shared",
             "f_ctor_shadow_capptr_shared",
             "c_ctor_shadow_capptr_shared"
         ],
