@@ -3687,8 +3687,43 @@
     {
         "alias": [
             "f_function_shadow_capsule",
-            "f_function_shadow<native>_capsule",
-
+            "f_function_shadow<native>_capsule"
+        ],
+        "comments": [
+            "Return a instance by value."
+        ],
+        "notes": [
+            "Create memory in c_pre_call so it will survive the return.",
+            "owner=caller sets idtor flag to release the memory.",
+            "c_local_var is passed in as argument."
+        ],
+        "mixin": [
+            "#f_mixin_function-to-subroutine",
+            "#f_mixin_function_shadow_capsule",
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_cvar-capsule-fill"
+        ],
+        "fmtdict": {
+            "cxx_addr": ""
+        },
+        "owner": "caller",
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} * {c_local_cxx} = new {cxx_type};"
+        ],
+        "c_call": [
+            "*{c_local_cxx} = {C_call_function};"
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
+        ]
+    },
+    {
+        "alias": [
             "f_function_shadow_capptr",
             "c_function_shadow_capptr",
             "f_function_shadow<native>_capptr",
@@ -3730,7 +3765,21 @@
     {
         "alias": [
             "f_ctor_shadow_capsule",
-            "c_ctor_shadow_capsule",
+            "c_ctor_shadow_capsule"
+        ],
+        "mixin": [
+            "f_mixin_function_shadow_capptr",
+            "c_mixin_shadow"
+        ],
+        "c_call": [
+            "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
+            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{c_var}->idtor = {idtor};"
+        ],
+        "owner": "caller"
+    },
+    {
+        "alias": [
             "f_ctor_shadow_capptr",
             "c_ctor_shadow_capptr"
         ],
