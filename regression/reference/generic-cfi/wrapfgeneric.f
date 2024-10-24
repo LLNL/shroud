@@ -1007,9 +1007,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(struct_as_class) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_struct_as_class
-        SHT_prv = c_create_struct_as_class_bufferify(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_create_struct_as_class_bufferify(SHT_rv%cxxmem)
         ! splicer end function.create_struct_as_class
     end function create_struct_as_class
 

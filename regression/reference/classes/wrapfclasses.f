@@ -1094,9 +1094,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.ctor_default
-        SHT_prv = c_class1_ctor_default(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_class1_ctor_default(SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_default
     end function class1_ctor_default
     ! end class1_ctor_default
@@ -1113,9 +1113,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.ctor_flag
-        SHT_prv = c_class1_ctor_flag(flag, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_class1_ctor_flag(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_flag
     end function class1_ctor_flag
     ! end class1_ctor_flag
@@ -1210,13 +1210,13 @@ contains
         character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.return_this_buffer
         integer(C_INT) SHT_name_len
         logical(C_BOOL) :: SHT_flag_cxx
         SHT_name_len = len(name, kind=C_INT)
         SHT_flag_cxx = flag  ! coerce to C_BOOL
-        SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
+        SHC_rv_ptr = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
             name, SHT_name_len, SHT_flag_cxx, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
@@ -1235,9 +1235,9 @@ contains
         use iso_c_binding, only : C_PTR
         class(class1) :: obj
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.getclass3
-        SHT_prv = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.getclass3
     end function class1_getclass3
     ! end class1_getclass3
@@ -1493,9 +1493,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(singleton) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Singleton.method.get_reference
-        SHT_prv = c_singleton_get_reference(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_singleton_get_reference(SHT_rv%cxxmem)
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
     ! end singleton_get_reference
@@ -1510,9 +1510,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(shape) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Shape.method.ctor
-        SHT_prv = c_shape_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_shape_ctor(SHT_rv%cxxmem)
         ! splicer end class.Shape.method.ctor
     end function shape_ctor
 
@@ -1562,9 +1562,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(circle) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Circle.method.ctor
-        SHT_prv = c_circle_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_circle_ctor(SHT_rv%cxxmem)
         ! splicer end class.Circle.method.ctor
     end function circle_ctor
 
@@ -1608,9 +1608,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(data) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Data.method.ctor
-        SHT_prv = c_data_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_data_ctor(SHT_rv%cxxmem)
         ! splicer end class.Data.method.ctor
     end function data_ctor
     ! end data_ctor
@@ -1764,9 +1764,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.getclass2
-        SHT_prv = c_getclass2(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_getclass2(SHT_rv%cxxmem)
         ! splicer end function.getclass2
     end function getclass2
 
@@ -1781,9 +1781,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.getclass3
-        SHT_prv = c_getclass3(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_getclass3(SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
 
@@ -1824,9 +1824,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.get_const_class_reference
-        SHT_prv = c_get_const_class_reference(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_get_const_class_reference(SHT_rv%cxxmem)
         ! splicer end function.get_const_class_reference
     end function get_const_class_reference
 
@@ -1837,9 +1837,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.get_class_reference
-        SHT_prv = c_get_class_reference(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_get_class_reference(SHT_rv%cxxmem)
         ! splicer end function.get_class_reference
     end function get_class_reference
 
@@ -1858,9 +1858,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.get_class_copy
-        SHT_prv = c_get_class_copy(flag, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_get_class_copy(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
 

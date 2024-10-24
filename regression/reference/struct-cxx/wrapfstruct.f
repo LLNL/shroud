@@ -1283,9 +1283,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(cstruct_as_class) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_cstruct_as_class
-        SHT_prv = c_create_cstruct_as_class(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_create_cstruct_as_class(SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_class
     end function create_cstruct_as_class
     ! end create_cstruct_as_class
@@ -1305,9 +1305,9 @@ contains
         integer(C_INT), value, intent(IN) :: x
         integer(C_INT), value, intent(IN) :: y
         type(cstruct_as_class) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_cstruct_as_class_args
-        SHT_prv = c_create_cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_create_cstruct_as_class_args(x, y, SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_class_args
     end function create_cstruct_as_class_args
 
@@ -1377,9 +1377,9 @@ contains
         integer(C_INT), value, intent(IN) :: y
         integer(C_INT), value, intent(IN) :: z
         type(cstruct_as_subclass) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_cstruct_as_subclass_args
-        SHT_prv = c_create_cstruct_as_subclass_args(x, y, z, &
+        SHC_rv_ptr = c_create_cstruct_as_subclass_args(x, y, z, &
             SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_subclass_args
     end function create_cstruct_as_subclass_args

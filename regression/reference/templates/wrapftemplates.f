@@ -433,9 +433,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(struct_as_class_int) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.structAsClass_int.method.ctor
-        SHT_prv = c_struct_as_class_int_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_struct_as_class_int_ctor(SHT_rv%cxxmem)
         ! splicer end class.structAsClass_int.method.ctor
     end function struct_as_class_int_ctor
 
@@ -530,9 +530,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(struct_as_class_double) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.structAsClass_double.method.ctor
-        SHT_prv = c_struct_as_class_double_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_struct_as_class_double_ctor(SHT_rv%cxxmem)
         ! splicer end class.structAsClass_double.method.ctor
     end function struct_as_class_double_ctor
 
@@ -627,9 +627,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(user_int) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.return_user_type
-        SHT_prv = c_return_user_type(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_return_user_type(SHT_rv%cxxmem)
         ! splicer end function.return_user_type
     end function return_user_type
 

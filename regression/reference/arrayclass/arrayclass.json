@@ -97,6 +97,7 @@
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "ArrayWrapper",
+                                        "f_local_ptr": "SHC_rv_ptr",
                                         "f_module_name": "arrayclass_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
                                         "f_type": "type(ArrayWrapper)",

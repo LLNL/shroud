@@ -6178,6 +6178,7 @@
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "struct_as_class",
+                                "f_local_ptr": "SHC_rv_ptr",
                                 "f_module_name": "generic_mod",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "type(struct_as_class)",

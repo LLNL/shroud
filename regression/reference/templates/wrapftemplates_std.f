@@ -250,9 +250,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(vector_int) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.std.class.vector_int.method.ctor
-        SHT_prv = c_vector_int_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_vector_int_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_int.method.ctor
     end function vector_int_ctor
 
@@ -335,9 +335,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(vector_double) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.std.class.vector_double.method.ctor
-        SHT_prv = c_vector_double_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_vector_double_ctor(SHT_rv%cxxmem)
         ! splicer end namespace.std.class.vector_double.method.ctor
     end function vector_double_ctor
 

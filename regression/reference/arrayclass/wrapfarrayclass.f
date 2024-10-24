@@ -491,9 +491,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(ArrayWrapper) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.ArrayWrapper.method.ctor
-        SHT_prv = c_ArrayWrapper_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_ArrayWrapper_ctor(SHT_rv%cxxmem)
         ! splicer end class.ArrayWrapper.method.ctor
     end function ArrayWrapper_ctor
 

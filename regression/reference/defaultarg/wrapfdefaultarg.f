@@ -565,9 +565,9 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: arg1
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.new_0
-        SHT_prv = c_class1_new_0(arg1, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_class1_new_0(arg1, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_0
     end function class1_new_0
 
@@ -591,9 +591,9 @@ contains
         integer(C_INT), value, intent(IN) :: arg1
         integer(C_INT), value, intent(IN) :: arg2
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.new_1
-        SHT_prv = c_class1_new_1(arg1, arg2, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_class1_new_1(arg1, arg2, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_1
     end function class1_new_1
 
@@ -620,9 +620,9 @@ contains
         integer(C_INT), value, intent(IN) :: arg2
         integer(C_INT), value, intent(IN) :: arg3
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class1.method.new_2
-        SHT_prv = c_class1_new_2(arg1, arg2, arg3, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_class1_new_2(arg1, arg2, arg3, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.new_2
     end function class1_new_2
 

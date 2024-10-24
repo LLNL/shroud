@@ -106,9 +106,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(object) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Object.method.ctor
-        SHT_prv = c_object_ctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = c_object_ctor(SHT_rv%cxxmem)
         ! splicer end class.Object.method.ctor
     end function object_ctor
 
@@ -130,9 +130,9 @@ contains
         use iso_c_binding, only : C_PTR
         class(object) :: obj
         type(object) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Object.method.create_child_a
-        SHT_prv = c_object_create_child_a(obj%cxxmem, SHT_rv%cxxmem)
+        SHC_rv_ptr = c_object_create_child_a(obj%cxxmem, SHT_rv%cxxmem)
         ! splicer end class.Object.method.create_child_a
     end function object_create_child_a
 

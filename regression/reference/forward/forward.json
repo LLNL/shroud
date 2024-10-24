@@ -151,6 +151,7 @@
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "class2",
+                                        "f_local_ptr": "SHC_rv_ptr",
                                         "f_module_name": "forward_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
                                         "f_type": "type(class2)",

@@ -101,9 +101,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(FNames) :: SHT_rv
-        type(C_PTR) :: SHT_prv
+        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.ns0.class.Names.method.defaultctor
-        SHT_prv = XXX_TES_names_defaultctor(SHT_rv%cxxmem)
+        SHC_rv_ptr = XXX_TES_names_defaultctor(SHT_rv%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.defaultctor
     end function names_defaultctor
 

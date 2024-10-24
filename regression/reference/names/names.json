@@ -5664,6 +5664,7 @@
                                                 "f_intent": "OUT",
                                                 "f_intent_attr": ", intent(OUT)",
                                                 "f_kind": "FNames",
+                                                "f_local_ptr": "SHC_rv_ptr",
                                                 "f_module_name": "name_module",
                                                 "f_result_clause": "\fresult(SHT_rv)",
                                                 "f_type": "type(FNames)",

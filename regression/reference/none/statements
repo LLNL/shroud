@@ -4814,14 +4814,16 @@ f_ctor_shadow_capptr:
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -4852,14 +4854,16 @@ f_ctor_shadow_capptr_shared:
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -4928,14 +4932,16 @@ f_ctor_shadow_capsule_shared:
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6241,14 +6247,16 @@ f_function_shadow&_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6282,14 +6290,16 @@ f_function_shadow&_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6323,14 +6333,16 @@ f_function_shadow&_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6454,14 +6466,16 @@ f_function_shadow*_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6495,14 +6509,16 @@ f_function_shadow*_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6536,14 +6552,16 @@ f_function_shadow*_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6579,14 +6597,16 @@ f_function_shadow*_capptr_shared:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6729,14 +6749,16 @@ f_function_shadow<native>_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6816,14 +6838,16 @@ f_function_shadow_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6865,14 +6889,16 @@ f_function_shadow_capptr_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -6914,14 +6940,16 @@ f_function_shadow_capptr_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
@@ -12462,14 +12490,16 @@ f_mixin_function_shadow_capptr:
   intent: mixin
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
+  - 'type(C_PTR) :: {f_local_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
+  - '{f_local_ptr} = {f_call_function}({F_arg_c_call})'
   f_module:
     iso_c_binding:
     - C_PTR
+  f_local:
+  - ptr
   f_need_wrapper: true
   i_result_decl:
   - 'type(C_PTR) :: {i_result_ptr}'
