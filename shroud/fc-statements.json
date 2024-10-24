@@ -3578,7 +3578,14 @@
             "f_function_shadow*_capsule",
             "c_function_shadow*_capsule",
             "f_function_shadow*_capsule_caller",
-            "f_function_shadow*_capsule_library"
+            "f_function_shadow*_capsule_library",
+
+            "f_function_shadow&_capsule",
+            "f_function_shadow&_capsule_caller",
+            "f_function_shadow&_capsule_library",
+            "c_function_shadow&_capsule",
+            "c_function_shadow&_capsule_caller",
+            "c_function_shadow&_capsule_library"
         ],
         "comments": [
             "Return a C_capsule_data_type."
@@ -3588,6 +3595,12 @@
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
             "c_mixin_cvar-capsule-fill"
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_call": [
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -3633,7 +3646,14 @@
             "f_function_shadow*_capptr_library",
             "c_function_shadow*_capptr",
             "c_function_shadow*_capptr_caller",
-            "c_function_shadow*_capptr_library"
+            "c_function_shadow*_capptr_library",
+
+            "f_function_shadow&_capptr",
+            "f_function_shadow&_capptr_caller",
+            "f_function_shadow&_capptr_library",
+            "c_function_shadow&_capptr",
+            "c_function_shadow&_capptr_caller",
+            "c_function_shadow&_capptr_library"
         ],
         "comments": [
             "Return a C_capsule_data_type."
@@ -3661,24 +3681,6 @@
         ],
         "notes": [
             "std::shared_ptr with a shadow class."
-        ],
-        "base": "f_function_shadow*_capptr"
-    },
-    {
-        "alias": [
-            "f_function_shadow&_capsule",
-            "f_function_shadow&_capsule_caller",
-            "f_function_shadow&_capsule_library",
-            "c_function_shadow&_capsule",
-            "c_function_shadow&_capsule_caller",
-            "c_function_shadow&_capsule_library",
-
-            "f_function_shadow&_capptr",
-            "f_function_shadow&_capptr_caller",
-            "f_function_shadow&_capptr_library",
-            "c_function_shadow&_capptr",
-            "c_function_shadow&_capptr_caller",
-            "c_function_shadow&_capptr_library"
         ],
         "base": "f_function_shadow*_capptr"
     },

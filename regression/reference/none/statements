@@ -1110,12 +1110,7 @@ c_function_shadow&_capsule:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -1125,9 +1120,7 @@ c_function_shadow&_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -1140,12 +1133,7 @@ c_function_shadow&_capsule_caller:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -1155,9 +1143,7 @@ c_function_shadow&_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -1170,12 +1156,7 @@ c_function_shadow&_capsule_library:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -1185,9 +1166,7 @@ c_function_shadow&_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -1327,10 +1306,14 @@ c_function_shadow*_capsule:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  c_local:
+  - cxx
   owner: library
 c_function_shadow*_this:
   name: c_function_shadow*_this
@@ -6397,25 +6380,16 @@ f_function_shadow&_capsule:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -6425,9 +6399,7 @@ f_function_shadow&_capsule:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -6438,25 +6410,16 @@ f_function_shadow&_capsule_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -6466,9 +6429,7 @@ f_function_shadow&_capsule_caller:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -6479,25 +6440,16 @@ f_function_shadow&_capsule_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -6507,9 +6459,7 @@ f_function_shadow&_capsule_library:
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -6700,10 +6650,14 @@ f_function_shadow*_capsule:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  c_local:
+  - cxx
   owner: library
 f_function_shadow*_capsule_caller:
   name: f_function_shadow*_capsule_caller
@@ -6726,10 +6680,14 @@ f_function_shadow*_capsule_caller:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  c_local:
+  - cxx
   owner: library
 f_function_shadow*_capsule_library:
   name: f_function_shadow*_capsule_library
@@ -6752,10 +6710,14 @@ f_function_shadow*_capsule_library:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  c_local:
+  - cxx
   owner: library
 f_function_shadow*_this:
   name: f_function_shadow*_this

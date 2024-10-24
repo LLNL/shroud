@@ -157,8 +157,8 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 void CLA_getclass2_void(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass2_void
-    const classes::Class1 *SHCXX_rv = classes::getclass2_void();
-    SHC_rv->addr  = const_cast<classes::Class1 *>(SHCXX_rv);
+    const classes::Class1 *SHC_rv_cxx = classes::getclass2_void();
+    SHC_rv->addr  = const_cast<classes::Class1 *>(SHC_rv_cxx);
     SHC_rv->idtor = 0;
     // splicer end function.getclass2_void
 }
@@ -173,8 +173,8 @@ void CLA_getclass2_void(CLA_Class1 * SHC_rv)
 void CLA_getclass3_void(CLA_Class1 * SHC_rv)
 {
     // splicer begin function.getclass3_void
-    classes::Class1 *SHCXX_rv = classes::getclass3_void();
-    SHC_rv->addr  = SHCXX_rv;
+    classes::Class1 *SHC_rv_cxx = classes::getclass3_void();
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     // splicer end function.getclass3_void
 }
