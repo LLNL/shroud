@@ -1978,7 +1978,7 @@
             "char_copy"
         ],
         "c_call": [
-            "{c_const}char *{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
@@ -3648,7 +3648,7 @@
             "cxx"
         ],
         "c_call": [
-            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_return_type": "{c_type} *",
         "c_return": [
@@ -3681,10 +3681,7 @@
             "c_function_shadow&_capptr_caller",
             "c_function_shadow&_capptr_library"
         ],
-        "base": "f_function_shadow*_capptr",
-        "c_call": [
-            "{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};"
-        ]
+        "base": "f_function_shadow*_capptr"
     },
     {
         "alias": [
@@ -4382,7 +4379,7 @@
             "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
         ],
         "c_call": [
-            "{c_const}char *{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4561,7 +4558,7 @@
             "char_copy"
         ],
         "c_call": [
-            "{c_const}{cxx_type} {c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_post_call": [
             "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
@@ -4578,7 +4575,7 @@
         ],
         "base": "f_function_string_cfi_copy",
         "c_call": [
-            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4587,7 +4584,7 @@
         ],
         "base": "f_function_string_cfi_copy",
         "c_call": [
-            "{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4618,7 +4615,7 @@
         ],
         "base": "f_function_string_cfi_arg",
         "c_call": [
-            "{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4875,7 +4872,7 @@
             "{i_type}{f_intent_attr}, allocatable :: {i_var}{f_assumed_shape}"
         ],
         "c_call": [
-            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4908,7 +4905,7 @@
             "{i_type}{f_intent_attr}, pointer :: {i_var}{f_assumed_shape}"
         ],
         "c_call": [
-            "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
