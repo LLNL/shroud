@@ -31,7 +31,7 @@ TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv)
     // splicer begin function.returnUserType
     user<int> * SHC_rv_cxx = new user<int>;
     *SHC_rv_cxx = returnUserType();
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 5;
     return SHC_rv;
     // splicer end function.returnUserType

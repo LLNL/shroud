@@ -153,6 +153,7 @@ root
         native
           cfi -- c_mixin_arg_native_cfi
       character -- c_mixin_character
+      cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
       declare-fortran-result -- c_mixin_declare-fortran-result
       destructor
@@ -1032,7 +1033,7 @@ c_function_shadow&_capptr:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1062,7 +1063,7 @@ c_function_shadow&_capptr_caller:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1092,7 +1093,7 @@ c_function_shadow&_capptr_library:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1122,7 +1123,7 @@ c_function_shadow&_capsule:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1152,7 +1153,7 @@ c_function_shadow&_capsule_caller:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1182,7 +1183,7 @@ c_function_shadow&_capsule_library:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1212,7 +1213,7 @@ c_function_shadow*_capptr:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1242,7 +1243,7 @@ c_function_shadow*_capptr_caller:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1272,7 +1273,7 @@ c_function_shadow*_capptr_library:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1304,7 +1305,7 @@ c_function_shadow*_capptr_shared:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1327,7 +1328,7 @@ c_function_shadow*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
   owner: library
@@ -1371,7 +1372,7 @@ c_function_shadow<native>_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1409,7 +1410,7 @@ c_function_shadow_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -3462,6 +3463,15 @@ c_mixin_character:
     - C_CHAR
   c_arg_decl:
   - '{gen.cdecl.c_var}'
+  owner: library
+c_mixin_cvar-capsule-fill:
+  name: c_mixin_cvar-capsule-fill
+  comments:
+  - Assign to capsule in C wrapper.
+  intent: mixin
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
   owner: library
 c_mixin_declare-arg:
   name: c_mixin_declare-arg
@@ -6290,7 +6300,7 @@ f_function_shadow&_capptr:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6331,7 +6341,7 @@ f_function_shadow&_capptr_caller:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6372,7 +6382,7 @@ f_function_shadow&_capptr_library:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6413,7 +6423,7 @@ f_function_shadow&_capsule:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6454,7 +6464,7 @@ f_function_shadow&_capsule_caller:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6495,7 +6505,7 @@ f_function_shadow&_capsule_library:
   c_call:
   - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6536,7 +6546,7 @@ f_function_shadow*_capptr:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6577,7 +6587,7 @@ f_function_shadow*_capptr_caller:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6618,7 +6628,7 @@ f_function_shadow*_capptr_library:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6661,7 +6671,7 @@ f_function_shadow*_capptr_shared:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6691,7 +6701,7 @@ f_function_shadow*_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
   owner: library
@@ -6728,7 +6738,7 @@ f_function_shadow*_capsule_caller:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6769,7 +6779,7 @@ f_function_shadow*_capsule_library:
   c_call:
   - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6831,7 +6841,7 @@ f_function_shadow<native>_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6880,7 +6890,7 @@ f_function_shadow<native>_capsule:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6929,7 +6939,7 @@ f_function_shadow_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -6978,7 +6988,7 @@ f_function_shadow_capptr_caller:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -7027,7 +7037,7 @@ f_function_shadow_capptr_library:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -7076,7 +7086,7 @@ f_function_shadow_capsule:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};

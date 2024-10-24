@@ -306,7 +306,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
         static_cast<const example::nested::ExClass1 *>(in->addr);
     example::nested::ExClass1 *SHC_rv_cxx = SH_this->get_class1(
         SHC_in_cxx);
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1

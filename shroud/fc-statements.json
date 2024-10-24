@@ -603,6 +603,16 @@
         ]
     },
     {
+        "name": "c_mixin_cvar-capsule-fill",
+        "comments": [
+            "Assign to capsule in C wrapper."
+        ],
+        "c_post_call": [
+            "{c_var}->addr  = {cxx_nonconst_ptr};",
+            "{c_var}->idtor = {idtor};"
+        ]
+    },
+    {
         "name": "c_mixin_native_capsule_fill",
         "comments": [
             "Assign to capsule in C wrapper."
@@ -3574,11 +3584,8 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
-            "c_mixin_shadow"
-        ],
-        "c_post_call": [
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};"
+            "c_mixin_shadow",
+            "c_mixin_cvar-capsule-fill"
         ]
     },
     {
@@ -3634,17 +3641,14 @@
         ],
         "mixin": [
             "f_mixin_function_shadow_capptr",
-            "c_mixin_shadow"
+            "c_mixin_shadow",
+            "c_mixin_cvar-capsule-fill"
         ],
         "c_local": [
             "cxx"
         ],
         "c_call": [
             "{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};"
-        ],
-        "c_post_call": [
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};"
         ],
         "c_return_type": "{c_type} *",
         "c_return": [
@@ -3704,7 +3708,8 @@
         ],
         "mixin": [
             "f_mixin_function_shadow_capptr",
-            "c_mixin_shadow"
+            "c_mixin_shadow",
+            "c_mixin_cvar-capsule-fill"
         ],
         "fmtdict": {
             "cxx_addr": ""
@@ -3718,10 +3723,6 @@
         ],
         "c_call": [
             "*{c_local_cxx} = {C_call_function};"
-        ],
-        "c_post_call": [
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};"
         ],
         "c_return_type": "{c_type} *",
         "c_return": [

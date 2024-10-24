@@ -345,7 +345,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class(
 {
     // splicer begin function.Create_Cstruct_as_class
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class();
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_class
@@ -366,7 +366,7 @@ STR_Cstruct_as_class * STR_Create_Cstruct_as_class_args(int x, int y,
 {
     // splicer begin function.Create_Cstruct_as_class_args
     Cstruct_as_class *SHC_rv_cxx = Create_Cstruct_as_class_args(x, y);
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_class_args
@@ -379,7 +379,7 @@ void STR_Return_Cstruct_as_class(STR_Cstruct_as_class * SHC_rv)
 {
     // splicer begin function.Return_Cstruct_as_class
     Cstruct_as_class *SHCXX_rv = Return_Cstruct_as_class();
-    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->addr  = SHCXX_rv;
     SHC_rv->idtor = 0;
     // splicer end function.Return_Cstruct_as_class
 }
@@ -398,7 +398,7 @@ void STR_Return_Cstruct_as_class_args(int x, int y,
 {
     // splicer begin function.Return_Cstruct_as_class_args
     Cstruct_as_class *SHCXX_rv = Return_Cstruct_as_class_args(x, y);
-    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->addr  = SHCXX_rv;
     SHC_rv->idtor = 0;
     // splicer end function.Return_Cstruct_as_class_args
 }
@@ -437,7 +437,7 @@ STR_Cstruct_as_subclass * STR_Create_Cstruct_as_subclass_args(int x,
     // splicer begin function.Create_Cstruct_as_subclass_args
     Cstruct_as_subclass *SHC_rv_cxx = Create_Cstruct_as_subclass_args(x,
         y, z);
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.Create_Cstruct_as_subclass_args
@@ -461,7 +461,7 @@ void STR_Return_Cstruct_as_subclass_args(int x, int y, int z,
     // splicer begin function.Return_Cstruct_as_subclass_args
     Cstruct_as_subclass *SHCXX_rv = Return_Cstruct_as_subclass_args(x,
         y, z);
-    SHC_rv->addr = SHCXX_rv;
+    SHC_rv->addr  = SHCXX_rv;
     SHC_rv->idtor = 0;
     // splicer end function.Return_Cstruct_as_subclass_args
 }

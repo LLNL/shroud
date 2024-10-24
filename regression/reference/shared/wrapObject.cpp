@@ -58,7 +58,7 @@ SHA_Object * SHA_Object_createChildA(SHA_Object * self,
     Object *SH_this = static_cast<Object *>(self->addr);
     // splicer begin class.Object.method.createChildA
     Object *SHC_rv_cxx = SH_this->createChildA();
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end class.Object.method.createChildA
