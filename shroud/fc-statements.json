@@ -4542,7 +4542,9 @@
     },
     {
         "alias": [
-            "f_function_string_cfi_copy"
+            "f_function_string_cfi_copy",
+            "f_function_string*_cfi_copy",
+            "f_function_string&_cfi_copy"
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
@@ -4571,25 +4573,9 @@
     },
     {
         "alias": [
-            "f_function_string*_cfi_copy"
-        ],
-        "base": "f_function_string_cfi_copy",
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_string&_cfi_copy"
-        ],
-        "base": "f_function_string_cfi_copy",
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_string_cfi_arg"
+            "f_function_string_cfi_arg",
+            "#f_function_string&_cfi_arg  XXX needs a test",
+            "f_function_string&_cfi_arg"
         ],
         "comments": [
             "Change function result into an argument.",
@@ -4607,15 +4593,6 @@
         ],
         "f_arg_decl": [
             "character(len=*), intent(OUT) :: {f_var}"
-        ]
-    },
-    {
-        "alias": [
-            "f_function_string&_cfi_arg"
-        ],
-        "base": "f_function_string_cfi_arg",
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {

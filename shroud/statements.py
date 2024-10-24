@@ -477,6 +477,8 @@ def process_mixin(stmts, defaults, stmtdict):
             # name is not allowed"
             aliases = [ alias for alias in stmt["alias"] if alias[0] != "#"]
             # XXX - first alias used for lang
+            if len(aliases) == 0:
+                continue
             tmp_name = aliases[0]
         if "name" in stmt:
             name = stmt["name"]
