@@ -615,7 +615,7 @@
     {
         "name": "c_mixin_native_capsule_fill",
         "comments": [
-            "Assign to capsule in C wrapper."
+            "Assign to local capsule variable in C wrapper."
         ],
         "c_post_call": [
             "{c_var_capsule}->addr  = {cxx_nonconst_ptr};",
@@ -3576,7 +3576,9 @@
     {
         "alias": [
             "f_function_shadow*_capsule",
-            "c_function_shadow*_capsule"
+            "c_function_shadow*_capsule",
+            "f_function_shadow*_capsule_caller",
+            "f_function_shadow*_capsule_library"
         ],
         "comments": [
             "Return a C_capsule_data_type."
@@ -3626,9 +3628,6 @@
     },
     {
         "alias": [
-            "f_function_shadow*_capsule_caller",
-            "f_function_shadow*_capsule_library",
-            
             "f_function_shadow*_capptr",
             "f_function_shadow*_capptr_caller",
             "f_function_shadow*_capptr_library",

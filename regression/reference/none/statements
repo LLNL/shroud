@@ -3679,7 +3679,7 @@ c_mixin_inout_vector_cdesc:
 c_mixin_native_capsule_fill:
   name: c_mixin_native_capsule_fill
   comments:
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   intent: mixin
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -5885,7 +5885,7 @@ f_function_native*_cdesc_allocatable:
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -6002,7 +6002,7 @@ f_function_native*_cdesc_pointer_caller:
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Set Fortran pointer to native array.
   notes:
   - +deref(pointer) +owner(caller)
@@ -6712,39 +6712,24 @@ f_function_shadow*_capsule_caller:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
+  c_return_type: void
   owner: library
 f_function_shadow*_capsule_library:
   name: f_function_shadow*_capsule_library
@@ -6753,39 +6738,24 @@ f_function_shadow*_capsule_library:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
-  c_call:
-  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
+  c_return_type: void
   owner: library
 f_function_shadow*_this:
   name: f_function_shadow*_this
@@ -7270,7 +7240,7 @@ f_function_string&_cdesc_allocatable:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -7331,7 +7301,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -7392,7 +7362,7 @@ f_function_string&_cdesc_allocatable_library:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -8037,7 +8007,7 @@ f_function_string*_cdesc_allocatable:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -8098,7 +8068,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -8159,7 +8129,7 @@ f_function_string*_cdesc_allocatable_library:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -8817,7 +8787,7 @@ f_function_string_cdesc_allocatable:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -8890,7 +8860,7 @@ f_function_string_cdesc_allocatable_caller:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -8963,7 +8933,7 @@ f_function_string_cdesc_allocatable_library:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -13113,7 +13083,7 @@ f_mixin_use_capsule:
   name: f_mixin_use_capsule
   comments:
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: mixin
   f_declare:
@@ -13683,7 +13653,7 @@ f_out_native**_cdesc_allocatable:
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   notes:
   - deref(allocatable)
@@ -14076,7 +14046,7 @@ f_out_string**_cdesc_allocatable:
   - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: out
   f_arg_name:
