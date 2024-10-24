@@ -455,8 +455,6 @@ class FillMeta(object):
         elif ntypemap.sgroup == "shadow":
             if node.return_this:
                 meta["api"] = "this"
-            elif node.options.C_shadow_result:
-                meta["api"] = "capptr"
             else:
                 meta["api"] = "capsule"
 
@@ -536,7 +534,7 @@ class FillMeta(object):
             meta["api"] = "capptr"
 
     def set_func_post_fortran(self, node, meta):
-        """Final check on metaattributes for C.
+        """Final check on metaattributes for Fortran.
         Check defaults from typemap.
         """
         ast = node.ast
@@ -544,7 +542,7 @@ class FillMeta(object):
 
         if ntypemap.sgroup == "shared_ptr":
             meta["owner"] = "shared"
-            meta["api"] = "capptr"
+            meta["api"] = "capsule"
             meta["deref"] = None
             
     def set_arg_api_c(self, arg, meta):

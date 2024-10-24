@@ -386,7 +386,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  Class1 *getClassStatic +owner(library)
-        ! Statement: f_function_shadow*_capptr_library
+        ! Statement: c_function_shadow*_capptr_library
         function c_get_class_static(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="OWN_getClassStatic")
@@ -398,11 +398,21 @@ module ownership_mod
         end function c_get_class_static
 
         ! ----------------------------------------
+        ! Function:  Class1 *getClassStatic +owner(library)
+        ! Statement: f_function_shadow*_capsule_library
+        subroutine c_get_class_static_bufferify(SHT_rv) &
+                bind(C, name="OWN_getClassStatic_bufferify")
+            import :: OWN_SHROUD_capsule_data
+            implicit none
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_get_class_static_bufferify
+
+        ! ----------------------------------------
         ! Function:  Class1 *getClassNew +owner(caller)
-        ! Statement: f_function_shadow*_capptr_caller
+        ! Statement: c_function_shadow*_capptr_caller
         ! ----------------------------------------
         ! Argument:  int flag
-        ! Statement: f_in_native
+        ! Statement: c_in_native
         function c_get_class_new(flag, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="OWN_getClassNew")
@@ -413,6 +423,21 @@ module ownership_mod
             type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_get_class_new
+
+        ! ----------------------------------------
+        ! Function:  Class1 *getClassNew +owner(caller)
+        ! Statement: f_function_shadow*_capsule_caller
+        ! ----------------------------------------
+        ! Argument:  int flag
+        ! Statement: f_in_native
+        subroutine c_get_class_new_bufferify(flag, SHT_rv) &
+                bind(C, name="OWN_getClassNew_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: OWN_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(OWN_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_get_class_new_bufferify
     end interface
 
     interface
@@ -629,20 +654,18 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 *getClassStatic +owner(library)
-    ! Statement: f_function_shadow*_capptr_library
+    ! Statement: f_function_shadow*_capsule_library
     function get_class_static() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.get_class_static
-        SHC_rv_ptr = c_get_class_static(SHT_rv%cxxmem)
+        call c_get_class_static_bufferify(SHT_rv%cxxmem)
         ! splicer end function.get_class_static
     end function get_class_static
 
     ! ----------------------------------------
     ! Function:  Class1 *getClassNew +owner(caller)
-    ! Statement: f_function_shadow*_capptr_caller
+    ! Statement: f_function_shadow*_capsule_caller
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -652,12 +675,11 @@ contains
     !<
     function get_class_new(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.get_class_new
-        SHC_rv_ptr = c_get_class_new(flag, SHT_rv%cxxmem)
+        call c_get_class_new_bufferify(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_new
     end function get_class_new
 

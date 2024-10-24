@@ -68,7 +68,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Statement: f_ctor_shadow_capptr
+        ! Statement: c_ctor_shadow_capptr
         function c_class2_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="FOR_Class2_ctor")
@@ -78,6 +78,16 @@ module forward_mod
             type(FOR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_class2_ctor
+
+        ! ----------------------------------------
+        ! Function:  Class2
+        ! Statement: f_ctor_shadow_capsule
+        subroutine c_class2_ctor_bufferify(SHT_rv) &
+                bind(C, name="FOR_Class2_ctor_bufferify")
+            import :: FOR_SHROUD_capsule_data
+            implicit none
+            type(FOR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_class2_ctor_bufferify
 
         ! ----------------------------------------
         ! Function:  ~Class2
@@ -172,14 +182,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     function class2_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class2) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Class2.method.ctor
-        SHC_rv_ptr = c_class2_ctor(SHT_rv%cxxmem)
+        call c_class2_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Class2.method.ctor
     end function class2_ctor
 

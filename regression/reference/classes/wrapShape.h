@@ -30,6 +30,8 @@ extern "C" {
 
 CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv);
 
+void CLA_Shape_ctor_bufferify(CLA_Shape * SHC_rv);
+
 int CLA_Shape_get_ivar(const CLA_Shape * self);
 
 #ifdef __cplusplus

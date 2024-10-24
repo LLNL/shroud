@@ -90,6 +90,20 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
 
+// ----------------------------------------
+// Function:  ExClass1
+// Statement: f_ctor_shadow_capsule
+void AA_example_nested_ExClass1_ctor_0_bufferify(
+    AA_example_nested_ExClass1 * SHC_rv)
+{
+    // splicer begin namespace.example::nested.class.ExClass1.method.ctor_0_bufferify
+    example::nested::ExClass1 *SHCXX_rv =
+        new example::nested::ExClass1();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
+    // splicer end namespace.example::nested.class.ExClass1.method.ctor_0_bufferify
+}
+
 /**
  * \brief constructor
  *
@@ -127,12 +141,12 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
  */
 // ----------------------------------------
 // Function:  ExClass1
-// Statement: f_ctor_shadow_capptr
+// Statement: f_ctor_shadow_capsule
 // ----------------------------------------
 // Argument:  const string *name
 // Statement: f_in_string*_buf
-AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
-    char *name, int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv)
+void AA_example_nested_ExClass1_ctor_1_bufferify(char *name,
+    int SHT_name_len, AA_example_nested_ExClass1 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
     const std::string SHC_name_cxx(name,
@@ -141,7 +155,6 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
         new example::nested::ExClass1(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 1;
-    return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
 }
 

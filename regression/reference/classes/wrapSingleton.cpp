@@ -35,4 +35,18 @@ CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv)
 }
 // end CLA_Singleton_getReference
 
+// ----------------------------------------
+// Function:  static Singleton &getReference
+// Statement: f_function_shadow&_capsule
+// start CLA_Singleton_getReference_bufferify
+void CLA_Singleton_getReference_bufferify(CLA_Singleton * SHC_rv)
+{
+    // splicer begin class.Singleton.method.getReference_bufferify
+    classes::Singleton &SHC_rv_cxx = classes::Singleton::getReference();
+    SHC_rv->addr  = &SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end class.Singleton.method.getReference_bufferify
+}
+// end CLA_Singleton_getReference_bufferify
+
 }  // extern "C"

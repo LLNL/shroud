@@ -53,7 +53,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
-        ! Statement: f_ctor_shadow_capptr
+        ! Statement: c_ctor_shadow_capptr
         function XXX_TES_names_defaultctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -63,6 +63,16 @@ module name_module
             type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function XXX_TES_names_defaultctor
+
+        ! ----------------------------------------
+        ! Function:  Names +name(defaultctor)
+        ! Statement: f_ctor_shadow_capsule
+        subroutine XXX_TES_names_defaultctor_bufferify(SHT_rv) &
+                bind(C, name="XXX_TES_ns0_Names_defaultctor_bufferify")
+            import :: TES_SHROUD_capsule_data
+            implicit none
+            type(TES_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine XXX_TES_names_defaultctor_bufferify
 
         ! ----------------------------------------
         ! Function:  void method1
@@ -96,14 +106,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     function names_defaultctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(FNames) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.ns0.class.Names.method.defaultctor
-        SHC_rv_ptr = XXX_TES_names_defaultctor(SHT_rv%cxxmem)
+        call XXX_TES_names_defaultctor_bufferify(SHT_rv%cxxmem)
         ! splicer end namespace.ns0.class.Names.method.defaultctor
     end function names_defaultctor
 

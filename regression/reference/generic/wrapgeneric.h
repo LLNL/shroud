@@ -64,8 +64,7 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
     GEN_SHROUD_array *SHT_addr_cdesc);
 #endif
 
-GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
-    GEN_StructAsClass * SHC_rv);
+void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass * SHC_rv);
 
 long GEN_UpdateStructAsClass_int_bufferify(GEN_StructAsClass * arg,
     int inew);

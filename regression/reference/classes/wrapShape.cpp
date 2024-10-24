@@ -34,6 +34,18 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 }
 
 // ----------------------------------------
+// Function:  Shape
+// Statement: f_ctor_shadow_capsule
+void CLA_Shape_ctor_bufferify(CLA_Shape * SHC_rv)
+{
+    // splicer begin class.Shape.method.ctor_bufferify
+    classes::Shape *SHCXX_rv = new classes::Shape();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 2;
+    // splicer end class.Shape.method.ctor_bufferify
+}
+
+// ----------------------------------------
 // Function:  int get_ivar
 // Statement: c_function_native
 int CLA_Shape_get_ivar(const CLA_Shape * self)

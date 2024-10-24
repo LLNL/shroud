@@ -66,6 +66,20 @@ CLA_Data * CLA_Data_ctor(CLA_Data * SHC_rv)
 // end CLA_Data_ctor
 
 // ----------------------------------------
+// Function:  Data
+// Statement: f_ctor_shadow_capsule
+// start CLA_Data_ctor_bufferify
+void CLA_Data_ctor_bufferify(CLA_Data * SHC_rv)
+{
+    // splicer begin class.Data.method.ctor_bufferify
+    classes::Data *SHCXX_rv = new classes::Data();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 4;
+    // splicer end class.Data.method.ctor_bufferify
+}
+// end CLA_Data_ctor_bufferify
+
+// ----------------------------------------
 // Function:  ~Data
 // Statement: c_dtor
 // start CLA_Data_dtor

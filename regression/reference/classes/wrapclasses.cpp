@@ -131,6 +131,22 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 }
 
 /**
+ * \brief Return const class pointer
+ *
+ */
+// ----------------------------------------
+// Function:  const Class1 *getclass2
+// Statement: f_function_shadow*_capsule
+void CLA_getclass2_bufferify(CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getclass2_bufferify
+    const classes::Class1 *SHC_rv_cxx = classes::getclass2();
+    SHC_rv->addr  = const_cast<classes::Class1 *>(SHC_rv_cxx);
+    SHC_rv->idtor = 0;
+    // splicer end function.getclass2_bufferify
+}
+
+/**
  * \brief Return class pointer
  *
  */
@@ -145,6 +161,22 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getclass3
+}
+
+/**
+ * \brief Return class pointer
+ *
+ */
+// ----------------------------------------
+// Function:  Class1 *getclass3
+// Statement: f_function_shadow*_capsule
+void CLA_getclass3_bufferify(CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getclass3_bufferify
+    classes::Class1 *SHC_rv_cxx = classes::getclass3();
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end function.getclass3_bufferify
 }
 
 /**
@@ -194,6 +226,19 @@ CLA_Class1 * CLA_getConstClassReference(CLA_Class1 * SHC_rv)
 }
 
 // ----------------------------------------
+// Function:  const Class1 &getConstClassReference
+// Statement: f_function_shadow&_capsule
+void CLA_getConstClassReference_bufferify(CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getConstClassReference_bufferify
+    const classes::Class1 &SHC_rv_cxx = classes::getConstClassReference(
+        );
+    SHC_rv->addr  = const_cast<classes::Class1 *>(&SHC_rv_cxx);
+    SHC_rv->idtor = 0;
+    // splicer end function.getConstClassReference_bufferify
+}
+
+// ----------------------------------------
 // Function:  Class1 &getClassReference
 // Statement: c_function_shadow&_capptr
 CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
@@ -204,6 +249,18 @@ CLA_Class1 * CLA_getClassReference(CLA_Class1 * SHC_rv)
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getClassReference
+}
+
+// ----------------------------------------
+// Function:  Class1 &getClassReference
+// Statement: f_function_shadow&_capsule
+void CLA_getClassReference_bufferify(CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getClassReference_bufferify
+    classes::Class1 &SHC_rv_cxx = classes::getClassReference();
+    SHC_rv->addr  = &SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end function.getClassReference_bufferify
 }
 
 /**
@@ -225,6 +282,26 @@ CLA_Class1 * CLA_getClassCopy(int flag, CLA_Class1 * SHC_rv)
     SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end function.getClassCopy
+}
+
+/**
+ * \brief Return Class1 instance by value, uses copy constructor
+ *
+ */
+// ----------------------------------------
+// Function:  Class1 getClassCopy
+// Statement: f_function_shadow_capsule
+// ----------------------------------------
+// Argument:  int flag
+// Statement: f_in_native
+void CLA_getClassCopy_bufferify(int flag, CLA_Class1 * SHC_rv)
+{
+    // splicer begin function.getClassCopy_bufferify
+    classes::Class1 * SHC_rv_cxx = new classes::Class1;
+    *SHC_rv_cxx = classes::getClassCopy(flag);
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 1;
+    // splicer end function.getClassCopy_bufferify
 }
 
 // ----------------------------------------

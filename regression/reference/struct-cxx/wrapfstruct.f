@@ -607,7 +607,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class *Create_Cstruct_as_class
-        ! Statement: f_function_shadow*_capptr
+        ! Statement: c_function_shadow*_capptr
         ! start c_create_cstruct_as_class
         function c_create_cstruct_as_class(SHT_rv) &
                 result(SHT_prv) &
@@ -621,14 +621,26 @@ module struct_mod
         ! end c_create_cstruct_as_class
 
         ! ----------------------------------------
+        ! Function:  Cstruct_as_class *Create_Cstruct_as_class
+        ! Statement: f_function_shadow*_capsule
+        ! start c_create_cstruct_as_class_bufferify
+        subroutine c_create_cstruct_as_class_bufferify(SHT_rv) &
+                bind(C, name="STR_Create_Cstruct_as_class_bufferify")
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_create_cstruct_as_class_bufferify
+        ! end c_create_cstruct_as_class_bufferify
+
+        ! ----------------------------------------
         ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
-        ! Statement: f_function_shadow*_capptr
+        ! Statement: c_function_shadow*_capptr
         ! ----------------------------------------
         ! Argument:  int x
-        ! Statement: f_in_native
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  int y
-        ! Statement: f_in_native
+        ! Statement: c_in_native
         function c_create_cstruct_as_class_args(x, y, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="STR_Create_Cstruct_as_class_args")
@@ -640,6 +652,26 @@ module struct_mod
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_create_cstruct_as_class_args
+
+        ! ----------------------------------------
+        ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
+        ! Statement: f_function_shadow*_capsule
+        ! ----------------------------------------
+        ! Argument:  int x
+        ! Statement: f_in_native
+        ! ----------------------------------------
+        ! Argument:  int y
+        ! Statement: f_in_native
+        subroutine c_create_cstruct_as_class_args_bufferify(x, y, &
+                SHT_rv) &
+                bind(C, name="STR_Create_Cstruct_as_class_args_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: x
+            integer(C_INT), value, intent(IN) :: y
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_create_cstruct_as_class_args_bufferify
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class *Return_Cstruct_as_class
@@ -688,16 +720,16 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
-        ! Statement: f_function_shadow*_capptr
+        ! Statement: c_function_shadow*_capptr
         ! ----------------------------------------
         ! Argument:  int x
-        ! Statement: f_in_native
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  int y
-        ! Statement: f_in_native
+        ! Statement: c_in_native
         ! ----------------------------------------
         ! Argument:  int z
-        ! Statement: f_in_native
+        ! Statement: c_in_native
         function c_create_cstruct_as_subclass_args(x, y, z, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="STR_Create_Cstruct_as_subclass_args")
@@ -710,6 +742,30 @@ module struct_mod
             type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_create_cstruct_as_subclass_args
+
+        ! ----------------------------------------
+        ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
+        ! Statement: f_function_shadow*_capsule
+        ! ----------------------------------------
+        ! Argument:  int x
+        ! Statement: f_in_native
+        ! ----------------------------------------
+        ! Argument:  int y
+        ! Statement: f_in_native
+        ! ----------------------------------------
+        ! Argument:  int z
+        ! Statement: f_in_native
+        subroutine c_create_cstruct_as_subclass_args_bufferify(x, y, z, &
+                SHT_rv) &
+                bind(C, name="STR_Create_Cstruct_as_subclass_args_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: x
+            integer(C_INT), value, intent(IN) :: y
+            integer(C_INT), value, intent(IN) :: z
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_create_cstruct_as_subclass_args_bufferify
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_subclass *Return_Cstruct_as_subclass_args
@@ -1277,22 +1333,20 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class *Create_Cstruct_as_class
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     ! start create_cstruct_as_class
     function create_cstruct_as_class() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(cstruct_as_class) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_cstruct_as_class
-        SHC_rv_ptr = c_create_cstruct_as_class(SHT_rv%cxxmem)
+        call c_create_cstruct_as_class_bufferify(SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_class
     end function create_cstruct_as_class
     ! end create_cstruct_as_class
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class *Create_Cstruct_as_class_args
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  int x
     ! Statement: f_in_native
@@ -1301,13 +1355,13 @@ contains
     ! Statement: f_in_native
     function create_cstruct_as_class_args(x, y) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: x
         integer(C_INT), value, intent(IN) :: y
         type(cstruct_as_class) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_cstruct_as_class_args
-        SHC_rv_ptr = c_create_cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        call c_create_cstruct_as_class_args_bufferify(x, y, &
+            SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_class_args
     end function create_cstruct_as_class_args
 
@@ -1360,7 +1414,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass *Create_Cstruct_as_subclass_args
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  int x
     ! Statement: f_in_native
@@ -1372,14 +1426,13 @@ contains
     ! Statement: f_in_native
     function create_cstruct_as_subclass_args(x, y, z) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: x
         integer(C_INT), value, intent(IN) :: y
         integer(C_INT), value, intent(IN) :: z
         type(cstruct_as_subclass) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin function.create_cstruct_as_subclass_args
-        SHC_rv_ptr = c_create_cstruct_as_subclass_args(x, y, z, &
+        call c_create_cstruct_as_subclass_args_bufferify(x, y, z, &
             SHT_rv%cxxmem)
         ! splicer end function.create_cstruct_as_subclass_args
     end function create_cstruct_as_subclass_args

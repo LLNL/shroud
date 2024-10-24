@@ -120,15 +120,15 @@
                                         "i_var": "SHT_rv",
                                         "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_ctor_shadow_capptr_shared",
+                                        "stmt_name": "f_ctor_shadow_capsule_shared",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
-                                        "api": "capptr",
+                                        "api": "capsule",
                                         "intent": "ctor",
                                         "owner": "shared"
                                     },
-                                    "stmt": "f_ctor_shadow_capptr_shared"
+                                    "stmt": "f_ctor_shadow_capsule_shared"
                                 }
                             },
                             "share": {
@@ -281,7 +281,24 @@
                                         "cxx_rv_decl": "Object *SHCXX_rv",
                                         "cxx_type": "Object",
                                         "cxx_var": "SHC_rv_cxx",
+                                        "f_capsule_data_type": "SHA_SHROUD_capsule_data",
+                                        "f_derived_type": "object",
+                                        "f_intent": "OUT",
+                                        "f_intent_attr": ", intent(OUT)",
+                                        "f_kind": "object",
+                                        "f_module_name": "shared_mod",
+                                        "f_type": "type(object)",
+                                        "f_var": "SHT_rv",
+                                        "i_arguments": "self,\t SHT_rv",
+                                        "i_kind": "object",
+                                        "i_local_cxx": "SHC_rv_cxx",
+                                        "i_module_name": "shared_mod",
                                         "i_name_function": "c_object_create_child_a",
+                                        "i_result_clause": "\fresult(SHT_prv)",
+                                        "i_result_var": "SHT_prv",
+                                        "i_subprogram": "function",
+                                        "i_type": "type(SHA_SHROUD_capsule_data)",
+                                        "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_function_shadow*_capptr",
@@ -298,9 +315,9 @@
                                 "+result": {
                                     "fmtdict": {
                                         "C_call_function": "SH_this->createChildA(\t)",
-                                        "C_name": "SHA_Object_createChildA",
+                                        "C_name": "SHA_Object_createChildA_bufferify",
                                         "C_prototype": "SHA_Object * self,\t SHA_Object * SHC_rv",
-                                        "C_return_type": "SHA_Object *",
+                                        "C_return_type": "void",
                                         "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem",
                                         "F_arguments": "obj",
                                         "F_subprogram": "function",
@@ -317,13 +334,12 @@
                                         "cxx_rv_decl": "Object *SHCXX_rv",
                                         "cxx_type": "Object",
                                         "cxx_var": "SHC_rv_cxx",
-                                        "f_call_function": "c_object_create_child_a",
+                                        "f_call_function": "c_object_create_child_a_bufferify",
                                         "f_capsule_data_type": "SHA_SHROUD_capsule_data",
                                         "f_derived_type": "object",
                                         "f_intent": "OUT",
                                         "f_intent_attr": ", intent(OUT)",
                                         "f_kind": "object",
-                                        "f_local_ptr": "SHC_rv_ptr",
                                         "f_module_name": "shared_mod",
                                         "f_result_clause": "\fresult(SHT_rv)",
                                         "f_type": "type(object)",
@@ -333,22 +349,21 @@
                                         "i_kind": "object",
                                         "i_local_cxx": "SHC_rv_cxx",
                                         "i_module_name": "shared_mod",
-                                        "i_name_function": "c_object_create_child_a",
-                                        "i_result_clause": "\fresult(SHT_prv)",
-                                        "i_result_var": "SHT_prv",
-                                        "i_subprogram": "function",
+                                        "i_name_function": "c_object_create_child_a_bufferify",
+                                        "i_subprogram": "subroutine",
+                                        "i_suffix": "_bufferify",
                                         "i_type": "type(SHA_SHROUD_capsule_data)",
                                         "i_var": "SHT_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_OTHER",
-                                        "stmt_name": "f_function_shadow*_capptr",
+                                        "stmt_name": "f_function_shadow*_capsule",
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
-                                        "api": "capptr",
+                                        "api": "capsule",
                                         "intent": "function"
                                     },
-                                    "stmt": "f_function_shadow*_capptr"
+                                    "stmt": "f_function_shadow*_capsule"
                                 }
                             },
                             "share": {

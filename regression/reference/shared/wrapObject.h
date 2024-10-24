@@ -35,6 +35,9 @@ void SHA_Object_dtor(SHA_Object * self);
 SHA_Object * SHA_Object_createChildA(SHA_Object * self,
     SHA_Object * SHC_rv);
 
+void SHA_Object_createChildA_bufferify(SHA_Object * self,
+    SHA_Object * SHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

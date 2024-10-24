@@ -32,6 +32,8 @@ extern "C" {
 
 CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv);
 
+void CXX_Class1_ctor_bufferify(CXX_Class1 * SHC_rv);
+
 int CXX_Class1_check_length_0(CXX_Class1 * self);
 
 int CXX_Class1_check_length_1(CXX_Class1 * self, int length);

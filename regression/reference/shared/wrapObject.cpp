@@ -64,4 +64,18 @@ SHA_Object * SHA_Object_createChildA(SHA_Object * self,
     // splicer end class.Object.method.createChildA
 }
 
+// ----------------------------------------
+// Function:  Object *createChildA
+// Statement: f_function_shadow*_capsule
+void SHA_Object_createChildA_bufferify(SHA_Object * self,
+    SHA_Object * SHC_rv)
+{
+    Object *SH_this = static_cast<Object *>(self->addr);
+    // splicer begin class.Object.method.createChildA_bufferify
+    Object *SHC_rv_cxx = SH_this->createChildA();
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end class.Object.method.createChildA_bufferify
+}
+
 }  // extern "C"

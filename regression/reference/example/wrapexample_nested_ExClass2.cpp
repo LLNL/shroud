@@ -105,12 +105,12 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Statement: f_ctor_shadow_capptr
+// Statement: f_ctor_shadow_capsule
 // ----------------------------------------
 // Argument:  const string *name +len_trim(trim_name)
 // Statement: f_in_string*_buf
-AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
-    char *name, int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv)
+void AA_example_nested_ExClass2_ctor_bufferify(char *name,
+    int SHT_name_len, AA_example_nested_ExClass2 * SHC_rv)
 {
     // splicer begin namespace.example::nested.class.ExClass2.method.ctor_bufferify
     const std::string SHC_name_cxx(name,
@@ -119,7 +119,6 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
         new example::nested::ExClass2(&SHC_name_cxx);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 2;
-    return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.ctor_bufferify
 }
 
@@ -310,6 +309,28 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass2.method.get_class1
+}
+
+// ----------------------------------------
+// Function:  ExClass1 *get_class1
+// Statement: f_function_shadow*_capsule
+// ----------------------------------------
+// Argument:  const ExClass1 *in
+// Statement: f_in_shadow*
+void AA_example_nested_ExClass2_get_class1_bufferify(
+    AA_example_nested_ExClass2 * self, AA_example_nested_ExClass1 * in,
+    AA_example_nested_ExClass1 * SHC_rv)
+{
+    example::nested::ExClass2 *SH_this =
+        static_cast<example::nested::ExClass2 *>(self->addr);
+    // splicer begin namespace.example::nested.class.ExClass2.method.get_class1_bufferify
+    const example::nested::ExClass1 * SHC_in_cxx =
+        static_cast<const example::nested::ExClass1 *>(in->addr);
+    example::nested::ExClass1 *SHC_rv_cxx = SH_this->get_class1(
+        SHC_in_cxx);
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end namespace.example::nested.class.ExClass2.method.get_class1_bufferify
 }
 
 // ----------------------------------------

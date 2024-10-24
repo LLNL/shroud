@@ -110,6 +110,7 @@ class Names
 Fortran Names(void) +name(defaultctor)
 Fortran void method1(void)
 Fortran void method2(void)
+C-interface c Names(void) +name(defaultctor)
 C-interface f Names(void) +name(defaultctor)
 C-interface f void method1(void)
 C-interface f void method2(void)

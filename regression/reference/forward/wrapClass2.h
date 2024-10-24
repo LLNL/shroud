@@ -32,6 +32,8 @@ extern "C" {
 
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv);
 
+void FOR_Class2_ctor_bufferify(FOR_Class2 * SHC_rv);
+
 void FOR_Class2_dtor(FOR_Class2 * self);
 
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg);

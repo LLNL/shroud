@@ -248,7 +248,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_capptr
+        ! Statement: c_ctor_shadow_capptr
         function c_ex_class1_ctor_0(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
@@ -258,6 +258,16 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_ex_class1_ctor_0
+
+        ! ----------------------------------------
+        ! Function:  ExClass1
+        ! Statement: f_ctor_shadow_capsule
+        subroutine c_ex_class1_ctor_0_bufferify(SHT_rv) &
+                bind(C, name="AA_example_nested_ExClass1_ctor_0_bufferify")
+            import :: AA_SHROUD_capsule_data
+            implicit none
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_ex_class1_ctor_0_bufferify
 
         ! ----------------------------------------
         ! Function:  ExClass1
@@ -278,22 +288,20 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
-        ! Statement: f_ctor_shadow_capptr
+        ! Statement: f_ctor_shadow_capsule
         ! ----------------------------------------
         ! Argument:  const string *name
         ! Statement: f_in_string*_buf
-        function c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
+        subroutine c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
                 SHT_rv) &
-                result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_CHAR, C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: SHT_name_len
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
-        end function c_ex_class1_ctor_1_bufferify
+        end subroutine c_ex_class1_ctor_1_bufferify
 
         ! ----------------------------------------
         ! Function:  ~ExClass1
@@ -454,21 +462,20 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
-        ! Statement: f_ctor_shadow_capptr
+        ! Statement: f_ctor_shadow_capsule
         ! ----------------------------------------
         ! Argument:  const string *name +len_trim(trim_name)
         ! Statement: f_in_string*_buf
-        function c_ex_class2_ctor_bufferify(name, SHT_name_len, SHT_rv) &
-                result(SHT_prv) &
+        subroutine c_ex_class2_ctor_bufferify(name, SHT_name_len, &
+                SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_CHAR, C_INT
             import :: AA_SHROUD_capsule_data
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: SHT_name_len
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
-        end function c_ex_class2_ctor_bufferify
+        end subroutine c_ex_class2_ctor_bufferify
 
         ! ----------------------------------------
         ! Function:  ~ExClass2
@@ -600,10 +607,10 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 *get_class1
-        ! Statement: f_function_shadow*_capptr
+        ! Statement: c_function_shadow*_capptr
         ! ----------------------------------------
         ! Argument:  const ExClass1 *in
-        ! Statement: f_in_shadow*
+        ! Statement: c_in_shadow*
         function c_ex_class2_get_class1(self, in, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
@@ -615,6 +622,21 @@ module userlibrary_example_nested_mod
             type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_ex_class2_get_class1
+
+        ! ----------------------------------------
+        ! Function:  ExClass1 *get_class1
+        ! Statement: f_function_shadow*_capsule
+        ! ----------------------------------------
+        ! Argument:  const ExClass1 *in
+        ! Statement: f_in_shadow*
+        subroutine c_ex_class2_get_class1_bufferify(self, in, SHT_rv) &
+                bind(C, name="AA_example_nested_ExClass2_get_class1_bufferify")
+            import :: AA_SHROUD_capsule_data
+            implicit none
+            type(AA_SHROUD_capsule_data), intent(IN) :: self
+            type(AA_SHROUD_capsule_data), intent(IN) :: in
+            type(AA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_ex_class2_get_class1_bufferify
 
         ! ----------------------------------------
         ! Function:  void destroyall
@@ -1171,20 +1193,18 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     function ex_class1_ctor_0() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(ex_class1) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_0
-        SHC_rv_ptr = c_ex_class1_ctor_0(SHT_rv%cxxmem)
+        call c_ex_class1_ctor_0_bufferify(SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_0
     end function ex_class1_ctor_0
 
     ! ----------------------------------------
     ! Function:  ExClass1
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     ! ----------------------------------------
     ! Argument:  const string *name
     ! Statement: f_in_string*_buf
@@ -1198,14 +1218,13 @@ contains
     !<
     function ex_class1_ctor_1(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         type(ex_class1) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
         integer(C_INT) SHT_name_len
         SHT_name_len = len(name, kind=C_INT)
-        SHC_rv_ptr = c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
+        call c_ex_class1_ctor_1_bufferify(name, SHT_name_len, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass1.method.ctor_1
     end function ex_class1_ctor_1
@@ -1359,7 +1378,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass2
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     ! ----------------------------------------
     ! Argument:  const string *name +len_trim(trim_name)
     ! Statement: f_in_string*_buf
@@ -1369,14 +1388,13 @@ contains
     !<
     function ex_class2_ctor(name) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
         type(ex_class2) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.example::nested.class.ExClass2.method.ctor
         integer(C_INT) SHT_name_len
         SHT_name_len = len(name, kind=C_INT)
-        SHC_rv_ptr = c_ex_class2_ctor_bufferify(name, SHT_name_len, &
+        call c_ex_class2_ctor_bufferify(name, SHT_name_len, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.ctor
     end function ex_class2_ctor
@@ -1487,19 +1505,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  ExClass1 *get_class1
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  const ExClass1 *in
     ! Statement: f_in_shadow*
     function ex_class2_get_class1(obj, in) &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         class(ex_class2) :: obj
         type(ex_class1), intent(IN) :: in
         type(ex_class1) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_class1
-        SHC_rv_ptr = c_ex_class2_get_class1(obj%cxxmem, in%cxxmem, &
+        call c_ex_class2_get_class1_bufferify(obj%cxxmem, in%cxxmem, &
             SHT_rv%cxxmem)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_class1
     end function ex_class2_get_class1

@@ -15,6 +15,7 @@ Fortran ~Object(void)
 Fortran Object *createChildA(void)
 C-interface f Object(void) +owner(shared)
 C-interface f ~Object(void)
+C-interface c Object *createChildA(void)
 C-interface f Object *createChildA(void)
 Close wrapfshared.f
 Close utilShared.cpp

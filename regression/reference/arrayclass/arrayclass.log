@@ -55,6 +55,7 @@ Fortran void fetchVoidPtr(void **array +intent(out))
 Fortran void fetchVoidRef(void *&array +intent(out))
 Fortran bool checkPtr(void *array)
 Fortran double sumArray(void)
+C-interface c ArrayWrapper(void)
 C-interface f ArrayWrapper(void)
 C-interface f void setSize(int size)
 C-interface f int getSize(void) const

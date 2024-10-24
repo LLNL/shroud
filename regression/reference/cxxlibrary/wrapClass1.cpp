@@ -33,6 +33,18 @@ CXX_Class1 * CXX_Class1_ctor(CXX_Class1 * SHC_rv)
     // splicer end class.Class1.method.ctor
 }
 
+// ----------------------------------------
+// Function:  Class1
+// Statement: f_ctor_shadow_capsule
+void CXX_Class1_ctor_bufferify(CXX_Class1 * SHC_rv)
+{
+    // splicer begin class.Class1.method.ctor_bufferify
+    Class1 *SHCXX_rv = new Class1();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
+    // splicer end class.Class1.method.ctor_bufferify
+}
+
 /**
  * \brief Test fortran_generic with default arguments.
  *

@@ -6154,7 +6154,7 @@
                                 "C_call_function": "CreateStructAsClass(\t)",
                                 "C_name": "GEN_CreateStructAsClass_bufferify",
                                 "C_prototype": "GEN_StructAsClass * SHC_rv",
-                                "C_return_type": "GEN_StructAsClass *",
+                                "C_return_type": "void",
                                 "F_arg_c_call": "SHT_rv%cxxmem",
                                 "F_arguments": "",
                                 "F_name_generic": "struct_as_class",
@@ -6178,7 +6178,6 @@
                                 "f_intent": "OUT",
                                 "f_intent_attr": ", intent(OUT)",
                                 "f_kind": "struct_as_class",
-                                "f_local_ptr": "SHC_rv_ptr",
                                 "f_module_name": "generic_mod",
                                 "f_result_clause": "\fresult(SHT_rv)",
                                 "f_type": "type(struct_as_class)",
@@ -6189,22 +6188,20 @@
                                 "i_local_cxx": "SHC_rv_cxx",
                                 "i_module_name": "generic_mod",
                                 "i_name_function": "c_create_struct_as_class_bufferify",
-                                "i_result_clause": "\fresult(SHT_prv)",
-                                "i_result_var": "SHT_prv",
-                                "i_subprogram": "function",
+                                "i_subprogram": "subroutine",
                                 "i_suffix": "_bufferify",
                                 "i_type": "type(GEN_SHROUD_capsule_data)",
                                 "i_var": "SHT_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt_name": "f_function_shadow*_capptr",
+                                "stmt_name": "f_function_shadow*_capsule",
                                 "typemap_name": "StructAsClass"
                             },
                             "meta": {
-                                "api": "capptr",
+                                "api": "capsule",
                                 "intent": "function"
                             },
-                            "stmt": "f_function_shadow*_capptr"
+                            "stmt": "f_function_shadow*_capsule"
                         }
                     },
                     "share": {

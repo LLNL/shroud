@@ -54,7 +54,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object +owner(shared)
-        ! Statement: f_ctor_shadow_capptr_shared
+        ! Statement: f_ctor_shadow_capsule_shared
         function c_object_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_ctor")
@@ -77,7 +77,7 @@ module shared_mod
 
         ! ----------------------------------------
         ! Function:  Object *createChildA
-        ! Statement: f_function_shadow*_capptr
+        ! Statement: c_function_shadow*_capptr
         function c_object_create_child_a(self, SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_createChildA")
@@ -88,6 +88,17 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_object_create_child_a
+
+        ! ----------------------------------------
+        ! Function:  Object *createChildA
+        ! Statement: f_function_shadow*_capsule
+        subroutine c_object_create_child_a_bufferify(self, SHT_rv) &
+                bind(C, name="SHA_Object_createChildA_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_create_child_a_bufferify
     end interface
 
     interface object
@@ -101,7 +112,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Object +owner(shared)
-    ! Statement: f_ctor_shadow_capptr_shared
+    ! Statement: f_ctor_shadow_capsule_shared
     function object_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -124,15 +135,14 @@ contains
 
     ! ----------------------------------------
     ! Function:  Object *createChildA
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     function object_create_child_a(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         class(object) :: obj
         type(object) :: SHT_rv
-        type(C_PTR) :: SHC_rv_ptr
         ! splicer begin class.Object.method.create_child_a
-        SHC_rv_ptr = c_object_create_child_a(obj%cxxmem, SHT_rv%cxxmem)
+        call c_object_create_child_a_bufferify(obj%cxxmem, &
+            SHT_rv%cxxmem)
         ! splicer end class.Object.method.create_child_a
     end function object_create_child_a
 
