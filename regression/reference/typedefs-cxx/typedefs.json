@@ -369,6 +369,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -398,6 +399,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -449,6 +451,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -487,6 +490,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -511,6 +515,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -534,6 +539,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -543,11 +549,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -647,6 +655,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -676,6 +685,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -727,6 +737,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -765,6 +776,7 @@
                                 "typemap_name": "Alias"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -774,11 +786,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -870,6 +884,7 @@
                                 "typemap_name": "iColor"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "c_function_enum"
@@ -908,6 +923,7 @@
                                 "typemap_name": "iColor"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -963,6 +979,7 @@
                                 "typemap_name": "iColor"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "f_function_enum"
@@ -1002,6 +1019,7 @@
                                 "typemap_name": "iColor"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1026,6 +1044,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "py_function_enum"
@@ -1050,6 +1069,7 @@
                                 "value_var": "SHValue_in"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1059,11 +1079,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1172,6 +1194,7 @@
                                 "typemap_name": "TypeID"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "c_function_enum"
@@ -1210,6 +1233,7 @@
                                 "typemap_name": "TypeID"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1265,6 +1289,7 @@
                                 "typemap_name": "TypeID"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "f_function_enum"
@@ -1304,6 +1329,7 @@
                                 "typemap_name": "TypeID"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1328,6 +1354,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "py_function_enum"
@@ -1352,6 +1379,7 @@
                                 "value_var": "SHValue_in"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1361,11 +1389,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1450,6 +1480,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1478,6 +1509,7 @@
                                 "typemap_name": "Struct1Rename"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_struct*"
@@ -1502,6 +1534,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1540,6 +1573,7 @@
                                 "typemap_name": "Struct1Rename"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct*"
@@ -1551,6 +1585,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1578,6 +1613,7 @@
                                 "vargs": "arg1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "py_inout_struct*_list"
@@ -1586,11 +1622,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             }
                         }
@@ -1683,6 +1721,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -1712,6 +1751,7 @@
                                 "typemap_name": "IndexType"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1763,6 +1803,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -1801,6 +1842,7 @@
                                 "typemap_name": "IndexType"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1810,11 +1852,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1911,6 +1955,7 @@
                                 "typemap_name": "IndexType"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -1940,6 +1985,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1969,6 +2015,7 @@
                                 "typemap_name": "IndexType"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2020,6 +2067,7 @@
                                 "typemap_name": "IndexType"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2058,6 +2106,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2101,6 +2150,7 @@
                                 "typemap_name": "IndexType"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2110,17 +2160,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "ndims": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "shape": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -2197,6 +2250,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2226,6 +2280,7 @@
                                 "typemap_name": "IndexType2"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2277,6 +2332,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2315,6 +2371,7 @@
                                 "typemap_name": "IndexType2"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2324,11 +2381,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2425,6 +2484,7 @@
                                 "typemap_name": "IndexType2"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2454,6 +2514,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2483,6 +2544,7 @@
                                 "typemap_name": "IndexType2"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2534,6 +2596,7 @@
                                 "typemap_name": "IndexType2"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2572,6 +2635,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2615,6 +2679,7 @@
                                 "typemap_name": "IndexType2"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2624,17 +2689,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "ndims": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "shape": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }

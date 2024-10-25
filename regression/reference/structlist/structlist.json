@@ -98,6 +98,7 @@
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
+                                        "abstract": "struct",
                                         "intent": "ctor"
                                     },
                                     "stmt": "py_ctor_struct"
@@ -126,6 +127,7 @@
                                         "value_var": "SHValue_count"
                                     },
                                     "meta": {
+                                        "abstract": "native[]",
                                         "intent": "in",
                                         "value": true
                                     },
@@ -155,6 +157,7 @@
                                         "value_var": "SHValue_name"
                                     },
                                     "meta": {
+                                        "abstract": "char[]",
                                         "intent": "in",
                                         "value": true
                                     },
@@ -164,17 +167,20 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "struct",
                                         "intent": "ctor"
                                     }
                                 },
                                 "count": {
                                     "meta": {
+                                        "abstract": "native[]",
                                         "intent": "in",
                                         "value": true
                                     }
                                 },
                                 "name": {
                                     "meta": {
+                                        "abstract": "char[]",
                                         "intent": "in",
                                         "value": true
                                     }

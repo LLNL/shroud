@@ -96,6 +96,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function"
                             },
                             "stmt": "c_function_string&"
@@ -158,6 +159,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function"
@@ -184,6 +186,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function"
                             },
                             "stmt": "py_function_string&"
@@ -192,6 +195,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function"
                             }
                         }
@@ -253,6 +257,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -275,6 +280,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -286,6 +292,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -294,6 +301,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         }
@@ -493,6 +501,7 @@
                                                 "vargs": "SHCXX_rv"
                                             },
                                             "meta": {
+                                                "abstract": "struct",
                                                 "intent": "ctor"
                                             },
                                             "stmt": "py_ctor_struct"
@@ -518,6 +527,7 @@
                                                 "value_var": "SHValue_dfield"
                                             },
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             },
@@ -544,6 +554,7 @@
                                                 "value_var": "SHValue_ifield"
                                             },
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             },
@@ -553,17 +564,20 @@
                                     "share": {
                                         "+result": {
                                             "meta": {
+                                                "abstract": "struct",
                                                 "intent": "ctor"
                                             }
                                         },
                                         "dfield": {
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             }
                                         },
                                         "ifield": {
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             }
@@ -752,6 +766,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -774,6 +789,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -785,6 +801,7 @@
                                         "stmt": "py_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "py_subroutine"
@@ -793,6 +810,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 }

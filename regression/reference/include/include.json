@@ -58,6 +58,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -89,6 +90,7 @@
                                         "typemap_name": "MPI_Comm"
                                     },
                                     "meta": {
+                                        "abstract": "unknown",
                                         "intent": "in",
                                         "value": true
                                     },
@@ -114,6 +116,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -154,6 +157,7 @@
                                         "typemap_name": "MPI_Comm"
                                     },
                                     "meta": {
+                                        "abstract": "unknown",
                                         "intent": "in",
                                         "value": true
                                     },
@@ -163,11 +167,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 },
                                 "comm": {
                                     "meta": {
+                                        "abstract": "unknown",
                                         "intent": "in",
                                         "value": true
                                     }
@@ -238,6 +244,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -267,6 +274,7 @@
                                         "typemap_name": "three::Class1"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "inout"
                                     },
                                     "stmt": "c_inout_shadow*"
@@ -291,6 +299,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -332,6 +341,7 @@
                                         "typemap_name": "three::Class1"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "inout"
                                     },
                                     "stmt": "f_inout_shadow*"
@@ -340,11 +350,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 },
                                 "c2": {
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "inout"
                                     }
                                 }
@@ -447,6 +459,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "c_subroutine"
@@ -469,6 +482,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
@@ -477,6 +491,7 @@
                                     "share": {
                                         "+result": {
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             }
                                         }
@@ -606,6 +621,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "c_subroutine"
@@ -635,6 +651,7 @@
                                                 "typemap_name": "CustomType"
                                             },
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             },
@@ -660,6 +677,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
@@ -698,6 +716,7 @@
                                                 "typemap_name": "CustomType"
                                             },
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             },
@@ -707,11 +726,13 @@
                                     "share": {
                                         "+result": {
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             }
                                         },
                                         "arg1": {
                                             "meta": {
+                                                "abstract": "native",
                                                 "intent": "in",
                                                 "value": true
                                             }
@@ -830,6 +851,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "c_subroutine"
@@ -853,6 +875,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
@@ -861,6 +884,7 @@
                                     "share": {
                                         "+result": {
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             }
                                         }
@@ -943,6 +967,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -965,6 +990,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -973,6 +999,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 }
@@ -1061,6 +1088,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "c_subroutine"
@@ -1084,6 +1112,7 @@
                                                 "typemap_name": "void"
                                             },
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             },
                                             "stmt": "f_subroutine"
@@ -1092,6 +1121,7 @@
                                     "share": {
                                         "+result": {
                                             "meta": {
+                                                "abstract": "void",
                                                 "intent": "subroutine"
                                             }
                                         }
@@ -1174,6 +1204,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -1196,6 +1227,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -1204,6 +1236,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 }

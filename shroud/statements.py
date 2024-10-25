@@ -207,8 +207,7 @@ def lookup_c_function_stmt(node):
         result_stmt = lookup_fc_stmts(stmts)
     else:
         # intent will be "function", "ctor", "getter"
-        abstract = find_abstract_declarator(ast)
-        stmts = ["c", sintent, abstract,
+        stmts = ["c", sintent, r_meta["abstract"],
                  r_meta["api"], r_meta["deref"], r_meta["owner"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
@@ -226,8 +225,7 @@ def lookup_f_function_stmt(node):
         result_stmt = lookup_fc_stmts(stmts)
     else:
         # intent will be "function", "ctor", "getter"
-        abstract = find_abstract_declarator(ast)
-        stmts = ["f", sintent, abstract,
+        stmts = ["f", sintent, r_meta["abstract"],
                  r_meta["api"], r_meta["deref"], r_meta["owner"]]
     result_stmt = lookup_fc_stmts(stmts)
     return result_stmt
@@ -235,9 +233,8 @@ def lookup_f_function_stmt(node):
 def lookup_c_arg_stmt(node, arg):
     """Lookup the C statements for an argument."""
     c_meta = get_arg_bind(node, arg, "c").meta
-    abstract = find_abstract_declarator(arg)
     sapi = c_meta["api"]
-    stmts = ["c", c_meta["intent"], abstract,
+    stmts = ["c", c_meta["intent"], c_meta["abstract"],
              sapi, c_meta["deref"], c_meta["owner"]]
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt
@@ -245,11 +242,10 @@ def lookup_c_arg_stmt(node, arg):
 def lookup_f_arg_stmt(node, arg):
     """Lookup the Fortran statements for an argument."""
     c_meta = get_arg_bind(node, arg, "f").meta
-    abstract = find_abstract_declarator(arg)
     sapi = c_meta["api"]
     if c_meta["hidden"]:
         sapi = "hidden"
-    stmts = ["f", c_meta["intent"], abstract,
+    stmts = ["f", c_meta["intent"], c_meta["abstract"],
              sapi, c_meta["deref"], c_meta["owner"]]
     arg_stmt = lookup_fc_stmts(stmts)
     return arg_stmt

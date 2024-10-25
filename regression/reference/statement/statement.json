@@ -71,6 +71,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -120,6 +121,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -128,6 +130,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         }
@@ -220,6 +223,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function",
                                 "len": "get_name_length()"
                             },
@@ -276,6 +280,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "function",
@@ -287,6 +292,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function",
                                 "len": "get_name_length()"
                             }
@@ -393,6 +399,7 @@
                                 "typemap_name": "bool"
                             },
                             "meta": {
+                                "abstract": "bool",
                                 "intent": "function"
                             },
                             "stmt": "c_function_bool"
@@ -430,6 +437,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             },
                             "stmt": "c_in_string&"
@@ -456,6 +464,7 @@
                                 "typemap_name": "bool"
                             },
                             "meta": {
+                                "abstract": "bool",
                                 "intent": "function"
                             },
                             "stmt": "f_function_bool"
@@ -478,6 +487,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "api": "buf",
                                 "intent": "in"
                             },
@@ -487,11 +497,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "bool",
                                 "intent": "function"
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             }
                         }

@@ -72,6 +72,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -109,6 +110,7 @@
                                 "typemap_name": "float_complex"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native*"
@@ -117,11 +119,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             }
                         }
@@ -194,6 +198,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -231,6 +236,7 @@
                                 "typemap_name": "double_complex"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_native*"
@@ -242,6 +248,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -269,6 +276,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             },
                             "stmt": "py_inout_native*"
@@ -277,11 +285,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             }
                         }
@@ -374,6 +384,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -411,6 +422,7 @@
                                 "typemap_name": "double_complex"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native*"
@@ -422,6 +434,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -448,6 +461,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_native*"
@@ -456,11 +470,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }
@@ -555,6 +571,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -582,6 +599,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             },
                             "stmt": "py_inout_native*"
@@ -606,6 +624,7 @@
                                 "value_var": "SHValue_flag"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_native*"
@@ -614,16 +633,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             }
                         },
                         "flag": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }
@@ -735,6 +757,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -772,6 +795,7 @@
                                 "typemap_name": "double_complex"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native*"
@@ -809,6 +833,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "f_out_native*"
@@ -820,6 +845,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -846,6 +872,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_native*"
@@ -870,6 +897,7 @@
                                 "value_var": "SHValue_flag"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_native*"
@@ -878,16 +906,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         },
                         "flag": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }

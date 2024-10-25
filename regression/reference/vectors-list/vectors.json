@@ -83,6 +83,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -121,6 +122,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -130,11 +132,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -227,6 +231,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -264,6 +269,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             },
@@ -273,11 +279,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -390,11 +398,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -483,11 +493,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -567,11 +579,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -651,11 +665,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "inout",
                                 "rank": 1
                             }
@@ -720,11 +736,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "inout",
                                 "rank": 1
                             }
@@ -799,6 +817,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -836,6 +855,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             },
@@ -845,11 +865,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -948,17 +970,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "vector<native*>&",
                                 "intent": "in",
                                 "rank": 1
                             }
                         },
                         "num": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1027,11 +1052,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -1103,11 +1130,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -1176,11 +1205,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -1250,11 +1281,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "out",
                                 "len": "20",
                                 "rank": 1
@@ -1328,11 +1361,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "inout",
                                 "rank": 1
                             }
@@ -1428,6 +1463,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "vector<native>",
                                 "intent": "function",
                                 "rank": 1
                             },
@@ -1452,6 +1488,7 @@
                                 "value_var": "SHValue_n"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1461,12 +1498,14 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "vector<native>",
                                 "intent": "function",
                                 "rank": 1
                             }
                         },
                         "n": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1569,6 +1608,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -1595,6 +1635,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -1620,6 +1661,7 @@
                                 "value_var": "SHValue_len"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "implied": "size(arg,2)",
                                 "intent": "in",
                                 "value": true
@@ -1630,17 +1672,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 2
                             }
                         },
                         "len": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }

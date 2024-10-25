@@ -107,6 +107,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -115,6 +116,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         }
@@ -197,6 +199,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -220,6 +223,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -244,6 +248,7 @@
                                 "value_var": "SHValue_arg2"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -253,17 +258,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -369,6 +377,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "string",
                                 "intent": "function"
                             },
                             "stmt": "py_function_string"
@@ -394,6 +403,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             },
                             "stmt": "py_in_string&"
@@ -419,6 +429,7 @@
                                 "value_var": "SHValue_arg2"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             },
                             "stmt": "py_in_string&"
@@ -427,16 +438,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "string",
                                 "intent": "function"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             }
                         }
@@ -535,6 +549,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -558,6 +573,7 @@
                                 "value_var": "SHValue_arg1"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -584,6 +600,7 @@
                                 "value_var": "SHValue_arg2"
                             },
                             "meta": {
+                                "abstract": "bool",
                                 "intent": "in",
                                 "value": true
                             },
@@ -593,17 +610,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "abstract": "bool",
                                 "intent": "in",
                                 "value": true
                             }
@@ -681,6 +701,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -706,6 +727,7 @@
                                 "value_var": "SHValue_name"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             },
                             "stmt": "py_in_string&"
@@ -714,11 +736,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             }
                         }
@@ -789,6 +813,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -812,6 +837,7 @@
                                 "value_var": "SHValue_indx"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -821,11 +847,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "indx": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -923,11 +951,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "template",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1013,6 +1043,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1036,6 +1067,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1045,11 +1077,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1157,6 +1191,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1180,6 +1215,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1189,11 +1225,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1284,6 +1322,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "template",
                                 "intent": "function"
                             }
                         }
@@ -1356,6 +1395,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         }
@@ -1434,6 +1474,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         }
@@ -1475,6 +1516,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1483,6 +1525,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         }
@@ -1629,6 +1672,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1652,6 +1696,7 @@
                                 "value_var": "SHValue_arg2"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1678,6 +1723,7 @@
                                 "value_var": "SHValue_name"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             },
                             "stmt": "py_in_string&"
@@ -1686,17 +1732,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg2": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "in"
                             }
                         }
@@ -1804,6 +1853,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -1827,6 +1877,7 @@
                                 "value_var": "SHValue_num"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1851,6 +1902,7 @@
                                 "value_var": "SHValue_offset"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1875,6 +1927,7 @@
                                 "value_var": "SHValue_stride"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1884,23 +1937,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "num": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "offset": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "stride": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2016,6 +2073,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -2039,6 +2097,7 @@
                                 "value_var": "SHValue_num"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2063,6 +2122,7 @@
                                 "value_var": "SHValue_offset"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2087,6 +2147,7 @@
                                 "value_var": "SHValue_stride"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2111,6 +2172,7 @@
                                 "value_var": "SHValue_type"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2120,29 +2182,34 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "num": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "offset": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "stride": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "type": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2224,6 +2291,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -2247,6 +2315,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2256,11 +2325,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2340,6 +2411,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "py_function_enum"
@@ -2364,6 +2436,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2373,11 +2446,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2477,6 +2552,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -2501,6 +2577,7 @@
                                 "value_var": "SHValue_max"
                             },
                             "meta": {
+                                "abstract": "native&",
                                 "intent": "out"
                             },
                             "stmt": "py_out_native&"
@@ -2525,6 +2602,7 @@
                                 "value_var": "SHValue_min"
                             },
                             "meta": {
+                                "abstract": "native&",
                                 "intent": "out"
                             },
                             "stmt": "py_out_native&"
@@ -2533,16 +2611,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "max": {
                             "meta": {
+                                "abstract": "native&",
                                 "intent": "out"
                             }
                         },
                         "min": {
                             "meta": {
+                                "abstract": "native&",
                                 "intent": "out"
                             }
                         }
@@ -2637,17 +2718,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "incr": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr  None ****************************************",
                                     "ast": {
@@ -2679,11 +2763,13 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -2757,6 +2843,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function",
                                 "len": "30"
                             },
@@ -2766,6 +2853,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "string&",
                                 "intent": "function",
                                 "len": "30"
                             }

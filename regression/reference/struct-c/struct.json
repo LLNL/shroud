@@ -833,6 +833,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native"
@@ -841,6 +842,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     }
                                 }
@@ -928,6 +930,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter"
@@ -966,6 +969,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     },
@@ -975,11 +979,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     }
@@ -1077,6 +1083,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native"
@@ -1085,6 +1092,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     }
                                 }
@@ -1172,6 +1180,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter"
@@ -1210,6 +1219,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     },
@@ -1219,11 +1229,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     }
@@ -1416,6 +1428,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native"
@@ -1424,6 +1437,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     }
                                 }
@@ -1511,6 +1525,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter"
@@ -1549,6 +1564,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     },
@@ -1558,11 +1574,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     }
@@ -1660,6 +1678,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native"
@@ -1668,6 +1687,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     }
                                 }
@@ -1755,6 +1775,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter"
@@ -1793,6 +1814,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     },
@@ -1802,11 +1824,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     }
@@ -1904,6 +1928,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     },
                                     "stmt": "f_getter_native"
@@ -1912,6 +1937,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "getter"
                                     }
                                 }
@@ -1999,6 +2025,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     },
                                     "stmt": "f_setter"
@@ -2037,6 +2064,7 @@
                                         "typemap_name": "int"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     },
@@ -2046,11 +2074,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "setter"
                                     }
                                 },
                                 "val": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "setter",
                                         "value": true
                                     }
@@ -2353,6 +2383,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2392,6 +2423,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2401,11 +2433,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2506,6 +2540,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2544,6 +2579,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -2552,11 +2588,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -2682,6 +2720,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2722,6 +2761,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "api": "buf",
                                 "intent": "out"
                             },
@@ -2761,6 +2801,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -2769,17 +2810,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "outbuf": {
                             "meta": {
+                                "abstract": "char*",
                                 "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
                         },
                         "s1": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -2879,6 +2923,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2917,6 +2962,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -2925,11 +2971,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -3026,6 +3074,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -3064,6 +3113,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "out"
                             },
                             "stmt": "f_out_struct*"
@@ -3102,6 +3152,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3141,6 +3192,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3150,22 +3202,26 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "out"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -3240,6 +3296,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -3278,6 +3335,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct*"
@@ -3286,11 +3344,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             }
                         }
@@ -3392,6 +3452,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "function"
                             },
                             "stmt": "f_function_struct"
@@ -3430,6 +3491,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3469,6 +3531,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3478,17 +3541,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "function"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -3613,6 +3679,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
@@ -3653,6 +3720,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3692,6 +3760,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3701,17 +3770,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -3856,6 +3928,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
@@ -3896,6 +3969,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3935,6 +4009,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3976,6 +4051,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "api": "buf",
                                 "intent": "out"
                             },
@@ -3985,23 +4061,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "outbuf": {
                             "meta": {
+                                "abstract": "char*",
                                 "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
@@ -4116,6 +4196,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "dim_ast": [
@@ -4132,6 +4213,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "dim_ast": [
                                     {
                                         "constant": "2"
@@ -4235,6 +4317,7 @@
                                 "typemap_name": "Cstruct_list"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "intent": "function"
@@ -4245,6 +4328,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             }
                         }
@@ -4339,6 +4423,7 @@
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "api": "capsule",
                                 "intent": "function"
                             },
@@ -4348,6 +4433,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         }
@@ -4463,6 +4549,7 @@
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "api": "capsule",
                                 "intent": "function"
                             },
@@ -4502,6 +4589,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4541,6 +4629,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4550,17 +4639,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -4654,6 +4746,7 @@
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "api": "capsule",
                                 "intent": "function"
                             },
@@ -4663,6 +4756,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         }
@@ -4777,6 +4871,7 @@
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "api": "capsule",
                                 "intent": "function"
                             },
@@ -4816,6 +4911,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4855,6 +4951,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4864,17 +4961,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -4983,6 +5083,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -5024,6 +5125,7 @@
                                 "typemap_name": "Cstruct_as_class"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_shadow*"
@@ -5032,11 +5134,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "point": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "in"
                             }
                         }
@@ -5162,6 +5266,7 @@
                                 "typemap_name": "Cstruct_as_subclass"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "api": "capsule",
                                 "intent": "function"
                             },
@@ -5201,6 +5306,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -5240,6 +5346,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -5279,6 +5386,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -5288,23 +5396,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "z": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -5430,6 +5542,7 @@
                                 "typemap_name": "Cstruct_as_subclass"
                             },
                             "meta": {
+                                "abstract": "shadow*",
                                 "api": "capsule",
                                 "intent": "function"
                             },
@@ -5469,6 +5582,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -5508,6 +5622,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -5547,6 +5662,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -5556,23 +5672,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "z": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -5690,6 +5810,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "deref": "pointer",
                                 "intent": "getter"
                             },
@@ -5729,6 +5850,7 @@
                                 "typemap_name": "Cstruct_ptr"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -5737,11 +5859,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "getter"
                             }
                         },
                         "SH_this": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -5846,6 +5970,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "setter"
                             },
                             "stmt": "f_setter"
@@ -5884,6 +6009,7 @@
                                 "typemap_name": "Cstruct_ptr"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct*"
@@ -5921,6 +6047,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "setter"
                             },
                             "stmt": "f_setter_native*"
@@ -5929,16 +6056,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "setter"
                             }
                         },
                         "SH_this": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             }
                         },
                         "val": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "setter"
                             }
                         }
@@ -6081,6 +6211,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "dim_ast": [
@@ -6133,6 +6264,7 @@
                                 "typemap_name": "Cstruct_list"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -6141,6 +6273,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "left": {
@@ -6158,6 +6291,7 @@
                         },
                         "SH_this": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -6262,6 +6396,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "setter"
                             },
                             "stmt": "f_setter"
@@ -6300,6 +6435,7 @@
                                 "typemap_name": "Cstruct_list"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct*"
@@ -6342,6 +6478,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "setter",
                                 "rank": 1
                             },
@@ -6351,16 +6488,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "setter"
                             }
                         },
                         "SH_this": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             }
                         },
                         "val": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "setter",
                                 "rank": 1
                             }
@@ -6504,6 +6644,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "api": "cdesc",
                                 "deref": "pointer",
                                 "dim_ast": [
@@ -6556,6 +6697,7 @@
                                 "typemap_name": "Cstruct_list"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -6564,6 +6706,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "left": {
@@ -6581,6 +6724,7 @@
                         },
                         "SH_this": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -6685,6 +6829,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "setter"
                             },
                             "stmt": "f_setter"
@@ -6723,6 +6868,7 @@
                                 "typemap_name": "Cstruct_list"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_struct*"
@@ -6765,6 +6911,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "setter",
                                 "rank": 1
                             },
@@ -6774,16 +6921,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "setter"
                             }
                         },
                         "SH_this": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             }
                         },
                         "val": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "setter",
                                 "rank": 1
                             }

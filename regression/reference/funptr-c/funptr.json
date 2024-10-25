@@ -77,6 +77,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -116,6 +117,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr1  None ****************************************",
                                     "ast": {
@@ -142,6 +144,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -150,6 +153,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -170,11 +174,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr1": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr1  None ****************************************",
                                     "ast": {
@@ -201,6 +207,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -209,6 +216,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -302,6 +310,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -341,6 +350,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr1_wrap  None ****************************************",
                                     "ast": {
@@ -367,6 +377,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -375,6 +386,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -395,11 +407,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr1_wrap": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr1_wrap  None ****************************************",
                                     "ast": {
@@ -426,6 +440,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -434,6 +449,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -527,6 +543,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -566,6 +583,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "deref": "external",
                                 "fptr": {
                                     "<FUNCTION>": "incr1_external  None ****************************************",
@@ -596,6 +614,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -604,6 +623,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -624,11 +644,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr1_external": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr1_external  None ****************************************",
                                     "ast": {
@@ -658,6 +680,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -666,6 +689,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -762,6 +786,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -800,6 +825,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "deref": "funptr",
                                 "fptr": {
                                     "<FUNCTION>": "incr1_funptr  None ****************************************",
@@ -830,6 +856,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -838,6 +865,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -858,11 +886,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr1_funptr": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr1_funptr  None ****************************************",
                                     "ast": {
@@ -892,6 +922,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -900,6 +931,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -1006,6 +1038,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1045,6 +1078,7 @@
                                 "typemap_name": "incrtype"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1084,6 +1118,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1121,6 +1156,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
@@ -1130,23 +1166,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr": {
                             "meta": {
+                                "abstract": "procedure",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "ival": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "in"
                             }
                         }
@@ -1244,6 +1284,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1283,6 +1324,7 @@
                                 "typemap_name": "incrtype"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "deref": "external",
                                 "intent": "in",
                                 "value": true
@@ -1323,6 +1365,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1360,6 +1403,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
@@ -1369,23 +1413,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr": {
                             "meta": {
+                                "abstract": "procedure",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "ival": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "in"
                             }
                         }
@@ -1484,6 +1532,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1523,6 +1572,7 @@
                                 "typemap_name": "incrtype"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "deref": "funptr",
                                 "intent": "in",
                                 "value": true
@@ -1563,6 +1613,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1600,6 +1651,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "ftrim_char_in": true,
                                 "intent": "in"
                             },
@@ -1609,23 +1661,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "incr": {
                             "meta": {
+                                "abstract": "procedure",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "ival": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "in"
                             }
                         }
@@ -1736,6 +1792,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1773,6 +1830,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void*",
                                 "assumedtype": true,
                                 "intent": "in"
                             },
@@ -1812,6 +1870,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "deref": "funptr",
                                 "fptr": {
                                     "<FUNCTION>": "incr3  None ****************************************",
@@ -1842,6 +1901,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -1850,6 +1910,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -1900,6 +1961,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1909,17 +1971,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "void*",
                                 "assumedtype": true,
                                 "intent": "in"
                             }
                         },
                         "incr3": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "incr3  None ****************************************",
                                     "ast": {
@@ -1949,6 +2014,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -1957,6 +2023,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             }
@@ -1974,6 +2041,7 @@
                         },
                         "type": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2144,6 +2212,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2183,6 +2252,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "actor  None ****************************************",
                                     "ast": {
@@ -2254,6 +2324,7 @@
                                                     "sh_type": "SH_TYPE_INT"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -2281,6 +2352,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "in",
                                                     "rank": 1
                                                 },
@@ -2305,6 +2377,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "in",
                                                     "value": true
                                                 },
@@ -2314,17 +2387,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "ilow": {
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "in",
                                                     "rank": 1
                                                 }
                                             },
                                             "nargs": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "in",
                                                     "value": true
                                                 }
@@ -2380,6 +2456,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2420,6 +2497,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2429,11 +2507,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "actor": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "actor  None ****************************************",
                                     "ast": {
@@ -2505,6 +2585,7 @@
                                                     "sh_type": "SH_TYPE_INT"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -2532,6 +2613,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "in",
                                                     "rank": 1
                                                 },
@@ -2556,6 +2638,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "in",
                                                     "value": true
                                                 },
@@ -2565,17 +2648,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "ilow": {
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "in",
                                                     "rank": 1
                                                 }
                                             },
                                             "nargs": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "in",
                                                     "value": true
                                                 }
@@ -2594,12 +2680,14 @@
                         },
                         "ilow": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }
                         },
                         "nargs": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2685,6 +2773,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -2723,6 +2812,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "get_ptr  None ****************************************",
                                     "ast": {
@@ -2766,6 +2856,7 @@
                                                     "sh_type": "SH_TYPE_INT"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "deref": "pointer",
                                                     "intent": "function"
                                                 },
@@ -2775,6 +2866,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "function"
                                                 }
                                             }
@@ -2794,11 +2886,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "get_ptr": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "get_ptr  None ****************************************",
                                     "ast": {
@@ -2842,6 +2936,7 @@
                                                     "sh_type": "SH_TYPE_INT"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "deref": "pointer",
                                                     "intent": "function"
                                                 },
@@ -2851,6 +2946,7 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "function"
                                                 }
                                             }
@@ -2963,6 +3059,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -3002,6 +3099,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "get  None ****************************************",
                                     "ast": {
@@ -3060,6 +3158,7 @@
                                                     "sh_type": "SH_TYPE_DOUBLE"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -3081,6 +3180,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3103,6 +3203,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3112,17 +3213,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "i": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -3144,11 +3248,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "get": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "get  None ****************************************",
                                     "ast": {
@@ -3207,6 +3313,7 @@
                                                     "sh_type": "SH_TYPE_DOUBLE"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -3228,6 +3335,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3250,6 +3358,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3259,17 +3368,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "i": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -3420,6 +3532,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -3459,6 +3572,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "get_abs  None ****************************************",
                                     "ast": {
@@ -3516,6 +3630,7 @@
                                                     "sh_type": "SH_TYPE_INT"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -3537,6 +3652,7 @@
                                                     "typemap_name": "double"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3559,6 +3675,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3568,17 +3685,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -3630,6 +3750,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3639,11 +3760,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "get_abs": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "get_abs  None ****************************************",
                                     "ast": {
@@ -3701,6 +3824,7 @@
                                                     "sh_type": "SH_TYPE_INT"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -3722,6 +3846,7 @@
                                                     "typemap_name": "double"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3744,6 +3869,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3753,17 +3879,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -3782,6 +3911,7 @@
                         },
                         "input": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -3876,6 +4006,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -3915,6 +4046,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "void_ptr_arg  None ****************************************",
                                     "ast": {
@@ -3956,6 +4088,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -3977,6 +4110,7 @@
                                                     "typemap_name": "void"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void*",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -3986,11 +4120,13 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "void*",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -4012,11 +4148,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "void_ptr_arg": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "void_ptr_arg  None ****************************************",
                                     "ast": {
@@ -4058,6 +4196,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -4079,6 +4218,7 @@
                                                     "typemap_name": "void"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void*",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4088,11 +4228,13 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "void*",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -4257,6 +4399,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -4296,6 +4439,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "all_types  None ****************************************",
                                     "ast": {
@@ -4395,6 +4539,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -4416,6 +4561,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4442,6 +4588,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "none",
                                                     "rank": 1
                                                 },
@@ -4463,6 +4610,7 @@
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
+                                                    "abstract": "char",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4483,6 +4631,7 @@
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
+                                                    "abstract": "char*",
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_char*"
@@ -4502,6 +4651,7 @@
                                                     "typemap_name": "bool"
                                                 },
                                                 "meta": {
+                                                    "abstract": "bool",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4521,6 +4671,7 @@
                                                     "typemap_name": "bool"
                                                 },
                                                 "meta": {
+                                                    "abstract": "bool*",
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_bool*"
@@ -4529,40 +4680,47 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "none",
                                                     "rank": 1
                                                 }
                                             },
                                             "arg3": {
                                                 "meta": {
+                                                    "abstract": "char",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg4": {
                                                 "meta": {
+                                                    "abstract": "char*",
                                                     "intent": "none"
                                                 }
                                             },
                                             "arg5": {
                                                 "meta": {
+                                                    "abstract": "bool",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg6": {
                                                 "meta": {
+                                                    "abstract": "bool*",
                                                     "intent": "none"
                                                 }
                                             }
@@ -4583,11 +4741,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "all_types": {
                             "meta": {
+                                "abstract": "procedure",
                                 "fptr": {
                                     "<FUNCTION>": "all_types  None ****************************************",
                                     "ast": {
@@ -4687,6 +4847,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -4708,6 +4869,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4734,6 +4896,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "none",
                                                     "rank": 1
                                                 },
@@ -4755,6 +4918,7 @@
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
+                                                    "abstract": "char",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4775,6 +4939,7 @@
                                                     "typemap_name": "char"
                                                 },
                                                 "meta": {
+                                                    "abstract": "char*",
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_char*"
@@ -4794,6 +4959,7 @@
                                                     "typemap_name": "bool"
                                                 },
                                                 "meta": {
+                                                    "abstract": "bool",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -4813,6 +4979,7 @@
                                                     "typemap_name": "bool"
                                                 },
                                                 "meta": {
+                                                    "abstract": "bool*",
                                                     "intent": "none"
                                                 },
                                                 "stmt": "f_none_bool*"
@@ -4821,40 +4988,47 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native*",
                                                     "intent": "none",
                                                     "rank": 1
                                                 }
                                             },
                                             "arg3": {
                                                 "meta": {
+                                                    "abstract": "char",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg4": {
                                                 "meta": {
+                                                    "abstract": "char*",
                                                     "intent": "none"
                                                 }
                                             },
                                             "arg5": {
                                                 "meta": {
+                                                    "abstract": "bool",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg6": {
                                                 "meta": {
+                                                    "abstract": "bool*",
                                                     "intent": "none"
                                                 }
                                             }
@@ -5035,6 +5209,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -5056,6 +5231,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5078,6 +5254,7 @@
                                                     "typemap_name": "TypeID"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5087,17 +5264,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             },
                                             "i": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "j": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -5166,6 +5346,7 @@
                                                     "i_subprogram": "subroutine"
                                                 },
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 },
                                                 "stmt": "f_subroutine"
@@ -5187,6 +5368,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5209,6 +5391,7 @@
                                                     "typemap_name": "TypeID"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5218,17 +5401,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "void",
                                                     "intent": "subroutine"
                                                 }
                                             },
                                             "i": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "j": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -5368,6 +5554,7 @@
                                                     "sh_type": "SH_TYPE_OTHER"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -5389,6 +5576,7 @@
                                                     "typemap_name": "double"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5411,6 +5599,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5420,17 +5609,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
@@ -5509,6 +5701,7 @@
                                                     "sh_type": "SH_TYPE_OTHER"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 },
                                                 "stmt": "f_function_native"
@@ -5530,6 +5723,7 @@
                                                     "typemap_name": "double"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5552,6 +5746,7 @@
                                                     "typemap_name": "int"
                                                 },
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 },
@@ -5561,17 +5756,20 @@
                                         "share": {
                                             "+result": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "function"
                                                 }
                                             },
                                             "arg1": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
                                             },
                                             "arg2": {
                                                 "meta": {
+                                                    "abstract": "native",
                                                     "intent": "none",
                                                     "value": true
                                                 }
