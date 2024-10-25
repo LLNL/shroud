@@ -36,6 +36,7 @@ Contents
    tutorial
    input
    pointers
+   shared_ptr
    types
    namespaces
    struct

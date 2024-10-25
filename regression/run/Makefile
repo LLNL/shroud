@@ -98,6 +98,7 @@ fortran-test-list-std = \
   test-fortran-generic \
   test-fortran-statement \
   test-fortran-templates \
+  test-fortran-shared \
   test-fortran-wrap-cxx
 
 fortran-test-list-cfi = \
@@ -183,6 +184,7 @@ cpp-test-list = \
   test-cpp-classes \
   test-cpp-templates \
   test-cpp-sgroup \
+  test-cpp-shared \
   test-cpp-defaultarg32 \
   test-cpp-defaultarg64 \
   test-cpp-scope

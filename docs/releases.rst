@@ -162,7 +162,8 @@ f_type_module                 typemap.f_module_name
 F_pure_clause                 f_pure_clause
 F_result_clause               f_result_clause
 F_result                      f_result_var
-F_result_ptr                  f_result_ptr
+F_result_ptr                  removed
+                              Use a f_local variable.
 F_C_arguments                 i_arguments
 F_C_call                      f_call_function
 F_C_name                      i_name_function

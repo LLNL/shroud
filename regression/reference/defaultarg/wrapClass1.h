@@ -30,9 +30,17 @@ extern "C" {
 
 DEF_Class1 * DEF_Class1_new_0(int arg1, DEF_Class1 * SHC_rv);
 
+void DEF_Class1_new_0_bufferify(int arg1, DEF_Class1 * SHC_rv);
+
 DEF_Class1 * DEF_Class1_new_1(int arg1, int arg2, DEF_Class1 * SHC_rv);
 
+void DEF_Class1_new_1_bufferify(int arg1, int arg2,
+    DEF_Class1 * SHC_rv);
+
 DEF_Class1 * DEF_Class1_new_2(int arg1, int arg2, int arg3,
+    DEF_Class1 * SHC_rv);
+
+void DEF_Class1_new_2_bufferify(int arg1, int arg2, int arg3,
     DEF_Class1 * SHC_rv);
 
 void DEF_Class1_delete(DEF_Class1 * self);

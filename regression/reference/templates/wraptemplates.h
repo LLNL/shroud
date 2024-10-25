@@ -30,6 +30,8 @@ extern "C" {
 
 TEM_user_int * TEM_returnUserType(TEM_user_int * SHC_rv);
 
+void TEM_returnUserType_bufferify(TEM_user_int * SHC_rv);
+
 void TEM_FunctionTU_0(int arg1, long arg2);
 
 void TEM_FunctionTU_1(float arg1, double arg2);

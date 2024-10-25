@@ -30,6 +30,8 @@ extern "C" {
 
 CLA_Singleton * CLA_Singleton_getReference(CLA_Singleton * SHC_rv);
 
+void CLA_Singleton_getReference_bufferify(CLA_Singleton * SHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

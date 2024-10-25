@@ -34,6 +34,8 @@ extern "C" {
 
 ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv);
 
+void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper * SHC_rv);
+
 void ARR_ArrayWrapper_setSize(ARR_ArrayWrapper * self, int size);
 
 int ARR_ArrayWrapper_getSize(const ARR_ArrayWrapper * self);

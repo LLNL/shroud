@@ -42,6 +42,8 @@ typedef size_t TEM_vector_int_size_type;
 
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv);
 
+void TEM_vector_int_ctor_bufferify(TEM_vector_int * SHC_rv);
+
 void TEM_vector_int_dtor(TEM_vector_int * self);
 
 void TEM_vector_int_push_back(TEM_vector_int * self, const int *value);

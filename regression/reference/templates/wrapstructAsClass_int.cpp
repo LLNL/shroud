@@ -35,6 +35,19 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 }
 
 // ----------------------------------------
+// Function:  structAsClass
+// Statement: f_ctor_shadow_capsule
+void TEM_structAsClass_int_ctor_bufferify(
+    TEM_structAsClass_int * SHC_rv)
+{
+    // splicer begin class.structAsClass.method.ctor_bufferify
+    structAsClass<int> *SHCXX_rv = new structAsClass<int>();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 3;
+    // splicer end class.structAsClass.method.ctor_bufferify
+}
+
+// ----------------------------------------
 // Function:  void set_npts
 // Statement: c_subroutine
 // ----------------------------------------

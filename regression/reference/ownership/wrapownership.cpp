@@ -328,10 +328,22 @@ OWN_Class1 * OWN_getClassStatic(OWN_Class1 * SHC_rv)
 {
     // splicer begin function.getClassStatic
     Class1 *SHC_rv_cxx = getClassStatic();
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
     return SHC_rv;
     // splicer end function.getClassStatic
+}
+
+// ----------------------------------------
+// Function:  Class1 *getClassStatic +owner(library)
+// Statement: f_function_shadow*_capsule_library
+void OWN_getClassStatic_bufferify(OWN_Class1 * SHC_rv)
+{
+    // splicer begin function.getClassStatic_bufferify
+    Class1 *SHC_rv_cxx = getClassStatic();
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end function.getClassStatic_bufferify
 }
 
 /**
@@ -348,10 +360,29 @@ OWN_Class1 * OWN_getClassNew(int flag, OWN_Class1 * SHC_rv)
 {
     // splicer begin function.getClassNew
     Class1 *SHC_rv_cxx = getClassNew(flag);
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end function.getClassNew
+}
+
+/**
+ * \brief Return pointer to new Class1 instance.
+ *
+ */
+// ----------------------------------------
+// Function:  Class1 *getClassNew +owner(caller)
+// Statement: f_function_shadow*_capsule_caller
+// ----------------------------------------
+// Argument:  int flag
+// Statement: f_in_native
+void OWN_getClassNew_bufferify(int flag, OWN_Class1 * SHC_rv)
+{
+    // splicer begin function.getClassNew_bufferify
+    Class1 *SHC_rv_cxx = getClassNew(flag);
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 1;
+    // splicer end function.getClassNew_bufferify
 }
 
 }  // extern "C"

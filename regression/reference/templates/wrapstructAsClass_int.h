@@ -31,6 +31,9 @@ extern "C" {
 TEM_structAsClass_int * TEM_structAsClass_int_ctor(
     TEM_structAsClass_int * SHC_rv);
 
+void TEM_structAsClass_int_ctor_bufferify(
+    TEM_structAsClass_int * SHC_rv);
+
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self,
     int n);
 

@@ -451,6 +451,25 @@ typemap:
       sgroup: native
       sh_type: SH_TYPE_SIZE_T
       cfi_type: CFI_type_size_t
+  - type: std::shared_ptr
+    fields:
+      flat_name: std_shared_ptr_{cxx_T}
+      ntemplate_args: 1
+      base: shared_ptr
+      idtor: 0
+      cxx_type: std::shared_ptr<{cxx_T}>
+      cxx_header:
+      - <memory>
+      f_cast: "{f_var}"
+      impl_header:
+      - <memory>
+      PY_format: O
+      LUA_type: LUA_TNONE
+      LUA_pop: POP
+      LUA_push: PUSH
+      sgroup: shared_ptr
+      sh_type: SH_TYPE_OTHER
+      cfi_type: CFI_type_other
   - type: std::string
     fields:
       flat_name: std_string

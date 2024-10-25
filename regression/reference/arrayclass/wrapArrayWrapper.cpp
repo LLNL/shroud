@@ -34,6 +34,18 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
 }
 
 // ----------------------------------------
+// Function:  ArrayWrapper
+// Statement: f_ctor_shadow_capsule
+void ARR_ArrayWrapper_ctor_bufferify(ARR_ArrayWrapper * SHC_rv)
+{
+    // splicer begin class.ArrayWrapper.method.ctor_bufferify
+    ArrayWrapper *SHCXX_rv = new ArrayWrapper();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
+    // splicer end class.ArrayWrapper.method.ctor_bufferify
+}
+
+// ----------------------------------------
 // Function:  void setSize
 // Statement: c_subroutine
 // ----------------------------------------

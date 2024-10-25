@@ -1,0 +1,27 @@
+copyright:
+- Copyright (c) 2017-2024, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test shared pointers
+
+library: Shared
+cxx_header: shared.hpp
+#namespace: shared
+
+options:
+  debug: True
+
+declarations:
+- decl: class Object
+  options:
+    C_shared_ptr: true
+  declarations:
+  - decl: Object() +owner(shared)
+  - decl: ~Object()
+
+#  - decl: Object* createChildA(void)
+#  - decl: std::shared_ptr<Object>* createChildA(void)

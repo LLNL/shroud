@@ -29,6 +29,7 @@
             "C_name_template": "{C_prefix}{C_name_scope}{C_name_api}{function_suffix}{i_suffix}{template_suffix}",
             "C_name_typedef_template": "{C_prefix}{C_name_scope}{typedef_name}",
             "C_shadow_result": true,
+            "C_shared_ptr": false,
             "C_var_capsule_template": "C{c_var}",
             "C_var_context_template": "D{c_var}",
             "F_API_case": "underscore",
@@ -243,7 +244,6 @@
             "f_optional_attr": "",
             "f_pure_clause": "",
             "f_result_clause": "",
-            "f_result_ptr": "SHT_prv",
             "f_result_var": "SHT_rv",
             "f_shape_var": "",
             "f_type": "",
@@ -726,6 +726,19 @@
             "flat_name": "size_t",
             "sgroup": "native",
             "sh_type": "SH_TYPE_SIZE_T"
+        },
+        "std::shared_ptr": {
+            "base": "shared_ptr",
+            "cxx_header": [
+                "<memory>"
+            ],
+            "cxx_type": "std::shared_ptr<{cxx_T}>",
+            "flat_name": "std_shared_ptr_{cxx_T}",
+            "impl_header": [
+                "<memory>"
+            ],
+            "ntemplate_args": 1,
+            "sgroup": "shared_ptr"
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",

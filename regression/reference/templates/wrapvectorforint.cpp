@@ -35,6 +35,18 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 }
 
 // ----------------------------------------
+// Function:  vector
+// Statement: f_ctor_shadow_capsule
+void TEM_vector_int_ctor_bufferify(TEM_vector_int * SHC_rv)
+{
+    // splicer begin namespace.std.class.vector.method.ctor_bufferify
+    std::vector<int> *SHCXX_rv = new std::vector<int>();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
+    // splicer end namespace.std.class.vector.method.ctor_bufferify
+}
+
+// ----------------------------------------
 // Function:  ~vector
 // Statement: c_dtor
 void TEM_vector_int_dtor(TEM_vector_int * self)

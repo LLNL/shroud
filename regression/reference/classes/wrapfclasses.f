@@ -201,7 +201,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: c_ctor_shadow_capptr
     ! start c_class1_ctor_default
     interface
         function c_class1_ctor_default(SHT_rv) &
@@ -218,10 +218,24 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
+    ! start c_class1_ctor_default_bufferify
+    interface
+        subroutine c_class1_ctor_default_bufferify(SHT_rv) &
+                bind(C, name="CLA_Class1_ctor_default_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_class1_ctor_default_bufferify
+    end interface
+    ! end c_class1_ctor_default_bufferify
+
+    ! ----------------------------------------
+    ! Function:  Class1
+    ! Statement: c_ctor_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native
+    ! Statement: c_in_native
     ! start c_class1_ctor_flag
     interface
         function c_class1_ctor_flag(flag, SHT_rv) &
@@ -236,6 +250,25 @@ module classes_mod
         end function c_class1_ctor_flag
     end interface
     ! end c_class1_ctor_flag
+
+    ! ----------------------------------------
+    ! Function:  Class1
+    ! Statement: f_ctor_shadow_capsule
+    ! ----------------------------------------
+    ! Argument:  int flag
+    ! Statement: f_in_native
+    ! start c_class1_ctor_flag_bufferify
+    interface
+        subroutine c_class1_ctor_flag_bufferify(flag, SHT_rv) &
+                bind(C, name="CLA_Class1_ctor_flag_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_class1_ctor_flag_bufferify
+    end interface
+    ! end c_class1_ctor_flag_bufferify
 
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
@@ -331,7 +364,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 *returnThisBuffer
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  std::string &name +intent(in)
     ! Statement: f_in_string&_buf
@@ -340,11 +373,10 @@ module classes_mod
     ! Statement: f_in_bool
     ! start c_class1_return_this_buffer_bufferify
     interface
-        function c_class1_return_this_buffer_bufferify(self, name, &
+        subroutine c_class1_return_this_buffer_bufferify(self, name, &
                 SHT_name_len, flag, SHT_rv) &
-                result(SHT_prv) &
                 bind(C, name="CLA_Class1_returnThisBuffer_bufferify")
-            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
+            use iso_c_binding, only : C_BOOL, C_CHAR, C_INT
             import :: CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
@@ -352,14 +384,13 @@ module classes_mod
             integer(C_INT), value, intent(IN) :: SHT_name_len
             logical(C_BOOL), value, intent(IN) :: flag
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
-            type(C_PTR) :: SHT_prv
-        end function c_class1_return_this_buffer_bufferify
+        end subroutine c_class1_return_this_buffer_bufferify
     end interface
     ! end c_class1_return_this_buffer_bufferify
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: c_function_shadow*_capptr
     ! start c_class1_getclass3
     interface
         function c_class1_getclass3(self, SHT_rv) &
@@ -374,6 +405,21 @@ module classes_mod
         end function c_class1_getclass3
     end interface
     ! end c_class1_getclass3
+
+    ! ----------------------------------------
+    ! Function:  Class1 *getclass3
+    ! Statement: f_function_shadow*_capsule
+    ! start c_class1_getclass3_bufferify
+    interface
+        subroutine c_class1_getclass3_bufferify(self, SHT_rv) &
+                bind(C, name="CLA_Class1_getclass3_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_class1_getclass3_bufferify
+    end interface
+    ! end c_class1_getclass3_bufferify
 
     ! ----------------------------------------
     ! Function:  const std::string &getName
@@ -614,7 +660,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  static Singleton &getReference
-    ! Statement: f_function_shadow&_capptr
+    ! Statement: c_function_shadow&_capptr
     ! start c_singleton_get_reference
     interface
         function c_singleton_get_reference(SHT_rv) &
@@ -630,8 +676,22 @@ module classes_mod
     ! end c_singleton_get_reference
 
     ! ----------------------------------------
+    ! Function:  static Singleton &getReference
+    ! Statement: f_function_shadow&_capsule
+    ! start c_singleton_get_reference_bufferify
+    interface
+        subroutine c_singleton_get_reference_bufferify(SHT_rv) &
+                bind(C, name="CLA_Singleton_getReference_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_singleton_get_reference_bufferify
+    end interface
+    ! end c_singleton_get_reference_bufferify
+
+    ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: c_ctor_shadow_capptr
     interface
         function c_shape_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -642,6 +702,18 @@ module classes_mod
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_shape_ctor
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Shape
+    ! Statement: f_ctor_shadow_capsule
+    interface
+        subroutine c_shape_ctor_bufferify(SHT_rv) &
+                bind(C, name="CLA_Shape_ctor_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_shape_ctor_bufferify
     end interface
 
     ! ----------------------------------------
@@ -661,7 +733,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: c_ctor_shadow_capptr
     interface
         function c_circle_ctor(SHT_rv) &
                 result(SHT_prv) &
@@ -672,6 +744,18 @@ module classes_mod
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_circle_ctor
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Circle
+    ! Statement: f_ctor_shadow_capsule
+    interface
+        subroutine c_circle_ctor_bufferify(SHT_rv) &
+                bind(C, name="CLA_Circle_ctor_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_circle_ctor_bufferify
     end interface
 
     ! ----------------------------------------
@@ -709,7 +793,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: c_ctor_shadow_capptr
     ! start c_data_ctor
     interface
         function c_data_ctor(SHT_rv) &
@@ -723,6 +807,20 @@ module classes_mod
         end function c_data_ctor
     end interface
     ! end c_data_ctor
+
+    ! ----------------------------------------
+    ! Function:  Data
+    ! Statement: f_ctor_shadow_capsule
+    ! start c_data_ctor_bufferify
+    interface
+        subroutine c_data_ctor_bufferify(SHT_rv) &
+                bind(C, name="CLA_Data_ctor_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_data_ctor_bufferify
+    end interface
+    ! end c_data_ctor_bufferify
 
     ! ----------------------------------------
     ! Function:  ~Data
@@ -881,7 +979,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 *getclass2
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: c_function_shadow*_capptr
     interface
         function c_getclass2(SHT_rv) &
                 result(SHT_prv) &
@@ -895,8 +993,20 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  const Class1 *getclass2
+    ! Statement: f_function_shadow*_capsule
+    interface
+        subroutine c_getclass2_bufferify(SHT_rv) &
+                bind(C, name="CLA_getclass2_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_getclass2_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: c_function_shadow*_capptr
     interface
         function c_getclass3(SHT_rv) &
                 result(SHT_prv) &
@@ -907,6 +1017,18 @@ module classes_mod
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_getclass3
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Class1 *getclass3
+    ! Statement: f_function_shadow*_capsule
+    interface
+        subroutine c_getclass3_bufferify(SHT_rv) &
+                bind(C, name="CLA_getclass3_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_getclass3_bufferify
     end interface
 
     ! ----------------------------------------
@@ -935,7 +1057,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 &getConstClassReference
-    ! Statement: f_function_shadow&_capptr
+    ! Statement: c_function_shadow&_capptr
     interface
         function c_get_const_class_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -949,8 +1071,20 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  const Class1 &getConstClassReference
+    ! Statement: f_function_shadow&_capsule
+    interface
+        subroutine c_get_const_class_reference_bufferify(SHT_rv) &
+                bind(C, name="CLA_getConstClassReference_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_get_const_class_reference_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  Class1 &getClassReference
-    ! Statement: f_function_shadow&_capptr
+    ! Statement: c_function_shadow&_capptr
     interface
         function c_get_class_reference(SHT_rv) &
                 result(SHT_prv) &
@@ -964,11 +1098,23 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  Class1 &getClassReference
+    ! Statement: f_function_shadow&_capsule
+    interface
+        subroutine c_get_class_reference_bufferify(SHT_rv) &
+                bind(C, name="CLA_getClassReference_bufferify")
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_get_class_reference_bufferify
+    end interface
+
+    ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_capptr
+    ! Statement: c_function_shadow_capptr
     ! ----------------------------------------
     ! Argument:  int flag
-    ! Statement: f_in_native
+    ! Statement: c_in_native
     interface
         function c_get_class_copy(flag, SHT_rv) &
                 result(SHT_prv) &
@@ -980,6 +1126,23 @@ module classes_mod
             type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_get_class_copy
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Class1 getClassCopy
+    ! Statement: f_function_shadow_capsule
+    ! ----------------------------------------
+    ! Argument:  int flag
+    ! Statement: f_in_native
+    interface
+        subroutine c_get_class_copy_bufferify(flag, SHT_rv) &
+                bind(C, name="CLA_getClassCopy_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: CLA_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: flag
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_get_class_copy_bufferify
     end interface
 
     ! ----------------------------------------
@@ -1088,34 +1251,31 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.ctor_default
-        SHT_prv = c_class1_ctor_default(SHT_rv%cxxmem)
+        call c_class1_ctor_default_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_default
     end function class1_ctor_default
     ! end class1_ctor_default
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
     ! start class1_ctor_flag
     function class1_ctor_flag(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.ctor_flag
-        SHT_prv = c_class1_ctor_flag(flag, SHT_rv%cxxmem)
+        call c_class1_ctor_flag_bufferify(flag, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.ctor_flag
     end function class1_ctor_flag
     ! end class1_ctor_flag
@@ -1191,7 +1351,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1 *returnThisBuffer
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     ! ----------------------------------------
     ! Argument:  std::string &name +intent(in)
     ! Statement: f_in_string&_buf
@@ -1205,26 +1365,25 @@ contains
     ! start class1_return_this_buffer
     function class1_return_this_buffer(obj, name, flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_BOOL, C_INT, C_PTR
+        use iso_c_binding, only : C_BOOL, C_INT
         class(class1) :: obj
         character(len=*), intent(IN) :: name
         logical, value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.return_this_buffer
         integer(C_INT) SHT_name_len
         logical(C_BOOL) :: SHT_flag_cxx
         SHT_name_len = len(name, kind=C_INT)
         SHT_flag_cxx = flag  ! coerce to C_BOOL
-        SHT_prv = c_class1_return_this_buffer_bufferify(obj%cxxmem, &
-            name, SHT_name_len, SHT_flag_cxx, SHT_rv%cxxmem)
+        call c_class1_return_this_buffer_bufferify(obj%cxxmem, name, &
+            SHT_name_len, SHT_flag_cxx, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.return_this_buffer
     end function class1_return_this_buffer
     ! end class1_return_this_buffer
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     !>
     !! \brief Test const method
     !!
@@ -1232,12 +1391,10 @@ contains
     ! start class1_getclass3
     function class1_getclass3(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         class(class1) :: obj
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Class1.method.getclass3
-        SHT_prv = c_class1_getclass3(obj%cxxmem, SHT_rv%cxxmem)
+        call c_class1_getclass3_bufferify(obj%cxxmem, SHT_rv%cxxmem)
         ! splicer end class.Class1.method.getclass3
     end function class1_getclass3
     ! end class1_getclass3
@@ -1487,15 +1644,13 @@ contains
 
     ! ----------------------------------------
     ! Function:  static Singleton &getReference
-    ! Statement: f_function_shadow&_capptr
+    ! Statement: f_function_shadow&_capsule
     ! start singleton_get_reference
     function singleton_get_reference() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(singleton) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Singleton.method.get_reference
-        SHT_prv = c_singleton_get_reference(SHT_rv%cxxmem)
+        call c_singleton_get_reference_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Singleton.method.get_reference
     end function singleton_get_reference
     ! end singleton_get_reference
@@ -1505,14 +1660,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     function shape_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(shape) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Shape.method.ctor
-        SHT_prv = c_shape_ctor(SHT_rv%cxxmem)
+        call c_shape_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Shape.method.ctor
     end function shape_ctor
 
@@ -1557,14 +1710,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     function circle_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(circle) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Circle.method.ctor
-        SHT_prv = c_circle_ctor(SHT_rv%cxxmem)
+        call c_circle_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Circle.method.ctor
     end function circle_ctor
 
@@ -1602,15 +1753,13 @@ contains
 
     ! ----------------------------------------
     ! Function:  Data
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     ! start data_ctor
     function data_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(data) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.Data.method.ctor
-        SHT_prv = c_data_ctor(SHT_rv%cxxmem)
+        call c_data_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.Data.method.ctor
     end function data_ctor
     ! end data_ctor
@@ -1755,35 +1904,31 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 *getclass2
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     !>
     !! \brief Return const class pointer
     !!
     !<
     function getclass2() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.getclass2
-        SHT_prv = c_getclass2(SHT_rv%cxxmem)
+        call c_getclass2_bufferify(SHT_rv%cxxmem)
         ! splicer end function.getclass2
     end function getclass2
 
     ! ----------------------------------------
     ! Function:  Class1 *getclass3
-    ! Statement: f_function_shadow*_capptr
+    ! Statement: f_function_shadow*_capsule
     !>
     !! \brief Return class pointer
     !!
     !<
     function getclass3() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.getclass3
-        SHT_prv = c_getclass3(SHT_rv%cxxmem)
+        call c_getclass3_bufferify(SHT_rv%cxxmem)
         ! splicer end function.getclass3
     end function getclass3
 
@@ -1819,33 +1964,29 @@ contains
 
     ! ----------------------------------------
     ! Function:  const Class1 &getConstClassReference
-    ! Statement: f_function_shadow&_capptr
+    ! Statement: f_function_shadow&_capsule
     function get_const_class_reference() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_const_class_reference
-        SHT_prv = c_get_const_class_reference(SHT_rv%cxxmem)
+        call c_get_const_class_reference_bufferify(SHT_rv%cxxmem)
         ! splicer end function.get_const_class_reference
     end function get_const_class_reference
 
     ! ----------------------------------------
     ! Function:  Class1 &getClassReference
-    ! Statement: f_function_shadow&_capptr
+    ! Statement: f_function_shadow&_capsule
     function get_class_reference() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_reference
-        SHT_prv = c_get_class_reference(SHT_rv%cxxmem)
+        call c_get_class_reference_bufferify(SHT_rv%cxxmem)
         ! splicer end function.get_class_reference
     end function get_class_reference
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
-    ! Statement: f_function_shadow_capptr
+    ! Statement: f_function_shadow_capsule
     ! ----------------------------------------
     ! Argument:  int flag
     ! Statement: f_in_native
@@ -1855,12 +1996,11 @@ contains
     !<
     function get_class_copy(flag) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
+        use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin function.get_class_copy
-        SHT_prv = c_get_class_copy(flag, SHT_rv%cxxmem)
+        call c_get_class_copy_bufferify(flag, SHT_rv%cxxmem)
         ! splicer end function.get_class_copy
     end function get_class_copy
 

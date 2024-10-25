@@ -115,7 +115,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
-        ! Statement: f_ctor_shadow_capptr
+        ! Statement: c_ctor_shadow_capptr
         function c_ArrayWrapper_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="ARR_ArrayWrapper_ctor")
@@ -125,6 +125,16 @@ module arrayclass_mod
             type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
             type(C_PTR) :: SHT_prv
         end function c_ArrayWrapper_ctor
+
+        ! ----------------------------------------
+        ! Function:  ArrayWrapper
+        ! Statement: f_ctor_shadow_capsule
+        subroutine c_ArrayWrapper_ctor_bufferify(SHT_rv) &
+                bind(C, name="ARR_ArrayWrapper_ctor_bufferify")
+            import :: ARR_SHROUD_capsule_data
+            implicit none
+            type(ARR_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_ArrayWrapper_ctor_bufferify
 
         ! ----------------------------------------
         ! Function:  void setSize
@@ -486,14 +496,12 @@ contains
 
     ! ----------------------------------------
     ! Function:  ArrayWrapper
-    ! Statement: f_ctor_shadow_capptr
+    ! Statement: f_ctor_shadow_capsule
     function ArrayWrapper_ctor() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         type(ArrayWrapper) :: SHT_rv
-        type(C_PTR) :: SHT_prv
         ! splicer begin class.ArrayWrapper.method.ctor
-        SHT_prv = c_ArrayWrapper_ctor(SHT_rv%cxxmem)
+        call c_ArrayWrapper_ctor_bufferify(SHT_rv%cxxmem)
         ! splicer end class.ArrayWrapper.method.ctor
     end function ArrayWrapper_ctor
 

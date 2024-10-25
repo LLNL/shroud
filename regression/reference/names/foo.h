@@ -30,6 +30,8 @@ extern "C" {
 
 TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv);
 
+void XXX_TES_ns0_Names_defaultctor_bufferify(TES_ns0_Names * SHC_rv);
+
 void XXX_TES_ns0_Names_method1(TES_ns0_Names * self);
 
 void XXX_TES_ns0_Names_method2(TES_ns0_Names * self2);

@@ -570,6 +570,7 @@ if __name__ == "__main__":
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),
+        TestDesc("shared"),
         TestDesc("sgroup"),
         TestDesc("ownership"),
         TestDesc("generic"),

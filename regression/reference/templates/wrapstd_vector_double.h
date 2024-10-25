@@ -42,6 +42,8 @@ typedef size_t TEM_vector_double_size_type;
 
 TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv);
 
+void TEM_vector_double_ctor_bufferify(TEM_vector_double * SHC_rv);
+
 void TEM_vector_double_dtor(TEM_vector_double * self);
 
 void TEM_vector_double_push_back(TEM_vector_double * self,

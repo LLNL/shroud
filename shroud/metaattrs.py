@@ -451,12 +451,13 @@ class FillMeta(object):
         api = attrs.get("api", missing)
 
         if api is not missing:
+            if api == "capptr":
+                # capptr is not used with Fortran wrappers.
+                api = "capsule"
             meta["api"] = api
         elif ntypemap.sgroup == "shadow":
             if node.return_this:
                 meta["api"] = "this"
-            elif node.options.C_shadow_result:
-                meta["api"] = "capptr"
             else:
                 meta["api"] = "capsule"
 
@@ -523,6 +524,30 @@ class FillMeta(object):
             meta["deref"] = "arg"
             meta["api"] = "buf"
 
+    def set_func_post_c(self, node, meta):
+        """Final check on metaattributes for C.
+        Check defaults from typemap.
+        """
+        ast = node.ast
+        ntypemap = ast.typemap
+
+        if ntypemap.sgroup == "shared_ptr":
+            # XXX - special case for now, need to copy from ntypemap
+            meta["owner"] = "shared"
+            meta["api"] = "capptr"
+
+    def set_func_post_fortran(self, node, meta):
+        """Final check on metaattributes for Fortran.
+        Check defaults from typemap.
+        """
+        ast = node.ast
+        ntypemap = ast.typemap
+
+        if ntypemap.sgroup == "shared_ptr":
+            meta["owner"] = "shared"
+            meta["api"] = "capsule"
+            meta["deref"] = None
+            
     def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator
         ntypemap = arg.typemap
@@ -891,7 +916,8 @@ class FillMetaShare(FillMeta):
 
         owner = attrs.get("owner", missing)
         if owner is not missing:
-            if owner not in ["caller", "library"]:
+            if owner not in ["caller", "library", "shared"]:
+                # XXX - shared is only valued with language=c++
                 self.cursor.generate(
                     "Illegal value '{}' for owner attribute. "
                     "Must be 'caller' or 'library'.".format(owner)
@@ -960,6 +986,7 @@ class FillMetaC(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_c(node, r_meta)
         self.set_func_api_c(node, r_meta)
+        self.set_func_post_c(node, r_meta)
 
         # --- Loop over function parameters
         for arg in declarator.params:
@@ -1022,6 +1049,7 @@ class FillMetaFortran(FillMeta):
         self.set_func_share(node, r_meta)
         self.set_func_deref_fortran(node, r_meta)
         self.set_func_api_fortran(node, r_meta)
+        self.set_func_post_fortran(node, r_meta)
         
         self.meta_function_params(node, fptr_arg)
 

@@ -4,6 +4,8 @@ root
     ctor
       shadow
         capptr -- c_ctor_shadow_capptr
+          shared -- c_ctor_shadow_capptr_shared
+        capsule -- c_ctor_shadow_capsule
     dtor -- c_dtor
     function
       bool -- c_function_bool
@@ -26,10 +28,14 @@ root
         capptr -- c_function_shadow&_capptr
           caller -- c_function_shadow&_capptr_caller
           library -- c_function_shadow&_capptr_library
+        capsule -- c_function_shadow&_capsule
+          caller -- c_function_shadow&_capsule_caller
+          library -- c_function_shadow&_capsule_library
       shadow*
         capptr -- c_function_shadow*_capptr
           caller -- c_function_shadow*_capptr_caller
           library -- c_function_shadow*_capptr_library
+          shared -- c_function_shadow*_capptr_shared
         capsule -- c_function_shadow*_capsule
         this -- c_function_shadow*_this
       shadow<native>
@@ -147,14 +153,18 @@ root
         native
           cfi -- c_mixin_arg_native_cfi
       character -- c_mixin_character
+      cvar-capsule-fill -- c_mixin_cvar-capsule-fill
       declare-arg -- c_mixin_declare-arg
       declare-fortran-result -- c_mixin_declare-fortran-result
       destructor
+        new-shadow-shared -- c_mixin_destructor_new-shadow-shared
         new-string -- c_mixin_destructor_new-string
         new-vector -- c_mixin_destructor_new-vector
       function -- c_mixin_function
         char*
           cdesc -- c_mixin_function_char*_cdesc
+        shadow
+          capptr -- c_mixin_function_shadow_capptr
         string
           cdesc -- c_mixin_function_string_cdesc
         vector
@@ -253,7 +263,8 @@ root
   f
     ctor
       shadow
-        capptr -- f_ctor_shadow_capptr
+        capsule -- f_ctor_shadow_capsule
+          shared -- f_ctor_shadow_capsule_shared
     dtor -- f_dtor
     function
       bool -- f_function_bool
@@ -299,21 +310,18 @@ root
         scalar -- f_function_native*_scalar
       native** -- f_function_native**
       shadow
-        capptr -- f_function_shadow_capptr
-          caller -- f_function_shadow_capptr_caller
-          library -- f_function_shadow_capptr_library
+        capsule -- f_function_shadow_capsule
       shadow&
-        capptr -- f_function_shadow&_capptr
-          caller -- f_function_shadow&_capptr_caller
-          library -- f_function_shadow&_capptr_library
+        capsule -- f_function_shadow&_capsule
+          caller -- f_function_shadow&_capsule_caller
+          library -- f_function_shadow&_capsule_library
       shadow*
-        capptr -- f_function_shadow*_capptr
-          caller -- f_function_shadow*_capptr_caller
-          library -- f_function_shadow*_capptr_library
         capsule -- f_function_shadow*_capsule
+          caller -- f_function_shadow*_capsule_caller
+          library -- f_function_shadow*_capsule_library
         this -- f_function_shadow*_this
       shadow<native>
-        capptr -- f_function_shadow<native>_capptr
+        capsule -- f_function_shadow<native>_capsule
       string
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg
@@ -511,7 +519,6 @@ root
         c-ptr -- f_mixin_function_c-ptr
         ptr -- f_mixin_function_ptr
         shadow
-          capptr -- f_mixin_function_shadow_capptr
           capsule -- f_mixin_function_shadow_capsule
         string
           cfi
@@ -672,6 +679,66 @@ c_ctor_shadow_capptr:
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
   owner: caller
+c_ctor_shadow_capptr_shared:
+  name: c_ctor_shadow_capptr_shared
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  notes:
+  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  intent: ctor
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
+  - '{c_var}->idtor = {idtor};'
+  c_local:
+  - shared
+  impl_header:
+  - <memory>
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
+    \ *>(ptr);"
+  - shared->reset();
+  - delete shared;
+  owner: shared
+c_ctor_shadow_capsule:
+  name: c_ctor_shadow_capsule
+  comments:
+  - Pass function result as a capsule argument from Fortran to C.
+  intent: ctor
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  owner: caller
 c_dtor:
   name: c_dtor
   comments:
@@ -755,7 +822,7 @@ c_function_char*_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
@@ -798,7 +865,7 @@ c_function_char*_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
@@ -842,7 +909,7 @@ c_function_char*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
@@ -947,9 +1014,9 @@ c_function_shadow&_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -977,9 +1044,9 @@ c_function_shadow&_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1007,13 +1074,82 @@ c_function_shadow&_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
   c_return_type: '{c_type} *'
+  c_local:
+  - cxx
+  owner: library
+c_function_shadow&_capsule:
+  name: c_function_shadow&_capsule
+  comments:
+  - Return a C_capsule_data_type.
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
+  owner: library
+c_function_shadow&_capsule_caller:
+  name: c_function_shadow&_capsule_caller
+  comments:
+  - Return a C_capsule_data_type.
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
+  owner: library
+c_function_shadow&_capsule_library:
+  name: c_function_shadow&_capsule_library
+  comments:
+  - Return a C_capsule_data_type.
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -1037,9 +1173,9 @@ c_function_shadow*_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1067,9 +1203,9 @@ c_function_shadow*_capptr_caller:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1097,9 +1233,41 @@ c_function_shadow*_capptr_library:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  c_local:
+  - cxx
+  owner: library
+c_function_shadow*_capptr_shared:
+  name: c_function_shadow*_capptr_shared
+  comments:
+  - Return a C_capsule_data_type.
+  notes:
+  - std::shared_ptr with a shadow class.
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1121,10 +1289,14 @@ c_function_shadow*_capsule:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  c_local:
+  - cxx
   owner: library
 c_function_shadow*_this:
   name: c_function_shadow*_this
@@ -1166,7 +1338,7 @@ c_function_shadow<native>_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -1204,7 +1376,7 @@ c_function_shadow_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return:
   - return {c_var};
@@ -3258,6 +3430,15 @@ c_mixin_character:
   c_arg_decl:
   - '{gen.cdecl.c_var}'
   owner: library
+c_mixin_cvar-capsule-fill:
+  name: c_mixin_cvar-capsule-fill
+  comments:
+  - Assign to capsule in C wrapper.
+  intent: mixin
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  owner: library
 c_mixin_declare-arg:
   name: c_mixin_declare-arg
   intent: mixin
@@ -3274,6 +3455,18 @@ c_mixin_declare-fortran-result:
   i_module:
     '{i_module_name}':
     - '{i_kind}'
+  owner: library
+c_mixin_destructor_new-shadow-shared:
+  name: c_mixin_destructor_new-shadow-shared
+  intent: mixin
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
+    \ *>(ptr);"
+  - shared->reset();
+  - delete shared;
   owner: library
 c_mixin_destructor_new-string:
   name: c_mixin_destructor_new-string
@@ -3310,6 +3503,19 @@ c_mixin_function_char*_cdesc:
   - '{c_var_cdesc}->rank = 0;'
   c_helper:
   - type_defines
+  owner: library
+c_mixin_function_shadow_capptr:
+  name: c_mixin_function_shadow_capptr
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  intent: mixin
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
   owner: library
 c_mixin_function_string_cdesc:
   name: c_mixin_function_string_cdesc
@@ -3452,7 +3658,7 @@ c_mixin_inout_vector_cdesc:
 c_mixin_native_capsule_fill:
   name: c_mixin_native_capsule_fill
   comments:
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   intent: mixin
   c_post_call:
   - '{c_var_capsule}->addr  = {cxx_nonconst_ptr};'
@@ -4601,33 +4807,21 @@ c_subroutine:
   name: c_subroutine
   intent: subroutine
   owner: library
-f_ctor_shadow_capptr:
-  name: f_ctor_shadow_capptr
+f_ctor_shadow_capsule:
+  name: f_ctor_shadow_capsule
   comments:
-  - Pass function result as a capsule field of shadow class
-  - from Fortran to C.
+  - Pass function result as a capsule argument from Fortran to C.
   intent: ctor
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -4636,7 +4830,48 @@ f_ctor_shadow_capptr:
   - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{c_var}->idtor = {idtor};'
+  c_return_type: void
   owner: caller
+f_ctor_shadow_capsule_shared:
+  name: f_ctor_shadow_capsule_shared
+  comments:
+  - Pass function result as a capsule argument from Fortran to C.
+  notes:
+  - Create a std::shared_pointer on the heap to hold the pointer to the instance.
+  intent: ctor
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - shared
+  impl_header:
+  - <memory>
+  destructor_header:
+  - <memory>
+  destructor_name: shadow-{cxx_type}
+  destructor:
+  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
+    \ *>(ptr);"
+  - shared->reset();
+  - delete shared;
+  owner: shared
 f_dtor:
   name: f_dtor
   comments:
@@ -4771,7 +5006,7 @@ f_function_char*_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
@@ -4836,7 +5071,7 @@ f_function_char*_buf_arg:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
@@ -4899,7 +5134,7 @@ f_function_char*_buf_copy:
   c_arg_call:
   - '{cxx_var}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
   c_return_type: void
@@ -5069,7 +5304,7 @@ f_function_char*_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
@@ -5111,7 +5346,7 @@ f_function_char*_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}char *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
@@ -5520,7 +5755,7 @@ f_function_native*_cdesc_allocatable:
   - Allocate Fortran native array, then fill from cdesc
   - using helper copy_array.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -5637,7 +5872,7 @@ f_function_native*_cdesc_pointer_caller:
   - Add a capsule argument to the Fortran wrapper.
   - Pass the capsule as argument to C wrapper.
   - Fill cdesc from native in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Set Fortran pointer to native array.
   notes:
   - +deref(pointer) +owner(caller)
@@ -5727,7 +5962,7 @@ f_function_native*_cfi_allocatable:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - if ({c_local_cxx} != {nullptr}) {{+
   - "{c_temp_lower_decl}{c_temp_extents_decl}int SH_ret = CFI_allocate({c_var_cfi},\
@@ -5776,7 +6011,7 @@ f_function_native*_cfi_pointer:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - '{{+'
   - CFI_CDESC_T({rank}) {c_local_fptr};
@@ -5902,249 +6137,93 @@ f_function_native*_scalar:
   c_return_type: '{c_type}'
   c_need_wrapper: true
   owner: library
-f_function_shadow&_capptr:
-  name: f_function_shadow&_capptr
+f_function_shadow&_capsule:
+  name: f_function_shadow&_capsule
   comments:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
-f_function_shadow&_capptr_caller:
-  name: f_function_shadow&_capptr_caller
+f_function_shadow&_capsule_caller:
+  name: f_function_shadow&_capsule_caller
   comments:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
-f_function_shadow&_capptr_library:
-  name: f_function_shadow&_capptr_library
+f_function_shadow&_capsule_library:
+  name: f_function_shadow&_capsule_library
   comments:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
-  owner: library
-f_function_shadow*_capptr:
-  name: f_function_shadow*_capptr
-  comments:
-  - Return a C_capsule_data_type.
-  intent: function
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    '{f_module_name}':
-    - '{f_capsule_data_type}'
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
-  c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
-  owner: library
-f_function_shadow*_capptr_caller:
-  name: f_function_shadow*_capptr_caller
-  comments:
-  - Return a C_capsule_data_type.
-  intent: function
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    '{f_module_name}':
-    - '{f_capsule_data_type}'
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
-  c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
-  owner: library
-f_function_shadow*_capptr_library:
-  name: f_function_shadow*_capptr_library
-  comments:
-  - Return a C_capsule_data_type.
-  intent: function
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    '{f_module_name}':
-    - '{f_capsule_data_type}'
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
-  c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   owner: library
@@ -6169,10 +6248,74 @@ f_function_shadow*_capsule:
     - '{f_capsule_data_type}'
   c_arg_decl:
   - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
   c_return_type: void
+  c_local:
+  - cxx
+  owner: library
+f_function_shadow*_capsule_caller:
+  name: f_function_shadow*_capsule_caller
+  comments:
+  - Return a C_capsule_data_type.
+  intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
+  owner: library
+f_function_shadow*_capsule_library:
+  name: f_function_shadow*_capsule_library
+  comments:
+  - Return a C_capsule_data_type.
+  intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
   owner: library
 f_function_shadow*_this:
   name: f_function_shadow*_this
@@ -6189,8 +6332,8 @@ f_function_shadow*_this:
   - '{C_call_function};'
   c_return_type: void
   owner: library
-f_function_shadow<native>_capptr:
-  name: f_function_shadow<native>_capptr
+f_function_shadow<native>_capsule:
+  name: f_function_shadow<native>_capsule
   comments:
   - Return a instance by value.
   notes:
@@ -6200,25 +6343,16 @@ f_function_shadow<native>_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -6228,18 +6362,16 @@ f_function_shadow<native>_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   fmtdict:
     cxx_addr: ''
   owner: caller
-f_function_shadow_capptr:
-  name: f_function_shadow_capptr
+f_function_shadow_capsule:
+  name: f_function_shadow_capsule
   comments:
   - Return a instance by value.
   notes:
@@ -6249,25 +6381,16 @@ f_function_shadow_capptr:
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
   f_arg_call:
   - '{f_var}%{F_derived_member}'
   f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
+  - call {f_call_function}({F_arg_c_call})
   f_need_wrapper: true
   i_arg_names:
   - '{i_var}'
   i_arg_decl:
   - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
   i_module:
-    iso_c_binding:
-    - C_PTR
     '{f_module_name}':
     - '{f_capsule_data_type}'
   c_arg_decl:
@@ -6277,109 +6400,9 @@ f_function_shadow_capptr:
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
   - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
-  fmtdict:
-    cxx_addr: ''
-  owner: caller
-f_function_shadow_capptr_caller:
-  name: f_function_shadow_capptr_caller
-  comments:
-  - Return a instance by value.
-  notes:
-  - Create memory in c_pre_call so it will survive the return.
-  - owner=caller sets idtor flag to release the memory.
-  - c_local_var is passed in as argument.
-  intent: function
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    '{f_module_name}':
-    - '{f_capsule_data_type}'
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
-  c_call:
-  - '*{c_local_cxx} = {C_call_function};'
-  c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
-  c_local:
-  - cxx
-  fmtdict:
-    cxx_addr: ''
-  owner: caller
-f_function_shadow_capptr_library:
-  name: f_function_shadow_capptr_library
-  comments:
-  - Return a instance by value.
-  notes:
-  - Create memory in c_pre_call so it will survive the return.
-  - owner=caller sets idtor flag to release the memory.
-  - c_local_var is passed in as argument.
-  intent: function
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  i_arg_names:
-  - '{i_var}'
-  i_arg_decl:
-  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-    '{f_module_name}':
-    - '{f_capsule_data_type}'
-  c_arg_decl:
-  - '{c_type} * {c_var}'
-  c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
-  c_call:
-  - '*{c_local_cxx} = {C_call_function};'
-  c_post_call:
-  - '{c_var}->addr = {cxx_nonconst_ptr};'
-  - '{c_var}->idtor = {idtor};'
-  c_return:
-  - return {c_var};
-  c_return_type: '{c_type} *'
+  c_return_type: void
   c_local:
   - cxx
   fmtdict:
@@ -6559,7 +6582,7 @@ f_function_string&_cdesc_allocatable:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -6620,7 +6643,7 @@ f_function_string&_cdesc_allocatable_caller:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -6681,7 +6704,7 @@ f_function_string&_cdesc_allocatable_library:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -6996,7 +7019,7 @@ f_function_string&_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -7045,7 +7068,7 @@ f_function_string&_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} &{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -7326,7 +7349,7 @@ f_function_string*_cdesc_allocatable:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -7387,7 +7410,7 @@ f_function_string*_cdesc_allocatable_caller:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -7448,7 +7471,7 @@ f_function_string*_cdesc_allocatable_library:
   - Pass local capsule as argument to C wrapper.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Release memory from capsule.
@@ -7761,7 +7784,7 @@ f_function_string*_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} *{c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -8106,7 +8129,7 @@ f_function_string_cdesc_allocatable:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -8179,7 +8202,7 @@ f_function_string_cdesc_allocatable_caller:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -8252,7 +8275,7 @@ f_function_string_cdesc_allocatable_library:
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
   - using helper copy_string.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: function
   f_arg_decl:
@@ -8442,7 +8465,7 @@ f_function_string_cfi_arg:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} {c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -8491,7 +8514,7 @@ f_function_string_cfi_copy:
   c_arg_call:
   - '{c_local_cxx}'
   c_call:
-  - '{c_const}{cxx_type} {c_local_cxx} = {C_call_function};'
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
   c_post_call:
   - char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};
   - if ({c_local_cxx}{cxx_member}empty()) {{+
@@ -11849,30 +11872,6 @@ f_mixin_function_ptr:
     iso_c_binding:
     - C_PTR
   owner: library
-f_mixin_function_shadow_capptr:
-  name: f_mixin_function_shadow_capptr
-  comments:
-  - Pass function result as a capsule field of shadow class
-  - from Fortran to C.
-  intent: mixin
-  f_arg_decl:
-  - '{f_type} :: {f_var}'
-  - 'type(C_PTR) :: {f_result_ptr}'
-  f_arg_call:
-  - '{f_var}%{F_derived_member}'
-  f_call:
-  - '{f_result_ptr} = {f_call_function}({F_arg_c_call})'
-  f_module:
-    iso_c_binding:
-    - C_PTR
-  f_need_wrapper: true
-  i_result_decl:
-  - 'type(C_PTR) :: {i_result_ptr}'
-  i_result_var: '{i_result_ptr}'
-  i_module:
-    iso_c_binding:
-    - C_PTR
-  owner: library
 f_mixin_function_shadow_capsule:
   name: f_mixin_function_shadow_capsule
   comments:
@@ -12402,7 +12401,7 @@ f_mixin_use_capsule:
   name: f_mixin_use_capsule
   comments:
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: mixin
   f_declare:
@@ -12972,7 +12971,7 @@ f_out_native**_cdesc_allocatable:
   - Allocate Fortran native array for argument
   - then fill from cdesc using helper copy_array.
   - Pass local capsule as argument to C wrapper.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   notes:
   - deref(allocatable)
@@ -13365,7 +13364,7 @@ f_out_string**_cdesc_allocatable:
   - Allocate a vector<string> variable.
   - Assign to std::string pointer from C++ function.
   - Copy into Fortran allocated memory.
-  - Assign to capsule in C wrapper.
+  - Assign to local capsule variable in C wrapper.
   - Release memory from capsule.
   intent: out
   f_arg_name:

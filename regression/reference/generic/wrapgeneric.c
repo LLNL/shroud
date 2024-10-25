@@ -324,15 +324,13 @@ void GEN_GetPointerAsPointer_float2d_bufferify(
 
 // ----------------------------------------
 // Function:  StructAsClass *CreateStructAsClass
-// Statement: f_function_shadow*_capptr
-GEN_StructAsClass * GEN_CreateStructAsClass_bufferify(
-    GEN_StructAsClass * SHC_rv)
+// Statement: f_function_shadow*_capsule
+void GEN_CreateStructAsClass_bufferify(GEN_StructAsClass * SHC_rv)
 {
     // splicer begin function.CreateStructAsClass_bufferify
     StructAsClass *SHC_rv_cxx = CreateStructAsClass();
-    SHC_rv->addr = SHC_rv_cxx;
+    SHC_rv->addr  = SHC_rv_cxx;
     SHC_rv->idtor = 0;
-    return SHC_rv;
     // splicer end function.CreateStructAsClass_bufferify
 }
 

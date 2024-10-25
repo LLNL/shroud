@@ -152,8 +152,14 @@ def find_abstract_declarator(arg):
     Funtion pointers from a typedef already have the correct typemap.
 
     Args:
-        arg -
+        arg - declast.Declaration
     """
+    if arg.typemap.sgroup == "shared_ptr":
+        arg = arg.template_arguments[0]
+        suffix = ["*"]
+    else:
+        suffix = []
+        
     declarator = arg.declarator
     if declarator.is_function_pointer():
         decl = ["procedure"]
@@ -170,6 +176,7 @@ def find_abstract_declarator(arg):
             decl.append(",")
         decl[-1] = ">"
     decl.append(abstract)
+    decl.extend(suffix)
     return "".join(decl)
 
 def lookup_fc_stmts(path):
@@ -468,8 +475,10 @@ def process_mixin(stmts, defaults, stmtdict):
         intent = None
         if "alias" in stmt:
             # name is not allowed"
-            aliases = stmt["alias"]
+            aliases = [ alias for alias in stmt["alias"] if alias[0] != "#"]
             # XXX - first alias used for lang
+            if len(aliases) == 0:
+                continue
             tmp_name = aliases[0]
         if "name" in stmt:
             name = stmt["name"]
@@ -557,8 +566,6 @@ def process_mixin(stmts, defaults, stmtdict):
         if aliases:
             # Install with alias name.
             for alias in aliases:
-                if alias[0] == "#":
-                    continue
                 apart = alias.split("_", 2)
                 intent = apart[1]
                 anode = util.Scope(node)
@@ -809,6 +816,7 @@ CStmts = util.Scope(
 
     iface_header=[],
     impl_header=[],
+    destructor_header=[],
     destructor_name=None,
     destructor=[],
     owner="library",

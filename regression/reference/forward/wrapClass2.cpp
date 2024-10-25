@@ -38,6 +38,18 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
 }
 
 // ----------------------------------------
+// Function:  Class2
+// Statement: f_ctor_shadow_capsule
+void FOR_Class2_ctor_bufferify(FOR_Class2 * SHC_rv)
+{
+    // splicer begin class.Class2.method.ctor_bufferify
+    forward::Class2 *SHCXX_rv = new forward::Class2();
+    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHC_rv->idtor = 1;
+    // splicer end class.Class2.method.ctor_bufferify
+}
+
+// ----------------------------------------
 // Function:  ~Class2
 // Statement: c_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
