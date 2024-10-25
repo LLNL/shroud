@@ -761,6 +761,13 @@ def print_tree_statements(fp, statements, defaults):
         complete[name] = all
     yaml.safe_dump(complete, fp, sort_keys=False)
 
+    return
+    # Dump each group to a file
+    # This makes it easier to compare one finalized group to another using diff.
+    for name, group in complete.items():
+        with open(name, "w") as fp:
+            yaml.safe_dump(group, fp, sort_keys=False)
+
 
 # Listed in the order they are used in the wrapper.
 # This order is preserved with option --write-statements.
