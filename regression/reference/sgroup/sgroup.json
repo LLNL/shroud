@@ -125,6 +125,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -175,6 +176,7 @@
                                 "typemap_name": "twostruct"
                             },
                             "meta": {
+                                "abstract": "twostruct<native,native>",
                                 "intent": "in",
                                 "value": true
                             },
@@ -184,11 +186,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "twostruct<native,native>",
                                 "intent": "in",
                                 "value": true
                             }

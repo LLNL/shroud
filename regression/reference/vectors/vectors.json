@@ -92,6 +92,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -129,6 +130,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "intent": "in",
                                 "rank": 1
@@ -181,6 +183,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -228,6 +231,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "intent": "in",
                                 "rank": 1
@@ -238,11 +242,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -340,6 +346,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -388,6 +395,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -416,6 +424,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -467,6 +476,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "intent": "out",
                                 "rank": 1
@@ -477,11 +487,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -612,6 +624,7 @@
                             },
                             "fstmts": "c",
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -660,6 +673,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -704,6 +718,7 @@
                             },
                             "fstmts": "f",
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -755,6 +770,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "intent": "out",
                                 "rank": 1
@@ -765,11 +781,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -885,6 +903,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -933,6 +952,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -975,6 +995,7 @@
                             },
                             "fstmts": "f",
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1026,6 +1047,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "intent": "out",
                                 "rank": 1
@@ -1036,11 +1058,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -1139,6 +1163,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1187,6 +1212,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "malloc",
                                 "intent": "out",
@@ -1215,6 +1241,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1268,6 +1295,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out",
@@ -1279,11 +1307,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -1385,6 +1415,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1433,6 +1464,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "malloc",
                                 "intent": "inout",
@@ -1461,6 +1493,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1518,6 +1551,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "inout",
@@ -1529,11 +1563,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "inout",
                                 "rank": 1
                             }
@@ -1627,6 +1663,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1673,6 +1710,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "inout",
@@ -1701,6 +1739,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1756,6 +1795,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "intent": "inout",
                                 "rank": 1
@@ -1766,11 +1806,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "inout",
                                 "rank": 1
                             }
@@ -1867,6 +1909,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1915,6 +1958,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -1943,6 +1987,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -1994,6 +2039,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "api": "cdesc",
                                 "intent": "out",
                                 "rank": 1
@@ -2004,11 +2050,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<native>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -2124,6 +2172,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2162,6 +2211,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native*>&",
                                 "api": "buf",
                                 "intent": "in",
                                 "rank": 1
@@ -2193,6 +2243,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2244,6 +2295,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2293,6 +2345,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native*>&",
                                 "api": "buf",
                                 "intent": "in",
                                 "rank": 1
@@ -2333,6 +2386,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2342,17 +2396,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "vector<native*>&",
                                 "intent": "in",
                                 "rank": 1
                             }
                         },
                         "num": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2455,6 +2512,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2497,6 +2555,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "buf",
                                 "intent": "in",
                                 "rank": 1
@@ -2549,6 +2608,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -2605,6 +2665,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "buf",
                                 "intent": "in",
                                 "rank": 1
@@ -2615,11 +2676,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -2718,6 +2781,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2760,6 +2824,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -2788,6 +2853,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -2837,6 +2903,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "cdesc",
                                 "intent": "out",
                                 "rank": 1
@@ -2847,11 +2914,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -2950,6 +3019,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2992,6 +3062,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -3020,6 +3091,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -3080,6 +3152,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out",
@@ -3091,11 +3164,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "out",
                                 "rank": 1
                             }
@@ -3195,6 +3270,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3239,6 +3315,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "buf",
                                 "deref": "copy",
                                 "intent": "out",
@@ -3268,6 +3345,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -3329,6 +3407,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "out",
@@ -3341,11 +3420,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "out",
                                 "len": "20",
                                 "rank": 1
@@ -3422,11 +3503,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "vector<string>&",
                                 "intent": "inout",
                                 "rank": 1
                             }
@@ -3546,6 +3629,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>",
                                 "deref": "malloc",
                                 "intent": "function",
                                 "rank": 1
@@ -3585,6 +3669,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3650,6 +3735,7 @@
                                 "typemap_name": "std::vector"
                             },
                             "meta": {
+                                "abstract": "vector<native>",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function",
@@ -3691,6 +3777,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3700,12 +3787,14 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "vector<native>",
                                 "intent": "function",
                                 "rank": 1
                             }
                         },
                         "n": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -3802,6 +3891,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -3830,6 +3920,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -3860,6 +3951,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -3911,6 +4003,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -3953,6 +4046,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 2
                             },
@@ -3993,6 +4087,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4002,17 +4097,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 2
                             }
                         },
                         "len": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }

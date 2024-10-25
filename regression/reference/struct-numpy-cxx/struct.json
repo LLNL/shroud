@@ -988,6 +988,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -1016,6 +1017,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1025,11 +1027,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1117,6 +1121,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -1146,6 +1151,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "py_in_struct*_numpy"
@@ -1154,11 +1160,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -1265,6 +1273,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -1290,6 +1299,7 @@
                                 "value_var": "SHValue_outbuf"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_char*_charlen"
@@ -1319,6 +1329,7 @@
                                 "value_var": "SHValue_s1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "py_in_struct*_numpy"
@@ -1327,17 +1338,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "outbuf": {
                             "meta": {
+                                "abstract": "char*",
                                 "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
                         },
                         "s1": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -1425,6 +1439,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -1454,6 +1469,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "py_in_struct*_numpy"
@@ -1462,11 +1478,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }
@@ -1564,6 +1582,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1592,6 +1611,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_struct*_numpy"
@@ -1615,6 +1635,7 @@
                                 "value_var": "SHValue_d"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1639,6 +1660,7 @@
                                 "value_var": "SHValue_i"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1648,22 +1670,26 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "out"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1739,6 +1765,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -1768,6 +1795,7 @@
                                 "value_var": "SHValue_arg"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             },
                             "stmt": "py_inout_struct*_numpy"
@@ -1776,11 +1804,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "inout"
                             }
                         }
@@ -1877,6 +1907,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "function"
                             },
                             "stmt": "py_function_struct_numpy"
@@ -1900,6 +1931,7 @@
                                 "value_var": "SHValue_d"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1924,6 +1956,7 @@
                                 "value_var": "SHValue_i"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1933,17 +1966,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct",
                                 "intent": "function"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2048,6 +2084,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             },
                             "stmt": "py_function_struct*_numpy"
@@ -2071,6 +2108,7 @@
                                 "value_var": "SHValue_d"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2095,6 +2133,7 @@
                                 "value_var": "SHValue_i"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2104,17 +2143,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2238,6 +2280,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             },
                             "stmt": "py_function_struct*_numpy"
@@ -2261,6 +2304,7 @@
                                 "value_var": "SHValue_d"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2285,6 +2329,7 @@
                                 "value_var": "SHValue_i"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2311,6 +2356,7 @@
                                 "value_var": "SHValue_outbuf"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "out"
                             },
                             "stmt": "py_out_char*_charlen"
@@ -2319,23 +2365,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             }
                         },
                         "d": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "i": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "outbuf": {
                             "meta": {
+                                "abstract": "char*",
                                 "charlen": "LENOUTBUF",
                                 "intent": "out"
                             }
@@ -2427,6 +2477,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "dim_ast": [
                                     {
                                         "constant": "2"
@@ -2441,6 +2492,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "dim_ast": [
                                     {
                                         "constant": "2"
@@ -2520,6 +2572,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             },
                             "stmt": "py_function_struct*_numpy"
@@ -2528,6 +2581,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "function"
                             }
                         }
@@ -2583,6 +2637,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         }
@@ -2645,17 +2700,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2698,6 +2756,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         }
@@ -2760,17 +2819,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2831,11 +2893,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "point": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "in"
                             }
                         }
@@ -2909,23 +2973,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "z": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2999,23 +3067,27 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "shadow*",
                                 "intent": "function"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "y": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "z": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }

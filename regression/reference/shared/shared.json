@@ -83,6 +83,7 @@
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
+                                        "abstract": "shadow",
                                         "api": "capptr",
                                         "intent": "ctor",
                                         "owner": "shared"
@@ -138,6 +139,7 @@
                                         "typemap_name": "Object"
                                     },
                                     "meta": {
+                                        "abstract": "shadow",
                                         "api": "capsule",
                                         "intent": "ctor",
                                         "owner": "shared"
@@ -148,6 +150,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "shadow",
                                         "intent": "ctor",
                                         "owner": "shared"
                                     }
@@ -199,6 +202,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     },
                                     "stmt": "c_dtor"
@@ -222,6 +226,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
@@ -230,6 +235,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     }
                                 }

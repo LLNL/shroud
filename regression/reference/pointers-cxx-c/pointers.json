@@ -64,6 +64,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -92,6 +93,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in"
                             },
                             "stmt": "c_in_native*"
@@ -100,11 +102,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in"
                             }
                         }
@@ -169,6 +173,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -197,6 +202,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_native*"
@@ -205,11 +211,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             }
                         }
@@ -274,6 +282,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -302,6 +311,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
@@ -310,11 +320,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }
@@ -411,6 +423,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -440,6 +453,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -469,6 +483,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_native*"
@@ -497,6 +512,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
@@ -505,22 +521,26 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "argin": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "arginout": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout"
                             }
                         },
                         "argout": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }
@@ -622,6 +642,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -650,6 +671,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -681,6 +703,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "args": [
@@ -721,6 +744,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -730,17 +754,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }
                         },
                         "out": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "args": [
@@ -757,6 +784,7 @@
                         },
                         "sizein": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -859,6 +887,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -887,6 +916,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -918,6 +948,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "args": [
@@ -958,6 +989,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -967,17 +999,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }
                         },
                         "out": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "args": [
@@ -994,6 +1029,7 @@
                         },
                         "sizein": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -1082,6 +1118,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1110,6 +1147,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
@@ -1140,6 +1178,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1154,16 +1193,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "nvalues": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         },
                         "values": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1258,6 +1300,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1288,6 +1331,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1324,6 +1368,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1338,11 +1383,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg1": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1354,6 +1401,7 @@
                         },
                         "arg2": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1435,6 +1483,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1464,6 +1513,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1495,6 +1545,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "name": "nvar"
@@ -1509,17 +1560,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "nvar": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "values": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "name": "nvar"
@@ -1624,6 +1678,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1653,6 +1708,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -1682,6 +1738,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
@@ -1710,6 +1767,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -1719,22 +1777,26 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "len": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
                         },
                         "result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         },
                         "values": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -1804,6 +1866,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1834,6 +1897,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1848,11 +1912,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "out": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "3"
@@ -1940,6 +2006,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -1968,6 +2035,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout",
                                 "rank": 1
                             },
@@ -1998,6 +2066,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2007,17 +2076,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "array": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout",
                                 "rank": 1
                             }
                         },
                         "sizein": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2096,6 +2168,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2124,6 +2197,7 @@
                                 "typemap_name": "double"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout",
                                 "rank": 1
                             },
@@ -2154,6 +2228,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2163,17 +2238,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "x": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "inout",
                                 "rank": 1
                             }
                         },
                         "x_length": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2266,6 +2344,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2294,6 +2373,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2324,6 +2404,7 @@
                                 "typemap_name": "size_t"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2333,17 +2414,20 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arr": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "in",
                                 "rank": 1
                             }
                         },
                         "len": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2428,6 +2512,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2456,6 +2541,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char**",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -2465,11 +2551,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "names": {
                             "meta": {
+                                "abstract": "char**",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -2527,6 +2615,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2556,6 +2645,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -2565,11 +2655,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "value": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -2631,6 +2723,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -2639,6 +2732,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         }
@@ -2708,6 +2802,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2736,6 +2831,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native**"
@@ -2744,11 +2840,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "nitems": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             }
                         }
@@ -2820,6 +2918,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2850,6 +2949,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -2864,11 +2964,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -2965,6 +3067,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -2995,6 +3098,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "name": "ncount"
@@ -3029,6 +3133,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
@@ -3037,11 +3142,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "name": "ncount"
@@ -3053,6 +3160,7 @@
                         },
                         "ncount": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }
@@ -3124,6 +3232,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3154,6 +3263,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "args": [],
@@ -3169,11 +3279,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "args": [],
@@ -3251,6 +3363,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3279,6 +3392,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native**"
@@ -3287,11 +3401,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "nitems": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             }
                         }
@@ -3361,6 +3477,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3391,6 +3508,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -3405,11 +3523,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -3504,6 +3624,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3534,6 +3655,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "name": "ncount"
@@ -3568,6 +3690,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native*"
@@ -3576,11 +3699,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "name": "ncount"
@@ -3592,6 +3717,7 @@
                         },
                         "ncount": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "out"
                             }
                         }
@@ -3663,6 +3789,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3691,6 +3818,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native**"
@@ -3699,11 +3827,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "nitems": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             }
                         }
@@ -3778,6 +3908,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3806,6 +3937,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native**"
@@ -3814,11 +3946,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "nitems": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             }
                         }
@@ -3890,6 +4024,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -3918,6 +4053,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native**"
@@ -3926,11 +4062,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             }
                         }
@@ -4005,6 +4143,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -4033,6 +4172,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native**"
@@ -4041,11 +4181,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "out"
                             }
                         }
@@ -4121,6 +4263,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -4149,6 +4292,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native***",
                                 "intent": "out"
                             },
                             "stmt": "c_out_native***"
@@ -4157,11 +4301,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native***",
                                 "intent": "out"
                             }
                         }
@@ -4247,6 +4393,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -4275,6 +4422,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "in"
                             },
                             "stmt": "c_in_native**"
@@ -4283,11 +4431,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "in"
                             }
                         }
@@ -4359,6 +4509,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -4389,6 +4540,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -4406,11 +4558,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -4494,6 +4648,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -4524,6 +4679,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -4538,11 +4694,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "count": {
                             "meta": {
+                                "abstract": "native**",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -4623,6 +4781,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_void*"
@@ -4652,6 +4811,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4661,11 +4821,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void*",
                                 "intent": "function"
                             }
                         },
                         "flag": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -4743,6 +4905,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_void*"
@@ -4772,6 +4935,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             },
@@ -4781,11 +4945,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void*",
                                 "intent": "function"
                             }
                         },
                         "flag": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "in",
                                 "value": true
                             }
@@ -4854,6 +5020,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -4882,6 +5049,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void**",
                                 "intent": "out"
                             },
                             "stmt": "c_out_void**"
@@ -4890,11 +5058,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "addr": {
                             "meta": {
+                                "abstract": "void**",
                                 "intent": "out"
                             }
                         }
@@ -4965,6 +5135,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -4993,6 +5164,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void**",
                                 "intent": "inout"
                             },
                             "stmt": "c_inout_void**"
@@ -5001,11 +5173,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "addr": {
                             "meta": {
+                                "abstract": "void**",
                                 "intent": "inout"
                             }
                         }
@@ -5089,6 +5263,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -5117,6 +5292,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void**",
                                 "intent": "in",
                                 "rank": 1
                             },
@@ -5126,11 +5302,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "addr": {
                             "meta": {
+                                "abstract": "void**",
                                 "intent": "in",
                                 "rank": 1
                             }
@@ -5194,6 +5372,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native*"
@@ -5202,6 +5381,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             }
                         }
@@ -5269,6 +5449,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -5283,6 +5464,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -5352,6 +5534,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native*"
@@ -5360,6 +5543,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             }
                         }
@@ -5428,6 +5612,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -5442,6 +5627,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -5513,6 +5699,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native*"
@@ -5521,6 +5708,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             }
                         }
@@ -5591,6 +5779,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native*"
@@ -5599,6 +5788,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             }
                         }
@@ -5687,6 +5877,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native*"
@@ -5715,6 +5906,7 @@
                                 "typemap_name": "char"
                             },
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "in"
                             },
                             "stmt": "c_in_char*"
@@ -5723,11 +5915,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "intent": "function"
                             }
                         },
                         "name": {
                             "meta": {
+                                "abstract": "char*",
                                 "intent": "in"
                             }
                         }
@@ -5799,6 +5993,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native**"
@@ -5807,6 +6002,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native**",
                                 "intent": "function"
                             }
                         }
@@ -5877,6 +6073,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"
@@ -5891,6 +6088,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native*",
                                 "dim_ast": [
                                     {
                                         "constant": "10"

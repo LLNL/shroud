@@ -1,659 +1,4 @@
 ***** Fortran/C
-root
-  c
-    ctor
-      shadow
-        capptr -- c_ctor_shadow_capptr
-          shared -- c_ctor_shadow_capptr_shared
-        capsule -- c_ctor_shadow_capsule
-    dtor -- c_dtor
-    function
-      bool -- c_function_bool
-      char -- c_function_char
-      char* -- c_function_char*
-        arg -- c_function_char*_arg
-        buf
-          arg -- c_function_char*_buf_arg
-          copy -- c_function_char*_buf_copy
-      enum -- c_function_enum
-      native -- c_function_native
-      native& -- c_function_native&
-      native* -- c_function_native*
-        caller -- c_function_native*_caller
-        scalar -- c_function_native*_scalar
-      native** -- c_function_native**
-      shadow
-        capptr -- c_function_shadow_capptr
-      shadow&
-        capptr -- c_function_shadow&_capptr
-          caller -- c_function_shadow&_capptr_caller
-          library -- c_function_shadow&_capptr_library
-        capsule -- c_function_shadow&_capsule
-          caller -- c_function_shadow&_capsule_caller
-          library -- c_function_shadow&_capsule_library
-      shadow*
-        capptr -- c_function_shadow*_capptr
-          caller -- c_function_shadow*_capptr_caller
-          library -- c_function_shadow*_capptr_library
-          shared -- c_function_shadow*_capptr_shared
-        capsule -- c_function_shadow*_capsule
-        this -- c_function_shadow*_this
-      shadow<native>
-        capptr -- c_function_shadow<native>_capptr
-      string -- c_function_string
-        buf
-          arg -- c_function_string_buf_arg
-          copy -- c_function_string_buf_copy
-      string& -- c_function_string&
-        buf
-          arg -- c_function_string&_buf_arg
-          copy -- c_function_string&_buf_copy
-        copy -- c_function_string&_copy
-      string* -- c_function_string*
-        buf
-          copy -- c_function_string*_buf_copy
-        caller -- c_function_string*_caller
-        copy -- c_function_string*_copy
-        library -- c_function_string*_library
-      struct -- c_function_struct
-      struct* -- c_function_struct*
-      vector<native> -- c_function_vector<native>
-        malloc -- c_function_vector<native>_malloc
-      void* -- c_function_void*
-    getter
-      native -- c_getter_native
-      native* -- c_getter_native*
-    in
-      bool -- c_in_bool
-      char -- c_in_char
-      char* -- c_in_char*
-        buf -- c_in_char*_buf
-      char** -- c_in_char**
-        buf -- c_in_char**_buf
-      enum -- c_in_enum
-      native -- c_in_native
-      native& -- c_in_native&
-      native* -- c_in_native*
-        cdesc -- c_in_native*_cdesc
-      native** -- c_in_native**
-      procedure -- c_in_procedure
-        external -- c_in_procedure_external
-        funptr -- c_in_procedure_funptr
-      shadow -- c_in_shadow
-      shadow& -- c_in_shadow&
-      shadow* -- c_in_shadow*
-      string -- c_in_string
-        buf -- c_in_string_buf
-      string& -- c_in_string&
-        buf -- c_in_string&_buf
-      string* -- c_in_string*
-        buf -- c_in_string*_buf
-      struct -- c_in_struct
-      struct& -- c_in_struct&
-      struct* -- c_in_struct*
-      unknown -- c_in_unknown
-      vector<native*>& -- c_in_vector<native*>&
-        buf -- c_in_vector<native*>&_buf
-      vector<native>
-        buf -- c_in_vector<native>_buf
-      vector<native>& -- c_in_vector<native>&
-        buf -- c_in_vector<native>&_buf
-      vector<native>*
-        buf -- c_in_vector<native>*_buf
-      vector<string>
-        buf -- c_in_vector<string>_buf
-      vector<string>& -- c_in_vector<string>&
-        buf -- c_in_vector<string>&_buf
-      vector<string>*
-        buf -- c_in_vector<string>*_buf
-      void -- c_in_void
-      void* -- c_in_void*
-        cdesc -- c_in_void*_cdesc
-      void** -- c_in_void**
-    inout
-      bool
-        * -- c_inout_bool_*
-      char* -- c_inout_char*
-        buf -- c_inout_char*_buf
-      enum* -- c_inout_enum*
-      native& -- c_inout_native&
-        hidden -- c_inout_native&_hidden
-      native* -- c_inout_native*
-        cdesc -- c_inout_native*_cdesc
-        hidden -- c_inout_native*_hidden
-      shadow& -- c_inout_shadow&
-      shadow* -- c_inout_shadow*
-      string& -- c_inout_string&
-        buf -- c_inout_string&_buf
-      string* -- c_inout_string*
-        buf -- c_inout_string*_buf
-      struct& -- c_inout_struct&
-      struct* -- c_inout_struct*
-      vector<native>
-        buf
-          copy -- c_inout_vector<native>_buf_copy
-          malloc -- c_inout_vector<native>_buf_malloc
-      vector<native>&
-        buf
-          copy -- c_inout_vector<native>&_buf_copy
-          malloc -- c_inout_vector<native>&_buf_malloc
-      vector<native>*
-        buf
-          copy -- c_inout_vector<native>*_buf_copy
-          malloc -- c_inout_vector<native>*_buf_malloc
-      vector<scalar>& -- c_inout_vector<scalar>&
-      void*
-        cdesc -- c_inout_void*_cdesc
-      void** -- c_inout_void**
-    mixin
-      arg
-        cfi -- c_mixin_arg_cfi
-        character
-          cfi -- c_mixin_arg_character_cfi
-        native
-          cfi -- c_mixin_arg_native_cfi
-      character -- c_mixin_character
-      cvar-capsule-fill -- c_mixin_cvar-capsule-fill
-      declare-arg -- c_mixin_declare-arg
-      declare-fortran-result -- c_mixin_declare-fortran-result
-      destructor
-        new-shadow-shared -- c_mixin_destructor_new-shadow-shared
-        new-string -- c_mixin_destructor_new-string
-        new-vector -- c_mixin_destructor_new-vector
-      function -- c_mixin_function
-        char*
-          cdesc -- c_mixin_function_char*_cdesc
-        shadow
-          capptr -- c_mixin_function_shadow_capptr
-        string
-          cdesc -- c_mixin_function_string_cdesc
-        vector
-          malloc -- c_mixin_function_vector_malloc
-      in
-        character
-          buf -- c_mixin_in_character_buf
-      inout
-        vector
-          cdesc -- c_mixin_inout_vector_cdesc
-        vector<native>
-          cdesc -- c_mixin_inout_vector<native>_cdesc
-      native
-        capsule
-          fill -- c_mixin_native_capsule_fill
-        cdesc
-          fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
-        cfi
-          allocatable -- c_mixin_native_cfi_allocatable
-          pointer -- c_mixin_native_cfi_pointer
-      noargs -- c_mixin_noargs
-      out
-        native** -- c_mixin_out_native**
-        vector
-          buf
-            malloc -- c_mixin_out_vector_buf_malloc
-        vector<native>
-          cdesc -- c_mixin_out_vector<native>_cdesc
-      shadow -- c_mixin_shadow
-      unknown -- c_mixin_unknown
-      vector
-        cdesc
-          fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
-    out
-      bool
-        * -- c_out_bool_*
-      char
-        *
-          buf -- c_out_char_*_buf
-      char* -- c_out_char*
-      enum* -- c_out_enum*
-      native& -- c_out_native&
-        hidden -- c_out_native&_hidden
-      native* -- c_out_native*
-        cdesc -- c_out_native*_cdesc
-        hidden -- c_out_native*_hidden
-      native*& -- c_out_native*&
-      native** -- c_out_native**
-        raw -- c_out_native**_raw
-      native*** -- c_out_native***
-      string& -- c_out_string&
-        buf -- c_out_string&_buf
-      string* -- c_out_string*
-        buf -- c_out_string*_buf
-      string** -- c_out_string**
-        cdesc
-          copy -- c_out_string**_cdesc_copy
-      struct& -- c_out_struct&
-      struct* -- c_out_struct*
-      vector<native>
-        buf
-          copy -- c_out_vector<native>_buf_copy
-          malloc -- c_out_vector<native>_buf_malloc
-      vector<native>& -- c_out_vector<native>&
-        buf
-          copy -- c_out_vector<native>&_buf_copy
-          malloc -- c_out_vector<native>&_buf_malloc
-        cdesc -- c_out_vector<native>&_cdesc
-      vector<native>*
-        buf
-          copy -- c_out_vector<native>*_buf_copy
-          malloc -- c_out_vector<native>*_buf_malloc
-        cdesc -- c_out_vector<native>*_cdesc
-      vector<string>
-        buf
-          copy -- c_out_vector<string>_buf_copy
-      vector<string>& -- c_out_vector<string>&
-        buf
-          copy -- c_out_vector<string>&_buf_copy
-        cdesc -- c_out_vector<string>&_cdesc
-          allocatable -- c_out_vector<string>&_cdesc_allocatable
-      vector<string>*
-        buf
-          copy -- c_out_vector<string>*_buf_copy
-      void*
-        cdesc -- c_out_void*_cdesc
-      void*& -- c_out_void*&
-      void** -- c_out_void**
-    setter -- c_setter
-      native -- c_setter_native
-      native* -- c_setter_native*
-      string
-        scalar
-          buf -- c_setter_string_scalar_buf
-    subroutine -- c_subroutine
-  f
-    ctor
-      shadow
-        capsule -- f_ctor_shadow_capsule
-          shared -- f_ctor_shadow_capsule_shared
-    dtor -- f_dtor
-    function
-      bool -- f_function_bool
-      char -- f_function_char
-        cdesc
-          allocatable -- f_function_char_cdesc_allocatable
-          pointer -- f_function_char_cdesc_pointer
-        cfi
-          allocatable -- f_function_char_cfi_allocatable
-          pointer -- f_function_char_cfi_pointer
-      char* -- f_function_char*
-        allocatable -- f_function_char*_allocatable
-        arg -- f_function_char*_arg
-        buf
-          arg -- f_function_char*_buf_arg
-          copy -- f_function_char*_buf_copy
-        cdesc
-          allocatable -- f_function_char*_cdesc_allocatable
-          pointer -- f_function_char*_cdesc_pointer
-        cfi
-          allocatable -- f_function_char*_cfi_allocatable
-          arg -- f_function_char*_cfi_arg
-          copy -- f_function_char*_cfi_copy
-          pointer -- f_function_char*_cfi_pointer
-        copy -- f_function_char*_copy
-        pointer -- f_function_char*_pointer
-        raw -- f_function_char*_raw
-      enum -- f_function_enum
-      native -- f_function_native
-      native& -- f_function_native&
-        pointer -- f_function_native&_pointer
-      native*
-        cdesc
-          allocatable -- f_function_native*_cdesc_allocatable
-          pointer -- f_function_native*_cdesc_pointer
-            caller -- f_function_native*_cdesc_pointer_caller
-        cfi
-          allocatable -- f_function_native*_cfi_allocatable
-          pointer -- f_function_native*_cfi_pointer
-        pointer -- f_function_native*_pointer
-          caller -- f_function_native*_pointer_caller
-        raw -- f_function_native*_raw
-        scalar -- f_function_native*_scalar
-      native** -- f_function_native**
-      shadow
-        capsule -- f_function_shadow_capsule
-      shadow&
-        capsule -- f_function_shadow&_capsule
-          caller -- f_function_shadow&_capsule_caller
-          library -- f_function_shadow&_capsule_library
-      shadow*
-        capsule -- f_function_shadow*_capsule
-          caller -- f_function_shadow*_capsule_caller
-          library -- f_function_shadow*_capsule_library
-        this -- f_function_shadow*_this
-      shadow<native>
-        capsule -- f_function_shadow<native>_capsule
-      string
-        buf -- f_function_string_buf
-          arg -- f_function_string_buf_arg
-          copy -- f_function_string_buf_copy
-        cdesc
-          allocatable -- f_function_string_cdesc_allocatable
-            caller -- f_function_string_cdesc_allocatable_caller
-            library -- f_function_string_cdesc_allocatable_library
-        cfi
-          allocatable -- f_function_string_cfi_allocatable
-            caller -- f_function_string_cfi_allocatable_caller
-            library -- f_function_string_cfi_allocatable_library
-          arg -- f_function_string_cfi_arg
-          copy -- f_function_string_cfi_copy
-          pointer -- f_function_string_cfi_pointer
-            caller -- f_function_string_cfi_pointer_caller
-            library -- f_function_string_cfi_pointer_library
-      string&
-        buf -- f_function_string&_buf
-          arg -- f_function_string&_buf_arg
-          copy -- f_function_string&_buf_copy
-        cdesc
-          allocatable -- f_function_string&_cdesc_allocatable
-            caller -- f_function_string&_cdesc_allocatable_caller
-            library -- f_function_string&_cdesc_allocatable_library
-          pointer -- f_function_string&_cdesc_pointer
-            caller -- f_function_string&_cdesc_pointer_caller
-            library -- f_function_string&_cdesc_pointer_library
-        cfi
-          allocatable -- f_function_string&_cfi_allocatable
-            caller -- f_function_string&_cfi_allocatable_caller
-            library -- f_function_string&_cfi_allocatable_library
-          arg -- f_function_string&_cfi_arg
-          copy -- f_function_string&_cfi_copy
-          pointer -- f_function_string&_cfi_pointer
-            caller -- f_function_string&_cfi_pointer_caller
-            library -- f_function_string&_cfi_pointer_library
-      string*
-        buf -- f_function_string*_buf
-          copy -- f_function_string*_buf_copy
-        cdesc
-          allocatable -- f_function_string*_cdesc_allocatable
-            caller -- f_function_string*_cdesc_allocatable_caller
-            library -- f_function_string*_cdesc_allocatable_library
-          pointer -- f_function_string*_cdesc_pointer
-            caller -- f_function_string*_cdesc_pointer_caller
-            library -- f_function_string*_cdesc_pointer_library
-        cfi
-          allocatable -- f_function_string*_cfi_allocatable
-            caller -- f_function_string*_cfi_allocatable_caller
-            library -- f_function_string*_cfi_allocatable_library
-          copy -- f_function_string*_cfi_copy
-          pointer -- f_function_string*_cfi_pointer
-            caller -- f_function_string*_cfi_pointer_caller
-            library -- f_function_string*_cfi_pointer_library
-      struct -- f_function_struct
-      struct*
-        cdesc
-          pointer -- f_function_struct*_cdesc_pointer
-        pointer -- f_function_struct*_pointer
-      vector
-        scalar
-          cdesc -- f_function_vector_scalar_cdesc
-      vector<native>
-        cdesc
-          allocatable -- f_function_vector<native>_cdesc_allocatable
-      void* -- f_function_void*
-    getter
-      bool -- f_getter_bool
-      native -- f_getter_native
-      native*
-        cdesc
-          pointer -- f_getter_native*_cdesc_pointer
-        pointer -- f_getter_native*_pointer
-      string
-        cdesc
-          allocatable -- f_getter_string_cdesc_allocatable
-      struct*
-        cdesc
-          pointer -- f_getter_struct*_cdesc_pointer
-        fapi
-          pointer -- f_getter_struct*_fapi_pointer
-      struct**
-        cdesc
-          raw -- f_getter_struct**_cdesc_raw
-    in
-      bool -- f_in_bool
-      char -- f_in_char
-      char* -- f_in_char*
-        buf -- f_in_char*_buf
-        capi -- f_in_char*_capi
-        cfi -- f_in_char*_cfi
-      char** -- f_in_char**
-        buf -- f_in_char**_buf
-        cfi -- f_in_char**_cfi
-      enum -- f_in_enum
-      native -- f_in_native
-      native& -- f_in_native&
-      native* -- f_in_native*
-        cdesc -- f_in_native*_cdesc
-        cfi -- f_in_native*_cfi
-      native** -- f_in_native**
-      procedure -- f_in_procedure
-        external -- f_in_procedure_external
-        funptr -- f_in_procedure_funptr
-      shadow -- f_in_shadow
-      shadow& -- f_in_shadow&
-      shadow* -- f_in_shadow*
-      string
-        buf -- f_in_string_buf
-        cfi -- f_in_string_cfi
-      string& -- f_in_string&
-        buf -- f_in_string&_buf
-        cfi -- f_in_string&_cfi
-      string* -- f_in_string*
-        buf -- f_in_string*_buf
-        cfi -- f_in_string*_cfi
-      struct -- f_in_struct
-      struct& -- f_in_struct&
-      struct* -- f_in_struct*
-      unknown -- f_in_unknown
-      vector
-        &
-          cdesc
-            targ
-              native
-                scalar -- f_in_vector_&_cdesc_targ_native_scalar
-      vector<native*>&
-        buf -- f_in_vector<native*>&_buf
-      vector<native>
-        buf -- f_in_vector<native>_buf
-      vector<native>&
-        buf -- f_in_vector<native>&_buf
-      vector<native>*
-        buf -- f_in_vector<native>*_buf
-      vector<string>
-        buf -- f_in_vector<string>_buf
-      vector<string>&
-        buf -- f_in_vector<string>&_buf
-      vector<string>*
-        buf -- f_in_vector<string>*_buf
-      void -- f_in_void
-      void* -- f_in_void*
-        cdesc -- f_in_void*_cdesc
-      void** -- f_in_void**
-        cfi -- f_in_void**_cfi
-    inout
-      bool* -- f_inout_bool*
-      char* -- f_inout_char*
-        buf -- f_inout_char*_buf
-        capi -- f_inout_char*_capi
-        cfi -- f_inout_char*_cfi
-      enum* -- f_inout_enum*
-      native& -- f_inout_native&
-        hidden -- f_inout_native&_hidden
-      native* -- f_inout_native*
-        cdesc -- f_inout_native*_cdesc
-        cfi -- f_inout_native*_cfi
-        hidden -- f_inout_native*_hidden
-      shadow& -- f_inout_shadow&
-      shadow* -- f_inout_shadow*
-      string& -- f_inout_string&
-        buf -- f_inout_string&_buf
-        cfi -- f_inout_string&_cfi
-      string* -- f_inout_string*
-        buf -- f_inout_string*_buf
-        cfi -- f_inout_string*_cfi
-      struct& -- f_inout_struct&
-      struct* -- f_inout_struct*
-      vector
-        buf
-          targ
-            string
-              scalar -- f_inout_vector_buf_targ_string_scalar
-      vector<native>&
-        cdesc -- f_inout_vector<native>&_cdesc
-          allocatable -- f_inout_vector<native>&_cdesc_allocatable
-      void*
-        cdesc -- f_inout_void*_cdesc
-      void** -- f_inout_void**
-    mixin
-      arg
-        capsule -- f_mixin_arg_capsule
-      capsule
-        dtor -- f_mixin_capsule_dtor
-      char
-        cdesc
-          allocate -- f_mixin_char_cdesc_allocate
-          pointer -- f_mixin_char_cdesc_pointer
-      declare-as-cptr -- f_mixin_declare-as-cptr
-      declare-fortran-arg -- f_mixin_declare-fortran-arg
-      declare-fortran-result -- f_mixin_declare-fortran-result
-      declare-interface-arg -- f_mixin_declare-interface-arg
-      function -- f_mixin_function
-        c-ptr -- f_mixin_function_c-ptr
-        ptr -- f_mixin_function_ptr
-        shadow
-          capsule -- f_mixin_function_shadow_capsule
-        string
-          cfi
-            allocatable -- f_mixin_function_string_cfi_allocatable
-      function-to-subroutine -- f_mixin_function-to-subroutine
-      getter
-        cdesc -- f_mixin_getter_cdesc
-      helper
-        array
-          string
-            allocatable -- f_mixin_helper_array_string_allocatable
-        vector
-          string
-            allocatable -- f_mixin_helper_vector_string_allocatable
-      in
-        2d
-          vector
-            buf -- f_mixin_in_2d_vector_buf
-        string
-          array
-            buf -- f_mixin_in_string_array_buf
-        vector
-          buf -- f_mixin_in_vector_buf
-      inout
-        array
-          cdesc -- f_mixin_inout_array_cdesc
-      interface-as-cptr -- f_mixin_interface-as-cptr
-      interface-as-cptr-value -- f_mixin_interface-as-cptr-value
-      local-logical-var -- f_mixin_local-logical-var
-      native
-        cdesc
-          allocate -- f_mixin_native_cdesc_allocate
-          pointer -- f_mixin_native_cdesc_pointer
-          raw -- f_mixin_native_cdesc_raw
-      out
-        array
-          cdesc
-            allocatable -- f_mixin_out_array_cdesc_allocatable
-        native
-          cdesc
-            allocate -- f_mixin_out_native_cdesc_allocate
-            pointer -- f_mixin_out_native_cdesc_pointer
-        string**
-          cfi -- f_mixin_out_string**_cfi
-        vector
-          buf -- f_mixin_out_vector_buf
-      pass
-        capsule -- f_mixin_pass_capsule
-        cdesc -- f_mixin_pass_cdesc
-        character
-          buf -- f_mixin_pass_character_buf
-      shadow-arg -- f_mixin_shadow-arg
-      str
-        array -- f_mixin_str_array
-      unknown -- f_mixin_unknown
-      use
-        capsule -- f_mixin_use_capsule
-    none
-      bool -- f_none_bool
-      bool* -- f_none_bool*
-      char -- f_none_char
-      char* -- f_none_char*
-      native -- f_none_native
-      native* -- f_none_native*
-      void* -- f_none_void*
-    out
-      bool* -- f_out_bool*
-      char* -- f_out_char*
-        buf -- f_out_char*_buf
-        capi -- f_out_char*_capi
-        cfi -- f_out_char*_cfi
-      enum* -- f_out_enum*
-      native& -- f_out_native&
-        hidden -- f_out_native&_hidden
-      native* -- f_out_native*
-        cdesc -- f_out_native*_cdesc
-        cfi
-          allocatable -- f_out_native*_cfi_allocatable
-        hidden -- f_out_native*_hidden
-      native*&
-        cdesc -- f_out_native*&_cdesc
-          pointer -- f_out_native*&_cdesc_pointer
-      native**
-        cdesc
-          allocatable -- f_out_native**_cdesc_allocatable
-          pointer -- f_out_native**_cdesc_pointer
-        cfi
-          allocatable -- f_out_native**_cfi_allocatable
-          pointer -- f_out_native**_cfi_pointer
-        raw -- f_out_native**_raw
-      native*** -- f_out_native***
-      string&
-        buf -- f_out_string&_buf
-        cfi -- f_out_string&_cfi
-      string*
-        buf -- f_out_string*_buf
-        cfi -- f_out_string*_cfi
-      string**
-        cdesc
-          allocatable -- f_out_string**_cdesc_allocatable
-          copy -- f_out_string**_cdesc_copy
-        cfi
-          allocatable -- f_out_string**_cfi_allocatable
-          copy -- f_out_string**_cfi_copy
-        copy -- f_out_string**_copy
-      struct& -- f_out_struct&
-      struct* -- f_out_struct*
-      vector
-        buf
-          targ
-            string
-              scalar -- f_out_vector_buf_targ_string_scalar
-      vector<native>&
-        cdesc -- f_out_vector<native>&_cdesc
-          allocatable -- f_out_vector<native>&_cdesc_allocatable
-      vector<native>*
-        cdesc -- f_out_vector<native>*_cdesc
-          allocatable -- f_out_vector<native>*_cdesc_allocatable
-      vector<string>&
-        cdesc -- f_out_vector<string>&_cdesc
-          allocatable -- f_out_vector<string>&_cdesc_allocatable
-      void*
-        cdesc -- f_out_void*_cdesc
-      void*& -- f_out_void*&
-      void** -- f_out_void**
-    setter -- f_setter
-      bool -- f_setter_bool
-      native -- f_setter_native
-      native* -- f_setter_native*
-      string
-        buf -- f_setter_string_buf
-      struct* -- f_setter_struct*
-        pointer -- f_setter_struct*_pointer
-      struct** -- f_setter_struct**
-    subroutine -- f_subroutine
 c_ctor_shadow_capptr:
   name: c_ctor_shadow_capptr
   comments:
@@ -14429,207 +13774,662 @@ f_subroutine:
   f_call:
   - call {f_call_function}({F_arg_c_call})
   owner: library
-***** Python
 root
-  py
+  c
     ctor
-      char* -- py_ctor_char*
-        numpy -- py_ctor_char*_numpy
-      char** -- py_ctor_char**
-        list -- py_ctor_char**_list
-      char[] -- py_ctor_char[]
-        list -- py_ctor_char[]_list
-        numpy -- py_ctor_char[]_numpy
-      native -- py_ctor_native
-        list -- py_ctor_native_list
-        numpy -- py_ctor_native_numpy
-      native* -- py_ctor_native*
-        list -- py_ctor_native*_list
-        numpy -- py_ctor_native*_numpy
-      native[] -- py_ctor_native[]
-        list -- py_ctor_native[]_list
-        numpy -- py_ctor_native[]_numpy
-      shadow -- py_ctor_shadow
-      struct -- py_ctor_struct
-    descr
-      bool -- py_descr_bool
-      char* -- py_descr_char*
-        numpy -- py_descr_char*_numpy
-      char**
-        list -- py_descr_char**_list
-      char[] -- py_descr_char[]
-        list -- py_descr_char[]_list
-        numpy -- py_descr_char[]_numpy
-      native -- py_descr_native
-      native*
-        list -- py_descr_native*_list
-        numpy -- py_descr_native*_numpy
-      native[]
-        list -- py_descr_native[]_list
-        numpy -- py_descr_native[]_numpy
+      shadow
+        capptr -- c_ctor_shadow_capptr
+          shared -- c_ctor_shadow_capptr_shared
+        capsule -- c_ctor_shadow_capsule
+    dtor -- c_dtor
     function
-      bool -- py_function_bool
-      char -- py_function_char
-      char* -- py_function_char*
-      enum -- py_function_enum
-      native -- py_function_native
-      native&
-        numpy -- py_function_native&_numpy
-      native*
-        list -- py_function_native*_list
-        numpy -- py_function_native*_numpy
-        scalar -- py_function_native*_scalar
-      shadow -- py_function_shadow
-      shadow& -- py_function_shadow&
-      shadow* -- py_function_shadow*
-      string -- py_function_string
-      string& -- py_function_string&
-      string* -- py_function_string*
-      struct
-        class -- py_function_struct_class
-        list -- py_function_struct_list
-        numpy -- py_function_struct_numpy
-      struct*
-        class -- py_function_struct*_class
-        list -- py_function_struct*_list
-        numpy -- py_function_struct*_numpy
-      vector
-        list -- py_function_vector_list
-        numpy -- py_function_vector_numpy
-      vector<native>
-        list -- py_function_vector<native>_list
-        numpy -- py_function_vector<native>_numpy
-      void* -- py_function_void*
-    implied
-      bool -- py_implied_bool
-      native -- py_implied_native
+      bool -- c_function_bool
+      char -- c_function_char
+      char* -- c_function_char*
+        arg -- c_function_char*_arg
+        buf
+          arg -- c_function_char*_buf_arg
+          copy -- c_function_char*_buf_copy
+      enum -- c_function_enum
+      native -- c_function_native
+      native& -- c_function_native&
+      native* -- c_function_native*
+        caller -- c_function_native*_caller
+        scalar -- c_function_native*_scalar
+      native** -- c_function_native**
+      shadow
+        capptr -- c_function_shadow_capptr
+      shadow&
+        capptr -- c_function_shadow&_capptr
+          caller -- c_function_shadow&_capptr_caller
+          library -- c_function_shadow&_capptr_library
+        capsule -- c_function_shadow&_capsule
+          caller -- c_function_shadow&_capsule_caller
+          library -- c_function_shadow&_capsule_library
+      shadow*
+        capptr -- c_function_shadow*_capptr
+          caller -- c_function_shadow*_capptr_caller
+          library -- c_function_shadow*_capptr_library
+          shared -- c_function_shadow*_capptr_shared
+        capsule -- c_function_shadow*_capsule
+        this -- c_function_shadow*_this
+      shadow<native>
+        capptr -- c_function_shadow<native>_capptr
+      string -- c_function_string
+        buf
+          arg -- c_function_string_buf_arg
+          copy -- c_function_string_buf_copy
+      string& -- c_function_string&
+        buf
+          arg -- c_function_string&_buf_arg
+          copy -- c_function_string&_buf_copy
+        copy -- c_function_string&_copy
+      string* -- c_function_string*
+        buf
+          copy -- c_function_string*_buf_copy
+        caller -- c_function_string*_caller
+        copy -- c_function_string*_copy
+        library -- c_function_string*_library
+      struct -- c_function_struct
+      struct* -- c_function_struct*
+      vector<native> -- c_function_vector<native>
+        malloc -- c_function_vector<native>_malloc
+      void* -- c_function_void*
+    getter
+      native -- c_getter_native
+      native* -- c_getter_native*
     in
-      bool -- py_in_bool
-      char -- py_in_char
-      char* -- py_in_char*
-      char** -- py_in_char**
-      enum -- py_in_enum
-      native -- py_in_native
-      native& -- py_in_native&
-      native* -- py_in_native*
-        list -- py_in_native*_list
-        numpy -- py_in_native*_numpy
-      procedure -- py_in_procedure
-      shadow -- py_in_shadow
-      shadow& -- py_in_shadow&
-      shadow* -- py_in_shadow*
-      string -- py_in_string
-      string& -- py_in_string&
-      string* -- py_in_string*
-      struct
-        class -- py_in_struct_class
-        list -- py_in_struct_list
-        numpy -- py_in_struct_numpy
-      struct&
-        class -- py_in_struct&_class
-        numpy -- py_in_struct&_numpy
-      struct*
-        class -- py_in_struct*_class
-        list -- py_in_struct*_list
-        numpy -- py_in_struct*_numpy
-      unknown -- py_in_unknown
-      vector<native>&
-        list -- py_in_vector<native>&_list
-        numpy -- py_in_vector<native>&_numpy
-      void* -- py_in_void*
+      bool -- c_in_bool
+      char -- c_in_char
+      char* -- c_in_char*
+        buf -- c_in_char*_buf
+      char** -- c_in_char**
+        buf -- c_in_char**_buf
+      enum -- c_in_enum
+      native -- c_in_native
+      native& -- c_in_native&
+      native* -- c_in_native*
+        cdesc -- c_in_native*_cdesc
+      native** -- c_in_native**
+      procedure -- c_in_procedure
+        external -- c_in_procedure_external
+        funptr -- c_in_procedure_funptr
+      shadow -- c_in_shadow
+      shadow& -- c_in_shadow&
+      shadow* -- c_in_shadow*
+      string -- c_in_string
+        buf -- c_in_string_buf
+      string& -- c_in_string&
+        buf -- c_in_string&_buf
+      string* -- c_in_string*
+        buf -- c_in_string*_buf
+      struct -- c_in_struct
+      struct& -- c_in_struct&
+      struct* -- c_in_struct*
+      unknown -- c_in_unknown
+      vector<native*>& -- c_in_vector<native*>&
+        buf -- c_in_vector<native*>&_buf
+      vector<native>
+        buf -- c_in_vector<native>_buf
+      vector<native>& -- c_in_vector<native>&
+        buf -- c_in_vector<native>&_buf
+      vector<native>*
+        buf -- c_in_vector<native>*_buf
+      vector<string>
+        buf -- c_in_vector<string>_buf
+      vector<string>& -- c_in_vector<string>&
+        buf -- c_in_vector<string>&_buf
+      vector<string>*
+        buf -- c_in_vector<string>*_buf
+      void -- c_in_void
+      void* -- c_in_void*
+        cdesc -- c_in_void*_cdesc
+      void** -- c_in_void**
     inout
-      bool -- py_inout_bool
-      bool* -- py_inout_bool*
-      char* -- py_inout_char*
-      native& -- py_inout_native&
-      native* -- py_inout_native*
-        list -- py_inout_native*_list
-        numpy -- py_inout_native*_numpy
-      shadow
-        * -- py_inout_shadow_*
-      string -- py_inout_string
-      string& -- py_inout_string&
-      string* -- py_inout_string*
-      struct
-        list -- py_inout_struct_list
-      struct&
-        class -- py_inout_struct&_class
-        numpy -- py_inout_struct&_numpy
-      struct*
-        class -- py_inout_struct*_class
-        list -- py_inout_struct*_list
-        numpy -- py_inout_struct*_numpy
-    mixin
-      alloc-cxx-type -- py_mixin_alloc-cxx-type
-      array
-        error -- py_mixin_array_error
-      array-ContiguousFromObject -- py_mixin_array-ContiguousFromObject
-      array-FROM-OFT-in -- py_mixin_array-FROM-OFT-in
-      array-FROM-OTF -- py_mixin_array-FROM-OTF
-      array-FromAny -- py_mixin_array-FromAny
-      array-NewFromDescr -- py_mixin_array-NewFromDescr
-      array-NewFromDescr2 -- py_mixin_array-NewFromDescr2
-      array-SimpleNew -- py_mixin_array-SimpleNew
-      array-SimpleNewFromData -- py_mixin_array-SimpleNewFromData
-      array-SimpleNewFromData2 -- py_mixin_array-SimpleNewFromData2
-      array-capsule -- py_mixin_array-capsule
-      array-get-data -- py_mixin_array-get-data
-      array-parse -- py_mixin_array-parse
-      ctor
-        array -- py_mixin_ctor_array
-          fill -- py_mixin_ctor_array_fill
-      cxx-as-pointer -- py_mixin_cxx-as-pointer
-      cxx-as-scalar -- py_mixin_cxx-as-scalar
-      function-assign-pointee -- py_mixin_function-assign-pointee
-      function-declare -- py_mixin_function-declare
-      function-struct-class -- py_mixin_function-struct-class
-      function-void -- py_mixin_function-void
-      malloc -- py_mixin_malloc
-        error -- py_mixin_malloc_error
-        error2 -- py_mixin_malloc_error2
-      shadow-create-object -- py_mixin_shadow-create-object
-      string-fmtdict -- py_mixin_string-fmtdict
-      string-fmtdict-scalar -- py_mixin_string-fmtdict-scalar
-      template
-        array
-          error -- py_mixin_template_array_error
-      unknown -- py_mixin_unknown
-    out
-      bool -- py_out_bool
-      bool* -- py_out_bool*
-      char*
-        charlen -- py_out_char*_charlen
-      enum* -- py_out_enum*
-      native& -- py_out_native&
-      native* -- py_out_native*
-        list -- py_out_native*_list
-        numpy -- py_out_native*_numpy
-      native*&
-        numpy -- py_out_native*&_numpy
-      native**
-        list -- py_out_native**_list
-        numpy -- py_out_native**_numpy
-        raw -- py_out_native**_raw
-      shadow
-        * -- py_out_shadow_*
-      string -- py_out_string
-      string& -- py_out_string&
-      string* -- py_out_string*
-      struct
-        list -- py_out_struct_list
-      struct&
-        class -- py_out_struct&_class
-        numpy -- py_out_struct&_numpy
-      struct*
-        class -- py_out_struct*_class
-        list -- py_out_struct*_list
-        numpy -- py_out_struct*_numpy
+      bool
+        * -- c_inout_bool_*
+      char* -- c_inout_char*
+        buf -- c_inout_char*_buf
+      enum* -- c_inout_enum*
+      native& -- c_inout_native&
+        hidden -- c_inout_native&_hidden
+      native* -- c_inout_native*
+        cdesc -- c_inout_native*_cdesc
+        hidden -- c_inout_native*_hidden
+      shadow& -- c_inout_shadow&
+      shadow* -- c_inout_shadow*
+      string& -- c_inout_string&
+        buf -- c_inout_string&_buf
+      string* -- c_inout_string*
+        buf -- c_inout_string*_buf
+      struct& -- c_inout_struct&
+      struct* -- c_inout_struct*
+      vector<native>
+        buf
+          copy -- c_inout_vector<native>_buf_copy
+          malloc -- c_inout_vector<native>_buf_malloc
       vector<native>&
-        list -- py_out_vector<native>&_list
-        numpy -- py_out_vector<native>&_numpy
-      void*& -- py_out_void*&
-      void** -- py_out_void**
-    subroutine -- py_subroutine
+        buf
+          copy -- c_inout_vector<native>&_buf_copy
+          malloc -- c_inout_vector<native>&_buf_malloc
+      vector<native>*
+        buf
+          copy -- c_inout_vector<native>*_buf_copy
+          malloc -- c_inout_vector<native>*_buf_malloc
+      vector<scalar>& -- c_inout_vector<scalar>&
+      void*
+        cdesc -- c_inout_void*_cdesc
+      void** -- c_inout_void**
+    mixin
+      arg
+        cfi -- c_mixin_arg_cfi
+        character
+          cfi -- c_mixin_arg_character_cfi
+        native
+          cfi -- c_mixin_arg_native_cfi
+      character -- c_mixin_character
+      cvar-capsule-fill -- c_mixin_cvar-capsule-fill
+      declare-arg -- c_mixin_declare-arg
+      declare-fortran-result -- c_mixin_declare-fortran-result
+      destructor
+        new-shadow-shared -- c_mixin_destructor_new-shadow-shared
+        new-string -- c_mixin_destructor_new-string
+        new-vector -- c_mixin_destructor_new-vector
+      function -- c_mixin_function
+        char*
+          cdesc -- c_mixin_function_char*_cdesc
+        shadow
+          capptr -- c_mixin_function_shadow_capptr
+        string
+          cdesc -- c_mixin_function_string_cdesc
+        vector
+          malloc -- c_mixin_function_vector_malloc
+      in
+        character
+          buf -- c_mixin_in_character_buf
+      inout
+        vector
+          cdesc -- c_mixin_inout_vector_cdesc
+        vector<native>
+          cdesc -- c_mixin_inout_vector<native>_cdesc
+      native
+        capsule
+          fill -- c_mixin_native_capsule_fill
+        cdesc
+          fill-cdesc -- c_mixin_native_cdesc_fill-cdesc
+        cfi
+          allocatable -- c_mixin_native_cfi_allocatable
+          pointer -- c_mixin_native_cfi_pointer
+      noargs -- c_mixin_noargs
+      out
+        native** -- c_mixin_out_native**
+        vector
+          buf
+            malloc -- c_mixin_out_vector_buf_malloc
+        vector<native>
+          cdesc -- c_mixin_out_vector<native>_cdesc
+      shadow -- c_mixin_shadow
+      unknown -- c_mixin_unknown
+      vector
+        cdesc
+          fill-cdesc -- c_mixin_vector_cdesc_fill-cdesc
+    out
+      bool
+        * -- c_out_bool_*
+      char
+        *
+          buf -- c_out_char_*_buf
+      char* -- c_out_char*
+      enum* -- c_out_enum*
+      native& -- c_out_native&
+        hidden -- c_out_native&_hidden
+      native* -- c_out_native*
+        cdesc -- c_out_native*_cdesc
+        hidden -- c_out_native*_hidden
+      native*& -- c_out_native*&
+      native** -- c_out_native**
+        raw -- c_out_native**_raw
+      native*** -- c_out_native***
+      string& -- c_out_string&
+        buf -- c_out_string&_buf
+      string* -- c_out_string*
+        buf -- c_out_string*_buf
+      string** -- c_out_string**
+        cdesc
+          copy -- c_out_string**_cdesc_copy
+      struct& -- c_out_struct&
+      struct* -- c_out_struct*
+      vector<native>
+        buf
+          copy -- c_out_vector<native>_buf_copy
+          malloc -- c_out_vector<native>_buf_malloc
+      vector<native>& -- c_out_vector<native>&
+        buf
+          copy -- c_out_vector<native>&_buf_copy
+          malloc -- c_out_vector<native>&_buf_malloc
+        cdesc -- c_out_vector<native>&_cdesc
+      vector<native>*
+        buf
+          copy -- c_out_vector<native>*_buf_copy
+          malloc -- c_out_vector<native>*_buf_malloc
+        cdesc -- c_out_vector<native>*_cdesc
+      vector<string>
+        buf
+          copy -- c_out_vector<string>_buf_copy
+      vector<string>& -- c_out_vector<string>&
+        buf
+          copy -- c_out_vector<string>&_buf_copy
+        cdesc -- c_out_vector<string>&_cdesc
+          allocatable -- c_out_vector<string>&_cdesc_allocatable
+      vector<string>*
+        buf
+          copy -- c_out_vector<string>*_buf_copy
+      void*
+        cdesc -- c_out_void*_cdesc
+      void*& -- c_out_void*&
+      void** -- c_out_void**
+    setter -- c_setter
+      native -- c_setter_native
+      native* -- c_setter_native*
+      string
+        scalar
+          buf -- c_setter_string_scalar_buf
+    subroutine -- c_subroutine
+  f
+    ctor
+      shadow
+        capsule -- f_ctor_shadow_capsule
+          shared -- f_ctor_shadow_capsule_shared
+    dtor -- f_dtor
+    function
+      bool -- f_function_bool
+      char -- f_function_char
+        cdesc
+          allocatable -- f_function_char_cdesc_allocatable
+          pointer -- f_function_char_cdesc_pointer
+        cfi
+          allocatable -- f_function_char_cfi_allocatable
+          pointer -- f_function_char_cfi_pointer
+      char* -- f_function_char*
+        allocatable -- f_function_char*_allocatable
+        arg -- f_function_char*_arg
+        buf
+          arg -- f_function_char*_buf_arg
+          copy -- f_function_char*_buf_copy
+        cdesc
+          allocatable -- f_function_char*_cdesc_allocatable
+          pointer -- f_function_char*_cdesc_pointer
+        cfi
+          allocatable -- f_function_char*_cfi_allocatable
+          arg -- f_function_char*_cfi_arg
+          copy -- f_function_char*_cfi_copy
+          pointer -- f_function_char*_cfi_pointer
+        copy -- f_function_char*_copy
+        pointer -- f_function_char*_pointer
+        raw -- f_function_char*_raw
+      enum -- f_function_enum
+      native -- f_function_native
+      native& -- f_function_native&
+        pointer -- f_function_native&_pointer
+      native*
+        cdesc
+          allocatable -- f_function_native*_cdesc_allocatable
+          pointer -- f_function_native*_cdesc_pointer
+            caller -- f_function_native*_cdesc_pointer_caller
+        cfi
+          allocatable -- f_function_native*_cfi_allocatable
+          pointer -- f_function_native*_cfi_pointer
+        pointer -- f_function_native*_pointer
+          caller -- f_function_native*_pointer_caller
+        raw -- f_function_native*_raw
+        scalar -- f_function_native*_scalar
+      native** -- f_function_native**
+      shadow
+        capsule -- f_function_shadow_capsule
+      shadow&
+        capsule -- f_function_shadow&_capsule
+          caller -- f_function_shadow&_capsule_caller
+          library -- f_function_shadow&_capsule_library
+      shadow*
+        capsule -- f_function_shadow*_capsule
+          caller -- f_function_shadow*_capsule_caller
+          library -- f_function_shadow*_capsule_library
+        this -- f_function_shadow*_this
+      shadow<native>
+        capsule -- f_function_shadow<native>_capsule
+      string
+        buf -- f_function_string_buf
+          arg -- f_function_string_buf_arg
+          copy -- f_function_string_buf_copy
+        cdesc
+          allocatable -- f_function_string_cdesc_allocatable
+            caller -- f_function_string_cdesc_allocatable_caller
+            library -- f_function_string_cdesc_allocatable_library
+        cfi
+          allocatable -- f_function_string_cfi_allocatable
+            caller -- f_function_string_cfi_allocatable_caller
+            library -- f_function_string_cfi_allocatable_library
+          arg -- f_function_string_cfi_arg
+          copy -- f_function_string_cfi_copy
+          pointer -- f_function_string_cfi_pointer
+            caller -- f_function_string_cfi_pointer_caller
+            library -- f_function_string_cfi_pointer_library
+      string&
+        buf -- f_function_string&_buf
+          arg -- f_function_string&_buf_arg
+          copy -- f_function_string&_buf_copy
+        cdesc
+          allocatable -- f_function_string&_cdesc_allocatable
+            caller -- f_function_string&_cdesc_allocatable_caller
+            library -- f_function_string&_cdesc_allocatable_library
+          pointer -- f_function_string&_cdesc_pointer
+            caller -- f_function_string&_cdesc_pointer_caller
+            library -- f_function_string&_cdesc_pointer_library
+        cfi
+          allocatable -- f_function_string&_cfi_allocatable
+            caller -- f_function_string&_cfi_allocatable_caller
+            library -- f_function_string&_cfi_allocatable_library
+          arg -- f_function_string&_cfi_arg
+          copy -- f_function_string&_cfi_copy
+          pointer -- f_function_string&_cfi_pointer
+            caller -- f_function_string&_cfi_pointer_caller
+            library -- f_function_string&_cfi_pointer_library
+      string*
+        buf -- f_function_string*_buf
+          copy -- f_function_string*_buf_copy
+        cdesc
+          allocatable -- f_function_string*_cdesc_allocatable
+            caller -- f_function_string*_cdesc_allocatable_caller
+            library -- f_function_string*_cdesc_allocatable_library
+          pointer -- f_function_string*_cdesc_pointer
+            caller -- f_function_string*_cdesc_pointer_caller
+            library -- f_function_string*_cdesc_pointer_library
+        cfi
+          allocatable -- f_function_string*_cfi_allocatable
+            caller -- f_function_string*_cfi_allocatable_caller
+            library -- f_function_string*_cfi_allocatable_library
+          copy -- f_function_string*_cfi_copy
+          pointer -- f_function_string*_cfi_pointer
+            caller -- f_function_string*_cfi_pointer_caller
+            library -- f_function_string*_cfi_pointer_library
+      struct -- f_function_struct
+      struct*
+        cdesc
+          pointer -- f_function_struct*_cdesc_pointer
+        pointer -- f_function_struct*_pointer
+      vector
+        scalar
+          cdesc -- f_function_vector_scalar_cdesc
+      vector<native>
+        cdesc
+          allocatable -- f_function_vector<native>_cdesc_allocatable
+      void* -- f_function_void*
+    getter
+      bool -- f_getter_bool
+      native -- f_getter_native
+      native*
+        cdesc
+          pointer -- f_getter_native*_cdesc_pointer
+        pointer -- f_getter_native*_pointer
+      string
+        cdesc
+          allocatable -- f_getter_string_cdesc_allocatable
+      struct*
+        cdesc
+          pointer -- f_getter_struct*_cdesc_pointer
+        fapi
+          pointer -- f_getter_struct*_fapi_pointer
+      struct**
+        cdesc
+          raw -- f_getter_struct**_cdesc_raw
+    in
+      bool -- f_in_bool
+      char -- f_in_char
+      char* -- f_in_char*
+        buf -- f_in_char*_buf
+        capi -- f_in_char*_capi
+        cfi -- f_in_char*_cfi
+      char** -- f_in_char**
+        buf -- f_in_char**_buf
+        cfi -- f_in_char**_cfi
+      enum -- f_in_enum
+      native -- f_in_native
+      native& -- f_in_native&
+      native* -- f_in_native*
+        cdesc -- f_in_native*_cdesc
+        cfi -- f_in_native*_cfi
+      native** -- f_in_native**
+      procedure -- f_in_procedure
+        external -- f_in_procedure_external
+        funptr -- f_in_procedure_funptr
+      shadow -- f_in_shadow
+      shadow& -- f_in_shadow&
+      shadow* -- f_in_shadow*
+      string
+        buf -- f_in_string_buf
+        cfi -- f_in_string_cfi
+      string& -- f_in_string&
+        buf -- f_in_string&_buf
+        cfi -- f_in_string&_cfi
+      string* -- f_in_string*
+        buf -- f_in_string*_buf
+        cfi -- f_in_string*_cfi
+      struct -- f_in_struct
+      struct& -- f_in_struct&
+      struct* -- f_in_struct*
+      unknown -- f_in_unknown
+      vector
+        &
+          cdesc
+            targ
+              native
+                scalar -- f_in_vector_&_cdesc_targ_native_scalar
+      vector<native*>&
+        buf -- f_in_vector<native*>&_buf
+      vector<native>
+        buf -- f_in_vector<native>_buf
+      vector<native>&
+        buf -- f_in_vector<native>&_buf
+      vector<native>*
+        buf -- f_in_vector<native>*_buf
+      vector<string>
+        buf -- f_in_vector<string>_buf
+      vector<string>&
+        buf -- f_in_vector<string>&_buf
+      vector<string>*
+        buf -- f_in_vector<string>*_buf
+      void -- f_in_void
+      void* -- f_in_void*
+        cdesc -- f_in_void*_cdesc
+      void** -- f_in_void**
+        cfi -- f_in_void**_cfi
+    inout
+      bool* -- f_inout_bool*
+      char* -- f_inout_char*
+        buf -- f_inout_char*_buf
+        capi -- f_inout_char*_capi
+        cfi -- f_inout_char*_cfi
+      enum* -- f_inout_enum*
+      native& -- f_inout_native&
+        hidden -- f_inout_native&_hidden
+      native* -- f_inout_native*
+        cdesc -- f_inout_native*_cdesc
+        cfi -- f_inout_native*_cfi
+        hidden -- f_inout_native*_hidden
+      shadow& -- f_inout_shadow&
+      shadow* -- f_inout_shadow*
+      string& -- f_inout_string&
+        buf -- f_inout_string&_buf
+        cfi -- f_inout_string&_cfi
+      string* -- f_inout_string*
+        buf -- f_inout_string*_buf
+        cfi -- f_inout_string*_cfi
+      struct& -- f_inout_struct&
+      struct* -- f_inout_struct*
+      vector
+        buf
+          targ
+            string
+              scalar -- f_inout_vector_buf_targ_string_scalar
+      vector<native>&
+        cdesc -- f_inout_vector<native>&_cdesc
+          allocatable -- f_inout_vector<native>&_cdesc_allocatable
+      void*
+        cdesc -- f_inout_void*_cdesc
+      void** -- f_inout_void**
+    mixin
+      arg
+        capsule -- f_mixin_arg_capsule
+      capsule
+        dtor -- f_mixin_capsule_dtor
+      char
+        cdesc
+          allocate -- f_mixin_char_cdesc_allocate
+          pointer -- f_mixin_char_cdesc_pointer
+      declare-as-cptr -- f_mixin_declare-as-cptr
+      declare-fortran-arg -- f_mixin_declare-fortran-arg
+      declare-fortran-result -- f_mixin_declare-fortran-result
+      declare-interface-arg -- f_mixin_declare-interface-arg
+      function -- f_mixin_function
+        c-ptr -- f_mixin_function_c-ptr
+        ptr -- f_mixin_function_ptr
+        shadow
+          capsule -- f_mixin_function_shadow_capsule
+        string
+          cfi
+            allocatable -- f_mixin_function_string_cfi_allocatable
+      function-to-subroutine -- f_mixin_function-to-subroutine
+      getter
+        cdesc -- f_mixin_getter_cdesc
+      helper
+        array
+          string
+            allocatable -- f_mixin_helper_array_string_allocatable
+        vector
+          string
+            allocatable -- f_mixin_helper_vector_string_allocatable
+      in
+        2d
+          vector
+            buf -- f_mixin_in_2d_vector_buf
+        string
+          array
+            buf -- f_mixin_in_string_array_buf
+        vector
+          buf -- f_mixin_in_vector_buf
+      inout
+        array
+          cdesc -- f_mixin_inout_array_cdesc
+      interface-as-cptr -- f_mixin_interface-as-cptr
+      interface-as-cptr-value -- f_mixin_interface-as-cptr-value
+      local-logical-var -- f_mixin_local-logical-var
+      native
+        cdesc
+          allocate -- f_mixin_native_cdesc_allocate
+          pointer -- f_mixin_native_cdesc_pointer
+          raw -- f_mixin_native_cdesc_raw
+      out
+        array
+          cdesc
+            allocatable -- f_mixin_out_array_cdesc_allocatable
+        native
+          cdesc
+            allocate -- f_mixin_out_native_cdesc_allocate
+            pointer -- f_mixin_out_native_cdesc_pointer
+        string**
+          cfi -- f_mixin_out_string**_cfi
+        vector
+          buf -- f_mixin_out_vector_buf
+      pass
+        capsule -- f_mixin_pass_capsule
+        cdesc -- f_mixin_pass_cdesc
+        character
+          buf -- f_mixin_pass_character_buf
+      shadow-arg -- f_mixin_shadow-arg
+      str
+        array -- f_mixin_str_array
+      unknown -- f_mixin_unknown
+      use
+        capsule -- f_mixin_use_capsule
+    none
+      bool -- f_none_bool
+      bool* -- f_none_bool*
+      char -- f_none_char
+      char* -- f_none_char*
+      native -- f_none_native
+      native* -- f_none_native*
+      void* -- f_none_void*
+    out
+      bool* -- f_out_bool*
+      char* -- f_out_char*
+        buf -- f_out_char*_buf
+        capi -- f_out_char*_capi
+        cfi -- f_out_char*_cfi
+      enum* -- f_out_enum*
+      native& -- f_out_native&
+        hidden -- f_out_native&_hidden
+      native* -- f_out_native*
+        cdesc -- f_out_native*_cdesc
+        cfi
+          allocatable -- f_out_native*_cfi_allocatable
+        hidden -- f_out_native*_hidden
+      native*&
+        cdesc -- f_out_native*&_cdesc
+          pointer -- f_out_native*&_cdesc_pointer
+      native**
+        cdesc
+          allocatable -- f_out_native**_cdesc_allocatable
+          pointer -- f_out_native**_cdesc_pointer
+        cfi
+          allocatable -- f_out_native**_cfi_allocatable
+          pointer -- f_out_native**_cfi_pointer
+        raw -- f_out_native**_raw
+      native*** -- f_out_native***
+      string&
+        buf -- f_out_string&_buf
+        cfi -- f_out_string&_cfi
+      string*
+        buf -- f_out_string*_buf
+        cfi -- f_out_string*_cfi
+      string**
+        cdesc
+          allocatable -- f_out_string**_cdesc_allocatable
+          copy -- f_out_string**_cdesc_copy
+        cfi
+          allocatable -- f_out_string**_cfi_allocatable
+          copy -- f_out_string**_cfi_copy
+        copy -- f_out_string**_copy
+      struct& -- f_out_struct&
+      struct* -- f_out_struct*
+      vector
+        buf
+          targ
+            string
+              scalar -- f_out_vector_buf_targ_string_scalar
+      vector<native>&
+        cdesc -- f_out_vector<native>&_cdesc
+          allocatable -- f_out_vector<native>&_cdesc_allocatable
+      vector<native>*
+        cdesc -- f_out_vector<native>*_cdesc
+          allocatable -- f_out_vector<native>*_cdesc_allocatable
+      vector<string>&
+        cdesc -- f_out_vector<string>&_cdesc
+          allocatable -- f_out_vector<string>&_cdesc_allocatable
+      void*
+        cdesc -- f_out_void*_cdesc
+      void*& -- f_out_void*&
+      void** -- f_out_void**
+    setter -- f_setter
+      bool -- f_setter_bool
+      native -- f_setter_native
+      native* -- f_setter_native*
+      string
+        buf -- f_setter_string_buf
+      struct* -- f_setter_struct*
+        pointer -- f_setter_struct*_pointer
+      struct** -- f_setter_struct**
+    subroutine -- f_subroutine
+***** Python
 py_ctor_char*:
   name: py_ctor_char*
   intent: ctor
@@ -17181,39 +16981,207 @@ py_subroutine:
   intent: subroutine
   call:
   - '{C_call_function};'
-***** Lua
 root
-  lua
-    ctor -- lua_ctor
-    dtor -- lua_dtor
+  py
+    ctor
+      char* -- py_ctor_char*
+        numpy -- py_ctor_char*_numpy
+      char** -- py_ctor_char**
+        list -- py_ctor_char**_list
+      char[] -- py_ctor_char[]
+        list -- py_ctor_char[]_list
+        numpy -- py_ctor_char[]_numpy
+      native -- py_ctor_native
+        list -- py_ctor_native_list
+        numpy -- py_ctor_native_numpy
+      native* -- py_ctor_native*
+        list -- py_ctor_native*_list
+        numpy -- py_ctor_native*_numpy
+      native[] -- py_ctor_native[]
+        list -- py_ctor_native[]_list
+        numpy -- py_ctor_native[]_numpy
+      shadow -- py_ctor_shadow
+      struct -- py_ctor_struct
+    descr
+      bool -- py_descr_bool
+      char* -- py_descr_char*
+        numpy -- py_descr_char*_numpy
+      char**
+        list -- py_descr_char**_list
+      char[] -- py_descr_char[]
+        list -- py_descr_char[]_list
+        numpy -- py_descr_char[]_numpy
+      native -- py_descr_native
+      native*
+        list -- py_descr_native*_list
+        numpy -- py_descr_native*_numpy
+      native[]
+        list -- py_descr_native[]_list
+        numpy -- py_descr_native[]_numpy
     function
-      bool -- lua_function_bool
-      enum -- lua_function_enum
-      native -- lua_function_native
-      shadow* -- lua_function_shadow*
-      string -- lua_function_string
-      string& -- lua_function_string&
-      void* -- lua_function_void*
+      bool -- py_function_bool
+      char -- py_function_char
+      char* -- py_function_char*
+      enum -- py_function_enum
+      native -- py_function_native
+      native&
+        numpy -- py_function_native&_numpy
+      native*
+        list -- py_function_native*_list
+        numpy -- py_function_native*_numpy
+        scalar -- py_function_native*_scalar
+      shadow -- py_function_shadow
+      shadow& -- py_function_shadow&
+      shadow* -- py_function_shadow*
+      string -- py_function_string
+      string& -- py_function_string&
+      string* -- py_function_string*
+      struct
+        class -- py_function_struct_class
+        list -- py_function_struct_list
+        numpy -- py_function_struct_numpy
+      struct*
+        class -- py_function_struct*_class
+        list -- py_function_struct*_list
+        numpy -- py_function_struct*_numpy
+      vector
+        list -- py_function_vector_list
+        numpy -- py_function_vector_numpy
+      vector<native>
+        list -- py_function_vector<native>_list
+        numpy -- py_function_vector<native>_numpy
+      void* -- py_function_void*
+    implied
+      bool -- py_implied_bool
+      native -- py_implied_native
     in
-      bool -- lua_in_bool
-      enum -- lua_in_enum
-      native -- lua_in_native
-      native* -- lua_in_native*
-      procedure -- lua_in_procedure
-      shadow* -- lua_in_shadow*
-      string& -- lua_in_string&
-      string* -- lua_in_string*
-      unknown -- lua_in_unknown
-      void -- lua_in_void
+      bool -- py_in_bool
+      char -- py_in_char
+      char* -- py_in_char*
+      char** -- py_in_char**
+      enum -- py_in_enum
+      native -- py_in_native
+      native& -- py_in_native&
+      native* -- py_in_native*
+        list -- py_in_native*_list
+        numpy -- py_in_native*_numpy
+      procedure -- py_in_procedure
+      shadow -- py_in_shadow
+      shadow& -- py_in_shadow&
+      shadow* -- py_in_shadow*
+      string -- py_in_string
+      string& -- py_in_string&
+      string* -- py_in_string*
+      struct
+        class -- py_in_struct_class
+        list -- py_in_struct_list
+        numpy -- py_in_struct_numpy
+      struct&
+        class -- py_in_struct&_class
+        numpy -- py_in_struct&_numpy
+      struct*
+        class -- py_in_struct*_class
+        list -- py_in_struct*_list
+        numpy -- py_in_struct*_numpy
+      unknown -- py_in_unknown
+      vector<native>&
+        list -- py_in_vector<native>&_list
+        numpy -- py_in_vector<native>&_numpy
+      void* -- py_in_void*
     inout
-      native* -- lua_inout_native*
+      bool -- py_inout_bool
+      bool* -- py_inout_bool*
+      char* -- py_inout_char*
+      native& -- py_inout_native&
+      native* -- py_inout_native*
+        list -- py_inout_native*_list
+        numpy -- py_inout_native*_numpy
+      shadow
+        * -- py_inout_shadow_*
+      string -- py_inout_string
+      string& -- py_inout_string&
+      string* -- py_inout_string*
+      struct
+        list -- py_inout_struct_list
+      struct&
+        class -- py_inout_struct&_class
+        numpy -- py_inout_struct&_numpy
+      struct*
+        class -- py_inout_struct*_class
+        list -- py_inout_struct*_list
+        numpy -- py_inout_struct*_numpy
     mixin
-      callfunction -- lua_mixin_callfunction
-      push -- lua_mixin_push
-      unknown -- lua_mixin_unknown
+      alloc-cxx-type -- py_mixin_alloc-cxx-type
+      array
+        error -- py_mixin_array_error
+      array-ContiguousFromObject -- py_mixin_array-ContiguousFromObject
+      array-FROM-OFT-in -- py_mixin_array-FROM-OFT-in
+      array-FROM-OTF -- py_mixin_array-FROM-OTF
+      array-FromAny -- py_mixin_array-FromAny
+      array-NewFromDescr -- py_mixin_array-NewFromDescr
+      array-NewFromDescr2 -- py_mixin_array-NewFromDescr2
+      array-SimpleNew -- py_mixin_array-SimpleNew
+      array-SimpleNewFromData -- py_mixin_array-SimpleNewFromData
+      array-SimpleNewFromData2 -- py_mixin_array-SimpleNewFromData2
+      array-capsule -- py_mixin_array-capsule
+      array-get-data -- py_mixin_array-get-data
+      array-parse -- py_mixin_array-parse
+      ctor
+        array -- py_mixin_ctor_array
+          fill -- py_mixin_ctor_array_fill
+      cxx-as-pointer -- py_mixin_cxx-as-pointer
+      cxx-as-scalar -- py_mixin_cxx-as-scalar
+      function-assign-pointee -- py_mixin_function-assign-pointee
+      function-declare -- py_mixin_function-declare
+      function-struct-class -- py_mixin_function-struct-class
+      function-void -- py_mixin_function-void
+      malloc -- py_mixin_malloc
+        error -- py_mixin_malloc_error
+        error2 -- py_mixin_malloc_error2
+      shadow-create-object -- py_mixin_shadow-create-object
+      string-fmtdict -- py_mixin_string-fmtdict
+      string-fmtdict-scalar -- py_mixin_string-fmtdict-scalar
+      template
+        array
+          error -- py_mixin_template_array_error
+      unknown -- py_mixin_unknown
     out
-      native* -- lua_out_native*
-    subroutine -- lua_subroutine
+      bool -- py_out_bool
+      bool* -- py_out_bool*
+      char*
+        charlen -- py_out_char*_charlen
+      enum* -- py_out_enum*
+      native& -- py_out_native&
+      native* -- py_out_native*
+        list -- py_out_native*_list
+        numpy -- py_out_native*_numpy
+      native*&
+        numpy -- py_out_native*&_numpy
+      native**
+        list -- py_out_native**_list
+        numpy -- py_out_native**_numpy
+        raw -- py_out_native**_raw
+      shadow
+        * -- py_out_shadow_*
+      string -- py_out_string
+      string& -- py_out_string&
+      string* -- py_out_string*
+      struct
+        list -- py_out_struct_list
+      struct&
+        class -- py_out_struct&_class
+        numpy -- py_out_struct&_numpy
+      struct*
+        class -- py_out_struct*_class
+        list -- py_out_struct*_list
+        numpy -- py_out_struct*_numpy
+      vector<native>&
+        list -- py_out_vector<native>&_list
+        numpy -- py_out_vector<native>&_numpy
+      void*& -- py_out_void*&
+      void** -- py_out_void**
+    subroutine -- py_subroutine
+***** Lua
 lua_ctor:
   name: lua_ctor
   intent: ctor
@@ -17346,3 +17314,35 @@ lua_subroutine:
   intent: subroutine
   call:
   - '{LUA_this_call}{function_name}({cxx_call_list});'
+root
+  lua
+    ctor -- lua_ctor
+    dtor -- lua_dtor
+    function
+      bool -- lua_function_bool
+      enum -- lua_function_enum
+      native -- lua_function_native
+      shadow* -- lua_function_shadow*
+      string -- lua_function_string
+      string& -- lua_function_string&
+      void* -- lua_function_void*
+    in
+      bool -- lua_in_bool
+      enum -- lua_in_enum
+      native -- lua_in_native
+      native* -- lua_in_native*
+      procedure -- lua_in_procedure
+      shadow* -- lua_in_shadow*
+      string& -- lua_in_string&
+      string* -- lua_in_string*
+      unknown -- lua_in_unknown
+      void -- lua_in_void
+    inout
+      native* -- lua_inout_native*
+    mixin
+      callfunction -- lua_mixin_callfunction
+      push -- lua_mixin_push
+      unknown -- lua_mixin_unknown
+    out
+      native* -- lua_out_native*
+    subroutine -- lua_subroutine

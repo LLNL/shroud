@@ -987,11 +987,11 @@ def write_stmts_tree(fp):
     ----------
     fp : file
     """
+    statements.print_tree_statements(fp, lua_dict, default_stmts)
     tree = statements.update_stmt_tree(lua_dict)
     lines = []
     statements.print_tree_index(tree, lines)
     fp.writelines(lines)
-    statements.print_tree_statements(fp, lua_dict, default_stmts)
     
 
 def lookup_stmts(path):

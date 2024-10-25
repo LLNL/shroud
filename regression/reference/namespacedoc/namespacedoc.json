@@ -45,6 +45,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -67,6 +68,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -78,6 +80,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -86,6 +89,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         }
@@ -146,6 +150,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "c_subroutine"
@@ -168,6 +173,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -179,6 +185,7 @@
                                 "stmt": "py_subroutine"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "py_subroutine"
@@ -187,6 +194,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         }
@@ -253,6 +261,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -275,6 +284,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -286,6 +296,7 @@
                                         "stmt": "py_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "py_subroutine"
@@ -294,6 +305,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 }
@@ -390,6 +402,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -412,6 +425,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -423,6 +437,7 @@
                                         "stmt": "py_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "py_subroutine"
@@ -431,6 +446,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 }
@@ -527,6 +543,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -549,6 +566,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -560,6 +578,7 @@
                                         "stmt": "py_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "py_subroutine"
@@ -568,6 +587,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 }

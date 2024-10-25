@@ -91,6 +91,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string*",
                                 "intent": "function",
                                 "owner": "library"
                             },
@@ -154,6 +155,7 @@
                                 "typemap_name": "std::string"
                             },
                             "meta": {
+                                "abstract": "string*",
                                 "api": "cdesc",
                                 "deref": "allocatable",
                                 "intent": "function",
@@ -165,6 +167,7 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "string*",
                                 "intent": "function",
                                 "owner": "library"
                             }

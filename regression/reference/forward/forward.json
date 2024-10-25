@@ -133,6 +133,7 @@
                                         "typemap_name": "forward::Class2"
                                     },
                                     "meta": {
+                                        "abstract": "shadow",
                                         "api": "capptr",
                                         "intent": "ctor"
                                     },
@@ -185,6 +186,7 @@
                                         "typemap_name": "forward::Class2"
                                     },
                                     "meta": {
+                                        "abstract": "shadow",
                                         "api": "capsule",
                                         "intent": "ctor"
                                     },
@@ -202,6 +204,7 @@
                                         "stmt": "lua_ctor"
                                     },
                                     "meta": {
+                                        "abstract": "shadow",
                                         "intent": "ctor"
                                     }
                                 }
@@ -230,6 +233,7 @@
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
+                                        "abstract": "shadow",
                                         "intent": "ctor"
                                     },
                                     "stmt": "py_ctor_shadow"
@@ -238,6 +242,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "shadow",
                                         "intent": "ctor"
                                     }
                                 }
@@ -315,6 +320,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     },
                                     "stmt": "c_dtor"
@@ -338,6 +344,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     },
                                     "stmt": "f_dtor"
@@ -349,6 +356,7 @@
                                         "stmt": "lua_dtor"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     }
                                 }
@@ -356,6 +364,7 @@
                             "py": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     }
                                 }
@@ -363,6 +372,7 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "dtor"
                                     }
                                 }
@@ -454,6 +464,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -483,6 +494,7 @@
                                         "typemap_name": "tutorial::Class1"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     },
                                     "stmt": "c_in_shadow*"
@@ -507,6 +519,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -548,6 +561,7 @@
                                         "typemap_name": "tutorial::Class1"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow*"
@@ -559,6 +573,7 @@
                                         "stmt": "lua_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 },
@@ -578,6 +593,7 @@
                                         "stmt": "lua_in_shadow*"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     }
                                 }
@@ -588,6 +604,7 @@
                                         "stmt": "py_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "py_subroutine"
@@ -614,6 +631,7 @@
                                         "value_var": "SHValue_arg"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     },
                                     "stmt": "py_in_shadow*"
@@ -622,11 +640,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 },
                                 "arg": {
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     }
                                 }
@@ -727,6 +747,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "c_subroutine"
@@ -756,6 +777,7 @@
                                         "typemap_name": "forward::Class3"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     },
                                     "stmt": "c_in_shadow*"
@@ -780,6 +802,7 @@
                                         "typemap_name": "void"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "f_subroutine"
@@ -821,6 +844,7 @@
                                         "typemap_name": "forward::Class3"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     },
                                     "stmt": "f_in_shadow*"
@@ -832,6 +856,7 @@
                                         "stmt": "lua_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 },
@@ -851,6 +876,7 @@
                                         "stmt": "lua_in_shadow*"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     }
                                 }
@@ -861,6 +887,7 @@
                                         "stmt": "py_subroutine"
                                     },
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     },
                                     "stmt": "py_subroutine"
@@ -889,6 +916,7 @@
                                         "value_var": "SHValue_arg"
                                     },
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     },
                                     "stmt": "py_in_shadow*"
@@ -897,11 +925,13 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "void",
                                         "intent": "subroutine"
                                     }
                                 },
                                 "arg": {
                                     "meta": {
+                                        "abstract": "shadow*",
                                         "intent": "in"
                                     }
                                 }
@@ -1073,6 +1103,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "c_function_native"
@@ -1101,6 +1132,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "c_in_struct*"
@@ -1151,6 +1183,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -1189,6 +1222,7 @@
                                 "typemap_name": "Cstruct1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "f_in_struct*"
@@ -1197,11 +1231,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "arg": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }

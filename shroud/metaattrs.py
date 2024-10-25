@@ -22,6 +22,7 @@ This file sets some meta attributes based on language specific
 wrappings.
 
 Shared:
+   abstract Computed from declaration  ex  'native', 'native*'
    charlen  attrs
 
 Fortran:
@@ -126,6 +127,12 @@ class FillMeta(object):
                     "used on pointer and references"
                 )
             self.parse_dim_attrs(dim, meta)
+
+    def set_func_abstract_type(self, node, meta):
+        meta["abstract"] = statements.find_abstract_declarator(node.ast)
+
+    def set_arg_abstract_type(self, node, arg, meta):
+        meta["abstract"] = statements.find_abstract_declarator(arg)
         
     def set_func_intent(self, node, meta):
         declarator = node.ast.declarator
@@ -655,7 +662,7 @@ class FillMeta(object):
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
         for attr in [
-                "assumedtype",
+                "abstract", "assumedtype",
                 "dimension", "dim_ast",
                 "free_pattern", "hidden", "len", "owner", "rank",
         ]:
@@ -668,7 +675,7 @@ class FillMeta(object):
         if not meta["intent"]:
             meta["intent"] = share_meta["intent"]
         for attr in [
-                "assumedtype",
+                "abstract", "assumedtype",
                 "dimension", "dim_ast",
                 "fptr", "free_pattern", "hidden", "len", "owner", "rank",
                 "value", "optional",
@@ -718,6 +725,7 @@ class FillMetaShare(FillMeta):
         r_meta = r_bind.meta
         
         self.check_func_attrs(node, r_meta)
+        self.set_func_abstract_type(node, r_meta)
         self.set_func_intent(node, r_meta)
         self.meta_function_params(node, is_fptr)
 
@@ -735,6 +743,7 @@ class FillMetaShare(FillMeta):
             meta = a_bind.meta
 
             self.check_arg_attrs(node, arg, meta)
+            self.set_arg_abstract_type(node, arg, meta)
             self.set_arg_intent(arg, meta, is_fptr)
             self.check_value(arg, meta)
 

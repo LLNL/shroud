@@ -89,6 +89,7 @@
                                         "vargs": "SHCXX_rv"
                                     },
                                     "meta": {
+                                        "abstract": "struct",
                                         "intent": "ctor"
                                     },
                                     "stmt": "py_ctor_struct"
@@ -114,6 +115,7 @@
                                         "value_var": "SHValue_x1"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "in",
                                         "value": true
                                     },
@@ -140,6 +142,7 @@
                                         "value_var": "SHValue_y1"
                                     },
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "in",
                                         "value": true
                                     },
@@ -149,17 +152,20 @@
                             "share": {
                                 "+result": {
                                     "meta": {
+                                        "abstract": "struct",
                                         "intent": "ctor"
                                     }
                                 },
                                 "x1": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "in",
                                         "value": true
                                     }
                                 },
                                 "y1": {
                                     "meta": {
+                                        "abstract": "native",
                                         "intent": "in",
                                         "value": true
                                     }
@@ -472,6 +478,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -501,6 +508,7 @@
                                 "value_var": "SHValue_s1"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "py_in_struct*_class"
@@ -530,6 +538,7 @@
                                 "value_var": "SHValue_s2"
                             },
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             },
                             "stmt": "py_in_struct*_numpy"
@@ -538,16 +547,19 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "s1": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         },
                         "s2": {
                             "meta": {
+                                "abstract": "struct*",
                                 "intent": "in"
                             }
                         }

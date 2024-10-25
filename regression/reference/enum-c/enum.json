@@ -295,6 +295,7 @@
                                 "typemap_name": "int"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "f_function_native"
@@ -334,6 +335,7 @@
                                 "typemap_name": "Color"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -358,6 +360,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             },
                             "stmt": "py_function_native"
@@ -382,6 +385,7 @@
                                 "value_var": "SHValue_in"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -391,11 +395,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "native",
                                 "intent": "function"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             }
@@ -510,6 +516,7 @@
                                 "typemap_name": "Color"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "f_function_enum"
@@ -549,6 +556,7 @@
                                 "typemap_name": "Color"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -573,6 +581,7 @@
                                 "value_var": "SHValue_rv"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "py_function_enum"
@@ -597,6 +606,7 @@
                                 "value_var": "SHValue_in"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             },
@@ -606,11 +616,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             }
                         },
                         "in": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "in",
                                 "value": true
                             }
@@ -705,6 +717,7 @@
                                 "typemap_name": "void"
                             },
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             },
                             "stmt": "f_subroutine"
@@ -745,6 +758,7 @@
                                 "typemap_name": "Color"
                             },
                             "meta": {
+                                "abstract": "enum*",
                                 "intent": "out"
                             },
                             "stmt": "f_out_enum*"
@@ -753,11 +767,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "void",
                                 "intent": "subroutine"
                             }
                         },
                         "out": {
                             "meta": {
+                                "abstract": "enum*",
                                 "intent": "out"
                             }
                         }
@@ -863,6 +879,7 @@
                                 "typemap_name": "Color"
                             },
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             },
                             "stmt": "f_function_enum"
@@ -903,6 +920,7 @@
                                 "typemap_name": "Color"
                             },
                             "meta": {
+                                "abstract": "enum*",
                                 "intent": "inout"
                             },
                             "stmt": "f_inout_enum*"
@@ -911,11 +929,13 @@
                     "share": {
                         "+result": {
                             "meta": {
+                                "abstract": "enum",
                                 "intent": "function"
                             }
                         },
                         "inout": {
                             "meta": {
+                                "abstract": "enum*",
                                 "intent": "inout"
                             }
                         }

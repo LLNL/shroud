@@ -659,6 +659,7 @@ def main_with_args(args):
             whelpers.write_f_helpers(fp)
 
     if args.write_statements:
+        os.chdir(args.logdir)
         hfile = os.path.join(args.logdir, args.write_statements)
 
         lang = newlibrary.language
