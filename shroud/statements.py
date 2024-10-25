@@ -677,11 +677,11 @@ def write_cf_tree(fp):
     ----------
     fp : file
     """
+    print_tree_statements(fp, fc_dict, default_stmts)
     tree = update_stmt_tree(fc_dict)
     lines = []
     print_tree_index(tree, lines)
     fp.writelines(lines)
-    print_tree_statements(fp, fc_dict, default_stmts)
 
 
 def print_tree_index(tree, lines, indent=""):

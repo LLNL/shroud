@@ -324,6 +324,12 @@ These headers may include C++ code.
 
 .. listed in fc_statements as *c_impl_header* and *cxx_impl_header*
 
+destructor_header
+^^^^^^^^^^^^^^^^^
+
+A list of header files which will be added to the C++ utility file.
+These headers may include C++ code.
+
 destructor_name
 ^^^^^^^^^^^^^^^
 
