@@ -42,6 +42,7 @@ module shared_mod
     end type object
 
     type, extends(object) :: object_shared
+        type(SHA_SHROUD_capsule_data) :: cxxshared
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains

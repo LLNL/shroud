@@ -19,3 +19,5 @@ A ``std::shared_ptr`` will be created when the constructor has the
 The option **C_shared_ptr** is used to create a ``FINAL`` subprogram
 which will reduce the count in the ``shared_ptr``.
 
+
+.. fmt.F_derived_shared = cxxshared  Needs name option template

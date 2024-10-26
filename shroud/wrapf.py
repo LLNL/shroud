@@ -268,6 +268,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         if node.baseclass:
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
+            # ['pubic', 'ClassName', declast.CXXClass]
             fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
         elif options.class_baseclass:
             # Used with wrap_struct_as=class.
@@ -283,6 +284,12 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 "type, extends({F_derived_member_base}) :: {F_derived_name}+",
                 fmt_class,
             )
+            if node.C_shared_class:
+                append_format(
+                    f_type_decl,
+                    "type({F_capsule_data_type}) :: {F_shared_member}",
+                    fmt_class,
+                )
         else:
             append_format(
                 f_type_decl,

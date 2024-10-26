@@ -511,6 +511,7 @@ class GenFunctions(object):
         newcls.name_api = cls.name + class_suffix
         newcls.functions = []
 
+        newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
         newcls.delete_format_templates()
         newcls.default_format()

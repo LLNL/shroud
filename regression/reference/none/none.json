@@ -181,6 +181,7 @@
             "F_name_instance_set": "set_instance",
             "F_name_scope": "",
             "F_name_typedef": "",
+            "F_shared_member": "cxxshared",
             "F_string_result_as_arg": "",
             "F_this": "obj",
             "LUA_header_filename_suffix": "hpp",
