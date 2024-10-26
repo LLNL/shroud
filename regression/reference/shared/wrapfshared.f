@@ -41,12 +41,22 @@ module shared_mod
         ! splicer end class.Object.type_bound_procedure_part
     end type object
 
+    type, extends(object) :: object_shared
+        ! splicer begin class.Object_shared.component_part
+        ! splicer end class.Object_shared.component_part
+    contains
+        ! splicer begin class.Object_shared.type_bound_procedure_part
+        ! splicer end class.Object_shared.type_bound_procedure_part
+    end type object_shared
+
     interface operator (.eq.)
         module procedure object_eq
+        module procedure object_shared_eq
     end interface
 
     interface operator (.ne.)
         module procedure object_ne
+        module procedure object_shared_ne
     end interface
 
     interface
@@ -157,6 +167,9 @@ contains
     ! splicer begin class.Object.additional_functions
     ! splicer end class.Object.additional_functions
 
+    ! splicer begin class.Object_shared.additional_functions
+    ! splicer end class.Object_shared.additional_functions
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
@@ -181,5 +194,27 @@ contains
             rv = .false.
         endif
     end function object_ne
+
+    function object_shared_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(object_shared), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function object_shared_eq
+
+    function object_shared_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(object_shared), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function object_shared_ne
 
 end module shared_mod

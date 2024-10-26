@@ -8,11 +8,13 @@ C f ~Object(void)
 Close wrapObject.h
 Close wrapObject.cpp
 class Object
+class Object
 Fortran Object(void) +owner(shared)
 Fortran ~Object(void)
 C-interface c Object(void) +owner(shared)
 C-interface f Object(void) +owner(shared)
 C-interface f ~Object(void)
+class Object
 Close wrapfshared.f
 Close utilShared.cpp
 Close typesShared.h

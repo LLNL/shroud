@@ -1155,7 +1155,7 @@ class ClassNode(AstNode, NamespaceMixin):
         cxx_template - list of TemplateArgument instances
 
         Args:
-            base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
+            base - list of tuples ('public|private|protected', qualified-name (aa:bb), declast.CXXClass)
             parse_keyword - keyword from decl - "class" or "struct".
         """
         # From arguments

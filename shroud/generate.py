@@ -480,6 +480,7 @@ class GenFunctions(object):
             newcls.name_instantiation = cls.name + targs.instantiation
             newcls.scope_file[-1] += class_suffix
 
+            # Add fmt and options from YAML
             if targs.fmtdict:
                 newcls.user_fmt.update(targs.fmtdict)
             if targs.options:
@@ -500,7 +501,24 @@ class GenFunctions(object):
             self.push_instantiate_scope(newcls, targs)
             self.process_class(newcls, newcls)
             self.pop_instantiate_scope()
-            
+
+    def share_class(self, cls):
+        """Create a subclass for use with std::shared.
+        """
+        newcls = cls.clone()
+        # XXX - need a option template to create the name.
+        class_suffix = "_shared"
+        newcls.name_api = cls.name + class_suffix
+        newcls.functions = []
+
+        # Remove defaulted attributes then reset with current values.
+        newcls.delete_format_templates()
+        newcls.default_format()
+        
+        newcls.typemap = typemap.create_class_typemap(newcls)
+        newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
+        return newcls
+        
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
 
@@ -526,6 +544,9 @@ class GenFunctions(object):
             else:
                 clslist.append(cls)
                 self.process_class(cls, cls)
+                if cls.options.C_shared_ptr:
+                    shared = self.share_class(cls)
+                    clslist.append(shared)
             self.cursor.pop_node(cls)
 
         node.classes = clslist
