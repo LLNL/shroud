@@ -38,7 +38,7 @@ typedef struct s_SHA_Object SHA_Object;
 
 // C++ capsule SHA_Object_shared
 struct s_SHA_Object_shared {
-    Object *addr;     /* address of C++ memory */
+    std::shared_ptr<Object> *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_SHA_Object_shared SHA_Object_shared;

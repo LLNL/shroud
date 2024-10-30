@@ -36,7 +36,6 @@ module shared_mod
         procedure :: get_instance => object_get_instance
         procedure :: set_instance => object_set_instance
         procedure :: associated => object_associated
-        final :: object_final
         ! splicer begin class.Object.type_bound_procedure_part
         ! splicer end class.Object.type_bound_procedure_part
     end type object
@@ -46,6 +45,8 @@ module shared_mod
         ! splicer begin class.Object_shared.component_part
         ! splicer end class.Object_shared.component_part
     contains
+        procedure :: dtor => object_shared_dtor
+        final :: object_shared_final
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
     end type object_shared
@@ -63,8 +64,8 @@ module shared_mod
     interface
 
         ! ----------------------------------------
-        ! Function:  Object +owner(shared)
-        ! Statement: c_ctor_shadow_capptr_shared
+        ! Function:  Object
+        ! Statement: c_ctor_shadow_capptr
         function c_object_ctor(SHT_rv) &
                 result(SHT_prv) &
                 bind(C, name="SHA_Object_ctor")
@@ -76,8 +77,8 @@ module shared_mod
         end function c_object_ctor
 
         ! ----------------------------------------
-        ! Function:  Object +owner(shared)
-        ! Statement: f_ctor_shadow_capsule_shared
+        ! Function:  Object
+        ! Statement: f_ctor_shadow_capsule
         subroutine c_object_ctor_bufferify(SHT_rv) &
                 bind(C, name="SHA_Object_ctor_bufferify")
             import :: SHA_SHROUD_capsule_data
@@ -94,11 +95,48 @@ module shared_mod
             implicit none
             type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
         end subroutine c_object_dtor
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: c_ctor_shadow_capptr_shared
+        function c_object_shared_ctor(SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="SHA_Object_shared_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_prv
+        end function c_object_shared_ctor
+
+        ! ----------------------------------------
+        ! Function:  Object
+        ! Statement: f_ctor_shadow_capsule_shared
+        subroutine c_object_shared_ctor_bufferify(SHT_rv) &
+                bind(C, name="SHA_Object_shared_ctor_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_shared_ctor_bufferify
+
+        ! ----------------------------------------
+        ! Function:  ~Object
+        ! Statement: f_dtor
+        subroutine c_object_shared_dtor(self) &
+                bind(C, name="SHA_Object_shared_dtor")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: self
+        end subroutine c_object_shared_dtor
     end interface
 
     interface object
         module procedure object_ctor
     end interface object
+
+    interface object_shared
+        module procedure object_shared_ctor
+    end interface object_shared
 
     ! splicer begin additional_declarations
     ! splicer end additional_declarations
@@ -106,8 +144,8 @@ module shared_mod
 contains
 
     ! ----------------------------------------
-    ! Function:  Object +owner(shared)
-    ! Statement: f_ctor_shadow_capsule_shared
+    ! Function:  Object
+    ! Statement: f_ctor_shadow_capsule
     function object_ctor() &
             result(SHT_rv)
         type(object) :: SHT_rv
@@ -149,9 +187,33 @@ contains
         rv = c_associated(obj%cxxmem%addr)
     end function object_associated
 
-    subroutine object_final(obj)
+    ! splicer begin class.Object.additional_functions
+    ! splicer end class.Object.additional_functions
+
+    ! ----------------------------------------
+    ! Function:  Object
+    ! Statement: f_ctor_shadow_capsule_shared
+    function object_shared_ctor() &
+            result(SHT_rv)
+        type(object_shared) :: SHT_rv
+        ! splicer begin class.Object_shared.method.ctor
+        call c_object_shared_ctor_bufferify(SHT_rv%cxxmem)
+        ! splicer end class.Object_shared.method.ctor
+    end function object_shared_ctor
+
+    ! ----------------------------------------
+    ! Function:  ~Object
+    ! Statement: f_dtor
+    subroutine object_shared_dtor(obj)
+        class(object_shared) :: obj
+        ! splicer begin class.Object_shared.method.dtor
+        call c_object_shared_dtor(obj%cxxmem)
+        ! splicer end class.Object_shared.method.dtor
+    end subroutine object_shared_dtor
+
+    subroutine object_shared_final(obj)
         use iso_c_binding, only : c_associated
-        type(object), intent(INOUT) :: obj
+        type(object_shared), intent(INOUT) :: obj
         interface
             subroutine array_destructor(capsule) &
                 bind(C, name="SHA_SHROUD_memory_destructor")
@@ -163,10 +225,7 @@ contains
         if (c_associated(obj%cxxmem%addr)) then
             call array_destructor(obj%cxxmem)
         endif
-    end subroutine object_final
-
-    ! splicer begin class.Object.additional_functions
-    ! splicer end class.Object.additional_functions
+    end subroutine object_shared_final
 
     ! splicer begin class.Object_shared.additional_functions
     ! splicer end class.Object_shared.additional_functions

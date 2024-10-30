@@ -920,6 +920,9 @@ CXX_this
     Name of the C++ object pointer set from the *C_this* argument.
     Defaults to ``SH_this``.
 
+file_scope
+    Used in template options to set output filenames.
+
 F_array_type
     Name of derived type used to store metadata about an array
     such as its address and size.
@@ -1219,7 +1222,7 @@ F_name_instance_set
 cxx_class
     The name of the C++ class from the YAML input file.
     Used in generating names for C and Fortran and filenames.
-    When the class is templated, it willl be converted to a legal identifier
+    When the class is templated, it will be converted to a legal identifier
     by adding the *template_suffix* or a sequence number.
 
     When *cxx_class* is set in the YAML file for a class, its value will be

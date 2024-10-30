@@ -686,7 +686,7 @@
             "<memory>"
         ],
         "destructor": [
-            "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}> *>(ptr);",
+            "{cxx_type} *shared =\t reinterpret_cast<{cxx_type} *>(ptr);",
             "shared->reset();",
             "delete shared;"
         ]

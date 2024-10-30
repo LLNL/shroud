@@ -59,8 +59,7 @@ c_ctor_shadow_capptr_shared:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
-  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
-    \ *>(ptr);"
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type}>(ptr);"
   - shared->reset();
   - delete shared;
   owner: shared
@@ -2808,8 +2807,7 @@ c_mixin_destructor_new-shadow-shared:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
-  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
-    \ *>(ptr);"
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type}>(ptr);"
   - shared->reset();
   - delete shared;
   owner: library
@@ -4212,8 +4210,7 @@ f_ctor_shadow_capsule_shared:
   - <memory>
   destructor_name: shadow-{cxx_type}
   destructor:
-  - "std::shared_ptr<{cxx_type}> *shared =\t reinterpret_cast<std::shared_ptr<{cxx_type}>\
-    \ *>(ptr);"
+  - "{cxx_type} *shared =\t reinterpret_cast<{cxx_type}>(ptr);"
   - shared->reset();
   - delete shared;
   owner: shared

@@ -20,7 +20,7 @@ declarations:
   options:
     C_shared_ptr: true
   declarations:
-  - decl: Object() +owner(shared)
+  - decl: Object()
   - decl: ~Object()
 
 #  - decl: Object* createChildA(void)

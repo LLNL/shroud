@@ -34,7 +34,14 @@ void SHA_SHROUD_memory_destructor(SHA_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
-    case 2:   // shadow-Object
+    case 2:   // std::shared_ptr<Object>
+    {
+        std::shared_ptr<Object> *cxx_ptr = 
+            reinterpret_cast<std::shared_ptr<Object> *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 3:   // shadow-std::shared_ptr<Object>
     {
         std::shared_ptr<Object> *shared =
             reinterpret_cast<std::shared_ptr<Object> *>(ptr);

@@ -31,11 +31,15 @@ program tester
 contains
 
   subroutine test_object
-    type(object) objectSharedPtr
+    type(object) objectPtr
+    type(object_shared) objectSharedPtr
 
     call set_case_name("test_object")
 
-    objectSharedPtr = object()
+    objectPtr = object()
+    call assert_true(objectPtr%associated())
+
+    objectSharedPtr = object_shared()
     call assert_true(objectSharedPtr%associated())
 
   end subroutine test_object

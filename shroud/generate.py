@@ -509,7 +509,9 @@ class GenFunctions(object):
         # XXX - need a option template to create the name.
         class_suffix = "_shared"
         newcls.name_api = cls.name + class_suffix
-        newcls.functions = []
+        newcls.name_instantiation = "std::shared_ptr<{}>".format(cls.fmtdict.cxx_type)
+        newcls.scope_file[-1] += class_suffix
+#        newcls.functions = []
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -548,6 +550,7 @@ class GenFunctions(object):
                 if cls.options.C_shared_ptr:
                     shared = self.share_class(cls)
                     clslist.append(shared)
+                    self.process_class(shared, shared)
             self.cursor.pop_node(cls)
 
         node.classes = clslist

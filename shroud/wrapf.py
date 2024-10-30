@@ -247,6 +247,7 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
         if not node.baseclass:
             # subclasses share these functions.
             self.write_object_get_set(node, fileinfo)
+        self.write_object_final(node, fileinfo)
         self._create_splicer("additional_functions", fileinfo.impl, blank=True)
         self._pop_splicer(fmt_class.cxx_class)
 
@@ -613,16 +614,25 @@ nullify(lhs%{F_derived_member}%addr)
                 fmt,
             )
 
-        if options.F_auto_reference_count or options.C_shared_ptr:
-            fmt.F_name_api = fmt_class.F_name_final
-            fmt.F_name_function = wformat(options.F_name_function_template, fmt)
-            fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
+    def write_object_final(self, node, fileinfo):
+#        if options.F_auto_reference_count or options.C_shared_ptr:
+        if not node.C_shared_class:
+            return
+        options = node.options
+        fmt_class = node.fmtdict
+        impl = fileinfo.impl
+        type_bound_part = fileinfo.type_bound_part
+        fmt = util.Scope(fmt_class)
+        
+        fmt.F_name_api = fmt_class.F_name_final
+        fmt.F_name_function = wformat(options.F_name_function_template, fmt)
+        fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            type_bound_part.append("final :: %s" % fmt.F_name_impl)
+        type_bound_part.append("final :: %s" % fmt.F_name_impl)
 
-            append_format(
-                impl,
-                """
+        append_format(
+            impl,
+            """
 subroutine {F_name_impl}({F_this})+
 use iso_c_binding, only : c_associated
 type({F_derived_name}), intent(INOUT) :: {F_this}
@@ -637,8 +647,8 @@ if (c_associated({F_this}%{F_derived_member}%addr)) then+
 call array_destructor({F_this}%{F_derived_member})
 -endif
 -end subroutine {F_name_impl}""",
-                fmt,
-            )
+            fmt,
+        )
 
     def overload_compare(self, node, fileinfo, fmt_class, operator, procedure, predicate):
         """ Overload .eq. and .eq.
