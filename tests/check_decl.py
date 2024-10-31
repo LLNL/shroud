@@ -169,6 +169,9 @@ int callback1(int in, int (*incr)(int));
 # declstr language=c++ create_std
 int fun1(std::vector<int> arg1, std::vector<int> *arg2, std::vector<int> &arg3);
 int callback1(int in, int (*incr)(int));
+
+class Object;
+std::shared_ptr<Object> *return_ptr(void);
 --------------------
 """  # end line
 
