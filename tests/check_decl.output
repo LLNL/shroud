@@ -1491,7 +1491,7 @@ stmts:
     params: []
     pointer:
     - ptr: '*'
-    typemap_name: std::shared_ptr
+    typemap_name: std::shared_ptr<Object>
   specifier:
   - std::shared_ptr
   template_arguments:
@@ -1501,7 +1501,7 @@ stmts:
     specifier:
     - Object
     typemap_name: Object
-  typemap_name: std::shared_ptr
+  typemap_name: std::shared_ptr<Object>
 XXXX SymbolTable
 cls: Global
 symbols:
@@ -1558,3 +1558,6 @@ int(*)(int):
   base: procedure
   f_type: f-function-pointer
   sgroup: procedure
+std::shared_ptr<Object>:
+  base: shadow
+  sgroup: shadow
