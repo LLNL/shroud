@@ -517,8 +517,12 @@ class GenFunctions(object):
         # Remove defaulted attributes then reset with current values.
         newcls.delete_format_templates()
         newcls.default_format()
-        
-        newcls.typemap = typemap.create_class_typemap(newcls)
+
+        newcls.typemap = declast.fetch_shared_ptr_typemap(
+            newcls.name_instantiation,
+            self.newlibrary.symtab)
+        typemap.fill_class_typemap(newcls)
+
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
         

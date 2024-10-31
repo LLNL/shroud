@@ -301,7 +301,7 @@
                             "specifier": [
                                 "Object"
                             ],
-                            "typemap_name": "Object_shared"
+                            "typemap_name": "std::shared_ptr<Object>"
                         },
                         "decl": "Object()",
                         "declgen": "Object(void)",
@@ -355,7 +355,7 @@
                                         "idtor": "3",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "c_ctor_shadow_capptr_shared",
-                                        "typemap_name": "Object_shared"
+                                        "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
@@ -411,7 +411,7 @@
                                         "idtor": "3",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt_name": "f_ctor_shadow_capsule_shared",
-                                        "typemap_name": "Object_shared"
+                                        "typemap_name": "std::shared_ptr<Object>"
                                     },
                                     "meta": {
                                         "abstract": "shadow",
@@ -542,7 +542,7 @@
                 },
                 "parse_keyword": "class",
                 "scope": "Object::",
-                "typemap_name": "Object_shared",
+                "typemap_name": "std::shared_ptr<Object>",
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -627,7 +627,7 @@
                 "typesShared.h"
             ]
         },
-        "Object_shared": {
+        "std::shared_ptr<Object>": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
             "base": "shadow",

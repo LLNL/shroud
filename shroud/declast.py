@@ -1669,12 +1669,25 @@ def create_shared_ptr_typemap(node, symtab):
 
     node.typemap is referencing type Object.
 
-    Return existing entry if it already exists, otherwise create one.
-    Create with sgroup=shadow. It servers a a place holder and 
-    will be filled in later.
+    Parameters:
+      node - declast.Declaration
+      symtab - declast.SymbolTable
     """
     targs = node.gen_template_arguments()
     type_name = node.typemap.name + targs
+    node.typemap = fetch_shared_ptr_typemap(type_name, symtab)
+
+def fetch_shared_ptr_typemap(type_name, symtab):
+    """Return a Typemap entry for a shared pointer instantiation.
+
+    Return existing entry if it already exists, otherwise create one.
+    Create with sgroup=shadow. It servers a a place holder and 
+    will be filled in later.
+
+    Parameters:
+      type_name - str
+      symtab - declast.SymbolTable
+    """
     ntypemap = symtab.lookup_typemap(type_name)
     if ntypemap is None:
         ntypemap = typemap.Typemap(
@@ -1683,7 +1696,7 @@ def create_shared_ptr_typemap(node, symtab):
             sgroup="shadow",
         )
         symtab.register_typemap(type_name, ntypemap)
-    node.typemap = ntypemap
+    return ntypemap
 
 
 class Namespace(Node):
