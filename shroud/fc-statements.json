@@ -3771,16 +3771,9 @@
         "name":"#### shared ################################################"
     },
     {
-        "alias": [
-            "f_ctor_shadow_capsule_shared"
-        ],
-        "notes": [
+        "name": "c_mixin_make-shared",
+        "comments": [
             "Create a std::shared_pointer on the heap to hold the pointer to the instance."
-        ],
-        "mixin": [
-            "f_mixin_function_shadow_capsule",
-            "c_mixin_shadow",
-            "c_mixin_destructor_new-shadow-shared"
         ],
         "c_call": [
             "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;",
@@ -3794,34 +3787,31 @@
         "c_local": [
             "shared"
         ],
-        "c_return_type": "void",
         "owner": "shared"
+    },
+    {
+        "alias": [
+            "f_ctor_shadow_capsule_shared"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared"
+        ],
+        "c_return_type": "void"
     },
     {
         "alias": [
             "c_ctor_shadow_capptr_shared"
         ],
-        "notes": [
-            "Create a std::shared_pointer on the heap to hold the pointer to the instance."
-        ],
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_destructor_new-shadow-shared"
-        ],
-        "c_call": [
-            "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;",
-            "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
-            "{c_var}->idtor = {idtor};"
-        ],
-        "impl_header": [
-            "<memory>"
-        ],
-        "c_local": [
-            "shared"
-        ],
-        "owner": "shared"
+            "c_mixin_destructor_new-shadow-shared",
+            "c_mixin_make-shared"
+        ]
     },
     {
         "alias": [
