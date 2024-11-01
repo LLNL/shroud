@@ -154,11 +154,9 @@ def find_abstract_declarator(arg):
     Args:
         arg - declast.Declaration
     """
-    if arg.typemap.sgroup == "shared_ptr":
-        arg = arg.template_arguments[0]
-        suffix = ["*"]
-    else:
-        suffix = []
+    if arg.typemap.base_typemap:
+        # Deal with std::shared_ptr<Object>
+        return "shadow"
         
     declarator = arg.declarator
     if declarator.is_function_pointer():
@@ -176,7 +174,6 @@ def find_abstract_declarator(arg):
             decl.append(",")
         decl[-1] = ">"
     decl.append(abstract)
-    decl.extend(suffix)
     return "".join(decl)
 
 def lookup_fc_stmts(path):

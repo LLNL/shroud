@@ -730,6 +730,42 @@ c_function_shadow_capptr:
   fmtdict:
     cxx_addr: ''
   owner: caller
+c_function_shadow_capptr_shared:
+  name: c_function_shadow_capptr_shared
+  comments:
+  - Return a instance by value.
+  notes:
+  - Used with std::shared_ptr<Object>* createChildA(void)
+  intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
 c_function_string:
   name: c_function_string
   comments:
@@ -5720,6 +5756,42 @@ f_function_shadow_capsule:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
   - c_local_var is passed in as argument.
+  intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_pre_call:
+  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
+f_function_shadow_capsule_shared:
+  name: f_function_shadow_capsule_shared
+  comments:
+  - Return a instance by value.
+  notes:
+  - Used with std::shared_ptr<Object>* createChildA(void)
   intent: function
   f_arg_decl:
   - '{f_type} :: {f_var}'
@@ -13796,6 +13868,7 @@ root
       native** -- c_function_native**
       shadow
         capptr -- c_function_shadow_capptr
+          shared -- c_function_shadow_capptr_shared
       shadow&
         capptr -- c_function_shadow&_capptr
           caller -- c_function_shadow&_capptr_caller
@@ -14083,6 +14156,7 @@ root
       native** -- f_function_native**
       shadow
         capsule -- f_function_shadow_capsule
+          shared -- f_function_shadow_capsule_shared
       shadow&
         capsule -- f_function_shadow&_capsule
           caller -- f_function_shadow&_capsule_caller

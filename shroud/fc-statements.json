@@ -3768,6 +3768,9 @@
         "owner": "caller"
     },
     {
+        "name":"#### shared ################################################"
+    },
+    {
         "alias": [
             "f_ctor_shadow_capsule_shared"
         ],
@@ -3819,6 +3822,27 @@
             "shared"
         ],
         "owner": "shared"
+    },
+    {
+        "alias": [
+            "f_function_shadow_capsule_shared"
+        ],
+        "notes": [
+            "Used with std::shared_ptr<Object>* createChildA(void)"
+        ],
+        "base": "f_function_shadow_capsule"
+    },
+    {
+        "alias": [
+            "c_function_shadow_capptr_shared"
+        ],
+        "notes": [
+            "Used with std::shared_ptr<Object>* createChildA(void)"
+        ],
+        "base": "c_function_shadow_capptr"
+    },
+    {
+        "name":"#### dtor ##################################################"
     },
     {
         "alias": [
