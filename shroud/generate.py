@@ -520,6 +520,7 @@ class GenFunctions(object):
 
         newcls.typemap = declast.fetch_shared_ptr_typemap(
             newcls.name_instantiation,
+            cls.typemap,
             self.newlibrary.symtab)
         typemap.fill_class_typemap(newcls)
 

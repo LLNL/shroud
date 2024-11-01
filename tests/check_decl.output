@@ -1560,4 +1560,5 @@ int(*)(int):
   sgroup: procedure
 std::shared_ptr<Object>:
   base: shadow
+  base_typemap: Object
   sgroup: shadow

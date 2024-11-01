@@ -1667,7 +1667,7 @@ def create_shared_ptr_typemap(node, symtab):
 
     ex: std::shared_ptr<Object> *return_ptr(void);
 
-    node.typemap is referencing type Object.
+    base_typemap is referencing type Object.
 
     Parameters:
       node - declast.Declaration
@@ -1675,9 +1675,10 @@ def create_shared_ptr_typemap(node, symtab):
     """
     targs = node.gen_template_arguments()
     type_name = node.typemap.name + targs
-    node.typemap = fetch_shared_ptr_typemap(type_name, symtab)
+    base_typemap = node.template_arguments[0].typemap
+    node.typemap = fetch_shared_ptr_typemap(type_name, base_typemap, symtab)
 
-def fetch_shared_ptr_typemap(type_name, symtab):
+def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
     """Return a Typemap entry for a shared pointer instantiation.
 
     Return existing entry if it already exists, otherwise create one.
@@ -1694,6 +1695,7 @@ def fetch_shared_ptr_typemap(type_name, symtab):
             type_name,
             base="shadow",
             sgroup="shadow",
+            base_typemap=base_typemap,
         )
         symtab.register_typemap(type_name, ntypemap)
     return ntypemap

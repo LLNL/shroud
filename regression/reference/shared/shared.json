@@ -631,6 +631,7 @@
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
             "base": "shadow",
+            "base_typemap": "Object",
             "c_to_cxx": "static_cast<{c_const}std::shared_ptr<Object> *>\t({c_var}->addr)",
             "c_type": "SHA_Object_shared",
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
