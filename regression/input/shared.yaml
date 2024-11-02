@@ -24,4 +24,4 @@ declarations:
   - decl: ~Object()
 
 #  - decl: Object* createChildA(void)
-#  - decl: std::shared_ptr<Object>* createChildA(void)
+  - decl: std::shared_ptr<Object>* createChildA(void)

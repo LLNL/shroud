@@ -34,6 +34,12 @@ void SHA_Object_shared_ctor_bufferify(SHA_Object_shared * SHC_rv);
 
 void SHA_Object_shared_dtor(SHA_Object_shared * self);
 
+SHA_Object_shared * SHA_Object_shared_createChildA(
+    SHA_Object_shared * self, SHA_Object_shared * SHC_rv);
+
+void SHA_Object_shared_createChildA_bufferify(SHA_Object_shared * self,
+    SHA_Object_shared * SHC_rv);
+
 #ifdef __cplusplus
 }
 #endif
