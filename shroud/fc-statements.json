@@ -3706,20 +3706,8 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_new_instance",
             "c_mixin_cvar-capsule-fill"
-        ],
-        "fmtdict": {
-            "cxx_addr": ""
-        },
-        "owner": "caller",
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} * {c_local_cxx} = new {cxx_type};"
-        ],
-        "c_call": [
-            "*{c_local_cxx} = {C_call_function};"
         ],
         "c_return_type": "{c_type} *",
         "c_return": [

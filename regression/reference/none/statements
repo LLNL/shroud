@@ -677,7 +677,7 @@ c_function_shadow<native>_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -715,7 +715,7 @@ c_function_shadow_capptr:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -751,7 +751,7 @@ c_function_shadow_capptr_shared:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
