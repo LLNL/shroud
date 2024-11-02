@@ -656,7 +656,7 @@ c_function_shadow*_this:
 c_function_shadow<native>_capptr:
   name: c_function_shadow<native>_capptr
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -694,7 +694,7 @@ c_function_shadow<native>_capptr:
 c_function_shadow_capptr:
   name: c_function_shadow_capptr
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -732,7 +732,10 @@ c_function_shadow_capptr:
 c_function_shadow_capptr_shared:
   name: c_function_shadow_capptr_shared
   comments:
-  - Return a instance by value.
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Allocate a function result on the heap.
+  - Assign to capsule in C wrapper.
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
   intent: function
@@ -5750,7 +5753,7 @@ f_function_shadow*_this:
 f_function_shadow<native>_capsule:
   name: f_function_shadow<native>_capsule
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -5788,7 +5791,7 @@ f_function_shadow<native>_capsule:
 f_function_shadow_capsule:
   name: f_function_shadow_capsule
   comments:
-  - Return a instance by value.
+  - Return an instance by value.
   notes:
   - Create memory in c_pre_call so it will survive the return.
   - owner=caller sets idtor flag to release the memory.
@@ -5826,7 +5829,10 @@ f_function_shadow_capsule:
 f_function_shadow_capsule_shared:
   name: f_function_shadow_capsule_shared
   comments:
-  - Return a instance by value.
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Allocate a function result on the heap.
+  - Assign to capsule in C wrapper.
   notes:
   - Used with std::shared_ptr<Object>* createChildA(void)
   intent: function

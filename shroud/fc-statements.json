@@ -3683,7 +3683,7 @@
             "f_function_shadow<native>_capsule"
         ],
         "comments": [
-            "Return a instance by value."
+            "Return an instance by value."
         ],
         "notes": [
             "Create memory in c_pre_call so it will survive the return.",
@@ -3704,7 +3704,7 @@
             "c_function_shadow<native>_capptr"
         ],
         "comments": [
-            "Return a instance by value."
+            "Return an instance by value."
         ],
         "notes": [
             "Create memory in c_pre_call so it will survive the return.",
@@ -3803,7 +3803,13 @@
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
         ],
-        "base": "f_function_shadow_capsule"
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+            "c_mixin_new_instance",
+            "c_mixin_cvar-capsule-fill"
+        ]
     },
     {
         "alias": [
@@ -3812,7 +3818,13 @@
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
         ],
-        "base": "c_function_shadow_capptr"
+        "mixin": [
+            "c_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_new_instance",
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
+        ]
     },
     {
         "name":"#### dtor ##################################################"
