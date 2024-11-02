@@ -3675,8 +3675,7 @@
             "c_local_var is passed in as argument."
         ],
         "mixin": [
-            "#f_mixin_function-to-subroutine",
-            "#f_mixin_function_shadow_capsule",
+            "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
             "c_mixin_cvar-capsule-fill"
@@ -3685,9 +3684,6 @@
             "cxx_addr": ""
         },
         "owner": "caller",
-        "f_call": [
-            "call {f_call_function}({F_arg_c_call})"
-        ],
         "c_local": [
             "cxx"
         ],
@@ -3696,8 +3692,7 @@
         ],
         "c_call": [
             "*{c_local_cxx} = {C_call_function};"
-        ],
-        "c_return_type": "void"
+        ]
     },
     {
         "alias": [
@@ -3799,8 +3794,7 @@
             "c_mixin_shadow",
             "c_mixin_destructor_new-shadow-shared",
             "c_mixin_make-shared"
-        ],
-        "c_return_type": "void"
+        ]
     },
     {
         "alias": [
