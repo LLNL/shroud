@@ -62,6 +62,25 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "name": "c_mixin_new_instance",
+        "comments": [
+            "Allocate a function result on the heap."
+        ],
+        "fmtdict": {
+            "cxx_addr": ""
+        },
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{cxx_type} *{c_local_cxx} = new {cxx_type};"
+        ],
+        "c_call": [
+            "*{c_local_cxx} = {C_call_function};"
+        ],
+        "owner": "caller"
+    },
+    {
         "name": "f_mixin_interface-as-cptr",
         "notes": [
             "Pass the address of the argument directly to C.",
@@ -2623,22 +2642,11 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
+            "c_mixin_new_instance",
             "c_mixin_destructor_new-string",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
             "f_mixin_use_capsule"
-        ],
-        "fmtdict": {
-            "cxx_addr": ""
-        },
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "std::string *{cxx_var} = new std::string;"
-        ],
-        "c_call": [
-            "*{c_local_cxx} = {C_call_function};"
         ]
     },
     {
@@ -3678,20 +3686,8 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
+            "c_mixin_new_instance",
             "c_mixin_cvar-capsule-fill"
-        ],
-        "fmtdict": {
-            "cxx_addr": ""
-        },
-        "owner": "caller",
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{cxx_type} * {c_local_cxx} = new {cxx_type};"
-        ],
-        "c_call": [
-            "*{c_local_cxx} = {C_call_function};"
         ]
     },
     {

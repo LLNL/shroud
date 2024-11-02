@@ -3111,6 +3111,20 @@ c_mixin_native_cfi_pointer:
   - cdesc
   - err
   owner: library
+c_mixin_new_instance:
+  name: c_mixin_new_instance
+  comments:
+  - Allocate a function result on the heap.
+  intent: mixin
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
 c_mixin_noargs:
   name: c_mixin_noargs
   intent: mixin
@@ -5752,7 +5766,7 @@ f_function_shadow<native>_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -5790,7 +5804,7 @@ f_function_shadow_capsule:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -5826,7 +5840,7 @@ f_function_shadow_capsule_shared:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_pre_call:
-  - '{cxx_type} * {c_local_cxx} = new {cxx_type};'
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7554,6 +7568,7 @@ f_function_string_cdesc_allocatable:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate a function result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -7598,7 +7613,7 @@ f_function_string_cdesc_allocatable:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
-  - std::string *{cxx_var} = new std::string;
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7621,12 +7636,13 @@ f_function_string_cdesc_allocatable:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
+  owner: caller
 f_function_string_cdesc_allocatable_caller:
   name: f_function_string_cdesc_allocatable_caller
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate a function result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -7671,7 +7687,7 @@ f_function_string_cdesc_allocatable_caller:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
-  - std::string *{cxx_var} = new std::string;
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7694,12 +7710,13 @@ f_function_string_cdesc_allocatable_caller:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
+  owner: caller
 f_function_string_cdesc_allocatable_library:
   name: f_function_string_cdesc_allocatable_library
   comments:
   - Call the C wrapper as a subroutine.
   - Pass cdesc as argument to C wrapper.
+  - Allocate a function result on the heap.
   - Fill cdesc from std::string using helper string_to_cdesc
   - in the C wrapper.
   - Allocate Fortran CHARACTER scalar, then fill from cdesc
@@ -7744,7 +7761,7 @@ f_function_string_cdesc_allocatable_library:
   - '{C_array_type} *{c_var_cdesc}'
   - '{C_capsule_data_type} *{c_var_capsule}'
   c_pre_call:
-  - std::string *{cxx_var} = new std::string;
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
   c_call:
   - '*{c_local_cxx} = {C_call_function};'
   c_post_call:
@@ -7767,7 +7784,7 @@ f_function_string_cdesc_allocatable_library:
   destructor:
   - "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);"
   - delete cxx_ptr;
-  owner: library
+  owner: caller
 f_function_string_cfi_allocatable:
   name: f_function_string_cfi_allocatable
   comments:
@@ -14047,6 +14064,8 @@ root
         cfi
           allocatable -- c_mixin_native_cfi_allocatable
           pointer -- c_mixin_native_cfi_pointer
+      new
+        instance -- c_mixin_new_instance
       noargs -- c_mixin_noargs
       out
         native** -- c_mixin_out_native**
