@@ -62,6 +62,18 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "name": "c_mixin_function-assign-to-local",
+        "comments": [
+            "Call function and assign to a local C++ variable."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_call": [
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+        ]
+    },
+    {
         "name": "c_mixin_new_instance",
         "comments": [
             "Allocate a function result on the heap."
@@ -1983,16 +1995,11 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_declare-fortran-result",
             "f_mixin_pass_character_buf",
-            "c_mixin_in_character_buf"
-        ],
-        "c_local": [
-            "cxx"
+            "c_mixin_in_character_buf",
+            "c_mixin_function-assign-to-local"
         ],
         "c_helper": [
             "char_copy"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_post_call": [
             "{c_helper_char_copy}({c_var}, {c_var_len},\t {c_local_cxx},\t -1);"
@@ -3590,20 +3597,15 @@
             "c_function_shadow&_capsule_caller",
             "c_function_shadow&_capsule_library"
         ],
-        "comments": [
+        "notes": [
             "Return a C_capsule_data_type."
         ],
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -3658,14 +3660,9 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -3814,6 +3811,13 @@
     {
         "alias": [
             "f_function_shared<shadow>*_capsule"
+        ],
+        "mixin": [
+            "f_mixin_function-to-subroutine",
+            "f_mixin_function_shadow_capsule",
+            "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_cvar-capsule-fill"
         ]
     },
     {
@@ -3834,6 +3838,13 @@
     {
         "alias": [
             "c_function_shared<shadow>*_capptr"
+        ],
+        "mixin": [
+            "c_mixin_function_shadow_capptr",
+            "c_mixin_shadow",
+            "c_mixin_function-assign-to-local",
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
         ]
     },
     {
@@ -4437,16 +4448,16 @@
             "{f_var}"
         ],
         "f_need_wrapper": true,
-        "c_pre_call": [],
         "c_helper": [
             "char_copy"
+        ],
+        "c_pre_call": [],
+        "c_call": [
+            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],
         "c_post_call": [
             "char *{c_var} = {cast_static}char *{cast1}{c_var_cfi}->base_addr{cast2};",
             "{c_helper_char_copy}({c_var}, {c_var_cfi}->elem_len,\t {c_local_cxx},\t -1);"
-        ],
-        "c_call": [
-            "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ]
     },
     {
@@ -4622,10 +4633,10 @@
         "f_arg_call": [
             "{f_var}"
         ],
-        "c_pre_call": [],
         "c_helper": [
             "char_copy"
         ],
+        "c_pre_call": [],
         "c_call": [
             "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
         ],

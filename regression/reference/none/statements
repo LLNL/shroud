@@ -145,6 +145,7 @@ c_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -188,6 +189,7 @@ c_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -231,6 +233,7 @@ c_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -430,6 +433,11 @@ c_function_shadow&_capptr_library:
 c_function_shadow&_capsule:
   name: c_function_shadow&_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -453,6 +461,11 @@ c_function_shadow&_capsule:
 c_function_shadow&_capsule_caller:
   name: c_function_shadow&_capsule_caller
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -476,6 +489,11 @@ c_function_shadow&_capsule_caller:
 c_function_shadow&_capsule_library:
   name: c_function_shadow&_capsule_library
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -621,6 +639,11 @@ c_function_shadow*_capptr_shared:
 c_function_shadow*_capsule:
   name: c_function_shadow*_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   i_arg_names:
@@ -731,7 +754,36 @@ c_function_shadow_capptr:
   owner: caller
 c_function_shared<shadow>*_capptr:
   name: c_function_shared<shadow>*_capptr
+  comments:
+  - Pass function result as a capsule field of shadow class
+  - from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
   intent: function
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_result_decl:
+  - 'type(C_PTR) :: {i_result_ptr}'
+  i_result_var: '{i_result_ptr}'
+  i_module:
+    iso_c_binding:
+    - C_PTR
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  c_local:
+  - cxx
   owner: library
 c_function_shared<shadow>_capptr:
   name: c_function_shared<shadow>_capptr
@@ -2875,6 +2927,16 @@ c_mixin_function:
   - Call a function.
   intent: mixin
   owner: library
+c_mixin_function-assign-to-local:
+  name: c_mixin_function-assign-to-local
+  comments:
+  - Call function and assign to a local C++ variable.
+  intent: mixin
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_local:
+  - cxx
+  owner: library
 c_mixin_function-return-cvar:
   name: c_mixin_function-return-cvar
   intent: mixin
@@ -4386,6 +4448,7 @@ f_function_char*_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -4451,6 +4514,7 @@ f_function_char*_buf_arg:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - Change function result into an argument
   - Use F_string_result_as_arg as the argument name.
@@ -4516,6 +4580,7 @@ f_function_char*_buf_copy:
   comments:
   - Call the C wrapper as a subroutine.
   - Pass CHARACTER and LEN to C wrapper.
+  - Call function and assign to a local C++ variable.
   notes:
   - char *getname() +len(30)
   - Copy result into caller's buffer.
@@ -5562,6 +5627,11 @@ f_function_native*_scalar:
 f_function_shadow&_capsule:
   name: f_function_shadow&_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5592,6 +5662,11 @@ f_function_shadow&_capsule:
 f_function_shadow&_capsule_caller:
   name: f_function_shadow&_capsule_caller
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5622,6 +5697,11 @@ f_function_shadow&_capsule_caller:
 f_function_shadow&_capsule_library:
   name: f_function_shadow&_capsule_library
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5652,6 +5732,11 @@ f_function_shadow&_capsule_library:
 f_function_shadow*_capsule:
   name: f_function_shadow*_capsule
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5682,6 +5767,11 @@ f_function_shadow*_capsule:
 f_function_shadow*_capsule_caller:
   name: f_function_shadow*_capsule_caller
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5712,6 +5802,11 @@ f_function_shadow*_capsule_caller:
 f_function_shadow*_capsule_library:
   name: f_function_shadow*_capsule_library
   comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
+  notes:
   - Return a C_capsule_data_type.
   intent: function
   f_arg_decl:
@@ -5832,7 +5927,36 @@ f_function_shadow_capsule:
   owner: caller
 f_function_shared<shadow>*_capsule:
   name: f_function_shared<shadow>*_capsule
+  comments:
+  - Call the C wrapper as a subroutine.
+  - Pass function result as a capsule argument from Fortran to C.
+  - Call function and assign to a local C++ variable.
+  - Assign to capsule in C wrapper.
   intent: function
+  f_arg_decl:
+  - '{f_type} :: {f_var}'
+  f_arg_call:
+  - '{f_var}%{F_derived_member}'
+  f_call:
+  - call {f_call_function}({F_arg_c_call})
+  f_need_wrapper: true
+  i_arg_names:
+  - '{i_var}'
+  i_arg_decl:
+  - 'type({f_capsule_data_type}){f_intent_attr} :: {i_var}'
+  i_module:
+    '{f_module_name}':
+    - '{f_capsule_data_type}'
+  c_arg_decl:
+  - '{c_type} * {c_var}'
+  c_call:
+  - "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
+  c_post_call:
+  - '{c_var}->addr  = {cxx_nonconst_ptr};'
+  - '{c_var}->idtor = {idtor};'
+  c_return_type: void
+  c_local:
+  - cxx
   owner: library
 f_function_shared<shadow>_capsule:
   name: f_function_shared<shadow>_capsule
@@ -14071,6 +14195,7 @@ root
           cdesc -- c_mixin_function_string_cdesc
         vector
           malloc -- c_mixin_function_vector_malloc
+      function-assign-to-local -- c_mixin_function-assign-to-local
       function-return-cvar -- c_mixin_function-return-cvar
       in
         character
