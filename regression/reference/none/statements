@@ -2937,6 +2937,20 @@ c_mixin_function-assign-to-local:
   c_local:
   - cxx
   owner: library
+c_mixin_function-assign-to-new:
+  name: c_mixin_function-assign-to-new
+  comments:
+  - Allocate a function result on the heap.
+  intent: mixin
+  c_pre_call:
+  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
+  c_call:
+  - '*{c_local_cxx} = {C_call_function};'
+  c_local:
+  - cxx
+  fmtdict:
+    cxx_addr: ''
+  owner: caller
 c_mixin_function-return-cvar:
   name: c_mixin_function-return-cvar
   intent: mixin
@@ -3187,20 +3201,6 @@ c_mixin_native_cfi_pointer:
   - cdesc
   - err
   owner: library
-c_mixin_new_instance:
-  name: c_mixin_new_instance
-  comments:
-  - Allocate a function result on the heap.
-  intent: mixin
-  c_pre_call:
-  - '{cxx_type} *{c_local_cxx} = new {cxx_type};'
-  c_call:
-  - '*{c_local_cxx} = {C_call_function};'
-  c_local:
-  - cxx
-  fmtdict:
-    cxx_addr: ''
-  owner: caller
 c_mixin_noargs:
   name: c_mixin_noargs
   intent: mixin
@@ -14196,6 +14196,7 @@ root
         vector
           malloc -- c_mixin_function_vector_malloc
       function-assign-to-local -- c_mixin_function-assign-to-local
+      function-assign-to-new -- c_mixin_function-assign-to-new
       function-return-cvar -- c_mixin_function-return-cvar
       in
         character
@@ -14214,8 +14215,6 @@ root
         cfi
           allocatable -- c_mixin_native_cfi_allocatable
           pointer -- c_mixin_native_cfi_pointer
-      new
-        instance -- c_mixin_new_instance
       noargs -- c_mixin_noargs
       out
         native** -- c_mixin_out_native**

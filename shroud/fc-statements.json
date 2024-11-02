@@ -74,7 +74,7 @@
         ]
     },
     {
-        "name": "c_mixin_new_instance",
+        "name": "c_mixin_function-assign-to-new",
         "comments": [
             "Allocate a function result on the heap."
         ],
@@ -2660,7 +2660,7 @@
         "mixin": [
             "f_mixin_function-to-subroutine",
             "f_mixin_pass_cdesc",
-            "c_mixin_new_instance",
+            "c_mixin_function-assign-to-new",
             "c_mixin_destructor_new-string",
             "c_mixin_function_string_cdesc",
             "f_mixin_char_cdesc_allocate",
@@ -3691,7 +3691,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
-            "c_mixin_new_instance",
+            "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill"
         ]
     },
@@ -3711,7 +3711,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_new_instance",
+            "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
         ]
@@ -3804,7 +3804,7 @@
             "f_mixin_function-to-subroutine",
             "f_mixin_function_shadow_capsule",
             "c_mixin_shadow",
-            "c_mixin_new_instance",
+            "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill"
         ]
     },
@@ -3830,7 +3830,7 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_new_instance",
+            "c_mixin_function-assign-to-new",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
         ]
