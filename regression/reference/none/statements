@@ -2868,6 +2868,13 @@ c_mixin_function:
   - Call a function.
   intent: mixin
   owner: library
+c_mixin_function-return-cvar:
+  name: c_mixin_function-return-cvar
+  intent: mixin
+  c_return:
+  - return {c_var};
+  c_return_type: '{c_type} *'
+  owner: library
 c_mixin_function_char*_cdesc:
   name: c_mixin_function_char*_cdesc
   comments:
@@ -14047,6 +14054,7 @@ root
           cdesc -- c_mixin_function_string_cdesc
         vector
           malloc -- c_mixin_function_vector_malloc
+      function-return-cvar -- c_mixin_function-return-cvar
       in
         character
           buf -- c_mixin_in_character_buf

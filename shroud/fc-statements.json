@@ -679,6 +679,17 @@
         }
     },
     {
+        "name": "c_mixin_function-return-cvar",
+        "notes": [
+            "Return a pointer to a heap variable.",
+            "Used when a function returns a value."
+        ],
+        "c_return_type": "{c_type} *",
+        "c_return": [
+            "return {c_var};"
+        ]
+    },
+    {
         "name": "c_mixin_destructor_new-string",
         "destructor_name": "new_string",
         "destructor": [
@@ -3647,17 +3658,14 @@
         "mixin": [
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
-            "c_mixin_cvar-capsule-fill"
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
         ],
         "c_local": [
             "cxx"
         ],
         "c_call": [
             "{gen.cxxdecl.c_local_cxx} =\t {C_call_function};"
-        ],
-        "c_return_type": "{c_type} *",
-        "c_return": [
-            "return {c_var};"
         ]
     },
     {
@@ -3707,11 +3715,8 @@
             "c_mixin_function_shadow_capptr",
             "c_mixin_shadow",
             "c_mixin_new_instance",
-            "c_mixin_cvar-capsule-fill"
-        ],
-        "c_return_type": "{c_type} *",
-        "c_return": [
-            "return {c_var};"
+            "c_mixin_cvar-capsule-fill",
+            "c_mixin_function-return-cvar"
         ]
     },
     {
