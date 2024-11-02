@@ -1693,8 +1693,8 @@ def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
     if ntypemap is None:
         ntypemap = typemap.Typemap(
             type_name,
-            base="shadow",
-            sgroup="shadow",
+            base="shared",
+            sgroup="shared",
             base_typemap=base_typemap,
         )
         symtab.register_typemap(type_name, ntypemap)

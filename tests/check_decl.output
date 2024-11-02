@@ -1559,6 +1559,6 @@ int(*)(int):
   f_type: f-function-pointer
   sgroup: procedure
 std::shared_ptr<Object>:
-  base: shadow
+  base: shared
   base_typemap: Object
-  sgroup: shadow
+  sgroup: shared

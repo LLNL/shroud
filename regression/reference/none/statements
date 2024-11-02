@@ -729,8 +729,12 @@ c_function_shadow_capptr:
   fmtdict:
     cxx_addr: ''
   owner: caller
-c_function_shadow_capptr_shared:
-  name: c_function_shadow_capptr_shared
+c_function_shared<shadow>*_capptr:
+  name: c_function_shared<shadow>*_capptr
+  intent: function
+  owner: library
+c_function_shared<shadow>_capptr:
+  name: c_function_shared<shadow>_capptr
   comments:
   - Pass function result as a capsule field of shadow class
   - from Fortran to C.
@@ -5826,8 +5830,12 @@ f_function_shadow_capsule:
   fmtdict:
     cxx_addr: ''
   owner: caller
-f_function_shadow_capsule_shared:
-  name: f_function_shadow_capsule_shared
+f_function_shared<shadow>*_capsule:
+  name: f_function_shared<shadow>*_capsule
+  intent: function
+  owner: library
+f_function_shared<shadow>_capsule:
+  name: f_function_shared<shadow>_capsule
   comments:
   - Call the C wrapper as a subroutine.
   - Pass function result as a capsule argument from Fortran to C.
@@ -13914,7 +13922,6 @@ root
       native** -- c_function_native**
       shadow
         capptr -- c_function_shadow_capptr
-          shared -- c_function_shadow_capptr_shared
       shadow&
         capptr -- c_function_shadow&_capptr
           caller -- c_function_shadow&_capptr_caller
@@ -13931,6 +13938,10 @@ root
         this -- c_function_shadow*_this
       shadow<native>
         capptr -- c_function_shadow<native>_capptr
+      shared<shadow>
+        capptr -- c_function_shared<shadow>_capptr
+      shared<shadow>*
+        capptr -- c_function_shared<shadow>*_capptr
       string -- c_function_string
         buf
           arg -- c_function_string_buf_arg
@@ -14206,7 +14217,6 @@ root
       native** -- f_function_native**
       shadow
         capsule -- f_function_shadow_capsule
-          shared -- f_function_shadow_capsule_shared
       shadow&
         capsule -- f_function_shadow&_capsule
           caller -- f_function_shadow&_capsule_caller
@@ -14218,6 +14228,10 @@ root
         this -- f_function_shadow*_this
       shadow<native>
         capsule -- f_function_shadow<native>_capsule
+      shared<shadow>
+        capsule -- f_function_shared<shadow>_capsule
+      shared<shadow>*
+        capsule -- f_function_shared<shadow>*_capsule
       string
         buf -- f_function_string_buf
           arg -- f_function_string_buf_arg

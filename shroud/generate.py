@@ -523,6 +523,8 @@ class GenFunctions(object):
             cls.typemap,
             self.newlibrary.symtab)
         typemap.fill_class_typemap(newcls)
+        newcls.typemap.base = "shared"
+        newcls.typemap.sgroup = "shared"
 
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls

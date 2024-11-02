@@ -478,7 +478,6 @@
                                     },
                                     "meta": {
                                         "abstract": "void",
-                                        "api": "capptr",
                                         "intent": "dtor",
                                         "owner": "shared"
                                     },
@@ -504,7 +503,6 @@
                                     },
                                     "meta": {
                                         "abstract": "void",
-                                        "api": "capsule",
                                         "intent": "dtor",
                                         "owner": "shared"
                                     },
@@ -630,7 +628,7 @@
         "std::shared_ptr<Object>": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
-            "base": "shadow",
+            "base": "shared",
             "base_typemap": "Object",
             "c_to_cxx": "static_cast<{c_const}std::shared_ptr<Object> *>\t({c_var}->addr)",
             "c_type": "SHA_Object_shared",
@@ -659,7 +657,7 @@
             "impl_header": [
                 "shared.hpp"
             ],
-            "sgroup": "shadow",
+            "sgroup": "shared",
             "wrap_header": [
                 "typesShared.h"
             ]

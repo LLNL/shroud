@@ -154,10 +154,6 @@ def find_abstract_declarator(arg):
     Args:
         arg - declast.Declaration
     """
-    if arg.typemap.base_typemap:
-        # Deal with std::shared_ptr<Object>
-        return "shadow"
-        
     declarator = arg.declarator
     if declarator.is_function_pointer():
         decl = ["procedure"]
@@ -759,6 +755,7 @@ def print_tree_statements(fp, statements, defaults):
     yaml.safe_dump(complete, fp, sort_keys=False)
 
     return
+    # DEBUG
     # Dump each group to a file
     # This makes it easier to compare one finalized group to another using diff.
     for name, group in complete.items():

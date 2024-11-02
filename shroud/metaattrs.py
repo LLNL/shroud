@@ -254,7 +254,7 @@ class FillMeta(object):
             # Unable to set Fortran pointer for void
             # if deref set, error
             pass
-        elif ntypemap.sgroup == "shadow":
+        elif ntypemap.sgroup in ["shared", "shadow"]:
             # Change a C++ pointer into a Fortran pointer
             # return 'void *' as 'type(C_PTR)'
             # 'shadow' assigns pointer to type(C_PTR) in a derived type
@@ -440,7 +440,7 @@ class FillMeta(object):
 
         if api is not missing:
             meta["api"] = api
-        elif ntypemap.sgroup == "shadow":
+        elif ntypemap.sgroup in ["shared", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             elif node.options.C_shadow_result:
@@ -462,7 +462,7 @@ class FillMeta(object):
                 # capptr is not used with Fortran wrappers.
                 api = "capsule"
             meta["api"] = api
-        elif ntypemap.sgroup == "shadow":
+        elif ntypemap.sgroup in ["shared", "shadow"]:
             if node.return_this:
                 meta["api"] = "this"
             else:
@@ -540,8 +540,11 @@ class FillMeta(object):
 
         if cls and cls.C_shared_class:
             # XXX - special case for now, need to copy from ntypemap
-            meta["owner"] = "shared"
-            meta["api"] = "capptr"
+            if ast.is_ctor:
+                meta["owner"] = "shared"
+                meta["api"] = "capptr"
+            elif ast.is_dtor:
+                meta["owner"] = "shared"
 
     def set_func_post_fortran(self, cls, node, meta):
         """Final check on metaattributes for Fortran.
@@ -551,9 +554,12 @@ class FillMeta(object):
         ntypemap = ast.typemap
 
         if cls and cls.C_shared_class:
-            meta["owner"] = "shared"
-            meta["api"] = "capsule"
-            meta["deref"] = None
+            if ast.is_ctor:
+                meta["owner"] = "shared"
+                meta["api"] = "capsule"
+                meta["deref"] = None
+            elif ast.is_dtor:
+                meta["owner"] = "shared"
             
     def set_arg_api_c(self, arg, meta):
         declarator = arg.declarator

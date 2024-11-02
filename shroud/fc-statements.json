@@ -3798,7 +3798,7 @@
     },
     {
         "alias": [
-            "f_function_shadow_capsule_shared"
+            "f_function_shared<shadow>_capsule"
         ],
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
@@ -3813,7 +3813,12 @@
     },
     {
         "alias": [
-            "c_function_shadow_capptr_shared"
+            "f_function_shared<shadow>*_capsule"
+        ]
+    },
+    {
+        "alias": [
+            "c_function_shared<shadow>_capptr"
         ],
         "notes": [
             "Used with std::shared_ptr<Object>* createChildA(void)"
@@ -3824,6 +3829,11 @@
             "c_mixin_new_instance",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
+        ]
+    },
+    {
+        "alias": [
+            "c_function_shared<shadow>*_capptr"
         ]
     },
     {

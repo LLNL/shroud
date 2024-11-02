@@ -20,7 +20,7 @@ typemap:
       f_to_c: "{f_var}%cxxmem"
   - type: shared_ptr<Object>
     fields:
-      base: shadow
+      base: shared
       wrap_header:
       - typesShared.h
       c_type: SHA_Object_shared
