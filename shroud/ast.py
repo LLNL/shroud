@@ -729,7 +729,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_name_scope = "",
             F_name_typedef="",
             f_result_var="SHT_rv",
-            F_shared_member="cxxshared",
             F_this="obj",
             C_string_result_as_arg="SHF_rv",
             F_string_result_as_arg="",

@@ -272,12 +272,6 @@ class Wrapf(util.WrapperMixin, fcfmt.FillFormat):
                 "type, extends({F_derived_member_base}) :: {F_derived_name}+",
                 fmt_class,
             )
-            if node.C_shared_class:
-                append_format(
-                    f_type_decl,
-                    "type({F_capsule_data_type}) :: {F_shared_member}",
-                    fmt_class,
-                )
         else:
             append_format(
                 f_type_decl,
