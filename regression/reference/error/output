@@ -1,4 +1,11 @@
 Wrote error_types.yaml
+
+----------------------------------------
+Phase: initial
+----------------------------------------
+Node: Cstruct_as_subclass
+line 22
+Unknown class 'Cstruct_as_class' in option.class_baseclass
 Wrote wrapCstruct_as_subclass.h
 Wrote wrapCstruct_as_subclass.cpp
 
@@ -26,13 +33,6 @@ Statement: f_subroutine
 No such c_helper 'no_c_helper'
 Wrote wraperror.h
 Wrote wraperror.cpp
-
-----------------------------------------
-Phase: Wrapf.wrap_class
-----------------------------------------
-Node: Cstruct_as_subclass
-line 22
-Unknown class 'Cstruct_as_class' in option.class_baseclass
 
 ----------------------------------------
 Phase: Wrapf.wrap_function_impl
