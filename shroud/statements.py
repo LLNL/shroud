@@ -902,3 +902,28 @@ def set_template_fields(ast, fmt):
     """
     fmt.cxx_T = ast.gen_template_argument()
     fmt.targs = [TemplateFormat(targ) for targ in ast.template_arguments]
+
+
+######################################################################
+# baseclass
+
+class BaseClassFormat(object):
+    """Used with Scope and format fields.
+    to access type information for the baseclass.
+
+    "{baseclass.cxx_type}"
+    """
+    def __init__(self, cls):
+        """
+        cls - ast.ClassNode
+        """
+        self.cls = cls
+
+    def __str__(self):
+        return self.cls.typemap.name
+
+    def __repr__(self):
+        return "<BasesClassFormat {}>".format(self.cls.typemap.name)
+
+    def __getattr__(self, name):
+        return getattr(self.cls.typemap, name)

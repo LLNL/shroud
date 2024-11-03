@@ -283,6 +283,8 @@ class ToDict(visitor.Visitor):
         for key, value in node.__dict__.items():
             if key in ["gen"]:
                 continue
+            elif key in ["baseclass"]:
+                d[key] = repr(value)
             elif key in ["targs"]:
                 d[key] = self.visit(value)
             elif key == "typemap":

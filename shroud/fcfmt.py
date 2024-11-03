@@ -99,6 +99,7 @@ class FillFormat(object):
             # Base class already contains F_derived_member.
             # ['pubic', 'ClassName', declast.CXXClass]
             fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
+            fmt_class.baseclass = statements.BaseClassFormat(node.baseclass[0][2])
         elif options.class_baseclass:
             # Used with wrap_struct_as=class.
             baseclass = node.parent.ast.unqualified_lookup(options.class_baseclass)

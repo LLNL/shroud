@@ -919,6 +919,7 @@
                     "F_derived_name": "object_shared",
                     "F_name_api": "object_shared",
                     "F_name_scope": "object_shared_",
+                    "baseclass": "<BasesClassFormat Object>",
                     "class_scope": "std::shared_ptr<Object>::",
                     "cxx_class": "Object_shared",
                     "cxx_type": "std::shared_ptr<Object>",
