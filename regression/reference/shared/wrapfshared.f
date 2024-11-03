@@ -34,6 +34,7 @@ module shared_mod
     contains
         procedure :: dtor => object_dtor
         procedure :: create_child_a => object_create_child_a
+        procedure :: create_child_b => object_create_child_b
         procedure :: get_instance => object_get_instance
         procedure :: set_instance => object_set_instance
         procedure :: associated => object_associated
@@ -48,6 +49,7 @@ module shared_mod
     contains
         procedure :: dtor => object_shared_dtor
         procedure :: create_child_a => object_shared_create_child_a
+        procedure :: create_child_b => object_shared_create_child_b
         final :: object_shared_final
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
@@ -124,6 +126,31 @@ module shared_mod
         end subroutine c_object_create_child_a_bufferify
 
         ! ----------------------------------------
+        ! Function:  std::shared_ptr<Object> *createChildB
+        ! Statement: c_function_shared<shadow>*_capptr
+        function c_object_create_child_b(self, SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="SHA_Object_createChildB")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_prv
+        end function c_object_create_child_b
+
+        ! ----------------------------------------
+        ! Function:  std::shared_ptr<Object> *createChildB
+        ! Statement: f_function_shared<shadow>*_capsule
+        subroutine c_object_create_child_b_bufferify(self, SHT_rv) &
+                bind(C, name="SHA_Object_createChildB_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_create_child_b_bufferify
+
+        ! ----------------------------------------
         ! Function:  Object
         ! Statement: c_ctor_shadow_capptr_shared
         function c_object_shared_ctor(SHT_rv) &
@@ -181,6 +208,32 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_shared_create_child_a_bufferify
+
+        ! ----------------------------------------
+        ! Function:  std::shared_ptr<Object> *createChildB
+        ! Statement: c_function_shared<shadow>*_capptr
+        function c_object_shared_create_child_b(self, SHT_rv) &
+                result(SHT_prv) &
+                bind(C, name="SHA_Object_shared_createChildB")
+            use iso_c_binding, only : C_PTR
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+            type(C_PTR) :: SHT_prv
+        end function c_object_shared_create_child_b
+
+        ! ----------------------------------------
+        ! Function:  std::shared_ptr<Object> *createChildB
+        ! Statement: f_function_shared<shadow>*_capsule
+        subroutine c_object_shared_create_child_b_bufferify(self, &
+                SHT_rv) &
+                bind(C, name="SHA_Object_shared_createChildB_bufferify")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
+        end subroutine c_object_shared_create_child_b_bufferify
     end interface
 
     interface object
@@ -229,6 +282,19 @@ contains
             SHT_rv%cxxmem)
         ! splicer end class.Object.method.create_child_a
     end function object_create_child_a
+
+    ! ----------------------------------------
+    ! Function:  std::shared_ptr<Object> *createChildB
+    ! Statement: f_function_shared<shadow>*_capsule
+    function object_create_child_b(obj) &
+            result(SHT_rv)
+        class(object) :: obj
+        type(object_shared) :: SHT_rv
+        ! splicer begin class.Object.method.create_child_b
+        call c_object_create_child_b_bufferify(obj%cxxmem, &
+            SHT_rv%cxxmem)
+        ! splicer end class.Object.method.create_child_b
+    end function object_create_child_b
 
     ! Return pointer to C++ memory.
     function object_get_instance(obj) result (cxxptr)
@@ -289,6 +355,19 @@ contains
             SHT_rv%cxxmem)
         ! splicer end class.Object_shared.method.create_child_a
     end function object_shared_create_child_a
+
+    ! ----------------------------------------
+    ! Function:  std::shared_ptr<Object> *createChildB
+    ! Statement: f_function_shared<shadow>*_capsule
+    function object_shared_create_child_b(obj) &
+            result(SHT_rv)
+        class(object_shared) :: obj
+        type(object_shared) :: SHT_rv
+        ! splicer begin class.Object_shared.method.create_child_b
+        call c_object_shared_create_child_b_bufferify(obj%cxxmem, &
+            SHT_rv%cxxmem)
+        ! splicer end class.Object_shared.method.create_child_b
+    end function object_shared_create_child_b
 
     subroutine object_shared_final(obj)
         use iso_c_binding, only : c_associated

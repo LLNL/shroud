@@ -40,6 +40,12 @@ SHA_Object_shared * SHA_Object_shared_createChildA(
 void SHA_Object_shared_createChildA_bufferify(SHA_Object_shared * self,
     SHA_Object_shared * SHC_rv);
 
+SHA_Object_shared * SHA_Object_shared_createChildB(
+    SHA_Object_shared * self, SHA_Object_shared * SHC_rv);
+
+void SHA_Object_shared_createChildB_bufferify(SHA_Object_shared * self,
+    SHA_Object_shared * SHC_rv);
+
 #ifdef __cplusplus
 }
 #endif

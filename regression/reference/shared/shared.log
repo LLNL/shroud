@@ -7,6 +7,8 @@ C c ~Object(void)
 C f ~Object(void)
 C c std::shared_ptr<Object> *createChildA(void)
 C f std::shared_ptr<Object> *createChildA(void)
+C c std::shared_ptr<Object> *createChildB(void)
+C f std::shared_ptr<Object> *createChildB(void)
 Close wrapObject.h
 Close wrapObject.cpp
 class std::shared_ptr<Object>
@@ -16,26 +18,34 @@ C c ~Object(void)
 C f ~Object(void)
 C c std::shared_ptr<Object> *createChildA(void)
 C f std::shared_ptr<Object> *createChildA(void)
+C c std::shared_ptr<Object> *createChildB(void)
+C f std::shared_ptr<Object> *createChildB(void)
 Close wrapObject_shared.h
 Close wrapObject_shared.cpp
 class Object
 Fortran Object(void)
 Fortran ~Object(void)
 Fortran std::shared_ptr<Object> *createChildA(void)
+Fortran std::shared_ptr<Object> *createChildB(void)
 C-interface c Object(void)
 C-interface f Object(void)
 C-interface f ~Object(void)
 C-interface c std::shared_ptr<Object> *createChildA(void)
 C-interface f std::shared_ptr<Object> *createChildA(void)
+C-interface c std::shared_ptr<Object> *createChildB(void)
+C-interface f std::shared_ptr<Object> *createChildB(void)
 class std::shared_ptr<Object>
 Fortran Object(void)
 Fortran ~Object(void)
 Fortran std::shared_ptr<Object> *createChildA(void)
+Fortran std::shared_ptr<Object> *createChildB(void)
 C-interface c Object(void)
 C-interface f Object(void)
 C-interface f ~Object(void)
 C-interface c std::shared_ptr<Object> *createChildA(void)
 C-interface f std::shared_ptr<Object> *createChildA(void)
+C-interface c std::shared_ptr<Object> *createChildB(void)
+C-interface f std::shared_ptr<Object> *createChildB(void)
 Close wrapfshared.f
 Close utilShared.cpp
 Close typesShared.h

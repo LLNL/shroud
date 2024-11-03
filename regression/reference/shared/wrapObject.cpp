@@ -87,4 +87,33 @@ void SHA_Object_createChildA_bufferify(SHA_Object * self,
     // splicer end class.Object.method.createChildA_bufferify
 }
 
+// ----------------------------------------
+// Function:  std::shared_ptr<Object> *createChildB
+// Statement: c_function_shared<shadow>*_capptr
+SHA_Object_shared * SHA_Object_createChildB(SHA_Object * self,
+    SHA_Object_shared * SHC_rv)
+{
+    Object *SH_this = static_cast<Object *>(self->addr);
+    // splicer begin class.Object.method.createChildB
+    std::shared_ptr<Object> *SHC_rv_cxx = SH_this->createChildB();
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+    // splicer end class.Object.method.createChildB
+}
+
+// ----------------------------------------
+// Function:  std::shared_ptr<Object> *createChildB
+// Statement: f_function_shared<shadow>*_capsule
+void SHA_Object_createChildB_bufferify(SHA_Object * self,
+    SHA_Object_shared * SHC_rv)
+{
+    Object *SH_this = static_cast<Object *>(self->addr);
+    // splicer begin class.Object.method.createChildB_bufferify
+    std::shared_ptr<Object> *SHC_rv_cxx = SH_this->createChildB();
+    SHC_rv->addr  = SHC_rv_cxx;
+    SHC_rv->idtor = 0;
+    // splicer end class.Object.method.createChildB_bufferify
+}
+
 }  // extern "C"

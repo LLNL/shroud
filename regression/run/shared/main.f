@@ -53,7 +53,8 @@ contains
     childA = objectSharedPtr%create_child_a()
     call assert_true(childA%associated())
 
-    !    childB = objectSharedPtr%create_child_b()
+    childB = objectSharedPtr%create_child_b()
+    call assert_true(childB%associated())
 
   end subroutine test_object_shared
 
