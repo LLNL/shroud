@@ -56,6 +56,8 @@ contains
     childB = objectSharedPtr%create_child_b()
     call assert_true(childB%associated())
 
+    call objectSharedPtr%replace_child_b(childA)
+
   end subroutine test_object_shared
 
 end program tester

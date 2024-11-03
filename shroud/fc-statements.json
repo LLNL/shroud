@@ -3582,7 +3582,12 @@
             "f_inout_shadow*",
             "c_inout_shadow*",
             "f_inout_shadow&",
-            "c_inout_shadow&"
+            "c_inout_shadow&",
+            "f_in_shared<shadow>*",
+            "c_in_shared<shadow>*",
+            "f_inout_shared<shadow>*",
+            "c_inout_shared<shadow>*"
+            
         ],
         "mixin": [
             "f_mixin_shadow-arg",
@@ -3852,12 +3857,6 @@
             "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
-        ]
-    },
-    {
-        "alias": [
-            "f_inout_shared<shadow>*",
-            "c_inout_shared<shadow>*"
         ]
     },
     {

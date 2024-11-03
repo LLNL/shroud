@@ -46,6 +46,9 @@ SHA_Object_shared * SHA_Object_shared_createChildB(
 void SHA_Object_shared_createChildB_bufferify(SHA_Object_shared * self,
     SHA_Object_shared * SHC_rv);
 
+void SHA_Object_shared_replaceChildB(SHA_Object_shared * self,
+    SHA_Object_shared * child);
+
 #ifdef __cplusplus
 }
 #endif

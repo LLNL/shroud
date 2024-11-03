@@ -35,6 +35,7 @@ module shared_mod
         procedure :: dtor => object_dtor
         procedure :: create_child_a => object_create_child_a
         procedure :: create_child_b => object_create_child_b
+        procedure :: replace_child_b => object_replace_child_b
         procedure :: get_instance => object_get_instance
         procedure :: set_instance => object_set_instance
         procedure :: associated => object_associated
@@ -50,6 +51,7 @@ module shared_mod
         procedure :: dtor => object_shared_dtor
         procedure :: create_child_a => object_shared_create_child_a
         procedure :: create_child_b => object_shared_create_child_b
+        procedure :: replace_child_b => object_shared_replace_child_b
         final :: object_shared_final
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
@@ -151,6 +153,20 @@ module shared_mod
         end subroutine c_object_create_child_b_bufferify
 
         ! ----------------------------------------
+        ! Function:  void replaceChildB
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  std::shared_ptr<Object> *child
+        ! Statement: f_inout_shared<shadow>*
+        subroutine c_object_replace_child_b(self, child) &
+                bind(C, name="SHA_Object_replaceChildB")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
+        end subroutine c_object_replace_child_b
+
+        ! ----------------------------------------
         ! Function:  Object
         ! Statement: c_ctor_shadow_capptr_shared
         function c_object_shared_ctor(SHT_rv) &
@@ -234,6 +250,20 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(OUT) :: SHT_rv
         end subroutine c_object_shared_create_child_b_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void replaceChildB
+        ! Statement: f_subroutine
+        ! ----------------------------------------
+        ! Argument:  std::shared_ptr<Object> *child
+        ! Statement: f_inout_shared<shadow>*
+        subroutine c_object_shared_replace_child_b(self, child) &
+                bind(C, name="SHA_Object_shared_replaceChildB")
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
+        end subroutine c_object_shared_replace_child_b
     end interface
 
     interface object
@@ -295,6 +325,20 @@ contains
             SHT_rv%cxxmem)
         ! splicer end class.Object.method.create_child_b
     end function object_create_child_b
+
+    ! ----------------------------------------
+    ! Function:  void replaceChildB
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::shared_ptr<Object> *child
+    ! Statement: f_inout_shared<shadow>*
+    subroutine object_replace_child_b(obj, child)
+        class(object) :: obj
+        type(object_shared), intent(INOUT) :: child
+        ! splicer begin class.Object.method.replace_child_b
+        call c_object_replace_child_b(obj%cxxmem, child%cxxmem)
+        ! splicer end class.Object.method.replace_child_b
+    end subroutine object_replace_child_b
 
     ! Return pointer to C++ memory.
     function object_get_instance(obj) result (cxxptr)
@@ -368,6 +412,20 @@ contains
             SHT_rv%cxxmem)
         ! splicer end class.Object_shared.method.create_child_b
     end function object_shared_create_child_b
+
+    ! ----------------------------------------
+    ! Function:  void replaceChildB
+    ! Statement: f_subroutine
+    ! ----------------------------------------
+    ! Argument:  std::shared_ptr<Object> *child
+    ! Statement: f_inout_shared<shadow>*
+    subroutine object_shared_replace_child_b(obj, child)
+        class(object_shared) :: obj
+        type(object_shared), intent(INOUT) :: child
+        ! splicer begin class.Object_shared.method.replace_child_b
+        call c_object_shared_replace_child_b(obj%cxxmem, child%cxxmem)
+        ! splicer end class.Object_shared.method.replace_child_b
+    end subroutine object_shared_replace_child_b
 
     subroutine object_shared_final(obj)
         use iso_c_binding, only : c_associated

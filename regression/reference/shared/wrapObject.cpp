@@ -116,4 +116,21 @@ void SHA_Object_createChildB_bufferify(SHA_Object * self,
     // splicer end class.Object.method.createChildB_bufferify
 }
 
+// ----------------------------------------
+// Function:  void replaceChildB
+// Statement: c_subroutine
+// ----------------------------------------
+// Argument:  std::shared_ptr<Object> *child
+// Statement: c_inout_shared<shadow>*
+void SHA_Object_replaceChildB(SHA_Object * self,
+    SHA_Object_shared * child)
+{
+    Object *SH_this = static_cast<Object *>(self->addr);
+    // splicer begin class.Object.method.replaceChildB
+    std::shared_ptr<Object> * SHC_child_cxx =
+        static_cast<std::shared_ptr<Object> *>(child->addr);
+    SH_this->replaceChildB(SHC_child_cxx);
+    // splicer end class.Object.method.replaceChildB
+}
+
 }  // extern "C"
