@@ -1561,4 +1561,5 @@ int(*)(int):
 std::shared_ptr<Object>:
   base: shared
   base_typemap: Object
+  ntemplate_args: 1
   sgroup: shared

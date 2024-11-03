@@ -1384,6 +1384,7 @@
             "impl_header": [
                 "shared.hpp"
             ],
+            "ntemplate_args": 1,
             "sgroup": "shared",
             "wrap_header": [
                 "typesShared.h"

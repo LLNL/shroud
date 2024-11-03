@@ -1696,6 +1696,7 @@ def fetch_shared_ptr_typemap(type_name, base_typemap, symtab):
             base="shared",
             sgroup="shared",
             base_typemap=base_typemap,
+            ntemplate_args=1,
         )
         symtab.register_typemap(type_name, ntypemap)
     return ntypemap
