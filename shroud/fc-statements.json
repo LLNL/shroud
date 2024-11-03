@@ -62,6 +62,21 @@
         "sphinx-end-before": "f_mixin_declare-fortran-arg"
     },
     {
+        "name": "c_mixin_cast-argument",
+        "comments": [
+            "Cast C argument to local C++ variable."
+        ],
+        "c_local": [
+            "cxx"
+        ],
+        "c_pre_call": [
+            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
+        ],
+        "c_arg_call": [
+            "{c_local_cxx}"
+        ]
+    },
+    {
         "name": "c_mixin_function-assign-to-local",
         "comments": [
             "Call function and assign to a local C++ variable."
@@ -3571,16 +3586,8 @@
         ],
         "mixin": [
             "f_mixin_shadow-arg",
+            "c_mixin_cast-argument",
             "c_mixin_shadow"
-        ],
-        "c_local": [
-            "cxx"
-        ],
-        "c_pre_call": [
-            "{c_const}{cxx_type} * {c_local_cxx} =\t {cast_static}{c_const}{cxx_type} *{cast1}{c_var}->addr{cast2};"
-        ],
-        "c_arg_call": [
-            "{c_local_cxx}"
         ]
     },
     {
@@ -3845,6 +3852,12 @@
             "c_mixin_function-assign-to-local",
             "c_mixin_cvar-capsule-fill",
             "c_mixin_function-return-cvar"
+        ]
+    },
+    {
+        "alias": [
+            "f_inout_shared<shadow>*",
+            "c_inout_shared<shadow>*"
         ]
     },
     {
