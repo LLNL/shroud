@@ -46,8 +46,8 @@ c_ctor_shadow_capptr_shared:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
-  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
   c_local:
@@ -3129,8 +3129,8 @@ c_mixin_make-shared:
   - Create a std::shared_pointer on the heap to hold the pointer to the instance.
   intent: mixin
   c_call:
-  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
-  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
   c_local:
@@ -4339,8 +4339,8 @@ f_ctor_shadow_capsule_shared:
   c_arg_decl:
   - '{c_type} * {c_var}'
   c_call:
-  - "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;"
-  - "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});"
+  - "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;"
+  - "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});"
   - "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});"
   - '{c_var}->idtor = {idtor};'
   c_return_type: void

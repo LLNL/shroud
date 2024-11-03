@@ -1194,6 +1194,11 @@ C_impl_file
     Name of generated C++ implementation file for the library.
     Defaulted from expansion of option *C_impl_filename_class_template*.
 
+baseclass
+    An instance of ``BaseClassFormat`` to allow access to the base
+    class' *typemap*.  Used in format fields as
+    ``{baseclass.cxx_type}``.
+    
 F_derived_name
     Name of Fortran derived type for this class.
     Computed from option *F_derived_name_template*.

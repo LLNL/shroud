@@ -3757,8 +3757,8 @@
             "Create a std::shared_pointer on the heap to hold the pointer to the instance."
         ],
         "c_call": [
-            "std::shared_ptr<{cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{cxx_type}>;",
-            "*{c_local_shared} = \t std::make_shared<{cxx_type}>({C_call_list});",
+            "std::shared_ptr<{baseclass.cxx_type}> *{c_local_shared} =\t new std::shared_ptr<{baseclass.cxx_type}>;",
+            "*{c_local_shared} = \t std::make_shared<{baseclass.cxx_type}>({C_call_list});",
             "{c_var}->addr = static_cast<{c_const}void *>(\t{c_local_shared});",
             "{c_var}->idtor = {idtor};"
         ],

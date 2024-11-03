@@ -28,9 +28,9 @@ extern "C" {
 SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared * SHC_rv)
 {
     // splicer begin class.Object.method.ctor
-    std::shared_ptr<std::shared_ptr<Object>> *SHC_rv_shared =
-        new std::shared_ptr<std::shared_ptr<Object>>;
-    *SHC_rv_shared =  std::make_shared<std::shared_ptr<Object>>();
+    std::shared_ptr<Object> *SHC_rv_shared =
+        new std::shared_ptr<Object>;
+    *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
     SHC_rv->idtor = 3;
     return SHC_rv;
@@ -43,9 +43,9 @@ SHA_Object_shared * SHA_Object_shared_ctor(SHA_Object_shared * SHC_rv)
 void SHA_Object_shared_ctor_bufferify(SHA_Object_shared * SHC_rv)
 {
     // splicer begin class.Object.method.ctor_bufferify
-    std::shared_ptr<std::shared_ptr<Object>> *SHC_rv_shared =
-        new std::shared_ptr<std::shared_ptr<Object>>;
-    *SHC_rv_shared =  std::make_shared<std::shared_ptr<Object>>();
+    std::shared_ptr<Object> *SHC_rv_shared =
+        new std::shared_ptr<Object>;
+    *SHC_rv_shared =  std::make_shared<Object>();
     SHC_rv->addr = static_cast<void *>(SHC_rv_shared);
     SHC_rv->idtor = 3;
     // splicer end class.Object.method.ctor_bufferify
