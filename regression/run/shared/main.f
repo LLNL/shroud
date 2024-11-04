@@ -44,6 +44,8 @@ contains
   subroutine test_object_shared
     type(object_shared) objectSharedPtr
     type(object_shared) childA, childB
+    integer(C_LONG) count
+    ! use_count returns a LONG but assert_equals does not have generic for LONG.
 
     call set_case_name("test_object_shared")
 
@@ -51,13 +53,26 @@ contains
     call assert_true(objectSharedPtr%associated())
 
     childA = objectSharedPtr%create_child_a()
-    call assert_true(childA%associated())
+    call assert_true(childA%associated(), "create ChildA")
 
     childB = objectSharedPtr%create_child_b()
-    call assert_true(childB%associated())
+    call assert_true(childB%associated(), "create ChildB")
+
+    count = childA%use_count()
+    call assert_equals(1, int(count), "childA use_count")
+
+    count = childB%use_count()
+    call assert_equals(1, int(count), "childB use_count")
 
     call objectSharedPtr%replace_child_b(childA)
 
+    count = childA%use_count()
+    call assert_equals(2, int(count), "childA use_count post replace")
+
+    count = childB%use_count()
+    call assert_equals(2, int(count), "childB use_count post replace")
+
+    
   end subroutine test_object_shared
 
 end program tester

@@ -512,6 +512,7 @@ class GenFunctions(object):
         newcls.name_instantiation = "std::shared_ptr<{}>".format(cls.fmtdict.cxx_type)
         newcls.scope_file[-1] += class_suffix
 #        newcls.functions = []
+        self.share_methods(newcls)
 
         newcls.C_shared_class = True
         # Remove defaulted attributes then reset with current values.
@@ -528,6 +529,16 @@ class GenFunctions(object):
 
         newcls.baseclass = [ ( 'public', "DDDD", cls.ast) ]
         return newcls
+
+    def share_methods(self, cls):
+        """A methods to a std::shared_ptr class.
+
+        long use_count() const noexcept;
+	T* get() const noexcept;
+        """
+        decl = "long use_count(void)"
+        fcn = cls.add_function(decl)
+        fcn.C_shared_method = True
         
     def instantiate_classes(self, node):
         """Instantate any template_arguments.

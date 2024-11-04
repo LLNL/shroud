@@ -51,6 +51,7 @@ module shared_mod
         procedure :: create_child_a => object_shared_create_child_a
         procedure :: create_child_b => object_shared_create_child_b
         procedure :: replace_child_b => object_shared_replace_child_b
+        procedure :: use_count => object_shared_use_count
         final :: object_shared_final
         ! splicer begin class.Object_shared.type_bound_procedure_part
         ! splicer end class.Object_shared.type_bound_procedure_part
@@ -263,6 +264,19 @@ module shared_mod
             type(SHA_SHROUD_capsule_data), intent(IN) :: self
             type(SHA_SHROUD_capsule_data), intent(INOUT) :: child
         end subroutine c_object_shared_replace_child_b
+
+        ! ----------------------------------------
+        ! Function:  long use_count
+        ! Statement: f_function_native
+        function c_object_shared_use_count(self) &
+                result(SHT_rv) &
+                bind(C, name="SHA_Object_shared_use_count")
+            use iso_c_binding, only : C_LONG
+            import :: SHA_SHROUD_capsule_data
+            implicit none
+            type(SHA_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_LONG) :: SHT_rv
+        end function c_object_shared_use_count
     end interface
 
     interface object
@@ -425,6 +439,19 @@ contains
         call c_object_shared_replace_child_b(obj%cxxmem, child%cxxmem)
         ! splicer end class.Object_shared.method.replace_child_b
     end subroutine object_shared_replace_child_b
+
+    ! ----------------------------------------
+    ! Function:  long use_count
+    ! Statement: f_function_native
+    function object_shared_use_count(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_LONG
+        class(object_shared) :: obj
+        integer(C_LONG) :: SHT_rv
+        ! splicer begin class.Object_shared.method.use_count
+        SHT_rv = c_object_shared_use_count(obj%cxxmem)
+        ! splicer end class.Object_shared.method.use_count
+    end function object_shared_use_count
 
     subroutine object_shared_final(obj)
         use iso_c_binding, only : c_associated

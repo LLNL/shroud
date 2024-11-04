@@ -1547,6 +1547,7 @@ class FunctionNode(AstNode):
         self.C_force_wrapper = False
         self.C_signature = None
         self.C_fortran_generic = False
+        self.C_shared_method = False      # True if method of a smart pointer (ex. use_count)
 
         # self.function_index = []
 
